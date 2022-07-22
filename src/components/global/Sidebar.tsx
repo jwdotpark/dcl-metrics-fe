@@ -41,6 +41,11 @@ interface LinkItemProps {
   name: string
   icon: IconType
 }
+
+const makeName = (name: string) => {
+  return name.toLowerCase().split(" ").join("-")
+}
+
 const LinkItems: Array<LinkItemProps> = [
   { name: "Home", icon: FiHome },
   { name: "Global", icon: FiTrendingUp },
@@ -108,7 +113,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {LinkItems.map((link) => (
         <>
           <NavItem key={link.name} icon={link.icon}>
-            <Link href="/test">
+            <Link href={`/${makeName(link.name)}`}>
               <p>{link.name}</p>
             </Link>
           </NavItem>
