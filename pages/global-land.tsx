@@ -1,17 +1,24 @@
 import type { NextPage } from "next"
-import { Grid, GridItem } from "@chakra-ui/react"
+import { Box, Grid, GridItem, useBreakpointValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-import DashboardBox from "../src/components/local/DashboardBox"
+import BarChartComponent from "../src/components/chart/BarChartComponent"
 
 const GlobalPage: NextPage = () => {
   const box = {
-    height: "300px",
+    h: "450",
+    w: "100%",
+    bg: "white",
   }
+
+  const gridColumn = useBreakpointValue({ sm: 1, lg: 2 })
+
   return (
     <Layout>
-      <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-        <DashboardBox height={box.height}>1</DashboardBox>
-        <DashboardBox height={box.height}>2</DashboardBox>
+      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
+        <BarChartComponent />
+        <GridItem h={box.h} bg={box.bg} borderRadius="md" boxShadow="md" />
+        <GridItem h={box.h} bg={box.bg} borderRadius="md" boxShadow="md" />
+        <GridItem h={box.h} bg={box.bg} borderRadius="md" boxShadow="md" />
       </Grid>
     </Layout>
   )
