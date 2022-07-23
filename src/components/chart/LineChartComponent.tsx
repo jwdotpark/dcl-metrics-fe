@@ -24,7 +24,7 @@ const LineChartComponent = () => {
       borderRadius="md"
       boxShadow="md"
     >
-      <ComponentHeader name="Bar Chart" />
+      <ComponentHeader name="Line Chart" />
       <LineChart data={data} />
     </GridItem>
   )
