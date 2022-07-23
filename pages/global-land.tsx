@@ -2,6 +2,7 @@ import type { NextPage } from "next"
 import { Box, Grid, GridItem, useBreakpointValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import BarChartComponent from "../src/components/chart/BarChartComponent"
+import PieChartComponent from "../src/components/chart/PieChartComponent"
 
 const GlobalPage: NextPage = () => {
   const box = {
@@ -16,6 +17,7 @@ const GlobalPage: NextPage = () => {
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <BarChartComponent />
+        <PieChartComponent />
         <GridItem h={box.h} bg={box.bg} borderRadius="md" boxShadow="md" />
         <GridItem h={box.h} bg={box.bg} borderRadius="md" boxShadow="md" />
         <GridItem h={box.h} bg={box.bg} borderRadius="md" boxShadow="md" />

@@ -111,7 +111,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         justifyContent="space-between"
         cursor="pointer"
       >
-        <Link href="/">
+        <Link href="/home">
           <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
             Logo
           </Text>

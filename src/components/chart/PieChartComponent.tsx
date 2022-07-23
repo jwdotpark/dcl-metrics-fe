@@ -1,11 +1,11 @@
 // @ts-nocheck
 import dynamic from "next/dynamic"
 import { GridItem } from "@chakra-ui/react"
-import data from "../../../public/data/bar-chart-data.json"
+import data from "../../../public/data/pie-chart-data.json"
 import ComponentHeader from "../local/ComponentHeader"
-const BarChart = dynamic(() => import("../../lib/BarChart"), { ssr: false })
+const PieChart = dynamic(() => import("../../lib/PieChart"), { ssr: false })
 
-const BarChartComponent = () => {
+const PieChartComponent = () => {
   // TODO put box property into context
   const box = {
     h: "450",
@@ -22,10 +22,10 @@ const BarChartComponent = () => {
       borderRadius="md"
       boxShadow="md"
     >
-      <ComponentHeader name="Bar Chart" />
-      <BarChart data={data} />
+      <ComponentHeader name="Pie Chart" />
+      <PieChart data={data} />
     </GridItem>
   )
 }
 
-export default BarChartComponent
+export default PieChartComponent
