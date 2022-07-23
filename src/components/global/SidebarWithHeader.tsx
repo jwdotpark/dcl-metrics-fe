@@ -48,10 +48,10 @@ const makeName = (name: string) => {
 
 const LinkItems: Array<LinkItemProps> = [
   { name: "Home", icon: FiHome },
-  { name: "Global", icon: FiTrendingUp },
+  { name: "Global Land", icon: FiTrendingUp },
   { name: "Single Land", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
+  { name: "About", icon: FiStar },
+  // { name: "Settings", icon: FiSettings },
 ]
 
 export default function SidebarWithHeader({
@@ -104,19 +104,27 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       h="full"
       {...rest}
     >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+      <Flex
+        h="20"
+        alignItems="center"
+        mx="8"
+        justifyContent="space-between"
+        cursor="pointer"
+      >
+        <Link href="/">
+          <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+            Logo
+          </Text>
+        </Link>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
         <>
-          <NavItem key={link.name} icon={link.icon}>
-            <Link href={`/${makeName(link.name)}`}>
+          <Link href={`/${makeName(link.name)}`}>
+            <NavItem key={link.name} icon={link.icon}>
               <p>{link.name}</p>
-            </Link>
-          </NavItem>
+            </NavItem>
+          </Link>
         </>
       ))}
     </Box>
@@ -190,7 +198,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
-        fontFamily="monospace"
+        fontFamily="sans-serif"
         fontWeight="bold"
       >
         Logo
@@ -211,12 +219,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               _focus={{ boxShadow: "none" }}
             >
               <HStack>
-                <Avatar
-                  size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
+                <Avatar size={"sm"} src="./profile.jpeg" />
                 <VStack
                   display={{ base: "none", md: "flex" }}
                   alignItems="flex-start"
