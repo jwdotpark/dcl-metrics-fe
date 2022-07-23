@@ -6,7 +6,7 @@ import { ResponsiveLine } from "@nivo/line"
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-const BarChart = ({ data }) => (
+const LineChart = ({ data }) => (
   <ResponsiveLine
     data={data}
     margin={{ top: 50, right: 25, bottom: 100, left: 50 }}
@@ -74,4 +74,4 @@ const BarChart = ({ data }) => (
   />
 )
 
-export default BarChart
+export default LineChart
