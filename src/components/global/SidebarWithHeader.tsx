@@ -36,7 +36,7 @@ import {
 import { IconType } from "react-icons"
 import { ReactText } from "react"
 import Link from "next/link"
-
+import { useRouter } from "next/router"
 interface LinkItemProps {
   name: string
   icon: IconType
@@ -93,6 +93,8 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const router = useRouter()
+  console.log("path: ", router.pathname)
   return (
     <Box
       transition="3s ease"
@@ -122,7 +124,9 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <>
           <Link href={`/${makeName(link.name)}`}>
             <NavItem key={link.name} icon={link.icon}>
-              <p>{link.name}</p>
+              <Text as={router.pathname === "/" + makeName(link.name) && "u"}>
+                {link.name}
+              </Text>
             </NavItem>
           </Link>
         </>
