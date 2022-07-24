@@ -1,25 +1,25 @@
+import { useEffect, useState } from "react"
+import dynamic from "next/dynamic"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-
 // functions
 import { fetchResult } from "../src/lib/hooks/fetch"
-
 // components
 import TopUsersTimeSpentComponent from "../src/components/local/stats/TopUsersTimeSpent"
-import TopUsersTimeSpentComponent2 from "../src/components/local/stats/TopUsersTimeSpent2"
+// import TopUsersTimeSpentComponent2 from "../src/components/local/stats/TopUsersTimeSpent2"
+const TopUsersTimeSpentComponent2 = dynamic(
+  () => import("../src/components/local/stats/TopUsersTimeSpent2"),
+  { ssr: false }
+)
 import TopParcelSceneTimeSpentComponent from "../src/components/local/stats/TopParcelSceneTimeSpent"
 // charts
 import LineChartComponent from "../src/components/chart/LineChartComponent"
 import PieChartComponent from "../src/components/chart/PieChartComponent"
 import BarChartComponent from "../src/components/chart/BarChartComponent"
-import { useEffect, useState } from "react"
 
 const GlobalPage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const [dailyParcel, setDailyParcel] = useState([])
-  const [dailyUser, setDailyUser] = useState([])
-  const [timeSpent, setTimeSpent] = useState([])
 
   const box = {
     h: "450",

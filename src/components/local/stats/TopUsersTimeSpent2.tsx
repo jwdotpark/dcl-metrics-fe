@@ -118,13 +118,13 @@ const TopUsersTimeSpentComponent2 = ({ box, isLoading, setIsLoading }) => {
                   <Tr
                     key={index}
                     style={{
-                      background: `linear-gradient(90deg, #e0f2fe ${
+                      background: `linear-gradient(90deg, #FFFFCC75 ${
                         dataArr[item] / 3600
                       }%, #ffffff 0)`,
                     }}
                   >
                     <Td>
-                      <Text>
+                      <Text color="gray.500">
                         {index + 1 + page * rowsPerPage - rowsPerPage}
                       </Text>
                     </Td>
@@ -161,7 +161,7 @@ const TopUsersTimeSpentComponent2 = ({ box, isLoading, setIsLoading }) => {
         <>
           <Box position="absolute" m="2" ml="4">
             <Text fontSize="xl">
-              <b>Top Users Time Spent</b>
+              <b>Top Address Time Spent</b>
             </Text>
           </Box>
           <TableComponent />
