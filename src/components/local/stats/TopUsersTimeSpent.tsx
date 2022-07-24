@@ -73,8 +73,9 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
                 <Tr
                   key={item.address}
                   style={{
-                    background: `linear-gradient(90deg, #FFFFCC75 ${
-                      item.timeSpent / 3600
+                    background: `linear-gradient(90deg, #61CDBB50 ${
+                      // FIXME convert to 100&
+                      item.timeSpent / 2000
                     }%, #ffffff 0)`,
                   }}
                 >
