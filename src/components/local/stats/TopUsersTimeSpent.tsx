@@ -13,7 +13,9 @@ import {
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
+import Pagination from "../Pagination"
 import Loading from "../Loading"
+import { convertSeconds } from "../../../lib/hooks/utils"
 import { FiLink } from "react-icons/fi"
 import { fetchResult } from "../../../lib/hooks/fetch"
 
@@ -33,7 +35,6 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   }, [])
 
   const data = Object.entries(timeSpent)
-
   const dataArr = []
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < data[i][1].length; j++) {
@@ -49,42 +50,10 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
     return b.timeSpent - a.timeSpent
   })
 
-  // make a function that convert seconds to hrs min secs
-  const convertSeconds = (seconds: number) => {
-    const hrs = Math.floor(seconds / 3600)
-    const min = Math.floor((seconds % 3600) / 60)
-    const sec = Math.floor(seconds % 60)
-    return `${hrs}hrs ${min}min ${sec}s`
-  }
-
   // table pagination
   const [page, setPage] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const pages = dataArr.length / rowsPerPage
-
-  const Pagination = () => {
-    return (
-      <Box m="2">
-        {Array.from({ length: pages }, (_, i) => {
-          return (
-            <Button
-              key={i}
-              size="sm"
-              variant="ghost"
-              onClick={() => {
-                setPage(i + 1)
-              }}
-              color={page === i + 1 ? "blue.500" : "gray.500"}
-              fontSize="sm"
-              cursor="pointer"
-            >
-              {i + 1}
-            </Button>
-          )
-        })}
-      </Box>
-    )
-  }
 
   const TableComponent = () => {
     return (
@@ -134,7 +103,7 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
           </Tbody>
         </Table>
         <Center>
-          <Pagination />
+          <Pagination page={page} pages={pages} setPage={setPage} />
         </Center>
       </TableContainer>
     )
