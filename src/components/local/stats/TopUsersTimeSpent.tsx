@@ -8,10 +8,6 @@ import {
   Td,
   Th,
   Tr,
-  Tfoot,
-  HStack,
-  Spacer,
-  VStack,
   Button,
   Center,
 } from "@chakra-ui/react"
@@ -51,7 +47,13 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
     return b.timeSpent - a.timeSpent
   })
 
-  console.log(dataArr)
+  // make a function that convert seconds to hrs min secs
+  const convertSeconds = (seconds: number) => {
+    const hrs = Math.floor(seconds / 3600)
+    const min = Math.floor((seconds % 3600) / 60)
+    const sec = Math.floor(seconds % 60)
+    return `${hrs}hrs ${min}min ${sec}s`
+  }
 
   // table pagination
   const [page, setPage] = useState(1)
@@ -80,14 +82,6 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
         })}
       </Box>
     )
-  }
-
-  // make a function that convert seconds to hrs min secs
-  const convertSeconds = (seconds: number) => {
-    const hrs = Math.floor(seconds / 3600)
-    const min = Math.floor((seconds % 3600) / 60)
-    const sec = Math.floor(seconds % 60)
-    return `${hrs}hrs ${min}min ${sec}s`
   }
 
   const TableComponent = () => {
