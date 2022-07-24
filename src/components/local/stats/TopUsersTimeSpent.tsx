@@ -20,10 +20,12 @@ import { fetchResult } from "../../../lib/hooks/fetch"
 const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [timeSpent, setTimeSpent] = useState([])
 
+  // TODO fix static fetching
   useEffect(() => {
     setIsLoading(true)
-    const timeSpentUrl = "time_spent.json"
-    fetchResult(timeSpentUrl).then((data) => {
+    // const url = "https://dclund.herokuapp.com/api/user_stats/time_spent/daily"
+    const staticUrl = "time_spent.json"
+    fetchResult(staticUrl).then((data) => {
       setTimeSpent(data)
     })
     setIsLoading(false)

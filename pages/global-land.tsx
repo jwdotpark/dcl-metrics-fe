@@ -7,7 +7,7 @@ import { fetchResult } from "../src/lib/hooks/fetch"
 
 // components
 import TopUsersTimeSpentComponent from "../src/components/local/stats/TopUsersTimeSpent"
-
+import TopParcelSceneTimeSpentComponent from "../src/components/local/stats/TopParcelSceneTimeSpent"
 // charts
 import LineChartComponent from "../src/components/chart/LineChartComponent"
 import PieChartComponent from "../src/components/chart/PieChartComponent"
@@ -49,6 +49,11 @@ const GlobalPage: NextPage = () => {
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <TopUsersTimeSpentComponent
+          box={box}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
+        <TopParcelSceneTimeSpentComponent
           box={box}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
