@@ -1,8 +1,29 @@
 import { Box, Button } from "@chakra-ui/react"
+import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
 const Pagination = ({ page, pages, setPage }) => {
+  const prevClick = () => {
+    if (page > 1) {
+      setPage(page - 1)
+    }
+  }
+
+  const nextClick = () => {
+    if (page < pages) {
+      setPage(page + 1)
+    }
+  }
   return (
     <Box m="2">
+      <Button
+        size="sm"
+        variant="ghost"
+        onClick={prevClick}
+        fontSize="sm"
+        cursor="pointer"
+      >
+        <FiChevronsLeft />
+      </Button>
       {Array.from({ length: pages }, (_, i) => {
         return (
           <Button
@@ -12,7 +33,7 @@ const Pagination = ({ page, pages, setPage }) => {
             onClick={() => {
               setPage(i + 1)
             }}
-            color={page === i + 1 ? "blue.500" : "gray.500"}
+            color={page === i + 1 ? "blue.700" : "gray.500"}
             fontSize="sm"
             cursor="pointer"
           >
@@ -20,6 +41,15 @@ const Pagination = ({ page, pages, setPage }) => {
           </Button>
         )
       })}
+      <Button
+        size="sm"
+        variant="ghost"
+        onClick={nextClick}
+        fontSize="sm"
+        cursor="pointer"
+      >
+        <FiChevronsRight />
+      </Button>
     </Box>
   )
 }

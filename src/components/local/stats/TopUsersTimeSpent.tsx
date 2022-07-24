@@ -89,7 +89,7 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
                       href={"https://etherscan.io/address/" + `${item.address}`}
                       rel="noreferrer"
                     >
-                      <Text color="gray.500">
+                      <Text color="gray.600">
                         {item.address.slice(0, 10)}..{" "}
                         <Box display="inline-block">
                           <FiLink size="12" />
