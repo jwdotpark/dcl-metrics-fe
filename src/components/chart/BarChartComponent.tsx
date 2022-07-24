@@ -15,6 +15,8 @@ const BarChartComponent = () => {
     bg: "white",
   }
 
+  // console.log("data: ", data)
+
   return (
     <GridItem
       minW={box.w}

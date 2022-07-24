@@ -1,7 +1,7 @@
 import type { NextPage } from "next"
 import { Grid, GridItem } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-import DashboardBox from "../src/components/local/DashboardBox"
+import DashboardBox from "../src/components/local/GridBox"
 
 const About = () => {
   return (

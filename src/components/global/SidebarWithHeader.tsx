@@ -94,7 +94,6 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const router = useRouter()
-  console.log("path: ", router.pathname)
   return (
     <Box
       transition="3s ease"
@@ -121,15 +120,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <>
-          <Link href={`/${makeName(link.name)}`}>
-            <NavItem key={link.name} icon={link.icon}>
-              <Text as={router.pathname === "/" + makeName(link.name) && "u"}>
-                {link.name}
-              </Text>
-            </NavItem>
-          </Link>
-        </>
+        <Link key={link.name} href={`/${makeName(link.name)}`}>
+          <NavItem icon={link.icon}>
+            <Text as={router.pathname === "/" + makeName(link.name) && "u"}>
+              {link.name}
+            </Text>
+          </NavItem>
+        </Link>
       ))}
     </Box>
   )
@@ -141,8 +138,8 @@ interface NavItemProps extends FlexProps {
 }
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   return (
-    <Link
-      href="#"
+    <div
+      // href="#"
       style={{ textDecoration: "none" }}
       // _focus={{ boxShadow: "none" }}
     >
@@ -171,7 +168,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         )}
         {children}
       </Flex>
-    </Link>
+    </div>
   )
 }
 

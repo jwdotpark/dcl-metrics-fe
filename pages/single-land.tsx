@@ -1,7 +1,10 @@
 import type { NextPage } from "next"
 import { Grid, GridItem } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-import DashboardBox from "../src/components/local/DashboardBox"
+import DashboardBox from "../src/components/local/GridBox"
+import LineChartComponent from "../src/components/chart/LineChartComponent"
+import PieChartComponent from "../src/components/chart/PieChartComponent"
+import BarChartComponent from "../src/components/chart/BarChartComponent"
 
 const SingleLand = () => {
   const box = {
@@ -10,10 +13,9 @@ const SingleLand = () => {
   return (
     <Layout>
       <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-        <DashboardBox height={box.height}>1</DashboardBox>
-        <DashboardBox height={box.height}>2</DashboardBox>
-        <DashboardBox height={box.height}>3</DashboardBox>
-        <DashboardBox height={box.height}>4</DashboardBox>
+        <LineChartComponent />
+        <PieChartComponent />
+        <BarChartComponent />
       </Grid>
     </Layout>
   )
