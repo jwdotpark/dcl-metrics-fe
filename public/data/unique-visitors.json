@@ -1,0 +1,9 @@
+[
+  { "date": "2022-07-18", "unique_users": 6234, "active_parcels": 2113 },
+  { "date": "2022-07-19", "unique_users": 8901, "active_parcels": 3336 },
+  { "date": "2022-07-20", "unique_users": 9179, "active_parcels": 3831 },
+  { "date": "2022-07-21", "unique_users": 9289, "active_parcels": 4700 },
+  { "date": "2022-07-22", "unique_users": 9373, "active_parcels": 4649 },
+  { "date": "2022-07-23", "unique_users": 8667, "active_parcels": 4444 },
+  { "date": "2022-07-24", "unique_users": 8556, "active_parcels": 4059 }
+]

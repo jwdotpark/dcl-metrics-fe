@@ -142,7 +142,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
         <Box position="relative" mt="4" mx="5">
           <Box>
             <Text fontSize="xl" mb="4">
-              <b>Top Parcels Time Spent </b>
+              <b>Top Parcels/Scenes Time Spent </b>
               <Box display="inline" ml="2"></Box>
             </Text>
           </Box>

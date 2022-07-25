@@ -16,7 +16,8 @@ const TopParcelsTimeSpentComponent = dynamic(
   () => import("../src/components/local/stats/TopParcelsTimeSpent"),
   { ssr: false }
 )
-// import TopParcelsTimeSpentComponent from "../src/components/local/stats/TopParcelsTimeSpent"
+import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
+
 // charts
 import LineChartComponent from "../src/components/chart/LineChartComponent"
 import PieChartComponent from "../src/components/chart/PieChartComponent"
@@ -46,10 +47,15 @@ const GlobalPage: NextPage = () => {
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
+        <UniqueVisitors
+          // box={box}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
 
-        <LineChartComponent />
-        <PieChartComponent />
-        <BarChartComponent />
+        {/* <LineChartComponent box={box} /> */}
+        {/* <PieChartComponent /> */}
+        {/* <BarChartComponent /> */}
       </Grid>
     </Layout>
   )

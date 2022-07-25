@@ -9,7 +9,7 @@ import { ResponsiveLine } from "@nivo/line"
 const LineChart = ({ data }) => (
   <ResponsiveLine
     data={data}
-    margin={{ top: 50, right: 25, bottom: 100, left: 50 }}
+    margin={{ top: 50, right: 50, bottom: 100, left: 75 }}
     xScale={{ type: "point" }}
     yScale={{
       type: "linear",
@@ -26,9 +26,10 @@ const LineChart = ({ data }) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: "transportation",
-      legendOffset: 36,
-      legendPosition: "middle",
+      // legend: "transportation",
+      // legend: data[0].id,
+      // legendOffset: 36,
+      // legendPosition: "middle",
     }}
     axisLeft={{
       orient: "left",
@@ -36,7 +37,7 @@ const LineChart = ({ data }) => (
       tickPadding: 5,
       tickRotation: 0,
       legend: "count",
-      legendOffset: -40,
+      legendOffset: -60,
       legendPosition: "middle",
     }}
     pointSize={10}
@@ -49,16 +50,16 @@ const LineChart = ({ data }) => (
       {
         anchor: "bottom",
         direction: "row",
-        justify: false,
+        justify: true,
         translateX: 0,
         translateY: 75,
-        itemsSpacing: 0,
+        itemsSpacing: 20,
         itemDirection: "left-to-right",
-        itemWidth: 80,
+        itemWidth: 85,
         itemHeight: 20,
         itemOpacity: 0.75,
         symbolSize: 12,
-        symbolShape: "circle",
+        symbolShape: "square",
         symbolBorderColor: "rgba(0, 0, 0, .5)",
         effects: [
           {
@@ -71,6 +72,22 @@ const LineChart = ({ data }) => (
         ],
       },
     ]}
+    tooltip={(point) => {
+      return (
+        <div
+          style={{
+            background: "white",
+            padding: "9px 12px",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+          }}
+        >
+          <div>
+            {point.point.data.x + ": " + point.point.data.yStacked} counts
+          </div>
+        </div>
+      )
+    }}
   />
 )
 

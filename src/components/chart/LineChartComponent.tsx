@@ -7,13 +7,25 @@ const LineChart = dynamic(() => import("../../lib/LineChart"), {
   ssr: false,
 })
 
-const LineChartComponent = () => {
-  // TODO put box property into context
-  const box = {
-    h: "450",
-    w: "100%",
-    bg: "white",
-  }
+const LineChartComponent = ({ box, res }) => {
+  const result = [
+    {
+      id: "Active Parcels",
+      color: "hsl(170, 70%, 50%)",
+      data: res.map((item) => ({
+        x: item.date,
+        y: item.active_parcels,
+      })),
+    },
+    {
+      id: "Unique Users",
+      color: "hsl(325, 70%, 50%)",
+      data: res.map((item) => ({
+        x: item.date,
+        y: item.unique_users,
+      })),
+    },
+  ]
 
   return (
     <GridItem
@@ -24,8 +36,8 @@ const LineChartComponent = () => {
       borderRadius="md"
       boxShadow="md"
     >
-      <ComponentHeader name="Line Chart" />
-      <LineChart data={data} />
+      <ComponentHeader />
+      <LineChart data={result} />
     </GridItem>
   )
 }

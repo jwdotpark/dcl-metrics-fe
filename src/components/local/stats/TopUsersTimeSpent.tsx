@@ -9,8 +9,6 @@ import {
   Th,
   Tr,
   Center,
-  Switch,
-  Spacer,
   Button,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
@@ -18,7 +16,6 @@ import GridBox from "../GridBox"
 import Pagination from "../Pagination"
 import Loading from "../Loading"
 import { convertSeconds } from "../../../lib/hooks/utils"
-import { fetchResult } from "../../../lib/hooks/fetch"
 import { FiLink } from "react-icons/fi"
 import staticData from "../../../../public/data/daily-user-stats.json"
 
