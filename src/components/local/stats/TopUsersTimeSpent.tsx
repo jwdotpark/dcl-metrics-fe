@@ -9,6 +9,9 @@ import {
   Th,
   Tr,
   Center,
+  Switch,
+  Spacer,
+  Button,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
@@ -60,18 +63,14 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const pages = dataArr.length / rowsPerPage
 
-  useEffect(() => {
-    console.log(isLoading)
-  })
-
   const TableComponent = () => {
     return (
-      <TableContainer m="2" mt="12" whiteSpace="nowrap">
+      <TableContainer mx="4" whiteSpace="nowrap">
         <Table variant="simple" size="sm" overflowX="scroll">
           <Thead>
             <Tr>
               <Th>#</Th>
-              <Th>Date</Th>
+              {dateClicked && <Th>Date</Th>}
               <Th>Time Spent</Th>
               <Th>Address</Th>
             </Tr>
@@ -93,7 +92,7 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
                       {index + 1 + page * rowsPerPage - rowsPerPage}
                     </Text>
                   </Td>
-                  <Td>{item.date}</Td>
+                  {dateClicked && <Td>{item.date}</Td>}
                   <Td>{convertSeconds(item.timeSpent)}</Td>
                   <Td>
                     <a
@@ -101,12 +100,21 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
                       href={"https://etherscan.io/address/" + `${item.address}`}
                       rel="noreferrer"
                     >
-                      <Text color="gray.600">
-                        {item.address.slice(0, 10)}..{" "}
-                        <Box display="inline-block">
-                          <FiLink size="12" />
-                        </Box>
-                      </Text>
+                      {dateClicked ? (
+                        <Text color="gray.600">
+                          {item.address.slice(0, 10)}..{" "}
+                          <Box display="inline-block">
+                            <FiLink size="12" />
+                          </Box>
+                        </Text>
+                      ) : (
+                        <Text color="gray.600">
+                          {item.address.slice(0, 40)}
+                          <Box display="inline-block">
+                            <FiLink size="12" />
+                          </Box>
+                        </Text>
+                      )}
                     </a>
                   </Td>
                 </Tr>
@@ -121,13 +129,28 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
     )
   }
 
+  const [dateClicked, setDateClicked] = useState(false)
+
   return (
     <>
       <GridBox box={box}>
         <>
-          <Box position="absolute" m="2" ml="4">
-            <Text fontSize="xl">
-              <b>Top Address Time Spent</b>
+          <Box position="relative" mt="2" mx="5">
+            <Text fontSize="xl" mb="2">
+              <b>Top Recent 7 Days Users Time Spent </b>
+              <Box display="inline" ml="2">
+                <Button
+                  size="sm"
+                  variant={dateClicked ? "solid" : "outline"}
+                  onClick={() => {
+                    setDateClicked(!dateClicked)
+                  }}
+                >
+                  <Text color={dateClicked ? "gray.300" : "gray.800"} size="sm">
+                    Date
+                  </Text>
+                </Button>
+              </Box>
             </Text>
           </Box>
           {dataArr.length > 0 && !isLoading ? <TableComponent /> : <Loading />}

@@ -149,7 +149,7 @@ const TopUsersTimeSpentComponent2 = ({ box, isLoading, setIsLoading }) => {
         <>
           <Box position="absolute" m="2" ml="4">
             <Text fontSize="xl">
-              <b>Top Address Time Spent</b>
+              <b>Top Recent 7 Days Users Time Spent</b>
             </Text>
           </Box>
           <TableComponent />

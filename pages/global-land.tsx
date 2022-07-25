@@ -37,11 +37,11 @@ const GlobalPage: NextPage = () => {
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
-        <TopUsersTimeSpentComponent2
+        {/* <TopUsersTimeSpentComponent2
           box={box}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
-        />
+        /> */}
         <TopParcelSceneTimeSpentComponent
           box={box}
           isLoading={isLoading}
