@@ -67,11 +67,11 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
     return (
       <TableContainer mx="4" whiteSpace="nowrap">
         <Table
-          size="sm"
+          size="md"
           variant="simple"
           overflowX="scroll"
           maxW="100%"
-          height="800px"
+          height="600px"
         >
           <Thead>
             <Tr>
@@ -141,8 +141,8 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
     <>
       <GridBox box={box}>
         <>
-          <Box position="relative" mt="2" mx="5">
-            <Text fontSize="xl" mb="3">
+          <Box position="relative" mt="4" mx="5">
+            <Text fontSize="xl">
               <b>Top Users Time Spent </b>
               <Box display="inline" ml="2">
                 <Button

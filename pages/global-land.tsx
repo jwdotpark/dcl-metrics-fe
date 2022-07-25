@@ -26,7 +26,7 @@ const GlobalPage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const box = {
-    h: "900",
+    h: "700",
     w: "100%",
     bg: "white",
   }
