@@ -22,20 +22,21 @@ import staticData from "../../../../public/data/daily-user-stats.json"
 const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
-  // from API
+  // // NOTE from API
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   const url = "api/fetch/daily-user-timespent"
+  //   fetchResult(url, setRes)
+  //   setIsLoading(false)
+  // }, [isLoading, setIsLoading])
+
+  // json
   useEffect(() => {
     setIsLoading(true)
-    const url = "api/fetch/daily-user-timespent"
-    fetchResult(url, setRes)
+    // @ts-ignore
+    setRes(staticData)
     setIsLoading(false)
-    // eslint-disable-next-line
   }, [])
-
-  // // json
-  // useEffect(() => {
-  //   // @ts-ignore
-  //   setRes(staticData)
-  // }, [])
 
   // consolidate data as date/timeSpent/address
   const data = Object.entries(res)
@@ -58,6 +59,10 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [page, setPage] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const pages = dataArr.length / rowsPerPage
+
+  useEffect(() => {
+    console.log(isLoading)
+  })
 
   const TableComponent = () => {
     return (
@@ -119,18 +124,14 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   return (
     <>
       <GridBox box={box}>
-        {!isLoading ? (
-          <>
-            <Box position="absolute" m="2" ml="4">
-              <Text fontSize="xl">
-                <b>Top Address Time Spent</b>
-              </Text>
-            </Box>
-            <TableComponent />
-          </>
-        ) : (
-          <Loading />
-        )}
+        <>
+          <Box position="absolute" m="2" ml="4">
+            <Text fontSize="xl">
+              <b>Top Address Time Spent</b>
+            </Text>
+          </Box>
+          {dataArr.length > 0 ? <TableComponent /> : <Loading />}
+        </>
       </GridBox>
     </>
   )

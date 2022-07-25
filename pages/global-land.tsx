@@ -29,23 +29,6 @@ const GlobalPage: NextPage = () => {
 
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
-  // useEffect(() => {
-  //   const dailyParcelUrl = "daily-parcel-stats.json"
-  //   const dailyUserUrl = "daily-user-stats.json"
-  //   const timeSpentUrl = "time_spent.json"
-  //   setIsLoading(true)
-  //   fetchResult(dailyParcelUrl).then((data) => {
-  //     setDailyParcel(data)
-  //   })
-  //   fetchResult(dailyUserUrl).then((data) => {
-  //     setDailyUser(data)
-  //   })
-  //   fetchResult(timeSpentUrl).then((data) => {
-  //     setTimeSpent(data)
-  //   })
-  //   setIsLoading(false)
-  // }, [])
-
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
