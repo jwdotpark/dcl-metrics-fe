@@ -23,6 +23,24 @@ import dataArr from "../../../../public/data/top-visited-parcel.json"
 const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
+  if (process.env.NODE_ENV === "production") {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      setIsLoading(true)
+      const url = "api/fetch/top-parcels-timespent"
+      fetchResult(url, setRes)
+      setIsLoading(false)
+    }, [isLoading, setIsLoading])
+  } else {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      setIsLoading(true)
+      // @ts-ignore
+      setRes(dataArr)
+      setIsLoading(false)
+    }, [setIsLoading])
+  }
+
   // // NOTE from API
   // useEffect(() => {
   //   setIsLoading(true)
@@ -32,12 +50,12 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   // }, [isLoading, setIsLoading])
 
   // // json
-  useEffect(() => {
-    setIsLoading(true)
-    // @ts-ignore
-    setRes(dataArr)
-    setIsLoading(false)
-  }, [setIsLoading])
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   // @ts-ignore
+  //   setRes(dataArr)
+  //   setIsLoading(false)
+  // }, [setIsLoading])
 
   // table pagination
   const [page, setPage] = useState(1)

@@ -15,6 +15,24 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
     bg: "white",
   }
 
+  if (process.env.NODE_ENV === "production") {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      setIsLoading(true)
+      const url = "api/fetch/unique-visitors"
+      fetchResult(url, setRes)
+      setIsLoading(false)
+    }, [isLoading, setIsLoading])
+  } else {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      setIsLoading(true)
+      // @ts-ignore
+      setRes(staticData)
+      setIsLoading(false)
+    }, [setIsLoading])
+  }
+
   // NOTE from API
   // useEffect(() => {
   //   setIsLoading(true)
@@ -24,12 +42,12 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   // }, [isLoading, setIsLoading])
 
   // // json
-  useEffect(() => {
-    setIsLoading(true)
-    // @ts-ignore
-    setRes(staticData)
-    setIsLoading(false)
-  }, [setIsLoading])
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   // @ts-ignore
+  //   setRes(staticData)
+  //   setIsLoading(false)
+  // }, [setIsLoading])
 
   return (
     <>
