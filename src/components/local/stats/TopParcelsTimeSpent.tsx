@@ -97,7 +97,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                         // target="_blank"
                         // rel="noopener noreferrer"
                       >
-                        <Text fontSize="md">
+                        <Text fontSize="lg">
                           {coord[i].replace("/", ",") + " "}
                           <Box display="inline-block">
                             <FiLink />
@@ -107,12 +107,12 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                     </Box>
                   </Td>
                   <Td>
-                    <Text fontSize="md">
-                      {convertSeconds(item[1].avg_time_spent)}
+                    <Text fontSize="lg">
+                      <b>{convertSeconds(item[1].avg_time_spent)}</b>
                     </Text>
                   </Td>
                   <Td>
-                    <Text fontSize="md">
+                    <Text fontSize="lg">
                       {convertSeconds(item[1].avg_time_spent_afk)}
                     </Text>
                   </Td>

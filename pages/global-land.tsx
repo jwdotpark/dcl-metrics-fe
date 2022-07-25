@@ -24,7 +24,10 @@ const Explorers = dynamic(
   () => import("../src/components/local/stats/Explorers"),
   { ssr: false }
 )
-// import Explorers from "../src/components/local/stats/Explorers"
+const RecentExplorers = dynamic(
+  () => import("../src/components/local/stats/RecentExplorers"),
+  { ssr: false }
+)
 
 // charts
 import LineChartComponent from "../src/components/chart/LineChartComponent"
@@ -46,25 +49,16 @@ const GlobalPage: NextPage = () => {
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <TopUsersTimeSpentComponent
-          box={box}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
         <TopParcelsTimeSpentComponent
-          // box={box}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
-        <UniqueVisitors
-          // box={box}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        />
-        <Explorers
-          // box={box}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        />
+        <UniqueVisitors isLoading={isLoading} setIsLoading={setIsLoading} />
+        <Explorers isLoading={isLoading} setIsLoading={setIsLoading} />
+        <RecentExplorers isLoading={isLoading} setIsLoading={setIsLoading} />
 
         {/* <LineChartComponent box={box} /> */}
         {/* <PieChartComponent /> */}

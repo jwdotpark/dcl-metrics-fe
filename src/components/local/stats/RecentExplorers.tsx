@@ -10,16 +10,16 @@ import {
   Thead,
   Tr,
   Image,
+  Select,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { fetchResult } from "../../../lib/hooks/fetch"
 import GridBox from "../GridBox"
-import staticData from "../../../../public/data/explorers.json"
+import staticData from "../../../../public/data/recent-explorers.json"
 import { FiLink } from "react-icons/fi"
 import Loading from "../Loading"
-import Pagination from "../Pagination"
 
-const Explorers = ({ isLoading, setIsLoading }) => {
+const RecentExplorers = ({ isLoading, setIsLoading }) => {
   const box = {
     h: "570",
     w: "100%",
@@ -31,7 +31,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       setIsLoading(true)
-      const url = "api/fetch/explorers"
+      const url = "api/fetch/recent-explorers"
       fetchResult(url, setRes)
       setIsLoading(false)
     } else {
@@ -44,13 +44,40 @@ const Explorers = ({ isLoading, setIsLoading }) => {
 
   const data = Object.entries(res)
 
-  // table pagination
-  const [page, setPage] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
-  const pages = Math.ceil(data.length / rowsPerPage)
-  const dataPaginated = data.slice((page - 1) * rowsPerPage, page * rowsPerPage)
+  const DateArr = []
+  for (let i = 0; i < data.length; i++) {
+    DateArr.push(data[i][0])
+  }
+  const valueArr = []
+  for (let i = 0; i < data.length; i++) {
+    valueArr.push(data[i][1])
+  }
 
-  // create a table with data
+  const [currentDate, setCurrentDate] = useState(6)
+
+  const DateSelector = () => {
+    return (
+      <Box w="100">
+        <Select
+          variant="flushed"
+          size="sm"
+          onChange={(e) => {
+            setCurrentDate(Number(e.target.value))
+          }}
+          value={currentDate}
+        >
+          {DateArr.map((date, index) => {
+            return (
+              <option key={index} value={index}>
+                {date}
+              </option>
+            )
+          })}
+        </Select>
+      </Box>
+    )
+  }
+
   const TableComponent = () => {
     return (
       <TableContainer mx="4" whiteSpace="nowrap">
@@ -62,33 +89,27 @@ const Explorers = ({ isLoading, setIsLoading }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {dataPaginated.map((item, index) => {
+            {valueArr[currentDate].map((item, index) => {
               return (
                 <Tr
                   key={index}
                   style={{
-                    background: `linear-gradient(90deg, #F4756075 ${
-                      item[1] / 10
+                    background: `linear-gradient(90deg, #EED31275 ${
+                      item.parcels_visited / 3
                     }%, #ffffff 0)`,
                   }}
                 >
                   <Td>
-                    <a
-                      target="_blank"
-                      href={"https://etherscan.io/address/" + `${item[0]}`}
-                      rel="noreferrer"
-                    >
-                      <Text as="kbd" color="gray.600" fontSize="md">
-                        {item[0].slice(0, 35) + ".. "}
-                        <Box display="inline-block">
-                          <FiLink size="12" />
-                        </Box>
-                      </Text>
-                    </a>
+                    <Text fontSize="lg" as="kbd" color="gray.600">
+                      {item.address.slice(0, 35) + ".. "}
+                      <Box display="inline-block">
+                        <FiLink size="12" />
+                      </Box>
+                    </Text>
                   </Td>
                   <Td>
                     <Text fontSize="lg" textAlign="center">
-                      <b>{item[1]}</b>
+                      <b>{item.parcels_visited}</b>
                     </Text>
                   </Td>
                 </Tr>
@@ -96,9 +117,9 @@ const Explorers = ({ isLoading, setIsLoading }) => {
             })}
           </Tbody>
         </Table>
-        <Center>
-          <Pagination page={page} pages={pages} setPage={setPage} />
-        </Center>
+        <Box>
+          <DateSelector />
+        </Box>
       </TableContainer>
     )
   }
@@ -109,9 +130,9 @@ const Explorers = ({ isLoading, setIsLoading }) => {
         <Box>
           <Box>
             <Text fontSize="xl" mb="1" ml="5">
-              <b>Explorers</b>
+              <b>Recent Explorers</b>
               <Text fontSize="sm" color="gray.500">
-                Users that visited the most parcels yesterday
+                Users that visited the most parcels in the last 7 days
               </Text>
             </Text>
           </Box>
@@ -129,4 +150,4 @@ const Explorers = ({ isLoading, setIsLoading }) => {
   )
 }
 
-export default Explorers
+export default RecentExplorers

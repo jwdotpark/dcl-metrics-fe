@@ -20,7 +20,7 @@ import { FiLink } from "react-icons/fi"
 import staticData from "../../../../public/data/daily-user-stats.json"
 import { fetchResult } from "../../../lib/hooks/fetch"
 
-const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
+const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
   useEffect(() => {
@@ -137,6 +137,12 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
         </Center>
       </TableContainer>
     )
+  }
+
+  const box = {
+    h: "600",
+    w: "100%",
+    bg: "white",
   }
 
   const [dateClicked, setDateClicked] = useState(false)
