@@ -100,7 +100,7 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
                   }}
                 >
                   <Td>
-                    <Text fontSize="lg" as="kbd" color="gray.600">
+                    <Text fontSize="md" as="kbd" color="gray.600">
                       {item.address.slice(0, 35) + ".. "}
                       <Box display="inline-block">
                         <FiLink size="12" />

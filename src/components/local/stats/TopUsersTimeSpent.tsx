@@ -118,8 +118,8 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                           </Box>
                         </Text>
                       ) : (
-                        <Text color="gray.600" fontSize="md">
-                          {item.address.slice(0, 40)}
+                        <Text color="gray.600" fontSize="md" as="kbd">
+                          {item.address.slice(0, 35) + ".. "}
                           <Box display="inline-block">
                             <FiLink size="12" />
                           </Box>

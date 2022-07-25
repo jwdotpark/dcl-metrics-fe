@@ -97,7 +97,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                         // target="_blank"
                         // rel="noopener noreferrer"
                       >
-                        <Text fontSize="lg">
+                        <Text fontSize="lg" color="gray.600" as="kbd">
                           {coord[i].replace("/", ",") + " "}
                           <Box display="inline-block">
                             <FiLink />
