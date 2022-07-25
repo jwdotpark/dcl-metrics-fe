@@ -31,7 +31,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       setIsLoading(true)
-      const url = "api/fetch/daily-user-timespent"
+      const url = "api/fetch/explorers"
       fetchResult(url, setRes)
       setIsLoading(false)
     } else {

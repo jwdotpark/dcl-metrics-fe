@@ -94,7 +94,11 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
                       {index + 1 + page * rowsPerPage - rowsPerPage}
                     </Text>
                   </Td>
-                  {dateClicked && <Td>{item.date}</Td>}
+                  {dateClicked && (
+                    <Td>
+                      <Text fontSize="lg">{item.date}</Text>
+                    </Td>
+                  )}
                   <Td>
                     <Text fontSize="lg">
                       <b>{convertSeconds(item.timeSpent)}</b>
