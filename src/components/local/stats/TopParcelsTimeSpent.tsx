@@ -149,7 +149,9 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
               <TableComponent />
             </Box>
           ) : (
-            <Loading />
+            <Center h={box.h}>
+              <Loading />
+            </Center>
           )}
         </Box>
       </GridBox>

@@ -1,10 +1,11 @@
 import dynamic from "next/dynamic"
-import { Text, Box, GridItem } from "@chakra-ui/react"
+import { Text, Box, GridItem, Center } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
 import staticData from "../../../../public/data/unique-visitors.json"
 import LineChartComponent from "../../chart/LineChartComponent"
 import { fetchResult } from "../../../lib/hooks/fetch"
+import Loading from "../Loading"
 
 const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
@@ -37,8 +38,15 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
             <b>Unique Visitors </b>
           </Text>
         </Box>
-
-        <LineChartComponent box={box} res={res} />
+        {res.length > 0 && !isLoading ? (
+          <Box>
+            <LineChartComponent box={box} res={res} />
+          </Box>
+        ) : (
+          <Center h={box.h}>
+            <Loading />
+          </Center>
+        )}
       </GridBox>
     </>
   )
