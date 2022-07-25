@@ -36,7 +36,7 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
     // @ts-ignore
     setRes(staticData)
     setIsLoading(false)
-  }, [])
+  }, [setIsLoading])
 
   // consolidate data as date/timeSpent/address
   const data = Object.entries(res)
@@ -130,7 +130,7 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
               <b>Top Address Time Spent</b>
             </Text>
           </Box>
-          {dataArr.length > 0 ? <TableComponent /> : <Loading />}
+          {dataArr.length > 0 && !isLoading ? <TableComponent /> : <Loading />}
         </>
       </GridBox>
     </>
