@@ -18,6 +18,7 @@ import Loading from "../Loading"
 import { convertSeconds } from "../../../lib/hooks/utils"
 import { FiLink } from "react-icons/fi"
 import staticData from "../../../../public/data/daily-user-stats.json"
+import { fetchResult } from "../../../lib/hooks/fetch"
 
 const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])

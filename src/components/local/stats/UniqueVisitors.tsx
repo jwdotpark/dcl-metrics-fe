@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
 import staticData from "../../../../public/data/unique-visitors.json"
 import LineChartComponent from "../../chart/LineChartComponent"
+import { fetchResult } from "../../../lib/hooks/fetch"
 
 const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
@@ -14,10 +15,10 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
     bg: "white",
   }
 
-  // // NOTE from API
+  // NOTE from API
   // useEffect(() => {
   //   setIsLoading(true)
-  //   const url = "api/fetch/daily-user-timespent"
+  //   const url = "api/fetch/unique-visitors"
   //   fetchResult(url, setRes)
   //   setIsLoading(false)
   // }, [isLoading, setIsLoading])

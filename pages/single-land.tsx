@@ -13,9 +13,9 @@ const SingleLand = () => {
   return (
     <Layout>
       <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-        <LineChartComponent />
-        <PieChartComponent />
-        <BarChartComponent />
+        {/* <LineChartComponent /> */}
+        {/* <PieChartComponent /> */}
+        {/* <BarChartComponent /> */}
       </Grid>
     </Layout>
   )
