@@ -15,28 +15,30 @@ import GridBox from "../GridBox"
 import Pagination from "../Pagination"
 import Loading from "../Loading"
 import { convertSeconds } from "../../../lib/hooks/utils"
-import { FiLink } from "react-icons/fi"
 import { fetchResult } from "../../../lib/hooks/fetch"
+import { FiLink } from "react-icons/fi"
+import staticData from "../../../../public/data/daily-user-stats.json"
 
 const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
-  const [timeSpent, setTimeSpent] = useState([])
+  const [res, setRes] = useState([])
 
-  const fetchResult = async () => {
-    const url = "api/fetch/daily-user"
-    const response = await fetch(url)
-    const result = await response.json()
-    setTimeSpent(result.data)
-  }
+  // // from API
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   const url = "api/fetch/daily-user"
+  //   fetchResult(url, setRes)
+  //   setIsLoading(false)
+  //   // eslint-disable-next-line
+  // }, [])
 
+  // json
   useEffect(() => {
-    setIsLoading(true)
-    fetchResult()
-    setIsLoading(false)
-    // eslint-disable-next-line
+    // @ts-ignore
+    setRes(staticData)
   }, [])
 
   // consolidate data as date/timeSpent/address
-  const data = Object.entries(timeSpent)
+  const data = Object.entries(res)
   const dataArr = []
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < data[i][1].length; j++) {

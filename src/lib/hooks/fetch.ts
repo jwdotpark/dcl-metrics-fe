@@ -1,7 +1,5 @@
-export const fetchResult = async (target: string) => {
-  const url = `/data/${target}`
-  // const url = "https://dclund.herokuapp.com/api/user_stats/time_spent/daily"
+export const fetchResult = async (url: any, setRes) => {
   const response = await fetch(url)
-  const data = await response.json()
-  return data
+  const result = await response.json()
+  setRes(result.data)
 }

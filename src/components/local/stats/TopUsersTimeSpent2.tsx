@@ -81,23 +81,10 @@ const TopUsersTimeSpentComponent2 = ({ box, isLoading, setIsLoading }) => {
     "0x5b8c9b17b6435ba390d1a6f5e141f2a36520c767": 53832,
     "0x5b8c9b17b6435ba390d1a6f5e141f2a36520c761": 53832,
   }
-
   const [timeSpent, setTimeSpent] = useState([])
   const [page, setPage] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const pages = Math.ceil(Object.keys(dataArr).length / rowsPerPage)
-
-  // // TODO fix static fetching
-  // useEffect(() => {
-  //   setIsLoading(true)
-  //   // const url = "https://dclund.herokuapp.com/api/user_stats/time_spent/daily"
-  //   const staticUrl = "time_spent.json"
-  //   fetchResult(staticUrl).then((data) => {
-  //     setTimeSpent(data)
-  //   })
-  //   setIsLoading(false)
-  //   // eslint-disable-next-line
-  // }, [])
 
   const TableComponent = () => {
     return (
