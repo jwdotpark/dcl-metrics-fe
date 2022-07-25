@@ -59,7 +59,7 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
     return (
       <Box w="100">
         <Select
-          variant="flushed"
+          variant="unstyled"
           size="sm"
           onChange={(e) => {
             setCurrentDate(Number(e.target.value))
