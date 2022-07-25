@@ -18,108 +18,26 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import GridBox from "../GridBox"
 import Loading from "../Loading"
 import Pagination from "../Pagination"
+import dataArr from "../../../../public/data/top-visited-parcel.json"
 
 const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
-  const dataArr = {
-    "-101,127": {
-      avg_time_spent: 76014,
-      avg_time_spent_afk: 51441,
-      unique_visitors: 14653,
-      logins: 7262,
-      logouts: 8951,
-    },
-    "-101,129": {
-      avg_time_spent: 75640,
-      avg_time_spent_afk: 46818,
-      unique_visitors: 8967,
-      logins: 4017,
-      logouts: 5067,
-    },
-    "-107,133": {
-      avg_time_spent: 75360,
-      avg_time_spent_afk: 57940,
-      unique_visitors: 14362,
-      logins: 8020,
-      logouts: 9502,
-    },
-    "-101,128": {
-      avg_time_spent: 61902,
-      avg_time_spent_afk: 37988,
-      unique_visitors: 8980,
-      logins: 3062,
-      logouts: 4090,
-    },
-    "-100,127": {
-      avg_time_spent: 55575,
-      avg_time_spent_afk: 35697,
-      unique_visitors: 19164,
-      logins: 12302,
-      logouts: 6641,
-    },
-    "-101,126": {
-      avg_time_spent: 53406,
-      avg_time_spent_afk: 30369,
-      unique_visitors: 0,
-      logins: 0,
-      logouts: 1700,
-    },
-    "-108,133": {
-      avg_time_spent: 48952,
-      avg_time_spent_afk: 32148,
-      unique_visitors: 6830,
-      logins: 896,
-      logouts: 3004,
-    },
-    "-108,135": {
-      avg_time_spent: 48414,
-      avg_time_spent_afk: 30534,
-      unique_visitors: 2933,
-      logins: 747,
-      logouts: 2085,
-    },
-    "-100,128": {
-      avg_time_spent: 40690,
-      avg_time_spent_afk: 27081,
-      unique_visitors: 1281,
-      logins: 161,
-      logouts: 1672,
-    },
-    "-109,135": {
-      avg_time_spent: 24853,
-      avg_time_spent_afk: 12642,
-      unique_visitors: 3644,
-      logins: 1084,
-      logouts: 243,
-    },
-    "-109,133": {
-      avg_time_spent: 15287,
-      avg_time_spent_afk: 7472,
-      unique_visitors: 2126,
-      logins: 834,
-      logouts: 0,
-    },
-    "119,-12": {
-      avg_time_spent: 10491,
-      avg_time_spent_afk: 7888,
-      unique_visitors: 0,
-      logins: 0,
-      logouts: 168,
-    },
-    "-100,126": {
-      avg_time_spent: 7191,
-      avg_time_spent_afk: 3616,
-      unique_visitors: 0,
-      logins: 0,
-      logouts: 132,
-    },
-    "-107,135": {
-      avg_time_spent: 5424,
-      avg_time_spent_afk: 3286,
-      unique_visitors: 878,
-      logins: 320,
-      logouts: 0,
-    },
-  }
+  const [res, setRes] = useState([])
+
+  // // NOTE from API
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   const url = "api/fetch/top-parcels-timespent"
+  //   fetchResult(url, setRes)
+  //   setIsLoading(false)
+  // }, [isLoading, setIsLoading])
+
+  // // json
+  useEffect(() => {
+    setIsLoading(true)
+    // @ts-ignore
+    setRes(dataArr)
+    setIsLoading(false)
+  }, [setIsLoading])
 
   // table pagination
   const [page, setPage] = useState(1)
@@ -163,7 +81,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                     <Box boxSize="5.5rem" borderRadius="md" overflow="clip">
                       <Image
                         src={
-                          `https://api.decentraland.org/v1/parcels/${coord[i]}` +
+                          `https://api.decentraland.org/v1/parcels/ + ${coord[i]}` +
                           mapUrl
                         }
                         alt="map image"
@@ -228,7 +146,13 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
               <Box display="inline" ml="2"></Box>
             </Text>
           </Box>
-          <TableComponent />
+          {data.length > 0 && !isLoading ? (
+            <Box>
+              <TableComponent />
+            </Box>
+          ) : (
+            <Loading />
+          )}
         </Box>
       </GridBox>
     </>

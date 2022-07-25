@@ -33,7 +33,7 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   //   setIsLoading(false)
   // }, [isLoading, setIsLoading])
 
-  // json
+  // // json
   useEffect(() => {
     setIsLoading(true)
     // @ts-ignore
