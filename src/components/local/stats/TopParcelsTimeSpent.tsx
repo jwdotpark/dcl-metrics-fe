@@ -9,6 +9,7 @@ import {
   Th,
   Thead,
   Tr,
+  Image,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { FiLink } from "react-icons/fi"
@@ -18,7 +19,7 @@ import GridBox from "../GridBox"
 import Loading from "../Loading"
 import Pagination from "../Pagination"
 
-const TopParcelsTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
+const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   const dataArr = {
     "-101,127": {
       avg_time_spent: 76014,
@@ -119,59 +120,90 @@ const TopParcelsTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
       logouts: 0,
     },
   }
-  const [timeSpent, setTimeSpent] = useState([])
+
+  // table pagination
   const [page, setPage] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
-  const pages = Math.ceil(Object.keys(dataArr).length / rowsPerPage)
+  const [rowsPerPage, setRowsPerPage] = useState(5)
+
+  // array dateArr
+  const data = Object.entries(dataArr)
+  const dataPaginated = data.slice((page - 1) * rowsPerPage, page * rowsPerPage)
+  const pages = Math.ceil(data.length / rowsPerPage)
+  const coord = []
+
+  // extract coordinates from data
+  for (let i = 0; i < dataPaginated.length; i++) {
+    coord.push(dataPaginated[i][0].replace(",", "/"))
+  }
+  const mapUrl = "/map.png?width=auto&height=auto&size=10"
 
   const TableComponent = () => {
     return (
-      <TableContainer m="2" mt="12" whiteSpace="nowrap">
-        <Table variant="simple" size="sm" overflowX="scroll">
+      <TableContainer>
+        <Table
+          size="sm"
+          variant="simple"
+          overflowX="scroll"
+          maxW="100%"
+          height="800px"
+        >
           <Thead>
             <Tr>
-              <Th>#</Th>
-              <Th>Address</Th>
-              <Th>Time Spent</Th>
+              <Th>Parcel</Th>
+              <Th>Coordinate</Th>
+              <Th>Avg. time spent</Th>
+              <Th>Avg. time spent afk</Th>
             </Tr>
           </Thead>
           <Tbody>
-            {Object.keys(dataArr)
-              .slice((page - 1) * 10, page * 10)
-              .map((item, index) => {
-                return (
-                  <Tr
-                    key={index}
-                    style={{
-                      background: `linear-gradient(90deg, #61CDBB50 ${
-                        // FIXME convert to 100&
-                        dataArr[item] / 2400
-                      }%, #ffffff 0)`,
-                    }}
-                  >
-                    <Td>
-                      <Text color="gray.500">
-                        {index + 1 + page * rowsPerPage - rowsPerPage}
-                      </Text>
-                    </Td>
-                    <Td>
+            {dataPaginated.map((item, i) => {
+              return (
+                <Tr key={i}>
+                  <Td>
+                    <Box boxSize="115px" borderRadius="md" overflow="clip">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <Image
+                        src={
+                          `https://api.decentraland.org/v1/parcels/${coord[i]}` +
+                          mapUrl
+                        }
+                        alt="map image"
+                        objectFit="cover"
+                        boxSize="125px"
+                      />
+                    </Box>
+                  </Td>
+                  {/* coordinate column */}
+                  <Td>
+                    <Box>
                       <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://etherscan.io/address/${item}`}
+                        // href={`https://api.decentraland.org/v1/parcels/${coord[i]}`}
+                        href="#"
+                        // target="_blank"
+                        // rel="noopener noreferrer"
                       >
-                        <Text color="gray.600">
-                          {item + " "}
+                        <Text fontSize="md">
+                          {coord[i].replace("/", ",") + " "}
                           <Box display="inline-block">
-                            <FiLink size="10" />
+                            <FiLink />
                           </Box>
                         </Text>
                       </a>
-                    </Td>
-                    <Td>{convertSeconds(dataArr[item])}</Td>
-                  </Tr>
-                )
-              })}
+                    </Box>
+                  </Td>
+                  <Td>
+                    <Text fontSize="md">
+                      {convertSeconds(item[1].avg_time_spent)}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text fontSize="md">
+                      {convertSeconds(item[1].avg_time_spent_afk)}
+                    </Text>
+                  </Td>
+                </Tr>
+              )
+            })}
           </Tbody>
         </Table>
         <Center>
@@ -181,22 +213,27 @@ const TopParcelsTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
     )
   }
 
+  const box = {
+    h: "900",
+    w: "100%",
+    bg: "white",
+  }
+
   return (
-    <GridBox box={box}>
-      {!isLoading ? (
-        <>
-          <Box position="absolute" m="2" ml="4">
-            <Text fontSize="xl">
-              <b>Top Recent 7 Days Users Time Spent</b>
+    <>
+      <GridBox box={box}>
+        <Box position="relative" mt="2" mx="5">
+          <Box>
+            <Text fontSize="xl" mb="4">
+              <b>Top Parcels Time Spent </b>
+              <Box display="inline" ml="2"></Box>
             </Text>
           </Box>
           <TableComponent />
-        </>
-      ) : (
-        <Loading />
-      )}
-    </GridBox>
+        </Box>
+      </GridBox>
+    </>
   )
 }
 
-export default TopUsersTimeSpentComponent2
+export default TopParcelsTimeSpentComponent

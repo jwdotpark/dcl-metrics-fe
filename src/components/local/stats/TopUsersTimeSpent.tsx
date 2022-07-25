@@ -66,7 +66,13 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const TableComponent = () => {
     return (
       <TableContainer mx="4" whiteSpace="nowrap">
-        <Table variant="simple" size="sm" overflowX="scroll">
+        <Table
+          size="sm"
+          variant="simple"
+          overflowX="scroll"
+          maxW="100%"
+          height="800px"
+        >
           <Thead>
             <Tr>
               <Th>#</Th>
@@ -136,8 +142,8 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
       <GridBox box={box}>
         <>
           <Box position="relative" mt="2" mx="5">
-            <Text fontSize="xl" mb="2">
-              <b>Top Recent 7 Days Users Time Spent </b>
+            <Text fontSize="xl" mb="3">
+              <b>Top Users Time Spent </b>
               <Box display="inline" ml="2">
                 <Button
                   size="sm"
@@ -153,7 +159,13 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
               </Box>
             </Text>
           </Box>
-          {dataArr.length > 0 && !isLoading ? <TableComponent /> : <Loading />}
+          {dataArr.length > 0 && !isLoading ? (
+            <Box>
+              <TableComponent />
+            </Box>
+          ) : (
+            <Loading />
+          )}
         </>
       </GridBox>
     </>

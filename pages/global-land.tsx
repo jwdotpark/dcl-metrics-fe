@@ -6,13 +6,17 @@ import Layout from "../src/components/layout/layout"
 // functions
 import { fetchResult } from "../src/lib/hooks/fetch"
 // components
-import TopUsersTimeSpentComponent from "../src/components/local/stats/TopUsersTimeSpent"
+// import TopUsersTimeSpentComponent from "../src/components/local/stats/TopUsersTimeSpent"
 // import TopUsersTimeSpentComponent2 from "../src/components/local/stats/TopUsersTimeSpent2"
-const TopUsersTimeSpentComponent2 = dynamic(
-  () => import("../src/components/local/stats/TopUsersTimeSpent2"),
+const TopUsersTimeSpentComponent = dynamic(
+  () => import("../src/components/local/stats/TopUsersTimeSpent"),
   { ssr: false }
 )
-import TopParcelSceneTimeSpentComponent from "../src/components/local/stats/TopParcelSceneTimeSpent"
+const TopParcelsTimeSpentComponent = dynamic(
+  () => import("../src/components/local/stats/TopParcelsTimeSpent"),
+  { ssr: false }
+)
+// import TopParcelsTimeSpentComponent from "../src/components/local/stats/TopParcelsTimeSpent"
 // charts
 import LineChartComponent from "../src/components/chart/LineChartComponent"
 import PieChartComponent from "../src/components/chart/PieChartComponent"
@@ -22,7 +26,7 @@ const GlobalPage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const box = {
-    h: "450",
+    h: "900",
     w: "100%",
     bg: "white",
   }
@@ -37,16 +41,12 @@ const GlobalPage: NextPage = () => {
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
-        {/* <TopUsersTimeSpentComponent2
-          box={box}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        /> */}
-        <TopParcelSceneTimeSpentComponent
-          box={box}
+        <TopParcelsTimeSpentComponent
+          // box={box}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
+
         <LineChartComponent />
         <PieChartComponent />
         <BarChartComponent />
