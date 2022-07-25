@@ -10,7 +10,7 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
   const box = {
-    h: "500",
+    h: "525",
     w: "100%",
     bg: "white",
   }

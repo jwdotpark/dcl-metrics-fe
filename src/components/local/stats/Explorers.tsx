@@ -21,7 +21,7 @@ import Pagination from "../Pagination"
 
 const Explorers = ({ isLoading, setIsLoading }) => {
   const box = {
-    h: "550",
+    h: "570",
     w: "100%",
     bg: "white",
   }
@@ -107,10 +107,14 @@ const Explorers = ({ isLoading, setIsLoading }) => {
     <GridBox box={box}>
       <Box position="relative" mt="4">
         <Box>
-          <Text fontSize="xl" mb="1" ml="5">
-            <b>Explorers</b>
-            <Box display="inline" ml="2"></Box>
-          </Text>
+          <Box>
+            <Text fontSize="xl" mb="1" ml="5">
+              <b>Explorers</b>
+              <Text fontSize="sm" color="gray.500">
+                Users that visited the most parcels in the last 7 days
+              </Text>
+            </Text>
+          </Box>
         </Box>
         {/* <TableComponent /> */}
         {data.length > 0 && !isLoading ? (
