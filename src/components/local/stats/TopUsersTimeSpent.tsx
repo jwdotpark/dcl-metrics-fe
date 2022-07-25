@@ -8,7 +8,6 @@ import {
   Td,
   Th,
   Tr,
-  Button,
   Center,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
@@ -22,18 +21,21 @@ import { fetchResult } from "../../../lib/hooks/fetch"
 const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [timeSpent, setTimeSpent] = useState([])
 
-  // TODO fix static fetching
+  const fetchResult = async () => {
+    const url = "api/fetch/daily-user"
+    const response = await fetch(url)
+    const result = await response.json()
+    setTimeSpent(result.data)
+  }
+
   useEffect(() => {
     setIsLoading(true)
-    // const url = "https://dclund.herokuapp.com/api/user_stats/time_spent/daily"
-    const staticUrl = "time_spent.json"
-    fetchResult(staticUrl).then((data) => {
-      setTimeSpent(data)
-    })
+    fetchResult()
     setIsLoading(false)
     // eslint-disable-next-line
   }, [])
 
+  // consolidate data as date/timeSpent/address
   const data = Object.entries(timeSpent)
   const dataArr = []
   for (let i = 0; i < data.length; i++) {
@@ -74,7 +76,7 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
                   key={item.address}
                   style={{
                     background: `linear-gradient(90deg, #61CDBB50 ${
-                      // FIXME convert to 100&
+                      // FIXME convert to 100%
                       item.timeSpent / 2000
                     }%, #ffffff 0)`,
                   }}

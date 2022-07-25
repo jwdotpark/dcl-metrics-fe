@@ -120,7 +120,7 @@ const TopUsersTimeSpentComponent2 = ({ box, isLoading, setIsLoading }) => {
                     style={{
                       background: `linear-gradient(90deg, #61CDBB50 ${
                         // FIXME convert to 100&
-                        dataArr[item] / 2000
+                        dataArr[item] / 2400
                       }%, #ffffff 0)`,
                     }}
                   >
