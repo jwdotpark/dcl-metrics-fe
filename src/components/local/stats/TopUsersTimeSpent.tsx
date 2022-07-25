@@ -24,9 +24,21 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
   if (process.env.NODE_ENV === "production") {
-    console.log("prod")
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      setIsLoading(true)
+      const url = "api/fetch/daily-user-timespent"
+      fetchResult(url, setRes)
+      setIsLoading(false)
+    }, [isLoading, setIsLoading])
   } else {
-    console.log("dev")
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      setIsLoading(true)
+      // @ts-ignore
+      setRes(staticData)
+      setIsLoading(false)
+    }, [setIsLoading])
   }
 
   // // NOTE from API
@@ -38,12 +50,12 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   // }, [isLoading, setIsLoading])
 
   // // json
-  useEffect(() => {
-    setIsLoading(true)
-    // @ts-ignore
-    setRes(staticData)
-    setIsLoading(false)
-  }, [setIsLoading])
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   // @ts-ignore
+  //   setRes(staticData)
+  //   setIsLoading(false)
+  // }, [setIsLoading])
 
   // consolidate data as date/timeSpent/address
   const data = Object.entries(res)
