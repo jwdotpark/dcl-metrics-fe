@@ -6,13 +6,12 @@ import staticData from "../../../../public/data/unique-visitors.json"
 import LineChartComponent from "../../chart/LineChartComponent"
 import { fetchResult } from "../../../lib/hooks/fetch"
 import Loading from "../Loading"
-import { browser } from "process"
 
-const UniqueVisitors = ({ isLoading, setIsLoading }) => {
+const TotalVisitedParcels = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
   const box = {
-    h: "500",
+    h: "503",
     w: "100%",
     bg: "white",
   }
@@ -34,16 +33,16 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   return (
     <>
       <GridBox box={box}>
-        <Box position="relative" mt="4" mx="5" mb="1">
+        <Box position="relative" mt="4" mx="5">
           <Text fontSize="xl">
-            <b>Unique Visitors </b>
+            <b>Total Visited Parcels</b>
             <Text fontSize="sm" color="gray.500">
-              Unique vistors per day in the last 7 days
+              Parcels visited per day in the last 7 days
             </Text>
           </Text>
         </Box>
         {res.length > 0 && !isLoading ? (
-          <Box mb="200">
+          <Box>
             <LineChartComponent box={box} res={res} />
           </Box>
         ) : (
@@ -56,4 +55,4 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   )
 }
 
-export default UniqueVisitors
+export default TotalVisitedParcels

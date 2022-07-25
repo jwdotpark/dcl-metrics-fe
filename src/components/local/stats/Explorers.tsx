@@ -108,7 +108,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
       <Box position="relative" mt="4">
         <Box>
           <Box>
-            <Text fontSize="xl" mb="1" ml="5">
+            <Text fontSize="xl" ml="5">
               <b>Explorers</b>
               <Text fontSize="sm" color="gray.500">
                 Users that visited the most parcels yesterday

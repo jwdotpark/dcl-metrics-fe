@@ -132,7 +132,7 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
             <Text fontSize="xl" mb="1" ml="5">
               <b>Recent Explorers</b>
               <Text fontSize="sm" color="gray.500">
-                Users that visited the most parcels in the last 7 days
+                Users that visited the most parcels yesterday
               </Text>
             </Text>
           </Box>

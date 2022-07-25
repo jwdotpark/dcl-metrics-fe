@@ -129,7 +129,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   }
 
   const box = {
-    h: "600",
+    h: "625",
     w: "100%",
     bg: "white",
   }
@@ -141,7 +141,9 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
           <Box>
             <Text fontSize="xl" mb="1">
               <b>Top Parcels/Scenes Time Spent </b>
-              <Box display="inline" ml="2"></Box>
+              <Text fontSize="sm" color="gray.500">
+                Parcels with the most time spent on them in the last 7 days
+              </Text>
             </Text>
           </Box>
           {data.length > 0 && !isLoading ? (

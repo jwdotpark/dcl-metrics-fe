@@ -1,13 +1,9 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import dynamic from "next/dynamic"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-// functions
-import { fetchResult } from "../src/lib/hooks/fetch"
-// components
-// import TopUsersTimeSpentComponent from "../src/components/local/stats/TopUsersTimeSpent"
-// import TopUsersTimeSpentComponent2 from "../src/components/local/stats/TopUsersTimeSpent2"
+
 const TopUsersTimeSpentComponent = dynamic(
   () => import("../src/components/local/stats/TopUsersTimeSpent"),
   { ssr: false }
@@ -28,11 +24,10 @@ const RecentExplorers = dynamic(
   () => import("../src/components/local/stats/RecentExplorers"),
   { ssr: false }
 )
-
-// charts
-import LineChartComponent from "../src/components/chart/LineChartComponent"
-import PieChartComponent from "../src/components/chart/PieChartComponent"
-import BarChartComponent from "../src/components/chart/BarChartComponent"
+const TotalVisitedParcels = dynamic(
+  () => import("../src/components/local/stats/TotalVisitedParcels"),
+  { ssr: false }
+)
 
 const GlobalPage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -47,7 +42,7 @@ const GlobalPage: NextPage = () => {
 
   return (
     <Layout>
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
+      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="20">
         <TopUsersTimeSpentComponent
           isLoading={isLoading}
           setIsLoading={setIsLoading}
@@ -58,8 +53,11 @@ const GlobalPage: NextPage = () => {
         />
         <UniqueVisitors isLoading={isLoading} setIsLoading={setIsLoading} />
         <Explorers isLoading={isLoading} setIsLoading={setIsLoading} />
+        <TotalVisitedParcels
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
         <RecentExplorers isLoading={isLoading} setIsLoading={setIsLoading} />
-
         {/* <LineChartComponent box={box} /> */}
         {/* <PieChartComponent /> */}
         {/* <BarChartComponent /> */}

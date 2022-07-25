@@ -29,8 +29,9 @@ const LineChartComponent = ({ box, res }) => {
 
   return (
     <GridItem
-      minW={box.w}
-      maxW={box.w}
+      // minW={box.w}
+      // maxW={box.w}
+      w={box.w}
       h={box.h}
       bg={box.bg}
       borderRadius="md"

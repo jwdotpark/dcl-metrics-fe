@@ -140,7 +140,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   }
 
   const box = {
-    h: "600",
+    h: "625",
     w: "100%",
     bg: "white",
   }
@@ -167,6 +167,9 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                   </Text>
                 </Button>
               </Box>
+              <Text fontSize="sm" color="gray.500">
+                Users that visited the most parcels yesterday
+              </Text>
             </Text>
           </Box>
           {dataArr.length > 0 && !isLoading ? (
