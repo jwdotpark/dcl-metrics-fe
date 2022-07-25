@@ -67,7 +67,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                 <Tr
                   key={index}
                   style={{
-                    background: `linear-gradient(90deg, #61CDBB50 ${
+                    background: `linear-gradient(90deg, #F4756075 ${
                       item[1] / 10
                     }%, #ffffff 0)`,
                   }}
@@ -78,7 +78,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                       href={"https://etherscan.io/address/" + `${item[0]}`}
                       rel="noreferrer"
                     >
-                      <Text color="gray.600">
+                      <Text color="gray.600" fontSize="md">
                         {item[0] + " "}
                         <Box display="inline-block">
                           <FiLink size="12" />
@@ -86,7 +86,11 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                       </Text>
                     </a>
                   </Td>
-                  <Td>{item[1]}</Td>
+                  <Td>
+                    <Text fontSize="lg">
+                      <b>{item[1]}</b>
+                    </Text>
+                  </Td>
                 </Tr>
               )
             })}

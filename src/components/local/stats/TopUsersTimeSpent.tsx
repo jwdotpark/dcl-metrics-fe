@@ -95,7 +95,11 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
                     </Text>
                   </Td>
                   {dateClicked && <Td>{item.date}</Td>}
-                  <Td>{convertSeconds(item.timeSpent)}</Td>
+                  <Td>
+                    <Text fontSize="lg">
+                      <b>{convertSeconds(item.timeSpent)}</b>
+                    </Text>
+                  </Td>
                   <Td>
                     <a
                       target="_blank"
@@ -103,14 +107,14 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
                       rel="noreferrer"
                     >
                       {dateClicked ? (
-                        <Text color="gray.600">
+                        <Text color="gray.600" fontSize="md">
                           {item.address.slice(0, 10)}..{" "}
                           <Box display="inline-block">
                             <FiLink size="12" />
                           </Box>
                         </Text>
                       ) : (
-                        <Text color="gray.600">
+                        <Text color="gray.600" fontSize="md">
                           {item.address.slice(0, 40)}
                           <Box display="inline-block">
                             <FiLink size="12" />
