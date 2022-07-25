@@ -16,7 +16,15 @@ const TopParcelsTimeSpentComponent = dynamic(
   () => import("../src/components/local/stats/TopParcelsTimeSpent"),
   { ssr: false }
 )
-import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
+const UniqueVisitors = dynamic(
+  () => import("../src/components/local/stats/UniqueVisitors"),
+  { ssr: false }
+)
+const Explorers = dynamic(
+  () => import("../src/components/local/stats/Explorers"),
+  { ssr: false }
+)
+// import Explorers from "../src/components/local/stats/Explorers"
 
 // charts
 import LineChartComponent from "../src/components/chart/LineChartComponent"
@@ -48,6 +56,11 @@ const GlobalPage: NextPage = () => {
           setIsLoading={setIsLoading}
         />
         <UniqueVisitors
+          // box={box}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
+        <Explorers
           // box={box}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
