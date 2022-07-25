@@ -23,39 +23,19 @@ import { fetchResult } from "../../../lib/hooks/fetch"
 const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
-  if (process.env.NODE_ENV === "production") {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
       setIsLoading(true)
       const url = "api/fetch/daily-user-timespent"
       fetchResult(url, setRes)
       setIsLoading(false)
-    }, [isLoading, setIsLoading])
-  } else {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
+    } else {
       setIsLoading(true)
       // @ts-ignore
       setRes(staticData)
       setIsLoading(false)
-    }, [setIsLoading])
-  }
-
-  // // NOTE from API
-  // useEffect(() => {
-  //   setIsLoading(true)
-  //   const url = "api/fetch/daily-user-timespent"
-  //   fetchResult(url, setRes)
-  //   setIsLoading(false)
-  // }, [isLoading, setIsLoading])
-
-  // // json
-  // useEffect(() => {
-  //   setIsLoading(true)
-  //   // @ts-ignore
-  //   setRes(staticData)
-  //   setIsLoading(false)
-  // }, [setIsLoading])
+    }
+  }, [isLoading, setIsLoading])
 
   // consolidate data as date/timeSpent/address
   const data = Object.entries(res)
