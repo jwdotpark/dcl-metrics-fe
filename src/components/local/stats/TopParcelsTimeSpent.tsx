@@ -63,7 +63,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
           variant="simple"
           overflowX="scroll"
           maxW="100%"
-          height="590px"
+          height="500px"
         >
           <Thead>
             <Tr>
@@ -78,7 +78,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
               return (
                 <Tr key={i}>
                   <Td>
-                    <Box boxSize="5.5rem" borderRadius="md" overflow="clip">
+                    <Box boxSize="4rem" borderRadius="md" overflow="clip">
                       <Image
                         src={
                           `https://api.decentraland.org/v1/parcels/ + ${coord[i]}` +
@@ -131,7 +131,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   }
 
   const box = {
-    h: "700",
+    h: "600",
     w: "100%",
     bg: "white",
   }
@@ -141,7 +141,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
       <GridBox box={box}>
         <Box position="relative" mt="4" mx="5">
           <Box>
-            <Text fontSize="xl" mb="4">
+            <Text fontSize="xl" mb="1">
               <b>Top Parcels/Scenes Time Spent </b>
               <Box display="inline" ml="2"></Box>
             </Text>

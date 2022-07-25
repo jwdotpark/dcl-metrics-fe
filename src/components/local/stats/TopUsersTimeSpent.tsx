@@ -23,6 +23,12 @@ import { fetchResult } from "../../../lib/hooks/fetch"
 const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
+  if (process.env.NODE_ENV === "production") {
+    console.log("prod")
+  } else {
+    console.log("dev")
+  }
+
   // // NOTE from API
   // useEffect(() => {
   //   setIsLoading(true)
@@ -65,11 +71,11 @@ const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
     return (
       <TableContainer mx="4" whiteSpace="nowrap">
         <Table
-          size="md"
+          size="sm"
           variant="simple"
           overflowX="scroll"
           maxW="100%"
-          height="600px"
+          height="500px"
         >
           <Thead>
             <Tr>
