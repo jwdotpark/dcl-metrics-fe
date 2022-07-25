@@ -22,20 +22,20 @@ import staticData from "../../../../public/data/daily-user-stats.json"
 const TopUsersTimeSpentComponent = ({ box, isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
-  // // from API
-  // useEffect(() => {
-  //   setIsLoading(true)
-  //   const url = "api/fetch/daily-user"
-  //   fetchResult(url, setRes)
-  //   setIsLoading(false)
-  //   // eslint-disable-next-line
-  // }, [])
-
-  // json
+  // from API
   useEffect(() => {
-    // @ts-ignore
-    setRes(staticData)
+    setIsLoading(true)
+    const url = "api/fetch/daily-user-timespent"
+    fetchResult(url, setRes)
+    setIsLoading(false)
+    // eslint-disable-next-line
   }, [])
+
+  // // json
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   setRes(staticData)
+  // }, [])
 
   // consolidate data as date/timeSpent/address
   const data = Object.entries(res)
