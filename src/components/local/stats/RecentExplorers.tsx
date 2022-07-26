@@ -123,9 +123,9 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
             })}
           </Tbody>
         </Table>
-        <Box>
+        {/* <Box>
           <DateSelector />
-        </Box>
+        </Box> */}
       </TableContainer>
     )
   }

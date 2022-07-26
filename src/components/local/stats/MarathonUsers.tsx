@@ -81,9 +81,9 @@ const MarathonUsers = ({ isLoading, setIsLoading }) => {
         {data.length > 0 && !isLoading ? (
           <Box>
             <BarChartComponent data={valueArr[currentDate]} />
-            <Box mx="6">
+            {/* <Box mx="6">
               <DateSelector />
-            </Box>
+            </Box> */}
           </Box>
         ) : (
           <Center h={box.h}>

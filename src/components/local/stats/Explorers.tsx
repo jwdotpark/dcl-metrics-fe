@@ -96,9 +96,9 @@ const Explorers = ({ isLoading, setIsLoading }) => {
             })}
           </Tbody>
         </Table>
-        <Center>
+        {/* <Center>
           <Pagination page={page} pages={pages} setPage={setPage} />
-        </Center>
+        </Center> */}
       </TableContainer>
     )
   }
