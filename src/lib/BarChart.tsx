@@ -6,7 +6,7 @@ const BarChart = ({ data }) => (
     data={data}
     keys={["time_spent"]}
     indexBy="address"
-    margin={{ top: 10, right: 30, bottom: 13, left: 70 }}
+    margin={{ top: 10, right: 30, bottom: 10, left: 70 }}
     padding={0.3}
     valueScale={{ type: "linear" }}
     indexScale={{ type: "band", round: true }}
