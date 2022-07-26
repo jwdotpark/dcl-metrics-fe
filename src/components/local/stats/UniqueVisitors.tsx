@@ -17,7 +17,7 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   }
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV !== "production") {
       setIsLoading(true)
       const url = "api/fetch/unique-visitors"
       fetchResult(url, setRes)
@@ -41,9 +41,10 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
         })),
       },
     ]
+    const min = Math.min(...result[0].data.map((item) => item.y))
     return (
       <GridItem w={box.w} h="428" bg={box.bg} borderRadius="md" boxShadow="md">
-        <LineChart data={result} />
+        <LineChart data={result} min={min} />
       </GridItem>
     )
   }
