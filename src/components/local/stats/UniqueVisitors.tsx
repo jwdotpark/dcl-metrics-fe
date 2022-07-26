@@ -17,7 +17,7 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   }
 
   useEffect(() => {
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.NODE_ENV === "production") {
       setIsLoading(true)
       const url = "api/fetch/unique-visitors"
       fetchResult(url, setRes)
