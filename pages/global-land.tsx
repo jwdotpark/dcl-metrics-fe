@@ -51,14 +51,12 @@ const GlobalPage: NextPage = () => {
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="20">
+        {/* marathon user */}
         <TopUsersTimeSpentComponent
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
-        <TopParcelsTimeSpentComponent
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        />
+        <MarathonUsers isLoading={isLoading} setIsLoading={setIsLoading} />
         <UniqueVisitors isLoading={isLoading} setIsLoading={setIsLoading} />
         <TotalVisitedParcels
           isLoading={isLoading}
@@ -66,11 +64,16 @@ const GlobalPage: NextPage = () => {
         />
         <Explorers isLoading={isLoading} setIsLoading={setIsLoading} />
         <RecentExplorers isLoading={isLoading} setIsLoading={setIsLoading} />
-        <MarathonUsers isLoading={isLoading} setIsLoading={setIsLoading} />
-        <RecentMarathonUsers
+
+        {/* <RecentMarathonUsers
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        /> */}
+        <TopParcelsTimeSpentComponent
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
+
         {/* <LineChartComponent box={box} /> */}
         {/* <PieChartComponent /> */}
         {/* <BarChartComponent /> */}

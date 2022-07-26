@@ -11,7 +11,7 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
   const box = {
-    h: "500",
+    h: "570",
     w: "100%",
     bg: "white",
   }
@@ -43,7 +43,7 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
     ]
     const min = Math.min(...result.map((item) => item.data[0].y))
     return (
-      <GridItem w={box.w} h="428" bg={box.bg} borderRadius="md" boxShadow="md">
+      <GridItem w={box.w} h="500" bg={box.bg} borderRadius="md">
         <LineChart data={result} min={min} />
       </GridItem>
     )

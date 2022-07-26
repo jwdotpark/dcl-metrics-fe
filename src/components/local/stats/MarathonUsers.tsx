@@ -70,9 +70,9 @@ const MarathonUsers = ({ isLoading, setIsLoading }) => {
         <Box>
           <Box>
             <Text fontSize="xl" mb="1" ml="5">
-              <b>Marathon Users</b>
+              <b>Recent Marathon Users</b>
               <Text fontSize="sm" color="gray.500">
-                Users with most online time in the last 7 days
+                Users with most online time yesterday
               </Text>
             </Text>
           </Box>

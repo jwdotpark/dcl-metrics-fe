@@ -131,7 +131,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   }
 
   const box = {
-    h: "610",
+    h: "580",
     w: "100%",
     bg: "white",
   }
@@ -144,7 +144,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
         <>
           <Box position="relative" mt="4" mx="5">
             <Text fontSize="xl">
-              <b>Top Users Time Spent </b>
+              <b>Marathon Users </b>
               {/* <Box display="inline" ml="2">
                 <Button
                   size="sm"
@@ -159,7 +159,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                 </Button>
               </Box> */}
               <Text fontSize="sm" color="gray.500">
-                Users that visited the most parcels yesterday
+                Users with most online time in the last 7 days
               </Text>
             </Text>
           </Box>

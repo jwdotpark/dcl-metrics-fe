@@ -53,7 +53,7 @@ const MarathonUsers = ({ isLoading, setIsLoading }) => {
 
         {data.length > 0 && !isLoading ? (
           <Box>
-            <GridItem h={450} bg={box.bg} borderRadius="md">
+            <GridItem h={490} bg={box.bg} borderRadius="md">
               <BarChart2 data={dataPaginated} />
               {/* <Center>
                 <Pagination page={page} pages={pages} setPage={setPage} />

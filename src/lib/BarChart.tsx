@@ -49,9 +49,9 @@ const BarChart = ({ data }) => (
             Users spent{" "}
             <strong> {convertSeconds(Number(point.data.time_spent))}</strong>{" "}
             <br />
-            Click to the address below
+            Click to copy address to clipboard
             <br />
-            <code>{point.data.address.toString().slice(0, 20) + ".. "}</code>
+            <code>{point.data.address.toString().slice(0, 28) + ".. "}</code>
           </div>
         </div>
       )

@@ -24,7 +24,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
   useEffect(() => {
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.NODE_ENV === "production") {
       setIsLoading(true)
       const url = "api/fetch/top-parcels-timespent"
       fetchResult(url, setRes)
