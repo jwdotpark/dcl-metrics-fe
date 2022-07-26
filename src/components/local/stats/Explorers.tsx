@@ -18,10 +18,11 @@ import staticData from "../../../../public/data/explorers.json"
 import { FiLink } from "react-icons/fi"
 import Loading from "../Loading"
 import Pagination from "../Pagination"
+import ProfilePicture from "../ProfilePicture"
 
 const Explorers = ({ isLoading, setIsLoading }) => {
   const box = {
-    h: "570",
+    h: "590",
     w: "100%",
     bg: "white",
   }
@@ -78,11 +79,15 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                       href={"https://etherscan.io/address/" + `${item[0]}`}
                       rel="noreferrer"
                     >
-                      <Text as="kbd" color="gray.600">
-                        {item[0].slice(0, 35) + ".. "}
-                        <Box display="inline-block">
-                          <FiLink size="12" />
-                        </Box>
+                      <Box display="inline-block" mr="2">
+                        <ProfilePicture address={item[0]} />
+                      </Box>
+                      <Text
+                        as="kbd"
+                        display="inline-block"
+                        css={{ transform: "translateY(-7px)" }}
+                      >
+                        {item[0]}
                       </Text>
                     </a>
                   </Td>
