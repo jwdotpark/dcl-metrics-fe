@@ -67,7 +67,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                 <Tr
                   key={index}
                   style={{
-                    background: `linear-gradient(90deg, #F4756075 ${
+                    background: `linear-gradient(90deg, #F4756050 ${
                       item[1] / 10
                     }%, #ffffff 0)`,
                   }}

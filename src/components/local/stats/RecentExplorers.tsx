@@ -94,7 +94,7 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
                 <Tr
                   key={index}
                   style={{
-                    background: `linear-gradient(90deg, #EED31275 ${
+                    background: `linear-gradient(90deg, #EED31250 ${
                       item.parcels_visited / 3
                     }%, #ffffff 0)`,
                   }}
