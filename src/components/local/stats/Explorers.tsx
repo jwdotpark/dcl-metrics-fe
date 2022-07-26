@@ -83,6 +83,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                         <ProfilePicture address={item[0]} />
                       </Box>
                       <Text
+                        color="gray.600"
                         as="kbd"
                         display="inline-block"
                         css={{ transform: "translateY(-7px)" }}

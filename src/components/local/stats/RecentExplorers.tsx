@@ -18,10 +18,11 @@ import GridBox from "../GridBox"
 import staticData from "../../../../public/data/recent-explorers.json"
 import { FiLink } from "react-icons/fi"
 import Loading from "../Loading"
+import ProfilePicture from "../ProfilePicture"
 
 const RecentExplorers = ({ isLoading, setIsLoading }) => {
   const box = {
-    h: "570",
+    h: "590",
     w: "100%",
     bg: "white",
   }
@@ -105,7 +106,15 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
                       href={"https://etherscan.io/address/" + `${item.address}`}
                       rel="noreferrer"
                     >
-                      <Text as="kbd" color="gray.600">
+                      <Box display="inline-block" mr="2">
+                        <ProfilePicture address={item.address} />
+                      </Box>
+                      <Text
+                        color="gray.600"
+                        as="kbd"
+                        display="inline-block"
+                        css={{ transform: "translateY(-7px)" }}
+                      >
                         {item.address.slice(0, 35) + ".. "}
                         <Box display="inline-block">
                           <FiLink size="12" />
