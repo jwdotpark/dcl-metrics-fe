@@ -51,7 +51,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   for (let i = 0; i < dataPaginated.length; i++) {
     coord.push(dataPaginated[i][0].replace(",", "/"))
   }
-  const mapUrl = "/map.png?width=auto&height=auto&size=10"
+  const mapUrl = "/map.png?width=auto&height=auto&size=20"
 
   const TableComponent = () => {
     return (

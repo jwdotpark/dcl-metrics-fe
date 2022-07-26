@@ -53,7 +53,7 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
       <GridBox box={box}>
         <Box position="relative" mt="4" mx="5" mb="1">
           <Text fontSize="xl">
-            <b>Top Unique Visitors </b>
+            <b>Unique Visitors </b>
             <Text fontSize="sm" color="gray.500">
               Unique vistors per day in the last 7 days
             </Text>
