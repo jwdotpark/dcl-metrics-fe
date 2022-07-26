@@ -59,7 +59,7 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
     return (
       <Box w="100">
         <Select
-          variant="outline"
+          variant="flushed"
           size="sm"
           onChange={(e) => {
             setCurrentDate(Number(e.target.value))
@@ -100,12 +100,18 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
                   }}
                 >
                   <Td>
-                    <Text fontSize="md" as="kbd" color="gray.600">
-                      {item.address.slice(0, 35) + ".. "}
-                      <Box display="inline-block">
-                        <FiLink size="12" />
-                      </Box>
-                    </Text>
+                    <a
+                      target="_blank"
+                      href={"https://etherscan.io/address/" + `${item.address}`}
+                      rel="noreferrer"
+                    >
+                      <Text as="kbd" color="gray.600" fontSize="md">
+                        {item.address.slice(0, 35) + ".. "}
+                        <Box display="inline-block">
+                          <FiLink size="12" />
+                        </Box>
+                      </Text>
+                    </a>
                   </Td>
                   <Td>
                     <Text fontSize="lg" textAlign="center">
@@ -132,7 +138,7 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
             <Text fontSize="xl" mb="1" ml="5">
               <b>Recent Explorers</b>
               <Text fontSize="sm" color="gray.500">
-                Users that visited the most parcels yesterday
+                Users that visited the most parcels in recent 7 days
               </Text>
             </Text>
           </Box>

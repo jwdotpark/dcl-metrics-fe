@@ -101,7 +101,7 @@ const LineChart = ({ data }) => (
         </div>
       )
     }}
-    colors={(d) => colors[Math.floor(Math.random() * colors.length)]}
+    colors={() => colors[Math.floor(Math.random() * colors.length)]}
   />
 )
 
