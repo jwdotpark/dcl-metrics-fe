@@ -40,11 +40,11 @@ const RecentMarathonUsers = dynamic(
 const GlobalPage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false)
 
-  const box = {
-    h: "600",
-    w: "100%",
-    bg: "white",
-  }
+  // const box = {
+  //   h: "600",
+  //   w: "100%",
+  //   bg: "white",
+  // }
 
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
@@ -60,7 +60,6 @@ const GlobalPage: NextPage = () => {
           setIsLoading={setIsLoading}
         />
         <UniqueVisitors isLoading={isLoading} setIsLoading={setIsLoading} />
-
         <TotalVisitedParcels
           isLoading={isLoading}
           setIsLoading={setIsLoading}

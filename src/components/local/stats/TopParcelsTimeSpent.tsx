@@ -24,7 +24,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV !== "production") {
       setIsLoading(true)
       const url = "api/fetch/top-parcels-timespent"
       fetchResult(url, setRes)
@@ -39,7 +39,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
 
   // table pagination
   const [page, setPage] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(5)
+  const [rowsPerPage, setRowsPerPage] = useState(2)
 
   // array dateArr
   const data = Object.entries(dataArr)
@@ -51,17 +51,19 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   for (let i = 0; i < dataPaginated.length; i++) {
     coord.push(dataPaginated[i][0].replace(",", "/"))
   }
-  const mapUrl = "/map.png?width=auto&height=auto&size=20"
+  const baseUrl = "https://api.decentraland.org/v1/parcels/"
+  const mapUrl = "/map.png?width=auto&height=auto&size=40"
 
   const TableComponent = () => {
     return (
-      <TableContainer>
+      <TableContainer mt="2">
         <Table
           size="sm"
           variant="simple"
           overflowX="hidden"
           maxW="100%"
-          height="485px"
+          height="450"
+          // border="1px solid red"
         >
           <Thead>
             <Tr>
@@ -76,19 +78,23 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
               return (
                 <Tr key={i}>
                   <Td>
-                    <Box boxSize="4rem" borderRadius="md" overflow="clip">
-                      <Image
-                        src={
-                          `https://api.decentraland.org/v1/parcels/ + ${coord[i]}` +
-                          mapUrl
-                        }
-                        alt="map image"
-                        objectFit="cover"
-                        // boxSize="1px"
-                      />
-                    </Box>
+                    {/* <Box
+                      // boxSize="12.5rem"
+                      objectFit={"cover"}
+                      borderRadius="md"
+                      overflow="clip"
+                    > */}
+                    <Image
+                      mb="1"
+                      borderRadius="md"
+                      height="13rem"
+                      w="100%"
+                      src={baseUrl + coord[i] + mapUrl}
+                      alt="map image"
+                      objectFit="cover"
+                    />
+                    {/* </Box> */}
                   </Td>
-                  {/* coordinate column */}
                   <Td>
                     <Box>
                       <a
@@ -119,9 +125,9 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
             })}
           </Tbody>
         </Table>
-        {/* <Center>
+        <Center>
           <Pagination page={page} pages={pages} setPage={setPage} />
-        </Center> */}
+        </Center>
       </TableContainer>
     )
   }
