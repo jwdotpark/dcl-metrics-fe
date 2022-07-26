@@ -52,7 +52,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
     coord.push(dataPaginated[i][0].replace(",", "/"))
   }
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
-  const mapUrl = "/map.png?width=auto&height=auto&size=40"
+  const mapUrl = "/map.png?width=auto&height=auto&size=15"
 
   const TableComponent = () => {
     return (
