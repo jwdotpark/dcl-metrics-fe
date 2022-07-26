@@ -17,7 +17,7 @@ const Home: NextPage = () => {
     <Layout>
       <Box
         as={Container}
-        maxW="8xl"
+        minW="full"
         border="1px solid gray.100"
         bg="white"
         borderRadius="md"
@@ -82,7 +82,7 @@ const Home: NextPage = () => {
       </Box>
       <Box
         as={Container}
-        maxW="8xl"
+        minW="full"
         border="1px solid gray.100"
         bg="white"
         borderRadius="md"

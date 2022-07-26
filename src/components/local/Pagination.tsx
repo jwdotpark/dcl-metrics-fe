@@ -14,7 +14,7 @@ const Pagination = ({ page, pages, setPage }) => {
     }
   }
   return (
-    <Box m="2">
+    <Box m="2" h="50">
       <Button
         size="sm"
         variant="ghost"
@@ -33,7 +33,7 @@ const Pagination = ({ page, pages, setPage }) => {
             onClick={() => {
               setPage(i + 1)
             }}
-            color={page === i + 1 ? "blue.700" : "gray.500"}
+            color={page === i + 1 ? "gray.900" : "gray.400"}
             fontSize="sm"
             cursor="pointer"
           >

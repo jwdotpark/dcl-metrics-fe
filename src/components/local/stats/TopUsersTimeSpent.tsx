@@ -65,7 +65,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
         <Table
           size="sm"
           variant="simple"
-          overflowX="scroll"
+          overflowX="hidden"
           maxW="100%"
           height="490px"
         >
@@ -100,7 +100,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                     </Td>
                   )} */}
                   <Td>
-                    <Text fontSize="lg">
+                    <Text>
                       <b>{convertSeconds(item.timeSpent)}</b>
                     </Text>
                   </Td>
@@ -131,7 +131,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   }
 
   const box = {
-    h: "615",
+    h: "610",
     w: "100%",
     bg: "white",
   }

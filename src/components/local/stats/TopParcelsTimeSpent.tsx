@@ -59,9 +59,9 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
         <Table
           size="sm"
           variant="simple"
-          overflowX="scroll"
+          overflowX="hidden"
           maxW="100%"
-          height="490px"
+          height="485px"
         >
           <Thead>
             <Tr>
@@ -107,14 +107,12 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                     </Box>
                   </Td>
                   <Td>
-                    <Text fontSize="lg">
+                    <Text>
                       <b>{convertSeconds(item[1].avg_time_spent)}</b>
                     </Text>
                   </Td>
                   <Td>
-                    <Text fontSize="lg">
-                      {convertSeconds(item[1].avg_time_spent_afk)}
-                    </Text>
+                    <Text>{convertSeconds(item[1].avg_time_spent_afk)}</Text>
                   </Td>
                 </Tr>
               )
@@ -129,7 +127,7 @@ const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   }
 
   const box = {
-    h: "615",
+    h: "610",
     w: "100%",
     bg: "white",
   }
