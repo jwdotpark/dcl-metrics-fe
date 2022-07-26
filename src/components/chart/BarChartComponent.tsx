@@ -6,7 +6,7 @@ const BarChart = dynamic(() => import("../../lib/BarChart"), {
   ssr: false,
 })
 
-const BarChartComponent = ({ data }) => {
+const BarChartComponent = ({ data, recentMarathonUserProps }) => {
   const box = {
     h: "460",
     w: "100%",

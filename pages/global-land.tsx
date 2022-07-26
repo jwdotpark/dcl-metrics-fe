@@ -32,6 +32,10 @@ const MarathonUsers = dynamic(
   () => import("../src/components/local/stats/MarathonUsers"),
   { ssr: false }
 )
+const RecentMarathonUsers = dynamic(
+  () => import("../src/components/local/stats/RecentMarathonUsers"),
+  { ssr: false }
+)
 
 const GlobalPage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -64,7 +68,10 @@ const GlobalPage: NextPage = () => {
         <Explorers isLoading={isLoading} setIsLoading={setIsLoading} />
         <RecentExplorers isLoading={isLoading} setIsLoading={setIsLoading} />
         <MarathonUsers isLoading={isLoading} setIsLoading={setIsLoading} />
-
+        <RecentMarathonUsers
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
         {/* <LineChartComponent box={box} /> */}
         {/* <PieChartComponent /> */}
         {/* <BarChartComponent /> */}
