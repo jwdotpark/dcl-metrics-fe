@@ -41,8 +41,6 @@ const MarathonUsers = ({ isLoading, setIsLoading }) => {
 
   const [currentDate, setCurrentDate] = useState(6)
 
-  console.log(valueArr[0])
-
   const DateSelector = () => {
     return (
       <Box w="100">

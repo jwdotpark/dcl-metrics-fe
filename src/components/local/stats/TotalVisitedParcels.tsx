@@ -31,7 +31,6 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   }, [isLoading, setIsLoading])
 
   const LineChartComponent = ({ box, res }) => {
-    console.log(res)
     const result = [
       {
         id: "Active Parcels",

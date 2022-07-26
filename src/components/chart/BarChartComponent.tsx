@@ -13,8 +13,6 @@ const BarChartComponent = ({ data }) => {
     bg: "white",
   }
 
-  // console.log("data: ", data)
-
   return (
     <GridItem h={box.h} bg={box.bg} borderRadius="md">
       <BarChart data={data} />

@@ -8,7 +8,6 @@ const LineChart = dynamic(() => import("../../lib/LineChart"), {
 })
 
 const LineChartComponent = ({ box, res }) => {
-  console.log(res)
   const result = [
     {
       id: "Active Parcels",
@@ -31,13 +30,7 @@ const LineChartComponent = ({ box, res }) => {
   ]
 
   return (
-    <GridItem
-      w={box.w}
-      h={box.h}
-      bg={box.bg}
-      borderRadius="md"
-      boxShadow="md"
-    >
+    <GridItem w={box.w} h={box.h} bg={box.bg} borderRadius="md" boxShadow="md">
       <ComponentHeader />
       <LineChart data={result} />
     </GridItem>
