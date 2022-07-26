@@ -94,11 +94,11 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                       {index + 1 + page * rowsPerPage - rowsPerPage}
                     </Text>
                   </Td>
-                  {dateClicked && (
+                  {/* {dateClicked && (
                     <Td>
                       <Text fontSize="lg">{item.date}</Text>
                     </Td>
-                  )}
+                  )} */}
                   <Td>
                     <Text fontSize="lg">
                       <b>{convertSeconds(item.timeSpent)}</b>
@@ -110,21 +110,12 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                       href={"https://etherscan.io/address/" + `${item.address}`}
                       rel="noreferrer"
                     >
-                      {dateClicked ? (
-                        <Text color="gray.600" fontSize="md">
-                          {item.address.slice(0, 10)}..{" "}
-                          <Box display="inline-block">
-                            <FiLink size="12" />
-                          </Box>
-                        </Text>
-                      ) : (
-                        <Text color="gray.600" fontSize="md" as="kbd">
-                          {item.address.slice(0, 35) + ".. "}
-                          <Box display="inline-block">
-                            <FiLink size="12" />
-                          </Box>
-                        </Text>
-                      )}
+                      <Text color="gray.600" fontSize="md" as="kbd">
+                        {item.address.slice(0, 25) + ".. "}
+                        <Box display="inline-block">
+                          <FiLink size="12" />
+                        </Box>
+                      </Text>
                     </a>
                   </Td>
                 </Tr>
@@ -154,7 +145,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
           <Box position="relative" mt="4" mx="5">
             <Text fontSize="xl">
               <b>Top Users Time Spent </b>
-              <Box display="inline" ml="2">
+              {/* <Box display="inline" ml="2">
                 <Button
                   size="sm"
                   variant={dateClicked ? "solid" : "outline"}
@@ -166,7 +157,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                     Date
                   </Text>
                 </Button>
-              </Box>
+              </Box> */}
               <Text fontSize="sm" color="gray.500">
                 Users that visited the most parcels yesterday
               </Text>

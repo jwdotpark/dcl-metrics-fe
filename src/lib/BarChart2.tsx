@@ -15,11 +15,12 @@ const BarChart = ({ data }) => {
       data={mutatedData}
       keys={["time_spent"]}
       indexBy="address"
-      margin={{ top: 10, right: 30, bottom: 6, left: 70 }}
+      margin={{ top: 30, right: 30, bottom: 6, left: 70 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
-      colors={{ scheme: "nivo" }}
+      colors={{ scheme: "pastel1" }}
+      layout="vertical"
       colorBy="indexValue"
       borderColor={{
         from: "color",
