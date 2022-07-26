@@ -9,7 +9,7 @@ import Pagination from "../Pagination"
 
 const MarathonUsers = ({ isLoading, setIsLoading }) => {
   const box = {
-    h: "570",
+    h: "580",
     w: "100%",
     bg: "white",
   }

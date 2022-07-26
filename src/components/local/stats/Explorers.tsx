@@ -78,7 +78,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                       href={"https://etherscan.io/address/" + `${item[0]}`}
                       rel="noreferrer"
                     >
-                      <Text as="kbd" color="gray.600" fontSize="md">
+                      <Text as="kbd" color="gray.600">
                         {item[0].slice(0, 35) + ".. "}
                         <Box display="inline-block">
                           <FiLink size="12" />
@@ -87,7 +87,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                     </a>
                   </Td>
                   <Td>
-                    <Text fontSize="lg" textAlign="center">
+                    <Text textAlign="center">
                       <b>{item[1]}</b>
                     </Text>
                   </Td>

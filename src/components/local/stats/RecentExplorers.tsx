@@ -105,7 +105,7 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
                       href={"https://etherscan.io/address/" + `${item.address}`}
                       rel="noreferrer"
                     >
-                      <Text as="kbd" color="gray.600" fontSize="md">
+                      <Text as="kbd" color="gray.600">
                         {item.address.slice(0, 35) + ".. "}
                         <Box display="inline-block">
                           <FiLink size="12" />
