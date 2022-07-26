@@ -52,11 +52,12 @@ const GlobalPage: NextPage = () => {
           setIsLoading={setIsLoading}
         />
         <UniqueVisitors isLoading={isLoading} setIsLoading={setIsLoading} />
-        <Explorers isLoading={isLoading} setIsLoading={setIsLoading} />
+
         <TotalVisitedParcels
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
+        <Explorers isLoading={isLoading} setIsLoading={setIsLoading} />
         <RecentExplorers isLoading={isLoading} setIsLoading={setIsLoading} />
         {/* <LineChartComponent box={box} /> */}
         {/* <PieChartComponent /> */}

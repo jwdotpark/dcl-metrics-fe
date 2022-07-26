@@ -1,9 +1,9 @@
 import { Box } from "@chakra-ui/react"
 
-const ComponentHeader = ({ name }) => {
+const ComponentHeader = ({ children }) => {
   return (
     <Box position="absolute" m="4">
-      {name}
+      {children}
     </Box>
   )
 }

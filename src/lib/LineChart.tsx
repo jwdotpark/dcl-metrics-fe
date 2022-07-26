@@ -6,10 +6,21 @@ import { ResponsiveLine } from "@nivo/line"
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
+
+// make a color list array
+const colors = [
+  "#F5656575",
+  "#F5656575",
+  "#48BB7875",
+  "#4299e175",
+  "#9F7AEA75",
+  "#ED64A675",
+]
+
 const LineChart = ({ data }) => (
   <ResponsiveLine
     data={data}
-    margin={{ top: 20, right: 40, bottom: 100, left: 75 }}
+    margin={{ top: 50, right: 60, bottom: 100, left: 80 }}
     xScale={{ type: "point" }}
     yScale={{
       type: "linear",
@@ -40,9 +51,9 @@ const LineChart = ({ data }) => (
       legendOffset: -60,
       legendPosition: "middle",
     }}
-    pointSize={10}
+    pointSize={6}
     pointColor={{ theme: "background" }}
-    pointBorderWidth={2}
+    pointBorderWidth={6}
     pointBorderColor={{ from: "serieColor" }}
     pointLabelYOffset={-12}
     useMesh={true}
@@ -77,17 +88,20 @@ const LineChart = ({ data }) => (
         <div
           style={{
             background: "white",
-            padding: "9px 12px",
+            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+            padding: ".3rem",
             border: "1px solid #ccc",
             borderRadius: "5px",
           }}
+          s
         >
           <div>
-            {point.point.data.x + ": " + point.point.data.yStacked} counts
+            {point.point.data.x + ", " + point.point.data.yStacked} counts
           </div>
         </div>
       )
     }}
+    colors={(d) => colors[Math.floor(Math.random() * colors.length)]}
   />
 )
 

@@ -8,9 +8,11 @@ const LineChart = dynamic(() => import("../../lib/LineChart"), {
 })
 
 const LineChartComponent = ({ box, res }) => {
+  console.log(res)
   const result = [
     {
       id: "Active Parcels",
+      id: res.map((item) => item.id),
       color: "hsl(170, 70%, 50%)",
       data: res.map((item) => ({
         x: item.date,
@@ -19,6 +21,7 @@ const LineChartComponent = ({ box, res }) => {
     },
     {
       id: "Unique Users",
+      // set id as unique_users from res
       color: "hsl(325, 70%, 50%)",
       data: res.map((item) => ({
         x: item.date,
@@ -29,8 +32,6 @@ const LineChartComponent = ({ box, res }) => {
 
   return (
     <GridItem
-      // minW={box.w}
-      // maxW={box.w}
       w={box.w}
       h={box.h}
       bg={box.bg}

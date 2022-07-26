@@ -4,6 +4,7 @@ const GridBox = ({ box, children }: any) => {
   return (
     <>
       <GridItem
+        // border="1px solid red"
         minW={box.w}
         maxW={box.w}
         h={box.h}

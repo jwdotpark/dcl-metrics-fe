@@ -3,15 +3,15 @@ import { Text, Box, GridItem, Center } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
 import staticData from "../../../../public/data/unique-visitors.json"
-import LineChartComponent from "../../chart/LineChartComponent"
 import { fetchResult } from "../../../lib/hooks/fetch"
 import Loading from "../Loading"
+import LineChart from "../../../lib/LineChart"
 
-const TotalVisitedParcels = ({ isLoading, setIsLoading }) => {
+const UniqueVisitors = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
   const box = {
-    h: "503",
+    h: "500",
     w: "100%",
     bg: "white",
   }
@@ -30,19 +30,38 @@ const TotalVisitedParcels = ({ isLoading, setIsLoading }) => {
     }
   }, [isLoading, setIsLoading])
 
+  const LineChartComponent = ({ box, res }) => {
+    console.log(res)
+    const result = [
+      {
+        id: "Active Parcels",
+        color: "hsl(90, 70%, 50%)",
+        data: res.map((item) => ({
+          x: item.date,
+          y: item.active_parcels,
+        })),
+      },
+    ]
+    return (
+      <GridItem w={box.w} h="428" bg={box.bg} borderRadius="md" boxShadow="md">
+        <LineChart data={result} />
+      </GridItem>
+    )
+  }
+
   return (
     <>
       <GridBox box={box}>
-        <Box position="relative" mt="4" mx="5">
+        <Box position="relative" mt="4" mx="5" mb="1">
           <Text fontSize="xl">
-            <b>Total Visited Parcels</b>
+            <b>Top Visited Parcels</b>
             <Text fontSize="sm" color="gray.500">
               Parcels visited per day in the last 7 days
             </Text>
           </Text>
         </Box>
         {res.length > 0 && !isLoading ? (
-          <Box>
+          <Box mb="200">
             <LineChartComponent box={box} res={res} />
           </Box>
         ) : (
@@ -55,4 +74,4 @@ const TotalVisitedParcels = ({ isLoading, setIsLoading }) => {
   )
 }
 
-export default TotalVisitedParcels
+export default UniqueVisitors
