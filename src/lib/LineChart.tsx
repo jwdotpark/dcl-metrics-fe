@@ -93,7 +93,6 @@ const LineChart = ({ data }) => (
             border: "1px solid #ccc",
             borderRadius: "5px",
           }}
-          s
         >
           <div>
             {point.point.data.x + ", " + point.point.data.yStacked} counts
