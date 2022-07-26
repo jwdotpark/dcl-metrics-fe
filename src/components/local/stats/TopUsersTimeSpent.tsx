@@ -67,7 +67,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
           variant="simple"
           overflowX="scroll"
           maxW="100%"
-          height="500px"
+          height="490px"
         >
           <Thead>
             <Tr>
@@ -140,7 +140,7 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   }
 
   const box = {
-    h: "625",
+    h: "615",
     w: "100%",
     bg: "white",
   }
