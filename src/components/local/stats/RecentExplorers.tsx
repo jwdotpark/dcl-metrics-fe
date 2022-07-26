@@ -123,7 +123,7 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
                     </a>
                   </Td>
                   <Td>
-                    <Text fontSize="lg" textAlign="center">
+                    <Text>
                       <b>{item.parcels_visited}</b>
                     </Text>
                   </Td>

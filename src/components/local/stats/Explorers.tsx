@@ -93,7 +93,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                     </a>
                   </Td>
                   <Td>
-                    <Text textAlign="center">
+                    <Text>
                       <b>{item[1]}</b>
                     </Text>
                   </Td>
