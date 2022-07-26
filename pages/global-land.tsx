@@ -5,7 +5,7 @@ import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 
 const TopUsersTimeSpentComponent = dynamic(
-  () => import("../src/components/local/stats/TopUsersTimeSpent"),
+  () => import("../src/components/local/stats/MarathonUsers"),
   { ssr: false }
 )
 const TopParcelsTimeSpentComponent = dynamic(
@@ -29,11 +29,11 @@ const TotalVisitedParcels = dynamic(
   { ssr: false }
 )
 const MarathonUsers = dynamic(
-  () => import("../src/components/local/stats/MarathonUsers"),
+  () => import("../src/components/local/stats/RecentMarathonUsers"),
   { ssr: false }
 )
 const RecentMarathonUsers = dynamic(
-  () => import("../src/components/local/stats/RecentMarathonUsers"),
+  () => import("../src/components/local/stats/TempRecentMarathonUsers"),
   { ssr: false }
 )
 
