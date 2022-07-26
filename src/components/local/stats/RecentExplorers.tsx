@@ -53,6 +53,7 @@ const RecentExplorers = ({ isLoading, setIsLoading }) => {
     valueArr.push(data[i][1])
   }
 
+  console.log(DateArr.length)
   const [currentDate, setCurrentDate] = useState(6)
 
   const DateSelector = () => {

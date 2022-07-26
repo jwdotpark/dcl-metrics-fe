@@ -39,7 +39,7 @@ const MarathonUsers = ({ isLoading, setIsLoading }) => {
     valueArr.push(value)
   })
 
-  const [currentDate, setCurrentDate] = useState(0)
+  const [currentDate, setCurrentDate] = useState(6)
 
   console.log(valueArr[0])
 
@@ -47,7 +47,7 @@ const MarathonUsers = ({ isLoading, setIsLoading }) => {
     return (
       <Box w="100">
         <Select
-          variant="outline"
+          variant="flushed"
           size="sm"
           onChange={(e) => {
             setCurrentDate(Number(e.target.value))
