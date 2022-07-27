@@ -64,19 +64,10 @@ const GlobalPage: NextPage = () => {
         />
         <Explorers isLoading={isLoading} setIsLoading={setIsLoading} />
         <RecentExplorers isLoading={isLoading} setIsLoading={setIsLoading} />
-
-        {/* <RecentMarathonUsers
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        /> */}
         <TopParcelsTimeSpentComponent
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />
-
-        {/* <LineChartComponent box={box} /> */}
-        {/* <PieChartComponent /> */}
-        {/* <BarChartComponent /> */}
       </Grid>
     </Layout>
   )
