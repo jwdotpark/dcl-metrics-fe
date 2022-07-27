@@ -28,14 +28,14 @@ const TotalVisitedParcels = dynamic(
   () => import("../src/components/local/stats/TotalVisitedParcels"),
   { ssr: false }
 )
-// const MarathonUsers = dynamic(
-//   () => import("../src/components/local/stats/RecentMarathonUsers"),
-//   { ssr: false }
-// )
 const RecentMarathonUsers = dynamic(
-  () => import("../src/components/local/stats/TempRecentMarathonUsers"),
+  () => import("../src/components/local/stats/RecentMarathonUsers"),
   { ssr: false }
 )
+// const RecentMarathonUsers = dynamic(
+//   () => import("../src/components/local/stats/TempRecentMarathonUsers"),
+//   { ssr: false }
+// )
 
 const GlobalPage: NextPage = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
@@ -52,7 +52,10 @@ const GlobalPage: NextPage = () => {
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="20">
         {/* marathon user */}
         <MarathonUsers isLoading={isLoading} setIsLoading={setIsLoading} />
-        <MarathonUsers isLoading={isLoading} setIsLoading={setIsLoading} />
+        <RecentMarathonUsers
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
         <UniqueVisitors isLoading={isLoading} setIsLoading={setIsLoading} />
         <TotalVisitedParcels
           isLoading={isLoading}

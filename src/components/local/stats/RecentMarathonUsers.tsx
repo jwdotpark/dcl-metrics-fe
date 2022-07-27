@@ -21,7 +21,7 @@ import Loading from "../Loading"
 import PopupModal from "../PopupModal"
 import BarChartComponent from "../../chart/BarChartComponent"
 
-const MarathonUsers = ({ isLoading, setIsLoading }) => {
+const RecentMarathonUsers = ({ isLoading, setIsLoading }) => {
   const box = {
     h: "590",
     w: "100%",
@@ -110,4 +110,4 @@ const MarathonUsers = ({ isLoading, setIsLoading }) => {
   )
 }
 
-export default MarathonUsers
+export default RecentMarathonUsers
