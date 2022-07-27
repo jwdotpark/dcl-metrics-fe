@@ -22,7 +22,7 @@ import { fetchResult } from "../../../lib/hooks/fetch"
 import ProfilePicture from "../ProfilePicture"
 
 // #1 Marathon Users
-const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
+const MarathonUsers = ({ isLoading, setIsLoading }) => {
   const [res, setRes] = useState([])
 
   useEffect(() => {
@@ -184,4 +184,4 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
   )
 }
 
-export default TopUsersTimeSpentComponent
+export default MarathonUsers
