@@ -9,7 +9,7 @@ const BarChart = dynamic(() => import("../../lib/BarChart"), {
 
 const BarChartComponent = ({ data }) => {
   const box = {
-    h: "490",
+    h: "510",
     w: "100%",
     bg: "white",
   }
