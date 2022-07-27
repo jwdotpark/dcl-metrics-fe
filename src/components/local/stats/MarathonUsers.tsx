@@ -109,7 +109,10 @@ const TopUsersTimeSpentComponent = ({ isLoading, setIsLoading }) => {
                     >
                       <Text color="gray.600">
                         <Box display="inline-block" mr="4">
-                          <ProfilePicture address={item.address} />
+                          <ProfilePicture
+                            address={item.address}
+                            modal={false}
+                          />
                         </Box>
                         <Box
                           as="kbd"

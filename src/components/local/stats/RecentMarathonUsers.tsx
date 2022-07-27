@@ -1,9 +1,24 @@
-import { Box, Center, Select, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Center,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Select,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { fetchResult } from "../../../lib/hooks/fetch"
 import GridBox from "../GridBox"
 import staticData from "../../../../public/data/marathon-users.json"
 import Loading from "../Loading"
+import PopupModal from "../PopupModal"
 import BarChartComponent from "../../chart/BarChartComponent"
 
 const MarathonUsers = ({ isLoading, setIsLoading }) => {

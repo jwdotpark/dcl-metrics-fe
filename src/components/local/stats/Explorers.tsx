@@ -80,7 +80,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
                       rel="noreferrer"
                     >
                       <Box display="inline-block" mr="2">
-                        <ProfilePicture address={item[0]} />
+                        <ProfilePicture address={item[0]} modal={false} />
                       </Box>
                       <Text
                         color="gray.600"

@@ -2,7 +2,7 @@ import { Image, WrapItem, Avatar, Box, Center, Spinner } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { fetchResult } from "../../lib/hooks/fetch"
 
-const ProfilePicture = ({ address }) => {
+const ProfilePicture = ({ address, modal }) => {
   const [pic, setPic] = useState()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -26,15 +26,14 @@ const ProfilePicture = ({ address }) => {
       <Center
         borderRadius="full"
         display="inline-block"
-        boxSize="1.7rem"
-        // bg="gray.100"
+        boxSize={modal ? "10rem" : "1.7rem"}
       >
         {isLoading ? (
           <Center h="100%">
             <Spinner size="sm" />
           </Center>
         ) : (
-          <Image boxSize="1.6rem" src={pic} alt="" />
+          <Image boxSize="100%" src={pic} alt="" />
         )}
       </Center>
     </>
