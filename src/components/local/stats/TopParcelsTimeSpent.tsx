@@ -10,6 +10,7 @@ import {
   Thead,
   Tr,
   Image,
+  GridItem,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { FiLink } from "react-icons/fi"
@@ -40,7 +41,7 @@ const TopParcelsTimeSpentComponent = () => {
 
   // table pagination
   const [page, setPage] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(2)
+  const [rowsPerPage, setRowsPerPage] = useState(5)
 
   // array dateArr
   const data = Object.entries(dataArr)
@@ -59,12 +60,11 @@ const TopParcelsTimeSpentComponent = () => {
     return (
       <TableContainer mt="2">
         <Table
-          size="sm"
+          size="xs"
           variant="simple"
           overflowX="hidden"
           maxW="100%"
-          height="450"
-          // border="1px solid red"
+          height="1100"
         >
           <Thead>
             <Tr>
@@ -79,22 +79,26 @@ const TopParcelsTimeSpentComponent = () => {
               return (
                 <Tr key={i}>
                   <Td>
-                    {/* <Box
-                      // boxSize="12.5rem"
-                      objectFit={"cover"}
+                    <Box
+                      // p="2"
+                      maxW="95%"
+                      minW="100px"
+                      minH="6rem"
+                      maxH="12rem"
                       borderRadius="md"
-                      overflow="clip"
-                    > */}
-                    <Image
-                      mb="1"
-                      borderRadius="md"
-                      height="13rem"
-                      w="100%"
-                      src={baseUrl + coord[i] + mapUrl}
-                      alt="map image"
-                      objectFit="cover"
-                    />
-                    {/* </Box> */}
+                    >
+                      <Image
+                        // p="4"
+                        my="2"
+                        mb="1"
+                        borderRadius="md"
+                        height="12rem"
+                        w="100%"
+                        src={baseUrl + coord[i] + mapUrl}
+                        alt="map image"
+                        objectFit="cover"
+                      />
+                    </Box>
                   </Td>
                   <Td>
                     <Box>
@@ -126,7 +130,7 @@ const TopParcelsTimeSpentComponent = () => {
             })}
           </Tbody>
         </Table>
-        <Center>
+        <Center h="100%" w="100%">
           <Pagination page={page} pages={pages} setPage={setPage} />
         </Center>
       </TableContainer>
@@ -134,17 +138,17 @@ const TopParcelsTimeSpentComponent = () => {
   }
 
   const box = {
-    h: "610",
-    w: "100%",
+    h: "1250",
+    w: "100% + 2rem",
     bg: "white",
   }
 
   return (
     <>
-      <GridBox box={box}>
+      <GridItem h={box.h} bg={box.bg} borderRadius="md" boxShadow="md">
         <Box position="relative" mt="4" mx="5">
           <Box>
-            <Text fontSize="xl" mb="1">
+            <Text fontSize="xl" mb="1" pt="4">
               <b>Top Parcels/Scenes Time Spent </b>
               <Text fontSize="sm" color="gray.500">
                 Parcels with the most time spent on them in the last 7 days
@@ -161,7 +165,7 @@ const TopParcelsTimeSpentComponent = () => {
             </Center>
           )}
         </Box>
-      </GridBox>
+      </GridItem>
     </>
   )
 }
