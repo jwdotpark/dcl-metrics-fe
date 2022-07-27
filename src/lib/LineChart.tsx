@@ -9,8 +9,9 @@ const LineChart = ({ data, min }) => {
     "#4299e175",
     "#9F7AEA75",
     "#ED64A675",
+    "#E5581275",
+    "#0E474975",
   ]
-  // const min = Math.min(...data.map((item) => item.data[0].y))
 
   return (
     <ResponsiveLine

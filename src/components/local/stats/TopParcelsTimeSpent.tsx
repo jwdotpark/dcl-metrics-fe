@@ -80,18 +80,19 @@ const TopParcelsTimeSpentComponent = () => {
                 <Tr key={i}>
                   <Td>
                     <Box
-                      // p="2"
-                      maxW="95%"
-                      minW="100px"
-                      minH="6rem"
-                      maxH="12rem"
+                      mr="10"
+                      // my="2"
+                      // mb="1"
+                      minW="200px"
+                      maxH={["10%", "100%"]}
                       borderRadius="md"
+                      border="2px solid"
+                      borderColor="gray.200"
+                      overflow="clip"
+                      boxShadow="md"
                     >
                       <Image
-                        // p="4"
-                        my="2"
-                        mb="1"
-                        borderRadius="md"
+                        borderRadius="sm"
                         height="12rem"
                         w="100%"
                         src={baseUrl + coord[i] + mapUrl}
