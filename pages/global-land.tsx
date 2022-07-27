@@ -1,8 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
+
+import staticMarathonUsers from "../public/data/marathon-users.json"
+import staticVisitors from "../public/data/unique-visitors.json"
 
 const MarathonUsers = dynamic(
   () => import("../src/components/local/stats/MarathonUsers"),
@@ -47,26 +50,62 @@ const GlobalPage: NextPage = () => {
   //   bg: "white",
   // }
 
+  // --------------- marathon users -----------------
+  const [res, setRes] = useState([])
+  const fetchResult = async (url: any) => {
+    const response = await fetch(url)
+    const result = await response.json()
+    setRes(result.data)
+  }
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      setIsLoading(true)
+      const url = "api/fetch/daily-user-timespent"
+      fetchResult(url)
+      setIsLoading(false)
+    } else {
+      // setIsLoading(true)
+      // @ts-ignore
+      setRes(staticMarathonUsers)
+      // setIsLoading(false)
+    }
+  }, [])
+
+  // --------------- unique visitors -----------------
+  const [visitor, setVisitor] = useState([])
+  const [visitorLoading, setVisitorLoading] = useState(false)
+  const fetchVisitorResult = async (url: any) => {
+    const response = await fetch(url)
+    const result = await response.json()
+    setVisitor(result.data)
+  }
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      setVisitorLoading(true)
+      const url = "api/fetch/unique-visitors"
+      fetchVisitorResult(url)
+      setVisitorLoading(false)
+    } else {
+      // setVisitorLoading(true)
+      // @ts-ignore
+      setVisitor(staticVisitors)
+      // setVisitorLoading(false)
+    }
+  }, [isLoading, setIsLoading])
+
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="20">
-        {/* marathon user */}
-        <MarathonUsers isLoading={isLoading} setIsLoading={setIsLoading} />
-        <RecentMarathonUsers
+        <MarathonUsers isLoading={isLoading} res={res} />
+        <RecentMarathonUsers isLoading={isLoading} res={res} />
+        <UniqueVisitors res={visitor} visitorLoading={visitorLoading} />
+        <TotalVisitedParcels res={visitor} visitorLoading={visitorLoading} />
+        {/* <Explorers isLoading={isLoading} setIsLoading={setIsLoading} /> */}
+        {/* <RecentExplorers isLoading={isLoading} setIsLoading={setIsLoading} /> */}
+        {/* <TopParcelsTimeSpentComponent
           isLoading={isLoading}
           setIsLoading={setIsLoading}
-        />
-        <UniqueVisitors isLoading={isLoading} setIsLoading={setIsLoading} />
-        <TotalVisitedParcels
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        />
-        <Explorers isLoading={isLoading} setIsLoading={setIsLoading} />
-        <RecentExplorers isLoading={isLoading} setIsLoading={setIsLoading} />
-        <TopParcelsTimeSpentComponent
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        />
+        /> */}
       </Grid>
     </Layout>
   )

@@ -17,32 +17,33 @@ import Pagination from "../Pagination"
 import Loading from "../Loading"
 import { convertSeconds } from "../../../lib/hooks/utils"
 import { FiLink } from "react-icons/fi"
-import staticData from "../../../../public/data/daily-user-stats.json"
+import staticMarathonUsers from "../../../../public/data/marathon-users.json"
 import { fetchResult } from "../../../lib/hooks/fetch"
 import ProfilePicture from "../ProfilePicture"
 
 // #1 Marathon Users
-const MarathonUsers = ({ isLoading, setIsLoading }) => {
-  const [res, setRes] = useState([])
+const MarathonUsers = ({ isLoading, res }) => {
+  // const [res, setRes] = useState([])
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
-      setIsLoading(true)
-      const url = "api/fetch/daily-user-timespent"
-      fetchResult(url, setRes)
-      setIsLoading(false)
-    } else {
-      setIsLoading(true)
-      // @ts-ignore
-      setRes(staticData)
-      setIsLoading(false)
-    }
-  }, [isLoading, setIsLoading])
+  // useEffect(() => {
+  //   if (process.env.NODE_ENV === "production") {
+  //     setIsLoading(true)
+  //     const url = "api/fetch/daily-user-timespent"
+  //     fetchResult(url, setRes)
+  //     setIsLoading(false)
+  //   } else {
+  //     setIsLoading(true)
+  //     // @ts-ignore
+  //     setRes(staticMarathonUsers)
+  //     setIsLoading(false)
+  //   }
+  // }, [isLoading, setIsLoading])
 
   // consolidate data as date/timeSpent/address
   const data = Object.entries(res)
   const dataArr = []
   for (let i = 0; i < data.length; i++) {
+    //  @ts-ignore
     for (let j = 0; j < data[i][1].length; j++) {
       dataArr.push({
         date: data[i][0],

@@ -21,30 +21,31 @@ import Loading from "../Loading"
 import PopupModal from "../PopupModal"
 import BarChartComponent from "../../chart/BarChartComponent"
 
-const RecentMarathonUsers = ({ isLoading, setIsLoading }) => {
+const RecentMarathonUsers = ({ isLoading, res }) => {
   const box = {
     h: "590",
     w: "100%",
     bg: "white",
   }
 
-  const [res, setRes] = useState([])
+  // const [res, setRes] = useState([])
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
-      setIsLoading(true)
-      const url = "api/fetch/marathon-users"
-      fetchResult(url, setRes)
-      setIsLoading(false)
-    } else {
-      setIsLoading(true)
-      // @ts-ignore
-      setRes(staticData)
-      setIsLoading(false)
-    }
-  }, [isLoading, setIsLoading])
+  // useEffect(() => {
+  //   if (process.env.NODE_ENV === "production") {
+  //     setIsLoading(true)
+  //     const url = "api/fetch/daily-user-timespent"
+  //     fetchResult(url, setRes)
+  //     setIsLoading(false)
+  //   } else {
+  //     setIsLoading(true)
+  //     // @ts-ignore
+  //     setRes(staticData)
+  //     setIsLoading(false)
+  //   }
+  // }, [isLoading, setIsLoading])
 
   const data = Object.entries(res)
+
   const dateArr = []
   data.forEach(([key, value]) => {
     dateArr.push(key)

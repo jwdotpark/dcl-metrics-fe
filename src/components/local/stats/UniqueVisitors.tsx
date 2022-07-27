@@ -7,28 +7,27 @@ import { fetchResult } from "../../../lib/hooks/fetch"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
-const UniqueVisitors = ({ isLoading, setIsLoading }) => {
-  const [res, setRes] = useState([])
-
+const UniqueVisitors = ({ res, visitorLoading }) => {
   const box = {
     h: "570",
     w: "100%",
     bg: "white",
   }
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
-      setIsLoading(true)
-      const url = "api/fetch/unique-visitors"
-      fetchResult(url, setRes)
-      setIsLoading(false)
-    } else {
-      setIsLoading(true)
-      // @ts-ignore
-      setRes(staticData)
-      setIsLoading(false)
-    }
-  }, [isLoading, setIsLoading])
+  // const [res, setRes] = useState([])
+  // useEffect(() => {
+  //   if (process.env.NODE_ENV === "production") {
+  //     setIsLoading(true)
+  //     const url = "api/fetch/unique-visitors"
+  //     fetchResult(url, setRes)
+  //     setIsLoading(false)
+  //   } else {
+  //     setIsLoading(true)
+  //     // @ts-ignore
+  //     setRes(staticData)
+  //     setIsLoading(false)
+  //   }
+  // }, [isLoading, setIsLoading])
 
   const LineChartComponent = ({ box, res }) => {
     const result = [
@@ -60,7 +59,7 @@ const UniqueVisitors = ({ isLoading, setIsLoading }) => {
             </Text>
           </Text>
         </Box>
-        {res.length > 0 && !isLoading ? (
+        {res.length > 0 && !visitorLoading ? (
           <Box h="100%">
             <LineChartComponent box={box} res={res} />
           </Box>
