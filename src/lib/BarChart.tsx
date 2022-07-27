@@ -1,9 +1,5 @@
 import { ResponsiveBar } from "@nivo/bar"
-import { setPriority } from "os"
-import { useState } from "react"
-import ProfilePicture from "../components/local/ProfilePicture"
 import { convertSeconds } from "../lib/hooks/utils"
-// import ProfilePicture from "../components/local/ProfilePicture"
 
 const BarChart = ({ data, onOpen, value, setValue }) => {
   return (
@@ -21,8 +17,6 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
         from: "color",
         modifiers: [["darker", 1.6]],
       }}
-      axisTop={null}
-      axisRight={null}
       labelSkipWidth={12}
       labelSkipHeight={12}
       labelTextColor={{
@@ -37,13 +31,41 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       onClick={onOpen}
       onMouseEnter={(point) => {
         // @ts-ignore
-        console.log(point)
         setValue(point)
       }}
       animate={false}
       axisLeft={{
         format: (value) => convertSeconds(value),
       }}
+      // axisTop={{
+      //   tickSize: 5,
+      //   tickPadding: 2,
+      //   tickRotation: 1,
+      //   legend: "",
+      //   legendPosition: "middle",
+      //   legendOffset: 0,
+      //   renderTick: ({
+      //     textAnchor,
+      //     textBaseline,
+      //     textX,
+      //     textY,
+      //     value,
+      //     x,
+      //     y,
+      //   }) => {
+      //     return (
+      //       <g transform={`translate(${x},${y})`}>
+      //         <text
+      //           // alignmentBaseline={textBaseline}
+      //           textAnchor={textAnchor}
+      //           transform={`translate(${textX},${textY})`}
+      //         >
+      //           <ProfilePicture address={value} modal={false} />
+      //         </text>
+      //       </g>
+      //     )
+      //   },
+      // }}
     />
   )
 }
