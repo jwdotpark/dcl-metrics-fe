@@ -41,7 +41,7 @@ const RecentExplorers = () => {
       setRes(staticData)
       setIsLoading(false)
     }
-  }, [isLoading, setIsLoading])
+  }, [])
 
   const data = Object.entries(res)
 

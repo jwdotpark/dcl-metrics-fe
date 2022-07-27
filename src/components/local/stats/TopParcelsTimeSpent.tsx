@@ -36,7 +36,7 @@ const TopParcelsTimeSpentComponent = () => {
       setRes(dataArr)
       setIsLoading(false)
     }
-  }, [isLoading, setIsLoading])
+  }, [])
 
   // table pagination
   const [page, setPage] = useState(1)

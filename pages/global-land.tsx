@@ -85,7 +85,7 @@ const GlobalPage: NextPage = () => {
       setVisitor(staticVisitors)
       setVisitorLoading(false)
     }
-  }, [isLoading, setIsLoading])
+  }, [])
 
   return (
     <Layout>
