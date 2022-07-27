@@ -23,23 +23,6 @@ import ProfilePicture from "../ProfilePicture"
 
 // #1 Marathon Users
 const MarathonUsers = ({ isLoading, res }) => {
-  // const [res, setRes] = useState([])
-
-  // useEffect(() => {
-  //   if (process.env.NODE_ENV === "production") {
-  //     setIsLoading(true)
-  //     const url = "api/fetch/daily-user-timespent"
-  //     fetchResult(url, setRes)
-  //     setIsLoading(false)
-  //   } else {
-  //     setIsLoading(true)
-  //     // @ts-ignore
-  //     setRes(staticMarathonUsers)
-  //     setIsLoading(false)
-  //   }
-  // }, [isLoading, setIsLoading])
-
-  // consolidate data as date/timeSpent/address
   const data = Object.entries(res)
   const dataArr = []
   for (let i = 0; i < data.length; i++) {

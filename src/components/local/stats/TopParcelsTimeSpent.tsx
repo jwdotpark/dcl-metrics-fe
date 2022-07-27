@@ -20,8 +20,9 @@ import Loading from "../Loading"
 import Pagination from "../Pagination"
 import dataArr from "../../../../public/data/top-visited-parcel.json"
 
-const TopParcelsTimeSpentComponent = ({ isLoading, setIsLoading }) => {
+const TopParcelsTimeSpentComponent = () => {
   const [res, setRes] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {

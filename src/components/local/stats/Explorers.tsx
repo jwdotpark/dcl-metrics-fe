@@ -20,7 +20,7 @@ import Loading from "../Loading"
 import Pagination from "../Pagination"
 import ProfilePicture from "../ProfilePicture"
 
-const Explorers = ({ isLoading, setIsLoading }) => {
+const Explorers = () => {
   const box = {
     h: "590",
     w: "100%",
@@ -28,6 +28,7 @@ const Explorers = ({ isLoading, setIsLoading }) => {
   }
 
   const [res, setRes] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {

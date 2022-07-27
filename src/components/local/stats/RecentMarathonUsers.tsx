@@ -27,23 +27,6 @@ const RecentMarathonUsers = ({ isLoading, res }) => {
     w: "100%",
     bg: "white",
   }
-
-  // const [res, setRes] = useState([])
-
-  // useEffect(() => {
-  //   if (process.env.NODE_ENV === "production") {
-  //     setIsLoading(true)
-  //     const url = "api/fetch/daily-user-timespent"
-  //     fetchResult(url, setRes)
-  //     setIsLoading(false)
-  //   } else {
-  //     setIsLoading(true)
-  //     // @ts-ignore
-  //     setRes(staticData)
-  //     setIsLoading(false)
-  //   }
-  // }, [isLoading, setIsLoading])
-
   const data = Object.entries(res)
 
   const dateArr = []

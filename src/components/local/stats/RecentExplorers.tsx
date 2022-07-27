@@ -20,13 +20,13 @@ import { FiLink } from "react-icons/fi"
 import Loading from "../Loading"
 import ProfilePicture from "../ProfilePicture"
 
-const RecentExplorers = ({ isLoading, setIsLoading }) => {
+const RecentExplorers = () => {
   const box = {
     h: "590",
     w: "100%",
     bg: "white",
   }
-
+  const [isLoading, setIsLoading] = useState(false)
   const [res, setRes] = useState([])
 
   useEffect(() => {

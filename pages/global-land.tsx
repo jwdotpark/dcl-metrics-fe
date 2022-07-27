@@ -44,12 +44,6 @@ const GlobalPage: NextPage = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
   const [isLoading, setIsLoading] = useState(false)
 
-  // const box = {
-  //   h: "600",
-  //   w: "100%",
-  //   bg: "white",
-  // }
-
   // --------------- marathon users -----------------
   const [res, setRes] = useState([])
   const fetchResult = async (url: any) => {
@@ -64,10 +58,10 @@ const GlobalPage: NextPage = () => {
       fetchResult(url)
       setIsLoading(false)
     } else {
-      // setIsLoading(true)
+      setIsLoading(true)
       // @ts-ignore
       setRes(staticMarathonUsers)
-      // setIsLoading(false)
+      setIsLoading(false)
     }
   }, [])
 
@@ -86,10 +80,10 @@ const GlobalPage: NextPage = () => {
       fetchVisitorResult(url)
       setVisitorLoading(false)
     } else {
-      // setVisitorLoading(true)
+      setVisitorLoading(true)
       // @ts-ignore
       setVisitor(staticVisitors)
-      // setVisitorLoading(false)
+      setVisitorLoading(false)
     }
   }, [isLoading, setIsLoading])
 
@@ -100,12 +94,9 @@ const GlobalPage: NextPage = () => {
         <RecentMarathonUsers isLoading={isLoading} res={res} />
         <UniqueVisitors res={visitor} visitorLoading={visitorLoading} />
         <TotalVisitedParcels res={visitor} visitorLoading={visitorLoading} />
-        {/* <Explorers isLoading={isLoading} setIsLoading={setIsLoading} /> */}
-        {/* <RecentExplorers isLoading={isLoading} setIsLoading={setIsLoading} /> */}
-        {/* <TopParcelsTimeSpentComponent
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        /> */}
+        <Explorers />
+        <RecentExplorers />
+        <TopParcelsTimeSpentComponent />
       </Grid>
     </Layout>
   )
