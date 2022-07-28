@@ -74,7 +74,7 @@ const GlobalPage: NextPage = () => {
     setVisitor(result.data)
   }
   useEffect(() => {
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.NODE_ENV === "production") {
       setVisitorLoading(true)
       const url = "api/fetch/unique-visitors"
       fetchVisitorResult(url)
