@@ -88,7 +88,7 @@ const Explorers = () => {
                         as="kbd"
                         display="inline-block"
                         _hover={{ color: "gray.900" }}
-                        css={{ transform: "translateY(-7px)" }}
+                        css={{ transform: "translateY(3px)" }}
                       >
                         {item[0]}
                       </Text>
