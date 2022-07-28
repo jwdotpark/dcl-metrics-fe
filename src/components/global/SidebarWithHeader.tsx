@@ -49,7 +49,7 @@ const makeName = (name: string) => {
 const LinkItems: Array<LinkItemProps> = [
   { name: "Home", icon: FiHome },
   { name: "Global Land", icon: FiTrendingUp },
-  { name: "Single Land", icon: FiCompass },
+  // { name: "Single Land", icon: FiCompass },
   { name: "About", icon: FiStar },
   // { name: "Settings", icon: FiSettings },
 ]
@@ -96,7 +96,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const router = useRouter()
   return (
     <Box
-      transition="3s ease"
+      transition=".5s ease"
       bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
