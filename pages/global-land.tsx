@@ -96,8 +96,9 @@ const GlobalPage: NextPage = () => {
         <RecentMarathonUsers isLoading={isLoading} res={res} />
         <Explorers />
         <RecentExplorers />
+        <TopParcelsTimeSpentComponent />
+        {/* <TopParcelsTimeSpentComponent /> */}
       </Grid>
-      <TopParcelsTimeSpentComponent />
     </Layout>
   )
 }

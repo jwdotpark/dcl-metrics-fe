@@ -140,7 +140,8 @@ const TopParcelsTimeSpentComponent = () => {
 
   const box = {
     h: "1250",
-    w: "100% + 2rem",
+    // w: "100% + 2rem",
+    w: "100%",
     bg: "white",
   }
 
