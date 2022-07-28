@@ -6,6 +6,7 @@ import Layout from "../src/components/layout/layout"
 
 import staticMarathonUsers from "../public/data/marathon-users.json"
 import staticVisitors from "../public/data/unique-visitors.json"
+import staticParcel from "../public/data/top-visited-parcel.json"
 
 const MarathonUsers = dynamic(
   () => import("../src/components/local/stats/MarathonUsers"),
@@ -35,6 +36,11 @@ const RecentMarathonUsers = dynamic(
   () => import("../src/components/local/stats/RecentMarathonUsers"),
   { ssr: false }
 )
+const TopParcelsTimeLogSpentVisit = dynamic(
+  () => import("../src/components/local/stats/TopParcelsTimeLogSpentVisit"),
+  { ssr: false }
+)
+
 // const RecentMarathonUsers = dynamic(
 //   () => import("../src/components/local/stats/TempRecentMarathonUsers"),
 //   { ssr: false }
@@ -87,6 +93,28 @@ const GlobalPage: NextPage = () => {
     }
   }, [])
 
+  // --------------- top parcel/scene time spent -----------------
+  const [parcel, setParcel] = useState([])
+  const [isParcelLoading, setIsParcelLoading] = useState(false)
+  const fetchParcelResult = async (url: any) => {
+    const response = await fetch(url)
+    const result = await response.json()
+    setVisitor(result.data)
+  }
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      setIsParcelLoading(true)
+      const url = "api/fetch/top-parcels-timespent"
+      fetchParcelResult(url)
+      setIsParcelLoading(false)
+    } else {
+      setIsParcelLoading(true)
+      // @ts-ignore
+      setParcel(staticParcel)
+      setIsParcelLoading(false)
+    }
+  }, [])
+
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
@@ -96,8 +124,14 @@ const GlobalPage: NextPage = () => {
         <RecentMarathonUsers isLoading={isLoading} res={res} />
         <Explorers />
         <RecentExplorers />
-        <TopParcelsTimeSpentComponent />
-        <TopParcelsTimeSpentComponent />
+        <TopParcelsTimeSpentComponent
+          parcel={parcel}
+          isParcelLoading={isParcelLoading}
+        />
+        <TopParcelsTimeLogSpentVisit
+          parcel={parcel}
+          isParcelLoading={isParcelLoading}
+        />
       </Grid>
     </Layout>
   )

@@ -1,17 +1,25 @@
 import { Image, WrapItem, Avatar, Box, Center, Spinner } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { fetchResult } from "../../lib/hooks/fetch"
+import staticAvatar from "../../../public/avatar.png"
 
 const ProfilePicture = ({ address, modal }) => {
   const [pic, setPic] = useState()
   const [isLoading, setIsLoading] = useState(false)
+  const staticPic =
+    "https://peer-eu1.decentraland.org/content/contents/bafkreiawwdcbesqxgj6d66brhnjtastcnl24at4avhzsllp226ejphofq4"
 
   const fetchProfile = async () => {
     const url = `https://peer.decentraland.org/lambdas/profiles/${address}`
     const result = await fetch(url)
     const data = await result.json()
     const avatar = data.avatars[0].avatar.snapshots.face256
-    setPic(avatar)
+    if (process.env.NODE_ENV === "production") {
+      setPic(avatar)
+    } else {
+      // @ts-ignore
+      setPic(staticAvatar.src)
+    }
   }
 
   useEffect(() => {
