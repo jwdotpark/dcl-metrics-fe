@@ -122,7 +122,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
             })}
           </Tbody>
         </Table>
-        <Center w="100%">
+        <Center w="100%" h="100%">
           <Pagination page={page} pages={pages} setPage={setPage} />
         </Center>
       </TableContainer>
@@ -130,7 +130,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
   }
 
   const box = {
-    h: "890",
+    h: "920",
     w: "100%",
     bg: "white",
   }

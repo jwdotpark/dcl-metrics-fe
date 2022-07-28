@@ -136,7 +136,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
   }
 
   const box = {
-    h: "890",
+    h: "920",
     w: "100%",
     bg: "white",
   }
