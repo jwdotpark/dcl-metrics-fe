@@ -23,21 +23,13 @@ const ProfilePicture = ({ address, modal }) => {
 
   return (
     <>
-      <Center
-        borderRadius="full"
-        display="inline-block"
-        boxSize={modal ? "10rem" : "1.7rem"}
-        border="1px solid"
-        borderColor="gray.300"
-        backgroundColor="gray.300"
-        overflow="clip"
-      >
+      <Center>
         {isLoading ? (
           <Center h="100%">
             <Spinner size="sm" />
           </Center>
         ) : (
-          <Image boxSize="100%" src={pic} alt="" />
+          <Avatar src={pic} size="xs" />
         )}
       </Center>
     </>
