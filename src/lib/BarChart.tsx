@@ -37,6 +37,7 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       axisLeft={{
         format: (value) => convertSeconds(value),
       }}
+      enableLabel={true}
       // axisTop={{
       //   tickSize: 5,
       //   tickPadding: 2,

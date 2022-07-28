@@ -90,10 +90,10 @@ const GlobalPage: NextPage = () => {
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
-        <MarathonUsers isLoading={isLoading} res={res} />
-        <RecentMarathonUsers isLoading={isLoading} res={res} />
         <UniqueVisitors res={visitor} visitorLoading={visitorLoading} />
         <TotalVisitedParcels res={visitor} visitorLoading={visitorLoading} />
+        <MarathonUsers isLoading={isLoading} res={res} />
+        <RecentMarathonUsers isLoading={isLoading} res={res} />
         <Explorers />
         <RecentExplorers />
       </Grid>
