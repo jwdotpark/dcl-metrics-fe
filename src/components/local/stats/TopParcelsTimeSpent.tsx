@@ -67,10 +67,18 @@ const TopParcelsTimeSpentComponent = () => {
         >
           <Thead>
             <Tr>
-              <Th>Parcel</Th>
-              <Th>Coordinate</Th>
-              <Th>Avg. time spent</Th>
-              <Th>Avg. time spent afk</Th>
+              <Th>
+                <Text fontSize="xs">Parcel</Text>
+              </Th>
+              <Th>
+                <Text fontSize="xs">Coordinate</Text>
+              </Th>
+              <Th>
+                <Text fontSize="xs">Avg. time spent</Text>
+              </Th>
+              <Th>
+                <Text fontSize="xs">Avg. time spent afk</Text>
+              </Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -112,6 +120,7 @@ const TopParcelsTimeSpentComponent = () => {
                           color="gray.600"
                           as="kbd"
                           _hover={{ color: "gray.900" }}
+                          fontSize="sm"
                         >
                           {coord[i].replace("/", ",") + " "}
                           {/* <Box display="inline-block">
@@ -122,12 +131,14 @@ const TopParcelsTimeSpentComponent = () => {
                     </Box>
                   </Td>
                   <Td>
-                    <Text>
+                    <Text fontSize="sm">
                       <b>{convertSeconds(item[1].avg_time_spent)}</b>
                     </Text>
                   </Td>
                   <Td>
-                    <Text>{convertSeconds(item[1].avg_time_spent_afk)}</Text>
+                    <Text fontSize="sm">
+                      {convertSeconds(item[1].avg_time_spent_afk)}
+                    </Text>
                   </Td>
                 </Tr>
               )
@@ -152,6 +163,8 @@ const TopParcelsTimeSpentComponent = () => {
     w: "100%",
     bg: "white",
   }
+
+  console.log(data)
 
   return (
     <>
