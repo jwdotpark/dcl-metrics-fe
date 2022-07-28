@@ -62,8 +62,7 @@ const TopParcelsTimeSpentComponent = () => {
         <Table
           size="xs"
           variant="simple"
-          overflowX="hidden"
-          maxW="100%"
+          // maxW="100%"
           height="1100"
         >
           <Thead>
@@ -142,16 +141,28 @@ const TopParcelsTimeSpentComponent = () => {
     )
   }
 
+  // const box = {
+  //   h: "1250",
+  //   // w: "100% + 2rem",
+  //   w: "100%",
+  //   bg: "white",
+  // }
   const box = {
     h: "1250",
-    // w: "100% + 2rem",
     w: "100%",
     bg: "white",
   }
 
   return (
     <>
-      <GridItem h={box.h} bg={box.bg} borderRadius="md" boxShadow="md">
+      <GridItem
+        minW={box.w}
+        maxW={box.w}
+        h={box.h}
+        bg={box.bg}
+        borderRadius="md"
+        boxShadow="md"
+      >
         <Box position="relative" mt="4" mx="5">
           <Box>
             <Text fontSize="xl" mb="1" pt="4">

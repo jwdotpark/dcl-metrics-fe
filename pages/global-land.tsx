@@ -97,7 +97,7 @@ const GlobalPage: NextPage = () => {
         <Explorers />
         <RecentExplorers />
         <TopParcelsTimeSpentComponent />
-        {/* <TopParcelsTimeSpentComponent /> */}
+        <TopParcelsTimeSpentComponent />
       </Grid>
     </Layout>
   )
