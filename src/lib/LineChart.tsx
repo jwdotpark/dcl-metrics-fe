@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
 
-const LineChart = ({ data, min }) => {
+const LineChart = ({ data }) => {
   const colors = [
     "#F5656575",
     "#F5656575",
@@ -13,6 +13,7 @@ const LineChart = ({ data, min }) => {
     "#0E474975",
   ]
 
+  const min = Math.min(...data[0].data.map((item) => item.y))
   return (
     <ResponsiveLine
       data={data}

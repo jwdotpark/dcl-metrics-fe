@@ -14,21 +14,6 @@ const UniqueVisitors = ({ res, visitorLoading }) => {
     bg: "white",
   }
 
-  // const [res, setRes] = useState([])
-  // useEffect(() => {
-  //   if (process.env.NODE_ENV === "production") {
-  //     setIsLoading(true)
-  //     const url = "api/fetch/unique-visitors"
-  //     fetchResult(url, setRes)
-  //     setIsLoading(false)
-  //   } else {
-  //     setIsLoading(true)
-  //     // @ts-ignore
-  //     setRes(staticData)
-  //     setIsLoading(false)
-  //   }
-  // }, [isLoading, setIsLoading])
-
   const LineChartComponent = ({ box, res }) => {
     const result = [
       {
@@ -40,10 +25,9 @@ const UniqueVisitors = ({ res, visitorLoading }) => {
         })),
       },
     ]
-    const min = Math.min(...result[0].data.map((item) => item.y))
     return (
       <GridItem w={box.w} h="500" bg={box.bg} borderRadius="md">
-        <LineChart data={result} min={min} />
+        <LineChart data={result} />
       </GridItem>
     )
   }

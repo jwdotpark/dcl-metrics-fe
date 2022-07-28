@@ -40,10 +40,9 @@ const UniqueVisitors = ({ res, visitorLoading }) => {
         })),
       },
     ]
-    const min = Math.min(...result.map((item) => item.data[0].y))
     return (
       <GridItem w={box.w} h="500" bg={box.bg} borderRadius="md">
-        <LineChart data={result} min={min} />
+        <LineChart data={result} />
       </GridItem>
     )
   }
