@@ -113,8 +113,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         cursor="pointer"
       >
         <Link href="/home">
-          <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-            Logo
+          <Text fontSize="2xl" fontWeight="extrabold">
+            DCL Metrics
           </Text>
         </Link>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
