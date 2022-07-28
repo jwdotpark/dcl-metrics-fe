@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, { ReactNode } from "react"
 import {
+  Image,
   IconButton,
   Avatar,
   Box,
@@ -37,6 +38,7 @@ import { IconType } from "react-icons"
 import { ReactText } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import logo from "../../../public/images/logo.png"
 interface LinkItemProps {
   name: string
   icon: IconType
@@ -108,14 +110,21 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       <Flex
         h="20"
         alignItems="center"
-        mx="8"
+        ml="8"
         justifyContent="space-between"
         cursor="pointer"
       >
         <Link href="/home">
-          <Text fontSize="2xl" fontWeight="extrabold">
-            DCL Metrics
-          </Text>
+          <HStack>
+            <Image src={logo.src} alt="logo" boxSize="26px" boxShadow="md" />
+            <Text
+              fontSize="23px"
+              fontWeight="extrabold"
+              css={{ transform: "translateY(-1px)" }}
+            >
+              DCL Metrics
+            </Text>
+          </HStack>
         </Link>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
@@ -202,7 +211,16 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         fontFamily="sans-serif"
         fontWeight="bold"
       >
-        Logo
+        <HStack>
+          <Image src={logo.src} alt="logo" boxSize="26px" boxShadow="md" />
+          <Text
+            fontSize="23px"
+            fontWeight="extrabold"
+            css={{ transform: "translateY(-1px)" }}
+          >
+            DCL Metrics
+          </Text>
+        </HStack>
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
