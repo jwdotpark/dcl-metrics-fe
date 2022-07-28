@@ -101,6 +101,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                         <Box
                           as="kbd"
                           display="inline-block"
+                          _hover={{ color: "gray.900" }}
                           css={{ transform: "translateY(-7px)" }}
                         >
                           {item.address}

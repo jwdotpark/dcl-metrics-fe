@@ -109,11 +109,15 @@ const TopParcelsTimeSpentComponent = () => {
                         // target="_blank"
                         // rel="noopener noreferrer"
                       >
-                        <Text color="gray.600" as="kbd">
+                        <Text
+                          color="gray.600"
+                          as="kbd"
+                          _hover={{ color: "gray.900" }}
+                        >
                           {coord[i].replace("/", ",") + " "}
-                          <Box display="inline-block">
+                          {/* <Box display="inline-block">
                             <FiLink />
-                          </Box>
+                          </Box> */}
                         </Text>
                       </a>
                     </Box>
