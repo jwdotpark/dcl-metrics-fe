@@ -24,14 +24,6 @@ const About = () => {
   const boxVariant = useBreakpointValue({ base: "18rem", md: "450px" })
   const degVariant = useBreakpointValue({ base: "0deg", md: "1" })
 
-  const bp = {
-    sm: "320px",
-    md: "1200px",
-    lg: "1200px",
-    xl: "1200px",
-    "2xl": "1536px",
-  }
-
   return (
     <Layout>
       <Box px={widthVariant}>
@@ -104,7 +96,7 @@ const LeftCard = ({ widthVariant, boxVariant }) => {
         <motion.div
           transition={{
             repeat: Infinity,
-            duration: 100,
+            duration: 10,
             type: "spring",
             stiffness: 260,
             damping: 20,
