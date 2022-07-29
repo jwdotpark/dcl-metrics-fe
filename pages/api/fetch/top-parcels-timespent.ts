@@ -26,8 +26,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   await runMiddleware(req, res, cors)
-
-  const url = "https://dclund.herokuapp.com/api/parcel_stats/time_spent/top"
+  const url = "https://api.dcl-metrics.com/parcel_stats/time_spent/top"
   const response = await fetch(url, {
     method: "GET",
     headers: {

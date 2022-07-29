@@ -26,9 +26,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   await runMiddleware(req, res, cors)
-
   const url = "https://api.dcl-metrics.com/internal_metrics"
-  console.log(req.body)
   const response = await fetch(url, {
     method: "POST",
     headers: {

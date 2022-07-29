@@ -27,7 +27,7 @@ export default async function handler(
 ) {
   await runMiddleware(req, res, cors)
 
-  const url = "https://dclund.herokuapp.com/api/stats"
+  const url = "https://api.dcl-metrics.com/stats"
   const response = await fetch(url, {
     method: "GET",
     headers: {

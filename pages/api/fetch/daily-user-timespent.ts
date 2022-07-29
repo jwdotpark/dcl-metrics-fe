@@ -30,8 +30,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   await runMiddleware(req, res, cors)
-
-  const url = "https://dclund.herokuapp.com/api/user_stats/time_spent/daily"
+  const url = "https://api.dcl-metrics.com/user_stats/time_spent/daily"
   const response = await fetch(url, {
     method: "GET",
     headers: {
