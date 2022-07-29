@@ -1,21 +1,4 @@
-import {
-  Container,
-  Center,
-  Stack,
-  Flex,
-  Box,
-  Heading,
-  Text,
-  Button,
-  Image,
-  Icon,
-  IconButton,
-  createIcon,
-  IconProps,
-  useColorModeValue,
-  VStack,
-  scaleFadeConfig,
-} from "@chakra-ui/react"
+import { Center, Box, Text, Button, Image, VStack } from "@chakra-ui/react"
 import type { NextPage } from "next"
 import Link from "next/link"
 import image from "../public/images/image.png"
