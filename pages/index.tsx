@@ -1,4 +1,5 @@
 import { Center, Box, Text, Button, Image, VStack } from "@chakra-ui/react"
+import { useState, useEffect } from "react"
 import type { NextPage } from "next"
 import Link from "next/link"
 import image from "../public/images/image.png"
@@ -21,6 +22,10 @@ const Index: NextPage = () => {
 export default Index
 
 const Background = () => {
+  const [backgroundPic, setBackgroundPic] = useState("")
+  useEffect(() => {
+    setBackgroundPic(background.src)
+  }, [])
   return (
     <Box
       h="100%"
@@ -34,7 +39,8 @@ const Background = () => {
       overflow="hidden"
     >
       <Image
-        src={background.src}
+        // src={background.src}
+        src={backgroundPic}
         alt="background image"
         h="100%"
         w="100%"
@@ -48,6 +54,10 @@ const Background = () => {
 }
 
 const Card = () => {
+  const [pic, setPic] = useState("")
+  useEffect(() => {
+    setPic(image.src)
+  }, [])
   return (
     <VStack bg="gray.100" p="2" borderRadius="2rem" boxShadow="xl">
       <Box>
@@ -61,7 +71,8 @@ const Card = () => {
           }}
         >
           <Image
-            src={image.src}
+            // src={image.src}
+            src={pic}
             alt="background image"
             borderRadius="1rem"
             border="2px solid"
