@@ -50,8 +50,8 @@ const makeName = (name: string) => {
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome },
-  { name: "Global Land", icon: FiTrendingUp },
+  // { name: "Home", icon: FiHome },
+  { name: "Global", icon: FiTrendingUp },
   // { name: "Single Land", icon: FiCompass },
   { name: "About", icon: FiStar },
   // { name: "Settings", icon: FiSettings },
@@ -116,9 +116,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         justifyContent="space-between"
         cursor="pointer"
       >
-        <Link href="/home">
+        <Link href="/">
           <HStack>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <Image src={logo.src} alt="logo" boxSize="26px" boxShadow="md" />
             <Text
               fontSize="23px"
@@ -131,15 +130,39 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Link>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <Link key={link.name} href={`/${makeName(link.name)}`}>
-          <NavItem icon={link.icon}>
-            <Text as={router.pathname === "/" + makeName(link.name) && "u"}>
-              {link.name}
+      <>
+        <Link href="/">
+          <NavItem icon={FiTrendingUp}>
+            <Text
+              fontSize="xl"
+              as={router.pathname === "/" && "u"}
+              color={router.pathname === "/" ? "gray.800" : "gray.500"}
+            >
+              Global
             </Text>
           </NavItem>
         </Link>
-      ))}
+        <Link href="/about">
+          <NavItem icon={FiCompass}>
+            <Text
+              fontSize="xl"
+              as={router.pathname === "/about" && "u"}
+              color={router.pathname === "/about" ? "gray.800" : "gray.500"}
+            >
+              About
+            </Text>
+          </NavItem>
+        </Link>
+      </>
+      {/* {LinkItems.map((link) => (
+        <Link key={link.name} href={`/${makeName(link.name)}`}>
+          <NavItem icon={link.icon}>
+            <Text as={router.pathname === "/" + makeName(link.name) && "u"}>
+              {link.name === "Global" ? "Global" : link.name}
+            </Text>
+          </NavItem>
+        </Link>
+      ))} */}
     </Box>
   )
 }

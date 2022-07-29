@@ -1,134 +1,144 @@
-import { Center, Box, Text, Button, Image, VStack } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
+import dynamic from "next/dynamic"
 import type { NextPage } from "next"
-import Link from "next/link"
-import image from "../public/images/image.png"
-import background from "../public/images/background.png"
-import { motion } from "framer-motion"
+import { Grid, useBreakpointValue } from "@chakra-ui/react"
+// import Layout from "../src/components/layout/layout"
+import { isProduction } from "../src/lib/hooks/isProduction"
+const Layout = dynamic(() => import("../src/components/layout/layout"), {
+  ssr: false,
+})
 
-const Index: NextPage = () => {
-  // initial hydration error..?
-  const [page, setPage] = useState()
+import staticMarathonUsers from "../public/data/marathon-users.json"
+import staticVisitors from "../public/data/unique-visitors.json"
+import staticParcel from "../public/data/top-visited-parcel.json"
+
+const MarathonUsers = dynamic(
+  () => import("../src/components/local/stats/MarathonUsers"),
+  { ssr: false }
+)
+const TopParcelsTimeSpentComponent = dynamic(
+  () => import("../src/components/local/stats/TopParcelsTimeSpent"),
+  { ssr: false }
+)
+const UniqueVisitors = dynamic(
+  () => import("../src/components/local/stats/UniqueVisitors"),
+  { ssr: false }
+)
+const Explorers = dynamic(
+  () => import("../src/components/local/stats/Explorers"),
+  { ssr: false }
+)
+const RecentExplorers = dynamic(
+  () => import("../src/components/local/stats/RecentExplorers"),
+  { ssr: false }
+)
+const TotalVisitedParcels = dynamic(
+  () => import("../src/components/local/stats/TotalVisitedParcels"),
+  { ssr: false }
+)
+const RecentMarathonUsers = dynamic(
+  () => import("../src/components/local/stats/RecentMarathonUsers"),
+  { ssr: false }
+)
+const TopParcelsTimeLogSpentVisit = dynamic(
+  () => import("../src/components/local/stats/TopParcelsTimeLogSpentVisit"),
+  { ssr: false }
+)
+
+// const RecentMarathonUsers = dynamic(
+//   () => import("../src/components/local/stats/TempRecentMarathonUsers"),
+//   { ssr: false }
+// )
+
+const GlobalPage: NextPage = () => {
+  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
+
+  // --------------- unique visitors -----------------
+  const [visitor, setVisitor] = useState([])
+  const [visitorLoading, setVisitorLoading] = useState(false)
+  const fetchVisitorResult = async (url: any) => {
+    const response = await fetch(url)
+    const result = await response.json()
+    setVisitor(result.data)
+  }
   useEffect(() => {
-    // @ts-ignore
-    setPage(<FrontPage />)
+    if (process.env.NODE_ENV === "production") {
+      setVisitorLoading(true)
+      const url = "api/fetch/unique-visitors"
+      fetchVisitorResult(url)
+      setVisitorLoading(false)
+    } else {
+      setVisitorLoading(true)
+      // @ts-ignore
+      setVisitor(staticVisitors)
+      setVisitorLoading(false)
+    }
   }, [])
-  return page
-}
 
-export default Index
-
-const FrontPage = () => {
-  return (
-    <Box w="100vw" h="100vh" maxW="100%">
-      <Center w="100vw" h="100vh" maxW="100%" css={{ overflow: "hidden" }}>
-        <Box className="outer">
-          <Background />
-        </Box>
-        <Card />
-      </Center>
-    </Box>
-  )
-}
-
-const Background = () => {
-  const [backgroundPic, setBackgroundPic] = useState("")
+  // --------------- marathon users -----------------
+  const [res, setRes] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const fetchResult = async (url: any) => {
+    const response = await fetch(url)
+    const result = await response.json()
+    setRes(result.data)
+  }
   useEffect(() => {
-    setBackgroundPic(background.src)
+    if (process.env.NODE_ENV === "production") {
+      setIsLoading(true)
+      const url = "api/fetch/daily-user-timespent"
+      fetchResult(url)
+      setIsLoading(false)
+    } else {
+      setIsLoading(true)
+      // @ts-ignore
+      setRes(staticMarathonUsers)
+      setIsLoading(false)
+    }
   }, [])
-  return (
-    <Box
-      h="100%"
-      w="100%"
-      position="absolute"
-      top="0"
-      left="0"
-      zIndex="-1"
-      css={{ filter: "brightness(0.25) " }}
-      display="inline-block"
-      overflow="hidden"
-    >
-      <Image
-        // src={background.src}
-        src={backgroundPic}
-        alt="background image"
-        h="100%"
-        w="100%"
-        display="block"
-        transition="0.3s ease-in-out"
-        objectFit="cover"
-        css={{ transform: "scale(1.2)" }}
-      />
-    </Box>
-  )
-}
 
-const Card = () => {
-  const [pic, setPic] = useState("")
+  // --------------- top parcel/scene time spent -----------------
+  const [parcel, setParcel] = useState([])
+  const [isParcelLoading, setIsParcelLoading] = useState(false)
+  const fetchParcelResult = async (url: any) => {
+    const response = await fetch(url)
+    const result = await response.json()
+    setParcel(result.data)
+  }
   useEffect(() => {
-    setPic(image.src)
+    if (process.env.NODE_ENV === "production") {
+      setIsParcelLoading(true)
+      const url = "api/fetch/top-parcels-timespent"
+      fetchParcelResult(url)
+      setIsParcelLoading(false)
+    } else {
+      setIsParcelLoading(true)
+      // @ts-ignore
+      setParcel(staticParcel)
+      setIsParcelLoading(false)
+    }
   }, [])
+
   return (
-    <VStack bg="gray.100" p="2" borderRadius="2rem" boxShadow="xl">
-      <Box>
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ rotate: 360, scale: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 20,
-          }}
-        >
-          <Image
-            // src={image.src}
-            src={pic}
-            alt="background image"
-            borderRadius="1rem"
-            border="2px solid"
-            borderColor="gray.300"
-            boxSize="200px"
-            mt="8"
-            mx="8"
-            boxShadow="xl"
-          />
-        </motion.div>
-      </Box>
-      <Box py="2">
-        <Text
-          fontSize="30px"
-          fontWeight="extrabold"
-          css={{
-            textShadow: `0px 2px 2px rgba(0,0,0,0.2),
-       0px 8px 13px rgba(0,0,0,0.1),
-       0px 18px 23px rgba(0,0,0,0.1);`,
-          }}
-        >
-          DCL Metrics
-        </Text>
-      </Box>
-      <Box pt="0" pb="8">
-        <ToHome />
-      </Box>
-    </VStack>
+    <Layout>
+      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
+        <UniqueVisitors res={visitor} visitorLoading={visitorLoading} />
+        <TotalVisitedParcels res={visitor} visitorLoading={visitorLoading} />
+        <MarathonUsers isLoading={isLoading} res={res} />
+        <RecentMarathonUsers isLoading={isLoading} res={res} />
+        <Explorers />
+        <RecentExplorers />
+        <TopParcelsTimeSpentComponent
+          parcel={parcel}
+          isParcelLoading={isParcelLoading}
+        />
+        <TopParcelsTimeLogSpentVisit
+          parcel={parcel}
+          isParcelLoading={isParcelLoading}
+        />
+      </Grid>
+    </Layout>
   )
 }
 
-const ToHome = () => {
-  return (
-    <Link href="/global-land">
-      <Button
-        width="170px"
-        boxShadow="md"
-        rounded="xl"
-        size={"lg"}
-        fontWeight={"normal"}
-        colorScheme={"red"}
-        bg={"red.400"}
-        _hover={{ bg: "red.500" }}
-      >
-        Get started
-      </Button>
-    </Link>
-  )
-}
+export default GlobalPage
