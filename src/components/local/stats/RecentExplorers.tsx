@@ -113,12 +113,10 @@ const RecentExplorers = () => {
                         color="gray.600"
                         as="kbd"
                         display="inline-block"
-                        css={{ transform: "translateY(-7px)" }}
+                        _hover={{ color: "gray.900" }}
+                        css={{ transform: "translateY(3px)" }}
                       >
-                        {item.address.slice(0, 35) + ".. "}
-                        <Box display="inline-block">
-                          <FiLink size="12" />
-                        </Box>
+                        {item.address}
                       </Text>
                     </a>
                   </Td>

@@ -1,6 +1,7 @@
 // @ts-nocheck
-import React, { ReactNode } from "react"
+import React, { ReactNode, useState, useEffect } from "react"
 import {
+  Image,
   IconButton,
   Avatar,
   Box,
@@ -37,6 +38,8 @@ import { IconType } from "react-icons"
 import { ReactText } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import logo from "../../../public/images/logo.png"
+
 interface LinkItemProps {
   name: string
   icon: IconType
@@ -49,7 +52,7 @@ const makeName = (name: string) => {
 const LinkItems: Array<LinkItemProps> = [
   { name: "Home", icon: FiHome },
   { name: "Global Land", icon: FiTrendingUp },
-  { name: "Single Land", icon: FiCompass },
+  // { name: "Single Land", icon: FiCompass },
   { name: "About", icon: FiStar },
   // { name: "Settings", icon: FiSettings },
 ]
@@ -94,9 +97,10 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const router = useRouter()
+
   return (
     <Box
-      transition="3s ease"
+      transition=".5s ease"
       bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
@@ -108,14 +112,22 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       <Flex
         h="20"
         alignItems="center"
-        mx="8"
+        ml="8"
         justifyContent="space-between"
         cursor="pointer"
       >
         <Link href="/home">
-          <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-            Logo
-          </Text>
+          <HStack>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <Image src={logo.src} alt="logo" boxSize="26px" boxShadow="md" />
+            <Text
+              fontSize="23px"
+              fontWeight="extrabold"
+              css={{ transform: "translateY(-1px)" }}
+            >
+              DCL Metrics
+            </Text>
+          </HStack>
         </Link>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
@@ -202,7 +214,16 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         fontFamily="sans-serif"
         fontWeight="bold"
       >
-        Logo
+        <HStack>
+          <Image src={logo.src} alt="logo" boxSize="26px" boxShadow="md" />
+          <Text
+            fontSize="23px"
+            fontWeight="extrabold"
+            css={{ transform: "translateY(-1px)" }}
+          >
+            DCL Metrics
+          </Text>
+        </HStack>
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>

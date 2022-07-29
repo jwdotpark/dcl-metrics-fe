@@ -14,7 +14,7 @@ const Pagination = ({ page, pages, setPage }) => {
     }
   }
   return (
-    <Box m="2" h="50">
+    <Box m="2">
       <Button
         size="sm"
         variant="ghost"
