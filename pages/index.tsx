@@ -92,6 +92,7 @@ const GlobalPage: NextPage = () => {
     } finally {
       console.log("telemetry " + userInfo + " sent")
     }
+    // eslint-disable-next-line
   }, [userInfoFromSession, userInfo])
 
   // --------------- unique visitors -----------------

@@ -27,7 +27,7 @@ export default async function handler(
 ) {
   await runMiddleware(req, res, cors)
 
-  const url = process.env.TELEMETRY
+  const url = "https://api.dcl-metrics.com/internal_metrics"
   const response = await fetch(url, {
     method: "POST",
     headers: {
