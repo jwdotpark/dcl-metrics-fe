@@ -2,7 +2,11 @@ import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
-import Layout from "../src/components/layout/layout"
+// import Layout from "../src/components/layout/layout"
+import { isProduction } from "../src/lib/hooks/isProduction"
+const Layout = dynamic(() => import("../src/components/layout/layout"), {
+  ssr: false,
+})
 
 import staticMarathonUsers from "../public/data/marathon-users.json"
 import staticVisitors from "../public/data/unique-visitors.json"
@@ -48,28 +52,6 @@ const TopParcelsTimeLogSpentVisit = dynamic(
 
 const GlobalPage: NextPage = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
-  const [isLoading, setIsLoading] = useState(false)
-
-  // --------------- marathon users -----------------
-  const [res, setRes] = useState([])
-  const fetchResult = async (url: any) => {
-    const response = await fetch(url)
-    const result = await response.json()
-    setRes(result.data)
-  }
-  useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
-      setIsLoading(true)
-      const url = "api/fetch/daily-user-timespent"
-      fetchResult(url)
-      setIsLoading(false)
-    } else {
-      setIsLoading(true)
-      // @ts-ignore
-      setRes(staticMarathonUsers)
-      setIsLoading(false)
-    }
-  }, [])
 
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])
@@ -93,13 +75,35 @@ const GlobalPage: NextPage = () => {
     }
   }, [])
 
+  // --------------- marathon users -----------------
+  const [res, setRes] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const fetchResult = async (url: any) => {
+    const response = await fetch(url)
+    const result = await response.json()
+    setRes(result.data)
+  }
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      setIsLoading(true)
+      const url = "api/fetch/daily-user-timespent"
+      fetchResult(url)
+      setIsLoading(false)
+    } else {
+      setIsLoading(true)
+      // @ts-ignore
+      setRes(staticMarathonUsers)
+      setIsLoading(false)
+    }
+  }, [])
+
   // --------------- top parcel/scene time spent -----------------
   const [parcel, setParcel] = useState([])
   const [isParcelLoading, setIsParcelLoading] = useState(false)
   const fetchParcelResult = async (url: any) => {
     const response = await fetch(url)
     const result = await response.json()
-    setVisitor(result.data)
+    setParcel(result.data)
   }
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
@@ -122,16 +126,16 @@ const GlobalPage: NextPage = () => {
         <TotalVisitedParcels res={visitor} visitorLoading={visitorLoading} />
         <MarathonUsers isLoading={isLoading} res={res} />
         <RecentMarathonUsers isLoading={isLoading} res={res} />
-        <Explorers />
-        <RecentExplorers />
-        <TopParcelsTimeSpentComponent
+        {/* <Explorers /> */}
+        {/* <RecentExplorers /> */}
+        {/* <TopParcelsTimeSpentComponent
           parcel={parcel}
           isParcelLoading={isParcelLoading}
         />
         <TopParcelsTimeLogSpentVisit
           parcel={parcel}
           isParcelLoading={isParcelLoading}
-        />
+        /> */}
       </Grid>
     </Layout>
   )
