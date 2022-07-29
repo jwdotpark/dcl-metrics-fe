@@ -7,6 +7,18 @@ import background from "../public/images/background.png"
 import { motion } from "framer-motion"
 
 const Index: NextPage = () => {
+  // initial hydration error..?
+  const [page, setPage] = useState()
+  useEffect(() => {
+    // @ts-ignore
+    setPage(<FrontPage />)
+  }, [])
+  return page
+}
+
+export default Index
+
+const FrontPage = () => {
   return (
     <Box w="100vw" h="100vh" maxW="100%">
       <Center w="100vw" h="100vh" maxW="100%" css={{ overflow: "hidden" }}>
@@ -18,8 +30,6 @@ const Index: NextPage = () => {
     </Box>
   )
 }
-
-export default Index
 
 const Background = () => {
   const [backgroundPic, setBackgroundPic] = useState("")
@@ -106,7 +116,7 @@ const Card = () => {
 
 const ToHome = () => {
   return (
-    <Link href="/home">
+    <Link href="/global-land">
       <Button
         width="170px"
         boxShadow="md"
