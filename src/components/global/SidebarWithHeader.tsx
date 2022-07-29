@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { ReactNode } from "react"
+import React, { ReactNode, useState, useEffect } from "react"
 import {
   Image,
   IconButton,
@@ -39,6 +39,7 @@ import { ReactText } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import logo from "../../../public/images/logo.png"
+
 interface LinkItemProps {
   name: string
   icon: IconType
@@ -96,6 +97,7 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const router = useRouter()
+
   return (
     <Box
       transition=".5s ease"
@@ -116,6 +118,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       >
         <Link href="/home">
           <HStack>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <Image src={logo.src} alt="logo" boxSize="26px" boxShadow="md" />
             <Text
               fontSize="23px"

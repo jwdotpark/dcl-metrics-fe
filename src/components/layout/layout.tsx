@@ -1,6 +1,9 @@
-import { Box } from "@chakra-ui/react"
 import Head from "next/head"
-import SidebarWithHeader from "../global/SidebarWithHeader"
+import dynamic from "next/dynamic"
+const SidebarWithHeader = dynamic(() => import("../global/SidebarWithHeader"), {
+  ssr: false,
+})
+// import SidebarWithHeader from "../global/SidebarWithHeader"
 
 const Layout = ({ children }: any) => {
   return (
