@@ -44,7 +44,6 @@ const TopParcelsTimeLogSpentVisit = dynamic(
   () => import("../src/components/local/stats/TopParcelsTimeLogSpentVisit"),
   { ssr: false }
 )
-
 // const RecentMarathonUsers = dynamic(
 //   () => import("../src/components/local/stats/TempRecentMarathonUsers"),
 //   { ssr: false }
@@ -52,6 +51,48 @@ const TopParcelsTimeLogSpentVisit = dynamic(
 
 const GlobalPage: NextPage = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
+
+  const userInfo = {
+    pathName: window.location.pathname,
+    language: navigator.language,
+    platform: navigator.platform,
+    userAgent: navigator.userAgent,
+  }
+
+  // ----------------- user telemetry ---------------------------
+  // save userInfo into session storage
+  useEffect(() => {
+    sessionStorage.setItem("userInfo", JSON.stringify(userInfo))
+  }, [])
+
+  // read session storage
+  const userInfoFromSession = sessionStorage.getItem("userInfo")
+  const isDev = process.env.NODE_ENV === "development"
+
+  useEffect(() => {
+    console.log("sending telemetry..")
+    try {
+      const postTelemetry = async () => {
+        const url = "/api/fetch/telemetry"
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userInfoFromSession),
+        })
+        const data = await response.json()
+        if (isDev) {
+          console.log("response: ", data)
+        }
+        postTelemetry()
+      }
+    } catch (error) {
+      console.log("Error: ", error)
+    } finally {
+      console.log("telemetry " + userInfo + " sent")
+    }
+  }, [userInfoFromSession, userInfo])
 
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])
