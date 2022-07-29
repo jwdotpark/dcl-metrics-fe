@@ -27,8 +27,7 @@ export default async function handler(
 ) {
   await runMiddleware(req, res, cors)
 
-  const url =
-    "https://dclund.herokuapp.com/api/user_stats/parcels_visited/daily"
+  const url = "https://dclund.herokuapp.com/user_stats/parcels_visited/daily"
   const response = await fetch(url, {
     method: "GET",
     headers: {
