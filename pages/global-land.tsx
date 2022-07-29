@@ -126,16 +126,16 @@ const GlobalPage: NextPage = () => {
         <TotalVisitedParcels res={visitor} visitorLoading={visitorLoading} />
         <MarathonUsers isLoading={isLoading} res={res} />
         <RecentMarathonUsers isLoading={isLoading} res={res} />
-        {/* <Explorers /> */}
-        {/* <RecentExplorers /> */}
-        {/* <TopParcelsTimeSpentComponent
+        <Explorers />
+        <RecentExplorers />
+        <TopParcelsTimeSpentComponent
           parcel={parcel}
           isParcelLoading={isParcelLoading}
         />
         <TopParcelsTimeLogSpentVisit
           parcel={parcel}
           isParcelLoading={isParcelLoading}
-        /> */}
+        />
       </Grid>
     </Layout>
   )
