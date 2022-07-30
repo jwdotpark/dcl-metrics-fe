@@ -13,6 +13,9 @@ import staticMarathonUsers from "../public/data/marathon-users.json"
 import staticVisitors from "../public/data/unique-visitors.json"
 import staticParcel from "../public/data/top-visited-parcel.json"
 
+// table
+import { HookTable } from "../src/components/local/stats/table/HookTable"
+
 const MarathonUsers = dynamic(
   () => import("../src/components/local/stats/MarathonUsers"),
   { ssr: false }
@@ -141,6 +144,7 @@ const GlobalPage: NextPage = () => {
           parcel={parcel}
           isParcelLoading={isParcelLoading}
         />
+        <HookTable />
       </Grid>
     </Layout>
   )

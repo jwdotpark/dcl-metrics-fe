@@ -1123,6 +1123,18 @@
   dependencies:
     tslib "^2.4.0"
 
+"@tanstack/react-table@^8.5.2":
+  version "8.5.2"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.5.2.tgz#1e547649b8f057eddbe769b04612914a2efa5d09"
+  integrity sha512-CbNOay5FZHjU5EKiqik+Q8/gkUJfzH07KzYnnpGyqbfeocGZZckDblw7YwGMQ5/8Y0jgmobTYrMSqd27wtPdrA==
+  dependencies:
+    "@tanstack/table-core" "8.5.2"
+
+"@tanstack/table-core@8.5.2":
+  version "8.5.2"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.5.2.tgz#097d88131bdf72eca0d4554270922e250e944a92"
+  integrity sha512-uhmhqeSNL2un0ssO5fZFtuwgvloBZdc2NFu8Rodzp4uPc1LfEWPhvrfoG9/L7FLRHC2ImlkmQgpVOakNZk9zgQ==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -2808,6 +2820,11 @@ react-style-singleton@^2.2.1:
     get-nonce "^1.0.0"
     invariant "^2.2.4"
     tslib "^2.0.0"
+
+react-table@^7.8.0:
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.8.0.tgz#07858c01c1718c09f7f1aed7034fcfd7bda907d2"
+  integrity sha512-hNaz4ygkZO4bESeFfnfOft73iBUj8K5oKi1EcSHPAibEydfsX2MyU6Z8KCr3mv3C9Kqqh71U+DhZkFvibbnPbA==
 
 react@18.2.0:
   version "18.2.0"
