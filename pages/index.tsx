@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
-import { fetchFingerprint, postTelemetry } from "../src/lib/hooks/telemetry"
+import {
+  fetchFingerprint,
+  postTelemetry,
+  isDev,
+} from "../src/lib/hooks/telemetry"
 import type { NextPage } from "next"
 import { Button, Grid, useBreakpointValue } from "@chakra-ui/react"
 // import Layout from "../src/components/layout/layout"
-import { isProduction } from "../src/lib/hooks/isProduction"
 const Layout = dynamic(() => import("../src/components/layout/layout"), {
   ssr: false,
 })
@@ -57,8 +60,10 @@ const GlobalPage: NextPage = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
   useEffect(() => {
-    fetchFingerprint()
-    postTelemetry()
+    if (!isDev) {
+      fetchFingerprint()
+      postTelemetry()
+    }
   }, [])
 
   // --------------- unique visitors -----------------
@@ -144,7 +149,6 @@ const GlobalPage: NextPage = () => {
           parcel={parcel}
           isParcelLoading={isParcelLoading}
         />
-        <HookTable />
       </Grid>
     </Layout>
   )

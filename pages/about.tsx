@@ -12,13 +12,20 @@ import background from "../public/images/background.png"
 import background2 from "../public/images/background2.png"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { fetchFingerprint, postTelemetry } from "../src/lib/hooks/telemetry"
+import {
+  fetchFingerprint,
+  postTelemetry,
+  isDev,
+} from "../src/lib/hooks/telemetry"
 
 const About = () => {
   useEffect(() => {
-    fetchFingerprint()
-    postTelemetry()
+    if (!isDev) {
+      fetchFingerprint()
+      postTelemetry()
+    }
   }, [])
+
   const box = {
     h: "100%",
     w: "100%",

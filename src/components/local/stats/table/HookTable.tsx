@@ -21,22 +21,6 @@ export const HookTable = () => {
   const columns = useMemo(() => COLUMNS, [])
   const memoizedData = useMemo(() => staticMarathonUsers, [])
 
-  const data = Object.entries(memoizedData)
-  const dataArr = []
-  for (let i = 0; i < data.length; i++) {
-    //  @ts-ignore
-    for (let j = 0; j < data[i][1].length; j++) {
-      dataArr.push({
-        date: data[i][0],
-        timeSpent: data[i][1][j].time_spent,
-        address: data[i][1][j].address,
-      })
-    }
-  }
-
-  // no pagination
-  const tempData = data[0][1]
-
   const {
     getTableProps,
     getTableBodyProps,
@@ -47,7 +31,7 @@ export const HookTable = () => {
   } = useTable(
     {
       columns,
-      data: tempData,
+      data: memoizedData,
     },
     useSortBy
   )

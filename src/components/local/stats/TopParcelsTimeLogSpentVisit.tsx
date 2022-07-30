@@ -11,124 +11,157 @@ import {
   Tr,
   Image,
   GridItem,
-  Button,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
-import { FiLink } from "react-icons/fi"
-import { fetchResult } from "../../../lib/hooks/fetch"
 import { convertSeconds } from "../../../lib/hooks/utils"
-import GridBox from "../GridBox"
 import Loading from "../Loading"
 import Pagination from "../Pagination"
-import dataArr from "../../../../public/data/top-visited-parcel.json"
+import { useMemo } from "react"
+import { useTable, useSortBy } from "react-table"
+import { FiChevronUp, FiChevronDown } from "react-icons/fi"
 
 const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
+  const baseUrl = "https://api.decentraland.org/v1/parcels/"
+  const mapUrl = "/map.png?width=auto&height=auto&size=15"
+
   // table pagination
   const [page, setPage] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(5)
 
-  // array dateArr
   const data = Object.entries(parcel)
-  const dataPaginated = data.slice((page - 1) * rowsPerPage, page * rowsPerPage)
-  const pages = Math.ceil(data.length / rowsPerPage)
-  const coord = []
-
-  for (let i = 0; i < dataPaginated.length; i++) {
-    coord.push(dataPaginated[i][0].replace(",", "/"))
+  const dataArr = []
+  for (let i = 0; i < data.length; i++) {
+    dataArr.push(data[i][1])
   }
-  const baseUrl = "https://api.decentraland.org/v1/parcels/"
-  const mapUrl = "/map.png?width=auto&height=auto&size=15"
+
+  const dataPaginated = dataArr.slice(
+    (page - 1) * rowsPerPage,
+    page * rowsPerPage
+  )
+
+  const pages = Math.ceil(data.length / rowsPerPage)
+
+  for (let i = 0; i < data.length; i++) {
+    const coord = Object.entries(parcel)[i][0]
+    // insert coord into each element of dataArr
+    dataArr[i].coord = coord
+    dataArr[i].mapUrl = baseUrl + coord.replace(",", "/") + mapUrl
+  }
+
+  const COLUMNS = [
+    {
+      Header: "Parcel Map",
+      accessor: "mapUrl",
+      disableSortBy: true,
+      Cell: ({ value }) => {
+        return (
+          <Box
+            minW="5rem"
+            borderRadius="md"
+            border="2px solid"
+            borderColor="gray.300"
+            overflow="clip"
+            boxShadow="md"
+          >
+            <Image
+              height="8rem"
+              w="100%"
+              src={value}
+              alt="map image"
+              objectFit="cover"
+            />
+          </Box>
+        )
+      },
+    },
+    {
+      Header: "Coordinate",
+      accessor: "coord",
+      disableSortBy: true,
+    },
+    {
+      Header: "Logins",
+      accessor: "logins",
+    },
+    {
+      Header: "Logouts",
+      accessor: "logouts",
+    },
+  ]
+
+  console.log(dataPaginated)
+
+  // eslint-disable-next-line
+  const columns = useMemo(() => COLUMNS, [])
+  // eslint-disable-next-line
+  const memoizedData = useMemo(() => dataPaginated, [page])
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable(
+      {
+        columns,
+        data: memoizedData,
+      },
+      useSortBy
+    )
 
   const TableComponent = () => {
     return (
-      <TableContainer mt="2">
-        <Table size="xs" variant="simple" height="730">
+      <TableContainer mx="4" whiteSpace="nowrap">
+        <Table
+          {...getTableProps()}
+          size="sm"
+          variant="simple"
+          height="760"
+          overflowX="hidden"
+        >
           <Thead>
-            <Tr>
-              <Th>
-                <Text fontSize="xs">Parcel</Text>
-              </Th>
-              <Th>
-                <Text fontSize="xs">Coordinate</Text>
-              </Th>
-              <Th>
-                <Text fontSize="xs">Logins</Text>
-              </Th>
-              <Th>
-                <Text fontSize="xs">Logouts</Text>
-              </Th>
-              <Th>
-                <Text fontSize="xs">Unique Visitors</Text>
-              </Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {dataPaginated.map((item, i) => {
-              return (
-                <Tr key={i}>
-                  <Td>
+            {headerGroups.map((headerGroup, i) => (
+              <Tr {...headerGroup.getHeaderGroupProps()} key={i}>
+                {headerGroup.headers.map((column, j) => (
+                  <Th
+                    key={j}
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                  >
+                    {column.render("Header")}
                     <Box
-                      mr="10"
-                      minW="150px"
-                      borderRadius="md"
-                      border="2px solid"
-                      borderColor="gray.200"
-                      overflow="clip"
-                      boxShadow="md"
+                      display="inline-block"
+                      mr="4"
+                      css={{ transform: "translateY(2px)" }}
                     >
-                      <Image
-                        borderRadius="sm"
-                        height="8rem"
-                        w="100%"
-                        src={baseUrl + coord[i] + mapUrl}
-                        alt="map image"
-                        objectFit="cover"
-                      />
+                      {column.isSorted ? (
+                        column.isSortedDesc ? (
+                          <FiChevronDown size="14px" />
+                        ) : (
+                          <FiChevronUp size="14px" />
+                        )
+                      ) : (
+                        ""
+                      )}
                     </Box>
-                  </Td>
-                  <Td>
-                    <Box>
-                      <a
-                        // href={`https://api.decentraland.org/v1/parcels/${coord[i]}`}
-                        // target="_blank"
-                        // rel="noopener noreferrer"
-                        href="#"
-                      >
-                        <Text
-                          color="gray.600"
-                          as="kbd"
-                          _hover={{ color: "gray.900" }}
-                          fontSize="sm"
-                        >
-                          {coord[i].replace("/", ",") + " "}
-                        </Text>
-                      </a>
-                    </Box>
-                  </Td>
-                  <Td>
-                    <Text fontSize="sm">
-                      {/* @ts-ignore */}
-                      <b>{item[1].logins}</b>
-                    </Text>
-                  </Td>
-                  <Td>
-                    <Text fontSize="sm">
-                      {/* @ts-ignore */}
-                      {item[1].logouts}
-                    </Text>
-                  </Td>
-                  <Td>
-                    <Text fontSize="sm">
-                      {/* @ts-ignore */}
-                      {item[1].unique_visitors}
-                    </Text>
-                  </Td>
+                  </Th>
+                ))}
+              </Tr>
+            ))}
+          </Thead>
+          <Tbody {...getTableBodyProps()}>
+            {rows.map((row, i) => {
+              prepareRow(row)
+              return (
+                <Tr {...row.getRowProps()} key={i}>
+                  {row.cells.map((cell, j) => {
+                    return (
+                      <Td key={j} {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </Td>
+                    )
+                  })}
                 </Tr>
               )
             })}
           </Tbody>
         </Table>
-        <Center h="100%" w="100%">
+        <Center w="100%" h="100%">
           <Pagination page={page} pages={pages} setPage={setPage} />
         </Center>
       </TableContainer>
@@ -154,9 +187,10 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
         <Box position="relative" mt="4" mx="5">
           <Box>
             <Text fontSize="xl" mb="1" pt="4">
-              <b>Parcel Login, Logout & Unique Visitors</b>
+              <b>Parcel Logins & Logouts</b>
               <Text fontSize="sm" color="gray.500">
-                Parcels with the most access and visit in the last 7 days
+                Parcels with the most sessions started and ended in the last 7
+                days
               </Text>
             </Text>
           </Box>

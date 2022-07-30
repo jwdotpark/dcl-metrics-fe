@@ -1,4 +1,4 @@
-const isDev = process.env.NODE_ENV === "development"
+export const isDev = process.env.NODE_ENV === "development"
 const isServer = typeof window === "undefined"
 
 const fingerPrintSessionStorage =

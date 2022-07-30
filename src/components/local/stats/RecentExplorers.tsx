@@ -97,7 +97,7 @@ const RecentExplorers = () => {
                   key={index}
                   style={{
                     background: `linear-gradient(90deg, #EED31250 ${
-                      item.parcels_visited / 3
+                      item.parcels_visited / 2
                     }%, #ffffff 0)`,
                   }}
                 >
