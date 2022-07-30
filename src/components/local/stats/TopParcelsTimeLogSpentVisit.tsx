@@ -89,12 +89,10 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
     },
   ]
 
-  console.log(dataPaginated)
-
   // eslint-disable-next-line
   const columns = useMemo(() => COLUMNS, [])
   // eslint-disable-next-line
-  const memoizedData = useMemo(() => dataPaginated, [page])
+  const memoizedData = useMemo(() => dataPaginated, [page, parcel])
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(

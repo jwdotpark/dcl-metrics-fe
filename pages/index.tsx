@@ -119,7 +119,7 @@ const GlobalPage: NextPage = () => {
     setParcel(result.data)
   }
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV !== "production") {
       setIsParcelLoading(true)
       const url = "api/fetch/top-parcels-timespent"
       fetchParcelResult(url)
