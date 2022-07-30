@@ -22,7 +22,7 @@ import ProfilePicture from "../ProfilePicture"
 
 const RecentExplorers = () => {
   const box = {
-    h: "590",
+    h: "560",
     w: "100%",
     bg: "white",
   }
@@ -81,18 +81,19 @@ const RecentExplorers = () => {
 
   const TableComponent = () => {
     return (
-      <TableContainer mx="4" whiteSpace="nowrap">
+      <TableContainer mx="4" whiteSpace="nowrap" mt="4">
         <Table size="sm" variant="simple" height="450px">
-          <Thead>
+          <Thead display="block">
             <Tr>
-              <Th>Address</Th>
               <Th>Parcels Visited</Th>
+              <Th>Address</Th>
             </Tr>
           </Thead>
           <Tbody>
             {valueArr[currentDate].map((item, index) => {
               return (
                 <Tr
+                  display="block"
                   key={index}
                   style={{
                     background: `linear-gradient(90deg, #EED31250 ${
@@ -100,6 +101,13 @@ const RecentExplorers = () => {
                     }%, #ffffff 0)`,
                   }}
                 >
+                  <Td>
+                    <Box w="100px">
+                      <Text as="kbd">
+                        <b>{item.parcels_visited}</b>
+                      </Text>
+                    </Box>
+                  </Td>
                   <Td>
                     <a
                       target="_blank"
@@ -119,11 +127,6 @@ const RecentExplorers = () => {
                         {item.address}
                       </Text>
                     </a>
-                  </Td>
-                  <Td>
-                    <Text>
-                      <b>{item.parcels_visited}</b>
-                    </Text>
                   </Td>
                 </Tr>
               )

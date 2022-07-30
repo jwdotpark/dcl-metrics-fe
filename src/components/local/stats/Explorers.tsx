@@ -10,6 +10,7 @@ import {
   Thead,
   Tr,
   Image,
+  TableCaption,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { fetchResult } from "../../../lib/hooks/fetch"
@@ -22,7 +23,7 @@ import ProfilePicture from "../ProfilePicture"
 
 const Explorers = () => {
   const box = {
-    h: "590",
+    h: "560",
     w: "100%",
     bg: "white",
   }
@@ -55,12 +56,12 @@ const Explorers = () => {
   // create a table with data
   const TableComponent = () => {
     return (
-      <TableContainer mx="4" whiteSpace="nowrap">
-        <Table size="sm" variant="simple" height="450px">
-          <Thead>
+      <TableContainer mx="4" whiteSpace="nowrap" mt="4">
+        <Table size="sm" variant="simple" height="450px" w="100%">
+          <Thead display="block">
             <Tr>
-              <Th>Address</Th>
               <Th>Parcels Visited</Th>
+              <Th>Address</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -73,7 +74,15 @@ const Explorers = () => {
                       item[1] / 10
                     }%, #ffffff 0)`,
                   }}
+                  display="block"
                 >
+                  <Td>
+                    <Box w="100px">
+                      <Text as="kbd">
+                        <b>{item[1]}</b>
+                      </Text>
+                    </Box>
+                  </Td>
                   <Td>
                     <a
                       target="_blank"
@@ -93,11 +102,6 @@ const Explorers = () => {
                         {item[0]}
                       </Text>
                     </a>
-                  </Td>
-                  <Td>
-                    <Text>
-                      <b>{item[1]}</b>
-                    </Text>
                   </Td>
                 </Tr>
               )

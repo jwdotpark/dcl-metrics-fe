@@ -56,9 +56,11 @@ const MarathonUsers = ({ isLoading, res }) => {
       accessor: "timeSpent",
       Cell: ({ value }) => {
         return (
-          <Text as="kbd" color="gray.900">
-            <b>{convertSeconds(value)}</b>
-          </Text>
+          <Box width="100px">
+            <Text as="kbd" color="gray.900">
+              <b>{convertSeconds(value)}</b>
+            </Text>
+          </Box>
         )
       },
     },
