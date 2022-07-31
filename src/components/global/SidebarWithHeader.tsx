@@ -23,6 +23,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  useColorMode,
 } from "@chakra-ui/react"
 import {
   FiHome,
@@ -39,6 +40,7 @@ import { ReactText } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import logo from "../../../public/images/logo.png"
+import ColorButton from "./ColorButton"
 
 interface LinkItemProps {
   name: string
@@ -97,7 +99,7 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const router = useRouter()
-
+  const { colorMode } = useColorMode()
   return (
     <Box
       transition=".5s ease"
@@ -132,22 +134,31 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       </Flex>
       <>
         <Link href="/">
-          <NavItem icon={FiTrendingUp}>
-            <Text
-              fontSize="xl"
-              as={router.pathname === "/" && "u"}
-              color={router.pathname === "/" ? "gray.800" : "gray.500"}
-            >
+          <NavItem
+            icon={FiTrendingUp}
+            bg={
+              router.pathname === "/" && // eslint-disable-next-line
+              useColorModeValue("gray.200", "gray.700")
+            }
+          >
+            <Text fontSize="xl" as={router.pathname === "/" && "u"}>
               Global
             </Text>
           </NavItem>
         </Link>
         <Link href="/about">
-          <NavItem icon={FiCompass}>
+          <NavItem
+            icon={FiCompass}
+            bg={
+              router.pathname === "/about" &&
+              // eslint-disable-next-line
+              useColorModeValue("gray.200", "gray.700")
+            }
+          >
             <Text
               fontSize="xl"
               as={router.pathname === "/about" && "u"}
-              color={router.pathname === "/about" ? "gray.800" : "gray.500"}
+              // color={router.pathname === "/about" ? "gray.800" : "gray.300"}
             >
               About
             </Text>
@@ -250,13 +261,14 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
+        <ColorButton />
+        {/* <IconButton
           size="lg"
           variant="ghost"
           aria-label="open menu"
           icon={<FiBell />}
-        />
-        <Flex alignItems={"center"}>
+        /> */}
+        {/* <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
               py={2}
@@ -292,7 +304,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               <MenuItem>Sign out</MenuItem>
             </MenuList>
           </Menu>
-        </Flex>
+        </Flex> */}
       </HStack>
     </Flex>
   )
