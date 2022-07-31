@@ -11,35 +11,31 @@ import {
   Tr,
   Image,
   GridItem,
+  Button,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
-import Pagination from "../Pagination"
+// import Pagination from "../Pagination"
 import { useMemo } from "react"
-import { useTable, useSortBy } from "react-table"
+import { useTable, useSortBy, usePagination } from "react-table"
 import { FiChevronUp, FiChevronDown } from "react-icons/fi"
+import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
+// TopParcelsTimeLogSpentVisit
 const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
   const mapUrl = "/map.png?width=auto&height=auto&size=15"
 
   // table pagination
-  const [page, setPage] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(5)
+  // const [page, setPage] = useState(1)
+  // const [rowsPerPage, setRowsPerPage] = useState(5)
 
   const data = Object.entries(parcel)
   const dataArr = []
   for (let i = 0; i < data.length; i++) {
     dataArr.push(data[i][1])
   }
-
-  const dataPaginated = dataArr.slice(
-    (page - 1) * rowsPerPage,
-    page * rowsPerPage
-  )
-
-  const pages = Math.ceil(data.length / rowsPerPage)
 
   for (let i = 0; i < data.length; i++) {
     const coord = Object.entries(parcel)[i][0]
@@ -49,6 +45,15 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
   }
 
   const COLUMNS = [
+    {
+      Header: "#",
+      accessor: "",
+      Cell: (row) => {
+        return <Box>{Number(row.row.id) + 1}</Box>
+      },
+      disableSortBy: true,
+      disableFilters: true,
+    },
     {
       Header: "Parcel Map",
       accessor: "mapUrl",
@@ -64,7 +69,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
             boxShadow="md"
           >
             <Image
-              height="8rem"
+              height="4.75rem"
               w="100%"
               src={value}
               alt="map image"
@@ -78,6 +83,9 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
       Header: "Coordinate",
       accessor: "coord",
       disableSortBy: true,
+      Cell: ({ value }) => {
+        return <Text>{`[${value}]`}</Text>
+      },
     },
     {
       Header: "Logins",
@@ -92,82 +100,139 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
   // eslint-disable-next-line
   const columns = useMemo(() => COLUMNS, [])
   // eslint-disable-next-line
-  const memoizedData = useMemo(() => dataPaginated, [page, parcel])
+  const memoizedData = useMemo(() => dataArr, [parcel])
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable(
-      {
-        columns,
-        data: memoizedData,
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    prepareRow,
+    pageOptions,
+    state,
+    gotoPage,
+  } = useTable(
+    {
+      columns,
+      data: memoizedData,
+      initialState: {
+        pageSize: 5,
       },
-      useSortBy
-    )
+    },
+    useSortBy,
+    usePagination
+  )
+
+  const { pageIndex } = state
 
   const TableComponent = () => {
     return (
-      <TableContainer mx="4" whiteSpace="nowrap">
-        <Table
-          {...getTableProps()}
-          size="sm"
-          variant="simple"
-          height="760"
-          overflowX="hidden"
-        >
-          <Thead>
-            {headerGroups.map((headerGroup, i) => (
-              <Tr {...headerGroup.getHeaderGroupProps()} key={i}>
-                {headerGroup.headers.map((column, j) => (
-                  <Th
-                    key={j}
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                  >
-                    {column.render("Header")}
-                    <Box
-                      display="inline-block"
-                      mr="4"
-                      css={{ transform: "translateY(2px)" }}
+      <>
+        <TableContainer whiteSpace="nowrap" borderColor="gray.400" height="500">
+          <Table
+            {...getTableProps()}
+            size="sm"
+            variant="striped"
+            colorScheme="gray"
+            // height="500"
+            overflowX="hidden"
+          >
+            <Thead>
+              {headerGroups.map((headerGroup, i) => (
+                <Tr {...headerGroup.getHeaderGroupProps()} key={i}>
+                  {headerGroup.headers.map((column, j) => (
+                    <Th
+                      key={j}
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
                     >
-                      {column.isSorted ? (
-                        column.isSortedDesc ? (
-                          <FiChevronDown size="14px" />
+                      {column.render("Header")}
+                      <Box
+                        display="inline-block"
+                        mr="4"
+                        css={{ transform: "translateY(2px)" }}
+                      >
+                        {column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <FiChevronDown size="14px" />
+                          ) : (
+                            <FiChevronUp size="14px" />
+                          )
                         ) : (
-                          <FiChevronUp size="14px" />
-                        )
-                      ) : (
-                        ""
-                      )}
-                    </Box>
-                  </Th>
-                ))}
-              </Tr>
-            ))}
-          </Thead>
-          <Tbody {...getTableBodyProps()}>
-            {rows.map((row, i) => {
-              prepareRow(row)
-              return (
-                <Tr {...row.getRowProps()} key={i}>
-                  {row.cells.map((cell, j) => {
-                    return (
-                      <Td key={j} {...cell.getCellProps()}>
-                        {cell.render("Cell")}
-                      </Td>
-                    )
-                  })}
+                          ""
+                        )}
+                      </Box>
+                    </Th>
+                  ))}
                 </Tr>
-              )
-            })}
-          </Tbody>
-        </Table>
-        <Center w="100%" h="100%">
-          <Pagination page={page} pages={pages} setPage={setPage} />
+              ))}
+            </Thead>
+            <Tbody {...getTableBodyProps()}>
+              {page.map((row, i) => {
+                prepareRow(row)
+                return (
+                  <Tr {...row.getRowProps()} key={i}>
+                    {row.cells.map((cell, j) => {
+                      return (
+                        <Td key={j} {...cell.getCellProps()}>
+                          {cell.render("Cell")}
+                        </Td>
+                      )
+                    })}
+                  </Tr>
+                )
+              })}
+            </Tbody>
+          </Table>
+        </TableContainer>
+        {/* pagination  */}
+        <Center m="2">
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              previousPage()
+            }}
+            disabled={!canPreviousPage}
+          >
+            <FiChevronsLeft size="12" />
+          </Button>
+          {pageOptions.map((option, i) => {
+            return (
+              <Button
+                key={i}
+                size="sm"
+                variant="link"
+                onClick={() => {
+                  // setRowsPerPage(option)
+                  gotoPage(i)
+                }}
+                isActive={pageIndex === i}
+              >
+                {option}
+              </Button>
+            )
+          })}
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              nextPage()
+            }}
+            disabled={!canNextPage}
+          >
+            <FiChevronsRight size="12" />
+          </Button>
         </Center>
-      </TableContainer>
+      </>
     )
   }
 
   const box = {
-    h: "920",
+    h: "auto",
     w: "100%",
     bg: "white",
   }
