@@ -218,7 +218,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
                 }}
                 isActive={pageIndex === i}
               >
-                {option}
+                {option + 1}
               </Button>
             )
           })}
