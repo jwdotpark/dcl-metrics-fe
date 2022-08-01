@@ -74,6 +74,13 @@ export async function getServerSideProps(context) {
 const GlobalPage: NextPage = (props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
+  const fetchFingerprint = async () => {
+    const url = "https://hutils.loxal.net/whois"
+    const response = await fetch(url)
+    const geoInfo = await response.json()
+    sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
+  }
+
   useEffect(() => {
     if (!isDev) {
       fetchFingerprint()
