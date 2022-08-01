@@ -84,9 +84,9 @@ const GlobalPage: NextPage = (props) => {
   useEffect(() => {
     if (!isDev) {
       fetchFingerprint()
-      const geoInfo = JSON.parse(sessionStorage.getItem("geoInfo"))
+      const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
       // @ts-ignore
-      postTelemetry(props.ip, geoInfo)
+      postTelemetry(props.ip, JSON.parse(fingerPrintInfo))
     }
     // eslint-disable-next-line
   }, [])
@@ -160,6 +160,7 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
+        {/* {JSON.stringify(sessionStorage.getItem("fingerPrint"))} */}
         <UniqueVisitors res={visitor} visitorLoading={visitorLoading} />
         <TotalVisitedParcels res={visitor} visitorLoading={visitorLoading} />
         <MarathonUsers isLoading={isLoading} res={res} />

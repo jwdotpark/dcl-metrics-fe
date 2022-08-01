@@ -12,31 +12,31 @@ const userInfo = {
   userAgent: !isServer && navigator.userAgent,
 }
 
-export const fetchFingerprint = async () => {
-  const url = "https://hutils.loxal.net/whois"
-  const response = await fetch(url)
-  const geoInfo = await response.json()
-  !isServer && sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
-  return geoInfo
-}
+// export const fetchFingerprint = async () => {
+//   const url = "https://hutils.loxal.net/whois"
+//   const response = await fetch(url)
+//   const geoInfo = await response.json()
+//   !isServer && sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
+//   return geoInfo
+// }
 
 export const postTelemetry = async (ipAddr, geoInfo) => {
+  console.log("geo info", geoInfo)
   const telemetryBody = {
     endpoint: userInfo.pathName,
     language: userInfo.language,
     platform: userInfo.platform,
     userAgent: userInfo.userAgent,
-    ip: geoInfo?.ip,
-    city: geoInfo?.city,
-    country: geoInfo?.country,
-    timeZone: geoInfo?.timeZone,
-    fingerprint: geoInfo?.fingerprint,
-    tor: geoInfo?.tor,
-    latitude: geoInfo?.latitude,
-    longitude: geoInfo?.longitude,
+    ip: geoInfo.ip,
+    city: geoInfo.city,
+    country: geoInfo.country,
+    timeZone: geoInfo.timeZone,
+    fingerprint: geoInfo.fingerprint,
+    tor: geoInfo.tor,
+    latitude: geoInfo.latitude,
+    longitude: geoInfo.longitude,
   }
 
-  // console.log("asdf: ", geoInfo)
   const url = "/api/fetch/telemetry"
   telemetryBody.ip = ipAddr
   !isDev && console.log("telemetry body: ", telemetryBody)
