@@ -44,4 +44,6 @@ export const postTelemetry = async () => {
     },
     body: JSON.stringify(telemetryBody),
   })
+  const data = await response.json()
+  isDev && console.log("telemetry response: ", data)
 }
