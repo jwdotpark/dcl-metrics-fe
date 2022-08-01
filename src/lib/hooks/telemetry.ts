@@ -50,7 +50,7 @@ export const postTelemetry = async () => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Test-Header": userIp,
+      "X-Test-Header": JSON.stringify(userIp),
     },
     body: JSON.stringify(telemetryBody),
   })
