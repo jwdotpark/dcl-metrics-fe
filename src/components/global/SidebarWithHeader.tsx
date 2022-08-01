@@ -72,11 +72,12 @@ export default function SidebarWithHeader({
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const router = useRouter()
+
+  // telemetry
   useEffect(() => {
     if (!isDev) {
       fetchFingerprint()
       const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-      // const ip = props.ip
       postTelemetry(JSON.parse(fingerPrintInfo))
     }
     // eslint-disable-next-line

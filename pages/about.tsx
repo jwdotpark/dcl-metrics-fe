@@ -12,40 +12,8 @@ import background from "../public/images/background.png"
 import background2 from "../public/images/background2.png"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import {
-  postTelemetry,
-  isDev,
-  fetchFingerprint,
-} from "../src/lib/hooks/telemetry"
 
-export async function getServerSideProps(context) {
-  let ip
-  const { req } = context
-  if (req.headers["x-forwarded-for"]) {
-    ip = req.headers["x-forwarded-for"].split(",")[0]
-  } else if (req.headers["x-real-ip"]) {
-    ip = req.connection.remoteAddress
-  } else {
-    ip = req.connection.remoteAddress
-  }
-  return {
-    props: {
-      ip,
-    },
-  }
-}
-
-const About = (props) => {
-  // useEffect(() => {
-  //   if (!isDev) {
-  //     fetchFingerprint()
-  //     const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-  //     const ip = props.ip
-  //     postTelemetry(ip, JSON.parse(fingerPrintInfo))
-  //   }
-  //   // eslint-disable-next-line
-  // }, [])
-
+const About = () => {
   const box = {
     h: "100%",
     w: "100%",

@@ -48,44 +48,9 @@ const TopParcelsTimeLogSpentVisit = dynamic(
   () => import("../src/components/local/stats/TopParcelsTimeLogSpentVisit"),
   { ssr: false }
 )
-// const RecentMarathonUsers = dynamic(
-//   () => import("../src/components/local/stats/TempRecentMarathonUsers"),
-//   { ssr: false }
-// )
 
-export async function getServerSideProps(context) {
-  let ip
-  const { req } = context
-  if (req.headers["x-forwarded-for"]) {
-    ip = req.headers["x-forwarded-for"].split(",")[0]
-  } else if (req.headers["x-real-ip"]) {
-    ip = req.connection.remoteAddress
-  } else {
-    ip = req.connection.remoteAddress
-  }
-
-  return {
-    props: {
-      ip,
-    },
-  }
-}
-
-type PropTypes = {
-  ip: string
-}
-const GlobalPage: NextPage = (props: PropTypes) => {
+const GlobalPage: NextPage = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
-
-  // useEffect(() => {
-  //   if (!isDev) {
-  //     fetchFingerprint()
-  //     const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-  //     const ip = props.ip
-  //     postTelemetry(ip, JSON.parse(fingerPrintInfo))
-  //   }
-  //   // eslint-disable-next-line
-  // }, [])
 
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])
