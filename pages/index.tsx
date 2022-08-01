@@ -73,22 +73,18 @@ export async function getServerSideProps(context) {
 
 const GlobalPage: NextPage = (props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
-  const [fingerPrint, setFingerPrint] = useState()
 
   const fetchFingerprint = async () => {
     const url = "https://hutils.loxal.net/whois"
     const response = await fetch(url)
     const geoInfo = await response.json()
-    // setFingerPrint(geoInfo)
     sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
   }
 
   useEffect(() => {
-    fetchFingerprint()
-    const geoInfo = JSON.parse(sessionStorage.getItem("fingerPrint"))
-    // console.log("props: ", props)
-    // console.log("geo info", geoInfo)
-    if (isDev) {
+    if (!isDev) {
+      fetchFingerprint()
+      const geoInfo = JSON.parse(sessionStorage.getItem("fingerPrint"))
       // @ts-ignore
       postTelemetry(props.ip, geoInfo)
     }
