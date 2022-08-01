@@ -36,19 +36,12 @@ export async function getServerSideProps(context) {
 }
 
 const About = (props) => {
-  // const fetchFingerprint = async () => {
-  //   const url = "https://hutils.loxal.net/whois"
-  //   const response = await fetch(url)
-  //   const geoInfo = await response.json()
-  //   sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
-  // }
-
   useEffect(() => {
     if (!isDev) {
       fetchFingerprint()
       const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-      // @ts-ignore
-      postTelemetry(props.ip, JSON.parse(fingerPrintInfo))
+      const ip = props.ip
+      postTelemetry(ip, JSON.parse(fingerPrintInfo))
     }
     // eslint-disable-next-line
   }, [])

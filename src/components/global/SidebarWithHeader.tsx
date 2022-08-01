@@ -187,7 +187,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
     <div
       // href="#"
       style={{ textDecoration: "none" }}
-      // _focus={{ boxShadow: "none" }}
+      _focus={{ boxShadow: "none" }}
     >
       <Flex
         align="center"
@@ -197,7 +197,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: "blue.300",
+          bg: "gray.300",
           color: "white",
         }}
         {...rest}

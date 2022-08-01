@@ -1,10 +1,6 @@
 export const isDev = process.env.NODE_ENV === "development"
 const isServer = typeof window === "undefined"
 
-const fingerPrintSessionStorage =
-  !isServer && sessionStorage.getItem("fingerPrint")
-const fingerPrintSession = JSON.parse(fingerPrintSessionStorage)
-
 const userInfo = {
   pathName: !isServer && window.location.pathname,
   language: !isServer && navigator.language,
@@ -20,7 +16,6 @@ export const fetchFingerprint = async () => {
 }
 
 export const postTelemetry = async (ipAddr, geoInfo) => {
-  console.log("geo info", geoInfo)
   const telemetryBody = {
     endpoint: userInfo.pathName,
     language: userInfo.language,
@@ -38,7 +33,7 @@ export const postTelemetry = async (ipAddr, geoInfo) => {
 
   const url = "/api/fetch/telemetry"
   telemetryBody.ip = ipAddr
-  !isDev && console.log("telemetry body: ", telemetryBody)
+  isDev && console.log("telemetry body: ", telemetryBody)
   const response = await fetch(url, {
     method: "POST",
     headers: {
