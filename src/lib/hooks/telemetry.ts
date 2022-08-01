@@ -37,8 +37,8 @@ export const postTelemetry = async (ipAddr, geoInfo) => {
 
   // console.log("asdf: ", geoInfo)
   const url = "/api/fetch/telemetry"
-  // telemetryBody.ip = ipAddr
-  isDev && console.log("telemetry body: ", telemetryBody)
+  telemetryBody.ip = ipAddr
+  !isDev && console.log("telemetry body: ", telemetryBody)
   const response = await fetch(url, {
     method: "POST",
     headers: {
