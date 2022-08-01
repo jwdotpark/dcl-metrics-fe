@@ -1,5 +1,6 @@
 import { ResponsiveBar } from "@nivo/bar"
 import { convertSeconds } from "../lib/hooks/utils"
+import ProfilePicture from "../components/local/ProfilePicture"
 
 const BarChart = ({ data, onOpen, value, setValue }) => {
   const min = Math.min(...data.map((d) => d.time_spent))
@@ -42,8 +43,8 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       }}
       enableLabel={true}
       valueFormat={(value) => convertSeconds(value)}
-      minValue={min}
-      maxValue={max}
+      // minValue={min}
+      // maxValue={max}
       // axisTop={{
       //   tickSize: 5,
       //   tickPadding: 2,
