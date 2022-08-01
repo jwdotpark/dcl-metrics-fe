@@ -41,6 +41,11 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import logo from "../../../public/images/logo.png"
 import ColorButton from "./ColorButton"
+import {
+  isDev,
+  fetchFingerprint,
+  postTelemetry,
+} from "../../lib/hooks/telemetry"
 
 interface LinkItemProps {
   name: string
@@ -65,6 +70,18 @@ export default function SidebarWithHeader({
   children: ReactNode
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const router = useRouter()
+  useEffect(() => {
+    if (!isDev) {
+      fetchFingerprint()
+      const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
+      // const ip = props.ip
+      postTelemetry(JSON.parse(fingerPrintInfo))
+    }
+    // eslint-disable-next-line
+  }, [router.pathname])
+
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
