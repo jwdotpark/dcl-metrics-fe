@@ -43,6 +43,7 @@ const About = (props) => {
       fetchFingerprint()
       postTelemetry(ipAddr)
     }
+    // eslint-disable-next-line
   }, [])
 
   const box = {
