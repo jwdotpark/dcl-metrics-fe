@@ -43,8 +43,8 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       }}
       enableLabel={true}
       valueFormat={(value) => convertSeconds(value)}
-      // minValue={min}
-      // maxValue={max}
+      minValue={min}
+      maxValue={max}
       // axisTop={{
       //   tickSize: 5,
       //   tickPadding: 2,
