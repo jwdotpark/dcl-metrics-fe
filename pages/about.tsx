@@ -13,7 +13,7 @@ import background2 from "../public/images/background2.png"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import {
-  fetchFingerprint,
+  // fetchFingerprint,
   postTelemetry,
   isDev,
 } from "../src/lib/hooks/telemetry"
@@ -36,6 +36,13 @@ export async function getServerSideProps(context) {
 }
 
 const About = (props) => {
+  const fetchFingerprint = async () => {
+    const url = "https://hutils.loxal.net/whois"
+    const response = await fetch(url)
+    const geoInfo = await response.json()
+    sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
+  }
+
   useEffect(() => {
     if (!isDev) {
       fetchFingerprint()

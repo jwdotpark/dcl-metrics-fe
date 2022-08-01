@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import {
-  fetchFingerprint,
+  // fetchFingerprint,
   postTelemetry,
   isDev,
 } from "../src/lib/hooks/telemetry"
