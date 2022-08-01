@@ -9,7 +9,6 @@ import {
 const SidebarWithHeader = dynamic(() => import("../global/SidebarWithHeader"), {
   ssr: false,
 })
-// import SidebarWithHeader from "../global/SidebarWithHeader"
 
 const Layout = ({ children }: any) => {
   const router = useRouter()
