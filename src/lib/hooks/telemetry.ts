@@ -63,6 +63,6 @@ export const postTelemetry = async (ipAddr) => {
     },
     body: JSON.stringify(telemetryBody),
   })
-  // const data = await response.json()
-  // isDev && console.log("telemetry response: ", data)
+  const data = await response.json()
+  isDev && console.log("telemetry response: ", data)
 }
