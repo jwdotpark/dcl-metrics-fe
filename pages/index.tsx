@@ -4,7 +4,6 @@ import {
   fetchFingerprint,
   postTelemetry,
   isDev,
-  fetchIp,
 } from "../src/lib/hooks/telemetry"
 import type { NextPage } from "next"
 import { Button, Grid, useBreakpointValue } from "@chakra-ui/react"
@@ -57,16 +56,36 @@ const TopParcelsTimeLogSpentVisit = dynamic(
 //   { ssr: false }
 // )
 
-const GlobalPage: NextPage = () => {
+export async function getServerSideProps(context) {
+  let ip
+
+  const { req } = context
+
+  if (req.headers["x-forwarded-for"]) {
+    ip = req.headers["x-forwarded-for"].split(",")[0]
+  } else if (req.headers["x-real-ip"]) {
+    ip = req.connection.remoteAddress
+  } else {
+    ip = req.connection.remoteAddress
+  }
+  return {
+    props: {
+      ip,
+    },
+  }
+}
+
+const GlobalPage: NextPage = (props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
   useEffect(() => {
     if (!isDev) {
-      fetchIp()
       fetchFingerprint()
       postTelemetry()
     }
   }, [])
+
+  console.log("ip: ", props)
 
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])

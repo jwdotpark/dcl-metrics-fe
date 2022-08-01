@@ -34,27 +34,32 @@ export const fetchFingerprint = async () => {
   !isServer && sessionStorage.setItem("fingerPrint", JSON.stringify(data))
 }
 
-export const fetchIp = async () => {
-  const url = "http://ip.jsontest.com/"
-  const response = await fetch(url)
-  const data = await response.json()
-  console.log("ip: ", data)
-  sessionStorage.setItem("userIp", data.ip)
-}
+// export async function getServerSideProps({ req }) {
+//   const forwarded = req.headers["x-forwarded-for"]
+//   const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress
+//   return {
+//     props: {
+//       ip,
+//     },
+//   }
+// }
+
+// export const fetchIp = async () => {
+//   const url = "http://ip.jsontest.com/"
+//   const response = await fetch(url)
+//   const data = await response.json()
+//   console.log("ip: ", data)
+//   sessionStorage.setItem("userIp", data.ip)
+// }
 
 export const postTelemetry = async () => {
   const url = "/api/fetch/telemetry"
   isDev && console.log("telemetry body: ", telemetryBody)
-  const userIp = !isServer && sessionStorage.getItem("userIp")
-
-  // create a new header with userIp
-  const headers = new Headers()
-  headers.append("HTTP_X_FORWARDED_FOR", JSON.stringify(userIp))
-  headers.append("Content-Type", "application/json")
-
   const response = await fetch(url, {
     method: "POST",
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(telemetryBody),
   })
   const data = await response.json()
