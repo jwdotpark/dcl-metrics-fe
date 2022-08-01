@@ -18,11 +18,30 @@ import {
   isDev,
 } from "../src/lib/hooks/telemetry"
 
-const About = () => {
+export async function getServerSideProps(context) {
+  let ip
+  const { req } = context
+  if (req.headers["x-forwarded-for"]) {
+    ip = req.headers["x-forwarded-for"].split(",")[0]
+  } else if (req.headers["x-real-ip"]) {
+    ip = req.connection.remoteAddress
+  } else {
+    ip = req.connection.remoteAddress
+  }
+  return {
+    props: {
+      ip,
+    },
+  }
+}
+
+const About = (props) => {
   useEffect(() => {
+    // @ts-ignore
+    const ipAddr = props.ip
     if (!isDev) {
       fetchFingerprint()
-      postTelemetry()
+      postTelemetry(ipAddr)
     }
   }, [])
 
