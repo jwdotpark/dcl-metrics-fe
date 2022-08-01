@@ -4,6 +4,7 @@ import {
   fetchFingerprint,
   postTelemetry,
   isDev,
+  fetchIp,
 } from "../src/lib/hooks/telemetry"
 import type { NextPage } from "next"
 import { Button, Grid, useBreakpointValue } from "@chakra-ui/react"
@@ -61,6 +62,7 @@ const GlobalPage: NextPage = () => {
 
   useEffect(() => {
     if (!isDev) {
+      fetchIp()
       fetchFingerprint()
       postTelemetry()
     }

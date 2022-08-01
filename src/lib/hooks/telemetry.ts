@@ -34,13 +34,23 @@ export const fetchFingerprint = async () => {
   !isServer && sessionStorage.setItem("fingerPrint", JSON.stringify(data))
 }
 
+export const fetchIp = async () => {
+  const url = "http://ip.jsontest.com/"
+  const response = await fetch(url)
+  const data = await response.json()
+  console.log("ip: ", data)
+  !isServer && sessionStorage.setItem("userIp", data.ip)
+}
+
 export const postTelemetry = async () => {
   const url = "/api/fetch/telemetry"
   isDev && console.log("telemetry body: ", telemetryBody)
+  const userIp = !isServer && sessionStorage.getItem("userIp")
   const response = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-Test-Header": userIp,
     },
     body: JSON.stringify(telemetryBody),
   })
