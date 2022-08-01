@@ -52,8 +52,9 @@ export const fetchFingerprint = async () => {
 //   sessionStorage.setItem("userIp", data.ip)
 // }
 
-export const postTelemetry = async () => {
+export const postTelemetry = async (ipAddr) => {
   const url = "/api/fetch/telemetry"
+  telemetryBody.ip = ipAddr
   isDev && console.log("telemetry body: ", telemetryBody)
   const response = await fetch(url, {
     method: "POST",

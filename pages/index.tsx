@@ -58,9 +58,7 @@ const TopParcelsTimeLogSpentVisit = dynamic(
 
 export async function getServerSideProps(context) {
   let ip
-
   const { req } = context
-
   if (req.headers["x-forwarded-for"]) {
     ip = req.headers["x-forwarded-for"].split(",")[0]
   } else if (req.headers["x-real-ip"]) {
@@ -78,14 +76,14 @@ export async function getServerSideProps(context) {
 const GlobalPage: NextPage = (props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
+  // @ts-ignore
+  const ipAddr = props.ip
   useEffect(() => {
     if (!isDev) {
       fetchFingerprint()
-      postTelemetry()
+      postTelemetry(ipAddr)
     }
   }, [])
-
-  console.log("ip: ", props)
 
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])
