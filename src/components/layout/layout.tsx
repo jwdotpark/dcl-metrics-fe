@@ -23,7 +23,7 @@ const Layout = ({ children }: any) => {
   }
 
   useEffect(() => {
-    if (isDev) {
+    if (!isDev) {
       fetchFingerprint()
       setTimeout(() => {
         const fingerPrintInfo = sessionStorage.getItem("fingerPrint")

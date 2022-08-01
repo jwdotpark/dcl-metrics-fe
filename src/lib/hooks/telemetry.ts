@@ -1,12 +1,12 @@
 export const isDev = process.env.NODE_ENV === "development"
 const isServer = typeof window === "undefined"
 
-const userInfo = {
-  pathName: window.location.pathname,
-  language: !isServer && navigator.language,
-  platform: !isServer && navigator.platform,
-  userAgent: !isServer && navigator.userAgent,
-}
+// const userInfo = {
+//   pathName: window.location.pathname,
+//   language: !isServer && navigator.language,
+//   platform: !isServer && navigator.platform,
+//   userAgent: !isServer && navigator.userAgent,
+// }
 
 export const fetchFingerprint = async () => {
   const url = "https://hutils.loxal.net/whois"
