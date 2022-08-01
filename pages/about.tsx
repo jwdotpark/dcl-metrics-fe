@@ -36,15 +36,15 @@ export async function getServerSideProps(context) {
 }
 
 const About = (props) => {
-  useEffect(() => {
-    if (!isDev) {
-      fetchFingerprint()
-      const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-      const ip = props.ip
-      postTelemetry(ip, JSON.parse(fingerPrintInfo))
-    }
-    // eslint-disable-next-line
-  }, [])
+  // useEffect(() => {
+  //   if (!isDev) {
+  //     fetchFingerprint()
+  //     const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
+  //     const ip = props.ip
+  //     postTelemetry(ip, JSON.parse(fingerPrintInfo))
+  //   }
+  //   // eslint-disable-next-line
+  // }, [])
 
   const box = {
     h: "100%",

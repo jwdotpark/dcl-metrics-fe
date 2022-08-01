@@ -77,15 +77,15 @@ type PropTypes = {
 const GlobalPage: NextPage = (props: PropTypes) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
-  useEffect(() => {
-    if (!isDev) {
-      fetchFingerprint()
-      const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-      const ip = props.ip
-      postTelemetry(ip, JSON.parse(fingerPrintInfo))
-    }
-    // eslint-disable-next-line
-  }, [])
+  // useEffect(() => {
+  //   if (!isDev) {
+  //     fetchFingerprint()
+  //     const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
+  //     const ip = props.ip
+  //     postTelemetry(ip, JSON.parse(fingerPrintInfo))
+  //   }
+  //   // eslint-disable-next-line
+  // }, [])
 
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])
