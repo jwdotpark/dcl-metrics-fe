@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import {
-  // fetchFingerprint,
+  fetchFingerprint,
   postTelemetry,
   isDev,
 } from "../src/lib/hooks/telemetry"
@@ -71,22 +71,25 @@ export async function getServerSideProps(context) {
   }
 }
 
-const GlobalPage: NextPage = (props) => {
+type PropTypes = {
+  ip: string
+}
+const GlobalPage: NextPage = (props: PropTypes) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
-  const fetchFingerprint = async () => {
-    const url = "https://hutils.loxal.net/whois"
-    const response = await fetch(url)
-    const geoInfo = await response.json()
-    sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
-  }
+  // const fetchFingerprint = async () => {
+  //   const url = "https://hutils.loxal.net/whois"
+  //   const response = await fetch(url)
+  //   const geoInfo = await response.json()
+  //   sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
+  // }
 
   useEffect(() => {
     if (!isDev) {
       fetchFingerprint()
       const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-      // @ts-ignore
-      postTelemetry(props.ip, JSON.parse(fingerPrintInfo))
+      const ip = props.ip
+      postTelemetry(ip, JSON.parse(fingerPrintInfo))
     }
     // eslint-disable-next-line
   }, [])

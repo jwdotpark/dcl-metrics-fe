@@ -13,9 +13,9 @@ import background2 from "../public/images/background2.png"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import {
-  // fetchFingerprint,
   postTelemetry,
   isDev,
+  fetchFingerprint,
 } from "../src/lib/hooks/telemetry"
 
 export async function getServerSideProps(context) {
@@ -36,19 +36,19 @@ export async function getServerSideProps(context) {
 }
 
 const About = (props) => {
-  const fetchFingerprint = async () => {
-    const url = "https://hutils.loxal.net/whois"
-    const response = await fetch(url)
-    const geoInfo = await response.json()
-    sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
-  }
+  // const fetchFingerprint = async () => {
+  //   const url = "https://hutils.loxal.net/whois"
+  //   const response = await fetch(url)
+  //   const geoInfo = await response.json()
+  //   sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
+  // }
 
   useEffect(() => {
     if (!isDev) {
       fetchFingerprint()
-      const geoInfo = JSON.parse(sessionStorage.getItem("geoInfo"))
+      const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
       // @ts-ignore
-      postTelemetry(props.ip, geoInfo)
+      postTelemetry(props.ip, JSON.parse(fingerPrintInfo))
     }
     // eslint-disable-next-line
   }, [])
