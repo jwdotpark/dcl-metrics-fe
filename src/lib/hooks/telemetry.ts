@@ -2,7 +2,7 @@ export const isDev = process.env.NODE_ENV === "development"
 const isServer = typeof window === "undefined"
 
 const userInfo = {
-  pathName: !isServer && window.location.pathname,
+  pathName: window.location.pathname,
   language: !isServer && navigator.language,
   platform: !isServer && navigator.platform,
   userAgent: !isServer && navigator.userAgent,
@@ -15,7 +15,7 @@ export const fetchFingerprint = async () => {
   sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
 }
 
-export const postTelemetry = async (geoInfo) => {
+export const postTelemetry = async (userInfo, geoInfo) => {
   const telemetryBody = {
     endpoint: userInfo.pathName,
     language: userInfo.language,
