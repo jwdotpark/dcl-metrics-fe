@@ -80,7 +80,6 @@ const GlobalPage: NextPage = (props) => {
   const ipAddr = props.ip
   useEffect(() => {
     if (!isDev) {
-      console.log(ipAddr)
       fetchFingerprint()
       postTelemetry(ipAddr)
     }
