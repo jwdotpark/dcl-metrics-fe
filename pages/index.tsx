@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import {
-  fetchFingerprint,
+  // fetchFingerprint,
   postTelemetry,
   isDev,
 } from "../src/lib/hooks/telemetry"
@@ -15,9 +15,6 @@ const Layout = dynamic(() => import("../src/components/layout/layout"), {
 import staticMarathonUsers from "../public/data/marathon-users.json"
 import staticVisitors from "../public/data/unique-visitors.json"
 import staticParcel from "../public/data/top-visited-parcel.json"
-
-// table
-import { HookTable } from "../src/components/local/stats/table/HookTable"
 
 const MarathonUsers = dynamic(
   () => import("../src/components/local/stats/MarathonUsers"),
@@ -67,9 +64,13 @@ export async function getServerSideProps(context) {
     ip = req.connection.remoteAddress
   }
 
+  const url = "https://hutils.loxal.net/whois"
+  const response = await fetch(url)
+  const geoInfo = await response.json()
   return {
     props: {
       ip,
+      geoInfo,
     },
   }
 }
@@ -77,25 +78,12 @@ export async function getServerSideProps(context) {
 const GlobalPage: NextPage = (props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
-  const isClient = (typeof window !== "undefined") as boolean
-  const fetchFingerprint = async () => {
-    if (isClient) {
-      const url = "https://hutils.loxal.net/whois"
-      const response = await fetch(url)
-      const data = await response.json()
-      sessionStorage.setItem("fingerPrint", JSON.stringify(data))
-    }
-  }
-  fetchFingerprint()
-
-  const geoInfo = isClient && sessionStorage.getItem("fingerPrint")
-
-  // @ts-ignore
-  const ipAddr = props.ip
   useEffect(() => {
+    console.log("props: ", props)
+
     if (!isDev) {
-      fetchFingerprint()
-      postTelemetry(ipAddr, geoInfo)
+      // @ts-ignore
+      postTelemetry(props.ip, props.geoInfo)
     }
     // eslint-disable-next-line
   }, [])

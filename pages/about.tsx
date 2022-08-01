@@ -13,7 +13,7 @@ import background2 from "../public/images/background2.png"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import {
-  fetchFingerprint,
+  // fetchFingerprint,
   postTelemetry,
   isDev,
 } from "../src/lib/hooks/telemetry"
