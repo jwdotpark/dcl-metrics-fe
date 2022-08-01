@@ -64,26 +64,33 @@ export async function getServerSideProps(context) {
     ip = req.connection.remoteAddress
   }
 
-  const url = "https://hutils.loxal.net/whois"
-  const response = await fetch(url)
-  const geoInfo = await response.json()
   return {
     props: {
       ip,
-      geoInfo,
     },
   }
 }
 
 const GlobalPage: NextPage = (props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
+  const [fingerPrint, setFingerPrint] = useState()
+
+  const fetchFingerprint = async () => {
+    const url = "https://hutils.loxal.net/whois"
+    const response = await fetch(url)
+    const geoInfo = await response.json()
+    // setFingerPrint(geoInfo)
+    sessionStorage.setItem("fingerPrint", JSON.stringify(geoInfo))
+  }
 
   useEffect(() => {
-    console.log("props: ", props)
-
-    if (!isDev) {
+    fetchFingerprint()
+    const geoInfo = JSON.parse(sessionStorage.getItem("fingerPrint"))
+    // console.log("props: ", props)
+    // console.log("geo info", geoInfo)
+    if (isDev) {
       // @ts-ignore
-      postTelemetry(props.ip, props.geoInfo)
+      postTelemetry(props.ip, geoInfo)
     }
     // eslint-disable-next-line
   }, [])
