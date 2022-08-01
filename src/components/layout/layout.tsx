@@ -13,12 +13,14 @@ const SidebarWithHeader = dynamic(() => import("../global/SidebarWithHeader"), {
 
 const Layout = ({ children }: any) => {
   const router = useRouter()
-  // telemetry
+
   useEffect(() => {
     if (!isDev) {
       fetchFingerprint()
-      const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-      postTelemetry(JSON.parse(fingerPrintInfo))
+      setTimeout(() => {
+        const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
+        postTelemetry(JSON.parse(fingerPrintInfo))
+      }, 500)
     }
     // eslint-disable-next-line
   }, [router.pathname])
