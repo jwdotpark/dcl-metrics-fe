@@ -32,7 +32,6 @@ export const postTelemetry = async (geoInfo) => {
   }
 
   const url = "/api/fetch/telemetry"
-  // telemetryBody.ip = ipAddr
   isDev && console.log("telemetry body: ", telemetryBody)
   const response = await fetch(url, {
     method: "POST",
