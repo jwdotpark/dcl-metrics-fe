@@ -1,4 +1,3 @@
-import { Center, Text } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 import Layout from "../src/components/layout/layout"
@@ -6,7 +5,13 @@ import Layout from "../src/components/layout/layout"
 function Error({ statusCode }) {
   const router = useRouter()
   useEffect(() => {
-    router.push(`/error/${statusCode}`)
+    if (400 <= statusCode && statusCode < 500) {
+      router.push(`/error/${statusCode}`)
+    } else if (500 <= statusCode) {
+      router.push("/error/500")
+    } else {
+      router.push("/error/unknown")
+    }
     // eslint-disable-next-line
   }, [])
   return <Layout></Layout>
