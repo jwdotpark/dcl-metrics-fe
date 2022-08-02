@@ -1,6 +1,5 @@
 import { ResponsiveBar } from "@nivo/bar"
 import { convertSeconds } from "../lib/hooks/utils"
-import ProfilePicture from "../components/local/ProfilePicture"
 
 const BarChart = ({ data, onOpen, value, setValue }) => {
   const min = Math.min(...data.map((d) => d.time_spent))
@@ -29,9 +28,6 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       }}
       role="application"
       ariaLabel="bar chart"
-      barAriaLabel={function (e) {
-        return e.id + ": " + e.formattedValue + " in country: " + e.indexValue
-      }}
       onClick={onOpen}
       onMouseEnter={(point) => {
         // @ts-ignore
@@ -45,35 +41,6 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       valueFormat={(value) => convertSeconds(value)}
       minValue={min}
       maxValue={max}
-      // axisTop={{
-      //   tickSize: 5,
-      //   tickPadding: 2,
-      //   tickRotation: 1,
-      //   legend: "",
-      //   legendPosition: "middle",
-      //   legendOffset: 0,
-      //   renderTick: ({
-      //     textAnchor,
-      //     textBaseline,
-      //     textX,
-      //     textY,
-      //     value,
-      //     x,
-      //     y,
-      //   }) => {
-      //     return (
-      //       <g transform={`translate(${x},${y})`}>
-      //         <text
-      //           // alignmentBaseline={textBaseline}
-      //           textAnchor={textAnchor}
-      //           transform={`translate(${textX},${textY})`}
-      //         >
-      //           <ProfilePicture address={value} modal={false} />
-      //         </text>
-      //       </g>
-      //     )
-      //   },
-      // }}
     />
   )
 }

@@ -82,6 +82,7 @@ const GlobalPage: NextPage = () => {
     const result = await response.json()
     setRes(result.data)
   }
+
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       setIsLoading(true)
@@ -94,6 +95,7 @@ const GlobalPage: NextPage = () => {
       setRes(staticMarathonUsers)
       setIsLoading(false)
     }
+    // eslint-disable-next-line
   }, [])
 
   // --------------- top parcel/scene time spent -----------------
@@ -121,7 +123,6 @@ const GlobalPage: NextPage = () => {
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
-        {/* {JSON.stringify(sessionStorage.getItem("fingerPrint"))} */}
         <UniqueVisitors res={visitor} visitorLoading={visitorLoading} />
         <TotalVisitedParcels res={visitor} visitorLoading={visitorLoading} />
         <MarathonUsers isLoading={isLoading} res={res} />

@@ -38,7 +38,7 @@ const RecentMarathonUsers = ({ isLoading, res }) => {
     valueArr.push(value)
   })
 
-  const [currentDate, setCurrentDate] = useState(6)
+  const [currentDate, setCurrentDate] = useState(valueArr.length - 1)
 
   const DateSelector = () => {
     return (
@@ -79,7 +79,7 @@ const RecentMarathonUsers = ({ isLoading, res }) => {
 
         {data.length > 0 && !isLoading ? (
           <Box>
-            <BarChartComponent data={valueArr[currentDate]} />
+            <BarChartComponent data={valueArr[valueArr.length - 1]} />
             {/* <Box mx="6">
               <DateSelector />
             </Box> */}
