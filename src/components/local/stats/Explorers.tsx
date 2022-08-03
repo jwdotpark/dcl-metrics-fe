@@ -31,7 +31,7 @@ const Explorers = () => {
   const [res, setRes] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const ENV = process.env.NEXT_PUBLIC_ENV
-  
+
   useEffect(() => {
     if (ENV === "prod") {
       setIsLoading(true)
@@ -44,6 +44,7 @@ const Explorers = () => {
       setRes(staticData)
       setIsLoading(false)
     }
+    // eslint-disable-next-line
   }, [])
 
   const data = Object.entries(res)
