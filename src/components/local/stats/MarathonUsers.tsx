@@ -106,7 +106,7 @@ const MarathonUsers = ({ isLoading, res }) => {
         <Table
           {...getTableProps()}
           size="sm"
-          variant="simple"
+          variant="unstyled"
           overflowX="hidden"
           maxW="100%"
           height="500px"
@@ -146,6 +146,7 @@ const MarathonUsers = ({ isLoading, res }) => {
               return (
                 <Tr
                   display="block"
+                  borderBottom="1px solid rgba(0, 0, 0, 0.06)"
                   {...row.getRowProps()}
                   key={i}
                   style={{

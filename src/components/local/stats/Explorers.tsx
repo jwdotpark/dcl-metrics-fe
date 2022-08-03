@@ -59,7 +59,7 @@ const Explorers = () => {
   const TableComponent = () => {
     return (
       <TableContainer mx="4" whiteSpace="nowrap" mt="4">
-        <Table size="sm" variant="simple" height="450px" w="100%">
+        <Table size="sm" variant="unstyled" height="450px" w="100%">
           <Thead display="block">
             <Tr>
               <Th>Parcels Visited</Th>
@@ -70,6 +70,7 @@ const Explorers = () => {
             {dataPaginated.map((item, index) => {
               return (
                 <Tr
+                  borderBottom="1px solid rgba(0, 0, 0, 0.06)"
                   key={index}
                   style={{
                     background: `linear-gradient(90deg, #F4756050 ${
