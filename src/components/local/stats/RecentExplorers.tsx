@@ -28,9 +28,10 @@ const RecentExplorers = () => {
   }
   const [isLoading, setIsLoading] = useState(false)
   const [res, setRes] = useState([])
+  const ENV = process.env.NEXT_PUBLIC_ENV
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (ENV === "prod") {
       setIsLoading(true)
       const url = "api/fetch/recent-explorers"
       fetchResult(url, setRes)
@@ -41,6 +42,7 @@ const RecentExplorers = () => {
       setRes(staticData)
       setIsLoading(false)
     }
+    // eslint-disable-next-line
   }, [])
 
   const data = Object.entries(res)

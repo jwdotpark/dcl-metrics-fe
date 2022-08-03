@@ -119,7 +119,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         justifyContent="space-between"
         cursor="pointer"
       >
-        <Link href="/">
+        <Link href="/" passHref>
           <HStack>
             <Image src={logo.src} alt="logo" boxSize="26px" boxShadow="md" />
             <Text
@@ -134,36 +134,36 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       <>
-        <Link href="/">
-          <NavItem
-            icon={FiTrendingUp}
-            bg={
-              router.pathname === "/" && // eslint-disable-next-line
-              useColorModeValue("gray.200", "gray.700")
-            }
-          >
-            <Text fontSize="xl" as={router.pathname === "/" && "u"}>
-              Global
-            </Text>
-          </NavItem>
-        </Link>
-        <Link href="/about">
-          <NavItem
-            icon={FiCompass}
-            bg={
-              router.pathname === "/about" &&
-              // eslint-disable-next-line
-              useColorModeValue("gray.200", "gray.700")
-            }
-          >
-            <Text
-              fontSize="xl"
-              as={router.pathname === "/about" && "u"}
-              // color={router.pathname === "/about" ? "gray.800" : "gray.300"}
+        <Link href="/" passHref>
+          <a>
+            <NavItem
+              icon={FiTrendingUp}
+              bg={
+                router.pathname === "/" && // eslint-disable-next-line
+                useColorModeValue("gray.200", "gray.700")
+              }
             >
-              About
-            </Text>
-          </NavItem>
+              <Text fontSize="xl" as={router.pathname === "/" && "u"}>
+                Global
+              </Text>
+            </NavItem>
+          </a>
+        </Link>
+        <Link href="/about" passHref>
+          <a>
+            <NavItem
+              icon={FiCompass}
+              bg={
+                router.pathname === "/about" &&
+                // eslint-disable-next-line
+                useColorModeValue("gray.200", "gray.700")
+              }
+            >
+              <Text fontSize="xl" as={router.pathname === "/about" && "u"}>
+                About
+              </Text>
+            </NavItem>
+          </a>
         </Link>
       </>
       {/* {LinkItems.map((link) => (
@@ -185,11 +185,7 @@ interface NavItemProps extends FlexProps {
 }
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   return (
-    <div
-      // href="#"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
-    >
+    <Box style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
       <Flex
         align="center"
         p="4"
@@ -215,7 +211,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         )}
         {children}
       </Flex>
-    </div>
+    </Box>
   )
 }
 

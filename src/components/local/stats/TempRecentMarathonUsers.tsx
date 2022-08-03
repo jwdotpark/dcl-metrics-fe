@@ -15,9 +15,10 @@ const MarathonUsers = ({ isLoading, setIsLoading }) => {
   }
 
   const [res, setRes] = useState([])
+  const ENV = process.env.NEXT_PUBLIC_ENV
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (ENV === "prod") {
       setIsLoading(true)
       const url = "api/fetch/recent-marathon-users"
       fetchResult(url, setRes)

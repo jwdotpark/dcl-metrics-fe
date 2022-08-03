@@ -12,7 +12,7 @@ const SidebarWithHeader = dynamic(() => import("../global/SidebarWithHeader"), {
 
 const Layout = ({ children }: any) => {
   const router = useRouter()
-
+  const ENV = process.env.NEXT_PUBLIC_ENV
   // telemetry
   const isServer = typeof window === "undefined"
   const userInfo = {
@@ -23,7 +23,7 @@ const Layout = ({ children }: any) => {
   }
 
   useEffect(() => {
-    if (!isDev) {
+    if (ENV === "prod") {
       fetchFingerprint()
       setTimeout(() => {
         const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
