@@ -137,10 +137,10 @@ const GlobalPage: NextPage = () => {
           parcel={parcel}
           isParcelLoading={isParcelLoading}
         />
-        test
       </Grid>
     </Layout>
   )
 }
 
 export default GlobalPage
+
