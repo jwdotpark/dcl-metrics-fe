@@ -30,9 +30,10 @@ const Explorers = () => {
 
   const [res, setRes] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-
+  const ENV = process.env.NEXT_PUBLIC_ENV
+  
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (ENV === "prod") {
       setIsLoading(true)
       const url = "api/fetch/explorers"
       fetchResult(url, setRes)

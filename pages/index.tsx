@@ -51,6 +51,7 @@ const TopParcelsTimeLogSpentVisit = dynamic(
 
 const GlobalPage: NextPage = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
+  const ENV = process.env.NEXT_PUBLIC_ENV
 
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])
@@ -61,7 +62,7 @@ const GlobalPage: NextPage = () => {
     setVisitor(result.data)
   }
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (ENV === "prod") {
       setVisitorLoading(true)
       const url = "api/fetch/unique-visitors"
       fetchVisitorResult(url)
@@ -84,7 +85,7 @@ const GlobalPage: NextPage = () => {
   }
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (ENV === "prod") {
       setIsLoading(true)
       const url = "api/fetch/daily-user-timespent"
       fetchResult(url)
@@ -107,7 +108,7 @@ const GlobalPage: NextPage = () => {
     setParcel(result.data)
   }
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (ENV === "prod") {
       setIsParcelLoading(true)
       const url = "api/fetch/top-parcels-timespent"
       fetchParcelResult(url)

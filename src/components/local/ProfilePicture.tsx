@@ -6,6 +6,7 @@ import staticAvatar from "../../../public/avatar.png"
 const ProfilePicture = ({ address, modal }) => {
   const [pic, setPic] = useState()
   const [isLoading, setIsLoading] = useState(false)
+  const ENV = process.env.NEXT_PUBLIC_ENV
   const staticPic =
     "https://peer-eu1.decentraland.org/content/contents/bafkreiawwdcbesqxgj6d66brhnjtastcnl24at4avhzsllp226ejphofq4"
 
@@ -13,8 +14,9 @@ const ProfilePicture = ({ address, modal }) => {
     const url = `https://peer.decentraland.org/lambdas/profiles/${address}`
     const result = await fetch(url)
     const data = await result.json()
-    const avatar = data.avatars[0].avatar.snapshots.face256
-    if (process.env.NODE_ENV === "production") {
+
+    if (ENV === "prod" && data.avatars[0]) {
+      const avatar = data.avatars[0].avatar.snapshots.face256
       setPic(avatar)
     } else {
       // @ts-ignore
