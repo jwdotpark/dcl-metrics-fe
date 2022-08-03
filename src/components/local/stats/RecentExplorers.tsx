@@ -42,6 +42,7 @@ const RecentExplorers = () => {
       setRes(staticData)
       setIsLoading(false)
     }
+    // eslint-disable-next-line
   }, [])
 
   const data = Object.entries(res)

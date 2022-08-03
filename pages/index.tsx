@@ -73,6 +73,7 @@ const GlobalPage: NextPage = () => {
       setVisitor(staticVisitors)
       setVisitorLoading(false)
     }
+    // eslint-disable-next-line
   }, [])
 
   // --------------- marathon users -----------------
@@ -119,6 +120,7 @@ const GlobalPage: NextPage = () => {
       setParcel(staticParcel)
       setIsParcelLoading(false)
     }
+    // eslint-disable-next-line
   }, [])
 
   return (
