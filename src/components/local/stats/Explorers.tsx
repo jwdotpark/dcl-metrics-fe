@@ -23,7 +23,7 @@ import ProfilePicture from "../ProfilePicture"
 
 const Explorers = () => {
   const box = {
-    h: "560",
+    h: "600",
     w: "100%",
     bg: "white",
   }

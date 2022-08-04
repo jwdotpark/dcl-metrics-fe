@@ -63,6 +63,8 @@ const MarathonUsers = ({ isLoading, res }) => {
           </Box>
         )
       },
+      disableSortBy: true,
+      disableFilters: true,
     },
     {
       Header: "Address",
@@ -129,11 +131,11 @@ const MarathonUsers = ({ isLoading, res }) => {
                       mr="4"
                       css={{ transform: "translateY(2px)" }}
                     >
-                      {column.isSorted ? (
+                      {/* {column.isSorted ? (
                         <FiChevronDown size="14px" />
                       ) : (
                         <FiChevronUp size="14px" />
-                      )}
+                      )} */}
                     </Box>
                   </Th>
                 ))}
@@ -177,7 +179,7 @@ const MarathonUsers = ({ isLoading, res }) => {
   }
 
   const box = {
-    h: "590",
+    h: "600",
     w: "100%",
     bg: "white",
   }
