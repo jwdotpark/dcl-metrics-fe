@@ -63,6 +63,8 @@ const MarathonUsers = ({ isLoading, res }) => {
           </Box>
         )
       },
+      disableSortBy: true,
+      disableFilters: true,
     },
     {
       Header: "Address",
@@ -106,7 +108,7 @@ const MarathonUsers = ({ isLoading, res }) => {
         <Table
           {...getTableProps()}
           size="sm"
-          variant="simple"
+          variant="unstyled"
           overflowX="hidden"
           maxW="100%"
           height="500px"
@@ -129,11 +131,11 @@ const MarathonUsers = ({ isLoading, res }) => {
                       mr="4"
                       css={{ transform: "translateY(2px)" }}
                     >
-                      {column.isSorted ? (
+                      {/* {column.isSorted ? (
                         <FiChevronDown size="14px" />
                       ) : (
                         <FiChevronUp size="14px" />
-                      )}
+                      )} */}
                     </Box>
                   </Th>
                 ))}
@@ -146,6 +148,7 @@ const MarathonUsers = ({ isLoading, res }) => {
               return (
                 <Tr
                   display="block"
+                  borderBottom="1px solid rgba(0, 0, 0, 0.06)"
                   {...row.getRowProps()}
                   key={i}
                   style={{
@@ -176,7 +179,7 @@ const MarathonUsers = ({ isLoading, res }) => {
   }
 
   const box = {
-    h: "590",
+    h: "600",
     w: "100%",
     bg: "white",
   }

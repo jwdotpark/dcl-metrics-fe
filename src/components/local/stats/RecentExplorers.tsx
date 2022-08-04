@@ -22,7 +22,7 @@ import ProfilePicture from "../ProfilePicture"
 
 const RecentExplorers = () => {
   const box = {
-    h: "560",
+    h: "600",
     w: "100%",
     bg: "white",
   }
@@ -84,7 +84,7 @@ const RecentExplorers = () => {
   const TableComponent = () => {
     return (
       <TableContainer mx="4" whiteSpace="nowrap" mt="4">
-        <Table size="sm" variant="simple" height="450px">
+        <Table size="sm" variant="unstyled" height="450px">
           <Thead display="block">
             <Tr>
               <Th>Parcels Visited</Th>
@@ -96,6 +96,7 @@ const RecentExplorers = () => {
               return (
                 <Tr
                   display="block"
+                  borderBottom="1px solid rgba(0, 0, 0, 0.06)"
                   key={index}
                   style={{
                     background: `linear-gradient(90deg, #EED31250 ${

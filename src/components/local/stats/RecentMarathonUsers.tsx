@@ -23,7 +23,7 @@ import BarChartComponent from "../../chart/BarChartComponent"
 
 const RecentMarathonUsers = ({ isLoading, res }) => {
   const box = {
-    h: "590",
+    h: "600",
     w: "100%",
     bg: "white",
   }
