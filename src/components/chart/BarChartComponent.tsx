@@ -20,7 +20,12 @@ const BarChartComponent = ({ data }) => {
   return (
     <GridItem h={box.h} bg={box.bg} borderRadius="md">
       <BarChart data={data} onOpen={onOpen} value={value} setValue={setValue} />
-      <PopupModal isOpen={isOpen} onClose={onClose} value={value} />
+      <PopupModal
+        isOpen={isOpen}
+        onClose={onClose}
+        value={value}
+        modal={true}
+      />
     </GridItem>
   )
 }

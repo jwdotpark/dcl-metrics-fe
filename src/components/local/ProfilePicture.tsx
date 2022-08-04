@@ -36,7 +36,6 @@ const ProfilePicture = ({ address, modal }) => {
       <Center
         borderRadius="full"
         display="inline-block"
-        boxSize={modal ? "10rem" : ""}
         border="1px solid"
         borderColor="gray.300"
         backgroundColor="gray.300"
@@ -47,7 +46,7 @@ const ProfilePicture = ({ address, modal }) => {
             <Spinner size="sm" />
           </Center>
         ) : (
-          <Avatar src={pic} size="xs" />
+          <Avatar src={pic} size={modal ? "2xl" : "xs"} />
         )}
       </Center>
     </>
