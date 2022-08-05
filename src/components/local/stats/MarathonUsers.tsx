@@ -54,7 +54,7 @@ const MarathonUsers = ({ isLoading, res }) => {
       accessor: "timeSpent",
       Cell: ({ value }) => {
         return (
-          <Box width="100px">
+          <Box width="90px">
             <Text as="kbd" color={useColorModeValue("gray.800", "gray.200")}>
               <b>{convertSeconds(value)}</b>
             </Text>
@@ -73,7 +73,7 @@ const MarathonUsers = ({ isLoading, res }) => {
             <Box
               display="inline-block"
               mr="2"
-              css={{ transform: "translateY(-2px)" }}
+              // css={{ transform: "translateY(-2px)" }}
             >
               <ProfilePicture address={value} modal={false} />
             </Box>
@@ -81,6 +81,8 @@ const MarathonUsers = ({ isLoading, res }) => {
               as="kbd"
               color={useColorModeValue("gray.800", "gray.200")}
               _hover={{ color: "gray.900" }}
+              position="absolute"
+              css={{ transform: "translateY(6px)" }}
             >
               <a
                 target="_blank"
@@ -134,13 +136,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                       display="inline-block"
                       mr="4"
                       css={{ transform: "translateY(2px)" }}
-                    >
-                      {/* {column.isSorted ? (
-                        <FiChevronDown size="14px" />
-                      ) : (
-                        <FiChevronUp size="14px" />
-                      )} */}
-                    </Box>
+                    ></Box>
                   </Th>
                 ))}
               </Tr>
@@ -184,8 +180,6 @@ const MarathonUsers = ({ isLoading, res }) => {
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
-
-  const [dateClicked, setDateClicked] = useState(false)
 
   return (
     <>

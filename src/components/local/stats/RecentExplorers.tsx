@@ -127,7 +127,8 @@ const RecentExplorers = () => {
                         as="kbd"
                         display="inline-block"
                         _hover={{ color: "gray.900" }}
-                        css={{ transform: "translateY(3px)" }}
+                        position="absolute"
+                        css={{ transform: "translateY(6px)" }}
                       >
                         {item.address}
                       </Text>

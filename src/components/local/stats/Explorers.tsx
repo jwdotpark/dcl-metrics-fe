@@ -95,11 +95,10 @@ const Explorers = () => {
                         <ProfilePicture address={item[0]} modal={false} />
                       </Box>
                       <Text
-                        // color={useColorModeValue("gray.800", "gray.200")}
                         as="kbd"
-                        display="inline-block"
                         _hover={{ color: "gray.900" }}
-                        css={{ transform: "translateY(3px)" }}
+                        position="absolute"
+                        css={{ transform: "translateY(6px)" }}
                       >
                         {item[0]}
                       </Text>
