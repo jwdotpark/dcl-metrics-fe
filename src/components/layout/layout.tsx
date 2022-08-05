@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
 import { useRouter } from "next/router"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import {
   isDev,
   fetchFingerprint,
@@ -12,22 +12,23 @@ const SidebarWithHeader = dynamic(() => import("../global/SidebarWithHeader"), {
 
 const Layout = ({ children }: any) => {
   const router = useRouter()
+
+  // telemetry on initial access or path change
   const ENV = process.env.NEXT_PUBLIC_ENV
-  // telemetry
-  const isServer = typeof window === "undefined"
-  const userInfo = {
-    pathName: window.location.pathname,
-    language: !isServer && navigator.language,
-    platform: !isServer && navigator.platform,
-    userAgent: !isServer && navigator.userAgent,
-  }
+  const localFingerPrint = sessionStorage.getItem("fingerPrint")
 
   useEffect(() => {
-    if (ENV === "prod") {
+    if (localFingerPrint === null) {
       fetchFingerprint()
+    }
+    // eslint-disable-next-line
+  }, [])
+
+  useEffect(() => {
+    if (ENV === "prod" && localFingerPrint !== null) {
       setTimeout(() => {
         const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-        postTelemetry(userInfo, JSON.parse(fingerPrintInfo))
+        postTelemetry(JSON.parse(fingerPrintInfo))
       }, 500)
     }
     // eslint-disable-next-line
