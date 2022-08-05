@@ -21,14 +21,14 @@ export const postTelemetry = async (userInfo, geoInfo) => {
     language: userInfo.language,
     platform: userInfo.platform,
     userAgent: userInfo.userAgent,
-    ip: geoInfo.ip,
-    city: geoInfo.city,
-    country: geoInfo.country,
-    timeZone: geoInfo.timeZone,
-    fingerprint: geoInfo.fingerprint,
-    tor: geoInfo.tor,
-    latitude: geoInfo.latitude,
-    longitude: geoInfo.longitude,
+    ip: geoInfo?.ip,
+    city: geoInfo?.city,
+    country: geoInfo?.country,
+    timeZone: geoInfo?.timeZone,
+    fingerprint: geoInfo?.fingerprint,
+    tor: geoInfo?.tor,
+    latitude: geoInfo?.latitude,
+    longitude: geoInfo?.longitude,
   }
 
   const url = "/api/fetch/telemetry"
