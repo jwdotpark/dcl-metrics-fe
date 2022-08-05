@@ -11,6 +11,8 @@ import {
   Tr,
   Image,
   Select,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { fetchResult } from "../../../lib/hooks/fetch"
@@ -24,7 +26,7 @@ const RecentExplorers = () => {
   const box = {
     h: "600",
     w: "100%",
-    bg: "white",
+    bg: useColorModeValue("white", "gray.800"),
   }
   const [isLoading, setIsLoading] = useState(false)
   const [res, setRes] = useState([])
@@ -82,6 +84,7 @@ const RecentExplorers = () => {
   }
 
   const TableComponent = () => {
+    const { colorMode } = useColorMode()
     return (
       <TableContainer mx="4" whiteSpace="nowrap" mt="4">
         <Table size="sm" variant="unstyled" height="450px">
@@ -101,7 +104,7 @@ const RecentExplorers = () => {
                   style={{
                     background: `linear-gradient(90deg, #EED31250 ${
                       item.parcels_visited / 2
-                    }%, #ffffff 0)`,
+                    }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
                 >
                   <Td>
@@ -121,7 +124,6 @@ const RecentExplorers = () => {
                         <ProfilePicture address={item.address} modal={false} />
                       </Box>
                       <Text
-                        color="gray.600"
                         as="kbd"
                         display="inline-block"
                         _hover={{ color: "gray.900" }}

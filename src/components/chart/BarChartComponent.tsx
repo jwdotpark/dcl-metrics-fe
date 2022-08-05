@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useState } from "react"
 import dynamic from "next/dynamic"
-import { GridItem, useDisclosure } from "@chakra-ui/react"
+import { GridItem, useDisclosure, useColorModeValue } from "@chakra-ui/react"
 import PopupModal from "../local/PopupModal"
 const BarChart = dynamic(() => import("../../lib/BarChart"), {
   ssr: false,
@@ -11,7 +11,7 @@ const BarChartComponent = ({ data }) => {
   const box = {
     h: "500",
     w: "100%",
-    bg: "white",
+    bg: useColorModeValue("white", "gray.800"),
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure()

@@ -4,9 +4,9 @@ const ColorButton = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
     <>
-      {/* <Button size="lg" variant="link" onClick={toggleColorMode}>
+      <Button size="lg" variant="link" onClick={toggleColorMode}>
         {colorMode === "light" ? <FiMoon /> : <FiSun />}
-      </Button> */}
+      </Button>
     </>
   )
 }

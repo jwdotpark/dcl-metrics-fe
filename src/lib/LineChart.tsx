@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
+import { useColorModeValue } from "@chakra-ui/react"
 
 const LineChart = ({ data }) => {
   const colors = [
@@ -17,7 +18,7 @@ const LineChart = ({ data }) => {
   return (
     <ResponsiveLine
       data={data}
-      margin={{ top: 50, right: 60, bottom: 50, left: 80 }}
+      margin={{ top: 50, right: 40, bottom: 50, left: 80 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -44,38 +45,15 @@ const LineChart = ({ data }) => {
         legendOffset: -60,
         legendPosition: "middle",
       }}
+      theme={{
+        textColor: useColorModeValue("gray.800", "white"),
+      }}
       pointSize={6}
       pointColor={{ theme: "background" }}
       pointBorderWidth={6}
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
       useMesh={true}
-      // legends={[
-      //   {
-      //     anchor: "bottom",
-      //     direction: "row",
-      //     justify: true,
-      //     translateX: 0,
-      //     translateY: 75,
-      //     itemsSpacing: 20,
-      //     itemDirection: "left-to-right",
-      //     itemWidth: 85,
-      //     itemHeight: 20,
-      //     itemOpacity: 0.75,
-      //     symbolSize: 12,
-      //     symbolShape: "square",
-      //     symbolBorderColor: "rgba(0, 0, 0, .5)",
-      //     effects: [
-      //       {
-      //         on: "hover",
-      //         style: {
-      //           itemBackground: "rgba(0, 0, 0, .03)",
-      //           itemOpacity: 1,
-      //         },
-      //       },
-      //     ],
-      //   },
-      // ]}
       tooltip={(point) => {
         return (
           <div

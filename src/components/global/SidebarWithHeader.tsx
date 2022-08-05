@@ -89,7 +89,7 @@ export default function SidebarWithHeader({
   const sidebarStatus = sidebarOpen ? "180px" : "60px"
 
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.700")}>
       <SidebarContent
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}

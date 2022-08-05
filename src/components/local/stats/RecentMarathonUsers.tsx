@@ -11,6 +11,7 @@ import {
   ModalOverlay,
   Select,
   Text,
+  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
@@ -25,7 +26,7 @@ const RecentMarathonUsers = ({ isLoading, res }) => {
   const box = {
     h: "600",
     w: "100%",
-    bg: "white",
+    bg: useColorModeValue("white", "gray.800"),
   }
   const data = Object.entries(res)
 
