@@ -15,7 +15,7 @@ import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ res, visitorLoading }) => {
   const box = {
-    h: "570",
+    h: "600",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
