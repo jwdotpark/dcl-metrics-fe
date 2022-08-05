@@ -15,7 +15,7 @@ const ProfilePicture = ({ address, modal }) => {
     const result = await fetch(url)
     const data = await result.json()
 
-    if (ENV === "prod" && data.avatars[0]) {
+    if (ENV !== "prod" && data.avatars[0]) {
       const avatar = data.avatars[0].avatar.snapshots.face256
       setPic(avatar)
     } else {

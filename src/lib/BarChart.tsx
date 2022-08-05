@@ -37,7 +37,6 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       keys={["time_spent"]}
       indexBy="address"
       margin={{ top: 30, right: 30, bottom: 10, left: 110 }}
-      padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={{ scheme: "nivo" }}
@@ -66,6 +65,7 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       valueFormat={(value) => convertSeconds(value)}
       minValue={min}
       maxValue={max}
+      padding={0.1}
       tooltip={(point) => {
         return <PopoverTooltip value={point} />
       }}
@@ -78,19 +78,21 @@ export default BarChart
 const PopoverTooltip = (value) => {
   return (
     <Flex
-      sx={{ backdropFilter: "blur(20px)" }}
+      // sx={{ backdropFilter: "blur(20px)" }}
+      bg={useColorModeValue("white", "gray.600")}
       boxShadow="xl"
       m="2"
       mx="4"
       p="4"
       px="6"
-      border="gray.400"
+      border="1px solid"
+      borderColor={useColorModeValue("gray.200", "gray.500")}
       borderRadius="xl"
       gap="1rem"
     >
       <Center>
         <Box w="100%">
-          <ProfilePicture address={value.indexValue} modal={true} />
+          <ProfilePicture address={value.value.indexValue} modal={true} />
         </Box>
       </Center>
 
