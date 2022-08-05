@@ -19,7 +19,6 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
   const handleToast = (value) => {
     navigator.clipboard.writeText(value.indexValue)
     toast({
-      title: "Address copied.",
       description:
         "Address " +
         value.indexValue.slice(0, 10) +
@@ -27,7 +26,8 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       duration: 2000,
       isClosable: true,
       position: "top-right",
-      status: "success",
+      status: "info",
+      variant: "subtle",
     })
   }
 
