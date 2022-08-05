@@ -11,6 +11,7 @@ import {
   Center,
   useColorModeValue,
   useColorMode,
+  Flex,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
@@ -69,30 +70,26 @@ const MarathonUsers = ({ isLoading, res }) => {
       accessor: "address",
       Cell: ({ value }) => {
         return (
-          <Box>
-            <Box
-              display="inline-block"
-              mr="2"
-              // css={{ transform: "translateY(-2px)" }}
-            >
+          <Flex>
+            <Box display="inline" mr="2">
               <ProfilePicture address={value} modal={false} />
             </Box>
-            <Text
-              as="kbd"
-              color={useColorModeValue("gray.800", "gray.200")}
-              _hover={{ color: "gray.900" }}
-              position="absolute"
-              css={{ transform: "translateY(6px)" }}
-            >
-              <a
-                target="_blank"
-                href={"https://etherscan.io/address/" + `${value}`}
-                rel="noreferrer"
+            <Box display="inline-block" mt="1.5">
+              <Text
+                as="kbd"
+                color={useColorModeValue("gray.800", "gray.200")}
+                _hover={{ color: "gray.600" }}
               >
-                {value}
-              </a>
-            </Text>
-          </Box>
+                <a
+                  target="_blank"
+                  href={"https://etherscan.io/address/" + `${value}`}
+                  rel="noreferrer"
+                >
+                  {value}
+                </a>
+              </Text>
+            </Box>
+          </Flex>
         )
       },
     },
@@ -151,6 +148,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                   borderBottom="1px solid rgba(0, 0, 0, 0.06)"
                   {...row.getRowProps()}
                   key={i}
+                  h="3rem"
                   style={{
                     background: `linear-gradient(90deg, #61CDBB50 ${
                       row.original.timeSpent / 2000

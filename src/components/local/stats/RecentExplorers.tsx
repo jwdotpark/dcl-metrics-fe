@@ -13,6 +13,7 @@ import {
   Select,
   useColorMode,
   useColorModeValue,
+  Flex,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { fetchResult } from "../../../lib/hooks/fetch"
@@ -106,33 +107,39 @@ const RecentExplorers = () => {
                       item.parcels_visited / 2
                     }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
+                  h="3rem"
                 >
                   <Td>
-                    <Box w="100px">
+                    <Box w="105px">
                       <Text as="kbd">
                         <b>{item.parcels_visited}</b>
                       </Text>
                     </Box>
                   </Td>
                   <Td>
-                    <a
-                      target="_blank"
-                      href={"https://etherscan.io/address/" + `${item.address}`}
-                      rel="noreferrer"
-                    >
+                    <Flex>
                       <Box display="inline-block" mr="2">
                         <ProfilePicture address={item.address} modal={false} />
                       </Box>
-                      <Text
-                        as="kbd"
-                        display="inline-block"
-                        _hover={{ color: "gray.900" }}
-                        position="absolute"
-                        css={{ transform: "translateY(6px)" }}
-                      >
-                        {item.address}
-                      </Text>
-                    </a>
+                      <Box display="inline-block" mt="1.5">
+                        <a
+                          target="_blank"
+                          href={
+                            "https://etherscan.io/address/" + `${item.address}`
+                          }
+                          rel="noreferrer"
+                        >
+                          <Text
+                            as="kbd"
+                            // eslint-disable-next-line
+                            color={useColorModeValue("gray.800", "gray.200")}
+                            _hover={{ color: "gray.600" }}
+                          >
+                            {item.address}
+                          </Text>
+                        </a>
+                      </Box>
+                    </Flex>
                   </Td>
                 </Tr>
               )

@@ -47,6 +47,8 @@ const GlobalPage: NextPage = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
   const ENV = process.env.NEXT_PUBLIC_ENV
 
+  const [gridNum, setGridNum] = useState(2)
+
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])
   const [visitorLoading, setVisitorLoading] = useState(false)
