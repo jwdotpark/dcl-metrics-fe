@@ -11,6 +11,7 @@ import {
   Tr,
   useColorModeValue,
   useColorMode,
+  Flex,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { fetchResult } from "../../../lib/hooks/fetch"
@@ -77,32 +78,37 @@ const Explorers = () => {
                     }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
                   display="block"
+                  h="3rem"
                 >
                   <Td>
-                    <Box w="100px">
+                    <Box w="105px">
                       <Text as="kbd">
                         <b>{item[1]}</b>
                       </Text>
                     </Box>
                   </Td>
                   <Td>
-                    <a
-                      target="_blank"
-                      href={"https://etherscan.io/address/" + `${item[0]}`}
-                      rel="noreferrer"
-                    >
-                      <Box display="inline-block" mr="2">
+                    <Flex>
+                      <Box display="inline" mr="2">
                         <ProfilePicture address={item[0]} modal={false} />
                       </Box>
-                      <Text
-                        as="kbd"
-                        _hover={{ color: "gray.900" }}
-                        position="absolute"
-                        css={{ transform: "translateY(6px)" }}
-                      >
-                        {item[0]}
-                      </Text>
-                    </a>
+                      <Box display="inline-block" mt="1.5">
+                        <a
+                          target="_blank"
+                          href={"https://etherscan.io/address/" + `${item[0]}`}
+                          rel="noreferrer"
+                        >
+                          <Text
+                            as="kbd"
+                            _hover={{ color: "gray.600" }}
+                            // eslint-disable-next-line
+                            color={useColorModeValue("gray.800", "gray.200")}
+                          >
+                            {item[0]}
+                          </Text>
+                        </a>
+                      </Box>
+                    </Flex>
                   </Td>
                 </Tr>
               )
