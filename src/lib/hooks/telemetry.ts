@@ -11,6 +11,7 @@ const userInfo = {
 }
 
 export const fetchFingerprint = async () => {
+  isDev && console.log("fetching finger print")
   const url = `https://api.geoapify.com/v1/ipinfo?&apiKey=${process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY}`
   // const url = "https://hutils.loxal.net/whois"
   const response = await fetch(url)
