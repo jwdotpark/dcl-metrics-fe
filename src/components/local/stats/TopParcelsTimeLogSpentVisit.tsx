@@ -255,7 +255,9 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
               <Text
                 fontSize="sm"
                 color="gray.500"
-                css={{ wordBreak: "keep-all" }}
+                whiteSpace="nowrap"
+                overflow="hidden"
+                textOverflow="ellipsis"
               >
                 Parcels with the most sessions in the last 7 days
               </Text>

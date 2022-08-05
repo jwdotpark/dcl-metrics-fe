@@ -258,7 +258,13 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
           <Box>
             <Text fontSize="xl" mb="1" pt="4">
               <b>Top Parcels Time Spent </b>
-              <Text fontSize="sm" color="gray.500">
+              <Text
+                fontSize="sm"
+                color="gray.500"
+                whiteSpace="nowrap"
+                overflow="hidden"
+                textOverflow="ellipsis"
+              >
                 Parcels with the most time spent on them in the last 7 days
               </Text>
             </Text>
