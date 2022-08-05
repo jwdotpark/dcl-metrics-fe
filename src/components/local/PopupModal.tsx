@@ -27,11 +27,11 @@ const PopupModal = ({ isOpen, value, onClose }) => {
         variant={useColorModeValue("solid", "outline")}
       >
         <ModalOverlay />
-        <ModalContent bg="gray.100">
+        <ModalContent bg={useColorModeValue("gray.200", "gray.800")}>
           <ModalCloseButton />
           <Center m="4">
             <VStack padding={2}>
-              <Flex w="100%" borderRadius="xl">
+              <Flex w="100%" borderRadius="full">
                 <Center w="100%">
                   <ProfilePicture address={value.indexValue} modal={true} />
                 </Center>
@@ -53,7 +53,7 @@ const PopupModal = ({ isOpen, value, onClose }) => {
                   <Text
                     _hover={{ cursor: "pointer", color: "gray.800" }}
                     fontWeight={600}
-                    color={"gray.500"}
+                    // color={"gray.500"}
                     size="lg"
                     mb={4}
                     as="kbd"

@@ -46,7 +46,7 @@ const ProfilePicture = ({ address, modal }) => {
             <Spinner size="sm" />
           </Center>
         ) : (
-          <Avatar src={pic} size={modal ? "2xl" : "xs"} />
+          <Avatar src={pic} size={modal ? "md" : "xs"} />
         )}
       </Center>
     </>

@@ -58,11 +58,14 @@ const LineChart = ({ data }) => {
         return (
           <div
             style={{
-              background: "white",
-              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+              boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
               padding: ".3rem",
-              border: "1px solid #ccc",
+              border: "1px solid #A0AEC0",
               borderRadius: "5px",
+              // eslint-disable-next-line
+              background: useColorModeValue("white", "#4A5568"),
+              // eslint-disable-next-line
+              color: useColorModeValue("#4A5568", "white"),
             }}
           >
             <div>

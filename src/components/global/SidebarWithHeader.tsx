@@ -1,17 +1,14 @@
 // @ts-nocheck
-import React, { ReactNode, useState, useEffect } from "react"
+import React, { ReactNode, useState } from "react"
 import {
   Center,
   Spacer,
-  Button,
   Image,
   IconButton,
-  Avatar,
   Box,
   CloseButton,
   Flex,
   HStack,
-  VStack,
   Icon,
   useColorModeValue,
   // Link,
@@ -21,22 +18,13 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
   useColorMode,
 } from "@chakra-ui/react"
 import {
-  FiHome,
   FiTrendingUp,
   FiCompass,
   FiStar,
-  FiSettings,
   FiMenu,
-  FiBell,
-  FiChevronDown,
   FiArrowLeftCircle,
   FiArrowRightCircle,
 } from "react-icons/fi"
@@ -89,7 +77,7 @@ export default function SidebarWithHeader({
   const sidebarStatus = sidebarOpen ? "180px" : "60px"
 
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.700")}>
+    <Box minH="100vh" bg={useColorModeValue("gray.100", "blackAlpha.900")}>
       <SidebarContent
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
