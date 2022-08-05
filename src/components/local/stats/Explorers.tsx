@@ -21,7 +21,7 @@ import ProfilePicture from "../ProfilePicture"
 
 const Explorers = () => {
   const box = {
-    h: "600",
+    h: "630",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }

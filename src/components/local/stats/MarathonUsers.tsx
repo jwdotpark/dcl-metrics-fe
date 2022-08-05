@@ -115,7 +115,7 @@ const MarathonUsers = ({ isLoading, res }) => {
           variant="unstyled"
           overflowX="hidden"
           maxW="100%"
-          height="500px"
+          h="500px"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (
@@ -180,7 +180,7 @@ const MarathonUsers = ({ isLoading, res }) => {
   }
 
   const box = {
-    h: "600",
+    h: "630",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }

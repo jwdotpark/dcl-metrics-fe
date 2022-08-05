@@ -12,7 +12,6 @@ import {
   Image,
   GridItem,
   Button,
-  useColorModeValue,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { convertSeconds } from "../../../lib/hooks/utils"
@@ -239,9 +238,9 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
   }
 
   const box = {
-    h: "auto",
+    h: "630",
     w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
+    bg: "white",
   }
 
   return (

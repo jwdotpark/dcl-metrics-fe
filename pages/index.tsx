@@ -44,7 +44,7 @@ const TopParcelsTimeLogSpentVisit = dynamic(
 )
 
 const GlobalPage: NextPage = () => {
-  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 3 })
+  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
   const ENV = process.env.NEXT_PUBLIC_ENV
 
   // --------------- unique visitors -----------------

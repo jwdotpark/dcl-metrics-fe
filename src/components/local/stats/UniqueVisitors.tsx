@@ -15,7 +15,7 @@ import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ res, visitorLoading }) => {
   const box = {
-    h: "600",
+    h: "630",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
@@ -32,7 +32,7 @@ const UniqueVisitors = ({ res, visitorLoading }) => {
       },
     ]
     return (
-      <GridItem w={box.w} h="500" bg={box.bg} borderRadius="md">
+      <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md">
         <LineChart data={result} />
       </GridItem>
     )
