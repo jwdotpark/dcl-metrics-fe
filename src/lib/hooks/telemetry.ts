@@ -25,7 +25,7 @@ export const fetchFingerprint = async () => {
 
 export const postTelemetry = async (geoInfo) => {
   const telemetryBody = {
-    endpoint: userInfo.pathName,
+    endpoint: window.location.pathname,
     language: userInfo.language,
     platform: userInfo.platform,
     userAgent: userInfo.userAgent,
