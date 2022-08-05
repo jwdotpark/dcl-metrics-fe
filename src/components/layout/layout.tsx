@@ -24,6 +24,8 @@ const Layout = ({ children }: any) => {
     // eslint-disable-next-line
   }, [])
 
+  console.log(router)
+
   useEffect(() => {
     if (ENV === "prod" && localFingerPrint !== null) {
       setTimeout(() => {
@@ -32,7 +34,7 @@ const Layout = ({ children }: any) => {
       }, 500)
     }
     // eslint-disable-next-line
-  }, [router.pathname])
+  }, [router.isReady])
 
   return (
     <>
