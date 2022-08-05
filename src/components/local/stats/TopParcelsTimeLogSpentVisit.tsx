@@ -65,7 +65,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
             minW="5rem"
             borderRadius="md"
             border="2px solid"
-            borderColor="gray.300"
+            borderColor="gray.500"
             overflow="clip"
             boxShadow="md"
           >
