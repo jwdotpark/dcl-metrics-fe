@@ -40,7 +40,7 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       }}
       enableLabel={true}
       theme={{
-        textColor: useColorModeValue("gray.800", "white"),
+        textColor: useColorModeValue("#1A202C", "#E2E8F0"),
       }}
       valueFormat={(value) => convertSeconds(value)}
       minValue={min}
