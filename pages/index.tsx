@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
-import {
-  fetchFingerprint,
-  postTelemetry,
-  isDev,
-} from "../src/lib/hooks/telemetry"
 import type { NextPage } from "next"
-import { Button, Grid, useBreakpointValue } from "@chakra-ui/react"
-// import Layout from "../src/components/layout/layout"
+import { Grid, useBreakpointValue } from "@chakra-ui/react"
 const Layout = dynamic(() => import("../src/components/layout/layout"), {
   ssr: false,
 })
@@ -52,6 +46,8 @@ const TopParcelsTimeLogSpentVisit = dynamic(
 const GlobalPage: NextPage = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
   const ENV = process.env.NEXT_PUBLIC_ENV
+
+  const [gridNum, setGridNum] = useState(2)
 
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])

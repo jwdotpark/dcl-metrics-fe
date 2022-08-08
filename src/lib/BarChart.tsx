@@ -1,12 +1,35 @@
-import { Box, Text } from "@chakra-ui/react"
+import {
+  Text,
+  Center,
+  useColorModeValue,
+  Box,
+  Flex,
+  useToast,
+} from "@chakra-ui/react"
 import { ResponsiveBar } from "@nivo/bar"
 import ProfilePicture from "../components/local/ProfilePicture"
 import { convertSeconds } from "../lib/hooks/utils"
-import avatar from "../../public/images/avatar.png"
 
 const BarChart = ({ data, onOpen, value, setValue }) => {
   const min = Math.min(...data.map((d) => d.time_spent))
   const max = Math.max(...data.map((d) => d.time_spent))
+
+  const toast = useToast()
+
+  const handleToast = (value) => {
+    navigator.clipboard.writeText(value.indexValue)
+    toast({
+      description:
+        "Address " +
+        value.indexValue.slice(0, 10) +
+        ".. has been copied to the clipboard.",
+      duration: 2000,
+      isClosable: true,
+      position: "top-right",
+      status: "info",
+      variant: "subtle",
+    })
+  }
 
   return (
     <ResponsiveBar
@@ -14,7 +37,6 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       keys={["time_spent"]}
       indexBy="address"
       margin={{ top: 30, right: 30, bottom: 10, left: 110 }}
-      padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={{ scheme: "nivo" }}
@@ -31,59 +53,58 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
       }}
       role="application"
       ariaLabel="bar chart"
-      onClick={onOpen}
-      onMouseEnter={(point) => {
-        // @ts-ignore
-        setValue(point)
-      }}
+      onClick={(value) => handleToast(value)}
       animate={false}
       axisLeft={{
         format: (value) => convertSeconds(value),
       }}
       enableLabel={true}
+      theme={{
+        textColor: useColorModeValue("#1A202C", "#E2E8F0"),
+      }}
       valueFormat={(value) => convertSeconds(value)}
       minValue={min}
       maxValue={max}
-      // barComponent={CustomBarComponent}
+      padding={0.1}
+      tooltip={(point) => {
+        return <PopoverTooltip value={point} />
+      }}
     />
   )
 }
 
 export default BarChart
 
-const CustomBarComponent = (props) => {
-  console.log(props.bar)
-  const image = "https://picsum.photos/200"
+const PopoverTooltip = (value) => {
   return (
-    <>
-      <svg
-        transform={`translate(${props.bar.x}, ${props.bar.y})`}
-        onClick={props.onClick}
-        // onMouseEnter={props.onMouseEnter}
-        // onMouseLeave={props.onMouseLeave}
-      >
-        <rect
-          width={props.bar.width}
-          height={props.bar.height}
-          fill={props.bar.color}
-          rx={props.bar.borderRadius}
-          ry={props.bar.borderRadius}
-        />
+    <Flex
+      // sx={{ backdropFilter: "blur(20px)" }}
+      bg={useColorModeValue("white", "gray.600")}
+      boxShadow="xl"
+      m="2"
+      mx="4"
+      p="4"
+      px="6"
+      border="1px solid"
+      borderColor={useColorModeValue("gray.200", "gray.500")}
+      borderRadius="xl"
+      gap="1rem"
+    >
+      <Center>
+        <Box w="100%">
+          <ProfilePicture address={value.value.indexValue} modal={true} />
+        </Box>
+      </Center>
 
-        <text
-          // x={props.bar.width / 2}
-          // y={props.bar.height / 2}
-          x={200}
-          y={20}
-          textAnchor="middle"
-          dominantBaseline="central"
-          fill={props.labelTextColor}
-        >
-          {/* <image href={image} width={20} height={20} /> */}
-          <image href={image} height="200" width="200" x={200} y={20} />
-          {props.bar.data.data.address}
-        </text>
-      </svg>
-    </>
+      <Box>
+        <Text>
+          This user spent <b>{value.value.formattedValue}</b> yesterday.
+        </Text>
+        <Text>
+          Click to copy the address{" "}
+          <kbd>{value.value.indexValue.slice(0, 11) + ".. "}</kbd>
+        </Text>
+      </Box>
+    </Flex>
   )
 }

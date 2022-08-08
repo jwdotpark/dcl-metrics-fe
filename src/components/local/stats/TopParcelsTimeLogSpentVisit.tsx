@@ -12,6 +12,7 @@ import {
   Image,
   GridItem,
   Button,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { convertSeconds } from "../../../lib/hooks/utils"
@@ -64,7 +65,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
             minW="5rem"
             borderRadius="md"
             border="2px solid"
-            borderColor="gray.300"
+            borderColor="gray.500"
             overflow="clip"
             boxShadow="md"
           >
@@ -138,7 +139,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
             size="sm"
             variant="striped"
             colorScheme="gray"
-            // height="500"
+            height="500"
             overflowX="hidden"
           >
             <Thead>
@@ -232,9 +233,9 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
   }
 
   const box = {
-    h: "auto",
+    h: "630",
     w: "100%",
-    bg: "white",
+    bg: useColorModeValue("white", "gray.800"),
   }
 
   return (
@@ -251,9 +252,14 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
           <Box>
             <Text fontSize="xl" mb="1" pt="4">
               <b>Parcel Logins & Logouts</b>
-              <Text fontSize="sm" color="gray.500">
-                Parcels with the most sessions started and ended in the last 7
-                days
+              <Text
+                fontSize="sm"
+                color="gray.500"
+                whiteSpace="nowrap"
+                overflow="hidden"
+                textOverflow="ellipsis"
+              >
+                Parcels with the most sessions in the last 7 days
               </Text>
             </Text>
           </Box>

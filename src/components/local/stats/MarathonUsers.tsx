@@ -9,15 +9,14 @@ import {
   Th,
   Tr,
   Center,
-  Button,
+  useColorModeValue,
+  useColorMode,
+  Flex,
 } from "@chakra-ui/react"
-import { FiChevronUp, FiChevronDown } from "react-icons/fi"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import GridBox from "../GridBox"
-import Pagination from "../Pagination"
 import Loading from "../Loading"
 import { convertSeconds } from "../../../lib/hooks/utils"
-import { FiLink } from "react-icons/fi"
 import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
@@ -56,8 +55,8 @@ const MarathonUsers = ({ isLoading, res }) => {
       accessor: "timeSpent",
       Cell: ({ value }) => {
         return (
-          <Box width="100px">
-            <Text as="kbd" color="gray.900">
+          <Box width="90px">
+            <Text as="kbd" color={useColorModeValue("gray.800", "gray.200")}>
               <b>{convertSeconds(value)}</b>
             </Text>
           </Box>
@@ -71,24 +70,26 @@ const MarathonUsers = ({ isLoading, res }) => {
       accessor: "address",
       Cell: ({ value }) => {
         return (
-          <Box>
-            <Box
-              display="inline-block"
-              mr="2"
-              css={{ transform: "translateY(-2px)" }}
-            >
+          <Flex>
+            <Box display="inline" mr="2">
               <ProfilePicture address={value} modal={false} />
             </Box>
-            <Text as="kbd" color="gray.600" _hover={{ color: "gray.900" }}>
-              <a
-                target="_blank"
-                href={"https://etherscan.io/address/" + `${value}`}
-                rel="noreferrer"
+            <Box display="inline-block" mt="1.5">
+              <Text
+                as="kbd"
+                color={useColorModeValue("gray.800", "gray.200")}
+                _hover={{ color: "gray.600" }}
               >
-                {value}
-              </a>
-            </Text>
-          </Box>
+                <a
+                  target="_blank"
+                  href={"https://etherscan.io/address/" + `${value}`}
+                  rel="noreferrer"
+                >
+                  {value}
+                </a>
+              </Text>
+            </Box>
+          </Flex>
         )
       },
     },
@@ -103,6 +104,8 @@ const MarathonUsers = ({ isLoading, res }) => {
     useTable({ columns: columns, data: memoizedData }, useSortBy)
 
   const TableComponent = () => {
+    const { colorMode } = useColorMode()
+
     return (
       <TableContainer mx="4" whiteSpace="nowrap" mt="4">
         <Table
@@ -111,7 +114,7 @@ const MarathonUsers = ({ isLoading, res }) => {
           variant="unstyled"
           overflowX="hidden"
           maxW="100%"
-          height="500px"
+          h="500px"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (
@@ -130,13 +133,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                       display="inline-block"
                       mr="4"
                       css={{ transform: "translateY(2px)" }}
-                    >
-                      {/* {column.isSorted ? (
-                        <FiChevronDown size="14px" />
-                      ) : (
-                        <FiChevronUp size="14px" />
-                      )} */}
-                    </Box>
+                    ></Box>
                   </Th>
                 ))}
               </Tr>
@@ -151,20 +148,18 @@ const MarathonUsers = ({ isLoading, res }) => {
                   borderBottom="1px solid rgba(0, 0, 0, 0.06)"
                   {...row.getRowProps()}
                   key={i}
+                  h="3rem"
                   style={{
                     background: `linear-gradient(90deg, #61CDBB50 ${
-                      // FIXME convert to 100%
                       row.original.timeSpent / 2000
-                    }%, #ffffff 0)`,
+                    }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
                 >
                   {row.cells.map((cell, j) => {
                     return (
                       <Td key={j} {...cell.getCellProps()}>
                         <Box display="inline-block">
-                          <Text fontSize="sm" color="gray.600">
-                            {cell.render("Cell")}
-                          </Text>
+                          <Text fontSize="sm">{cell.render("Cell")}</Text>
                         </Box>
                       </Td>
                     )
@@ -179,12 +174,10 @@ const MarathonUsers = ({ isLoading, res }) => {
   }
 
   const box = {
-    h: "600",
+    h: "630",
     w: "100%",
-    bg: "white",
+    bg: useColorModeValue("white", "gray.800"),
   }
-
-  const [dateClicked, setDateClicked] = useState(false)
 
   return (
     <>

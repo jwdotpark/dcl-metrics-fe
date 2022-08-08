@@ -1,5 +1,11 @@
 import dynamic from "next/dynamic"
-import { Text, Box, GridItem, Center } from "@chakra-ui/react"
+import {
+  Text,
+  Box,
+  GridItem,
+  Center,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
 import staticData from "../../../../public/data/unique-visitors.json"
@@ -9,9 +15,9 @@ import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ res, visitorLoading }) => {
   const box = {
-    h: "570",
+    h: "630",
     w: "100%",
-    bg: "white",
+    bg: useColorModeValue("white", "gray.800"),
   }
 
   const LineChartComponent = ({ box, res }) => {
@@ -26,7 +32,7 @@ const UniqueVisitors = ({ res, visitorLoading }) => {
       },
     ]
     return (
-      <GridItem w={box.w} h="500" bg={box.bg} borderRadius="md">
+      <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md">
         <LineChart data={result} />
       </GridItem>
     )

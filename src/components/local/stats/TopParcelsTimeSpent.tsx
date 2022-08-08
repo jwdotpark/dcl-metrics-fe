@@ -12,6 +12,7 @@ import {
   Image,
   GridItem,
   Button,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { convertSeconds } from "../../../lib/hooks/utils"
@@ -64,7 +65,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
             minW="5rem"
             borderRadius="md"
             border="2px solid"
-            borderColor="gray.300"
+            borderColor="gray.500"
             overflow="clip"
             boxShadow="md"
           >
@@ -238,9 +239,9 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
   }
 
   const box = {
-    h: "auto",
+    h: "630",
     w: "100%",
-    bg: "white",
+    bg: useColorModeValue("white", "gray.800"),
   }
 
   return (
@@ -257,7 +258,13 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
           <Box>
             <Text fontSize="xl" mb="1" pt="4">
               <b>Top Parcels Time Spent </b>
-              <Text fontSize="sm" color="gray.500">
+              <Text
+                fontSize="sm"
+                color="gray.500"
+                whiteSpace="nowrap"
+                overflow="hidden"
+                textOverflow="ellipsis"
+              >
                 Parcels with the most time spent on them in the last 7 days
               </Text>
             </Text>

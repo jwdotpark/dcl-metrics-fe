@@ -9,23 +9,22 @@ import {
   Th,
   Thead,
   Tr,
-  Image,
-  TableCaption,
+  useColorModeValue,
+  useColorMode,
+  Flex,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { fetchResult } from "../../../lib/hooks/fetch"
 import GridBox from "../GridBox"
 import staticData from "../../../../public/data/explorers.json"
-import { FiLink } from "react-icons/fi"
 import Loading from "../Loading"
-import Pagination from "../Pagination"
 import ProfilePicture from "../ProfilePicture"
 
 const Explorers = () => {
   const box = {
-    h: "600",
+    h: "630",
     w: "100%",
-    bg: "white",
+    bg: useColorModeValue("white", "gray.800"),
   }
 
   const [res, setRes] = useState([])
@@ -57,6 +56,7 @@ const Explorers = () => {
 
   // create a table with data
   const TableComponent = () => {
+    const { colorMode } = useColorMode()
     return (
       <TableContainer mx="4" whiteSpace="nowrap" mt="4">
         <Table size="sm" variant="unstyled" height="450px" w="100%">
@@ -75,36 +75,40 @@ const Explorers = () => {
                   style={{
                     background: `linear-gradient(90deg, #F4756050 ${
                       item[1] / 10
-                    }%, #ffffff 0)`,
+                    }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
                   display="block"
+                  h="3rem"
                 >
                   <Td>
-                    <Box w="100px">
+                    <Box w="105px">
                       <Text as="kbd">
                         <b>{item[1]}</b>
                       </Text>
                     </Box>
                   </Td>
                   <Td>
-                    <a
-                      target="_blank"
-                      href={"https://etherscan.io/address/" + `${item[0]}`}
-                      rel="noreferrer"
-                    >
-                      <Box display="inline-block" mr="2">
+                    <Flex>
+                      <Box display="inline" mr="2">
                         <ProfilePicture address={item[0]} modal={false} />
                       </Box>
-                      <Text
-                        color="gray.600"
-                        as="kbd"
-                        display="inline-block"
-                        _hover={{ color: "gray.900" }}
-                        css={{ transform: "translateY(3px)" }}
-                      >
-                        {item[0]}
-                      </Text>
-                    </a>
+                      <Box display="inline-block" mt="1.5">
+                        <a
+                          target="_blank"
+                          href={"https://etherscan.io/address/" + `${item[0]}`}
+                          rel="noreferrer"
+                        >
+                          <Text
+                            as="kbd"
+                            _hover={{ color: "gray.600" }}
+                            // eslint-disable-next-line
+                            color={useColorModeValue("gray.800", "gray.200")}
+                          >
+                            {item[0]}
+                          </Text>
+                        </a>
+                      </Box>
+                    </Flex>
                   </Td>
                 </Tr>
               )
