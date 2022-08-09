@@ -33,8 +33,17 @@ const LineChart = ({ data }) => {
       axisBottom={{
         orient: "bottom",
         tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
+        tickPadding: 10,
+        tickRotation: 45,
+        renderTick: (tick) => {
+          return (
+            <text x={tick.x - 17} y={tick.y + 20} fontSize="12px">
+              {/* remove '2022-' in value */}
+              {tick.value.replace(/2022-/, "")}
+              {/* {tick.value} */}
+            </text>
+          )
+        },
       }}
       axisLeft={{
         orient: "left",

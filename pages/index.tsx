@@ -63,10 +63,11 @@ const GlobalPage: NextPage = () => {
   }
 
   useEffect(() => {
-    if (ENV === "prod") {
+    if (process.env.ENV === "prod") {
       fetchData()
     }
     console.log("origin: ", data)
+
     // eslint-disable-next-line
   }, [])
 
