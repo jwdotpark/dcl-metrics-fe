@@ -40,7 +40,7 @@ const LineChart = ({ data }) => {
           return (
             <text
               x={tick.x - 17}
-              y={tick.y + 20}
+              y={tick.y + 17}
               fontSize="12px"
               fill={colorMode === "light" ? "gray.800" : "white"}
             >

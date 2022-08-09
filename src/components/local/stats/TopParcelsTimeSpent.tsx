@@ -32,6 +32,8 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
   // const [page, setPage] = useState(1)
   // const [rowsPerPage, setRowsPerPage] = useState(5)
 
+  console.log("parcel: ", parcel)
+
   const data = Object.entries(parcel)
   const dataArr = []
   for (let i = 0; i < data.length; i++) {

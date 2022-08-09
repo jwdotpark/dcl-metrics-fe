@@ -67,7 +67,6 @@ const GlobalPage: NextPage = () => {
       fetchData()
     }
     console.log("origin: ", data)
-
     // eslint-disable-next-line
   }, [])
 
