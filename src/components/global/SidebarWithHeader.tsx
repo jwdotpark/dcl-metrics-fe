@@ -27,6 +27,7 @@ import {
   FiMenu,
   FiArrowLeftCircle,
   FiArrowRightCircle,
+  FiAnchor,
 } from "react-icons/fi"
 import { IconType } from "react-icons"
 import { ReactText } from "react"
@@ -127,7 +128,7 @@ const SidebarContent = ({
   const { colorMode } = useColorMode()
   return (
     <Box
-      transition=".5s ease"
+      transition=".25s ease"
       bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
@@ -166,14 +167,37 @@ const SidebarContent = ({
           <Link href="/" passHref>
             <a>
               <NavItem
+                height="3rem"
                 icon={FiTrendingUp}
                 bg={
                   router.pathname === "/" && // eslint-disable-next-line
                   useColorModeValue("gray.200", "gray.700")
                 }
               >
-                <Text fontSize="xl" as={router.pathname === "/" && "u"}>
+                <Text fontSize="lg" as={router.pathname === "/" && "u"}>
                   Global
+                </Text>
+              </NavItem>
+            </a>
+          </Link>
+        </Box>
+        <Box>
+          <Link href="/changelog" passHref>
+            <a>
+              <NavItem
+                height="3rem"
+                icon={FiAnchor}
+                bg={
+                  router.pathname === "/changelog" &&
+                  // eslint-disable-next-line
+                  useColorModeValue("gray.200", "gray.700")
+                }
+              >
+                <Text
+                  fontSize="lg"
+                  as={router.pathname === "/changelog" && "u"}
+                >
+                  Change Log
                 </Text>
               </NavItem>
             </a>
@@ -183,6 +207,7 @@ const SidebarContent = ({
           <Link href="/about" passHref>
             <a>
               <NavItem
+                height="3rem"
                 icon={FiCompass}
                 bg={
                   router.pathname === "/about" &&
@@ -190,7 +215,7 @@ const SidebarContent = ({
                   useColorModeValue("gray.200", "gray.700")
                 }
               >
-                <Text fontSize="xl" as={router.pathname === "/about" && "u"}>
+                <Text fontSize="lg" as={router.pathname === "/about" && "u"}>
                   About
                 </Text>
               </NavItem>
@@ -200,6 +225,7 @@ const SidebarContent = ({
         <Spacer />
         <Box display={{ base: "none", md: "block" }}>
           <NavItem
+            height="3rem"
             icon={sidebarOpen ? FiArrowLeftCircle : FiArrowRightCircle}
             onClick={handleSidebar}
           >
@@ -265,7 +291,7 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
       // NOTE
-      transition=".5s ease"
+      transition=".25s ease"
       ml={{ base: 0, md: sidebarStatus }}
       px={{ base: 4, md: 4 }}
       height="20"
