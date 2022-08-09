@@ -59,7 +59,7 @@ const RecentExplorers = () => {
     valueArr.push(data[i][1])
   }
 
-  const [currentDate, setCurrentDate] = useState(6)
+  const [currentDate, setCurrentDate] = useState(valueArr.length)
 
   const DateSelector = () => {
     return (
