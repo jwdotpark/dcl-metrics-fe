@@ -6,6 +6,7 @@ const Layout = dynamic(() => import("../src/components/layout/layout"), {
   ssr: false,
 })
 
+import staticGlobal from "../public/data/global.json"
 import staticMarathonUsers from "../public/data/marathon-users.json"
 import staticVisitors from "../public/data/unique-visitors.json"
 import staticParcel from "../public/data/top-visited-parcel.json"
@@ -48,6 +49,26 @@ const GlobalPage: NextPage = () => {
   const ENV = process.env.NEXT_PUBLIC_ENV
 
   const [gridNum, setGridNum] = useState(2)
+
+  // --------------- global fetch -----------------
+  const [data, setData] = useState(staticGlobal)
+  const [isDataLoading, setIsDataLoading] = useState(false)
+
+  const fetchData = async () => {
+    setIsDataLoading(true)
+    const response = await fetch("/api/fetch/global")
+    const result = await response.json()
+    setData(result.data)
+    setIsDataLoading(false)
+  }
+
+  useEffect(() => {
+    if (ENV === "prod") {
+      fetchData()
+    }
+    console.log("origin: ", data)
+    // eslint-disable-next-line
+  }, [])
 
   // --------------- unique visitors -----------------
   const [visitor, setVisitor] = useState([])
@@ -122,12 +143,24 @@ const GlobalPage: NextPage = () => {
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
-        <UniqueVisitors res={visitor} visitorLoading={visitorLoading} />
-        <TotalVisitedParcels res={visitor} visitorLoading={visitorLoading} />
-        <MarathonUsers isLoading={isLoading} res={res} />
-        <RecentMarathonUsers isLoading={isLoading} res={res} />
-        <Explorers />
-        <RecentExplorers />
+        <UniqueVisitors res={data.global} visitorLoading={isDataLoading} />
+        <TotalVisitedParcels res={data.global} visitorLoading={isDataLoading} />
+        <MarathonUsers
+          res={data.users.daily.time_spent}
+          isLoading={isDataLoading}
+        />
+        <RecentMarathonUsers
+          res={data.users.daily.time_spent}
+          isLoading={isDataLoading}
+        />
+        <Explorers
+          res={data.users.top.parcels_visited}
+          isLoading={isDataLoading}
+        />
+        <RecentExplorers
+          res={data.users.daily.parcels_visited}
+          isLoading={isDataLoading}
+        />
         <TopParcelsTimeSpentComponent
           parcel={parcel}
           isParcelLoading={isParcelLoading}

@@ -20,31 +20,31 @@ import staticData from "../../../../public/data/explorers.json"
 import Loading from "../Loading"
 import ProfilePicture from "../ProfilePicture"
 
-const Explorers = () => {
+const Explorers = ({ res, isLoading }) => {
   const box = {
     h: "630",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const [res, setRes] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const ENV = process.env.NEXT_PUBLIC_ENV
+  // const [res, setRes] = useState([])
+  // const [isLoading, setIsLoading] = useState(false)
+  // const ENV = process.env.NEXT_PUBLIC_ENV
 
-  useEffect(() => {
-    if (ENV === "prod") {
-      setIsLoading(true)
-      const url = "api/fetch/explorers"
-      fetchResult(url, setRes)
-      setIsLoading(false)
-    } else {
-      setIsLoading(true)
-      // @ts-ignore
-      setRes(staticData)
-      setIsLoading(false)
-    }
-    // eslint-disable-next-line
-  }, [])
+  // useEffect(() => {
+  //   if (ENV === "prod") {
+  //     setIsLoading(true)
+  //     const url = "api/fetch/explorers"
+  //     fetchResult(url, setRes)
+  //     setIsLoading(false)
+  //   } else {
+  //     setIsLoading(true)
+  //     // @ts-ignore
+  //     setRes(staticData)
+  //     setIsLoading(false)
+  //   }
+  //   // eslint-disable-next-line
+  // }, [])
 
   const data = Object.entries(res)
 
@@ -74,7 +74,7 @@ const Explorers = () => {
                   key={index}
                   style={{
                     background: `linear-gradient(90deg, #F4756050 ${
-                      item[1] / 10
+                      Number(item[1]) / 10
                     }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
                   display="block"
@@ -83,7 +83,7 @@ const Explorers = () => {
                   <Td>
                     <Box w="105px">
                       <Text as="kbd">
-                        <b>{item[1]}</b>
+                        <b>{Number(item[1])}</b>
                       </Text>
                     </Box>
                   </Td>
