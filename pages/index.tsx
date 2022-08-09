@@ -45,7 +45,7 @@ const TopParcelsTimeLogSpentVisit = dynamic(
 )
 
 const GlobalPage: NextPage = () => {
-  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
+  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 3 })
   const ENV = process.env.NEXT_PUBLIC_ENV
 
   const [gridNum, setGridNum] = useState(2)

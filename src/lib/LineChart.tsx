@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
-import { useColorModeValue } from "@chakra-ui/react"
+import { useColorModeValue, useColorMode } from "@chakra-ui/react"
 
 const LineChart = ({ data }) => {
   const colors = [
@@ -15,6 +15,7 @@ const LineChart = ({ data }) => {
   ]
 
   const min = Math.min(...data[0].data.map((item) => item.y))
+  const { colorMode } = useColorMode()
   return (
     <ResponsiveLine
       data={data}
@@ -33,14 +34,17 @@ const LineChart = ({ data }) => {
       axisBottom={{
         orient: "bottom",
         tickSize: 5,
-        tickPadding: 10,
-        tickRotation: 45,
+        tickPadding: 0,
+        tickRotation: 0,
         renderTick: (tick) => {
           return (
-            <text x={tick.x - 17} y={tick.y + 20} fontSize="12px">
-              {/* remove '2022-' in value */}
+            <text
+              x={tick.x - 17}
+              y={tick.y + 20}
+              fontSize="12px"
+              fill={colorMode === "light" ? "gray.800" : "white"}
+            >
               {tick.value.replace(/2022-/, "")}
-              {/* {tick.value} */}
             </text>
           )
         },
