@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import dynamic from "next/dynamic"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
@@ -9,6 +9,8 @@ const Layout = dynamic(() => import("../src/components/layout/layout"), {
 import staticMarathonUsers from "../public/data/marathon-users.json"
 import staticVisitors from "../public/data/unique-visitors.json"
 import staticParcel from "../public/data/top-visited-parcel.json"
+
+import { DataContext } from "../src/lib/hooks/DataProvider"
 
 const MarathonUsers = dynamic(
   () => import("../src/components/local/stats/MarathonUsers"),
@@ -118,6 +120,9 @@ const GlobalPage: NextPage = () => {
     }
     // eslint-disable-next-line
   }, [])
+
+  const dataContext = useContext(DataContext)
+  console.log(dataContext)
 
   return (
     <Layout>
