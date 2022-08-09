@@ -10,8 +10,6 @@ import staticMarathonUsers from "../public/data/marathon-users.json"
 import staticVisitors from "../public/data/unique-visitors.json"
 import staticParcel from "../public/data/top-visited-parcel.json"
 
-import { DataContext } from "../src/lib/hooks/DataProvider"
-
 const MarathonUsers = dynamic(
   () => import("../src/components/local/stats/MarathonUsers"),
   { ssr: false }
@@ -120,9 +118,6 @@ const GlobalPage: NextPage = () => {
     }
     // eslint-disable-next-line
   }, [])
-
-  const dataContext = useContext(DataContext)
-  console.log(dataContext)
 
   return (
     <Layout>
