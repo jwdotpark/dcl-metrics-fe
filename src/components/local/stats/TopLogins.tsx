@@ -24,7 +24,7 @@ import { FiChevronUp, FiChevronDown } from "react-icons/fi"
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
 // TopParcelsTimeLogSpentVisit
-const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
+const TopLogins = ({ parcel, isParcelLoading }) => {
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
   const mapUrl = "/map.png?width=auto&height=auto&size=15"
 
@@ -45,6 +45,9 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
     dataArr[i].mapUrl = baseUrl + coord.replace(",", "/") + mapUrl
   }
 
+  // sort dataArr by logins
+  dataArr.sort((a, b) => b.logins - a.logins)
+
   const COLUMNS = [
     {
       Header: "#",
@@ -62,7 +65,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
       Cell: ({ value }) => {
         return (
           <Box
-            minW="5rem"
+            maxW="8rem"
             borderRadius="md"
             border="2px solid"
             borderColor="gray.500"
@@ -70,7 +73,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
             boxShadow="md"
           >
             <Image
-              height="4.75rem"
+              boxSize="4.5rem"
               w="100%"
               src={value}
               alt="map image"
@@ -92,10 +95,10 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
       Header: "Logins",
       accessor: "logins",
     },
-    {
-      Header: "Logouts",
-      accessor: "logouts",
-    },
+    // {
+    //   Header: "Logouts",
+    //   accessor: "logouts",
+    // },
   ]
 
   // eslint-disable-next-line
@@ -190,7 +193,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
           </Table>
         </TableContainer>
         {/* pagination  */}
-        <Center m="2">
+        {/* <Center m="2">
           <Button
             size="sm"
             variant="ghost"
@@ -227,7 +230,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
           >
             <FiChevronsRight size="12" />
           </Button>
-        </Center>
+        </Center> */}
       </>
     )
   }
@@ -251,7 +254,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
         <Box position="relative" mt="4" mx="5">
           <Box>
             <Text fontSize="xl" mb="1" pt="4">
-              <b>Parcel Logins & Logouts</b>
+              <b>Parcel With Most Logins</b>
               <Text
                 fontSize="sm"
                 color="gray.500"
@@ -259,7 +262,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
                 overflow="hidden"
                 textOverflow="ellipsis"
               >
-                Parcels with the most sessions in the last 7 days
+                Parcels with the most initial contacts in the last 7 days
               </Text>
             </Text>
           </Box>
@@ -278,4 +281,4 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default TopParcelsTimeLogSpentVisit
+export default TopLogins

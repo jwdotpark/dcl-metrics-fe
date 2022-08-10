@@ -1,98 +1,44 @@
 {
   "global": [
-    { "date": "2022-08-02", "unique_users": 9379, "active_parcels": 5548 },
-    { "date": "2022-08-03", "unique_users": 9144, "active_parcels": 5427 },
-    { "date": "2022-08-04", "unique_users": 9255, "active_parcels": 5233 },
-    { "date": "2022-08-05", "unique_users": 9000, "active_parcels": 4844 },
-    { "date": "2022-08-06", "unique_users": 8351, "active_parcels": 4249 },
-    { "date": "2022-08-07", "unique_users": 7792, "active_parcels": 4400 },
-    { "date": "2022-08-08", "unique_users": 8740, "active_parcels": 5153 }
+    {
+      "date": "2022-08-03",
+      "unique_users": 9144,
+      "active_parcels": 5427
+    },
+    {
+      "date": "2022-08-04",
+      "unique_users": 9255,
+      "active_parcels": 5233
+    },
+    {
+      "date": "2022-08-05",
+      "unique_users": 9000,
+      "active_parcels": 4844
+    },
+    {
+      "date": "2022-08-06",
+      "unique_users": 8351,
+      "active_parcels": 4249
+    },
+    {
+      "date": "2022-08-07",
+      "unique_users": 7792,
+      "active_parcels": 4400
+    },
+    {
+      "date": "2022-08-08",
+      "unique_users": 8740,
+      "active_parcels": 5153
+    },
+    {
+      "date": "2022-08-09",
+      "unique_users": 8831,
+      "active_parcels": 5252
+    }
   ],
   "parcels": {
     "daily": {
       "logins": {
-        "2022-08-02": [
-          {
-            "coordinates": "-100,127",
-            "avg_time_spent": 8823,
-            "avg_time_spent_afk": 4923,
-            "unique_visitors": 2985,
-            "logins": 491,
-            "logouts": 233
-          },
-          {
-            "coordinates": "-107,133",
-            "avg_time_spent": 10733,
-            "avg_time_spent_afk": 9611,
-            "unique_visitors": 2080,
-            "logins": 272,
-            "logouts": 335
-          },
-          {
-            "coordinates": "-101,127",
-            "avg_time_spent": 10450,
-            "avg_time_spent_afk": 8556,
-            "unique_visitors": 2099,
-            "logins": 215,
-            "logouts": 311
-          },
-          {
-            "coordinates": "1,-1",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 1042,
-            "logins": 172,
-            "logouts": null
-          },
-          {
-            "coordinates": "0,-1",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 1059,
-            "logins": 167,
-            "logouts": null
-          },
-          {
-            "coordinates": "-101,129",
-            "avg_time_spent": 10776,
-            "avg_time_spent_afk": 8922,
-            "unique_visitors": 1372,
-            "logins": 104,
-            "logouts": 156
-          },
-          {
-            "coordinates": "-107,135",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 908,
-            "logins": 93,
-            "logouts": null
-          },
-          {
-            "coordinates": "-101,128",
-            "avg_time_spent": 7667,
-            "avg_time_spent_afk": 5062,
-            "unique_visitors": 1305,
-            "logins": 90,
-            "logouts": 135
-          },
-          {
-            "coordinates": "-109,135",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 908,
-            "logins": 87,
-            "logouts": null
-          },
-          {
-            "coordinates": "-29,55",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": null,
-            "logins": 86,
-            "logouts": null
-          }
-        ],
         "2022-08-03": [
           {
             "coordinates": "-100,127",
@@ -177,20 +123,20 @@
         ],
         "2022-08-04": [
           {
-            "coordinates": "-71,85",
-            "avg_time_spent": 82699,
-            "avg_time_spent_afk": null,
-            "unique_visitors": null,
-            "logins": 7,
-            "logouts": null
-          },
-          {
             "coordinates": "-100,127",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": 2979,
             "logins": 7,
             "logouts": 11
+          },
+          {
+            "coordinates": "-71,85",
+            "avg_time_spent": 82699,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 7,
+            "logouts": null
           },
           {
             "coordinates": "-71,84",
@@ -209,20 +155,20 @@
             "logouts": 2
           },
           {
-            "coordinates": "-109,135",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": null,
-            "logins": 3,
-            "logouts": 3
-          },
-          {
             "coordinates": "-107,133",
             "avg_time_spent": 34353,
             "avg_time_spent_afk": null,
             "unique_visitors": 2077,
             "logins": 3,
             "logouts": 5
+          },
+          {
+            "coordinates": "-109,135",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 3,
+            "logouts": 3
           },
           {
             "coordinates": "-108,135",
@@ -485,20 +431,20 @@
             "logouts": 8
           },
           {
-            "coordinates": "-107,135",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": null,
-            "logins": 6,
-            "logouts": null
-          },
-          {
             "coordinates": "-101,129",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": 1183,
             "logins": 6,
             "logouts": 13
+          },
+          {
+            "coordinates": "-107,135",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 6,
+            "logouts": null
           }
         ],
         "2022-08-07": [
@@ -527,20 +473,20 @@
             "logouts": 16
           },
           {
-            "coordinates": "-29,55",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": null,
-            "logins": 9,
-            "logouts": null
-          },
-          {
             "coordinates": "119,-12",
             "avg_time_spent": 17837,
             "avg_time_spent_afk": null,
             "unique_visitors": null,
             "logins": 9,
             "logouts": 8
+          },
+          {
+            "coordinates": "-29,55",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 9,
+            "logouts": null
           },
           {
             "coordinates": "-101,128",
@@ -586,26 +532,18 @@
         "2022-08-08": [
           {
             "coordinates": "-100,127",
-            "avg_time_spent": 6815,
-            "avg_time_spent_afk": 4437,
+            "avg_time_spent": 35610,
+            "avg_time_spent_afk": null,
             "unique_visitors": 2980,
-            "logins": 741,
-            "logouts": 332
-          },
-          {
-            "coordinates": "-107,133",
-            "avg_time_spent": 9516,
-            "avg_time_spent_afk": 8616,
-            "unique_visitors": 1953,
-            "logins": 323,
-            "logouts": 441
+            "logins": 46,
+            "logouts": 33
           },
           {
             "coordinates": "0,-1",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": 1053,
-            "logins": 274,
+            "logins": 29,
             "logouts": null
           },
           {
@@ -613,142 +551,150 @@
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": 1054,
-            "logins": 266,
+            "logins": 22,
+            "logouts": null
+          },
+          {
+            "coordinates": "119,-12",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 19,
+            "logouts": 17
+          },
+          {
+            "coordinates": "-107,133",
+            "avg_time_spent": 34497,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1953,
+            "logins": 17,
+            "logouts": 29
+          },
+          {
+            "coordinates": "38,103",
+            "avg_time_spent": 57911,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 12,
             "logouts": null
           },
           {
             "coordinates": "-101,127",
-            "avg_time_spent": 10858,
-            "avg_time_spent_afk": 7538,
+            "avg_time_spent": 38435,
+            "avg_time_spent_afk": null,
             "unique_visitors": 2080,
-            "logins": 223,
-            "logouts": 381
+            "logins": 12,
+            "logouts": 13
+          },
+          {
+            "coordinates": "1,0",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 11,
+            "logouts": null
+          },
+          {
+            "coordinates": "-99,129",
+            "avg_time_spent": 73969,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 10,
+            "logouts": 11
+          },
+          {
+            "coordinates": "117,-26",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 8,
+            "logouts": 7
+          }
+        ],
+        "2022-08-09": [
+          {
+            "coordinates": "-100,127",
+            "avg_time_spent": 7784,
+            "avg_time_spent_afk": 5234,
+            "unique_visitors": 2860,
+            "logins": 1357,
+            "logouts": 650
+          },
+          {
+            "coordinates": "-107,133",
+            "avg_time_spent": 9783,
+            "avg_time_spent_afk": 8921,
+            "unique_visitors": 1971,
+            "logins": 677,
+            "logouts": 933
+          },
+          {
+            "coordinates": "0,-1",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1098,
+            "logins": 583,
+            "logouts": null
+          },
+          {
+            "coordinates": "-101,127",
+            "avg_time_spent": 10476,
+            "avg_time_spent_afk": 8105,
+            "unique_visitors": 2031,
+            "logins": 566,
+            "logouts": 802
+          },
+          {
+            "coordinates": "1,-1",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1078,
+            "logins": 530,
+            "logouts": null
           },
           {
             "coordinates": "-101,129",
-            "avg_time_spent": 10702,
-            "avg_time_spent_afk": 6936,
-            "unique_visitors": 1265,
-            "logins": 119,
-            "logouts": 213
+            "avg_time_spent": 9160,
+            "avg_time_spent_afk": 6396,
+            "unique_visitors": 1225,
+            "logins": 268,
+            "logouts": 463
           },
           {
             "coordinates": "-29,55",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": null,
-            "logins": 118,
+            "logins": 230,
             "logouts": null
+          },
+          {
+            "coordinates": "-101,128",
+            "avg_time_spent": 7629,
+            "avg_time_spent_afk": 5800,
+            "unique_visitors": 1145,
+            "logins": 230,
+            "logouts": 312
           },
           {
             "coordinates": "-107,135",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
-            "unique_visitors": null,
-            "logins": 112,
+            "unique_visitors": 874,
+            "logins": 228,
             "logouts": null
           },
           {
-            "coordinates": "-101,128",
-            "avg_time_spent": 7563,
-            "avg_time_spent_afk": 7621,
-            "unique_visitors": 1235,
-            "logins": 109,
-            "logouts": 160
-          },
-          {
             "coordinates": "-109,135",
-            "avg_time_spent": 5433,
-            "avg_time_spent_afk": 2337,
-            "unique_visitors": 883,
-            "logins": 107,
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 856,
+            "logins": 222,
             "logouts": null
           }
         ]
       },
       "logouts": {
-        "2022-08-02": [
-          {
-            "coordinates": "-107,133",
-            "avg_time_spent": 10733,
-            "avg_time_spent_afk": 9611,
-            "unique_visitors": 2080,
-            "logins": 272,
-            "logouts": 335
-          },
-          {
-            "coordinates": "-101,127",
-            "avg_time_spent": 10450,
-            "avg_time_spent_afk": 8556,
-            "unique_visitors": 2099,
-            "logins": 215,
-            "logouts": 311
-          },
-          {
-            "coordinates": "-100,127",
-            "avg_time_spent": 8823,
-            "avg_time_spent_afk": 4923,
-            "unique_visitors": 2985,
-            "logins": 491,
-            "logouts": 233
-          },
-          {
-            "coordinates": "-101,129",
-            "avg_time_spent": 10776,
-            "avg_time_spent_afk": 8922,
-            "unique_visitors": 1372,
-            "logins": 104,
-            "logouts": 156
-          },
-          {
-            "coordinates": "-101,128",
-            "avg_time_spent": 7667,
-            "avg_time_spent_afk": 5062,
-            "unique_visitors": 1305,
-            "logins": 90,
-            "logouts": 135
-          },
-          {
-            "coordinates": "-108,133",
-            "avg_time_spent": 8307,
-            "avg_time_spent_afk": 4501,
-            "unique_visitors": 941,
-            "logins": null,
-            "logouts": 96
-          },
-          {
-            "coordinates": "-101,126",
-            "avg_time_spent": 8629,
-            "avg_time_spent_afk": 4485,
-            "unique_visitors": null,
-            "logins": null,
-            "logouts": 66
-          },
-          {
-            "coordinates": "-108,135",
-            "avg_time_spent": 6581,
-            "avg_time_spent_afk": 4854,
-            "unique_visitors": null,
-            "logins": null,
-            "logouts": 66
-          },
-          {
-            "coordinates": "-100,128",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": null,
-            "logins": null,
-            "logouts": 54
-          },
-          {
-            "coordinates": "-100,126",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": null,
-            "logins": null,
-            "logouts": 43
-          }
-        ],
         "2022-08-03": [
           {
             "coordinates": "-107,133",
@@ -881,14 +827,6 @@
             "logouts": 3
           },
           {
-            "coordinates": "0,-1",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 1049,
-            "logins": 2,
-            "logouts": 2
-          },
-          {
             "coordinates": "1,-1",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
@@ -897,19 +835,27 @@
             "logouts": 2
           },
           {
-            "coordinates": "-101,127",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 2095,
-            "logins": 5,
-            "logouts": 2
-          },
-          {
             "coordinates": "-109,133",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": null,
             "logins": null,
+            "logouts": 2
+          },
+          {
+            "coordinates": "0,-1",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1049,
+            "logins": 2,
+            "logouts": 2
+          },
+          {
+            "coordinates": "-101,127",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 2095,
+            "logins": 5,
             "logouts": 2
           }
         ],
@@ -1241,68 +1187,142 @@
         ],
         "2022-08-08": [
           {
+            "coordinates": "-100,127",
+            "avg_time_spent": 35610,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 2980,
+            "logins": 46,
+            "logouts": 33
+          },
+          {
             "coordinates": "-107,133",
-            "avg_time_spent": 9516,
-            "avg_time_spent_afk": 8616,
+            "avg_time_spent": 34497,
+            "avg_time_spent_afk": null,
             "unique_visitors": 1953,
-            "logins": 323,
-            "logouts": 441
+            "logins": 17,
+            "logouts": 29
+          },
+          {
+            "coordinates": "119,-12",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 19,
+            "logouts": 17
           },
           {
             "coordinates": "-101,127",
-            "avg_time_spent": 10858,
-            "avg_time_spent_afk": 7538,
+            "avg_time_spent": 38435,
+            "avg_time_spent_afk": null,
             "unique_visitors": 2080,
-            "logins": 223,
-            "logouts": 381
-          },
-          {
-            "coordinates": "-100,127",
-            "avg_time_spent": 6815,
-            "avg_time_spent_afk": 4437,
-            "unique_visitors": 2980,
-            "logins": 741,
-            "logouts": 332
-          },
-          {
-            "coordinates": "-101,129",
-            "avg_time_spent": 10702,
-            "avg_time_spent_afk": 6936,
-            "unique_visitors": 1265,
-            "logins": 119,
-            "logouts": 213
+            "logins": 12,
+            "logouts": 13
           },
           {
             "coordinates": "-101,128",
-            "avg_time_spent": 7563,
-            "avg_time_spent_afk": 7621,
+            "avg_time_spent": 31992,
+            "avg_time_spent_afk": null,
             "unique_visitors": 1235,
-            "logins": 109,
-            "logouts": 160
+            "logins": null,
+            "logouts": 12
           },
           {
-            "coordinates": "-108,133",
-            "avg_time_spent": 7424,
-            "avg_time_spent_afk": 5853,
+            "coordinates": "-99,129",
+            "avg_time_spent": 73969,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 10,
+            "logouts": 11
+          },
+          {
+            "coordinates": "-103,-97",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
             "unique_visitors": null,
             "logins": null,
-            "logouts": 118
+            "logouts": 8
           },
           {
             "coordinates": "-101,126",
-            "avg_time_spent": 8084,
-            "avg_time_spent_afk": 5831,
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
             "unique_visitors": null,
             "logins": null,
-            "logouts": 93
+            "logouts": 7
+          },
+          {
+            "coordinates": "117,-26",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 8,
+            "logouts": 7
+          },
+          {
+            "coordinates": "-101,129",
+            "avg_time_spent": 30131,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1265,
+            "logins": null,
+            "logouts": 6
+          }
+        ],
+        "2022-08-09": [
+          {
+            "coordinates": "-107,133",
+            "avg_time_spent": 9783,
+            "avg_time_spent_afk": 8921,
+            "unique_visitors": 1971,
+            "logins": 677,
+            "logouts": 933
+          },
+          {
+            "coordinates": "-101,127",
+            "avg_time_spent": 10476,
+            "avg_time_spent_afk": 8105,
+            "unique_visitors": 2031,
+            "logins": 566,
+            "logouts": 802
+          },
+          {
+            "coordinates": "-100,127",
+            "avg_time_spent": 7784,
+            "avg_time_spent_afk": 5234,
+            "unique_visitors": 2860,
+            "logins": 1357,
+            "logouts": 650
+          },
+          {
+            "coordinates": "-101,129",
+            "avg_time_spent": 9160,
+            "avg_time_spent_afk": 6396,
+            "unique_visitors": 1225,
+            "logins": 268,
+            "logouts": 463
+          },
+          {
+            "coordinates": "-101,128",
+            "avg_time_spent": 7629,
+            "avg_time_spent_afk": 5800,
+            "unique_visitors": 1145,
+            "logins": 230,
+            "logouts": 312
           },
           {
             "coordinates": "-100,128",
-            "avg_time_spent": 7057,
-            "avg_time_spent_afk": 4132,
-            "unique_visitors": 972,
+            "avg_time_spent": 6586,
+            "avg_time_spent_afk": 4416,
+            "unique_visitors": 932,
             "logins": null,
-            "logouts": 91
+            "logouts": 221
+          },
+          {
+            "coordinates": "-108,133",
+            "avg_time_spent": 7208,
+            "avg_time_spent_afk": 4348,
+            "unique_visitors": null,
+            "logins": null,
+            "logouts": 184
           },
           {
             "coordinates": "-108,135",
@@ -1310,101 +1330,27 @@
             "avg_time_spent_afk": null,
             "unique_visitors": null,
             "logins": null,
-            "logouts": 69
+            "logouts": 158
+          },
+          {
+            "coordinates": "-101,126",
+            "avg_time_spent": 9145,
+            "avg_time_spent_afk": 6438,
+            "unique_visitors": null,
+            "logins": null,
+            "logouts": 158
           },
           {
             "coordinates": "119,-12",
-            "avg_time_spent": 10374,
-            "avg_time_spent_afk": 12675,
+            "avg_time_spent": 11527,
+            "avg_time_spent_afk": 8022,
             "unique_visitors": null,
             "logins": null,
-            "logouts": 63
+            "logouts": 134
           }
         ]
       },
       "time_spent": {
-        "2022-08-02": [
-          {
-            "coordinates": "119,-12",
-            "avg_time_spent": 12005,
-            "avg_time_spent_afk": 11290,
-            "unique_visitors": null,
-            "logins": null,
-            "logouts": null
-          },
-          {
-            "coordinates": "-101,129",
-            "avg_time_spent": 10776,
-            "avg_time_spent_afk": 8922,
-            "unique_visitors": 1372,
-            "logins": 104,
-            "logouts": 156
-          },
-          {
-            "coordinates": "-107,133",
-            "avg_time_spent": 10733,
-            "avg_time_spent_afk": 9611,
-            "unique_visitors": 2080,
-            "logins": 272,
-            "logouts": 335
-          },
-          {
-            "coordinates": "-101,127",
-            "avg_time_spent": 10450,
-            "avg_time_spent_afk": 8556,
-            "unique_visitors": 2099,
-            "logins": 215,
-            "logouts": 311
-          },
-          {
-            "coordinates": "-100,127",
-            "avg_time_spent": 8823,
-            "avg_time_spent_afk": 4923,
-            "unique_visitors": 2985,
-            "logins": 491,
-            "logouts": 233
-          },
-          {
-            "coordinates": "-101,126",
-            "avg_time_spent": 8629,
-            "avg_time_spent_afk": 4485,
-            "unique_visitors": null,
-            "logins": null,
-            "logouts": 66
-          },
-          {
-            "coordinates": "-108,133",
-            "avg_time_spent": 8307,
-            "avg_time_spent_afk": 4501,
-            "unique_visitors": 941,
-            "logins": null,
-            "logouts": 96
-          },
-          {
-            "coordinates": "-101,128",
-            "avg_time_spent": 7667,
-            "avg_time_spent_afk": 5062,
-            "unique_visitors": 1305,
-            "logins": 90,
-            "logouts": 135
-          },
-          {
-            "coordinates": "-108,135",
-            "avg_time_spent": 6581,
-            "avg_time_spent_afk": 4854,
-            "unique_visitors": null,
-            "logins": null,
-            "logouts": 66
-          },
-          {
-            "coordinates": "-109,133",
-            "avg_time_spent": 5520,
-            "avg_time_spent_afk": 3061,
-            "unique_visitors": null,
-            "logins": null,
-            "logouts": null
-          }
-        ],
         "2022-08-03": [
           {
             "coordinates": "-101,129",
@@ -1897,170 +1843,170 @@
         ],
         "2022-08-08": [
           {
-            "coordinates": "-101,127",
-            "avg_time_spent": 10858,
-            "avg_time_spent_afk": 7538,
-            "unique_visitors": 2080,
-            "logins": 223,
-            "logouts": 381
+            "coordinates": "-99,129",
+            "avg_time_spent": 73969,
+            "avg_time_spent_afk": null,
+            "unique_visitors": null,
+            "logins": 10,
+            "logouts": 11
           },
           {
-            "coordinates": "-101,129",
-            "avg_time_spent": 10702,
-            "avg_time_spent_afk": 6936,
-            "unique_visitors": 1265,
-            "logins": 119,
-            "logouts": 213
-          },
-          {
-            "coordinates": "119,-12",
-            "avg_time_spent": 10374,
-            "avg_time_spent_afk": 12675,
+            "coordinates": "120,-12",
+            "avg_time_spent": 64829,
+            "avg_time_spent_afk": null,
             "unique_visitors": null,
             "logins": null,
-            "logouts": 63
+            "logouts": null
           },
           {
-            "coordinates": "-107,133",
-            "avg_time_spent": 9516,
-            "avg_time_spent_afk": 8616,
-            "unique_visitors": 1953,
-            "logins": 323,
-            "logouts": 441
-          },
-          {
-            "coordinates": "-101,126",
-            "avg_time_spent": 8084,
-            "avg_time_spent_afk": 5831,
+            "coordinates": "38,103",
+            "avg_time_spent": 57911,
+            "avg_time_spent_afk": null,
             "unique_visitors": null,
-            "logins": null,
-            "logouts": 93
-          },
-          {
-            "coordinates": "-101,128",
-            "avg_time_spent": 7563,
-            "avg_time_spent_afk": 7621,
-            "unique_visitors": 1235,
-            "logins": 109,
-            "logouts": 160
+            "logins": 12,
+            "logouts": null
           },
           {
             "coordinates": "-108,133",
-            "avg_time_spent": 7424,
-            "avg_time_spent_afk": 5853,
+            "avg_time_spent": 51797,
+            "avg_time_spent_afk": null,
             "unique_visitors": null,
             "logins": null,
-            "logouts": 118
+            "logouts": null
           },
           {
-            "coordinates": "-100,128",
-            "avg_time_spent": 7057,
-            "avg_time_spent_afk": 4132,
-            "unique_visitors": 972,
+            "coordinates": "-109,133",
+            "avg_time_spent": 44610,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 879,
             "logins": null,
-            "logouts": 91
+            "logouts": null
+          },
+          {
+            "coordinates": "-101,127",
+            "avg_time_spent": 38435,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 2080,
+            "logins": 12,
+            "logouts": 13
           },
           {
             "coordinates": "-100,127",
-            "avg_time_spent": 6815,
-            "avg_time_spent_afk": 4437,
+            "avg_time_spent": 35610,
+            "avg_time_spent_afk": null,
             "unique_visitors": 2980,
-            "logins": 741,
-            "logouts": 332
+            "logins": 46,
+            "logouts": 33
           },
           {
-            "coordinates": "-109,135",
-            "avg_time_spent": 5433,
-            "avg_time_spent_afk": 2337,
-            "unique_visitors": 883,
-            "logins": 107,
+            "coordinates": "-107,133",
+            "avg_time_spent": 34497,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1953,
+            "logins": 17,
+            "logouts": 29
+          },
+          {
+            "coordinates": "-101,128",
+            "avg_time_spent": 31992,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1235,
+            "logins": null,
+            "logouts": 12
+          },
+          {
+            "coordinates": "-101,129",
+            "avg_time_spent": 30131,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1265,
+            "logins": null,
+            "logouts": 6
+          }
+        ],
+        "2022-08-09": [
+          {
+            "coordinates": "119,-12",
+            "avg_time_spent": 11527,
+            "avg_time_spent_afk": 8022,
+            "unique_visitors": null,
+            "logins": null,
+            "logouts": 134
+          },
+          {
+            "coordinates": "-101,127",
+            "avg_time_spent": 10476,
+            "avg_time_spent_afk": 8105,
+            "unique_visitors": 2031,
+            "logins": 566,
+            "logouts": 802
+          },
+          {
+            "coordinates": "-107,133",
+            "avg_time_spent": 9783,
+            "avg_time_spent_afk": 8921,
+            "unique_visitors": 1971,
+            "logins": 677,
+            "logouts": 933
+          },
+          {
+            "coordinates": "-101,129",
+            "avg_time_spent": 9160,
+            "avg_time_spent_afk": 6396,
+            "unique_visitors": 1225,
+            "logins": 268,
+            "logouts": 463
+          },
+          {
+            "coordinates": "-101,126",
+            "avg_time_spent": 9145,
+            "avg_time_spent_afk": 6438,
+            "unique_visitors": null,
+            "logins": null,
+            "logouts": 158
+          },
+          {
+            "coordinates": "-100,127",
+            "avg_time_spent": 7784,
+            "avg_time_spent_afk": 5234,
+            "unique_visitors": 2860,
+            "logins": 1357,
+            "logouts": 650
+          },
+          {
+            "coordinates": "-101,128",
+            "avg_time_spent": 7629,
+            "avg_time_spent_afk": 5800,
+            "unique_visitors": 1145,
+            "logins": 230,
+            "logouts": 312
+          },
+          {
+            "coordinates": "-108,133",
+            "avg_time_spent": 7208,
+            "avg_time_spent_afk": 4348,
+            "unique_visitors": null,
+            "logins": null,
+            "logouts": 184
+          },
+          {
+            "coordinates": "-100,128",
+            "avg_time_spent": 6586,
+            "avg_time_spent_afk": 4416,
+            "unique_visitors": 932,
+            "logins": null,
+            "logouts": 221
+          },
+          {
+            "coordinates": "-109,133",
+            "avg_time_spent": 5505,
+            "avg_time_spent_afk": 2126,
+            "unique_visitors": null,
+            "logins": null,
             "logouts": null
           }
         ]
       },
       "visitors": {
-        "2022-08-02": [
-          {
-            "coordinates": "-100,127",
-            "avg_time_spent": 8823,
-            "avg_time_spent_afk": 4923,
-            "unique_visitors": 2985,
-            "logins": 491,
-            "logouts": 233
-          },
-          {
-            "coordinates": "-101,127",
-            "avg_time_spent": 10450,
-            "avg_time_spent_afk": 8556,
-            "unique_visitors": 2099,
-            "logins": 215,
-            "logouts": 311
-          },
-          {
-            "coordinates": "-107,133",
-            "avg_time_spent": 10733,
-            "avg_time_spent_afk": 9611,
-            "unique_visitors": 2080,
-            "logins": 272,
-            "logouts": 335
-          },
-          {
-            "coordinates": "-101,129",
-            "avg_time_spent": 10776,
-            "avg_time_spent_afk": 8922,
-            "unique_visitors": 1372,
-            "logins": 104,
-            "logouts": 156
-          },
-          {
-            "coordinates": "-101,128",
-            "avg_time_spent": 7667,
-            "avg_time_spent_afk": 5062,
-            "unique_visitors": 1305,
-            "logins": 90,
-            "logouts": 135
-          },
-          {
-            "coordinates": "0,-1",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 1059,
-            "logins": 167,
-            "logouts": null
-          },
-          {
-            "coordinates": "1,-1",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 1042,
-            "logins": 172,
-            "logouts": null
-          },
-          {
-            "coordinates": "-108,133",
-            "avg_time_spent": 8307,
-            "avg_time_spent_afk": 4501,
-            "unique_visitors": 941,
-            "logins": null,
-            "logouts": 96
-          },
-          {
-            "coordinates": "-109,135",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 908,
-            "logins": 87,
-            "logouts": null
-          },
-          {
-            "coordinates": "-107,135",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 908,
-            "logins": 93,
-            "logouts": null
-          }
-        ],
         "2022-08-03": [
           {
             "coordinates": "-100,127",
@@ -2103,19 +2049,19 @@
             "logouts": 181
           },
           {
-            "coordinates": "1,-1",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 1048,
-            "logins": 238,
-            "logouts": null
-          },
-          {
             "coordinates": "0,-1",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": 1048,
             "logins": 231,
+            "logouts": null
+          },
+          {
+            "coordinates": "1,-1",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1048,
+            "logins": 238,
             "logouts": null
           },
           {
@@ -2326,14 +2272,6 @@
           },
           {
             "coordinates": "-101,127",
-            "avg_time_spent": 10263,
-            "avg_time_spent_afk": 7177,
-            "unique_visitors": 1991,
-            "logins": 866,
-            "logouts": 1197
-          },
-          {
-            "coordinates": "-101,127",
             "avg_time_spent": 23414,
             "avg_time_spent_afk": null,
             "unique_visitors": 1991,
@@ -2341,12 +2279,12 @@
             "logouts": 20
           },
           {
-            "coordinates": "-107,133",
-            "avg_time_spent": 10438,
-            "avg_time_spent_afk": 8339,
-            "unique_visitors": 1913,
-            "logins": 1014,
-            "logouts": 1275
+            "coordinates": "-101,127",
+            "avg_time_spent": 10263,
+            "avg_time_spent_afk": 7177,
+            "unique_visitors": 1991,
+            "logins": 866,
+            "logouts": 1197
           },
           {
             "coordinates": "-107,133",
@@ -2357,12 +2295,12 @@
             "logouts": 22
           },
           {
-            "coordinates": "-101,128",
-            "avg_time_spent": 30828,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 1189,
-            "logins": 7,
-            "logouts": 8
+            "coordinates": "-107,133",
+            "avg_time_spent": 10438,
+            "avg_time_spent_afk": 8339,
+            "unique_visitors": 1913,
+            "logins": 1014,
+            "logouts": 1275
           },
           {
             "coordinates": "-101,128",
@@ -2373,12 +2311,12 @@
             "logouts": 510
           },
           {
-            "coordinates": "-101,129",
-            "avg_time_spent": 8863,
-            "avg_time_spent_afk": 6462,
-            "unique_visitors": 1183,
-            "logins": 430,
-            "logouts": 629
+            "coordinates": "-101,128",
+            "avg_time_spent": 30828,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1189,
+            "logins": 7,
+            "logouts": 8
           },
           {
             "coordinates": "-101,129",
@@ -2389,12 +2327,12 @@
             "logouts": 13
           },
           {
-            "coordinates": "1,-1",
-            "avg_time_spent": null,
-            "avg_time_spent_afk": null,
-            "unique_visitors": 897,
-            "logins": 17,
-            "logouts": null
+            "coordinates": "-101,129",
+            "avg_time_spent": 8863,
+            "avg_time_spent_afk": 6462,
+            "unique_visitors": 1183,
+            "logins": 430,
+            "logouts": 629
           },
           {
             "coordinates": "1,-1",
@@ -2405,12 +2343,12 @@
             "logouts": null
           },
           {
-            "coordinates": "0,-1",
+            "coordinates": "1,-1",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
-            "unique_visitors": 815,
-            "logins": 10,
-            "logouts": 5
+            "unique_visitors": 897,
+            "logins": 17,
+            "logouts": null
           },
           {
             "coordinates": "0,-1",
@@ -2419,6 +2357,14 @@
             "unique_visitors": 815,
             "logins": 559,
             "logouts": null
+          },
+          {
+            "coordinates": "0,-1",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 815,
+            "logins": 10,
+            "logouts": 5
           },
           {
             "coordinates": "-109,133",
@@ -2454,19 +2400,19 @@
           },
           {
             "coordinates": "-108,133",
-            "avg_time_spent": 6431,
-            "avg_time_spent_afk": 5090,
-            "unique_visitors": 754,
-            "logins": null,
-            "logouts": 296
-          },
-          {
-            "coordinates": "-108,133",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": 754,
             "logins": null,
             "logouts": 6
+          },
+          {
+            "coordinates": "-108,133",
+            "avg_time_spent": 6431,
+            "avg_time_spent_afk": 5090,
+            "unique_visitors": 754,
+            "logins": null,
+            "logouts": 296
           }
         ],
         "2022-08-07": [
@@ -2554,50 +2500,50 @@
         "2022-08-08": [
           {
             "coordinates": "-100,127",
-            "avg_time_spent": 6815,
-            "avg_time_spent_afk": 4437,
+            "avg_time_spent": 35610,
+            "avg_time_spent_afk": null,
             "unique_visitors": 2980,
-            "logins": 741,
-            "logouts": 332
+            "logins": 46,
+            "logouts": 33
           },
           {
             "coordinates": "-101,127",
-            "avg_time_spent": 10858,
-            "avg_time_spent_afk": 7538,
+            "avg_time_spent": 38435,
+            "avg_time_spent_afk": null,
             "unique_visitors": 2080,
-            "logins": 223,
-            "logouts": 381
+            "logins": 12,
+            "logouts": 13
           },
           {
             "coordinates": "-107,133",
-            "avg_time_spent": 9516,
-            "avg_time_spent_afk": 8616,
+            "avg_time_spent": 34497,
+            "avg_time_spent_afk": null,
             "unique_visitors": 1953,
-            "logins": 323,
-            "logouts": 441
+            "logins": 17,
+            "logouts": 29
           },
           {
             "coordinates": "-101,129",
-            "avg_time_spent": 10702,
-            "avg_time_spent_afk": 6936,
+            "avg_time_spent": 30131,
+            "avg_time_spent_afk": null,
             "unique_visitors": 1265,
-            "logins": 119,
-            "logouts": 213
+            "logins": null,
+            "logouts": 6
           },
           {
             "coordinates": "-101,128",
-            "avg_time_spent": 7563,
-            "avg_time_spent_afk": 7621,
+            "avg_time_spent": 31992,
+            "avg_time_spent_afk": null,
             "unique_visitors": 1235,
-            "logins": 109,
-            "logouts": 160
+            "logins": null,
+            "logouts": 12
           },
           {
             "coordinates": "1,-1",
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": 1054,
-            "logins": 266,
+            "logins": 22,
             "logouts": null
           },
           {
@@ -2605,99 +2551,700 @@
             "avg_time_spent": null,
             "avg_time_spent_afk": null,
             "unique_visitors": 1053,
-            "logins": 274,
+            "logins": 29,
             "logouts": null
           },
           {
             "coordinates": "-100,128",
-            "avg_time_spent": 7057,
-            "avg_time_spent_afk": 4132,
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
             "unique_visitors": 972,
             "logins": null,
-            "logouts": 91
+            "logouts": null
           },
           {
             "coordinates": "-109,135",
-            "avg_time_spent": 5433,
-            "avg_time_spent_afk": 2337,
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
             "unique_visitors": 883,
-            "logins": 107,
+            "logins": null,
             "logouts": null
           },
           {
             "coordinates": "-109,133",
-            "avg_time_spent": null,
+            "avg_time_spent": 44610,
             "avg_time_spent_afk": null,
             "unique_visitors": 879,
             "logins": null,
+            "logouts": null
+          }
+        ],
+        "2022-08-09": [
+          {
+            "coordinates": "-100,127",
+            "avg_time_spent": 7784,
+            "avg_time_spent_afk": 5234,
+            "unique_visitors": 2860,
+            "logins": 1357,
+            "logouts": 650
+          },
+          {
+            "coordinates": "-101,127",
+            "avg_time_spent": 10476,
+            "avg_time_spent_afk": 8105,
+            "unique_visitors": 2031,
+            "logins": 566,
+            "logouts": 802
+          },
+          {
+            "coordinates": "-107,133",
+            "avg_time_spent": 9783,
+            "avg_time_spent_afk": 8921,
+            "unique_visitors": 1971,
+            "logins": 677,
+            "logouts": 933
+          },
+          {
+            "coordinates": "-101,129",
+            "avg_time_spent": 9160,
+            "avg_time_spent_afk": 6396,
+            "unique_visitors": 1225,
+            "logins": 268,
+            "logouts": 463
+          },
+          {
+            "coordinates": "-101,128",
+            "avg_time_spent": 7629,
+            "avg_time_spent_afk": 5800,
+            "unique_visitors": 1145,
+            "logins": 230,
+            "logouts": 312
+          },
+          {
+            "coordinates": "0,-1",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1098,
+            "logins": 583,
+            "logouts": null
+          },
+          {
+            "coordinates": "1,-1",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 1078,
+            "logins": 530,
+            "logouts": null
+          },
+          {
+            "coordinates": "-100,128",
+            "avg_time_spent": 6586,
+            "avg_time_spent_afk": 4416,
+            "unique_visitors": 932,
+            "logins": null,
+            "logouts": 221
+          },
+          {
+            "coordinates": "-107,135",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 874,
+            "logins": 228,
+            "logouts": null
+          },
+          {
+            "coordinates": "-109,135",
+            "avg_time_spent": null,
+            "avg_time_spent_afk": null,
+            "unique_visitors": 856,
+            "logins": 222,
             "logouts": null
           }
         ]
       }
     },
     "top": {
-      "logins": "{\"-100,127\":{\"avg_time_spent\":158757,\"avg_time_spent_afk\":28057,\"unique_visitors\":23255,\"logins\":5359,\"logouts\":2523},\"-107,133\":{\"avg_time_spent\":182793,\"avg_time_spent_afk\":44270,\"unique_visitors\":16072,\"logins\":2845,\"logouts\":3650},\"-101,127\":{\"avg_time_spent\":74630,\"avg_time_spent_afk\":38409,\"unique_visitors\":16564,\"logins\":2354,\"logouts\":3344},\"1,-1\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":6771,\"logins\":1795,\"logouts\":5},\"0,-1\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":6744,\"logins\":1745,\"logouts\":7},\"-101,129\":{\"avg_time_spent\":147867,\"avg_time_spent_afk\":36301,\"unique_visitors\":10344,\"logins\":1222,\"logouts\":1849},\"-101,128\":{\"avg_time_spent\":101076,\"avg_time_spent_afk\":30072,\"unique_visitors\":8840,\"logins\":959,\"logouts\":1448},\"-107,135\":{\"avg_time_spent\":6097,\"avg_time_spent_afk\":2453,\"unique_visitors\":2816,\"logins\":863,\"logouts\":0},\"-109,133\":{\"avg_time_spent\":6491,\"avg_time_spent_afk\":3174,\"unique_visitors\":2644,\"logins\":711,\"logouts\":0},\"-29,55\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":518,\"logouts\":0},\"-109,135\":{\"avg_time_spent\":5433,\"avg_time_spent_afk\":2337,\"unique_visitors\":1791,\"logins\":464,\"logouts\":3},\"1,0\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":116,\"logouts\":0},\"119,-12\":{\"avg_time_spent\":17837,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":20,\"logouts\":22},\"-71,85\":{\"avg_time_spent\":82699,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":7,\"logouts\":0},\"-100,128\":{\"avg_time_spent\":77797,\"avg_time_spent_afk\":0,\"unique_visitors\":843,\"logins\":6,\"logouts\":4},\"-71,84\":{\"avg_time_spent\":143844,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":6,\"logouts\":0},\"-108,135\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":2,\"logouts\":0}}",
-      "logouts": "{\"-107,133\":{\"avg_time_spent\":182793,\"avg_time_spent_afk\":44270,\"unique_visitors\":16072,\"logins\":2845,\"logouts\":3650},\"-101,127\":{\"avg_time_spent\":74630,\"avg_time_spent_afk\":38409,\"unique_visitors\":16564,\"logins\":2354,\"logouts\":3344},\"-100,127\":{\"avg_time_spent\":158757,\"avg_time_spent_afk\":28057,\"unique_visitors\":23255,\"logins\":5359,\"logouts\":2523},\"-101,129\":{\"avg_time_spent\":98356,\"avg_time_spent_afk\":36301,\"unique_visitors\":8988,\"logins\":1220,\"logouts\":1849},\"-101,128\":{\"avg_time_spent\":70085,\"avg_time_spent_afk\":30072,\"unique_visitors\":7632,\"logins\":951,\"logouts\":1448},\"-108,133\":{\"avg_time_spent\":34400,\"avg_time_spent_afk\":25266,\"unique_visitors\":3380,\"logins\":0,\"logouts\":914},\"-100,128\":{\"avg_time_spent\":105407,\"avg_time_spent_afk\":17840,\"unique_visitors\":4351,\"logins\":6,\"logouts\":744},\"-101,126\":{\"avg_time_spent\":34973,\"avg_time_spent_afk\":22457,\"unique_visitors\":0,\"logins\":0,\"logouts\":683},\"-108,135\":{\"avg_time_spent\":23102,\"avg_time_spent_afk\":15844,\"unique_visitors\":0,\"logins\":0,\"logouts\":645},\"-100,126\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":287},\"119,-12\":{\"avg_time_spent\":37842,\"avg_time_spent_afk\":20530,\"unique_visitors\":0,\"logins\":20,\"logouts\":256},\"-103,-97\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":9},\"0,-1\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":1864,\"logins\":12,\"logouts\":7},\"1,-1\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":1913,\"logins\":8,\"logouts\":7},\"-27,59\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":6},\"-28,58\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":5},\"-120,136\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":4},\"-29,55\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":3},\"-107,135\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":951,\"logins\":0,\"logouts\":3},\"-109,135\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":3,\"logouts\":3},\"-109,133\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":2}}",
-      "time_spent": "{\"-71,84\":{\"avg_time_spent\":307254,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":6,\"logouts\":0},\"-71,85\":{\"avg_time_spent\":246304,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":7,\"logouts\":0},\"-107,133\":{\"avg_time_spent\":182793,\"avg_time_spent_afk\":44270,\"unique_visitors\":16072,\"logins\":2845,\"logouts\":3650},\"-101,128\":{\"avg_time_spent\":179855,\"avg_time_spent_afk\":30072,\"unique_visitors\":10142,\"logins\":959,\"logouts\":1448},\"-65,80\":{\"avg_time_spent\":170428,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"-100,127\":{\"avg_time_spent\":158757,\"avg_time_spent_afk\":28057,\"unique_visitors\":20276,\"logins\":5352,\"logouts\":2512},\"-101,129\":{\"avg_time_spent\":147867,\"avg_time_spent_afk\":36301,\"unique_visitors\":9161,\"logins\":1216,\"logouts\":1836},\"-108,135\":{\"avg_time_spent\":117540,\"avg_time_spent_afk\":15844,\"unique_visitors\":0,\"logins\":0,\"logouts\":395},\"-100,128\":{\"avg_time_spent\":105407,\"avg_time_spent_afk\":17840,\"unique_visitors\":3582,\"logins\":6,\"logouts\":685},\"-25,58\":{\"avg_time_spent\":92896,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"19,80\":{\"avg_time_spent\":92886,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"-29,57\":{\"avg_time_spent\":92701,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"-101,126\":{\"avg_time_spent\":88957,\"avg_time_spent_afk\":22457,\"unique_visitors\":0,\"logins\":0,\"logouts\":437},\"-27,59\":{\"avg_time_spent\":87546,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"-99,129\":{\"avg_time_spent\":86358,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"48,-43\":{\"avg_time_spent\":76183,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"-101,127\":{\"avg_time_spent\":74630,\"avg_time_spent_afk\":38409,\"unique_visitors\":12530,\"logins\":2336,\"logouts\":3326},\"-27,60\":{\"avg_time_spent\":70282,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"119,-12\":{\"avg_time_spent\":68197,\"avg_time_spent_afk\":48013,\"unique_visitors\":0,\"logins\":9,\"logouts\":242},\"-107,135\":{\"avg_time_spent\":64737,\"avg_time_spent_afk\":2453,\"unique_visitors\":1813,\"logins\":264,\"logouts\":0},\"-28,56\":{\"avg_time_spent\":63927,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"-28,58\":{\"avg_time_spent\":55614,\"avg_time_spent_afk\":0,\"unique_visitors\":0,\"logins\":0,\"logouts\":0},\"-108,133\":{\"avg_time_spent\":34400,\"avg_time_spent_afk\":25266,\"unique_visitors\":2626,\"logins\":0,\"logouts\":908},\"-109,133\":{\"avg_time_spent\":12011,\"avg_time_spent_afk\":6235,\"unique_visitors\":779,\"logins\":291,\"logouts\":0},\"-109,135\":{\"avg_time_spent\":5433,\"avg_time_spent_afk\":2337,\"unique_visitors\":883,\"logins\":107,\"logouts\":0}}",
-      "visitors": "{\"-100,127\":{\"avg_time_spent\":158757,\"avg_time_spent_afk\":28057,\"unique_visitors\":23255,\"logins\":5359,\"logouts\":2523},\"-101,127\":{\"avg_time_spent\":74630,\"avg_time_spent_afk\":38409,\"unique_visitors\":16564,\"logins\":2354,\"logouts\":3344},\"-107,133\":{\"avg_time_spent\":182793,\"avg_time_spent_afk\":44270,\"unique_visitors\":16072,\"logins\":2845,\"logouts\":3650},\"-101,129\":{\"avg_time_spent\":147867,\"avg_time_spent_afk\":36301,\"unique_visitors\":10344,\"logins\":1222,\"logouts\":1849},\"-101,128\":{\"avg_time_spent\":179855,\"avg_time_spent_afk\":30072,\"unique_visitors\":10142,\"logins\":959,\"logouts\":1448},\"1,-1\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":7800,\"logins\":1795,\"logouts\":7},\"0,-1\":{\"avg_time_spent\":0,\"avg_time_spent_afk\":0,\"unique_visitors\":6744,\"logins\":1745,\"logouts\":7},\"-100,128\":{\"avg_time_spent\":97974,\"avg_time_spent_afk\":12689,\"unique_visitors\":5281,\"logins\":6,\"logouts\":459},\"-108,133\":{\"avg_time_spent\":21556,\"avg_time_spent_afk\":14828,\"unique_visitors\":5167,\"logins\":0,\"logouts\":683},\"-107,135\":{\"avg_time_spent\":64737,\"avg_time_spent_afk\":2453,\"unique_visitors\":4615,\"logins\":479,\"logouts\":3},\"-109,133\":{\"avg_time_spent\":6491,\"avg_time_spent_afk\":3174,\"unique_visitors\":4302,\"logins\":705,\"logouts\":0},\"-109,135\":{\"avg_time_spent\":5433,\"avg_time_spent_afk\":2337,\"unique_visitors\":2628,\"logins\":194,\"logouts\":0}}"
+      "logins": {
+        "-100,127": {
+          "avg_time_spent": 186513,
+          "avg_time_spent_afk": 23931,
+          "unique_visitors": 23130,
+          "logins": 5530,
+          "logouts": 2641
+        },
+        "-107,133": {
+          "avg_time_spent": 206824,
+          "avg_time_spent_afk": 34964,
+          "unique_visitors": 15963,
+          "logins": 2944,
+          "logouts": 3836
+        },
+        "-101,127": {
+          "avg_time_spent": 102233,
+          "avg_time_spent_afk": 30420,
+          "unique_visitors": 16496,
+          "logins": 2494,
+          "logouts": 3467
+        },
+        "0,-1": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 6783,
+          "logins": 1916,
+          "logouts": 7
+        },
+        "1,-1": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 6807,
+          "logins": 1909,
+          "logouts": 5
+        },
+        "-101,129": {
+          "avg_time_spent": 135549,
+          "avg_time_spent_afk": 26839,
+          "unique_visitors": 8932,
+          "logins": 1267,
+          "logouts": 1943
+        },
+        "-101,128": {
+          "avg_time_spent": 93475,
+          "avg_time_spent_afk": 23189,
+          "unique_visitors": 7445,
+          "logins": 990,
+          "logouts": 1465
+        },
+        "-107,135": {
+          "avg_time_spent": 6097,
+          "avg_time_spent_afk": 2453,
+          "unique_visitors": 2782,
+          "logins": 886,
+          "logouts": 0
+        },
+        "-109,133": {
+          "avg_time_spent": 6491,
+          "avg_time_spent_afk": 3174,
+          "unique_visitors": 2644,
+          "logins": 711,
+          "logouts": 0
+        },
+        "-29,55": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 544,
+          "logouts": 0
+        },
+        "-109,135": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 856,
+          "logins": 492,
+          "logouts": 3
+        },
+        "1,0": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 127,
+          "logouts": 0
+        },
+        "119,-12": {
+          "avg_time_spent": 17837,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 39,
+          "logouts": 39
+        },
+        "38,103": {
+          "avg_time_spent": 57911,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 12,
+          "logouts": 0
+        },
+        "-99,129": {
+          "avg_time_spent": 73969,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 10,
+          "logouts": 11
+        },
+        "117,-26": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 8,
+          "logouts": 7
+        },
+        "-71,85": {
+          "avg_time_spent": 82699,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 7,
+          "logouts": 0
+        },
+        "-100,128": {
+          "avg_time_spent": 77797,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 843,
+          "logins": 6,
+          "logouts": 4
+        },
+        "-71,84": {
+          "avg_time_spent": 143844,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 6,
+          "logouts": 0
+        },
+        "-108,135": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 2,
+          "logouts": 0
+        }
+      },
+      "logouts": {
+        "-107,133": {
+          "avg_time_spent": 206824,
+          "avg_time_spent_afk": 34964,
+          "unique_visitors": 15963,
+          "logins": 2944,
+          "logouts": 3836
+        },
+        "-101,127": {
+          "avg_time_spent": 102233,
+          "avg_time_spent_afk": 30420,
+          "unique_visitors": 16496,
+          "logins": 2494,
+          "logouts": 3467
+        },
+        "-100,127": {
+          "avg_time_spent": 186513,
+          "avg_time_spent_afk": 23931,
+          "unique_visitors": 23130,
+          "logins": 5530,
+          "logouts": 2641
+        },
+        "-101,129": {
+          "avg_time_spent": 116169,
+          "avg_time_spent_afk": 26839,
+          "unique_visitors": 8841,
+          "logins": 1265,
+          "logouts": 1949
+        },
+        "-101,128": {
+          "avg_time_spent": 94476,
+          "avg_time_spent_afk": 23189,
+          "unique_visitors": 7472,
+          "logins": 982,
+          "logouts": 1477
+        },
+        "-108,133": {
+          "avg_time_spent": 25877,
+          "avg_time_spent_afk": 19260,
+          "unique_visitors": 2439,
+          "logins": 0,
+          "logouts": 884
+        },
+        "-100,128": {
+          "avg_time_spent": 104936,
+          "avg_time_spent_afk": 18124,
+          "unique_visitors": 4311,
+          "logins": 6,
+          "logouts": 820
+        },
+        "-101,126": {
+          "avg_time_spent": 27405,
+          "avg_time_spent_afk": 18579,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 689
+        },
+        "-108,135": {
+          "avg_time_spent": 16521,
+          "avg_time_spent_afk": 10990,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 668
+        },
+        "119,-12": {
+          "avg_time_spent": 38995,
+          "avg_time_spent_afk": 15877,
+          "unique_visitors": 0,
+          "logins": 39,
+          "logouts": 344
+        },
+        "-100,126": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 244
+        },
+        "-103,-97": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 17
+        },
+        "-99,129": {
+          "avg_time_spent": 73969,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 10,
+          "logouts": 11
+        },
+        "117,-26": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 8,
+          "logouts": 7
+        },
+        "0,-1": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 1864,
+          "logins": 12,
+          "logouts": 7
+        },
+        "1,-1": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 1913,
+          "logins": 8,
+          "logouts": 7
+        },
+        "-27,59": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 6
+        },
+        "-28,58": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 5
+        },
+        "-120,136": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 4
+        },
+        "-107,135": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 951,
+          "logins": 0,
+          "logouts": 3
+        },
+        "-29,55": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 3
+        },
+        "-109,135": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 3,
+          "logouts": 3
+        },
+        "-109,133": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 2
+        }
+      },
+      "time_spent": {
+        "-71,84": {
+          "avg_time_spent": 307254,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 6,
+          "logouts": 0
+        },
+        "-71,85": {
+          "avg_time_spent": 246304,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 7,
+          "logouts": 0
+        },
+        "-107,133": {
+          "avg_time_spent": 206824,
+          "avg_time_spent_afk": 34964,
+          "unique_visitors": 15963,
+          "logins": 2944,
+          "logouts": 3836
+        },
+        "-101,128": {
+          "avg_time_spent": 204246,
+          "avg_time_spent_afk": 23189,
+          "unique_visitors": 9982,
+          "logins": 990,
+          "logouts": 1477
+        },
+        "-100,127": {
+          "avg_time_spent": 186513,
+          "avg_time_spent_afk": 23931,
+          "unique_visitors": 20151,
+          "logins": 5523,
+          "logouts": 2630
+        },
+        "-65,80": {
+          "avg_time_spent": 170428,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        },
+        "-101,129": {
+          "avg_time_spent": 165680,
+          "avg_time_spent_afk": 26839,
+          "unique_visitors": 9014,
+          "logins": 1261,
+          "logouts": 1936
+        },
+        "-99,129": {
+          "avg_time_spent": 160327,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 10,
+          "logouts": 11
+        },
+        "-108,135": {
+          "avg_time_spent": 110959,
+          "avg_time_spent_afk": 10990,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 329
+        },
+        "-100,128": {
+          "avg_time_spent": 104936,
+          "avg_time_spent_afk": 18124,
+          "unique_visitors": 3542,
+          "logins": 6,
+          "logouts": 815
+        },
+        "-101,127": {
+          "avg_time_spent": 102233,
+          "avg_time_spent_afk": 30420,
+          "unique_visitors": 12462,
+          "logins": 2476,
+          "logouts": 3449
+        },
+        "-25,58": {
+          "avg_time_spent": 92896,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        },
+        "19,80": {
+          "avg_time_spent": 92886,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        },
+        "-29,57": {
+          "avg_time_spent": 92701,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        },
+        "-27,59": {
+          "avg_time_spent": 87546,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        },
+        "-101,126": {
+          "avg_time_spent": 81389,
+          "avg_time_spent_afk": 18579,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 436
+        },
+        "-108,133": {
+          "avg_time_spent": 77674,
+          "avg_time_spent_afk": 19260,
+          "unique_visitors": 1685,
+          "logins": 0,
+          "logouts": 878
+        },
+        "48,-43": {
+          "avg_time_spent": 76183,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        },
+        "-27,60": {
+          "avg_time_spent": 70282,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        },
+        "120,-12": {
+          "avg_time_spent": 64829,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        },
+        "-107,135": {
+          "avg_time_spent": 64737,
+          "avg_time_spent_afk": 2453,
+          "unique_visitors": 1813,
+          "logins": 264,
+          "logouts": 0
+        },
+        "-28,56": {
+          "avg_time_spent": 63927,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        },
+        "38,103": {
+          "avg_time_spent": 57911,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 12,
+          "logouts": 0
+        },
+        "119,-12": {
+          "avg_time_spent": 57345,
+          "avg_time_spent_afk": 32070,
+          "unique_visitors": 0,
+          "logins": 9,
+          "logouts": 313
+        },
+        "-109,133": {
+          "avg_time_spent": 56606,
+          "avg_time_spent_afk": 5300,
+          "unique_visitors": 1658,
+          "logins": 291,
+          "logouts": 0
+        },
+        "-28,58": {
+          "avg_time_spent": 55614,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 0,
+          "logins": 0,
+          "logouts": 0
+        }
+      },
+      "visitors": {
+        "-100,127": {
+          "avg_time_spent": 186513,
+          "avg_time_spent_afk": 23931,
+          "unique_visitors": 23130,
+          "logins": 5530,
+          "logouts": 2641
+        },
+        "-101,127": {
+          "avg_time_spent": 102233,
+          "avg_time_spent_afk": 30420,
+          "unique_visitors": 16496,
+          "logins": 2494,
+          "logouts": 3467
+        },
+        "-107,133": {
+          "avg_time_spent": 206824,
+          "avg_time_spent_afk": 34964,
+          "unique_visitors": 15963,
+          "logins": 2944,
+          "logouts": 3836
+        },
+        "-101,129": {
+          "avg_time_spent": 165680,
+          "avg_time_spent_afk": 26839,
+          "unique_visitors": 10197,
+          "logins": 1267,
+          "logouts": 1949
+        },
+        "-101,128": {
+          "avg_time_spent": 204246,
+          "avg_time_spent_afk": 23189,
+          "unique_visitors": 9982,
+          "logins": 990,
+          "logouts": 1477
+        },
+        "1,-1": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 7836,
+          "logins": 1909,
+          "logouts": 7
+        },
+        "0,-1": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 6783,
+          "logins": 1916,
+          "logouts": 7
+        },
+        "-100,128": {
+          "avg_time_spent": 97503,
+          "avg_time_spent_afk": 12973,
+          "unique_visitors": 6213,
+          "logins": 6,
+          "logouts": 589
+        },
+        "-107,135": {
+          "avg_time_spent": 64737,
+          "avg_time_spent_afk": 2453,
+          "unique_visitors": 4581,
+          "logins": 614,
+          "logouts": 3
+        },
+        "-109,133": {
+          "avg_time_spent": 51101,
+          "avg_time_spent_afk": 3174,
+          "unique_visitors": 4302,
+          "logins": 705,
+          "logouts": 0
+        },
+        "-108,133": {
+          "avg_time_spent": 13249,
+          "avg_time_spent_afk": 10327,
+          "unique_visitors": 4226,
+          "logins": 0,
+          "logouts": 587
+        },
+        "-109,135": {
+          "avg_time_spent": 0,
+          "avg_time_spent_afk": 0,
+          "unique_visitors": 2576,
+          "logins": 222,
+          "logouts": 0
+        }
+      }
     }
   },
   "scenes": {},
   "users": {
     "daily": {
       "parcels_visited": {
-        "2022-08-02": [
-          {
-            "address": "0x9ac0476d96f780cf99f6e538957a70c8e8c284e1",
-            "time_spent": null,
-            "parcels_visited": 216
-          },
-          {
-            "address": "0xfc384b7cd1ad7432c08ebe7fa3ce589ba7fb33c4",
-            "time_spent": null,
-            "parcels_visited": 182
-          },
-          {
-            "address": "0xde8736f2439db342ae4df7a80da4cd2f59bcffcf",
-            "time_spent": null,
-            "parcels_visited": 113
-          },
-          {
-            "address": "0x2509dea66db55699381bcd84d6e4158f747e3281",
-            "time_spent": null,
-            "parcels_visited": 95
-          },
-          {
-            "address": "0xdef65502729ee54873553c26b4617e4289e5acb5",
-            "time_spent": null,
-            "parcels_visited": 89
-          },
-          {
-            "address": "0x0ad26845ef24eb49d954563a1e657051c36cb96a",
-            "time_spent": null,
-            "parcels_visited": 85
-          },
-          {
-            "address": "0x338571a641d8c43f9e5a306300c5d89e0cb2cfaf",
-            "time_spent": null,
-            "parcels_visited": 76
-          },
-          {
-            "address": "0xf605e3257c5662406b8baa9e6040dc393d05922f",
-            "time_spent": null,
-            "parcels_visited": 73
-          },
-          {
-            "address": "0xf3d1e270694af5309995cc77ea2520bbcbb1f536",
-            "time_spent": null,
-            "parcels_visited": 72
-          },
-          {
-            "address": "0xb94d272ce26d1f1d9f25e1fed9498031a000cbbc",
-            "time_spent": null,
-            "parcels_visited": 68
-          }
-        ],
         "2022-08-03": [
           {
             "address": "0x9ac0476d96f780cf99f6e538957a70c8e8c284e1",
@@ -2730,12 +3277,12 @@
             "parcels_visited": 68
           },
           {
-            "address": "0x7ac78736ed192ed3066f1a1f7d3bcd0154224f50",
+            "address": "0x950445dee1d70e9db6ba3f781f3708f46d0e566d",
             "time_spent": null,
             "parcels_visited": 64
           },
           {
-            "address": "0x950445dee1d70e9db6ba3f781f3708f46d0e566d",
+            "address": "0x7ac78736ed192ed3066f1a1f7d3bcd0154224f50",
             "time_spent": null,
             "parcels_visited": 64
           },
@@ -2839,12 +3386,12 @@
             "parcels_visited": 50
           },
           {
-            "address": "0xeac48e4136ad168061a12feb7f7746073be94c50",
+            "address": "0x26871b48edad35f81901ab9002e656e594397e7d",
             "time_spent": null,
             "parcels_visited": 49
           },
           {
-            "address": "0x26871b48edad35f81901ab9002e656e594397e7d",
+            "address": "0xeac48e4136ad168061a12feb7f7746073be94c50",
             "time_spent": null,
             "parcels_visited": 49
           },
@@ -2891,12 +3438,12 @@
             "parcels_visited": 59
           },
           {
-            "address": "0x3c31bf0b7a74b28196f131e3cb8bd768146669dd",
+            "address": "0x40a81f7ad84ea2063937c22f4582eada756a63b8",
             "time_spent": null,
             "parcels_visited": 55
           },
           {
-            "address": "0x40a81f7ad84ea2063937c22f4582eada756a63b8",
+            "address": "0x3c31bf0b7a74b28196f131e3cb8bd768146669dd",
             "time_spent": null,
             "parcels_visited": 55
           },
@@ -3009,61 +3556,61 @@
             "time_spent": null,
             "parcels_visited": 67
           }
+        ],
+        "2022-08-09": [
+          {
+            "address": "0xfc384b7cd1ad7432c08ebe7fa3ce589ba7fb33c4",
+            "time_spent": null,
+            "parcels_visited": 194
+          },
+          {
+            "address": "0xe67494026f8e5edc3a2f7bb9b178f3d2a73ae207",
+            "time_spent": null,
+            "parcels_visited": 145
+          },
+          {
+            "address": "0xde8736f2439db342ae4df7a80da4cd2f59bcffcf",
+            "time_spent": null,
+            "parcels_visited": 126
+          },
+          {
+            "address": "0x25644ad9948cc83a5cd02f629b069ad0a033fa41",
+            "time_spent": null,
+            "parcels_visited": 98
+          },
+          {
+            "address": "0xf5440e631b42f698cbace253e2e28f318142b3da",
+            "time_spent": null,
+            "parcels_visited": 87
+          },
+          {
+            "address": "0x240e11a68132ba21cb54ffa7cca5b925485cde43",
+            "time_spent": null,
+            "parcels_visited": 81
+          },
+          {
+            "address": "0xdef65502729ee54873553c26b4617e4289e5acb5",
+            "time_spent": null,
+            "parcels_visited": 75
+          },
+          {
+            "address": "0x70400564e69ffe7fa25b59a2d3b23dda6c38db91",
+            "time_spent": null,
+            "parcels_visited": 73
+          },
+          {
+            "address": "0x69648dafe715ff2eb5663b855ced54b63788e497",
+            "time_spent": null,
+            "parcels_visited": 72
+          },
+          {
+            "address": "0xbac24f8f10ec767753ab0313444eeb1fc0556f83",
+            "time_spent": null,
+            "parcels_visited": 71
+          }
         ]
       },
       "time_spent": {
-        "2022-08-02": [
-          {
-            "address": "0x491077ede45cc68b37a4216ac2a1173c5cf18e2a",
-            "time_spent": 83540,
-            "parcels_visited": null
-          },
-          {
-            "address": "0xc6b3edc6d36008e304a440764b72958d9d040055",
-            "time_spent": 82050,
-            "parcels_visited": null
-          },
-          {
-            "address": "0x3ebbd61fe48943d8964bcc95b9786deeb2ae7088",
-            "time_spent": 81995,
-            "parcels_visited": null
-          },
-          {
-            "address": "0x28d340f1359a1413888d25d777e90744a698bd4e",
-            "time_spent": 81991,
-            "parcels_visited": null
-          },
-          {
-            "address": "0xfe279c154d874450377177c47e7879063945380f",
-            "time_spent": 81760,
-            "parcels_visited": null
-          },
-          {
-            "address": "0x5b934dd91713cc3780402f887921be331950d0b0",
-            "time_spent": 81755,
-            "parcels_visited": null
-          },
-          {
-            "address": "0x2e90d784befedae35f2a5fe6481f450343c60d11",
-            "time_spent": 81087,
-            "parcels_visited": null
-          },
-          {
-            "address": "0xb70fc8f26dfd7eb3e1b7c8f1d76ff1e9fa06bcbc",
-            "time_spent": 80226,
-            "parcels_visited": null
-          },
-          {
-            "address": "0x743363e6f70c77e44c568e5d9b7c100326e195f4",
-            "time_spent": 79626,
-            "parcels_visited": null
-          },
-          {
-            "address": "0xd9d0c76c4bd956980e39f57b09236d59e675eaed",
-            "time_spent": 79346,
-            "parcels_visited": null
-          }
-        ],
         "2022-08-03": [
           {
             "address": "0x2a9eca23bfbe5f00537240cbfe4828e50330d6af",
@@ -3170,16 +3717,6 @@
         ],
         "2022-08-05": [
           {
-            "address": "0x6b9073e4fccf98bf83ff2a180cca17e4fb0d7ef7",
-            "time_spent": 84957,
-            "parcels_visited": null
-          },
-          {
-            "address": "0xd4b278dd333e8eaa300bc2446b0d924721dccc1f",
-            "time_spent": 84957,
-            "parcels_visited": null
-          },
-          {
             "address": "0x2a7d26442c358b8a11a5aa38f691bcdf9d25a454",
             "time_spent": 84957,
             "parcels_visited": null
@@ -3190,8 +3727,23 @@
             "parcels_visited": null
           },
           {
+            "address": "0xd4b278dd333e8eaa300bc2446b0d924721dccc1f",
+            "time_spent": 84957,
+            "parcels_visited": null
+          },
+          {
+            "address": "0x6b9073e4fccf98bf83ff2a180cca17e4fb0d7ef7",
+            "time_spent": 84957,
+            "parcels_visited": null
+          },
+          {
             "address": "0x7e62c4c6e90703985fe74b084d6995dd82d18aa0",
             "time_spent": 84670,
+            "parcels_visited": null
+          },
+          {
+            "address": "0x7424a20e15935bae5d6b8b6186e90f072255d46c",
+            "time_spent": 84338,
             "parcels_visited": null
           },
           {
@@ -3201,11 +3753,6 @@
           },
           {
             "address": "0x32046fde38ee19588b9bb799a6e087b41a145626",
-            "time_spent": 84338,
-            "parcels_visited": null
-          },
-          {
-            "address": "0x7424a20e15935bae5d6b8b6186e90f072255d46c",
             "time_spent": 84338,
             "parcels_visited": null
           },
@@ -3326,53 +3873,105 @@
         ],
         "2022-08-08": [
           {
-            "address": "0xbd045faed962fbe29f03feefa740c431f15a0b5f",
-            "time_spent": 83931,
+            "address": "0xa45de15de29c25753fb00b74ce639671fe39cf37",
+            "time_spent": 169055,
             "parcels_visited": null
           },
           {
-            "address": "0x44503b3625d45913ac992fa1e8164b6149f39248",
-            "time_spent": 83579,
+            "address": "0xb7c4996e2a136863b98343ab4ad888402b2f356f",
+            "time_spent": 167487,
             "parcels_visited": null
           },
           {
-            "address": "0x3edb7cb14b6383564c5a4263a55554d904ee9d33",
-            "time_spent": 83435,
+            "address": "0x88cee03723a74242e796a7f93c1a39f5d2af3d6e",
+            "time_spent": 143001,
             "parcels_visited": null
           },
           {
-            "address": "0x1a1cbb687187c6ff9e7a8ac3a3416f95cf13fbf9",
-            "time_spent": 81741,
+            "address": "0xbeee816c3ab89976b22faba9a17e12488e30bcaa",
+            "time_spent": 142618,
             "parcels_visited": null
           },
           {
-            "address": "0x9a1fb57721d19f4507ed3e86c0d6b2b092de2893",
-            "time_spent": 80776,
+            "address": "0xe944f07f9847275c55ac1f919e7476be1c3be9b9",
+            "time_spent": 142040,
             "parcels_visited": null
           },
           {
-            "address": "0x7df23a0e93bbd06d72ff0c49d9eaa5b6d400533f",
-            "time_spent": 80727,
+            "address": "0x7fa1335a1847f42743fb6286d4007d872fbbbe0b",
+            "time_spent": 139172,
             "parcels_visited": null
           },
           {
-            "address": "0xabc225a1d310ba039ca256586d2165a96d757f6a",
-            "time_spent": 80462,
+            "address": "0x69ce8b16f5c45dc31e60f28a976e7da5a9bb9330",
+            "time_spent": 132102,
             "parcels_visited": null
           },
           {
-            "address": "0x7cfd4c34ef4d4642d3e6bb25d7c54c83a53bc97b",
-            "time_spent": 80256,
+            "address": "0x709283916e5cf3f0d36d5e5139da31adee6422e1",
+            "time_spent": 131649,
             "parcels_visited": null
           },
           {
-            "address": "0x8cb3e81464c7e2a3d949226085de000080ae781e",
-            "time_spent": 80033,
+            "address": "0xf49a4bab49bad53acf7c7e04cb98c03c9b185d2d",
+            "time_spent": 131559,
             "parcels_visited": null
           },
           {
-            "address": "0xcf375953e61bf7887dea78952940fbeda819bbed",
-            "time_spent": 79487,
+            "address": "0x69b0b6fb940e7a46a9a09440fd70e229d63ad2e2",
+            "time_spent": 124633,
+            "parcels_visited": null
+          }
+        ],
+        "2022-08-09": [
+          {
+            "address": "0x65176882701336dd8d61b8fc3070e4f3f6e9c285",
+            "time_spent": 83937,
+            "parcels_visited": null
+          },
+          {
+            "address": "0xa194021b4a2dd03b0b26d32c5f45291378b7fee8",
+            "time_spent": 83937,
+            "parcels_visited": null
+          },
+          {
+            "address": "0xe2b8e854e04b72e054f251f9f1219b1f460a7651",
+            "time_spent": 82945,
+            "parcels_visited": null
+          },
+          {
+            "address": "0xbb7449f0378c34159f2586530bfbeb4ddaef29f5",
+            "time_spent": 82672,
+            "parcels_visited": null
+          },
+          {
+            "address": "0x598a300469948ce4cbed7f0718eaad122963b6d6",
+            "time_spent": 82396,
+            "parcels_visited": null
+          },
+          {
+            "address": "0xc38decced50a8d7f925ead3c8e82ea875909650e",
+            "time_spent": 82267,
+            "parcels_visited": null
+          },
+          {
+            "address": "0xb98d6130079392b4763385d3e84fee1d36dcb5b6",
+            "time_spent": 82199,
+            "parcels_visited": null
+          },
+          {
+            "address": "0x95c4ee3c6af095523025e49d80406e3f13d7da1c",
+            "time_spent": 81764,
+            "parcels_visited": null
+          },
+          {
+            "address": "0xee507c508f7a74188457661e0698a3f004a747f4",
+            "time_spent": 81149,
+            "parcels_visited": null
+          },
+          {
+            "address": "0xdc81a35784475c181e632c5db44d59516b3a955b",
+            "time_spent": 81023,
             "parcels_visited": null
           }
         ]
@@ -3380,31 +3979,31 @@
     },
     "top": {
       "parcels_visited": {
-        "0xfc384b7cd1ad7432c08ebe7fa3ce589ba7fb33c4": 1299,
-        "0x9ac0476d96f780cf99f6e538957a70c8e8c284e1": 679,
-        "0xde8736f2439db342ae4df7a80da4cd2f59bcffcf": 483,
-        "0xdef65502729ee54873553c26b4617e4289e5acb5": 427,
+        "0xfc384b7cd1ad7432c08ebe7fa3ce589ba7fb33c4": 1311,
+        "0xde8736f2439db342ae4df7a80da4cd2f59bcffcf": 496,
+        "0x9ac0476d96f780cf99f6e538957a70c8e8c284e1": 463,
+        "0xdef65502729ee54873553c26b4617e4289e5acb5": 413,
+        "0xe67494026f8e5edc3a2f7bb9b178f3d2a73ae207": 294,
         "0x26871b48edad35f81901ab9002e656e594397e7d": 191,
         "0xeac48e4136ad168061a12feb7f7746073be94c50": 184,
-        "0x2509dea66db55699381bcd84d6e4158f747e3281": 178,
-        "0xe67494026f8e5edc3a2f7bb9b178f3d2a73ae207": 149,
+        "0x25644ad9948cc83a5cd02f629b069ad0a033fa41": 171,
         "0xda748613e558b01da81d317d3f63d9958d37da79": 140,
         "0xdcc287d36cdfdc3da6ccbfac5c069aa24c0a3bad": 131,
         "0x4f12a0855d407a835f8fe750eaeeb8929ef3fa6d": 129,
-        "0x338571a641d8c43f9e5a306300c5d89e0cb2cfaf": 128,
         "0x7ac78736ed192ed3066f1a1f7d3bcd0154224f50": 125,
         "0xf7d93ca6993b75c554f2138e08783abc2c5cea61": 112,
-        "0x0ad26845ef24eb49d954563a1e657051c36cb96a": 85,
+        "0xf5440e631b42f698cbace253e2e28f318142b3da": 87,
         "0x957353bdda14914285fb3fe9a7b759424d93fd15": 84,
+        "0x2509dea66db55699381bcd84d6e4158f747e3281": 83,
+        "0x240e11a68132ba21cb54ffa7cca5b925485cde43": 81,
         "0xf2c86508ed9d7f74207ee39979ddf8b9692ef7d3": 78,
-        "0x25644ad9948cc83a5cd02f629b069ad0a033fa41": 73,
-        "0xf605e3257c5662406b8baa9e6040dc393d05922f": 73,
-        "0xf3d1e270694af5309995cc77ea2520bbcbb1f536": 72,
+        "0x70400564e69ffe7fa25b59a2d3b23dda6c38db91": 73,
+        "0x69648dafe715ff2eb5663b855ced54b63788e497": 72,
+        "0xbac24f8f10ec767753ab0313444eeb1fc0556f83": 71,
         "0x35333f4f0efa8536f5d6c84a0654fa36788a3b18": 71,
         "0x1ba0558b8fac9c6c29dbc84ceaa654b9021937cb": 71,
         "0x5b51d1ab9965bd1e0ecbe470c3c263e8a62a0cbe": 70,
         "0xe05b0e1a49cfef754b667b5652e5ce7e36df0cbc": 69,
-        "0xb94d272ce26d1f1d9f25e1fed9498031a000cbbc": 68,
         "0xa2f8cd45cd7ea14bce6e87f177cf9df928a089a5": 66,
         "0x0506d39effcaefbc632cbe72c36c4d64759a665f": 64,
         "0xe0dd93e8f6bbe7133642cde68f5235cd412ee448": 64,
@@ -3418,14 +4017,17 @@
         "0x3c31bf0b7a74b28196f131e3cb8bd768146669dd": 55,
         "0xc4fa7fa71f4e7b99c8dc8bf2b314693b3ff75a67": 54,
         "0xda436db56e7d5d7ceeb20003fc63acd4d8b465ba": 54,
+        "0x338571a641d8c43f9e5a306300c5d89e0cb2cfaf": 52,
         "0x196bb73dabc6465f7f8cd8d26c5c7383a395694e": 51,
-        "0x55f8b8979e9442ee1817df08f2c55d403199891d": 50,
         "0x71004f7b856e177b309f5c6129cdb66ecd1c2437": 50,
+        "0x55f8b8979e9442ee1817df08f2c55d403199891d": 50,
         "0xa6381e7297ae963d1292370de8b7fabb98583fa1": 47
       },
       "time_spent": {
         "0x0608616ea553a5ccbece155a2f57617b1b705018": 177466,
         "0x90976243a1f85b7e2f3fb70efb23483110b62695": 170428,
+        "0xa45de15de29c25753fb00b74ce639671fe39cf37": 169055,
+        "0xb7c4996e2a136863b98343ab4ad888402b2f356f": 167487,
         "0x9f47ca3bc00cc17cb3aedaaa4fe855e610d9291f": 166197,
         "0xe95b219e4ac2059c41be3d5f15528a320df3523c": 165033,
         "0x815fe10c6e90fdabb5bd2c39329455175c1de9a9": 163826,
@@ -3437,11 +4039,19 @@
         "0xf7898613521806ff18429087711416b165ea0ca2": 163398,
         "0xd01fba641d1bb4b3ddbad909b2db0d2ef35fa284": 163137,
         "0xb6bdee2103a3ecfdd7cffa68a451dca01a91673a": 158393,
+        "0x88cee03723a74242e796a7f93c1a39f5d2af3d6e": 143001,
         "0xcecbe670c11d4d28678955f23e0d2d708d79c893": 142745,
+        "0xbeee816c3ab89976b22faba9a17e12488e30bcaa": 142618,
+        "0xe944f07f9847275c55ac1f919e7476be1c3be9b9": 142040,
         "0xe350d063e095db5931e62989ce1367bc97dc9f54": 141237,
+        "0x7fa1335a1847f42743fb6286d4007d872fbbbe0b": 139172,
         "0xea6b0cc55105ccbf6be34cef6a5a41a1cd35fadf": 136118,
         "0x32262248d406aef04025831209e32e51fd190adf": 134918,
         "0xa3b527f67a53ce189daa42810f5a8f80c6bd8138": 133657,
+        "0x69ce8b16f5c45dc31e60f28a976e7da5a9bb9330": 132102,
+        "0x709283916e5cf3f0d36d5e5139da31adee6422e1": 131649,
+        "0xf49a4bab49bad53acf7c7e04cb98c03c9b185d2d": 131559,
+        "0x69b0b6fb940e7a46a9a09440fd70e229d63ad2e2": 124633,
         "0xeba01e7298e3a4b139c43b8fa3f173552c1ce8f0": 121602,
         "0xd95df944e402898e45a34b9378282169e6a5a305": 119591,
         "0xad072c3e055caf3850a5787cc3890a0194049886": 116402,
@@ -3465,34 +4075,24 @@
         "0x2a9eca23bfbe5f00537240cbfe4828e50330d6af": 84238,
         "0x6ed562f45823b3718a2fc9344da11c1edf123cfb": 84182,
         "0x227a423a656c8ae23d2fbc3ef2d2e093cdd97087": 84142,
-        "0xbd045faed962fbe29f03feefa740c431f15a0b5f": 83931,
-        "0x44503b3625d45913ac992fa1e8164b6149f39248": 83579,
-        "0x491077ede45cc68b37a4216ac2a1173c5cf18e2a": 83540,
-        "0x3edb7cb14b6383564c5a4263a55554d904ee9d33": 83435,
+        "0xa194021b4a2dd03b0b26d32c5f45291378b7fee8": 83937,
+        "0x65176882701336dd8d61b8fc3070e4f3f6e9c285": 83937,
+        "0xe2b8e854e04b72e054f251f9f1219b1f460a7651": 82945,
+        "0xbb7449f0378c34159f2586530bfbeb4ddaef29f5": 82672,
         "0x5aee90e08ba1373768401a0563a39fb916101a58": 82483,
+        "0x598a300469948ce4cbed7f0718eaad122963b6d6": 82396,
         "0xb77f9d8c863cc2dd68e517d611faea4a5b119bf8": 82366,
+        "0xc38decced50a8d7f925ead3c8e82ea875909650e": 82267,
+        "0xb98d6130079392b4763385d3e84fee1d36dcb5b6": 82199,
         "0x187c1ae9d81f607ad6f99a8a8b0fec148cd2fcb5": 82153,
         "0xd93717577f757c156252fc5eabd5364a7e8aed0d": 82076,
-        "0xc6b3edc6d36008e304a440764b72958d9d040055": 82050,
         "0x38acfeb9de1e2814da3fb69933f9d48cc055bcbf": 82033,
-        "0x3ebbd61fe48943d8964bcc95b9786deeb2ae7088": 81995,
-        "0x28d340f1359a1413888d25d777e90744a698bd4e": 81991,
-        "0xfe279c154d874450377177c47e7879063945380f": 81760,
-        "0x5b934dd91713cc3780402f887921be331950d0b0": 81755,
-        "0x1a1cbb687187c6ff9e7a8ac3a3416f95cf13fbf9": 81741,
-        "0x2e90d784befedae35f2a5fe6481f450343c60d11": 81087,
-        "0x9a1fb57721d19f4507ed3e86c0d6b2b092de2893": 80776,
-        "0x7df23a0e93bbd06d72ff0c49d9eaa5b6d400533f": 80727,
+        "0x95c4ee3c6af095523025e49d80406e3f13d7da1c": 81764,
+        "0xee507c508f7a74188457661e0698a3f004a747f4": 81149,
+        "0xdc81a35784475c181e632c5db44d59516b3a955b": 81023,
         "0x180520eca20dd6d5eb0bac38f20cb5b5d4a6054d": 80490,
-        "0xabc225a1d310ba039ca256586d2165a96d757f6a": 80462,
-        "0x7cfd4c34ef4d4642d3e6bb25d7c54c83a53bc97b": 80256,
-        "0xb70fc8f26dfd7eb3e1b7c8f1d76ff1e9fa06bcbc": 80226,
         "0x9cb0ef2c77b301fff7fadc73481fdd0925f18cc1": 80132,
-        "0x8cb3e81464c7e2a3d949226085de000080ae781e": 80033,
-        "0x7bf70dabec8cb3e7f099282a7a1a85d7a83e92ae": 80005,
-        "0x743363e6f70c77e44c568e5d9b7c100326e195f4": 79626,
-        "0xcf375953e61bf7887dea78952940fbeda819bbed": 79487,
-        "0xd9d0c76c4bd956980e39f57b09236d59e675eaed": 79346
+        "0x7bf70dabec8cb3e7f099282a7a1a85d7a83e92ae": 80005
       }
     }
   }

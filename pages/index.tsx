@@ -39,13 +39,17 @@ const RecentMarathonUsers = dynamic(
   () => import("../src/components/local/stats/RecentMarathonUsers"),
   { ssr: false }
 )
-const TopParcelsTimeLogSpentVisit = dynamic(
-  () => import("../src/components/local/stats/TopParcelsTimeLogSpentVisit"),
+const TopLogins = dynamic(
+  () => import("../src/components/local/stats/TopLogins"),
+  { ssr: false }
+)
+const TopLogouts = dynamic(
+  () => import("../src/components/local/stats/TopLogouts"),
   { ssr: false }
 )
 
 const GlobalPage: NextPage = () => {
-  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 3 })
+  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
   const ENV = process.env.NEXT_PUBLIC_ENV
 
   const [gridNum, setGridNum] = useState(2)
@@ -66,7 +70,6 @@ const GlobalPage: NextPage = () => {
     if (process.env.ENV === "prod") {
       fetchData()
     }
-    console.log("origin: ", data)
     // eslint-disable-next-line
   }, [])
 
@@ -162,12 +165,16 @@ const GlobalPage: NextPage = () => {
           isLoading={isDataLoading}
         />
         <TopParcelsTimeSpentComponent
-          parcel={parcel}
-          isParcelLoading={isParcelLoading}
+          parcel={data.parcels.top.time_spent}
+          isParcelLoading={isDataLoading}
         />
-        <TopParcelsTimeLogSpentVisit
-          parcel={parcel}
-          isParcelLoading={isParcelLoading}
+        <TopLogins
+          parcel={data.parcels.top.time_spent}
+          isParcelLoading={isDataLoading}
+        />
+        <TopLogouts
+          parcel={data.parcels.top.time_spent}
+          isParcelLoading={isDataLoading}
         />
       </Grid>
     </Layout>

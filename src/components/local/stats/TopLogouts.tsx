@@ -24,11 +24,13 @@ import { FiChevronUp, FiChevronDown } from "react-icons/fi"
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
 // TopParcelsTimeLogSpentVisit
-const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
+const TopLogouts = ({ parcel, isParcelLoading }) => {
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
   const mapUrl = "/map.png?width=auto&height=auto&size=15"
 
-  console.log(parcel)
+  // table pagination
+  // const [page, setPage] = useState(1)
+  // const [rowsPerPage, setRowsPerPage] = useState(5)
 
   const data = Object.entries(parcel)
   const dataArr = []
@@ -43,12 +45,15 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
     dataArr[i].mapUrl = baseUrl + coord.replace(",", "/") + mapUrl
   }
 
+  // sort dataArr by logins
+  dataArr.sort((a, b) => b.logouts - a.logouts)
+
   const COLUMNS = [
     {
       Header: "#",
       accessor: "",
       Cell: (row) => {
-        return <Box width="5px">{Number(row.row.id) + 1}</Box>
+        return <Box>{Number(row.row.id) + 1}</Box>
       },
       disableSortBy: true,
       disableFilters: true,
@@ -86,19 +91,13 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
         return <Text>{`[${value}]`}</Text>
       },
     },
+    // {
+    //   Header: "Logins",
+    //   accessor: "logins",
+    // },
     {
-      Header: "AVG. Time Spent",
-      accessor: "avg_time_spent",
-      Cell: ({ value }) => {
-        return convertSeconds(value)
-      },
-    },
-    {
-      Header: "Avg. Time Spent AFK",
-      accessor: "avg_time_spent_afk",
-      Cell: ({ value }) => {
-        return convertSeconds(value)
-      },
+      Header: "Logouts",
+      accessor: "logouts",
     },
   ]
 
@@ -143,7 +142,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
             size="sm"
             variant="striped"
             colorScheme="gray"
-            // height="500"
+            height="500"
             overflowX="hidden"
           >
             <Thead>
@@ -255,7 +254,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
         <Box position="relative" mt="4" mx="5">
           <Box>
             <Text fontSize="xl" mb="1" pt="4">
-              <b>Top Parcels Time Spent </b>
+              <b>Parcel With Most Logouts</b>
               <Text
                 fontSize="sm"
                 color="gray.500"
@@ -263,7 +262,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
                 overflow="hidden"
                 textOverflow="ellipsis"
               >
-                Parcels with the most time spent on them in the last 7 days
+                Parcels with the most log outs in the last 7 days
               </Text>
             </Text>
           </Box>
@@ -282,4 +281,4 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default TopParcelsTimeSpentComponent
+export default TopLogouts
