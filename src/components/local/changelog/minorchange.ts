@@ -1,5 +1,11 @@
 // https://react-icons.github.io/react-icons/icons?name=fi
-import { FiPackage, FiHome, FiBarChart2, FiCheckCircle } from "react-icons/fi"
+import {
+  FiPackage,
+  FiHome,
+  FiBarChart2,
+  FiCheckCircle,
+  FiCloudDrizzle,
+} from "react-icons/fi"
 
 export const minorchangeTemplate = [
   {
@@ -22,6 +28,12 @@ export const minorchangeTemplate = [
         day: "July 29, 2022",
         title: "Re-initiated project",
         description: `Okja is a very cute dog`,
+      },
+      {
+        icon: FiCloudDrizzle,
+        day: "August 1, 2022",
+        title: "test",
+        description: `test`,
       },
     ],
   },

@@ -6,35 +6,54 @@ import {
   Box,
   Switch,
   Button,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
 } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import GridBox from "../src/components/local/GridBox"
 import MinorChange from "../src/components/local/changelog/MinorChange"
 import MajorChange from "../src/components/local/changelog/MajorChange"
 import { majorchangeTemplate } from "../src/components/local/changelog/majorchange"
-import { useState } from "react"
 
-const ChangeLog = () => {
+const Roadmap = () => {
   const box = {
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
+  const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 1 })
 
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <GridBox box={box}>
-          <MajorChange milestones={majorchangeTemplate} />
+          <Tabs variant="line" size="md" align="center" isFitted>
+            <TabList>
+              <Tab>Roadmap</Tab>
+              <Tab>Changelog</Tab>
+            </TabList>
+
+            <TabPanels>
+              <TabPanel>
+                <MajorChange milestones={majorchangeTemplate} />
+              </TabPanel>
+              <TabPanel>
+                <MinorChange />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+          {/* <MajorChange milestones={majorchangeTemplate} /> */}
         </GridBox>
-        <GridBox box={box}>
+        {/* <GridBox box={box}>
           <MinorChange />
-        </GridBox>
+        </GridBox> */}
       </Grid>
     </Layout>
   )
 }
 
-export default ChangeLog
+export default Roadmap

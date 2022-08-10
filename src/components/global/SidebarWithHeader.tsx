@@ -28,6 +28,7 @@ import {
   FiArrowLeftCircle,
   FiArrowRightCircle,
   FiAnchor,
+  FiMap,
 } from "react-icons/fi"
 import { IconType } from "react-icons"
 import { ReactText } from "react"
@@ -182,22 +183,19 @@ const SidebarContent = ({
           </Link>
         </Box>
         <Box>
-          <Link href="/changelog" passHref>
+          <Link href="/roadmap" passHref>
             <a>
               <NavItem
                 height="3rem"
-                icon={FiAnchor}
+                icon={FiMap}
                 bg={
-                  router.pathname === "/changelog" &&
+                  router.pathname === "/roadmap" &&
                   // eslint-disable-next-line
                   useColorModeValue("gray.200", "gray.700")
                 }
               >
-                <Text
-                  fontSize="lg"
-                  as={router.pathname === "/changelog" && "u"}
-                >
-                  Change Log
+                <Text fontSize="lg" as={router.pathname === "/roadmap" && "u"}>
+                  Roadmap
                 </Text>
               </NavItem>
             </a>
