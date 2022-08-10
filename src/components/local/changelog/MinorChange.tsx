@@ -57,7 +57,7 @@ const ChangeLog = () => {
           textAlign="center"
           w="100%"
         >
-          Minor Changes
+          Past Changes
         </chakra.h3>
         <Box zIndex={5}>
           <ChangeList />

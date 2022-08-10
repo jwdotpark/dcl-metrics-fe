@@ -1,4 +1,3 @@
-// major change template
 export const majorchangeTemplate = [
   {
     date: "June 29, 2022",

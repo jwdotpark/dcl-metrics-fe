@@ -26,7 +26,7 @@ const MajorChange = ({ milestones }) => {
   return (
     <Container maxWidth="7xl" p={{ base: 2, sm: 10 }}>
       <chakra.h3 fontSize="4xl" fontWeight="bold" mb="16" textAlign="center">
-        Major Changes
+        Future Changes
       </chakra.h3>
       {milestonesWithId.map((milestone, i) => (
         <Flex key={i} mb="10px">

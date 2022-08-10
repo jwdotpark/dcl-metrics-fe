@@ -23,8 +23,6 @@ const ChangeLog = () => {
 
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
 
-  const [isToggled, setIsToggled] = useState(false)
-
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>

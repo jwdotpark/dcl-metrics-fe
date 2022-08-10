@@ -1,6 +1,6 @@
+// https://react-icons.github.io/react-icons/icons?name=fi
 import { FiPackage, FiHome, FiBarChart2, FiCheckCircle } from "react-icons/fi"
 
-// minor change template
 export const minorchangeTemplate = [
   {
     date: "2022 July",
@@ -18,7 +18,7 @@ export const minorchangeTemplate = [
         description: `3pass is gone for good!!`,
       },
       {
-        icon: FiHome,
+        icon: FiCheckCircle,
         day: "July 29, 2022",
         title: "Re-initiated project",
         description: `Okja is a very cute dog`,
