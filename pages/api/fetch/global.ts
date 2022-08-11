@@ -27,7 +27,8 @@ export default async function handler(
 ) {
   await runMiddleware(req, res, cors)
 
-  const url = process.env.NEXT_PUBLIC_GLOBAL_API
+  // const url = process.env.NEXT_PUBLIC_GLOBAL_API
+  const url = "http://api.dcl-metrics.com/global"
   const response = await fetch(url, {
     method: "GET",
     headers: {

@@ -14,7 +14,6 @@ const Layout = ({ children }: any) => {
   const router = useRouter()
 
   // telemetry on initial access or path change
-  const ENV = process.env.ENV
   const localFingerPrint = sessionStorage.getItem("fingerPrint")
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const Layout = ({ children }: any) => {
 
   useEffect(() => {
     if (
-      ENV === "prod" &&
+      process.env.ENV === "prod" &&
       localFingerPrint !== null &&
       process.env.STAGING !== "true"
     ) {
@@ -35,7 +34,7 @@ const Layout = ({ children }: any) => {
         postTelemetry(JSON.parse(fingerPrintInfo))
       }, 500)
     }
-  }, [router.pathname, localFingerPrint, ENV])
+  }, [router.pathname, localFingerPrint])
 
   return (
     <>
