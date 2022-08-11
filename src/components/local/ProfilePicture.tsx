@@ -6,7 +6,7 @@ import staticAvatar from "../../../public/avatar.png"
 const ProfilePicture = ({ address, modal }) => {
   const [pic, setPic] = useState()
   const [isLoading, setIsLoading] = useState(false)
-  const ENV = process.env.NEXT_PUBLIC_ENV
+  const ENV = process.env.ENV
   const staticPic =
     "https://peer-eu1.decentraland.org/content/contents/bafkreiawwdcbesqxgj6d66brhnjtastcnl24at4avhzsllp226ejphofq4"
 

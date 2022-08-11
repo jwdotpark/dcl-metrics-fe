@@ -14,7 +14,7 @@ const Layout = ({ children }: any) => {
   const router = useRouter()
 
   // telemetry on initial access or path change
-  const ENV = process.env.NEXT_PUBLIC_ENV
+  const ENV = process.env.ENV
   const localFingerPrint = sessionStorage.getItem("fingerPrint")
 
   useEffect(() => {
