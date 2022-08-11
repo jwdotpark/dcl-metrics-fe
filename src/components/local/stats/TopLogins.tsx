@@ -11,18 +11,14 @@ import {
   Tr,
   Image,
   GridItem,
-  Button,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { useState, useEffect } from "react"
-import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
 import { useMemo } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
 import { FiChevronUp, FiChevronDown } from "react-icons/fi"
-import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
-const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
+const TopLogins = ({ parcel, isParcelLoading }) => {
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
   const mapUrl = "/map.png?width=auto&height=auto&size=15"
 
@@ -34,16 +30,20 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
 
   for (let i = 0; i < data.length; i++) {
     const coord = Object.entries(parcel)[i][0]
+    // insert coord into each element of dataArr
     dataArr[i].coord = coord
     dataArr[i].mapUrl = baseUrl + coord.replace(",", "/") + mapUrl
   }
+
+  // sort dataArr by logins
+  dataArr.sort((a, b) => b.logins - a.logins)
 
   const COLUMNS = [
     {
       Header: "#",
       accessor: "",
       Cell: (row) => {
-        return <Box width="5px">{Number(row.row.id) + 1}</Box>
+        return <Box>{Number(row.row.id) + 1}</Box>
       },
       disableSortBy: true,
       disableFilters: true,
@@ -82,18 +82,8 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
       },
     },
     {
-      Header: "AVG. Time Spent",
-      accessor: "avg_time_spent",
-      Cell: ({ value }) => {
-        return convertSeconds(value)
-      },
-    },
-    {
-      Header: "Avg. Time Spent AFK",
-      accessor: "avg_time_spent_afk",
-      Cell: ({ value }) => {
-        return convertSeconds(value)
-      },
+      Header: "Logins",
+      accessor: "logins",
     },
   ]
 
@@ -138,7 +128,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
             size="sm"
             variant="striped"
             colorScheme="gray"
-            // height="500"
+            height="500"
             overflowX="hidden"
           >
             <Thead>
@@ -250,7 +240,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
         <Box position="relative" mt="4" mx="5">
           <Box>
             <Text fontSize="xl" mb="1" pt="4">
-              <b>Top Parcels Time Spent </b>
+              <b>Parcel With Most Logins</b>
               <Text
                 fontSize="sm"
                 color="gray.500"
@@ -258,7 +248,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
                 overflow="hidden"
                 textOverflow="ellipsis"
               >
-                Parcels with the most time spent on them in the last 7 days
+                Parcels with the most initial contacts in the last 7 days
               </Text>
             </Text>
           </Box>
@@ -277,4 +267,4 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default TopParcelsTimeSpentComponent
+export default TopLogins

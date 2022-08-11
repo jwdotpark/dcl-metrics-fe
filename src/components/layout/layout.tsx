@@ -25,7 +25,11 @@ const Layout = ({ children }: any) => {
   }, [])
 
   useEffect(() => {
-    if (ENV === "prod" && localFingerPrint !== null) {
+    if (
+      ENV === "prod" &&
+      localFingerPrint !== null &&
+      process.env.STAGING === "false"
+    ) {
       setTimeout(() => {
         const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
         postTelemetry(JSON.parse(fingerPrintInfo))

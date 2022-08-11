@@ -27,7 +27,7 @@ export default async function handler(
 ) {
   await runMiddleware(req, res, cors)
 
-  const url = "https://dclund.herokuapp.com/user_stats/parcels_visited/top"
+  const url = process.env.NEXT_PUBLIC_GLOBAL_API
   const response = await fetch(url, {
     method: "GET",
     headers: {

@@ -5,11 +5,10 @@ import GridBox from "../GridBox"
 import staticData from "../../../../public/data/recent-marathon-users.json"
 import Loading from "../Loading"
 import BarChart2 from "../../../lib/BarChart2"
-import Pagination from "../Pagination"
 
 const MarathonUsers = ({ isLoading, setIsLoading }) => {
   const box = {
-    h: "590",
+    h: "630",
     w: "100%",
     bg: "white",
   }

@@ -22,39 +22,27 @@ const About = () => {
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <GridBox box={box}>
-          <Image
-            borderRadius="md"
-            src="/images/background.png"
-            alt="about image"
-            boxSize="full"
-            objectFit="cover"
-          />
-        </GridBox>
-        <GridBox box={box}>
-          <Box p="8">
-            <Text fontSize="md" p="8">
+          <Box p="4">
+            <Text fontSize="md" m="2" my="4">
               In the past year Decentraland has seen wild growth: casinos, P2E
               games, event venues, real estate companies, ad agencies and more
               are terraforming the metaverse, changing it from an endless
               expanse of auto-generated shrubs to a living, breathing world.
             </Text>
-            <Text fontSize="md" p="8">
+            <Text fontSize="md" m="2" my="4">
               On top of that, there is the foundation, tasked with building the
               tools to keep it running and the DAO which, as a community, makes
               choices which affect Decentraland&apos;s future.
             </Text>
-          </Box>
-        </GridBox>
-        <GridBox box={box}>
-          <Box p="8">
-            <Text fontSize="md" p="8">
+
+            <Text fontSize="md" m="2" my="4">
               It is critically important for each of these groups to understand
               their audience in order to make the best possible decisions - and
               we have the means to do that! The web3 world is literally made of
               data, but it&apos;s difficult to understand and access without
               building your own solution to acquire and interpret it.
             </Text>
-            <Text fontSize="md" p="8">
+            <Text fontSize="md" m="2" my="4">
               DCL-Metrics aims to make that data accessible so it can be used by
               the community to build a better metaverse.
             </Text>

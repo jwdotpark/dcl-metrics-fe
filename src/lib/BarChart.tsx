@@ -10,7 +10,7 @@ import { ResponsiveBar } from "@nivo/bar"
 import ProfilePicture from "../components/local/ProfilePicture"
 import { convertSeconds } from "../lib/hooks/utils"
 
-const BarChart = ({ data, onOpen, value, setValue }) => {
+const BarChart = ({ data }) => {
   const min = Math.min(...data.map((d) => d.time_spent))
   const max = Math.max(...data.map((d) => d.time_spent))
 
@@ -25,9 +25,9 @@ const BarChart = ({ data, onOpen, value, setValue }) => {
         ".. has been copied to the clipboard.",
       duration: 2000,
       isClosable: true,
-      position: "top-right",
-      status: "info",
-      variant: "subtle",
+      position: "bottom-right",
+      status: "success",
+      // variant: "subtle",
     })
   }
 

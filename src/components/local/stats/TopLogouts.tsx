@@ -17,20 +17,14 @@ import {
 import { useState, useEffect } from "react"
 import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
-// import Pagination from "../Pagination"
 import { useMemo } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
 import { FiChevronUp, FiChevronDown } from "react-icons/fi"
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
-// TopParcelsTimeLogSpentVisit
-const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
+const TopLogouts = ({ parcel, isParcelLoading }) => {
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
   const mapUrl = "/map.png?width=auto&height=auto&size=15"
-
-  // table pagination
-  // const [page, setPage] = useState(1)
-  // const [rowsPerPage, setRowsPerPage] = useState(5)
 
   const data = Object.entries(parcel)
   const dataArr = []
@@ -44,6 +38,9 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
     dataArr[i].coord = coord
     dataArr[i].mapUrl = baseUrl + coord.replace(",", "/") + mapUrl
   }
+
+  // sort dataArr by logins
+  dataArr.sort((a, b) => b.logouts - a.logouts)
 
   const COLUMNS = [
     {
@@ -62,7 +59,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
       Cell: ({ value }) => {
         return (
           <Box
-            minW="5rem"
+            maxW="8rem"
             borderRadius="md"
             border="2px solid"
             borderColor="gray.500"
@@ -70,7 +67,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
             boxShadow="md"
           >
             <Image
-              height="4.75rem"
+              boxSize="4.5rem"
               w="100%"
               src={value}
               alt="map image"
@@ -87,10 +84,6 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
       Cell: ({ value }) => {
         return <Text>{`[${value}]`}</Text>
       },
-    },
-    {
-      Header: "Logins",
-      accessor: "logins",
     },
     {
       Header: "Logouts",
@@ -190,7 +183,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
           </Table>
         </TableContainer>
         {/* pagination  */}
-        <Center m="2">
+        {/* <Center m="2">
           <Button
             size="sm"
             variant="ghost"
@@ -227,7 +220,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
           >
             <FiChevronsRight size="12" />
           </Button>
-        </Center>
+        </Center> */}
       </>
     )
   }
@@ -251,7 +244,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
         <Box position="relative" mt="4" mx="5">
           <Box>
             <Text fontSize="xl" mb="1" pt="4">
-              <b>Parcel Logins & Logouts</b>
+              <b>Parcel With Most Logouts</b>
               <Text
                 fontSize="sm"
                 color="gray.500"
@@ -259,7 +252,7 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
                 overflow="hidden"
                 textOverflow="ellipsis"
               >
-                Parcels with the most sessions in the last 7 days
+                Parcels with the most log outs in the last 7 days
               </Text>
             </Text>
           </Box>
@@ -278,4 +271,4 @@ const TopParcelsTimeLogSpentVisit = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default TopParcelsTimeLogSpentVisit
+export default TopLogouts
