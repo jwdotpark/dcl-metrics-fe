@@ -34,7 +34,7 @@ const Layout = ({ children }: any) => {
         postTelemetry(JSON.parse(fingerPrintInfo))
       }, 500)
     }
-  }, [router.pathname, localFingerPrint])
+  }, [router.pathname])
 
   return (
     <>
