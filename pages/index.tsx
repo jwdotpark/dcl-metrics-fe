@@ -59,7 +59,7 @@ const GlobalPage: NextPage = () => {
   }
 
   useEffect(() => {
-    if (process.env.ENV === "prod") {
+    if (process.env.NEXT_PUBLIC_ENV === "prod") {
       fetchData()
     }
   }, [])

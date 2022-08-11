@@ -25,9 +25,9 @@ const Layout = ({ children }: any) => {
 
   useEffect(() => {
     if (
-      process.env.ENV === "prod" &&
+      process.env.NEXT_PUBLIC_ENV === "prod" &&
       localFingerPrint !== null &&
-      process.env.STAGING !== "true"
+      process.env.NEXT_PUBLIC_STAGING !== "true"
     ) {
       setTimeout(() => {
         const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
