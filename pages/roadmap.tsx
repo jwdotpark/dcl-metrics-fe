@@ -1,11 +1,7 @@
 import {
-  Text,
   useBreakpointValue,
   Grid,
   useColorModeValue,
-  Box,
-  Switch,
-  Button,
   Tabs,
   TabList,
   TabPanels,
@@ -14,9 +10,8 @@ import {
 } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import GridBox from "../src/components/local/GridBox"
-import Changelog from "../src/components/local/changelog/Changelog"
-import RoadMap from "../src/components/local/changelog/RoadMap"
-// import { majorchangeTemplate } from "../src/components/local/changelog/roadmap"
+import Changelog from "../src/components/local/change/changelog/Changelog"
+import RoadMap from "../src/components/local/change/roadmap/RoadMap"
 
 const Roadmap = () => {
   const box = {
