@@ -13,7 +13,6 @@ const SidebarWithHeader = dynamic(() => import("../global/SidebarWithHeader"), {
 const Layout = ({ children }: any) => {
   const router = useRouter()
 
-  // telemetry on initial access or path change
   const localFingerPrint = sessionStorage.getItem("fingerPrint")
 
   useEffect(() => {
