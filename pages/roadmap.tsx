@@ -14,9 +14,9 @@ import {
 } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import GridBox from "../src/components/local/GridBox"
-import MinorChange from "../src/components/local/changelog/MinorChange"
-import MajorChange from "../src/components/local/changelog/MajorChange"
-import { majorchangeTemplate } from "../src/components/local/changelog/majorchange"
+import MinorChange from "../src/components/local/changelog/Changelog"
+import MajorChange from "../src/components/local/changelog/RoadMap"
+import { majorchangeTemplate } from "../src/components/local/changelog/roadmap"
 
 const Roadmap = () => {
   const box = {

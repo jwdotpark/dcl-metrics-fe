@@ -10,32 +10,32 @@ import {
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react"
-// import { FaTools } from "react-icons/fa"
-import { FiPackage, FiHome, FiBarChart2, FiCheckCircle } from "react-icons/fi"
-import { minorchangeTemplate } from "./minorchange"
-const ChangeLog = () => {
-  // const linkColor = "blue.400"
-  // const linkHoverColor = "blue.600"
+import { FiCheckCircle } from "react-icons/fi"
+import { roadmap } from "./roadmap"
 
-  const ChangeList = () => {
+const RoadMap = () => {
+  const RoadMapList = () => {
     return (
       <>
-        {minorchangeTemplate
-          .slice(0)
-          .reverse()
+        {roadmap
+          // .slice(0)
+          // .reverse()
           .map((change, i) => (
             <Box mb={3} textAlign="left" key={i}>
               <Heading fontSize="4xl" fontWeight="600" my={8}>
                 {change.date}
               </Heading>
               {change.contents
-                .slice(0)
-                .reverse()
+                // .slice(0)
+                // .reverse()
                 .map((content, j) => {
                   return (
                     <Box key={j}>
                       <MilestoneItem icon={content.icon}>
-                        <b>{content.title}</b> - {content.day}
+                        <b>{content.title}</b>
+                        <Text display="inline" ml="2" fontWeight="light">
+                          {content.day}
+                        </Text>
                         <Text fontSize="md">{content.description}</Text>
                       </MilestoneItem>
                     </Box>
@@ -57,10 +57,10 @@ const ChangeLog = () => {
           textAlign="center"
           w="100%"
         >
-          Past Changes
+          Roadmap
         </chakra.h3>
         <Box zIndex={5}>
-          <ChangeList />
+          <RoadMapList />
         </Box>
       </VStack>
     </Container>
@@ -106,61 +106,4 @@ const MilestoneItem: React.FC<MilestoneItemProps> = ({
   )
 }
 
-export default ChangeLog
-
-// original timeline
-
-// <Heading fontSize="4xl" fontWeight="600" my={5}>
-// 2022 Aug
-// </Heading>
-// <Box>
-// <MilestoneItem icon={FaTools}>
-//   Site-wide dark mode is available
-// </MilestoneItem>
-// <MilestoneItem icon={FiPackage}>
-//   Published 3 posts on my portfolio website{" "}
-//   <Link
-//     href="https://mahmad.me/blog"
-//     color={linkColor}
-//     _hover={{ color: linkHoverColor }}
-//     isExternal
-//   >
-//     Blog
-//   </Link>
-// </MilestoneItem>
-// <MilestoneItem icon={FiPackage}>
-//   Published or contributed to{" "}
-//   <Link
-//     href="https://mahmad.me/open-source"
-//     color={linkColor}
-//     _hover={{ color: linkHoverColor }}
-//     isExternal
-//   >
-//     20+ open-source repositories
-//   </Link>
-// </MilestoneItem>
-// <MilestoneItem icon={FiBarChart2}>
-//   Collected 34k+ posts views and 1.5k+ total reactions on{" "}
-//   <Link
-//     href="https://dev.to/m_ahmad"
-//     color={linkColor}
-//     _hover={{ color: linkHoverColor }}
-//     isExternal
-//   >
-//     Dev.to
-//   </Link>
-// </MilestoneItem>
-// <MilestoneItem icon={FiHome} skipTrail>
-//   Rebuilt my portfolio website with React, ChakraUI and
-//   Framer-motion,{" "}
-//   <Link
-//     href="https://github.com/MA-Ahmad/myPortfolio"
-//     color={linkColor}
-//     _hover={{ color: linkHoverColor }}
-//     isExternal
-//   >
-//     source on Github
-//   </Link>
-//   .
-// </MilestoneItem>
-// </Box>
+export default RoadMap
