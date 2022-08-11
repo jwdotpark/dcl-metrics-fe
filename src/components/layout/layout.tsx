@@ -25,7 +25,7 @@ const Layout = ({ children }: any) => {
 
   useEffect(() => {
     if (
-      process.env.NEXT_PUBLIC_ENV !== "prod"
+      process.env.NEXT_PUBLIC_ENV === "prod"
       // &&
       // process.env.NEXT_PUBLIC_STAGING !== "true" &&
       // localFingerPrint !== null
