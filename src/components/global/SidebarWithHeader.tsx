@@ -182,7 +182,7 @@ const SidebarContent = ({
             </a>
           </Link>
         </Box>
-        <Box>
+        {/* <Box>
           <Link href="/roadmap" passHref>
             <a>
               <NavItem
@@ -200,7 +200,7 @@ const SidebarContent = ({
               </NavItem>
             </a>
           </Link>
-        </Box>
+        </Box> */}
         <Box>
           <Link href="/about" passHref>
             <a>
