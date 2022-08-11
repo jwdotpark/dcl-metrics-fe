@@ -24,9 +24,13 @@ const Layout = ({ children }: any) => {
       fetchFingerprint()
     }
     if (
-      process.env.NEXT_PUBLIC_ENV === "prod" &&
-      process.env.NEXT_PUBLIC_STAGING !== "true"
+      process.env.NEXT_PUBLIC_ENV === "prod"
+      // &&
+      // process.env.NEXT_PUBLIC_STAGING !== "true"
     ) {
+      // NOTE delete later
+      console.log(process.env.NEXT_PUBLIC_ENV)
+
       setTimeout(() => {
         const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
         postTelemetry(JSON.parse(fingerPrintInfo))
