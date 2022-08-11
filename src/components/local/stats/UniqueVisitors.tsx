@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic"
 import {
   Text,
   Box,
@@ -8,8 +7,7 @@ import {
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
-import staticData from "../../../../public/data/unique-visitors.json"
-import { fetchResult } from "../../../lib/hooks/fetch"
+
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 

@@ -17,20 +17,14 @@ import {
 import { useState, useEffect } from "react"
 import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
-// import Pagination from "../Pagination"
 import { useMemo } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
 import { FiChevronUp, FiChevronDown } from "react-icons/fi"
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
-// TopParcelsTimeLogSpentVisit
 const TopLogouts = ({ parcel, isParcelLoading }) => {
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
   const mapUrl = "/map.png?width=auto&height=auto&size=15"
-
-  // table pagination
-  // const [page, setPage] = useState(1)
-  // const [rowsPerPage, setRowsPerPage] = useState(5)
 
   const data = Object.entries(parcel)
   const dataArr = []
@@ -91,10 +85,6 @@ const TopLogouts = ({ parcel, isParcelLoading }) => {
         return <Text>{`[${value}]`}</Text>
       },
     },
-    // {
-    //   Header: "Logins",
-    //   accessor: "logins",
-    // },
     {
       Header: "Logouts",
       accessor: "logouts",

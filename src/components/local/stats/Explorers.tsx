@@ -27,25 +27,6 @@ const Explorers = ({ res, isLoading }) => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  // const [res, setRes] = useState([])
-  // const [isLoading, setIsLoading] = useState(false)
-  // const ENV = process.env.NEXT_PUBLIC_ENV
-
-  // useEffect(() => {
-  //   if (ENV === "prod") {
-  //     setIsLoading(true)
-  //     const url = "api/fetch/explorers"
-  //     fetchResult(url, setRes)
-  //     setIsLoading(false)
-  //   } else {
-  //     setIsLoading(true)
-  //     // @ts-ignore
-  //     setRes(staticData)
-  //     setIsLoading(false)
-  //   }
-  //   // eslint-disable-next-line
-  // }, [])
-
   const data = Object.entries(res)
 
   // table pagination

@@ -29,7 +29,7 @@ export default async function handler(
 
   const url = "https://api.dcl-metrics.com/internal_metrics"
   const result = req.body
-  console.log(result)
+  // console.log(result)
   const response = await fetch(url, {
     method: "POST",
     headers: {

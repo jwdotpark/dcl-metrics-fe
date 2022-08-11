@@ -11,26 +11,16 @@ import {
   Tr,
   Image,
   GridItem,
-  Button,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { useState, useEffect } from "react"
-import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
-// import Pagination from "../Pagination"
 import { useMemo } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
 import { FiChevronUp, FiChevronDown } from "react-icons/fi"
-import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
-// TopParcelsTimeLogSpentVisit
 const TopLogins = ({ parcel, isParcelLoading }) => {
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
   const mapUrl = "/map.png?width=auto&height=auto&size=15"
-
-  // table pagination
-  // const [page, setPage] = useState(1)
-  // const [rowsPerPage, setRowsPerPage] = useState(5)
 
   const data = Object.entries(parcel)
   const dataArr = []
@@ -95,10 +85,6 @@ const TopLogins = ({ parcel, isParcelLoading }) => {
       Header: "Logins",
       accessor: "logins",
     },
-    // {
-    //   Header: "Logouts",
-    //   accessor: "logouts",
-    // },
   ]
 
   // eslint-disable-next-line

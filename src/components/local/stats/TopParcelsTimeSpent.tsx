@@ -17,18 +17,14 @@ import {
 import { useState, useEffect } from "react"
 import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
-// import Pagination from "../Pagination"
 import { useMemo } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
 import { FiChevronUp, FiChevronDown } from "react-icons/fi"
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
-// TopParcelsTimeLogSpentVisit
 const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
   const mapUrl = "/map.png?width=auto&height=auto&size=15"
-
-  console.log(parcel)
 
   const data = Object.entries(parcel)
   const dataArr = []
@@ -38,7 +34,6 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
 
   for (let i = 0; i < data.length; i++) {
     const coord = Object.entries(parcel)[i][0]
-    // insert coord into each element of dataArr
     dataArr[i].coord = coord
     dataArr[i].mapUrl = baseUrl + coord.replace(",", "/") + mapUrl
   }

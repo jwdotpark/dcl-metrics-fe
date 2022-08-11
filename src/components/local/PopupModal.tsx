@@ -53,7 +53,6 @@ const PopupModal = ({ isOpen, value, onClose }) => {
                   <Text
                     _hover={{ cursor: "pointer", color: "gray.800" }}
                     fontWeight={600}
-                    // color={"gray.500"}
                     size="lg"
                     mb={4}
                     as="kbd"

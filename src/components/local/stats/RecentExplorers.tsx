@@ -16,9 +16,7 @@ import {
   Flex,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import { fetchResult } from "../../../lib/hooks/fetch"
 import GridBox from "../GridBox"
-import staticData from "../../../../public/data/recent-explorers.json"
 import { FiLink } from "react-icons/fi"
 import Loading from "../Loading"
 import ProfilePicture from "../ProfilePicture"
@@ -29,25 +27,6 @@ const RecentExplorers = ({ res, isLoading }) => {
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
-
-  // const [isLoading, setIsLoading] = useState(false)
-  // const [res, setRes] = useState([])
-  // const ENV = process.env.NEXT_PUBLIC_ENV
-
-  // useEffect(() => {
-  //   if (ENV === "prod") {
-  //     setIsLoading(true)
-  //     const url = "api/fetch/recent-explorers"
-  //     fetchResult(url, setRes)
-  //     setIsLoading(false)
-  //   } else {
-  //     setIsLoading(true)
-  //     // @ts-ignore
-  //     setRes(staticData)
-  //     setIsLoading(false)
-  //   }
-  //   // eslint-disable-next-line
-  // }, [])
 
   const data = Object.entries(res)
 
