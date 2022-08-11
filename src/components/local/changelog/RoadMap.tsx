@@ -17,32 +17,29 @@ const RoadMap = () => {
   const RoadMapList = () => {
     return (
       <>
-        {roadmap
-          // .slice(0)
-          // .reverse()
-          .map((change, i) => (
-            <Box mb={3} textAlign="left" key={i}>
-              <Heading fontSize="4xl" fontWeight="600" my={8}>
-                {change.date}
-              </Heading>
-              {change.contents
-                // .slice(0)
-                // .reverse()
-                .map((content, j) => {
-                  return (
-                    <Box key={j}>
-                      <MilestoneItem icon={content.icon}>
-                        <b>{content.title}</b>
-                        <Text display="inline" ml="2" fontWeight="light">
-                          {content.day}
-                        </Text>
-                        <Text fontSize="md">{content.description}</Text>
-                      </MilestoneItem>
-                    </Box>
-                  )
-                })}
-            </Box>
-          ))}
+        {roadmap.map((change, i) => (
+          <Box mb={3} textAlign="left" key={i}>
+            <Heading fontSize="4xl" fontWeight="600" my={8}>
+              {change.date}
+            </Heading>
+            {change.contents.map((content, j) => {
+              return (
+                <Box key={j}>
+                  <MilestoneItem
+                    icon={content.icon}
+                    skipTrail={j === change.contents.length - 1 && true}
+                  >
+                    <b>{content.title}</b>
+                    <Text display="inline" ml="2" fontWeight="light">
+                      {content.day}
+                    </Text>
+                    <Text fontSize="md">{content.description}</Text>
+                  </MilestoneItem>
+                </Box>
+              )
+            })}
+          </Box>
+        ))}
       </>
     )
   }
@@ -97,7 +94,7 @@ const MilestoneItem: React.FC<MilestoneItemProps> = ({
           left="0.875rem"
           top="0.875rem"
         />
-        {!skipTrail && <Box w="1px" flex={1} bg={color} my={1} />}
+        {!skipTrail && <Box w="2px" flex={1} bg="gray.400" my={1} />}
       </Flex>
       <Box pt={{ base: 1, sm: 2 }} {...boxProps}>
         {children}

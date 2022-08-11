@@ -32,7 +32,10 @@ const ChangeLog = () => {
                 .map((content, j) => {
                   return (
                     <Box key={j}>
-                      <MilestoneItem icon={content.icon}>
+                      <MilestoneItem
+                        icon={content.icon}
+                        skipTrail={j === change.contents.length - 1 && true}
+                      >
                         <b>{content.title}</b>
                         <Text display="inline" ml="2" fontWeight="light">
                           {content.day}
@@ -98,7 +101,7 @@ const MilestoneItem: React.FC<MilestoneItemProps> = ({
           left="0.875rem"
           top="0.875rem"
         />
-        {!skipTrail && <Box w="1px" flex={1} bg={color} my={1} />}
+        {!skipTrail && <Box w="2px" flex={1} bg="gray.400" my={1} />}
       </Flex>
       <Box pt={{ base: 1, sm: 2 }} {...boxProps}>
         {children}
