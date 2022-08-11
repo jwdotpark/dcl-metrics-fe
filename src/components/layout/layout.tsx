@@ -16,25 +16,23 @@ const Layout = ({ children }: any) => {
   const localFingerPrint = sessionStorage.getItem("fingerPrint")
 
   useEffect(() => {
-    if (localFingerPrint === null) {
-      fetchFingerprint()
-    }
     // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
+    if (localFingerPrint === null) {
+      fetchFingerprint()
+    }
     if (
-      process.env.NEXT_PUBLIC_ENV === "prod"
-      // &&
-      // process.env.NEXT_PUBLIC_STAGING !== "true" &&
-      // localFingerPrint !== null
+      process.env.NEXT_PUBLIC_ENV === "prod" &&
+      process.env.NEXT_PUBLIC_STAGING !== "true"
     ) {
       setTimeout(() => {
         const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
         postTelemetry(JSON.parse(fingerPrintInfo))
       }, 500)
     }
-  }, [router.pathname])
+  }, [router.pathname, localFingerPrint])
 
   return (
     <>
