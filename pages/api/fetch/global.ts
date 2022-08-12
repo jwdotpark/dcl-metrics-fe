@@ -30,14 +30,12 @@ export default async function handler(
 
   const url = process.env.NEXT_PUBLIC_GLOBAL_API
 
-  // using fixie
   try {
     const response = await axios.get(url, {
       method: "get",
-      url: process.env.FIXIE_URL,
       proxy: {
         protocol: "http",
-        host: "olympic.usefixie.com",
+        host: process.env.FIXIE_HOST,
         port: 80,
         auth: {
           username: "fixie",
@@ -47,7 +45,6 @@ export default async function handler(
     })
     const data = response.data
     res.status(200).json({ data: data })
-    return data
   } catch (error) {
     console.error(error)
   }
