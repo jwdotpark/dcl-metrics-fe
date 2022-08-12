@@ -27,9 +27,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   await runMiddleware(req, res, cors)
-
   const url = process.env.NEXT_PUBLIC_GLOBAL_API
-
   try {
     const response = await axios.get(url, {
       method: "get",
@@ -48,14 +46,4 @@ export default async function handler(
   } catch (error) {
     console.error(error)
   }
-
-  // using fetch API
-  // const response = await fetch(url, {
-  //   method: "GET",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // })
-  // const data = await response.json()
-  // res.json({ data: data })
 }

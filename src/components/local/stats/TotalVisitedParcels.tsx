@@ -40,7 +40,7 @@ const UniqueVisitors = ({ res, visitorLoading }) => {
       <GridBox box={box}>
         <Box position="relative" mt="4" mx="5" mb="1">
           <Text fontSize="xl">
-            <b>Top Visited Parcels</b>
+            <b>Parcels Visited</b>
             <Text fontSize="sm" color="gray.500">
               Parcels visited per day in the last 7 days
             </Text>

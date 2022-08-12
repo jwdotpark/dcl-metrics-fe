@@ -30,7 +30,6 @@ export default async function handler(
 
   const url = "https://api.dcl-metrics.com/internal_metrics"
   const result = req.body
-
   try {
     axios({
       url: url,
@@ -50,5 +49,4 @@ export default async function handler(
   } catch (error) {
     console.error("error: ", error)
   }
-
 }
