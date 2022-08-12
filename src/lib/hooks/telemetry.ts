@@ -25,17 +25,17 @@ export const postTelemetry = async (geoInfo) => {
     language: userInfo.language,
     platform: userInfo.platform,
     userAgent: userInfo.userAgent,
-    ip: geoInfo?.ip,
-    city: geoInfo?.city.name,
-    country: geoInfo?.country.name,
-    iso_code: geoInfo?.country.iso_code,
-    latitude: geoInfo?.location.latitude,
-    longitude: geoInfo?.location.longitude,
-    continent: geoInfo?.continent.name,
+    ip: geoInfo?.data.ip,
+    city: geoInfo?.data.city.name,
+    country: geoInfo?.data.country.name,
+    iso_code: geoInfo?.data.country.iso_code,
+    latitude: geoInfo?.data.location.latitude,
+    longitude: geoInfo?.data.location.longitude,
+    continent: geoInfo?.data.continent.name,
   }
 
   const url = "/api/fetch/telemetry"
-  isDev && console.log("telemetry sent: ", telemetryBody)
+  isDev && console.log("client telemetry body: ", telemetryBody)
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -43,6 +43,5 @@ export const postTelemetry = async (geoInfo) => {
     },
     body: JSON.stringify(telemetryBody),
   })
-  const data = await response.json()
-  isDev && console.log("telemetry response: ", data)
+  await response.json()
 }

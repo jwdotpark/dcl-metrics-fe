@@ -13,14 +13,8 @@ const SidebarWithHeader = dynamic(() => import("../global/SidebarWithHeader"), {
 const Layout = ({ children }: any) => {
   const router = useRouter()
 
-  const localFingerPrint = sessionStorage.getItem("fingerPrint")
-
   useEffect(() => {
-    // eslint-disable-next-line
-  }, [])
-
-  useEffect(() => {
-    if (localFingerPrint === null) {
+    if (sessionStorage.getItem("fingerPrint") === null) {
       fetchFingerprint()
     }
     if (
@@ -28,8 +22,10 @@ const Layout = ({ children }: any) => {
       process.env.NEXT_PUBLIC_STAGING !== "true"
     ) {
       setTimeout(() => {
-        const fingerPrintInfo = sessionStorage.getItem("fingerPrint")
-        postTelemetry(JSON.parse(fingerPrintInfo))
+        const fingerPrintInfo = JSON.parse(
+          sessionStorage.getItem("fingerPrint")
+        )
+        postTelemetry(fingerPrintInfo)
       }, 500)
     }
     // eslint-disable-next-line
