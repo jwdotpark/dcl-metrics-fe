@@ -45,7 +45,6 @@ export default async function handler(
         },
       },
     })
-    console.log(response)
     const data = response.data
     res.status(200).json({ data: data })
     return data
