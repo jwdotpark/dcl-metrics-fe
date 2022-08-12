@@ -51,13 +51,4 @@ export default async function handler(
     console.error("error: ", error)
   }
 
-  // const response = await fetch(url, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(result),
-  // })
-  // const data = await response.json()
-  // res.json({ data: data })
 }
