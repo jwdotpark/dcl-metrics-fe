@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import Cors from "cors"
+const axios = require("axios").default
 
 const cors = Cors({
   methods: ["POST", "GET", "HEAD"],
@@ -28,12 +29,37 @@ export default async function handler(
   await runMiddleware(req, res, cors)
 
   const url = process.env.NEXT_PUBLIC_GLOBAL_API
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-  const data = await response.json()
-  res.json({ data: data })
+
+  // using fixie
+  try {
+    const response = await axios.get(url, {
+      method: "get",
+      url: process.env.FIXIE_URL,
+      proxy: {
+        protocol: "http",
+        host: "olympic.usefixie.com",
+        port: 80,
+        auth: {
+          username: "fixie",
+          password: process.env.FIXIE_TOKEN,
+        },
+      },
+    })
+    console.log(response)
+    const data = response.data
+    res.status(200).json({ data: data })
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+
+  // using fetch API
+  // const response = await fetch(url, {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // })
+  // const data = await response.json()
+  // res.json({ data: data })
 }
