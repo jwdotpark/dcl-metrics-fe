@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <script
             async
             defer
-            data-website-id="149cf6e0-3ac8-4781-b4c3-d10a8bf3437e"
+            data-website-id="378207c9-88d2-4d51-923d-6d1c54d19e4e"
             src="https://dcl-metrics-telemetry.herokuapp.com/umami.js"
           ></script>
         </Head>
