@@ -1,6 +1,7 @@
 import "../styles/globals.css"
 import Head from "next/head"
-import type { AppProps } from "next/app"
+import Script from "next/script"
+import type { AppProps, NextWebVitalsMetric } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 
 function SafeHydrate({ children }) {
@@ -36,6 +37,10 @@ function SafeHydrate({ children }) {
 //   }
 // }
 
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  console.log(metric)
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
@@ -48,14 +53,14 @@ function MyApp({ Component, pageProps }: AppProps) {
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
-          <script
-            async
-            defer
-            data-website-id="ba886c85-0602-4add-a574-52d2d163ecc1"
-            src="https://dcl-metrics-telemetry.herokuapp.com/dcl-metrics-telemetry.js"
-            data-cache="true"
-          ></script>
         </Head>
+        <Script
+          async
+          defer
+          data-website-id="ba886c85-0602-4add-a574-52d2d163ecc1"
+          src="https://dcl-metrics-telemetry.herokuapp.com/dcl-metrics-telemetry.js"
+          data-cache="true"
+        ></Script>
         <Component {...pageProps} />
       </SafeHydrate>
     </ChakraProvider>
