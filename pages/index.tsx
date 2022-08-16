@@ -47,14 +47,7 @@ const TopLogouts = dynamic(
 
 export async function getStaticProps() {
   // const url = process.env.GLOBAL_API
-  // const res = await fetch(url)
-  // const fetchRes = await res.json()
-  // const day = 60 * 60 * 24
-  // return {
-  //   props: { fetchRes },
-  //   revalidate: day,
-  // }
-  const url = process.env.GLOBAL_API
+  const url = "http://api.dcl-metrics.com/global"
   const response = await axios.get(url, {
     method: "get",
     proxy: {
