@@ -13,6 +13,13 @@ function SafeHydrate({ children }) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const isProd = () => {
+    if (process.env.NEXT_PUBLIC_ENV === "prod") {
+      return true
+    } else {
+      return false
+    }
+  }
   return (
     <ChakraProvider>
       <SafeHydrate>
@@ -25,13 +32,15 @@ function MyApp({ Component, pageProps }: AppProps) {
             content="initial-scale=1.0, width=device-width"
           />
         </Head>
-        <Script
-          async
-          defer
-          data-website-id="ba886c85-0602-4add-a574-52d2d163ecc1"
-          src="https://dcl-metrics-telemetry.herokuapp.com/dcl-metrics-telemetry.js"
-          data-cache="true"
-        ></Script>
+        {isProd() && (
+          <Script
+            async
+            defer
+            data-website-id="ba886c85-0602-4add-a574-52d2d163ecc1"
+            src="https://dcl-metrics-telemetry.herokuapp.com/dcl-metrics-telemetry.js"
+            data-cache="true"
+          ></Script>
+        )}
         <Component {...pageProps} />
       </SafeHydrate>
     </ChakraProvider>
