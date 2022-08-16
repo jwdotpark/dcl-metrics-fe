@@ -3,6 +3,7 @@ import dynamic from "next/dynamic"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import staticGlobal from "../public/data/global.json"
+const axios = require("axios").default
 
 const Layout = dynamic(() => import("../src/components/layout/layout"), {
   ssr: false,
@@ -44,57 +45,87 @@ const TopLogouts = dynamic(
   { ssr: false }
 )
 
-const GlobalPage: NextPage = () => {
-  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
+export async function getStaticProps() {
+  const day = 60 * 60 * 24
+  if (process.env.NODE_ENV === "production") {
+    const url = "http://api.dcl-metrics.com/global"
+    const response = await axios.get(url, {
+      method: "get",
+      proxy: {
+        protocol: "http",
+        host: process.env.FIXIE_HOST,
+        port: 80,
+        auth: {
+          username: "fixie",
+          password: process.env.FIXIE_TOKEN,
+        },
+      },
+    })
+    const ISR = response.data
+    return {
+      props: { ISR },
+      revalidate: day,
+    }
+  } else {
+    const ISR = staticGlobal
+    return {
+      props: { ISR },
+      revalidate: day,
+    }
+  }
+}
 
+const GlobalPage: NextPage = (ISR) => {
   const [data, setData] = useState(staticGlobal)
   const [isDataLoading, setIsDataLoading] = useState(false)
 
-  const fetchData = async () => {
-    setIsDataLoading(true)
-    const response = await fetch("/api/fetch/global")
-    const result = await response.json()
-    setData(result.data)
-    setIsDataLoading(false)
-  }
-
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_ENV === "prod") {
-      fetchData()
+      // @ts-ignore
+      setData(ISR)
     }
+    // eslint-disable-next-line
   }, [])
+
+  // @ts-ignore
+  const result = ISR.ISR
+
+  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
 
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
-        <UniqueVisitors res={data.global} visitorLoading={isDataLoading} />
-        <TotalVisitedParcels res={data.global} visitorLoading={isDataLoading} />
+        <UniqueVisitors res={result.global} visitorLoading={isDataLoading} />
+        <TotalVisitedParcels
+          res={result.global}
+          visitorLoading={isDataLoading}
+        />
         <MarathonUsers
-          res={data.users.daily.time_spent}
+          res={result.users.daily.time_spent}
           isLoading={isDataLoading}
         />
         <RecentMarathonUsers
-          res={data.users.daily.time_spent}
+          res={result.users.daily.time_spent}
           isLoading={isDataLoading}
         />
         <Explorers
-          res={data.users.top.parcels_visited}
+          res={result.users.top.parcels_visited}
           isLoading={isDataLoading}
         />
         <RecentExplorers
-          res={data.users.daily.parcels_visited}
+          res={result.users.daily.parcels_visited}
           isLoading={isDataLoading}
         />
         <TopParcelsTimeSpentComponent
-          parcel={data.parcels.top.time_spent}
+          parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}
         />
         <TopLogins
-          parcel={data.parcels.top.time_spent}
+          parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}
         />
         <TopLogouts
-          parcel={data.parcels.top.time_spent}
+          parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}
         />
       </Grid>
