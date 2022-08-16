@@ -1,7 +1,7 @@
 import "../styles/globals.css"
 import Head from "next/head"
 import Script from "next/script"
-import type { AppProps, NextWebVitalsMetric } from "next/app"
+import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 
 function SafeHydrate({ children }) {
@@ -10,35 +10,6 @@ function SafeHydrate({ children }) {
       {typeof window === "undefined" ? null : children}
     </div>
   )
-}
-
-// export function reportWebVitals(metric) {
-//   switch (metric.name) {
-//     case "FCP":
-//       // handle FCP results
-//       break
-//     case "LCP":
-//       // handle LCP results
-//       break
-//     case "CLS":
-//       // handle CLS results
-//       break
-//     case "FID":
-//       // handle FID results
-//       break
-//     case "TTFB":
-//       // handle TTFB results
-//       break
-//     case "INP":
-//       // handle INP results (note: INP is still an experimental metric)
-//       break
-//     default:
-//       break
-//   }
-// }
-
-export function reportWebVitals(metric: NextWebVitalsMetric) {
-  console.log(metric)
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
