@@ -13,6 +13,11 @@ function SafeHydrate({ children }) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const url = "dcl-metrics.com"
+  const checkURL = () => {
+    return window.location.hostname.includes(url)
+  }
+
   return (
     <ChakraProvider>
       <SafeHydrate>
@@ -25,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             content="initial-scale=1.0, width=device-width"
           />
         </Head>
-        {process.env.NEXT_PUBLIC_ENV !== "dev" && (
+        {process.env.NEXT_PUBLIC_ENV !== "dev" && checkURL() && (
           <Script
             async
             defer
