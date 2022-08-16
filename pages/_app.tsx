@@ -13,9 +13,10 @@ function SafeHydrate({ children }) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const url = "dcl-metrics.com"
   const checkURL = () => {
-    return window.location.hostname.includes(url)
+    if (typeof window !== "undefined") {
+      return window.location.hostname.includes("dcl-metrics.com")
+    }
   }
 
   return (
