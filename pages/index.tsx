@@ -46,24 +46,33 @@ const TopLogouts = dynamic(
 )
 
 export async function getStaticProps() {
-  const url = "http://api.dcl-metrics.com/global"
-  const response = await axios.get(url, {
-    method: "get",
-    proxy: {
-      protocol: "http",
-      host: process.env.FIXIE_HOST,
-      port: 80,
-      auth: {
-        username: "fixie",
-        password: process.env.FIXIE_TOKEN,
+  if (process.env.NODE_ENV === "production") {
+    const url = "http://api.dcl-metrics.com/global"
+    const response = await axios.get(url, {
+      method: "get",
+      proxy: {
+        protocol: "http",
+        host: process.env.FIXIE_HOST,
+        port: 80,
+        auth: {
+          username: "fixie",
+          password: process.env.FIXIE_TOKEN,
+        },
       },
-    },
-  })
-  const ISR = response.data
-  const day = 60 * 60 * 24
-  return {
-    props: { ISR },
-    revalidate: day,
+    })
+    const ISR = response.data
+    const day = 60 * 60 * 24
+    return {
+      props: { ISR },
+      revalidate: day,
+    }
+  } else {
+    const ISR = staticGlobal
+    const day = 60 * 60 * 24
+    return {
+      props: { ISR },
+      revalidate: day,
+    }
   }
 }
 
