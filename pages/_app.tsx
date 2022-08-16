@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       return false
     }
   }
-  console.log(isProd())
   return (
     <ChakraProvider>
       <SafeHydrate>
