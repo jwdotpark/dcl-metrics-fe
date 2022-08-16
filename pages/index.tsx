@@ -46,6 +46,7 @@ const TopLogouts = dynamic(
 )
 
 export async function getStaticProps() {
+  const day = 60 * 60 * 24
   if (process.env.NODE_ENV === "production") {
     const url = "http://api.dcl-metrics.com/global"
     const response = await axios.get(url, {
@@ -61,14 +62,12 @@ export async function getStaticProps() {
       },
     })
     const ISR = response.data
-    const day = 60 * 60 * 24
     return {
       props: { ISR },
       revalidate: day,
     }
   } else {
     const ISR = staticGlobal
-    const day = 60 * 60 * 24
     return {
       props: { ISR },
       revalidate: day,

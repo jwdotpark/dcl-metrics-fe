@@ -25,13 +25,15 @@ function MyApp({ Component, pageProps }: AppProps) {
             content="initial-scale=1.0, width=device-width"
           />
         </Head>
-        <Script
-          async
-          defer
-          data-website-id="ba886c85-0602-4add-a574-52d2d163ecc1"
-          src="https://dcl-metrics-telemetry.herokuapp.com/dcl-metrics-telemetry.js"
-          data-cache="true"
-        ></Script>
+        {process.env.NEXT_PUBLIC_ENV !== "dev" && (
+          <Script
+            async
+            defer
+            data-website-id="ba886c85-0602-4add-a574-52d2d163ecc1"
+            src="https://dcl-metrics-telemetry.herokuapp.com/dcl-metrics-telemetry.js"
+            data-cache="true"
+          ></Script>
+        )}
         <Component {...pageProps} />
       </SafeHydrate>
     </ChakraProvider>
