@@ -3,6 +3,7 @@ import dynamic from "next/dynamic"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import staticGlobal from "../public/data/global.json"
+const axios = require("axios").default
 
 const Layout = dynamic(() => import("../src/components/layout/layout"), {
   ssr: false,
@@ -45,9 +46,28 @@ const TopLogouts = dynamic(
 )
 
 export async function getStaticProps() {
+  // const url = process.env.GLOBAL_API
+  // const res = await fetch(url)
+  // const fetchRes = await res.json()
+  // const day = 60 * 60 * 24
+  // return {
+  //   props: { fetchRes },
+  //   revalidate: day,
+  // }
   const url = process.env.GLOBAL_API
-  const res = await fetch(url)
-  const fetchRes = await res.json()
+  const response = await axios.get(url, {
+    method: "get",
+    proxy: {
+      protocol: "http",
+      host: process.env.FIXIE_HOST,
+      port: 80,
+      auth: {
+        username: "fixie",
+        password: process.env.FIXIE_TOKEN,
+      },
+    },
+  })
+  const fetchRes = response.data
   const day = 60 * 60 * 24
   return {
     props: { fetchRes },
