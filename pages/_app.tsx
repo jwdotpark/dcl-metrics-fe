@@ -23,7 +23,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Head>
           <title>DCL Metrics</title>
           <link rel="shortcut icon" sizes="32x32" href="/images/favicon.ico" />
-          <meta name="DCL Metrics" content="DCL Metrics" />
+          <meta
+            name="description"
+            content="We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
+          />
+          <meta
+            name="keywords"
+            content="Decentraland, dcl stats, decentraland stats, dcl statistics, decentraland statistics, dcl metrics, decentraland metrics, metaverse stats, metaverse statistics, metaverse metrics"
+          />
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"
