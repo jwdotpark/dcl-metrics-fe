@@ -14,12 +14,9 @@ function SafeHydrate({ children }) {
 
 function MyApp({ Component, pageProps }: AppProps) {
   const isProd = () => {
-    if (process.env.NEXT_PUBLIC_ENV === "prod") {
-      return true
-    } else {
-      return false
-    }
+    return process.env.NEXT_PUBLIC_ENV === "prod"
   }
+
   return (
     <ChakraProvider>
       <SafeHydrate>
