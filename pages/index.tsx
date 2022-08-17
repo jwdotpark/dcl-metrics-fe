@@ -76,16 +76,16 @@ export async function getStaticProps() {
 }
 
 const GlobalPage: NextPage = (ISR) => {
-  const [data, setData] = useState(staticGlobal)
+  // const [data, setData] = useState(ISR)
   const [isDataLoading, setIsDataLoading] = useState(false)
 
-  useEffect(() => {
-    if (process.env.NEXT_PUBLIC_ENV === "prod") {
-      // @ts-ignore
-      setData(ISR)
-    }
-    // eslint-disable-next-line
-  }, [])
+  // useEffect(() => {
+  //   if (process.env.NEXT_PUBLIC_ENV === "prod") {
+  //     // @ts-ignore
+  //     setData(ISR)
+  //   }
+  //   // eslint-disable-next-line
+  // }, [])
 
   // @ts-ignore
   const result = ISR.ISR
