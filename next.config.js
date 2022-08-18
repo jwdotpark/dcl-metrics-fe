@@ -12,6 +12,7 @@ const nextConfig = {
 const sentryWebpackPluginOptions = {
   silent: true,
   traceSampleRate: 0.5,
+  integrations: [new BrowserTracing({ tracingOrigins: ["*"] })],
   enabled: process.env.NEXT_PUBLIC_ENV === "prod",
 }
 
