@@ -8,7 +8,7 @@ const ErrorPage = () => {
   return (
     <Layout>
       <Center h="calc(100vh - 8rem)">
-        <Text fontSize="4xl">
+        <Text fontSize="6xl">
           {query.statusCode === "unknown"
             ? "Something bad has happened!"
             : query.statusCode}

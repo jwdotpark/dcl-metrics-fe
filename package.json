@@ -18,6 +18,7 @@
     "@nivo/line": "^0.79.1",
     "@nivo/marimekko": "^0.79.1",
     "@nivo/pie": "^0.79.1",
+    "@sentry/nextjs": "^7.11.1",
     "@tanstack/react-table": "^8.5.2",
     "axios": "^0.27.2",
     "cors": "^2.8.5",

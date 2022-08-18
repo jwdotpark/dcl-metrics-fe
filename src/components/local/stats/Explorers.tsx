@@ -13,10 +13,8 @@ import {
   useColorMode,
   Flex,
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
-import { fetchResult } from "../../../lib/hooks/fetch"
+import { useState } from "react"
 import GridBox from "../GridBox"
-import staticData from "../../../../public/data/explorers.json"
 import Loading from "../Loading"
 import ProfilePicture from "../ProfilePicture"
 
