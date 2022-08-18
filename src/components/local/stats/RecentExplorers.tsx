@@ -9,15 +9,13 @@ import {
   Th,
   Thead,
   Tr,
-  Image,
   Select,
   useColorMode,
   useColorModeValue,
   Flex,
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import GridBox from "../GridBox"
-import { FiLink } from "react-icons/fi"
 import Loading from "../Loading"
 import ProfilePicture from "../ProfilePicture"
 

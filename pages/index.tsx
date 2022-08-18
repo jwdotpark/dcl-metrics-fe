@@ -47,7 +47,7 @@ const TopLogouts = dynamic(
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NEXT_PUBLIC_ENV === "prod") {
     const url = "http://api.dcl-metrics.com/global"
     const response = await axios.get(url, {
       method: "get",
