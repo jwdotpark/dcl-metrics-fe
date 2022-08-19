@@ -14,7 +14,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 
 function MyApp({ Component, pageProps }: AppProps) {
   const telemetry = () => {
-    return process.env.TELEMETRY === "true"
+    return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }
 
   return (
