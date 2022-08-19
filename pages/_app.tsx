@@ -4,17 +4,17 @@ import Script from "next/script"
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 
-function SafeHydrate({ children }) {
-  return (
-    <div suppressHydrationWarning>
-      {typeof window === "undefined" ? null : children}
-    </div>
-  )
-}
+// function SafeHydrate({ children }) {
+//   return (
+//     <div suppressHydrationWarning>
+//       {typeof window === "undefined" ? null : children}
+//     </div>
+//   )
+// }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const isProd = () => {
-    return process.env.NEXT_PUBLIC_ENV === "prod"
+  const telemetry = () => {
+    return process.env.TELEMETRY === "true"
   }
 
   return (
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      {isProd() && (
+      {telemetry() && (
         <Script
           async
           defer
