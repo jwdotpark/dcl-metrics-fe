@@ -9,9 +9,10 @@ const nextConfig = {
   },
 }
 
+const sampleRate = process.env.NEXT_PUBLIC_TRACE_SAMPLE_RATE
 const sentryWebpackPluginOptions = {
   silent: true,
-  traceSampleRate: 0.5,
+  traceSampleRate: sampleRate,
   // FIXME possibly dcl-metrics.com only later
   enabled: process.env.NEXT_PUBLIC_ENV === "prod",
 }
