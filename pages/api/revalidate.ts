@@ -1,9 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
+import { withSentry } from "@sentry/nextjs"
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
     return res.status(401).json({ message: "Invalid token" })
   }
@@ -15,3 +13,5 @@ export default async function handler(
     return res.status(500).send("Error revalidating")
   }
 }
+
+export default withSentry(handler)

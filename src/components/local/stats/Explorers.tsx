@@ -13,10 +13,8 @@ import {
   useColorMode,
   Flex,
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
-import { fetchResult } from "../../../lib/hooks/fetch"
+import { useState } from "react"
 import GridBox from "../GridBox"
-import staticData from "../../../../public/data/explorers.json"
 import Loading from "../Loading"
 import ProfilePicture from "../ProfilePicture"
 
@@ -29,13 +27,11 @@ const Explorers = ({ res, isLoading }) => {
 
   const data = Object.entries(res)
 
-  // table pagination
   const [page, setPage] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const pages = Math.ceil(data.length / rowsPerPage)
   const dataPaginated = data.slice((page - 1) * rowsPerPage, page * rowsPerPage)
 
-  // create a table with data
   const TableComponent = () => {
     const { colorMode } = useColorMode()
     return (
