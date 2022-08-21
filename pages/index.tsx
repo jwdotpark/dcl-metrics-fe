@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import type { NextPage } from "next"
-import { Grid, useBreakpointValue } from "@chakra-ui/react"
+import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
 import staticGlobal from "../public/data/global.json"
 const axios = require("axios").default
 
@@ -44,6 +44,7 @@ const TopLogouts = dynamic(
   () => import("../src/components/local/stats/TopLogouts"),
   { ssr: false }
 )
+import TempError from "../src/components/local/TempError"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
@@ -85,7 +86,8 @@ const GlobalPage: NextPage = (ISR) => {
 
   return (
     <Layout>
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
+      <TempError />
+      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mt="4">
         <UniqueVisitors res={result.global} visitorLoading={isDataLoading} />
         <TotalVisitedParcels
           res={result.global}
