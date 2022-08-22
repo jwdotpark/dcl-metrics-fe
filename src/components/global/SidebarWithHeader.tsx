@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, { ReactNode, useState } from "react"
 import {
+  Tooltip,
   Center,
   Spacer,
   Image,
@@ -164,62 +165,92 @@ const SidebarContent = ({
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       <Flex direction="column" gap="1" h="calc(100vh - 6rem)">
-        <Box>
-          <Link href="/" passHref>
-            <a>
-              <NavItem
-                height="3rem"
-                icon={FiTrendingUp}
-                bg={
-                  router.pathname === "/" && // eslint-disable-next-line
-                  useColorModeValue("gray.200", "gray.700")
-                }
-              >
-                <Text fontSize="lg" as={router.pathname === "/" && "u"}>
-                  Global
-                </Text>
-              </NavItem>
-            </a>
-          </Link>
-        </Box>
-        <Box>
-          <Link href="/roadmap" passHref>
-            <a>
-              <NavItem
-                height="3rem"
-                icon={FiMap}
-                bg={
-                  router.pathname === "/roadmap" &&
-                  // eslint-disable-next-line
-                  useColorModeValue("gray.200", "gray.700")
-                }
-              >
-                <Text fontSize="lg" as={router.pathname === "/roadmap" && "u"}>
-                  Roadmap
-                </Text>
-              </NavItem>
-            </a>
-          </Link>
-        </Box>
-        <Box>
-          <Link href="/about" passHref>
-            <a>
-              <NavItem
-                height="3rem"
-                icon={FiCompass}
-                bg={
-                  router.pathname === "/about" &&
-                  // eslint-disable-next-line
-                  useColorModeValue("gray.200", "gray.700")
-                }
-              >
-                <Text fontSize="lg" as={router.pathname === "/about" && "u"}>
-                  About
-                </Text>
-              </NavItem>
-            </a>
-          </Link>
-        </Box>
+        <Tooltip
+          label="Global Dashboard"
+          placement="right"
+          color={useColorModeValue("black", "white")}
+          fontSize="sm"
+          bg={useColorModeValue("gray.300", "gray.700")}
+          borderRadius="md"
+        >
+          <Box>
+            <Link href="/" passHref>
+              <a>
+                <NavItem
+                  height="3rem"
+                  icon={FiTrendingUp}
+                  bg={
+                    router.pathname === "/" && // eslint-disable-next-line
+                    useColorModeValue("gray.200", "gray.700")
+                  }
+                >
+                  <Text fontSize="lg" as={router.pathname === "/" && "u"}>
+                    Global
+                  </Text>
+                </NavItem>
+              </a>
+            </Link>
+          </Box>
+        </Tooltip>
+        <Tooltip
+          label="Roadmap"
+          placement="right"
+          fontSize="sm"
+          bg={useColorModeValue("gray.300", "gray.700")}
+          color={useColorModeValue("black", "white")}
+          borderRadius="md"
+        >
+          <Box>
+            <Link href="/roadmap" passHref>
+              <a>
+                <NavItem
+                  height="3rem"
+                  icon={FiMap}
+                  bg={
+                    router.pathname === "/roadmap" &&
+                    // eslint-disable-next-line
+                    useColorModeValue("gray.200", "gray.700")
+                  }
+                >
+                  <Text
+                    fontSize="lg"
+                    as={router.pathname === "/roadmap" && "u"}
+                  >
+                    Roadmap
+                  </Text>
+                </NavItem>
+              </a>
+            </Link>
+          </Box>
+        </Tooltip>
+        <Tooltip
+          label="About"
+          placement="right"
+          fontSize="sm"
+          bg={useColorModeValue("gray.300", "gray.700")}
+          color={useColorModeValue("black", "white")}
+          borderRadius="md"
+        >
+          <Box>
+            <Link href="/about" passHref>
+              <a>
+                <NavItem
+                  height="3rem"
+                  icon={FiCompass}
+                  bg={
+                    router.pathname === "/about" &&
+                    // eslint-disable-next-line
+                    useColorModeValue("gray.200", "gray.700")
+                  }
+                >
+                  <Text fontSize="lg" as={router.pathname === "/about" && "u"}>
+                    About
+                  </Text>
+                </NavItem>
+              </a>
+            </Link>
+          </Box>
+        </Tooltip>
         <Spacer />
         <Box display={{ base: "none", md: "block" }}>
           <NavItem
