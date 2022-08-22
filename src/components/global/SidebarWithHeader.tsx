@@ -252,15 +252,24 @@ const SidebarContent = ({
           </Box>
         </Tooltip>
         <Spacer />
-        <Box display={{ base: "none", md: "block" }}>
-          <NavItem
-            height="3rem"
-            icon={sidebarOpen ? FiArrowLeftCircle : FiArrowRightCircle}
-            onClick={handleSidebar}
-          >
-            <Text fontSize="xl">Collapse</Text>
-          </NavItem>
-        </Box>
+        <Tooltip
+          label={sidebarOpen ? "Collapse" : "Expand"}
+          placement="right"
+          fontSize="sm"
+          bg={useColorModeValue("gray.300", "gray.700")}
+          color={useColorModeValue("black", "white")}
+          borderRadius="md"
+        >
+          <Box display={{ base: "none", md: "block" }}>
+            <NavItem
+              height="3rem"
+              icon={sidebarOpen ? FiArrowLeftCircle : FiArrowRightCircle}
+              onClick={handleSidebar}
+            >
+              <Text fontSize="xl">Collapse</Text>
+            </NavItem>
+          </Box>
+        </Tooltip>
       </Flex>
       {/* {LinkItems.map((link) => (
         <Link key={link.name} href={`/${makeName(link.name)}`}>
