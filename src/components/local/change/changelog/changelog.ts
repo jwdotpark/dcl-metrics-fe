@@ -18,15 +18,21 @@ export const minorchangeTemplate = [
     contents: [
       {
         icon: FiHome,
-        day: "2022 Jul",
+        day: "2022 July",
         title: "Project initialized",
         description: ``,
       },
       {
         icon: FiBarChart2,
-        day: "2022 Aug",
-        title: "Dashboard and initial data point is available",
+        day: "2022 August",
+        title: "Dashboard with basic global metrics available",
         description: ``,
+      },
+      {
+        icon: FiCheckCircle,
+        day: "2022 August",
+        title: "DAO Grant passed to fund dcl-metrics for one year!",
+        description: `https://governance.decentraland.org/proposal/?id=ac2b57f0-12ac-11ed-affb-95d45c2147f8`,
       },
     ],
   },
