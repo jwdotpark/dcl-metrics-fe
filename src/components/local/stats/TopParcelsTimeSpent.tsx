@@ -138,7 +138,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
             size="sm"
             variant="striped"
             colorScheme="gray"
-            // height="500"
+            height="500"
             overflowX="hidden"
           >
             <Thead>

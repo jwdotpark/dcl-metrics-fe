@@ -19,7 +19,7 @@ const LineChart = ({ data }) => {
   return (
     <ResponsiveLine
       data={data}
-      margin={{ top: 50, right: 40, bottom: 25, left: 80 }}
+      margin={{ top: 50, right: 25, bottom: 25, left: 50 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -57,6 +57,18 @@ const LineChart = ({ data }) => {
         legend: "count",
         legendOffset: -60,
         legendPosition: "middle",
+        // renderTick: (tick) => {
+        //   return (
+        //     <text
+        //       x={tick.x + 3}
+        //       y={tick.y - 2}
+        //       fontSize="12px"
+        //       fill={colorMode === "light" ? "gray.800" : "white"}
+        //     >
+        //       {tick.value.toFixed(2)}
+        //     </text>
+        //   )
+        // },
       }}
       theme={{
         textColor: useColorModeValue("gray.800", "white"),

@@ -82,7 +82,12 @@ const GlobalPage: NextPage = (ISR) => {
   // @ts-ignore
   const result = ISR.ISR
 
-  const gridColumn = useBreakpointValue({ md: 1, lg: 2, xl: 2 })
+  const gridColumn = useBreakpointValue({
+    md: 1,
+    lg: 2,
+    xl: 2,
+    // "2xl": 3,
+  })
 
   return (
     <Layout>
