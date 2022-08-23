@@ -12,5 +12,5 @@ Sentry.init({
     SENTRY_DSN ||
     "https://730958d1b4114e55aba35d2f755bddca@o1365263.ingest.sentry.io/6660841",
   tracesSampleRate: sampleRate,
-  integrations: [new Sentry.BrowserTracing({ tracingOrigins: [/^\//] })],
+  // integrations: [new Sentry.BrowserTracing({ tracingOrigins: [/^\//] })],
 })
