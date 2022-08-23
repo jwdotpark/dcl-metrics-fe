@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prod": "yarn build && yarn start"
+    "prod": "yarn build && yarn start",
+    "test": "jest --coverage --watch --silent"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.4",
