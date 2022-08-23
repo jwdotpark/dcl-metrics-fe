@@ -78,7 +78,7 @@ export async function getStaticProps() {
 
 const GlobalPage: NextPage = (ISR) => {
   const [isDataLoading, setIsDataLoading] = useState(false)
-
+  
   // @ts-ignore
   const result = ISR.ISR
 
@@ -86,7 +86,6 @@ const GlobalPage: NextPage = (ISR) => {
     md: 1,
     lg: 2,
     xl: 2,
-    // "2xl": 3,
   })
 
   return (
