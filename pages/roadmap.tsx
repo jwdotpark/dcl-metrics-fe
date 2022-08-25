@@ -30,6 +30,7 @@ const Roadmap = () => {
             <TabList>
               <Tab>Roadmap</Tab>
               <Tab>Changelog</Tab>
+              <Tab>Temp</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
