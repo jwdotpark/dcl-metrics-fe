@@ -1,9 +1,9 @@
-name: Deploy staging
+name: Deploy production
 on:
   push:
-    branches: [dev]
+    branches: [main]
   pull_request:
-    branches: [dev]
+    branches: [main]
 
 jobs:
   build:
@@ -29,5 +29,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "dcl-metrics-fe-stage"
+          heroku_app_name: "dcl-metrics-fe"
           heroku_email: "jongwoo.park@code.berlin"
