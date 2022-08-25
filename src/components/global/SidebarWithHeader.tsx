@@ -43,18 +43,6 @@ interface LinkItemProps {
   icon: IconType
 }
 
-const makeName = (name: string) => {
-  return name.toLowerCase().split(" ").join("-")
-}
-
-const LinkItems: Array<LinkItemProps> = [
-  // { name: "Home", icon: FiHome },
-  { name: "Global", icon: FiTrendingUp },
-  // { name: "Single Land", icon: FiCompass },
-  { name: "About", icon: FiStar },
-  // { name: "Settings", icon: FiSettings },
-]
-
 export default function SidebarWithHeader({
   children,
 }: {
@@ -106,7 +94,7 @@ export default function SidebarWithHeader({
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} sidebarStatus={sidebarStatus} />
       {/* NOTE */}
-      <Box ml={{ base: 0, md: sidebarStatus }} p="4">
+      <Box ml={{ base: 0, md: sidebarStatus }} p="4" data-testid="sidebar">
         {children}
       </Box>
     </Box>
@@ -156,6 +144,7 @@ const SidebarContent = ({
               fontSize="20px"
               fontWeight="extrabold"
               css={{ transform: "translateY(-1px)" }}
+              data-testid="sidebar-title"
             >
               {sidebarOpen && "DCL Metrics"}
               {/* DCL Metrics */}
@@ -360,6 +349,7 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
             fontSize="23px"
             fontWeight="extrabold"
             css={{ transform: "translateY(-1px)" }}
+            data-testid="title"
           >
             DCL Metrics
           </Text>
