@@ -25,7 +25,7 @@ jobs:
             ⏳ <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b> build started</a>
             ${{ github.workflow }}
             By: ${{ github.actor }}
-            Branch: ${{ github.ref }}
+            Branch: ${{ inputs.branch }}
             Commit: ${{ github.event.head_commit.message }}
             <a href="${{ github.event.head_commit.url }}">Link</a>
 
@@ -37,28 +37,23 @@ jobs:
         run: |
           yarn test
 
-      - name: Test Fail
+      - name: Send Test Fail message
         if: failure()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ${{ github.actor }}
-            Test Failed
-            Commit : ${{ github.event.commits[0].message }}
-            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            🆘 Test Failed
 
-      - name: Test Success
+      - name: Send Test Success message
         if: success()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ${{ github.actor }}
-            Test passed
-            Commit : ${{ github.event.commits[0].message }}
+            ✅ Test passed
 
   deploy:
     runs-on: ubuntu-latest
@@ -80,9 +75,6 @@ jobs:
           disable_web_page_preview: true
           format: html
           message: |
-            ${{ job.status == 'success' && '✅' || '🆘' }} <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b> build finished</a>
-            ${{ github.workflow }}
-            By: ${{ github.actor }}
-            Branch: ${{ github.ref }}
-            Commit: ${{ github.event.head_commit.message }}
-            <a href="${{ github.event.head_commit.url }}">Link</a>
+            ${{ job.status == 'success' && '✅ build success' || '🆘 build fail' }} <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b></a>
+            Branch: ${{ inputs.branch }}
+            <a href="https://dcl-metrics.com/">Open</a>
