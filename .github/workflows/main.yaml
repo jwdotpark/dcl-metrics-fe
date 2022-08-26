@@ -21,16 +21,28 @@ jobs:
         run: |
           yarn test
 
-      - name: send notification to telegram
+      - name: send telegram message when failed
+        if: failure()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-          Repository: ${{ github.repository }}
-          Event name: ${{ github.event.name }}
-          Action: ${{ github.action }}
-          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            ${{ github.actor }}
+            Test Failed
+            Commit : ${{ github.event.commits[0].message }}
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - name: send telegram message when success
+        if: success()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.actor }}
+            Test passed
+            Commit : ${{ github.event.commits[0].message }}
 
   deploy:
     runs-on: ubuntu-latest
