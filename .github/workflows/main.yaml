@@ -1,4 +1,4 @@
-name: Deploy production
+name: Deploy Production
 on:
   push:
     branches: [main]
@@ -22,12 +22,12 @@ jobs:
           disable_web_page_preview: true
           format: html
           message: |
-            ⏳ <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b> build started</a>
-            ${{ github.workflow }}
+            ⏳ <a href="${{ github.repository }}"><b>${{ github.repository }}</b> build started</a>
+            ${{ github.workflow }} workflow 
             By: ${{ github.actor }}
-            Branch: ${{ inputs.branch }}
+            Branch: ${{ github.ref_name }}
             Commit: ${{ github.event.head_commit.message }}
-            <a href="${{ github.event.head_commit.url }}">Link</a>
+            Commit <a href="${{ github.event.head_commit.url }}">Link</a>
 
       - name: Install dependencies
         run: |
@@ -44,7 +44,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🆘 Test Failed
+            ❌ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> Test failed..</a>
 
       - name: Send Test Success message
         if: success()
@@ -53,7 +53,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ✅ Test passed
+            ✅ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> Test passed!</a>
 
   deploy:
     runs-on: ubuntu-latest
@@ -75,6 +75,22 @@ jobs:
           disable_web_page_preview: true
           format: html
           message: |
-            ${{ job.status == 'success' && '✅ build success' || '🆘 build fail' }} <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b></a>
-            Branch: ${{ inputs.branch }}
-            <a href="https://dcl-metrics.com/">Open</a>
+            <div>
+              <p>${{ github.workflow }} workflow</p>
+              <table>
+                <tr>
+                  ${{ job.status == 'success' && '✅ Build Success!' || '❌ Build Failed..' }} 
+                </tr>
+                <tr>
+                  <td>Repository Link</td>
+                  <td>Branch</td>
+                  <td>Live Site</td>
+                </tr>
+                <tr>
+                  <td><a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b></a></td>
+                  <td>${{ github.ref_name }}</td>
+                  <td><a href="https://dcl-metrics.com/">dcl-metrics.com</a></td>
+                </tr>
+              </table>
+
+            </div>
