@@ -1,6 +1,7 @@
 import sslRedirect from "next-ssl-redirect-middleware"
 
 export default sslRedirect({})
+<<<<<<< HEAD
 
 // import { NextFetchEvent, NextRequest, NextResponse } from "next/server"
 
@@ -19,3 +20,5 @@ export default sslRedirect({})
 //   }
 //   return NextResponse.next()
 // }
+=======
+>>>>>>> preview
