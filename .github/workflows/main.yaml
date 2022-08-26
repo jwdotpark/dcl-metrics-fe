@@ -22,24 +22,21 @@ jobs:
           disable_web_page_preview: true
           format: html
           message: |
-            ⏳ <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b></a>
+            ⏳ <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b> build started</a>
             ${{ github.workflow }}
             By: ${{ github.actor }}
             Branch: ${{ github.ref }}
             Commit: ${{ github.event.head_commit.message }}
-            SHA: ${{ steps.vars.outputs.sha_short }}
             <a href="${{ github.event.head_commit.url }}">Link</a>
 
       - name: Install dependencies
         run: |
           yarn install
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
       - name: Run test
         run: |
           yarn test
+
       - name: Test Fail
         if: failure()
         uses: appleboy/telegram-action@master
@@ -51,6 +48,7 @@ jobs:
             Test Failed
             Commit : ${{ github.event.commits[0].message }}
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
       - name: Test Success
         if: success()
         uses: appleboy/telegram-action@master
@@ -82,10 +80,9 @@ jobs:
           disable_web_page_preview: true
           format: html
           message: |
-            ${{ job.status == 'success' && '✅' || '🆘' }} <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b></a>
+            ${{ job.status == 'success' && '✅' || '🆘' }} <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b> build finished</a>
             ${{ github.workflow }}
             By: ${{ github.actor }}
             Branch: ${{ github.ref }}
             Commit: ${{ github.event.head_commit.message }}
-            SHA: ${{ steps.vars.outputs.sha_short }}
             <a href="${{ github.event.head_commit.url }}">Link</a>
