@@ -21,6 +21,17 @@ jobs:
         run: |
           yarn test
 
+      - name: send notification to telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+          Repository: ${{ github.repository }}
+          Event name: ${{ github.event.name }}
+          Action: ${{ github.action }}
+          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+
   deploy:
     runs-on: ubuntu-latest
     needs: [build]
