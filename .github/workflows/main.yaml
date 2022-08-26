@@ -22,10 +22,9 @@ jobs:
           disable_web_page_preview: true
           format: html
           message: |
-            ⏳ <a href="${{ github.repository }}"><b>${{ github.repository }}</b> build started</a>
-            ${{ github.workflow }} workflow 
+            ⏳ ${{ github.repository }}/${{ github.ref_name }} build started
+            Workflow: ${{ github.workflow }}
             By: ${{ github.actor }}
-            Branch: ${{ github.ref_name }}
             Commit: <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>
 
       - name: Install dependencies
@@ -44,7 +43,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: html
           message: |
-            ❌ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> Test failed..
+            ❌ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> test failed..
 
       - name: Send Test Success message
         if: success()
@@ -54,7 +53,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: html
           message: |
-            ✅ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> Test passed!
+            ✅ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> test passed!
 
   deploy:
     runs-on: ubuntu-latest
@@ -76,8 +75,5 @@ jobs:
           disable_web_page_preview: true
           format: html
           message: |
-            <p>${{ github.workflow }} workflow</p>
-            <p>${{ job.status == 'success' && '✅ Build Success!' || '❌ Build Failed..' }}</p>
-            Repository Link: <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b></a><br />
-            Branch: ${{ github.ref_name }}<br />
+            ${{ job.status == 'success' &&s '✅ Build Success!' || '❌ Build Failed..' }}
             Live Site: <a href="https://dcl-metrics.com/">dcl-metrics.com</a>
