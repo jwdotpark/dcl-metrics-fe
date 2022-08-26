@@ -14,14 +14,33 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
+      - name: Start build notfication
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          disable_web_page_preview: true
+          format: html
+          message: |
+            ⏳ <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b></a>
+            ${{ github.workflow }}
+            By: ${{ github.actor }}
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.event.head_commit.message }}
+            SHA: ${{ steps.vars.outputs.sha_short }}
+            <a href="${{ github.event.head_commit.url }}">Link</a>
+
       - name: Install dependencies
         run: |
           yarn install
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
       - name: Run test
         run: |
           yarn test
-
-      - name: send telegram message when failed
+      - name: Test Fail
         if: failure()
         uses: appleboy/telegram-action@master
         with:
@@ -32,8 +51,7 @@ jobs:
             Test Failed
             Commit : ${{ github.event.commits[0].message }}
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
-      - name: send telegram message when success
+      - name: Test Success
         if: success()
         uses: appleboy/telegram-action@master
         with:
@@ -54,3 +72,20 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "dcl-metrics-fe"
           heroku_email: "jongwoo.park@code.berlin"
+
+      - name: Finish build notfication
+        uses: appleboy/telegram-action@master
+        if: always()
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          disable_web_page_preview: true
+          format: html
+          message: |
+            ${{ job.status == 'success' && '✅' || '🆘' }} <a href="${{ github.server_url }}/${{ github.repository }}"><b>${{ github.repository }}</b></a>
+            ${{ github.workflow }}
+            By: ${{ github.actor }}
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.event.head_commit.message }}
+            SHA: ${{ steps.vars.outputs.sha_short }}
+            <a href="${{ github.event.head_commit.url }}">Link</a>
