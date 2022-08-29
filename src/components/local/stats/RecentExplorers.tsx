@@ -62,6 +62,16 @@ const RecentExplorers = ({ res, isLoading }) => {
     )
   }
 
+  const lengthArr = []
+  for (let i = 0; i < valueArr[currentDate].length; i++) {
+    lengthArr.push(valueArr[currentDate][i].parcels_visited)
+  }
+
+  const normalizedData = []
+  for (let i = 0; i < lengthArr.length; i++) {
+    normalizedData.push(Math.round((lengthArr[i] / lengthArr[0]) * 100))
+  }
+
   const TableComponent = () => {
     const { colorMode } = useColorMode()
     return (
@@ -82,7 +92,7 @@ const RecentExplorers = ({ res, isLoading }) => {
                   key={index}
                   style={{
                     background: `linear-gradient(90deg, #EED31250 ${
-                      item.parcels_visited / 2
+                      normalizedData[index]
                     }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
                   h="3rem"

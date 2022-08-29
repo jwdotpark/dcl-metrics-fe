@@ -1,4 +1,4 @@
-name: Deploy staging
+name: Deploy Staging
 on:
   push:
     branches: [dev]
@@ -14,6 +14,20 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
+
+      - name: Start build notfication
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          disable_web_page_preview: true
+          format: html
+          message: |
+            ⏳ <b>Dev Build started!</b> ${{ github.repository }}/${{ github.ref_name }}
+            Workflow: ${{ github.workflow }}
+            By: ${{ github.actor }}
+            Commit: <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>
+
       - name: Install dependencies
         run: |
           yarn install
@@ -31,3 +45,15 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "dcl-metrics-fe-stage"
           heroku_email: "jongwoo.park@code.berlin"
+
+      - name: Finish build notfication
+        uses: appleboy/telegram-action@master
+        if: always()
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          disable_web_page_preview: true
+          format: html
+          message: |
+            ${{ job.status == 'success' && '✅ Dev Build Success!' || '❌ Dev Build Failed..' }}
+            Live Site: <a href="https://dcl-metrics-fe-stage.herokuapp.com/">dcl-metrics-fe-stage.herokuapp.com</a>
