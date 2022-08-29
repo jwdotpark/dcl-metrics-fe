@@ -1,4 +1,4 @@
-name: Deploy Production
+name: Pull request to main
 on:
   pull_request:
     branches: [main]
