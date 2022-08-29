@@ -100,6 +100,21 @@ const MarathonUsers = ({ isLoading, res }) => {
   // eslint-disable-next-line
   const memoizedData = useMemo(() => dataArr.slice(0, 10), [res])
 
+  const timeSpentArr = []
+  for (let i = 0; i < memoizedData.length; i++) {
+    timeSpentArr.push(memoizedData[i].timeSpent)
+  }
+
+  const max = Math.max(...timeSpentArr)
+  const min = Math.min(...timeSpentArr)
+  const range = max - min
+  const normalizedTimeSpentArr = []
+  for (let i = 0; i < timeSpentArr.length; i++) {
+    normalizedTimeSpentArr.push(
+      Math.round(((timeSpentArr[i] - min) / range) * (100 - 20) + 20)
+    )
+  }
+
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns: columns, data: memoizedData }, useSortBy)
 
@@ -151,7 +166,8 @@ const MarathonUsers = ({ isLoading, res }) => {
                   h="3rem"
                   style={{
                     background: `linear-gradient(90deg, #61CDBB50 ${
-                      row.original.timeSpent / 2000
+                      // row.original.timeSpent / 2000
+                      normalizedTimeSpentArr[i]
                     }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
                 >
