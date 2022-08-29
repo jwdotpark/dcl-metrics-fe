@@ -14,6 +14,20 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
+
+      - name: Start build notfication
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          disable_web_page_preview: true
+          format: html
+          message: |
+            ⏳ <b>Dev Build started!</b> ${{ github.repository }}/${{ github.ref_name }}
+            Workflow: ${{ github.workflow }}
+            By: ${{ github.actor }}
+            Commit: <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>
+
       - name: Install dependencies
         run: |
           yarn install
