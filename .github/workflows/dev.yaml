@@ -31,3 +31,15 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "dcl-metrics-fe-stage"
           heroku_email: "jongwoo.park@code.berlin"
+
+      - name: Finish build notfication
+        uses: appleboy/telegram-action@master
+        if: always()
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          disable_web_page_preview: true
+          format: html
+          message: |
+            ${{ job.status == 'success' && '✅ Dev Build Success!' || '❌ Dev Build Failed..' }}
+            Live Site: <a href="https://dcl-metrics-fe-stage.herokuapp.com/">dcl-metrics-fe-stage.herokuapp.com</a>
