@@ -32,6 +32,17 @@ const Explorers = ({ res, isLoading }) => {
   const pages = Math.ceil(data.length / rowsPerPage)
   const dataPaginated = data.slice((page - 1) * rowsPerPage, page * rowsPerPage)
 
+  // make an array that contains second index of each array in dataPaginated
+  const lengthArr = []
+  for (let i = 0; i < dataPaginated.length; i++) {
+    lengthArr.push(dataPaginated[i][1])
+  }
+
+  const normalizedData = []
+  for (let i = 0; i < lengthArr.length; i++) {
+    normalizedData.push(Math.round((lengthArr[i] / lengthArr[0]) * 100))
+  }
+
   const TableComponent = () => {
     const { colorMode } = useColorMode()
     return (
@@ -51,7 +62,7 @@ const Explorers = ({ res, isLoading }) => {
                   key={index}
                   style={{
                     background: `linear-gradient(90deg, #F4756050 ${
-                      Number(item[1]) / 10
+                      normalizedData[index]
                     }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
                   display="block"
