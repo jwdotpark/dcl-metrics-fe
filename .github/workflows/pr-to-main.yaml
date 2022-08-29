@@ -41,7 +41,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: html
           message: |
-            ❌ PR <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> test failed..
+            ❌ PR <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>test failed..
 
       - name: Send Test Success message
         if: success()
@@ -51,7 +51,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: html
           message: |
-            ✅ PR <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> test passed!
+            ✅ PR <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>test passed!
 
   # deploy:
   #   runs-on: ubuntu-latest
