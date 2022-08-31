@@ -12,6 +12,12 @@ const MarathonUsers = dynamic(
   () => import("../src/components/local/stats/MarathonUsers"),
   { ssr: false }
 )
+
+const MarathonUsersBar = dynamic(
+  () => import("../src/components/local/stats/MarathonUsersBar"),
+  { ssr: false }
+)
+
 const TopParcelsTimeSpentComponent = dynamic(
   () => import("../src/components/local/stats/TopParcelsTimeSpent"),
   { ssr: false }
@@ -101,6 +107,12 @@ const GlobalPage: NextPage = (ISR) => {
           res={result.users.daily.time_spent}
           isLoading={isDataLoading}
         />
+
+        <MarathonUsersBar
+          res={result.users.daily.time_spent}
+          isLoading={isDataLoading}
+        />
+
         <RecentMarathonUsers
           res={result.users.daily.time_spent}
           isLoading={isDataLoading}
