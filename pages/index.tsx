@@ -103,16 +103,14 @@ const GlobalPage: NextPage = (ISR) => {
           res={result.global}
           visitorLoading={isDataLoading}
         />
-        <MarathonUsers
+        {/* <MarathonUsers
           res={result.users.daily.time_spent}
           isLoading={isDataLoading}
-        />
-
+        /> */}
         <MarathonUsersBar
           res={result.users.daily.time_spent}
           isLoading={isDataLoading}
         />
-
         <RecentMarathonUsers
           res={result.users.daily.time_spent}
           isLoading={isDataLoading}
