@@ -12,6 +12,7 @@ import {
   useColorModeValue,
   useColorMode,
   Flex,
+  Spacer,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
@@ -20,91 +21,129 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
+import DateRange from "../DateRange"
 
-// #1 Marathon Users
+// temp static json
+import staticGlobal from "../../../../public/data/global_response.json"
+
 const MarathonUsers = ({ isLoading, res }) => {
-  const data = Object.entries(res)
-  const dataArr = []
-  for (let i = 0; i < data.length; i++) {
-    //  @ts-ignore
-    for (let j = 0; j < data[i][1].length; j++) {
-      dataArr.push({
-        date: data[i][0],
-        timeSpent: data[i][1][j].time_spent,
-        address: data[i][1][j].address,
-      })
-    }
+  // leave it in case customize size of component dimension
+  const box = {
+    h: "630",
+    w: "100%",
+    bg: useColorModeValue("white", "gray.800"),
   }
-  // sort by time_spent
-  dataArr.sort((a, b) => {
-    return b.timeSpent - a.timeSpent
-  })
 
-  // table pagination
-  const [page, setPage] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
-  const pages = dataArr.length / rowsPerPage
+  // FIXME static json, attach real api later
+  // const dataArr = staticGlobal.users.yesterday.time_spent
 
-  const COLUMNS = [
-    // {
-    //   Header: "Date",
-    //   accessor: "date",
-    // },
-    {
-      Header: "Time Spent",
-      accessor: "timeSpent",
-      Cell: ({ value }) => {
-        return (
-          <Box width="90px">
-            <Text as="kbd" color={useColorModeValue("gray.800", "gray.200")}>
-              <b>{convertSeconds(value)}</b>
-            </Text>
-          </Box>
-        )
-      },
-      disableSortBy: true,
-      disableFilters: true,
-    },
-    {
-      Header: "Address",
-      accessor: "address",
-      Cell: ({ value }) => {
-        return (
-          <Flex>
-            <Box display="inline" mr="2">
-              <ProfilePicture address={value} modal={false} />
-            </Box>
-            <Box display="inline-block" mt="1.5">
+  const [dateRange, setDateRange] = useState("1d")
+
+  // const dataArr = staticGlobal.users.yesterday.time_spent
+
+  // make a function
+  // if dateRange is '1d', return 'staticGlobal.users.yesterday.time_spent'
+  // if dateRange is '7d', return 'staticGlobal.users.last_week.time_spent'
+  // if dateRange is '30d, return 'staticGlobal.users.last_month.time_spent'
+  const dataArr = useMemo(() => {
+    if (dateRange === "1d") {
+      return staticGlobal.users.yesterday.time_spent
+    } else if (dateRange === "7d") {
+      return staticGlobal.users.last_week.time_spent
+    } else if (dateRange === "30d") {
+      return staticGlobal.users.last_month.time_spent
+    }
+  }, [dateRange])
+
+  // table column definition
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Time Spent",
+        accessor: "time_spent",
+        width: 100,
+        Cell: ({ value }) => {
+          return (
+            <Box>
               <Text
                 as="kbd"
+                fontSize="lg"
                 color={useColorModeValue("gray.800", "gray.200")}
-                _hover={{ color: "gray.600" }}
               >
-                <a
-                  target="_blank"
-                  href={"https://etherscan.io/address/" + `${value}`}
-                  rel="noreferrer"
-                >
-                  {value}
-                </a>
+                <b>{convertSeconds(value)}</b>
               </Text>
             </Box>
-          </Flex>
-        )
+          )
+        },
+        disableSortBy: true,
+        disableFilters: true,
       },
-    },
-  ]
+      {
+        Header: "",
+        accessor: "avatar_url",
+        width: 0,
+        Cell: ({ value }) => {
+          return (
+            <Box ml="2">
+              <Center>
+                <ProfilePicture address={value} />
+              </Center>
+            </Box>
+          )
+        },
+      },
+      {
+        Header: "User",
+        accessor: "name",
+        width: 220,
+        Cell: ({ value }) => {
+          return (
+            <Box w="7.5rem">
+              <Box display="inline-block" ml="-6">
+                <Text color={useColorModeValue("gray.800", "gray.200")}>
+                  {value}
+                </Text>
+              </Box>
+            </Box>
+          )
+        },
+      },
+      {
+        Header: "Address",
+        accessor: "address",
+        Cell: ({ value }) => {
+          return (
+            <Flex>
+              <Box display="inline-block">
+                <Text
+                  as="kbd"
+                  fontSize="lg"
+                  color={useColorModeValue("gray.800", "gray.200")}
+                  _hover={{ color: "gray.600" }}
+                >
+                  <a
+                    target="_blank"
+                    href={"https://etherscan.io/address/" + `${value}`}
+                    rel="noreferrer"
+                  >
+                    {value}
+                  </a>
+                </Text>
+              </Box>
+            </Flex>
+          )
+        },
+      },
+    ],
+    []
+  )
 
-  // eslint-disable-next-line
-  const columns = useMemo(() => COLUMNS, [])
-  // eslint-disable-next-line
-  const memoizedData = useMemo(() => dataArr.slice(0, 10), [res])
-
+  // for table width representation,
+  // time_spent value is normalized from 0 to 100 scale
   const timeSpentArr = []
-  for (let i = 0; i < memoizedData.length; i++) {
-    timeSpentArr.push(memoizedData[i].timeSpent)
+  for (let i = 0; i < dataArr.length; i++) {
+    timeSpentArr.push(dataArr[i].time_spent)
   }
-
   const max = Math.max(...timeSpentArr)
   const min = Math.min(...timeSpentArr)
   const range = max - min
@@ -115,12 +154,12 @@ const MarathonUsers = ({ isLoading, res }) => {
     )
   }
 
+  // table props
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns: columns, data: memoizedData }, useSortBy)
+    useTable({ columns: columns, data: dataArr }, useSortBy)
 
   const TableComponent = () => {
     const { colorMode } = useColorMode()
-
     return (
       <TableContainer mx="4" whiteSpace="nowrap" mt="4">
         <Table
@@ -141,14 +180,11 @@ const MarathonUsers = ({ isLoading, res }) => {
                 {headerGroup.headers.map((column, j) => (
                   <Th
                     key={j}
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    width={column.width}
+                    // sorting
+                    // {...column.getHeaderProps(column.getSortByToggleProps())}
                   >
                     {column.render("Header")}
-                    <Box
-                      display="inline-block"
-                      mr="4"
-                      css={{ transform: "translateY(2px)" }}
-                    ></Box>
                   </Th>
                 ))}
               </Tr>
@@ -164,9 +200,9 @@ const MarathonUsers = ({ isLoading, res }) => {
                   {...row.getRowProps()}
                   key={i}
                   h="3rem"
+                  // NOTE tacky horizontal bar width :/
                   style={{
                     background: `linear-gradient(90deg, #61CDBB50 ${
-                      // row.original.timeSpent / 2000
                       normalizedTimeSpentArr[i]
                     }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
@@ -175,7 +211,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                     return (
                       <Td key={j} {...cell.getCellProps()}>
                         <Box display="inline-block">
-                          <Text fontSize="sm">{cell.render("Cell")}</Text>
+                          <Text fontSize="md">{cell.render("Cell")}</Text>
                         </Box>
                       </Td>
                     )
@@ -189,22 +225,24 @@ const MarathonUsers = ({ isLoading, res }) => {
     )
   }
 
-  const box = {
-    h: "630",
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
-
   return (
     <>
       <GridBox box={box}>
         <>
-          <Box position="relative" mt="4" mx="5">
-            <Text fontSize="xl">
-              <b>Marathon Users </b>
-              <Text fontSize="sm" color="gray.500">
-                Users with most online time in the last 7 days
-              </Text>
+          <Flex position="relative" mt="4" mx="5">
+            <Flex w="100%">
+              <Box>
+                <Text fontSize="2xl">
+                  <b>Marathon Users </b>
+                </Text>
+              </Box>
+              <Spacer />
+              <DateRange dateRange={dateRange} setDateRange={setDateRange} />
+            </Flex>
+          </Flex>
+          <Box ml="6">
+            <Text fontSize="sm" color="gray.500">
+              Users with most online time in the last 7 days
             </Text>
           </Box>
           {dataArr.length > 0 && !isLoading ? (
