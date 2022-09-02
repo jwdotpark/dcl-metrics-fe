@@ -112,7 +112,6 @@ const RecentMarathonUsers = ({ res, isLoading }) => {
                       <Box display="inline" mr="2">
                         <ProfilePicture
                           address={recentMarathonUserData[index].address}
-                          modal={false}
                         />
                       </Box>
                       <Box display="inline-block" mt="1.5">

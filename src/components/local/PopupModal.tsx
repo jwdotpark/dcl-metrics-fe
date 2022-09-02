@@ -33,7 +33,7 @@ const PopupModal = ({ isOpen, value, onClose }) => {
             <VStack padding={2}>
               <Flex w="100%" borderRadius="full">
                 <Center w="100%">
-                  <ProfilePicture address={value.indexValue} modal={true} />
+                  <ProfilePicture address={value.indexValue} />
                 </Center>
               </Flex>
               <Stack

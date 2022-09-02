@@ -107,7 +107,7 @@ const RecentExplorers = ({ res, isLoading }) => {
                   <Td>
                     <Flex>
                       <Box display="inline-block" mr="2">
-                        <ProfilePicture address={item.address} modal={false} />
+                        <ProfilePicture address={item.address} />
                       </Box>
                       <Box display="inline-block" mt="1.5">
                         <a

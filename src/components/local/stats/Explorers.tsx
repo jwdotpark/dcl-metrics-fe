@@ -78,7 +78,7 @@ const Explorers = ({ res, isLoading }) => {
                   <Td>
                     <Flex>
                       <Box display="inline" mr="2">
-                        <ProfilePicture address={item[0]} modal={false} />
+                        <ProfilePicture address={item[0]} />
                       </Box>
                       <Box display="inline-block" mt="1.5">
                         <a
