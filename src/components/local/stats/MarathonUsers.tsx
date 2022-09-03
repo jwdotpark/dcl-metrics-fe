@@ -35,16 +35,8 @@ const MarathonUsers = ({ isLoading, res }) => {
   }
 
   // FIXME static json, attach real api later
-  // const dataArr = staticGlobal.users.yesterday.time_spent
-
   const [dateRange, setDateRange] = useState("1d")
 
-  // const dataArr = staticGlobal.users.yesterday.time_spent
-
-  // make a function
-  // if dateRange is '1d', return 'staticGlobal.users.yesterday.time_spent'
-  // if dateRange is '7d', return 'staticGlobal.users.last_week.time_spent'
-  // if dateRange is '30d, return 'staticGlobal.users.last_month.time_spent'
   const dataArr = useMemo(() => {
     if (dateRange === "1d") {
       return staticGlobal.users.yesterday.time_spent
@@ -61,7 +53,7 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "Time Spent",
         accessor: "time_spent",
-        width: 100,
+        width: 110,
         Cell: ({ value }) => {
           return (
             <Box>
@@ -95,13 +87,13 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "User",
         accessor: "name",
-        width: 220,
+        width: 195,
         Cell: ({ value }) => {
           return (
-            <Box w="7.5rem">
+            <Box w="6rem">
               <Box display="inline-block" ml="-6">
                 <Text color={useColorModeValue("gray.800", "gray.200")}>
-                  {value}
+                  {value.length > 16 ? value.slice(0, 16) + ".." : value}
                 </Text>
               </Box>
             </Box>
