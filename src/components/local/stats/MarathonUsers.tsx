@@ -21,7 +21,7 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
-import DateRange from "../DateRange"
+import DateRange from "../TableDateRange"
 
 const MarathonUsers = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
@@ -35,15 +35,19 @@ const MarathonUsers = ({ isLoading, res }) => {
   const staticGlobal = res
   const [dateRange, setDateRange] = useState("1d")
 
+  console.log(res)
+
   const dataArr = useMemo(() => {
     if (dateRange === "1d") {
-      return staticGlobal.users.yesterday.time_spent
+      return res.yesterday.time_spent
     } else if (dateRange === "7d") {
-      return staticGlobal.users.last_week.time_spent
+      return res.last_week.time_spent
     } else if (dateRange === "30d") {
-      return staticGlobal.users.last_month.time_spent
+      return res.last_month.time_spent
+    } else if (dateRange === "90d") {
+      return res.last_quarter.time_spent
     }
-  }, [staticGlobal, dateRange])
+  }, [res, dateRange])
 
   // table column definition
   const columns = useMemo(

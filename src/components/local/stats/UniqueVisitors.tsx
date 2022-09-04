@@ -11,19 +11,29 @@ import GridBox from "../GridBox"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
-const UniqueVisitors = ({ res, visitorLoading }) => {
+const UniqueVisitors = ({ visitorLoading, data }) => {
   const box = {
     h: "630",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
+  const chartData = []
+  const dataArr = Object.entries(data)
+
+  dataArr.map((item) => {
+    chartData.push({
+      date: item[0],
+      // @ts-ignore
+      unique_users: item[1].unique_users,
+    })
+  })
 
   const LineChartComponent = ({ box, res }) => {
     const result = [
       {
         id: "Unique Users",
         color: "hsl(90, 70%, 50%)",
-        data: res.map((item) => ({
+        data: chartData.slice(0, 90).map((item) => ({
           x: item.date,
           y: item.unique_users,
         })),
@@ -43,13 +53,13 @@ const UniqueVisitors = ({ res, visitorLoading }) => {
           <Text fontSize="xl">
             <b>Unique Visitors </b>
             <Text fontSize="sm" color="gray.500">
-              Unique vistors per day in the last 7 days
+              Unique vistors per day in the last period
             </Text>
           </Text>
         </Box>
-        {res.length > 0 && !visitorLoading ? (
+        {chartData.length > 0 && !visitorLoading ? (
           <Box h="100%">
-            <LineChartComponent box={box} res={res} />
+            <LineChartComponent box={box} res={chartData} />
           </Box>
         ) : (
           <Center h={box.h}>

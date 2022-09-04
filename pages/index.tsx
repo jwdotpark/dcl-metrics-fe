@@ -2,8 +2,8 @@ import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import type { NextPage } from "next"
 import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
-import staticGlobal from "../public/data/global.json"
-import staticGlobalNew from "../public/data/global_response.json"
+import staticGlobal from "../public/data/global_response.json"
+// import tempGlobal from "../public/data/global.json"
 
 const axios = require("axios").default
 
@@ -103,14 +103,18 @@ const GlobalPage: NextPage = (ISR) => {
     <Layout>
       {/* <TempError /> */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
-        <UniqueVisitors res={result.global} visitorLoading={isDataLoading} />
-        <VisitedParcels res={result.global} visitorLoading={isDataLoading} />
-        <MarathonUsers res={staticGlobalNew} isLoading={isDataLoading} />
+        <UniqueVisitors
+          // res={tempGlobal.global}
+          data={result.global}
+          visitorLoading={isDataLoading}
+        />
+        {/* <VisitedParcels res={result.global} visitorLoading={isDataLoading} /> */}
+        <MarathonUsers res={result.users} isLoading={isDataLoading} />
         {/* <RecentMarathonUsers
           res={result.users.daily.time_spent}
           isLoading={isDataLoading}
         /> */}
-        <Explorer res={staticGlobalNew} isLoading={isDataLoading} />
+        <Explorer res={result.users} isLoading={isDataLoading} />
         {/* <Explorers
           res={result.users.top.parcels_visited}
           isLoading={isDataLoading}

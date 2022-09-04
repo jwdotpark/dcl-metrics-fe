@@ -19,7 +19,7 @@ const LineChart = ({ data }) => {
   return (
     <ResponsiveLine
       data={data}
-      margin={{ top: 50, right: 25, bottom: 25, left: 40 }}
+      margin={{ top: 50, right: 30, bottom: 50, left: 35 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -28,26 +28,15 @@ const LineChart = ({ data }) => {
         stacked: true,
         reverse: false,
       }}
-      yFormat=" >-.2f"
       axisTop={null}
       axisRight={null}
+      // enablePointLabel={true}
       axisBottom={{
         orient: "bottom",
-        tickSize: 5,
-        tickPadding: 0,
-        tickRotation: 0,
-        renderTick: (tick) => {
-          return (
-            <text
-              x={tick.x - 17}
-              y={tick.y + 17}
-              fontSize="12px"
-              fill={colorMode === "light" ? "gray.800" : "white"}
-            >
-              {tick.value.replace(/2022-/, "")}
-            </text>
-          )
-        },
+        tickSize: 10,
+        tickPadding: 15,
+        tickRotation: 45,
+        format: (value) => value.replace("2022-", ""),
       }}
       axisLeft={{
         orient: "left",

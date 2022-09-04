@@ -20,7 +20,7 @@ import Loading from "../Loading"
 import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
-import DateRange from "../DateRange"
+import DateRange from "../TableDateRange"
 
 const Explorer = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
@@ -32,20 +32,20 @@ const Explorer = ({ isLoading, res }) => {
 
   const staticGlobal = res
 
-  console.log(staticGlobal.users)
-
   // FIXME static json, attach real api later
   const [dateRange, setDateRange] = useState("1d")
 
   const dataArr = useMemo(() => {
     if (dateRange === "1d") {
-      return staticGlobal.users.yesterday.parcels_visited
+      return res.yesterday.parcels_visited
     } else if (dateRange === "7d") {
-      return staticGlobal.users.last_week.parcels_visited
+      return res.last_week.parcels_visited
     } else if (dateRange === "30d") {
-      return staticGlobal.users.last_month.parcels_visited
+      return res.last_month.parcels_visited
+    } else if (dateRange === "90d") {
+      return res.last_quarter.parcels_visited
     }
-  }, [staticGlobal, dateRange])
+  }, [res, dateRange])
 
   // table column definition
   const columns = useMemo(
