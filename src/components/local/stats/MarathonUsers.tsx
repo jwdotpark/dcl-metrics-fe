@@ -35,8 +35,6 @@ const MarathonUsers = ({ isLoading, res }) => {
   const staticGlobal = res
   const [dateRange, setDateRange] = useState("1d")
 
-  console.log(res)
-
   const dataArr = useMemo(() => {
     if (dateRange === "1d") {
       return res.yesterday.time_spent

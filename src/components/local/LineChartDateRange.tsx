@@ -8,33 +8,35 @@ import {
 
 const LineChartDateRange = ({ dateRange, setDateRange }) => {
   const btnColor = useColorModeValue("gray.200", "gray.600")
+
+  // range 7, 30, 90
   return (
     <Box zIndex="1" mt="1">
       <HStack>
         <ButtonGroup isAttached size="sm" variant="outline" boxShadow="sm">
           <Button
-            onClick={() => setDateRange("1d")}
-            bgColor={dateRange === "1d" && btnColor}
+            onClick={() => setDateRange(7)}
+            bgColor={dateRange === 7 && btnColor}
           >
-            1d
+            7D
           </Button>
           <Button
-            onClick={() => setDateRange("7d")}
-            bgColor={dateRange === "7d" && btnColor}
+            onClick={() => setDateRange(14)}
+            bgColor={dateRange === 14 && btnColor}
           >
-            7d
+            14D
           </Button>
           <Button
-            onClick={() => setDateRange("30d")}
-            bgColor={dateRange === "30d" && btnColor}
+            onClick={() => setDateRange(30)}
+            bgColor={dateRange === 30 && btnColor}
           >
-            30d
+            1M
           </Button>
           <Button
-            onClick={() => setDateRange("90d")}
-            bgColor={dateRange === "90d" && btnColor}
+            onClick={() => setDateRange(90)}
+            bgColor={dateRange === 90 && btnColor}
           >
-            90d
+            3M
           </Button>
         </ButtonGroup>
       </HStack>

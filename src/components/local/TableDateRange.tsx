@@ -16,25 +16,25 @@ const TableDateRange = ({ dateRange, setDateRange }) => {
             onClick={() => setDateRange("1d")}
             bgColor={dateRange === "1d" && btnColor}
           >
-            1d
+            1D
           </Button>
           <Button
             onClick={() => setDateRange("7d")}
             bgColor={dateRange === "7d" && btnColor}
           >
-            7d
+            7D
           </Button>
           <Button
             onClick={() => setDateRange("30d")}
             bgColor={dateRange === "30d" && btnColor}
           >
-            30d
+            1M
           </Button>
           <Button
             onClick={() => setDateRange("90d")}
             bgColor={dateRange === "90d" && btnColor}
           >
-            90d
+            3M
           </Button>
         </ButtonGroup>
       </HStack>

@@ -1,15 +1,18 @@
 import {
+  Flex,
   Text,
   Box,
   GridItem,
   Center,
   useColorModeValue,
+  Spacer,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
-
+import LineChartDateRange from "../LineChartDateRange"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
+import SliderLineChart from "../SliderLineChart"
 
 const UniqueVisitors = ({ visitorLoading, data }) => {
   const box = {
@@ -17,6 +20,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
+
   const chartData = []
   const dataArr = Object.entries(data)
 
@@ -28,20 +32,24 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     })
   })
 
+  const [dateRange, setDateRange] = useState<number>(7)
+
   const LineChartComponent = ({ box, res }) => {
     const result = [
       {
         id: "Unique Users",
         color: "hsl(90, 70%, 50%)",
-        data: chartData.slice(0, 90).map((item) => ({
-          x: item.date,
-          y: item.unique_users,
-        })),
+        data: chartData
+          .slice(dataArr.length - dateRange, dataArr.length)
+          .map((item) => ({
+            x: item.date,
+            y: item.unique_users,
+          })),
       },
     ]
     return (
       <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md">
-        <LineChart data={result} />
+        <LineChart data={result} dateRange={dateRange} />
       </GridItem>
     )
   }
@@ -49,12 +57,23 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
   return (
     <>
       <GridBox box={box}>
-        <Box position="relative" mt="4" mx="5" mb="1">
-          <Text fontSize="xl">
-            <b>Unique Visitors </b>
-            <Text fontSize="sm" color="gray.500">
-              Unique vistors per day in the last period
-            </Text>
+        <Flex position="relative" mt="4" mx="5">
+          <Flex w="100%">
+            <Box>
+              <Text fontSize="2xl">
+                <b>Unique Visitors </b>
+              </Text>
+            </Box>
+            <Spacer />
+            <LineChartDateRange
+              dateRange={dateRange}
+              setDateRange={setDateRange}
+            />
+          </Flex>
+        </Flex>
+        <Box ml="6">
+          <Text fontSize="sm" color="gray.500">
+            Unique vistors per day in the last period
           </Text>
         </Box>
         {chartData.length > 0 && !visitorLoading ? (
