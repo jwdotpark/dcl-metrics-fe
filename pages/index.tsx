@@ -42,10 +42,11 @@ import Explorer from "../src/components/local/stats/Explorer"
 //   () => import("../src/components/local/stats/RecentMarathonUsers"),
 //   { ssr: false }
 // )
-const TopParcelsTimeSpentComponent = dynamic(
-  () => import("../src/components/local/stats/TopParcelsTimeSpent"),
-  { ssr: false }
-)
+import TopParcelsTimeSpentComponent from "../src/components/local/stats/TopParcelsTimeSpent"
+// const TopParcelsTimeSpentComponent = dynamic(
+//   () => import("../src/components/local/stats/TopParcelsTimeSpent"),
+//   { ssr: false }
+// )
 const TopLogins = dynamic(
   () => import("../src/components/local/stats/TopLogins"),
   { ssr: false }
@@ -101,7 +102,7 @@ const GlobalPage: NextPage = (ISR) => {
     lg: 2,
     xl: 2,
   })
-
+  
   return (
     <Layout>
       {/* <TempError /> */}
@@ -110,10 +111,10 @@ const GlobalPage: NextPage = (ISR) => {
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
-        {/* <TopParcelsTimeSpentComponent
-          parcel={result.parcels.top.time_spent}
+        <TopParcelsTimeSpentComponent
+          parcel={result.parcels}
           isParcelLoading={isDataLoading}
-        /> */}
+        />
         {/* <TopLogins
           parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}

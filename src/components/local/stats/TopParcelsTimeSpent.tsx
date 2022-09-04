@@ -14,17 +14,17 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { useState, useEffect } from "react"
 import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
 import { useMemo } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
 import { FiChevronUp, FiChevronDown } from "react-icons/fi"
-import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
 const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
   const baseUrl = "https://api.decentraland.org/v1/parcels/"
   const mapUrl = "/map.png?width=auto&height=auto&size=15"
+
+  console.log("parcel:", parcel.yesterday.time_spent)
 
   const data = Object.entries(parcel)
   const dataArr = []
@@ -38,6 +38,7 @@ const TopParcelsTimeSpentComponent = ({ parcel, isParcelLoading }) => {
     dataArr[i].mapUrl = baseUrl + coord.replace(",", "/") + mapUrl
   }
 
+  const parcelArr = []
   const COLUMNS = [
     {
       Header: "#",
