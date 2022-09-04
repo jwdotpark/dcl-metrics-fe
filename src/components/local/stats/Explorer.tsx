@@ -22,7 +22,7 @@ import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
 import DateRange from "../DateRange"
 
-const ExplorerNew = ({ isLoading, res }) => {
+const Explorer = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
   const box = {
     h: "630",
@@ -72,7 +72,6 @@ const ExplorerNew = ({ isLoading, res }) => {
       {
         // Header: "",
         accessor: "avatar_url",
-        // width: 0,
         Cell: ({ value }) => {
           return (
             <Box>
@@ -248,4 +247,4 @@ const ExplorerNew = ({ isLoading, res }) => {
   )
 }
 
-export default ExplorerNew
+export default Explorer

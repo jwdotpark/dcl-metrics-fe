@@ -10,36 +10,41 @@ const axios = require("axios").default
 const Layout = dynamic(() => import("../src/components/layout/layout"), {
   ssr: false,
 })
-const MarathonUsers = dynamic(
-  () => import("../src/components/local/stats/MarathonUsers"),
-  { ssr: false }
-)
+
+import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
+// const UniqueVisitors = dynamic(
+//   () => import("../src/components/local/stats/UniqueVisitors"),
+//   { ssr: false }
+// )
+import VisitedParcels from "../src/components/local/stats/VisitedParcels"
+// const VisitedParcels = dynamic(
+//   () => import("../src/components/local/stats/VisitedParcels"),
+//   { ssr: false }
+// )
+import MarathonUsers from "../src/components/local/stats/MarathonUsers"
+// const MarathonUsers = dynamic(
+//   () => import("../src/components/local/stats/MarathonUsers"),
+//   { ssr: false }
+// )
+import Explorer from "../src/components/local/stats/Explorer"
+// const Explorer = dynamic(
+//   () => import("../src/components/local/stats/Explorer"),
+//   { ssr: false }
+// )
+// const Explorers = dynamic(
+//   () => import("../src/components/local/stats/Explorers"),
+//   { ssr: false }
+// )
+// const RecentExplorers = dynamic(
+//   () => import("../src/components/local/stats/RecentExplorers"),
+//   { ssr: false }
+// )
+// const RecentMarathonUsers = dynamic(
+//   () => import("../src/components/local/stats/RecentMarathonUsers"),
+//   { ssr: false }
+// )
 const TopParcelsTimeSpentComponent = dynamic(
   () => import("../src/components/local/stats/TopParcelsTimeSpent"),
-  { ssr: false }
-)
-const UniqueVisitors = dynamic(
-  () => import("../src/components/local/stats/UniqueVisitors"),
-  { ssr: false }
-)
-const ExplorerNew = dynamic(
-  () => import("../src/components/local/stats/ExplorerNew"),
-  { ssr: false }
-)
-const Explorers = dynamic(
-  () => import("../src/components/local/stats/Explorers"),
-  { ssr: false }
-)
-const RecentExplorers = dynamic(
-  () => import("../src/components/local/stats/RecentExplorers"),
-  { ssr: false }
-)
-const TotalVisitedParcels = dynamic(
-  () => import("../src/components/local/stats/TotalVisitedParcels"),
-  { ssr: false }
-)
-const RecentMarathonUsers = dynamic(
-  () => import("../src/components/local/stats/RecentMarathonUsers"),
   { ssr: false }
 )
 const TopLogins = dynamic(
@@ -99,16 +104,13 @@ const GlobalPage: NextPage = (ISR) => {
       {/* <TempError /> */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <UniqueVisitors res={result.global} visitorLoading={isDataLoading} />
-        <TotalVisitedParcels
-          res={result.global}
-          visitorLoading={isDataLoading}
-        />
+        <VisitedParcels res={result.global} visitorLoading={isDataLoading} />
         <MarathonUsers res={staticGlobalNew} isLoading={isDataLoading} />
         {/* <RecentMarathonUsers
           res={result.users.daily.time_spent}
           isLoading={isDataLoading}
         /> */}
-        <ExplorerNew res={staticGlobalNew} isLoading={isDataLoading} />
+        <Explorer res={staticGlobalNew} isLoading={isDataLoading} />
         {/* <Explorers
           res={result.users.top.parcels_visited}
           isLoading={isDataLoading}
@@ -117,7 +119,7 @@ const GlobalPage: NextPage = (ISR) => {
           res={result.users.daily.parcels_visited}
           isLoading={isDataLoading}
         /> */}
-        <TopParcelsTimeSpentComponent
+        {/* <TopParcelsTimeSpentComponent
           parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}
         />
@@ -128,7 +130,7 @@ const GlobalPage: NextPage = (ISR) => {
         <TopLogouts
           parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}
-        />
+        /> */}
       </Grid>
     </Layout>
   )
