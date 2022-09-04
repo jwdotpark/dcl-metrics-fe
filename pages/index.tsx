@@ -4,13 +4,12 @@ import type { NextPage } from "next"
 import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
 import staticGlobal from "../public/data/global_response.json"
 // import tempGlobal from "../public/data/global.json"
-
 const axios = require("axios").default
 
-const Layout = dynamic(() => import("../src/components/layout/layout"), {
-  ssr: false,
-})
-
+import Layout from "../src/components/layout/layout"
+// const Layout = dynamic(() => import("../src/components/layout/layout"), {
+//   ssr: false,
+// })
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 // const UniqueVisitors = dynamic(
 //   () => import("../src/components/local/stats/UniqueVisitors"),
@@ -60,7 +59,11 @@ import TempError from "../src/components/local/TempError"
 export async function getStaticProps() {
   const day = 60 * 60 * 24
   if (process.env.NEXT_PUBLIC_ENV === "prod") {
-    const url = "http://api.dcl-metrics.com/global"
+    // FIXME now it's using staging server res,
+    // change to prod later
+
+    // const url = "http://api.dcl-metrics.com/global"
+    const url = "https://dcl-metrics-be-staging.herokuapp.com/global"
     const response = await axios.get(url, {
       method: "get",
       proxy: {
@@ -103,31 +106,15 @@ const GlobalPage: NextPage = (ISR) => {
     <Layout>
       {/* <TempError /> */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
-        <UniqueVisitors
-          // res={tempGlobal.global}
-          data={result.global}
-          visitorLoading={isDataLoading}
-        />
-        {/* <VisitedParcels res={result.global} visitorLoading={isDataLoading} /> */}
+        <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
+        <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
-        {/* <RecentMarathonUsers
-          res={result.users.daily.time_spent}
-          isLoading={isDataLoading}
-        /> */}
         <Explorer res={result.users} isLoading={isDataLoading} />
-        {/* <Explorers
-          res={result.users.top.parcels_visited}
-          isLoading={isDataLoading}
-        /> */}
-        {/* <RecentExplorers
-          res={result.users.daily.parcels_visited}
-          isLoading={isDataLoading}
-        /> */}
         {/* <TopParcelsTimeSpentComponent
           parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}
-        />
-        <TopLogins
+        /> */}
+        {/* <TopLogins
           parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}
         />

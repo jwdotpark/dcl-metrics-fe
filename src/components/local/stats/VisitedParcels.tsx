@@ -1,36 +1,55 @@
 import {
+  Flex,
   Text,
   Box,
   GridItem,
   Center,
   useColorModeValue,
+  Spacer,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
+import LineChartDateRange from "../LineChartDateRange"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
-const UniqueVisitors = ({ res, visitorLoading }) => {
+const VisitedParcels = ({ visitorLoading, data }) => {
   const box = {
     h: "630",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
 
+  const chartData = []
+  const dataArr = Object.entries(data)
+
+  dataArr.map((item) => {
+    chartData.push({
+      date: item[0],
+      // @ts-ignore
+      unique_users: item[1].active_parcels,
+    })
+  })
+
+  const [dateRange, setDateRange] = useState<number>(14)
+
   const LineChartComponent = ({ box, res }) => {
+    const color = "#CAB2D6FF"
     const result = [
       {
-        id: "Active Parcels",
+        id: "Parcels Visited",
         color: "hsl(90, 70%, 50%)",
-        data: res.map((item) => ({
-          x: item.date,
-          y: item.active_parcels,
-        })),
+        data: chartData
+          .slice(dataArr.length - dateRange, dataArr.length)
+          .map((item) => ({
+            x: item.date,
+            y: item.unique_users,
+          })),
       },
     ]
     return (
       <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md">
-        <LineChart data={result} />
+        <LineChart data={result} color={color} />
       </GridItem>
     )
   }
@@ -38,17 +57,28 @@ const UniqueVisitors = ({ res, visitorLoading }) => {
   return (
     <>
       <GridBox box={box}>
-        <Box position="relative" mt="4" mx="5" mb="1">
-          <Text fontSize="xl">
-            <b>Parcels Visited</b>
-            <Text fontSize="sm" color="gray.500">
-              Parcels visited per day in the last 7 days
-            </Text>
+        <Flex position="relative" mt="4" mx="5">
+          <Flex w="100%">
+            <Box>
+              <Text fontSize="2xl">
+                <b>Parcels Visited</b>
+              </Text>
+            </Box>
+            <Spacer />
+            <LineChartDateRange
+              dateRange={dateRange}
+              setDateRange={setDateRange}
+            />
+          </Flex>
+        </Flex>
+        <Box ml="6">
+          <Text fontSize="sm" color="gray.500">
+            Parcels visited per day in the last period
           </Text>
         </Box>
-        {res.length > 0 && !visitorLoading ? (
-          <Box mb="200">
-            <LineChartComponent box={box} res={res} />
+        {chartData.length > 0 && !visitorLoading ? (
+          <Box h="100%">
+            <LineChartComponent box={box} res={chartData} />
           </Box>
         ) : (
           <Center h={box.h}>
@@ -60,4 +90,4 @@ const UniqueVisitors = ({ res, visitorLoading }) => {
   )
 }
 
-export default UniqueVisitors
+export default VisitedParcels

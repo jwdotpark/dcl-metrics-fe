@@ -3,8 +3,8 @@ import { ResponsiveLine } from "@nivo/line"
 import { useColorModeValue, useColorMode } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
 
-const LineChart = ({ data, dateRange }) => {
-  const colors = ["#4299e175"]
+const LineChart = ({ data, color }) => {
+  // const colors = ["#4299e175"]
   const min = Math.min(...data[0].data.map((item) => item.y))
   const { colorMode } = useColorMode()
 
@@ -91,7 +91,7 @@ const LineChart = ({ data, dateRange }) => {
           </div>
         )
       }}
-      colors={() => colors[Math.floor(Math.random() * colors.length)]}
+      colors={color}
       enableArea={true}
       areaBaselineValue={min}
       areaOpacity={0.5}

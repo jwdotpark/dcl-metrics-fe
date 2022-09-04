@@ -7,12 +7,11 @@ import {
   useColorModeValue,
   Spacer,
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import GridBox from "../GridBox"
 import LineChartDateRange from "../LineChartDateRange"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
-import SliderLineChart from "../SliderLineChart"
 
 const UniqueVisitors = ({ visitorLoading, data }) => {
   const box = {
@@ -32,9 +31,10 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     })
   })
 
-  const [dateRange, setDateRange] = useState<number>(7)
+  const [dateRange, setDateRange] = useState<number>(14)
 
   const LineChartComponent = ({ box, res }) => {
+    const color = "#A6CEE3FF"
     const result = [
       {
         id: "Unique Users",
@@ -49,7 +49,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     ]
     return (
       <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md">
-        <LineChart data={result} dateRange={dateRange} />
+        <LineChart data={result} color={color} />
       </GridItem>
     )
   }
