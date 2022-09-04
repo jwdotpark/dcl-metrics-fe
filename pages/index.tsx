@@ -3,6 +3,8 @@ import dynamic from "next/dynamic"
 import type { NextPage } from "next"
 import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
 import staticGlobal from "../public/data/global.json"
+import staticGlobalNew from "../public/data/global_response.json"
+
 const axios = require("axios").default
 
 const Layout = dynamic(() => import("../src/components/layout/layout"), {
@@ -12,18 +14,16 @@ const MarathonUsers = dynamic(
   () => import("../src/components/local/stats/MarathonUsers"),
   { ssr: false }
 )
-
-const MarathonUsersBar = dynamic(
-  () => import("../src/components/local/stats/MarathonUsersBar"),
-  { ssr: false }
-)
-
 const TopParcelsTimeSpentComponent = dynamic(
   () => import("../src/components/local/stats/TopParcelsTimeSpent"),
   { ssr: false }
 )
 const UniqueVisitors = dynamic(
   () => import("../src/components/local/stats/UniqueVisitors"),
+  { ssr: false }
+)
+const ExplorerNew = dynamic(
+  () => import("../src/components/local/stats/ExplorerNew"),
   { ssr: false }
 )
 const Explorers = dynamic(
@@ -103,26 +103,20 @@ const GlobalPage: NextPage = (ISR) => {
           res={result.global}
           visitorLoading={isDataLoading}
         />
-        <MarathonUsers
-          res={result.users.daily.time_spent}
-          isLoading={isDataLoading}
-        />
-        {/* <MarathonUsersBar
+        <MarathonUsers res={staticGlobalNew} isLoading={isDataLoading} />
+        {/* <RecentMarathonUsers
           res={result.users.daily.time_spent}
           isLoading={isDataLoading}
         /> */}
-        <RecentMarathonUsers
-          res={result.users.daily.time_spent}
-          isLoading={isDataLoading}
-        />
-        <Explorers
+        <ExplorerNew res={staticGlobalNew} isLoading={isDataLoading} />
+        {/* <Explorers
           res={result.users.top.parcels_visited}
           isLoading={isDataLoading}
-        />
-        <RecentExplorers
+        /> */}
+        {/* <RecentExplorers
           res={result.users.daily.parcels_visited}
           isLoading={isDataLoading}
-        />
+        /> */}
         <TopParcelsTimeSpentComponent
           parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}

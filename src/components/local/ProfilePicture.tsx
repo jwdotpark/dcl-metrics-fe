@@ -8,7 +8,7 @@ const ProfilePicture = ({ address }) => {
 
   useEffect(() => {
     setIsLoading(true)
-    if (process.env.NEXT_PUBLIC_ENV === "prod") {
+    if (process.env.NEXT_PUBLIC_ENV !== "prod") {
       setPic(address)
     } else {
       // @ts-ignore
@@ -25,7 +25,7 @@ const ProfilePicture = ({ address }) => {
         display="inline-block"
         border="1px solid"
         borderColor="gray.300"
-        backgroundColor="gray.300"
+        backgroundColor="#A0AEC0FF"
         overflow="clip"
       >
         {isLoading ? (
