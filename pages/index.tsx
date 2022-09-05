@@ -15,7 +15,7 @@ import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 //   () => import("../src/components/local/stats/UniqueVisitors"),
 //   { ssr: false }
 // )
-import VisitedParcels from "../src/components/local/stats/VisitedParcels"
+import VisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 // const VisitedParcels = dynamic(
 //   () => import("../src/components/local/stats/VisitedParcels"),
 //   { ssr: false }
@@ -50,6 +50,7 @@ import AvgTimeSpentParcel from "../src/components/local/stats/AvgTimeSpentParcel
 import AFKTimeSpentParcel from "../src/components/local/stats/AFKTimeSpentParcel"
 import LogOutTimeSpentParcel from "../src/components/local/stats/LogOutTimeSpentParcel"
 import LogInTimeSpentParcel from "../src/components/local/stats/LogInTimeSpentParcel"
+import MostVisitedParcel from "../src/components/local/stats/MostVisitedParcel"
 
 const TopLogins = dynamic(
   () => import("../src/components/local/stats/TopLogins"),
@@ -130,6 +131,10 @@ const GlobalPage: NextPage = (ISR) => {
           isParcelLoading={isDataLoading}
         />
         <LogOutTimeSpentParcel
+          parcel={result.parcels}
+          isParcelLoading={isDataLoading}
+        />
+        <MostVisitedParcel
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />

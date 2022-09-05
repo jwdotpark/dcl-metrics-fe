@@ -13,7 +13,7 @@ import LineChartDateRange from "../LineChartDateRange"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
-const VisitedParcels = ({ visitorLoading, data }) => {
+const UniqueVisitedParcels = ({ visitorLoading, data }) => {
   const box = {
     h: "630",
     w: "100%",
@@ -90,4 +90,4 @@ const VisitedParcels = ({ visitorLoading, data }) => {
   )
 }
 
-export default VisitedParcels
+export default UniqueVisitedParcels
