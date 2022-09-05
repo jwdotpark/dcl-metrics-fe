@@ -10,6 +10,7 @@ import {
   FiUsers,
   FiUserPlus,
   FiZoomIn,
+  FiCalendar,
 } from "react-icons/fi"
 
 export const minorchangeTemplate = [
@@ -38,7 +39,15 @@ export const minorchangeTemplate = [
         icon: FiTarget,
         day: "2022 September",
         title: "More accurate daily stats",
-        description: "By using multiple data streams, we are able to build a more accurate count of daily active parcels with data going back to 2022-08-22",
+        description:
+          "By using multiple data streams, we are able to build a more accurate count of daily active parcels with data going back to 2022-08-22",
+      },
+      {
+        icon: FiCalendar,
+        day: "2022 September",
+        title: "Date range picker is added",
+        description:
+          "User now can select date range of week, month and quarter on each chart, and the charts will be updated accordingly",
       },
     ],
   },
