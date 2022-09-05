@@ -14,7 +14,7 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import GridBox from "../GridBox"
 import Loading from "../Loading"
 import ProfilePicture from "../ProfilePicture"
@@ -45,6 +45,16 @@ const Explorer = ({ isLoading, res }) => {
     }
   }, [res, dateRange])
 
+  // verified logo
+  const [verifiedUserArr, setVerifiedUser] = useState([])
+  useEffect(() => {
+    setVerifiedUser(dataArr.map((user) => user.verified_user))
+  }, [dataArr])
+  useEffect(() => {
+    setVerifiedUser(dataArr.map((user) => user.verified_user))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   // table column definition
   const columns = useMemo(
     () => [
@@ -70,11 +80,14 @@ const Explorer = ({ isLoading, res }) => {
       {
         // Header: "",
         accessor: "avatar_url",
-        Cell: ({ value }) => {
+        Cell: ({ value, row }) => {
           return (
             <Box>
               <Center>
-                <ProfilePicture address={value} />
+                <ProfilePicture
+                  address={value}
+                  verified={verifiedUserArr[Number(row.id)]}
+                />
               </Center>
             </Box>
           )
@@ -125,7 +138,8 @@ const Explorer = ({ isLoading, res }) => {
         },
       },
     ],
-    []
+    // eslint-disable-next-line
+    [dataArr, dateRange]
   )
 
   // for table width representation,
