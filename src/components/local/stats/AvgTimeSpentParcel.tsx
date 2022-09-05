@@ -171,14 +171,9 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Parcels Most Time Spent</b>
+                <b>Parcels Average Time Spent</b>
               </Text>
             </Box>
-            <Spacer />
-            <ParcelDateRange
-              dateRange={dateRange}
-              setDateRange={setDateRange}
-            />
           </Flex>
         </Flex>
         <Box ml="6">
@@ -186,6 +181,7 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
             Parcels with the most average time spent on them in the last period
           </Text>
         </Box>
+        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isParcelLoading ? (
           <Box mx="4" mb="8">
             <TableComponent />

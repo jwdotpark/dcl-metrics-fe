@@ -63,6 +63,8 @@ const GlobalPage: NextPage = (ISR) => {
     xl: 2,
   })
 
+  console.log(result)
+
   return (
     <Layout>
       {/* <TempError /> */}
@@ -75,11 +77,11 @@ const GlobalPage: NextPage = (ISR) => {
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />
-        <AFKTimeSpentParcel
+        <LogInTimeSpentParcel
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />
-        <LogInTimeSpentParcel
+        <AFKTimeSpentParcel
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />

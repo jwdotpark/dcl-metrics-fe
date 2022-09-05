@@ -174,11 +174,6 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
                 <b>Parcels With Most AFK</b>
               </Text>
             </Box>
-            <Spacer />
-            <ParcelDateRange
-              dateRange={dateRange}
-              setDateRange={setDateRange}
-            />
           </Flex>
         </Flex>
         <Box ml="6">
@@ -187,6 +182,7 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
             on them in the last period
           </Text>
         </Box>
+        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isParcelLoading ? (
           <Box mx="4" mb="8">
             <TableComponent />

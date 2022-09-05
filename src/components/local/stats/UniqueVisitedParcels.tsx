@@ -15,7 +15,7 @@ import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitedParcels = ({ visitorLoading, data }) => {
   const box = {
-    h: "630",
+    h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
@@ -48,7 +48,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
       },
     ]
     return (
-      <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md">
+      <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md" mb="4">
         <LineChart data={result} color={color} />
       </GridItem>
     )
@@ -64,11 +64,6 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
                 <b>Parcels Visited</b>
               </Text>
             </Box>
-            <Spacer />
-            <LineChartDateRange
-              dateRange={dateRange}
-              setDateRange={setDateRange}
-            />
           </Flex>
         </Flex>
         <Box ml="6">
@@ -76,6 +71,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
             Parcels visited per day in the last period
           </Text>
         </Box>
+        <LineChartDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {chartData.length > 0 && !visitorLoading ? (
           <Box h="100%">
             <LineChartComponent box={box} res={chartData} />

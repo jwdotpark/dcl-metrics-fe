@@ -174,11 +174,6 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
                 <b>Most Visited Parcel</b>
               </Text>
             </Box>
-            <Spacer />
-            <ParcelDateRange
-              dateRange={dateRange}
-              setDateRange={setDateRange}
-            />
           </Flex>
         </Flex>
         <Box ml="6">
@@ -186,6 +181,7 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
             Parcels with the most visit count in the last period
           </Text>
         </Box>
+        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isParcelLoading ? (
           <Box mx="4" mb="8">
             <TableComponent />
