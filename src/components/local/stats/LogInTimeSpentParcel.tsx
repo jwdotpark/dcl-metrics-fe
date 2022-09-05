@@ -21,7 +21,7 @@ import { useTable, useSortBy, usePagination } from "react-table"
 import ParcelDateRange from "../ParcelDateRange"
 import GridBox from "../GridBox"
 
-const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
+const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const box = {
     // h: "630",
     h: "auto",
@@ -41,13 +41,13 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const parcelDataRange = data[dateRange]
 
   // @ts-ignore
-  const timeSpentData = parcelDataRange[1].time_spent
-  // make an array with timeSpentData
-  for (const [key, value] of Object.entries(timeSpentData)) {
+  const timeSpentAFKData = parcelDataRange[1].logins
+  // make an array with timeSpentAFKData
+  for (const [key, value] of Object.entries(timeSpentAFKData)) {
     dataArr.push({
       mapUrl: baseUrl + key.replace(",", "/") + mapUrl,
       coord: key,
-      avg_time_spent: value,
+      logins: value,
     })
   }
 
@@ -86,12 +86,12 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
       },
     },
     {
-      Header: "AVG. Time Spent",
-      accessor: "avg_time_spent",
+      Header: "Logins",
+      accessor: "logins",
       Cell: ({ value }) => {
         return (
           <Text as="kbd" fontSize="lg">
-            {convertSeconds(value)}
+            {Number(value)}
           </Text>
         )
       },
@@ -171,7 +171,7 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Parcels Most Time Spent</b>
+                <b>Parcels with Most Logins</b>
               </Text>
             </Box>
             <Spacer />
@@ -183,7 +183,7 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Parcels with the most average time spent on them in the last period
+            Parcels with the most Login happened in the last period
           </Text>
         </Box>
         {dataArr.length > 0 && !isParcelLoading ? (
@@ -200,4 +200,4 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default AvgTimeSpentParcel
+export default LogInTimeSpentParcel

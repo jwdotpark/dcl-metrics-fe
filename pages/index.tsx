@@ -48,6 +48,8 @@ import AvgTimeSpentParcel from "../src/components/local/stats/AvgTimeSpentParcel
 //   { ssr: false }
 // )
 import AFKTimeSpentParcel from "../src/components/local/stats/AFKTimeSpentParcel"
+import LogOutTimeSpentParcel from "../src/components/local/stats/LogOutTimeSpentParcel"
+import LogInTimeSpentParcel from "../src/components/local/stats/LogInTimeSpentParcel"
 
 const TopLogins = dynamic(
   () => import("../src/components/local/stats/TopLogins"),
@@ -123,6 +125,15 @@ const GlobalPage: NextPage = (ISR) => {
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />
+        <LogInTimeSpentParcel
+          parcel={result.parcels}
+          isParcelLoading={isDataLoading}
+        />
+        <LogOutTimeSpentParcel
+          parcel={result.parcels}
+          isParcelLoading={isDataLoading}
+        />
+
         {/* <TopLogins
           parcel={result.parcels.top.time_spent}
           isParcelLoading={isDataLoading}

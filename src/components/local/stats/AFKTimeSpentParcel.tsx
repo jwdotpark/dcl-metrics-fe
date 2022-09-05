@@ -59,7 +59,7 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
       Cell: ({ value }) => {
         return (
           <Box
-            maxW="16rem"
+            maxW="14rem"
             borderRadius="md"
             border="2px solid"
             borderColor="gray.500"
@@ -171,7 +171,7 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Top Parcels AFK Time Spent</b>
+                <b>Parcels With Most AFK</b>
               </Text>
             </Box>
             <Spacer />
