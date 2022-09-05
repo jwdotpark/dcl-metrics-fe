@@ -18,7 +18,7 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import ParcelDateRange from "../ParcelDateRange"
+import ParcelDateRange from "./daterange/ParcelDateRange"
 import GridBox from "../GridBox"
 
 const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
@@ -59,7 +59,7 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
       Cell: ({ value }) => {
         return (
           <Box
-            w="14rem"
+            // w="14rem"
             borderRadius="md"
             border="2px solid"
             borderColor="gray.500"
@@ -174,11 +174,6 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
                 <b>Most Visited Parcel</b>
               </Text>
             </Box>
-            <Spacer />
-            <ParcelDateRange
-              dateRange={dateRange}
-              setDateRange={setDateRange}
-            />
           </Flex>
         </Flex>
         <Box ml="6">
@@ -186,6 +181,7 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
             Parcels with the most visit count in the last period
           </Text>
         </Box>
+        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isParcelLoading ? (
           <Box mx="4" mb="8">
             <TableComponent />

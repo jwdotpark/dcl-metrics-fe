@@ -361,7 +361,7 @@
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreieefkaduphlx2dd3atkb6q3eg2mjomcdjjag4q2iwhv5izzsh3tvq",
           "guest_user": false,
           "name": "Krakxou",
-          "verified_user": false
+          "verified_user": true
         },
         {
           "address": "0x3f5ca37ff83a3d9cc4c47880ba2c61b9760cd278",
@@ -393,7 +393,7 @@
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihekbyml4ozziwu2f7fyuvz3crpaoajqxz34uz4xpfzlbrtalsvda",
           "guest_user": false,
           "name": "Heathencore",
-          "verified_user": false
+          "verified_user": true
         },
         {
           "address": "0x46d5e2f151cd9c11bf32ca6b87ca1f65ed400fa4",
@@ -467,7 +467,7 @@
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreie77xflxuvqvg2tsb2wf33mmh7k5qwnpuu6jtp3znnbv6dwqxvvgy",
           "guest_user": false,
           "name": "sanchezzz",
-          "verified_user": false
+          "verified_user": true
         },
         {
           "address": "0x117198d3f727ad4a88764b6146d54b8643d6e505",
@@ -807,7 +807,7 @@
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreif7uxetiaaizrznmm2xia6adqgu7f5yj22njlnignnlnskd24wxlq",
           "guest_user": false,
           "name": "murphy",
-          "verified_user": false
+          "verified_user": true
         },
         {
           "address": "0xcc1253a816161ac51676d085843ff09c8c239607",
@@ -823,7 +823,7 @@
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihd63obuobeufqvq625cissnpuwesdgpbv727n4sxehcfe3plgp6u",
           "guest_user": false,
           "name": "haruuuuu",
-          "verified_user": false
+          "verified_user": true
         },
         {
           "address": "0xea58c6e4bd8a815fd56c17d58b2e8fd1a263a577",
@@ -831,7 +831,7 @@
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreid2bozb6bdgko4qhdy3rf5oypkwzlvppfzj2rmuynbqyzfonljeya",
           "guest_user": false,
           "name": "Anica",
-          "verified_user": false
+          "verified_user": true
         },
         {
           "address": "0x20dfeed4bd0a027b31240a25dd257e85a42bffaf",
@@ -847,7 +847,7 @@
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreienjom4covgv4qpguzgq6iakuldbuoupfbfzv4fuy6kvblzfwqtea",
           "guest_user": false,
           "name": "Cherry",
-          "verified_user": false
+          "verified_user": true
         }
       ]
     },

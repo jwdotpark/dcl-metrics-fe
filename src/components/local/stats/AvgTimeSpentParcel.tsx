@@ -18,12 +18,11 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import ParcelDateRange from "../ParcelDateRange"
+import ParcelDateRange from "./daterange/ParcelDateRange"
 import GridBox from "../GridBox"
 
 const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const box = {
-    // h: "630",
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
@@ -59,7 +58,7 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
       Cell: ({ value }) => {
         return (
           <Box
-            w="14rem"
+            w="100%"
             borderRadius="md"
             border="2px solid"
             borderColor="gray.500"
@@ -171,14 +170,9 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Parcels Most Time Spent</b>
+                <b>Parcels Average Time Spent</b>
               </Text>
             </Box>
-            <Spacer />
-            <ParcelDateRange
-              dateRange={dateRange}
-              setDateRange={setDateRange}
-            />
           </Flex>
         </Flex>
         <Box ml="6">
@@ -186,6 +180,7 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
             Parcels with the most average time spent on them in the last period
           </Text>
         </Box>
+        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isParcelLoading ? (
           <Box mx="4" mb="8">
             <TableComponent />

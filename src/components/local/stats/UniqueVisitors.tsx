@@ -9,13 +9,13 @@ import {
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
-import LineChartDateRange from "../LineChartDateRange"
+import LineChartDateRange from "./daterange/LineChartDateRange"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ visitorLoading, data }) => {
   const box = {
-    h: "630",
+    h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
@@ -31,7 +31,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     })
   })
 
-  const [dateRange, setDateRange] = useState<number>(14)
+  const [dateRange, setDateRange] = useState<number>(7)
 
   const LineChartComponent = ({ box, res }) => {
     const color = "#A6CEE3FF"
@@ -48,7 +48,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
       },
     ]
     return (
-      <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md">
+      <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md" mb="4">
         <LineChart data={result} color={color} />
       </GridItem>
     )
@@ -64,11 +64,6 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
                 <b>Unique Visitors </b>
               </Text>
             </Box>
-            <Spacer />
-            <LineChartDateRange
-              dateRange={dateRange}
-              setDateRange={setDateRange}
-            />
           </Flex>
         </Flex>
         <Box ml="6">
@@ -76,6 +71,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
             Unique vistors per day in the last period
           </Text>
         </Box>
+        <LineChartDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {chartData.length > 0 && !visitorLoading ? (
           <Box h="100%">
             <LineChartComponent box={box} res={chartData} />

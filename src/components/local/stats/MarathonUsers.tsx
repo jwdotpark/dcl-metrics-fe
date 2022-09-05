@@ -14,26 +14,24 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import GridBox from "../GridBox"
 import Loading from "../Loading"
 import { convertSeconds } from "../../../lib/hooks/utils"
 import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
-import DateRange from "../TableDateRange"
+import TableDateRange from "./daterange/TableDateRange"
 
 const MarathonUsers = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
   const box = {
-    h: "630",
+    h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  // FIXME static json, attach real api later
-  const staticGlobal = res
-  const [dateRange, setDateRange] = useState("1d")
+  const [dateRange, setDateRange] = useState("7d")
 
   const dataArr = useMemo(() => {
     if (dateRange === "1d") {
@@ -46,6 +44,16 @@ const MarathonUsers = ({ isLoading, res }) => {
       return res.last_quarter.time_spent
     }
   }, [res, dateRange])
+
+  // verified logo
+  const [verifiedUserArr, setVerifiedUser] = useState([])
+  useEffect(() => {
+    setVerifiedUser(dataArr.map((user) => user.verified_user))
+  }, [dataArr])
+  useEffect(() => {
+    setVerifiedUser(dataArr.map((user) => user.verified_user))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // table column definition
   const columns = useMemo(
@@ -74,11 +82,14 @@ const MarathonUsers = ({ isLoading, res }) => {
         Header: "",
         accessor: "avatar_url",
         width: 0,
-        Cell: ({ value }) => {
+        Cell: ({ value, row }) => {
           return (
             <Box ml="2">
               <Center>
-                <ProfilePicture address={value} />
+                <ProfilePicture
+                  address={value}
+                  verified={verifiedUserArr[Number(row.id)]}
+                />
               </Center>
             </Box>
           )
@@ -127,7 +138,8 @@ const MarathonUsers = ({ isLoading, res }) => {
         },
       },
     ],
-    []
+    // eslint-disable-next-line
+    [dataArr, dateRange]
   )
 
   // for table width representation,
@@ -161,6 +173,7 @@ const MarathonUsers = ({ isLoading, res }) => {
           overflowX="hidden"
           maxW="100%"
           h="500px"
+          mb="8"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (
@@ -228,8 +241,6 @@ const MarathonUsers = ({ isLoading, res }) => {
                   <b>Marathon Users </b>
                 </Text>
               </Box>
-              <Spacer />
-              <DateRange dateRange={dateRange} setDateRange={setDateRange} />
             </Flex>
           </Flex>
           <Box ml="6">
@@ -237,6 +248,7 @@ const MarathonUsers = ({ isLoading, res }) => {
               Users with most online time in the last period
             </Text>
           </Box>
+          <TableDateRange dateRange={dateRange} setDateRange={setDateRange} />
           {dataArr.length > 0 && !isLoading ? (
             <Box>
               <TableComponent />
