@@ -25,12 +25,10 @@ import DateRange from "../TableDateRange"
 const Explorer = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
   const box = {
-    h: "630",
+    h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
-
-  const staticGlobal = res
 
   // FIXME static json, attach real api later
   const [dateRange, setDateRange] = useState("1d")
@@ -161,6 +159,7 @@ const Explorer = ({ isLoading, res }) => {
           overflowX="hidden"
           maxW="100%"
           h="500px"
+          mb="4"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (
@@ -221,8 +220,6 @@ const Explorer = ({ isLoading, res }) => {
               <b>Explorer</b>
             </Text>
           </Box>
-          <Spacer />
-          <DateRange dateRange={dateRange} setDateRange={setDateRange} />
         </Flex>
       </Flex>
       <Box ml="6">
@@ -230,6 +227,7 @@ const Explorer = ({ isLoading, res }) => {
           Users that visited the most parcels in the last period
         </Text>
       </Box>
+      <DateRange dateRange={dateRange} setDateRange={setDateRange} />
       {dataArr.length > 0 && !isLoading ? (
         <Box>
           <TableComponent />

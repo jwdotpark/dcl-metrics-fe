@@ -21,12 +21,12 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
-import DateRange from "../TableDateRange"
+import TableDateRange from "../TableDateRange"
 
 const MarathonUsers = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
   const box = {
-    h: "630",
+    h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
@@ -161,6 +161,7 @@ const MarathonUsers = ({ isLoading, res }) => {
           overflowX="hidden"
           maxW="100%"
           h="500px"
+          mb="8"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (
@@ -228,8 +229,6 @@ const MarathonUsers = ({ isLoading, res }) => {
                   <b>Marathon Users </b>
                 </Text>
               </Box>
-              <Spacer />
-              <DateRange dateRange={dateRange} setDateRange={setDateRange} />
             </Flex>
           </Flex>
           <Box ml="6">
@@ -237,6 +236,7 @@ const MarathonUsers = ({ isLoading, res }) => {
               Users with most online time in the last period
             </Text>
           </Box>
+          <TableDateRange dateRange={dateRange} setDateRange={setDateRange} />
           {dataArr.length > 0 && !isLoading ? (
             <Box>
               <TableComponent />
