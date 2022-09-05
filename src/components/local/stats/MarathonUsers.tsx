@@ -62,7 +62,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                 fontSize="lg"
                 color={useColorModeValue("gray.800", "gray.200")}
               >
-                <b>{convertSeconds(value)}</b>
+                {convertSeconds(value)}
               </Text>
             </Box>
           )

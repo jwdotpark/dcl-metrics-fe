@@ -42,11 +42,13 @@ import Explorer from "../src/components/local/stats/Explorer"
 //   () => import("../src/components/local/stats/RecentMarathonUsers"),
 //   { ssr: false }
 // )
-import TopParcelsTimeSpentComponent from "../src/components/local/stats/TopParcelsTimeSpent"
+import AvgTimeSpentParcel from "../src/components/local/stats/AvgTimeSpentParcel"
 // const TopParcelsTimeSpentComponent = dynamic(
 //   () => import("../src/components/local/stats/TopParcelsTimeSpent"),
 //   { ssr: false }
 // )
+import AFKTimeSpentParcel from "../src/components/local/stats/AFKTimeSpentParcel"
+
 const TopLogins = dynamic(
   () => import("../src/components/local/stats/TopLogins"),
   { ssr: false }
@@ -102,7 +104,9 @@ const GlobalPage: NextPage = (ISR) => {
     lg: 2,
     xl: 2,
   })
-  
+
+  console.log(result.parcels)
+
   return (
     <Layout>
       {/* <TempError /> */}
@@ -111,7 +115,11 @@ const GlobalPage: NextPage = (ISR) => {
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
-        <TopParcelsTimeSpentComponent
+        <AvgTimeSpentParcel
+          parcel={result.parcels}
+          isParcelLoading={isDataLoading}
+        />
+        <AFKTimeSpentParcel
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />

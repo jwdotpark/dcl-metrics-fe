@@ -61,7 +61,7 @@ const Explorer = ({ isLoading, res }) => {
                 fontSize="lg"
                 color={useColorModeValue("gray.800", "gray.200")}
               >
-                <b>{Number(value)}</b>
+                {Number(value)}
               </Text>
             </Box>
           )
@@ -213,37 +213,33 @@ const Explorer = ({ isLoading, res }) => {
   }
 
   return (
-    <>
-      <GridBox box={box}>
-        <>
-          <Flex position="relative" mt="4" mx="5">
-            <Flex w="100%">
-              <Box>
-                <Text fontSize="2xl">
-                  <b>Explorer</b>
-                </Text>
-              </Box>
-              <Spacer />
-              <DateRange dateRange={dateRange} setDateRange={setDateRange} />
-            </Flex>
-          </Flex>
-          <Box ml="6">
-            <Text fontSize="sm" color="gray.500">
-              Users that visited the most parcels in the last period
+    <GridBox box={box}>
+      <Flex position="relative" mt="4" mx="5">
+        <Flex w="100%">
+          <Box>
+            <Text fontSize="2xl">
+              <b>Explorer</b>
             </Text>
           </Box>
-          {dataArr.length > 0 && !isLoading ? (
-            <Box>
-              <TableComponent />
-            </Box>
-          ) : (
-            <Center h={box.h}>
-              <Loading />
-            </Center>
-          )}
-        </>
-      </GridBox>
-    </>
+          <Spacer />
+          <DateRange dateRange={dateRange} setDateRange={setDateRange} />
+        </Flex>
+      </Flex>
+      <Box ml="6">
+        <Text fontSize="sm" color="gray.500">
+          Users that visited the most parcels in the last period
+        </Text>
+      </Box>
+      {dataArr.length > 0 && !isLoading ? (
+        <Box>
+          <TableComponent />
+        </Box>
+      ) : (
+        <Center h={box.h}>
+          <Loading />
+        </Center>
+      )}
+    </GridBox>
   )
 }
 
