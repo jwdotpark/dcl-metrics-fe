@@ -16,8 +16,10 @@ const TableDateRange = ({ dateRange, setDateRange }) => {
             isAttached
             size="sm"
             variant="outline"
-            boxShadow="sm"
             w="100%"
+            boxShadow="md"
+            borderRadius="md"
+            overflow="hidden"
           >
             <Button
               w="100%"

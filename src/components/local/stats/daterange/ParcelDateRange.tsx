@@ -17,7 +17,8 @@ const ParcelDateRange = ({ dateRange, setDateRange }) => {
             isAttached
             size="sm"
             variant="outline"
-            boxShadow="sm"
+            boxShadow="md"
+            borderRadius="md"
             w="100%"
           >
             <Button
