@@ -1,65 +1,20 @@
-import { useState, useEffect } from "react"
-import dynamic from "next/dynamic"
+import { useState } from "react"
 import type { NextPage } from "next"
-import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
+import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import staticGlobal from "../public/data/global_response.json"
-// import tempGlobal from "../public/data/global.json"
 const axios = require("axios").default
 
 import Layout from "../src/components/layout/layout"
-// const Layout = dynamic(() => import("../src/components/layout/layout"), {
-//   ssr: false,
-// })
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
-// const UniqueVisitors = dynamic(
-//   () => import("../src/components/local/stats/UniqueVisitors"),
-//   { ssr: false }
-// )
 import VisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
-// const VisitedParcels = dynamic(
-//   () => import("../src/components/local/stats/VisitedParcels"),
-//   { ssr: false }
-// )
 import MarathonUsers from "../src/components/local/stats/MarathonUsers"
-// const MarathonUsers = dynamic(
-//   () => import("../src/components/local/stats/MarathonUsers"),
-//   { ssr: false }
-// )
 import Explorer from "../src/components/local/stats/Explorer"
-// const Explorer = dynamic(
-//   () => import("../src/components/local/stats/Explorer"),
-//   { ssr: false }
-// )
-// const Explorers = dynamic(
-//   () => import("../src/components/local/stats/Explorers"),
-//   { ssr: false }
-// )
-// const RecentExplorers = dynamic(
-//   () => import("../src/components/local/stats/RecentExplorers"),
-//   { ssr: false }
-// )
-// const RecentMarathonUsers = dynamic(
-//   () => import("../src/components/local/stats/RecentMarathonUsers"),
-//   { ssr: false }
-// )
 import AvgTimeSpentParcel from "../src/components/local/stats/AvgTimeSpentParcel"
-// const TopParcelsTimeSpentComponent = dynamic(
-//   () => import("../src/components/local/stats/TopParcelsTimeSpent"),
-//   { ssr: false }
-// )
 import AFKTimeSpentParcel from "../src/components/local/stats/AFKTimeSpentParcel"
 import LogOutTimeSpentParcel from "../src/components/local/stats/LogOutTimeSpentParcel"
 import LogInTimeSpentParcel from "../src/components/local/stats/LogInTimeSpentParcel"
 import MostVisitedParcel from "../src/components/local/stats/MostVisitedParcel"
 
-const TopLogins = dynamic(
-  () => import("../src/components/local/stats/TopLogins"),
-  { ssr: false }
-)
-const TopLogouts = dynamic(
-  () => import("../src/components/local/stats/TopLogouts"),
-  { ssr: false }
-)
 import TempError from "../src/components/local/TempError"
 
 export async function getStaticProps() {
@@ -108,8 +63,6 @@ const GlobalPage: NextPage = (ISR) => {
     xl: 2,
   })
 
-  console.log(result.parcels)
-
   return (
     <Layout>
       {/* <TempError /> */}
@@ -138,15 +91,6 @@ const GlobalPage: NextPage = (ISR) => {
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />
-
-        {/* <TopLogins
-          parcel={result.parcels.top.time_spent}
-          isParcelLoading={isDataLoading}
-        />
-        <TopLogouts
-          parcel={result.parcels.top.time_spent}
-          isParcelLoading={isDataLoading}
-        /> */}
       </Grid>
     </Layout>
   )
