@@ -73,5 +73,5 @@ jobs:
           disable_web_page_preview: true
           format: html
           message: |
-            ${{ job.status == 'success' && '✅ Build Success!' || '❌ Build Failed..' }}
+            ${{ job.status == 'success' && '✅ Production Build Success!' || '❌ Production Build Failed..' }}
             Live Site: <a href="https://dcl-metrics.com/">dcl-metrics.com</a>
