@@ -18,7 +18,7 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import ParcelDateRange from "../ParcelDateRange"
+import ParcelDateRange from "./daterange/ParcelDateRange"
 import GridBox from "../GridBox"
 
 const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {

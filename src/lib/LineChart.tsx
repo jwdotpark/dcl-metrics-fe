@@ -4,7 +4,6 @@ import { useColorModeValue, useColorMode } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
 
 const LineChart = ({ data, color }) => {
-  // const colors = ["#4299e175"]
   const min = Math.min(...data[0].data.map((item) => item.y))
   const { colorMode } = useColorMode()
 
@@ -23,7 +22,7 @@ const LineChart = ({ data, color }) => {
       }}
       animate={true}
       pointSize={4}
-      margin={{ top: 40, right: 35, bottom: 60, left: 50 }}
+      margin={{ top: 40, right: 45, bottom: 60, left: 55 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",

@@ -18,12 +18,11 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import ParcelDateRange from "../ParcelDateRange"
+import ParcelDateRange from "./daterange/ParcelDateRange"
 import GridBox from "../GridBox"
 
 const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const box = {
-    // h: "630",
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),

@@ -21,7 +21,7 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
-import TableDateRange from "../TableDateRange"
+import TableDateRange from "./daterange/TableDateRange"
 
 const MarathonUsers = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension

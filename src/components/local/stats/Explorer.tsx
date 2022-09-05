@@ -20,7 +20,7 @@ import Loading from "../Loading"
 import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
-import DateRange from "../TableDateRange"
+import DateRange from "./daterange/TableDateRange"
 
 const Explorer = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension

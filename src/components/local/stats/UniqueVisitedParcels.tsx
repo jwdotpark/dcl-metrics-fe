@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
-import LineChartDateRange from "../LineChartDateRange"
+import LineChartDateRange from "./daterange/LineChartDateRange"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
@@ -31,7 +31,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
     })
   })
 
-  const [dateRange, setDateRange] = useState<number>(14)
+  const [dateRange, setDateRange] = useState<number>(7)
 
   const LineChartComponent = ({ box, res }) => {
     const color = "#CAB2D6FF"
