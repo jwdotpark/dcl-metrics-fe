@@ -59,7 +59,7 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
       Cell: ({ value }) => {
         return (
           <Box
-            maxW="14rem"
+            w="14rem"
             borderRadius="md"
             border="2px solid"
             borderColor="gray.500"
