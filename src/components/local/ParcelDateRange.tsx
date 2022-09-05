@@ -12,26 +12,36 @@ const ParcelDateRange = ({ dateRange, setDateRange }) => {
   return (
     <Box zIndex="1" mt="1">
       <HStack>
-        <ButtonGroup isAttached size="sm" variant="outline" boxShadow="sm">
+        <ButtonGroup
+          isAttached
+          size="sm"
+          variant="outline"
+          boxShadow="sm"
+          w="100%"
+        >
           <Button
+            w="100%"
             onClick={() => setDateRange(0)}
             bgColor={dateRange === 0 && btnColor}
           >
             1D
           </Button>
           <Button
+            w="100%"
             onClick={() => setDateRange(1)}
             bgColor={dateRange === 1 && btnColor}
           >
             7D
           </Button>
           <Button
+            w="100%"
             onClick={() => setDateRange(2)}
             bgColor={dateRange === 2 && btnColor}
           >
             1M
           </Button>
           <Button
+            w="100%"
             onClick={() => setDateRange(3)}
             bgColor={dateRange === 3 && btnColor}
           >
