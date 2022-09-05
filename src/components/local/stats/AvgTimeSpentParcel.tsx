@@ -58,7 +58,7 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
       Cell: ({ value }) => {
         return (
           <Box
-            w="14rem"
+            w="100%"
             borderRadius="md"
             border="2px solid"
             borderColor="gray.500"

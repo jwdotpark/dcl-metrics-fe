@@ -59,7 +59,7 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
       Cell: ({ value }) => {
         return (
           <Box
-            w="14rem"
+            // w="14rem"
             borderRadius="md"
             border="2px solid"
             borderColor="gray.500"

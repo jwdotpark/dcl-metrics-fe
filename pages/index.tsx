@@ -15,7 +15,7 @@ import LogOutTimeSpentParcel from "../src/components/local/stats/LogOutTimeSpent
 import LogInTimeSpentParcel from "../src/components/local/stats/LogInTimeSpentParcel"
 import MostVisitedParcel from "../src/components/local/stats/MostVisitedParcel"
 
-import TempError from "../src/components/local/TempError"
+import TempError from "../src/components/local/stats/error/TempError"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
@@ -75,11 +75,11 @@ const GlobalPage: NextPage = (ISR) => {
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />
-        <LogInTimeSpentParcel
+        <AFKTimeSpentParcel
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />
-        <AFKTimeSpentParcel
+        <LogInTimeSpentParcel
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />

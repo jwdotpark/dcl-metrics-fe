@@ -25,28 +25,28 @@ const ParcelDateRange = ({ dateRange, setDateRange }) => {
               onClick={() => setDateRange(0)}
               bgColor={dateRange === 0 && btnColor}
             >
-              1D
+              1d
             </Button>
             <Button
               w="100%"
               onClick={() => setDateRange(1)}
               bgColor={dateRange === 1 && btnColor}
             >
-              7D
+              7d
             </Button>
             <Button
               w="100%"
               onClick={() => setDateRange(2)}
               bgColor={dateRange === 2 && btnColor}
             >
-              1M
+              30d
             </Button>
             <Button
               w="100%"
               onClick={() => setDateRange(3)}
               bgColor={dateRange === 3 && btnColor}
             >
-              3M
+              90d
             </Button>
           </ButtonGroup>
         </HStack>

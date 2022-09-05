@@ -18,7 +18,7 @@ import {
   AlertTitle,
 } from "@chakra-ui/react"
 import { useState } from "react"
-import GridBox from "./GridBox"
+import GridBox from "../../GridBox"
 
 const AlertComponent = () => {
   return (

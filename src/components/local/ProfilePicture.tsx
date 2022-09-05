@@ -8,7 +8,7 @@ const ProfilePicture = ({ address }) => {
 
   useEffect(() => {
     setIsLoading(true)
-    if (process.env.NEXT_PUBLIC_ENV === "prod") {
+    if (process.env.NEXT_PUBLIC_ENV !== "prod") {
       setPic(address)
     } else {
       // @ts-ignore
