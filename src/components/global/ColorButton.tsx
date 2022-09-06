@@ -13,8 +13,6 @@ const ColorButton = () => {
         label="theme change"
         placement="auto"
         fontSize="sm"
-        bg={useColorModeValue("gray.300", "gray.700")}
-        color={useColorModeValue("black", "white")}
         borderRadius="md"
       >
         <Button size="lg" variant="link" onClick={toggleColorMode}>

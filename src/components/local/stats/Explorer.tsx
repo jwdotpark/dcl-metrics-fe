@@ -55,6 +55,16 @@ const Explorer = ({ isLoading, res }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // guest logo
+  const [explorerGuestUserArr, setExplorerGuestUser] = useState([])
+  useEffect(() => {
+    setExplorerGuestUser(dataArr.map((user) => user.guest_user))
+  }, [dataArr])
+  useEffect(() => {
+    setExplorerGuestUser(dataArr.map((user) => user.guest_user))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   // table column definition
   const columns = useMemo(
     () => [
@@ -86,7 +96,8 @@ const Explorer = ({ isLoading, res }) => {
               <Center>
                 <ProfilePicture
                   address={value}
-                  verified={verifiedUserArr[Number(row.id)]}
+                  verified={row.original.verified_user}
+                  guest={row.original.guest_user}
                 />
               </Center>
             </Box>

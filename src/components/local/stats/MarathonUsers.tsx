@@ -55,6 +55,16 @@ const MarathonUsers = ({ isLoading, res }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // guest logo
+  const [marathonGuestUserArr, setMarathonGuestUser] = useState([])
+  useEffect(() => {
+    setMarathonGuestUser(dataArr.map((user) => user.guest_user))
+  }, [dataArr])
+  useEffect(() => {
+    setMarathonGuestUser(dataArr.map((user) => user.guest_user))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   // table column definition
   const columns = useMemo(
     () => [
@@ -88,7 +98,8 @@ const MarathonUsers = ({ isLoading, res }) => {
               <Center>
                 <ProfilePicture
                   address={value}
-                  verified={verifiedUserArr[Number(row.id)]}
+                  verified={row.original.verified_user}
+                  guest={row.original.guest_user}
                 />
               </Center>
             </Box>
@@ -104,7 +115,7 @@ const MarathonUsers = ({ isLoading, res }) => {
             <Box w="6rem">
               <Box display="inline-block" ml="-6">
                 <Text color={useColorModeValue("gray.800", "gray.200")}>
-                  {value.length > 16 ? value.slice(0, 16) + ".." : value}
+                  {value.length > 14 ? value.slice(0, 14) + ".." : value}
                 </Text>
               </Box>
             </Box>
@@ -139,7 +150,7 @@ const MarathonUsers = ({ isLoading, res }) => {
       },
     ],
     // eslint-disable-next-line
-    [dataArr, dateRange]
+    [dataArr]
   )
 
   // for table width representation,

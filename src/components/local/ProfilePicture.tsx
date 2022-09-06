@@ -1,4 +1,5 @@
 import {
+  Text,
   useColorModeValue,
   Box,
   Avatar,
@@ -9,9 +10,10 @@ import {
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import verifiedBadge from "../../../public/verified.svg"
+import guestBadge from "../../../public/guest.svg"
 import staticAvatar from "../../../public/avatar.png"
 
-const ProfilePicture = ({ address, verified }) => {
+const ProfilePicture = ({ address, verified, guest }) => {
   const [pic, setPic] = useState<string>()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -29,45 +31,60 @@ const ProfilePicture = ({ address, verified }) => {
 
   return (
     <>
-      <Center
-        borderRadius="full"
-        display="inline-block"
-        border="1px solid"
-        borderColor="gray.300"
-        overflow="clip"
-      >
+      <Center borderRadius="full" display="inline-block">
         {isLoading ? (
           <Center h="100%">
             <Spinner size="sm" />
           </Center>
         ) : (
-          <Box>
+          <Box w="2rem">
             <Avatar
               src={pic}
               size="sm"
               showBorder={true}
               borderColor="gray.300"
-            ></Avatar>
+            />
+            {guest && (
+              <Tooltip
+                label="Guest user"
+                placement="auto"
+                fontSize="sm"
+                borderRadius="md"
+              >
+                <Box
+                  display="inline-block"
+                  css={{ transform: "translateX(-12px) translateY(16px)" }}
+                  backgroundColor="yellow.200"
+                  borderRadius="full"
+                  border="1px solid yellow"
+                  boxSize="14px"
+                >
+                  <Center h="100%">
+                    <Image
+                      objectFit="cover"
+                      src={guestBadge}
+                      alt="guest user"
+                    />
+                  </Center>
+                </Box>
+              </Tooltip>
+            )}
             {verified && (
               <Tooltip
                 label="User owns DCL ENS token"
                 placement="auto"
-                // eslint-disable-next-line
-                color={useColorModeValue("black", "white")}
                 fontSize="sm"
-                // eslint-disable-next-line
-                bg={useColorModeValue("gray.300", "gray.700")}
                 borderRadius="md"
               >
                 <Box
-                  position="absolute"
-                  css={{ transform: "translateX(16px) translateY(-14px)" }}
+                  display="inline-block"
+                  css={{ transform: "translateX(-16px) translateY(14px)" }}
                 >
                   <Image
                     src={verifiedBadge}
                     alt="verified logo"
-                    width="24"
-                    height="24"
+                    width="22"
+                    height="22"
                   />
                 </Box>
               </Tooltip>

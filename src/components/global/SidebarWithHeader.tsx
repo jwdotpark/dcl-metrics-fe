@@ -157,9 +157,7 @@ const SidebarContent = ({
         <Tooltip
           label="Global Dashboard"
           placement="right"
-          color={useColorModeValue("black", "white")}
           fontSize="sm"
-          bg={useColorModeValue("gray.300", "gray.700")}
           borderRadius="md"
         >
           <Box>
@@ -185,8 +183,6 @@ const SidebarContent = ({
           label="Roadmap"
           placement="right"
           fontSize="sm"
-          bg={useColorModeValue("gray.300", "gray.700")}
-          color={useColorModeValue("black", "white")}
           borderRadius="md"
         >
           <Box>
@@ -216,8 +212,6 @@ const SidebarContent = ({
           label="About"
           placement="right"
           fontSize="sm"
-          bg={useColorModeValue("gray.300", "gray.700")}
-          color={useColorModeValue("black", "white")}
           borderRadius="md"
         >
           <Box>
@@ -245,8 +239,6 @@ const SidebarContent = ({
           label={sidebarOpen ? "Collapse" : "Expand"}
           placement="right"
           fontSize="sm"
-          bg={useColorModeValue("gray.300", "gray.700")}
-          color={useColorModeValue("black", "white")}
           borderRadius="md"
         >
           <Box display={{ base: "none", md: "block" }}>
