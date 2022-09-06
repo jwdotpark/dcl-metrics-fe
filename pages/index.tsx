@@ -34,6 +34,12 @@ export async function getStaticProps() {
         },
       },
     })
+    // if no res, return static json
+    if (response.status >= 300) {
+      return {
+        props: { staticGlobal },
+      }
+    }
     const ISR = response.data
     return {
       props: { ISR },
@@ -43,7 +49,6 @@ export async function getStaticProps() {
     const ISR = staticGlobal
     return {
       props: { ISR },
-      revalidate: day,
     }
   }
 }
