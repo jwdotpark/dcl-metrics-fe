@@ -78,7 +78,7 @@ export async function getStaticProps() {
 
 const GlobalPage: NextPage = (ISR) => {
   const [isDataLoading, setIsDataLoading] = useState(false)
-  
+
   // @ts-ignore
   const result = ISR.ISR
 
@@ -90,7 +90,7 @@ const GlobalPage: NextPage = (ISR) => {
 
   return (
     <Layout>
-      <TempError />
+      {/* <TempError /> */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mt="4">
         <UniqueVisitors res={result.global} visitorLoading={isDataLoading} />
         <TotalVisitedParcels
