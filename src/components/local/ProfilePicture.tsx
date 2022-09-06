@@ -50,7 +50,7 @@ const ProfilePicture = ({ address, verified }) => {
             ></Avatar>
             {verified && (
               <Tooltip
-                label="Verified user"
+                label="User owns DCL ENS token"
                 placement="auto"
                 // eslint-disable-next-line
                 color={useColorModeValue("black", "white")}
