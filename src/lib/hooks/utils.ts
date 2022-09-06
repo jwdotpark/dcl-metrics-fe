@@ -1,5 +1,5 @@
 export const convertSeconds = (seconds: number) => {
-  const hrs = `0${Math.floor(seconds / 3600)}`.slice(-2)
+  const hrs = `0${Math.floor(seconds / 3600)}`.slice(-3)
   const min =
     Math.floor((seconds % 3600) / 60) < 10
       ? `0${Math.floor((seconds % 3600) / 60)}`

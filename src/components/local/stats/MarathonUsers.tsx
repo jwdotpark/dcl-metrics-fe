@@ -254,7 +254,7 @@ const MarathonUsers = ({ isLoading, res }) => {
               <TableComponent />
             </Box>
           ) : (
-            <Center h={box.h}>
+            <Center h="100%">
               <Loading />
             </Center>
           )}
