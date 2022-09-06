@@ -1,4 +1,5 @@
 import {
+  Tooltip,
   Text,
   Box,
   TableContainer,
@@ -112,9 +113,18 @@ const Explorer = ({ isLoading, res }) => {
             <Box w="6rem">
               <Box display="inline-block" ml="-6">
                 <Text color={useColorModeValue("gray.800", "gray.200")}>
-                  {value && value.length > 16
-                    ? value.slice(0, 16) + ".."
-                    : value}
+                  {value && value.length > 16 ? (
+                    <Tooltip
+                      label={value}
+                      placement="top"
+                      fontSize="sm"
+                      borderRadius="md"
+                    >
+                      {value.slice(0, 16) + ".."}
+                    </Tooltip>
+                  ) : (
+                    value
+                  )}
                   {!value && "N/A"}
                 </Text>
               </Box>

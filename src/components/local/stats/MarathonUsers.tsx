@@ -1,4 +1,5 @@
 import {
+  Tooltip,
   Text,
   Box,
   TableContainer,
@@ -115,7 +116,18 @@ const MarathonUsers = ({ isLoading, res }) => {
             <Box w="6rem">
               <Box display="inline-block" ml="-6">
                 <Text color={useColorModeValue("gray.800", "gray.200")}>
-                  {value.length > 14 ? value.slice(0, 14) + ".." : value}
+                  {value.length > 14 ? (
+                    <Tooltip
+                      label={value}
+                      placement="top"
+                      fontSize="sm"
+                      borderRadius="md"
+                    >
+                      {value.slice(0, 14) + ".."}
+                    </Tooltip>
+                  ) : (
+                    value
+                  )}
                 </Text>
               </Box>
             </Box>
