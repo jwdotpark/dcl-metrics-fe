@@ -398,7 +398,7 @@
         {
           "address": "0x785c8d210ab8888da6d121faa0a9568f75400b13",
           "parcels_visited": 76,
-          "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihtlmhq5ughw4ggjbowi4wjm7lgn7xsibapt5wlq563275r7bhpmy",
+          "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihaaim6tkl5xek7ue266afc4ycmci2gg7qr4cl5erhzbwldhbuu7q",
           "guest_user": false,
           "name": "VinnyPiazza",
           "verified_user": true
@@ -449,7 +449,7 @@
           "address": "0x78dc706e87fedf7182dfa087d9f499a27d85731b",
           "time_spent": 85088,
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiea7r3e2i53aclgwrak4tg6m5hpnpisfn6m4e66l6bhec2nuuh6mi",
-          "guest_user": true,
+          "guest_user": false,
           "name": "BugsBunnyBro",
           "verified_user": false
         },
@@ -533,14 +533,14 @@
           "address": "0x85b8952c777880a2f9181750978360ef2b580b00",
           "parcels_visited": 609,
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreigqgxmzqg64ezq55y4wf7imohv6727i6lky4c5x6yvb34dxuqug6m",
-          "guest_user": true,
+          "guest_user": false,
           "name": "Krakxou",
           "verified_user": false
         },
         {
           "address": "0x785c8d210ab8888da6d121faa0a9568f75400b13",
           "parcels_visited": 312,
-          "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihtlmhq5ughw4ggjbowi4wjm7lgn7xsibapt5wlq563275r7bhpmy",
+          "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihaaim6tkl5xek7ue266afc4ycmci2gg7qr4cl5erhzbwldhbuu7q",
           "guest_user": false,
           "name": "VinnyPiazza",
           "verified_user": true
@@ -556,7 +556,7 @@
         {
           "address": "0xdaee9ae89f2f4de5560c83d0ea5d473a721e890e",
           "parcels_visited": 279,
-          "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreib2bjdnxxqlkts3lc4ntniok6j3msy3naf4migiwikuvq72s435xa",
+          "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreie7u6aa7ejcxc5cxpsrbzcknsjo5ubytw2kznd47kwvskpj26gzm4",
           "guest_user": false,
           "name": "AS13",
           "verified_user": false
@@ -589,7 +589,7 @@
           "address": "0x90fdc35d0ebfe6ce49d4b27cfa92cab07694d857",
           "parcels_visited": 156,
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiddriyqjvrgum6pp6phi4ttijgqe2dkmn5n7epd4nptp372u27cqy",
-          "guest_user": true,
+          "guest_user": false,
           "name": "Heathencore",
           "verified_user": false
         },
@@ -615,7 +615,7 @@
           "address": "0xf0b4d06e1b6b69a2a6657030a5a7283b9732ce85",
           "time_spent": 254104,
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreigvxxnlorqoadyjo54bmqih6bvvcgtfcv5oxf2kxhfjariqwxlb3e",
-          "guest_user": true,
+          "guest_user": false,
           "name": "Nolan",
           "verified_user": false
         },
@@ -957,7 +957,7 @@
           "avatar_url": "https://peer-ec1.decentraland.org/content/contents/QmR5tdnxFNP9b4kVyy2g7zKGVqMZBvpN9a6jXyJiZQhxSm",
           "guest_user": true,
           "name": "1Z",
-          "verified_user": false
+          "verified_user": true
         },
         {
           "address": "0x63c40ee9a1e146032ad74bc4615f022c1130ce96",

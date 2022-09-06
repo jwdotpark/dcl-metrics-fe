@@ -29,6 +29,10 @@ const ProfilePicture = ({ address, verified, guest }) => {
     // eslint-disable-next-line
   }, [])
 
+  if (verified) {
+    guest = false
+  }
+
   return (
     <>
       <Center borderRadius="full" display="inline-block">
