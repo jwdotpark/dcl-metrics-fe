@@ -74,7 +74,7 @@ export default function SidebarWithHeader({
   useEffect(() => {
     if (
       window.innerWidth < 768 &&
-      sessionStorage.getItem("toast-desktop-status") === "closed"
+      sessionStorage.getItem("toast-desktop-status") !== "closed"
     ) {
       toast({
         title: "Desktop is recommended. ☹️",
