@@ -24,16 +24,20 @@ const RoadMap = () => {
             </Heading>
             {change.contents.map((content, j) => {
               return (
-                <Box key={j}>
+                <Box key={j} mb="2">
                   <MilestoneItem
                     icon={content.icon}
                     skipTrail={j === change.contents.length - 1 && true}
                   >
-                    <b>{content.title}</b>
-                    <Text display="inline" ml="2" fontWeight="light">
-                      {content.day}
+                    <Text fontWeight="bold">{content.title}</Text>
+                    <Text
+                      my="4"
+                      fontSize="sm"
+                      // eslint-disable-next-line
+                      color={useColorModeValue("gray.600", "gray.400")}
+                    >
+                      {content.description}
                     </Text>
-                    <Text fontSize="md">{content.description}</Text>
                   </MilestoneItem>
                 </Box>
               )
