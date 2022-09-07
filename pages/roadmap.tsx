@@ -20,13 +20,14 @@ const Roadmap = () => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 1 })
+  const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
 
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <GridBox box={box}>
-          <Tabs variant="line" size="md" align="center" isFitted>
+          <RoadMap />
+          {/* <Tabs variant="line" size="md" align="center" isFitted>
             <TabList>
               <Tab>Roadmap</Tab>
               <Tab>Changelog</Tab>
@@ -39,7 +40,10 @@ const Roadmap = () => {
                 <Changelog />
               </TabPanel>
             </TabPanels>
-          </Tabs>
+          </Tabs> */}
+        </GridBox>
+        <GridBox box={box}>
+          <Changelog />
         </GridBox>
       </Grid>
     </Layout>

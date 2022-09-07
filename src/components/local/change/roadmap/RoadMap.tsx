@@ -18,18 +18,21 @@ const RoadMap = () => {
     return (
       <>
         {roadmap.map((change, i) => (
-          <Box mb={3} textAlign="left" key={i}>
+          <Box mb={3} textAlign="left" key={i} w="100%">
             <Heading fontSize="4xl" fontWeight="600" my={8}>
               {change.date}
             </Heading>
             {change.contents.map((content, j) => {
               return (
-                <Box key={j} mb="2">
+                <Box key={j} mb="2" w="100%" pr="6">
                   <MilestoneItem
+                    mr="8"
                     icon={content.icon}
                     skipTrail={j === change.contents.length - 1 && true}
                   >
-                    <Text fontWeight="bold">{content.title}</Text>
+                    <Text fontWeight="bold" wordBreak="keep-all">
+                      {content.title}
+                    </Text>
                     <Text
                       my="4"
                       fontSize="sm"
@@ -49,22 +52,29 @@ const RoadMap = () => {
   }
 
   return (
-    <Container maxW="7xl" p={{ base: 2, sm: 10 }}>
-      <VStack textAlign="start" align="start" mb={5}>
-        <chakra.h3
-          fontSize="4xl"
-          fontWeight="bold"
-          mb={18}
-          textAlign="center"
-          w="100%"
-        >
-          Roadmap
-        </chakra.h3>
-        <Box zIndex={5}>
-          <RoadMapList />
-        </Box>
-      </VStack>
-    </Container>
+    <Box>
+      <Container
+        maxW="7xl"
+        p={{ base: 2, sm: 10 }}
+        ml="4"
+        wordBreak="break-all"
+      >
+        <VStack textAlign="start" align="start" mb={2}>
+          <chakra.h3
+            fontSize="4xl"
+            fontWeight="bold"
+            my={4}
+            textAlign="center"
+            w="100%"
+          >
+            Roadmap
+          </chakra.h3>
+          <Box zIndex={1}>
+            <RoadMapList />
+          </Box>
+        </VStack>
+      </Container>
+    </Box>
   )
 }
 
