@@ -18,6 +18,7 @@ import { convertSeconds } from "../../../lib/hooks/utils"
 import Loading from "../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
+import TableMap from "./partials/TableMap"
 import ParcelDateRange from "./daterange/ParcelDateRange"
 import GridBox from "../GridBox"
 
@@ -56,24 +57,7 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
       accessor: "mapUrl",
       disableSortBy: true,
       Cell: ({ value }) => {
-        return (
-          <Box
-            w="100%"
-            borderRadius="md"
-            border="2px solid"
-            borderColor="gray.500"
-            overflow="clip"
-            boxShadow="md"
-          >
-            <Image
-              boxSize="5rem"
-              w="100%"
-              src={value}
-              alt="map image"
-              objectFit="cover"
-            />
-          </Box>
-        )
+        return <TableMap mapUrl={value} />
       },
     },
     {
@@ -87,6 +71,7 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
     {
       Header: "AVG. Time Spent",
       accessor: "avg_time_spent",
+      width: 200,
       Cell: ({ value }) => {
         return (
           <Text as="kbd" fontSize="lg">
