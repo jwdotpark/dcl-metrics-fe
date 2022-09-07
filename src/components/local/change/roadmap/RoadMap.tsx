@@ -26,7 +26,7 @@ const RoadMap = () => {
               return (
                 <Box key={j} mb="2" w="100%" pr="6">
                   <MilestoneItem
-                    mr="8"
+                    mr="4"
                     icon={content.icon}
                     skipTrail={j === change.contents.length - 1 && true}
                   >
