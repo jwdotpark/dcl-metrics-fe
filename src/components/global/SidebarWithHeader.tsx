@@ -1,6 +1,7 @@
 // @ts-nocheck
-import React, { ReactNode, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import {
+  useToast,
   Tooltip,
   Center,
   Spacer,
@@ -30,6 +31,7 @@ import {
   FiArrowRightCircle,
   FiAnchor,
   FiMap,
+  FiFrown,
 } from "react-icons/fi"
 import { IconType } from "react-icons"
 import { ReactText } from "react"
@@ -66,6 +68,27 @@ export default function SidebarWithHeader({
   }
 
   const sidebarStatus = sidebarOpen ? "180px" : "60px"
+
+  // desktop recommendation toast
+  const toast = useToast()
+  useEffect(() => {
+    if (
+      window.innerWidth < 768 &&
+      sessionStorage.getItem("toast-desktop-status") === "closed"
+    ) {
+      toast({
+        title: "Desktop is recommended. ☹️",
+        description: " For better experience, please use desktop!",
+        status: "info",
+        duration: 5000,
+        isClosable: true,
+        onCloseComplete: () => {
+          sessionStorage.setItem("toast-desktop-status", "closed")
+        },
+      })
+    }
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "blackAlpha.900")}>
