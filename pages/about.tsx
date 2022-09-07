@@ -205,7 +205,7 @@ export const featuresList = [
   },
   {
     id: 4,
-    title: " 5-star hosts",
+    title: "Community",
     desc: "DCL-Metrics aims to make that data accessible so it can be used by the community to build a better metaverse.",
     icon: (
       <svg
