@@ -65,18 +65,14 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
       accessor: "coord",
       disableSortBy: true,
       Cell: ({ value }) => {
-        return <Text as="kbd" fontSize="lg">{`[${value}]`}</Text>
+        return <Text as="kbd">{`[${value}]`}</Text>
       },
     },
     {
       Header: "Visit Count",
       accessor: "visitors",
       Cell: ({ value }) => {
-        return (
-          <Text as="kbd" fontSize="lg">
-            {Number(value)}
-          </Text>
-        )
+        return <Text as="kbd">{Number(value)}</Text>
       },
     },
   ]

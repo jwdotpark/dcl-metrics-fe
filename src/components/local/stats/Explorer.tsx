@@ -75,11 +75,7 @@ const Explorer = ({ isLoading, res }) => {
         Cell: ({ value }) => {
           return (
             <Box w="100px">
-              <Text
-                as="kbd"
-                fontSize="lg"
-                color={useColorModeValue("gray.800", "gray.200")}
-              >
+              <Text as="kbd" color={useColorModeValue("gray.800", "gray.200")}>
                 {Number(value)}
               </Text>
             </Box>
@@ -141,7 +137,6 @@ const Explorer = ({ isLoading, res }) => {
               <Box display="inline-block">
                 <Text
                   as="kbd"
-                  fontSize="lg"
                   color={useColorModeValue("gray.800", "gray.200")}
                   _hover={{ color: "gray.600" }}
                 >
@@ -232,7 +227,7 @@ const Explorer = ({ isLoading, res }) => {
                     return (
                       <Td key={j} {...cell.getCellProps()}>
                         <Box display="inline-block">
-                          <Text fontSize="md">{cell.render("Cell")}</Text>
+                          <Text>{cell.render("Cell")}</Text>
                         </Box>
                       </Td>
                     )

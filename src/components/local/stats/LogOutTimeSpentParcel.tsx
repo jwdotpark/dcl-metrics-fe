@@ -66,18 +66,14 @@ const LogOutTimeSpentParcel = ({ parcel, isParcelLoading }) => {
       accessor: "coord",
       disableSortBy: true,
       Cell: ({ value }) => {
-        return <Text as="kbd" fontSize="lg">{`[${value}]`}</Text>
+        return <Text as="kbd">{`[${value}]`}</Text>
       },
     },
     {
       Header: "Logouts",
       accessor: "logouts",
       Cell: ({ value }) => {
-        return (
-          <Text as="kbd" fontSize="lg">
-            {Number(value)}
-          </Text>
-        )
+        return <Text as="kbd">{Number(value)}</Text>
       },
     },
   ]

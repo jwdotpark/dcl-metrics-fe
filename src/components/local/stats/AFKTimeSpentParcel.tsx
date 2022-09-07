@@ -66,18 +66,14 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
       accessor: "coord",
       disableSortBy: true,
       Cell: ({ value }) => {
-        return <Text as="kbd" fontSize="lg">{`[${value}]`}</Text>
+        return <Text as="kbd">{`[${value}]`}</Text>
       },
     },
     {
       Header: "AVG. AFK",
       accessor: "time_spent_afk",
       Cell: ({ value }) => {
-        return (
-          <Text as="kbd" fontSize="lg">
-            {convertSeconds(value)}
-          </Text>
-        )
+        return <Text as="kbd">{convertSeconds(value)}</Text>
       },
     },
   ]
