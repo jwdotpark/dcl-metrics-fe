@@ -13,13 +13,14 @@ import {
   useColorModeValue,
   useColorMode,
   Flex,
-  Spacer,
+  useToast,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import GridBox from "../GridBox"
 import Loading from "../Loading"
 import { convertSeconds } from "../../../lib/hooks/utils"
 import ProfilePicture from "../ProfilePicture"
+import TableLink from "./partials/TableLink"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
 import TableDateRange from "./daterange/TableDateRange"
@@ -30,6 +31,23 @@ const MarathonUsers = ({ isLoading, res }) => {
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
+  }
+
+  // copy toast
+  const toast = useToast()
+  const handleToast = (value) => {
+    navigator.clipboard.writeText(value)
+    toast({
+      description:
+        "Address " +
+        value.slice(0, 10) +
+        ".. has been copied to the clipboard.",
+      duration: 2000,
+      isClosable: true,
+      position: "bottom-right",
+      status: "success",
+      // variant: "subtle",
+    })
   }
 
   const [dateRange, setDateRange] = useState("1d")
@@ -86,8 +104,8 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "User",
         accessor: "name",
-        width: 195,
-        Cell: ({ value }) => {
+        width: 175,
+        Cell: ({ value, row }) => {
           return (
             <Box w="6rem">
               <Box display="inline-block" ml="-6">
@@ -110,26 +128,41 @@ const MarathonUsers = ({ isLoading, res }) => {
           )
         },
       },
+
       {
         Header: "Address",
         accessor: "address",
+        width: 330,
         Cell: ({ value }) => {
           return (
             <Flex>
-              <Box display="inline-block">
+              <Box display="inline-block" onClick={() => handleToast(value)}>
                 <Text
                   as="kbd"
                   color={useColorModeValue("gray.800", "gray.200")}
-                  _hover={{ color: "gray.600" }}
+                  _hover={{ color: "gray.600", cursor: "pointer" }}
                 >
-                  <a
+                  {/* <a
                     target="_blank"
                     href={"https://etherscan.io/address/" + `${value}`}
                     rel="noreferrer"
-                  >
-                    {value}
-                  </a>
+                  > */}
+                  {value}
+                  {/* </a> */}
                 </Text>
+              </Box>
+            </Flex>
+          )
+        },
+      },
+      {
+        Header: "Link",
+        accessor: "",
+        Cell: ({ row }) => {
+          return (
+            <Flex>
+              <Box display="inline-block">
+                <TableLink address={row.original.address} />
               </Box>
             </Flex>
           )
@@ -167,7 +200,7 @@ const MarathonUsers = ({ isLoading, res }) => {
         <Table
           {...getTableProps()}
           size="sm"
-          variant="unstyled"
+          // variant="unstyled"
           overflowX="hidden"
           maxW="100%"
           h="500px"
