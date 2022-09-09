@@ -10,7 +10,6 @@ import {
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react"
-// import { FaTools } from "react-icons/fa"
 import { FiPackage, FiHome, FiBarChart2, FiCheckCircle } from "react-icons/fi"
 import { minorchangeTemplate } from "./changelog"
 
@@ -36,7 +35,7 @@ const ChangeLog = () => {
                       fontSize="sm"
                       // eslint-disable-next-line
                       color={useColorModeValue("gray.600", "gray.400")}
-                      wordBreak="break-all"
+                      wordBreak="break-word"
                     >
                       {content.description}
                     </Text>

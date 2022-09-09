@@ -45,9 +45,9 @@ export const minorchangeTemplate = [
       {
         icon: FiCalendar,
         day: "2022 September",
-        title: "Date range picker is added",
+        title: "Display global stats with selectable date range",
         description:
-          "User now can select date range of week, month and quarter on each chart, and the charts will be updated accordingly",
+          "User now can select date range of week, month and quarter on each global chart",
       },
     ],
   },

@@ -30,7 +30,7 @@ const RoadMap = () => {
                     icon={content.icon}
                     skipTrail={j === change.contents.length - 1 && true}
                   >
-                    <Text fontWeight="bold" wordBreak="keep-all">
+                    <Text fontWeight="bold" wordBreak="break-word">
                       {content.title}
                     </Text>
                     <Text
@@ -57,7 +57,7 @@ const RoadMap = () => {
         maxW="7xl"
         p={{ base: 2, sm: 10 }}
         ml="4"
-        wordBreak="break-all"
+        wordBreak="break-word"
       >
         <VStack textAlign="start" align="start" mb={2}>
           <chakra.h3

@@ -22,12 +22,6 @@ export const roadmap = [
         title: "Build Metrics for Scenes",
         description: `I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised.`,
       },
-      {
-        icon: FiBarChart2,
-
-        title: "Update Frontend aesthetic and charts components",
-        description: ``,
-      },
     ],
   },
   {
