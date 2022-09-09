@@ -20,7 +20,7 @@ export const roadmap = [
         icon: FiPackage,
 
         title: "Build Metrics for Scenes",
-        description: `I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised.`,
+        description: `I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised`,
       },
     ],
   },
