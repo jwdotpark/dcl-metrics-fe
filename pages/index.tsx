@@ -1,55 +1,27 @@
-import { useState, useEffect } from "react"
-import dynamic from "next/dynamic"
+import { useState } from "react"
 import type { NextPage } from "next"
-import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
-import staticGlobal from "../public/data/global.json"
+import { Grid, useBreakpointValue } from "@chakra-ui/react"
+import staticGlobal from "../public/data/global_response.json"
 const axios = require("axios").default
 
-const Layout = dynamic(() => import("../src/components/layout/layout"), {
-  ssr: false,
-})
-const MarathonUsers = dynamic(
-  () => import("../src/components/local/stats/MarathonUsers"),
-  { ssr: false }
-)
-const TopParcelsTimeSpentComponent = dynamic(
-  () => import("../src/components/local/stats/TopParcelsTimeSpent"),
-  { ssr: false }
-)
-const UniqueVisitors = dynamic(
-  () => import("../src/components/local/stats/UniqueVisitors"),
-  { ssr: false }
-)
-const Explorers = dynamic(
-  () => import("../src/components/local/stats/Explorers"),
-  { ssr: false }
-)
-const RecentExplorers = dynamic(
-  () => import("../src/components/local/stats/RecentExplorers"),
-  { ssr: false }
-)
-const TotalVisitedParcels = dynamic(
-  () => import("../src/components/local/stats/TotalVisitedParcels"),
-  { ssr: false }
-)
-const RecentMarathonUsers = dynamic(
-  () => import("../src/components/local/stats/RecentMarathonUsers"),
-  { ssr: false }
-)
-const TopLogins = dynamic(
-  () => import("../src/components/local/stats/TopLogins"),
-  { ssr: false }
-)
-const TopLogouts = dynamic(
-  () => import("../src/components/local/stats/TopLogouts"),
-  { ssr: false }
-)
-import TempError from "../src/components/local/TempError"
+import Layout from "../src/components/layout/layout"
+import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
+import VisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
+import MarathonUsers from "../src/components/local/stats/MarathonUsers"
+import Explorer from "../src/components/local/stats/Explorer"
+import AvgTimeSpentParcel from "../src/components/local/stats/AvgTimeSpentParcel"
+import AFKTimeSpentParcel from "../src/components/local/stats/AFKTimeSpentParcel"
+import LogOutTimeSpentParcel from "../src/components/local/stats/LogOutTimeSpentParcel"
+import LogInTimeSpentParcel from "../src/components/local/stats/LogInTimeSpentParcel"
+import MostVisitedParcel from "../src/components/local/stats/MostVisitedParcel"
+
+import TempError from "../src/components/local/stats/error/TempError"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
   if (process.env.NEXT_PUBLIC_ENV === "prod") {
     const url = "http://api.dcl-metrics.com/global"
+    // const url = "https://dcl-metrics-be-staging.herokuapp.com/global"
     const response = await axios.get(url, {
       method: "get",
       proxy: {
@@ -62,6 +34,12 @@ export async function getStaticProps() {
         },
       },
     })
+    // if no res, return static json
+    if (response.status >= 300) {
+      return {
+        props: { staticGlobal },
+      }
+    }
     const ISR = response.data
     return {
       props: { ISR },
@@ -71,7 +49,6 @@ export async function getStaticProps() {
     const ISR = staticGlobal
     return {
       props: { ISR },
-      revalidate: day,
     }
   }
 }
@@ -91,38 +68,29 @@ const GlobalPage: NextPage = (ISR) => {
   return (
     <Layout>
       {/* <TempError /> */}
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mt="4">
-        <UniqueVisitors res={result.global} visitorLoading={isDataLoading} />
-        <TotalVisitedParcels
-          res={result.global}
-          visitorLoading={isDataLoading}
-        />
-        <MarathonUsers
-          res={result.users.daily.time_spent}
-          isLoading={isDataLoading}
-        />
-        <RecentMarathonUsers
-          res={result.users.daily.time_spent}
-          isLoading={isDataLoading}
-        />
-        <Explorers
-          res={result.users.top.parcels_visited}
-          isLoading={isDataLoading}
-        />
-        <RecentExplorers
-          res={result.users.daily.parcels_visited}
-          isLoading={isDataLoading}
-        />
-        <TopParcelsTimeSpentComponent
-          parcel={result.parcels.top.time_spent}
+      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
+        <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
+        <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
+        <MarathonUsers res={result.users} isLoading={isDataLoading} />
+        <Explorer res={result.users} isLoading={isDataLoading} />
+        <AvgTimeSpentParcel
+          parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />
-        <TopLogins
-          parcel={result.parcels.top.time_spent}
+        <LogInTimeSpentParcel
+          parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />
-        <TopLogouts
-          parcel={result.parcels.top.time_spent}
+        <AFKTimeSpentParcel
+          parcel={result.parcels}
+          isParcelLoading={isDataLoading}
+        />
+        <LogOutTimeSpentParcel
+          parcel={result.parcels}
+          isParcelLoading={isDataLoading}
+        />
+        <MostVisitedParcel
+          parcel={result.parcels}
           isParcelLoading={isDataLoading}
         />
       </Grid>

@@ -92,7 +92,7 @@ const PopoverTooltip = (value) => {
     >
       <Center>
         <Box w="100%">
-          <ProfilePicture address={value.value.indexValue} modal={true} />
+          {/* <ProfilePicture address={value.value.indexValue} /> */}
         </Box>
       </Center>
 

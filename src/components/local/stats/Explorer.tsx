@@ -18,13 +18,12 @@ import {
 import { useState, useEffect } from "react"
 import GridBox from "../GridBox"
 import Loading from "../Loading"
-import { convertSeconds } from "../../../lib/hooks/utils"
 import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
-import TableDateRange from "./daterange/TableDateRange"
+import DateRange from "./daterange/TableDateRange"
 
-const MarathonUsers = ({ isLoading, res }) => {
+const Explorer = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
   const box = {
     h: "auto",
@@ -32,17 +31,18 @@ const MarathonUsers = ({ isLoading, res }) => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
+  // FIXME static json, attach real api later
   const [dateRange, setDateRange] = useState("1d")
 
   const dataArr = useMemo(() => {
     if (dateRange === "1d") {
-      return res.yesterday.time_spent
+      return res.yesterday.parcels_visited
     } else if (dateRange === "7d") {
-      return res.last_week.time_spent
+      return res.last_week.parcels_visited
     } else if (dateRange === "30d") {
-      return res.last_month.time_spent
+      return res.last_month.parcels_visited
     } else if (dateRange === "90d") {
-      return res.last_quarter.time_spent
+      return res.last_quarter.parcels_visited
     }
   }, [res, dateRange])
 
@@ -50,14 +50,13 @@ const MarathonUsers = ({ isLoading, res }) => {
   const columns = useMemo(
     () => [
       {
-        Header: "Time Spent",
-        accessor: "time_spent",
-        width: 110,
+        Header: "Parcels Visited",
+        accessor: "parcels_visited",
         Cell: ({ value }) => {
           return (
-            <Box>
+            <Box w="100px">
               <Text as="kbd" color={useColorModeValue("gray.800", "gray.200")}>
-                {convertSeconds(value)}
+                {Number(value)}
               </Text>
             </Box>
           )
@@ -66,12 +65,11 @@ const MarathonUsers = ({ isLoading, res }) => {
         disableFilters: true,
       },
       {
-        Header: "",
+        // Header: "",
         accessor: "avatar_url",
-        width: 0,
         Cell: ({ value, row }) => {
           return (
-            <Box ml="2">
+            <Box>
               <Center>
                 <ProfilePicture
                   address={value}
@@ -86,24 +84,24 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "User",
         accessor: "name",
-        width: 195,
         Cell: ({ value }) => {
           return (
             <Box w="6rem">
               <Box display="inline-block" ml="-6">
                 <Text color={useColorModeValue("gray.800", "gray.200")}>
-                  {value.length > 14 ? (
+                  {value && value.length > 16 ? (
                     <Tooltip
                       label={value}
                       placement="top"
                       fontSize="sm"
                       borderRadius="md"
                     >
-                      {value.slice(0, 14) + ".."}
+                      {value.slice(0, 16) + ".."}
                     </Tooltip>
                   ) : (
                     value
                   )}
+                  {!value && "N/A"}
                 </Text>
               </Box>
             </Box>
@@ -137,22 +135,22 @@ const MarathonUsers = ({ isLoading, res }) => {
       },
     ],
     // eslint-disable-next-line
-    [dataArr]
+    [dataArr, dateRange]
   )
 
   // for table width representation,
   // time_spent value is normalized from 0 to 100 scale
-  const timeSpentArr = []
+  const parcelVisitedArr = []
   for (let i = 0; i < dataArr.length; i++) {
-    timeSpentArr.push(dataArr[i].time_spent)
+    parcelVisitedArr.push(dataArr[i].parcels_visited)
   }
-  const max = Math.max(...timeSpentArr)
-  const min = Math.min(...timeSpentArr)
+  const max = Math.max(...parcelVisitedArr)
+  const min = Math.min(...parcelVisitedArr)
   const range = max - min
-  const normalizedTimeSpentArr = []
-  for (let i = 0; i < timeSpentArr.length; i++) {
-    normalizedTimeSpentArr.push(
-      Math.round(((timeSpentArr[i] - min) / range) * (100 - 20) + 20)
+  const normalizedParcelVisitedArr = []
+  for (let i = 0; i < parcelVisitedArr.length; i++) {
+    normalizedParcelVisitedArr.push(
+      Math.round(((parcelVisitedArr[i] - min) / range) * (100 - 20) + 20)
     )
   }
 
@@ -181,12 +179,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                 display="block"
               >
                 {headerGroup.headers.map((column, j) => (
-                  <Th
-                    key={j}
-                    width={column.width}
-                    // sorting
-                    // {...column.getHeaderProps(column.getSortByToggleProps())}
-                  >
+                  <Th key={j} maxW="6rem" minW={j === 2 && "12rem"}>
                     {column.render("Header")}
                   </Th>
                 ))}
@@ -205,8 +198,8 @@ const MarathonUsers = ({ isLoading, res }) => {
                   h="3rem"
                   // NOTE tacky horizontal bar width :/
                   style={{
-                    background: `linear-gradient(90deg, #61CDBB50 ${
-                      normalizedTimeSpentArr[i]
+                    background: `linear-gradient(90deg, #F4756050 ${
+                      normalizedParcelVisitedArr[i]
                     }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
                   }}
                 >
@@ -229,37 +222,33 @@ const MarathonUsers = ({ isLoading, res }) => {
   }
 
   return (
-    <>
-      <GridBox box={box}>
-        <>
-          <Flex position="relative" mt="4" mx="5">
-            <Flex w="100%">
-              <Box>
-                <Text fontSize="2xl">
-                  <b>Marathon Users </b>
-                </Text>
-              </Box>
-            </Flex>
-          </Flex>
-          <Box ml="6">
-            <Text fontSize="sm" color="gray.500">
-              Users with most online time in the last period
+    <GridBox box={box}>
+      <Flex position="relative" mt="4" mx="5">
+        <Flex w="100%">
+          <Box>
+            <Text fontSize="2xl">
+              <b>Explorers</b>
             </Text>
           </Box>
-          <TableDateRange dateRange={dateRange} setDateRange={setDateRange} />
-          {dataArr.length > 0 && !isLoading ? (
-            <Box>
-              <TableComponent />
-            </Box>
-          ) : (
-            <Center h="100%">
-              <Loading />
-            </Center>
-          )}
-        </>
-      </GridBox>
-    </>
+        </Flex>
+      </Flex>
+      <Box ml="6">
+        <Text fontSize="sm" color="gray.500">
+          Users that visited the most parcels in the last period
+        </Text>
+      </Box>
+      <DateRange dateRange={dateRange} setDateRange={setDateRange} />
+      {dataArr.length > 0 && !isLoading ? (
+        <Box>
+          <TableComponent />
+        </Box>
+      ) : (
+        <Center h={box.h}>
+          <Loading />
+        </Center>
+      )}
+    </GridBox>
   )
 }
 
-export default MarathonUsers
+export default Explorer

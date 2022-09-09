@@ -1,54 +1,99 @@
-import { Avatar, Center, Spinner } from "@chakra-ui/react"
+import {
+  Text,
+  useColorModeValue,
+  Box,
+  Avatar,
+  Center,
+  Spinner,
+  Tooltip,
+} from "@chakra-ui/react"
+import Image from "next/image"
 import { useEffect, useState } from "react"
+import verifiedBadge from "../../../public/verified.svg"
+import guestBadge from "../../../public/guest.svg"
 import staticAvatar from "../../../public/avatar.png"
 
-const ProfilePicture = ({ address, modal }) => {
-  const [pic, setPic] = useState()
+const ProfilePicture = ({ address, verified, guest }) => {
+  const [pic, setPic] = useState<string>()
   const [isLoading, setIsLoading] = useState(false)
-
-  const fetchProfile = async () => {
-    const url = `https://peer.decentraland.org/lambdas/profiles/${address}`
-    const result = await fetch(url)
-    const data = await result.json()
-
-    if (process.env.NEXT_PUBLIC_ENV === "prod" && data.avatars[0]) {
-      const avatar = data.avatars[0].avatar.snapshots.face256
-      setPic(avatar)
-    } else {
-      // @ts-ignore
-      setPic(staticAvatar.src)
-    }
-  }
 
   useEffect(() => {
     setIsLoading(true)
     if (process.env.NEXT_PUBLIC_ENV === "prod") {
-      fetchProfile()
+      setPic(address)
     } else {
       // @ts-ignore
       setPic(staticAvatar.src)
     }
-
     setIsLoading(false)
     // eslint-disable-next-line
   }, [])
 
+  if (verified) {
+    guest = false
+  }
+
   return (
     <>
-      <Center
-        borderRadius="full"
-        display="inline-block"
-        border="1px solid"
-        borderColor="gray.300"
-        backgroundColor="gray.300"
-        overflow="clip"
-      >
+      <Center borderRadius="full" display="inline-block">
         {isLoading ? (
           <Center h="100%">
             <Spinner size="sm" />
           </Center>
         ) : (
-          <Avatar src={pic} size={modal ? "md" : "sm"} />
+          <Box w="2rem">
+            <Avatar
+              src={pic}
+              size="sm"
+              showBorder={true}
+              borderColor="gray.300"
+            />
+            {guest && (
+              <Tooltip
+                label="Guest user"
+                placement="auto"
+                fontSize="sm"
+                borderRadius="md"
+              >
+                <Box
+                  display="inline-block"
+                  css={{ transform: "translateX(-12px) translateY(16px)" }}
+                  backgroundColor="yellow.200"
+                  borderRadius="full"
+                  border="1px solid yellow"
+                  boxSize="14px"
+                >
+                  <Center h="100%">
+                    <Image
+                      objectFit="cover"
+                      src={guestBadge}
+                      alt="guest user"
+                    />
+                  </Center>
+                </Box>
+              </Tooltip>
+            )}
+            {verified && (
+              <Tooltip
+                label="User owns DCL ENS token"
+                placement="auto"
+                fontSize="sm"
+                borderRadius="md"
+              >
+                <Box
+                  display="inline-block"
+                  css={{ transform: "translateX(-16px) translateY(14px)" }}
+                >
+                  <Image
+                    src={verifiedBadge}
+                    alt="verified logo"
+                    width="22"
+                    height="22"
+                  />
+                </Box>
+              </Tooltip>
+            )}
+          </Box>
         )}
       </Center>
     </>

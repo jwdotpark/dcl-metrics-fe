@@ -1,13 +1,4 @@
-import {
-  useBreakpointValue,
-  Grid,
-  useColorModeValue,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-} from "@chakra-ui/react"
+import { useBreakpointValue, Grid, useColorModeValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import GridBox from "../src/components/local/GridBox"
 import Changelog from "../src/components/local/change/changelog/Changelog"
@@ -20,26 +11,16 @@ const Roadmap = () => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 1 })
+  const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
 
   return (
     <Layout>
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <GridBox box={box}>
-          <Tabs variant="line" size="md" align="center" isFitted>
-            <TabList>
-              <Tab>Roadmap</Tab>
-              <Tab>Changelog</Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-                <RoadMap />
-              </TabPanel>
-              <TabPanel>
-                <Changelog />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+          <RoadMap />
+        </GridBox>
+        <GridBox box={box}>
+          <Changelog />
         </GridBox>
       </Grid>
     </Layout>

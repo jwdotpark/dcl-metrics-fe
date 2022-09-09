@@ -7,13 +7,13 @@ import {
   useColorModeValue,
   Spacer,
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
 import LineChartDateRange from "./daterange/LineChartDateRange"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
-const UniqueVisitors = ({ visitorLoading, data }) => {
+const UniqueVisitedParcels = ({ visitorLoading, data }) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -27,17 +27,17 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     chartData.push({
       date: item[0],
       // @ts-ignore
-      unique_users: item[1].unique_users,
+      unique_users: item[1].active_parcels,
     })
   })
 
   const [dateRange, setDateRange] = useState<number>(7)
 
   const LineChartComponent = ({ box, res }) => {
-    const color = "#A6CEE3FF"
+    const color = "#CAB2D6FF"
     const result = [
       {
-        id: "Unique Users",
+        id: "Parcels Visited",
         color: "hsl(90, 70%, 50%)",
         data: chartData
           .slice(dataArr.length - dateRange, dataArr.length)
@@ -61,14 +61,14 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Unique Visitors </b>
+                <b>Parcels Visited</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Unique vistors per day in the last period
+            Parcels visited per day in the last period
           </Text>
         </Box>
         <LineChartDateRange dateRange={dateRange} setDateRange={setDateRange} />
@@ -86,4 +86,4 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
   )
 }
 
-export default UniqueVisitors
+export default UniqueVisitedParcels

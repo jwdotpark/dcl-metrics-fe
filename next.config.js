@@ -2,7 +2,7 @@
 const { withSentryConfig } = require("@sentry/nextjs")
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   images: {
     domains: ["https://api.decentraland.org/"],

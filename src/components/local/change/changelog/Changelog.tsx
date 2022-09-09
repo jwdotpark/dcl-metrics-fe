@@ -10,7 +10,6 @@ import {
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react"
-// import { FaTools } from "react-icons/fa"
 import { FiPackage, FiHome, FiBarChart2, FiCheckCircle } from "react-icons/fi"
 import { minorchangeTemplate } from "./changelog"
 
@@ -18,52 +17,51 @@ const ChangeLog = () => {
   const ChangeList = () => {
     return (
       <>
-        {minorchangeTemplate
-          // .slice(0)
-          // .reverse()
-          .map((change, i) => (
-            <Box mb={3} textAlign="left" key={i}>
-              <Heading fontSize="4xl" fontWeight="600" my={8}>
-                {change.date}
-              </Heading>
-              {change.contents
-                // .slice(0)
-                // .reverse()
-                .map((content, j) => {
-                  return (
-                    <Box key={j}>
-                      <MilestoneItem
-                        icon={content.icon}
-                        skipTrail={j === change.contents.length - 1 && true}
-                      >
-                        <b>{content.title}</b>
-                        <Text display="inline" ml="2" fontWeight="light">
-                          {content.day}
-                        </Text>
-                        <Text fontSize="md">{content.description}</Text>
-                      </MilestoneItem>
-                    </Box>
-                  )
-                })}
-            </Box>
-          ))}
+        {minorchangeTemplate.map((change, i) => (
+          <Box mb={3} textAlign="left" key={i}>
+            <Heading fontSize="4xl" fontWeight="600" my={8}>
+              {change.date}
+            </Heading>
+            {change.contents.map((content, j) => {
+              return (
+                <Box key={j} mr="8">
+                  <MilestoneItem
+                    icon={content.icon}
+                    skipTrail={j === change.contents.length - 1 && true}
+                  >
+                    <Text fontWeight="bold">{content.title}</Text>
+                    <Text
+                      my="4"
+                      fontSize="sm"
+                      // eslint-disable-next-line
+                      color={useColorModeValue("gray.600", "gray.400")}
+                      wordBreak="break-word"
+                    >
+                      {content.description}
+                    </Text>
+                  </MilestoneItem>
+                </Box>
+              )
+            })}
+          </Box>
+        ))}
       </>
     )
   }
 
   return (
-    <Container maxW="7xl" p={{ base: 2, sm: 10 }}>
-      <VStack textAlign="start" align="start" mb={5}>
+    <Container maxW="7xl" p={{ base: 2, sm: 10 }} ml="4">
+      <VStack textAlign="start" align="start" mb={2}>
         <chakra.h3
           fontSize="4xl"
           fontWeight="bold"
-          mb={18}
+          my={4}
           textAlign="center"
           w="100%"
         >
           Changelog
         </chakra.h3>
-        <Box zIndex={5}>
+        <Box zIndex={1}>
           <ChangeList />
         </Box>
       </VStack>

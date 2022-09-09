@@ -8,5 +8,5 @@ Sentry.init({
   dsn:
     SENTRY_DSN ||
     "https://730958d1b4114e55aba35d2f755bddca@o1365263.ingest.sentry.io/6660841",
-  tracesSampleRate: 0.7,
+  tracesSampleRate: 0.25,
 })

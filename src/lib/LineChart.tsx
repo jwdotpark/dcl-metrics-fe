@@ -1,25 +1,28 @@
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
 import { useColorModeValue, useColorMode } from "@chakra-ui/react"
+import { useState, useEffect, useMemo } from "react"
 
-const LineChart = ({ data }) => {
-  const colors = [
-    "#F5656575",
-    "#F5656575",
-    "#48BB7875",
-    "#4299e175",
-    "#9F7AEA75",
-    "#ED64A675",
-    "#E5581275",
-    "#0E474975",
-  ]
-
+const LineChart = ({ data, color }) => {
   const min = Math.min(...data[0].data.map((item) => item.y))
   const { colorMode } = useColorMode()
+
   return (
     <ResponsiveLine
       data={data}
-      margin={{ top: 50, right: 25, bottom: 25, left: 40 }}
+      theme={{
+        textColor: useColorModeValue("gray.800", "white"),
+        grid: {
+          line: {
+            stroke: "gray",
+            opacity: 0.5,
+            strokeDasharray: "1 1",
+          },
+        },
+      }}
+      animate={true}
+      pointSize={4}
+      margin={{ top: 40, right: 45, bottom: 60, left: 55 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -28,39 +31,28 @@ const LineChart = ({ data }) => {
         stacked: true,
         reverse: false,
       }}
-      yFormat=" >-.2f"
       axisTop={null}
       axisRight={null}
+      // enablePointLabel={true}
       axisBottom={{
         orient: "bottom",
-        tickSize: 5,
-        tickPadding: 0,
-        tickRotation: 0,
-        renderTick: (tick) => {
-          return (
-            <text
-              x={tick.x - 17}
-              y={tick.y + 17}
-              fontSize="12px"
-              fill={colorMode === "light" ? "gray.800" : "white"}
-            >
-              {tick.value.replace(/2022-/, "")}
-            </text>
-          )
-        },
+        tickSize: 10,
+        tickPadding: 15,
+        tickRotation: 45,
+        format: (value) => value.replace("2022-", ""),
       }}
       axisLeft={{
         orient: "left",
         tickSize: 5,
-        tickPadding: 5,
+        tickPadding: 10,
         tickRotation: 0,
-        legend: "count",
+        legend: "Visit Count",
         legendOffset: -60,
         legendPosition: "middle",
         renderTick: (tick) => {
           return (
             <text
-              x={tick.x - 28}
+              x={tick.x - 37}
               y={tick.y + 4}
               fontSize="12px"
               fill={colorMode === "light" ? "gray.800" : "white"}
@@ -73,10 +65,6 @@ const LineChart = ({ data }) => {
           )
         },
       }}
-      theme={{
-        textColor: useColorModeValue("gray.800", "white"),
-      }}
-      pointSize={6}
       pointColor={{ theme: "background" }}
       pointBorderWidth={6}
       pointBorderColor={{ from: "serieColor" }}
@@ -102,7 +90,7 @@ const LineChart = ({ data }) => {
           </div>
         )
       }}
-      colors={() => colors[Math.floor(Math.random() * colors.length)]}
+      colors={color}
       enableArea={true}
       areaBaselineValue={min}
       areaOpacity={0.5}

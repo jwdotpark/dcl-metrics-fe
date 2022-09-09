@@ -2,7 +2,6 @@
 import { useState } from "react"
 import dynamic from "next/dynamic"
 import { GridItem, useDisclosure, useColorModeValue } from "@chakra-ui/react"
-// import PopupModal from "../local/PopupModal"
 const BarChart = dynamic(() => import("../../lib/BarChart"), {
   ssr: false,
 })
@@ -20,12 +19,6 @@ const BarChartComponent = ({ data }) => {
   return (
     <GridItem h={box.h} bg={box.bg} borderRadius="md">
       <BarChart data={data} onOpen={onOpen} value={value} setValue={setValue} />
-      {/* <PopupModal
-        isOpen={isOpen}
-        onClose={onClose}
-        value={value}
-        modal={true}
-      /> */}
     </GridItem>
   )
 }
