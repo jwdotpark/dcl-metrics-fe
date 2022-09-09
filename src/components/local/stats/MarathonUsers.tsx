@@ -191,7 +191,7 @@ const MarathonUsers = ({ isLoading, res }) => {
           overflowX="hidden"
           maxW="100%"
           h="500px"
-          mb="8"
+          mb="6"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (

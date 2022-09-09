@@ -189,7 +189,7 @@ const Explorer = ({ isLoading, res }) => {
           overflowX="hidden"
           maxW="100%"
           h="500px"
-          mb="4"
+          mb="6"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (
