@@ -46,26 +46,6 @@ const Explorer = ({ isLoading, res }) => {
     }
   }, [res, dateRange])
 
-  // verified logo
-  const [verifiedUserArr, setVerifiedUser] = useState([])
-  useEffect(() => {
-    setVerifiedUser(dataArr.map((user) => user.verified_user))
-  }, [dataArr])
-  useEffect(() => {
-    setVerifiedUser(dataArr.map((user) => user.verified_user))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // guest logo
-  const [explorerGuestUserArr, setExplorerGuestUser] = useState([])
-  useEffect(() => {
-    setExplorerGuestUser(dataArr.map((user) => user.guest_user))
-  }, [dataArr])
-  useEffect(() => {
-    setExplorerGuestUser(dataArr.map((user) => user.guest_user))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   // table column definition
   const columns = useMemo(
     () => [
@@ -247,7 +227,7 @@ const Explorer = ({ isLoading, res }) => {
         <Flex w="100%">
           <Box>
             <Text fontSize="2xl">
-              <b>Explorer</b>
+              <b>Explorers</b>
             </Text>
           </Box>
         </Flex>

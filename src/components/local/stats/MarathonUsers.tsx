@@ -32,7 +32,7 @@ const MarathonUsers = ({ isLoading, res }) => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const [dateRange, setDateRange] = useState("7d")
+  const [dateRange, setDateRange] = useState("1d")
 
   const dataArr = useMemo(() => {
     if (dateRange === "1d") {
@@ -45,26 +45,6 @@ const MarathonUsers = ({ isLoading, res }) => {
       return res.last_quarter.time_spent
     }
   }, [res, dateRange])
-
-  // verified logo
-  const [verifiedUserArr, setVerifiedUser] = useState([])
-  useEffect(() => {
-    setVerifiedUser(dataArr.map((user) => user.verified_user))
-  }, [dataArr])
-  useEffect(() => {
-    setVerifiedUser(dataArr.map((user) => user.verified_user))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // guest logo
-  const [marathonGuestUserArr, setMarathonGuestUser] = useState([])
-  useEffect(() => {
-    setMarathonGuestUser(dataArr.map((user) => user.guest_user))
-  }, [dataArr])
-  useEffect(() => {
-    setMarathonGuestUser(dataArr.map((user) => user.guest_user))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   // table column definition
   const columns = useMemo(

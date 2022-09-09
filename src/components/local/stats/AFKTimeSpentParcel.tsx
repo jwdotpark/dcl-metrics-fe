@@ -158,8 +158,7 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Parcels with the most idle <kbd>Away From Keyboard</kbd> time spent
-            on them in the last period
+            Parcels with the most idle time spent on them in the last period
           </Text>
         </Box>
         <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />

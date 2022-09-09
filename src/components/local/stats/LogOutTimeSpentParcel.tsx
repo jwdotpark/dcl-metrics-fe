@@ -158,7 +158,7 @@ const LogOutTimeSpentParcel = ({ parcel, isParcelLoading }) => {
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Parcels with the most Logout happened in the last period
+            Parcels with the most logouts in the last period
           </Text>
         </Box>
         <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />

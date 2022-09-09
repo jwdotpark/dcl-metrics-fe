@@ -158,7 +158,7 @@ const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Parcels with the most Login happened in the last period
+            Parcels with the most logins in the last period
           </Text>
         </Box>
         <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
