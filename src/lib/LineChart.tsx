@@ -66,7 +66,7 @@ const LineChart = ({ data, color }) => {
         },
       }}
       pointColor={{ theme: "background" }}
-      pointBorderWidth={6}
+      pointBorderWidth={4}
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
       useMesh={true}
