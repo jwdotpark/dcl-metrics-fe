@@ -1,4 +1,5 @@
 import {
+  HStack,
   Tooltip,
   Text,
   Box,
@@ -70,10 +71,10 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "Time Spent",
         accessor: "time_spent",
-        width: 110,
+        width: 100,
         Cell: ({ value }) => {
           return (
-            <Box>
+            <Box w="100px">
               <Text as="kbd" color={useColorModeValue("gray.800", "gray.200")}>
                 {convertSeconds(value)}
               </Text>
@@ -84,45 +85,38 @@ const MarathonUsers = ({ isLoading, res }) => {
         disableFilters: true,
       },
       {
-        Header: "",
-        accessor: "avatar_url",
-        width: 0,
-        Cell: ({ value, row }) => {
-          return (
-            <Box ml="2">
-              <Center>
-                <ProfilePicture
-                  address={value}
-                  verified={row.original.verified_user}
-                  guest={row.original.guest_user}
-                />
-              </Center>
-            </Box>
-          )
-        },
-      },
-      {
         Header: "User",
         accessor: "name",
-        width: 175,
+        width: 195,
         Cell: ({ value, row }) => {
           return (
-            <Box w="6rem">
-              <Box display="inline-block" ml="-6">
-                <Text color={useColorModeValue("gray.800", "gray.200")}>
-                  {value.length > 14 ? (
-                    <Tooltip
-                      label={value}
-                      placement="top"
-                      fontSize="sm"
-                      borderRadius="md"
-                    >
-                      {value.slice(0, 14) + ".."}
-                    </Tooltip>
-                  ) : (
-                    value
-                  )}
-                </Text>
+            <Box w="137px">
+              <Box ml="-6">
+                <Flex h="100%">
+                  <Box>
+                    <ProfilePicture
+                      address={value}
+                      verified={row.original.verified_user}
+                      guest={row.original.guest_user}
+                    />
+                  </Box>
+                  <Center minH="100%" ml="2">
+                    <Text color={useColorModeValue("gray.800", "gray.200")}>
+                      {value.length > 14 ? (
+                        <Tooltip
+                          label={value}
+                          placement="top"
+                          fontSize="sm"
+                          borderRadius="md"
+                        >
+                          {value.slice(0, 14) + ".."}
+                        </Tooltip>
+                      ) : (
+                        value
+                      )}
+                    </Text>
+                  </Center>
+                </Flex>
               </Box>
             </Box>
           )
@@ -132,23 +126,17 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "Address",
         accessor: "address",
-        width: 330,
+        width: 360,
         Cell: ({ value }) => {
           return (
-            <Flex>
+            <Flex w="330px">
               <Box display="inline-block" onClick={() => handleToast(value)}>
                 <Text
                   as="kbd"
                   color={useColorModeValue("gray.800", "gray.200")}
                   _hover={{ color: "gray.600", cursor: "pointer" }}
                 >
-                  {/* <a
-                    target="_blank"
-                    href={"https://etherscan.io/address/" + `${value}`}
-                    rel="noreferrer"
-                  > */}
                   {value}
-                  {/* </a> */}
                 </Text>
               </Box>
             </Flex>
@@ -158,6 +146,7 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "Link",
         accessor: "",
+        width: -10, // idk why but this works
         Cell: ({ row }) => {
           return (
             <Flex>
@@ -200,7 +189,6 @@ const MarathonUsers = ({ isLoading, res }) => {
         <Table
           {...getTableProps()}
           size="sm"
-          // variant="unstyled"
           overflowX="hidden"
           maxW="100%"
           h="500px"

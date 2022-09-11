@@ -13,7 +13,7 @@ import {
   useColorModeValue,
   useColorMode,
   Flex,
-  Spacer,
+  useToast,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import GridBox from "../GridBox"
@@ -22,6 +22,7 @@ import ProfilePicture from "../ProfilePicture"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
 import DateRange from "./daterange/TableDateRange"
+import TableLink from "./partials/TableLink"
 
 const Explorer = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
@@ -29,6 +30,23 @@ const Explorer = ({ isLoading, res }) => {
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
+  }
+
+  // copy toast
+  const toast = useToast()
+  const handleToast = (value) => {
+    navigator.clipboard.writeText(value)
+    toast({
+      description:
+        "Address " +
+        value.slice(0, 10) +
+        ".. has been copied to the clipboard.",
+      duration: 2000,
+      isClosable: true,
+      position: "bottom-right",
+      status: "success",
+      // variant: "subtle",
+    })
   }
 
   // FIXME static json, attach real api later
@@ -50,11 +68,12 @@ const Explorer = ({ isLoading, res }) => {
   const columns = useMemo(
     () => [
       {
-        Header: "Parcels Visited",
+        Header: "Count",
         accessor: "parcels_visited",
+        width: 75,
         Cell: ({ value }) => {
           return (
-            <Box w="100px">
+            <Box w="68px">
               <Text as="kbd" color={useColorModeValue("gray.800", "gray.200")}>
                 {Number(value)}
               </Text>
@@ -65,44 +84,39 @@ const Explorer = ({ isLoading, res }) => {
         disableFilters: true,
       },
       {
-        // Header: "",
-        accessor: "avatar_url",
-        Cell: ({ value, row }) => {
-          return (
-            <Box>
-              <Center>
-                <ProfilePicture
-                  address={value}
-                  verified={row.original.verified_user}
-                  guest={row.original.guest_user}
-                />
-              </Center>
-            </Box>
-          )
-        },
-      },
-      {
         Header: "User",
         accessor: "name",
-        Cell: ({ value }) => {
+        width: 195,
+        Cell: ({ value, row }) => {
           return (
-            <Box w="6rem">
+            <Box w="140px">
               <Box display="inline-block" ml="-6">
-                <Text color={useColorModeValue("gray.800", "gray.200")}>
-                  {value && value.length > 16 ? (
-                    <Tooltip
-                      label={value}
-                      placement="top"
-                      fontSize="sm"
-                      borderRadius="md"
-                    >
-                      {value.slice(0, 16) + ".."}
-                    </Tooltip>
-                  ) : (
-                    value
-                  )}
-                  {!value && "N/A"}
-                </Text>
+                <Flex h="100%">
+                  <Box>
+                    <ProfilePicture
+                      address={value}
+                      verified={row.original.verified_user}
+                      guest={row.original.guest_user}
+                    />
+                  </Box>
+                  <Center minH="100%" ml="2">
+                    <Text color={useColorModeValue("gray.800", "gray.200")}>
+                      {value && value.length > 16 ? (
+                        <Tooltip
+                          label={value}
+                          placement="top"
+                          fontSize="sm"
+                          borderRadius="md"
+                        >
+                          {value.slice(0, 16) + ".."}
+                        </Tooltip>
+                      ) : (
+                        value
+                      )}
+                      {!value && "N/A"}
+                    </Text>
+                  </Center>
+                </Flex>
               </Box>
             </Box>
           )
@@ -111,23 +125,32 @@ const Explorer = ({ isLoading, res }) => {
       {
         Header: "Address",
         accessor: "address",
+        width: 360,
         Cell: ({ value }) => {
           return (
-            <Flex>
-              <Box display="inline-block">
+            <Flex w="330px">
+              <Box display="inline-block" onClick={() => handleToast(value)}>
                 <Text
                   as="kbd"
                   color={useColorModeValue("gray.800", "gray.200")}
-                  _hover={{ color: "gray.600" }}
+                  _hover={{ color: "gray.600", cursor: "pointer" }}
                 >
-                  <a
-                    target="_blank"
-                    href={"https://etherscan.io/address/" + `${value}`}
-                    rel="noreferrer"
-                  >
-                    {value}
-                  </a>
+                  {value}
                 </Text>
+              </Box>
+            </Flex>
+          )
+        },
+      },
+      {
+        Header: "Link",
+        accessor: "",
+        width: -10, 
+        Cell: ({ row }) => {
+          return (
+            <Flex>
+              <Box display="inline-block">
+                <TableLink address={row.original.address} />
               </Box>
             </Flex>
           )
@@ -179,7 +202,8 @@ const Explorer = ({ isLoading, res }) => {
                 display="block"
               >
                 {headerGroup.headers.map((column, j) => (
-                  <Th key={j} maxW="6rem" minW={j === 2 && "12rem"}>
+                  // <Th key={j} maxW="6rem" minW={j === 2 && "12rem"}>
+                  <Th key={j} width={column.width}>
                     {column.render("Header")}
                   </Th>
                 ))}

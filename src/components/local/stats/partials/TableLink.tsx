@@ -14,6 +14,7 @@ import etherscanLogo from "../../../../../public/etherscan-logo.svg"
 const TableLink = (data) => {
   const dclLink = "https://market.decentraland.org/accounts/" + data.address
   const etherscanLink = "https://etherscan.io/address/" + data.address
+
   return (
     <Box>
       <ButtonGroup size="sm">
@@ -31,7 +32,7 @@ const TableLink = (data) => {
                 size="sm"
                 borderRadius="200"
                 boxShadow="sm"
-                _hover={{ filter: "brightness(90%)" }}
+                _hover={{ filter: "brightness(75%)" }}
               >
                 <Center h="100%" w="100%">
                   <Image
@@ -61,7 +62,7 @@ const TableLink = (data) => {
                 size="sm"
                 borderRadius="200"
                 boxShadow="sm"
-                _hover={{ filter: "brightness(90%)" }}
+                _hover={{ filter: "brightness(75%)" }}
               >
                 <Center h="100%" w="100%">
                   <Image
