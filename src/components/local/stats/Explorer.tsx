@@ -45,11 +45,10 @@ const Explorer = ({ isLoading, res }) => {
       isClosable: true,
       position: "bottom-right",
       status: "success",
-      // variant: "subtle",
+      variant: "subtle",
     })
   }
 
-  // FIXME static json, attach real api later
   const [dateRange, setDateRange] = useState("1d")
 
   const dataArr = useMemo(() => {

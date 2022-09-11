@@ -47,7 +47,7 @@ const MarathonUsers = ({ isLoading, res }) => {
       isClosable: true,
       position: "bottom-right",
       status: "success",
-      // variant: "subtle",
+      variant: "subtle",
     })
   }
 
@@ -224,7 +224,6 @@ const MarathonUsers = ({ isLoading, res }) => {
                   {...row.getRowProps()}
                   key={i}
                   h="3rem"
-                  // NOTE tacky horizontal bar width :/
                   style={{
                     background: `linear-gradient(90deg, #61CDBB50 ${
                       normalizedTimeSpentArr[i]
