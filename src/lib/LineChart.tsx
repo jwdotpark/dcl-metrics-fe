@@ -5,7 +5,29 @@ import { useState, useEffect, useMemo } from "react"
 
 const LineChart = ({ data, color }) => {
   const min = Math.min(...data[0].data.map((item) => item.y))
+
   const { colorMode } = useColorMode()
+
+  const avg = useMemo(() => {
+    const sum = data[0].data.reduce((acc, item) => acc + item.y, 0)
+    return Math.floor(sum / data[0].data.length)
+  }, [data])
+
+  const yAxisLabel = (value) => {
+    if (data[0].data.length > 30 && value.toString().slice(-1) % 2 !== 0) {
+      return ""
+    } else {
+      return value.replace("2022-", "")
+    }
+  }
+
+  const yAxisLabelDegree = () => {
+    if (data[0].data.length > 14) {
+      return 45
+    } else {
+      return 0
+    }
+  }
 
   return (
     <ResponsiveLine
@@ -38,8 +60,9 @@ const LineChart = ({ data, color }) => {
         orient: "bottom",
         tickSize: 10,
         tickPadding: 15,
-        tickRotation: 45,
-        format: (value) => value.replace("2022-", ""),
+        tickRotation: yAxisLabelDegree(),
+        // format: (value) => value.replace("2022-", ""),
+        format: (value) => yAxisLabel(value),
       }}
       axisLeft={{
         orient: "left",
@@ -94,6 +117,22 @@ const LineChart = ({ data, color }) => {
       enableArea={true}
       areaBaselineValue={min}
       areaOpacity={0.5}
+      markers={[
+        data[0].data.length >= 30 && {
+          axis: "x",
+          value: "2022-08-18",
+          lineStyle: { stroke: "white", strokeWidth: 2, height: 10 },
+          legendOrientation: "horizontal",
+          legend: (value) => <text style={{ fontSize: "40px" }}>error!</text>,
+        },
+        {
+          axis: "y",
+          value: avg,
+          lineStyle: { stroke: "#b0413e", strokeWidth: 2, height: 10 },
+          legendOrientation: "horizontal",
+          legend: "Average count",
+        },
+      ]}
     />
   )
 }
