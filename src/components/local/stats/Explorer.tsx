@@ -94,7 +94,7 @@ const Explorer = ({ isLoading, res }) => {
                 <Flex h="100%">
                   <Box>
                     <ProfilePicture
-                      address={value}
+                      address={row.original.avatar_url}
                       verified={row.original.verified_user}
                       guest={row.original.guest_user}
                     />
@@ -145,7 +145,7 @@ const Explorer = ({ isLoading, res }) => {
       {
         Header: "Link",
         accessor: "",
-        width: -10, 
+        width: -10,
         Cell: ({ row }) => {
           return (
             <Flex>

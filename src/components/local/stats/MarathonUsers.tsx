@@ -95,7 +95,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                 <Flex h="100%">
                   <Box>
                     <ProfilePicture
-                      address={value}
+                      address={row.original.avatar_url}
                       verified={row.original.verified_user}
                       guest={row.original.guest_user}
                     />
