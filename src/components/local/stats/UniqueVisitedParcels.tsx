@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
 import LineChartDateRange from "./daterange/LineChartDateRange"
+import AvgStat from "./partials/AvgStat"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
@@ -41,6 +42,16 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
     }
   }
 
+  const [avgData, setAvgData] = useState(0)
+
+  useEffect(() => {
+    const data = slicedData()
+    const sum = slicedData().reduce((acc, cur) => acc + cur.unique_users, 0)
+    const result = Math.floor(sum / data.length)
+    setAvgData(result)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateRange])
+
   const LineChartComponent = ({ box, res }) => {
     const color = "#CAB2D6FF"
     const result = [
@@ -70,6 +81,8 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
                 <b>Parcels Visited</b>
               </Text>
             </Box>
+            <Spacer />
+            <AvgStat avg={avgData} data={slicedData()} />
           </Flex>
         </Flex>
         <Box ml="6">

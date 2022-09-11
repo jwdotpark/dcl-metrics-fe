@@ -7,9 +7,10 @@ import {
   useColorModeValue,
   Spacer,
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
 import LineChartDateRange from "./daterange/LineChartDateRange"
+import AvgStat from "./partials/AvgStat"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
@@ -33,8 +34,6 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
 
   const [dateRange, setDateRange] = useState<number>(7)
 
-  // if dateRange is negative, just return full data
-  // e.g. 60 data set with 90d dateRange picker
   const slicedData = () => {
     if (chartData.length - dateRange > 0) {
       return chartData.slice(chartData.length - dateRange, chartData.length)
@@ -42,6 +41,16 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
       return chartData
     }
   }
+
+  const [avgData, setAvgData] = useState(0)
+
+  useEffect(() => {
+    const data = slicedData()
+    const sum = slicedData().reduce((acc, cur) => acc + cur.unique_users, 0)
+    const result = Math.floor(sum / data.length)
+    setAvgData(result)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateRange])
 
   const LineChartComponent = ({ box, res }) => {
     const color = "#A6CEE3FF"
@@ -72,6 +81,8 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
                 <b>Unique Visitors </b>
               </Text>
             </Box>
+            <Spacer />
+            <AvgStat avg={avgData} data={slicedData()} />
           </Flex>
         </Flex>
         <Box ml="6">

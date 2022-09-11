@@ -118,19 +118,23 @@ const LineChart = ({ data, color }) => {
       areaBaselineValue={min}
       areaOpacity={0.5}
       markers={[
-        data[0].data.length >= 30 && {
-          axis: "x",
-          value: "2022-08-18",
-          lineStyle: { stroke: "white", strokeWidth: 2, height: 10 },
-          legendOrientation: "horizontal",
-          legend: (value) => <text style={{ fontSize: "40px" }}>error!</text>,
-        },
+        // data[0].data.length >= 30 && {
+        //   axis: "x",
+        //   value: "2022-08-18",
+        //   lineStyle: { stroke: "white", strokeWidth: 2, height: 10 },
+        //   legendOrientation: "horizontal",
+        //   legend: (value) => <text style={{ fontSize: "40px" }}>error!</text>,
+        // },
         {
           axis: "y",
           value: avg,
-          lineStyle: { stroke: "#b0413e", strokeWidth: 2, height: 10 },
+          lineStyle: {
+            stroke: useColorModeValue("#ff5555", "#50fa7b"),
+            strokeWidth: 2,
+            height: 10,
+          },
           legendOrientation: "horizontal",
-          legend: "Average count",
+          // legend: "Average count",
         },
       ]}
     />
