@@ -25,7 +25,6 @@ const AvgStat = ({ avg, data }) => {
             borderRadius="md"
           >
             <Text
-              // as="kbd"
               fontSize="2xl"
               fontWeight="extrabold"
               color={useColorModeValue("#ff5555", "#50fa7b")}
@@ -36,7 +35,7 @@ const AvgStat = ({ avg, data }) => {
           </Tooltip>
         </Flex>
         <Flex>
-          <Text color="gray.500" fontSize="sm">
+          <Text color="gray.500" fontSize="sm" fontStyle="italic">
             {firstDate} - {lastDate}
           </Text>
         </Flex>

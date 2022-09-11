@@ -37,7 +37,7 @@ const LineChart = ({ data, color }) => {
         grid: {
           line: {
             stroke: "gray",
-            opacity: 0.5,
+            opacity: 0.25,
             strokeDasharray: "1 1",
           },
         },
@@ -116,14 +116,19 @@ const LineChart = ({ data, color }) => {
       colors={color}
       enableArea={true}
       areaBaselineValue={min}
-      areaOpacity={0.5}
+      areaOpacity={0.25}
       markers={[
         // data[0].data.length >= 30 && {
         //   axis: "x",
         //   value: "2022-08-18",
-        //   lineStyle: { stroke: "white", strokeWidth: 2, height: 10 },
+        //   lineStyle: {
+        //     stroke: "yellow",
+        //     strokeWidth: 2,
+        //     height: 10,
+        //     strokeDasharray: "4 4",
+        //   },
         //   legendOrientation: "horizontal",
-        //   legend: (value) => <text style={{ fontSize: "40px" }}>error!</text>,
+        //   legend: "Missing data points here",
         // },
         {
           axis: "y",
@@ -132,9 +137,9 @@ const LineChart = ({ data, color }) => {
             stroke: useColorModeValue("#ff5555", "#50fa7b"),
             strokeWidth: 2,
             height: 10,
+            strokeDasharray: "8 8",
           },
           legendOrientation: "horizontal",
-          // legend: "Average count",
         },
       ]}
     />
