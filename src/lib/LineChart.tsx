@@ -39,16 +39,15 @@ const LineChart = ({ data, color }) => {
   }
 
   const error = {
-    x: "2022-08-30",
-    y: findData("2022-08-30").y,
+    x: "2022-08-10",
+    // y: findData("2022-08-10").y,
+    y: 0,
   }
 
-  // normalize error.y from 0 to 400
+  // normalize error.y from 0 to chart height
   const errorHeight = 415 - Math.floor(((error.y - min) / (max - min)) * 400)
 
   const errorDate = moment(error.x).format("MMM. D")
-
-  // find '2022-08-22' in data[0].data and replace date[0].unique_users to null
 
   return (
     <ResponsiveLine
