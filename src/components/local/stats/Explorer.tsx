@@ -187,7 +187,7 @@ const Explorer = ({ isLoading, res }) => {
         <Table
           {...getTableProps()}
           size="sm"
-          // variant="unstyled"
+          variant="unstyled"
           overflowX="hidden"
           maxW="100%"
           h="500px"

@@ -38,8 +38,8 @@ const AvgStat = ({ avg, data }) => {
             borderRadius="md"
           >
             <Box w="100%">
-              <Center h="100%">
-                <FiInfo size="1.25rem" />
+              <Center h="100%" mr="1">
+                <FiInfo size="20px" />
               </Center>
             </Box>
           </Tooltip>

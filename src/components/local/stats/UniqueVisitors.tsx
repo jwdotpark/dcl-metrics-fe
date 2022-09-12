@@ -32,6 +32,8 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     })
   })
 
+
+
   const [dateRange, setDateRange] = useState<number>(7)
 
   const slicedData = () => {

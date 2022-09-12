@@ -122,7 +122,7 @@ const LineChart = ({ data, color }) => {
         //   axis: "x",
         //   value: "2022-08-18",
         //   lineStyle: {
-        //     stroke: "yellow",
+        //     stroke: "orange",
         //     strokeWidth: 2,
         //     height: 10,
         //     strokeDasharray: "4 4",
