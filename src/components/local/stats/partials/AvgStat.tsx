@@ -6,6 +6,7 @@ import {
   Spacer,
   Center,
   useColorModeValue,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import moment from "moment"
 import CountUp from "react-countup"
@@ -15,7 +16,14 @@ const AvgStat = ({ avg, data }) => {
   const firstDate = moment(data[0].date).format("MMM. D")
   const lastDate = moment(data[data.length - 1].date).format("MMM. D")
 
-  console.log(data.length)
+  const statBoxDisplay = useBreakpointValue({
+    base: "none",
+    sm: "none",
+    md: "block",
+    lg: "block",
+    xl: "block",
+  })
+
   return (
     <Box position="absolute" right="0">
       <Box>
@@ -45,7 +53,7 @@ const AvgStat = ({ avg, data }) => {
             <CountUp end={avg} duration={0.5} />
           </Text>
         </Flex>
-        <Flex>
+        <Flex display={statBoxDisplay}>
           <Spacer />
           <Text color="gray.500" fontSize="sm" fontStyle="italic">
             {firstDate} - {lastDate}
