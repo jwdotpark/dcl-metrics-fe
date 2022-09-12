@@ -1,10 +1,13 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
 import { useColorModeValue, useColorMode } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
+import moment from "moment"
 
 const LineChart = ({ data, color }) => {
   const min = Math.min(...data[0].data.map((item) => item.y))
+  const max = Math.max(...data[0].data.map((item) => item.y))
 
   const { colorMode } = useColorMode()
 
@@ -28,6 +31,24 @@ const LineChart = ({ data, color }) => {
       return 0
     }
   }
+
+  // find data that has 2022-08-18 in data[0].data.x
+  const findData = (date) => {
+    const result = data[0].data.find((item) => item.x === date)
+    return result
+  }
+
+  const error = {
+    x: "2022-08-30",
+    y: findData("2022-08-30").y,
+  }
+
+  // normalize error.y from 0 to 400
+  const errorHeight = 415 - Math.floor(((error.y - min) / (max - min)) * 400)
+
+  const errorDate = moment(error.x).format("MMM. D")
+
+  // find '2022-08-22' in data[0].data and replace date[0].unique_users to null
 
   return (
     <ResponsiveLine
@@ -118,18 +139,23 @@ const LineChart = ({ data, color }) => {
       areaBaselineValue={min}
       areaOpacity={0.25}
       markers={[
-        // data[0].data.length >= 30 && {
-        //   axis: "x",
-        //   value: "2022-08-18",
-        //   lineStyle: {
-        //     stroke: "orange",
-        //     strokeWidth: 2,
-        //     height: 10,
-        //     strokeDasharray: "4 4",
-        //   },
-        //   legendOrientation: "horizontal",
-        //   legend: "Missing data points here",
-        // },
+        {
+          axis: "x",
+          value: `${error.x}`,
+          lineStyle: {
+            stroke: useColorModeValue("gray", "brown"),
+            strokeWidth: 0,
+            strokeDasharray: "4 16",
+          },
+          legendOrientation: "horizontal",
+          legend: `⚠️ ${errorDate} missing data`,
+          legendOffsetY: errorHeight - 5,
+          legendOffsetX: 20,
+          textStyle: {
+            fontSize: 14,
+            fill: useColorModeValue("#44475a", "#44475a"),
+          },
+        },
         {
           axis: "y",
           value: avg,
