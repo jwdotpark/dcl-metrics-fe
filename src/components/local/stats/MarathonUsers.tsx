@@ -88,35 +88,26 @@ const MarathonUsers = ({ isLoading, res }) => {
         Header: "User",
         accessor: "name",
         width: 195,
-        Cell: ({ value, row }) => {
+        Cell: ({ value }) => {
           return (
-            <Box w="137px">
-              <Box ml="-6">
-                <Flex h="100%">
-                  <Box>
-                    <ProfilePicture
-                      address={row.original.avatar_url}
-                      verified={row.original.verified_user}
-                      guest={row.original.guest_user}
-                    />
-                  </Box>
-                  <Center minH="100%" ml="2">
-                    <Text color={useColorModeValue("gray.800", "gray.200")}>
-                      {value.length > 14 ? (
-                        <Tooltip
-                          label={value}
-                          placement="top"
-                          fontSize="sm"
-                          borderRadius="md"
-                        >
-                          {value.slice(0, 14) + ".."}
-                        </Tooltip>
-                      ) : (
-                        value
-                      )}
-                    </Text>
-                  </Center>
-                </Flex>
+            <Box w="6rem">
+              <Box display="inline-block" ml="-6">
+                <Text color={useColorModeValue("gray.800", "gray.200")}>
+                  {value && value.length > 14 ? (
+                    <Tooltip
+                      label={value}
+                      placement="top"
+                      fontSize="sm"
+                      borderRadius="md"
+                    >
+                      {value.slice(0, 14) + ".."}
+                    </Tooltip>
+                  ) : value ? (
+                    value
+                  ) : (
+                    "N/A"
+                  )}
+                </Text>
               </Box>
             </Box>
           )

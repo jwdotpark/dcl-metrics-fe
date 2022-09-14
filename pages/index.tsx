@@ -65,6 +65,8 @@ const GlobalPage: NextPage = (ISR) => {
     xl: 2,
   })
 
+  console.log(result.users)
+
   return (
     <Layout>
       {/* <TempError /> */}
