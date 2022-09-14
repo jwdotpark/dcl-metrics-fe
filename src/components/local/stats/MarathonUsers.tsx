@@ -102,7 +102,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                   </Box>
                   <Center minH="100%" ml="2">
                     <Text color={useColorModeValue("gray.800", "gray.200")}>
-                      {value.length > 14 ? (
+                      {value && value.length > 14 ? (
                         <Tooltip
                           label={value}
                           placement="top"
@@ -111,8 +111,10 @@ const MarathonUsers = ({ isLoading, res }) => {
                         >
                           {value.slice(0, 14) + ".."}
                         </Tooltip>
-                      ) : (
+                      ) : value ? (
                         value
+                      ) : (
+                        "N/A"
                       )}
                     </Text>
                   </Center>
