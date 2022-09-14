@@ -73,7 +73,7 @@ const GlobalPage: NextPage = (ISR) => {
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
-        {/* <MarathonUsers res={result.users} isLoading={isDataLoading} /> */}
+        <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
         <AvgTimeSpentParcel
           parcel={result.parcels}
