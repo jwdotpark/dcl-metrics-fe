@@ -20,8 +20,8 @@ import TempError from "../src/components/local/stats/error/TempError"
 export async function getStaticProps() {
   const day = 60 * 60 * 24
   if (process.env.NEXT_PUBLIC_ENV === "prod") {
-    // const url = "http://api.dcl-metrics.com/global"
-    const url = "https://dcl-metrics-be-staging.herokuapp.com/global"
+    const url = "http://api.dcl-metrics.com/global"
+    // const url = "https://dcl-metrics-be-staging.herokuapp.com/global"
     const response = await axios.get(url, {
       method: "get",
       proxy: {
@@ -65,13 +65,15 @@ const GlobalPage: NextPage = (ISR) => {
     xl: 2,
   })
 
+  console.log(result.users)
+
   return (
     <Layout>
       {/* <TempError /> */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
-        <MarathonUsers res={result.users} isLoading={isDataLoading} />
+        {/* <MarathonUsers res={result.users} isLoading={isDataLoading} /> */}
         <Explorer res={result.users} isLoading={isDataLoading} />
         <AvgTimeSpentParcel
           parcel={result.parcels}
