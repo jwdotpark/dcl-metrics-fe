@@ -147,11 +147,11 @@ const LineChart = ({ data, color }) => {
             strokeDasharray: "4 16",
           },
           legendOrientation: "horizontal",
-          legend: `⚠️ ${errorDate} missing data`,
+          legend: `⚠️`,
           legendOffsetY: errorHeight - 5,
           legendOffsetX: 20,
           textStyle: {
-            fontSize: 14,
+            fontSize: 20,
             fill: useColorModeValue("#44475a", "#44475a"),
           },
         },

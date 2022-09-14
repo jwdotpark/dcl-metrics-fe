@@ -29,10 +29,10 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
       date: item[0],
       // @ts-ignore
       unique_users: item[1].unique_users,
+      // @ts-ignore
+      degraded: item[1].degraded,
     })
   })
-
-
 
   const [dateRange, setDateRange] = useState<number>(7)
 
