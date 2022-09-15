@@ -17,7 +17,11 @@ const LineChart = ({ data, color }) => {
   }, [data])
 
   const yAxisLabel = (value) => {
-    if (data[0].data.length > 30 && value.toString().slice(-1) % 2 !== 0) {
+    const dateRange = data[0].data.length
+    const lastChar = value.toString().slice(-2)
+    if (dateRange === 30 && lastChar % 2 !== 0) {
+      return ""
+    } else if (dateRange > 30 && (lastChar % 2 !== 0 || lastChar % 3 !== 0)) {
       return ""
     } else {
       return value.replace("2022-", "")
@@ -25,29 +29,12 @@ const LineChart = ({ data, color }) => {
   }
 
   const yAxisLabelDegree = () => {
-    if (data[0].data.length > 14) {
+    if (data[0].data.length > 0) {
       return 45
     } else {
       return 0
     }
   }
-
-  // find data that has 2022-08-18 in data[0].data.x
-  const findData = (date) => {
-    const result = data[0].data.find((item) => item.x === date)
-    return result
-  }
-
-  const error = {
-    x: "2022-08-10",
-    // y: findData("2022-08-10").y,
-    y: 0,
-  }
-
-  // normalize error.y from 0 to chart height
-  const errorHeight = 415 - Math.floor(((error.y - min) / (max - min)) * 400)
-
-  const errorDate = moment(error.x).format("MMM. D")
 
   return (
     <ResponsiveLine
@@ -81,7 +68,6 @@ const LineChart = ({ data, color }) => {
         tickSize: 10,
         tickPadding: 15,
         tickRotation: yAxisLabelDegree(),
-        // format: (value) => value.replace("2022-", ""),
         format: (value) => yAxisLabel(value),
       }}
       axisLeft={{
@@ -109,7 +95,7 @@ const LineChart = ({ data, color }) => {
         },
       }}
       pointColor={{ theme: "background" }}
-      pointBorderWidth={4}
+      pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
       useMesh={true}
@@ -138,23 +124,23 @@ const LineChart = ({ data, color }) => {
       areaBaselineValue={min}
       areaOpacity={0.25}
       markers={[
-        {
-          axis: "x",
-          value: `${error.x}`,
-          lineStyle: {
-            stroke: useColorModeValue("gray", "brown"),
-            strokeWidth: 0,
-            strokeDasharray: "4 16",
-          },
-          legendOrientation: "horizontal",
-          legend: `⚠️`,
-          legendOffsetY: errorHeight - 5,
-          legendOffsetX: 20,
-          textStyle: {
-            fontSize: 20,
-            fill: useColorModeValue("#44475a", "#44475a"),
-          },
-        },
+        // {
+        //   axis: "x",
+        //   value: `${error.x}`,
+        //   lineStyle: {
+        //     stroke: useColorModeValue("gray", "brown"),
+        //     strokeWidth: 0,
+        //     strokeDasharray: "4 16",
+        //   },
+        //   legendOrientation: "horizontal",
+        //   legend: `⚠️`,
+        //   legendOffsetY: errorHeight - 5,
+        //   legendOffsetX: 20,
+        //   textStyle: {
+        //     fontSize: 20,
+        //     fill: useColorModeValue("#44475a", "#44475a"),
+        //   },
+        // },
         {
           axis: "y",
           value: avg,
