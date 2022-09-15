@@ -29,6 +29,8 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
       date: item[0],
       // @ts-ignore
       unique_users: item[1].active_parcels,
+      // @ts-ignore
+      degraded: item[1].degraded,
     })
   })
 
@@ -60,10 +62,14 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
         color: "hsl(90, 70%, 50%)",
         data: slicedData().map((item) => ({
           x: item.date,
+          // @ts-ignore
           y: item.unique_users,
+          // @ts-ignore
+          degraded: item.degraded,
         })),
       },
     ]
+    console.log(result)
     return (
       <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md" mb="4">
         <LineChart data={result} color={color} />

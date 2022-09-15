@@ -1,12 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
-import { useColorModeValue, useColorMode } from "@chakra-ui/react"
+import { Box, useColorModeValue, useColorMode } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
+import TooltipTable from "../components/local/stats/partials/TableTooltip"
+import moment from "moment"
 
 const LineChart = ({ data, color }) => {
-  const min = Math.min(...data[0].data.map((item) => item.y))
-
   const { colorMode } = useColorMode()
+  const min = Math.min(...data[0].data.map((item) => item.y))
+  const dateRange = data[0].data.length
 
   const avg = useMemo(() => {
     const sum = data[0].data.reduce((acc, item) => acc + item.y, 0)
@@ -14,15 +17,18 @@ const LineChart = ({ data, color }) => {
   }, [data])
 
   const yAxisLabel = (value) => {
-    if (data[0].data.length > 30 && value.toString().slice(-1) % 2 !== 0) {
+    const lastChar = value.toString().slice(-2)
+    if (dateRange === 30 && lastChar % 2 !== 0) {
       return ""
-    } else {
-      return value.replace("2022-", "")
     }
+    if (dateRange > 30 && (lastChar % 2 !== 0 || lastChar % 3 !== 0)) {
+      return ""
+    }
+    return moment(value).format("MMM. D")
   }
 
   const yAxisLabelDegree = () => {
-    if (data[0].data.length > 14) {
+    if (data[0].data.length > 7) {
       return 45
     } else {
       return 0
@@ -55,13 +61,11 @@ const LineChart = ({ data, color }) => {
       }}
       axisTop={null}
       axisRight={null}
-      // enablePointLabel={true}
       axisBottom={{
         orient: "bottom",
-        tickSize: 10,
-        tickPadding: 15,
+        tickSize: 5,
+        tickPadding: 10,
         tickRotation: yAxisLabelDegree(),
-        // format: (value) => value.replace("2022-", ""),
         format: (value) => yAxisLabel(value),
       }}
       axisLeft={{
@@ -77,7 +81,7 @@ const LineChart = ({ data, color }) => {
             <text
               x={tick.x - 37}
               y={tick.y + 4}
-              fontSize="12px"
+              fontSize="11px"
               fill={colorMode === "light" ? "gray.800" : "white"}
             >
               {tick.value
@@ -89,28 +93,25 @@ const LineChart = ({ data, color }) => {
         },
       }}
       pointColor={{ theme: "background" }}
-      pointBorderWidth={4}
+      pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
       useMesh={true}
       tooltip={(point) => {
         return (
-          <div
-            style={{
-              boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
-              padding: ".3rem",
-              border: "1px solid #A0AEC0",
-              borderRadius: "5px",
-              // eslint-disable-next-line
-              background: useColorModeValue("white", "#4A5568"),
-              // eslint-disable-next-line
-              color: useColorModeValue("#4A5568", "white"),
-            }}
+          <Box
+            pt="2"
+            boxShadow="md"
+            borderRadius="xl"
+            color={useColorModeValue("black", "white")}
+            sx={{ backdropFilter: "blur(10px)" }}
           >
-            <div>
-              {point.point.data.x + ", " + point.point.data.yStacked} counts
-            </div>
-          </div>
+            <TooltipTable
+              date={point.point.data.x}
+              count={point.point.data.yStacked}
+              degraded={point.point.data.degraded}
+            />
+          </Box>
         )
       }}
       colors={color}
@@ -118,18 +119,6 @@ const LineChart = ({ data, color }) => {
       areaBaselineValue={min}
       areaOpacity={0.25}
       markers={[
-        // data[0].data.length >= 30 && {
-        //   axis: "x",
-        //   value: "2022-08-18",
-        //   lineStyle: {
-        //     stroke: "orange",
-        //     strokeWidth: 2,
-        //     height: 10,
-        //     strokeDasharray: "4 4",
-        //   },
-        //   legendOrientation: "horizontal",
-        //   legend: "Missing data points here",
-        // },
         {
           axis: "y",
           value: avg,
