@@ -63,6 +63,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
         data: slicedData().map((item) => ({
           x: item.date,
           y: item.unique_users,
+          degraded: item.degraded,
         })),
       },
     ]
