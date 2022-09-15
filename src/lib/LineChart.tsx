@@ -102,9 +102,9 @@ const LineChart = ({ data, color }) => {
           <Box
             pt="2"
             boxShadow="md"
-            borderRadius="md"
-            bgColor={useColorModeValue("#2D3748", "#A0AEC0")}
-            color={useColorModeValue("white", "black")}
+            borderRadius="xl"
+            color={useColorModeValue("black", "white")}
+            sx={{ backdropFilter: "blur(10px)" }}
           >
             <TooltipTable
               date={point.point.data.x}

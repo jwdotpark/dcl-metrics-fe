@@ -26,7 +26,7 @@ const TooltipTable = ({ date, count, degraded }) => {
             <Td
               isNumeric
               // eslint-disable-next-line react-hooks/rules-of-hooks
-              color={degraded && useColorModeValue("red.300", "red.600")}
+              color={degraded && "red"}
             >
               {count} {degraded && "(Degraded)"}
             </Td>
