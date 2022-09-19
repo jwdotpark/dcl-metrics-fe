@@ -124,7 +124,7 @@ const LineChart = ({ data, color }) => {
                 pt="2"
                 boxShadow="md"
                 borderRadius="md"
-                bgColor={useColorModeValue("gray.200", "gray.300")}
+                bgColor={useColorModeValue("gray.700", "gray.300")}
                 color={useColorModeValue("white", "black")}
               >
                 <TooltipTable
