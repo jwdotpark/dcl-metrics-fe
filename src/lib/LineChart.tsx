@@ -97,24 +97,6 @@ const LineChart = ({ data, color }) => {
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
       useMesh={true}
-      // enableSlices="y"
-      tooltip={(point) => {
-        return (
-          <Box
-            pt="2"
-            boxShadow="md"
-            borderRadius="xl"
-            color={useColorModeValue("black", "white")}
-            sx={{ backdropFilter: "blur(10px)" }}
-          >
-            <TooltipTable
-              date={point.point.data.x}
-              count={point.point.data.yStacked}
-              degraded={point.point.data.degraded}
-            />
-          </Box>
-        )
-      }}
       colors={color}
       enableArea={true}
       areaBaselineValue={min}
