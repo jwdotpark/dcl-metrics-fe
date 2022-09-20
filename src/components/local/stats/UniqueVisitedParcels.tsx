@@ -69,7 +69,6 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
         })),
       },
     ]
-    console.log(result)
     return (
       <GridItem w={box.w} h="530" bg={box.bg} borderRadius="md" mb="4">
         <LineChart data={result} color={color} />
