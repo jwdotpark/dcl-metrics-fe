@@ -1,8 +1,10 @@
 import { useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
-import staticGlobal from "../public/data/global_response.json"
+import staticGlobal from "../public/data/cached_global_response.json"
+
 const axios = require("axios").default
+const fs = require("fs")
 
 import Layout from "../src/components/layout/layout"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
@@ -20,8 +22,12 @@ import TempError from "../src/components/local/stats/error/TempError"
 export async function getStaticProps() {
   const day = 60 * 60 * 24
   if (process.env.NEXT_PUBLIC_ENV === "prod") {
-    const url = "http://api.dcl-metrics.com/global"
+    // temp staging
     // const url = "https://dcl-metrics-be-staging.herokuapp.com/global"
+    // const response = await axios.get(url)
+
+    // // production
+    const url = "http://api.dcl-metrics.com/global"
     const response = await axios.get(url, {
       method: "get",
       proxy: {
@@ -34,7 +40,19 @@ export async function getStaticProps() {
         },
       },
     })
-    // if no res, return static json
+
+    // caching data
+    if (response.status === 200) {
+      // on build
+      // it'll write the file in the public dir
+      // it'll be overwritten of status code is 200
+      fs.writeFileSync(
+        "./public/data/cached_global_response.json",
+        JSON.stringify(response.data)
+      )
+    }
+
+    // if response is not okay, use the cached data
     if (response.status >= 300) {
       return {
         props: { staticGlobal },
@@ -46,6 +64,7 @@ export async function getStaticProps() {
       revalidate: day,
     }
   } else {
+    // in any case req fails, use the cached data
     const ISR = staticGlobal
     return {
       props: { ISR },
@@ -54,6 +73,7 @@ export async function getStaticProps() {
 }
 
 const GlobalPage: NextPage = (ISR) => {
+  // SSR suppressed loading state completely for now
   const [isDataLoading, setIsDataLoading] = useState(false)
 
   // @ts-ignore
