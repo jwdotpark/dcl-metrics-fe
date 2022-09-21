@@ -109,7 +109,7 @@ const GlobalPage: NextPage = (ISR) => {
     <Layout>
       {/* <Button onClick={() => sendNotification()}>send notification</Button> */}
       {/* <TempError /> */}
-      <TopScenes />
+      {/* <TopScenes /> */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
