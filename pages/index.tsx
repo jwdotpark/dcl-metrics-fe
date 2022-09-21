@@ -22,7 +22,7 @@ import TempError from "../src/components/local/stats/error/TempError"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
-  if (process.env.NEXT_PUBLIC_ENV !== "prod") {
+  if (process.env.NEXT_PUBLIC_ENV === "prod") {
     // temp staging
     // const url = "https://dcl-metrics-be-staging.herokuapp.com/global"
     // const response = await axios.get(url)
