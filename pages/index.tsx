@@ -1,6 +1,6 @@
 import { useState } from "react"
 import type { NextPage } from "next"
-import { Grid, useBreakpointValue } from "@chakra-ui/react"
+import { Grid, useBreakpointValue, Button } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 
 const axios = require("axios").default
@@ -16,12 +16,13 @@ import AFKTimeSpentParcel from "../src/components/local/stats/AFKTimeSpentParcel
 import LogOutTimeSpentParcel from "../src/components/local/stats/LogOutTimeSpentParcel"
 import LogInTimeSpentParcel from "../src/components/local/stats/LogInTimeSpentParcel"
 import MostVisitedParcel from "../src/components/local/stats/MostVisitedParcel"
+import TopScenes from "../src/components/local/stats/TopScenes"
 
 import TempError from "../src/components/local/stats/error/TempError"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
-  if (process.env.NEXT_PUBLIC_ENV === "prod") {
+  if (process.env.NEXT_PUBLIC_ENV !== "prod") {
     // temp staging
     // const url = "https://dcl-metrics-be-staging.herokuapp.com/global"
     // const response = await axios.get(url)
@@ -52,8 +53,27 @@ export async function getStaticProps() {
       )
     }
 
-    // if response is not okay, use the cached data
     if (response.status >= 300) {
+      const sendNotification = async () => {
+        const URI =
+          "https://dcl-metrics-bot-server.herokuapp.com/telegram/internal"
+        const data = await fetch(URI, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            level: "warning",
+            message: `Global endpoint request failed on FE build, check out the logs in BE server`,
+            payload: {
+              status: response.status,
+            },
+          }),
+        })
+        await data.json()
+      }
+      sendNotification()
+
       return {
         props: { staticGlobal },
       }
@@ -87,7 +107,9 @@ const GlobalPage: NextPage = (ISR) => {
 
   return (
     <Layout>
+      {/* <Button onClick={() => sendNotification()}>send notification</Button> */}
       {/* <TempError /> */}
+      <TopScenes />
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
         <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
