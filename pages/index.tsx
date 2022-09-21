@@ -16,7 +16,7 @@ import AFKTimeSpentParcel from "../src/components/local/stats/AFKTimeSpentParcel
 import LogOutTimeSpentParcel from "../src/components/local/stats/LogOutTimeSpentParcel"
 import LogInTimeSpentParcel from "../src/components/local/stats/LogInTimeSpentParcel"
 import MostVisitedParcel from "../src/components/local/stats/MostVisitedParcel"
-import TopScenes from "../src/components/local/stats/TopScenes"
+import TopScenesVisitors from "../src/components/local/stats/TopScenesVisitors"
 
 import TempError from "../src/components/local/stats/error/TempError"
 
@@ -78,26 +78,27 @@ export async function getStaticProps() {
         props: { staticGlobal },
       }
     }
-    const ISR = response.data
+    const data = response.data
     return {
-      props: { ISR },
+      props: { data },
       revalidate: day,
     }
   } else {
     // in any case req fails, use the cached data
-    const ISR = staticGlobal
+    const data = staticGlobal
     return {
-      props: { ISR },
+      props: { data },
     }
   }
 }
 
-const GlobalPage: NextPage = (ISR) => {
+const GlobalPage: NextPage = (props) => {
   // SSR suppressed loading state completely for now
   const [isDataLoading, setIsDataLoading] = useState(false)
 
   // @ts-ignore
-  const result = ISR.ISR
+  // const result = data.data
+  const result = props.data
 
   const gridColumn = useBreakpointValue({
     md: 1,
@@ -113,9 +114,10 @@ const GlobalPage: NextPage = (ISR) => {
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
-      </Grid>
-      <TopScenes />
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
+        <TopScenesVisitors
+          res={result.scenes}
+          isParcelLoading={isDataLoading}
+        />
         <AvgTimeSpentParcel
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
