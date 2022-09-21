@@ -15,7 +15,7 @@ const TableMap = ({ mapUrl }) => {
     <Box
       h="100px"
       minW="100px"
-      maxW="300px"
+      maxW="275px"
       borderRadius="xl"
       border="3px solid"
       borderColor={useColorModeValue("gray.300", "gray.600")}

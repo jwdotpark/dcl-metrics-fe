@@ -14,9 +14,8 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import { convertSeconds } from "../../../lib/hooks/utils"
 import GridBox from "../GridBox"
 import Loading from "../Loading"
 import ParcelDateRange from "./daterange/ParcelDateRange"
@@ -34,9 +33,8 @@ const TopScenesVisitors = ({ res, isParcelLoading }) => {
   const data = Object.entries(res)
   const dataArr = []
   const sceneDataRange = data[dateRange]
-
   const visitorData = sceneDataRange[1].visitors
-  // make an array with timeSpentData
+
   for (const [key, value] of Object.entries(visitorData)) {
     dataArr.push({
       name: key,
@@ -44,8 +42,6 @@ const TopScenesVisitors = ({ res, isParcelLoading }) => {
       unique_address: value.unique_addresses,
     })
   }
-
-  console.log(visitorData)
 
   const COLUMNS = [
     {
