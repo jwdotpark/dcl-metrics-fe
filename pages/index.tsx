@@ -84,7 +84,6 @@ export async function getStaticProps() {
       revalidate: day,
     }
   } else {
-    // in any case req fails, use the cached data
     const ISR = staticGlobal
     return {
       props: { ISR },
