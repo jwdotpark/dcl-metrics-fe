@@ -18,7 +18,7 @@ import { useEffect, useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
 import GridBox from "../GridBox"
 import Loading from "../Loading"
-import ParcelDateRange from "./daterange/ParcelDateRange"
+import SceneDateRange from "./daterange/SceneDateRange"
 import TableMap from "./partials/TableMap"
 
 const TopScenesVisitors = ({ res, isParcelLoading }) => {
@@ -153,7 +153,7 @@ const TopScenesVisitors = ({ res, isParcelLoading }) => {
             Scenes with the most visit count in the last period
           </Text>
         </Box>
-        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
+        <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isParcelLoading ? (
           <Box mx="4" mb="8">
             <TableComponent />
