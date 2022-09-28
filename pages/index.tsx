@@ -4,7 +4,7 @@ import { Grid, useBreakpointValue, Button } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 
 const axios = require("axios").default
-const fs = require("fs")
+import fs from "fs"
 
 import Layout from "../src/components/layout/layout"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
@@ -21,6 +21,7 @@ import TopScenesVisitors from "../src/components/local/stats/scenes/TopScenesVis
 import ScenesLogin from "../src/components/local/stats/scenes/ScenesLogin"
 import ScenesLogout from "../src/components/local/stats/scenes/ScenesLogout"
 import ScenesTimeSpent from "../src/components/local/stats/scenes/ScenesTimeSpent"
+import ScenesTimeSpentAFK from "../src/components/local/stats/scenes/ScenesTimeSpentAFK"
 
 import TempError from "../src/components/local/stats/error/TempError"
 
@@ -46,11 +47,7 @@ export async function getStaticProps() {
       },
     })
 
-    // caching data
     if (response.status === 200) {
-      // on build
-      // it'll write the file in the public dir
-      // it'll be overwritten of status code is 200
       fs.writeFileSync(
         "./public/data/cached_global_response.json",
         JSON.stringify(response.data)
@@ -110,8 +107,6 @@ const GlobalPage: NextPage = (props) => {
     xl: 2,
   })
 
-  console.log(result.scenes)
-
   return (
     <Layout>
       {/* <TempError /> */}
@@ -127,6 +122,10 @@ const GlobalPage: NextPage = (props) => {
         <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
         <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
         <ScenesLogout res={result.scenes} isSceneLoading={isDataLoading} />
+        <ScenesTimeSpentAFK
+          res={result.scenes}
+          isSceneLoading={isDataLoading}
+        />
       </Grid>
       {/* parcel */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
