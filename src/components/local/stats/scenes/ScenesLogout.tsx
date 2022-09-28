@@ -1,45 +1,46 @@
 // @ts-nocheck
 import {
-  Box,
-  Text,
-  useColorModeValue,
-  useBreakpointValue,
-  Center,
   Flex,
+  Box,
+  Center,
   Table,
   TableContainer,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
+  useColorModeValue,
 } from "@chakra-ui/react"
+import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import GridBox from "../../GridBox"
-import Loading from "../../Loading"
-import SceneDateRange from "../daterange/SceneDateRange"
 import TableMap from "../partials/TableMap"
+import SceneDateRange from "../daterange/SceneDateRange"
+import GridBox from "../../GridBox"
 
-const TopScenesVisitors = ({ res, isSceneLoading }) => {
+const ScenesLogout = ({ res, isSceneLoading }) => {
   const box = {
+    // h: "630",
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  // 0 yesterday 1 last_week 2 last_month 3 last_quarter
   const [dateRange, setDateRange] = useState(0)
   const data = Object.entries(res)
   const dataArr = []
-  const sceneDataRange = data[dateRange]
-  const visitorData = sceneDataRange[1].visitors
 
-  for (const [key, value] of Object.entries(visitorData)) {
+  const sceneDataRange = data[dateRange]
+
+  const sceneData = sceneDataRange[1].logouts
+
+  for (const [key, value] of Object.entries(sceneData)) {
     dataArr.push({
-      name: key,
       mapUrl: value.map_url,
-      unique_address: value.unique_addresses,
+      name: key,
+      logouts: value.total_logouts,
     })
   }
 
@@ -61,11 +62,10 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
       },
     },
     {
-      Header: "Visit Count",
-      accessor: "unique_address",
-      width: 200,
+      Header: "Logouts",
+      accessor: "logouts",
       Cell: ({ value }) => {
-        return <Text as="kbd">{value}</Text>
+        return <Text as="kbd">{Number(value)}</Text>
       },
     },
   ]
@@ -143,14 +143,14 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Scenes with Most Visitor</b>
+                <b>Scenes with Most Logouts</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Scenes with the most visit count in the last period
+            Scenes with the most logouts in the last period
           </Text>
         </Box>
         <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />
@@ -168,4 +168,4 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
   )
 }
 
-export default TopScenesVisitors
+export default ScenesLogout

@@ -1,27 +1,30 @@
 // @ts-nocheck
 import {
-  Box,
-  Text,
-  useColorModeValue,
-  useBreakpointValue,
-  Center,
+  Spacer,
   Flex,
+  Box,
+  Center,
   Table,
   TableContainer,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
+  Image,
+  useColorModeValue,
 } from "@chakra-ui/react"
+import { convertSeconds } from "../../../../lib/hooks/utils"
+import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import GridBox from "../../GridBox"
-import Loading from "../../Loading"
-import SceneDateRange from "../daterange/SceneDateRange"
 import TableMap from "../partials/TableMap"
+import ParcelDateRange from "../daterange/ParcelDateRange"
+import GridBox from "../../GridBox"
+import moment from "moment"
 
-const TopScenesVisitors = ({ res, isSceneLoading }) => {
+const ScenesTimeSpent = ({ res, isSceneLoading }) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -30,16 +33,18 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
 
   // 0 yesterday 1 last_week 2 last_month 3 last_quarter
   const [dateRange, setDateRange] = useState(0)
+
   const data = Object.entries(res)
   const dataArr = []
-  const sceneDataRange = data[dateRange]
-  const visitorData = sceneDataRange[1].visitors
 
-  for (const [key, value] of Object.entries(visitorData)) {
+  const sceneDataRange = data[dateRange]
+
+  const sceneData = sceneDataRange[1].time_spent
+  for (const [key, value] of Object.entries(sceneData)) {
     dataArr.push({
-      name: key,
       mapUrl: value.map_url,
-      unique_address: value.unique_addresses,
+      name: key,
+      avg_time_spent: value.avg_time_spent,
     })
   }
 
@@ -61,11 +66,11 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
       },
     },
     {
-      Header: "Visit Count",
-      accessor: "unique_address",
+      Header: "AVG Time Spent",
+      accessor: "avg_time_spent",
       width: 200,
       Cell: ({ value }) => {
-        return <Text as="kbd">{value}</Text>
+        return <Text as="kbd">{convertSeconds(value)}</Text>
       },
     },
   ]
@@ -143,17 +148,17 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Scenes with Most Visitor</b>
+                <b>Scenes with AVG Time Spent</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Scenes with the most visit count in the last period
+            Scenes with the most average time spent on them in the last period
           </Text>
         </Box>
-        <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />
+        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isSceneLoading ? (
           <Box mx="4" mb="8">
             <TableComponent />
@@ -168,4 +173,4 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
   )
 }
 
-export default TopScenesVisitors
+export default ScenesTimeSpent

@@ -19,6 +19,8 @@ import MostVisitedParcel from "../src/components/local/stats/parcels/MostVisited
 
 import TopScenesVisitors from "../src/components/local/stats/scenes/TopScenesVisitors"
 import ScenesLogin from "../src/components/local/stats/scenes/ScenesLogin"
+import ScenesLogout from "../src/components/local/stats/scenes/ScenesLogout"
+import ScenesTimeSpent from "../src/components/local/stats/scenes/ScenesTimeSpent"
 
 import TempError from "../src/components/local/stats/error/TempError"
 
@@ -108,6 +110,8 @@ const GlobalPage: NextPage = (props) => {
     xl: 2,
   })
 
+  console.log(result.scenes)
+
   return (
     <Layout>
       {/* <TempError /> */}
@@ -120,10 +124,12 @@ const GlobalPage: NextPage = (props) => {
       {/* scene */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
         <TopScenesVisitors res={result.scenes} isSceneLoading={isDataLoading} />
+        <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
         <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
+        <ScenesLogout res={result.scenes} isSceneLoading={isDataLoading} />
       </Grid>
       {/* parcel */}
-      <Grid templateColumns={`repeat(3, 1fr)`} gap={4} mb="4">
+      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
         <AvgTimeSpentParcel
           parcel={result.parcels}
           isParcelLoading={isDataLoading}

@@ -15,7 +15,6 @@ import {
   Image,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { convertSeconds } from "../../../../lib/hooks/utils"
 import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
@@ -34,19 +33,13 @@ const ScenesLogin = ({ res, isSceneLoading }) => {
   // 0 yesterday 1 last_week 2 last_month 3 last_quarter
   const [dateRange, setDateRange] = useState(0)
 
-  const baseUrl = "https://api.decentraland.org/v1/parcels/"
-  const mapUrl = "/map.png?width=auto&height=auto&size=15"
-
   const data = Object.entries(res)
   const dataArr = []
 
   const sceneDataRange = data[dateRange]
 
-  // @ts-ignore
   const sceneData = sceneDataRange[1].logins
-  console.log(sceneData)
 
-  // make an array with timeSpentAFKData
   for (const [key, value] of Object.entries(sceneData)) {
     dataArr.push({
       mapUrl: value.map_url,
