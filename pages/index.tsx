@@ -8,14 +8,14 @@ const fs = require("fs")
 
 import Layout from "../src/components/layout/layout"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
-import VisitedParcels from "../src/components/local/stats/Parcels/UniqueVisitedParcels"
+import VisitedParcels from "../src/components/local/stats/parcels/UniqueVisitedParcels"
 import MarathonUsers from "../src/components/local/stats/MarathonUsers"
 import Explorer from "../src/components/local/stats/Explorer"
-import AvgTimeSpentParcel from "../src/components/local/stats/Parcels/AvgTimeSpentParcel"
-import AFKTimeSpentParcel from "../src/components/local/stats/Parcels/AFKTimeSpentParcel"
-import LogOutTimeSpentParcel from "../src/components/local/stats/Parcels/LogOutTimeSpentParcel"
-import LogInTimeSpentParcel from "../src/components/local/stats/Parcels/LogInTimeSpentParcel"
-import MostVisitedParcel from "../src/components/local/stats/Parcels/MostVisitedParcel"
+import AvgTimeSpentParcel from "../src/components/local/stats/parcels/AvgTimeSpentParcel"
+import AFKTimeSpentParcel from "../src/components/local/stats/parcels/AFKTimeSpentParcel"
+import LogOutTimeSpentParcel from "../src/components/local/stats/parcels/LogOutTimeSpentParcel"
+import LogInTimeSpentParcel from "../src/components/local/stats/parcels/LogInTimeSpentParcel"
+import MostVisitedParcel from "../src/components/local/stats/parcels/MostVisitedParcel"
 import TopScenesVisitors from "../src/components/local/stats/TopScenesVisitors"
 
 import TempError from "../src/components/local/stats/error/TempError"
@@ -118,6 +118,8 @@ const GlobalPage: NextPage = (props) => {
           res={result.scenes}
           isParcelLoading={isDataLoading}
         />
+      </Grid>
+      <Grid templateColumns={`repeat(3, 1fr)`} gap={4} mb="4">
         <AvgTimeSpentParcel
           parcel={result.parcels}
           isParcelLoading={isDataLoading}
