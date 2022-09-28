@@ -1,12 +1,25 @@
 import { useState } from "react"
 import type { NextPage } from "next"
-import { Grid, useBreakpointValue, Button } from "@chakra-ui/react"
+import {
+  Grid,
+  useBreakpointValue,
+  Button,
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 
 const axios = require("axios").default
 import fs from "fs"
 
 import Layout from "../src/components/layout/layout"
+import AccordionBox from "../src/components/local/stats/partials/AccordionBox"
+
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import VisitedParcels from "../src/components/local/stats/parcels/UniqueVisitedParcels"
 import MarathonUsers from "../src/components/local/stats/MarathonUsers"
@@ -116,40 +129,103 @@ const GlobalPage: NextPage = (props) => {
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
       </Grid>
-      {/* scene */}
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
-        <TopScenesVisitors res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesLogout res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesTimeSpentAFK
-          res={result.scenes}
-          isSceneLoading={isDataLoading}
-        />
-      </Grid>
-      {/* parcel */}
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
-        <AvgTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <LogInTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <AFKTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <LogOutTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <MostVisitedParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-      </Grid>
+
+      <AccordionBox>
+        <Accordion
+          defaultIndex={[0]}
+          allowMultiple
+          borderTop="none"
+          borderBottom="none"
+          border="1px solid"
+          borderColor={useColorModeValue("gray.300", "gray.600")}
+          borderRadius="md"
+          overflow="clip"
+          bg={useColorModeValue("gray.200", "gray.600")}
+        >
+          <AccordionItem>
+            <h2>
+              <AccordionButton
+                _expanded={{
+                  bg: useColorModeValue("gray.200", "gray.600"),
+                  color: useColorModeValue("gray.600", "gray.200"),
+                }}
+              >
+                <Box flex="1" textAlign="center">
+                  SCENES
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              {/* scene */}
+              <Grid
+                templateColumns={`repeat(${gridColumn}, 1fr)`}
+                gap={4}
+                mb="4"
+              >
+                <TopScenesVisitors
+                  res={result.scenes}
+                  isSceneLoading={isDataLoading}
+                />
+                <ScenesTimeSpent
+                  res={result.scenes}
+                  isSceneLoading={isDataLoading}
+                />
+                <ScenesLogin
+                  res={result.scenes}
+                  isSceneLoading={isDataLoading}
+                />
+                <ScenesLogout
+                  res={result.scenes}
+                  isSceneLoading={isDataLoading}
+                />
+                <ScenesTimeSpentAFK
+                  res={result.scenes}
+                  isSceneLoading={isDataLoading}
+                />
+              </Grid>
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="center">
+                  PARCELS
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              <Grid
+                templateColumns={`repeat(${gridColumn}, 1fr)`}
+                gap={4}
+                mb="4"
+              >
+                <AvgTimeSpentParcel
+                  parcel={result.parcels}
+                  isParcelLoading={isDataLoading}
+                />
+                <LogInTimeSpentParcel
+                  parcel={result.parcels}
+                  isParcelLoading={isDataLoading}
+                />
+                <AFKTimeSpentParcel
+                  parcel={result.parcels}
+                  isParcelLoading={isDataLoading}
+                />
+                <LogOutTimeSpentParcel
+                  parcel={result.parcels}
+                  isParcelLoading={isDataLoading}
+                />
+                <MostVisitedParcel
+                  parcel={result.parcels}
+                  isParcelLoading={isDataLoading}
+                />
+              </Grid>
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+      </AccordionBox>
     </Layout>
   )
 }
