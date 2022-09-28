@@ -14,14 +14,15 @@ import {
   Image,
   useColorModeValue,
 } from "@chakra-ui/react"
-import Loading from "../Loading"
+import { convertSeconds } from "../../../../lib/hooks/utils"
+import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import TableMap from "./partials/TableMap"
-import ParcelDateRange from "./daterange/ParcelDateRange"
-import GridBox from "../GridBox"
+import TableMap from "../partials/TableMap"
+import ParcelDateRange from "../daterange/ParcelDateRange"
+import GridBox from "../../GridBox"
 
-const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
+const LogOutTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const box = {
     // h: "630",
     h: "auto",
@@ -41,13 +42,13 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
   const parcelDataRange = data[dateRange]
 
   // @ts-ignore
-  const timeSpentAFKData = parcelDataRange[1].visitors
+  const timeSpentAFKData = parcelDataRange[1].logouts
   // make an array with timeSpentAFKData
   for (const [key, value] of Object.entries(timeSpentAFKData)) {
     dataArr.push({
       mapUrl: baseUrl + key.replace(",", "/") + mapUrl,
       coord: key,
-      visitors: value,
+      logouts: value,
     })
   }
 
@@ -69,8 +70,8 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
       },
     },
     {
-      Header: "Visit Count",
-      accessor: "visitors",
+      Header: "Logouts",
+      accessor: "logouts",
       Cell: ({ value }) => {
         return <Text as="kbd">{Number(value)}</Text>
       },
@@ -150,14 +151,14 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Most Visited Parcel</b>
+                <b>Parcels with Most Logouts</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Parcels with the most visit count in the last period
+            Parcels with the most logouts in the last period
           </Text>
         </Box>
         <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
@@ -175,4 +176,4 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default MostVisitedParcel
+export default LogOutTimeSpentParcel

@@ -8,11 +8,11 @@ import {
   Spacer,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import GridBox from "../GridBox"
-import LineChartDateRange from "./daterange/LineChartDateRange"
-import AvgStat from "./partials/AvgStat"
-import Loading from "../Loading"
-import LineChart from "../../../lib/LineChart"
+import GridBox from "../../GridBox"
+import LineChartDateRange from "../daterange/LineChartDateRange"
+import AvgStat from "../partials/AvgStat"
+import Loading from "../../Loading"
+import LineChart from "../../../../lib/LineChart"
 
 const UniqueVisitedParcels = ({ visitorLoading, data }) => {
   const box = {

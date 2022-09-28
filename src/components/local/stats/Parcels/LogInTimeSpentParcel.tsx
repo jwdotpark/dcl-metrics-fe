@@ -14,13 +14,13 @@ import {
   Image,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { convertSeconds } from "../../../lib/hooks/utils"
-import Loading from "../Loading"
+import { convertSeconds } from "../../../../lib/hooks/utils"
+import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import TableMap from "./partials/TableMap"
-import ParcelDateRange from "./daterange/ParcelDateRange"
-import GridBox from "../GridBox"
+import TableMap from "../partials/TableMap"
+import ParcelDateRange from "../daterange/ParcelDateRange"
+import GridBox from "../../GridBox"
 
 const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const box = {

@@ -14,16 +14,16 @@ import {
   Image,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { convertSeconds } from "../../../lib/hooks/utils"
-import Loading from "../Loading"
+import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import TableMap from "./partials/TableMap"
-import ParcelDateRange from "./daterange/ParcelDateRange"
-import GridBox from "../GridBox"
+import TableMap from "../partials/TableMap"
+import ParcelDateRange from "../daterange/ParcelDateRange"
+import GridBox from "../../GridBox"
 
-const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
+const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
   const box = {
+    // h: "630",
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
@@ -41,13 +41,13 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const parcelDataRange = data[dateRange]
 
   // @ts-ignore
-  const timeSpentData = parcelDataRange[1].time_spent
-  // make an array with timeSpentData
-  for (const [key, value] of Object.entries(timeSpentData)) {
+  const timeSpentAFKData = parcelDataRange[1].visitors
+  // make an array with timeSpentAFKData
+  for (const [key, value] of Object.entries(timeSpentAFKData)) {
     dataArr.push({
       mapUrl: baseUrl + key.replace(",", "/") + mapUrl,
       coord: key,
-      avg_time_spent: value,
+      visitors: value,
     })
   }
 
@@ -69,11 +69,10 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
       },
     },
     {
-      Header: "AVG. Time Spent",
-      accessor: "avg_time_spent",
-      width: 200,
+      Header: "Visit Count",
+      accessor: "visitors",
       Cell: ({ value }) => {
-        return <Text as="kbd">{convertSeconds(value)}</Text>
+        return <Text as="kbd">{Number(value)}</Text>
       },
     },
   ]
@@ -151,14 +150,14 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Parcels Average Time Spent</b>
+                <b>Most Visited Parcel</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Parcels with the most average time spent on them in the last period
+            Parcels with the most visit count in the last period
           </Text>
         </Box>
         <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
@@ -176,4 +175,4 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default AvgTimeSpentParcel
+export default MostVisitedParcel

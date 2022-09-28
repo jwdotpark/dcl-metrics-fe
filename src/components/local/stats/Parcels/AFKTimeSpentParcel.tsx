@@ -14,15 +14,15 @@ import {
   Image,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { convertSeconds } from "../../../lib/hooks/utils"
-import Loading from "../Loading"
+import { convertSeconds } from "../../../../lib/hooks/utils"
+import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import TableMap from "./partials/TableMap"
-import ParcelDateRange from "./daterange/ParcelDateRange"
-import GridBox from "../GridBox"
+import TableMap from "../partials/TableMap"
+import ParcelDateRange from "../daterange/ParcelDateRange"
+import GridBox from "../../GridBox"
 
-const LogOutTimeSpentParcel = ({ parcel, isParcelLoading }) => {
+const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
   const box = {
     // h: "630",
     h: "auto",
@@ -42,13 +42,13 @@ const LogOutTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const parcelDataRange = data[dateRange]
 
   // @ts-ignore
-  const timeSpentAFKData = parcelDataRange[1].logouts
+  const timeSpentAFKData = parcelDataRange[1].time_spent_afk
   // make an array with timeSpentAFKData
   for (const [key, value] of Object.entries(timeSpentAFKData)) {
     dataArr.push({
       mapUrl: baseUrl + key.replace(",", "/") + mapUrl,
       coord: key,
-      logouts: value,
+      time_spent_afk: value,
     })
   }
 
@@ -70,10 +70,10 @@ const LogOutTimeSpentParcel = ({ parcel, isParcelLoading }) => {
       },
     },
     {
-      Header: "Logouts",
-      accessor: "logouts",
+      Header: "AVG. AFK",
+      accessor: "time_spent_afk",
       Cell: ({ value }) => {
-        return <Text as="kbd">{Number(value)}</Text>
+        return <Text as="kbd">{convertSeconds(value)}</Text>
       },
     },
   ]
@@ -151,14 +151,14 @@ const LogOutTimeSpentParcel = ({ parcel, isParcelLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Parcels with Most Logouts</b>
+                <b>Parcels With Most AFK</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Parcels with the most logouts in the last period
+            Parcels with the most idle time spent on them in the last period
           </Text>
         </Box>
         <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
@@ -176,4 +176,4 @@ const LogOutTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default LogOutTimeSpentParcel
+export default AFKtimeSpentAFKParcel
