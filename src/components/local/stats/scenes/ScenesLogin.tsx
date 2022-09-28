@@ -1,28 +1,31 @@
 // @ts-nocheck
 import {
-  Box,
-  Text,
-  useColorModeValue,
-  useBreakpointValue,
-  Center,
+  Spacer,
   Flex,
+  Box,
+  Center,
   Table,
   TableContainer,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
+  Image,
+  useColorModeValue,
 } from "@chakra-ui/react"
-import { useEffect, useMemo, useState } from "react"
+import { convertSeconds } from "../../../../lib/hooks/utils"
+import Loading from "../../Loading"
+import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import GridBox from "../GridBox"
-import Loading from "../Loading"
-import SceneDateRange from "./daterange/SceneDateRange"
-import TableMap from "./partials/TableMap"
+import TableMap from "../partials/TableMap"
+import SceneDateRange from "../daterange/SceneDateRange"
+import GridBox from "../../GridBox"
 
-const TopScenesVisitors = ({ res, isParcelLoading }) => {
+const ScenesLogin = ({ res, isSceneLoading }) => {
   const box = {
+    // h: "630",
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
@@ -30,16 +33,25 @@ const TopScenesVisitors = ({ res, isParcelLoading }) => {
 
   // 0 yesterday 1 last_week 2 last_month 3 last_quarter
   const [dateRange, setDateRange] = useState(0)
+
+  const baseUrl = "https://api.decentraland.org/v1/parcels/"
+  const mapUrl = "/map.png?width=auto&height=auto&size=15"
+
   const data = Object.entries(res)
   const dataArr = []
-  const sceneDataRange = data[dateRange]
-  const visitorData = sceneDataRange[1].visitors
 
-  for (const [key, value] of Object.entries(visitorData)) {
+  const sceneDataRange = data[dateRange]
+
+  // @ts-ignore
+  const sceneData = sceneDataRange[1].logins
+  console.log(sceneData)
+
+  // make an array with timeSpentAFKData
+  for (const [key, value] of Object.entries(sceneData)) {
     dataArr.push({
-      name: key,
       mapUrl: value.map_url,
-      unique_address: value.unique_addresses,
+      name: key,
+      logins: value.total_logins,
     })
   }
 
@@ -61,11 +73,10 @@ const TopScenesVisitors = ({ res, isParcelLoading }) => {
       },
     },
     {
-      Header: "Visit Count",
-      accessor: "unique_address",
-      width: 200,
+      Header: "Logins",
+      accessor: "logins",
       Cell: ({ value }) => {
-        return <Text as="kbd">{value}</Text>
+        return <Text as="kbd">{Number(value)}</Text>
       },
     },
   ]
@@ -143,18 +154,18 @@ const TopScenesVisitors = ({ res, isParcelLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Top Scenes Visitor</b>
+                <b>Scenes with Most Logins</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Scenes with the most visit count in the last period
+            Scenes with the most logins in the last period
           </Text>
         </Box>
         <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />
-        {dataArr.length > 0 && !isParcelLoading ? (
+        {dataArr.length > 0 && !isSceneLoading ? (
           <Box mx="4" mb="8">
             <TableComponent />
           </Box>
@@ -168,4 +179,4 @@ const TopScenesVisitors = ({ res, isParcelLoading }) => {
   )
 }
 
-export default TopScenesVisitors
+export default ScenesLogin

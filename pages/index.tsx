@@ -16,7 +16,9 @@ import AFKTimeSpentParcel from "../src/components/local/stats/parcels/AFKTimeSpe
 import LogOutTimeSpentParcel from "../src/components/local/stats/parcels/LogOutTimeSpentParcel"
 import LogInTimeSpentParcel from "../src/components/local/stats/parcels/LogInTimeSpentParcel"
 import MostVisitedParcel from "../src/components/local/stats/parcels/MostVisitedParcel"
-import TopScenesVisitors from "../src/components/local/stats/TopScenesVisitors"
+
+import TopScenesVisitors from "../src/components/local/stats/scenes/TopScenesVisitors"
+import ScenesLogin from "../src/components/local/stats/scenes/ScenesLogin"
 
 import TempError from "../src/components/local/stats/error/TempError"
 
@@ -114,11 +116,13 @@ const GlobalPage: NextPage = (props) => {
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
-        <TopScenesVisitors
-          res={result.scenes}
-          isParcelLoading={isDataLoading}
-        />
       </Grid>
+      {/* scene */}
+      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
+        <TopScenesVisitors res={result.scenes} isSceneLoading={isDataLoading} />
+        <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
+      </Grid>
+      {/* parcel */}
       <Grid templateColumns={`repeat(3, 1fr)`} gap={4} mb="4">
         <AvgTimeSpentParcel
           parcel={result.parcels}
