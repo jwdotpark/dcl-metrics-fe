@@ -17,7 +17,7 @@ const TableMap = ({ mapUrl }) => {
   })
 
   return (
-    <Box w={responsiveWidth} borderRadius="xl" overflow="clip">
+    <Box w={responsiveWidth} h="100px" borderRadius="xl" overflow="clip">
       <Center h="100%">
         <Image
           borderRadius="md"

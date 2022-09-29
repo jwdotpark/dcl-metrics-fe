@@ -10,6 +10,7 @@ import {
 import { useState } from "react"
 import GridBox from "../GridBox"
 import SceneMap from "./partials/SceneMap"
+import Scenetable from "./partials/SceneTable"
 
 const Scene = ({ res }) => {
   const box = {
@@ -41,12 +42,32 @@ const Scene = ({ res }) => {
   return (
     <Box mb="4">
       <GridBox box={box}>
+        <Flex position="relative" mt="4" mx="5">
+          <Flex w="100%" mt="4">
+            <Box>
+              <Text fontSize="2xl">
+                <b>Top {selectedScene + 1} Scene</b>
+              </Text>
+            </Box>
+          </Flex>
+        </Flex>
+        <Box ml="6">
+          <Text fontSize="sm" color="gray.500">
+            Most busy scene in the Decentraland
+          </Text>
+        </Box>
         <Box>
           <Flex>
             <Box boxSize="40%">
               <SceneMap url={map_url} />
             </Box>
-            <Box boxSize="40%">{name}</Box>
+            <Box boxSize="60%">
+              <Scenetable
+                res={res}
+                selectedScene={selectedScene}
+                setSelectedScene={setSelectedScene}
+              />
+            </Box>
           </Flex>
         </Box>
       </GridBox>
