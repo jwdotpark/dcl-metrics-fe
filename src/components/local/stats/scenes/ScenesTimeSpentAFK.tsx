@@ -36,8 +36,6 @@ const ScenesTimeSpentAFK = ({ res, isSceneLoading }) => {
   const data = Object.entries(res)
   const dataArr = []
 
-  console.log(data)
-
   const sceneDataRange = data[dateRange]
 
   const sceneData = sceneDataRange[1].time_spent_afk

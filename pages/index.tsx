@@ -14,6 +14,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
+import staticScene from "../public/data/top_scenes.json"
 
 const axios = require("axios").default
 import fs from "fs"
@@ -31,6 +32,7 @@ import LogOutTimeSpentParcel from "../src/components/local/stats/parcels/LogOutT
 import LogInTimeSpentParcel from "../src/components/local/stats/parcels/LogInTimeSpentParcel"
 import MostVisitedParcel from "../src/components/local/stats/parcels/MostVisitedParcel"
 
+import Scene from "../src/components/local/stats/Scene"
 import TopScenesVisitors from "../src/components/local/stats/scenes/TopScenesVisitors"
 import ScenesLogin from "../src/components/local/stats/scenes/ScenesLogin"
 import ScenesLogout from "../src/components/local/stats/scenes/ScenesLogout"
@@ -129,8 +131,10 @@ const GlobalPage: NextPage = (props) => {
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
-
-        {/* scene */}
+      </Grid>
+      {/* scene */}
+      <Scene res={staticScene} />
+      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
         <TopScenesVisitors res={result.scenes} isSceneLoading={isDataLoading} />
         <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
         <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
@@ -139,7 +143,8 @@ const GlobalPage: NextPage = (props) => {
           res={result.scenes}
           isSceneLoading={isDataLoading}
         />
-
+      </Grid>
+      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
         {/* parcel */}
         <AvgTimeSpentParcel
           parcel={result.parcels}
