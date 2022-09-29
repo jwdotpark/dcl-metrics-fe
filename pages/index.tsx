@@ -4,6 +4,7 @@ import {
   Grid,
   useBreakpointValue,
   Button,
+  Text,
   Accordion,
   AccordionButton,
   AccordionIcon,
@@ -134,10 +135,6 @@ const GlobalPage: NextPage = (props) => {
         <Accordion
           defaultIndex={[0]}
           allowMultiple
-          borderTop="none"
-          borderBottom="none"
-          border="1px solid"
-          borderColor={useColorModeValue("gray.300", "gray.600")}
           borderRadius="md"
           overflow="clip"
           bg={useColorModeValue("gray.200", "gray.600")}
@@ -151,7 +148,7 @@ const GlobalPage: NextPage = (props) => {
                 }}
               >
                 <Box flex="1" textAlign="center">
-                  SCENES
+                  <Text fontWeight="bold">SCENES</Text>
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
@@ -190,7 +187,7 @@ const GlobalPage: NextPage = (props) => {
             <h2>
               <AccordionButton>
                 <Box flex="1" textAlign="center">
-                  PARCELS
+                  <Text fontWeight="bold">PARCELS</Text>
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
