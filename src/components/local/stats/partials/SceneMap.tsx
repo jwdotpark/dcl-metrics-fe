@@ -6,7 +6,6 @@ const SceneMap = (props) => {
     <Box overflow="clip">
       <Center h="100%">
         <Box
-          m="4"
           border="2px solid"
           borderColor={useColorModeValue("gray.200", "gray.600")}
           borderRadius="md"

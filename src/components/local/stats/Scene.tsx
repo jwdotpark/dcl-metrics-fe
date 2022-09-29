@@ -61,10 +61,10 @@ const Scene = ({ res }) => {
 
         <Box>
           <Flex>
-            <Box w="25%" h="100%">
+            <Box w="30%" h="100%" m="4">
               <SceneMap url={map_url} />
             </Box>
-            <Box boxSize="40%" m="2" mt="4" mr="4">
+            <Box w="70%" h="100%" m="4">
               <SceneSelector />
               <Scenetable
                 res={res}
