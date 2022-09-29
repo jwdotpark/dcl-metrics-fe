@@ -6,11 +6,13 @@ import {
   Box,
   useColorModeValue,
   Center,
+  Select,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
 import SceneMap from "./partials/SceneMap"
 import Scenetable from "./partials/SceneTable"
+import SceneSelector from "./partials/SceneSelector"
 
 const Scene = ({ res }) => {
   const box = {
@@ -56,12 +58,14 @@ const Scene = ({ res }) => {
             Most busy scene in the Decentraland
           </Text>
         </Box>
+
         <Box>
           <Flex>
-            <Box boxSize="40%">
+            <Box w="25%" h="100%">
               <SceneMap url={map_url} />
             </Box>
-            <Box boxSize="60%">
+            <Box boxSize="40%" m="2" mt="4" mr="4">
+              <SceneSelector />
               <Scenetable
                 res={res}
                 selectedScene={selectedScene}
