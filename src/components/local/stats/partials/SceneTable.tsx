@@ -10,6 +10,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react"
+import SceneSelector from "./SceneSelector"
 
 const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
   const {
@@ -30,32 +31,65 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
     parcels_heatmap,
   } = res[selectedScene]
 
+  // create a table component that contains res[selectedScene] data
+
   return (
     <Box>
+      <SceneSelector
+        res={res}
+        selectedScene={selectedScene}
+        setSelectedScene={setSelectedScene}
+      />
       <TableContainer>
-        <Table variant="simple">
+        <Table size="sm" variant="simple">
           <Thead>
             <Tr>
-              <Th>Properties</Th>
-              <Th>Value</Th>
+              <Th>Property</Th>
+              <Th isNumeric>Value</Th>
             </Tr>
           </Thead>
           <Tbody>
             <Tr>
-              <Td>inches</Td>
-              <Td>millimetres (mm)</Td>
+              <Td>Visitors</Td>
+              <Td isNumeric>{visitors}</Td>
             </Tr>
             <Tr>
-              <Td>feet</Td>
-              <Td>centimetres (cm)</Td>
+              <Td>Share of Global Visitors</Td>
+              <Td isNumeric>{share_of_global_visitors}</Td>
             </Tr>
             <Tr>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
+              <Td>Average Time Spent</Td>
+              <Td isNumeric>{avg_time_spent}</Td>
+            </Tr>
+            <Tr>
+              <Td>Average Time Spent AFK</Td>
+              <Td isNumeric>{avg_time_spent_afk}</Td>
+            </Tr>
+            <Tr>
+              <Td>Total Logins</Td>
+              <Td isNumeric>{total_logins}</Td>
+            </Tr>
+            <Tr>
+              <Td>Unique Logins</Td>
+              <Td isNumeric>{unique_logins}</Td>
+            </Tr>
+            <Tr>
+              <Td>Total Logouts</Td>
+              <Td isNumeric>{total_logouts}</Td>
+            </Tr>
+            <Tr>
+              <Td>Unique Logouts</Td>
+              <Td isNumeric>{unique_logouts}</Td>
+            </Tr>
+            <Tr>
+              <Td>Complete Sessions</Td>
+              <Td isNumeric>{complete_sessions}</Td>
+            </Tr>
+            <Tr>
+              <Td>Average Complete Session Duration</Td>
+              <Td isNumeric>{avg_complete_session_duration}</Td>
             </Tr>
           </Tbody>
-
-          <TableCaption>Imperial to metric conversion factors</TableCaption>
         </Table>
       </TableContainer>
     </Box>

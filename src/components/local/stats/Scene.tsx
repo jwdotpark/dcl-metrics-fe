@@ -12,7 +12,7 @@ import { useState } from "react"
 import GridBox from "../GridBox"
 import SceneMap from "./partials/SceneMap"
 import Scenetable from "./partials/SceneTable"
-import SceneSelector from "./partials/SceneSelector"
+import SceneMarathonUsers from "./partials/SceneMarathonUsers"
 
 const Scene = ({ res }) => {
   const box = {
@@ -21,7 +21,7 @@ const Scene = ({ res }) => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const [selectedScene, setSelectedScene] = useState(2)
+  const [selectedScene, setSelectedScene] = useState(0)
 
   const {
     name,
@@ -41,6 +41,11 @@ const Scene = ({ res }) => {
     parcels_heatmap,
   } = res[selectedScene]
 
+  console.log(res[selectedScene].marathon_users)
+  // 1. marathon users
+  // 2. time spent histogram
+  // 3. parcels heatmap
+
   return (
     <Box mb="4">
       <GridBox box={box}>
@@ -48,29 +53,31 @@ const Scene = ({ res }) => {
           <Flex w="100%" mt="4">
             <Box>
               <Text fontSize="2xl">
-                <b>Top {selectedScene + 1} Scene</b>
+                <b>{name}</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text fontSize="sm" color="gray.500">
-            Most busy scene in the Decentraland
+            Top 10 populated scene in the Decentraland
           </Text>
         </Box>
 
         <Box>
           <Flex>
-            <Box w="30%" h="100%" m="4">
+            <Box w="33%" minH="100%" m="4">
               <SceneMap url={map_url} />
             </Box>
-            <Box w="70%" h="100%" m="4">
-              <SceneSelector />
+            <Box w="33%" h="100%" m="4">
               <Scenetable
                 res={res}
                 selectedScene={selectedScene}
                 setSelectedScene={setSelectedScene}
               />
+            </Box>
+            <Box w="33%" minH="100%" m="4">
+              <SceneMarathonUsers />
             </Box>
           </Flex>
         </Box>

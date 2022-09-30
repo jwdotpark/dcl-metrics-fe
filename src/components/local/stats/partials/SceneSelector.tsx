@@ -1,12 +1,22 @@
-import { Box, Select } from "@chakra-ui/react"
+import { Text, Box, Select } from "@chakra-ui/react"
 
-const SceneSelector = () => {
+const SceneSelector = ({ res, selectedScene, setSelectedScene }) => {
+  // make an array that contains each name property of res
+  const sceneNames = res.map((scene) => scene.name)
+
   return (
     <Box mb="4">
-      <Select placeholder="Select option">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+      <Select>
+        {sceneNames.map((name: string, i) => (
+          <option
+            value={name}
+            onClick={() => {
+              setSelectedScene(i)
+            }}
+          >
+            {i + 1 + ". " + name}
+          </option>
+        ))}
       </Select>
     </Box>
   )

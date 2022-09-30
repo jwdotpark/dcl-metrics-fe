@@ -126,6 +126,7 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       {/* <TempError /> */}
+      <Scene res={staticScene} />
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
         <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
@@ -133,7 +134,7 @@ const GlobalPage: NextPage = (props) => {
         <Explorer res={result.users} isLoading={isDataLoading} />
       </Grid>
       {/* scene */}
-      <Scene res={staticScene} />
+
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
         <TopScenesVisitors res={result.scenes} isSceneLoading={isDataLoading} />
         <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
