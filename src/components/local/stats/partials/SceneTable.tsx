@@ -41,7 +41,8 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
         setSelectedScene={setSelectedScene}
       />
       <TableContainer>
-        <Table size="sm" variant="simple">
+        <Table size="sm" variant="striped">
+          <TableCaption>Stats in this scene</TableCaption>
           <Thead>
             <Tr>
               <Th>Property</Th>

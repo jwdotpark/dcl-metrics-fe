@@ -41,7 +41,6 @@ const Scene = ({ res }) => {
     parcels_heatmap,
   } = res[selectedScene]
 
-  console.log(res[selectedScene].marathon_users)
   // 1. marathon users
   // 2. time spent histogram
   // 3. parcels heatmap
@@ -77,7 +76,7 @@ const Scene = ({ res }) => {
               />
             </Box>
             <Box w="33%" minH="100%" m="4">
-              <SceneMarathonUsers />
+              <SceneMarathonUsers data={res[selectedScene].marathon_users} />
             </Box>
           </Flex>
         </Box>
