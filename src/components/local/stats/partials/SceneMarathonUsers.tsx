@@ -12,6 +12,7 @@ import {
   useToast,
   useColorModeValue,
 } from "@chakra-ui/react"
+import CountUp from "react-countup"
 
 const SceneMarathonUsers = ({ data }) => {
   // copy toast
@@ -32,7 +33,6 @@ const SceneMarathonUsers = ({ data }) => {
   const addressArr = dataArr.map((item) => item[0])
   const valueArr = dataArr.map((item) => item[1])
 
-  // make a table component that contains addressArr and valueArr
   const MarathonUserTable = () => {
     return (
       <TableContainer>
@@ -55,11 +55,16 @@ const SceneMarathonUsers = ({ data }) => {
                       _hover={{ color: "gray.600", cursor: "pointer" }}
                       onClick={() => handleToast(address)}
                     >
-                      {address.toString().slice(0, 30)}..
+                      {address.toString().slice(0, 100)}
                     </Text>
                   </Td>
-                  {/* @ts-ignore */}
-                  <Td>{Math.round(valueArr[index])}</Td>
+                  <Td>
+                    <CountUp
+                      // @ts-ignore
+                      end={Math.round(valueArr[index])}
+                      duration={0.5}
+                    />
+                  </Td>
                 </Tr>
               )
             })}

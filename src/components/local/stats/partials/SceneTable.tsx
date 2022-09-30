@@ -10,6 +10,8 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react"
+import CountUp from "react-countup"
+import RoadMap from "../../change/roadmap/RoadMap"
 import SceneSelector from "./SceneSelector"
 
 const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
@@ -31,7 +33,7 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
     parcels_heatmap,
   } = res[selectedScene]
 
-  // create a table component that contains res[selectedScene] data
+  
 
   return (
     <Box>
@@ -52,43 +54,72 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
           <Tbody>
             <Tr>
               <Td>Visitors</Td>
-              <Td isNumeric>{visitors}</Td>
+              <Td isNumeric>
+                <CountUp end={visitors} duration={0.5} />
+              </Td>
             </Tr>
             <Tr>
               <Td>Share of Global Visitors</Td>
-              <Td isNumeric>{share_of_global_visitors}</Td>
+              <Td isNumeric>
+                <CountUp
+                  end={share_of_global_visitors}
+                  duration={0.5}
+                />
+              </Td>
             </Tr>
             <Tr>
               <Td>Average Time Spent</Td>
-              <Td isNumeric>{avg_time_spent}</Td>
+              <Td isNumeric>
+                <CountUp end={avg_time_spent} duration={0.5} />
+              </Td>
             </Tr>
             <Tr>
               <Td>Average Time Spent AFK</Td>
-              <Td isNumeric>{avg_time_spent_afk}</Td>
+              <Td isNumeric>
+                <CountUp
+                  end={avg_time_spent_afk}
+                  duration={0.5}
+                />
+              </Td>
             </Tr>
             <Tr>
               <Td>Total Logins</Td>
-              <Td isNumeric>{total_logins}</Td>
+              <Td isNumeric>
+                <CountUp end={total_logins} duration={0.5} />
+              </Td>
             </Tr>
             <Tr>
               <Td>Unique Logins</Td>
-              <Td isNumeric>{unique_logins}</Td>
+              <Td isNumeric>
+                <CountUp end={unique_logins} duration={0.5} />
+              </Td>
             </Tr>
             <Tr>
               <Td>Total Logouts</Td>
-              <Td isNumeric>{total_logouts}</Td>
+              <Td isNumeric>
+                <CountUp end={total_logouts} duration={0.5} />
+              </Td>
             </Tr>
             <Tr>
               <Td>Unique Logouts</Td>
-              <Td isNumeric>{unique_logouts}</Td>
+              <Td isNumeric>
+                <CountUp end={unique_logouts} duration={0.5} />
+              </Td>
             </Tr>
             <Tr>
               <Td>Complete Sessions</Td>
-              <Td isNumeric>{complete_sessions}</Td>
+              <Td isNumeric>
+                <CountUp end={complete_sessions} duration={0.5} />
+              </Td>
             </Tr>
             <Tr>
               <Td>Average Complete Session Duration</Td>
-              <Td isNumeric>{avg_complete_session_duration}</Td>
+              <Td isNumeric>
+                <CountUp
+                  end={avg_complete_session_duration}
+                  duration={0.5}
+                />
+              </Td>
             </Tr>
           </Tbody>
         </Table>
