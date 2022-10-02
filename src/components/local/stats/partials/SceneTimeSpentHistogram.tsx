@@ -1,28 +1,43 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
-
-import { Box } from "@chakra-ui/react"
+import { useMemo } from "react"
+import {
+  Box,
+  useColorModeValue,
+  Text,
+  TableContainer,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Tbody,
+  Td,
+} from "@chakra-ui/react"
 import { ResponsiveLine } from "@nivo/line"
+import TooltipTable from "./TableTooltip"
 
-const SceneTimeSpentHistogram = ({ data }) => {
+const SceneTimeSpentHistogram = ({ data, selectedScene }) => {
   const timeSpentHistogramArr = data.map((item) => item.time_spent_histogram)
   timeSpentHistogramArr.forEach((item, index) => {
     item.name = data[index].name
   })
   return (
-    <Box h="300">
-      <MyResponsiveLine res={timeSpentHistogramArr} />
+    <Box h="500">
+      <MyResponsiveLine
+        res={timeSpentHistogramArr}
+        selectedScene={selectedScene}
+      />
     </Box>
   )
 }
 
 export default SceneTimeSpentHistogram
 
-const MyResponsiveLine = ({ res }) => {
+const MyResponsiveLine = ({ res, selectedScene }) => {
   const data = res.map((item) => {
     return {
       id: item.name,
-      color: `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`,
+      // color: `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`,
       data: item.map((item) => {
         return {
           x: item[0],
@@ -32,16 +47,37 @@ const MyResponsiveLine = ({ res }) => {
     }
   })
 
+  // const memoizedData = useMemo(
+  //   () => [data[selectedScene]],
+  //   [data, selectedScene]
+  // )
+  const memoizedData = useMemo(() => data, [data])
+
+  const yAxisLabel = (value) => {
+    if (value % 2 === 0) {
+      return ""
+    }
+    return value + "h"
+  }
+
+  const yAxisLabelDegree = () => {
+    if (data[0].data.length > 7) {
+      return 45
+    } else {
+      return 0
+    }
+  }
+
   return (
     <ResponsiveLine
-      data={data}
-      margin={{ top: 50, right: 40, bottom: 50, left: 60 }}
+      data={memoizedData}
+      margin={{ top: 50, right: 20, bottom: 30, left: 40 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
         min: "auto",
         max: "auto",
-        stacked: true,
+        stacked: false,
         reverse: false,
       }}
       yFormat=" >-.2f"
@@ -53,8 +89,10 @@ const MyResponsiveLine = ({ res }) => {
         tickPadding: 5,
         tickRotation: 0,
         legend: "24h",
-        legendOffset: 36,
+        legendOffset: -15,
         legendPosition: "middle",
+        tickRotation: yAxisLabelDegree(),
+        format: (value) => yAxisLabel(value),
       }}
       axisLeft={{
         orient: "left",
@@ -62,10 +100,11 @@ const MyResponsiveLine = ({ res }) => {
         tickPadding: 5,
         tickRotation: 0,
         legend: "count",
-        legendOffset: -50,
+        legendOffset: 10,
         legendPosition: "middle",
       }}
       pointSize={10}
+      colors={{ scheme: "set1" }}
       pointColor={{ theme: "background" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
@@ -75,10 +114,10 @@ const MyResponsiveLine = ({ res }) => {
       enablePoints={false}
       legends={[
         {
-          anchor: "right",
+          anchor: "top-right",
           direction: "column",
           justify: false,
-          translateX: 0,
+          translateX: 15,
           translateY: 0,
           itemsSpacing: 0,
           itemDirection: "right-to-left",
@@ -99,6 +138,52 @@ const MyResponsiveLine = ({ res }) => {
           ],
         },
       ]}
+      enableSlices="x"
+      sliceTooltip={({ slice }) => {
+        return (
+          <Box
+            p="2"
+            boxShadow="md"
+            borderRadius="md"
+            // bgColor={useColorModeValue("gray.700", "gray.300")}
+            sx={{ backdropFilter: "blur(5px)" }}
+            color={useColorModeValue("black", "white")}
+          >
+            <TableContainer>
+              <Table variant="simple" size="sm">
+                <Thead>
+                  <Tr>
+                    <Th>Scene</Th>
+                    <Th isNumeric>Count</Th>
+                  </Tr>
+                </Thead>
+
+                {slice.points.map((point, i) => (
+                  <>
+                    <Tbody>
+                      <Tr>
+                        <Td>
+                          <Box
+                            boxSize="10px"
+                            bg={point.serieColor}
+                            display="inline-block"
+                            mr="2"
+                            borderRadius="md"
+                          />
+                          {point.serieId}
+                        </Td>
+                        <Td isNumeric>
+                          <b>{Number(point.data.yFormatted)}</b>
+                        </Td>
+                      </Tr>
+                    </Tbody>
+                  </>
+                ))}
+              </Table>
+            </TableContainer>
+          </Box>
+        )
+      }}
     />
   )
 }

@@ -83,7 +83,10 @@ const Scene = ({ res }) => {
           <Flex>
             <Box w="100%" minH="100%" m="4">
               <Text>each scenes time_spent_histogram</Text>
-              <SceneTimeSpentHistogram data={res} />
+              <SceneTimeSpentHistogram
+                data={res}
+                selectedScene={selectedScene}
+              />
             </Box>
           </Flex>
         </Box>
