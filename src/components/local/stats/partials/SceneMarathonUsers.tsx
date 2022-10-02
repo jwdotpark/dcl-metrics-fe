@@ -47,10 +47,11 @@ const SceneMarathonUsers = ({ data }) => {
           <Tbody>
             {addressArr.map((address, index) => {
               return (
-                <Tr>
+                <Tr key={index}>
                   <Td>
                     <Text
                       as="kbd"
+                      // eslint-disable-next-line
                       color={useColorModeValue("gray.800", "gray.200")}
                       _hover={{ color: "gray.600", cursor: "pointer" }}
                       onClick={() => handleToast(address)}
