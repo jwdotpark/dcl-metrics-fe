@@ -7,7 +7,6 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import { ResponsiveBar } from "@nivo/bar"
-import ProfilePicture from "../components/local/ProfilePicture"
 import { convertSeconds } from "../lib/hooks/utils"
 
 const BarChart = ({ data }) => {

@@ -13,6 +13,7 @@ import GridBox from "../GridBox"
 import SceneMap from "./partials/SceneMap"
 import Scenetable from "./partials/SceneTable"
 import SceneMarathonUsers from "./partials/SceneMarathonUsers"
+import SceneTimeSpentHistogram from "./partials/SceneTimeSpentHistogram"
 
 const Scene = ({ res }) => {
   const box = {
@@ -77,6 +78,12 @@ const Scene = ({ res }) => {
             </Box>
             <Box w="33%" minH="100%" m="4">
               <SceneMarathonUsers data={res[selectedScene].marathon_users} />
+            </Box>
+          </Flex>
+          <Flex>
+            <Box w="100%" minH="100%" m="4">
+              <Text>each scenes time_spent_histogram</Text>
+              <SceneTimeSpentHistogram data={res} />
             </Box>
           </Flex>
         </Box>
