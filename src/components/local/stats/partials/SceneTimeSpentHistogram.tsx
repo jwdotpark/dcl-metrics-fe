@@ -131,7 +131,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         },
       }}
       enableArea={true}
-      areaOpacity={0.9}
+      areaOpacity={0.25}
       legends={[
         {
           anchor: "top-right",
