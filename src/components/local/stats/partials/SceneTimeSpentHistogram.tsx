@@ -33,10 +33,20 @@ const SceneTimeSpentHistogram = ({ data, selectedScene }) => {
 export default SceneTimeSpentHistogram
 
 const MyResponsiveLine = ({ res, selectedScene }) => {
+  // selected line color
+  const lineOpacity = 0.2
+  const randomColor = () => {
+    const r = Math.floor(Math.random() * 256)
+    const g = Math.floor(Math.random() * 256)
+    const b = Math.floor(Math.random() * 256)
+    return `rgb(${r},${g},${b},${lineOpacity})`
+  }
+
   const data = res.map((item) => {
     return {
       id: item.name,
-      // color: `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`,
+      // random color
+      color: randomColor(),
       data: item.map((item) => {
         return {
           x: item[0],
@@ -46,31 +56,23 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     }
   })
 
-  // const memoizedData = useMemo(
-  //   () => [data[selectedScene]],
-  //   [data, selectedScene]
-  // )
   const memoizedData = useMemo(() => data, [data])
+
+  const colors = data.map((item) => item.color)
+  colors[selectedScene] = colors[selectedScene].replace(lineOpacity, "1")
 
   const yAxisLabel = (value) => {
     if (value % 2 === 0) {
       return ""
     }
-    return value + "h"
-  }
-
-  const yAxisLabelDegree = () => {
-    if (data[0].data.length > 7) {
-      return 45
-    } else {
-      return 0
-    }
+    return value + ":00"
   }
 
   return (
     <ResponsiveLine
       data={memoizedData}
-      margin={{ top: 0, right: 20, bottom: 30, left: 40 }}
+      colors={colors}
+      margin={{ top: 0, right: 15, bottom: 25, left: 40 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -80,17 +82,24 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         reverse: false,
       }}
       yFormat=" >-.2f"
-      axisTop={null}
+      axisTop={{
+        orient: "left",
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: 0,
+        legend: "Some description for scene histogram chart",
+        legendOffset: 10,
+        legendPosition: "middle",
+      }}
       axisRight={null}
       axisBottom={{
         orient: "bottom",
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "24h",
+        legend: "",
         legendOffset: -15,
         legendPosition: "middle",
-        tickRotation: yAxisLabelDegree(),
         format: (value) => yAxisLabel(value),
       }}
       axisLeft={{
@@ -98,15 +107,15 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "count",
+        legend: "Visit Count",
         legendOffset: 10,
         legendPosition: "middle",
       }}
       pointSize={10}
-      colors={{ scheme: "set1" }}
-      pointColor={{ theme: "background" }}
+      // colors={{ scheme: "set1" }}
+      // pointColor={{ theme: "background" }}
       pointBorderWidth={2}
-      pointBorderColor={{ from: "serieColor" }}
+      // pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
       useMesh={true}
       curve="basis"
@@ -116,17 +125,19 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         grid: {
           line: {
             stroke: "gray",
-            opacity: 0.25,
+            opacity: 0.2,
             strokeDasharray: "1 1",
           },
         },
       }}
+      enableArea={true}
+      areaOpacity={0.9}
       legends={[
         {
           anchor: "top-right",
           direction: "column",
           justify: false,
-          translateX: 15,
+          translateX: 0,
           translateY: 0,
           itemsSpacing: 0,
           itemDirection: "right-to-left",
@@ -136,17 +147,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           symbolSize: 12,
           symbolShape: "circle",
           symbolBorderColor: "rgba(0, 0, 0, .5)",
-          // itemTextColor: useColorModeValue("gray.800", "gray.200"),
-          itemTextColor: useColorModeValue("#1A202CFF", "white"),
-          // effects: [
-          //   {
-          //     on: "hover",
-          //     style: {
-          //       itemBackground: "rgba(0, 0, 0, .03)",
-          //       itemOpacity: 1,
-          //     },
-          //   },
-          // ],
+          itemTextColor: useColorModeValue("#000", "#fff"),
         },
       ]}
       enableSlices="x"
@@ -156,7 +157,6 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             p="2"
             boxShadow="md"
             borderRadius="md"
-            // bgColor={useColorModeValue("gray.700", "gray.300")}
             sx={{ backdropFilter: "blur(10px)" }}
             color={useColorModeValue("black", "white")}
           >

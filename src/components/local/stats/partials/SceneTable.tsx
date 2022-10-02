@@ -33,18 +33,18 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
     parcels_heatmap,
   } = res[selectedScene]
 
-  
-
   return (
     <Box>
-      <SceneSelector
+      {/* <SceneSelector
         res={res}
         selectedScene={selectedScene}
         setSelectedScene={setSelectedScene}
-      />
+      /> */}
       <TableContainer>
-        <Table size="sm" variant="striped">
-          <TableCaption>Stats in this scene</TableCaption>
+        <Table size="md" variant="striped">
+          <TableCaption>
+            table caption or link to the dedicated scene page
+          </TableCaption>
           <Thead>
             <Tr>
               <Th>Property</Th>
@@ -61,10 +61,7 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
             <Tr>
               <Td>Share of Global Visitors</Td>
               <Td isNumeric>
-                <CountUp
-                  end={share_of_global_visitors}
-                  duration={0.5}
-                />
+                <CountUp end={share_of_global_visitors} duration={0.5} />
               </Td>
             </Tr>
             <Tr>
@@ -76,10 +73,7 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
             <Tr>
               <Td>Average Time Spent AFK</Td>
               <Td isNumeric>
-                <CountUp
-                  end={avg_time_spent_afk}
-                  duration={0.5}
-                />
+                <CountUp end={avg_time_spent_afk} duration={0.5} />
               </Td>
             </Tr>
             <Tr>
@@ -115,10 +109,7 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
             <Tr>
               <Td>Average Complete Session Duration</Td>
               <Td isNumeric>
-                <CountUp
-                  end={avg_complete_session_duration}
-                  duration={0.5}
-                />
+                <CountUp end={avg_complete_session_duration} duration={0.5} />
               </Td>
             </Tr>
           </Tbody>

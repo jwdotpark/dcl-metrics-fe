@@ -29,7 +29,7 @@ const LineChart = ({ data, color }) => {
 
   const yAxisLabelDegree = () => {
     if (data[0].data.length > 7) {
-      return 45
+      return 90
     } else {
       return 0
     }
@@ -50,7 +50,7 @@ const LineChart = ({ data, color }) => {
       }}
       animate={true}
       pointSize={4}
-      margin={{ top: 40, right: 45, bottom: 60, left: 55 }}
+      margin={{ top: 40, right: 20, bottom: 60, left: 55 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",

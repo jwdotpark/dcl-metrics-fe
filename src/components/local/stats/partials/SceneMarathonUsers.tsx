@@ -36,12 +36,12 @@ const SceneMarathonUsers = ({ data }) => {
   const MarathonUserTable = () => {
     return (
       <TableContainer>
-        <Table size="sm" variant="striped">
+        <Table size="md" variant="striped">
           <TableCaption>Marathon Users in this scene</TableCaption>
           <Thead>
             <Tr>
               <Th>Address</Th>
-              <Th>Value</Th>
+              <Th isNumeric>Value</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -59,7 +59,7 @@ const SceneMarathonUsers = ({ data }) => {
                       {address.toString().slice(0, 100)}
                     </Text>
                   </Td>
-                  <Td>
+                  <Td isNumeric>
                     <CountUp
                       // @ts-ignore
                       end={Math.round(valueArr[index])}
@@ -75,7 +75,7 @@ const SceneMarathonUsers = ({ data }) => {
     )
   }
   return (
-    <Box mt="14">
+    <Box>
       <MarathonUserTable />
     </Box>
   )
