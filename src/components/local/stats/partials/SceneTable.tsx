@@ -41,7 +41,7 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
         setSelectedScene={setSelectedScene}
       /> */}
       <TableContainer>
-        <Table size="md" variant="striped">
+        <Table size="sm" variant="striped" h="450px">
           <TableCaption>
             table caption or link to the dedicated scene page
           </TableCaption>

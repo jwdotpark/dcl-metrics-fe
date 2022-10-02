@@ -8,6 +8,8 @@ import {
   Center,
   Select,
   useBreakpointValue,
+  Spacer,
+  Grid,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
@@ -27,8 +29,8 @@ const Scene = ({ res }) => {
   const breakpoint = useBreakpointValue({
     sm: "100%",
     md: "100%",
-    lg: "50%",
-    xl: "50%",
+    lg: "33%",
+    xl: "33%",
   })
 
   const [selectedScene, setSelectedScene] = useState(0)
@@ -54,6 +56,12 @@ const Scene = ({ res }) => {
   // 1. marathon users
   // 2. time spent histogram
   // 3. parcels heatmap
+
+  const gridColumn = useBreakpointValue({
+    md: 1,
+    lg: 2,
+    xl: 3,
+  })
 
   return (
     <Box mb="4">
@@ -81,11 +89,11 @@ const Scene = ({ res }) => {
           </Text>
         </Box>
 
-        <Box>
-          <Flex>
+        <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
+          {/* <GridBox box={box}> */}
+          <Box w="100%">
             <Center
-              minW="33%"
-              h="auto"
+              h="calc(450px + 86px)"
               m="4"
               boxShadow="sm"
               borderRadius="md"
@@ -95,8 +103,10 @@ const Scene = ({ res }) => {
             >
               <SceneMap url={map_url} />
             </Center>
+          </Box>
+          {/* </GridBox> */}
+          <Box w="100%">
             <Box
-              w={breakpoint}
               h="auto"
               m="4"
               p="4"
@@ -105,14 +115,15 @@ const Scene = ({ res }) => {
               border="2px solid"
               borderColor={useColorModeValue("gray.300", "gray.500")}
             >
-              <Scenetable 
+              <Scenetable
                 res={res}
                 selectedScene={selectedScene}
                 setSelectedScene={setSelectedScene}
               />
             </Box>
+          </Box>
+          <Box w="100%">
             <Box
-              w={breakpoint}
               h="auto"
               m="4"
               p="4"
@@ -123,10 +134,13 @@ const Scene = ({ res }) => {
             >
               <SceneMarathonUsers data={res[selectedScene].marathon_users} />
             </Box>
-          </Flex>
+          </Box>
+        </Grid>
+
+        <Box>
           <Flex>
             <Box
-              w="100%"
+              w="50%"
               minH="100%"
               m="4"
               mb="6"
