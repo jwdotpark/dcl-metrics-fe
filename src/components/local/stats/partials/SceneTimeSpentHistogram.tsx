@@ -14,7 +14,6 @@ import {
   Td,
 } from "@chakra-ui/react"
 import { ResponsiveLine } from "@nivo/line"
-import TooltipTable from "./TableTooltip"
 
 const SceneTimeSpentHistogram = ({ data, selectedScene }) => {
   const timeSpentHistogramArr = data.map((item) => item.time_spent_histogram)
@@ -22,7 +21,7 @@ const SceneTimeSpentHistogram = ({ data, selectedScene }) => {
     item.name = data[index].name
   })
   return (
-    <Box h="500">
+    <Box h="300">
       <MyResponsiveLine
         res={timeSpentHistogramArr}
         selectedScene={selectedScene}
@@ -71,7 +70,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
   return (
     <ResponsiveLine
       data={memoizedData}
-      margin={{ top: 50, right: 20, bottom: 30, left: 40 }}
+      margin={{ top: 0, right: 20, bottom: 30, left: 40 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -146,7 +145,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             boxShadow="md"
             borderRadius="md"
             // bgColor={useColorModeValue("gray.700", "gray.300")}
-            sx={{ backdropFilter: "blur(5px)" }}
+            sx={{ backdropFilter: "blur(10px)" }}
             color={useColorModeValue("black", "white")}
           >
             <TableContainer>
@@ -164,7 +163,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
                       <Tr>
                         <Td>
                           <Box
-                            boxSize="10px"
+                            boxSize="12px"
                             bg={point.serieColor}
                             display="inline-block"
                             mr="2"
@@ -173,7 +172,9 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
                           {point.serieId}
                         </Td>
                         <Td isNumeric>
-                          <b>{Number(point.data.yFormatted)}</b>
+                          <Text as="kbd">
+                            <b>{Number(point.data.yFormatted)}</b>
+                          </Text>
                         </Td>
                       </Tr>
                     </Tbody>

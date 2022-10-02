@@ -6,7 +6,7 @@ import {
   Th,
   Tbody,
   Td,
-  useColorModeValue,
+  Text,
 } from "@chakra-ui/react"
 import moment from "moment"
 
@@ -28,9 +28,11 @@ const TooltipTable = ({ date, count, degraded }) => {
               // eslint-disable-next-line react-hooks/rules-of-hooks
               color={degraded && "red"}
             >
-              <b>
-                {count} {degraded && "(Degraded)"}
-              </b>
+              <Text as="kbd">
+                <b>
+                  {count} {degraded && "(Degraded)"}
+                </b>
+              </Text>
             </Td>
           </Tr>
         </Tbody>
