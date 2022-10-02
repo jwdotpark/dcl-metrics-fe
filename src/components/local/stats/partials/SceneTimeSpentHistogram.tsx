@@ -111,6 +111,16 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
       useMesh={true}
       curve="basis"
       enablePoints={false}
+      theme={{
+        textColor: useColorModeValue("gray.800", "white"),
+        grid: {
+          line: {
+            stroke: "gray",
+            opacity: 0.25,
+            strokeDasharray: "1 1",
+          },
+        },
+      }}
       legends={[
         {
           anchor: "top-right",
@@ -121,20 +131,22 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           itemsSpacing: 0,
           itemDirection: "right-to-left",
           itemWidth: 100,
-          itemHeight: 20,
+          itemHeight: 24,
           itemOpacity: 1,
           symbolSize: 12,
           symbolShape: "circle",
           symbolBorderColor: "rgba(0, 0, 0, .5)",
-          effects: [
-            {
-              on: "hover",
-              style: {
-                itemBackground: "rgba(0, 0, 0, .03)",
-                itemOpacity: 1,
-              },
-            },
-          ],
+          // itemTextColor: useColorModeValue("gray.800", "gray.200"),
+          itemTextColor: useColorModeValue("#1A202CFF", "white"),
+          // effects: [
+          //   {
+          //     on: "hover",
+          //     style: {
+          //       itemBackground: "rgba(0, 0, 0, .03)",
+          //       itemOpacity: 1,
+          //     },
+          //   },
+          // ],
         },
       ]}
       enableSlices="x"

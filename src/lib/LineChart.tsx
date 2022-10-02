@@ -114,6 +114,8 @@ const LineChart = ({ data, color }) => {
           legendOrientation: "horizontal",
         },
       ]}
+      curve="basis"
+      enablePoints={false}
       enableSlices="x"
       sliceTooltip={({ slice }) => {
         return (
