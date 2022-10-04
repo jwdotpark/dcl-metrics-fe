@@ -40,6 +40,7 @@ const LineChart = ({ data, color }) => {
       data={data}
       theme={{
         textColor: useColorModeValue("gray.800", "white"),
+        fontSize: 12,
         grid: {
           line: {
             stroke: "gray",

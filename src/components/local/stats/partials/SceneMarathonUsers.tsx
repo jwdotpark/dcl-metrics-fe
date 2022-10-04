@@ -36,7 +36,7 @@ const SceneMarathonUsers = ({ data }) => {
   const MarathonUserTable = () => {
     return (
       <TableContainer>
-        <Table size="sm" variant="striped" h="450px">
+        <Table size="sm" variant="simple" h="450px">
           <TableCaption>Marathon Users in this scene</TableCaption>
           <Thead>
             <Tr>

@@ -1,5 +1,8 @@
 import {
   Box,
+  Container,
+  SimpleGrid,
+  useColorModeValue,
   Table,
   TableCaption,
   TableContainer,
@@ -10,6 +13,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react"
+import StatBox from "./SceneStatBox"
 import CountUp from "react-countup"
 import RoadMap from "../../change/roadmap/RoadMap"
 import SceneSelector from "./SceneSelector"
@@ -40,7 +44,10 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
         selectedScene={selectedScene}
         setSelectedScene={setSelectedScene}
       /> */}
-      <TableContainer>
+      <StatBox data={res[selectedScene]} />
+
+      {/* table */}
+      {/* <TableContainer>
         <Table size="sm" variant="striped" h="450px">
           <TableCaption>
             table caption or link to the dedicated scene page
@@ -114,7 +121,7 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
             </Tr>
           </Tbody>
         </Table>
-      </TableContainer>
+      </TableContainer> */}
     </Box>
   )
 }

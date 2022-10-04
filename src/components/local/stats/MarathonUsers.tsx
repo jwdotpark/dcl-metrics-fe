@@ -192,7 +192,7 @@ const MarathonUsers = ({ isLoading, res }) => {
           {...getTableProps()}
           size="sm"
           overflowX="hidden"
-          variant="unstyled"
+          variant="simple"
           maxW="100%"
           h="500px"
           mb="6"

@@ -12,6 +12,7 @@ import {
   Th,
   Tbody,
   Td,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import { ResponsiveLine } from "@nivo/line"
 
@@ -33,6 +34,12 @@ const SceneTimeSpentHistogram = ({ data, selectedScene }) => {
 export default SceneTimeSpentHistogram
 
 const MyResponsiveLine = ({ res, selectedScene }) => {
+  const isMobile = useBreakpointValue({
+    base: false,
+    sm: true,
+    md: false,
+    lg: false,
+  })
   // selected line color
   const lineOpacity = 0.2
   const randomColor = () => {
@@ -62,17 +69,25 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
   colors[selectedScene] = colors[selectedScene].replace(lineOpacity, "1")
 
   const yAxisLabel = (value) => {
-    if (value % 2 === 0) {
+    if (value % 2 !== 0) {
       return ""
     }
     return value + ":00"
+  }
+
+  const yAxisLabelDegree = () => {
+    if (isMobile) {
+      return 90
+    } else {
+      return 0
+    }
   }
 
   return (
     <ResponsiveLine
       data={memoizedData}
       colors={colors}
-      margin={{ top: 0, right: 15, bottom: 25, left: 40 }}
+      margin={{ top: 0, right: 30, bottom: 50, left: 40 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -82,15 +97,17 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         reverse: false,
       }}
       yFormat=" >-.2f"
-      axisTop={{
-        orient: "left",
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: "Some description for scene histogram chart",
-        legendOffset: 10,
-        legendPosition: "middle",
-      }}
+      axisTop={
+        isMobile && {
+          orient: "left",
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          legend: "Some description for scene histogram chart",
+          legendOffset: 10,
+          legendPosition: "middle",
+        }
+      }
       axisRight={null}
       axisBottom={{
         orient: "bottom",
@@ -101,6 +118,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         legendOffset: -15,
         legendPosition: "middle",
         format: (value) => yAxisLabel(value),
+        tickRotation: yAxisLabelDegree(),
       }}
       axisLeft={{
         orient: "left",
@@ -108,7 +126,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         tickPadding: 5,
         tickRotation: 0,
         legend: "Visit Count",
-        legendOffset: 10,
+        legendOffset: 20,
         legendPosition: "middle",
       }}
       pointSize={10}
@@ -122,6 +140,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
       enablePoints={false}
       theme={{
         textColor: useColorModeValue("gray.800", "white"),
+        fontSize: 12,
         grid: {
           line: {
             stroke: "gray",
@@ -131,6 +150,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         },
       }}
       enableArea={true}
+      animate={true}
       areaOpacity={0.25}
       legends={[
         {

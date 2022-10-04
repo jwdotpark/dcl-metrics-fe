@@ -63,17 +63,25 @@ const Scene = ({ res }) => {
     xl: 3,
   })
 
+  const isMobile = useBreakpointValue({
+    base: false,
+    sm: true,
+    md: false,
+    lg: false,
+  })
+
   return (
     <Box mb="4">
       <GridBox box={box}>
         <Flex position="relative" mt="4" mx="5">
-          <Flex w="100%" mt="4">
+          <Flex w="100%" mt="4" flexDir={isMobile ? "column" : "row"}>
             <Box>
               <Text fontSize="2xl">
                 <b>{name}</b>
               </Text>
             </Box>
-            <Box position="absolute" top="2" right="0">
+            <Spacer />
+            <Box>
               <SceneSelector
                 res={res}
                 name={name}
@@ -83,17 +91,19 @@ const Scene = ({ res }) => {
             </Box>
           </Flex>
         </Flex>
-        <Box ml="6">
-          <Text fontSize="sm" color="gray.500">
-            Most populated scene in the Decentraland
-          </Text>
-        </Box>
+        {!isMobile && (
+          <Box ml="5" mt="-4">
+            <Text fontSize="sm" color="gray.500">
+              Most populated scene in the Decentraland
+            </Text>
+          </Box>
+        )}
 
         <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
           {/* <GridBox box={box}> */}
           <Box w="100%">
             <Center
-              h="calc(450px + 86px)"
+              h="calc(450px + 8rem)"
               m="4"
               boxShadow="sm"
               borderRadius="md"
@@ -107,9 +117,10 @@ const Scene = ({ res }) => {
           {/* </GridBox> */}
           <Box w="100%">
             <Box
-              h="auto"
-              m="4"
-              p="4"
+              // h="450px"
+              h="calc(450px + 8rem)"
+              mt="4"
+              // p="4"
               borderRadius="md"
               boxShadow="sm"
               border="2px solid"
@@ -124,7 +135,8 @@ const Scene = ({ res }) => {
           </Box>
           <Box w="100%">
             <Box
-              h="auto"
+              // h="auto"
+              h="calc(450px + 8rem)"
               m="4"
               p="4"
               borderRadius="md"
@@ -139,17 +151,7 @@ const Scene = ({ res }) => {
 
         <Box>
           <Flex>
-            <Box
-              w="50%"
-              minH="100%"
-              m="4"
-              mb="6"
-              p="4"
-              borderRadius="md"
-              boxShadow="sm"
-              border="2px solid"
-              borderColor={useColorModeValue("gray.300", "gray.500")}
-            >
+            <Box w="100%" minH="100%" m="4" mb="2" borderRadius="md">
               <SceneTimeSpentHistogram
                 data={res}
                 selectedScene={selectedScene}
