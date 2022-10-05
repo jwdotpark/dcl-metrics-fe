@@ -2,6 +2,7 @@ import { useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
+import staticScene from "../public/data/top_scenes.json"
 
 const axios = require("axios").default
 import fs from "fs"
@@ -14,6 +15,7 @@ import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import VisitedParcels from "../src/components/local/stats/parcels/UniqueVisitedParcels"
 import MarathonUsers from "../src/components/local/stats/MarathonUsers"
 import Explorer from "../src/components/local/stats/Explorer"
+import Scene from "../src/components/local/stats/Scene"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
@@ -106,6 +108,7 @@ const GlobalPage: NextPage = (props) => {
         <Explorer res={result.users} isLoading={isDataLoading} />
       </Grid>
 
+      {/* single scene component */}
       {/* <Scene res={staticScene} /> */}
 
       {/* scene & parcel map tables */}

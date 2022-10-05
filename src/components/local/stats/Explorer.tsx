@@ -23,6 +23,7 @@ import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
 import DateRange from "./daterange/TableDateRange"
 import TableLink from "./partials/TableLink"
+import TruncateName from "./partials/TruncatedName"
 
 const Explorer = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
@@ -69,10 +70,10 @@ const Explorer = ({ isLoading, res }) => {
       {
         Header: "Count",
         accessor: "parcels_visited",
-        width: 75,
+        width: 110,
         Cell: ({ value }) => {
           return (
-            <Box w="68px">
+            <Box w="100px">
               <Text
                 as="kbd"
                 color={useColorModeValue("gray.800", "gray.200")}
@@ -89,10 +90,10 @@ const Explorer = ({ isLoading, res }) => {
       {
         Header: "User",
         accessor: "name",
-        width: 195,
+        width: 230,
         Cell: ({ value, row }) => {
           return (
-            <Box w="140px">
+            <Box w="170px">
               <Box display="inline-block" ml="-6">
                 <Flex h="100%">
                   <Box>
@@ -104,7 +105,9 @@ const Explorer = ({ isLoading, res }) => {
                   </Box>
                   <Center minH="100%" ml="2">
                     <Text color={useColorModeValue("gray.800", "gray.200")}>
-                      {value && value.length > 16 ? (
+                      {value ? TruncateName(value) : "N/A"}
+
+                      {/* {value && value.length > 16 ? (
                         <Tooltip
                           fontSize="sm"
                           borderRadius="md"
@@ -116,7 +119,7 @@ const Explorer = ({ isLoading, res }) => {
                       ) : (
                         value
                       )}
-                      {!value && "N/A"}
+                      {!value && "N/A"} */}
                     </Text>
                   </Center>
                 </Flex>

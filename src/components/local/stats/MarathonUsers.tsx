@@ -25,6 +25,7 @@ import TableLink from "./partials/TableLink"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
 import TableDateRange from "./daterange/TableDateRange"
+import TruncateName from "./partials/TruncatedName"
 
 const MarathonUsers = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
@@ -68,7 +69,7 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "Time Spent",
         accessor: "time_spent",
-        width: 100,
+        width: 140,
         Cell: ({ value }) => {
           return (
             <Box w="100px">
@@ -88,11 +89,11 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "User",
         accessor: "name",
-        width: 195,
+        width: 200,
         Cell: ({ value, row }) => {
           return (
-            <Box w="137px">
-              <Box ml="-6">
+            <Box w="170px">
+              <Box ml="-6px">
                 <Flex h="100%">
                   <Box>
                     <ProfilePicture
@@ -103,20 +104,21 @@ const MarathonUsers = ({ isLoading, res }) => {
                   </Box>
                   <Center minH="100%" ml="2">
                     <Text color={useColorModeValue("gray.800", "gray.200")}>
-                      {value && value.length > 14 ? (
+                      {value ? TruncateName(value) : "N/A"}
+                      {/* {value && value.length > 14 ? (
                         <Tooltip
                           fontSize="sm"
                           borderRadius="md"
                           label={value}
                           placement="top"
                         >
-                          {value.slice(0, 14) + ".."}
+                          {value.slice(0, 25) + ".."}
                         </Tooltip>
                       ) : value ? (
                         value
                       ) : (
                         "N/A"
-                      )}
+                      )} */}
                     </Text>
                   </Center>
                 </Flex>
