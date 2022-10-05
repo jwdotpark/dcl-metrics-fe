@@ -11,6 +11,8 @@ const TableMap = ({ mapUrl }) => {
   const size = 15
   const mapWithSize = mapUrl.replace("size=15", `size=${size}`)
   const responsiveWidth = useBreakpointValue({
+    base: "100%",
+    sm: "150px",
     md: "100px",
     lg: "200px",
     xl: "275px",
@@ -19,7 +21,7 @@ const TableMap = ({ mapUrl }) => {
   return (
     <Box
       w={responsiveWidth}
-      h="100px"
+      maxH="100px"
       borderRadius="xl"
       overflow="clip"
       border="2px solid"

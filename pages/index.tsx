@@ -20,7 +20,8 @@ const axios = require("axios").default
 import fs from "fs"
 
 import Layout from "../src/components/layout/layout"
-import AccordionBox from "../src/components/local/stats/partials/AccordionBox"
+import SceneLayout from "../src/components/layout/global/SceneLayout"
+import ParcelLayout from "../src/components/layout/global/ParcelLayout"
 
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import VisitedParcels from "../src/components/local/stats/parcels/UniqueVisitedParcels"
@@ -126,48 +127,18 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       {/* <TempError /> */}
-      <Scene res={staticScene} />
+      {/* <Scene res={staticScene} /> */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
         <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
       </Grid>
-      {/* scene */}
 
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
-        <TopScenesVisitors res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesLogout res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesTimeSpentAFK
-          res={result.scenes}
-          isSceneLoading={isDataLoading}
-        />
-      </Grid>
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
-        {/* parcel */}
-        <AvgTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <LogInTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <AFKTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <LogOutTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <MostVisitedParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-      </Grid>
+      <Accordion defaultIndex={[0]} allowMultiple>
+        <SceneLayout result={result} isDataLoading={isDataLoading} />
+        <ParcelLayout result={result} isDataLoading={isDataLoading} />
+      </Accordion>
     </Layout>
   )
 }
