@@ -20,7 +20,7 @@ const PieChartComponent = () => {
       h={box.h}
       bg={box.bg}
       borderRadius="md"
-      boxShadow="md"
+      shadow="md"
     >
       <ComponentHeader name="Pie Chart" />
       <PieChart data={data} />

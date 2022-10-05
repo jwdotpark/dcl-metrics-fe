@@ -104,10 +104,10 @@ export default function SidebarWithHeader({
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
-        placement="left"
         onClose={onClose}
-        returnFocusOnClose={false}
         onOverlayClick={onClose}
+        placement="left"
+        returnFocusOnClose={false}
         size="full"
       >
         <DrawerContent>
@@ -141,31 +141,31 @@ const SidebarContent = ({
   const { colorMode } = useColorMode()
   return (
     <Box
-      transition=".25s ease"
+      pos="fixed"
+      w={{ base: "full", md: sidebarStatus }}
+      h="full"
       bg={useColorModeValue("white", "gray.900")}
+      // NOTE
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
-      // NOTE
-      w={{ base: "full", md: sidebarStatus }}
-      pos="fixed"
-      h="full"
+      transition=".25s ease"
       {...rest}
       overflow="clip"
     >
       <Flex
+        align="center"
+        justify="space-between"
         h="20"
-        alignItems="center"
         ml="4"
-        justifyContent="space-between"
         cursor="pointer"
       >
         <Link href="/" passHref>
           <HStack>
-            <Image src={logo.src} alt="logo" boxSize="26px" boxShadow="md" />
+            <Image boxSize="26px" shadow="md" alt="logo" src={logo.src} />
             <Text
-              wordBreak="keep-all"
               fontSize="20px"
               fontWeight="extrabold"
+              wordBreak="keep-all"
               css={{ transform: "translateY(-1px)" }}
               data-testid="sidebar-title"
             >
@@ -178,10 +178,10 @@ const SidebarContent = ({
       </Flex>
       <Flex direction="column" gap="1" h="calc(100vh - 6rem)">
         <Tooltip
-          label="Global Dashboard"
-          placement="right"
           fontSize="sm"
           borderRadius="md"
+          label="Global Dashboard"
+          placement="right"
         >
           <Box>
             <Link href="/" passHref>
@@ -194,7 +194,7 @@ const SidebarContent = ({
                     useColorModeValue("gray.200", "gray.700")
                   }
                 >
-                  <Text fontSize="lg" as={router.pathname === "/" && "u"}>
+                  <Text as={router.pathname === "/" && "u"} fontSize="lg">
                     Global
                   </Text>
                 </NavItem>
@@ -203,10 +203,10 @@ const SidebarContent = ({
           </Box>
         </Tooltip>
         <Tooltip
-          label="Roadmap"
-          placement="right"
           fontSize="sm"
           borderRadius="md"
+          label="Roadmap"
+          placement="right"
         >
           <Box>
             <Link href="/roadmap" passHref>
@@ -221,8 +221,8 @@ const SidebarContent = ({
                   }
                 >
                   <Text
-                    fontSize="lg"
                     as={router.pathname === "/roadmap" && "u"}
+                    fontSize="lg"
                   >
                     Roadmap
                   </Text>
@@ -232,10 +232,10 @@ const SidebarContent = ({
           </Box>
         </Tooltip>
         <Tooltip
-          label="About"
-          placement="right"
           fontSize="sm"
           borderRadius="md"
+          label="About"
+          placement="right"
         >
           <Box>
             <Link href="/about" passHref>
@@ -249,7 +249,7 @@ const SidebarContent = ({
                     useColorModeValue("gray.200", "gray.700")
                   }
                 >
-                  <Text fontSize="lg" as={router.pathname === "/about" && "u"}>
+                  <Text as={router.pathname === "/about" && "u"} fontSize="lg">
                     About
                   </Text>
                 </NavItem>
@@ -259,10 +259,10 @@ const SidebarContent = ({
         </Tooltip>
         <Spacer />
         <Tooltip
-          label={sidebarOpen ? "Collapse" : "Expand"}
-          placement="right"
           fontSize="sm"
           borderRadius="md"
+          label={sidebarOpen ? "Collapse" : "Expand"}
+          placement="right"
         >
           <Box display={{ base: "none", md: "block" }}>
             <NavItem
@@ -294,29 +294,29 @@ interface NavItemProps extends FlexProps {
 }
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   return (
-    <Box style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+    <Box _focus={{ boxShadow: "none" }} style={{ textDecoration: "none" }}>
       <Flex
         align="center"
-        px="1"
         mx="2"
+        px="1"
         borderRadius="lg"
-        role="group"
-        cursor="pointer"
         _hover={{
           bg: "gray.400",
           color: "white",
         }}
+        cursor="pointer"
+        role="group"
         {...rest}
       >
         {icon && (
           <Center px="2" py="4">
             <Icon
+              as={icon}
               mr="4"
               fontSize="16"
               _groupHover={{
                 color: "white",
               }}
-              as={icon}
             />
           </Center>
         )}
@@ -333,33 +333,33 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
       // NOTE
-      transition=".25s ease"
+      align="center"
+      justify={{ base: "space-between", md: "flex-end" }}
+      h="20"
       ml={{ base: 0, md: sidebarStatus }}
       px={{ base: 4, md: 4 }}
-      height="20"
-      alignItems="center"
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent={{ base: "space-between", md: "flex-end" }}
+      transition=".25s ease"
       {...rest}
     >
       <IconButton
         display={{ base: "flex", md: "none" }}
-        onClick={onOpen}
-        variant="outline"
         aria-label="open menu"
         icon={<FiMenu />}
+        onClick={onOpen}
+        variant="outline"
       />
 
       <Text
         display={{ base: "flex", md: "none" }}
-        fontSize="2xl"
         fontFamily="sans-serif"
+        fontSize="2xl"
         fontWeight="bold"
       >
         <HStack>
-          <Image src={logo.src} alt="logo" boxSize="26px" boxShadow="md" />
+          <Image boxSize="26px" shadow="md" alt="logo" src={logo.src} />
           <Text
             fontSize="23px"
             fontWeight="extrabold"

@@ -124,13 +124,13 @@ const LineChart = ({ data, color }) => {
             {slice.points.map((point, i) => (
               <Box
                 key={i}
+                sx={{ backdropFilter: "blur(5px)" }}
                 pt="2"
-                boxShadow="md"
-                borderRadius="md"
+                color={useColorModeValue("black", "white")}
                 // bgColor={useColorModeValue("gray.700", "gray.300")}
                 // color={useColorModeValue("white", "black")}
-                sx={{ backdropFilter: "blur(5px)" }}
-                color={useColorModeValue("black", "white")}
+                borderRadius="md"
+                shadow="md"
               >
                 <TooltipTable
                   date={point.data.xFormatted}

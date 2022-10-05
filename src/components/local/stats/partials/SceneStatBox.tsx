@@ -1,4 +1,4 @@
-import { Box, useColorModeValue, Container, SimpleGrid } from "@chakra-ui/react"
+import { Box, useColorModeValue, Container, SimpleGrid, Flex } from "@chakra-ui/react"
 import {} from "framer-motion"
 import CountUp from "react-countup"
 
@@ -36,32 +36,31 @@ const StatBox = ({ data }) => {
 
   const Stat = ({ label, value }) => {
     return (
-      <Box
+      <Flex
+        align="center"
+        justify="center"
+        direction="column"
         w="100%"
         h="100%"
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
+        px="2"
         bg={useColorModeValue("gray.100", "gray.800")}
         border="1px solid"
-        boxShadow="md"
-        borderRadius="md"
         borderColor={useColorModeValue("gray.200", " gray.600")}
-        px="2"
+        borderRadius="md"
+        shadow="md"
         // py="3"
       >
-        <Box fontSize="3xl" fontWeight="semibold" textAlign="center" as="kbd">
+        <Box as="kbd" fontSize="3xl" fontWeight="semibold" textAlign="center">
           <CountUp end={parseFloat(value)} duration={0.5} />
         </Box>
         <Box
-          fontSize="sm"
           color={useColorModeValue("gray.600", "gray.400")}
+          fontSize="sm"
           textAlign="center"
         >
           {mutateString(label)}
         </Box>
-      </Box>
+      </Flex>
     )
   }
   return (
@@ -74,13 +73,13 @@ const StatBox = ({ data }) => {
     >
       <Container>
         <SimpleGrid
-          columns={{
-            base: 1,
-            md: 2,
-          }}
           gap={{
             base: "2",
             md: "4",
+          }}
+          columns={{
+            base: 1,
+            md: 2,
           }}
         >
           {filteredStats.map(({ label, value }) => (

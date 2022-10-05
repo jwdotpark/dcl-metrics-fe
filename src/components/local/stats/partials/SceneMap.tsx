@@ -4,7 +4,7 @@ const SceneMap = (props) => {
   const { url } = props
   return (
     <Flex w="100%" h="100%">
-      <Image w="100%" h="100%" src={url} alt="map image" objectFit="cover" />
+      <Image w="100%" h="100%" objectFit="cover" alt="map image" src={url} />
     </Flex>
   )
 }

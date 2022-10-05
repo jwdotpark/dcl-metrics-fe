@@ -10,12 +10,12 @@ const ColorButton = () => {
   return (
     <>
       <Tooltip
-        label="Toggle Color Mode"
-        placement="auto"
         fontSize="sm"
         borderRadius="md"
+        label="Toggle Color Mode"
+        placement="auto"
       >
-        <Button size="lg" variant="link" onClick={toggleColorMode}>
+        <Button onClick={toggleColorMode} size="lg" variant="link">
           {colorMode === "light" ? <FiMoon /> : <FiSun />}
         </Button>
       </Tooltip>

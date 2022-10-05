@@ -98,14 +98,14 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
   const TableComponent = () => {
     return (
       <>
-        <TableContainer whiteSpace="nowrap" borderColor="gray.400" mt="2">
+        <TableContainer mt="2" borderColor="gray.400" whiteSpace="nowrap">
           <Table
             {...getTableProps()}
-            size="sm"
-            variant="striped"
-            colorScheme="gray"
-            // height="520"
             overflowX="hidden"
+            colorScheme="gray"
+            size="sm"
+            // height="520"
+            variant="striped"
           >
             <Thead>
               {headerGroups.map((headerGroup, i) => (
@@ -146,7 +146,7 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
   return (
     <>
       <GridBox box={box}>
-        <Flex position="relative" mt="4" mx="5">
+        <Flex pos="relative" mt="4" mx="5">
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
@@ -156,13 +156,13 @@ const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
           </Flex>
         </Flex>
         <Box ml="6">
-          <Text fontSize="sm" color="gray.500">
+          <Text color="gray.500" fontSize="sm">
             Parcels with the most visit count in the last period
           </Text>
         </Box>
         <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isParcelLoading ? (
-          <Box mx="4" mb="8">
+          <Box mb="8" mx="4">
             <TableComponent />
           </Box>
         ) : (

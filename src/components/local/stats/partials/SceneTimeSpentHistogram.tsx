@@ -174,14 +174,14 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
       sliceTooltip={({ slice }) => {
         return (
           <Box
-            p="2"
-            boxShadow="md"
-            borderRadius="md"
             sx={{ backdropFilter: "blur(10px)" }}
+            p="2"
             color={useColorModeValue("black", "white")}
+            borderRadius="md"
+            shadow="md"
           >
             <TableContainer>
-              <Table variant="simple" size="sm">
+              <Table size="sm" variant="simple">
                 <Thead>
                   <Tr>
                     <Th>Scene</Th>
@@ -195,10 +195,10 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
                       <Tr>
                         <Td>
                           <Box
-                            boxSize="12px"
-                            bg={point.serieColor}
                             display="inline-block"
+                            boxSize="12px"
                             mr="2"
+                            bg={point.serieColor}
                             borderRadius="md"
                           />
                           {point.serieId}

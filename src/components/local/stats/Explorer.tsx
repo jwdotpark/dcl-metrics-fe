@@ -102,10 +102,10 @@ const Explorer = ({ isLoading, res }) => {
                     <Text color={useColorModeValue("gray.800", "gray.200")}>
                       {value && value.length > 16 ? (
                         <Tooltip
-                          label={value}
-                          placement="top"
                           fontSize="sm"
                           borderRadius="md"
+                          label={value}
+                          placement="top"
                         >
                           {value.slice(0, 16) + ".."}
                         </Tooltip>
@@ -183,15 +183,15 @@ const Explorer = ({ isLoading, res }) => {
   const TableComponent = () => {
     const { colorMode } = useColorMode()
     return (
-      <TableContainer mx="4" whiteSpace="nowrap" mt="4">
+      <TableContainer mt="4" mx="4" whiteSpace="nowrap">
         <Table
           {...getTableProps()}
-          size="sm"
-          variant="simple"
           overflowX="hidden"
           maxW="100%"
           h="500px"
           mb="6"
+          size="sm"
+          variant="simple"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (
@@ -202,7 +202,7 @@ const Explorer = ({ isLoading, res }) => {
               >
                 {headerGroup.headers.map((column, j) => (
                   // <Th key={j} maxW="6rem" minW={j === 2 && "12rem"}>
-                  <Th key={j} width={column.width}>
+                  <Th key={j} w={column.width}>
                     {column.render("Header")}
                   </Th>
                 ))}
@@ -246,7 +246,7 @@ const Explorer = ({ isLoading, res }) => {
 
   return (
     <GridBox box={box}>
-      <Flex position="relative" mt="4" mx="5">
+      <Flex pos="relative" mt="4" mx="5">
         <Flex w="100%">
           <Box>
             <Text fontSize="2xl">
@@ -256,7 +256,7 @@ const Explorer = ({ isLoading, res }) => {
         </Flex>
       </Flex>
       <Box ml="6">
-        <Text fontSize="sm" color="gray.500">
+        <Text color="gray.500" fontSize="sm">
           Users that visited the most parcels in the last period
         </Text>
       </Box>

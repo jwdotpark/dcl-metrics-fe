@@ -91,14 +91,14 @@ const ScenesLogout = ({ res, isSceneLoading }) => {
   const TableComponent = () => {
     return (
       <>
-        <TableContainer whiteSpace="nowrap" borderColor="gray.400" mt="2">
+        <TableContainer mt="2" borderColor="gray.400" whiteSpace="nowrap">
           <Table
             {...getTableProps()}
-            size="sm"
-            variant="striped"
-            colorScheme="gray"
-            // height="520"
             overflowX="hidden"
+            colorScheme="gray"
+            size="sm"
+            // height="520"
+            variant="striped"
           >
             <Thead>
               {headerGroups.map((headerGroup, i) => (
@@ -139,7 +139,7 @@ const ScenesLogout = ({ res, isSceneLoading }) => {
   return (
     <>
       <GridBox box={box}>
-        <Flex position="relative" mt="4" mx="5">
+        <Flex pos="relative" mt="4" mx="5">
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
@@ -149,13 +149,13 @@ const ScenesLogout = ({ res, isSceneLoading }) => {
           </Flex>
         </Flex>
         <Box ml="6">
-          <Text fontSize="sm" color="gray.500">
+          <Text color="gray.500" fontSize="sm">
             Scenes with the most logouts in the last period
           </Text>
         </Box>
         <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isSceneLoading ? (
-          <Box mx="4" mb="8">
+          <Box mb="8" mx="4">
             <TableComponent />
           </Box>
         ) : (

@@ -13,7 +13,7 @@ import moment from "moment"
 const TooltipTable = ({ date, count, degraded }) => {
   return (
     <TableContainer>
-      <Table variant="simple" size="sm">
+      <Table size="sm" variant="simple">
         <Thead>
           <Tr>
             <Th>Date</Th>
@@ -24,9 +24,9 @@ const TooltipTable = ({ date, count, degraded }) => {
           <Tr>
             <Td>{moment(date).format("YYYY MMMM Do")}</Td>
             <Td
-              isNumeric
-              // eslint-disable-next-line react-hooks/rules-of-hooks
               color={degraded && "red"}
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              isNumeric
             >
               <Text as="kbd">
                 <b>

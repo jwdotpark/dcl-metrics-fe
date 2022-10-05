@@ -15,38 +15,38 @@ const LineChartDateRange = ({ dateRange, setDateRange }) => {
       <Box zIndex="1" mt="1">
         <HStack>
           <ButtonGroup
+            w="100%"
+            borderRadius="md"
+            shadow="md"
             isAttached
             size="sm"
             variant="outline"
-            boxShadow="md"
-            borderRadius="md"
-            w="100%"
           >
             <Button
               w="100%"
-              onClick={() => setDateRange(7)}
               bgColor={dateRange === 7 && btnColor}
+              onClick={() => setDateRange(7)}
             >
               7d
             </Button>
             <Button
               w="100%"
-              onClick={() => setDateRange(14)}
               bgColor={dateRange === 14 && btnColor}
+              onClick={() => setDateRange(14)}
             >
               14d
             </Button>
             <Button
               w="100%"
-              onClick={() => setDateRange(30)}
               bgColor={dateRange === 30 && btnColor}
+              onClick={() => setDateRange(30)}
             >
               30d
             </Button>
             <Button
               w="100%"
-              onClick={() => setDateRange(90)}
               bgColor={dateRange === 90 && btnColor}
+              onClick={() => setDateRange(90)}
             >
               90d
             </Button>

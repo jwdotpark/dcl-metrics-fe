@@ -25,17 +25,17 @@ const AvgStat = ({ avg, data }) => {
   })
 
   return (
-    <Box position="absolute" right="0">
+    <Box pos="absolute" right="0">
       <Box>
         <Flex>
           {/* <Text fontSize="2xl" mr="2">
             Average:
           </Text> */}
           <Tooltip
-            label={`Average count for ${data.length} days`}
-            placement="top"
             fontSize="sm"
             borderRadius="md"
+            label={`Average count for ${data.length} days`}
+            placement="top"
           >
             <Box w="100%">
               <Center h="100%" mr="1">
@@ -45,9 +45,9 @@ const AvgStat = ({ avg, data }) => {
           </Tooltip>
           <Spacer />
           <Text
+            color={useColorModeValue("#ff5555", "#50fa7b")}
             fontSize="2xl"
             fontWeight="extrabold"
-            color={useColorModeValue("#ff5555", "#50fa7b")}
             cursor="grab"
           >
             <CountUp end={avg} duration={0.5} />

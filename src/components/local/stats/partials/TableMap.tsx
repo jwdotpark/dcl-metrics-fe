@@ -20,19 +20,19 @@ const TableMap = ({ mapUrl }) => {
 
   return (
     <Box
+      overflow="clip"
       w={responsiveWidth}
       maxH="100px"
-      borderRadius="xl"
-      overflow="clip"
       border="2px solid"
       borderColor={useColorModeValue("gray.200", "gray.600")}
+      borderRadius="xl"
     >
       <Center h="100%">
         <Image
           borderRadius="md"
-          src={mapWithSize}
-          alt="map image"
           objectFit="cover"
+          alt="map image"
+          src={mapWithSize}
         />
       </Center>
     </Box>

@@ -15,7 +15,7 @@ const Roadmap = () => {
 
   return (
     <Layout>
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
+      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`}>
         <GridBox box={box}>
           <RoadMap />
         </GridBox>

@@ -73,8 +73,8 @@ const Scene = ({ res }) => {
   return (
     <Box mb="4">
       <GridBox box={box}>
-        <Flex position="relative" mt="4" mx="5">
-          <Flex w="100%" mt="4" flexDir={isMobile ? "column" : "row"}>
+        <Flex pos="relative" mt="4" mx="5">
+          <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
             <Box>
               <Text fontSize="2xl">
                 <b>{name}</b>
@@ -92,24 +92,24 @@ const Scene = ({ res }) => {
           </Flex>
         </Flex>
         {!isMobile && (
-          <Box ml="5" mt="-4">
-            <Text fontSize="sm" color="gray.500">
+          <Box mt="-4" ml="5">
+            <Text color="gray.500" fontSize="sm">
               Most populated scene in the Decentraland
             </Text>
           </Box>
         )}
 
-        <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`}>
           {/* <GridBox box={box}> */}
           <Box w="100%">
             <Center
+              overflow="clip"
               h="calc(450px + 8rem)"
               m="4"
-              boxShadow="sm"
-              borderRadius="md"
-              overflow="clip"
               border="2px solid"
               borderColor={useColorModeValue("gray.300", "gray.500")}
+              borderRadius="md"
+              shadow="sm"
             >
               <SceneMap url={map_url} />
             </Center>
@@ -121,10 +121,10 @@ const Scene = ({ res }) => {
               h="calc(450px + 8rem)"
               mt="4"
               // p="4"
-              borderRadius="md"
-              boxShadow="sm"
               border="2px solid"
               borderColor={useColorModeValue("gray.300", "gray.500")}
+              borderRadius="md"
+              shadow="sm"
             >
               <Scenetable
                 res={res}
@@ -139,10 +139,10 @@ const Scene = ({ res }) => {
               h="calc(450px + 8rem)"
               m="4"
               p="4"
-              borderRadius="md"
-              boxShadow="sm"
               border="2px solid"
               borderColor={useColorModeValue("gray.300", "gray.500")}
+              borderRadius="md"
+              shadow="sm"
             >
               <SceneMarathonUsers data={res[selectedScene].marathon_users} />
             </Box>

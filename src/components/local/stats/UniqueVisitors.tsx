@@ -68,7 +68,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
       },
     ]
     return (
-      <GridItem w={box.w} h="300" bg={box.bg} borderRadius="md" mb="4">
+      <GridItem w={box.w} h="300" mb="4" bg={box.bg} borderRadius="md">
         <LineChart data={result} color={color} />
       </GridItem>
     )
@@ -77,7 +77,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
   return (
     <>
       <GridBox box={box}>
-        <Flex position="relative" mt="4" mx="5">
+        <Flex pos="relative" mt="4" mx="5">
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
@@ -89,7 +89,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
           </Flex>
         </Flex>
         <Box ml="6">
-          <Text fontSize="sm" color="gray.500">
+          <Text color="gray.500" fontSize="sm">
             Unique vistors per day in the last period
           </Text>
         </Box>

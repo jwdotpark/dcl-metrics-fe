@@ -9,7 +9,7 @@ const GridBox = ({ box, children }: any) => {
         h={box.h}
         bg={box.bg}
         borderRadius="md"
-        boxShadow="md"
+        shadow="md"
       >
         {children}
       </GridItem>

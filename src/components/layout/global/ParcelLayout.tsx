@@ -26,15 +26,15 @@ const ParcelLayout = ({ result, isDataLoading }) => {
       <h2>
         <AccordionButton
           bg={useColorModeValue("gray.300", "gray.600")}
+          _hover={{
+            bg: useColorModeValue("gray.400", "gray.700"),
+          }}
           _expanded={{
             bg: useColorModeValue("gray.300", "gray.600"),
             color: useColorModeValue("gray.800", "white"),
           }}
-          _hover={{
-            bg: useColorModeValue("gray.400", "gray.700"),
-          }}
         >
-          <Box flex="1" textAlign="center" py="2">
+          <Box flex="1" py="2" textAlign="center">
             <Text fontSize="2xl" fontWeight="semibold">
               PARCEL
             </Text>
@@ -43,7 +43,7 @@ const ParcelLayout = ({ result, isDataLoading }) => {
         </AccordionButton>
       </h2>
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
-        <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <AvgTimeSpentParcel
             parcel={result.parcels}
             isParcelLoading={isDataLoading}

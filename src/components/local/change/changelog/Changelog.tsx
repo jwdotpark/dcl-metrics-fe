@@ -18,8 +18,8 @@ const ChangeLog = () => {
     return (
       <>
         {minorchangeTemplate.map((change, i) => (
-          <Box mb={3} textAlign="left" key={i}>
-            <Heading fontSize="4xl" fontWeight="600" my={8}>
+          <Box key={i} mb={3} textAlign="left">
+            <Heading my={8} fontSize="4xl" fontWeight="600">
               {change.date}
             </Heading>
             {change.contents.map((content, j) => {
@@ -32,9 +32,9 @@ const ChangeLog = () => {
                     <Text fontWeight="bold">{content.title}</Text>
                     <Text
                       my="4"
-                      fontSize="sm"
                       // eslint-disable-next-line
                       color={useColorModeValue("gray.600", "gray.400")}
+                      fontSize="sm"
                       wordBreak="break-word"
                     >
                       {content.description}
@@ -50,8 +50,8 @@ const ChangeLog = () => {
   }
 
   return (
-    <Container maxW="7xl" p={{ base: 2, sm: 10 }} ml="4">
-      <VStack textAlign="start" align="start" mb={2}>
+    <Container maxW="7xl" ml="4" p={{ base: 2, sm: 10 }}>
+      <VStack align="start" mb={2} textAlign="start">
         <chakra.h3
           fontSize="4xl"
           fontWeight="bold"
@@ -85,21 +85,21 @@ const MilestoneItem: React.FC<MilestoneItemProps> = ({
   const color = useColorModeValue("gray.700", "gray.500")
   return (
     <Flex minH={24} {...props}>
-      <Flex flexDir="column" alignItems="center" mr={4} pos="relative">
+      <Flex pos="relative" align="center" direction="column" mr={4}>
         <Circle
-          size={12}
           bg={useColorModeValue("gray.600", "gray.500")}
           opacity={useColorModeValue(0.07, 0.15)}
+          size={12}
         />
         <Box
           as={icon}
-          size="1.25rem"
-          color={color}
           pos="absolute"
-          left="0.875rem"
           top="0.875rem"
+          left="0.875rem"
+          color={color}
+          size="1.25rem"
         />
-        {!skipTrail && <Box w="2px" flex={1} bg="gray.400" my={1} />}
+        {!skipTrail && <Box flex={1} w="2px" my={1} bg="gray.400" />}
       </Flex>
       <Box pt={{ base: 1, sm: 2 }} {...boxProps}>
         {children}

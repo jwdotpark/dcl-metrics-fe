@@ -104,10 +104,10 @@ const MarathonUsers = ({ isLoading, res }) => {
                     <Text color={useColorModeValue("gray.800", "gray.200")}>
                       {value && value.length > 14 ? (
                         <Tooltip
-                          label={value}
-                          placement="top"
                           fontSize="sm"
                           borderRadius="md"
+                          label={value}
+                          placement="top"
                         >
                           {value.slice(0, 14) + ".."}
                         </Tooltip>
@@ -187,15 +187,15 @@ const MarathonUsers = ({ isLoading, res }) => {
   const TableComponent = () => {
     const { colorMode } = useColorMode()
     return (
-      <TableContainer mx="4" whiteSpace="nowrap" mt="4">
+      <TableContainer mt="4" mx="4" whiteSpace="nowrap">
         <Table
           {...getTableProps()}
-          size="sm"
           overflowX="hidden"
-          variant="simple"
           maxW="100%"
           h="500px"
           mb="6"
+          size="sm"
+          variant="simple"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (
@@ -207,7 +207,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                 {headerGroup.headers.map((column, j) => (
                   <Th
                     key={j}
-                    width={column.width}
+                    w={column.width}
                     // sorting
                     // {...column.getHeaderProps(column.getSortByToggleProps())}
                   >
@@ -255,7 +255,7 @@ const MarathonUsers = ({ isLoading, res }) => {
     <>
       <GridBox box={box}>
         <>
-          <Flex position="relative" mt="4" mx="5">
+          <Flex pos="relative" mt="4" mx="5">
             <Flex w="100%">
               <Box>
                 <Text fontSize="2xl">
@@ -265,7 +265,7 @@ const MarathonUsers = ({ isLoading, res }) => {
             </Flex>
           </Flex>
           <Box ml="6">
-            <Text fontSize="sm" color="gray.500">
+            <Text color="gray.500" fontSize="sm">
               Users with most online time in the last period
             </Text>
           </Box>
