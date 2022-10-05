@@ -36,7 +36,7 @@ const SceneLayout = ({ result, isDataLoading }) => {
         >
           <Box flex="1" py="2" textAlign="center">
             <Text fontSize="2xl" fontWeight="semibold">
-              SCENE
+              Global Scene
             </Text>
           </Box>
           <AccordionIcon />

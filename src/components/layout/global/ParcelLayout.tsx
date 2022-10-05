@@ -36,7 +36,7 @@ const ParcelLayout = ({ result, isDataLoading }) => {
         >
           <Box flex="1" py="2" textAlign="center">
             <Text fontSize="2xl" fontWeight="semibold">
-              PARCEL
+              Global Parcel
             </Text>
           </Box>
           <AccordionIcon />
