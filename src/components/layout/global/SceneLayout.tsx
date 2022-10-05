@@ -8,7 +8,6 @@ import {
   Grid,
   Text,
   useBreakpointValue,
-  Tooltip,
 } from "@chakra-ui/react"
 import ScenesLogin from "../../local/stats/scenes/ScenesLogin"
 import ScenesLogout from "../../local/stats/scenes/ScenesLogout"

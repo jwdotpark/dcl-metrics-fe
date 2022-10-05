@@ -7,7 +7,6 @@ import {
   AccordionIcon,
   AccordionPanel,
   Grid,
-  Accordion,
   useBreakpointValue,
 } from "@chakra-ui/react"
 import AFKTimeSpentParcel from "../../local/stats/parcels/AFKTimeSpentParcel"

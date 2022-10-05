@@ -102,7 +102,6 @@ export async function getStaticProps() {
       revalidate: day,
     }
   } else {
-    // in any case req fails, use the cached data
     const data = staticGlobal
     return {
       props: { data },
@@ -111,11 +110,9 @@ export async function getStaticProps() {
 }
 
 const GlobalPage: NextPage = (props) => {
-  // SSR suppressed loading state completely for now
   const [isDataLoading, setIsDataLoading] = useState(false)
 
   // @ts-ignore
-  // const result = data.data
   const result = props.data
 
   const gridColumn = useBreakpointValue({
