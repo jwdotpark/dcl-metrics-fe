@@ -1,4 +1,4 @@
-import { GridItem } from "@chakra-ui/react"
+import { GridItem, useColorModeValue } from "@chakra-ui/react"
 
 const GridBox = ({ box, children }: any) => {
   return (
@@ -8,7 +8,9 @@ const GridBox = ({ box, children }: any) => {
         maxW={box.w}
         h={box.h}
         bg={box.bg}
-        borderRadius="md"
+        border="1px solid"
+        borderColor={useColorModeValue("gray.300", "gray.700")}
+        borderRadius="xl"
         shadow="md"
       >
         {children}

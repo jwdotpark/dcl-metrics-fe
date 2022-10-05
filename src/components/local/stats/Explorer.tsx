@@ -128,17 +128,17 @@ const Explorer = ({ isLoading, res }) => {
       {
         Header: "Address",
         accessor: "address",
-        width: 360,
+        width: 155,
         Cell: ({ value }) => {
           return (
-            <Flex w="330px">
+            <Flex w="120px">
               <Box display="inline-block" onClick={() => handleToast(value)}>
                 <Text
                   as="kbd"
                   color={useColorModeValue("gray.800", "gray.200")}
                   _hover={{ color: "gray.600", cursor: "pointer" }}
                 >
-                  {value}
+                  {value.slice(0, 7) + ".." + value.slice(-7, -1)}
                 </Text>
               </Box>
             </Flex>
@@ -148,7 +148,7 @@ const Explorer = ({ isLoading, res }) => {
       {
         Header: "Link",
         accessor: "",
-        width: -10,
+        width: 40,
         Cell: ({ row }) => {
           return (
             <Flex>
