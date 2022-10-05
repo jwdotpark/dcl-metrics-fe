@@ -18,7 +18,7 @@ import CountUp from "react-countup"
 import RoadMap from "../../change/roadmap/RoadMap"
 import SceneSelector from "./SceneSelector"
 
-const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
+const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
   const {
     name,
     map_url,
@@ -126,4 +126,4 @@ const SceneTable = ({ res, selectedScene, setSelectedScene }) => {
   )
 }
 
-export default SceneTable
+export default SceneStats

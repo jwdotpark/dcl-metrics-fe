@@ -100,6 +100,8 @@ const GlobalPage: NextPage = (props) => {
 
   return (
     <Layout>
+      {/* single scene component */}
+      <Scene res={staticScene} />
       {/* <TempError /> */}
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
@@ -107,9 +109,6 @@ const GlobalPage: NextPage = (props) => {
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
       </Grid>
-
-      {/* single scene component */}
-      {/* <Scene res={staticScene} /> */}
 
       {/* scene & parcel map tables */}
       <Accordion allowMultiple defaultIndex={[0]}>

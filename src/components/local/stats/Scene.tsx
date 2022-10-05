@@ -14,7 +14,7 @@ import {
 import { useState } from "react"
 import GridBox from "../GridBox"
 import SceneMap from "./partials/SceneMap"
-import Scenetable from "./partials/SceneTable"
+import SceneStats from "./partials/SceneStats"
 import SceneMarathonUsers from "./partials/SceneMarathonUsers"
 import SceneTimeSpentHistogram from "./partials/SceneTimeSpentHistogram"
 import SceneSelector from "./partials/SceneSelector"
@@ -70,6 +70,13 @@ const Scene = ({ res }) => {
     lg: false,
   })
 
+  const chartWidth = useBreakpointValue({
+    base: "100%",
+    sm: "100%",
+    md: "100%",
+    lg: "50%",
+  })
+
   return (
     <Box mb="4">
       <GridBox box={box}>
@@ -101,37 +108,14 @@ const Scene = ({ res }) => {
 
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`}>
           {/* <GridBox box={box}> */}
-          <Box w="100%">
-            <Center
-              overflow="clip"
-              h="calc(450px + 8rem)"
-              m="4"
-              border="2px solid"
-              borderColor={useColorModeValue("gray.300", "gray.500")}
-              borderRadius="md"
-              shadow="sm"
-            >
-              <SceneMap url={map_url} />
-            </Center>
-          </Box>
+          <SceneMap url={map_url} />
           {/* </GridBox> */}
-          <Box w="100%">
-            <Box
-              // h="450px"
-              h="calc(450px + 8rem)"
-              mt="4"
-              // p="4"
-              border="2px solid"
-              borderColor={useColorModeValue("gray.300", "gray.500")}
-              borderRadius="md"
-              shadow="sm"
-            >
-              <Scenetable
-                res={res}
-                selectedScene={selectedScene}
-                setSelectedScene={setSelectedScene}
-              />
-            </Box>
+          <Box w="100%" border="1px solid red">
+            <SceneStats
+              res={res}
+              selectedScene={selectedScene}
+              setSelectedScene={setSelectedScene}
+            />
           </Box>
           <Box w="100%">
             <Box
@@ -151,7 +135,7 @@ const Scene = ({ res }) => {
 
         <Box>
           <Flex>
-            <Box w="100%" minH="100%" m="4" mb="2" borderRadius="md">
+            <Box w={chartWidth} minH="100%" m="4" mb="2" borderRadius="md">
               <SceneTimeSpentHistogram
                 data={res}
                 selectedScene={selectedScene}
