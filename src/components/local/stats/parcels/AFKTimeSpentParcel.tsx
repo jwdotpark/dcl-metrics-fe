@@ -73,7 +73,11 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
       Header: "AVG. AFK",
       accessor: "time_spent_afk",
       Cell: ({ value }) => {
-        return <Text as="kbd">{convertSeconds(value)}</Text>
+        return (
+          <Text as="kbd" fontWeight="bold">
+            {convertSeconds(value)}
+          </Text>
+        )
       },
     },
   ]

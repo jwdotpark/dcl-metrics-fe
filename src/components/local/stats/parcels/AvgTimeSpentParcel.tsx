@@ -73,7 +73,11 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
       accessor: "avg_time_spent",
       width: 200,
       Cell: ({ value }) => {
-        return <Text as="kbd">{convertSeconds(value)}</Text>
+        return (
+          <Text as="kbd" fontWeight="bold">
+            {convertSeconds(value)}
+          </Text>
+        )
       },
     },
   ]

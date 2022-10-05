@@ -11,18 +11,25 @@ const TableMap = ({ mapUrl }) => {
   const size = 15
   const mapWithSize = mapUrl.replace("size=15", `size=${size}`)
   const responsiveWidth = useBreakpointValue({
-    base: "100%",
-    sm: "150px",
-    md: "100px",
-    lg: "200px",
-    xl: "275px",
+    base: "100px",
+    sm: "100px",
+    md: "125px",
+    lg: "150px",
+    xl: "200px",
+  })
+
+  const responsiveHeight = useBreakpointValue({
+    base: "75px",
+    sm: "75px",
+    md: "75px",
+    lg: "75px",
   })
 
   return (
     <Box
       overflow="clip"
       w={responsiveWidth}
-      maxH="100px"
+      h={responsiveHeight}
       border="2px solid"
       borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"

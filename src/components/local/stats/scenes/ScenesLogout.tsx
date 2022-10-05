@@ -19,6 +19,7 @@ import { useTable, useSortBy, usePagination } from "react-table"
 import TableMap from "../partials/TableMap"
 import SceneDateRange from "../daterange/SceneDateRange"
 import GridBox from "../../GridBox"
+import TruncateName from "../partials/TruncatedName"
 
 const ScenesLogout = ({ res, isSceneLoading }) => {
   const box = {
@@ -58,14 +59,18 @@ const ScenesLogout = ({ res, isSceneLoading }) => {
       accessor: "name",
       disableSortBy: true,
       Cell: ({ value }) => {
-        return <Text>{value}</Text>
+        return <Text>{TruncateName(value)}</Text>
       },
     },
     {
       Header: "Logouts",
       accessor: "logouts",
       Cell: ({ value }) => {
-        return <Text as="kbd">{Number(value)}</Text>
+        return (
+          <Text as="kbd" fontWeight="bold">
+            {Number(value)}
+          </Text>
+        )
       },
     },
   ]

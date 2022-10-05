@@ -20,6 +20,7 @@ import GridBox from "../../GridBox"
 import Loading from "../../Loading"
 import SceneDateRange from "../daterange/SceneDateRange"
 import TableMap from "../partials/TableMap"
+import TruncateName from "../partials/TruncatedName"
 
 const TopScenesVisitors = ({ res, isSceneLoading }) => {
   const box = {
@@ -57,7 +58,7 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
       accessor: "name",
       disableSortBy: true,
       Cell: ({ value }) => {
-        return <Text>{value}</Text>
+        return <Text>{TruncateName(value)}</Text>
       },
     },
     {
@@ -65,7 +66,11 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
       accessor: "unique_address",
       width: 200,
       Cell: ({ value }) => {
-        return <Text as="kbd">{value}</Text>
+        return (
+          <Text as="kbd" fontWeight="bold">
+            {value}
+          </Text>
+        )
       },
     },
   ]

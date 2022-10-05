@@ -73,7 +73,11 @@ const Explorer = ({ isLoading, res }) => {
         Cell: ({ value }) => {
           return (
             <Box w="68px">
-              <Text as="kbd" color={useColorModeValue("gray.800", "gray.200")}>
+              <Text
+                as="kbd"
+                color={useColorModeValue("gray.800", "gray.200")}
+                fontWeight="bold"
+              >
                 {Number(value)}
               </Text>
             </Box>
@@ -183,13 +187,13 @@ const Explorer = ({ isLoading, res }) => {
   const TableComponent = () => {
     const { colorMode } = useColorMode()
     return (
-      <TableContainer mt="4" mx="4" whiteSpace="nowrap">
+      <TableContainer mt="4" mb="6" mx="4" whiteSpace="nowrap">
         <Table
           {...getTableProps()}
           overflowX="hidden"
           maxW="100%"
           h="500px"
-          mb="6"
+          // mb="6"
           size="sm"
           variant="simple"
         >

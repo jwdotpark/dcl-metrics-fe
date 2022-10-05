@@ -22,7 +22,7 @@ import { useTable, useSortBy, usePagination } from "react-table"
 import TableMap from "../partials/TableMap"
 import ParcelDateRange from "../daterange/ParcelDateRange"
 import GridBox from "../../GridBox"
-import moment from "moment"
+import TruncateName from "../partials/TruncatedName"
 
 const ScenesTimeSpent = ({ res, isSceneLoading }) => {
   const box = {
@@ -62,7 +62,7 @@ const ScenesTimeSpent = ({ res, isSceneLoading }) => {
       accessor: "name",
       disableSortBy: true,
       Cell: ({ value }) => {
-        return <Text>{value}</Text>
+        return <Text>{TruncateName(value)}</Text>
       },
     },
     {
@@ -70,7 +70,11 @@ const ScenesTimeSpent = ({ res, isSceneLoading }) => {
       accessor: "avg_time_spent",
       width: 200,
       Cell: ({ value }) => {
-        return <Text as="kbd">{convertSeconds(value)}</Text>
+        return (
+          <Text as="kbd" fontWeight="bold">
+            {convertSeconds(value)}
+          </Text>
+        )
       },
     },
   ]

@@ -163,7 +163,7 @@ const SidebarContent = ({
           <HStack>
             <Image boxSize="26px" shadow="md" alt="logo" src={logo.src} />
             <Text
-              fontSize="20px"
+              fontSize="18px"
               fontWeight="extrabold"
               wordBreak="keep-all"
               css={{ transform: "translateY(-1px)" }}
@@ -361,7 +361,7 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
         <HStack>
           <Image boxSize="26px" shadow="md" alt="logo" src={logo.src} />
           <Text
-            fontSize="23px"
+            fontSize="20px"
             fontWeight="extrabold"
             css={{ transform: "translateY(-1px)" }}
             data-testid="title"
