@@ -352,7 +352,7 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
         variant="outline"
       />
 
-      <Text
+      <Box
         display={{ base: "flex", md: "none" }}
         fontFamily="sans-serif"
         fontSize="2xl"
@@ -369,7 +369,7 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
             DCL Metrics
           </Text>
         </HStack>
-      </Text>
+      </Box>
 
       <HStack spacing={{ base: "0", md: "6" }}>
         <ColorButton />
