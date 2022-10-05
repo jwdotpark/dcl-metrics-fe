@@ -52,8 +52,8 @@ const TempError = () => {
     bg: useColorModeValue("white", "gray.800"),
   }
   return (
-    <Box borderRadius="md">
-      <GridBox box={box} mb="8">
+    <Box borderRadius="md" mb="4">
+      <GridBox box={box}>
         <Box h="100%">
           <AlertComponent />
         </Box>

@@ -119,6 +119,8 @@ const GlobalPage: NextPage = (props) => {
   const result = props.data
 
   const gridColumn = useBreakpointValue({
+    base: 1,
+    sm: 1,
     md: 1,
     lg: 2,
     xl: 2,
@@ -127,7 +129,6 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       {/* <TempError /> */}
-      {/* <Scene res={staticScene} /> */}
       <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4} mb="4">
         <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
@@ -135,6 +136,9 @@ const GlobalPage: NextPage = (props) => {
         <Explorer res={result.users} isLoading={isDataLoading} />
       </Grid>
 
+      {/* <Scene res={staticScene} /> */}
+
+      {/* scene & parcel map tables */}
       <Accordion defaultIndex={[0]} allowMultiple>
         <SceneLayout result={result} isDataLoading={isDataLoading} />
         <ParcelLayout result={result} isDataLoading={isDataLoading} />
