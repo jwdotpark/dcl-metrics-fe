@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 import staticScene from "../public/data/top_scenes.json"
+import { useAtom } from "jotai"
+import { DataAtom } from "../src/lib/hooks/atoms"
 
 const axios = require("axios").default
 import fs from "fs"
@@ -90,6 +92,12 @@ const GlobalPage: NextPage = (props) => {
 
   // @ts-ignore
   const result = props.data
+  const [res, setRes] = useAtom(DataAtom)
+
+  useEffect(() => {
+    setRes(result)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Layout>

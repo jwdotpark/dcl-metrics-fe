@@ -29,6 +29,7 @@
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "framer-motion": "^6.5.1",
+    "jotai": "^1.8.4",
     "moment": "^2.29.4",
     "next": "12.2.3",
     "next-ssl-redirect-middleware": "^0.1.4",
