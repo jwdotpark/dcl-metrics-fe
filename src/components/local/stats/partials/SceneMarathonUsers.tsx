@@ -36,7 +36,7 @@ const SceneMarathonUsers = ({ data }) => {
   const MarathonUserTable = () => {
     return (
       <TableContainer>
-        <Table h="450px" size="sm" variant="simple">
+        <Table size="sm" variant="striped">
           <TableCaption>Marathon Users in this scene</TableCaption>
           <Thead>
             <Tr>
@@ -75,8 +75,18 @@ const SceneMarathonUsers = ({ data }) => {
     )
   }
   return (
-    <Box>
-      <MarathonUserTable />
+    <Box
+      // w="100%"
+      overflowX="hidden"
+      // bg={useColorModeValue("gray.100", "gray.600")}
+      border="2px solid"
+      borderColor={useColorModeValue("gray.300", "gray.700")}
+      borderRadius="md"
+      shadow="md"
+    >
+      <Box p="4">
+        <MarathonUserTable />
+      </Box>
     </Box>
   )
 }

@@ -14,6 +14,7 @@ import AvgTimeSpentParcel from "../../local/stats/parcels/AvgTimeSpentParcel"
 import LogInTimeSpentParcel from "../../local/stats/parcels/LogInTimeSpentParcel"
 import LogOutTimeSpentParcel from "../../local/stats/parcels/LogOutTimeSpentParcel"
 import MostVisitedParcel from "../../local/stats/parcels/MostVisitedParcel"
+import AccordionLabel from "./partials/AccordionLabel"
 
 const ParcelLayout = ({ result, isDataLoading }) => {
   const gridColumn = useBreakpointValue({
@@ -23,25 +24,7 @@ const ParcelLayout = ({ result, isDataLoading }) => {
   })
   return (
     <AccordionItem>
-      <h2>
-        <AccordionButton
-          bg={useColorModeValue("gray.300", "gray.600")}
-          _hover={{
-            bg: useColorModeValue("gray.400", "gray.700"),
-          }}
-          _expanded={{
-            bg: useColorModeValue("gray.300", "gray.600"),
-            color: useColorModeValue("gray.800", "white"),
-          }}
-        >
-          <Box flex="1" py="2" textAlign="center">
-            <Text fontSize="2xl" fontWeight="semibold">
-              Global Parcel
-            </Text>
-          </Box>
-          <AccordionIcon />
-        </AccordionButton>
-      </h2>
+      <AccordionLabel name="Parcels" />
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <AvgTimeSpentParcel

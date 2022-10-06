@@ -38,90 +38,14 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
   } = res[selectedScene]
 
   return (
-    <Box>
-      {/* <SceneSelector
-        res={res}
-        selectedScene={selectedScene}
-        setSelectedScene={setSelectedScene}
-      /> */}
+    <Box
+      w="100%"
+      // border="2px solid"
+      // borderColor={useColorModeValue("gray.400", "gray.700")}
+      // borderRadius="md"
+      // shadow="md"
+    >
       <StatBox data={res[selectedScene]} />
-
-      {/* table */}
-      {/* <TableContainer>
-        <Table size="sm" variant="striped" h="450px">
-          <TableCaption>
-            table caption or link to the dedicated scene page
-          </TableCaption>
-          <Thead>
-            <Tr>
-              <Th>Property</Th>
-              <Th isNumeric>Value</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            <Tr>
-              <Td>Visitors</Td>
-              <Td isNumeric>
-                <CountUp end={visitors} duration={0.5} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Share of Global Visitors</Td>
-              <Td isNumeric>
-                <CountUp end={share_of_global_visitors} duration={0.5} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Average Time Spent</Td>
-              <Td isNumeric>
-                <CountUp end={avg_time_spent} duration={0.5} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Average Time Spent AFK</Td>
-              <Td isNumeric>
-                <CountUp end={avg_time_spent_afk} duration={0.5} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Total Logins</Td>
-              <Td isNumeric>
-                <CountUp end={total_logins} duration={0.5} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Unique Logins</Td>
-              <Td isNumeric>
-                <CountUp end={unique_logins} duration={0.5} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Total Logouts</Td>
-              <Td isNumeric>
-                <CountUp end={total_logouts} duration={0.5} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Unique Logouts</Td>
-              <Td isNumeric>
-                <CountUp end={unique_logouts} duration={0.5} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Complete Sessions</Td>
-              <Td isNumeric>
-                <CountUp end={complete_sessions} duration={0.5} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Average Complete Session Duration</Td>
-              <Td isNumeric>
-                <CountUp end={avg_complete_session_duration} duration={0.5} />
-              </Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer> */}
     </Box>
   )
 }

@@ -14,6 +14,7 @@ import ScenesLogout from "../../local/stats/scenes/ScenesLogout"
 import ScenesTimeSpent from "../../local/stats/scenes/ScenesTimeSpent"
 import ScenesTimeSpentAFK from "../../local/stats/scenes/ScenesTimeSpentAFK"
 import TopScenesVisitors from "../../local/stats/scenes/TopScenesVisitors"
+import AccordionLabel from "./partials/AccordionLabel"
 
 const SceneLayout = ({ result, isDataLoading }) => {
   const gridColumn = useBreakpointValue({
@@ -23,25 +24,7 @@ const SceneLayout = ({ result, isDataLoading }) => {
   })
   return (
     <AccordionItem>
-      <h2>
-        <AccordionButton
-          bg={useColorModeValue("gray.300", "gray.600")}
-          _hover={{
-            bg: useColorModeValue("gray.400", "gray.700"),
-          }}
-          _expanded={{
-            bg: useColorModeValue("gray.300", "gray.600"),
-            color: useColorModeValue("gray.800", "white"),
-          }}
-        >
-          <Box flex="1" py="2" textAlign="center">
-            <Text fontSize="2xl" fontWeight="semibold">
-              Global Scene
-            </Text>
-          </Box>
-          <AccordionIcon />
-        </AccordionButton>
-      </h2>
+      <AccordionLabel name="Scenes" />
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopScenesVisitors

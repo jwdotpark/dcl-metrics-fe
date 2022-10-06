@@ -1,6 +1,6 @@
 import { useState } from "react"
 import type { NextPage } from "next"
-import { Grid, useBreakpointValue, Accordion } from "@chakra-ui/react"
+import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 import staticScene from "../public/data/top_scenes.json"
 
@@ -8,6 +8,7 @@ const axios = require("axios").default
 import fs from "fs"
 
 import Layout from "../src/components/layout/layout"
+import UserLayout from "../src/components/layout/global/UserLayout"
 import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
 
@@ -101,20 +102,17 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       {/* single scene component */}
-      <Scene res={staticScene} />
-      {/* <TempError /> */}
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
-        <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
-        <MarathonUsers res={result.users} isLoading={isDataLoading} />
-        <Explorer res={result.users} isLoading={isDataLoading} />
-      </Grid>
+      {/* <Scene res={staticScene} /> */}
 
-      {/* scene & parcel map tables */}
-      <Accordion allowMultiple defaultIndex={[0]}>
-        <SceneLayout result={result} isDataLoading={isDataLoading} />
-        <ParcelLayout result={result} isDataLoading={isDataLoading} />
-      </Accordion>
+      {/* <TempError /> */}
+
+      <Box>
+        <Accordion allowMultiple defaultIndex={[0]}>
+          <UserLayout result={result} isDataLoading={isDataLoading} />
+          <SceneLayout result={result} isDataLoading={isDataLoading} />
+          <ParcelLayout result={result} isDataLoading={isDataLoading} />
+        </Accordion>
+      </Box>
     </Layout>
   )
 }

@@ -1,13 +1,22 @@
-import { Box, useColorModeValue, Container, SimpleGrid, Flex } from "@chakra-ui/react"
-import {} from "framer-motion"
+import {
+  Box,
+  useColorModeValue,
+  Container,
+  SimpleGrid,
+  Flex,
+  Heading,
+  Stack,
+  useBreakpointValue,
+  Text,
+  Spacer,
+  Grid,
+} from "@chakra-ui/react"
+import { useState } from "react"
 import CountUp from "react-countup"
 
 const StatBox = ({ data }) => {
-  // console.log("data", data)
-
-  // create an array of object with the data
-  const dataArr = Object.entries(data)
-  // assign each dataArr's 0th index to the key 'label' and 1st index to the value 'value'
+  const [dataArr, setDataArr] = useState(Object.entries(data))
+  // const dataArr = Object.entries(data)
   const stats = dataArr.map((item) => {
     return {
       label: item[0],
@@ -15,7 +24,6 @@ const StatBox = ({ data }) => {
     }
   })
 
-  // remove map_url, marathon_users, time_spent_histogram, parcels_heatmap
   const filteredStats = stats.filter(
     (item) =>
       item.label !== "name" &&
@@ -34,59 +42,46 @@ const StatBox = ({ data }) => {
     return mutatedStr
   }
 
-  const Stat = ({ label, value }) => {
+  const Stat = (props) => {
+    const { label, value } = props
     return (
-      <Flex
-        align="center"
-        justify="center"
-        direction="column"
-        w="100%"
-        h="100%"
-        px="2"
-        bg={useColorModeValue("gray.100", "gray.800")}
-        border="1px solid"
-        borderColor={useColorModeValue("gray.200", " gray.600")}
+      <Box
+        pl="2"
+        py="2"
+        border="2px solid"
+        borderColor={useColorModeValue("gray.300", "gray.700")}
         borderRadius="md"
-        shadow="md"
-        // py="3"
+        shadow={useColorModeValue("sm", "sm-dark")}
       >
-        <Box as="kbd" fontSize="3xl" fontWeight="semibold" textAlign="center">
-          <CountUp end={parseFloat(value)} duration={0.5} />
-        </Box>
-        <Box
-          color={useColorModeValue("gray.600", "gray.400")}
-          fontSize="sm"
-          textAlign="center"
-        >
-          {mutateString(label)}
-        </Box>
-      </Flex>
+        <Stack>
+          <Text color="muted" fontSize="xs">
+            {mutateString(label)}
+          </Text>
+          <Heading size={useBreakpointValue({ base: "sm", md: "md" })}>
+            <Text fontSize="2xl" fontWeight="bold">
+              <CountUp end={parseFloat(value)} duration={0.5} />
+            </Text>
+          </Heading>
+        </Stack>
+      </Box>
     )
   }
+
   return (
-    <Box
-      as="section"
-      py={{
-        base: "2",
-        md: "4",
-      }}
-    >
-      <Container>
-        <SimpleGrid
-          gap={{
-            base: "2",
-            md: "4",
-          }}
-          columns={{
-            base: 1,
-            md: 2,
-          }}
-        >
-          {filteredStats.map(({ label, value }) => (
-            <Stat key={label} label={label} value={value} />
-          ))}
-        </SimpleGrid>
-      </Container>
+    <Box as="section" w="100%">
+      <Grid
+        gap={7}
+        // templateRows="repeat(2, 1fr)"
+        templateColumns="repeat(2, 1fr)"
+        // columns={{
+        //   base: 1,
+        //   md: 2,
+        // }}
+      >
+        {filteredStats.map(({ label, value }) => (
+          <Stat key={label} label={label} value={value} />
+        ))}
+      </Grid>
     </Box>
   )
 }

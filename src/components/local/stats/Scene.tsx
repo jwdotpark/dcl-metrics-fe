@@ -64,7 +64,7 @@ const Scene = ({ res }) => {
   })
 
   const isMobile = useBreakpointValue({
-    base: false,
+    base: true,
     sm: true,
     md: false,
     lg: false,
@@ -74,7 +74,7 @@ const Scene = ({ res }) => {
     base: "100%",
     sm: "100%",
     md: "100%",
-    lg: "50%",
+    lg: "100%",
   })
 
   return (
@@ -83,9 +83,11 @@ const Scene = ({ res }) => {
         <Flex pos="relative" mt="4" mx="5">
           <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
             <Box>
-              <Text fontSize="2xl">
-                <b>{name}</b>
-              </Text>
+              {!isMobile && (
+                <Text fontSize="2xl">
+                  <b>{name}</b>
+                </Text>
+              )}
             </Box>
             <Spacer />
             <Box>
@@ -99,40 +101,29 @@ const Scene = ({ res }) => {
           </Flex>
         </Flex>
         {!isMobile && (
-          <Box mt="-4" ml="5">
+          <Box ml="5">
             <Text color="gray.500" fontSize="sm">
               Most populated scene in the Decentraland
             </Text>
           </Box>
         )}
-
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`}>
-          {/* <GridBox box={box}> */}
-          <SceneMap url={map_url} />
-          {/* </GridBox> */}
-          <Box w="100%" border="1px solid red">
-            <SceneStats
-              res={res}
-              selectedScene={selectedScene}
-              setSelectedScene={setSelectedScene}
-            />
+        <Grid
+          gap={4}
+          templateColumns={`repeat(${gridColumn}, 1fr)`}
+          mx="4"
+          my="2"
+          // border="1px solid red"
+        >
+          <Box>
+            <SceneMap url={map_url} />
           </Box>
-          <Box w="100%">
-            <Box
-              // h="auto"
-              h="calc(450px + 8rem)"
-              m="4"
-              p="4"
-              border="2px solid"
-              borderColor={useColorModeValue("gray.300", "gray.500")}
-              borderRadius="md"
-              shadow="sm"
-            >
-              <SceneMarathonUsers data={res[selectedScene].marathon_users} />
-            </Box>
-          </Box>
+          <SceneStats
+            res={res}
+            selectedScene={selectedScene}
+            setSelectedScene={setSelectedScene}
+          />
+          <SceneMarathonUsers data={res[selectedScene].marathon_users} />
         </Grid>
-
         <Box>
           <Flex>
             <Box w={chartWidth} minH="100%" m="4" mb="2" borderRadius="md">

@@ -84,7 +84,6 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     }
   }
 
-  console.log(memoizedData)
 
   return (
     <ResponsiveLine
