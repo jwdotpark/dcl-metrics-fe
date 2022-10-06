@@ -14,12 +14,6 @@ import UserLayout from "../src/components/layout/global/UserLayout"
 import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
 
-import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
-import VisitedParcels from "../src/components/local/stats/parcels/UniqueVisitedParcels"
-import MarathonUsers from "../src/components/local/stats/MarathonUsers"
-import Explorer from "../src/components/local/stats/Explorer"
-import Scene from "../src/components/local/stats/Scene"
-
 export async function getStaticProps() {
   const day = 60 * 60 * 24
   if (process.env.NEXT_PUBLIC_ENV === "prod") {

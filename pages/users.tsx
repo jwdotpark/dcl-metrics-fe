@@ -1,25 +1,27 @@
+// @ts-nocheck
 import { useBreakpointValue, Grid, useColorModeValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-import GridBox from "../src/components/local/GridBox"
-import Changelog from "../src/components/local/change/changelog/Changelog"
-import RoadMap from "../src/components/local/change/roadmap/RoadMap"
+import staticGlobal from "../public/data/cached_global_response.json"
+import Explorer from "../src/components/local/stats/Explorer"
+import MarathonUsers from "../src/components/local/stats/MarathonUsers"
+import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
+import VisitedParcels from "../src/components/local/stats/UniqueVisitors"
 import { useAtom } from "jotai"
-import { DataAtom } from "../src/lib/hooks/atoms"
+import { DataAtom, LoadingStateAtom } from "../src/lib/hooks/atoms"
 
 const Users = () => {
-  const box = {
-    h: "auto",
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
-
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const [data] = useAtom(DataAtom)
+  const [isDataLoading] = useAtom(LoadingStateAtom)
+  const result = data.length !== 0 ? data : staticGlobal
 
   return (
     <Layout>
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`}>
-        {JSON.stringify(data)}
+      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+        <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
+        <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
+        <MarathonUsers res={result.users} isLoading={isDataLoading} />
+        <Explorer res={result.users} isLoading={isDataLoading} />
       </Grid>
     </Layout>
   )

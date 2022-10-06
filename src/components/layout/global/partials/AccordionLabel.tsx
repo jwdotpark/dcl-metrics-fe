@@ -4,9 +4,23 @@ import {
   AccordionButton,
   useColorModeValue,
   AccordionIcon,
+  Button,
 } from "@chakra-ui/react"
+import { FiUsers, FiMapPin, FiPackage } from "react-icons/fi"
 
 const AccordionLabel = ({ name }) => {
+  const labelIcon = (name) => {
+    if (name === "Users") {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      return <FiUsers size="24px" color={useColorModeValue("#000", "#fff")} />
+    } else if (name === "Scenes") {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      return <FiMapPin size="24px" color={useColorModeValue("#000", "#fff")} />
+    } else if (name === "Parcels") {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      return <FiPackage size="24px" color={useColorModeValue("#000", "#fff")} />
+    }
+  }
   return (
     <h2>
       <AccordionButton
@@ -21,9 +35,16 @@ const AccordionLabel = ({ name }) => {
         }}
       >
         <Box flex="1" py="2" textAlign="center">
-          <Text as="b" fontSize="3xl" fontWeight="semibold">
-            {name}
-          </Text>
+          <Button leftIcon={labelIcon(name)} variant="link">
+            <Text
+              as="b"
+              sx={{ transform: "translateY(4px)" }}
+              color={useColorModeValue("gray.700", "gray.100")}
+              fontSize="24px"
+            >
+              {name}
+            </Text>
+          </Button>
         </Box>
         <AccordionIcon />
       </AccordionButton>

@@ -32,6 +32,7 @@ import {
   FiAnchor,
   FiMap,
   FiFrown,
+  FiUsers,
 } from "react-icons/fi"
 import { IconType } from "react-icons"
 import { ReactText } from "react"
@@ -196,6 +197,31 @@ const SidebarContent = ({
                 >
                   <Text as={router.pathname === "/" && "u"} fontSize="lg">
                     Global
+                  </Text>
+                </NavItem>
+              </a>
+            </Link>
+          </Box>
+        </Tooltip>
+        <Tooltip
+          fontSize="sm"
+          borderRadius="md"
+          label="Users"
+          placement="right"
+        >
+          <Box>
+            <Link href="/users" passHref>
+              <a>
+                <NavItem
+                  height="3rem"
+                  icon={FiUsers}
+                  bg={
+                    router.pathname === "/users" && // eslint-disable-next-line
+                    useColorModeValue("gray.200", "gray.700")
+                  }
+                >
+                  <Text as={router.pathname === "/users" && "u"} fontSize="lg">
+                    Users
                   </Text>
                 </NavItem>
               </a>
