@@ -15,6 +15,7 @@ import LogInTimeSpentParcel from "../../local/stats/parcels/LogInTimeSpentParcel
 import LogOutTimeSpentParcel from "../../local/stats/parcels/LogOutTimeSpentParcel"
 import MostVisitedParcel from "../../local/stats/parcels/MostVisitedParcel"
 import AccordionLabel from "./partials/AccordionLabel"
+import AccordionLink from "../global/partials/AccordionLink"
 
 const ParcelLayout = ({ result, isDataLoading }) => {
   const gridColumn = useBreakpointValue({
@@ -48,6 +49,7 @@ const ParcelLayout = ({ result, isDataLoading }) => {
             isParcelLoading={isDataLoading}
           />
         </Grid>
+        <AccordionLink name="parcels" />
       </AccordionPanel>
     </AccordionItem>
   )

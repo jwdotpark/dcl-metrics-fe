@@ -1,4 +1,5 @@
 import {
+  Text,
   AccordionItem,
   AccordionPanel,
   Grid,
@@ -10,6 +11,7 @@ import MarathonUsers from "../../local/stats/MarathonUsers"
 import UniqueVisitors from "../../local/stats/UniqueVisitors"
 import VisitedParcels from "../../local/stats/UniqueVisitors"
 import AccordionLabel from "../global/partials/AccordionLabel"
+import AccordionLink from "../global/partials/AccordionLink"
 
 const UserLayout = ({ result, isDataLoading }) => {
   const gridColumn = useBreakpointValue({
@@ -29,6 +31,7 @@ const UserLayout = ({ result, isDataLoading }) => {
           <MarathonUsers res={result.users} isLoading={isDataLoading} />
           <Explorer res={result.users} isLoading={isDataLoading} />
         </Grid>
+        <AccordionLink name="users" />
       </AccordionPanel>
     </AccordionItem>
   )

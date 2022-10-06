@@ -40,7 +40,7 @@ const AccordionLabel = ({ name }) => {
               as="b"
               sx={{ transform: "translateY(4px)" }}
               color={useColorModeValue("gray.700", "gray.100")}
-              fontSize="24px"
+              fontSize="30px"
             >
               {name}
             </Text>

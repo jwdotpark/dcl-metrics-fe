@@ -1,12 +1,8 @@
 import {
-  Box,
   AccordionItem,
-  AccordionButton,
   useColorModeValue,
-  AccordionIcon,
   AccordionPanel,
   Grid,
-  Text,
   useBreakpointValue,
 } from "@chakra-ui/react"
 import ScenesLogin from "../../local/stats/scenes/ScenesLogin"
@@ -14,7 +10,8 @@ import ScenesLogout from "../../local/stats/scenes/ScenesLogout"
 import ScenesTimeSpent from "../../local/stats/scenes/ScenesTimeSpent"
 import ScenesTimeSpentAFK from "../../local/stats/scenes/ScenesTimeSpentAFK"
 import TopScenesVisitors from "../../local/stats/scenes/TopScenesVisitors"
-import AccordionLabel from "./partials/AccordionLabel"
+import AccordionLabel from "../global/partials/AccordionLabel"
+import AccordionLink from "../global/partials/AccordionLink"
 
 const SceneLayout = ({ result, isDataLoading }) => {
   const gridColumn = useBreakpointValue({
@@ -39,6 +36,7 @@ const SceneLayout = ({ result, isDataLoading }) => {
             isSceneLoading={isDataLoading}
           />
         </Grid>
+        <AccordionLink name="scenes" />
       </AccordionPanel>
     </AccordionItem>
   )
