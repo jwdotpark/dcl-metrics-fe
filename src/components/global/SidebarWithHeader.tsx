@@ -258,7 +258,7 @@ const SidebarContent = ({
         <Tooltip
           fontSize="sm"
           borderRadius="md"
-          label="Scenes"
+          label="Parcels"
           placement="right"
         >
           <Box>
