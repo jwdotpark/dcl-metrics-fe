@@ -13,10 +13,10 @@ const AccordionLink = ({ name }) => {
           bg: useColorModeValue("gray.600", "gray.700"),
         }}
         onClick={() => router.push(`/${name}`)}
-        size="md"
+        size="sm"
         variant="ghost"
       >
-        <Text color={useColorModeValue("#fff", "gray.200")}>
+        <Text color={useColorModeValue("#fff", "gray.200")} fontSize="sm">
           View More {name.charAt(0).toUpperCase() + name.slice(1)}
         </Text>
       </Button>

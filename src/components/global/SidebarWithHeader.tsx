@@ -141,7 +141,7 @@ const SidebarContent = ({
   ...rest
 }: SidebarProps) => {
   const router = useRouter()
-  const { colorMode } = useColorMode()
+
   return (
     <Box
       pos="fixed"
@@ -211,7 +211,7 @@ const SidebarContent = ({
           label="Users"
           placement="right"
         >
-          <Box>
+          <Box ml={sidebarOpen && "4"}>
             <Link href="/users" passHref>
               <a>
                 <NavItem
@@ -236,7 +236,7 @@ const SidebarContent = ({
           label="Scenes"
           placement="right"
         >
-          <Box>
+          <Box ml={sidebarOpen && "4"}>
             <Link href="/scenes" passHref>
               <a>
                 <NavItem
@@ -261,7 +261,7 @@ const SidebarContent = ({
           label="Parcels"
           placement="right"
         >
-          <Box>
+          <Box ml={sidebarOpen && "4"}>
             <Link href="/parcels" passHref>
               <a>
                 <NavItem
