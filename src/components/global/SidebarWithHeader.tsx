@@ -33,6 +33,8 @@ import {
   FiMap,
   FiFrown,
   FiUsers,
+  FiMapPin,
+  FiPackage,
 } from "react-icons/fi"
 import { IconType } from "react-icons"
 import { ReactText } from "react"
@@ -222,6 +224,59 @@ const SidebarContent = ({
                 >
                   <Text as={router.pathname === "/users" && "u"} fontSize="lg">
                     Users
+                  </Text>
+                </NavItem>
+              </a>
+            </Link>
+          </Box>
+        </Tooltip>
+        <Tooltip
+          fontSize="sm"
+          borderRadius="md"
+          label="Scenes"
+          placement="right"
+        >
+          <Box>
+            <Link href="/scenes" passHref>
+              <a>
+                <NavItem
+                  height="3rem"
+                  icon={FiMapPin}
+                  bg={
+                    router.pathname === "/scenes" && // eslint-disable-next-line
+                    useColorModeValue("gray.200", "gray.700")
+                  }
+                >
+                  <Text as={router.pathname === "/scenes" && "u"} fontSize="lg">
+                    Scenes
+                  </Text>
+                </NavItem>
+              </a>
+            </Link>
+          </Box>
+        </Tooltip>
+        <Tooltip
+          fontSize="sm"
+          borderRadius="md"
+          label="Scenes"
+          placement="right"
+        >
+          <Box>
+            <Link href="/parcels" passHref>
+              <a>
+                <NavItem
+                  height="3rem"
+                  icon={FiPackage}
+                  bg={
+                    router.pathname === "/parcels" && // eslint-disable-next-line
+                    useColorModeValue("gray.200", "gray.700")
+                  }
+                >
+                  <Text
+                    as={router.pathname === "/parcels" && "u"}
+                    fontSize="lg"
+                  >
+                    Parcels
                   </Text>
                 </NavItem>
               </a>
