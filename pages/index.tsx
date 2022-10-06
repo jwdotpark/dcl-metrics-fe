@@ -91,23 +91,12 @@ const GlobalPage: NextPage = (props) => {
   // @ts-ignore
   const result = props.data
 
-  const gridColumn = useBreakpointValue({
-    base: 1,
-    sm: 1,
-    md: 1,
-    lg: 2,
-    xl: 2,
-  })
-
   return (
     <Layout>
-      {/* single scene component */}
       {/* <Scene res={staticScene} /> */}
-
       {/* <TempError /> */}
-
       <Box>
-        <Accordion allowMultiple defaultIndex={[0]}>
+        <Accordion allowMultiple defaultIndex={[0, 1]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
           <SceneLayout result={result} isDataLoading={isDataLoading} />
           <ParcelLayout result={result} isDataLoading={isDataLoading} />

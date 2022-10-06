@@ -1,11 +1,7 @@
 import {
-  AccordionButton,
-  AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Box,
   Grid,
-  Text,
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react"
