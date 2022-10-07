@@ -30,7 +30,6 @@ const UserLayout = ({ result, isDataLoading }) => {
           <MarathonUsers res={result.users} isLoading={isDataLoading} />
           <Explorer res={result.users} isLoading={isDataLoading} />
         </Grid>
-        <AccordionLink name="users" />
       </AccordionPanel>
     </AccordionItem>
   )
