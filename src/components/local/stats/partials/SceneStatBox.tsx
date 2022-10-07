@@ -46,12 +46,12 @@ const StatBox = ({ data }) => {
     const { label, value } = props
     return (
       <Box
-        pl="2"
-        py="2"
-        border="2px solid"
-        borderColor={useColorModeValue("gray.300", "gray.700")}
-        borderRadius="md"
-        shadow={useColorModeValue("sm", "sm-dark")}
+      // pl="2"
+      // py="2"
+      // border="2px solid"
+      // borderColor={useColorModeValue("gray.300", "gray.700")}
+      // borderRadius="md"
+      // shadow={useColorModeValue("sm", "sm-dark")}
       >
         <Stack>
           <Text color="muted" fontSize="xs">

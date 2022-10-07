@@ -17,6 +17,7 @@ import StatBox from "./SceneStatBox"
 import CountUp from "react-countup"
 import RoadMap from "../../change/roadmap/RoadMap"
 import SceneSelector from "./SceneSelector"
+import SceneBarChart from "./SceneBarChart"
 
 const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
   const {
@@ -40,12 +41,17 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
   return (
     <Box
       w="100%"
-      // border="2px solid"
-      // borderColor={useColorModeValue("gray.400", "gray.700")}
-      // borderRadius="md"
-      // shadow="md"
+      // maxW="800px"
+      h="100%"
+      bg={useColorModeValue("gray.100", "gray.700")}
+      border="1px solid"
+      borderColor={useColorModeValue("gray.200", "gray.700")}
+      borderRadius="xl"
+      shadow="md"
     >
-      <StatBox data={res[selectedScene]} />
+      <Box w="100%" h="400px">
+        <SceneBarChart />
+      </Box>
     </Box>
   )
 }

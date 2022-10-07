@@ -60,7 +60,7 @@ const Scene = ({ res }) => {
   const gridColumn = useBreakpointValue({
     md: 1,
     lg: 2,
-    xl: 3,
+    xl: 2,
   })
 
   const isMobile = useBreakpointValue({
@@ -90,14 +90,14 @@ const Scene = ({ res }) => {
               )}
             </Box>
             <Spacer />
-            <Box>
+            {/* <Box>
               <SceneSelector
                 res={res}
                 name={name}
                 selectedScene={selectedScene}
                 setSelectedScene={setSelectedScene}
               />
-            </Box>
+            </Box> */}
           </Flex>
         </Flex>
         {!isMobile && (
@@ -107,23 +107,27 @@ const Scene = ({ res }) => {
             </Text>
           </Box>
         )}
-        <Grid
-          gap={4}
-          templateColumns={`repeat(${gridColumn}, 1fr)`}
-          mx="4"
-          my="2"
-          // border="1px solid red"
-        >
-          <Box>
+        <Flex direction="row" gap="4" mx="4" my="2">
+          <Box w="35%">
+            <Box maxW="100%" mb="4">
+              <SceneSelector
+                res={res}
+                name={name}
+                selectedScene={selectedScene}
+                setSelectedScene={setSelectedScene}
+              />
+            </Box>
             <SceneMap url={map_url} />
           </Box>
-          <SceneStats
-            res={res}
-            selectedScene={selectedScene}
-            setSelectedScene={setSelectedScene}
-          />
+          <Box w="65%">
+            <SceneStats
+              res={res}
+              selectedScene={selectedScene}
+              setSelectedScene={setSelectedScene}
+            />
+          </Box>
           {/* <SceneMarathonUsers data={res[selectedScene].marathon_users} /> */}
-        </Grid>
+        </Flex>
         <Box>
           <Flex>
             <Box w={chartWidth} minH="100%" m="4" mb="2" borderRadius="md">
