@@ -122,7 +122,7 @@ const Scene = ({ res }) => {
             selectedScene={selectedScene}
             setSelectedScene={setSelectedScene}
           />
-          <SceneMarathonUsers data={res[selectedScene].marathon_users} />
+          {/* <SceneMarathonUsers data={res[selectedScene].marathon_users} /> */}
         </Grid>
         <Box>
           <Flex>

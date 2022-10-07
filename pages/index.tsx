@@ -96,7 +96,7 @@ const GlobalPage: NextPage = (props) => {
 
   return (
     <Layout>
-      {/* <Scene res={staticScene} /> */}
+      <Scene res={staticScene} />
       {/* <TempError /> */}
       <Box w="100%">
         <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
