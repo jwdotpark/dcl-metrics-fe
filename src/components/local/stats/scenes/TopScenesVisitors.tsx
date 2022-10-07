@@ -149,7 +149,7 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Scenes with Most Unique Visitor</b>
+                <b>Scenes with Most Unique Visitors</b>
               </Text>
             </Box>
           </Flex>
