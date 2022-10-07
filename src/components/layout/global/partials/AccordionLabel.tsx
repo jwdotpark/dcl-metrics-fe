@@ -38,6 +38,7 @@ const AccordionLabel = ({ name }) => {
           <Button leftIcon={labelIcon(name)} variant="link">
             <Text
               as="b"
+              // sx={{ transform: "translateY(4px)" }}
               color={useColorModeValue("gray.700", "gray.100")}
               fontSize="30px"
             >
