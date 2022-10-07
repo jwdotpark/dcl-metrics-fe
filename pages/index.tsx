@@ -10,6 +10,7 @@ const axios = require("axios").default
 import fs from "fs"
 
 import Layout from "../src/components/layout/layout"
+import Scene from "../src/components/local/stats/Scene"
 import UserLayout from "../src/components/layout/global/UserLayout"
 import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
@@ -97,7 +98,7 @@ const GlobalPage: NextPage = (props) => {
     <Layout>
       {/* <Scene res={staticScene} /> */}
       {/* <TempError /> */}
-      <Box>
+      <Box w="100%">
         <Accordion allowMultiple defaultIndex={[0, 1]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
           <SceneLayout result={result} isDataLoading={isDataLoading} />
