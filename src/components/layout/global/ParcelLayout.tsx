@@ -32,7 +32,11 @@ const ParcelLayout = ({ result, isDataLoading }) => {
             parcel={result.parcels}
             isParcelLoading={isDataLoading}
           />
-          <LogInTimeSpentParcel
+          <MostVisitedParcel
+            parcel={result.parcels}
+            isParcelLoading={isDataLoading}
+          />
+          {/* <LogInTimeSpentParcel
             parcel={result.parcels}
             isParcelLoading={isDataLoading}
           />
@@ -43,11 +47,7 @@ const ParcelLayout = ({ result, isDataLoading }) => {
           <LogOutTimeSpentParcel
             parcel={result.parcels}
             isParcelLoading={isDataLoading}
-          />
-          <MostVisitedParcel
-            parcel={result.parcels}
-            isParcelLoading={isDataLoading}
-          />
+          /> */}
         </Grid>
         <AccordionLink name="parcels" />
       </AccordionPanel>

@@ -10,6 +10,7 @@ import Explorer from "../../local/stats/Explorer"
 import MarathonUsers from "../../local/stats/MarathonUsers"
 import UniqueVisitors from "../../local/stats/UniqueVisitors"
 import VisitedParcels from "../../local/stats/UniqueVisitors"
+import UniqueVisitedParcels from "../../local/stats/UniqueVisitedParcels"
 import AccordionLabel from "../global/partials/AccordionLabel"
 import AccordionLink from "../global/partials/AccordionLink"
 
@@ -27,7 +28,10 @@ const UserLayout = ({ result, isDataLoading }) => {
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
-          <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
+          <UniqueVisitedParcels
+            data={result.global}
+            visitorLoading={isDataLoading}
+          />
           <MarathonUsers res={result.users} isLoading={isDataLoading} />
           <Explorer res={result.users} isLoading={isDataLoading} />
         </Grid>
