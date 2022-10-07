@@ -4,8 +4,6 @@ import Layout from "../src/components/layout/layout"
 import staticGlobal from "../public/data/cached_global_response.json"
 import Explorer from "../src/components/local/stats/Explorer"
 import MarathonUsers from "../src/components/local/stats/MarathonUsers"
-import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
-import VisitedParcels from "../src/components/local/stats/UniqueVisitors"
 import { useAtom } from "jotai"
 import { DataAtom, LoadingStateAtom } from "../src/lib/hooks/atoms"
 
@@ -18,8 +16,6 @@ const Users = () => {
   return (
     <Layout>
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
-        <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
         <MarathonUsers res={result.users} isLoading={isDataLoading} />
         <Explorer res={result.users} isLoading={isDataLoading} />
       </Grid>
