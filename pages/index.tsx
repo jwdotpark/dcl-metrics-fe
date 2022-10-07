@@ -14,6 +14,8 @@ import Scene from "../src/components/local/stats/Scene"
 import UserLayout from "../src/components/layout/global/UserLayout"
 import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
+import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
+import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
@@ -85,6 +87,14 @@ export async function getStaticProps() {
 const GlobalPage: NextPage = (props) => {
   const [isDataLoading, setIsDataLoading] = useState(false)
 
+  const gridColumn = useBreakpointValue({
+    base: 1,
+    sm: 1,
+    md: 1,
+    lg: 2,
+    xl: 2,
+  })
+
   // @ts-ignore
   const result = props.data
   const [res, setRes] = useAtom(DataAtom)
@@ -99,6 +109,13 @@ const GlobalPage: NextPage = (props) => {
       <Scene res={staticScene} />
       {/* <TempError /> */}
       <Box w="100%">
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
+          <UniqueVisitedParcels
+            data={result.global}
+            visitorLoading={isDataLoading}
+          />
+        </Grid>
         <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
           <SceneLayout result={result} isDataLoading={isDataLoading} />

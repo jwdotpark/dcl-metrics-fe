@@ -119,7 +119,6 @@ export default function SidebarWithHeader({
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} sidebarStatus={sidebarStatus} />
-      {/* NOTE */}
       <Box ml={{ base: 0, md: sidebarStatus }} p="4" data-testid="sidebar">
         {children}
       </Box>
@@ -148,7 +147,6 @@ const SidebarContent = ({
       w={{ base: "full", md: sidebarStatus }}
       h="full"
       bg={useColorModeValue("white", "gray.900")}
-      // NOTE
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
       transition=".25s ease"
@@ -191,6 +189,7 @@ const SidebarContent = ({
               <a>
                 <NavItem
                   height="3rem"
+                  shadow={router.pathname === "/" && "md"}
                   icon={FiTrendingUp}
                   bg={
                     router.pathname === "/" && // eslint-disable-next-line
@@ -216,6 +215,7 @@ const SidebarContent = ({
               <a>
                 <NavItem
                   height="3rem"
+                  shadow={router.pathname === "/users" && "md"}
                   icon={FiUsers}
                   bg={
                     router.pathname === "/users" && // eslint-disable-next-line
@@ -240,6 +240,7 @@ const SidebarContent = ({
             <Link href="/scenes" passHref>
               <a>
                 <NavItem
+                  shadow={router.pathname === "/scenes" && "md"}
                   height="3rem"
                   icon={FiMapPin}
                   bg={
@@ -265,6 +266,7 @@ const SidebarContent = ({
             <Link href="/parcels" passHref>
               <a>
                 <NavItem
+                  shadow={router.pathname === "/parcels" && "md"}
                   height="3rem"
                   icon={FiPackage}
                   bg={
@@ -293,6 +295,7 @@ const SidebarContent = ({
             <Link href="/roadmap" passHref>
               <a>
                 <NavItem
+                  shadow={router.pathname === "/roadmap" && "md"}
                   height="3rem"
                   icon={FiMap}
                   bg={
@@ -322,6 +325,7 @@ const SidebarContent = ({
             <Link href="/about" passHref>
               <a>
                 <NavItem
+                  shadow={router.pathname === "/about" && "md"}
                   height="3rem"
                   icon={FiCompass}
                   bg={

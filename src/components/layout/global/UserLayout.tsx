@@ -27,15 +27,9 @@ const UserLayout = ({ result, isDataLoading }) => {
       <AccordionLabel name="Users" />
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
-          <UniqueVisitedParcels
-            data={result.global}
-            visitorLoading={isDataLoading}
-          />
           <MarathonUsers res={result.users} isLoading={isDataLoading} />
           <Explorer res={result.users} isLoading={isDataLoading} />
         </Grid>
-        <AccordionLink name="users" />
       </AccordionPanel>
     </AccordionItem>
   )
