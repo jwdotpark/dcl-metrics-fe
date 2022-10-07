@@ -36,18 +36,6 @@ const ParcelLayout = ({ result, isDataLoading }) => {
             parcel={result.parcels}
             isParcelLoading={isDataLoading}
           />
-          {/* <LogInTimeSpentParcel
-            parcel={result.parcels}
-            isParcelLoading={isDataLoading}
-          />
-          <AFKTimeSpentParcel
-            parcel={result.parcels}
-            isParcelLoading={isDataLoading}
-          />
-          <LogOutTimeSpentParcel
-            parcel={result.parcels}
-            isParcelLoading={isDataLoading}
-          /> */}
         </Grid>
         <AccordionLink name="parcels" />
       </AccordionPanel>
