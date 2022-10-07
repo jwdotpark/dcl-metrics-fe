@@ -29,12 +29,12 @@ const SceneLayout = ({ result, isDataLoading }) => {
             isSceneLoading={isDataLoading}
           />
           <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
-          <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
+          {/* <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
           <ScenesLogout res={result.scenes} isSceneLoading={isDataLoading} />
           <ScenesTimeSpentAFK
             res={result.scenes}
             isSceneLoading={isDataLoading}
-          />
+          /> */}
         </Grid>
         <AccordionLink name="scenes" />
       </AccordionPanel>
