@@ -22,7 +22,7 @@ const TooltipTable = ({ date, count, degraded }) => {
         </Thead>
         <Tbody>
           <Tr>
-            <Td>{moment(date).format("YYYY MMMM Do")}</Td>
+            <Td>{moment(date).format("YYYY MMM. D")}</Td>
             <Td
               color={degraded && "red"}
               // eslint-disable-next-line react-hooks/rules-of-hooks
