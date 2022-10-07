@@ -35,6 +35,7 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
   const dataArr = []
   const sceneDataRange = data[dateRange]
   const visitorData = sceneDataRange[1].visitors
+  console.log(res)
 
   for (const [key, value] of Object.entries(visitorData)) {
     dataArr.push({
@@ -148,14 +149,14 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Scenes with Most Visitor</b>
+                <b>Scenes with Most Unique Visitor</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text color="gray.500" fontSize="sm">
-            Scenes with the most visits in the last period
+            Scenes with the most unique visits in the last period
           </Text>
         </Box>
         <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />

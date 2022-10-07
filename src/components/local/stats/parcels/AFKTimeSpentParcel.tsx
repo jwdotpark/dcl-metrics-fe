@@ -155,7 +155,7 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Parcels With Most AFK</b>
+                <b>Parcels with Most AFK</b>
               </Text>
             </Box>
           </Flex>
