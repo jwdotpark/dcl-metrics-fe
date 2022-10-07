@@ -42,19 +42,19 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     lg: false,
   })
   // selected line color
-  const lineOpacity = 0.2
-  const randomColor = () => {
+  const lineOpacity = 0.1
+  const randomColor = (index) => {
     const r = Math.floor(Math.random() * 256)
     const g = Math.floor(Math.random() * 256)
     const b = Math.floor(Math.random() * 256)
     return `rgb(${r},${g},${b},${lineOpacity})`
   }
 
-  const data = res.map((item) => {
+  const data = res.map((item, i) => {
     return {
       id: item.name,
       // random color
-      color: randomColor(),
+      color: randomColor(i),
       data: item.map((item) => {
         return {
           x: item[0],
@@ -96,7 +96,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
       <ResponsiveLine
         data={memoizedData}
         colors={colors}
-        margin={{ top: 40, right: 30, bottom: 60, left: 50 }}
+        margin={{ top: 40, right: 20, bottom: 50, left: 40 }}
         xScale={{ type: "point" }}
         yScale={{
           type: "linear",
@@ -106,16 +106,6 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           reverse: false,
         }}
         yFormat=" >-.2f"
-        axisTop={{
-          orient: "left",
-          tickSize: 5,
-          tickPadding: 0,
-          tickRotation: 0,
-          // legend: "Number of hours user spent",
-          legendOffset: 10,
-
-          legendPosition: "start",
-        }}
         axisRight={null}
         axisBottom={{
           orient: "bottom",
@@ -123,7 +113,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           tickPadding: 5,
           tickRotation: 0,
           legend: "Time spent in hours",
-          legendOffset: 40,
+          legendOffset: -15,
           legendPosition: "middle",
           format: (value) => yAxisLabel(value),
           tickRotation: yAxisLabelDegree(),
@@ -156,7 +146,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         }}
         enableArea={true}
         animate={true}
-        areaOpacity={0.25}
+        areaOpacity={0.5}
         legends={[
           {
             anchor: "top-right",

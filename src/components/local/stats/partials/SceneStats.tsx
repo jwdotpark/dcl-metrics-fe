@@ -49,7 +49,8 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
       borderRadius="xl"
       shadow="md"
     >
-      <SceneBarChart />
+      <SceneBarChart data={res[selectedScene]} />
+      {/* <StatBox data={res[selectedScene]} /> */}
     </Box>
   )
 }

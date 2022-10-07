@@ -1,7 +1,10 @@
 import { ResponsiveBar } from "@nivo/bar"
 
-const SceneBarChart = () => {
-  const data = [
+const SceneBarChart = ({ data }) => {
+  // make data's structure same as oldData
+  console.log(data)
+
+  const oldData = [
     {
       country: "AD",
       "hot dog": 179,
@@ -111,7 +114,7 @@ const SceneBarChart = () => {
 
   return (
     <ResponsiveBar
-      data={data}
+      data={oldData}
       keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
       indexBy="country"
       margin={{ top: 30, right: 130, bottom: 50, left: 60 }}
