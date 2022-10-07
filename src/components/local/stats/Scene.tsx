@@ -21,7 +21,7 @@ import SceneSelector from "./partials/SceneSelector"
 
 const Scene = ({ res }) => {
   const box = {
-    h: "auto",
+    h: "100%",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
@@ -78,9 +78,10 @@ const Scene = ({ res }) => {
   })
 
   return (
-    <Box mb="4">
+    <Box h="100%" mb="4">
       <GridBox box={box}>
-        <Flex pos="relative" mt="4" mx="5">
+        {/* title */}
+        <Flex pos="relative" mx="5">
           <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
             <Box>
               {!isMobile && (
@@ -90,14 +91,6 @@ const Scene = ({ res }) => {
               )}
             </Box>
             <Spacer />
-            {/* <Box>
-              <SceneSelector
-                res={res}
-                name={name}
-                selectedScene={selectedScene}
-                setSelectedScene={setSelectedScene}
-              />
-            </Box> */}
           </Flex>
         </Flex>
         {!isMobile && (
@@ -107,30 +100,54 @@ const Scene = ({ res }) => {
             </Text>
           </Box>
         )}
-        <Flex direction="row" gap="4" mx="4" my="2">
-          <Box w="35%">
-            <Box maxW="100%" mb="4">
-              <SceneSelector
+
+        {/* components */}
+        <Box m="4">
+          <Flex
+            direction={["column", "row"]}
+            gap={[0, 4]}
+            w="100%"
+            h="auto"
+            mb="3"
+          >
+            <Box w={["100%", "35%"]}>
+              <Box mb="2">
+                <SceneSelector
+                  res={res}
+                  name={name}
+                  selectedScene={selectedScene}
+                  setSelectedScene={setSelectedScene}
+                />
+              </Box>
+              <SceneMap url={map_url} />
+            </Box>
+            <Box w={["100%", "65%"]} h="400px" mt={[4, 0]}>
+              <SceneStats
                 res={res}
-                name={name}
                 selectedScene={selectedScene}
                 setSelectedScene={setSelectedScene}
               />
             </Box>
-            <SceneMap url={map_url} />
-          </Box>
-          <Box w="65%">
-            <SceneStats
-              res={res}
-              selectedScene={selectedScene}
-              setSelectedScene={setSelectedScene}
-            />
-          </Box>
-          {/* <SceneMarathonUsers data={res[selectedScene].marathon_users} /> */}
-        </Flex>
-        <Box>
-          <Flex>
-            <Box w={chartWidth} minH="100%" m="4" mb="2" borderRadius="md">
+          </Flex>
+          <Flex
+            direction={["column", "row"]}
+            gap={[0, 4]}
+            w="100%"
+            h="auto"
+            mb="4"
+          >
+            <Box w={["100%", "35%"]}>
+              {/* <Box mb="2">
+                <SceneSelector
+                  res={res}
+                  name={name}
+                  selectedScene={selectedScene}
+                  setSelectedScene={setSelectedScene}
+                />
+              </Box>
+              <SceneMap url={map_url} /> */}
+            </Box>
+            <Box w={["100%", "65%"]} h="400px" mt={[4, 0]}>
               <SceneTimeSpentHistogram
                 data={res}
                 selectedScene={selectedScene}
@@ -138,6 +155,15 @@ const Scene = ({ res }) => {
             </Box>
           </Flex>
         </Box>
+
+        {/* <Flex direction={["column", "row"]} gap="4" h="400px" m="4">
+          <Box w={["100%", "35%"]} border="1px solid red">
+            some empty space
+          </Box>
+          <Box w={["100%", "65%"]}>
+            <SceneTimeSpentHistogram data={res} selectedScene={selectedScene} />
+          </Box>
+        </Flex> */}
       </GridBox>
     </Box>
   )

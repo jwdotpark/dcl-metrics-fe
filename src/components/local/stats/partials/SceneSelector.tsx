@@ -10,7 +10,7 @@ const SceneSelector = ({ res, selectedScene, setSelectedScene, name }) => {
 
   return (
     <Box>
-      <Select onChange={(e) => handleChange(e)}>
+      <Select shadow="md" onChange={(e) => handleChange(e)}>
         {sceneNames.map((name: string, i: number) => (
           <option key={i} value={i}>
             <Text>{i + 1 + ". " + name}</Text>
