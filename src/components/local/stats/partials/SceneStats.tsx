@@ -18,6 +18,7 @@ import CountUp from "react-countup"
 import RoadMap from "../../change/roadmap/RoadMap"
 import SceneSelector from "./SceneSelector"
 import SceneBarChart from "./SceneBarChart"
+import SceneParcelsHeatmap from "./SceneParcelsHeatmap"
 
 const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
   const {
@@ -38,6 +39,8 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
     parcels_heatmap,
   } = res[selectedScene]
 
+  console.log(parcels_heatmap)
+
   return (
     <Box
       w="100%"
@@ -49,7 +52,8 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
       borderRadius="xl"
       shadow="md"
     >
-      <SceneBarChart data={res[selectedScene]} />
+      <SceneParcelsHeatmap data={parcels_heatmap} />
+      {/* <SceneBarChart data={res[selectedScene]} /> */}
       {/* <StatBox data={res[selectedScene]} /> */}
     </Box>
   )

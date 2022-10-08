@@ -2,7 +2,6 @@ import { ResponsiveBar } from "@nivo/bar"
 
 const SceneBarChart = ({ data }) => {
   // make data's structure same as oldData
-  console.log(data)
 
   const oldData = [
     {

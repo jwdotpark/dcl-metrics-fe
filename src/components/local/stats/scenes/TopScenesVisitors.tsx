@@ -35,7 +35,6 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
   const dataArr = []
   const sceneDataRange = data[dateRange]
   const visitorData = sceneDataRange[1].visitors
-  console.log(res)
 
   for (const [key, value] of Object.entries(visitorData)) {
     dataArr.push({
