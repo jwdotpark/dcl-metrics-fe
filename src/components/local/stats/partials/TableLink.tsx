@@ -21,8 +21,9 @@ const TableLink = (data) => {
         <Link href={dclLink}>
           <a target="_blank" rel="noopener noreferrer">
             <Tooltip
+              p="2"
               fontSize="sm"
-              borderRadius="md"
+              borderRadius="xl"
               label="Decentraland"
               placement="auto"
             >
@@ -51,8 +52,9 @@ const TableLink = (data) => {
         <Link href={etherscanLink}>
           <a target="_blank" rel="noopener noreferrer">
             <Tooltip
+              p="2"
               fontSize="sm"
-              borderRadius="md"
+              borderRadius="xl"
               label="Etherscan"
               placement="auto"
             >

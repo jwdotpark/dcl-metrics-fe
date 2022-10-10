@@ -176,7 +176,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
               sx={{ backdropFilter: "blur(10px)" }}
               p="2"
               color={useColorModeValue("black", "white")}
-              borderRadius="md"
+              borderRadius="xl"
               shadow="md"
             >
               <TableContainer>
@@ -198,7 +198,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
                               boxSize="12px"
                               mr="2"
                               bg={point.serieColor}
-                              borderRadius="md"
+                              borderRadius="xl"
                             />
                             {point.serieId}
                           </Td>

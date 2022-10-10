@@ -36,7 +36,7 @@ const TableMap = ({ mapUrl }) => {
     >
       <Center h="100%">
         <Image
-          borderRadius="md"
+          borderRadius="xl"
           objectFit="cover"
           alt="map image"
           src={mapWithSize}

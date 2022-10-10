@@ -15,7 +15,7 @@ const TableDateRange = ({ dateRange, setDateRange }) => {
           <ButtonGroup
             overflow="hidden"
             w="100%"
-            borderRadius="md"
+            borderRadius="xl"
             shadow="md"
             isAttached
             size="sm"

@@ -68,7 +68,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
       },
     ]
     return (
-      <GridItem w={box.w} h="300" mb="4" bg={box.bg} borderRadius="md">
+      <GridItem w={box.w} h="300" mb="4" bg={box.bg} borderRadius="xl">
         <LineChart data={result} color={color} />
       </GridItem>
     )

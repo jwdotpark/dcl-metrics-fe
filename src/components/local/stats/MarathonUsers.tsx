@@ -108,7 +108,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                       {/* {value && value.length > 14 ? (
                         <Tooltip
                           fontSize="sm"
-                          borderRadius="md"
+                          borderRadius="xl"
                           label={value}
                           placement="top"
                         >
