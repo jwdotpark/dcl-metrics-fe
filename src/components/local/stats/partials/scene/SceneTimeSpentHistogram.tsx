@@ -93,7 +93,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
       h="400px"
       bg={useColorModeValue("gray.100", "gray.700")}
       border="1px solid"
-      borderColor={useColorModeValue("gray.200", "gray.700")}
+      borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
       shadow="md"
     >

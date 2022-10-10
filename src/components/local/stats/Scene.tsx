@@ -18,6 +18,7 @@ import SceneStats from "./partials/scene/SceneStats"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import SceneTimeSpentHistogram from "./partials/scene/SceneTimeSpentHistogram"
 import SceneSelector from "./partials/scene/SceneSelector"
+import StatBox from "./partials/scene/SceneStatBox"
 
 const Scene = ({ res }) => {
   const box = {
@@ -121,7 +122,12 @@ const Scene = ({ res }) => {
               </Box>
               <SceneMap url={map_url} />
             </Box>
-            <Box w={["100%", "65%"]} h="400px" mt={[4, 0]}>
+            <Box
+              w={["100%", "65%"]}
+              maxW={["100%", "65%"]}
+              h="400px"
+              mt={[4, 0]}
+            >
               <SceneStats
                 res={res}
                 selectedScene={selectedScene}
@@ -137,15 +143,10 @@ const Scene = ({ res }) => {
             mb="4"
           >
             <Box w={["100%", "35%"]}>
-              {/* <Box mb="2">
-                <SceneSelector
-                  res={res}
-                  name={name}
-                  selectedScene={selectedScene}
-                  setSelectedScene={setSelectedScene}
-                />
-              </Box>
-              <SceneMap url={map_url} /> */}
+              <StatBox
+                data={res[selectedScene]}
+                selectedScene={selectedScene}
+              />
             </Box>
             <Box w={["100%", "65%"]} h="400px" mt={[4, 0]}>
               <SceneTimeSpentHistogram

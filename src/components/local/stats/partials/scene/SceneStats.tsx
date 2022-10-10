@@ -1,23 +1,4 @@
-import {
-  Box,
-  Container,
-  SimpleGrid,
-  useColorModeValue,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react"
-import StatBox from "./SceneStatBox"
-import CountUp from "react-countup"
-import RoadMap from "../../../change/roadmap/RoadMap"
-import SceneSelector from "./SceneSelector"
-import SceneBarChart from "./SceneBarChart"
+import { Box, useColorModeValue } from "@chakra-ui/react"
 import SceneParcelsHeatmap from "./SceneParcelsHeatmap"
 
 const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
@@ -43,7 +24,6 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
     <Box
       w="100%"
       h="395px"
-      // h="400px"
       bg={useColorModeValue("gray.100", "gray.700")}
       border="1px solid"
       borderColor={useColorModeValue("gray.200", "gray.700")}
@@ -54,8 +34,6 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
         data={parcels_heatmap}
         selectedScene={selectedScene}
       />
-      {/* <SceneBarChart data={res[selectedScene]} /> */}
-      {/* <StatBox data={res[selectedScene]} /> */}
     </Box>
   )
 }

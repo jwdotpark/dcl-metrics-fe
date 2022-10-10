@@ -10,13 +10,15 @@ import {
   Text,
   Spacer,
   Grid,
+  Center,
+  filter,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import CountUp from "react-countup"
+import { SceneColor } from "../../../../../lib/hooks/utils"
 
-const StatBox = ({ data }) => {
+const StatBox = ({ data, selectedScene }) => {
   const [dataArr, setDataArr] = useState(Object.entries(data))
-  // const dataArr = Object.entries(data)
   const stats = dataArr.map((item) => {
     return {
       label: item[0],
@@ -43,46 +45,61 @@ const StatBox = ({ data }) => {
   }
 
   const Stat = (props) => {
-    const { label, value } = props
+    const { label, value, index } = props
     return (
-      <Box
-      // pl="2"
-      // py="2"
-      // border="2px solid"
-      // borderColor={useColorModeValue("gray.300", "gray.700")}
-      // borderRadius="md"
-      // shadow={useColorModeValue("sm", "sm-dark")}
+      <Flex
+        h="100%"
+        mb="2"
+        p="2"
+        bg={useColorModeValue("gray.300", "gray.600")}
+        border="1px solid"
+        borderColor={useColorModeValue("gray.100", "gray.700")}
       >
-        <Stack>
-          <Text color="muted" fontSize="xs">
-            {mutateString(label)}
-          </Text>
-          <Heading size={useBreakpointValue({ base: "sm", md: "md" })}>
-            <Text fontSize="2xl" fontWeight="bold">
+        <Center w="100%" mx="2">
+          <Box w={["100%", "60%"]}>
+            <Text
+              color={useColorModeValue("gray.800", "gray.400")}
+              fontSize={["sm", "xs"]}
+            >
+              {mutateString(label)}
+            </Text>
+          </Box>
+          <Spacer />
+          <Box>
+            <Text as="kbd" fontSize={["lg", "2xl"]} fontWeight="bold">
               <CountUp end={parseFloat(value)} duration={0.5} />
             </Text>
-          </Heading>
-        </Stack>
-      </Box>
+          </Box>
+        </Center>
+      </Flex>
     )
   }
 
+  const statIndex = Object.keys(filteredStats)
+
+  filteredStats.forEach((item, index) => {
+    // @ts-ignore
+    item.index = statIndex[index]
+  })
+
   return (
-    <Box as="section" w="100%">
-      <Grid
-        gap={7}
-        // templateRows="repeat(2, 1fr)"
-        templateColumns="repeat(2, 1fr)"
-        // columns={{
-        //   base: 1,
-        //   md: 2,
-        // }}
+    <>
+      <SimpleGrid
+        w="100%"
+        h="100%"
+        p="2"
+        bg={useColorModeValue("gray.200", "gray.700")}
+        border="1px solid"
+        borderColor={useColorModeValue("gray.200", "gray.600")}
+        borderRadius="xl"
+        columns={[1, 1, 1, 2]}
       >
-        {filteredStats.map(({ label, value }) => (
-          <Stat key={label} label={label} value={value} />
+        {/* @ts-ignore */}
+        {filteredStats.map(({ label, value, index }) => (
+          <Stat key={label} label={label} value={value} index={index} />
         ))}
-      </Grid>
-    </Box>
+      </SimpleGrid>
+    </>
   )
 }
 
