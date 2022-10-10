@@ -50,8 +50,9 @@ const ProfilePicture = ({ address, verified, guest }) => {
             />
             {guest && (
               <Tooltip
+                p="2"
                 fontSize="sm"
-                borderRadius="md"
+                borderRadius="xl"
                 label="Guest user"
                 placement="auto"
               >
@@ -75,8 +76,9 @@ const ProfilePicture = ({ address, verified, guest }) => {
             )}
             {verified && (
               <Tooltip
+                p="2"
                 fontSize="sm"
-                borderRadius="md"
+                borderRadius="xl"
                 label="User owns DCL ENS token"
                 placement="auto"
               >

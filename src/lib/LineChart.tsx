@@ -129,10 +129,11 @@ const LineChart = ({ data, color }) => {
                 color={useColorModeValue("black", "white")}
                 // bgColor={useColorModeValue("gray.700", "gray.300")}
                 // color={useColorModeValue("white", "black")}
-                borderRadius="md"
+                borderRadius="xl"
                 shadow="md"
               >
                 <TooltipTable
+                  p="2"
                   date={point.data.xFormatted}
                   count={point.data.yFormatted}
                   degraded={point.data.degraded}

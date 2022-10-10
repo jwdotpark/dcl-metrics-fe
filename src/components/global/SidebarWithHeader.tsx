@@ -179,8 +179,9 @@ const SidebarContent = ({
       </Flex>
       <Flex direction="column" gap="1" h="calc(100vh - 6rem)">
         <Tooltip
+          p="2"
           fontSize="sm"
-          borderRadius="md"
+          borderRadius="xl"
           label="Global Dashboard"
           placement="right"
         >
@@ -205,8 +206,9 @@ const SidebarContent = ({
           </Box>
         </Tooltip>
         <Tooltip
+          p="2"
           fontSize="sm"
-          borderRadius="md"
+          borderRadius="xl"
           label="Users"
           placement="right"
         >
@@ -231,8 +233,9 @@ const SidebarContent = ({
           </Box>
         </Tooltip>
         <Tooltip
+          p="2"
           fontSize="sm"
-          borderRadius="md"
+          borderRadius="xl"
           label="Scenes"
           placement="right"
         >
@@ -257,8 +260,9 @@ const SidebarContent = ({
           </Box>
         </Tooltip>
         <Tooltip
+          p="2"
           fontSize="sm"
-          borderRadius="md"
+          borderRadius="xl"
           label="Parcels"
           placement="right"
         >
@@ -286,8 +290,9 @@ const SidebarContent = ({
           </Box>
         </Tooltip>
         <Tooltip
+          p="2"
           fontSize="sm"
-          borderRadius="md"
+          borderRadius="xl"
           label="Roadmap"
           placement="right"
         >
@@ -316,8 +321,9 @@ const SidebarContent = ({
           </Box>
         </Tooltip>
         <Tooltip
+          p="2"
           fontSize="sm"
-          borderRadius="md"
+          borderRadius="xl"
           label="About"
           placement="right"
         >
@@ -344,8 +350,9 @@ const SidebarContent = ({
         </Tooltip>
         <Spacer />
         <Tooltip
+          p="2"
           fontSize="sm"
-          borderRadius="md"
+          borderRadius="xl"
           label={sidebarOpen ? "Collapse" : "Expand"}
           placement="right"
         >

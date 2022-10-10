@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         p="8"
         bg="white"
         border="1px solid gray.100"
-        borderRadius="md"
+        borderRadius="xl"
         shadow="md"
       >
         <Grid
@@ -86,7 +86,7 @@ const Home: NextPage = () => {
         p="8"
         bg="white"
         border="1px solid gray.100"
-        borderRadius="md"
+        borderRadius="xl"
         shadow="md"
       >
         <Grid

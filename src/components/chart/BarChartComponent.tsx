@@ -17,7 +17,7 @@ const BarChartComponent = ({ data }) => {
   const [value, setValue] = useState("")
 
   return (
-    <GridItem h={box.h} bg={box.bg} borderRadius="md">
+    <GridItem h={box.h} bg={box.bg} borderRadius="xl">
       <BarChart data={data} onOpen={onOpen} value={value} setValue={setValue} />
     </GridItem>
   )

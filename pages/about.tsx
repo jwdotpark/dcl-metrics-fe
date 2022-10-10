@@ -19,7 +19,7 @@ const About = () => {
   return (
     <Layout>
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`}>
-        <GridItem w="100%" h="auto" borderRadius="md" shadow="md">
+        <GridItem w="100%" h="auto" borderRadius="xl" shadow="md">
           <AboutList />
         </GridItem>
       </Grid>
@@ -40,13 +40,13 @@ const AboutList = () => {
       )}
       // h="calc(100vh - 7rem)"
       bgSize="cover"
-      borderRadius="md"
+      borderRadius="xl"
     >
       <Center>
         <Container
           sx={{ backdropFilter: "blur(20px)" }}
           maxW={"8xl"}
-          borderRadius="md"
+          borderRadius="xl"
         >
           <Box
             maxW="64rem"

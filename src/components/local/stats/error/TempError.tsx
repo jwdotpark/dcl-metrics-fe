@@ -28,7 +28,7 @@ const AlertComponent = () => {
       flexDir="column"
       h="100%"
       textAlign="center"
-      borderRadius="md"
+      borderRadius="xl"
       status="warning"
       variant="subtle"
     >
@@ -52,7 +52,7 @@ const TempError = () => {
     bg: useColorModeValue("white", "gray.800"),
   }
   return (
-    <Box mb="4" borderRadius="md">
+    <Box mb="4" borderRadius="xl">
       <GridBox box={box}>
         <Box h="100%">
           <AlertComponent />

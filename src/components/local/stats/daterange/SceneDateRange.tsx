@@ -15,7 +15,7 @@ const ParcelDateRange = ({ dateRange, setDateRange }) => {
         <HStack>
           <ButtonGroup
             w="100%"
-            borderRadius="md"
+            borderRadius="xl"
             shadow="md"
             isAttached
             size="sm"

@@ -110,7 +110,7 @@ const Explorer = ({ isLoading, res }) => {
                       {/* {value && value.length > 16 ? (
                         <Tooltip
                           fontSize="sm"
-                          borderRadius="md"
+                          borderRadius="xl"
                           label={value}
                           placement="top"
                         >

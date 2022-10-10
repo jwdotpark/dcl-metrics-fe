@@ -8,7 +8,7 @@ const AccordionBox = ({ children }) => {
     bg: useColorModeValue("white", "gray.800"),
   }
   return (
-    <Box mb="4" borderRadius="md">
+    <Box mb="4" borderRadius="xl">
       <GridBox box={box}>{children}</GridBox>
     </Box>
   )

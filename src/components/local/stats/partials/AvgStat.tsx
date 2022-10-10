@@ -32,8 +32,9 @@ const AvgStat = ({ avg, data }) => {
             Average:
           </Text> */}
           <Tooltip
+            p="2"
             fontSize="sm"
-            borderRadius="md"
+            borderRadius="xl"
             label={`Average count for ${data.length} days`}
             placement="top"
           >

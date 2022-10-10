@@ -20,8 +20,9 @@ const TruncateName = (name: string) => {
   if (name.length > stringLimit) {
     return (
       <Tooltip
+        p="2"
         fontSize="sm"
-        borderRadius="md"
+        borderRadius="xl"
         aria-label="A tooltip"
         label={name}
         placement="top"
