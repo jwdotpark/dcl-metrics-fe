@@ -15,7 +15,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react"
 import { ResponsiveLine } from "@nivo/line"
-import { ResponsiveBar } from "@nivo/bar"
+import { SceneColor } from "../../../../lib/hooks/utils"
 
 const SceneTimeSpentHistogram = ({ data, selectedScene }) => {
   const timeSpentHistogramArr = data.map((item) => item.time_spent_histogram)
@@ -43,18 +43,22 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
   })
   // selected line color
   const lineOpacity = 0.1
-  const randomColor = (index) => {
-    const r = Math.floor(Math.random() * 256)
-    const g = Math.floor(Math.random() * 256)
-    const b = Math.floor(Math.random() * 256)
-    return `rgb(${r},${g},${b},${lineOpacity})`
+  const setColor = (index) => {
+    const color =
+      SceneColor[index]
+        .toString()
+        .substring(0, SceneColor[index].toString().length - 1) +
+      ", " +
+      lineOpacity +
+      ")"
+    return color
   }
 
   const data = res.map((item, i) => {
     return {
       id: item.name,
       // random color
-      color: randomColor(i),
+      color: setColor(i),
       data: item.map((item) => {
         return {
           x: item[0],
@@ -146,7 +150,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         }}
         enableArea={true}
         animate={true}
-        areaOpacity={0.5}
+        areaOpacity={0.25}
         legends={[
           {
             anchor: "top-right",

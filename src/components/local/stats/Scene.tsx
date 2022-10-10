@@ -155,15 +155,6 @@ const Scene = ({ res }) => {
             </Box>
           </Flex>
         </Box>
-
-        {/* <Flex direction={["column", "row"]} gap="4" h="400px" m="4">
-          <Box w={["100%", "35%"]} border="1px solid red">
-            some empty space
-          </Box>
-          <Box w={["100%", "65%"]}>
-            <SceneTimeSpentHistogram data={res} selectedScene={selectedScene} />
-          </Box>
-        </Flex> */}
       </GridBox>
     </Box>
   )

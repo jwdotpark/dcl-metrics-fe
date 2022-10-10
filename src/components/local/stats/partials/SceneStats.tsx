@@ -39,8 +39,6 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
     parcels_heatmap,
   } = res[selectedScene]
 
-  console.log(parcels_heatmap)
-
   return (
     <Box
       w="100%"
@@ -52,7 +50,10 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
       borderRadius="xl"
       shadow="md"
     >
-      <SceneParcelsHeatmap data={parcels_heatmap} />
+      <SceneParcelsHeatmap
+        data={parcels_heatmap}
+        selectedScene={selectedScene}
+      />
       {/* <SceneBarChart data={res[selectedScene]} /> */}
       {/* <StatBox data={res[selectedScene]} /> */}
     </Box>

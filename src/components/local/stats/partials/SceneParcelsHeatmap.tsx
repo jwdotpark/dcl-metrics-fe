@@ -1,10 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { Center, Box, Text, Flex, useColorModeValue } from "@chakra-ui/react"
+import { SceneColor } from "../../../../lib/hooks/utils"
 
-const SceneParcelsHeatmap = ({ data }) => {
-  console.log("data", data)
-
+const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   // grab the smallest x and y values from the data
   const minX = Math.min(...Object.keys(data).map((d) => d.split(",")[0]))
   const maxX = Math.max(...Object.keys(data).map((d) => d.split(",")[0]))
@@ -32,6 +31,16 @@ const SceneParcelsHeatmap = ({ data }) => {
     })
   )
 
+  const setBgColor = (value) => {
+    const i = selectedScene
+    const res =
+      SceneColor[i].substring(0, SceneColor[i].toString().length - 1) +
+      ", " +
+      value +
+      ")"
+    return res
+  }
+
   return (
     <Box overflow="auto" h="360px" m="4" borderRadius="xl">
       {normalizedGrid.map((row, i) => {
@@ -43,10 +52,7 @@ const SceneParcelsHeatmap = ({ data }) => {
                   key={j}
                   w="100%"
                   h="100px"
-                  bg={useColorModeValue(
-                    `rgba(98, 114, 164, ${cell.normalizedValue / 100})`,
-                    `rgba(16, 164, 114, ${cell.normalizedValue / 100})`
-                  )}
+                  bg={setBgColor(cell.normalizedValue / 100)}
                   border="1px solid"
                   borderColor={useColorModeValue("gray.100", "gray.700")}
                 >
