@@ -10,6 +10,7 @@ import {
   useBreakpointValue,
   Spacer,
   Grid,
+  GridItem,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
@@ -22,12 +23,6 @@ import StatBox from "./partials/scene/SceneStatBox"
 import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 
 const Scene = ({ res }) => {
-  const box = {
-    h: "100%",
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
-
   const breakpoint = useBreakpointValue({
     sm: "100%",
     md: "100%",
@@ -78,6 +73,12 @@ const Scene = ({ res }) => {
     md: "100%",
     lg: "100%",
   })
+
+  const box = {
+    h: "100%",
+    w: "100%",
+    bg: useColorModeValue("white", "gray.800"),
+  }
 
   return (
     <Box h="100%" mb="4">

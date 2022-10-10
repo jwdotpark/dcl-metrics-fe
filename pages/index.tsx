@@ -106,7 +106,7 @@ const GlobalPage: NextPage = (props) => {
 
   return (
     <Layout>
-      <Scene res={staticScene} />
+      {/* <Scene res={staticScene} /> */}
       {/* <TempError /> */}
       <Box w="100%">
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
