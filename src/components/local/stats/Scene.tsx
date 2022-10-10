@@ -19,6 +19,7 @@ import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import SceneTimeSpentHistogram from "./partials/scene/SceneTimeSpentHistogram"
 import SceneSelector from "./partials/scene/SceneSelector"
 import StatBox from "./partials/scene/SceneStatBox"
+import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 
 const Scene = ({ res }) => {
   const box = {
@@ -127,11 +128,11 @@ const Scene = ({ res }) => {
               maxW={["100%", "65%"]}
               h="400px"
               mt={[4, 0]}
+              mr="-2"
             >
-              <SceneStats
-                res={res}
+              <SceneParcelsHeatmap
+                data={parcels_heatmap}
                 selectedScene={selectedScene}
-                setSelectedScene={setSelectedScene}
               />
             </Box>
           </Flex>

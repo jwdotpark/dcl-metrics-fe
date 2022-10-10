@@ -21,20 +21,7 @@ const SceneStats = ({ res, selectedScene, setSelectedScene }) => {
   } = res[selectedScene]
 
   return (
-    <Box
-      w="100%"
-      h="395px"
-      bg={useColorModeValue("gray.100", "gray.700")}
-      border="1px solid"
-      borderColor={useColorModeValue("gray.200", "gray.700")}
-      borderRadius="xl"
-      shadow="md"
-    >
-      <SceneParcelsHeatmap
-        data={parcels_heatmap}
-        selectedScene={selectedScene}
-      />
-    </Box>
+    <SceneParcelsHeatmap data={parcels_heatmap} selectedScene={selectedScene} />
   )
 }
 

@@ -45,28 +45,25 @@ const StatBox = ({ data, selectedScene }) => {
   }
 
   const Stat = (props) => {
-    const { label, value, index } = props
+    const { label, value } = props
     return (
       <Flex
-        h="100%"
-        mb="2"
-        p="2"
         bg={useColorModeValue("gray.300", "gray.600")}
         border="1px solid"
         borderColor={useColorModeValue("gray.100", "gray.700")}
       >
-        <Center w="100%" mx="2">
+        <Center w="100%" mx="4" my="2">
           <Box w={["100%", "60%"]}>
             <Text
               color={useColorModeValue("gray.800", "gray.400")}
               fontSize={["sm", "xs"]}
             >
-              {mutateString(label)}
+              {mutateString(label).toUpperCase()}
             </Text>
           </Box>
           <Spacer />
           <Box>
-            <Text as="kbd" fontSize={["lg", "2xl"]} fontWeight="bold">
+            <Text as="kbd" fontSize="2xl" fontWeight="bold">
               <CountUp end={parseFloat(value)} duration={0.5} />
             </Text>
           </Box>
@@ -75,29 +72,22 @@ const StatBox = ({ data, selectedScene }) => {
     )
   }
 
-  const statIndex = Object.keys(filteredStats)
-
-  filteredStats.forEach((item, index) => {
-    // @ts-ignore
-    item.index = statIndex[index]
-  })
-
   return (
     <>
       <SimpleGrid
         w="100%"
         h="100%"
-        p="2"
+        p="3"
         bg={useColorModeValue("gray.200", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
-        columns={[1, 1, 1, 2]}
       >
-        {/* @ts-ignore */}
-        {filteredStats.map(({ label, value, index }) => (
-          <Stat key={label} label={label} value={value} index={index} />
-        ))}
+        <SimpleGrid overflow="clip" w="100%" borderRadius="xl" columns={[1, 2]}>
+          {filteredStats.map(({ label, value }) => (
+            <Stat key={label} label={label} value={value} />
+          ))}
+        </SimpleGrid>
       </SimpleGrid>
     </>
   )
