@@ -148,14 +148,14 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Scenes with Most Visitor</b>
+                <b>Scenes with Most Unique Visitors</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
           <Text color="gray.500" fontSize="sm">
-            Scenes with the most visits in the last period
+            Scenes with the most unique visits in the last period
           </Text>
         </Box>
         <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />

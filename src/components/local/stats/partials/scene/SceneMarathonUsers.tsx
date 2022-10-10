@@ -56,7 +56,8 @@ const SceneMarathonUsers = ({ data }) => {
                       _hover={{ color: "gray.600", cursor: "pointer" }}
                       onClick={() => handleToast(address)}
                     >
-                      {address.toString().slice(0, 100)}
+                      {/* {address.toString().slice(0, 100)} */}
+                      {address.slice(0, 7) + ".." + address.slice(-7, -1)}
                     </Text>
                   </Td>
                   <Td isNumeric>

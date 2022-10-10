@@ -1,5 +1,5 @@
 import { Flex, Image, Box, useColorModeValue, Center } from "@chakra-ui/react"
-import GridBox from "../../GridBox"
+import GridBox from "../../../GridBox"
 
 const SceneMap = (props) => {
   const { url } = props
@@ -7,12 +7,14 @@ const SceneMap = (props) => {
   return (
     <Box
       overflow="clip"
-      border="2px solid"
+      w="100%"
+      h="350px"
+      border="3px solid"
       borderColor={useColorModeValue("gray.300", "gray.700")}
-      borderRadius="md"
+      borderRadius="xl"
       shadow="md"
     >
-      <Image objectFit="cover" alt="map image" src={url} />
+      <Image minW="100%" h="100%" objectFit="cover" alt="map image" src={url} />
     </Box>
   )
 }

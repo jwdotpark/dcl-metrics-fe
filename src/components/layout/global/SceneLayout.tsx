@@ -9,6 +9,8 @@ import {
   Collapse,
   Button,
 } from "@chakra-ui/react"
+import staticScene from "../../../../public/data/top_scenes.json"
+import Scene from "../../local/stats/Scene"
 import ScenesLogin from "../../local/stats/scenes/ScenesLogin"
 import ScenesLogout from "../../local/stats/scenes/ScenesLogout"
 import ScenesTimeSpent from "../../local/stats/scenes/ScenesTimeSpent"
@@ -28,6 +30,7 @@ const SceneLayout = ({ result, isDataLoading }) => {
     <AccordionItem>
       <AccordionLabel name="Scenes" />
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
+        <Scene res={staticScene} />
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopScenesVisitors
             res={result.scenes}

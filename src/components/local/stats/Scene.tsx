@@ -10,22 +10,19 @@ import {
   useBreakpointValue,
   Spacer,
   Grid,
+  GridItem,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
-import SceneMap from "./partials/SceneMap"
-import SceneStats from "./partials/SceneStats"
-import SceneMarathonUsers from "./partials/SceneMarathonUsers"
-import SceneTimeSpentHistogram from "./partials/SceneTimeSpentHistogram"
-import SceneSelector from "./partials/SceneSelector"
+import SceneMap from "./partials/scene/SceneMap"
+import SceneStats from "./partials/scene/SceneStats"
+import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
+import SceneTimeSpentHistogram from "./partials/scene/SceneTimeSpentHistogram"
+import SceneSelector from "./partials/scene/SceneSelector"
+import StatBox from "./partials/scene/SceneStatBox"
+import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 
 const Scene = ({ res }) => {
-  const box = {
-    h: "auto",
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
-
   const breakpoint = useBreakpointValue({
     sm: "100%",
     md: "100%",
@@ -60,7 +57,7 @@ const Scene = ({ res }) => {
   const gridColumn = useBreakpointValue({
     md: 1,
     lg: 2,
-    xl: 3,
+    xl: 2,
   })
 
   const isMobile = useBreakpointValue({
@@ -77,10 +74,17 @@ const Scene = ({ res }) => {
     lg: "100%",
   })
 
+  const box = {
+    h: "100%",
+    w: "100%",
+    bg: useColorModeValue("white", "gray.800"),
+  }
+
   return (
-    <Box mb="4">
+    <Box h="100%" mb="4">
       <GridBox box={box}>
-        <Flex pos="relative" mt="4" mx="5">
+        {/* title */}
+        <Flex pos="relative" mx="5">
           <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
             <Box>
               {!isMobile && (
@@ -90,14 +94,6 @@ const Scene = ({ res }) => {
               )}
             </Box>
             <Spacer />
-            <Box>
-              <SceneSelector
-                res={res}
-                name={name}
-                selectedScene={selectedScene}
-                setSelectedScene={setSelectedScene}
-              />
-            </Box>
           </Flex>
         </Flex>
         {!isMobile && (
@@ -107,26 +103,54 @@ const Scene = ({ res }) => {
             </Text>
           </Box>
         )}
-        <Grid
-          gap={4}
-          templateColumns={`repeat(${gridColumn}, 1fr)`}
-          mx="4"
-          my="2"
-          // border="1px solid red"
-        >
-          <Box>
-            <SceneMap url={map_url} />
-          </Box>
-          <SceneStats
-            res={res}
-            selectedScene={selectedScene}
-            setSelectedScene={setSelectedScene}
-          />
-          <SceneMarathonUsers data={res[selectedScene].marathon_users} />
-        </Grid>
-        <Box>
-          <Flex>
-            <Box w={chartWidth} minH="100%" m="4" mb="2" borderRadius="md">
+
+        {/* components */}
+        <Box m="4">
+          <Flex
+            direction={["column", "row"]}
+            gap={[0, 4]}
+            w="100%"
+            h="auto"
+            mb="3"
+          >
+            <Box w={["100%", "35%"]}>
+              <Box mb="2">
+                <SceneSelector
+                  res={res}
+                  name={name}
+                  selectedScene={selectedScene}
+                  setSelectedScene={setSelectedScene}
+                />
+              </Box>
+              <SceneMap url={map_url} />
+            </Box>
+            <Box
+              w={["100%", "65%"]}
+              maxW={["100%", "65%"]}
+              h="400px"
+              mt={[4, 0]}
+              mr="-2"
+            >
+              <SceneParcelsHeatmap
+                data={parcels_heatmap}
+                selectedScene={selectedScene}
+              />
+            </Box>
+          </Flex>
+          <Flex
+            direction={["column", "row"]}
+            gap={[0, 4]}
+            w="100%"
+            h="auto"
+            mb="4"
+          >
+            <Box w={["100%", "35%"]}>
+              <StatBox
+                data={res[selectedScene]}
+                selectedScene={selectedScene}
+              />
+            </Box>
+            <Box w={["100%", "65%"]} h="400px" mt={[4, 0]}>
               <SceneTimeSpentHistogram
                 data={res}
                 selectedScene={selectedScene}

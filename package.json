@@ -24,6 +24,7 @@
     "@nivo/line": "^0.79.1",
     "@nivo/marimekko": "^0.79.1",
     "@nivo/pie": "^0.79.1",
+    "@nivo/treemap": "^0.80.0",
     "@sentry/nextjs": "^7.11.1",
     "@tanstack/react-table": "^8.5.2",
     "axios": "^0.27.2",
@@ -38,7 +39,8 @@
     "react-countup": "^6.3.1",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "react-table": "^7.8.0"
+    "react-table": "^7.8.0",
+    "react-use-draggable-scroll": "^0.4.7"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
