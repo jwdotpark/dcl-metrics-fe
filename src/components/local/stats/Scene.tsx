@@ -113,7 +113,7 @@ const Scene = ({ res }) => {
             h="auto"
             mb="3"
           >
-            <Box w={["100%", "35%"]}>
+            <Box w={["100%", "50%", "35%"]}>
               <Box mb="2">
                 <SceneSelector
                   res={res}
@@ -124,13 +124,7 @@ const Scene = ({ res }) => {
               </Box>
               <SceneMap url={map_url} />
             </Box>
-            <Box
-              w={["100%", "65%"]}
-              maxW={["100%", "65%"]}
-              h="400px"
-              mt={[4, 0]}
-              mr="-2"
-            >
+            <Box w={["100%", "50%", "65%"]} h="400px" mt={[4, 0]}>
               <SceneParcelsHeatmap
                 data={parcels_heatmap}
                 selectedScene={selectedScene}

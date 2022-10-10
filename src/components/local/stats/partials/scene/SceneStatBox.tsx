@@ -75,15 +75,23 @@ const StatBox = ({ data, selectedScene }) => {
   return (
     <>
       <SimpleGrid
+        overflowY="scroll"
         w="100%"
-        h="100%"
+        h="400px"
         p="3"
+        // h="100%"
         bg={useColorModeValue("gray.200", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
+        shadow="md"
       >
-        <SimpleGrid overflow="clip" w="100%" borderRadius="xl" columns={[1, 2]}>
+        <SimpleGrid
+          overflow="clip"
+          w="100%"
+          borderRadius="xl"
+          columns={[1, 1, 1, 2]}
+        >
           {filteredStats.map(({ label, value }) => (
             <Stat key={label} label={label} value={value} />
           ))}

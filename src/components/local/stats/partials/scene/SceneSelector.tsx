@@ -12,7 +12,8 @@ const SceneSelector = ({ res, selectedScene, setSelectedScene, name }) => {
     <Box>
       <Select
         border="2px solid"
-        borderColor="gray.300"
+        borderColor={useColorModeValue("gray.100", "gray.500")}
+        borderRadius="xl"
         shadow="md"
         // bgColor="gray.200"
         onChange={(e) => handleChange(e)}
