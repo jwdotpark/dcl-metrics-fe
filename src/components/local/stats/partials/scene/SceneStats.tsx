@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react"
 import StatBox from "./SceneStatBox"
 import CountUp from "react-countup"
-import RoadMap from "../../change/roadmap/RoadMap"
+import RoadMap from "../../../change/roadmap/RoadMap"
 import SceneSelector from "./SceneSelector"
 import SceneBarChart from "./SceneBarChart"
 import SceneParcelsHeatmap from "./SceneParcelsHeatmap"

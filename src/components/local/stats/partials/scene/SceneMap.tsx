@@ -1,5 +1,5 @@
 import { Flex, Image, Box, useColorModeValue, Center } from "@chakra-ui/react"
-import GridBox from "../../GridBox"
+import GridBox from "../../../GridBox"
 
 const SceneMap = (props) => {
   const { url } = props

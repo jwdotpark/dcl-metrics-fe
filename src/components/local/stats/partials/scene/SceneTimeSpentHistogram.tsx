@@ -15,7 +15,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react"
 import { ResponsiveLine } from "@nivo/line"
-import { SceneColor } from "../../../../lib/hooks/utils"
+import { SceneColor } from "../../../../../lib/hooks/utils"
 
 const SceneTimeSpentHistogram = ({ data, selectedScene }) => {
   const timeSpentHistogramArr = data.map((item) => item.time_spent_histogram)

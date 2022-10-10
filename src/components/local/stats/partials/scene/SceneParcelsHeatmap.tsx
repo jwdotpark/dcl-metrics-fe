@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { Center, Box, Text, Flex, useColorModeValue } from "@chakra-ui/react"
-import { SceneColor } from "../../../../lib/hooks/utils"
+import { SceneColor } from "../../../../../lib/hooks/utils"
 
 const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   // grab the smallest x and y values from the data

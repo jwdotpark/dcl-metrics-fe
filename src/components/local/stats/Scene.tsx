@@ -13,11 +13,11 @@ import {
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
-import SceneMap from "./partials/SceneMap"
-import SceneStats from "./partials/SceneStats"
-import SceneMarathonUsers from "./partials/SceneMarathonUsers"
-import SceneTimeSpentHistogram from "./partials/SceneTimeSpentHistogram"
-import SceneSelector from "./partials/SceneSelector"
+import SceneMap from "./partials/scene/SceneMap"
+import SceneStats from "./partials/scene/SceneStats"
+import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
+import SceneTimeSpentHistogram from "./partials/scene/SceneTimeSpentHistogram"
+import SceneSelector from "./partials/scene/SceneSelector"
 
 const Scene = ({ res }) => {
   const box = {
