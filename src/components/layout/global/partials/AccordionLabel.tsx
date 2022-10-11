@@ -25,6 +25,7 @@ const AccordionLabel = ({ name }) => {
     <h2>
       <AccordionButton
         bg={useColorModeValue("gray.300", "gray.600")}
+        borderTopWidth="0"
         borderTopRadius={name === "Users" ? "xl" : "none"}
         _hover={{
           bg: useColorModeValue("gray.400", "gray.700"),
