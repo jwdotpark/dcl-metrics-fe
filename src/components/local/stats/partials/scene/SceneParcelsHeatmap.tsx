@@ -1,5 +1,12 @@
 // @ts-nocheck
-import { Center, Box, Text, Flex, useColorModeValue } from "@chakra-ui/react"
+import {
+  Center,
+  Box,
+  Text,
+  Flex,
+  useColorModeValue,
+  Tooltip,
+} from "@chakra-ui/react"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 import CountUp from "react-countup"
 
@@ -41,54 +48,63 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   }
 
   return (
-    <Box
-      w="100%"
-      bg={useColorModeValue("gray.100", "gray.700")}
-      border="1px solid"
-      borderColor={useColorModeValue("gray.200", "gray.700")}
+    <Tooltip
+      p="4"
+      fontSize="sm"
       borderRadius="xl"
-      shadow="md"
+      shadow="xl"
+      label="This chart shows the heatmap of each coordinate in this scene"
+      placement="auto"
     >
       <Box
+        w="100%"
+        bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
-        borderColor={useColorModeValue("gray.100", "gray.600")}
+        borderColor={useColorModeValue("gray.200", "gray.700")}
         borderRadius="xl"
+        shadow="md"
       >
-        <Box overflow="auto" h="360px" m="4" borderRadius="xl">
-          {normalizedGrid.map((row, i) => {
-            return (
-              <Flex key={i}>
-                {row.map((cell, j) => {
-                  return (
-                    <Box
-                      key={j}
-                      w="100%"
-                      maxW="100%"
-                      h="100px"
-                      bg={setBgColor(cell.normalizedValue / 100)}
-                      border="1px solid"
-                      // eslint-disable-next-line react-hooks/rules-of-hooks
-                      borderColor={useColorModeValue("gray.100", "gray.700")}
-                    >
-                      <Box m="2">
-                        <Text as="kbd" fontSize="xs">
-                          [{cell.x},{cell.y}]
-                        </Text>
+        <Box
+          border="1px solid"
+          borderColor={useColorModeValue("gray.100", "gray.600")}
+          borderRadius="xl"
+        >
+          <Box overflow="auto" h="360px" m="4" borderRadius="xl">
+            {normalizedGrid.map((row, i) => {
+              return (
+                <Flex key={i}>
+                  {row.map((cell, j) => {
+                    return (
+                      <Box
+                        key={j}
+                        w="100%"
+                        maxW="100%"
+                        h="100px"
+                        bg={setBgColor(cell.normalizedValue / 100)}
+                        border="1px solid"
+                        // eslint-disable-next-line react-hooks/rules-of-hooks
+                        borderColor={useColorModeValue("gray.100", "gray.700")}
+                      >
+                        <Box m="2">
+                          <Text as="kbd" fontSize="xs">
+                            [{cell.x},{cell.y}]
+                          </Text>
+                        </Box>
+                        <Center>
+                          <Text as="kbd" fontSize="2xl" fontWeight="bold">
+                            <CountUp end={cell.value} duration={0.5} />
+                          </Text>
+                        </Center>
                       </Box>
-                      <Center>
-                        <Text as="kbd" fontSize="2xl" fontWeight="bold">
-                          <CountUp end={cell.value} duration={0.5} />
-                        </Text>
-                      </Center>
-                    </Box>
-                  )
-                })}
-              </Flex>
-            )
-          })}
+                    )
+                  })}
+                </Flex>
+              )
+            })}
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </Tooltip>
   )
 }
 
