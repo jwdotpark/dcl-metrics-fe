@@ -2,6 +2,7 @@ import { Box, useColorModeValue, useBreakpointValue } from "@chakra-ui/react"
 import { ResponsiveBar } from "@nivo/bar"
 import SceneHistogram from "../../../../../../public/data/scene_histogram.json"
 import { SceneColor } from "../../../../../lib/hooks/utils"
+import TooltipTable from "../TableTooltip"
 
 const SceneBarChart = ({ selectedScene }) => {
   const chartData = Object.keys(SceneHistogram).map((key) => {
@@ -81,7 +82,7 @@ const SceneBarChart = ({ selectedScene }) => {
           tickSize: 5,
           tickPadding: 0,
           tickRotation: 0,
-          legend: !isMobile && "Number of Users",
+          legend: "Number of Users",
           legendPosition: "end",
           legendOffset: 5,
         }}
@@ -92,6 +93,25 @@ const SceneBarChart = ({ selectedScene }) => {
         ariaLabel="scene bar chart"
         barAriaLabel={function (e) {
           return e.id + ": " + e.formattedValue + " in country: " + e.indexValue
+        }}
+        tooltip={(e) => {
+          return (
+            <Box
+              sx={{ backdropFilter: "blur(5px)" }}
+              pt="2"
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              color={useColorModeValue("black", "white")}
+              borderRadius="xl"
+              shadow="md"
+            >
+              <TooltipTable
+                bar={true}
+                date={e.indexValue}
+                count={e.value}
+                degraded={false}
+              />
+            </Box>
+          )
         }}
       />
     </Box>

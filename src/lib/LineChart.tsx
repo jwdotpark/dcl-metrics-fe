@@ -127,8 +127,6 @@ const LineChart = ({ data, color }) => {
                 sx={{ backdropFilter: "blur(5px)" }}
                 pt="2"
                 color={useColorModeValue("black", "white")}
-                // bgColor={useColorModeValue("gray.700", "gray.300")}
-                // color={useColorModeValue("white", "black")}
                 borderRadius="xl"
                 shadow="md"
               >
