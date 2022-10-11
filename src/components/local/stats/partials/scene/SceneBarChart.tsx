@@ -52,12 +52,12 @@ const SceneBarChart = ({ selectedScene }) => {
           left: isMobile ? 40 : 50,
         }}
         borderWidth={2}
-        padding={0.2}
+        padding={isMobile ? 0.4 : 0.2}
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}
         colors={colorOpacity}
         theme={{
-          textColor: useColorModeValue("gray.800", "white"),
+          textColor: useColorModeValue("black", "white"),
           fontSize: isMobile ? 10 : 12,
           grid: {
             line: {
@@ -88,7 +88,7 @@ const SceneBarChart = ({ selectedScene }) => {
         }}
         labelSkipWidth={12}
         labelSkipHeight={12}
-        labelTextColor={useColorModeValue("#000", "gray.200")}
+        labelTextColor={useColorModeValue("#000", "#fff")}
         role="application"
         ariaLabel="scene bar chart"
         barAriaLabel={function (e) {

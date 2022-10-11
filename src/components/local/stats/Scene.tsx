@@ -154,15 +154,9 @@ const Scene = ({ res }) => {
             gap={[0, 4]}
             w="100%"
             h="auto"
-            mb="4"
+            // mb="2"
           >
-            {/* <Box w={["100%", "35%"]}>
-              <StatBox
-                data={res[selectedScene]}
-                selectedScene={selectedScene}
-              />
-            </Box> */}
-            <Box w={["100%", "100%"]} h="400px" mt={[4, 0]}>
+            <Box w="100%" h="400px">
               <SceneBarChart selectedScene={selectedScene} />
             </Box>
           </Flex>

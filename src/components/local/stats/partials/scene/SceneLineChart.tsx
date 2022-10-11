@@ -138,7 +138,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         curve="basis"
         enablePoints={false}
         theme={{
-          textColor: useColorModeValue("gray.800", "white"),
+          textColor: useColorModeValue("black", "white"),
           fontSize: 12,
           grid: {
             line: {

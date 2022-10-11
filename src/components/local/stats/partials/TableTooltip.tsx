@@ -7,8 +7,6 @@ import {
   Tbody,
   Td,
   Text,
-  Box,
-  Spacer,
 } from "@chakra-ui/react"
 import moment from "moment"
 
