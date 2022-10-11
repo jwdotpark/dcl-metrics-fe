@@ -1,0 +1,266 @@
+[
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-ec1.decentraland.org/lambdas/profiles",
+    "statuses": {
+      "200": 15
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 15,
+    "total_count": 15
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-eu1.decentraland.org/comms/peers",
+    "statuses": {
+      "200": 980
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 980,
+    "total_count": 980
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.decentral.io/comms/peers",
+    "statuses": {
+      "200": 979
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 979,
+    "total_count": 979
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-ap1.decentraland.org/comms/peers",
+    "statuses": {
+      "200": 978
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 978,
+    "total_count": 978
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://interconnected.online/comms/peers",
+    "statuses": {
+      "200": 979
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 979,
+    "total_count": 979
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-ec1.decentraland.org/comms/peers",
+    "statuses": {
+      "200": 980
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 980,
+    "total_count": 980
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-ec2.decentraland.org/comms/peers",
+    "statuses": {
+      "200": 979
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 979,
+    "total_count": 979
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-wc1.decentraland.org/comms/peers",
+    "statuses": {
+      "200": 979
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 979,
+    "total_count": 979
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.dclnodes.io/stats/parcels",
+    "statuses": {
+      "200": 1410
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1410,
+    "total_count": 1410
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.decentraland.org/content/entities/scene",
+    "statuses": {
+      "200": 10114
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 10114,
+    "total_count": 10114
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.uadevops.com/stats/parcels",
+    "statuses": {
+      "200": 1411
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1411,
+    "total_count": 1411
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.melonwave.com/comms/peers",
+    "statuses": {
+      "200": 979
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 979,
+    "total_count": 979
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.kyllian.me/comms/peers",
+    "statuses": {
+      "200": 978
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 978,
+    "total_count": 978
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.uadevops.com/comms/peers",
+    "statuses": {
+      "200": 979
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 979,
+    "total_count": 979
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.dclnodes.io/comms/peers",
+    "statuses": {
+      "200": 978
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 978,
+    "total_count": 978
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-ec1.decentraland.org/stats/parcels",
+    "statuses": {
+      "200": 1408
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1408,
+    "total_count": 1408
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-ec2.decentraland.org/stats/parcels",
+    "statuses": {
+      "200": 1409
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1409,
+    "total_count": 1409
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-wc1.decentraland.org/stats/parcels",
+    "statuses": {
+      "200": 1408
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1408,
+    "total_count": 1408
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-eu1.decentraland.org/stats/parcels",
+    "statuses": {
+      "200": 1410
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1410,
+    "total_count": 1410
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer-ap1.decentraland.org/stats/parcels",
+    "statuses": {
+      "200": 1411
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1411,
+    "total_count": 1411
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://interconnected.online/stats/parcels",
+    "statuses": {
+      "200": 1411
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1411,
+    "total_count": 1411
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.decentral.io/stats/parcels",
+    "statuses": {
+      "200": 1411
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1411,
+    "total_count": 1411
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.melonwave.com/stats/parcels",
+    "statuses": {
+      "200": 1411
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1411,
+    "total_count": 1411
+  },
+  {
+    "date": "2022-09-19",
+    "url": "https://peer.kyllian.me/stats/parcels",
+    "statuses": {
+      "200": 1410
+    },
+    "failure_count": 0,
+    "failure_rate": 0.0,
+    "success_count": 1410,
+    "total_count": 1410
+  }
+]

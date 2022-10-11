@@ -43,7 +43,6 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   return (
     <Box
       w="100%"
-      // h="400px"
       bg={useColorModeValue("gray.100", "gray.700")}
       border="1px solid"
       borderColor={useColorModeValue("gray.200", "gray.700")}

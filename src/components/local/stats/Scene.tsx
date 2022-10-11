@@ -17,10 +17,11 @@ import GridBox from "../GridBox"
 import SceneMap from "./partials/scene/SceneMap"
 import SceneStats from "./partials/scene/SceneStats"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
-import SceneTimeSpentHistogram from "./partials/scene/SceneTimeSpentHistogram"
+import SceneLineChart from "./partials/scene/SceneLineChart"
 import SceneSelector from "./partials/scene/SceneSelector"
 import StatBox from "./partials/scene/SceneStatBox"
 import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
+import SceneBarChart from "./partials/scene/SceneBarChart"
 
 const Scene = ({ res }) => {
   const breakpoint = useBreakpointValue({
@@ -145,10 +146,24 @@ const Scene = ({ res }) => {
               />
             </Box>
             <Box w={["100%", "65%"]} h="400px" mt={[4, 0]}>
-              <SceneTimeSpentHistogram
-                data={res}
+              <SceneLineChart data={res} selectedScene={selectedScene} />
+            </Box>
+          </Flex>
+          <Flex
+            direction={["column", "row"]}
+            gap={[0, 4]}
+            w="100%"
+            h="auto"
+            mb="4"
+          >
+            {/* <Box w={["100%", "35%"]}>
+              <StatBox
+                data={res[selectedScene]}
                 selectedScene={selectedScene}
               />
+            </Box> */}
+            <Box w={["100%", "100%"]} h="400px" mt={[4, 0]}>
+              <SceneBarChart selectedScene={selectedScene} />
             </Box>
           </Flex>
         </Box>

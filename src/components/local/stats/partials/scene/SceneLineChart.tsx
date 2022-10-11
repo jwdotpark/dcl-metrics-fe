@@ -17,7 +17,7 @@ import {
 import { ResponsiveLine } from "@nivo/line"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 
-const SceneTimeSpentHistogram = ({ data, selectedScene }) => {
+const SceneLineChart = ({ data, selectedScene }) => {
   const timeSpentHistogramArr = data.map((item) => item.time_spent_histogram)
   timeSpentHistogramArr.forEach((item, index) => {
     item.name = data[index].name
@@ -32,7 +32,7 @@ const SceneTimeSpentHistogram = ({ data, selectedScene }) => {
   )
 }
 
-export default SceneTimeSpentHistogram
+export default SceneLineChart
 
 const MyResponsiveLine = ({ res, selectedScene }) => {
   const isMobile = useBreakpointValue({
@@ -100,7 +100,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
       <ResponsiveLine
         data={memoizedData}
         colors={colors}
-        margin={{ top: 40, right: 20, bottom: 50, left: 40 }}
+        margin={{ top: 30, right: 20, bottom: 40, left: 40 }}
         xScale={{ type: "point" }}
         yScale={{
           type: "linear",
@@ -118,7 +118,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           tickRotation: 0,
           legend: "Time spent in hours",
           legendOffset: -15,
-          legendPosition: "middle",
+          legendPosition: "end",
           format: (value) => yAxisLabel(value),
           tickRotation: yAxisLabelDegree(),
         }}
@@ -129,7 +129,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           tickRotation: 0,
           legend: "User Count",
           legendOffset: 10,
-          legendPosition: "middle",
+          legendPosition: "end",
         }}
         pointSize={10}
         pointBorderWidth={2}

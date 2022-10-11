@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
-import staticScene from "../public/data/top_scenes.json"
+// import staticScene from "../public/data/top_scenes.json"
+// import staticSceneHistogram from "../public/data/scene_histogram.json"
+
 import { useAtom } from "jotai"
 import { DataAtom } from "../src/lib/hooks/atoms"
 

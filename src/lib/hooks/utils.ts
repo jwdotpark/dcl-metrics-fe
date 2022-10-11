@@ -11,7 +11,7 @@ export const convertSeconds = (seconds: number) => {
 }
 
 export const SceneColor = [
-  "rgba(80, 250, 123)",
+  "rgba(80, 150, 123)",
   "rgba(255, 121, 198)",
   "rgba(255, 85, 85)",
   "rgba(78, 114, 264)",
@@ -19,6 +19,6 @@ export const SceneColor = [
   "rgba(255, 121, 198)",
   "rgba(189, 147, 249)",
   "rgba(255, 85, 85)",
-  "rgba(241, 250, 140)",
+  "rgba(241, 150, 140)",
   "rgba(255, 121, 198)",
 ]
