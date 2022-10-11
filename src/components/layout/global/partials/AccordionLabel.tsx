@@ -6,6 +6,7 @@ import {
   AccordionIcon,
   Button,
 } from "@chakra-ui/react"
+import { useState } from "react"
 import { FiUsers, FiMapPin, FiPackage } from "react-icons/fi"
 
 const AccordionLabel = ({ name }) => {
@@ -21,11 +22,21 @@ const AccordionLabel = ({ name }) => {
       return <FiPackage size="24px" color={useColorModeValue("#000", "#fff")} />
     }
   }
+
+  const [parcelRadius, setParcelRadius] = useState(false)
+  const handleParcelRadius = (value: string) => {
+    if (value === "Parcels") {
+      setParcelRadius(!parcelRadius)
+    }
+  }
+
   return (
     <h2>
       <AccordionButton
         bg={useColorModeValue("gray.300", "gray.600")}
-        borderTopRadius={name === "Users" ? "md" : "none"}
+        borderBottomWidth="0"
+        borderTopRadius={name === "Users" ? "xl" : "none"}
+        borderBottomRadius={parcelRadius && "xl"}
         _hover={{
           bg: useColorModeValue("gray.400", "gray.700"),
         }}
@@ -33,12 +44,15 @@ const AccordionLabel = ({ name }) => {
           bg: useColorModeValue("gray.300", "gray.600"),
           color: useColorModeValue("gray.800", "white"),
         }}
+        onClick={(e) => {
+          // @ts-ignore
+          handleParcelRadius(e.target.innerText)
+        }}
       >
         <Box flex="1" py="2" textAlign="center">
           <Button leftIcon={labelIcon(name)} variant="link">
             <Text
               as="b"
-              // sx={{ transform: "translateY(4px)" }}
               color={useColorModeValue("gray.700", "gray.100")}
               fontSize="30px"
             >

@@ -23,7 +23,7 @@ const UserLayout = ({ result, isDataLoading }) => {
     xl: 2,
   })
   return (
-    <AccordionItem>
+    <AccordionItem border="none">
       <AccordionLabel name="Users" />
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">

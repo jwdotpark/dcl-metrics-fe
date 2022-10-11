@@ -29,9 +29,14 @@ const ParcelLayout = ({ result, isDataLoading }) => {
   const { isOpen, onToggle } = useDisclosure()
 
   return (
-    <AccordionItem>
+    <AccordionItem border="none">
       <AccordionLabel name="Parcels" />
-      <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
+      <AccordionPanel
+        pb={4}
+        bg={useColorModeValue("gray.300", "gray.600")}
+        borderBottomWidth="0"
+        borderBottomRadius="xl"
+      >
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <AvgTimeSpentParcel
             parcel={result.parcels}
