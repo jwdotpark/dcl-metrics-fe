@@ -29,7 +29,7 @@ const LineChart = ({ data, color }) => {
 
   const yAxisLabelDegree = () => {
     if (data[0].data.length > 7) {
-      return 45
+      return 90
     } else {
       return 0
     }
@@ -40,6 +40,7 @@ const LineChart = ({ data, color }) => {
       data={data}
       theme={{
         textColor: useColorModeValue("gray.800", "white"),
+        fontSize: 12,
         grid: {
           line: {
             stroke: "gray",
@@ -50,7 +51,7 @@ const LineChart = ({ data, color }) => {
       }}
       animate={true}
       pointSize={4}
-      margin={{ top: 40, right: 45, bottom: 60, left: 55 }}
+      margin={{ top: 40, right: 25, bottom: 60, left: 55 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -114,6 +115,8 @@ const LineChart = ({ data, color }) => {
           legendOrientation: "horizontal",
         },
       ]}
+      curve="basis"
+      enablePoints={false}
       enableSlices="x"
       sliceTooltip={({ slice }) => {
         return (
@@ -121,13 +124,14 @@ const LineChart = ({ data, color }) => {
             {slice.points.map((point, i) => (
               <Box
                 key={i}
+                sx={{ backdropFilter: "blur(5px)" }}
                 pt="2"
-                boxShadow="md"
-                borderRadius="md"
-                bgColor={useColorModeValue("gray.700", "gray.300")}
-                color={useColorModeValue("white", "black")}
+                color={useColorModeValue("black", "white")}
+                borderRadius="xl"
+                shadow="md"
               >
                 <TooltipTable
+                  p="2"
                   date={point.data.xFormatted}
                   count={point.data.yFormatted}
                   degraded={point.data.degraded}

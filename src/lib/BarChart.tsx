@@ -7,7 +7,6 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import { ResponsiveBar } from "@nivo/bar"
-import ProfilePicture from "../components/local/ProfilePicture"
 import { convertSeconds } from "../lib/hooks/utils"
 
 const BarChart = ({ data }) => {
@@ -79,16 +78,16 @@ const PopoverTooltip = (value) => {
   return (
     <Flex
       // sx={{ backdropFilter: "blur(20px)" }}
-      bg={useColorModeValue("white", "gray.600")}
-      boxShadow="xl"
+      gap="1rem"
       m="2"
       mx="4"
       p="4"
       px="6"
+      bg={useColorModeValue("white", "gray.600")}
       border="1px solid"
       borderColor={useColorModeValue("gray.200", "gray.500")}
       borderRadius="xl"
-      gap="1rem"
+      shadow="xl"
     >
       <Center>
         <Box w="100%">

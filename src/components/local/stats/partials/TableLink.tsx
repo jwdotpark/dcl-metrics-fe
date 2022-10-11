@@ -21,20 +21,21 @@ const TableLink = (data) => {
         <Link href={dclLink}>
           <a target="_blank" rel="noopener noreferrer">
             <Tooltip
+              p="2"
+              fontSize="sm"
+              borderRadius="xl"
               label="Decentraland"
               placement="auto"
-              fontSize="sm"
-              borderRadius="md"
             >
               <Button
-                backgroundColor={useColorModeValue("gray.300", "gray.500")}
-                variant="unstyled"
-                size="sm"
                 borderRadius="200"
-                boxShadow="sm"
+                shadow="sm"
                 _hover={{ filter: "brightness(75%)" }}
+                bgColor={useColorModeValue("gray.300", "gray.500")}
+                size="sm"
+                variant="unstyled"
               >
-                <Center h="100%" w="100%">
+                <Center w="100%" h="100%">
                   <Image
                     src={dclLogo}
                     alt="link logo"
@@ -51,20 +52,21 @@ const TableLink = (data) => {
         <Link href={etherscanLink}>
           <a target="_blank" rel="noopener noreferrer">
             <Tooltip
+              p="2"
+              fontSize="sm"
+              borderRadius="xl"
               label="Etherscan"
               placement="auto"
-              fontSize="sm"
-              borderRadius="md"
             >
               <Button
-                backgroundColor={useColorModeValue("gray.300", "gray.500")}
-                variant="unstyled"
-                size="sm"
                 borderRadius="200"
-                boxShadow="sm"
+                shadow="sm"
                 _hover={{ filter: "brightness(75%)" }}
+                bgColor={useColorModeValue("gray.300", "gray.500")}
+                size="sm"
+                variant="unstyled"
               >
-                <Center h="100%" w="100%">
+                <Center w="100%" h="100%">
                   <Image
                     src={etherscanLogo}
                     alt="link logo"

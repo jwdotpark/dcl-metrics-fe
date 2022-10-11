@@ -16,11 +16,11 @@ const Pagination = ({ page, pages, setPage }) => {
   return (
     <Box m="2">
       <Button
-        size="sm"
-        variant="ghost"
-        onClick={prevClick}
         fontSize="sm"
         cursor="pointer"
+        onClick={prevClick}
+        size="sm"
+        variant="ghost"
       >
         <FiChevronsLeft />
       </Button>
@@ -28,25 +28,25 @@ const Pagination = ({ page, pages, setPage }) => {
         return (
           <Button
             key={i}
-            size="sm"
-            variant="ghost"
-            onClick={() => {
-              setPage(i + 1)
-            }}
             color={page === i + 1 ? "gray.900" : "gray.400"}
             fontSize="sm"
             cursor="pointer"
+            onClick={() => {
+              setPage(i + 1)
+            }}
+            size="sm"
+            variant="ghost"
           >
             {i + 1}
           </Button>
         )
       })}
       <Button
-        size="sm"
-        variant="ghost"
-        onClick={nextClick}
         fontSize="sm"
         cursor="pointer"
+        onClick={nextClick}
+        size="sm"
+        variant="ghost"
       >
         <FiChevronsRight />
       </Button>

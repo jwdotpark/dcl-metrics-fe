@@ -14,16 +14,17 @@ import {
   Image,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { convertSeconds } from "../../../lib/hooks/utils"
-import Loading from "../Loading"
+import { convertSeconds } from "../../../../lib/hooks/utils"
+import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import TableMap from "./partials/TableMap"
-import ParcelDateRange from "./daterange/ParcelDateRange"
-import GridBox from "../GridBox"
+import TableMap from "../partials/TableMap"
+import ParcelDateRange from "../daterange/ParcelDateRange"
+import GridBox from "../../GridBox"
 
-const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
+const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
   const box = {
+    // h: "630",
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
@@ -41,13 +42,13 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const parcelDataRange = data[dateRange]
 
   // @ts-ignore
-  const timeSpentData = parcelDataRange[1].time_spent
-  // make an array with timeSpentData
-  for (const [key, value] of Object.entries(timeSpentData)) {
+  const timeSpentAFKData = parcelDataRange[1].time_spent_afk
+  // make an array with timeSpentAFKData
+  for (const [key, value] of Object.entries(timeSpentAFKData)) {
     dataArr.push({
       mapUrl: baseUrl + key.replace(",", "/") + mapUrl,
       coord: key,
-      avg_time_spent: value,
+      time_spent_afk: value,
     })
   }
 
@@ -69,11 +70,14 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
       },
     },
     {
-      Header: "AVG. Time Spent",
-      accessor: "avg_time_spent",
-      width: 200,
+      Header: "AVG. AFK",
+      accessor: "time_spent_afk",
       Cell: ({ value }) => {
-        return <Text as="kbd">{convertSeconds(value)}</Text>
+        return (
+          <Text as="kbd" fontWeight="bold">
+            {convertSeconds(value)}
+          </Text>
+        )
       },
     },
   ]
@@ -99,14 +103,14 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const TableComponent = () => {
     return (
       <>
-        <TableContainer whiteSpace="nowrap" borderColor="gray.400" mt="2">
+        <TableContainer mt="2" borderColor="gray.400" whiteSpace="nowrap">
           <Table
             {...getTableProps()}
-            size="sm"
-            variant="striped"
-            colorScheme="gray"
-            // height="520"
             overflowX="hidden"
+            colorScheme="gray"
+            size="sm"
+            // height="520"
+            variant="striped"
           >
             <Thead>
               {headerGroups.map((headerGroup, i) => (
@@ -147,23 +151,23 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   return (
     <>
       <GridBox box={box}>
-        <Flex position="relative" mt="4" mx="5">
+        <Flex pos="relative" mt="4" mx="5">
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Parcels Average Time Spent</b>
+                <b>Parcels with Most AFK</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
-          <Text fontSize="sm" color="gray.500">
-            Parcels with the most average time spent on them in the last period
+          <Text color="gray.500" fontSize="sm">
+            Parcels with the most idle time spent on them in the last period
           </Text>
         </Box>
         <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isParcelLoading ? (
-          <Box mx="4" mb="8">
+          <Box mb="8" mx="4">
             <TableComponent />
           </Box>
         ) : (
@@ -176,4 +180,4 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default AvgTimeSpentParcel
+export default AFKtimeSpentAFKParcel

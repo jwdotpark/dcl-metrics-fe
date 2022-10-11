@@ -1,24 +1,23 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import type { NextPage } from "next"
-import { Grid, useBreakpointValue, Button } from "@chakra-ui/react"
+import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
+// import staticScene from "../public/data/top_scenes.json"
+// import staticSceneHistogram from "../public/data/scene_histogram.json"
+
+import { useAtom } from "jotai"
+import { DataAtom } from "../src/lib/hooks/atoms"
 
 const axios = require("axios").default
-const fs = require("fs")
+import fs from "fs"
 
 import Layout from "../src/components/layout/layout"
+import Scene from "../src/components/local/stats/Scene"
+import UserLayout from "../src/components/layout/global/UserLayout"
+import SceneLayout from "../src/components/layout/global/SceneLayout"
+import ParcelLayout from "../src/components/layout/global/ParcelLayout"
+import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
-import VisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
-import MarathonUsers from "../src/components/local/stats/MarathonUsers"
-import Explorer from "../src/components/local/stats/Explorer"
-import AvgTimeSpentParcel from "../src/components/local/stats/AvgTimeSpentParcel"
-import AFKTimeSpentParcel from "../src/components/local/stats/AFKTimeSpentParcel"
-import LogOutTimeSpentParcel from "../src/components/local/stats/LogOutTimeSpentParcel"
-import LogInTimeSpentParcel from "../src/components/local/stats/LogInTimeSpentParcel"
-import MostVisitedParcel from "../src/components/local/stats/MostVisitedParcel"
-import TopScenes from "../src/components/local/stats/TopScenes"
-
-import TempError from "../src/components/local/stats/error/TempError"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
@@ -42,11 +41,7 @@ export async function getStaticProps() {
       },
     })
 
-    // caching data
     if (response.status === 200) {
-      // on build
-      // it'll write the file in the public dir
-      // it'll be overwritten of status code is 200
       fs.writeFileSync(
         "./public/data/cached_global_response.json",
         JSON.stringify(response.data)
@@ -78,63 +73,57 @@ export async function getStaticProps() {
         props: { staticGlobal },
       }
     }
-    const ISR = response.data
+    const data = response.data
     return {
-      props: { ISR },
+      props: { data },
       revalidate: day,
     }
   } else {
-    const ISR = staticGlobal
+    const data = staticGlobal
     return {
-      props: { ISR },
+      props: { data },
     }
   }
 }
 
-const GlobalPage: NextPage = (ISR) => {
-  // SSR suppressed loading state completely for now
+const GlobalPage: NextPage = (props) => {
   const [isDataLoading, setIsDataLoading] = useState(false)
 
-  // @ts-ignore
-  const result = ISR.ISR
-
   const gridColumn = useBreakpointValue({
+    base: 1,
+    sm: 1,
     md: 1,
     lg: 2,
     xl: 2,
   })
 
+  // @ts-ignore
+  const result = props.data
+  const [res, setRes] = useAtom(DataAtom)
+
+  useEffect(() => {
+    setRes(result)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Layout>
-      {/* <Button onClick={() => sendNotification()}>send notification</Button> */}
+      {/* <Scene res={staticScene} /> */}
       {/* <TempError /> */}
-      {/* <TopScenes /> */}
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
-        <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
-        <VisitedParcels data={result.global} visitorLoading={isDataLoading} />
-        <MarathonUsers res={result.users} isLoading={isDataLoading} />
-        <Explorer res={result.users} isLoading={isDataLoading} />
-        <AvgTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <LogInTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <AFKTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <LogOutTimeSpentParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-        <MostVisitedParcel
-          parcel={result.parcels}
-          isParcelLoading={isDataLoading}
-        />
-      </Grid>
+      <Box w="100%">
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
+          <UniqueVisitedParcels
+            data={result.global}
+            visitorLoading={isDataLoading}
+          />
+        </Grid>
+        <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
+          <UserLayout result={result} isDataLoading={isDataLoading} />
+          <SceneLayout result={result} isDataLoading={isDataLoading} />
+          <ParcelLayout result={result} isDataLoading={isDataLoading} />
+        </Accordion>
+      </Box>
     </Layout>
   )
 }

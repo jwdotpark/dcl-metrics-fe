@@ -23,16 +23,16 @@ import GridBox from "../../GridBox"
 const AlertComponent = () => {
   return (
     <Alert
-      borderRadius="md"
-      status="warning"
-      variant="subtle"
-      flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      textAlign="center"
+      flexDir="column"
       h="100%"
+      textAlign="center"
+      borderRadius="xl"
+      status="warning"
+      variant="subtle"
     >
-      <AlertIcon boxSize="40px" mr={0} mt="4" />
+      <AlertIcon boxSize="40px" mt="4" mr={0} />
       <AlertTitle mt={4} mb={1} fontSize="3xl">
         Partial Outage
       </AlertTitle>
@@ -52,8 +52,8 @@ const TempError = () => {
     bg: useColorModeValue("white", "gray.800"),
   }
   return (
-    <Box borderRadius="md">
-      <GridBox box={box} mb="8">
+    <Box mb="4" borderRadius="xl">
+      <GridBox box={box}>
         <Box h="100%">
           <AlertComponent />
         </Box>

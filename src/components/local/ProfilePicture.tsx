@@ -35,7 +35,7 @@ const ProfilePicture = ({ address, verified, guest }) => {
 
   return (
     <>
-      <Center borderRadius="full" display="inline-block">
+      <Center display="inline-block" borderRadius="full">
         {isLoading ? (
           <Center h="100%">
             <Spinner size="sm" />
@@ -43,25 +43,26 @@ const ProfilePicture = ({ address, verified, guest }) => {
         ) : (
           <Box w="2rem">
             <Avatar
-              src={pic}
-              size="sm"
-              showBorder={true}
               borderColor="gray.300"
+              showBorder={true}
+              size="sm"
+              src={pic}
             />
             {guest && (
               <Tooltip
+                p="2"
+                fontSize="sm"
+                borderRadius="xl"
                 label="Guest user"
                 placement="auto"
-                fontSize="sm"
-                borderRadius="md"
               >
                 <Box
                   display="inline-block"
-                  css={{ transform: "translateX(-12px) translateY(16px)" }}
-                  backgroundColor="yellow.200"
-                  borderRadius="full"
-                  border="1px solid yellow"
                   boxSize="14px"
+                  border="1px solid yellow"
+                  borderRadius="full"
+                  bgColor="yellow.200"
+                  css={{ transform: "translateX(-12px) translateY(16px)" }}
                 >
                   <Center h="100%">
                     <Image
@@ -75,10 +76,11 @@ const ProfilePicture = ({ address, verified, guest }) => {
             )}
             {verified && (
               <Tooltip
+                p="2"
+                fontSize="sm"
+                borderRadius="xl"
                 label="User owns DCL ENS token"
                 placement="auto"
-                fontSize="sm"
-                borderRadius="md"
               >
                 <Box
                   display="inline-block"

@@ -18,8 +18,8 @@ const About = () => {
 
   return (
     <Layout>
-      <Grid templateColumns={`repeat(${gridColumn}, 1fr)`} gap={4}>
-        <GridItem w="100%" h="auto" borderRadius="md" boxShadow="md">
+      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`}>
+        <GridItem w="100%" h="auto" borderRadius="xl" shadow="md">
           <AboutList />
         </GridItem>
       </Grid>
@@ -32,76 +32,76 @@ export default About
 const AboutList = () => {
   return (
     <Box
-      borderRadius="md"
-      background={useColorModeValue(
+      h="100%"
+      px="4"
+      bg={useColorModeValue(
         "linear-gradient(322deg, rgba(250,146,248,1) 0%, rgba(145,198,252,1) 49%, rgba(241,246,252,1) 100%)",
         "linear-gradient(322deg, rgba(70,20,69,1) 0%, rgba(38,80,124,1) 49%, rgba(69,71,73,1) 100%)"
       )}
-      backgroundSize="cover"
       // h="calc(100vh - 7rem)"
-      h="100%"
-      px="4"
+      bgSize="cover"
+      borderRadius="xl"
     >
       <Center>
         <Container
-          borderRadius="md"
-          maxW={"8xl"}
           sx={{ backdropFilter: "blur(20px)" }}
+          maxW={"8xl"}
+          borderRadius="xl"
         >
           <Box
             maxW="64rem"
-            marginX="auto"
-            py={{ base: "3rem", md: "4rem" }}
             px={{ base: "1rem", md: "0" }}
+            py={{ base: "3rem", md: "4rem" }}
+            marginX="auto"
           >
             <Heading
               as="h3"
+              mb={{ base: "4", md: "2" }}
+              pb={4}
               fontSize="1.5rem"
               fontWeight="bold"
               textAlign="left"
-              mb={{ base: "4", md: "2" }}
-              pb={4}
-              borderBottom="1px solid"
               borderColor={useColorModeValue("gray.600", "gray.400")}
+              borderBottom="1px solid"
             >
               DCL-Metrics
             </Heading>
             <Flex
               as="section"
-              alignItems="start"
-              justify="between"
-              flexDirection={{ base: "column", md: "row" }}
-              my={{ base: "1.5rem", md: "2.5rem" }}
-              borderBottom="1px solid"
-              borderColor={useColorModeValue("gray.600", "gray.400")}
-              pb={8}
               zIndex="2"
+              align="start"
+              justify="between"
+              direction={{ base: "column", md: "row" }}
+              my={{ base: "1.5rem", md: "2.5rem" }}
+              pb={8}
+              borderColor={useColorModeValue("gray.600", "gray.400")}
+              borderBottom="1px solid"
             >
               {featuresList.map((feature) => {
                 return (
                   <Box
                     key={feature.id}
                     w={{ base: "100%", md: 1 / 3 }}
-                    px={{ md: "0.5rem" }}
                     mb={{ base: "6", md: "0" }}
+                    px={{ md: "0.5rem" }}
                   >
                     {feature.icon}
                     <Text
-                      textAlign="left"
-                      fontWeight="700"
                       mt={3}
                       mb={1}
                       color={useColorModeValue("gray.700", "gray.100")}
+                      fontWeight="700"
+                      textAlign="left"
                     >
                       {feature.title}
                     </Text>
                     <Text
+                      mt={3}
+                      mb={1}
                       color={useColorModeValue("gray.700", "gray.100")}
                       fontSize="0.875rem"
                       fontWeight="300"
                       textAlign="left"
-                      mt={3}
-                      mb={1}
                     >
                       {feature.desc}
                     </Text>

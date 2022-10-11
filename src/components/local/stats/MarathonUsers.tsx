@@ -25,6 +25,7 @@ import TableLink from "./partials/TableLink"
 import { useMemo } from "react"
 import { useTable, useSortBy } from "react-table"
 import TableDateRange from "./daterange/TableDateRange"
+import TruncateName from "./partials/TruncatedName"
 
 const MarathonUsers = ({ isLoading, res }) => {
   // leave it in case customize size of component dimension
@@ -39,10 +40,7 @@ const MarathonUsers = ({ isLoading, res }) => {
   const handleToast = (value) => {
     navigator.clipboard.writeText(value)
     toast({
-      description:
-        "Address " +
-        value.slice(0, 10) +
-        ".. has been copied to the clipboard.",
+      description: "Address " + value + " has been copied to the clipboard.",
       duration: 2000,
       isClosable: true,
       position: "bottom-right",
@@ -71,11 +69,15 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "Time Spent",
         accessor: "time_spent",
-        width: 100,
+        width: 140,
         Cell: ({ value }) => {
           return (
             <Box w="100px">
-              <Text as="kbd" color={useColorModeValue("gray.800", "gray.200")}>
+              <Text
+                as="kbd"
+                color={useColorModeValue("gray.800", "gray.200")}
+                fontWeight="bold"
+              >
                 {convertSeconds(value)}
               </Text>
             </Box>
@@ -87,11 +89,11 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "User",
         accessor: "name",
-        width: 195,
+        width: 200,
         Cell: ({ value, row }) => {
           return (
-            <Box w="137px">
-              <Box ml="-6">
+            <Box w="170px">
+              <Box ml="-6px">
                 <Flex h="100%">
                   <Box>
                     <ProfilePicture
@@ -102,20 +104,21 @@ const MarathonUsers = ({ isLoading, res }) => {
                   </Box>
                   <Center minH="100%" ml="2">
                     <Text color={useColorModeValue("gray.800", "gray.200")}>
-                      {value && value.length > 14 ? (
+                      {value ? TruncateName(value) : "N/A"}
+                      {/* {value && value.length > 14 ? (
                         <Tooltip
+                          fontSize="sm"
+                          borderRadius="xl"
                           label={value}
                           placement="top"
-                          fontSize="sm"
-                          borderRadius="md"
                         >
-                          {value.slice(0, 14) + ".."}
+                          {value.slice(0, 25) + ".."}
                         </Tooltip>
                       ) : value ? (
                         value
                       ) : (
                         "N/A"
-                      )}
+                      )} */}
                     </Text>
                   </Center>
                 </Flex>
@@ -124,21 +127,20 @@ const MarathonUsers = ({ isLoading, res }) => {
           )
         },
       },
-
       {
         Header: "Address",
         accessor: "address",
-        width: 360,
+        width: 155,
         Cell: ({ value }) => {
           return (
-            <Flex w="330px">
+            <Flex w="120px">
               <Box display="inline-block" onClick={() => handleToast(value)}>
                 <Text
                   as="kbd"
                   color={useColorModeValue("gray.800", "gray.200")}
                   _hover={{ color: "gray.600", cursor: "pointer" }}
                 >
-                  {value}
+                  {value.slice(0, 7) + ".." + value.slice(-7, -1)}
                 </Text>
               </Box>
             </Flex>
@@ -148,7 +150,7 @@ const MarathonUsers = ({ isLoading, res }) => {
       {
         Header: "Link",
         accessor: "",
-        width: -10, // idk why but this works
+        width: 40,
         Cell: ({ row }) => {
           return (
             <Flex>
@@ -187,15 +189,15 @@ const MarathonUsers = ({ isLoading, res }) => {
   const TableComponent = () => {
     const { colorMode } = useColorMode()
     return (
-      <TableContainer mx="4" whiteSpace="nowrap" mt="4">
+      <TableContainer mt="4" mb="6" mx="4" whiteSpace="nowrap">
         <Table
           {...getTableProps()}
-          size="sm"
           overflowX="hidden"
-          variant="unstyled"
           maxW="100%"
           h="500px"
-          mb="6"
+          // mb="6"
+          size="sm"
+          variant="simple"
         >
           <Thead>
             {headerGroups.map((headerGroup, i) => (
@@ -207,7 +209,7 @@ const MarathonUsers = ({ isLoading, res }) => {
                 {headerGroup.headers.map((column, j) => (
                   <Th
                     key={j}
-                    width={column.width}
+                    w={column.width}
                     // sorting
                     // {...column.getHeaderProps(column.getSortByToggleProps())}
                   >
@@ -255,7 +257,7 @@ const MarathonUsers = ({ isLoading, res }) => {
     <>
       <GridBox box={box}>
         <>
-          <Flex position="relative" mt="4" mx="5">
+          <Flex pos="relative" mt="4" mx="5">
             <Flex w="100%">
               <Box>
                 <Text fontSize="2xl">
@@ -265,7 +267,7 @@ const MarathonUsers = ({ isLoading, res }) => {
             </Flex>
           </Flex>
           <Box ml="6">
-            <Text fontSize="sm" color="gray.500">
+            <Text color="gray.500" fontSize="sm">
               Users with most online time in the last period
             </Text>
           </Box>

@@ -19,8 +19,8 @@ const PieChartComponent = () => {
       maxW={box.w}
       h={box.h}
       bg={box.bg}
-      borderRadius="md"
-      boxShadow="md"
+      borderRadius="xl"
+      shadow="md"
     >
       <ComponentHeader name="Pie Chart" />
       <PieChart data={data} />

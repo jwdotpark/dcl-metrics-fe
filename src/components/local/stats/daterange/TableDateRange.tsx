@@ -13,39 +13,41 @@ const TableDateRange = ({ dateRange, setDateRange }) => {
       <Box zIndex="1" mt="1">
         <HStack>
           <ButtonGroup
+            overflow="hidden"
+            w="100%"
+            border="1px solid"
+            borderColor={useColorModeValue("gray.200", "gray.600")}
+            borderRadius="xl"
+            shadow="md"
             isAttached
             size="sm"
             variant="outline"
-            w="100%"
-            boxShadow="md"
-            borderRadius="md"
-            overflow="hidden"
           >
             <Button
               w="100%"
-              onClick={() => setDateRange("1d")}
               bgColor={dateRange === "1d" && btnColor}
+              onClick={() => setDateRange("1d")}
             >
               1d
             </Button>
             <Button
               w="100%"
-              onClick={() => setDateRange("7d")}
               bgColor={dateRange === "7d" && btnColor}
+              onClick={() => setDateRange("7d")}
             >
               7d
             </Button>
             <Button
               w="100%"
-              onClick={() => setDateRange("30d")}
               bgColor={dateRange === "30d" && btnColor}
+              onClick={() => setDateRange("30d")}
             >
               30d
             </Button>
             <Button
               w="100%"
-              onClick={() => setDateRange("90d")}
               bgColor={dateRange === "90d" && btnColor}
+              onClick={() => setDateRange("90d")}
             >
               90d
             </Button>

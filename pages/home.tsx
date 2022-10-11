@@ -18,20 +18,20 @@ const Home: NextPage = () => {
       <Box
         as={Container}
         minW="full"
-        border="1px solid gray.100"
-        bg="white"
-        borderRadius="md"
-        boxShadow="md"
-        p="8"
         mb="4"
+        p="8"
+        bg="white"
+        border="1px solid gray.100"
+        borderRadius="xl"
+        shadow="md"
       >
         <Grid
+          gap={4}
           templateColumns={{
             base: "repeat(1, 1fr)",
             sm: "repeat(2, 1fr)",
             md: "repeat(2, 1fr)",
           }}
-          gap={4}
         >
           <GridItem colSpan={1}>
             <VStack alignItems="flex-start" spacing="20px">
@@ -55,12 +55,12 @@ const Home: NextPage = () => {
         </Grid>
         <Divider mt={12} mb={12} />
         <Grid
+          gap={{ base: "8", sm: "12", md: "16" }}
           templateColumns={{
             base: "repeat(1, 1fr)",
             sm: "repeat(2, 1fr)",
             md: "repeat(4, 1fr)",
           }}
-          gap={{ base: "8", sm: "12", md: "16" }}
         >
           <Feature
             heading={"First Feature"}
@@ -83,19 +83,19 @@ const Home: NextPage = () => {
       <Box
         as={Container}
         minW="full"
-        border="1px solid gray.100"
-        bg="white"
-        borderRadius="md"
-        boxShadow="md"
         p="8"
+        bg="white"
+        border="1px solid gray.100"
+        borderRadius="xl"
+        shadow="md"
       >
         <Grid
+          gap={4}
           templateColumns={{
             base: "repeat(1, 1fr)",
             sm: "repeat(2, 1fr)",
             md: "repeat(2, 1fr)",
           }}
-          gap={4}
         >
           <GridItem colSpan={1}>
             <VStack alignItems="flex-start" spacing="20px">
@@ -119,12 +119,12 @@ const Home: NextPage = () => {
         </Grid>
         <Divider mt={12} mb={12} />
         <Grid
+          gap={{ base: "8", sm: "12", md: "16" }}
           templateColumns={{
             base: "repeat(1, 1fr)",
             sm: "repeat(2, 1fr)",
             md: "repeat(4, 1fr)",
           }}
-          gap={{ base: "8", sm: "12", md: "16" }}
         >
           <Feature
             heading={"First Feature"}

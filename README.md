@@ -1,26 +1,14 @@
-# DCL-STATS
+# DCL-Metrics
 
-### Chart library
+## Library used
 
-| name                | description                         | memo              |
-| ------------------- | ----------------------------------- | ----------------- |
-| ~~visx~~            | ~~https://airbnb.io/visx/docs~~     | ~~d3 base~~       |
-| ~~react-chart.js2~~ | ~~https://react-chartjs-2.js.org/~~ | ~~chart.js base~~ |
-| Nivo                | https://nivo.rocks/pie/             |                   |
+| name      | description             | memo                          |
+| --------- | ----------------------- | ----------------------------- |
+| react     |                         | ui framework                  |
+| chakra ui | https://chakra-ui.com/  | component based css framework |
+| nivo      | https://nivo.rocks/pie/ | chart library                 |
 
-## Prefab Component
+## Instances
 
-1. Default Chakra components
-2. https://chakra-templates.dev/ (why chrome only?!)
-
-## Framework
-
-Next.js + Chakra UI
-
-## Dev deployment
-
-[Vercel](https://dcl-stats.vercel.app/)
-
-## Prod deployment
-
-WIP: [Serverless](https://www.serverless.com/examples/serverless-nextjs)
+- [Development](https://dcl-metrics-fe-stage.herokuapp.com/)
+- [Production](https://dcl-metrics.com/)

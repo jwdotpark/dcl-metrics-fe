@@ -20,8 +20,8 @@ export default Index
 
 const FrontPage = () => {
   return (
-    <Box w="100vw" h="100vh" maxW="100%">
-      <Center w="100vw" h="100vh" maxW="100%" css={{ overflow: "hidden" }}>
+    <Box w="100vw" maxW="100%" h="100vh">
+      <Center w="100vw" maxW="100%" h="100vh" css={{ overflow: "hidden" }}>
         <Box className="outer">
           <Background />
         </Box>
@@ -38,26 +38,26 @@ const Background = () => {
   }, [])
   return (
     <Box
-      h="100%"
-      w="100%"
-      position="absolute"
+      pos="absolute"
+      zIndex="-1"
       top="0"
       left="0"
-      zIndex="-1"
-      css={{ filter: "brightness(0.25) " }}
       display="inline-block"
       overflow="hidden"
+      w="100%"
+      h="100%"
+      css={{ filter: "brightness(0.25) " }}
     >
       <Image
         // src={background.src}
-        src={backgroundPic}
-        alt="background image"
-        h="100%"
-        w="100%"
         display="block"
+        w="100%"
+        h="100%"
         transition="0.3s ease-in-out"
         objectFit="cover"
+        alt="background image"
         css={{ transform: "scale(1.2)" }}
+        src={backgroundPic}
       />
     </Box>
   )
@@ -69,7 +69,7 @@ const Card = () => {
     setPic(image.src)
   }, [])
   return (
-    <VStack bg="gray.100" p="2" borderRadius="2rem" boxShadow="xl">
+    <VStack p="2" bg="gray.100" borderRadius="2rem" shadow="xl">
       <Box>
         <motion.div
           initial={{ scale: 0 }}
@@ -82,15 +82,15 @@ const Card = () => {
         >
           <Image
             // src={image.src}
-            src={pic}
-            alt="background image"
-            borderRadius="1rem"
-            border="2px solid"
-            borderColor="gray.300"
             boxSize="200px"
             mt="8"
             mx="8"
-            boxShadow="xl"
+            border="2px solid"
+            borderColor="gray.300"
+            borderRadius="1rem"
+            shadow="xl"
+            alt="background image"
+            src={pic}
           />
         </motion.div>
       </Box>
@@ -118,14 +118,14 @@ const ToHome = () => {
   return (
     <Link href="/">
       <Button
-        width="170px"
-        boxShadow="md"
+        w="170px"
+        fontWeight={"normal"}
+        bg={"red.400"}
+        shadow="md"
+        _hover={{ bg: "red.500" }}
+        colorScheme={"red"}
         rounded="xl"
         size={"lg"}
-        fontWeight={"normal"}
-        colorScheme={"red"}
-        bg={"red.400"}
-        _hover={{ bg: "red.500" }}
       >
         Get started
       </Button>

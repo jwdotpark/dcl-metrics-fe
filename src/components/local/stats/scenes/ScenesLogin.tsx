@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Spacer,
   Flex,
@@ -14,17 +15,16 @@ import {
   Image,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { convertSeconds } from "../../../lib/hooks/utils"
-import Loading from "../Loading"
+import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
-import TableMap from "./partials/TableMap"
-import ParcelDateRange from "./daterange/ParcelDateRange"
-import GridBox from "../GridBox"
+import TableMap from "../partials/TableMap"
+import SceneDateRange from "../daterange/SceneDateRange"
+import GridBox from "../../GridBox"
+import TruncateName from "../partials/TruncatedName"
 
-const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {
+const ScenesLogin = ({ res, isSceneLoading }) => {
   const box = {
-    // h: "630",
     h: "auto",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
@@ -33,47 +33,47 @@ const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   // 0 yesterday 1 last_week 2 last_month 3 last_quarter
   const [dateRange, setDateRange] = useState(0)
 
-  const baseUrl = "https://api.decentraland.org/v1/parcels/"
-  const mapUrl = "/map.png?width=auto&height=auto&size=15"
-
-  const data = Object.entries(parcel)
+  const data = Object.entries(res)
   const dataArr = []
 
-  const parcelDataRange = data[dateRange]
+  const sceneDataRange = data[dateRange]
 
-  // @ts-ignore
-  const timeSpentAFKData = parcelDataRange[1].logins
-  // make an array with timeSpentAFKData
-  for (const [key, value] of Object.entries(timeSpentAFKData)) {
+  const sceneData = sceneDataRange[1].logins
+
+  for (const [key, value] of Object.entries(sceneData)) {
     dataArr.push({
-      mapUrl: baseUrl + key.replace(",", "/") + mapUrl,
-      coord: key,
-      logins: value,
+      mapUrl: value.map_url,
+      name: key,
+      logins: value.total_logins,
     })
   }
 
   const COLUMNS = [
     {
-      Header: "Parcel Map",
+      Header: "Scene Map",
       accessor: "mapUrl",
       disableSortBy: true,
       Cell: ({ value }) => {
-        return <TableMap mapUrl={value} />
+        return <TableMap mapUrl={value + "&size=9"} />
       },
     },
     {
-      Header: "Coordinate",
-      accessor: "coord",
+      Header: "Name",
+      accessor: "name",
       disableSortBy: true,
       Cell: ({ value }) => {
-        return <Text as="kbd">{`[${value}]`}</Text>
+        return <Text>{TruncateName(value)}</Text>
       },
     },
     {
       Header: "Logins",
       accessor: "logins",
       Cell: ({ value }) => {
-        return <Text as="kbd">{Number(value)}</Text>
+        return (
+          <Text as="kbd" fontWeight="bold">
+            {Number(value)}
+          </Text>
+        )
       },
     },
   ]
@@ -99,14 +99,14 @@ const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   const TableComponent = () => {
     return (
       <>
-        <TableContainer whiteSpace="nowrap" borderColor="gray.400" mt="2">
+        <TableContainer mt="2" borderColor="gray.400" whiteSpace="nowrap">
           <Table
             {...getTableProps()}
-            size="sm"
-            variant="striped"
-            colorScheme="gray"
-            // height="520"
             overflowX="hidden"
+            colorScheme="gray"
+            size="sm"
+            // height="520"
+            variant="striped"
           >
             <Thead>
               {headerGroups.map((headerGroup, i) => (
@@ -147,23 +147,23 @@ const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   return (
     <>
       <GridBox box={box}>
-        <Flex position="relative" mt="4" mx="5">
+        <Flex pos="relative" mt="4" mx="5">
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Parcels with Most Logins</b>
+                <b>Scenes with Most Logins</b>
               </Text>
             </Box>
           </Flex>
         </Flex>
         <Box ml="6">
-          <Text fontSize="sm" color="gray.500">
-            Parcels with the most logins in the last period
+          <Text color="gray.500" fontSize="sm">
+            Scenes with the most logins in the last period
           </Text>
         </Box>
-        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
-        {dataArr.length > 0 && !isParcelLoading ? (
-          <Box mx="4" mb="8">
+        <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />
+        {dataArr.length > 0 && !isSceneLoading ? (
+          <Box mb="8" mx="4">
             <TableComponent />
           </Box>
         ) : (
@@ -176,4 +176,4 @@ const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {
   )
 }
 
-export default LogInTimeSpentParcel
+export default ScenesLogin
