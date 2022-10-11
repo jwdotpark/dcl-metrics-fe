@@ -49,7 +49,7 @@ const MarathonUsers = ({ isLoading, res }) => {
     })
   }
 
-  const [dateRange, setDateRange] = useState("7d")
+  const [dateRange, setDateRange] = useState("1d")
 
   const dataArr = useMemo(() => {
     if (dateRange === "1d") {
