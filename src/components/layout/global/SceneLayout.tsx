@@ -27,7 +27,7 @@ const SceneLayout = ({ result, isDataLoading }) => {
   })
   const { isOpen, onToggle } = useDisclosure()
   return (
-    <AccordionItem>
+    <AccordionItem border="none">
       <AccordionLabel name="Scenes" />
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
         {/* <Scene res={staticScene} /> */}
