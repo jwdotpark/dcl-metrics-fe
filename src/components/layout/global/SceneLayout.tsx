@@ -30,7 +30,7 @@ const SceneLayout = ({ result, isDataLoading }) => {
     <AccordionItem>
       <AccordionLabel name="Scenes" />
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
-        <Scene res={staticScene} />
+        {/* <Scene res={staticScene} /> */}
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopScenesVisitors
             res={result.scenes}

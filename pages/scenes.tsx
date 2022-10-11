@@ -21,7 +21,7 @@ const Scenes = () => {
 
   return (
     <Layout>
-      <Scene res={staticScene} />
+      {/* <Scene res={staticScene} /> */}
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <TopScenesVisitors res={result.scenes} isSceneLoading={isDataLoading} />
         <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
