@@ -28,7 +28,8 @@ const TableMap = ({ mapUrl }) => {
   return (
     <Box
       overflow="clip"
-      w={responsiveWidth}
+      // w={responsiveWidth}
+      w={["100px", "125px", "150px", "200px"]}
       h={responsiveHeight}
       border="2px solid"
       borderColor={useColorModeValue("gray.200", "gray.600")}
@@ -36,6 +37,7 @@ const TableMap = ({ mapUrl }) => {
     >
       <Center h="100%">
         <Image
+          w={["100px", "125px", "150px", "200px"]}
           borderRadius="xl"
           objectFit="cover"
           alt="map image"
