@@ -48,7 +48,7 @@ export async function getStaticProps() {
       )
     }
 
-    if (response.status >= 300) {
+    if (response.status !== 200) {
       const sendNotification = async () => {
         const URI =
           "https://dcl-metrics-bot-server.herokuapp.com/telegram/internal"
@@ -59,7 +59,7 @@ export async function getStaticProps() {
           },
           body: JSON.stringify({
             level: "warning",
-            message: `Global endpoint request failed on FE build, check out the logs in BE server`,
+            message: `Global endpoint request is ${response.status} while FE is on build, check out the log`,
             payload: {
               status: response.status,
             },
