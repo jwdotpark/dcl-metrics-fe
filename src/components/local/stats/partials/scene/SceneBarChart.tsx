@@ -96,7 +96,7 @@ const SceneBarChart = ({ selectedScene }) => {
             tickPadding: 0,
             tickRotation: 0,
             legend: "Number of Users",
-            legendPosition: "end",
+            legendPosition: "middle",
             legendOffset: 5,
           }}
           labelSkipWidth={12}

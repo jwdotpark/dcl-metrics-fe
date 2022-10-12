@@ -127,7 +127,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             tickRotation: 0,
             legend: "Time spent in hours",
             legendOffset: -15,
-            legendPosition: "end",
+            legendPosition: "middle",
             format: (value) => yAxisLabel(value),
             tickRotation: yAxisLabelDegree(),
           }}
@@ -138,7 +138,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             tickRotation: 0,
             legend: "User Count",
             legendOffset: 10,
-            legendPosition: "end",
+            legendPosition: "middle",
           }}
           pointSize={10}
           pointBorderWidth={2}
