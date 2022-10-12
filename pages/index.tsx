@@ -18,6 +18,7 @@ import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
+import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
@@ -117,7 +118,12 @@ const GlobalPage: NextPage = (props) => {
             data={result.global}
             visitorLoading={isDataLoading}
           />
+          {/* <ActiveScenes data={result.global} visitorLoading={isDataLoading} /> */}
         </Grid>
+        <Box mb="4">
+          <ActiveScenes data={result.global} visitorLoading={isDataLoading} />
+        </Box>
+
         <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
           <SceneLayout result={result} isDataLoading={isDataLoading} />

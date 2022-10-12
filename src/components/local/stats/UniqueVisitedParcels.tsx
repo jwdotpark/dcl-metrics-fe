@@ -14,6 +14,7 @@ import AvgStat from "./partials/AvgStat"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
+// active_parcels
 const UniqueVisitedParcels = ({ visitorLoading, data }) => {
   const box = {
     h: "auto",
@@ -28,7 +29,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
     chartData.push({
       date: item[0],
       // @ts-ignore
-      unique_users: item[1].active_parcels,
+      active_parcels: item[1].active_parcels,
       // @ts-ignore
       degraded: item[1].degraded,
     })
@@ -48,7 +49,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
 
   useEffect(() => {
     const data = slicedData()
-    const sum = slicedData().reduce((acc, cur) => acc + cur.unique_users, 0)
+    const sum = slicedData().reduce((acc, cur) => acc + cur.active_parcels, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -63,7 +64,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
         data: slicedData().map((item) => ({
           x: item.date,
           // @ts-ignore
-          y: item.unique_users,
+          y: item.active_parcels,
           // @ts-ignore
           degraded: item.degraded,
         })),
@@ -95,7 +96,11 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
             Parcels visited per day in the last period
           </Text>
         </Box>
-        <LineChartDateRange dateRange={dateRange} setDateRange={setDateRange} />
+        <LineChartDateRange
+          dateRange={dateRange}
+          setDateRange={setDateRange}
+          validLegnth={90}
+        />
         {chartData.length > 0 && !visitorLoading ? (
           <Box h="100%">
             <LineChartComponent box={box} res={chartData} />

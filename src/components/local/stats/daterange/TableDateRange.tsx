@@ -13,10 +13,7 @@ const TableDateRange = ({ dateRange, setDateRange }) => {
       <Box zIndex="1" mt="1">
         <HStack>
           <ButtonGroup
-            overflow="hidden"
             w="100%"
-            border="1px solid"
-            borderColor={useColorModeValue("gray.200", "gray.600")}
             borderRadius="xl"
             shadow="md"
             isAttached
