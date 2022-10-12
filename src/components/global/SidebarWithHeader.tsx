@@ -119,9 +119,19 @@ export default function SidebarWithHeader({
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} sidebarStatus={sidebarStatus} />
-      <Box ml={{ base: 0, md: sidebarStatus }} p="4" data-testid="sidebar">
+      {/* <Box ml={{ base: 0, md: sidebarStatus }} p="4" data-testid="sidebar">
         {children}
-      </Box>
+      </Box> */}
+      <Flex
+        align="center"
+        justify="center"
+        w={["100%", `calc(100% - ${sidebarStatus})`]}
+        ml={{ base: 0, md: sidebarStatus }}
+      >
+        <Box w="100%" maxW="1600px" p="4" data-testid="sidebar">
+          {children}
+        </Box>
+      </Flex>
     </Box>
   )
 }
