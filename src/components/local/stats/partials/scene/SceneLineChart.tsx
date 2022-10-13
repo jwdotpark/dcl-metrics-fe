@@ -95,7 +95,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
       fontSize="sm"
       borderRadius="xl"
       shadow="xl"
-      label="This chart shows the number of users and the time that user stayed in the scene"
+      label="This chart shows the number of users and the duration user stayed in the scene"
       placement="auto"
     >
       <Box
@@ -193,7 +193,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
                     <Thead>
                       <Tr>
                         <Th>Scene</Th>
-                        <Th isNumeric>Engaged users</Th>
+                        <Th isNumeric>Users</Th>
                       </Tr>
                     </Thead>
 
