@@ -17,10 +17,34 @@ import {
   AlertIcon,
   AlertTitle,
 } from "@chakra-ui/react"
-import { useState } from "react"
 import GridBox from "../../GridBox"
 
-const AlertComponent = () => {
+const Okay = () => {
+  return (
+    <Alert
+      alignItems="center"
+      justifyContent="center"
+      flexDir="column"
+      h="100%"
+      textAlign="center"
+      borderRadius="xl"
+      status="success"
+      variant="subtle"
+    >
+      <AlertIcon boxSize="40px" mt="4" mr={0} />
+      <AlertTitle mt={4} mb={1} fontSize="2xl">
+        All Systems Operational!
+      </AlertTitle>
+      <AlertDescription mx="4" my="4">
+        {/* We are experiencing service outages with the Decentraland API and the
+        quality of data is currently degraded. We apologize for any
+        inconvenience! */}
+      </AlertDescription>
+    </Alert>
+  )
+}
+
+const Warning = () => {
   return (
     <Alert
       alignItems="center"
@@ -33,10 +57,10 @@ const AlertComponent = () => {
       variant="subtle"
     >
       <AlertIcon boxSize="40px" mt="4" mr={0} />
-      <AlertTitle mt={4} mb={1} fontSize="3xl">
+      <AlertTitle mt={6} mb={0} fontSize="2xl">
         Partial Outage
       </AlertTitle>
-      <AlertDescription my="4">
+      <AlertDescription mx="2" my="4">
         We are experiencing service outages with the Decentraland API and the
         quality of data is currently degraded. We apologize for any
         inconvenience!
@@ -45,21 +69,19 @@ const AlertComponent = () => {
   )
 }
 
-const TempError = () => {
+const ErrorBox = ({ isError }) => {
   const box = {
-    // h: "300",
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
   }
+
   return (
     <Box mb="4" borderRadius="xl">
       <GridBox box={box}>
-        <Box h="100%">
-          <AlertComponent />
-        </Box>
+        <Box h="100%">{isError ? <Warning /> : <Okay />}</Box>
       </GridBox>
     </Box>
   )
 }
 
-export default TempError
+export default ErrorBox

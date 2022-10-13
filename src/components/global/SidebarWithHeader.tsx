@@ -35,6 +35,7 @@ import {
   FiUsers,
   FiMapPin,
   FiPackage,
+  FiActivity,
 } from "react-icons/fi"
 import { IconType } from "react-icons"
 import { ReactText } from "react"
@@ -125,7 +126,7 @@ export default function SidebarWithHeader({
       <Flex
         align="center"
         justify="center"
-        w={["100%", `calc(100% - ${sidebarStatus})`]}
+        w={["100%", "100%", `calc(100% - ${sidebarStatus})`]}
         ml={{ base: 0, md: sidebarStatus }}
       >
         <Box w="100%" maxW="1600px" p="4" data-testid="sidebar">
@@ -175,6 +176,12 @@ const SidebarContent = ({
       name: "parcels",
       icon: FiPackage,
       subItem: true,
+    },
+    status: {
+      label: "Status",
+      name: "status",
+      icon: FiActivity,
+      subItem: false,
     },
     roadmap: {
       label: "Roadmap",
