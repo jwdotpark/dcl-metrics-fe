@@ -41,11 +41,11 @@ const StatusBox = ({ data }) => {
 
   const successColor = (successRate) => {
     if (successRate >= 85) {
-      return "#50fa7b"
+      return useColorModeValue("green.400", "#50fa7b")
     } else if (successRate < 85 && successRate >= 70) {
-      return "#ffb86c"
+      return useColorModeValue("yellow.400", "#ffb86c")
     } else {
-      return "#ff5555"
+      return useColorModeValue("red.400", "#ff5555")
     }
   }
 
