@@ -103,17 +103,15 @@ const StatusBox = ({ data }) => {
                       <Td>Total Count</Td>
                       <Td isNumeric>{item.total_count}</Td>
                     </Tr>
-                    {/* <Tr>
-                      <Td>200</Td>
-                      <Td isNumeric>{item.statuses[200]}</Td>
-                    </Tr> */}
                     <Tr>
                       <Td>Success Count</Td>
                       <Td isNumeric>{item.success_count}</Td>
                     </Tr>
                     <Tr>
                       <Td>Failure Count</Td>
-                      <Td isNumeric>{item.failure_count}</Td>
+                      <Td isNumeric>
+                        {Number(item.total_count) - Number(item.success_count)}
+                      </Td>
                     </Tr>
                     {/* <Tr>
                       <Td>Failure Rate</Td>
