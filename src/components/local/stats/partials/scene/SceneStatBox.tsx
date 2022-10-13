@@ -53,10 +53,10 @@ const StatBox = ({ data, selectedScene }) => {
         borderColor={useColorModeValue("gray.100", "gray.700")}
       >
         <Center w="100%" mx="4" my="2">
-          <Box w={["100%", "60%"]}>
+          <Box w={["100%", "100%", "100%", "60%"]}>
             <Text
               color={useColorModeValue("gray.800", "gray.400")}
-              fontSize={["sm", "xs"]}
+              fontSize={["xs", "xs"]}
             >
               {mutateString(label).toUpperCase()}
             </Text>
@@ -86,12 +86,7 @@ const StatBox = ({ data, selectedScene }) => {
         borderRadius="xl"
         shadow="md"
       >
-        <SimpleGrid
-          overflow="clip"
-          w="100%"
-          borderRadius="xl"
-          columns={[1, 1, 1, 2]}
-        >
+        <SimpleGrid overflow="clip" w="100%" borderRadius="xl" columns={[1, 2]}>
           {filteredStats.map(({ label, value }) => (
             <Stat key={label} label={label} value={value} />
           ))}
