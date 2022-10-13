@@ -6,15 +6,9 @@ import {
   useColorModeValue,
   Flex,
   Spacer,
-  Tooltip,
-  TableContainer,
   Table,
-  TableCaption,
   Tbody,
   Td,
-  Tfoot,
-  Th,
-  Thead,
   Tr,
 } from "@chakra-ui/react"
 import CountUp from "react-countup"

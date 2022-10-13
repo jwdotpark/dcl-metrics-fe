@@ -17,7 +17,7 @@ const TableMap = ({ mapUrl }) => {
         "&::-webkit-scrollbar": {
           display: "none",
         },
-        "-ms-overflow-style": "none",
+        msOverflfowStyle: "none",
         scrollbarWidth: "none",
       }}
       overflow="auto"

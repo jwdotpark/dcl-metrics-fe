@@ -52,7 +52,7 @@ const StatBox = ({ data, selectedScene }) => {
         border="1px solid"
         borderColor={useColorModeValue("gray.100", "gray.700")}
       >
-        <Center w="100%" mx="4" my="2">
+        <Flex direction={["column", "row"]} w="100%" mx="4" my="2">
           <Box w={["100%", "100%", "100%", "60%"]}>
             <Text
               color={useColorModeValue("gray.800", "gray.400")}
@@ -63,11 +63,15 @@ const StatBox = ({ data, selectedScene }) => {
           </Box>
           <Spacer />
           <Box>
-            <Text as="kbd" fontSize="2xl" fontWeight="bold">
+            <Text
+              as="kbd"
+              fontSize={["xs", "sm", "md", "lg"]}
+              fontWeight="bold"
+            >
               <CountUp end={parseFloat(value)} duration={0.5} />
             </Text>
           </Box>
-        </Center>
+        </Flex>
       </Flex>
     )
   }
@@ -75,18 +79,16 @@ const StatBox = ({ data, selectedScene }) => {
   return (
     <>
       <SimpleGrid
-        overflowY="scroll"
         w="100%"
         h="400px"
-        p="3"
-        // h="100%"
+        p="4"
         bg={useColorModeValue("gray.200", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
         shadow="md"
       >
-        <SimpleGrid overflow="clip" w="100%" borderRadius="xl" columns={[1, 2]}>
+        <SimpleGrid overflow="auto" w="100%" borderRadius="xl" columns={[1, 2]}>
           {filteredStats.map(({ label, value }) => (
             <Stat key={label} label={label} value={value} />
           ))}
