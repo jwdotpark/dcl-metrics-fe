@@ -8,7 +8,7 @@
     "failure_count": 0,
     "failure_rate": 0.0,
     "success_count": 15,
-    "total_count": 15
+    "total_count": 20
   },
   {
     "date": "2022-09-19",
@@ -19,7 +19,7 @@
     "failure_count": 0,
     "failure_rate": 0.0,
     "success_count": 980,
-    "total_count": 980
+    "total_count": 1680
   },
   {
     "date": "2022-09-19",
@@ -30,7 +30,7 @@
     "failure_count": 0,
     "failure_rate": 0.0,
     "success_count": 979,
-    "total_count": 979
+    "total_count": 1279
   },
   {
     "date": "2022-09-19",
@@ -41,7 +41,7 @@
     "failure_count": 0,
     "failure_rate": 0.0,
     "success_count": 978,
-    "total_count": 978
+    "total_count": 1128
   },
   {
     "date": "2022-09-19",

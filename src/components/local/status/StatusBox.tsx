@@ -40,9 +40,9 @@ const StatusBox = ({ data }) => {
   const isError = successArr.some((item) => item < 75)
 
   const successColor = (successRate) => {
-    if (successRate >= 80) {
+    if (successRate >= 85) {
       return "#50fa7b"
-    } else if (successRate < 80 && successRate >= 60) {
+    } else if (successRate < 85 && successRate >= 70) {
       return "#ffb86c"
     } else {
       return "#ff5555"
