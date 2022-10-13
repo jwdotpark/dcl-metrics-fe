@@ -14,8 +14,8 @@ import AvgStat from "./partials/AvgStat"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
 
-// active_users
-const UniqueVisitors = ({ visitorLoading, data }) => {
+// active_scenes
+const ActiveScenes = ({ visitorLoading, data }) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -28,8 +28,9 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
   dataArr.map((item) => {
     chartData.push({
       date: item[0],
+      // if active_scenes is undefined, set it to 0
       // @ts-ignore
-      unique_users: item[1].unique_users,
+      active_scenes: item[1].active_scenes ? item[1].active_scenes : 0,
       // @ts-ignore
       degraded: item[1].degraded,
     })
@@ -49,21 +50,28 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
 
   useEffect(() => {
     const data = slicedData()
-    const sum = slicedData().reduce((acc, cur) => acc + cur.unique_users, 0)
+    const sum = slicedData().reduce((acc, cur) => acc + cur.active_scenes, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
+  // get the length of the array that active_scenes is not 0
+  const validLegnth = chartData.filter(
+    (item) => item.active_scenes !== 0
+  ).length
+
   const LineChartComponent = ({ box, res }) => {
-    const color = "#A6CEE3FF"
+    const color = "#ffb86c"
     const result = [
       {
-        id: "Unique Users",
+        id: "Active Scenes",
         color: "hsl(90, 70%, 50%)",
         data: slicedData().map((item) => ({
           x: item.date,
-          y: item.unique_users,
+          // @ts-ignore
+          y: item.active_scenes,
+          // @ts-ignore
           degraded: item.degraded,
         })),
       },
@@ -74,6 +82,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
       </GridItem>
     )
   }
+  console.log(chartData)
 
   return (
     <>
@@ -82,7 +91,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>Unique Visitors </b>
+                <b>Scenes Visited</b>
               </Text>
             </Box>
             <Spacer />
@@ -91,13 +100,13 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
         </Flex>
         <Box ml="6">
           <Text color="gray.500" fontSize="sm">
-            Unique vistors per day in the last period
+            Scenes visited per day in the last period
           </Text>
         </Box>
         <LineChartDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
-          validLegnth={90}
+          validLegnth={validLegnth}
         />
         {chartData.length > 0 && !visitorLoading ? (
           <Box h="100%">
@@ -113,4 +122,4 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
   )
 }
 
-export default UniqueVisitors
+export default ActiveScenes

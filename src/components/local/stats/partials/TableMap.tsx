@@ -8,29 +8,21 @@ import {
 } from "@chakra-ui/react"
 
 const TableMap = ({ mapUrl }) => {
-  const size = 15
+  const size = 17
   const mapWithSize = mapUrl.replace("size=15", `size=${size}`)
-  const responsiveWidth = useBreakpointValue({
-    base: "100px",
-    sm: "100px",
-    md: "125px",
-    lg: "150px",
-    xl: "200px",
-  })
-
-  const responsiveHeight = useBreakpointValue({
-    base: "75px",
-    sm: "75px",
-    md: "75px",
-    lg: "75px",
-  })
 
   return (
     <Box
-      overflow="clip"
-      // w={responsiveWidth}
+      sx={{
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+        "-ms-overflow-style": "none",
+        scrollbarWidth: "none",
+      }}
+      overflow="auto"
       w={["100px", "125px", "150px", "200px"]}
-      h={responsiveHeight}
+      h="75px"
       border="2px solid"
       borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"

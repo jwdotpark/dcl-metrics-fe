@@ -6,7 +6,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 
-const LineChartDateRange = ({ dateRange, setDateRange }) => {
+const LineChartDateRange = ({ dateRange, setDateRange, validLegnth }) => {
   const btnColor = useColorModeValue("gray.200", "gray.600")
 
   // range 7, 30, 90
@@ -45,10 +45,10 @@ const LineChartDateRange = ({ dateRange, setDateRange }) => {
             </Button>
             <Button
               w="100%"
-              bgColor={dateRange === 90 && btnColor}
-              onClick={() => setDateRange(90)}
+              bgColor={dateRange === validLegnth && btnColor}
+              onClick={() => setDateRange(validLegnth)}
             >
-              90d
+              {validLegnth}d
             </Button>
           </ButtonGroup>
         </HStack>

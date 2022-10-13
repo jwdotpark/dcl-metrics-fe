@@ -18,6 +18,7 @@ import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
+import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
@@ -48,7 +49,7 @@ export async function getStaticProps() {
       )
     }
 
-    if (response.status >= 300) {
+    if (response.status !== 200) {
       const sendNotification = async () => {
         const URI =
           "https://dcl-metrics-bot-server.herokuapp.com/telegram/internal"
@@ -59,7 +60,7 @@ export async function getStaticProps() {
           },
           body: JSON.stringify({
             level: "warning",
-            message: `Global endpoint request failed on FE build, check out the logs in BE server`,
+            message: `Global endpoint request is ${response.status} while FE is on build, check out the log`,
             payload: {
               status: response.status,
             },
@@ -117,7 +118,12 @@ const GlobalPage: NextPage = (props) => {
             data={result.global}
             visitorLoading={isDataLoading}
           />
+          {/* <ActiveScenes data={result.global} visitorLoading={isDataLoading} /> */}
         </Grid>
+        <Box mb="4">
+          <ActiveScenes data={result.global} visitorLoading={isDataLoading} />
+        </Box>
+
         <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
           <SceneLayout result={result} isDataLoading={isDataLoading} />
