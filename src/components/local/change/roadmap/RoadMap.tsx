@@ -103,10 +103,10 @@ const MilestoneItem: React.FC<MilestoneItemProps> = ({
         <Box
           as={icon}
           pos="absolute"
-          top="0.875rem"
-          left="0.875rem"
+          top="1rem"
+          left="1rem"
           color={color}
-          size="1.25rem"
+          size="1rem"
         />
         {!skipTrail && <Box flex={1} w="2px" my={1} bg="gray.400" />}
       </Flex>

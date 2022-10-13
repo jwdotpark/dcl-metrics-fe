@@ -218,16 +218,11 @@ const SidebarContent = ({
                   useColorModeValue("gray.200", "gray.700")
                 }
               >
-                {sidebarOpen && (
-                  <Text
-                    as={router.pathname === "/" + name && "u"}
-                    fontSize="lg"
-                  >
-                    {name
-                      ? name.charAt(0).toUpperCase() + name.slice(1)
-                      : "Global"}
-                  </Text>
-                )}
+                <Text as={router.pathname === "/" + name && "u"} fontSize="lg">
+                  {name
+                    ? name.charAt(0).toUpperCase() + name.slice(1)
+                    : "Global"}
+                </Text>
               </NavItem>
             </a>
           </Link>
