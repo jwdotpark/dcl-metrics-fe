@@ -82,7 +82,6 @@ const ActiveScenes = ({ visitorLoading, data }) => {
       </GridItem>
     )
   }
-  console.log(chartData)
 
   return (
     <>
