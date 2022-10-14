@@ -70,7 +70,35 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
           borderColor={useColorModeValue("gray.100", "gray.600")}
           borderRadius="xl"
         >
-          <Box overflow="auto" h="360px" m="4" borderRadius="xl">
+          <Box
+            sx={{
+              "&::-webkit-scrollbar": {
+                width: "14px",
+              },
+              "&::-webkit-scrollbar-track": {
+                width: "14px",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                background: useColorModeValue("gray.300", "gray.600"),
+                borderRadius: "14px",
+              },
+              "&::-webkit-scrollbar-thumb:hover": {
+                background: useColorModeValue("gray.400", "gray.500"),
+              },
+              // bottom scrollbar thinner
+              "&::-webkit-scrollbar-corner": {
+                width: "14px",
+                background: useColorModeValue("gray.100", "gray.700"),
+              },
+            }}
+            overflow="auto"
+            h="360px"
+            minH="100%"
+            m="4"
+            border="1px solid"
+            // scroll bar thin
+            borderColor={useColorModeValue("gray.300", "gray.700")}
+          >
             {normalizedGrid.map((row, i) => {
               return (
                 <Flex key={i}>
@@ -80,19 +108,24 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                         key={j}
                         w="100%"
                         minW="100px"
-                        h="100px"
+                        h="100%"
+                        minH="100px"
                         bg={setBgColor(cell.normalizedValue / 100)}
                         border="1px solid"
                         // eslint-disable-next-line react-hooks/rules-of-hooks
-                        borderColor={useColorModeValue("gray.100", "gray.700")}
+                        borderColor={useColorModeValue("gray.300", "gray.700")}
                       >
                         <Box m="2">
-                          <Text as="kbd" fontSize="xs">
+                          <Text as="kbd" fontSize={["8px", "xs"]}>
                             [{cell.x},{cell.y}]
                           </Text>
                         </Box>
                         <Center>
-                          <Text as="kbd" fontSize="2xl" fontWeight="bold">
+                          <Text
+                            as="kbd"
+                            fontSize={["sm", "sm", "2xl"]}
+                            fontWeight="bold"
+                          >
                             <CountUp end={cell.value} duration={0.5} />
                           </Text>
                         </Center>
