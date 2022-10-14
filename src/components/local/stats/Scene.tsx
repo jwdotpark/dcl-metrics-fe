@@ -6,7 +6,6 @@ import {
   Box,
   useColorModeValue,
   Center,
-  Select,
   useBreakpointValue,
   Spacer,
   Grid,
@@ -15,8 +14,8 @@ import {
 import { useState } from "react"
 import GridBox from "../GridBox"
 import SceneMap from "./partials/scene/SceneMap"
-import SceneStats from "./partials/scene/SceneStats"
-import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
+//import SceneStats from "./partials/scene/SceneStats"
+//import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import SceneLineChart from "./partials/scene/SceneLineChart"
 import SceneSelector from "./partials/scene/SceneSelector"
 import StatBox from "./partials/scene/SceneStatBox"

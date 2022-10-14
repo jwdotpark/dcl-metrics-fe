@@ -52,7 +52,7 @@ const StatBox = ({ data, selectedScene }) => {
         border="1px solid"
         borderColor={useColorModeValue("gray.100", "gray.700")}
       >
-        <Flex direction={["column", "row"]} w="100%" mx="4" my="2">
+        <Flex direction="row" w="100%" mx="4" my="2">
           <Box w={["100%", "100%", "100%", "60%"]}>
             <Text
               color={useColorModeValue("gray.800", "gray.400")}
@@ -65,7 +65,7 @@ const StatBox = ({ data, selectedScene }) => {
           <Box>
             <Text
               as="kbd"
-              fontSize={["xs", "sm", "md", "lg"]}
+              fontSize={["md", "sm", "md", "2xl"]}
               fontWeight="bold"
             >
               <CountUp end={parseFloat(value)} duration={0.5} />
