@@ -161,11 +161,9 @@ const Scene = ({ res }) => {
                 mt: [4, 0],
               },
             }}
-            // gap={[0, 4]}
             direction={["column", "row"]}
             w="100%"
             h="auto"
-            // mb="2"
           >
             <Box w="100%" h="400px">
               <SceneBarChart selectedScene={selectedScene} />

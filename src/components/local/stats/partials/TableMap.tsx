@@ -20,7 +20,7 @@ const TableMap = ({ mapUrl }) => {
         msOverflfowStyle: "none",
         scrollbarWidth: "none",
       }}
-      overflow="auto"
+      overflow="hidden"
       w={["100px", "125px", "150px", "200px"]}
       h="75px"
       border="2px solid"

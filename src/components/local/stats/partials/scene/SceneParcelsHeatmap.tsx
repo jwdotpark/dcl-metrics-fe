@@ -49,10 +49,11 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
 
   return (
     <Tooltip
-      p="4"
+      p="2"
       fontSize="sm"
-      borderRadius="xl"
+      borderRadius="md"
       shadow="xl"
+      hasArrow
       label="This chart shows the heatmap of each coordinate in this scene"
       placement="auto"
     >

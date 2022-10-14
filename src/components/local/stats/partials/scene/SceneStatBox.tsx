@@ -56,7 +56,7 @@ const StatBox = ({ data, selectedScene }) => {
           <Box w={["100%", "100%", "100%", "60%"]}>
             <Text
               color={useColorModeValue("gray.800", "gray.200")}
-              fontSize={["md", "xs", "xs", "xs"]}
+              fontSize={["sm", "xs", "xs", "xs"]}
             >
               {mutateString(label).toUpperCase()}
             </Text>
@@ -65,7 +65,7 @@ const StatBox = ({ data, selectedScene }) => {
           <Box>
             <Text
               as="kbd"
-              fontSize={["md", "4xl", "4xl", "3xl"]}
+              fontSize={["md", "3xl", "3xl", "3xl"]}
               fontWeight="bold"
             >
               <CountUp end={parseFloat(value)} duration={0.5} />

@@ -91,10 +91,11 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
 
   return (
     <Tooltip
-      p="4"
+      p="2"
       fontSize="sm"
-      borderRadius="xl"
+      borderRadius="md"
       shadow="xl"
+      hasArrow
       label="This chart shows the number of users and the time that user stayed in the scene"
       placement="auto"
     >

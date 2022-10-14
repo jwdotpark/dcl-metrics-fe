@@ -38,10 +38,11 @@ const SceneBarChart = ({ selectedScene }) => {
 
   return (
     <Tooltip
-      p="4"
+      p="2"
       fontSize="sm"
-      borderRadius="xl"
+      borderRadius="md"
       shadow="xl"
+      hasArrow
       label="This chart shows the number of users that is presented in each hour of the day"
       placement="auto"
     >
