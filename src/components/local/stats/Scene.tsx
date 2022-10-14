@@ -107,8 +107,15 @@ const Scene = ({ res }) => {
         {/* components */}
         <Box m="4">
           <Flex
+            sx={{
+              "& > * + *": {
+                ml: [0, 4],
+                mt: [4, 0],
+              },
+            }}
+            // gap={[0, 4]}
+            // safari flex gap
             direction={["column", "row"]}
-            gap={[0, 4]}
             w="100%"
             h="auto"
             mb="3"
@@ -132,8 +139,14 @@ const Scene = ({ res }) => {
             </Box>
           </Flex>
           <Flex
+            sx={{
+              "& > * + *": {
+                ml: [0, 4],
+                mt: [4, 0],
+              },
+            }}
+            // gap={[0, 4]}
             direction={["column", "row"]}
-            gap={[0, 4]}
             w="100%"
             h="auto"
             mb="4"
@@ -149,8 +162,14 @@ const Scene = ({ res }) => {
             </Box>
           </Flex>
           <Flex
+            sx={{
+              "& > * + *": {
+                ml: [0, 4],
+                mt: [4, 0],
+              },
+            }}
+            // gap={[0, 4]}
             direction={["column", "row"]}
-            gap={[0, 4]}
             w="100%"
             h="auto"
             // mb="2"

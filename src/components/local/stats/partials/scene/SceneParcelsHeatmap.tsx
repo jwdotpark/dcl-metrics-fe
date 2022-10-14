@@ -78,7 +78,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                       <Box
                         key={j}
                         w="100%"
-                        maxW="100%"
+                        minW="100px"
                         h="100px"
                         bg={setBgColor(cell.normalizedValue / 100)}
                         border="1px solid"
