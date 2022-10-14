@@ -87,40 +87,34 @@ const Scene = ({ res }) => {
         <Flex pos="relative" mx="5">
           <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
             <Box>
-              {!isMobile && (
-                <Text fontSize="2xl">
-                  <b>{name}</b>
-                </Text>
-              )}
+              <Text fontSize="2xl">
+                <b>{name}</b>
+              </Text>
             </Box>
             <Spacer />
           </Flex>
         </Flex>
-        {!isMobile && (
-          <Box ml="5">
-            <Text color="gray.500" fontSize="sm">
-              Most populated scene in the Decentraland
-            </Text>
-          </Box>
-        )}
+        <Box ml="5">
+          <Text color="gray.500" fontSize="sm">
+            Most populated scene in the Decentraland
+          </Text>
+        </Box>
 
         {/* components */}
         <Box m="4">
           <Flex
             sx={{
               "& > * + *": {
-                ml: [0, 4],
-                mt: [4, 0],
+                ml: [0, 0, 0, 4],
+                mt: [4, 4, 4, 0],
               },
             }}
-            // gap={[0, 4]}
-            // safari flex gap
-            direction={["column", "row"]}
+            direction={["column", "column", "column", "row"]}
             w="100%"
             h="auto"
             mb="3"
           >
-            <Box w={["100%", "50%", "35%"]}>
+            <Box w={["100%", "100%", "100%", "35%"]}>
               <Box mb="2">
                 <SceneSelector
                   res={res}
@@ -131,7 +125,7 @@ const Scene = ({ res }) => {
               </Box>
               <SceneMap url={map_url} />
             </Box>
-            <Box w={["100%", "50%", "65%"]} h="400px" mt={[4, 0]}>
+            <Box w={["100%", "100%", "100%", "65%"]} h="400px" mt={[4, 0]}>
               <SceneParcelsHeatmap
                 data={parcels_heatmap}
                 selectedScene={selectedScene}
@@ -141,23 +135,22 @@ const Scene = ({ res }) => {
           <Flex
             sx={{
               "& > * + *": {
-                ml: [0, 4],
-                mt: [4, 0],
+                ml: [0, 0, 0, 4],
+                mt: [4, 4, 4, 0],
               },
             }}
-            // gap={[0, 4]}
-            direction={["column", "row"]}
+            direction={["column", "column", "column", "row"]}
             w="100%"
             h="auto"
             mb="4"
           >
-            <Box w={["100%", "100%", "35%"]}>
+            <Box w={["100%", "100%", "100%", "35%"]}>
               <StatBox
                 data={res[selectedScene]}
                 selectedScene={selectedScene}
               />
             </Box>
-            <Box w={["100%", "100%", "65%"]} h="400px" mt={[4, 0]}>
+            <Box w={["100%", "100%", "100%", "65%"]} h="400px" mt={[4, 0]}>
               <SceneLineChart data={res} selectedScene={selectedScene} />
             </Box>
           </Flex>
