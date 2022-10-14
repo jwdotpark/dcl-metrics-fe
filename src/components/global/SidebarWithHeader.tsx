@@ -13,25 +13,20 @@ import {
   HStack,
   Icon,
   useColorModeValue,
-  // Link,
   Drawer,
   DrawerContent,
   Text,
   useDisclosure,
   BoxProps,
   FlexProps,
-  useColorMode,
 } from "@chakra-ui/react"
 import {
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
   FiMenu,
   FiArrowLeftCircle,
   FiArrowRightCircle,
+  FiTrendingUp,
+  FiCompass,
   FiAnchor,
-  FiMap,
-  FiFrown,
   FiUsers,
   FiMapPin,
   FiPackage,
@@ -42,12 +37,8 @@ import { ReactText } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import logo from "../../../public/images/logo.png"
+import { sidebarList } from "./sidebarList"
 import ColorButton from "./ColorButton"
-
-interface LinkItemProps {
-  name: string
-  icon: IconType
-}
 
 export default function SidebarWithHeader({
   children,
@@ -73,7 +64,6 @@ export default function SidebarWithHeader({
 
   const sidebarStatus = sidebarOpen ? "180px" : "60px"
 
-  // desktop recommendation toast
   const toast = useToast()
   useEffect(() => {
     if (
@@ -217,6 +207,7 @@ const SidebarContent = ({
                   router.pathname === "/" + name && // eslint-disable-next-line
                   useColorModeValue("gray.200", "gray.700")
                 }
+                overflow="hidden"
               >
                 <Text as={router.pathname === "/" + name && "u"} fontSize="lg">
                   {name
@@ -292,6 +283,7 @@ const SidebarContent = ({
               height="3rem"
               icon={sidebarOpen ? FiArrowLeftCircle : FiArrowRightCircle}
               onClick={handleSidebar}
+              overflow="hidden"
             >
               <Text fontSize="xl">Collapse</Text>
             </NavItem>
