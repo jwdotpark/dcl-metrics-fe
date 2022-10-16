@@ -14,17 +14,6 @@ import {
 
 export const roadmap = [
   {
-    date: "2022 Q3",
-    contents: [
-      {
-        icon: FiPackage,
-
-        title: "Build Metrics for Scenes",
-        description: `I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised`,
-      },
-    ],
-  },
-  {
     date: "2022 Q4",
     contents: [
       {

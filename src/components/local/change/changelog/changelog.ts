@@ -49,6 +49,12 @@ export const minorchangeTemplate = [
         description:
           "User now can select date range of week, month and quarter on each global chart",
       },
+      {
+        icon: FiPackage,
+        day: "2022 October",
+        title: "Build Metrics for Scenes",
+        description: `I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised`,
+      },
     ],
   },
 ]
