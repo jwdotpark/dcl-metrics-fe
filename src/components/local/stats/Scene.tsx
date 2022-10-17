@@ -51,8 +51,6 @@ const Scene = ({ res }) => {
     parcels_heatmap,
   } = res[selectedScene]
 
-  console.log(res)
-
   // 1. marathon users
   // 2. time spent histogram
   // 3. parcels heatmap
@@ -157,12 +155,7 @@ const Scene = ({ res }) => {
                 selectedScene={selectedScene}
               />
             </Box>
-            <Box
-              w={["100%", "100%", "100%", "65%"]}
-              h="400px"
-              mt={[4, 0]}
-              // ml="2"
-            >
+            <Box w={["100%", "100%", "100%", "65%"]} h="400px" mt={[4, 0]}>
               <SceneLineChart data={res} selectedScene={selectedScene} />
             </Box>
           </Flex>
@@ -183,7 +176,7 @@ const Scene = ({ res }) => {
               h="400px"
               mt={[4, 4, 8, 0]}
             >
-              <SceneMarathonUsers data={res} />
+              <SceneMarathonUsers data={marathon_users} />
             </Box>
             <Box
               w={["100%", "100%", "100%", "65%"]}
