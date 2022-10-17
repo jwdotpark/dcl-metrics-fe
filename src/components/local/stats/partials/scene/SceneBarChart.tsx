@@ -61,9 +61,9 @@ const SceneBarChart = ({ selectedScene }) => {
           indexBy="hour"
           margin={{
             top: 30,
-            right: isMobile ? 5 : 10,
-            bottom: isMobile ? 50 : 40,
-            left: isMobile ? 40 : 50,
+            right: isMobile ? 10 : 10,
+            bottom: isMobile ? 70 : 70,
+            left: isMobile ? 30 : 50,
           }}
           borderWidth={2}
           padding={isMobile ? 0.4 : 0.2}
@@ -87,9 +87,9 @@ const SceneBarChart = ({ selectedScene }) => {
             tickSize: 5,
             tickPadding: 1,
             tickRotation: yAxisLabelDegree(),
-            legend: "UTC",
+            legend: "All times are in UTC",
             legendPosition: "middle",
-            legendOffset: -15,
+            legendOffset: isMobile ? 45 : 40,
             format: (value) => value + ":00",
           }}
           axisLeft={{

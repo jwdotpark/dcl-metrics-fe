@@ -111,7 +111,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         <ResponsiveLine
           data={memoizedData}
           colors={colors}
-          margin={{ top: 30, right: 20, bottom: 40, left: 40 }}
+          margin={{ top: 30, right: 20, bottom: 60, left: 40 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
@@ -128,7 +128,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             tickPadding: 5,
             tickRotation: 0,
             legend: "Time spent in hours",
-            legendOffset: -15,
+            legendOffset: 42,
             legendPosition: "middle",
             format: (value) => yAxisLabel(value),
             tickRotation: yAxisLabelDegree(),
