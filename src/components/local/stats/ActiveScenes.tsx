@@ -36,7 +36,7 @@ const ActiveScenes = ({ visitorLoading, data }) => {
     })
   })
 
-  const [dateRange, setDateRange] = useState<number>(7)
+  const [dateRange, setDateRange] = useState<number>(30)
 
   const slicedData = () => {
     if (chartData.length - dateRange > 0) {
