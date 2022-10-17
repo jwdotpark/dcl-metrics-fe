@@ -17,7 +17,7 @@ const TooltipTable = ({ date, count, degraded, bar }) => {
       <Table size="sm" variant="unstyled">
         <Thead>
           <Tr>
-            <Th>{bar ? "Time" : "Date"}</Th>
+            <Th>{bar ? "Time (UTC)" : "Date"}</Th>
             <Th isNumeric>{bar ? "User" : "Count"}</Th>
           </Tr>
         </Thead>

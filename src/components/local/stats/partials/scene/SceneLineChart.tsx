@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react"
 import { ResponsiveLine } from "@nivo/line"
 import { SceneColor } from "../../../../../lib/hooks/utils"
+import moment from "moment"
 
 const SceneLineChart = ({ data, selectedScene }) => {
   const timeSpentHistogramArr = data.map((item) => item.time_spent_histogram)
@@ -128,7 +129,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             tickRotation: 0,
             legend: "Time spent in hours",
             legendOffset: -15,
-            legendPosition: "end",
+            legendPosition: "middle",
             format: (value) => yAxisLabel(value),
             tickRotation: yAxisLabelDegree(),
           }}
@@ -137,7 +138,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             tickSize: 5,
             tickPadding: 0,
             tickRotation: 0,
-            legend: "User Count",
+            legend: "Numer of Users",
             legendOffset: 10,
             legendPosition: "end",
           }}

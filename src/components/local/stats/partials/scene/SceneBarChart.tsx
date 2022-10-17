@@ -85,10 +85,10 @@ const SceneBarChart = ({ selectedScene }) => {
           axisRight={null}
           axisBottom={{
             tickSize: 5,
-            tickPadding: 5,
+            tickPadding: 1,
             tickRotation: yAxisLabelDegree(),
-            legend: "",
-            legendPosition: "end",
+            legend: "UTC",
+            legendPosition: "middle",
             legendOffset: -15,
             format: (value) => value + ":00",
           }}
