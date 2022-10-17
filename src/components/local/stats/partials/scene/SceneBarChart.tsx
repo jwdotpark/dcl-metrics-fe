@@ -49,6 +49,7 @@ const SceneBarChart = ({ selectedScene }) => {
       <Box
         w="100%"
         h="400px"
+        mt={[2, 2, 8, 0]}
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.700")}

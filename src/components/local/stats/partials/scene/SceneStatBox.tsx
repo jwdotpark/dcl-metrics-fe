@@ -81,6 +81,7 @@ const StatBox = ({ data, selectedScene }) => {
       <SimpleGrid
         w="100%"
         h="400px"
+        mt={[0, 2, 4, 0]}
         p="4"
         bg={useColorModeValue("gray.200", "gray.700")}
         border="1px solid"

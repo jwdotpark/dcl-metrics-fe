@@ -112,7 +112,7 @@ const Scene = ({ res }) => {
             direction={["column", "column", "column", "row"]}
             w="100%"
             h="auto"
-            mb="3"
+            mb="4"
           >
             <Box w={["100%", "100%", "100%", "35%"]}>
               <Box mb="2">
@@ -126,8 +126,8 @@ const Scene = ({ res }) => {
               <SceneMap url={map_url} />
             </Box>
             <Box w={["100%", "100%", "100%", "65%"]} h="400px" mt={[4, 0]}>
-              <SceneParcelsHeatmap
-                data={parcels_heatmap}
+              <StatBox
+                data={res[selectedScene]}
                 selectedScene={selectedScene}
               />
             </Box>
@@ -144,28 +144,33 @@ const Scene = ({ res }) => {
             h="auto"
             mb="4"
           >
-            <Box w={["100%", "100%", "100%", "35%"]}>
-              <StatBox
-                data={res[selectedScene]}
+            <Box w={["100%", "100%", "100%", "35%"]} mr="2">
+              <SceneParcelsHeatmap
+                data={parcels_heatmap}
                 selectedScene={selectedScene}
               />
             </Box>
-            <Box w={["100%", "100%", "100%", "65%"]} h="400px" mt={[4, 0]}>
+            <Box
+              w={["100%", "100%", "100%", "65%"]}
+              h="400px"
+              mt={[4, 0]}
+              // ml="2"
+            >
               <SceneLineChart data={res} selectedScene={selectedScene} />
             </Box>
           </Flex>
           <Flex
             sx={{
               "& > * + *": {
-                ml: [0, 4],
-                mt: [4, 0],
+                ml: [0, 0, 0, 4],
+                mt: [4, 4, 4, 0],
               },
             }}
             direction={["column", "row"]}
             w="100%"
             h="auto"
           >
-            <Box w="100%" h="400px">
+            <Box w="100%" h="auto" mb={[0, 0, 4, 0]}>
               <SceneBarChart selectedScene={selectedScene} />
             </Box>
           </Flex>

@@ -47,6 +47,8 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
     return res
   }
 
+  const heatmapHeight = 365
+
   return (
     <Tooltip
       p="2"
@@ -59,77 +61,42 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
     >
       <Box
         w="100%"
+        mt={[2, 2, 6, 0]}
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.700")}
         borderRadius="xl"
         shadow="md"
       >
-        <Box
-          border="1px solid"
-          borderColor={useColorModeValue("gray.100", "gray.600")}
-          borderRadius="xl"
-        >
-          <Box
-            sx={{
-              "&::-webkit-scrollbar": {
-                width: "14px",
-              },
-              "&::-webkit-scrollbar-track": {
-                width: "14px",
-              },
-              "&::-webkit-scrollbar-thumb": {
-                background: useColorModeValue("gray.300", "gray.600"),
-                borderRadius: "14px",
-              },
-              "&::-webkit-scrollbar-thumb:hover": {
-                background: useColorModeValue("gray.400", "gray.500"),
-              },
-              // bottom scrollbar thinner
-              "&::-webkit-scrollbar-corner": {
-                width: "14px",
-                background: useColorModeValue("gray.100", "gray.700"),
-              },
-            }}
-            overflow="auto"
-            h="360px"
-            minH="100%"
-            m="4"
-            border="1px solid"
-            // scroll bar thin
-            borderColor={useColorModeValue("gray.300", "gray.700")}
-          >
+        <Box borderRadius="xl">
+          <Box overflow="hidden" h={heatmapHeight} m="4" borderRadius="xl">
             {normalizedGrid.map((row, i) => {
               return (
                 <Flex key={i}>
                   {row.map((cell, j) => {
                     return (
-                      <Box
+                      <Tooltip
                         key={j}
-                        w="100%"
-                        minW="100px"
-                        h="100%"
-                        minH="100px"
-                        bg={setBgColor(cell.normalizedValue / 100)}
-                        border="1px solid"
-                        // eslint-disable-next-line react-hooks/rules-of-hooks
-                        borderColor={useColorModeValue("gray.300", "gray.700")}
+                        p="2"
+                        fontSize="sm"
+                        borderRadius="md"
+                        shadow="xl"
+                        hasArrow
+                        label={`[${cell.x}, ${cell.y}] : ${cell.value} counts`}
+                        placement="auto"
                       >
-                        <Box m="2">
-                          <Text as="kbd" fontSize={["8px", "xs"]}>
-                            [{cell.x},{cell.y}]
-                          </Text>
-                        </Box>
-                        <Center>
-                          <Text
-                            as="kbd"
-                            fontSize={["sm", "sm", "2xl"]}
-                            fontWeight="bold"
-                          >
-                            <CountUp end={cell.value} duration={0.5} />
-                          </Text>
-                        </Center>
-                      </Box>
+                        <Box
+                          w="100%"
+                          h={heatmapHeight / normalizedGrid.length - 1 + "px"}
+                          bg={setBgColor(cell.normalizedValue / 100)}
+                          border="1px solid"
+                          // eslint-disable-next-line react-hooks/rules-of-hooks
+                          borderColor={useColorModeValue(
+                            "gray.200",
+                            "gray.700"
+                          )}
+                        ></Box>
+                      </Tooltip>
                     )
                   })}
                 </Flex>
