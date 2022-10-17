@@ -112,17 +112,17 @@ const GlobalPage: NextPage = (props) => {
       {/* <Scene res={staticScene} /> */}
       {/* <TempError /> */}
       <Box w="100%">
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+        <Box mb="4">
           <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
+        </Box>
+
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <UniqueVisitedParcels
             data={result.global}
             visitorLoading={isDataLoading}
           />
-          {/* <ActiveScenes data={result.global} visitorLoading={isDataLoading} /> */}
-        </Grid>
-        <Box mb="4">
           <ActiveScenes data={result.global} visitorLoading={isDataLoading} />
-        </Box>
+        </Grid>
 
         <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
