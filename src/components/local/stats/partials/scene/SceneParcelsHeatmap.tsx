@@ -6,9 +6,11 @@ import {
   Flex,
   useColorModeValue,
   Tooltip,
+  MenuDescendantsProvider,
 } from "@chakra-ui/react"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 import CountUp from "react-countup"
+import { ColumnSizing } from "@tanstack/react-table"
 
 const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   const minX = Math.min(...Object.keys(data).map((d) => d.split(",")[0]))
@@ -64,7 +66,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
         mt={[2, 2, 6, 0]}
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
-        borderColor={useColorModeValue("gray.200", "gray.700")}
+        borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
         shadow="md"
       >
@@ -93,9 +95,29 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                           // eslint-disable-next-line react-hooks/rules-of-hooks
                           borderColor={useColorModeValue(
                             "gray.200",
-                            "gray.700"
+                            "gray.600"
                           )}
-                        ></Box>
+                          borderTopLeftRadius={i === 0 && j === 0 && "xl"}
+                          borderTopRightRadius={
+                            i === 0 && j === row.length - 1 && "xl"
+                          }
+                          borderBottomRightRadius={
+                            i === normalizedGrid.length - 1 &&
+                            j === row.length - 1 &&
+                            "xl"
+                          }
+                          borderBottomLeftRadius={
+                            i === normalizedGrid.length - 1 && j === 0 && "xl"
+                          }
+                        >
+                          <Center h="100%">
+                            <Text
+                              fontSize={heatmapHeight / 2.5 / row.length + "px"}
+                            >
+                              {cell.value}
+                            </Text>
+                          </Center>
+                        </Box>
                       </Tooltip>
                     )
                   })}
