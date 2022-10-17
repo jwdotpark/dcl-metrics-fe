@@ -125,7 +125,11 @@ const Scene = ({ res }) => {
               </Box>
               <SceneMap url={map_url} />
             </Box>
-            <Box w={["100%", "100%", "100%", "65%"]} h="400px" mt={[4, 0]}>
+            <Box
+              w={["100%", "100%", "100%", "65%"]}
+              h={["100%", "100%", "100%", "400px"]}
+              mt={[4, 4, 4, 0]}
+            >
               <StatBox
                 data={res[selectedScene]}
                 selectedScene={selectedScene}

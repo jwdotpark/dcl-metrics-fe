@@ -197,7 +197,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
                     <Thead>
                       <Tr>
                         <Th>Scene</Th>
-                        <Th isNumeric>Engaged users</Th>
+                        <Th isNumeric>Users</Th>
                       </Tr>
                     </Thead>
 
