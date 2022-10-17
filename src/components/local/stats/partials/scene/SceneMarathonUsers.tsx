@@ -35,53 +35,44 @@ const SceneMarathonUsers = ({ data }) => {
 
   const MarathonUserTable = () => {
     return (
-      <TableContainer>
-        <Table size="sm" variant="striped">
-          <TableCaption>Marathon Users in this scene</TableCaption>
-          <Thead>
-            <Tr>
-              <Th>Address</Th>
-              <Th isNumeric>Value</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {addressArr.map((address, index) => {
-              return (
-                <Tr key={index}>
-                  <Td>
-                    <Text
-                      as="kbd"
-                      // eslint-disable-next-line
-                      color={useColorModeValue("gray.800", "gray.200")}
-                      _hover={{ color: "gray.600", cursor: "pointer" }}
-                      onClick={() => handleToast(address)}
-                    >
-                      {/* {address.toString().slice(0, 100)} */}
-                      {address.slice(0, 7) + ".." + address.slice(-7, -1)}
-                    </Text>
-                  </Td>
-                  <Td isNumeric>
-                    <CountUp
-                      // @ts-ignore
-                      end={Math.round(valueArr[index])}
-                      duration={0.5}
-                    />
-                  </Td>
-                </Tr>
-              )
-            })}
-          </Tbody>
-        </Table>
-      </TableContainer>
+      <Table size="sm" variant="simple">
+        <Tbody>
+          {addressArr.map((address, index) => {
+            return (
+              <Tr key={index}>
+                <Td>
+                  <Text
+                    as="kbd"
+                    // eslint-disable-next-line
+                    color={useColorModeValue("gray.800", "gray.200")}
+                    _hover={{ color: "gray.600", cursor: "pointer" }}
+                    onClick={() => handleToast(address)}
+                  >
+                    {/* {address.toString().slice(0, 100)} */}
+                    {address.slice(0, 7) + ".." + address.slice(-7, -1)}
+                  </Text>
+                </Td>
+                <Td isNumeric>
+                  <CountUp
+                    // @ts-ignore
+                    end={Math.round(valueArr[index])}
+                    duration={0.5}
+                  />
+                </Td>
+              </Tr>
+            )
+          })}
+        </Tbody>
+      </Table>
     )
   }
   return (
     <Box
-      // w="100%"
       overflowX="hidden"
-      // bg={useColorModeValue("gray.100", "gray.600")}
+      h="400px"
+      bg={useColorModeValue("gray.100", "gray.700")}
       border="2px solid"
-      borderColor={useColorModeValue("gray.300", "gray.700")}
+      borderColor={useColorModeValue("gray.200", "gray.700")}
       borderRadius="xl"
       shadow="md"
     >

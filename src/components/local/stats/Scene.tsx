@@ -21,6 +21,7 @@ import SceneSelector from "./partials/scene/SceneSelector"
 import StatBox from "./partials/scene/SceneStatBox"
 import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 import SceneBarChart from "./partials/scene/SceneBarChart"
+import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 
 const Scene = ({ res }) => {
   const breakpoint = useBreakpointValue({
@@ -150,7 +151,7 @@ const Scene = ({ res }) => {
             h="auto"
             mb="4"
           >
-            <Box w={["100%", "100%", "100%", "35%"]} mr="2">
+            <Box w={["100%", "100%", "100%", "35%"]}>
               <SceneParcelsHeatmap
                 data={parcels_heatmap}
                 selectedScene={selectedScene}
@@ -172,11 +173,23 @@ const Scene = ({ res }) => {
                 mt: [4, 4, 4, 0],
               },
             }}
-            direction={["column", "row"]}
+            direction={["column", "column", "column", "row"]}
             w="100%"
             h="auto"
+            mt="4"
           >
-            <Box w="100%" h="auto" mb={[0, 0, 4, 0]}>
+            <Box
+              w={["100%", "100%", "100%", "35%"]}
+              h="400px"
+              mt={[4, 4, 8, 0]}
+            >
+              <SceneMarathonUsers data={res} />
+            </Box>
+            <Box
+              w={["100%", "100%", "100%", "65%"]}
+              h="400px"
+              mb={[4, 4, 4, 0]}
+            >
               <SceneBarChart selectedScene={selectedScene} />
             </Box>
           </Flex>

@@ -49,7 +49,7 @@ const SceneBarChart = ({ selectedScene }) => {
       <Box
         w="100%"
         h="400px"
-        mt={[2, 2, 8, 0]}
+        mt={[2, 2, 2, 0]}
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.700")}
@@ -63,8 +63,8 @@ const SceneBarChart = ({ selectedScene }) => {
           margin={{
             top: 30,
             right: isMobile ? 10 : 10,
-            bottom: isMobile ? 70 : 70,
-            left: isMobile ? 30 : 50,
+            bottom: isMobile ? 70 : 50,
+            left: isMobile ? 40 : 50,
           }}
           borderWidth={2}
           padding={isMobile ? 0.4 : 0.2}
@@ -90,7 +90,7 @@ const SceneBarChart = ({ selectedScene }) => {
             tickRotation: yAxisLabelDegree(),
             legend: "All times are in UTC",
             legendPosition: "middle",
-            legendOffset: isMobile ? 45 : 40,
+            legendOffset: isMobile ? 45 : 30,
             format: (value) => value + ":00",
           }}
           axisLeft={{

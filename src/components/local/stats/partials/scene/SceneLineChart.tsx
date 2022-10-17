@@ -113,7 +113,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         <ResponsiveLine
           data={memoizedData}
           colors={colors}
-          margin={{ top: 30, right: 20, bottom: 60, left: 40 }}
+          margin={{ top: 30, right: 20, bottom: 60, left: 50 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
