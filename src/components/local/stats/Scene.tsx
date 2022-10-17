@@ -50,6 +50,8 @@ const Scene = ({ res }) => {
     parcels_heatmap,
   } = res[selectedScene]
 
+  console.log(res)
+
   // 1. marathon users
   // 2. time spent histogram
   // 3. parcels heatmap
@@ -96,7 +98,7 @@ const Scene = ({ res }) => {
         </Flex>
         <Box ml="5">
           <Text color="gray.500" fontSize="sm">
-            Most populated scene in the Decentraland
+            Most populated scene in the Decentraland yesterday
           </Text>
         </Box>
 
