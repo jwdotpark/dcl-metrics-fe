@@ -119,7 +119,7 @@ export default function SidebarWithHeader({
         w={["100%", "100%", `calc(100% - ${sidebarStatus})`]}
         ml={{ base: 0, md: sidebarStatus }}
       >
-        <Box w="100%" maxW="1600px" p="4" data-testid="sidebar">
+        <Box w="100%" maxW="1920px" p="4" data-testid="sidebar">
           {children}
         </Box>
       </Flex>
