@@ -11,28 +11,40 @@ import {
   TableCaption,
   useToast,
   useColorModeValue,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import CountUp from "react-countup"
 
 const SceneMarathonUsers = ({ data }) => {
   // copy toast
   const toast = useToast()
-  const handleToast = (value) => {
-    navigator.clipboard.writeText(value)
-    toast({
-      description: "Address " + value + " has been copied to the clipboard.",
-      duration: 4000,
-      isClosable: true,
-      position: "bottom-right",
-      status: "success",
-      variant: "subtle",
-    })
+  const handleToast = async (value) => {
+    try {
+      await navigator.clipboard.writeText(value)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      toast({
+        description: "Address has been copied to the clipboard.",
+        duration: 4000,
+        isClosable: true,
+        position: "bottom-right",
+        status: "success",
+        variant: "subtle",
+      })
+    }
   }
 
   const dataArr = Object.entries(data)
   const addressArr = dataArr.map((item) => item[0])
   const valueArr = dataArr.map((item) => item[1])
 
+  const addressWidth = useBreakpointValue({
+    base: 8,
+    sm: 10,
+    md: 50,
+    lg: 25,
+  })
   const MarathonUserTable = () => {
     return (
       <Box
@@ -45,8 +57,12 @@ const SceneMarathonUsers = ({ data }) => {
             {addressArr.map((address, index) => {
               return (
                 <Tr key={index} h="37px">
+                  <Td w={["10px", "20px"]}>User</Td>
                   <Td>
-                    <Box w={["50px", "50px", "100px", "100px"]}>
+                    <Box
+                      // w={["50px", "50px", "100%", "150px"]}
+                      w="100%"
+                    >
                       <Text
                         as="kbd"
                         // eslint-disable-next-line
@@ -55,13 +71,11 @@ const SceneMarathonUsers = ({ data }) => {
                         _hover={{ color: "gray.600", cursor: "pointer" }}
                         onClick={() => handleToast(address)}
                       >
-                        {address.slice(0, 10) + ".."}
+                        {address.slice(0, addressWidth)}
+                        {address.length > addressWidth ? ".." : ""}
                       </Text>
                     </Box>
                   </Td>
-                  <Td>Pic</Td>
-                  <Td>Name</Td>
-                  <Td>Status</Td>
                   <Td isNumeric>
                     <Text as="kbd" fontWeight="bold">
                       <CountUp

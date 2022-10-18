@@ -9,11 +9,11 @@ import SceneHistogram from "../../../../../../public/data/scene_histogram.json"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 import TooltipTable from "../TableTooltip"
 
-const SceneBarChart = ({ selectedScene }) => {
-  const chartData = Object.keys(SceneHistogram).map((key) => {
+const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
+  const chartData = Object.keys(visitors_by_hour_histogram).map((key) => {
     return {
       hour: key,
-      count: SceneHistogram[key],
+      count: visitors_by_hour_histogram[key],
     }
   })
 

@@ -2,19 +2,23 @@ import { Button, Tooltip, Text, useToast, Box } from "@chakra-ui/react"
 
 const TruncateName = (name: string) => {
   const toast = useToast()
-
-  const handleToast = (value: string) => {
-    navigator.clipboard.writeText(value)
-    toast({
-      description: "POI " + value + " has been copied to the clipboard.",
-      duration: 2000,
-      isClosable: true,
-      position: "bottom-right",
-      status: "success",
-      variant: "subtle",
-    })
-    return null
+  const handleToast = async (value) => {
+    try {
+      await navigator.clipboard.writeText(value)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      toast({
+        description: "POI " + value + " has been copied to the clipboard.",
+        duration: 2000,
+        isClosable: true,
+        position: "bottom-right",
+        status: "success",
+        variant: "subtle",
+      })
+    }
   }
+
 
   const stringLimit = 22
   if (name.length > stringLimit) {

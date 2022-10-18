@@ -24,16 +24,14 @@ import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 
 const Scene = ({ res }) => {
-  const breakpoint = useBreakpointValue({
-    sm: "100%",
-    md: "100%",
-    lg: "33%",
-    xl: "33%",
-  })
-
   const [selectedScene, setSelectedScene] = useState(0)
-
-  const { name, map_url, marathon_users, parcels_heatmap } = res[selectedScene]
+  const {
+    name,
+    map_url,
+    marathon_users,
+    parcels_heatmap,
+    visitors_by_hour_histogram,
+  } = res[selectedScene]
 
   const isMobile = useBreakpointValue({
     base: true,
@@ -150,7 +148,10 @@ const Scene = ({ res }) => {
               h="400px"
               mb={[4, 4, 4, 0]}
             >
-              <SceneBarChart selectedScene={selectedScene} />
+              <SceneBarChart
+                visitors_by_hour_histogram={visitors_by_hour_histogram}
+                selectedScene={selectedScene}
+              />
             </Box>
           </Flex>
         </Box>
