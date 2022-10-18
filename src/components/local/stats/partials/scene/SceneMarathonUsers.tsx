@@ -1,14 +1,10 @@
 import {
   Text,
-  Thead,
   Box,
   Table,
-  TableContainer,
-  Th,
   Tr,
   Td,
   Tbody,
-  TableCaption,
   useToast,
   useColorModeValue,
   useBreakpointValue,
@@ -16,7 +12,6 @@ import {
 import CountUp from "react-countup"
 
 const SceneMarathonUsers = ({ data }) => {
-  // copy toast
   const toast = useToast()
   const handleToast = async (value) => {
     try {
@@ -59,10 +54,7 @@ const SceneMarathonUsers = ({ data }) => {
                 <Tr key={index} h="37px">
                   <Td w={["10px", "20px"]}>User</Td>
                   <Td>
-                    <Box
-                      // w={["50px", "50px", "100%", "150px"]}
-                      w="100%"
-                    >
+                    <Box w="100%">
                       <Text
                         as="kbd"
                         // eslint-disable-next-line

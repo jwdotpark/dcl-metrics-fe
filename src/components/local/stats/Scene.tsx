@@ -1,15 +1,10 @@
 import {
-  Image,
   Flex,
-  Square,
   Text,
   Box,
   useColorModeValue,
-  Center,
   useBreakpointValue,
   Spacer,
-  Grid,
-  GridItem,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
