@@ -12,6 +12,9 @@ import {
   Tbody,
   Td,
   Tr,
+  Thead,
+  Th,
+  TableCaption,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import CountUp from "react-countup"
@@ -32,16 +35,19 @@ const StatBox = ({ data, selectedScene }) => {
     avg_complete_session_duration: " minutes",
   }
   const description = {
-    visitors: "this is visitor",
-    share_of_global_visitors: "this is share of global visitors",
-    avg_time_spent: "this is avg time spent",
-    avg_time_spent_afk: "this is avg time spent afk",
-    total_logins: "this is total logins",
-    unique_logins: "this is unique logins",
-    total_logouts: "this is total logouts",
-    unique_logouts: "this is unique logouts",
-    complete_sessions: "this is complete sessions",
-    avg_complete_session_duration: "this is avg complete session duration",
+    visitors: "Unique visitors yesterday in this scene",
+    share_of_global_visitors: "",
+    avg_time_spent: "Average time users spent yesterday in this scene",
+    avg_time_spent_afk:
+      "Average Away From Keyboard time users spent yesterday in this scene",
+    total_logins: "The amount of number user logged yesterday in this scene",
+    unique_logins:
+      "The amount of number user logged once yesterday in this scene",
+    total_logouts: "Total amount of user logouts yesterday in this scene",
+    unique_logouts:
+      "Total amount of unique user logouts yesterday in this scene",
+    complete_sessions: "",
+    avg_complete_session_duration: "",
   }
 
   const name = {
@@ -80,7 +86,7 @@ const StatBox = ({ data, selectedScene }) => {
     base: "14px",
     sm: "14px",
     md: "16px",
-    lg: "20px",
+    lg: "18px",
   })
 
   const HelpTooltip = (description) => {
@@ -102,64 +108,65 @@ const StatBox = ({ data, selectedScene }) => {
   const StatTable = () => {
     return (
       <Flex
+        sx={{
+          "& > * + *": {
+            ml: [0, 0, 4, 4],
+            mt: [4, 4, 0, 0],
+          },
+        }}
         direction={["column", "row"]}
         overflow="hidden"
         w="100%"
         h="100%"
-        py="2"
-        bg={useColorModeValue("gray.100", "gray.700")}
+        p="4"
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
         shadow="md"
       >
-        <Box w="100%" mx={[2, 4]} pr={[2, 0]} py={[0, 4]}>
-          <Table h="100%" size="sm">
+        <Box w="100%" pr={[2, 0]} py={[2, 4]}>
+          <Table minH="350px" size="sm" variant="striped">
+            <Thead>
+              <Tr>
+                <Th>Stat</Th>
+                <Th isNumeric>Value</Th>
+              </Tr>
+            </Thead>
             <Tbody>
               {filteredStats
                 .slice(0, filteredStats.length / 2)
                 .map(({ label, name, value, description, unit }) => {
                   return (
                     <Tr key={label}>
-                      <Td>
+                      <Td borderBottom="none">
                         <Flex>
                           <Tooltip
-                            sx={{ transform: "translateY(-10px)" }}
                             fontSize="sm"
                             borderRadius="md"
                             label={description}
                             placement="top"
                           >
-                            <Box sx={{ transform: "translateY(-14px)" }} mr="2">
+                            <Box mr="2">
                               <FiInfo size={helpTooltipSize} />
                             </Box>
                           </Tooltip>
                           <Box>
-                            <Text
-                              sx={{ transform: "translateY(-14px)" }}
-                              fontSize={["xs", "sm", "md", "xl"]}
-                            >
+                            <Text fontSize={["xs", "sm", "md", "lg"]}>
                               {name}
                             </Text>
                           </Box>
                         </Flex>
                       </Td>
-                      <Td isNumeric>
-                        <Text
-                          as="kbd"
-                          fontSize={["md", "lg", "xl", "3xl"]}
-                          fontWeight="bold"
-                        >
-                          <CountUp end={Number(value)} duration={0.5} />
-                        </Text>
-                        <Text
-                          mt="1"
-                          // eslint-disable-next-line react-hooks/rules-of-hooks
-                          color={useColorModeValue("gray.500", "gray.400")}
-                          fontSize={["xs", "sm", "sm", "sm"]}
-                        >
-                          {unit}
-                        </Text>
+                      <Td borderBottom="none" isNumeric>
+                        <Box>
+                          <Text
+                            fontSize={["xs", "sm", "md", "lg"]}
+                            fontWeight="bold"
+                          >
+                            <CountUp end={Number(value)} duration={0.5} />
+                          </Text>
+                          <Text>{unit}</Text>
+                        </Box>
                       </Td>
                     </Tr>
                   )
@@ -167,53 +174,49 @@ const StatBox = ({ data, selectedScene }) => {
             </Tbody>
           </Table>
         </Box>
-        <Box w="100%" mx={[2, 4]} pr={[2, 0]} py={[0, 4]}>
-          <Table h="100%" size="sm">
+        <Box w="100%" pr={[2, 0]} py={[2, 4]}>
+          <Table minH="350px" size="sm" variant="striped">
+            <Thead>
+              <Tr>
+                <Th>Stat</Th>
+                <Th isNumeric>Value</Th>
+              </Tr>
+            </Thead>
             <Tbody>
               {filteredStats
                 .slice(filteredStats.length / 2, filteredStats.length)
                 .map(({ label, name, value, description, unit }) => {
                   return (
                     <Tr key={label}>
-                      <Td>
+                      <Td borderBottom="none">
                         <Flex>
                           <Tooltip
-                            sx={{ transform: "translateY(-10px)" }}
                             fontSize="sm"
                             borderRadius="md"
                             label={description}
                             placement="top"
                           >
-                            <Box sx={{ transform: "translateY(-14px)" }} mr="2">
+                            <Box mr="2">
                               <FiInfo size={helpTooltipSize} />
                             </Box>
                           </Tooltip>
                           <Box>
-                            <Text
-                              sx={{ transform: "translateY(-14px)" }}
-                              fontSize={["xs", "sm", "md", "xl"]}
-                            >
+                            <Text fontSize={["xs", "sm", "md", "lg"]}>
                               {name}
                             </Text>
                           </Box>
                         </Flex>
                       </Td>
-                      <Td isNumeric>
-                        <Text
-                          as="kbd"
-                          fontSize={["md", "lg", "xl", "3xl"]}
-                          fontWeight="bold"
-                        >
-                          <CountUp end={Number(value)} duration={0.5} />
-                        </Text>
-                        <Text
-                          mt="1"
-                          // eslint-disable-next-line react-hooks/rules-of-hooks
-                          color={useColorModeValue("gray.500", "gray.400")}
-                          fontSize={["xs", "sm", "sm", "sm"]}
-                        >
-                          {unit}
-                        </Text>
+                      <Td borderBottom="none" isNumeric>
+                        <Box>
+                          <Text
+                            fontSize={["xs", "sm", "md", "lg"]}
+                            fontWeight="bold"
+                          >
+                            <CountUp end={Number(value)} duration={0.5} />
+                          </Text>
+                          <Text>{unit}</Text>
+                        </Box>
                       </Td>
                     </Tr>
                   )
