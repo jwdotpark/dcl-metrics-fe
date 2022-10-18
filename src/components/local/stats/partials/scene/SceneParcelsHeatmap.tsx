@@ -113,7 +113,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                           <Center h="100%">
                             <Text
                               fontSize={[
-                                heatmapHeight / 4 / row.length + "px",
+                                heatmapHeight / 5 / row.length + "px",
                                 heatmapHeight / 4 / row.length + "px",
                               ]}
                             >

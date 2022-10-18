@@ -16,59 +16,21 @@ import {
   Th,
   TableCaption,
 } from "@chakra-ui/react"
+import moment from "moment"
 import { useState } from "react"
-import CountUp from "react-countup"
-import { FiInfo } from "react-icons/fi"
+import SceneHelpTooltip from "./SceneHelpTooltip"
+import { description, name } from "../../../../../lib/data/sceneInfo"
 
 const StatBox = ({ data, selectedScene }) => {
-  const [dataArr, setDataArr] = useState(Object.entries(data))
-  const unit = {
-    visitors: " users",
-    share_of_global_visitors: "%",
-    avg_time_spent: " minutes",
-    avg_time_spent_afk: " minutes",
-    total_logins: " times",
-    unique_logins: " times",
-    total_logouts: " times",
-    unique_logouts: " times",
-    complete_sessions: " sessions",
-    avg_complete_session_duration: " minutes",
-  }
-  const description = {
-    visitors: "Unique visitors yesterday in this scene",
-    share_of_global_visitors: "",
-    avg_time_spent: "Average time users spent yesterday in this scene",
-    avg_time_spent_afk:
-      "Average Away From Keyboard time users spent yesterday in this scene",
-    total_logins: "The amount of number user logged yesterday in this scene",
-    unique_logins:
-      "The amount of number user logged once yesterday in this scene",
-    total_logouts: "Total amount of user logouts yesterday in this scene",
-    unique_logouts:
-      "Total amount of unique user logouts yesterday in this scene",
-    complete_sessions: "",
-    avg_complete_session_duration: "",
-  }
+  // const [dataArr, setDataArr] = useState(Object.entries(data))
+  const dataArr = Object.entries(data)
 
-  const name = {
-    visitors: "Visitors",
-    share_of_global_visitors: "Share of Global Visitors",
-    avg_time_spent: "Average Time Spent",
-    avg_time_spent_afk: "Average Time Spent AFK",
-    total_logins: "Total Logins",
-    unique_logins: "Unique Logins",
-    total_logouts: "Total Logouts",
-    unique_logouts: "Unique Logouts",
-    complete_sessions: "Complete Sessions",
-    avg_complete_session_duration: "Average Complete Session Duration",
-  }
-
-  const stats = dataArr.map((item) => {
+  const stats = dataArr.map((item, index) => {
     return {
+      id: index,
       label: item[0],
       value: item[1],
       description: description[item[0]],
-      unit: unit[item[0]],
       name: name[item[0]],
     }
   })
@@ -79,31 +41,9 @@ const StatBox = ({ data, selectedScene }) => {
       item.label !== "map_url" &&
       item.label !== "marathon_users" &&
       item.label !== "time_spent_histogram" &&
-      item.label !== "parcels_heatmap"
+      item.label !== "parcels_heatmap" &&
+      item.label !== "visitors_by_hour_histogram"
   )
-
-  const helpTooltipSize = useBreakpointValue({
-    base: "14px",
-    sm: "14px",
-    md: "16px",
-    lg: "18px",
-  })
-
-  const HelpTooltip = (description) => {
-    return (
-      <Tooltip
-        sx={{ transform: "translateY(-10px)" }}
-        fontSize="sm"
-        borderRadius="md"
-        label={description}
-        placement="top"
-      >
-        <Box sx={{ transform: "translateY(-14px)" }} mr="2">
-          <FiInfo size={helpTooltipSize} />
-        </Box>
-      </Tooltip>
-    )
-  }
 
   const StatTable = () => {
     return (
@@ -135,23 +75,14 @@ const StatBox = ({ data, selectedScene }) => {
             <Tbody>
               {filteredStats
                 .slice(0, filteredStats.length / 2)
-                .map(({ label, name, value, description, unit }) => {
+                .map(({ label, name, value, description }) => {
                   return (
                     <Tr key={label}>
                       <Td borderBottom="none">
                         <Flex>
-                          <Tooltip
-                            fontSize="sm"
-                            borderRadius="md"
-                            label={description}
-                            placement="top"
-                          >
-                            <Box mr="2">
-                              <FiInfo size={helpTooltipSize} />
-                            </Box>
-                          </Tooltip>
+                          <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["xs", "sm", "md", "lg"]}>
+                            <Text fontSize={["xs", "sm", "md", "md"]}>
                               {name}
                             </Text>
                           </Box>
@@ -159,13 +90,18 @@ const StatBox = ({ data, selectedScene }) => {
                       </Td>
                       <Td borderBottom="none" isNumeric>
                         <Box>
+                          {/* @ts-ignore */}
                           <Text
                             fontSize={["xs", "sm", "md", "lg"]}
                             fontWeight="bold"
                           >
-                            <CountUp end={Number(value)} duration={0.5} />
+                            {name === "Average Time Spent" ||
+                            name === "Average Time Spent AFK"
+                              ? moment.utc(Number(value) * 1000).format(`H:m:s`)
+                              : value}
+                            {name === "Visitors" && " users"}
+                            {name === "Share of Global Visitors" && "%"}
                           </Text>
-                          <Text>{unit}</Text>
                         </Box>
                       </Td>
                     </Tr>
@@ -185,23 +121,14 @@ const StatBox = ({ data, selectedScene }) => {
             <Tbody>
               {filteredStats
                 .slice(filteredStats.length / 2, filteredStats.length)
-                .map(({ label, name, value, description, unit }) => {
+                .map(({ label, name, value, description }) => {
                   return (
                     <Tr key={label}>
                       <Td borderBottom="none">
                         <Flex>
-                          <Tooltip
-                            fontSize="sm"
-                            borderRadius="md"
-                            label={description}
-                            placement="top"
-                          >
-                            <Box mr="2">
-                              <FiInfo size={helpTooltipSize} />
-                            </Box>
-                          </Tooltip>
+                          <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["xs", "sm", "md", "lg"]}>
+                            <Text fontSize={["xs", "sm", "md", "md"]}>
                               {name}
                             </Text>
                           </Box>
@@ -210,12 +137,15 @@ const StatBox = ({ data, selectedScene }) => {
                       <Td borderBottom="none" isNumeric>
                         <Box>
                           <Text
-                            fontSize={["xs", "sm", "md", "lg"]}
+                            minW="100px"
+                            fontSize={["xs", "sm", "md", "md"]}
                             fontWeight="bold"
                           >
-                            <CountUp end={Number(value)} duration={0.5} />
+                            {/* @ts-ignore */}
+                            {name === "Average Complete Session Duration"
+                              ? moment.utc(Number(value) * 1000).format(`h:m:s`)
+                              : value}
                           </Text>
-                          <Text>{unit}</Text>
                         </Box>
                       </Td>
                     </Tr>

@@ -55,8 +55,7 @@ const SceneMarathonUsers = ({ data }) => {
                         _hover={{ color: "gray.600", cursor: "pointer" }}
                         onClick={() => handleToast(address)}
                       >
-                        {/* {address.slice(0, 10) + ".."} */}
-                        {Math.floor(400 / (addressArr.length - 1))}
+                        {address.slice(0, 10) + ".."}
                       </Text>
                     </Box>
                   </Td>

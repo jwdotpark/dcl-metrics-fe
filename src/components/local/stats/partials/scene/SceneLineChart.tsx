@@ -17,7 +17,6 @@ import {
 } from "@chakra-ui/react"
 import { ResponsiveLine } from "@nivo/line"
 import { SceneColor } from "../../../../../lib/hooks/utils"
-import moment from "moment"
 
 const SceneLineChart = ({ data, selectedScene }) => {
   const timeSpentHistogramArr = data.map((item) => item.time_spent_histogram)
@@ -82,13 +81,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     return value + "h"
   }
 
-  const yAxisLabelDegree = () => {
-    if (isMobile) {
-      return 90
-    } else {
-      return 0
-    }
-  }
+  const yAxisLabelDegree = isMobile ? 90 : 0
 
   return (
     <Tooltip
@@ -111,6 +104,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         shadow="md"
       >
         <ResponsiveLine
+          // layers={[BarLegend]}
           data={memoizedData}
           colors={colors}
           margin={{ top: 30, right: 20, bottom: 60, left: 50 }}
@@ -133,7 +127,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             legendOffset: 42,
             legendPosition: "middle",
             format: (value) => yAxisLabel(value),
-            tickRotation: yAxisLabelDegree(),
+            tickRotation: yAxisLabelDegree,
           }}
           axisLeft={{
             orient: "left",
@@ -166,6 +160,12 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           areaOpacity={0.25}
           legends={[
             {
+              dataFrom: "id",
+              data: memoizedData.map((id, index) => ({
+                color: colors[index],
+                id,
+                label: memoizedData.map((item) => item.id)[index],
+              })),
               anchor: "top-right",
               direction: "column",
               justify: false,
