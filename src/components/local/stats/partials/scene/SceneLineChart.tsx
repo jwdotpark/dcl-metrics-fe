@@ -107,7 +107,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           // layers={[BarLegend]}
           data={memoizedData}
           colors={colors}
-          margin={{ top: 30, right: 20, bottom: 60, left: 50 }}
+          margin={{ top: 30, right: 20, bottom: 50, left: 50 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
@@ -124,7 +124,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             tickPadding: 5,
             tickRotation: 0,
             legend: "Time spent in hours",
-            legendOffset: 42,
+            legendOffset: 35,
             legendPosition: "middle",
             format: (value) => yAxisLabel(value),
             tickRotation: yAxisLabelDegree,
