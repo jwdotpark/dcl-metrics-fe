@@ -1,8 +1,9 @@
-// @ts-nocheck
 import { Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import staticPeerStatus from "../public/data/cached_peerstats.json"
 import StatusBox from "../src/components/local/status/StatusBox"
+const axios = require("axios").default
+import fs from "fs"
 
 export async function getStaticProps(context) {
   const day = 60 * 60 * 24
