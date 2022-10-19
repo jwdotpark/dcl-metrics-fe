@@ -10,9 +10,6 @@ import {
   Tbody,
   Td,
   Tr,
-  TableCaption,
-  Grid,
-  GridItem,
 } from "@chakra-ui/react"
 import CountUp from "react-countup"
 import GridBox from "../GridBox"
@@ -135,9 +132,7 @@ const StatusBox = ({ data }) => {
   return (
     <Box w="100%">
       <ErrorBox isError={isError} />
-      {/* <SimpleGrid gap={4} columns={[1, 2, 2, 2, 4]}> */}
       <StatusDataBox />
-      {/* </SimpleGrid> */}
     </Box>
   )
 }
