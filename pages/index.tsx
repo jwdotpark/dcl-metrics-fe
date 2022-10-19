@@ -2,9 +2,6 @@ import { useEffect, useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
-// import staticScene from "../public/data/top_scenes.json"
-// import staticSceneHistogram from "../public/data/scene_histogram.json"
-
 import { useAtom } from "jotai"
 import { DataAtom } from "../src/lib/hooks/atoms"
 
@@ -12,7 +9,7 @@ const axios = require("axios").default
 import fs from "fs"
 
 import Layout from "../src/components/layout/layout"
-import Scene from "../src/components/local/stats/Scene"
+// import Scene from "../src/components/local/stats/Scene"
 import UserLayout from "../src/components/layout/global/UserLayout"
 import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
@@ -23,12 +20,13 @@ import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 export async function getStaticProps() {
   const day = 60 * 60 * 24
   if (process.env.NEXT_PUBLIC_ENV === "prod") {
-    // temp staging
-    // const url = "https://dcl-metrics-be-staging.herokuapp.com/global"
-    // const response = await axios.get(url)
-
     // // production
-    const url = "http://api.dcl-metrics.com/global"
+    // const url = "http://api.dcl-metrics.com/global"
+    const name = "/global"
+    const url =
+      process.env.NEXT_PUBLIC_ENV === "prod"
+        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + name
+        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + name
     const response = await axios.get(url, {
       method: "get",
       proxy: {
@@ -70,9 +68,9 @@ export async function getStaticProps() {
       }
       sendNotification()
 
-      return {
-        props: { staticGlobal },
-      }
+      // return {
+      //   props: { staticGlobal },
+      // }
     }
     const data = response.data
     return {
