@@ -10,6 +10,7 @@ import {
   Tbody,
   Td,
   Tr,
+  TableCaption,
 } from "@chakra-ui/react"
 import CountUp from "react-countup"
 import GridBox from "../GridBox"
@@ -43,80 +44,90 @@ const StatusBox = ({ data }) => {
     }
   }
 
+  const dataArr = Object.entries(data)
+  const StatusDataBox = () => {
+    return (
+      <>
+        {dataArr.map((category, i) => {
+          return (
+            <>
+              {/* @ts-ignore */}
+              {category[1].map((item, j) => {
+                return (
+                  <GridBox box={box} w="100%" border="1px solid red" key={j}>
+                    <Box m="4">
+                      <Flex mb="4">
+                        <Box mx="2">
+                          <Text
+                            ml="2"
+                            fontSize={["sm", "md", "lg", "md"]}
+                            _hover={{
+                              color: "gray.400",
+                            }}
+                            wordBreak="break-all"
+                          >
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={item.url}
+                            >
+                              {item.host}
+                            </a>
+                          </Text>
+                        </Box>
+                        <Spacer />
+                        <Box mr="2">
+                          <Text
+                            color={successColor(
+                              successRate(item.success_count, item.total_count)
+                            )}
+                            fontSize={["sm", "md", "xl", "2xl"]}
+                            cursor="grab"
+                          >
+                            <CountUp
+                              end={item.success_rate}
+                              duration={0.5}
+                              decimals={1}
+                            />
+                            %
+                          </Text>
+                        </Box>
+                      </Flex>
+                      <Box pb="2">
+                        <Table borderBottom="none" size="sm" variant="simple">
+                          <Tbody>
+                            <Tr>
+                              <Td>Total Count</Td>
+                              <Td isNumeric>
+                                <b>{item.total_count}</b>
+                              </Td>
+                            </Tr>
+                            <Tr>
+                              <Td>Success Count</Td>
+                              <Td isNumeric>
+                                <b>{item.success_count}</b>
+                              </Td>
+                            </Tr>
+                          </Tbody>
+                          <TableCaption mb="-4">{category[0]}</TableCaption>
+                        </Table>
+                      </Box>
+                    </Box>
+                  </GridBox>
+                )
+              })}
+            </>
+          )
+        })}
+      </>
+    )
+  }
+
   return (
     <Box w="100%">
       <ErrorBox isError={isError} />
       <SimpleGrid gap={4} columns={[1, 2, 2, 2, 4]}>
-        {data.map((item, i) => (
-          <GridBox box={box} key={i} w="100%" border="1px solid red">
-            <Box m="4">
-              <Flex>
-                <Box mx="4">
-                  <Text
-                    as="kbd"
-                    fontSize={["sm", "md", "lg", "xl"]}
-                    _hover={{
-                      color: "gray.400",
-                    }}
-                    wordBreak="break-all"
-                  >
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={item.url}
-                    >
-                      {item.url.replace("https://", "")}
-                    </a>
-                  </Text>
-                </Box>
-                <Spacer />
-
-                <Box mt={[0, -2]} mx="4">
-                  <Text
-                    color={successColor(
-                      successRate(item.success_count, item.total_count)
-                    )}
-                    fontSize={["xl", "2xl", "3xl", "4xl"]}
-                    cursor="grab"
-                  >
-                    <CountUp
-                      end={Number(
-                        successRate(item.success_count, item.total_count)
-                      )}
-                      duration={0.5}
-                    />
-                    %
-                  </Text>
-                </Box>
-              </Flex>
-
-              <Box py="2">
-                <Table borderBottom="none" size="sm" variant="simple">
-                  <Tbody>
-                    <Tr>
-                      <Td>Total Count</Td>
-                      <Td isNumeric>{item.total_count}</Td>
-                    </Tr>
-                    <Tr>
-                      <Td>Success Count</Td>
-                      <Td isNumeric>{item.success_count}</Td>
-                    </Tr>
-                    <Tr>
-                      <Td>Failure Count</Td>
-                      <Td isNumeric>
-                        {Number(item.total_count) - Number(item.success_count)}
-                      </Td>
-                    </Tr>
-                    {/* <Tr>
-                      <Td>Failure Rate</Td>
-                      <Td isNumeric>{item.failure_rate}</Td>
-                    </Tr> */}
-                  </Tbody>
-                </Table>
-              </Box>
-            </Box>
-          </GridBox>
-        ))}
+        <StatusDataBox />
       </SimpleGrid>
     </Box>
   )
