@@ -186,6 +186,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           sliceTooltip={({ slice }) => {
             return (
               <Box
+                key={slice.id}
                 sx={{ backdropFilter: "blur(10px)" }}
                 p="2"
                 color={useColorModeValue("black", "white")}
