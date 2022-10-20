@@ -19,18 +19,19 @@ import TopScenesVisitors from "../../local/stats/scenes/TopScenesVisitors"
 import AccordionLabel from "../global/partials/AccordionLabel"
 import AccordionViewMore from "../global/partials/AccordionViewMore"
 
-const SceneLayout = ({ result, isDataLoading }) => {
+const SceneLayout = ({ result, sceneResult, isDataLoading }) => {
   const gridColumn = useBreakpointValue({
     md: 1,
     lg: 2,
     xl: 2,
   })
   const { isOpen, onToggle } = useDisclosure()
+  console.log("sceneResult", sceneResult)
   return (
     <AccordionItem border="none">
       <AccordionLabel name="Scenes" />
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
-        <Scene res={staticScene} />
+        <Scene res={sceneResult} />
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopScenesVisitors
             res={result.scenes}

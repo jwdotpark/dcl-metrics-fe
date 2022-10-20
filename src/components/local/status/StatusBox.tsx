@@ -49,11 +49,11 @@ const StatusBox = ({ data }) => {
       <>
         {dataArr.map((category) => {
           return (
-            <>
+            <Box key={category[0]}>
               <Box ml="2" my="4">
                 <Text fontSize={["md", "xl", "3xl", "3xl"]}>{category[0]}</Text>
               </Box>
-              <SimpleGrid gap={4} columns={[0, 2, 3, 4]}>
+              <SimpleGrid gap={4} columns={[0, 2, 2, 3]}>
                 {/* @ts-ignore */}
                 {category[1].map((item, j) => {
                   return (
@@ -122,7 +122,7 @@ const StatusBox = ({ data }) => {
                   )
                 })}
               </SimpleGrid>
-            </>
+            </Box>
           )
         })}
       </>
