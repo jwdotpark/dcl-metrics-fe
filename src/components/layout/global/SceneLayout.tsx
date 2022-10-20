@@ -26,6 +26,7 @@ const SceneLayout = ({ result, sceneResult, isDataLoading }) => {
     xl: 2,
   })
   const { isOpen, onToggle } = useDisclosure()
+
   return (
     <AccordionItem border="none">
       <AccordionLabel name="Scenes" />

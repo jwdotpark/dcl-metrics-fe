@@ -105,20 +105,6 @@ const MarathonUsers = ({ isLoading, res }) => {
                   <Center minH="100%" ml="2">
                     <Text color={useColorModeValue("gray.800", "gray.200")}>
                       {value ? TruncateName(value) : "N/A"}
-                      {/* {value && value.length > 14 ? (
-                        <Tooltip
-                          fontSize="sm"
-                          borderRadius="xl"
-                          label={value}
-                          placement="top"
-                        >
-                          {value.slice(0, 25) + ".."}
-                        </Tooltip>
-                      ) : value ? (
-                        value
-                      ) : (
-                        "N/A"
-                      )} */}
                     </Text>
                   </Center>
                 </Flex>
