@@ -7,11 +7,10 @@ import fs from "fs"
 
 export async function getStaticProps(context) {
   const day = 60 * 60 * 24
-  const name = "/peer_status"
   const url =
-    process.env.NEXT_PUBLIC_ENV === "prod"
-      ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + name
-      : process.env.NEXT_PUBLIC_DEV_ENDPOINT + name
+    process.env.NEXT_PUBLIC_STAGING !== "true"
+      ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "peer_status"
+      : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "peer_status"
 
   if (process.env.NEXT_PUBLIC_ENV === "prod") {
     const response = await axios.get(url, {
@@ -45,7 +44,7 @@ export async function getStaticProps(context) {
           },
           body: JSON.stringify({
             level: "warning",
-            message: `Peerstat endpoint request is ${response.status} while build, check out the log`,
+            message: `Peer status endpoint request is ${response.status} while build, check out the log`,
             payload: {
               status: response.status,
             },
@@ -64,12 +63,12 @@ export async function getStaticProps(context) {
     const data = staticPeerStatus
     return {
       props: { data },
+      revalidate: day,
     }
   }
 }
 
 const Status = (props) => {
-  // const data = staticPeerStatus
   const data = props.data
   return (
     <Layout>
