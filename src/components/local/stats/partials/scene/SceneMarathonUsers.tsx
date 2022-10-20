@@ -90,7 +90,7 @@ const SceneMarathonUsers = ({ data }) => {
                   <Text>
                     {moment
                       .utc(Number(item[1].time_spent) * 1000)
-                      .format(`h:m:s`)}
+                      .format(`hh:mm:ss`)}
                   </Text>
                 </Td>
                 <Td>
