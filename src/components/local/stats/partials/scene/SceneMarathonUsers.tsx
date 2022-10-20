@@ -70,14 +70,20 @@ const SceneMarathonUsers = ({ data }) => {
                     {item[1].name ? TruncateName(item[1].name) : "N/A"}
                   </Text>
                 </Td>
-                <Td onClick={() => handleToast(item[1].address)}>
+                <Td
+                  onClick={() =>
+                    handleToast(item[1].address ? item[1].address : "")
+                  }
+                >
                   <Text
                     as="kbd"
                     // eslint-disable-next-line
                     color={useColorModeValue("gray.800", "gray.200")}
                     _hover={{ color: "gray.600", cursor: "pointer" }}
                   >
-                    {item[1].address.slice(0, addressWidth)}..
+                    {item[1].address
+                      ? item[1].address.slice(0, addressWidth) + ".."
+                      : "N/A"}
                   </Text>
                 </Td>
                 <Td isNumeric>
@@ -92,7 +98,7 @@ const SceneMarathonUsers = ({ data }) => {
                   </Text>
                 </Td>
                 <Td>
-                  <TableLink address={item[1].address} />
+                  <TableLink address={item[1].address ? item[1].address : ""} />
                 </Td>
               </Tr>
             ))}
