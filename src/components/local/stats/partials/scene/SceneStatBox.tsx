@@ -65,9 +65,16 @@ const StatBox = ({ data, selectedScene }) => {
         borderRadius="xl"
         shadow="md"
       >
-        <Box w="100%" pr={[2, 0]} py={[2, 4]}>
+        <Box
+          overflow="hidden"
+          w="100%"
+          border="1px solid"
+          borderColor={useColorModeValue("gray.200", "gray.600")}
+          borderRadius="xl"
+          shadow="md"
+        >
           <Table
-            minH="400px"
+            minH="420px"
             colorScheme="blackAlpha"
             size="sm"
             variant="striped"
@@ -112,9 +119,16 @@ const StatBox = ({ data, selectedScene }) => {
             </Tbody>
           </Table>
         </Box>
-        <Box w="100%" pr={[2, 0]} py={[2, 4]}>
+        <Box
+          overflow="hidden"
+          w="100%"
+          border="1px solid"
+          borderColor={useColorModeValue("gray.200", "gray.600")}
+          borderRadius="xl"
+          shadow="md"
+        >
           <Table
-            minH="400px"
+            minH="420px"
             colorScheme="blackAlpha"
             size="sm"
             variant="striped"
