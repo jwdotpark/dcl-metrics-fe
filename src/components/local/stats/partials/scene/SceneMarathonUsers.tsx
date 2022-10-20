@@ -13,10 +13,10 @@ import {
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react"
-import CountUp from "react-countup"
 import SceneProfilePicture from "./SceneProfilePicture"
 import TableLink from "../TableLink"
 import TruncateName from "../TruncatedName"
+import moment from "moment"
 
 const SceneMarathonUsers = ({ data }) => {
   const toast = useToast()
@@ -66,7 +66,7 @@ const SceneMarathonUsers = ({ data }) => {
                   </Flex>
                 </Td>
                 <Td>
-                  <Text fontSize="sm">
+                  <Text fontSize="sm" fontWeight="bold">
                     {item[1].name ? TruncateName(item[1].name) : "N/A"}
                   </Text>
                 </Td>
@@ -87,14 +87,10 @@ const SceneMarathonUsers = ({ data }) => {
                   </Text>
                 </Td>
                 <Td isNumeric>
-                  <Text as="kbd" fontWeight="bold">
-                    <CountUp
-                      start={0}
-                      end={item[1].time_spent}
-                      duration={1}
-                      separator=","
-                      decimals={0}
-                    />
+                  <Text>
+                    {moment
+                      .utc(Number(item[1].time_spent) * 1000)
+                      .format(`h:m:s`)}
                   </Text>
                 </Td>
                 <Td>
