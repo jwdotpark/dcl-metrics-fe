@@ -49,7 +49,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
     return res
   }
 
-  const heatmapHeight = 365
+  const heatmapHeight = 400
 
   return (
     <Tooltip
@@ -63,7 +63,6 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
     >
       <Box
         w="100%"
-        mt={[2, 2, 2, 0]}
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
@@ -71,7 +70,14 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
         shadow="md"
       >
         <Box borderRadius="xl">
-          <Box overflow="hidden" h={heatmapHeight} m="4" borderRadius="xl">
+          <Box
+            overflow="hidden"
+            h={heatmapHeight}
+            m="4"
+            bg={useColorModeValue("gray.50", "gray.800")}
+            borderRadius="xl"
+            shadow="md"
+          >
             {normalizedGrid.map((row, i) => {
               return (
                 <Flex key={i}>
@@ -89,7 +95,9 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                       >
                         <Box
                           w="100%"
-                          h={heatmapHeight / normalizedGrid.length - 1 + "px"}
+                          h={
+                            heatmapHeight / normalizedGrid.length - 1 + 1 + "px"
+                          }
                           bg={setBgColor(cell.normalizedValue / 100)}
                           border="1px solid"
                           // eslint-disable-next-line react-hooks/rules-of-hooks

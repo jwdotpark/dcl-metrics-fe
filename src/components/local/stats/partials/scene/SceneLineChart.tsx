@@ -94,7 +94,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
       placement="auto"
     >
       <Box
-        h="400px"
+        h="435px"
         mt={[2, 2, 6, 0]}
         // ml="2"
         bg={useColorModeValue("gray.100", "gray.700")}
@@ -107,7 +107,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           // layers={[BarLegend]}
           data={memoizedData}
           colors={colors}
-          margin={{ top: 30, right: 20, bottom: 50, left: 50 }}
+          margin={{ top: 30, right: 20, bottom: 60, left: 50 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
@@ -124,7 +124,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             tickPadding: 5,
             tickRotation: 0,
             legend: "Time spent in hours",
-            legendOffset: 35,
+            legendOffset: 45,
             legendPosition: "middle",
             format: (value) => yAxisLabel(value),
             tickRotation: yAxisLabelDegree,
@@ -186,7 +186,8 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           sliceTooltip={({ slice }) => {
             return (
               <Box
-                sx={{ backdropFilter: "blur(10px)" }}
+                key={slice.points[0].data.xFormatteds}
+                sx={{ backdropFilter: "blur(5px)" }}
                 p="2"
                 color={useColorModeValue("black", "white")}
                 borderRadius="xl"
@@ -202,27 +203,25 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
                     </Thead>
 
                     {slice.points.map((point, i) => (
-                      <>
-                        <Tbody>
-                          <Tr>
-                            <Td>
-                              <Box
-                                display="inline-block"
-                                boxSize="12px"
-                                mr="2"
-                                bg={point.serieColor}
-                                borderRadius="xl"
-                              />
-                              {point.serieId}
-                            </Td>
-                            <Td isNumeric>
-                              <Text as="kbd">
-                                <b>{Number(point.data.yFormatted)}</b>
-                              </Text>
-                            </Td>
-                          </Tr>
-                        </Tbody>
-                      </>
+                      <Tbody key={i}>
+                        <Tr>
+                          <Td>
+                            <Box
+                              display="inline-block"
+                              boxSize="12px"
+                              mr="2"
+                              bg={point.serieColor}
+                              borderRadius="xl"
+                            />
+                            {point.serieId}
+                          </Td>
+                          <Td isNumeric>
+                            <Text as="kbd">
+                              <b>{Number(point.data.yFormatted)}</b>
+                            </Text>
+                          </Td>
+                        </Tr>
+                      </Tbody>
                     ))}
                   </Table>
                 </TableContainer>

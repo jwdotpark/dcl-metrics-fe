@@ -1,4 +1,8 @@
+// @ts-nocheck
 import {
+  Tooltip,
+  Center,
+  Flex,
   Text,
   Box,
   Table,
@@ -10,6 +14,9 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react"
 import CountUp from "react-countup"
+import SceneProfilePicture from "./SceneProfilePicture"
+import TableLink from "../TableLink"
+import TruncateName from "../TruncatedName"
 
 const SceneMarathonUsers = ({ data }) => {
   const toast = useToast()
@@ -31,55 +38,64 @@ const SceneMarathonUsers = ({ data }) => {
   }
 
   const dataArr = Object.entries(data)
-  const addressArr = dataArr.map((item) => item[0])
-  const valueArr = dataArr.map((item) => item[1])
 
   const addressWidth = useBreakpointValue({
     base: 8,
     sm: 10,
-    md: 50,
-    lg: 25,
+    md: 20,
+    lg: 10,
   })
+
   const MarathonUserTable = () => {
     return (
-      <Box
-        overflow="hidden"
-        bg={useColorModeValue("gray.200", "gray.600")}
-        borderRadius="xl"
-      >
-        <Table size="sm" variant="simple">
+      <Box overflowX="scroll" borderRadius="xl">
+        <Table h="480px" colorScheme="blackAlpha" size="sm" variant="striped">
           <Tbody>
-            {addressArr.map((address, index) => {
-              return (
-                <Tr key={index} h="37px">
-                  <Td w={["10px", "20px"]}>User</Td>
-                  <Td>
-                    <Box w="100%">
-                      <Text
-                        as="kbd"
-                        // eslint-disable-next-line
-                        color={useColorModeValue("gray.800", "gray.200")}
-                        fontSize="sm"
-                        _hover={{ color: "gray.600", cursor: "pointer" }}
-                        onClick={() => handleToast(address)}
-                      >
-                        {address.slice(0, addressWidth)}
-                        {address.length > addressWidth ? ".." : ""}
-                      </Text>
-                    </Box>
-                  </Td>
-                  <Td isNumeric>
-                    <Text as="kbd" fontWeight="bold">
-                      <CountUp
-                        // @ts-ignore
-                        end={Math.round(valueArr[index])}
-                        duration={0.5}
+            {dataArr.map((item, index) => (
+              <Tr key={index}>
+                <Td>
+                  <Flex w="50px" h="30px">
+                    <Center w="10px">{index + 1}</Center>
+                    <Box display="inline-block" ml="4">
+                      <SceneProfilePicture
+                        address={item[1].avatar_url}
+                        verified={item[1].verified_user}
+                        guest={item[1].guest_user}
                       />
-                    </Text>
-                  </Td>
-                </Tr>
-              )
-            })}
+                    </Box>
+                  </Flex>
+                </Td>
+                <Td>
+                  <Text fontSize="sm">
+                    {item[1].name ? TruncateName(item[1].name) : "N/A"}
+                  </Text>
+                </Td>
+                <Td onClick={() => handleToast(item[1].address)}>
+                  <Text
+                    as="kbd"
+                    // eslint-disable-next-line
+                    color={useColorModeValue("gray.800", "gray.200")}
+                    _hover={{ color: "gray.600", cursor: "pointer" }}
+                  >
+                    {item[1].address.slice(0, addressWidth)}..
+                  </Text>
+                </Td>
+                <Td isNumeric>
+                  <Text as="kbd" fontWeight="bold">
+                    <CountUp
+                      start={0}
+                      end={item[1].time_spent}
+                      duration={1}
+                      separator=","
+                      decimals={0}
+                    />
+                  </Text>
+                </Td>
+                <Td>
+                  <TableLink address={item[1].address} />
+                </Td>
+              </Tr>
+            ))}
           </Tbody>
         </Table>
       </Box>
@@ -87,17 +103,26 @@ const SceneMarathonUsers = ({ data }) => {
   }
   return (
     <Box
-      overflow={["scroll", "hidden", "hidden", "hidden"]}
-      h="400px"
+      h="520px"
       bg={useColorModeValue("gray.100", "gray.700")}
       border="2px solid"
       borderColor={useColorModeValue("gray.200", "gray.700")}
       borderRadius="xl"
       shadow="md"
     >
-      <Box p="4">
-        <MarathonUserTable />
-      </Box>
+      <Tooltip
+        p="2"
+        fontSize="sm"
+        borderRadius="md"
+        shadow="xl"
+        hasArrow
+        label="This table shows the top 10 users who have spent the most time in the scene"
+        placement="auto"
+      >
+        <Box p="4">
+          <MarathonUserTable />
+        </Box>
+      </Tooltip>
     </Box>
   )
 }

@@ -59,13 +59,19 @@ const StatBox = ({ data, selectedScene }) => {
         w="100%"
         h="100%"
         p="4"
+        bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
         shadow="md"
       >
         <Box w="100%" pr={[2, 0]} py={[2, 4]}>
-          <Table minH="350px" size="sm" variant="striped">
+          <Table
+            minH="400px"
+            colorScheme="blackAlpha"
+            size="sm"
+            variant="striped"
+          >
             <Thead>
               <Tr>
                 <Th>Stat</Th>
@@ -92,7 +98,7 @@ const StatBox = ({ data, selectedScene }) => {
                         <Box>
                           {/* @ts-ignore */}
                           <Text
-                            fontSize={["xs", "sm", "md", "lg"]}
+                            fontSize={["xs", "sm", "sm", "sm"]}
                             fontWeight="bold"
                           >
                             {name === "Average Time Spent" ||
@@ -111,7 +117,12 @@ const StatBox = ({ data, selectedScene }) => {
           </Table>
         </Box>
         <Box w="100%" pr={[2, 0]} py={[2, 4]}>
-          <Table minH="350px" size="sm" variant="striped">
+          <Table
+            minH="400px"
+            colorScheme="blackAlpha"
+            size="sm"
+            variant="striped"
+          >
             <Thead>
               <Tr>
                 <Th>Stat</Th>
@@ -128,7 +139,7 @@ const StatBox = ({ data, selectedScene }) => {
                         <Flex>
                           <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["xs", "sm", "md", "md"]}>
+                            <Text fontSize={["xs", "sm", "sm", "sm"]}>
                               {name}
                             </Text>
                           </Box>

@@ -9,17 +9,17 @@ import {
 } from "@chakra-ui/react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import verifiedBadge from "../../../public/verified.svg"
-import guestBadge from "../../../public/guest.svg"
-import staticAvatar from "../../../public/avatar.png"
+import verifiedBadge from "../../../../../../public/verified.svg"
+import guestBadge from "../../../../../../public/guest.svg"
+import staticAvatar from "../../../../../../public/avatar.png"
 
-const ProfilePicture = ({ address, verified, guest }) => {
+const SceneProfilePicture = ({ address, verified, guest }) => {
   const [pic, setPic] = useState<string>()
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
-    if (process.env.NEXT_PUBLIC_ENV === "prod") {
+    if (process.env.NEXT_PUBLIC_ENV !== "prod") {
       setPic(address)
     } else {
       // @ts-ignore
@@ -41,7 +41,7 @@ const ProfilePicture = ({ address, verified, guest }) => {
             <Spinner size="sm" />
           </Center>
         ) : (
-          <Box w="2rem">
+          <Box>
             <Avatar
               borderColor="gray.300"
               showBorder={true}
@@ -62,7 +62,7 @@ const ProfilePicture = ({ address, verified, guest }) => {
                   border="1px solid yellow"
                   borderRadius="full"
                   bgColor="yellow.200"
-                  css={{ transform: "translateX(-12px) translateY(12px)" }}
+                  css={{ transform: "translateX(12px) translateY(-12px)" }}
                 >
                   <Center h="100%">
                     <Image
@@ -84,7 +84,7 @@ const ProfilePicture = ({ address, verified, guest }) => {
               >
                 <Box
                   display="inline-block"
-                  css={{ transform: "translateX(-16px) translateY(12px)" }}
+                  css={{ transform: "translateX(14px) translateY(-10px)" }}
                 >
                   <Image
                     src={verifiedBadge}
@@ -102,4 +102,4 @@ const ProfilePicture = ({ address, verified, guest }) => {
   )
 }
 
-export default ProfilePicture
+export default SceneProfilePicture

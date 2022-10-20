@@ -8,7 +8,7 @@ const SceneMap = (props) => {
     <Box
       overflow="hidden"
       w="100%"
-      h="357px"
+      h="400px"
       border="3px solid"
       borderColor={useColorModeValue("gray.300", "gray.700")}
       borderRadius="xl"

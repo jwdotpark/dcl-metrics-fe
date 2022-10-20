@@ -28,19 +28,19 @@ const TableLink = (data) => {
               placement="auto"
             >
               <Button
-                borderRadius="200"
+                borderRadius="full"
                 shadow="sm"
                 _hover={{ filter: "brightness(75%)" }}
                 bgColor={useColorModeValue("gray.300", "gray.500")}
-                size="sm"
+                size="xs"
                 variant="unstyled"
               >
                 <Center w="100%" h="100%">
                   <Image
                     src={dclLogo}
                     alt="link logo"
-                    width="28px"
-                    height="28px"
+                    width="18px"
+                    height="18px"
                     objectFit="cover"
                   />
                 </Center>
@@ -63,15 +63,15 @@ const TableLink = (data) => {
                 shadow="sm"
                 _hover={{ filter: "brightness(75%)" }}
                 bgColor={useColorModeValue("gray.300", "gray.500")}
-                size="sm"
+                size="xs"
                 variant="unstyled"
               >
                 <Center w="100%" h="100%">
                   <Image
                     src={etherscanLogo}
                     alt="link logo"
-                    width="28px"
-                    height="28px"
+                    width="18px"
+                    height="18px"
                     objectFit="cover"
                   />
                 </Center>

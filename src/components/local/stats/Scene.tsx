@@ -9,8 +9,6 @@ import {
 import { useState } from "react"
 import GridBox from "../GridBox"
 import SceneMap from "./partials/scene/SceneMap"
-//import SceneStats from "./partials/scene/SceneStats"
-//import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import SceneLineChart from "./partials/scene/SceneLineChart"
 import SceneSelector from "./partials/scene/SceneSelector"
 import StatBox from "./partials/scene/SceneStatBox"
@@ -88,7 +86,7 @@ const Scene = ({ res }) => {
             </Box>
             <Box
               w={["100%", "100%", "100%", "65%"]}
-              h={["100%", "100%", "100%", "400px"]}
+              h={["100%", "100%", "100%", "450px"]}
               mt={[4, 4, 4, 0]}
             >
               <StatBox
@@ -107,6 +105,7 @@ const Scene = ({ res }) => {
             direction={["column", "column", "column", "row"]}
             w="100%"
             h="auto"
+            // mb={[4, 0, 4, 4]}
             mb="4"
           >
             <Box w={["100%", "100%", "100%", "35%"]}>
@@ -115,7 +114,7 @@ const Scene = ({ res }) => {
                 selectedScene={selectedScene}
               />
             </Box>
-            <Box w={["100%", "100%", "100%", "65%"]} h="400px" mt={[4, 0]}>
+            <Box w={["100%", "100%", "100%", "65%"]} h="435px" mt={[4, 4, 0]}>
               <SceneLineChart data={res} selectedScene={selectedScene} />
             </Box>
           </Flex>
@@ -129,18 +128,13 @@ const Scene = ({ res }) => {
             direction={["column", "column", "column", "row"]}
             w="100%"
             h="auto"
-            mt="4"
           >
-            <Box
-              w={["100%", "100%", "100%", "35%"]}
-              h="400px"
-              mt={[4, 4, 8, 0]}
-            >
+            <Box w={["100%", "100%", "100%", "50%"]} h="520" mt={[4, 4, 8, 0]}>
               <SceneMarathonUsers data={marathon_users} />
             </Box>
             <Box
-              w={["100%", "100%", "100%", "65%"]}
-              h="400px"
+              w={["100%", "100%", "100%", "50%"]}
+              h="520px"
               mb={[4, 4, 4, 0]}
             >
               <SceneBarChart

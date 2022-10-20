@@ -260,15 +260,13 @@ const SidebarContent = ({
       </Flex>
       <Flex direction="column" gap="1" h="calc(100vh - 6rem)">
         {Object.keys(sidebarList).map((item) => (
-          <>
-            <SidebarItem
-              key={item}
-              label={sidebarList[item].label}
-              name={sidebarList[item].name}
-              icon={sidebarList[item].icon}
-              subItem={sidebarList[item].subItem}
-            />
-          </>
+          <SidebarItem
+            key={item}
+            label={sidebarList[item].label}
+            name={sidebarList[item].name}
+            icon={sidebarList[item].icon}
+            subItem={sidebarList[item].subItem}
+          />
         ))}
         <Spacer />
         <Tooltip

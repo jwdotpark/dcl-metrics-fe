@@ -19,8 +19,7 @@ const TruncateName = (name: string) => {
     }
   }
 
-
-  const stringLimit = 22
+  const stringLimit = 13
   if (name.length > stringLimit) {
     return (
       <Tooltip

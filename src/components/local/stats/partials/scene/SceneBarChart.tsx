@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
   useColorModeValue,
@@ -25,16 +26,16 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
     base: true,
     sm: true,
     md: true,
-    lg: false,
+    lg: true,
   })
 
-  const yAxisLabelDegree = () => {
-    if (isMobile) {
-      return 90
-    } else {
-      return 0
-    }
-  }
+  // const yAxisLabelDegree = () => {
+  //   if (isMobile) {
+  //     return 90
+  //   } else {
+  //     return 0
+  //   }
+  // }
 
   return (
     <Tooltip
@@ -48,7 +49,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
     >
       <Box
         w="100%"
-        h="400px"
+        h="520px"
         mt={[2, 2, 2, 0]}
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
@@ -63,7 +64,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
           margin={{
             top: 30,
             right: isMobile ? 10 : 10,
-            bottom: isMobile ? 70 : 50,
+            bottom: isMobile ? 70 : 70,
             left: isMobile ? 40 : 50,
           }}
           borderWidth={2}
@@ -87,10 +88,10 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
           axisBottom={{
             tickSize: 5,
             tickPadding: 1,
-            tickRotation: yAxisLabelDegree(),
+            tickRotation: 90,
             legend: "All times are in UTC",
             legendPosition: "middle",
-            legendOffset: isMobile ? 45 : 30,
+            legendOffset: isMobile ? 50 : 40,
             format: (value) => value + ":00",
           }}
           axisLeft={{
@@ -116,7 +117,6 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
               <Box
                 sx={{ backdropFilter: "blur(5px)" }}
                 pt="2"
-                // eslint-disable-next-line react-hooks/rules-of-hooks
                 color={useColorModeValue("black", "white")}
                 borderRadius="xl"
                 shadow="md"

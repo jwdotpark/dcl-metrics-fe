@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
+import staticScene from "../public/data/cached_scenes_top.json"
 import { useAtom } from "jotai"
-import { DataAtom } from "../src/lib/hooks/atoms"
+import { DataAtom, SceneDataAtom } from "../src/lib/hooks/atoms"
 
 const axios = require("axios").default
 import fs from "fs"
@@ -20,13 +21,11 @@ import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 export async function getStaticProps() {
   const day = 60 * 60 * 24
   if (process.env.NEXT_PUBLIC_ENV === "prod") {
-    // // production
-    // const url = "http://api.dcl-metrics.com/global"
-    const name = "/global"
+    // global endpoint
     const url =
       process.env.NEXT_PUBLIC_ENV === "prod"
-        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + name
-        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + name
+        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "/global"
+        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "/global"
     const response = await axios.get(url, {
       method: "get",
       proxy: {
@@ -39,15 +38,12 @@ export async function getStaticProps() {
         },
       },
     })
-
     if (response.status === 200) {
       fs.writeFileSync(
         "./public/data/cached_global_response.json",
         JSON.stringify(response.data)
       )
-    }
-
-    if (response.status !== 200) {
+    } else {
       const sendNotification = async () => {
         const URI =
           "https://dcl-metrics-bot-server.herokuapp.com/telegram/internal"
@@ -67,20 +63,64 @@ export async function getStaticProps() {
         await data.json()
       }
       sendNotification()
-
-      // return {
-      //   props: { staticGlobal },
-      // }
     }
+
+    // /scenes/top endpoint
+    const sceneURL =
+      process.env.NEXT_PUBLIC_ENV === "prod"
+        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "/scenes/top"
+        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "/scenes/top"
+    const sceneResponse = await axios.get(sceneURL, {
+      method: "get",
+      proxy: {
+        protocol: "http",
+        host: process.env.FIXIE_HOST,
+        port: 80,
+        auth: {
+          username: "fixie",
+          password: process.env.FIXIE_TOKEN,
+        },
+      },
+    })
+    if (sceneResponse.status === 200) {
+      fs.writeFileSync(
+        "./public/data/cached_scenes_top.json",
+        JSON.stringify(sceneResponse.data)
+      )
+    } else {
+      const sendNotification = async () => {
+        const URI =
+          "https://dcl-metrics-bot-server.herokuapp.com/telegram/internal"
+        const data = await fetch(URI, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            level: "warning",
+            message: `/scenes/top request is ${sceneResponse.status} while FE is on build, check out the log`,
+            payload: {
+              status: sceneResponse.status,
+            },
+          }),
+        })
+        await data.json()
+      }
+      sendNotification()
+    }
+
     const data = response.data
+    const sceneData = sceneResponse.data
     return {
-      props: { data },
+      props: { data, sceneData },
       revalidate: day,
     }
   } else {
     const data = staticGlobal
+    const sceneData = staticScene
     return {
-      props: { data },
+      props: { data, sceneData },
+      revalidate: day,
     }
   }
 }
@@ -98,17 +138,19 @@ const GlobalPage: NextPage = (props) => {
 
   // @ts-ignore
   const result = props.data
+  // @ts-ignore
+  const sceneResult = props.sceneData
   const [res, setRes] = useAtom(DataAtom)
+  const [sceneRes, setSceneRes] = useAtom(SceneDataAtom)
 
   useEffect(() => {
     setRes(result)
+    setSceneRes(sceneResult)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <Layout>
-      {/* <Scene res={staticScene} /> */}
-      {/* <TempError /> */}
       <Box w="100%">
         <Box mb="4">
           <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
@@ -124,7 +166,11 @@ const GlobalPage: NextPage = (props) => {
 
         <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
-          <SceneLayout result={result} isDataLoading={isDataLoading} />
+          <SceneLayout
+            result={result}
+            sceneResult={sceneResult}
+            isDataLoading={isDataLoading}
+          />
           <ParcelLayout result={result} isDataLoading={isDataLoading} />
         </Accordion>
       </Box>
