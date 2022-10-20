@@ -48,7 +48,13 @@ const SceneMarathonUsers = ({ data }) => {
 
   const MarathonUserTable = () => {
     return (
-      <Box overflowX="scroll" borderRadius="xl">
+      <Box
+        overflowX="scroll"
+        border="1px solid"
+        borderColor={useColorModeValue("gray.200", "gray.600")}
+        borderRadius="xl"
+        shadow="md"
+      >
         <Table h="480px" colorScheme="blackAlpha" size="sm" variant="striped">
           <Tbody>
             {dataArr.map((item, index) => (
