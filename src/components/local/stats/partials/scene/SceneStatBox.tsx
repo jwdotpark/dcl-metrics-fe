@@ -92,12 +92,14 @@ const StatBox = ({ data, selectedScene }) => {
                         <Box>
                           {/* @ts-ignore */}
                           <Text
-                            fontSize={["xs", "sm", "sm", "sm"]}
+                            fontSize={["xs", "sm", "md", "md"]}
                             fontWeight="bold"
                           >
                             {name === "Average Time Spent" ||
                             name === "Average Time Spent AFK"
-                              ? moment.utc(Number(value) * 1000).format(`H:m:s`)
+                              ? moment
+                                  .utc(Number(value) * 1000)
+                                  .format(`hh:mm:ss`)
                               : value}
                             {name === "Visitors" && " users"}
                             {name === "Share of Global Visitors" && "%"}
@@ -142,7 +144,9 @@ const StatBox = ({ data, selectedScene }) => {
                           >
                             {/* @ts-ignore */}
                             {name === "Average Complete Session Duration"
-                              ? moment.utc(Number(value) * 1000).format(`h:m:s`)
+                              ? moment
+                                  .utc(Number(value) * 1000)
+                                  .format(`hh:mm:ss`)
                               : value}
                           </Text>
                         </Box>
