@@ -143,7 +143,7 @@ const StatBox = ({ data, selectedScene }) => {
                         <Flex>
                           <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["xs", "sm", "sm", "sm"]}>
+                            <Text fontSize={["xs", "sm", "md", "md"]}>
                               {name}
                             </Text>
                           </Box>
