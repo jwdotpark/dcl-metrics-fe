@@ -164,7 +164,13 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
               data: memoizedData.map((id, index) => ({
                 color: colors[index],
                 id,
-                label: memoizedData.map((item) => item.id)[index],
+                label:
+                  String(memoizedData.map((item) => item.id)[index]).length > 25
+                    ? String(memoizedData.map((item) => item.id)[index]).slice(
+                        0,
+                        25
+                      ) + ".."
+                    : String(memoizedData.map((item) => item.id)[index]),
               })),
               anchor: "top-right",
               direction: "column",
