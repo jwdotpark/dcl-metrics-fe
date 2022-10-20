@@ -6,7 +6,6 @@ import {
   Tooltip,
 } from "@chakra-ui/react"
 import { ResponsiveBar } from "@nivo/bar"
-import SceneHistogram from "../../../../../../public/data/scene_histogram.json"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 import TooltipTable from "../TableTooltip"
 
@@ -28,14 +27,6 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
     md: true,
     lg: true,
   })
-
-  // const yAxisLabelDegree = () => {
-  //   if (isMobile) {
-  //     return 90
-  //   } else {
-  //     return 0
-  //   }
-  // }
 
   return (
     <Tooltip
@@ -63,9 +54,9 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
           indexBy="hour"
           margin={{
             top: 30,
-            right: isMobile ? 10 : 10,
-            bottom: isMobile ? 70 : 70,
-            left: isMobile ? 40 : 50,
+            right: 10,
+            bottom: 70,
+            left: 45,
           }}
           borderWidth={2}
           padding={isMobile ? 0.4 : 0.2}
@@ -102,8 +93,8 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
             legendPosition: "end",
             legendOffset: 5,
           }}
-          labelSkipWidth={12}
-          labelSkipHeight={12}
+          labelSkipWidth={10}
+          labelSkipHeight={10}
           labelTextColor={useColorModeValue("#000", "#fff")}
           role="application"
           ariaLabel="scene bar chart"
