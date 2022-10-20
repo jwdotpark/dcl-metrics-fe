@@ -28,6 +28,11 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
     lg: true,
   })
 
+  chartData.sort((a, b) => {
+    // @ts-ignore
+    return a.hour - b.hour
+  })
+
   return (
     <Tooltip
       p="2"
