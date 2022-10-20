@@ -72,12 +72,6 @@ const StatBox = ({ data, selectedScene }) => {
             size="sm"
             variant="striped"
           >
-            <Thead>
-              <Tr>
-                <Th>Stat</Th>
-                <Th isNumeric>Value</Th>
-              </Tr>
-            </Thead>
             <Tbody>
               {filteredStats
                 .slice(0, filteredStats.length / 2)
@@ -123,12 +117,6 @@ const StatBox = ({ data, selectedScene }) => {
             size="sm"
             variant="striped"
           >
-            <Thead>
-              <Tr>
-                <Th>Stat</Th>
-                <Th isNumeric>Value</Th>
-              </Tr>
-            </Thead>
             <Tbody>
               {filteredStats
                 .slice(filteredStats.length / 2, filteredStats.length)
