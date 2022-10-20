@@ -24,8 +24,8 @@ export async function getStaticProps() {
     // global endpoint
     const url =
       process.env.NEXT_PUBLIC_ENV === "prod"
-        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "/global"
-        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "/global"
+        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global"
+        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "global"
     const response = await axios.get(url, {
       method: "get",
       proxy: {
@@ -68,8 +68,8 @@ export async function getStaticProps() {
     // /scenes/top endpoint
     const sceneURL =
       process.env.NEXT_PUBLIC_ENV === "prod"
-        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "/scenes/top"
-        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "/scenes/top"
+        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "scenes/top"
+        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "scenes/top"
     const sceneResponse = await axios.get(sceneURL, {
       method: "get",
       proxy: {
