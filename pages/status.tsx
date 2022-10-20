@@ -7,7 +7,7 @@ import StatusBox from "../src/components/local/status/StatusBox"
 export async function getStaticProps(context) {
   const day = 60 * 60 * 24
   const url =
-    process.env.NEXT_PUBLIC_ENV === "prod"
+    process.env.NEXT_PUBLIC_STAGING !== "true"
       ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "peer_status"
       : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "peer_status"
 
