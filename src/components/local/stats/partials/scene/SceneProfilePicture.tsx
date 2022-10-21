@@ -84,7 +84,7 @@ const SceneProfilePicture = ({ address, verified, guest }) => {
               >
                 <Box
                   display="inline-block"
-                  css={{ transform: "translateX(14px) translateY(-10px)" }}
+                  css={{ transform: "translateX(12px) translateY(-12px)" }}
                 >
                   <Image
                     src={verifiedBadge}
