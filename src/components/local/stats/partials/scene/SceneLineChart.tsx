@@ -43,7 +43,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     lg: false,
   })
   // selected line color
-  const lineOpacity = 0.1
+  const lineOpacity = 0.2
   const setColor = (index) => {
     const color =
       SceneColor[index]
@@ -83,6 +83,17 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
 
   const yAxisLabelDegree = isMobile ? 90 : 0
 
+  const currentScene = memoizedData[selectedScene]
+  const currentMax = Math.max.apply(
+    Math,
+    currentScene.data.map((item) => item.y)
+  )
+  const currentMin = Math.min.apply(
+    Math,
+    currentScene.data.map((item) => item.y)
+  )
+  console.log(currentScene)
+
   return (
     <Tooltip
       p="2"
@@ -96,6 +107,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
       <Box
         h="435px"
         mt={[2, 2, 6, 0]}
+        pt="4"
         // ml="2"
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
@@ -111,8 +123,8 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
-            min: "auto",
-            max: "auto",
+            min: currentMin,
+            max: currentMax,
             stacked: false,
             reverse: false,
           }}
@@ -124,7 +136,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             tickPadding: 5,
             tickRotation: 0,
             legend: "Time spent in hours",
-            legendOffset: 45,
+            legendOffset: 40,
             legendPosition: "middle",
             format: (value) => yAxisLabel(value),
             tickRotation: yAxisLabelDegree,
@@ -150,14 +162,14 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             grid: {
               line: {
                 stroke: "gray",
-                opacity: 0.2,
+                opacity: 0.25,
                 strokeDasharray: "1 1",
               },
             },
           }}
           enableArea={true}
           animate={true}
-          areaOpacity={0.25}
+          areaOpacity={0.4}
           legends={[
             {
               dataFrom: "id",
