@@ -92,7 +92,6 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     Math,
     currentScene.data.map((item) => item.y)
   )
-  console.log(currentScene)
 
   return (
     <Tooltip
