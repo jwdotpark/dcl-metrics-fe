@@ -35,8 +35,8 @@ const Explorer = ({ isLoading, res }) => {
 
   // copy toast
   const toast = useToast()
-  const handleToast = (value) => {
-    navigator.clipboard.writeText(value)
+  const handleToast = async (value) => {
+    await navigator.clipboard.writeText(value)
     toast({
       description:
         "Address " +

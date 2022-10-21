@@ -37,8 +37,8 @@ const MarathonUsers = ({ isLoading, res }) => {
 
   // copy toast
   const toast = useToast()
-  const handleToast = (value) => {
-    navigator.clipboard.writeText(value)
+  const handleToast = async (value) => {
+    await navigator.clipboard.writeText(value)
     toast({
       description: "Address " + value + " has been copied to the clipboard.",
       duration: 2000,
