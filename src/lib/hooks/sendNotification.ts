@@ -4,7 +4,6 @@ export const sendNotification = async (response, name, status) => {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
   }
-
   const data = await fetch(URI, {
     method: "POST",
     headers: headers,

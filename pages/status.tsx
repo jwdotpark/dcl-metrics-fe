@@ -32,7 +32,6 @@ export async function getStaticProps(context) {
         "./public/data/cached_peerstats.json",
         JSON.stringify(response.data)
       )
-      sendNotification(response, "peer_status", "success")
     } else {
       sendNotification(response, "peer_status", "error")
     }

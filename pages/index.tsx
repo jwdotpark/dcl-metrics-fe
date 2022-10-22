@@ -47,7 +47,6 @@ export async function getStaticProps() {
         "./public/data/cached_global_response.json",
         JSON.stringify(response.data)
       )
-      sendNotification(response, "global", "success")
     } else {
       sendNotification(response, "global", "error")
     }
@@ -74,7 +73,6 @@ export async function getStaticProps() {
         "./public/data/cached_scenes_top.json",
         JSON.stringify(sceneResponse.data)
       )
-      sendNotification(sceneResponse, "scenes/top", "success")
     } else {
       sendNotification(sceneResponse, "scenes/top", "error")
     }
