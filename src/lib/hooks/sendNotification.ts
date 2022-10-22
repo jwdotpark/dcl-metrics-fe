@@ -1,4 +1,4 @@
-export const sendNotification = async (response, name) => {
+export const sendNotification = async (response, name, status) => {
   const URI = "https://dcl-metrics-bot-server.herokuapp.com/telegram/internal"
   const headers = {
     "Content-Type": "application/json",
@@ -10,7 +10,7 @@ export const sendNotification = async (response, name) => {
     headers: headers,
     body: JSON.stringify({
       level: "warning",
-      message: `${name} endpoint request is ${response.status}`,
+      message: `${name} endpoint request is ${response.status} - ${status}`,
       payload: {
         status: response.status,
       },
