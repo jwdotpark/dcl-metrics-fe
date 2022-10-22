@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import staticPeerStatus from "../public/data/cached_peerstats.json"
 import StatusBox from "../src/components/local/status/StatusBox"
+import { sendNotification } from "../src/lib/hooks/sendNotification"
 const axios = require("axios").default
 import fs from "fs"
 
@@ -31,28 +32,8 @@ export async function getStaticProps(context) {
         "./public/data/cached_peerstats.json",
         JSON.stringify(response.data)
       )
-    }
-
-    if (response.status !== 200) {
-      const sendNotification = async () => {
-        const URI =
-          "https://dcl-metrics-bot-server.herokuapp.com/telegram/internal"
-        const data = await fetch(URI, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            level: "warning",
-            message: `Peer status endpoint request is ${response.status} while build, check out the log`,
-            payload: {
-              status: response.status,
-            },
-          }),
-        })
-        await data.json()
-      }
-      sendNotification()
+    } else {
+      sendNotification(response, "peer_status")
     }
     const data = response.data
     return {

@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react"
 import type { NextPage } from "next"
-import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
+import {
+  Grid,
+  useBreakpointValue,
+  Accordion,
+  Box,
+  Button,
+} from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 import staticScene from "../public/data/cached_scenes_top.json"
 import { useAtom } from "jotai"
 import { DataAtom, SceneDataAtom } from "../src/lib/hooks/atoms"
-
 const axios = require("axios").default
 import fs from "fs"
-
+import { sendNotification } from "../src/lib/hooks/sendNotification"
 import Layout from "../src/components/layout/layout"
-// import Scene from "../src/components/local/stats/Scene"
 import UserLayout from "../src/components/layout/global/UserLayout"
 import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
@@ -44,28 +48,11 @@ export async function getStaticProps() {
         JSON.stringify(response.data)
       )
     } else {
-      const sendNotification = async () => {
-        const URI =
-          "https://dcl-metrics-bot-server.herokuapp.com/telegram/internal"
-        const data = await fetch(URI, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            level: "warning",
-            message: `Global endpoint request is ${response.status} while FE is on build, check out the log`,
-            payload: {
-              status: response.status,
-            },
-          }),
-        })
-        await data.json()
-      }
-      sendNotification()
+      const name = "global"
+      sendNotification(response, name)
     }
 
-    // /scenes/top endpoint
+    // /scenes/top
     const sceneURL =
       process.env.NEXT_PUBLIC_STAGING !== "true"
         ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "scenes/top"
@@ -88,25 +75,8 @@ export async function getStaticProps() {
         JSON.stringify(sceneResponse.data)
       )
     } else {
-      const sendNotification = async () => {
-        const URI =
-          "https://dcl-metrics-bot-server.herokuapp.com/telegram/internal"
-        const data = await fetch(URI, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            level: "warning",
-            message: `/scenes/top request is ${sceneResponse.status} while FE is on build, check out the log`,
-            payload: {
-              status: sceneResponse.status,
-            },
-          }),
-        })
-        await data.json()
-      }
-      sendNotification()
+      const name = "scenes/top"
+      sendNotification(sceneResponse, name)
     }
 
     const data = response.data
