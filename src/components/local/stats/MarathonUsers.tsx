@@ -239,8 +239,6 @@ const MarathonUsers = ({ isLoading, res }) => {
     )
   }
 
-  console.log(dataArr)
-
   return (
     <>
       <GridBox box={box}>
