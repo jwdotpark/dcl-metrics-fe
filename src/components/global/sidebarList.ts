@@ -33,12 +33,12 @@ export const sidebarList = {
     icon: FiPackage,
     subItem: true,
   },
-  status: {
-    label: "Status",
-    name: "status",
-    icon: FiActivity,
-    subItem: false,
-  },
+  // status: {
+  //   label: "Status",
+  //   name: "status",
+  //   icon: FiActivity,
+  //   subItem: false,
+  // },
   roadmap: {
     label: "Roadmap",
     name: "roadmap",
