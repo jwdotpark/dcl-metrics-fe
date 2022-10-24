@@ -48,6 +48,8 @@ const ScenesTimeSpentAFK = ({ res, isSceneLoading }) => {
     })
   }
 
+  dataArr.sort((a, b) => b.avg_time_spent_afk - a.avg_time_spent_afk)
+
   const COLUMNS = [
     {
       Header: "Scene Map",

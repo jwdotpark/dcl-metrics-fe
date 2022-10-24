@@ -44,6 +44,8 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
     })
   }
 
+  dataArr.sort((a, b) => b.unique_address - a.unique_address)
+
   const COLUMNS = [
     {
       Header: "Scene Map",
@@ -79,6 +81,8 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
   const columns = useMemo(() => COLUMNS, [])
   // eslint-disable-next-line
   const memoizedData = useMemo(() => dataArr, [dateRange])
+
+  console.log(memoizedData)
 
   const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
     useTable(

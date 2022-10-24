@@ -45,6 +45,8 @@ const ScenesLogout = ({ res, isSceneLoading }) => {
     })
   }
 
+  dataArr.sort((a, b) => b.logouts - a.logouts)
+
   const COLUMNS = [
     {
       Header: "Scene Map",

@@ -48,6 +48,8 @@ const ScenesLogin = ({ res, isSceneLoading }) => {
     })
   }
 
+  dataArr.sort((a, b) => b.logins - a.logins)
+
   const COLUMNS = [
     {
       Header: "Scene Map",
