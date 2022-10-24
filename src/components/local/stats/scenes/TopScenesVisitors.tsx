@@ -170,12 +170,16 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
           </Text>
         </Box>
         <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />
-        {dataArr.length > 0 && !isSceneLoading ? (
+        {dataArr.length > 0 && !isSceneLoading && (
           <Box mb="8" mx="4">
             <TableComponent />
           </Box>
-        ) : (
-          <Center h={box.h}>
+        )}
+        {dataArr.length === 0 && !isSceneLoading && (
+          <Center h="450px">Not Available</Center>
+        )}
+        {isSceneLoading && (
+          <Center h="100%">
             <Loading />
           </Center>
         )}
