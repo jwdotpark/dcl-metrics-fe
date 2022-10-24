@@ -15,6 +15,7 @@ import StatBox from "./partials/scene/SceneStatBox"
 import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
+import moment from "moment"
 
 const Scene = ({ res }) => {
   const [selectedScene, setSelectedScene] = useState(0)
@@ -45,11 +46,19 @@ const Scene = ({ res }) => {
         {/* title */}
         <Flex pos="relative" mx="5">
           <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
-            <Box>
-              <Text fontSize="2xl">
-                <b>{name}</b>
-              </Text>
-            </Box>
+            <Flex direction={["column-reverse", "row"]} w="100%">
+              <Box>
+                <Text fontSize="2xl">
+                  <b>{name}</b>
+                </Text>
+              </Box>
+              <Spacer />
+              <Box>
+                <Text fontSize="2xl" fontWeight="bold">
+                  {moment(res[selectedScene].date).format("MMM Do YYYY")}
+                </Text>
+              </Box>
+            </Flex>
             <Spacer />
           </Flex>
         </Flex>
