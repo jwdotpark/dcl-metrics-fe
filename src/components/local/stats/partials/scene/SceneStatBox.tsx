@@ -81,7 +81,7 @@ const StatBox = ({ data, selectedScene }) => {
           >
             <Tbody>
               {filteredStats
-                .slice(0, filteredStats.length / 2)
+                .slice(1, filteredStats.length / 2 + 1)
                 .map(({ label, name, value, description }) => {
                   return (
                     <Tr key={label}>
@@ -135,7 +135,7 @@ const StatBox = ({ data, selectedScene }) => {
           >
             <Tbody>
               {filteredStats
-                .slice(filteredStats.length / 2, filteredStats.length)
+                .slice(filteredStats.length / 2 + 1, filteredStats.length)
                 .map(({ label, name, value, description }) => {
                   return (
                     <Tr key={label}>
