@@ -13,8 +13,7 @@ export async function getStaticProps(context) {
       ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "peer_status"
       : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "peer_status"
 
-  // temporary fetching disabled
-  if (process.env.NEXT_PUBLIC_ENV !== "prod") {
+  if (process.env.NEXT_PUBLIC_ENV === "prod") {
     const response = await axios.get(url, {
       method: "get",
       proxy: {
