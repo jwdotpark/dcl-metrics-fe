@@ -23,29 +23,29 @@ const ParcelDateRange = ({ dateRange, setDateRange }) => {
           >
             <Button
               w="100%"
-              bgColor={dateRange === 0 && btnColor}
-              onClick={() => setDateRange(0)}
+              bgColor={dateRange === "yesterday" && btnColor}
+              onClick={() => setDateRange("yesterday")}
             >
               1d
             </Button>
             <Button
               w="100%"
-              bgColor={dateRange === 1 && btnColor}
-              onClick={() => setDateRange(1)}
+              bgColor={dateRange === "last_week" && btnColor}
+              onClick={() => setDateRange("last_week")}
             >
               7d
             </Button>
             <Button
               w="100%"
-              bgColor={dateRange === 2 && btnColor}
-              onClick={() => setDateRange(2)}
+              bgColor={dateRange === "last_month" && btnColor}
+              onClick={() => setDateRange("last_month")}
             >
               30d
             </Button>
             <Button
               w="100%"
-              bgColor={dateRange === 3 && btnColor}
-              onClick={() => setDateRange(3)}
+              bgColor={dateRange === "last_quarter" && btnColor}
+              onClick={() => setDateRange("last_quarter")}
             >
               90d
             </Button>
