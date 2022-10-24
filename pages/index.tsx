@@ -47,6 +47,7 @@ export async function getStaticProps() {
         console.log(error)
         return { props: { data: staticGlobal }, revalidate: day }
       })
+
     if (response.status === 200) {
       fs.writeFileSync(
         "./public/data/cached_global_response.json",
@@ -78,6 +79,7 @@ export async function getStaticProps() {
         console.log(error)
         return { props: { data: staticScene }, revalidate: day }
       })
+
     if (sceneResponse.status === 200) {
       fs.writeFileSync(
         "./public/data/cached_scenes_top.json",
