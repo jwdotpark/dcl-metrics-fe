@@ -239,6 +239,8 @@ const MarathonUsers = ({ isLoading, res }) => {
     )
   }
 
+  console.log(dataArr)
+
   return (
     <>
       <GridBox box={box}>
@@ -258,11 +260,11 @@ const MarathonUsers = ({ isLoading, res }) => {
             </Text>
           </Box>
           <TableDateRange dateRange={dateRange} setDateRange={setDateRange} />
-          {dataArr.length > 0 && !isLoading ? (
-            <Box>
-              <TableComponent />
-            </Box>
-          ) : (
+          {dataArr.length > 0 && !isLoading && <TableComponent />}
+          {dataArr.length === 0 && !isLoading && (
+            <Center h="450px">Not Available</Center>
+          )}
+          {isLoading && (
             <Center h="100%">
               <Loading />
             </Center>

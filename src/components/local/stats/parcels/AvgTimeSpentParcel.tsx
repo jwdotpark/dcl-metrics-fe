@@ -166,12 +166,16 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
           </Text>
         </Box>
         <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
-        {dataArr.length > 0 && !isParcelLoading ? (
+        {dataArr.length > 0 && !isParcelLoading && (
           <Box mb="8" mx="4">
             <TableComponent />
           </Box>
-        ) : (
-          <Center h={box.h}>
+        )}
+        {dataArr.length === 0 && !isParcelLoading && (
+          <Center h="450px">Not Available</Center>
+        )}
+        {isParcelLoading && (
+          <Center h="100%">
             <Loading />
           </Center>
         )}

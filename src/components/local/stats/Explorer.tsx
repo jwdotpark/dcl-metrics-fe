@@ -268,12 +268,12 @@ const Explorer = ({ isLoading, res }) => {
         </Text>
       </Box>
       <DateRange dateRange={dateRange} setDateRange={setDateRange} />
-      {dataArr.length > 0 && !isLoading ? (
-        <Box>
-          <TableComponent />
-        </Box>
-      ) : (
-        <Center h={box.h}>
+      {dataArr.length > 0 && !isLoading && <TableComponent />}
+      {dataArr.length === 0 && !isLoading && (
+        <Center h="450px">Not Available</Center>
+      )}
+      {isLoading && (
+        <Center h="100%">
           <Loading />
         </Center>
       )}
