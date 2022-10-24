@@ -30,18 +30,23 @@ export async function getStaticProps() {
       process.env.NEXT_PUBLIC_STAGING !== "true"
         ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global"
         : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "global"
-    const response = await axios.get(url, {
-      method: "get",
-      proxy: {
-        protocol: "http",
-        host: process.env.FIXIE_HOST,
-        port: 80,
-        auth: {
-          username: "fixie",
-          password: process.env.FIXIE_TOKEN,
+    const response = await axios
+      .get(url, {
+        method: "get",
+        proxy: {
+          protocol: "http",
+          host: process.env.FIXIE_HOST,
+          port: 80,
+          auth: {
+            username: "fixie",
+            password: process.env.FIXIE_TOKEN,
+          },
         },
-      },
-    })
+      })
+      .catch((error) => {
+        console.log(error)
+        return { props: { data: staticGlobal }, revalidate: day }
+      })
     if (response.status === 200) {
       fs.writeFileSync(
         "./public/data/cached_global_response.json",
@@ -56,18 +61,23 @@ export async function getStaticProps() {
       process.env.NEXT_PUBLIC_STAGING !== "true"
         ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "scenes/top"
         : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "scenes/top"
-    const sceneResponse = await axios.get(sceneURL, {
-      method: "get",
-      proxy: {
-        protocol: "http",
-        host: process.env.FIXIE_HOST,
-        port: 80,
-        auth: {
-          username: "fixie",
-          password: process.env.FIXIE_TOKEN,
+    const sceneResponse = await axios
+      .get(sceneURL, {
+        method: "get",
+        proxy: {
+          protocol: "http",
+          host: process.env.FIXIE_HOST,
+          port: 80,
+          auth: {
+            username: "fixie",
+            password: process.env.FIXIE_TOKEN,
+          },
         },
-      },
-    })
+      })
+      .catch((error) => {
+        console.log(error)
+        return { props: { data: staticScene }, revalidate: day }
+      })
     if (sceneResponse.status === 200) {
       fs.writeFileSync(
         "./public/data/cached_scenes_top.json",
