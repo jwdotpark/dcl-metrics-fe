@@ -29,21 +29,29 @@ const ScenesLogout = ({ res, isSceneLoading }) => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const [dateRange, setDateRange] = useState(0)
+  const [dateRange, setDateRange] = useState("yesterday")
   const data = Object.entries(res)
   const dataArr = []
-
-  const sceneDataRange = data[dateRange]
-
-  const sceneData = sceneDataRange[1].logouts
-
-  for (const [key, value] of Object.entries(sceneData)) {
+  const dateRangeArr = []
+  for (const [key] of Object.entries(data)) {
+    dateRangeArr.push(data[key][0])
+  }
+  const findDateRange = (arg) => {
+    for (const [key] of Object.entries(dateRangeArr)) {
+      if (dateRangeArr[key] === arg) {
+        return data[key][1]
+      }
+    }
+  }
+  const selectedData = findDateRange(dateRange).logouts
+  for (const [key, value] of Object.entries(selectedData)) {
     dataArr.push({
-      mapUrl: value.map_url,
       name: key,
+      mapUrl: value.map_url,
       logouts: value.total_logouts,
     })
   }
+  dataArr.sort((a, b) => b.logouts - a.logouts)
 
   const COLUMNS = [
     {
