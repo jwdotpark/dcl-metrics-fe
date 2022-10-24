@@ -13,40 +13,32 @@ import {
   HStack,
   Icon,
   useColorModeValue,
-  // Link,
   Drawer,
   DrawerContent,
   Text,
   useDisclosure,
   BoxProps,
   FlexProps,
-  useColorMode,
 } from "@chakra-ui/react"
 import {
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
   FiMenu,
   FiArrowLeftCircle,
   FiArrowRightCircle,
+  FiTrendingUp,
+  FiCompass,
   FiAnchor,
-  FiMap,
-  FiFrown,
   FiUsers,
   FiMapPin,
   FiPackage,
+  FiActivity,
 } from "react-icons/fi"
 import { IconType } from "react-icons"
 import { ReactText } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import logo from "../../../public/images/logo.png"
+import { sidebarList } from "./sidebarList"
 import ColorButton from "./ColorButton"
-
-interface LinkItemProps {
-  name: string
-  icon: IconType
-}
 
 export default function SidebarWithHeader({
   children,
@@ -72,7 +64,6 @@ export default function SidebarWithHeader({
 
   const sidebarStatus = sidebarOpen ? "180px" : "60px"
 
-  // desktop recommendation toast
   const toast = useToast()
   useEffect(() => {
     if (
@@ -125,10 +116,10 @@ export default function SidebarWithHeader({
       <Flex
         align="center"
         justify="center"
-        w={["100%", `calc(100% - ${sidebarStatus})`]}
+        w={["100%", "100%", `calc(100% - ${sidebarStatus})`]}
         ml={{ base: 0, md: sidebarStatus }}
       >
-        <Box w="100%" maxW="1600px" p="4" data-testid="sidebar">
+        <Box w="100%" maxW="1920px" p="4" data-testid="sidebar">
           {children}
         </Box>
       </Flex>
@@ -150,6 +141,86 @@ const SidebarContent = ({
   ...rest
 }: SidebarProps) => {
   const router = useRouter()
+
+  const sidebarList = {
+    global: {
+      label: "Global Dashboard",
+      name: "",
+      icon: FiTrendingUp,
+      subItem: false,
+    },
+    users: {
+      label: "Users",
+      name: "users",
+      icon: FiUsers,
+      subItem: true,
+    },
+    scenes: {
+      label: "Scenes",
+      name: "scenes",
+      icon: FiMapPin,
+      subItem: true,
+    },
+    parcels: {
+      label: "Parcels",
+      name: "parcels",
+      icon: FiPackage,
+      subItem: true,
+    },
+    status: {
+      label: "Status",
+      name: "status",
+      icon: FiActivity,
+      subItem: false,
+    },
+    roadmap: {
+      label: "Roadmap",
+      name: "roadmap",
+      icon: FiAnchor,
+      subItem: false,
+    },
+    about: {
+      label: "About",
+      name: "about",
+      icon: FiCompass,
+      subItem: false,
+    },
+  }
+
+  const SidebarItem = ({ label, name, icon, subItem }) => {
+    return (
+      <Tooltip
+        p="2"
+        fontSize="sm"
+        borderRadius="xl"
+        label={label}
+        placement="right"
+      >
+        <Box ml={sidebarOpen && subItem && "4"}>
+          <Link href={"/" + name} passHref>
+            <a>
+              <NavItem
+                height="3rem"
+                shadow={router.pathname === "/" + name && "md"}
+                icon={icon}
+                bg={
+                  router.pathname === "/" + name && // eslint-disable-next-line
+                  useColorModeValue("gray.200", "gray.700")
+                }
+                overflow="hidden"
+              >
+                <Text as={router.pathname === "/" + name && "u"} fontSize="lg">
+                  {name
+                    ? name.charAt(0).toUpperCase() + name.slice(1)
+                    : "Global"}
+                </Text>
+              </NavItem>
+            </a>
+          </Link>
+        </Box>
+      </Tooltip>
+    )
+  }
 
   return (
     <Box
@@ -188,176 +259,15 @@ const SidebarContent = ({
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       <Flex direction="column" gap="1" h="calc(100vh - 6rem)">
-        <Tooltip
-          p="2"
-          fontSize="sm"
-          borderRadius="xl"
-          label="Global Dashboard"
-          placement="right"
-        >
-          <Box>
-            <Link href="/" passHref>
-              <a>
-                <NavItem
-                  height="3rem"
-                  shadow={router.pathname === "/" && "md"}
-                  icon={FiTrendingUp}
-                  bg={
-                    router.pathname === "/" && // eslint-disable-next-line
-                    useColorModeValue("gray.200", "gray.700")
-                  }
-                >
-                  <Text as={router.pathname === "/" && "u"} fontSize="lg">
-                    Global
-                  </Text>
-                </NavItem>
-              </a>
-            </Link>
-          </Box>
-        </Tooltip>
-        <Tooltip
-          p="2"
-          fontSize="sm"
-          borderRadius="xl"
-          label="Users"
-          placement="right"
-        >
-          <Box ml={sidebarOpen && "4"}>
-            <Link href="/users" passHref>
-              <a>
-                <NavItem
-                  height="3rem"
-                  shadow={router.pathname === "/users" && "md"}
-                  icon={FiUsers}
-                  bg={
-                    router.pathname === "/users" && // eslint-disable-next-line
-                    useColorModeValue("gray.200", "gray.700")
-                  }
-                >
-                  <Text as={router.pathname === "/users" && "u"} fontSize="lg">
-                    Users
-                  </Text>
-                </NavItem>
-              </a>
-            </Link>
-          </Box>
-        </Tooltip>
-        <Tooltip
-          p="2"
-          fontSize="sm"
-          borderRadius="xl"
-          label="Scenes"
-          placement="right"
-        >
-          <Box ml={sidebarOpen && "4"}>
-            <Link href="/scenes" passHref>
-              <a>
-                <NavItem
-                  shadow={router.pathname === "/scenes" && "md"}
-                  height="3rem"
-                  icon={FiMapPin}
-                  bg={
-                    router.pathname === "/scenes" && // eslint-disable-next-line
-                    useColorModeValue("gray.200", "gray.700")
-                  }
-                >
-                  <Text as={router.pathname === "/scenes" && "u"} fontSize="lg">
-                    Scenes
-                  </Text>
-                </NavItem>
-              </a>
-            </Link>
-          </Box>
-        </Tooltip>
-        <Tooltip
-          p="2"
-          fontSize="sm"
-          borderRadius="xl"
-          label="Parcels"
-          placement="right"
-        >
-          <Box ml={sidebarOpen && "4"}>
-            <Link href="/parcels" passHref>
-              <a>
-                <NavItem
-                  shadow={router.pathname === "/parcels" && "md"}
-                  height="3rem"
-                  icon={FiPackage}
-                  bg={
-                    router.pathname === "/parcels" && // eslint-disable-next-line
-                    useColorModeValue("gray.200", "gray.700")
-                  }
-                >
-                  <Text
-                    as={router.pathname === "/parcels" && "u"}
-                    fontSize="lg"
-                  >
-                    Parcels
-                  </Text>
-                </NavItem>
-              </a>
-            </Link>
-          </Box>
-        </Tooltip>
-        <Tooltip
-          p="2"
-          fontSize="sm"
-          borderRadius="xl"
-          label="Roadmap"
-          placement="right"
-        >
-          <Box>
-            <Link href="/roadmap" passHref>
-              <a>
-                <NavItem
-                  shadow={router.pathname === "/roadmap" && "md"}
-                  height="3rem"
-                  icon={FiMap}
-                  bg={
-                    router.pathname === "/roadmap" &&
-                    // eslint-disable-next-line
-                    useColorModeValue("gray.200", "gray.700")
-                  }
-                >
-                  <Text
-                    as={router.pathname === "/roadmap" && "u"}
-                    fontSize="lg"
-                  >
-                    Roadmap
-                  </Text>
-                </NavItem>
-              </a>
-            </Link>
-          </Box>
-        </Tooltip>
-        <Tooltip
-          p="2"
-          fontSize="sm"
-          borderRadius="xl"
-          label="About"
-          placement="right"
-        >
-          <Box>
-            <Link href="/about" passHref>
-              <a>
-                <NavItem
-                  shadow={router.pathname === "/about" && "md"}
-                  height="3rem"
-                  icon={FiCompass}
-                  bg={
-                    router.pathname === "/about" &&
-                    // eslint-disable-next-line
-                    useColorModeValue("gray.200", "gray.700")
-                  }
-                >
-                  <Text as={router.pathname === "/about" && "u"} fontSize="lg">
-                    About
-                  </Text>
-                </NavItem>
-              </a>
-            </Link>
-          </Box>
-        </Tooltip>
+        {Object.keys(sidebarList).map((item) => (
+          <SidebarItem
+            key={item}
+            label={sidebarList[item].label}
+            name={sidebarList[item].name}
+            icon={sidebarList[item].icon}
+            subItem={sidebarList[item].subItem}
+          />
+        ))}
         <Spacer />
         <Tooltip
           p="2"
@@ -371,21 +281,13 @@ const SidebarContent = ({
               height="3rem"
               icon={sidebarOpen ? FiArrowLeftCircle : FiArrowRightCircle}
               onClick={handleSidebar}
+              overflow="hidden"
             >
               <Text fontSize="xl">Collapse</Text>
             </NavItem>
           </Box>
         </Tooltip>
       </Flex>
-      {/* {LinkItems.map((link) => (
-        <Link key={link.name} href={`/${makeName(link.name)}`}>
-          <NavItem icon={link.icon}>
-            <Text as={router.pathname === "/" + makeName(link.name) && "u"}>
-              {link.name === "Global" ? "Global" : link.name}
-            </Text>
-          </NavItem>
-        </Link>
-      ))} */}
     </Box>
   )
 }
@@ -475,49 +377,6 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
 
       <HStack spacing={{ base: "0", md: "6" }}>
         <ColorButton />
-        {/* <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        /> */}
-        {/* <Flex alignItems={"center"}>
-          <Menu>
-            <MenuButton
-              py={2}
-              transition="all 0.3s"
-              _focus={{ boxShadow: "none" }}
-            >
-              <HStack>
-                <Avatar size={"sm"} src="./profile.jpeg" />
-                <VStack
-                  display={{ base: "none", md: "flex" }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2"
-                >
-                  <Text fontSize="sm">User</Text>
-                  <Text fontSize="xs" color="gray.600">
-                    User Role
-                  </Text>
-                </VStack>
-                <Box display={{ base: "none", md: "flex" }}>
-                  <FiChevronDown />
-                </Box>
-              </HStack>
-            </MenuButton>
-            <MenuList
-              bg={useColorModeValue("white", "gray.900")}
-              borderColor={useColorModeValue("gray.200", "gray.700")}
-            >
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
-              <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
-            </MenuList>
-          </Menu>
-        </Flex> */}
       </HStack>
     </Flex>
   )

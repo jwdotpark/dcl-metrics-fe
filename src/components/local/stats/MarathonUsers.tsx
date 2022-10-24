@@ -37,8 +37,8 @@ const MarathonUsers = ({ isLoading, res }) => {
 
   // copy toast
   const toast = useToast()
-  const handleToast = (value) => {
-    navigator.clipboard.writeText(value)
+  const handleToast = async (value) => {
+    await navigator.clipboard.writeText(value)
     toast({
       description: "Address " + value + " has been copied to the clipboard.",
       duration: 2000,
@@ -105,20 +105,6 @@ const MarathonUsers = ({ isLoading, res }) => {
                   <Center minH="100%" ml="2">
                     <Text color={useColorModeValue("gray.800", "gray.200")}>
                       {value ? TruncateName(value) : "N/A"}
-                      {/* {value && value.length > 14 ? (
-                        <Tooltip
-                          fontSize="sm"
-                          borderRadius="xl"
-                          label={value}
-                          placement="top"
-                        >
-                          {value.slice(0, 25) + ".."}
-                        </Tooltip>
-                      ) : value ? (
-                        value
-                      ) : (
-                        "N/A"
-                      )} */}
                     </Text>
                   </Center>
                 </Flex>
@@ -194,7 +180,7 @@ const MarathonUsers = ({ isLoading, res }) => {
           {...getTableProps()}
           overflowX="hidden"
           maxW="100%"
-          h="500px"
+          // h="500px"
           // mb="6"
           size="sm"
           variant="simple"
@@ -225,10 +211,10 @@ const MarathonUsers = ({ isLoading, res }) => {
               return (
                 <Tr
                   display="block"
-                  borderBottom="1px solid rgba(0, 0, 0, 0.06)"
+                  // borderBottom="1px solid rgba(0, 0, 0, 0.06)"
                   {...row.getRowProps()}
                   key={i}
-                  h="3rem"
+                  // h="3rem"
                   style={{
                     background: `linear-gradient(90deg, #61CDBB50 ${
                       normalizedTimeSpentArr[i]

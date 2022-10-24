@@ -21,7 +21,7 @@ const SceneSelector = ({ res, selectedScene, setSelectedScene, name }) => {
       >
         {sceneNames.map((name: string, i: number) => (
           <option key={i} value={i}>
-            <Text>{i + 1 + ". " + name}</Text>
+            <Text>{name}</Text>
           </option>
         ))}
       </Select>

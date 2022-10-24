@@ -1,0 +1,334 @@
+{
+  "lambdas/profiles": [
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-ec1.decentraland.org/lambdas/profiles",
+      "host": "peer-ec1.decentraland.org",
+      "statuses": {
+        "200": 21
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 21,
+      "total_count": 21
+    }
+  ],
+  "stats/parcels": [
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-wc1.decentraland.org/stats/parcels",
+      "host": "peer-wc1.decentraland.org",
+      "statuses": {
+        "200": 1428
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1428,
+      "total_count": 1428
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.dclnodes.io/stats/parcels",
+      "host": "peer.dclnodes.io",
+      "statuses": {
+        "200": 1429
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1429,
+      "total_count": 1429
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-ec2.decentraland.org/stats/parcels",
+      "host": "peer-ec2.decentraland.org",
+      "statuses": {
+        "200": 1429,
+        "521": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.06993006993006994,
+      "success_rate": 99.93006993006993,
+      "success_count": 1429,
+      "total_count": 1430
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.melonwave.com/stats/parcels",
+      "host": "peer.melonwave.com",
+      "statuses": {
+        "200": 1428,
+        "521": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.06997900629811056,
+      "success_rate": 99.93002099370189,
+      "success_count": 1428,
+      "total_count": 1429
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.uadevops.com/stats/parcels",
+      "host": "peer.uadevops.com",
+      "statuses": {
+        "200": 1428,
+        "521": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.06997900629811056,
+      "success_rate": 99.93002099370189,
+      "success_count": 1428,
+      "total_count": 1429
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-ec1.decentraland.org/stats/parcels",
+      "host": "peer-ec1.decentraland.org",
+      "statuses": {
+        "200": 1424,
+        "521": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.07017543859649122,
+      "success_rate": 99.9298245614035,
+      "success_count": 1424,
+      "total_count": 1425
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-eu1.decentraland.org/stats/parcels",
+      "host": "peer-eu1.decentraland.org",
+      "statuses": {
+        "200": 1430
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1430,
+      "total_count": 1430
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://interconnected.online/stats/parcels",
+      "host": "interconnected.online",
+      "statuses": {
+        "200": 1427
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1427,
+      "total_count": 1427
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.decentral.io/stats/parcels",
+      "host": "peer.decentral.io",
+      "statuses": {
+        "200": 1426,
+        "502": 1,
+        "521": 1
+      },
+      "failure_count": 2,
+      "failure_rate": 0.1400560224089636,
+      "success_rate": 99.85994397759103,
+      "success_count": 1426,
+      "total_count": 1428
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-ap1.decentraland.org/stats/parcels",
+      "host": "peer-ap1.decentraland.org",
+      "statuses": {
+        "200": 1429,
+        "502": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.06993006993006994,
+      "success_rate": 99.93006993006993,
+      "success_count": 1429,
+      "total_count": 1430
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.kyllian.me/stats/parcels",
+      "host": "peer.kyllian.me",
+      "statuses": {
+        "200": 1429
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1429,
+      "total_count": 1429
+    }
+  ],
+  "comms/peers": [
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-ec1.decentraland.org/comms/peers",
+      "host": "peer-ec1.decentraland.org",
+      "statuses": {
+        "200": 992
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 992,
+      "total_count": 992
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-ec2.decentraland.org/comms/peers",
+      "host": "peer-ec2.decentraland.org",
+      "statuses": {
+        "200": 991
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 991,
+      "total_count": 991
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-wc1.decentraland.org/comms/peers",
+      "host": "peer-wc1.decentraland.org",
+      "statuses": {
+        "200": 993
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 993,
+      "total_count": 993
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-eu1.decentraland.org/comms/peers",
+      "host": "peer-eu1.decentraland.org",
+      "statuses": {
+        "200": 992,
+        "521": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.10070493454179255,
+      "success_rate": 99.8992950654582,
+      "success_count": 992,
+      "total_count": 993
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer-ap1.decentraland.org/comms/peers",
+      "host": "peer-ap1.decentraland.org",
+      "statuses": {
+        "200": 991,
+        "502": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.10080645161290322,
+      "success_rate": 99.8991935483871,
+      "success_count": 991,
+      "total_count": 992
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.melonwave.com/comms/peers",
+      "host": "peer.melonwave.com",
+      "statuses": {
+        "200": 991,
+        "429": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.10080645161290322,
+      "success_rate": 99.8991935483871,
+      "success_count": 991,
+      "total_count": 992
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.dclnodes.io/comms/peers",
+      "host": "peer.dclnodes.io",
+      "statuses": {
+        "200": 991
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 991,
+      "total_count": 991
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://interconnected.online/comms/peers",
+      "host": "interconnected.online",
+      "statuses": {
+        "200": 993
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 993,
+      "total_count": 993
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.kyllian.me/comms/peers",
+      "host": "peer.kyllian.me",
+      "statuses": {
+        "200": 992
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 992,
+      "total_count": 992
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.decentral.io/comms/peers",
+      "host": "peer.decentral.io",
+      "statuses": {
+        "200": 992,
+        "429": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.10070493454179255,
+      "success_rate": 99.8992950654582,
+      "success_count": 992,
+      "total_count": 993
+    },
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.uadevops.com/comms/peers",
+      "host": "peer.uadevops.com",
+      "statuses": {
+        "200": 992
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 992,
+      "total_count": 992
+    }
+  ],
+  "entities/scene": [
+    {
+      "date": "2022-10-18",
+      "url": "https://peer.decentraland.org/content/entities/scene",
+      "host": "peer.decentraland.org",
+      "statuses": {
+        "200": 10659,
+        "521": 2
+      },
+      "failure_count": 2,
+      "failure_rate": 0.018759966232060783,
+      "success_rate": 99.98124003376793,
+      "success_count": 10659,
+      "total_count": 10661
+    }
+  ]
+}

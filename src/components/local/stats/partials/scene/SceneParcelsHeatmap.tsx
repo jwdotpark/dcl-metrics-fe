@@ -6,9 +6,11 @@ import {
   Flex,
   useColorModeValue,
   Tooltip,
+  MenuDescendantsProvider,
 } from "@chakra-ui/react"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 import CountUp from "react-countup"
+import { ColumnSizing } from "@tanstack/react-table"
 
 const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   const minX = Math.min(...Object.keys(data).map((d) => d.split(",")[0]))
@@ -47,12 +49,15 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
     return res
   }
 
+  const heatmapHeight = 400
+
   return (
     <Tooltip
-      p="4"
+      p="2"
       fontSize="sm"
-      borderRadius="xl"
+      borderRadius="md"
       shadow="xl"
+      hasArrow
       label="This chart shows the heatmap of each coordinate in this scene"
       placement="auto"
     >
@@ -60,42 +65,71 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
         w="100%"
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
-        borderColor={useColorModeValue("gray.200", "gray.700")}
+        borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
         shadow="md"
       >
-        <Box
-          border="1px solid"
-          borderColor={useColorModeValue("gray.100", "gray.600")}
-          borderRadius="xl"
-        >
-          <Box overflow="auto" h="360px" m="4" borderRadius="xl">
+        <Box borderRadius="xl">
+          <Box
+            overflow="hidden"
+            h={heatmapHeight}
+            m="4"
+            bg={useColorModeValue("gray.50", "gray.800")}
+            borderRadius="xl"
+            shadow="md"
+          >
             {normalizedGrid.map((row, i) => {
               return (
                 <Flex key={i}>
                   {row.map((cell, j) => {
                     return (
-                      <Box
+                      <Tooltip
                         key={j}
-                        w="100%"
-                        maxW="100%"
-                        h="100px"
-                        bg={setBgColor(cell.normalizedValue / 100)}
-                        border="1px solid"
-                        // eslint-disable-next-line react-hooks/rules-of-hooks
-                        borderColor={useColorModeValue("gray.100", "gray.700")}
+                        p="2"
+                        fontSize="sm"
+                        borderRadius="md"
+                        shadow="xl"
+                        hasArrow
+                        label={`[${cell.x}, ${cell.y}] : ${cell.value} counts`}
+                        placement="auto"
                       >
-                        <Box m="2">
-                          <Text as="kbd" fontSize="xs">
-                            [{cell.x},{cell.y}]
-                          </Text>
+                        <Box
+                          w="100%"
+                          h={
+                            heatmapHeight / normalizedGrid.length - 1 + 1 + "px"
+                          }
+                          bg={setBgColor(cell.normalizedValue / 100)}
+                          border="1px solid"
+                          // eslint-disable-next-line react-hooks/rules-of-hooks
+                          borderColor={useColorModeValue(
+                            "gray.200",
+                            "gray.600"
+                          )}
+                          borderTopLeftRadius={i === 0 && j === 0 && "xl"}
+                          borderTopRightRadius={
+                            i === 0 && j === row.length - 1 && "xl"
+                          }
+                          borderBottomRightRadius={
+                            i === normalizedGrid.length - 1 &&
+                            j === row.length - 1 &&
+                            "xl"
+                          }
+                          borderBottomLeftRadius={
+                            i === normalizedGrid.length - 1 && j === 0 && "xl"
+                          }
+                        >
+                          <Center h="100%">
+                            <Text
+                              fontSize={[
+                                heatmapHeight / 5 / row.length + "px",
+                                heatmapHeight / 4 / row.length + "px",
+                              ]}
+                            >
+                              {cell.value}
+                            </Text>
+                          </Center>
                         </Box>
-                        <Center>
-                          <Text as="kbd" fontSize="2xl" fontWeight="bold">
-                            <CountUp end={cell.value} duration={0.5} />
-                          </Text>
-                        </Center>
-                      </Box>
+                      </Tooltip>
                     )
                   })}
                 </Flex>

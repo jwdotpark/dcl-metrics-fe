@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
   useColorModeValue,
@@ -5,15 +6,14 @@ import {
   Tooltip,
 } from "@chakra-ui/react"
 import { ResponsiveBar } from "@nivo/bar"
-import SceneHistogram from "../../../../../../public/data/scene_histogram.json"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 import TooltipTable from "../TableTooltip"
 
-const SceneBarChart = ({ selectedScene }) => {
-  const chartData = Object.keys(SceneHistogram).map((key) => {
+const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
+  const chartData = Object.keys(visitors_by_hour_histogram).map((key) => {
     return {
       hour: key,
-      count: SceneHistogram[key],
+      count: visitors_by_hour_histogram[key],
     }
   })
 
@@ -25,29 +25,28 @@ const SceneBarChart = ({ selectedScene }) => {
     base: true,
     sm: true,
     md: true,
-    lg: false,
+    lg: true,
   })
 
-  const yAxisLabelDegree = () => {
-    if (isMobile) {
-      return 90
-    } else {
-      return 0
-    }
-  }
+  chartData.sort((a, b) => {
+    // @ts-ignore
+    return a.hour - b.hour
+  })
 
   return (
     <Tooltip
-      p="4"
+      p="2"
       fontSize="sm"
-      borderRadius="xl"
+      borderRadius="md"
       shadow="xl"
+      hasArrow
       label="This chart shows the number of users that is presented in each hour of the day"
       placement="auto"
     >
       <Box
         w="100%"
-        h="400px"
+        h="520px"
+        mt={[2, 2, 2, 0]}
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.700")}
@@ -60,9 +59,9 @@ const SceneBarChart = ({ selectedScene }) => {
           indexBy="hour"
           margin={{
             top: 30,
-            right: isMobile ? 5 : 10,
-            bottom: isMobile ? 50 : 40,
-            left: isMobile ? 40 : 50,
+            right: 10,
+            bottom: 70,
+            left: 45,
           }}
           borderWidth={2}
           padding={isMobile ? 0.4 : 0.2}
@@ -84,11 +83,11 @@ const SceneBarChart = ({ selectedScene }) => {
           axisRight={null}
           axisBottom={{
             tickSize: 5,
-            tickPadding: 5,
-            tickRotation: yAxisLabelDegree(),
-            legend: "",
-            legendPosition: "end",
-            legendOffset: -15,
+            tickPadding: 1,
+            tickRotation: 90,
+            legend: "All times are in UTC",
+            legendPosition: "middle",
+            legendOffset: isMobile ? 50 : 40,
             format: (value) => value + ":00",
           }}
           axisLeft={{
@@ -99,8 +98,8 @@ const SceneBarChart = ({ selectedScene }) => {
             legendPosition: "end",
             legendOffset: 5,
           }}
-          labelSkipWidth={12}
-          labelSkipHeight={12}
+          labelSkipWidth={10}
+          labelSkipHeight={10}
           labelTextColor={useColorModeValue("#000", "#fff")}
           role="application"
           ariaLabel="scene bar chart"
@@ -114,7 +113,6 @@ const SceneBarChart = ({ selectedScene }) => {
               <Box
                 sx={{ backdropFilter: "blur(5px)" }}
                 pt="2"
-                // eslint-disable-next-line react-hooks/rules-of-hooks
                 color={useColorModeValue("black", "white")}
                 borderRadius="xl"
                 shadow="md"

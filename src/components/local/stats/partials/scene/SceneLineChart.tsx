@@ -43,7 +43,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     lg: false,
   })
   // selected line color
-  const lineOpacity = 0.1
+  const lineOpacity = 0.2
   const setColor = (index) => {
     const color =
       SceneColor[index]
@@ -81,25 +81,33 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     return value + "h"
   }
 
-  const yAxisLabelDegree = () => {
-    if (isMobile) {
-      return 90
-    } else {
-      return 0
-    }
-  }
+  const yAxisLabelDegree = isMobile ? 90 : 0
+
+  const currentScene = memoizedData[selectedScene]
+  const currentMax = Math.max.apply(
+    Math,
+    currentScene.data.map((item) => item.y)
+  )
+  const currentMin = Math.min.apply(
+    Math,
+    currentScene.data.map((item) => item.y)
+  )
 
   return (
     <Tooltip
-      p="4"
+      p="2"
       fontSize="sm"
-      borderRadius="xl"
+      borderRadius="md"
       shadow="xl"
+      hasArrow
       label="This chart shows the number of users and the time that user stayed in the scene"
       placement="auto"
     >
       <Box
-        h="400px"
+        h="435px"
+        mt={[2, 2, 6, 0]}
+        pt="4"
+        // ml="2"
         bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
@@ -107,14 +115,15 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         shadow="md"
       >
         <ResponsiveLine
+          // layers={[BarLegend]}
           data={memoizedData}
           colors={colors}
-          margin={{ top: 30, right: 20, bottom: 40, left: 40 }}
+          margin={{ top: 30, right: 20, bottom: 60, left: 50 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
-            min: "auto",
-            max: "auto",
+            min: currentMin,
+            max: currentMax,
             stacked: false,
             reverse: false,
           }}
@@ -126,17 +135,17 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             tickPadding: 5,
             tickRotation: 0,
             legend: "Time spent in hours",
-            legendOffset: -15,
-            legendPosition: "end",
+            legendOffset: 40,
+            legendPosition: "middle",
             format: (value) => yAxisLabel(value),
-            tickRotation: yAxisLabelDegree(),
+            tickRotation: yAxisLabelDegree,
           }}
           axisLeft={{
             orient: "left",
             tickSize: 5,
             tickPadding: 0,
             tickRotation: 0,
-            legend: "User Count",
+            legend: "Numer of Users",
             legendOffset: 10,
             legendPosition: "end",
           }}
@@ -152,16 +161,28 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
             grid: {
               line: {
                 stroke: "gray",
-                opacity: 0.2,
+                opacity: 0.25,
                 strokeDasharray: "1 1",
               },
             },
           }}
           enableArea={true}
           animate={true}
-          areaOpacity={0.25}
+          areaOpacity={0.4}
           legends={[
             {
+              dataFrom: "id",
+              data: memoizedData.map((id, index) => ({
+                color: colors[index],
+                id,
+                label:
+                  String(memoizedData.map((item) => item.id)[index]).length > 25
+                    ? String(memoizedData.map((item) => item.id)[index]).slice(
+                        0,
+                        25
+                      ) + ".."
+                    : String(memoizedData.map((item) => item.id)[index]),
+              })),
               anchor: "top-right",
               direction: "column",
               justify: false,
@@ -182,7 +203,8 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
           sliceTooltip={({ slice }) => {
             return (
               <Box
-                sx={{ backdropFilter: "blur(10px)" }}
+                key={slice.points[0].data.xFormatteds}
+                sx={{ backdropFilter: "blur(5px)" }}
                 p="2"
                 color={useColorModeValue("black", "white")}
                 borderRadius="xl"
@@ -193,32 +215,30 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
                     <Thead>
                       <Tr>
                         <Th>Scene</Th>
-                        <Th isNumeric>Engaged users</Th>
+                        <Th isNumeric>Users</Th>
                       </Tr>
                     </Thead>
 
                     {slice.points.map((point, i) => (
-                      <>
-                        <Tbody>
-                          <Tr>
-                            <Td>
-                              <Box
-                                display="inline-block"
-                                boxSize="12px"
-                                mr="2"
-                                bg={point.serieColor}
-                                borderRadius="xl"
-                              />
-                              {point.serieId}
-                            </Td>
-                            <Td isNumeric>
-                              <Text as="kbd">
-                                <b>{Number(point.data.yFormatted)}</b>
-                              </Text>
-                            </Td>
-                          </Tr>
-                        </Tbody>
-                      </>
+                      <Tbody key={i}>
+                        <Tr>
+                          <Td>
+                            <Box
+                              display="inline-block"
+                              boxSize="12px"
+                              mr="2"
+                              bg={point.serieColor}
+                              borderRadius="xl"
+                            />
+                            {point.serieId}
+                          </Td>
+                          <Td isNumeric>
+                            <Text as="kbd">
+                              <b>{Number(point.data.yFormatted)}</b>
+                            </Text>
+                          </Td>
+                        </Tr>
+                      </Tbody>
                     ))}
                   </Table>
                 </TableContainer>

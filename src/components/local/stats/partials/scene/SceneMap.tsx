@@ -6,15 +6,15 @@ const SceneMap = (props) => {
 
   return (
     <Box
-      overflow="clip"
+      overflow="hidden"
       w="100%"
-      h="350px"
+      h="405px"
       border="3px solid"
       borderColor={useColorModeValue("gray.300", "gray.700")}
       borderRadius="xl"
       shadow="md"
     >
-      <Image minW="100%" h="100%" objectFit="cover" alt="map image" src={url} />
+      <Image w="100%" h="100%" objectFit="cover" alt="map image" src={url} />
     </Box>
   )
 }
