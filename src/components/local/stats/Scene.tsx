@@ -46,7 +46,7 @@ const Scene = ({ res }) => {
         {/* title */}
         <Flex pos="relative" mx="5">
           <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
-            <Flex direction={["column-reverse", "row"]} w="100%">
+            <Flex direction={["column", "row"]} w="100%">
               <Box>
                 <Text fontSize="2xl">
                   <b>{name}</b>
@@ -54,7 +54,7 @@ const Scene = ({ res }) => {
               </Box>
               <Spacer />
               <Box>
-                <Text fontSize="2xl" fontWeight="bold">
+                <Text color="gray.500" fontSize="md">
                   {moment(res[selectedScene].date).format("MMM Do YYYY")}
                 </Text>
               </Box>
