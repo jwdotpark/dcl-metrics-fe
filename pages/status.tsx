@@ -14,18 +14,23 @@ export async function getStaticProps(context) {
       : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "peer_status"
 
   if (process.env.NEXT_PUBLIC_ENV === "prod") {
-    const response = await axios.get(url, {
-      method: "get",
-      proxy: {
-        protocol: "http",
-        host: process.env.FIXIE_HOST,
-        port: 80,
-        auth: {
-          username: "fixie",
-          password: process.env.FIXIE_TOKEN,
+    const response = await axios
+      .get(url, {
+        method: "get",
+        proxy: {
+          protocol: "http",
+          host: process.env.FIXIE_HOST,
+          port: 80,
+          auth: {
+            username: "fixie",
+            password: process.env.FIXIE_TOKEN,
+          },
         },
-      },
-    })
+      })
+      .catch((error) => {
+        console.log(error)
+        return { props: { data: staticPeerStatus }, revalidate: day }
+      })
 
     if (response.status === 200) {
       fs.writeFileSync(
