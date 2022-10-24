@@ -20,7 +20,7 @@ import Loading from "../../Loading"
 import { useMemo, useState } from "react"
 import { useTable, useSortBy, usePagination } from "react-table"
 import TableMap from "../partials/TableMap"
-import ParcelDateRange from "../daterange/ParcelDateRange"
+import SceneDateRange from "../daterange/SceneDateRange"
 import GridBox from "../../GridBox"
 import TruncateName from "../partials/TruncatedName"
 
@@ -32,21 +32,31 @@ const ScenesTimeSpent = ({ res, isSceneLoading }) => {
   }
 
   // 0 yesterday 1 last_week 2 last_month 3 last_quarter
-  const [dateRange, setDateRange] = useState(0)
+  const [dateRange, setDateRange] = useState("yesterday")
 
   const data = Object.entries(res)
   const dataArr = []
-
-  const sceneDataRange = data[dateRange]
-
-  const sceneData = sceneDataRange[1].time_spent
-  for (const [key, value] of Object.entries(sceneData)) {
+  const dateRangeArr = []
+  for (const [key] of Object.entries(data)) {
+    dateRangeArr.push(data[key][0])
+  }
+  const findDateRange = (arg) => {
+    for (const [key] of Object.entries(dateRangeArr)) {
+      if (dateRangeArr[key] === arg) {
+        return data[key][1]
+      }
+    }
+  }
+  const selectedData = findDateRange(dateRange).time_spent
+  for (const [key, value] of Object.entries(selectedData)) {
     dataArr.push({
-      mapUrl: value.map_url,
       name: key,
+      mapUrl: value.map_url,
       avg_time_spent: value.avg_time_spent,
     })
   }
+
+  dataArr.sort((a, b) => b.unique_address - a.unique_address)
 
   const COLUMNS = [
     {
@@ -162,7 +172,7 @@ const ScenesTimeSpent = ({ res, isSceneLoading }) => {
             Scenes with the most average time spent on them in the last period
           </Text>
         </Box>
-        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
+        <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />
         {dataArr.length > 0 && !isSceneLoading ? (
           <Box mb="8" mx="4">
             <TableComponent />

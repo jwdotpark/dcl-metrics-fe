@@ -30,13 +30,22 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
   }
 
   // 0 yesterday 1 last_week 2 last_month 3 last_quarter
-  const [dateRange, setDateRange] = useState(0)
+  const [dateRange, setDateRange] = useState("yesterday")
   const data = Object.entries(res)
   const dataArr = []
-  const sceneDataRange = data[dateRange]
-  const visitorData = sceneDataRange[1].visitors
-
-  for (const [key, value] of Object.entries(visitorData)) {
+  const dateRangeArr = []
+  for (const [key] of Object.entries(data)) {
+    dateRangeArr.push(data[key][0])
+  }
+  const findDateRange = (arg) => {
+    for (const [key] of Object.entries(dateRangeArr)) {
+      if (dateRangeArr[key] === arg) {
+        return data[key][1]
+      }
+    }
+  }
+  const selectedData = findDateRange(dateRange).visitors
+  for (const [key, value] of Object.entries(selectedData)) {
     dataArr.push({
       name: key,
       mapUrl: value.map_url,
@@ -81,8 +90,6 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
   const columns = useMemo(() => COLUMNS, [])
   // eslint-disable-next-line
   const memoizedData = useMemo(() => dataArr, [dateRange])
-
-  console.log(memoizedData)
 
   const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
     useTable(
