@@ -28,7 +28,6 @@ import TableDateRange from "./daterange/TableDateRange"
 import TruncateName from "./partials/TruncatedName"
 
 const MarathonUsers = ({ isLoading, res }) => {
-  // leave it in case customize size of component dimension
   const box = {
     h: "auto",
     w: "100%",
@@ -63,7 +62,6 @@ const MarathonUsers = ({ isLoading, res }) => {
     }
   }, [res, dateRange])
 
-  // table column definition
   const columns = useMemo(
     () => [
       {
