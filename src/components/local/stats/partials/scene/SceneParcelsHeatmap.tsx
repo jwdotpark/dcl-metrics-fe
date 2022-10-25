@@ -6,11 +6,10 @@ import {
   Flex,
   useColorModeValue,
   Tooltip,
-  MenuDescendantsProvider,
 } from "@chakra-ui/react"
 import { SceneColor } from "../../../../../lib/hooks/utils"
-import CountUp from "react-countup"
-import { ColumnSizing } from "@tanstack/react-table"
+// import CountUp from "react-countup"
+// import { ColumnSizing } from "@tanstack/react-table"
 
 const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   const minX = Math.min(...Object.keys(data).map((d) => d.split(",")[0]))
