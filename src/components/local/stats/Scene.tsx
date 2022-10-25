@@ -53,18 +53,14 @@ const Scene = ({ res }) => {
                 </Text>
               </Box>
               <Spacer />
-              <Box>
-                <Text color="gray.500" fontSize="md">
-                  {moment(res[selectedScene].date).format("MMM Do YYYY")}
-                </Text>
-              </Box>
             </Flex>
             <Spacer />
           </Flex>
         </Flex>
-        <Box ml="5">
+        <Box ml="5" mx="6">
           <Text color="gray.500" fontSize="sm">
-            Most populated scene in Decentraland yesterday
+            Most populated scene in Decentraland on{" "}
+            <i>{moment(res[selectedScene].date).format("dddd MMM. Do YYYY")}</i>
           </Text>
         </Box>
 
