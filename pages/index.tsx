@@ -117,9 +117,9 @@ const GlobalPage: NextPage = (props) => {
   })
 
   // @ts-ignore
-  const result = props.data > 0 ? props.data : staticGlobal
+  const result = props.data
   // @ts-ignore
-  const sceneResult = props.sceneData.length > 0 ? props.sceneData : staticScene
+  const sceneResult = props.sceneData
   const [res, setRes] = useAtom(DataAtom)
   const [sceneRes, setSceneRes] = useAtom(SceneDataAtom)
 
