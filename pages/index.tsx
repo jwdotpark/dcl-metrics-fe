@@ -48,6 +48,9 @@ export async function getStaticProps() {
         return { props: { data: staticGlobal }, revalidate: day }
       })
 
+    // TODO check if response.data's each property is not empty
+    // if empty, return the cached data
+
     if (response.status === 200) {
       fs.writeFileSync(
         "./public/data/cached_global_response.json",
@@ -79,6 +82,9 @@ export async function getStaticProps() {
         console.log(error)
         return { props: { data: staticScene }, revalidate: day }
       })
+
+    // TODO check if sceneResponse.data's each property is not empty
+    // if empty, return the cached data
 
     if (sceneResponse.status === 200) {
       fs.writeFileSync(
