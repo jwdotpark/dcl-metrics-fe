@@ -17,8 +17,11 @@ import SceneProfilePicture from "./SceneProfilePicture"
 import TableLink from "../TableLink"
 import TruncateName from "../TruncatedName"
 import moment from "moment"
+import momentDurationFormatSetup from "moment-duration-format"
 
 const SceneMarathonUsers = ({ data }) => {
+  momentDurationFormatSetup(moment)
+
   const toast = useToast()
   const handleToast = async (value) => {
     try {
@@ -93,10 +96,10 @@ const SceneMarathonUsers = ({ data }) => {
                   </Text>
                 </Td>
                 <Td isNumeric>
-                  <Text>
+                  <Text as="kbd" wordBreak="keep-all">
                     {moment
-                      .utc(Number(item[1].time_spent) * 1000)
-                      .format(`hh:mm:ss`)}
+                      .duration(item[1].time_spent, "minutes")
+                      .format("dd:hh:mm:ss")}
                   </Text>
                 </Td>
                 <Td>

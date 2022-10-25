@@ -32,6 +32,7 @@
     "framer-motion": "^6.5.1",
     "jotai": "^1.8.4",
     "moment": "^2.29.4",
+    "moment-duration-format": "^2.3.2",
     "next": "12.2.3",
     "next-ssl-redirect-middleware": "^0.1.4",
     "nextjs-cors": "^2.1.1",
