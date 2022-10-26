@@ -15,7 +15,7 @@ const LineChartDateRange = ({ dateRange, setDateRange, validLegnth }) => {
       <Box zIndex="1" mt="1">
         <HStack>
           <ButtonGroup
-            className="umami--click--linechartDaterange"
+            className="umami--click--lineChartDateRange"
             w="100%"
             borderRadius="xl"
             shadow="md"
@@ -24,6 +24,7 @@ const LineChartDateRange = ({ dateRange, setDateRange, validLegnth }) => {
             variant="outline"
           >
             <Button
+              className="umami--click--subButtonDateRange"
               w="100%"
               bgColor={dateRange === 7 && btnColor}
               onClick={() => setDateRange(7)}
