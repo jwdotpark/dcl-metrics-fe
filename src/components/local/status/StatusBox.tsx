@@ -31,12 +31,12 @@ const StatusBox = ({ data }) => {
     return successRate(item[1].success_count, item[1].total_count)
   })
 
-  const isError = successArr.some((item) => item < 75)
+  const isError = successArr.some((item) => item < 95)
 
   const successColor = (successRate) => {
-    if (successRate >= 95) {
+    if (successRate >= 98) {
       return useColorModeValue("green.400", "#50fa7b")
-    } else if (successRate < 95 && successRate >= 85) {
+    } else if (successRate < 98 && successRate >= 90) {
       return useColorModeValue("yellow.400", "#ffb86c")
     } else {
       return useColorModeValue("red.400", "#ff5555")
