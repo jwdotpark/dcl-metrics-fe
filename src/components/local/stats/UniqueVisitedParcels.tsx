@@ -100,6 +100,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
           dateRange={dateRange}
           setDateRange={setDateRange}
           validLegnth={90}
+          name="global_parcels_visited"
         />
         {chartData.length > 0 && !visitorLoading ? (
           <Box h="100%">

@@ -165,7 +165,11 @@ const LogOutTimeSpentParcel = ({ parcel, isParcelLoading }) => {
             Parcels with the most logouts in the last period
           </Text>
         </Box>
-        <ParcelDateRange dateRange={dateRange} setDateRange={setDateRange} />
+        <ParcelDateRange
+          dateRange={dateRange}
+          setDateRange={setDateRange}
+          name="parcels_logouts"
+        />
         {dataArr.length > 0 && !isParcelLoading && (
           <Box mb="8" mx="4">
             <TableComponent />

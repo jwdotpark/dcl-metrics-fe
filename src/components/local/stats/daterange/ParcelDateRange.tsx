@@ -6,14 +6,16 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 
-const ParcelDateRange = ({ dateRange, setDateRange }) => {
+const ParcelDateRange = ({ dateRange, setDateRange, name }) => {
   const btnColor = useColorModeValue("gray.200", "gray.600")
+  const umamiEvent = `umami--click--${name}`
 
   return (
     <Box w="100%" mt="4" mx="4" pr="8">
       <Box zIndex="1" mt="1">
         <HStack>
           <ButtonGroup
+            className={umamiEvent}
             w="100%"
             borderRadius="xl"
             shadow="md"

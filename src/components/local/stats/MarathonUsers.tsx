@@ -255,7 +255,11 @@ const MarathonUsers = ({ isLoading, res }) => {
               Users with most online time in the last period
             </Text>
           </Box>
-          <TableDateRange dateRange={dateRange} setDateRange={setDateRange} />
+          <TableDateRange
+            dateRange={dateRange}
+            setDateRange={setDateRange}
+            name="users_marathon_users"
+          />
           {dataArr.length > 0 && !isLoading && <TableComponent />}
           {dataArr.length === 0 && !isLoading && (
             <Center h="450px">Not Available</Center>

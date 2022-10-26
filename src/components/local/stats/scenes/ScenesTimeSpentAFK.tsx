@@ -186,7 +186,11 @@ const ScenesTimeSpentAFK = ({ res, isSceneLoading }) => {
             period
           </Text>
         </Box>
-        <SceneDateRange dateRange={dateRange} setDateRange={setDateRange} />
+        <SceneDateRange
+          dateRange={dateRange}
+          setDateRange={setDateRange}
+          name="scenes_afk_time_spent"
+        />
         {dataArr.length > 0 && !isSceneLoading && (
           <Box mb="8" mx="4">
             <TableComponent />
