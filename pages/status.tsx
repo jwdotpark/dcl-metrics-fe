@@ -6,7 +6,7 @@ import { sendNotification } from "../src/lib/hooks/sendNotification"
 const axios = require("axios").default
 import fs from "fs"
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const day = 60 * 60 * 24
   const url =
     process.env.NEXT_PUBLIC_STAGING !== "true"

@@ -92,7 +92,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     Math,
     currentScene.data.map((item) => item.y)
   )
-
+  
   return (
     <Tooltip
       p="2"
@@ -115,17 +115,17 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
         shadow="md"
       >
         <ResponsiveLine
-          // layers={[BarLegend]}
           data={memoizedData}
           colors={colors}
           margin={{ top: 30, right: 20, bottom: 60, left: 50 }}
-          xScale={{ type: "point" }}
+          xScale={{ type: "linear" }}
           yScale={{
             type: "linear",
             min: currentMin,
             max: currentMax,
             stacked: false,
             reverse: false,
+            clamp: "auto",
           }}
           yFormat=" >-.2f"
           axisRight={null}
