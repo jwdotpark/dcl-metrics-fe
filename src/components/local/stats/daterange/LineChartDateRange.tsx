@@ -15,6 +15,7 @@ const LineChartDateRange = ({ dateRange, setDateRange, validLegnth }) => {
       <Box zIndex="1" mt="1">
         <HStack>
           <ButtonGroup
+            className="umami--click--linechartDaterange"
             w="100%"
             borderRadius="xl"
             shadow="md"
