@@ -92,11 +92,7 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
     Math,
     currentScene.data.map((item) => item.y)
   )
-
-  console.log(currentMax)
-  console.log(currentMin)
-  console.log(currentScene)
-
+  
   return (
     <Tooltip
       p="2"
