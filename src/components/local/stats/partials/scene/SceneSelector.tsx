@@ -8,7 +8,7 @@ const SceneSelector = ({ res, selectedScene, setSelectedScene, name }) => {
     setSelectedScene(e.target.value)
   }
 
-  const selectorName = "scenes.big_component"
+  const selectorName = "scenes_BIG_component"
   const umamiEvent = `umami--click--${selectorName}`
 
   return (
