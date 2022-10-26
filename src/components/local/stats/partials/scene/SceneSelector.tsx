@@ -8,16 +8,19 @@ const SceneSelector = ({ res, selectedScene, setSelectedScene, name }) => {
     setSelectedScene(e.target.value)
   }
 
+  const selectorName = "big_scene_component"
+  const umamiEvent = `umami--click--${selectorName}`
+
   return (
     <Box>
       <Select
+        className={umamiEvent}
         border="2px solid"
         borderColor={useColorModeValue("gray.100", "gray.500")}
         borderRadius="xl"
         shadow="md"
-        // bgColor="gray.200"
         onChange={(e) => handleChange(e)}
-        // variant="filled"
+        variant="filled"
       >
         {sceneNames.map((name: string, i: number) => (
           <option key={i} value={i}>

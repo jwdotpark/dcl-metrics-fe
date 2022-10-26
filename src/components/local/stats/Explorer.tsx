@@ -267,7 +267,11 @@ const Explorer = ({ isLoading, res }) => {
           Users that visited the most parcels in the last period
         </Text>
       </Box>
-      <DateRange dateRange={dateRange} setDateRange={setDateRange} />
+      <DateRange
+        dateRange={dateRange}
+        setDateRange={setDateRange}
+        name="users.explorers"
+      />
       {dataArr.length > 0 && !isLoading && <TableComponent />}
       {dataArr.length === 0 && !isLoading && (
         <Center h="450px">Not Available</Center>
