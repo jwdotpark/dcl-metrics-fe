@@ -1,4 +1,4 @@
-import * as Sentry from "@sentry/nextjs"
+// import * as Sentry from "@sentry/nextjs"
 import NextErrorComponent from "next/error"
 import Layout from "../src/components/layout/layout"
 
@@ -11,7 +11,7 @@ const CustomErrorComponent = (props) => {
 }
 
 CustomErrorComponent.getInitialProps = async (contextData) => {
-  await Sentry.captureUnderscoreErrorException(contextData)
+  // await Sentry.captureUnderscoreErrorException(contextData)
   return NextErrorComponent.getInitialProps(contextData)
 }
 
