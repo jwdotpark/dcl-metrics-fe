@@ -150,7 +150,7 @@ const GlobalPage: NextPage = (props) => {
           <ActiveScenes data={result.global} visitorLoading={isDataLoading} />
         </Grid>
 
-        <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
+        <Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
           <SceneLayout
             result={result}
