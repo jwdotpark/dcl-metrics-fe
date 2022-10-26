@@ -168,7 +168,7 @@ const LogInTimeSpentParcel = ({ parcel, isParcelLoading }) => {
         <ParcelDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
-          name="parcels.logins"
+          name="parcels_logins"
         />
         {dataArr.length > 0 && !isParcelLoading && (
           <Box mb="8" mx="4">

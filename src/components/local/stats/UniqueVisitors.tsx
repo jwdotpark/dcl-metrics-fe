@@ -98,7 +98,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
           dateRange={dateRange}
           setDateRange={setDateRange}
           validLegnth={90}
-          name="globalUniqueVisitors"
+          name="global_unique_visitors"
         />
         {chartData.length > 0 && !visitorLoading ? (
           <Box h="100%">
