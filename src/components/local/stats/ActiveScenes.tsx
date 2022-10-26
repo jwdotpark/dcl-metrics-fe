@@ -106,6 +106,7 @@ const ActiveScenes = ({ visitorLoading, data }) => {
           dateRange={dateRange}
           setDateRange={setDateRange}
           validLegnth={validLegnth}
+          name="scenes_visited"
         />
         {chartData.length > 0 && !visitorLoading ? (
           <Box h="100%">
