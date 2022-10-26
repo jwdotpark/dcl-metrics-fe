@@ -34,9 +34,9 @@ const StatusBox = ({ data }) => {
   const isError = successArr.some((item) => item < 75)
 
   const successColor = (successRate) => {
-    if (successRate >= 85) {
+    if (successRate >= 95) {
       return useColorModeValue("green.400", "#50fa7b")
-    } else if (successRate < 85 && successRate >= 70) {
+    } else if (successRate < 95 && successRate >= 85) {
       return useColorModeValue("yellow.400", "#ffb86c")
     } else {
       return useColorModeValue("red.400", "#ff5555")
@@ -109,9 +109,10 @@ const StatusBox = ({ data }) => {
                                 </Td>
                               </Tr>
                               <Tr>
-                                <Td>Success Count</Td>
+                                <Td>Failure Count</Td>
                                 <Td isNumeric>
-                                  <b>{item.success_count}</b>
+                                  {/* <b>{item.success_count}</b> */}
+                                  <b>{item.failure_count}</b>
                                 </Td>
                               </Tr>
                             </Tbody>
