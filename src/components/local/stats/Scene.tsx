@@ -41,14 +41,14 @@ const Scene = ({ res }) => {
   }
 
   return (
-    <Box h="100%" mb="4">
+    <Box h="100%" mb="4" mx={[-4, 0]}>
       <GridBox box={box}>
         {/* title */}
         <Flex pos="relative" mx="5">
           <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
             <Flex direction={["column", "row"]} w="100%">
               <Box>
-                <Text fontSize="2xl">
+                <Text fontSize={["md", "2xl"]}>
                   <b>{name}</b>
                 </Text>
               </Box>
@@ -58,7 +58,7 @@ const Scene = ({ res }) => {
           </Flex>
         </Flex>
         <Box ml="5" mx="6">
-          <Text color="gray.500" fontSize="sm">
+          <Text color="gray.500" fontSize={["xs", "sm"]}>
             Most populated scene in Decentraland on{" "}
             <i>{moment(res[selectedScene].date).format("dddd MMM. Do YYYY")}</i>
           </Text>
