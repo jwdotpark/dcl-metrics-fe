@@ -89,7 +89,7 @@ const StatBox = ({ data, selectedScene }) => {
                         <Flex>
                           <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["xs", "sm", "md", "md"]}>
+                            <Text fontSize={["md", "sm", "md", "md"]}>
                               {name}
                             </Text>
                           </Box>
@@ -99,7 +99,7 @@ const StatBox = ({ data, selectedScene }) => {
                         <Box>
                           {/* @ts-ignore */}
                           <Text
-                            fontSize={["xs", "sm", "md", "md"]}
+                            fontSize={["md", "sm", "md", "md"]}
                             fontWeight="bold"
                           >
                             {name === "Average Time Spent" ||
@@ -143,7 +143,7 @@ const StatBox = ({ data, selectedScene }) => {
                         <Flex>
                           <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["xs", "sm", "md", "md"]}>
+                            <Text fontSize={["md", "sm", "md", "md"]}>
                               {name}
                             </Text>
                           </Box>
@@ -153,7 +153,7 @@ const StatBox = ({ data, selectedScene }) => {
                         <Box>
                           <Text
                             minW="100px"
-                            fontSize={["xs", "sm", "md", "md"]}
+                            fontSize={["md", "sm", "md", "md"]}
                             fontWeight="bold"
                           >
                             {/* @ts-ignore */}
