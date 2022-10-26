@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { withSentry } from "@sentry/nextjs"
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
@@ -14,4 +13,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export default withSentry(handler)
+export default handler
