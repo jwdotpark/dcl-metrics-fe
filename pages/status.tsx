@@ -27,10 +27,10 @@ export async function getStaticProps() {
           },
         },
       })
-      .catch((error) => {
-        console.log(error)
-        return { props: { data: staticPeerStatus }, revalidate: day }
-      })
+      // .catch((error) => {
+      //   console.log(error)
+      //   return { props: { data: staticPeerStatus }, revalidate: day }
+      // })
 
     if (response.status === 200) {
       fs.writeFileSync(
