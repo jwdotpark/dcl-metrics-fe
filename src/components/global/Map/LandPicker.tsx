@@ -7,8 +7,10 @@ import {
   Center,
   GridItem,
 } from "@chakra-ui/react"
-import GridBox from "../local/GridBox"
-import Loading from "../local/Loading"
+import GridBox from "../../local/GridBox"
+import Loading from "../../local/Loading"
+import Map from "./Map"
+import MapInfo from "./MapInfo"
 
 const LandPicker = () => {
   const box = {
@@ -17,13 +19,7 @@ const LandPicker = () => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const LandPickerBox = () => {
-    return (
-      <GridItem w={box.w} h="350" mb="4" bg={box.bg} borderRadius="xl">
-        {/* <LineChart data={result} color={color} /> */}
-      </GridItem>
-    )
-  }
+  const h = 500
 
   return (
     <GridBox box={box}>
@@ -44,7 +40,20 @@ const LandPicker = () => {
       </Box>
 
       <Box h="100%">
-        <LandPickerBox />
+        <Flex
+          sx={{
+            "& > * + *": {
+              ml: [0, 0, 0, 4],
+              mt: [4, 4, 4, 0],
+            },
+          }}
+          direction={["column", "column", "column", "row"]}
+          m="4"
+          mb="4"
+        >
+          <Map h={h} />
+          <MapInfo h={h} />
+        </Flex>
       </Box>
     </GridBox>
   )
