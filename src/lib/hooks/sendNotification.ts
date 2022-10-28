@@ -9,11 +9,9 @@ export const sendNotification = async (response, name, status) => {
     headers: headers,
     body: JSON.stringify({
       level: "warning",
-      message: `${name} endpoint request is ${
-        response ? response.statusCode : "not available"
-      } - ${status}`,
+      message: `${name} endpoint request is ${response.status} - ${status}`,
       payload: {
-        status: response.statusCode,
+        status: response.status,
       },
     }),
   })
