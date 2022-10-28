@@ -258,7 +258,7 @@ const MarathonUsers = ({ isLoading, res }) => {
           <TableDateRange
             dateRange={dateRange}
             setDateRange={setDateRange}
-            name="users.marathon_users"
+            name="users_marathon_users"
           />
           {dataArr.length > 0 && !isLoading && <TableComponent />}
           {dataArr.length === 0 && !isLoading && (

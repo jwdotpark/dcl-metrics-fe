@@ -270,7 +270,7 @@ const Explorer = ({ isLoading, res }) => {
       <DateRange
         dateRange={dateRange}
         setDateRange={setDateRange}
-        name="users.explorers"
+        name="users_explorers"
       />
       {dataArr.length > 0 && !isLoading && <TableComponent />}
       {dataArr.length === 0 && !isLoading && (

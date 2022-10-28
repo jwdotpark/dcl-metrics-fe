@@ -168,7 +168,7 @@ const AFKtimeSpentAFKParcel = ({ parcel, isParcelLoading }) => {
         <ParcelDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
-          name="parcels.afk_time_spent"
+          name="parcels_afk_time_spent"
         />
         {dataArr.length > 0 && !isParcelLoading && (
           <Box mb="8" mx="4">

@@ -172,7 +172,7 @@ const TopScenesVisitors = ({ res, isSceneLoading }) => {
         <SceneDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
-          name="scenes.unique_visitors"
+          name="scenes_unique_visitors"
         />
         {dataArr.length > 0 && !isSceneLoading && (
           <Box mb="8" mx="4">

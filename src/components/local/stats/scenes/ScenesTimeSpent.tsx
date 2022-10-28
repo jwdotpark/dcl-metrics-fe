@@ -175,7 +175,7 @@ const ScenesTimeSpent = ({ res, isSceneLoading }) => {
         <SceneDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
-          name="scenes.avg_time_spent"
+          name="scenes_avg_time_spent"
         />
         {dataArr.length > 0 && !isSceneLoading && (
           <Box mb="8" mx="4">

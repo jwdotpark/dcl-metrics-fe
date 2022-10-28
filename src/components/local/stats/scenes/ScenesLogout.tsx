@@ -169,7 +169,7 @@ const ScenesLogout = ({ res, isSceneLoading }) => {
         <SceneDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
-          name="scenes.logouts"
+          name="scenes_logouts"
         />
         {dataArr.length > 0 && !isSceneLoading && (
           <Box mb="8" mx="4">

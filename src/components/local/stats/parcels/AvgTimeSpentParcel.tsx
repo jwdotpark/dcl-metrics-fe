@@ -168,7 +168,7 @@ const AvgTimeSpentParcel = ({ parcel, isParcelLoading }) => {
         <ParcelDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
-          name="parcels.avg_time_spent"
+          name="parcels_avg_time_spent"
         />
         {dataArr.length > 0 && !isParcelLoading && (
           <Box mb="8" mx="4">

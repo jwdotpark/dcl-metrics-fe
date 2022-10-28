@@ -24,7 +24,6 @@ const LineChartDateRange = ({ dateRange, setDateRange, validLegnth, name }) => {
             variant="outline"
           >
             <Button
-              className="umami--click--subButtonDateRange"
               w="100%"
               bgColor={dateRange === 7 && btnColor}
               onClick={() => setDateRange(7)}
