@@ -6,6 +6,7 @@ import {
   Spacer,
   Center,
   GridItem,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import GridBox from "../../local/GridBox"
 import Loading from "../../local/Loading"
@@ -19,7 +20,7 @@ const LandPicker = () => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const h = 500
+  const h = useBreakpointValue({ base: 300, md: 400, lg: "auto" })
 
   return (
     <GridBox box={box}>
