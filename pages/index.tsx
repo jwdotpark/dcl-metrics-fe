@@ -15,6 +15,7 @@ const axios = require("axios").default
 import fs from "fs"
 import { sendNotification } from "../src/lib/hooks/sendNotification"
 import Layout from "../src/components/layout/layout"
+import LandPicker from "../src/components/global/LandPicker"
 import UserLayout from "../src/components/layout/global/UserLayout"
 import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
@@ -138,6 +139,9 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       <Box w="100%">
+        <Box mb="4">
+          <LandPicker />
+        </Box>
         <Box mb="4">
           <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         </Box>
