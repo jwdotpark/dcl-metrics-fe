@@ -17,5 +17,4 @@ jobs:
           message: |
             <b>Pull Request</b> ${{ github.repository }}/${{ github.ref_name }}
             Url : ${{ github.event.pull_request.html_url }}
-            Commit: <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>
             Author: ${{ github.actor }}

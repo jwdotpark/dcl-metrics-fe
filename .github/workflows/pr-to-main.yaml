@@ -23,7 +23,6 @@ jobs:
             ⏳ <b>PR TO MAIN Build started!</b> ${{ github.repository }}/${{ github.ref_name }}
             Workflow: ${{ github.workflow }}
             By: ${{ github.actor }}
-            Commit: <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>
 
       - name: Install dependencies
         run: |
