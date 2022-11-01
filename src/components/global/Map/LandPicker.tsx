@@ -20,7 +20,8 @@ const LandPicker = () => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  const h = useBreakpointValue({ base: 300, md: 400, lg: "auto" })
+  // const h = useBreakpointValue({ base: 300, md: 400, lg: "auto" })
+  const h = "auto"
 
   return (
     <GridBox box={box}>
