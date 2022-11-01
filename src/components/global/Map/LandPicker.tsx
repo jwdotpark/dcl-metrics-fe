@@ -44,11 +44,11 @@ const LandPicker = () => {
         <Flex
           sx={{
             "& > * + *": {
-              ml: [0, 0, 0, 4],
+              ml: [0, 0, 0, 0, 4],
               mt: [4, 4, 4, 0],
             },
           }}
-          direction={["column", "column", "column", "row"]}
+          direction={["column", "column", "column", "column", "row"]}
           m="4"
           mb="4"
         >

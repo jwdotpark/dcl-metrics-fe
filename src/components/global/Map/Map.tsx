@@ -36,7 +36,7 @@ const Map = ({ h }) => {
   // create 4*4 grid
   const grid = {
     num: 1,
-    size: useBreakpointValue({ base: 100, md: 150, lg: 250 }),
+    size: useBreakpointValue({ base: 100, md: 150, lg: 200 }),
   }
 
   const minX = -Number(grid.num)
@@ -120,6 +120,9 @@ const Map = ({ h }) => {
                         onClick={() => handleCellClick()}
                       >
                         <Image
+                          sx={{
+                            filter: "brightness(50%)",
+                          }}
                           boxSize={grid.size}
                           minW={grid.size}
                           maxW={grid.size}
@@ -129,6 +132,14 @@ const Map = ({ h }) => {
                           alt="pic"
                           src={getPic(item.x, item.y)}
                         />
+                        <Box pos="absolute">
+                          <Text
+                            color={useColorModeValue("gray.800", "gray.200")}
+                            fontSize="xl"
+                          >
+                            [{item.value}]
+                          </Text>
+                        </Box>
                       </Center>
                     </Box>
                   ))}
