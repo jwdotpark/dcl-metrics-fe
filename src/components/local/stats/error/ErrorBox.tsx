@@ -58,7 +58,7 @@ const Warning = () => {
   )
 }
 
-const ErrorBox = ({ isError }) => {
+const ErrorBox = ({ error }) => {
   const box = {
     w: "100%",
     bg: useColorModeValue("white", "gray.800"),
@@ -67,7 +67,7 @@ const ErrorBox = ({ isError }) => {
   return (
     <Box mb="4" borderRadius="xl">
       <GridBox box={box}>
-        <Box h="100%">{isError ? <Warning /> : <Okay />}</Box>
+        <Box h="100%">{error ? <Warning /> : <Okay />}</Box>
       </GridBox>
     </Box>
   )
