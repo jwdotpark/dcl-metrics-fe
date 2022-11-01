@@ -11,6 +11,7 @@ import {
   Td,
   Tr,
 } from "@chakra-ui/react"
+import { useState } from "react"
 import CountUp from "react-countup"
 import GridBox from "../GridBox"
 import ErrorBox from "../stats/error/ErrorBox"
@@ -22,28 +23,26 @@ const StatusBox = ({ data }) => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
+  const [error, setError] = useState(false)
+
   const successRate = (success, total) => {
     return Math.floor((success / total) * 100)
   }
 
-  const successArr = Object.entries(data).map((item) => {
-    // @ts-ignore
-    return successRate(item[1].success_count, item[1].total_count)
-  })
-
-  const isError = successArr.some((item) => item < 95)
+  const dataArr = Object.entries(data)
 
   const successColor = (successRate) => {
     if (successRate >= 98) {
       return useColorModeValue("green.400", "#50fa7b")
     } else if (successRate < 98 && successRate >= 90) {
+      setError(true)
       return useColorModeValue("yellow.400", "#ffb86c")
     } else {
+      setError(true)
       return useColorModeValue("red.400", "#ff5555")
     }
   }
 
-  const dataArr = Object.entries(data)
   const StatusDataBox = () => {
     return (
       <>
@@ -132,7 +131,7 @@ const StatusBox = ({ data }) => {
 
   return (
     <Box w="100%">
-      <ErrorBox isError={isError} />
+      <ErrorBox error={error} />
       <StatusDataBox />
     </Box>
   )
