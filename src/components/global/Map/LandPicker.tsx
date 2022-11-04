@@ -10,7 +10,8 @@ import {
 } from "@chakra-ui/react"
 import GridBox from "../../local/GridBox"
 import Loading from "../../local/Loading"
-import Map from "./Map"
+import dynamic from "next/dynamic"
+const Map = dynamic(() => import("./Map"), { ssr: false })
 import MapInfo from "./MapInfo"
 
 const LandPicker = () => {
