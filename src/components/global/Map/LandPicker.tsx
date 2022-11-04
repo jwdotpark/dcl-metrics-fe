@@ -13,6 +13,7 @@ import Loading from "../../local/Loading"
 import dynamic from "next/dynamic"
 const Map = dynamic(() => import("./Map"), { ssr: false })
 import MapInfo from "./MapInfo"
+import { useState } from "react"
 
 const LandPicker = () => {
   const box = {
@@ -23,6 +24,10 @@ const LandPicker = () => {
 
   // const h = useBreakpointValue({ base: 300, md: 400, lg: "auto" })
   const h = "auto"
+  const [coord, setCoord] = useState({
+    x: 0,
+    y: 0,
+  })
 
   return (
     <GridBox box={box}>
@@ -54,8 +59,8 @@ const LandPicker = () => {
           m="4"
           mb="4"
         >
-          <Map h={h} />
-          <MapInfo h={h} />
+          <Map h={h} coord={coord} setCoord={setCoord} />
+          <MapInfo h={h} coord={coord} setCoord={setCoord} />
         </Flex>
       </Box>
     </GridBox>

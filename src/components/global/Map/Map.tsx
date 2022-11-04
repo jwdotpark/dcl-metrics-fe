@@ -15,7 +15,7 @@ import { useEffect, useState } from "react"
 import "react-tile-map/lib/styles.css"
 import { Coord, Layer, TileMap, TileMapProps } from "react-tile-map"
 
-const Map = ({ h }) => {
+const Map = ({ h, coord, setCoord }) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -101,11 +101,6 @@ const Map = ({ h }) => {
     }
   }
 
-  const [coord, setCoord] = useState({
-    x: 0,
-    y: 0,
-  })
-
   useEffect(() => {
     fetchTiles()
   }, [])
@@ -121,11 +116,6 @@ const Map = ({ h }) => {
         shadow="md"
       >
         <Box p="4">
-          <Box pos="absolute" zIndex="tooltip" m="2">
-            <Text fontSize="3xl">
-              [{coord.x}, {coord.y}]
-            </Text>
-          </Box>
           <Box overflow="hidden" h="500" borderRadius="xl">
             <TileMap
               isDraggable={true}
