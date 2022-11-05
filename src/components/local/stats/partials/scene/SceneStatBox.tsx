@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Box,
   useColorModeValue,
@@ -20,8 +21,11 @@ import moment from "moment"
 import { useState } from "react"
 import SceneHelpTooltip from "./SceneHelpTooltip"
 import { description, name } from "../../../../../lib/data/sceneInfo"
+import momentDurationFormatSetup from "moment-duration-format"
 
 const StatBox = ({ data, selectedScene }) => {
+  momentDurationFormatSetup(moment)
+
   // const [dataArr, setDataArr] = useState(Object.entries(data))
   const dataArr = Object.entries(data)
 
@@ -102,11 +106,12 @@ const StatBox = ({ data, selectedScene }) => {
                             fontSize={["md", "sm", "md", "md"]}
                             fontWeight="bold"
                           >
-                            {name === "Average Time Spent" ||
-                            name === "Average Time Spent AFK"
-                              ? moment
-                                  .utc(Number(value) * 1000)
-                                  .format(`hh:mm:ss`)
+                            {name === "Avg Time Spent" ||
+                            name === "Avg Time Spent AFK"
+                              ?
+                              moment.duration(Number(value), 'seconds').format(
+                                "h[h] m[m] s[s]",
+                              )
                               : value}
                             {name === "Visitors" && " users"}
                             {name === "Share of Global Visitors" && "%"}
@@ -157,10 +162,9 @@ const StatBox = ({ data, selectedScene }) => {
                             fontWeight="bold"
                           >
                             {/* @ts-ignore */}
-                            {name === "Average Complete Session Duration"
-                              ? moment
-                                  .utc(Number(value) * 1000)
-                                  .format(`hh:mm:ss`)
+                            {name === "Avg Complete Session Duration"
+                              ?
+                              moment.duration(Number(value), 'seconds').format("h[h] m[m] s[s]",)
                               : value}
                           </Text>
                         </Box>
