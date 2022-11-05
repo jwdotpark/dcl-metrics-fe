@@ -54,6 +54,10 @@ const Map = ({ h, coord, setCoord }) => {
   }
 
   // const { layers = [], onChange, onPopup, onClick, ...rest } = props
+  const [tempCoord, setTempCoord] = useState({
+    x: 0,
+    y: 0,
+  })
   const [tiles, setTiles] = useState([])
   const layers = []
   const highlights = []
@@ -115,11 +119,19 @@ const Map = ({ h, coord, setCoord }) => {
         borderRadius="xl"
         shadow="md"
       >
+        <Box pos="absolute" zIndex="banner" p="6">
+          <Text fontSize="2xl">
+            [{tempCoord.x}, {tempCoord.y}]
+          </Text>
+        </Box>
         <Box p="4">
           <Box overflow="hidden" h="500" borderRadius="xl">
             <TileMap
               isDraggable={true}
               layers={[layer, ...layers]}
+              onHover={(x, y) => {
+                setTempCoord({ x, y })
+              }}
               onClick={(x, y) => {
                 setCoord({ x, y })
                 onClickAtlasHandler(x, y)
