@@ -20,12 +20,12 @@ export const description = {
 export const name = {
   visitors: "Visitors",
   share_of_global_visitors: "Share of Global Visitors",
-  avg_time_spent: "Average Time Spent",
-  avg_time_spent_afk: "Average Time Spent AFK",
+  avg_time_spent: "Avg Time Spent",
+  avg_time_spent_afk: "Avg Time Spent AFK",
   total_logins: "Total Logins",
   unique_logins: "Unique Logins",
   total_logouts: "Total Logouts",
   unique_logouts: "Unique Logouts",
   complete_sessions: "Complete Sessions",
-  avg_complete_session_duration: "Average Complete Session Duration",
+  avg_complete_session_duration: "Avg Complete Session Duration",
 }
