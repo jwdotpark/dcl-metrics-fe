@@ -10,6 +10,7 @@ import {
   useBreakpointValue,
   Button,
   Spacer,
+  Spinner,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import "react-tile-map/lib/styles.css"
@@ -79,13 +80,17 @@ const Map = ({ h, coord, setCoord }) => {
     }
   }
 
+  const [isMapLoading, setIsMapLoading] = useState(false)
   const fetchTiles = async (
     url: string = "https://api.decentraland.org/v2/tiles"
   ) => {
     if (!window.fetch) return {}
+    alert("fetching tiles..")
+    setIsMapLoading(true)
     const resp = await window.fetch(url)
     const json = await resp.json()
     setTiles(json.data)
+    setIsMapLoading(false)
   }
 
   const layer = (x, y) => {
@@ -119,24 +124,32 @@ const Map = ({ h, coord, setCoord }) => {
         borderRadius="xl"
         shadow="md"
       >
-        <Box pos="absolute" zIndex="banner" p="6">
-          <Text fontSize="2xl">
-            [{tempCoord.x}, {tempCoord.y}]
-          </Text>
-        </Box>
         <Box p="4">
           <Box overflow="hidden" h="500" borderRadius="xl">
-            <TileMap
-              isDraggable={true}
-              layers={[layer, ...layers]}
-              onHover={(x, y) => {
-                setTempCoord({ x, y })
-              }}
-              onClick={(x, y) => {
-                setCoord({ x, y })
-                onClickAtlasHandler(x, y)
-              }}
-            />
+            {!isMapLoading ? (
+              <>
+                <Box pos="absolute" zIndex="banner" p="2">
+                  <Text fontSize="2xl">
+                    [{tempCoord.x}, {tempCoord.y}]
+                  </Text>
+                </Box>
+                <TileMap
+                  isDraggable={true}
+                  layers={[layer, ...layers]}
+                  onHover={(x, y) => {
+                    setTempCoord({ x, y })
+                  }}
+                  onClick={(x, y) => {
+                    setCoord({ x, y })
+                    onClickAtlasHandler(x, y)
+                  }}
+                />
+              </>
+            ) : (
+              <Center h="500px">
+                <Spinner />
+              </Center>
+            )}
           </Box>
         </Box>
       </GridItem>

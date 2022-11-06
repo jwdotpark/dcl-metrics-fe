@@ -1,5 +1,5 @@
 import { Text, Image, Box, GridItem, useColorModeValue } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 
 const MapInfo = ({ h, coord, setCoord }) => {
@@ -33,7 +33,7 @@ const MapInfo = ({ h, coord, setCoord }) => {
           <Box p="2">
             <Text fontSize="xl">
               <a target="_blank" rel="noopener noreferrer" href={external_url}>
-                {name}
+                name: {name}
               </a>
             </Text>
           </Box>
@@ -42,11 +42,11 @@ const MapInfo = ({ h, coord, setCoord }) => {
           </Box>
           <Box p="2">
             <Box>
-              <Text>{description ? description : "N/A"}</Text>
+              <Text>Description: {description ? description : "N/A"}</Text>
             </Box>
-            <Box>
-              <Text>{id ? id : "N/A"}</Text>
-            </Box>
+            {/* <Box>
+              <Text>Id: {id ? id : "N/A"}</Text>
+            </Box> */}
           </Box>
         </Box>
       </GridItem>
