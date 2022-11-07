@@ -76,7 +76,6 @@ const Map = ({ h, coord, setCoord }) => {
     if (land) {
       // land?.landId && setSelectedId && setSelectedId(land.landId)
       // setClickedLandId && setClickedLandId(x, y)
-      console.log(land)
     }
   }
 
@@ -85,7 +84,7 @@ const Map = ({ h, coord, setCoord }) => {
     url: string = "https://api.decentraland.org/v2/tiles"
   ) => {
     if (!window.fetch) return {}
-    alert("fetching tiles..")
+    console.log("fetching tiles..")
     setIsMapLoading(true)
     const resp = await window.fetch(url)
     const json = await resp.json()
@@ -110,12 +109,22 @@ const Map = ({ h, coord, setCoord }) => {
     }
   }
 
+  // when hover, make scroll speed slower
+  const [isHover, setIsHover] = useState(false)
   useEffect(() => {
     fetchTiles()
   }, [])
 
+  // make scroll speed slow
+  useEffect(() => {
+    if (isHover) {
+      window.scrollBy(0, 1)
+    } else {
+    }
+  }, [isHover])
+
   return (
-    <Box w={["100%", "100%", "100%", "80%"]} h={h}>
+    <Box w={["100%", "100%", "100%", "80%"]} h="auto">
       <GridItem
         sx={mapBoxCss}
         w={box.w}
@@ -125,16 +134,26 @@ const Map = ({ h, coord, setCoord }) => {
         shadow="md"
       >
         <Box p="4">
-          <Box overflow="hidden" h="500" borderRadius="xl">
+          <Box
+            overflow="hidden"
+            h={h}
+            borderRadius="xl"
+            onMouseEnter={() => {
+              setIsHover(true)
+            }}
+            onMouseLeave={() => {
+              setIsHover(false)
+            }}
+            shadow="md"
+          >
             {!isMapLoading ? (
               <>
                 <Box pos="absolute" zIndex="banner" p="2">
                   <Text fontSize="2xl">
-                    [{tempCoord.x}, {tempCoord.y}]
+                    {isHover && `[${tempCoord.x}, ${tempCoord.y}]`}
                   </Text>
                 </Box>
                 <TileMap
-                  isDraggable={true}
                   layers={[layer, ...layers]}
                   onHover={(x, y) => {
                     setTempCoord({ x, y })
@@ -146,7 +165,7 @@ const Map = ({ h, coord, setCoord }) => {
                 />
               </>
             ) : (
-              <Center h="500px">
+              <Center h={h}>
                 <Spinner />
               </Center>
             )}

@@ -27,7 +27,7 @@ const MapInfo = ({ h, coord, setCoord }) => {
   }, [coord])
 
   return (
-    <Box w={["100%", "100%", "100%", "20%"]} h={h}>
+    <Box w={["100%", "100%", "100%", "20%"]} h={`${h} + 2rem`}>
       <GridItem w={box.w} h="100%" mb="4" bg={box.bg} borderRadius="xl">
         <Box p="2">
           <Box p="2">

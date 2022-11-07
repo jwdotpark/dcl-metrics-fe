@@ -23,7 +23,7 @@ const LandPicker = () => {
   }
 
   // const h = useBreakpointValue({ base: 300, md: 400, lg: "auto" })
-  const h = "auto"
+  const h = "800"
   const [coord, setCoord] = useState({
     x: 0,
     y: 0,
