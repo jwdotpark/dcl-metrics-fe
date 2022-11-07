@@ -60,6 +60,9 @@ const Map = ({ h, coord, setCoord }) => {
     y: 0,
   })
   const [tiles, setTiles] = useState([])
+  const [isHover, setIsHover] = useState(false)
+  const [isMapLoading, setIsMapLoading] = useState(false)
+
   const layers = []
   const highlights = []
 
@@ -79,7 +82,27 @@ const Map = ({ h, coord, setCoord }) => {
     }
   }
 
-  const [isMapLoading, setIsMapLoading] = useState(false)
+  const [selected, setSelected] = useState([])
+  const isSelected = (x: number, y: number) => {
+    return selected.some((coord) => coord.x === x && coord.y === y)
+  }
+
+  const selectedStrokeLayer: Layer = (x, y) => {
+    return isSelected(x, y) ? { color: "#ff0044", scale: 1.2 } : null
+  }
+
+  const selectedFillLayer: Layer = (x, y) => {
+    return isSelected(x, y) ? { color: "#ff9990", scale: 1.2 } : null
+  }
+
+  const handleClick = (x: number, y: number) => {
+    if (isSelected(x, y)) {
+      setSelected(selected.filter((coord) => coord.x !== x && coord.y !== y))
+    } else {
+      setSelected([...selected, { x, y }])
+    }
+  }
+
   const fetchTiles = async (
     url: string = "https://api.decentraland.org/v2/tiles"
   ) => {
@@ -109,19 +132,13 @@ const Map = ({ h, coord, setCoord }) => {
     }
   }
 
-  // when hover, make scroll speed slower
-  const [isHover, setIsHover] = useState(false)
   useEffect(() => {
     fetchTiles()
   }, [])
 
-  // make scroll speed slow
-  useEffect(() => {
-    if (isHover) {
-      window.scrollBy(0, 1)
-    } else {
-    }
-  }, [isHover])
+  const onResetClick = () => {
+    setSelected([])
+  }
 
   return (
     <Box w={["100%", "100%", "100%", "80%"]} h="auto">
@@ -136,7 +153,7 @@ const Map = ({ h, coord, setCoord }) => {
         <Box p="4">
           <Box
             overflow="hidden"
-            h={h}
+            h="400"
             borderRadius="xl"
             onMouseEnter={() => {
               setIsHover(true)
@@ -148,24 +165,47 @@ const Map = ({ h, coord, setCoord }) => {
           >
             {!isMapLoading ? (
               <>
-                <Box pos="absolute" zIndex="banner" p="2">
-                  <Text fontSize="2xl">
-                    {isHover && `[${tempCoord.x}, ${tempCoord.y}]`}
-                  </Text>
-                </Box>
+                {isHover && (
+                  <Flex position="absolute" zIndex="banner" p="2" w="100%">
+                    <Box mr="2">
+                      <Button
+                        size="sm"
+                        borderRadius="xl"
+                        variant="solid"
+                        bg={useColorModeValue("gray.200", "gray.600")}
+                        onClick={() => onResetClick()}
+                      >
+                        Reset
+                      </Button>
+                    </Box>
+                  </Flex>
+                )}
+                {isHover && (
+                  <Box pos="absolute" bottom="4" left="4" zIndex="banner">
+                    <Text>
+                      [{tempCoord.x}, {tempCoord.y}]
+                    </Text>
+                  </Box>
+                )}
                 <TileMap
-                  layers={[layer, ...layers]}
+                  layers={[
+                    layer,
+                    selectedStrokeLayer,
+                    selectedFillLayer,
+                    ...layers,
+                  ]}
                   onHover={(x, y) => {
                     setTempCoord({ x, y })
                   }}
                   onClick={(x, y) => {
                     setCoord({ x, y })
+                    handleClick(x, y)
                     onClickAtlasHandler(x, y)
                   }}
                 />
               </>
             ) : (
-              <Center h={h}>
+              <Center h="400">
                 <Spinner />
               </Center>
             )}

@@ -14,7 +14,6 @@ const MapInfo = ({ h, coord, setCoord }) => {
   const fetchLand = async () => {
     const res = await fetch(baseUrl)
     const json = await res.json()
-    console.log(json)
     setLand(json)
   }
 
