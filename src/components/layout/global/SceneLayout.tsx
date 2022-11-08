@@ -9,7 +9,6 @@ import {
   Collapse,
   Button,
 } from "@chakra-ui/react"
-import staticScene from "../../../../public/data/top_scenes.json"
 import Scene from "../../local/stats/Scene"
 import ScenesLogin from "../../local/stats/scenes/ScenesLogin"
 import ScenesLogout from "../../local/stats/scenes/ScenesLogout"
