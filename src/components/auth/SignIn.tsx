@@ -52,24 +52,24 @@ const SignIn = () => {
       <Center>
         <VStack
           w={[300, 400, 500]}
-          border={useColorModeValue("gray.200", "gray.6s00")}
           h="100%"
-          bg={useColorModeValue("white", "gray.700")}
-          rounded="xl"
-          boxShadow="md"
           p={{ base: 4, sm: 8 }}
+          bg={useColorModeValue("white", "gray.700")}
+          border={useColorModeValue("gray.200", "gray.6s00")}
+          shadow="md"
+          rounded="xl"
           spacing={8}
         >
           <VStack w={[300, 400, 500]} borderRadius="xl">
             <form onSubmit={handleSubmit(onSubmit)} style={{ width: "80%" }}>
               {/* @ts-ignore */}
-              <FormControl isInvalid={errors.account} mb="4">
+              <FormControl mb="4" isInvalid={errors.account}>
                 <FormLabel>Account</FormLabel>
                 <Input
-                  variant="filled"
-                  rounded="xl"
                   id="account"
                   placeholder="name"
+                  rounded="xl"
+                  variant="filled"
                   {...register("account", {
                     required: "This is required",
                     minLength: {
@@ -83,15 +83,15 @@ const SignIn = () => {
                 </FormErrorMessage>
               </FormControl>
               {/* @ts-ignore */}
-              <FormControl isInvalid={errors.password} mb="4">
+              <FormControl mb="4" isInvalid={errors.password}>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
                   <Input
-                    variant="filled"
-                    rounded="xl"
                     id="password"
                     placeholder="password"
+                    rounded="xl"
                     type={show ? "text" : "password"}
+                    variant="filled"
                     {...register("password", {
                       required: "This is required",
                       minLength: {
@@ -100,15 +100,15 @@ const SignIn = () => {
                       },
                     })}
                   />
-                  <InputRightElement width="4.5rem">
+                  <InputRightElement w="4.5rem">
                     <Button
                       h="1.75rem"
-                      size="sm"
-                      rounded="xl"
                       bg={useColorModeValue("gray.300", "gray.700")}
                       _hover={{
                         bg: useColorModeValue("gray.400", "gray.800"),
                       }}
+                      rounded="xl"
+                      size="sm"
                       type="submit"
                       // onClick={handleClick}
                     >
@@ -140,13 +140,13 @@ const SignIn = () => {
                 <Button
                   w="100%"
                   mt={4}
-                  isLoading={isSubmitting}
-                  type="submit"
                   bg={useColorModeValue("gray.200", "gray.600")}
                   _hover={{
                     bg: useColorModeValue("gray.300", "gray.500"),
                   }}
+                  isLoading={isSubmitting}
                   rounded="xl"
+                  type="submit"
                 >
                   Submit
                 </Button>
