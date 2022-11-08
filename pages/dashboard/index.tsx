@@ -5,7 +5,7 @@ import SignIn from "../../src/components/auth/SignIn"
 const Dashboard = () => {
   return (
     <Layout>
-      <Center h="calc(100vh - 7rem)">
+      <Center h="calc(100vh - 8rem)">
         <SignIn />
       </Center>
     </Layout>

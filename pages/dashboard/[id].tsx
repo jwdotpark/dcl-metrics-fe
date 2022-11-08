@@ -1,4 +1,3 @@
-// @ts-nocheck
 import Layout from "../../src/components/layout/layout"
 
 import staticGlobal from "../../public/data/cached_global_response.json"
@@ -20,6 +19,7 @@ import {
   SceneDataAtom,
   AuthAtom,
 } from "../../src/lib/hooks/atoms"
+import { useEffect } from "react"
 
 const DashboardPage = () => {
   const router = useRouter()
@@ -34,6 +34,13 @@ const DashboardPage = () => {
   const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
   const [isAuthenticated] = useAtom(AuthAtom)
 
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/dashboard")
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated])
+
   return (
     <Layout>
       {isAuthenticated ? (
@@ -46,16 +53,6 @@ const DashboardPage = () => {
             </Center>
           </Box>
           <Scene res={sceneResult} />
-          {/* <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <TopScenesVisitors res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesLogout res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesTimeSpentAFK
-          res={result.scenes}
-          isSceneLoading={isDataLoading}
-        />
-      </Grid> */}
         </>
       ) : (
         <Center h="calc(100vh - 6rem)">
