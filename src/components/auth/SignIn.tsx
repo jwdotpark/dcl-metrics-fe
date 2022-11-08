@@ -36,14 +36,14 @@ const SignIn = () => {
   function onSubmit(values) {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
-        if (values.account === "admin" && values.password === "admin") {
+        if (values.account === "okja" && values.password === "1q2w") {
           setIsAuthenticated(true)
           router.push("/dashboard/[id]", `/dashboard/${values.account}`)
         } else {
           alert("Invalid account or password")
         }
         resolve()
-      }, 1000)
+      }, 500)
     })
   }
 

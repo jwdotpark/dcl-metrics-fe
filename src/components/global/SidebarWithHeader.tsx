@@ -165,6 +165,7 @@ const SidebarContent = ({
                 overflow="hidden"
               >
                 <Text as={router.pathname === "/" + name && "u"} fontSize="lg">
+                  {/* if name is dashboard, replace it with 'Private' */}
                   {name
                     ? name.charAt(0).toUpperCase() + name.slice(1)
                     : "Global"}

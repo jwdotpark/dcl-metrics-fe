@@ -34,15 +34,15 @@ const DashboardPage = () => {
   const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
   const [isAuthenticated] = useAtom(AuthAtom)
 
-  console.log(isAuthenticated)
-
   return (
     <Layout>
       {isAuthenticated ? (
         <>
           <Box w="100%" mb="4">
             <Center>
-              <Text fontSize="3xl">{id}</Text>
+              <Text fontSize="3xl">
+                {isAuthenticated && "Dashboard - " + id}
+              </Text>
             </Center>
           </Box>
           <Scene res={sceneResult} />
