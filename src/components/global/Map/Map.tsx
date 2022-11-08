@@ -155,25 +155,25 @@ const Map = ({ h, coord, setCoord }) => {
             overflow="hidden"
             h="400"
             borderRadius="xl"
+            shadow="md"
             onMouseEnter={() => {
               setIsHover(true)
             }}
             onMouseLeave={() => {
               setIsHover(false)
             }}
-            shadow="md"
           >
             {!isMapLoading ? (
               <>
                 {isHover && (
-                  <Flex position="absolute" zIndex="banner" p="2" w="100%">
+                  <Flex pos="absolute" zIndex="banner" w="100%" p="2">
                     <Box mr="2">
                       <Button
-                        size="sm"
-                        borderRadius="xl"
-                        variant="solid"
                         bg={useColorModeValue("gray.200", "gray.600")}
+                        borderRadius="xl"
                         onClick={() => onResetClick()}
+                        size="sm"
+                        variant="solid"
                       >
                         Reset
                       </Button>
@@ -181,7 +181,7 @@ const Map = ({ h, coord, setCoord }) => {
                   </Flex>
                 )}
                 {isHover && (
-                  <Box pos="absolute" bottom="4" left="4" zIndex="banner">
+                  <Box pos="absolute" zIndex="banner" bottom="4" left="4">
                     <Text>
                       [{tempCoord.x}, {tempCoord.y}]
                     </Text>
