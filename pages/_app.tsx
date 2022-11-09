@@ -5,15 +5,7 @@ import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
 
-// function SafeHydrate({ children }) {
-//   return (
-//     <div suppressHydrationWarning>
-//       {typeof window === "undefined" ? null : children}
-//     </div>
-//   )
-// }
-
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const telemetry = () => {
     return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }

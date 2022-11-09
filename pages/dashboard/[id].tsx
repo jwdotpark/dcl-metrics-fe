@@ -20,7 +20,7 @@ import {
   AuthAtom,
 } from "../../src/lib/hooks/atoms"
 import { useEffect, useState } from "react"
-import { convertStr } from "../../src/lib/hooks/utils"
+import { encrypt, decrypt } from "../../src/lib/hooks/utils"
 
 const DashboardPage = () => {
   const router = useRouter()
@@ -37,15 +37,16 @@ const DashboardPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
-    const auth = localStorage.getItem("auth")
-    const pathStr = JSON.stringify(convertStr(window.location.pathname))
-    if (auth !== pathStr) {
+    const auth = JSON.parse(localStorage.getItem("auth"))
+    const pathStr = window.location.pathname
+    if (decrypt(auth) !== pathStr) {
       setIsLoggedIn(false)
       router.push("/dashboard")
     } else {
       setIsLoggedIn(true)
     }
-  }, [router])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Layout>

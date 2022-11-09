@@ -20,7 +20,7 @@ import { useForm } from "react-hook-form"
 import { useRouter } from "next/router"
 import { AuthAtom } from "../../lib/hooks/atoms"
 import { useAtom } from "jotai"
-import { convertStr } from "../../lib/hooks/utils"
+import { encrypt } from "../../lib/hooks/utils"
 
 const SignIn = () => {
   const router = useRouter()
@@ -39,7 +39,7 @@ const SignIn = () => {
       setTimeout(() => {
         if (values.account === "okja" && values.password === "1q2w") {
           setBtnMsg("Sign In")
-          setIsAuthenticated(convertStr("/dashboard/" + values.account))
+          setIsAuthenticated(encrypt("/dashboard/" + values.account))
           router.push("/dashboard/[id]", `/dashboard/${values.account}`)
         } else {
           setBtnMsg("Invalid account or password")
@@ -56,7 +56,9 @@ const SignIn = () => {
           w={[300, 400, 500]}
           h="100%"
           p={{ base: 4, sm: 8 }}
+          // eslint-disable-next-line react-hooks/rules-of-hooks
           bg={useColorModeValue("white", "gray.700")}
+          // eslint-disable-next-line react-hooks/rules-of-hooks
           border={useColorModeValue("gray.200", "gray.6s00")}
           shadow="md"
           rounded="xl"
@@ -105,8 +107,10 @@ const SignIn = () => {
                   <InputRightElement w="4.5rem">
                     <Button
                       h="1.75rem"
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
                       bg={useColorModeValue("gray.300", "gray.700")}
                       _hover={{
+                        // eslint-disable-next-line react-hooks/rules-of-hooks
                         bg: useColorModeValue("gray.400", "gray.800"),
                       }}
                       rounded="xl"
@@ -149,6 +153,7 @@ const SignIn = () => {
                       : "red.400"
                   }
                   _hover={{
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
                     bg: useColorModeValue("gray.300", "gray.500"),
                   }}
                   isLoading={isSubmitting}
