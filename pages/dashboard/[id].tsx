@@ -54,7 +54,7 @@ const DashboardPage = () => {
         <>
           <Box w="100%" mb="4">
             <Center>
-              <Text fontSize="3xl">{isLoggedIn && "Dashboard - " + id}</Text>
+              <Text fontSize="3xl">{isLoggedIn && id}</Text>
             </Center>
           </Box>
           <Scene res={sceneResult} />
