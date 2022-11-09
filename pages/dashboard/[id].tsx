@@ -19,7 +19,8 @@ import {
   SceneDataAtom,
   AuthAtom,
 } from "../../src/lib/hooks/atoms"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { convertStr } from "../../src/lib/hooks/utils"
 
 const DashboardPage = () => {
   const router = useRouter()
@@ -32,24 +33,27 @@ const DashboardPage = () => {
   const [isDataLoading] = useAtom(LoadingStateAtom)
   const result = data.length !== 0 ? data : staticGlobal
   const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
-  const [isAuthenticated] = useAtom(AuthAtom)
+  // const [isAuthenticated, setIsAuthenticated] = useAtom(AuthAtom)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    const auth = localStorage.getItem("auth")
+    const pathStr = JSON.stringify(convertStr(window.location.pathname))
+    if (auth !== pathStr) {
+      setIsLoggedIn(false)
       router.push("/dashboard")
+    } else {
+      setIsLoggedIn(true)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated])
+  }, [router])
 
   return (
     <Layout>
-      {isAuthenticated ? (
+      {isLoggedIn ? (
         <>
           <Box w="100%" mb="4">
             <Center>
-              <Text fontSize="3xl">
-                {isAuthenticated && "Dashboard - " + id}
-              </Text>
+              <Text fontSize="3xl">{isLoggedIn && "Dashboard - " + id}</Text>
             </Center>
           </Box>
           <Scene res={sceneResult} />

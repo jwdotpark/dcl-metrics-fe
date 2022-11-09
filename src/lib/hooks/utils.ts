@@ -20,3 +20,11 @@ export const SceneColor = [
   "rgba(241, 150, 140)",
   "rgba(255, 121, 198)",
 ]
+
+export const convertStr = (str) => {
+  let hex = ""
+  for (let i = 0; i < str.length; i++) {
+    hex += "" + str.charCodeAt(i).toString(16)
+  }
+  return hex
+}

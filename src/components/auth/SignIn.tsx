@@ -20,6 +20,7 @@ import { useForm } from "react-hook-form"
 import { useRouter } from "next/router"
 import { AuthAtom } from "../../lib/hooks/atoms"
 import { useAtom } from "jotai"
+import { convertStr } from "../../lib/hooks/utils"
 
 const SignIn = () => {
   const router = useRouter()
@@ -38,7 +39,7 @@ const SignIn = () => {
       setTimeout(() => {
         if (values.account === "okja" && values.password === "1q2w") {
           setBtnMsg("Sign In")
-          setIsAuthenticated(true)
+          setIsAuthenticated(convertStr("/dashboard/" + values.account))
           router.push("/dashboard/[id]", `/dashboard/${values.account}`)
         } else {
           setBtnMsg("Invalid account or password")
