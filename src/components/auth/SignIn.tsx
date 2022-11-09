@@ -26,7 +26,7 @@ const SignIn = () => {
   const [show, setShow] = useState(false)
 
   const [isAuthenticated, setIsAuthenticated] = useAtom(AuthAtom)
-
+  const [btnMsg, setBtnMsg] = useState("Sign In")
   const {
     handleSubmit,
     register,
@@ -37,10 +37,11 @@ const SignIn = () => {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
         if (values.account === "okja" && values.password === "1q2w") {
+          setBtnMsg("Sign In")
           setIsAuthenticated(true)
           router.push("/dashboard/[id]", `/dashboard/${values.account}`)
         } else {
-          alert("Invalid account or password")
+          setBtnMsg("Invalid account or password")
         }
         resolve()
       }, 500)
@@ -140,7 +141,12 @@ const SignIn = () => {
                 <Button
                   w="100%"
                   mt={4}
-                  bg={useColorModeValue("gray.200", "gray.600")}
+                  bg={
+                    btnMsg === "Sign In"
+                      ? // eslint-disable-next-line react-hooks/rules-of-hooks
+                        useColorModeValue("gray.200", "gray.600")
+                      : "red.400"
+                  }
                   _hover={{
                     bg: useColorModeValue("gray.300", "gray.500"),
                   }}
@@ -148,7 +154,7 @@ const SignIn = () => {
                   rounded="xl"
                   type="submit"
                 >
-                  Submit
+                  {btnMsg}
                 </Button>
               </Box>
             </form>
