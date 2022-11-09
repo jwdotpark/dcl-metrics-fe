@@ -30,9 +30,10 @@ export const encrypt = (text) => {
 }
 
 export const decrypt = (ciphertext) => {
-  // remove " " from ciphertext
-  ciphertext = ciphertext.replace(/ /g, "+")
-  const bytes = CryptoJS.AES.decrypt(ciphertext, passPhrase)
-  const originalText = bytes.toString(CryptoJS.enc.Utf8)
-  return originalText
+  if (ciphertext) {
+    ciphertext = ciphertext.replace(/ /g, "+")
+    const bytes = CryptoJS.AES.decrypt(ciphertext, passPhrase)
+    const originalText = bytes.toString(CryptoJS.enc.Utf8)
+    return originalText
+  }
 }

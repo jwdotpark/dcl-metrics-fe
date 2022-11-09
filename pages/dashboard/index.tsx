@@ -7,17 +7,19 @@ import { useRouter } from "next/router"
 
 const Dashboard = () => {
   const router = useRouter()
-  const [isloggedIn, setIsloggedIn] = useState(false)
   const [auth, setAuth] = useState("")
-
+  
   useEffect(() => {
     setAuth(JSON.parse(localStorage.getItem("auth")))
+  }, [])
+
+  useEffect(() => {
     const path = decrypt(auth)
-    if (decrypt(auth)) {
+    if (path) {
       router.push(path)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [auth])
 
   return (
     <Layout>
