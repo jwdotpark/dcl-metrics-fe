@@ -29,6 +29,7 @@ import logo from "../../../public/images/logo.png"
 import { sidebarList } from "./sidebarList"
 import ColorButton from "./ColorButton"
 import PrivateDashboardButton from "./PrivateDashboardButton"
+import LogOutButton from "./LogOutButton"
 
 export default function SidebarWithHeader({
   children,
@@ -322,7 +323,12 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
         </HStack>
       </Box>
       <HStack spacing={{ base: "0", md: "6" }}>
-        {auth && <PrivateDashboardButton />}
+        {auth && (
+          <>
+            <PrivateDashboardButton />
+            <LogOutButton />
+          </>
+        )}
         <ColorButton />
       </HStack>
     </Flex>

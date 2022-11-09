@@ -7,7 +7,7 @@ const ColorButton = () => {
       <Tooltip
         p="2"
         fontSize="sm"
-        borderRadius="xl"
+        borderRadius="md"
         label="Toggle Color Mode"
         placement="auto"
       >
