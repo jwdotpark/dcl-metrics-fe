@@ -34,7 +34,6 @@
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
     "next": "12.2.3",
-    "next-auth": "^4.16.4",
     "next-ssl-redirect-middleware": "^0.1.4",
     "nextjs-cors": "^2.1.1",
     "react": "18.2.0",
