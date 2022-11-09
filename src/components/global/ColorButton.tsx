@@ -1,9 +1,4 @@
-import {
-  Button,
-  Tooltip,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react"
+import { Button, Tooltip, useColorMode } from "@chakra-ui/react"
 import { FiMoon, FiSun } from "react-icons/fi"
 const ColorButton = () => {
   const { colorMode, toggleColorMode } = useColorMode()

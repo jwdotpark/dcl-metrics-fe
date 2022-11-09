@@ -20,18 +20,7 @@ import {
   BoxProps,
   FlexProps,
 } from "@chakra-ui/react"
-import {
-  FiMenu,
-  FiArrowLeftCircle,
-  FiArrowRightCircle,
-  FiTrendingUp,
-  FiCompass,
-  FiAnchor,
-  FiUsers,
-  FiMapPin,
-  FiPackage,
-  FiActivity,
-} from "react-icons/fi"
+import { FiMenu, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi"
 import { IconType } from "react-icons"
 import { ReactText } from "react"
 import Link from "next/link"
@@ -39,6 +28,7 @@ import { useRouter } from "next/router"
 import logo from "../../../public/images/logo.png"
 import { sidebarList } from "./sidebarList"
 import ColorButton from "./ColorButton"
+import PrivateDashboardButton from "./PrivateDashboardButton"
 
 export default function SidebarWithHeader({
   children,
@@ -290,6 +280,7 @@ interface MobileProps extends FlexProps {
   onOpen: () => void
 }
 const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
+  const auth = JSON.parse(localStorage.getItem("auth"))
   return (
     <Flex
       // NOTE
@@ -330,8 +321,8 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
           </Text>
         </HStack>
       </Box>
-
       <HStack spacing={{ base: "0", md: "6" }}>
+        {auth && <PrivateDashboardButton />}
         <ColorButton />
       </HStack>
     </Flex>
