@@ -20,7 +20,9 @@ export async function getServerSideProps(context) {
     },
     body: JSON.stringify({ url: url }),
   })
+
   const dashboard = await res.json()
+  console.log(dashboard)
 
   return {
     props: { dashboard, name },
@@ -30,8 +32,8 @@ export async function getServerSideProps(context) {
 const DashboardPage = (props) => {
   const router = useRouter()
   const { dashboard, name } = props
-  const [res, setRes] = useState([dashboard.result])
-  const availableDate = dashboard.available_dates
+  const [res, setRes] = useState([dashboard.data.result])
+  const availableDate = dashboard.data.available_dates
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -39,6 +41,9 @@ const DashboardPage = (props) => {
   const [date, setDate] = useState(
     d.setTime(d.getTime() + d.getTimezoneOffset() * 60 * 1000)
   )
+
+  // delete
+  // const [date, setDate] = useState(new Date())
 
   const fetchResult = async (url) => {
     setIsLoading(true)
