@@ -34,27 +34,22 @@ const SignIn = () => {
     formState: { errors, isSubmitting },
   } = useForm()
 
-  const ups = process.env.NEXT_PUBLIC_UPS
-  const ups_pw = process.env.NEXT_PUBLIC_UPS_PW
-  const goldfish = process.env.NEXT_PUBLIC_GOLDFISH
-  const goldfish_pw = process.env.NEXT_PUBLIC_GOLDFISH_PW
-
-  function onSubmit(values) {
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        if (
-          (values.account === ups && values.password === ups_pw) ||
-          (values.account === goldfish && values.password === goldfish_pw)
-        ) {
-          setBtnMsg("Sign In")
-          setIsAuthenticated(encrypt("/dashboard/" + values.account))
-          router.push("/dashboard/[id]", `/dashboard/${values.account}`)
-        } else {
-          setBtnMsg("Invalid account or password")
-        }
-        resolve()
-      }, 500)
+  const onSubmit = async (data) => {
+    setBtnMsg("Signing In...")
+    const result = await fetch("/api/validate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
+    const res = await result.json()
+    if (res.isAuthenticated === true) {
+      setIsAuthenticated(encrypt("/dashboard/" + data.account))
+      router.push("/dashboard/[id]", `/dashboard/${data.account}`)
+    } else {
+      setBtnMsg("Invalid account or password")
+    }
   }
 
   return (
@@ -158,6 +153,9 @@ const SignIn = () => {
                     btnMsg === "Sign In"
                       ? // eslint-disable-next-line react-hooks/rules-of-hooks
                         useColorModeValue("gray.200", "gray.600")
+                      : btnMsg === "Signing In..."
+                      ? // eslint-disable-next-line react-hooks/rules-of-hooks
+                        useColorModeValue("gray.300", "gray.500")
                       : "red.400"
                   }
                   _hover={{
