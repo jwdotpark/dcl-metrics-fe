@@ -51,13 +51,14 @@ const DashboardPage = (props) => {
   )
 
   useEffect(() => {
+    // TODO fetch data with url through fixie proxy
     const target = new Date(date).toISOString().split("T")[0]
     const nextDay = new Date(target)
     nextDay.setDate(nextDay.getDate() + 1)
     const res = nextDay.toISOString().split("T")[0]
     const url = `https://dcl-metrics-be-staging.herokuapp.com/dashboard/${name}?date=${res}`
     console.log(url)
-    // TODO fetch data with url
+
     // eslint-disable-next-line
   }, [date])
 
