@@ -53,11 +53,10 @@ const DashboardPage = (props) => {
     nextDay.setDate(nextDay.getDate() + 1)
     const res = nextDay.toISOString().split("T")[0]
 
-    const isProd = process.env.NEXT_PUBLIC_ENV === "prod"
+    const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
     const url = isProd
-      ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}/dashboard/${name}?date=${res}`
-      : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}/dashboard/${name}?date=${res}`
-
+      ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}?date=${res}`
+      : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}?date=${res}`
     fetchResult(url)
     // eslint-disable-next-line
   }, [date])
