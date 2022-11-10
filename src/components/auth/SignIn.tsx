@@ -139,7 +139,7 @@ const SignIn = () => {
                     fontSize={{ base: "md", sm: "md" }}
                     onClick={() => {
                       alert(
-                        "WIP: link to admin email or discord id? Or implement password reset page?"
+                        "Please contact the administrator contact@dcl-metrics.com to find/reset your password."
                       )
                     }}
                   >
