@@ -34,14 +34,18 @@ const SignIn = () => {
     formState: { errors, isSubmitting },
   } = useForm()
 
-  const ups = process.env.NEXT_PUBLIC_ID
-  const goldFish = process.env.NEXT_PUBLIC_GOLDFISH
-  const pw = process.env.NEXT_PUBLIC_PW
+  const ups = process.env.NEXT_PUBLIC_UPS
+  const ups_pw = process.env.NEXT_PUBLIC_UPS_PW
+  const goldfish = process.env.NEXT_PUBLIC_GOLDFISH
+  const goldfish_pw = process.env.NEXT_PUBLIC_GOLDFISH_PW
 
   function onSubmit(values) {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
-        if (values.account === ups || (goldFish && values.password === pw)) {
+        if (
+          (values.account === ups && values.password === ups_pw) ||
+          (values.account === goldfish && values.password === goldfish_pw)
+        ) {
           setBtnMsg("Sign In")
           setIsAuthenticated(encrypt("/dashboard/" + values.account))
           router.push("/dashboard/[id]", `/dashboard/${values.account}`)
