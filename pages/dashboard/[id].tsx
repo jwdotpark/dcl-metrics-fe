@@ -12,7 +12,13 @@ export async function getServerSideProps(context) {
     ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}/dashboard/${name}`
     : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}/dashboard/${name}`
 
-  const res = await fetch(url)
+  const res = await fetch("/api/fetch", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ url: url }),
+  })
   const dashboard = await res.json()
 
   return {
