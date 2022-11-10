@@ -1,28 +1,17 @@
 import Layout from "../../src/components/layout/layout"
-
-// import staticGlobal from "../../public/data/cached_global_response.json"
-// import staticScene from "../../public/data/private/private_scenes_top.json"
-
 import { useRouter } from "next/router"
-import { Text, Center } from "@chakra-ui/react"
+import { Box, Text, Center } from "@chakra-ui/react"
 import Scene from "../../src/components/local/stats/Scene"
-// import ScenesLogin from "../../src/components/local/stats/scenes/ScenesLogin"
-// import ScenesLogout from "../../src/components/local/stats/scenes/ScenesLogout"
-// import ScenesTimeSpent from "../../src/components/local/stats/scenes/ScenesTimeSpent"
-// import ScenesTimeSpentAFK from "../../src/components/local/stats/scenes/ScenesTimeSpentAFK"
-// import TopScenesVisitors from "../../src/components/local/stats/scenes/TopScenesVisitors"
-import { useAtom } from "jotai"
-import {
-  DataAtom,
-  LoadingStateAtom,
-  SceneDataAtom,
-} from "../../src/lib/hooks/atoms"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
 
 export async function getServerSideProps(context) {
   const name = context.query.id
-  const url = `https://dcl-metrics-be-staging.herokuapp.com/dashboard/${name}`
+  const isProd = process.env.NEXT_PUBLIC_ENV === "prod"
+  const url = isProd
+    ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}/dashboard/${name}`
+    : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}/dashboard/${name}`
+
   const res = await fetch(url)
   const dashboard = await res.json()
 
@@ -32,33 +21,44 @@ export async function getServerSideProps(context) {
 }
 
 const DashboardPage = (props) => {
-  // const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const router = useRouter()
   const { dashboard, name } = props
-  const res = [dashboard.result]
+  const [res, setRes] = useState([dashboard.result])
   const availableDate = dashboard.available_dates
 
-  const [data] = useAtom(DataAtom)
-  const [sceneData] = useAtom(SceneDataAtom)
-  const [isDataLoading] = useAtom(LoadingStateAtom)
-  // const result = data.length !== 0 ? data : staticGlobal
-  // const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+  const [isLoading, setIsLoading] = useState(false)
   const d = new Date(availableDate[availableDate.length - 1])
   const [date, setDate] = useState(
     d.setTime(d.getTime() + d.getTimezoneOffset() * 60 * 1000)
   )
 
+  const fetchResult = async (url) => {
+    setIsLoading(true)
+    const response = await fetch("/api/fetch", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url: url }),
+    })
+    const data = await response.json()
+    setRes([data.data.result])
+    setIsLoading(false)
+  }
+
   useEffect(() => {
-    // TODO fetch data with url through fixie proxy
     const target = new Date(date).toISOString().split("T")[0]
     const nextDay = new Date(target)
     nextDay.setDate(nextDay.getDate() + 1)
     const res = nextDay.toISOString().split("T")[0]
-    const url = `https://dcl-metrics-be-staging.herokuapp.com/dashboard/${name}?date=${res}`
-    console.log(url)
 
+    const isProd = process.env.NEXT_PUBLIC_ENV === "prod"
+    const url = isProd
+      ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}/dashboard/${name}?date=${res}`
+      : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}/dashboard/${name}?date=${res}`
+
+    fetchResult(url)
     // eslint-disable-next-line
   }, [date])
 
@@ -77,14 +77,15 @@ const DashboardPage = (props) => {
   return (
     <Layout>
       {isLoggedIn ? (
-        <>
+        <Box minH="calc(100vh - 7rem)">
           <Scene
             res={res}
             date={date}
             setDate={setDate}
             availableDate={availableDate}
+            isLoading={isLoading}
           />
-        </>
+        </Box>
       ) : (
         <Center h="calc(100vh - 6rem)">
           <Text fontSize="3xl">You are not authenticated</Text>

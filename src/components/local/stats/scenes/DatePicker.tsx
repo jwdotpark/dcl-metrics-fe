@@ -4,22 +4,23 @@ import { SingleDatepicker } from "chakra-dayzed-datepicker"
 const DatePicker = ({ date, setDate, availableDate }) => {
   const minDate = new Date(availableDate[0])
   const maxDate = new Date(availableDate[availableDate.length - 1])
+
   // create var min  that is date type and 10 days ago from now
-  const min = new Date()
-  min.setDate(min.getDate() - 10)
-  const max = new Date()
-  max.setDate(max.getDate())
+  // const min = new Date()
+  // min.setDate(min.getDate() - 10)
+  // const max = new Date()
+  // max.setDate(max.getDate())
 
   return (
     <Box
-      w="135px"
+      w={["100%", "135px"]}
       border="2px solid"
       borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
     >
       <SingleDatepicker
-        minDate={min}
-        maxDate={max}
+        minDate={minDate}
+        maxDate={maxDate}
         name="date-input"
         date={date}
         onDateChange={setDate}

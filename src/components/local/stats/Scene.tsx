@@ -5,6 +5,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   Spacer,
+  Spinner,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import GridBox from "../GridBox"
@@ -18,7 +19,7 @@ import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
 import DatePicker from "./scenes/DatePicker"
 
-const Scene = ({ res, date, setDate, availableDate }) => {
+const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
   const [selectedScene, setSelectedScene] = useState(0)
   const {
     name,
@@ -46,7 +47,6 @@ const Scene = ({ res, date, setDate, availableDate }) => {
   return (
     <Box h="100%" mb="4" mx={[-4, 0]}>
       <GridBox box={box}>
-        {/* title */}
         <Flex pos="relative" mx="5">
           <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
             <Flex direction={["column", "row"]} w="100%">
@@ -56,12 +56,19 @@ const Scene = ({ res, date, setDate, availableDate }) => {
                 </Text>
               </Box>
               <Spacer />
-              {!hasMultipleScenes && (
-                <DatePicker
-                  date={date}
-                  setDate={setDate}
-                  availableDate={availableDate}
-                />
+              {!hasMultipleScenes && !isLoading && (
+                <Box>
+                  <DatePicker
+                    date={date}
+                    setDate={setDate}
+                    availableDate={availableDate}
+                  />
+                </Box>
+              )}
+              {isLoading && (
+                <Box pt="4" pr="4">
+                  <Spinner />
+                </Box>
               )}
             </Flex>
             <Spacer />
@@ -78,7 +85,6 @@ const Scene = ({ res, date, setDate, availableDate }) => {
           )}
         </Box>
 
-        {/* components */}
         <Box m="4">
           <Flex
             sx={{
@@ -126,7 +132,6 @@ const Scene = ({ res, date, setDate, availableDate }) => {
             direction={["column", "column", "column", "row"]}
             w="100%"
             h="auto"
-            // mb={[4, 0, 4, 4]}
             mb="4"
           >
             <Box w={["100%", "100%", "100%", "35%"]}>
