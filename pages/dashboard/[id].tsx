@@ -22,8 +22,6 @@ export async function getServerSideProps(context) {
   })
 
   const dashboard = await res.json()
-  console.log(dashboard)
-
   return {
     props: { dashboard, name },
   }
@@ -41,9 +39,6 @@ const DashboardPage = (props) => {
   const [date, setDate] = useState(
     d.setTime(d.getTime() + d.getTimezoneOffset() * 60 * 1000)
   )
-
-  // delete
-  // const [date, setDate] = useState(new Date())
 
   const fetchResult = async (url) => {
     setIsLoading(true)
@@ -71,7 +66,7 @@ const DashboardPage = (props) => {
       : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}?date=${res}`
     fetchResult(url)
     // eslint-disable-next-line
-  }, [date])
+  }, [setDate])
 
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth"))
