@@ -20,31 +20,38 @@ import { useForm } from "react-hook-form"
 import { useRouter } from "next/router"
 import { AuthAtom } from "../../lib/hooks/atoms"
 import { useAtom } from "jotai"
+import { encrypt } from "../../lib/hooks/utils"
 
 const SignIn = () => {
   const router = useRouter()
   const [show, setShow] = useState(false)
 
   const [isAuthenticated, setIsAuthenticated] = useAtom(AuthAtom)
-
+  const [btnMsg, setBtnMsg] = useState("Sign In")
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
   } = useForm()
 
-  function onSubmit(values) {
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        if (values.account === "admin" && values.password === "admin") {
-          setIsAuthenticated(true)
-          router.push("/dashboard/[id]", `/dashboard/${values.account}`)
-        } else {
-          alert("Invalid account or password")
-        }
-        resolve()
-      }, 1000)
+  const onSubmit = async (data) => {
+    setBtnMsg("Signing In...")
+    const result = await fetch("/api/validate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
+    const res = await result.json()
+    if (res.isAuthenticated === true) {
+      setIsAuthenticated(encrypt("/dashboard/" + data.account))
+      // set data.account to localstorage
+      localStorage.setItem("account", data.account)
+      router.push("/dashboard/[id]", `/dashboard/${data.account}`)
+    } else {
+      setBtnMsg("Invalid account or password")
+    }
   }
 
   return (
@@ -54,7 +61,9 @@ const SignIn = () => {
           w={[300, 400, 500]}
           h="100%"
           p={{ base: 4, sm: 8 }}
+          // eslint-disable-next-line react-hooks/rules-of-hooks
           bg={useColorModeValue("white", "gray.700")}
+          // eslint-disable-next-line react-hooks/rules-of-hooks
           border={useColorModeValue("gray.200", "gray.6s00")}
           shadow="md"
           rounded="xl"
@@ -103,8 +112,10 @@ const SignIn = () => {
                   <InputRightElement w="4.5rem">
                     <Button
                       h="1.75rem"
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
                       bg={useColorModeValue("gray.300", "gray.700")}
                       _hover={{
+                        // eslint-disable-next-line react-hooks/rules-of-hooks
                         bg: useColorModeValue("gray.400", "gray.800"),
                       }}
                       rounded="xl"
@@ -128,7 +139,7 @@ const SignIn = () => {
                     fontSize={{ base: "md", sm: "md" }}
                     onClick={() => {
                       alert(
-                        "WIP: link to admin email or discord id? Or implement password reset page?"
+                        "Please contact the administrator contact@dcl-metrics.com to find/reset your password."
                       )
                     }}
                   >
@@ -140,15 +151,24 @@ const SignIn = () => {
                 <Button
                   w="100%"
                   mt={4}
-                  bg={useColorModeValue("gray.200", "gray.600")}
+                  bg={
+                    btnMsg === "Sign In"
+                      ? // eslint-disable-next-line react-hooks/rules-of-hooks
+                        useColorModeValue("gray.200", "gray.600")
+                      : btnMsg === "Signing In..."
+                      ? // eslint-disable-next-line react-hooks/rules-of-hooks
+                        useColorModeValue("gray.300", "gray.500")
+                      : "red.400"
+                  }
                   _hover={{
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
                     bg: useColorModeValue("gray.300", "gray.500"),
                   }}
                   isLoading={isSubmitting}
                   rounded="xl"
                   type="submit"
                 >
-                  Submit
+                  {btnMsg}
                 </Button>
               </Box>
             </form>

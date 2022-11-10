@@ -6,6 +6,7 @@ import {
   FiMapPin,
   FiPackage,
   FiActivity,
+  FiLock,
 } from "react-icons/fi"
 
 export const sidebarList = {
@@ -33,6 +34,12 @@ export const sidebarList = {
     icon: FiPackage,
     subItem: true,
   },
+  // private: {
+  //   label: "Private Dashboard",
+  //   name: "dashboard",
+  //   icon: FiLock,
+  //   subItem: false,
+  // },
   status: {
     label: "Status",
     name: "status",

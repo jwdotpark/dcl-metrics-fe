@@ -1,3 +1,5 @@
+import CryptoJS from "crypto-js"
+
 export const convertSeconds = (seconds: number) => {
   const hrs = `0${Math.floor(seconds / 3600)}`.slice(-3)
   const min =
@@ -20,3 +22,18 @@ export const SceneColor = [
   "rgba(241, 150, 140)",
   "rgba(255, 121, 198)",
 ]
+
+const passPhrase = "okgu"
+
+export const encrypt = (text) => {
+  return CryptoJS.AES.encrypt(text, passPhrase).toString()
+}
+
+export const decrypt = (ciphertext) => {
+  if (ciphertext) {
+    ciphertext = ciphertext.replace(/ /g, "+")
+    const bytes = CryptoJS.AES.decrypt(ciphertext, passPhrase)
+    const originalText = bytes.toString(CryptoJS.enc.Utf8)
+    return originalText
+  }
+}

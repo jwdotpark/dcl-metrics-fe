@@ -292,7 +292,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.8.7":
+"@babel/runtime@^7.6.2", "@babel/runtime@^7.8.7":
   version "7.20.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.1.tgz#1148bb33ab252b165a06698fde7576092a78b4a9"
   integrity sha512-mrzLkl6U9YLF8qpqI7TB82PESyEGjm/0Ly91jG575eVxMMlb8fYfOXFZIJ8XfLrJZQbm7dlKry2bJmXBUEkdFg==
@@ -2503,6 +2503,13 @@ caniuse-lite@^1.0.30001370:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001378.tgz#3d2159bf5a8f9ca093275b0d3ecc717b00f27b67"
   integrity sha512-JVQnfoO7FK7WvU4ZkBRbPjaot4+YqxogSDosHv0Hv5mWpUESmN+UubMU6L/hGz8QlQ2aY5U0vR6MOs6j/CXpNA==
 
+chakra-dayzed-datepicker@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/chakra-dayzed-datepicker/-/chakra-dayzed-datepicker-0.2.5.tgz#1d7170f30326a7bf546473840b9b01f1788b9719"
+  integrity sha512-nkTgP2G9lQGnttnBL9YCTiYSvDyBwBIwDseEgbUL0XE3YJgwZttsaX514Ap4MJf2YBof12QcXR7QlnMXAsiycw==
+  dependencies:
+    react-focus-lock "^2.5.2"
+
 chalk@^2.0.0:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
@@ -2660,6 +2667,11 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
+
 css-box-model@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/css-box-model/-/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
@@ -2798,6 +2810,19 @@ data-urls@^3.0.1:
     abab "^2.0.6"
     whatwg-mimetype "^3.0.0"
     whatwg-url "^11.0.0"
+
+date-fns@^2.0.0, date-fns@^2.29.3:
+  version "2.29.3"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.29.3.tgz#27402d2fc67eb442b511b70bbdf98e6411cd68a8"
+  integrity sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==
+
+dayzed@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/dayzed/-/dayzed-3.2.3.tgz#78c5ab7e28579cd3c0f9f848b744ac5c768e9a22"
+  integrity sha512-qXTIKs+R6ydWwNo+X1wu3lUptyRSGoyY+ZzRcQSM0zUlaG+/Ei+bFjqbQm1T2oJ+WKNkTHURBcGsxnx9N+9kfA==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    date-fns "^2.0.0"
 
 debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.4:
   version "4.3.4"
@@ -4984,7 +5009,7 @@ react-fast-compare@3.2.0:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
-react-focus-lock@^2.9.1:
+react-focus-lock@^2.5.2, react-focus-lock@^2.9.1:
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.9.1.tgz#094cfc19b4f334122c73bb0bff65d77a0c92dd16"
   integrity sha512-pSWOQrUmiKLkffPO6BpMXN7SNKXMsuOakl652IBuALAu1esk+IcpJyM+ALcYzPTTFz1rD0R54aB9A4HuP5t1Wg==
@@ -5070,11 +5095,6 @@ react-tile-map@^0.3.3:
     react-virtualized "^9.21.1"
     touch-pinch "^1.0.1"
     touch-position "^2.0.0"
-
-react-use-draggable-scroll@^0.4.7:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/react-use-draggable-scroll/-/react-use-draggable-scroll-0.4.7.tgz#86e77caab921ca07b134e9e1d1bc1810aeee4916"
-  integrity sha512-6gCxGPO9WV5dIsBaDrgUKBaac8CY07PkygcArfajijYSNDwAq0girDRjaBuF1+lRqQryoLFQfpVaV2u/Yh6CrQ==
 
 react-virtualized@^9.21.1:
   version "9.22.3"
