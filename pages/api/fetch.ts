@@ -3,6 +3,7 @@ const axios = require("axios").default
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { url } = req.body
+  console.log(url)
   if (req.method === "POST") {
     // fixie
     const response = await axios.get(url, {

@@ -9,10 +9,11 @@ export async function getServerSideProps(context) {
   const name = context.query.id
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
   const url = isProd
-    ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}/dashboard/${name}`
-    : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}/dashboard/${name}`
+    ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}`
+    : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}`
 
-  const res = await fetch("/api/fetch", {
+  const absURL = "https://dcl-metrics.com/api/fetch"
+  const res = await fetch(absURL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
