@@ -46,6 +46,8 @@ const SignIn = () => {
     const res = await result.json()
     if (res.isAuthenticated === true) {
       setIsAuthenticated(encrypt("/dashboard/" + data.account))
+      // set data.account to localstorage
+      localStorage.setItem("account", data.account)
       router.push("/dashboard/[id]", `/dashboard/${data.account}`)
     } else {
       setBtnMsg("Invalid account or password")
