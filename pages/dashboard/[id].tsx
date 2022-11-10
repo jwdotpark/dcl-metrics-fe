@@ -7,7 +7,7 @@ import { decrypt } from "../../src/lib/hooks/utils"
 
 export async function getServerSideProps(context) {
   const name = context.query.id
-  const isProd = process.env.NEXT_PUBLIC_ENV === "prod"
+  const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
   const url = isProd
     ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}/dashboard/${name}`
     : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}/dashboard/${name}`
