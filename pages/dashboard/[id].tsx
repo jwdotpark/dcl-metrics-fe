@@ -22,6 +22,8 @@ import {
 import { useEffect, useState } from "react"
 import { encrypt, decrypt } from "../../src/lib/hooks/utils"
 
+
+
 const DashboardPage = () => {
   const router = useRouter()
   const { id } = router.query
@@ -52,11 +54,6 @@ const DashboardPage = () => {
     <Layout>
       {isLoggedIn ? (
         <>
-          <Box w="100%" mb="4">
-            <Center>
-              <Text fontSize="3xl">{isLoggedIn && id}</Text>
-            </Center>
-          </Box>
           <Scene res={sceneResult} />
         </>
       ) : (
