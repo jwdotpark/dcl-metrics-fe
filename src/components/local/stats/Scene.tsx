@@ -16,6 +16,7 @@ import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
+import DatePicker from "./scenes/DatePicker"
 
 const Scene = ({ res }) => {
   const [selectedScene, setSelectedScene] = useState(0)
@@ -55,6 +56,7 @@ const Scene = ({ res }) => {
                 </Text>
               </Box>
               <Spacer />
+              <DatePicker />
             </Flex>
             <Spacer />
           </Flex>

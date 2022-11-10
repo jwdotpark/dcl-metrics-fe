@@ -44,6 +44,8 @@ const DashboardPage = (props) => {
   // const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+  // const [date, setDate] = useState(new Date())
+
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth"))
     const pathStr = window.location.pathname
