@@ -40,6 +40,8 @@ const Scene = ({ res }) => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
+  const hasMultipleScenes = res.length > 1 ? true : false
+
   return (
     <Box h="100%" mb="4" mx={[-4, 0]}>
       <GridBox box={box}>
@@ -58,10 +60,14 @@ const Scene = ({ res }) => {
           </Flex>
         </Flex>
         <Box ml="5" mx="6">
-          <Text color="gray.500" fontSize={["xs", "sm"]}>
-            Most populated scene in Decentraland on{" "}
-            <i>{moment(res[selectedScene].date).format("dddd MMM. Do YYYY")}</i>
-          </Text>
+          {hasMultipleScenes && (
+            <Text color="gray.500" fontSize={["xs", "sm"]}>
+              Most populated scene in Decentraland on{" "}
+              <i>
+                {moment(res[selectedScene].date).format("dddd MMM. Do YYYY")}
+              </i>
+            </Text>
+          )}
         </Box>
 
         {/* components */}
@@ -79,15 +85,17 @@ const Scene = ({ res }) => {
             mb="4"
           >
             <Box w={["100%", "100%", "100%", "35%"]}>
-              <Box mb="2">
-                <SceneSelector
-                  res={res}
-                  name={name}
-                  selectedScene={selectedScene}
-                  setSelectedScene={setSelectedScene}
-                />
-              </Box>
-              <SceneMap url={map_url} />
+              {hasMultipleScenes && (
+                <Box mb="2">
+                  <SceneSelector
+                    res={res}
+                    name={name}
+                    selectedScene={selectedScene}
+                    setSelectedScene={setSelectedScene}
+                  />
+                </Box>
+              )}
+              <SceneMap url={map_url} height={!hasMultipleScenes ? 450 : 405} />
             </Box>
             <Box
               w={["100%", "100%", "100%", "65%"]}

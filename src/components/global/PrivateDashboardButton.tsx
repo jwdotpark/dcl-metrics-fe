@@ -19,7 +19,6 @@ const PrivateDashboardButton = () => {
   }, [])
 
   const title = localStorage.getItem("account")
-  console.log(title)
 
   return (
     <>

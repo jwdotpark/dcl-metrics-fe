@@ -1,41 +1,47 @@
 import Layout from "../../src/components/layout/layout"
 
-import staticGlobal from "../../public/data/cached_global_response.json"
-// import staticScene from "../../public/data/cached_scenes_top.json"
-import staticScene from "../../public/data/private/private_scenes_top.json"
+// import staticGlobal from "../../public/data/cached_global_response.json"
+// import staticScene from "../../public/data/private/private_scenes_top.json"
 
 import { useRouter } from "next/router"
-import { Box, Grid, Text, useBreakpointValue, Center } from "@chakra-ui/react"
+import { Text, Center } from "@chakra-ui/react"
 import Scene from "../../src/components/local/stats/Scene"
-import ScenesLogin from "../../src/components/local/stats/scenes/ScenesLogin"
-import ScenesLogout from "../../src/components/local/stats/scenes/ScenesLogout"
-import ScenesTimeSpent from "../../src/components/local/stats/scenes/ScenesTimeSpent"
-import ScenesTimeSpentAFK from "../../src/components/local/stats/scenes/ScenesTimeSpentAFK"
-import TopScenesVisitors from "../../src/components/local/stats/scenes/TopScenesVisitors"
+// import ScenesLogin from "../../src/components/local/stats/scenes/ScenesLogin"
+// import ScenesLogout from "../../src/components/local/stats/scenes/ScenesLogout"
+// import ScenesTimeSpent from "../../src/components/local/stats/scenes/ScenesTimeSpent"
+// import ScenesTimeSpentAFK from "../../src/components/local/stats/scenes/ScenesTimeSpentAFK"
+// import TopScenesVisitors from "../../src/components/local/stats/scenes/TopScenesVisitors"
 import { useAtom } from "jotai"
 import {
   DataAtom,
   LoadingStateAtom,
   SceneDataAtom,
-  AuthAtom,
 } from "../../src/lib/hooks/atoms"
 import { useEffect, useState } from "react"
-import { encrypt, decrypt } from "../../src/lib/hooks/utils"
+import { decrypt } from "../../src/lib/hooks/utils"
 
+export async function getServerSideProps(context) {
+  const name = context.query.id
+  const url = `https://dcl-metrics-be-staging.herokuapp.com/dashboard/${name}`
+  const res = await fetch(url)
+  const dashboard = await res.json()
 
+  return {
+    props: { dashboard },
+  }
+}
 
-const DashboardPage = () => {
+const DashboardPage = (props) => {
+  // const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const router = useRouter()
-  const { id } = router.query
-
-  const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
+  const { dashboard } = props
+  const res = [dashboard.result]
 
   const [data] = useAtom(DataAtom)
   const [sceneData] = useAtom(SceneDataAtom)
   const [isDataLoading] = useAtom(LoadingStateAtom)
-  const result = data.length !== 0 ? data : staticGlobal
-  const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
-  // const [isAuthenticated, setIsAuthenticated] = useAtom(AuthAtom)
+  // const result = data.length !== 0 ? data : staticGlobal
+  // const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -54,7 +60,7 @@ const DashboardPage = () => {
     <Layout>
       {isLoggedIn ? (
         <>
-          <Scene res={sceneResult} />
+          <Scene res={res} />
         </>
       ) : (
         <Center h="calc(100vh - 6rem)">
