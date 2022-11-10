@@ -66,7 +66,7 @@ const DashboardPage = (props) => {
       : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}?date=${res}`
     fetchResult(url)
     // eslint-disable-next-line
-  }, [setDate])
+  }, [date])
 
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth"))
