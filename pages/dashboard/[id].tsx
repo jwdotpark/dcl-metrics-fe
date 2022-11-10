@@ -27,15 +27,16 @@ export async function getServerSideProps(context) {
   const dashboard = await res.json()
 
   return {
-    props: { dashboard },
+    props: { dashboard, name },
   }
 }
 
 const DashboardPage = (props) => {
   // const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const router = useRouter()
-  const { dashboard } = props
+  const { dashboard, name } = props
   const res = [dashboard.result]
+  const availableDate = dashboard.available_dates
 
   const [data] = useAtom(DataAtom)
   const [sceneData] = useAtom(SceneDataAtom)
@@ -44,7 +45,21 @@ const DashboardPage = (props) => {
   // const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  // const [date, setDate] = useState(new Date())
+  const d = new Date(availableDate[availableDate.length - 1])
+  const [date, setDate] = useState(
+    d.setTime(d.getTime() + d.getTimezoneOffset() * 60 * 1000)
+  )
+
+  useEffect(() => {
+    const target = new Date(date).toISOString().split("T")[0]
+    const nextDay = new Date(target)
+    nextDay.setDate(nextDay.getDate() + 1)
+    const res = nextDay.toISOString().split("T")[0]
+    const url = `https://dcl-metrics-be-staging.herokuapp.com/dashboard/${name}?date=${res}`
+    console.log(url)
+    // TODO fetch data with url
+    // eslint-disable-next-line
+  }, [date])
 
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth"))
@@ -62,7 +77,12 @@ const DashboardPage = (props) => {
     <Layout>
       {isLoggedIn ? (
         <>
-          <Scene res={res} />
+          <Scene
+            res={res}
+            date={date}
+            setDate={setDate}
+            availableDate={availableDate}
+          />
         </>
       ) : (
         <Center h="calc(100vh - 6rem)">

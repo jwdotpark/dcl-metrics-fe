@@ -18,7 +18,7 @@ import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
 import DatePicker from "./scenes/DatePicker"
 
-const Scene = ({ res }) => {
+const Scene = ({ res, date, setDate, availableDate }) => {
   const [selectedScene, setSelectedScene] = useState(0)
   const {
     name,
@@ -56,7 +56,13 @@ const Scene = ({ res }) => {
                 </Text>
               </Box>
               <Spacer />
-              <DatePicker />
+              {!hasMultipleScenes && (
+                <DatePicker
+                  date={date}
+                  setDate={setDate}
+                  availableDate={availableDate}
+                />
+              )}
             </Flex>
             <Spacer />
           </Flex>

@@ -1,9 +1,15 @@
 import { Box, useColorModeValue } from "@chakra-ui/react"
 import { SingleDatepicker } from "chakra-dayzed-datepicker"
-import { useState } from "react"
 
-const DatePicker = () => {
-  const [date, setDate] = useState(new Date())
+const DatePicker = ({ date, setDate, availableDate }) => {
+  const minDate = new Date(availableDate[0])
+  const maxDate = new Date(availableDate[availableDate.length - 1])
+  // create var min  that is date type and 10 days ago from now
+  const min = new Date()
+  min.setDate(min.getDate() - 10)
+  const max = new Date()
+  max.setDate(max.getDate())
+
   return (
     <Box
       w="135px"
@@ -12,6 +18,8 @@ const DatePicker = () => {
       borderRadius="xl"
     >
       <SingleDatepicker
+        minDate={min}
+        maxDate={max}
         name="date-input"
         date={date}
         onDateChange={setDate}
@@ -20,7 +28,8 @@ const DatePicker = () => {
             popoverBodyProps: {
               borderRadius: "xl",
               shadow: "md",
-              bg: useColorModeValue("gray.100", "gray.600"),
+              bg: useColorModeValue("gray.50", "gray.800"),
+              border: "none",
             },
             popoverContentProps: {
               borderRadius: "xl",
@@ -30,10 +39,12 @@ const DatePicker = () => {
           dateNavBtnProps: {
             colorScheme: "gray",
             variant: "solid",
+            size: "xs",
             borderRadius: "xl",
           },
           dayOfMonthBtnProps: {
             defaultBtnProps: {
+              border: "none",
               borderRadius: "xl",
               bg: useColorModeValue("gray.200", "gray.700"),
               borderColor: useColorModeValue("gray.200", "gray.600"),
@@ -45,13 +56,13 @@ const DatePicker = () => {
               color: "green.400",
             },
             selectedBtnProps: {
-              background: useColorModeValue("gray.100", "gray.700"),
+              bg: useColorModeValue("gray.100", "gray.700"),
               color: useColorModeValue("#ff5555", "#50fa7b"),
               fontWeight: "bold",
             },
             todayBtnProps: {
-              background: useColorModeValue("gray.300", "gray.600"),
-              borderColor: useColorModeValue("gray.200", "gray.600"),
+              bg: useColorModeValue("teal.100", "teal.700"),
+              borderColor: useColorModeValue("teal.100", "teal.700"),
             },
           },
         }}
