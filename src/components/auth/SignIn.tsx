@@ -27,7 +27,6 @@ import { encrypt } from "../../lib/hooks/utils"
 const SignIn = () => {
   const router = useRouter()
   const [show, setShow] = useState(false)
-
   const [isAuthenticated, setIsAuthenticated] = useAtom(AuthAtom)
   const [btnMsg, setBtnMsg] = useState("Sign In")
   const {
@@ -35,6 +34,8 @@ const SignIn = () => {
     register,
     formState: { errors, isSubmitting },
   } = useForm()
+
+  const handleClick = () => setShow(!show)
 
   const onSubmit = async (data) => {
     setBtnMsg("Signing In...")
@@ -114,16 +115,14 @@ const SignIn = () => {
                   <InputRightElement w="4.5rem">
                     <Button
                       h="1.75rem"
-                      // eslint-disable-next-line react-hooks/rules-of-hooks
                       bg={useColorModeValue("gray.300", "gray.700")}
                       _hover={{
-                        // eslint-disable-next-line react-hooks/rules-of-hooks
                         bg: useColorModeValue("gray.400", "gray.800"),
                       }}
+                      onClick={handleClick}
                       rounded="xl"
                       size="sm"
                       type="submit"
-                      // onClick={handleClick}
                     >
                       {show ? "Hide" : "Show"}
                     </Button>
