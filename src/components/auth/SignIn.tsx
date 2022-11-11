@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from "react"
 import {
   Box,
@@ -15,6 +16,7 @@ import {
   Link,
   FormErrorMessage,
   Spacer,
+  Spinner,
 } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
 import { useRouter } from "next/router"
@@ -153,22 +155,20 @@ const SignIn = () => {
                   mt={4}
                   bg={
                     btnMsg === "Sign In"
-                      ? // eslint-disable-next-line react-hooks/rules-of-hooks
-                        useColorModeValue("gray.200", "gray.600")
+                      ? useColorModeValue("gray.200", "gray.600")
                       : btnMsg === "Signing In..."
-                      ? // eslint-disable-next-line react-hooks/rules-of-hooks
-                        useColorModeValue("gray.300", "gray.500")
+                      ? useColorModeValue("gray.300", "gray.500")
                       : "red.400"
                   }
                   _hover={{
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
                     bg: useColorModeValue("gray.300", "gray.500"),
                   }}
                   isLoading={isSubmitting}
                   rounded="xl"
                   type="submit"
                 >
-                  {btnMsg}
+                  {btnMsg === "Signing In..." ? "" : btnMsg}
+                  {btnMsg === "Signing In..." && <Spinner size="sm" />}
                 </Button>
               </Box>
             </form>
