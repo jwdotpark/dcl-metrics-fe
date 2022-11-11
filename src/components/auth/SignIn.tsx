@@ -121,7 +121,7 @@ const SignIn = () => {
                     onClick={handleClick}
                     rounded="xl"
                     size="sm"
-                    type="submit"
+                    // type="submit"
                   >
                     {show ? "Hide" : "Show"}
                   </Button>

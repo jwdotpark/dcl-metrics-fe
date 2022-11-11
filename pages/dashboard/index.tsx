@@ -32,7 +32,7 @@ const Dashboard = () => {
   return (
     <Layout>
       <Center h="calc(100vh - 8rem)">
-        <Text>{msg}</Text>
+        {isLoggedIn && <Text>{msg}</Text>}
         {!isLoggedIn && <SignIn />}
       </Center>
     </Layout>
