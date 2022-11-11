@@ -53,13 +53,13 @@ const DatePicker = ({ date, setDate, availableDate }) => {
               color: "green.400",
             },
             selectedBtnProps: {
-              bg: useColorModeValue("gray.100", "gray.700"),
+              bg: useColorModeValue("blue.100", "blue.700"),
               color: useColorModeValue("#ff5555", "#50fa7b"),
               fontWeight: "bold",
             },
             todayBtnProps: {
-              bg: useColorModeValue("teal.100", "teal.700"),
-              borderColor: useColorModeValue("teal.100", "teal.700"),
+              bg: useColorModeValue("#ffb86c50", "#ffb86c50"),
+              borderColor: useColorModeValue("gray.700", "gray.100"),
             },
           },
         }}

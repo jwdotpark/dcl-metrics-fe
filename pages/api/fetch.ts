@@ -17,12 +17,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         },
       },
     })
-    return res.status(200).json({ data: response.data })
+    const data = await response.json()
+    return res.status(200).json(data)
 
     // non fixie
     // const response = await fetch(url)
     // const data = await response.json()
-    // return res.status(200).json({ data })
+    // return res.status(200).json(data)
   }
 }
 
