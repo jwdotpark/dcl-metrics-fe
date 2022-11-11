@@ -1,0 +1,299 @@
+{
+  "available_dates": [
+    "2022-11-09",
+    "2022-11-10"
+  ],
+  "daily_users": {
+    "2022-11-09": 32,
+    "2022-11-10": 28
+  },
+  "result": {
+    "2022-11-09": {
+      "name": "The UPS Store",
+      "date": "2022-11-09",
+      "map_url": "https://api.decentraland.org/v2/map.png?center=-24,-8&selected=-24,-8;-24,-9;-25,-8;-25,-9",
+      "visitors": 32,
+      "share_of_global_visitors": 0,
+      "avg_time_spent": 2999,
+      "avg_time_spent_afk": 3266,
+      "total_logins": 31,
+      "unique_logins": 26,
+      "total_logouts": 21,
+      "unique_logouts": 17,
+      "complete_sessions": 20,
+      "avg_complete_session_duration": 3958,
+      "marathon_users": [
+        {
+          "address": "0x1014b2e7e37d07167a4aafaba62f0959b468af32",
+          "time_spent": 814.7833333333333,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0x5dbaaa027657ae89f2167c9d2f76327e947a70c4",
+          "time_spent": 194.53333333333333,
+          "avatar_url": "https://peer-ec1.decentraland.org/content/contents/QmWpA75UohpAVjnDw7B2kecvnwCkUycRw17arD82xeYc7V",
+          "guest_user": true,
+          "name": "SenseiDrew#70c4",
+          "verified_user": false
+        },
+        {
+          "address": "0x8300c196557ed94252d1705d8c23b15a7b961ce9",
+          "time_spent": 47.75,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0x2a11809095a241843c8a8effa690a26f56e45062",
+          "time_spent": 37.68333333333333,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0x84d108953e4f98062b8388261d152a261a9abb9d",
+          "time_spent": 37.483333333333334,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0xfe06483e8e635ee5b30d6030eb60530d124efc01",
+          "time_spent": 24.583333333333332,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0x3c1e2347be0623e090af7f39433821e6e62be6d5",
+          "time_spent": 19.283333333333335,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0x2f1f3f0bb6c7a6dce6c0f74569db1b4d83f4d044",
+          "time_spent": 12.966666666666667,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0xa90b709286849814a2d4635058e4feec5ef4f0ef",
+          "time_spent": 10.4,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0xda74facd529db6bffa4b65f37ec3f072de2f3788",
+          "time_spent": 8.233333333333333,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        }
+      ],
+      "time_spent_histogram": [
+        [
+          0,
+          23
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "visitors_by_hour_histogram": {
+        "00": 2,
+        "01": 2,
+        "02": 2,
+        "03": 1,
+        "04": 2,
+        "06": 2,
+        "07": 1,
+        "08": 1,
+        "10": 1,
+        "12": 1,
+        "13": 1,
+        "14": 1,
+        "15": 4,
+        "16": 1,
+        "17": 1,
+        "18": 2,
+        "19": 2,
+        "20": 3,
+        "21": 1,
+        "22": 6,
+        "23": 1
+      },
+      "parcels_heatmap": {
+        "-24,-8": 2,
+        "-24,-9": 16,
+        "-25,-8": 5,
+        "-25,-9": 4
+      }
+    },
+    "2022-11-10": {
+      "name": "The UPS Store",
+      "date": "2022-11-10",
+      "map_url": "https://api.decentraland.org/v2/map.png?center=-24,-8&selected=-24,-8;-24,-9;-25,-8;-25,-9",
+      "visitors": 28,
+      "share_of_global_visitors": 0,
+      "avg_time_spent": 5082,
+      "avg_time_spent_afk": 4077,
+      "total_logins": 27,
+      "unique_logins": 21,
+      "total_logouts": 21,
+      "unique_logouts": 15,
+      "complete_sessions": 20,
+      "avg_complete_session_duration": 4465,
+      "marathon_users": [
+        {
+          "address": "0x1014b2e7e37d07167a4aafaba62f0959b468af32",
+          "time_spent": 1110.6166666666666,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0xb76d988dd75d8bddf94b0ca70bb9fcf6a33acb58",
+          "time_spent": 566.2166666666667,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0x2f86c15df3deca21aecec2406d934fe475ef1b03",
+          "time_spent": 90.16666666666667,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0x4dae28919214255f5b14b20b9a46ae38fe0ea08c",
+          "time_spent": 21.483333333333334,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0xce1dd09934b8882b2d89cb3999321507e6047d19",
+          "time_spent": 14.4,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0x051654b0407ad4bfe987db1ed21a068118f3cd25",
+          "time_spent": 7.233333333333333,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0xde6468732db344a0e269eb70c556ce841f6ab78c",
+          "time_spent": 6.966666666666667,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0xd2c8a79c2910a0172ef92808ddbdc1dff5fbc76b",
+          "time_spent": 6.716666666666667,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0xc0ae25921c1c35761d7717e63a61fe38f583c989",
+          "time_spent": 6.6,
+          "avatar_url": null,
+          "guest_user": null,
+          "name": null,
+          "verified_user": null
+        },
+        {
+          "address": "0x88a42add9601b02cccd3307c513dc7d2af5e319f",
+          "time_spent": 5.666666666666667,
+          "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiejyfyhpm67zng2ffeehlugy3ybwz7n3t6nwxbbtahlp5hapfpxxu",
+          "guest_user": false,
+          "name": "Rodio",
+          "verified_user": false
+        }
+      ],
+      "time_spent_histogram": [
+        [
+          0,
+          19
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          18,
+          1
+        ]
+      ],
+      "visitors_by_hour_histogram": {
+        "00": 2,
+        "01": 3,
+        "02": 4,
+        "03": 3,
+        "04": 2,
+        "05": 2,
+        "06": 1,
+        "07": 2,
+        "08": 2,
+        "09": 1,
+        "10": 1,
+        "11": 2,
+        "12": 2,
+        "13": 1,
+        "14": 2,
+        "15": 2,
+        "16": 1,
+        "17": 2,
+        "18": 1,
+        "19": 2,
+        "20": 1,
+        "21": 2,
+        "22": 1,
+        "23": 1
+      },
+      "parcels_heatmap": {
+        "-24,-8": 4,
+        "-24,-9": 27,
+        "-25,-8": 5,
+        "-25,-9": 6
+      }
+    }
+  }
+}

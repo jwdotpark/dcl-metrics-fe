@@ -4,67 +4,60 @@ import { Box, Text, Center } from "@chakra-ui/react"
 import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
+import tempData from "../../public/data/temp.json"
 
-export async function getServerSideProps(context) {
-  const name = context.query.id
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
+    fallback: false, // can also be true or 'blocking'
+  }
+}
+
+export async function getStaticProps(context) {
+  // console.log("ctx", context.params.id)
+  const name = context.params.id
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
   const url = isProd
     ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}`
     : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}`
 
   const absURL = "https://dcl-metrics.com/api/fetch"
-  const res = await fetch(absURL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ url: url }),
-  })
 
-  const dashboard = await res.json()
+  // const res = await fetch(absURL, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({ url: url }),
+  // })
+  // const dashboard = await res.json()
+  const dashboard = tempData
   return {
     props: { dashboard, name },
   }
+  // return { props: {} }
 }
 
 const DashboardPage = (props) => {
   const router = useRouter()
   const { dashboard, name } = props
-  const [res, setRes] = useState([dashboard.data.result])
-  const availableDate = dashboard.data.available_dates
+  const availableDate = dashboard.available_dates
+  const [res, setRes] = useState([
+    dashboard.result[availableDate[availableDate.length - 1]],
+  ])
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const d = new Date(availableDate[availableDate.length - 1])
-  const [date, setDate] = useState(
-    d.setTime(d.getTime() + d.getTimezoneOffset() * 60 * 1000)
+  const latestDay = new Date(
+    availableDate[availableDate.length - 1].replace(/-/g, "/")
   )
-
-  const fetchResult = async (url) => {
-    setIsLoading(true)
-    const response = await fetch("/api/fetch", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ url: url }),
-    })
-    const data = await response.json()
-    setRes([data.data.result])
-    setIsLoading(false)
-  }
+  const [date, setDate] = useState(latestDay)
 
   useEffect(() => {
-    const target = new Date(date).toISOString().split("T")[0]
-    const nextDay = new Date(target)
-    nextDay.setDate(nextDay.getDate() + 1)
-    const res = nextDay.toISOString().split("T")[0]
-
-    const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
-    const url = isProd
-      ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}?date=${res}`
-      : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}?date=${res}`
-    fetchResult(url)
+    const target = new Date(date)
+    target.setDate(target.getDate() + 1)
+    const targetString = target.toISOString().split("T")[0]
+    setRes([dashboard.result[targetString]])
     // eslint-disable-next-line
   }, [date])
 

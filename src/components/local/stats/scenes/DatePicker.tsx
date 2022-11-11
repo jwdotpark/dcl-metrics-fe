@@ -2,14 +2,10 @@ import { Box, useColorModeValue } from "@chakra-ui/react"
 import { SingleDatepicker } from "chakra-dayzed-datepicker"
 
 const DatePicker = ({ date, setDate, availableDate }) => {
-  const minDate = new Date(availableDate[0])
-  const maxDate = new Date(availableDate[availableDate.length - 1])
-
-  // create var min  that is date type and 10 days ago from now
-  // const min = new Date()
-  // min.setDate(min.getDate() - 10)
-  // const max = new Date()
-  // max.setDate(max.getDate())
+  const minDate = new Date(availableDate[0].replace(/-/g, "/"))
+  const maxDate = new Date(
+    availableDate[availableDate.length - 1].replace(/-/g, "/")
+  )
 
   return (
     <Box
