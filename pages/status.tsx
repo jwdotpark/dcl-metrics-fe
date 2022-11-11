@@ -56,46 +56,6 @@ export async function getStaticProps() {
       revalidate: day,
     }
   }
-
-  // if (process.env.NEXT_PUBLIC_ENV === "prod") {
-  //   const response = await axios
-  //     .get(url, {
-  //       method: "get",
-  //       proxy: {
-  //         protocol: "http",
-  //         host: process.env.FIXIE_HOST,
-  //         port: 80,
-  //         auth: {
-  //           username: "fixie",
-  //           password: process.env.FIXIE_TOKEN,
-  //         },
-  //       },
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //       return { props: { data: staticPeerStatus }, revalidate: day }
-  //     })
-
-  //   if (response.status === 200) {
-  //     fs.writeFileSync(
-  //       "./public/data/cached_peerstats.json",
-  //       JSON.stringify(response.data)
-  //     )
-  //   } else {
-  //     sendNotification(response, "peer_status", "error")
-  //   }
-  //   const data = response.data
-  //   return {
-  //     props: { data },
-  //     revalidate: day,
-  //   }
-  // } else {
-  //   const data = staticPeerStatus
-  //   return {
-  //     props: { data },
-  //     revalidate: day,
-  //   }
-  // }
 }
 
 const Status = (props) => {
