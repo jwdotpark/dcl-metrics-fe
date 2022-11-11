@@ -86,7 +86,7 @@ const DashboardPage = (props) => {
         </Box>
       ) : (
         <Center h="calc(100vh - 6rem)">
-          <Text fontSize="3xl">You are not authenticated</Text>
+          <Text fontSize="3xl"></Text>
         </Center>
       )}
     </Layout>
