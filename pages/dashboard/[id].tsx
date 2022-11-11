@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Layout from "../../src/components/layout/layout"
 import { useRouter } from "next/router"
 import { Box, Text, Center } from "@chakra-ui/react"
 import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
-import tempData from "../../public/data/temp.json"
 const axios = require("axios").default
 
 export async function getStaticPaths() {
@@ -21,7 +21,6 @@ export async function getStaticProps(context) {
   const url = isProd
     ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}`
     : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}`
-  // const absURL = "https://dcl-metrics.com/api/fetch"
 
   if (process.env.NEXT_PUBLIC_STAGING === "false") {
     console.log("prod")
@@ -52,19 +51,6 @@ export async function getStaticProps(context) {
       revalidate: day,
     }
   }
-
-  // const res = await fetch(absURL, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({ url: url }),
-  // })
-  // const data = await res.json()
-  // return {
-  //   props: { data, name },
-  //   revalidate: day,
-  // }
 }
 
 const DashboardPage = (props) => {
@@ -88,7 +74,6 @@ const DashboardPage = (props) => {
     target.setDate(target.getDate() + 1)
     const targetString = target.toISOString().split("T")[0]
     setRes([dashboard.result[targetString]])
-    // eslint-disable-next-line
   }, [date])
 
   useEffect(() => {
@@ -100,7 +85,6 @@ const DashboardPage = (props) => {
     } else {
       setIsLoggedIn(true)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
