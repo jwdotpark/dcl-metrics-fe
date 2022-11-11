@@ -5,6 +5,7 @@ import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
 import tempData from "../../public/data/temp.json"
+const axios = require("axios").default
 
 export async function getStaticPaths() {
   return {
@@ -20,26 +21,56 @@ export async function getStaticProps(context) {
   const url = isProd
     ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}`
     : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}`
-  const absURL = "https://dcl-metrics.com/api/fetch"
+  // const absURL = "https://dcl-metrics.com/api/fetch"
 
-  const res = await fetch(absURL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ url: url }),
-  })
-  const data = await res.json()
-  return {
-    props: { data, name },
-    revalidate: day,
+  if (process.env.NEXT_PUBLIC_STAGING === "false") {
+    console.log("prod")
+    const response = await axios.get(url, {
+      method: "get",
+      proxy: {
+        protocol: "http",
+        host: process.env.FIXIE_HOST,
+        port: 80,
+        auth: {
+          username: "fixie",
+          password: process.env.FIXIE_TOKEN,
+        },
+      },
+    })
+    const data = await response.json()
+    return {
+      props: { data, name },
+      revalidate: day,
+    }
   }
+  if (process.env.NEXT_PUBLIC_STAGING === "true") {
+    console.log("dev")
+    const response = await fetch(url)
+    const data = await response.json()
+    return {
+      props: { data, name },
+      revalidate: day,
+    }
+  }
+
+  // const res = await fetch(absURL, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({ url: url }),
+  // })
+  // const data = await res.json()
+  // return {
+  //   props: { data, name },
+  //   revalidate: day,
+  // }
 }
 
 const DashboardPage = (props) => {
   const router = useRouter()
   const { data, name } = props
-  const dashboard = data.data
+  const dashboard = data
 
   const availableDate = dashboard.available_dates
   const latestDay = availableDate[availableDate.length - 1].replace(/-/g, "/")
