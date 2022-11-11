@@ -8,7 +8,7 @@ import { useRouter } from "next/router"
 const Dashboard = () => {
   const router = useRouter()
   const [auth, setAuth] = useState("")
-  
+
   useEffect(() => {
     setAuth(JSON.parse(localStorage.getItem("auth")))
   }, [])
