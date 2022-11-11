@@ -23,7 +23,6 @@ export async function getStaticProps(context) {
     : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}`
 
   if (process.env.NEXT_PUBLIC_STAGING === "false") {
-    console.log("prod")
     const response = await axios.get(url, {
       method: "get",
       proxy: {
@@ -43,7 +42,6 @@ export async function getStaticProps(context) {
     }
   }
   if (process.env.NEXT_PUBLIC_STAGING === "true") {
-    console.log("dev")
     const response = await fetch(url)
     const data = await response.json()
     return {
