@@ -58,13 +58,10 @@ const SignIn = () => {
   }
 
   return (
-    // <Container maxW="7xl" p={{ base: 2, md: 4 }}>
     <Center>
       <VStack
-        // w={[300, 300, 400]}
         h="100%"
         p="8"
-        // p={{ base: 2, sm: 4 }}
         bg={useColorModeValue("white", "gray.700")}
         border={useColorModeValue("gray.200", "gray.600")}
         shadow="md"
@@ -72,10 +69,7 @@ const SignIn = () => {
         spacing={8}
       >
         <VStack borderRadius="xl">
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            // style={{ width: "100%", marginLeft: "2rem", marginRight: "2rem" }}
-          >
+          <form onSubmit={handleSubmit(onSubmit)}>
             {/* @ts-ignore */}
             <FormControl mb="4" isInvalid={errors.account}>
               <FormLabel>Account</FormLabel>
@@ -180,7 +174,6 @@ const SignIn = () => {
         </VStack>
       </VStack>
     </Center>
-    // </Container>
   )
 }
 
