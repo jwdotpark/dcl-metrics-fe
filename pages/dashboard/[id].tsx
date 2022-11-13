@@ -23,19 +23,24 @@ export async function getStaticProps(context) {
     : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}`
 
   if (process.env.NEXT_PUBLIC_STAGING === "false") {
-    const response = await axios.get(url, {
-      method: "get",
-      proxy: {
-        protocol: "http",
-        host: process.env.FIXIE_HOST,
-        port: 80,
-        auth: {
-          username: "fixie",
-          password: process.env.FIXIE_TOKEN,
+    const response = await axios
+      .get(url, {
+        method: "get",
+        proxy: {
+          protocol: "http",
+          host: process.env.FIXIE_HOST,
+          port: 80,
+          auth: {
+            username: "fixie",
+            password: process.env.FIXIE_TOKEN,
+          },
         },
-      },
-    })
-    const data = await response.json()
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+    const data = await response.data // data property is axios thing?
     return {
       props: { data, name },
       revalidate: day,
