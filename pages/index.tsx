@@ -51,10 +51,21 @@ export async function getStaticProps() {
       })
 
     if (response.status === 200) {
+      // this doeesn't work on runtime - only works on build time!
       fs.writeFileSync(
         "./public/data/cached_global_response.json",
         JSON.stringify(response.data)
       )
+
+      // save file endpoint
+      // FIXME endpoint should target prod later
+      await fetch(process.env.NEXT_PUBLIC_DEV_ENDPOINT + "/api/write-file", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data: response.data, name: "global" }),
+      })
     } else if (response.status !== 200) {
       sendNotification(response, "global", "error")
     }
