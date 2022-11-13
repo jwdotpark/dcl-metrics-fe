@@ -6,10 +6,15 @@ import { writeFile } from "fs"
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { data, name } = req.body
   if (req.method === "POST") {
-    const path = "./example.json"
+    const path = "public/data/example.json"
 
     // write
-    fs.writeFileSync(path, JSON.stringify(data))
+    try {
+      fs.writeFileSync(path, JSON.stringify(data))
+    } catch (e) {
+      console.log(e)
+    }
+    
     // read
     const file = fs.readFileSync(path, "utf8")
     console.log(file)
