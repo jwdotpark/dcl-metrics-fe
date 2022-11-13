@@ -6,28 +6,23 @@ import { writeFile } from "fs"
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { data, name } = req.body
   console.log("write-file", data, name)
-  const path = "./public/data/test.json"
+  const path = "./test.json"
   if (req.method === "POST" && name === "global") {
     // write file
-    writeFile(path, JSON.stringify(data, null, 2), (error) => {
-      if (error) {
-        console.error(error)
-        return
-      }
-      console.log("File has been created")
-    })
+    fs.writeFileSync(path, JSON.stringify(data))
   }
-
   // read file
-  const file = fs.readFile(path, "utf8", (err, jsonString) => {
+  const file = fs.readFile(path, "utf8", (err) => {
     if (err) {
       console.error(err)
       return
     }
-    console.log(jsonString)
   })
+  console.log(file)
 
-  return res.status(200).json({ message: "Static cache created", data: file })
+  return res
+    .status(200)
+    .json({ message: `${name} static cache created`, data: file })
 }
 
 export default handler
