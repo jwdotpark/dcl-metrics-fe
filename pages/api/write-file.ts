@@ -6,16 +6,19 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { data, name } = req.body
   console.log("write-file", data, name)
   if (req.method === "POST" && name === "global") {
+    // write file
     fs.writeFileSync(
-      `./public/data/cached_global_response_temp.json`,
-      JSON.stringify(data)
+      "./public/data/ached_global_response_temp.json",
+      JSON.stringify(data, null, 2)
     )
-    const cache = fs.readFileSync(
-      `./public/data/cached_global_response_temp.json`
+    // read file
+    const file = fs.readFileSync(
+      "./public/data/ached_global_response_temp.json",
+      "utf8"
     )
     return res
       .status(200)
-      .json({ message: "Static cache created", data: cache })
+      .json({ message: "Static cache created", data: JSON.parse(file) })
   }
 }
 
