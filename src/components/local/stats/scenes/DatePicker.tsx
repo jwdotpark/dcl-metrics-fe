@@ -2,14 +2,10 @@ import { Box, useColorModeValue } from "@chakra-ui/react"
 import { SingleDatepicker } from "chakra-dayzed-datepicker"
 
 const DatePicker = ({ date, setDate, availableDate }) => {
-  const minDate = new Date(availableDate[0])
-  const maxDate = new Date(availableDate[availableDate.length - 1])
-
-  // create var min  that is date type and 10 days ago from now
-  // const min = new Date()
-  // min.setDate(min.getDate() - 10)
-  // const max = new Date()
-  // max.setDate(max.getDate())
+  const minDate = new Date(availableDate[0].replace(/-/g, "/"))
+  const maxDate = new Date(
+    availableDate[availableDate.length - 1].replace(/-/g, "/")
+  )
 
   return (
     <Box
@@ -57,13 +53,13 @@ const DatePicker = ({ date, setDate, availableDate }) => {
               color: "green.400",
             },
             selectedBtnProps: {
-              bg: useColorModeValue("gray.100", "gray.700"),
+              bg: useColorModeValue("blue.100", "blue.700"),
               color: useColorModeValue("#ff5555", "#50fa7b"),
               fontWeight: "bold",
             },
             todayBtnProps: {
-              bg: useColorModeValue("teal.100", "teal.700"),
-              borderColor: useColorModeValue("teal.100", "teal.700"),
+              bg: useColorModeValue("#ffb86c50", "#ffb86c50"),
+              borderColor: useColorModeValue("gray.700", "gray.100"),
             },
           },
         }}
