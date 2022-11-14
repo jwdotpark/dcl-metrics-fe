@@ -53,26 +53,7 @@ export async function getStaticProps() {
         return { props: { data: staticGlobal }, revalidate: day }
       })
 
-    if (response.status === 200) {
-      // this doeesn't work on runtime - only works on build time!
-      fs.writeFileSync(
-        "./public/data/cached_global_response.json",
-        JSON.stringify(response.data)
-      )
-
-      // save file endpoint
-      const targetURL = isProd
-        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT
-        : process.env.NEXT_PUBLIC_DEV_ENDPOINT
-
-      await fetch(targetURL + "api/write-file", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data: response.data, name: "global" }),
-      })
-    } else if (response.status !== 200) {
+    if (response.status !== 200) {
       sendNotification(response, "global", "error")
     }
 

@@ -41,12 +41,7 @@ export async function getStaticProps() {
         return { props: { data: staticGlobal }, revalidate: day }
       })
 
-    if (response.status === 200) {
-      fs.writeFileSync(
-        "./public/data/cached_global_response.json",
-        JSON.stringify(response.data)
-      )
-    } else if (response.status !== 200) {
+    if (response.status !== 200) {
       sendNotification(response, "global", "error")
     }
 
