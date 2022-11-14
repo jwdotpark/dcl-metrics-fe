@@ -142,11 +142,7 @@ export async function getStaticProps() {
 
 const Scenes = (props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
-  // const [data] = useAtom(DataAtom)
-  // const [sceneData] = useAtom(SceneDataAtom)
   const [isDataLoading] = useAtom(LoadingStateAtom)
-  // const result = data.length !== 0 ? data : staticGlobal
-  // const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
   const result = props.data
   const sceneResult = props.sceneData
 
