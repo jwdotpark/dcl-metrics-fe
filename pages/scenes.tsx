@@ -17,13 +17,138 @@ import ScenesTimeSpent from "../src/components/local/stats/scenes/ScenesTimeSpen
 import ScenesTimeSpentAFK from "../src/components/local/stats/scenes/ScenesTimeSpentAFK"
 import TopScenesVisitors from "../src/components/local/stats/scenes/TopScenesVisitors"
 
-const Scenes = () => {
+export async function getStaticProps() {
+  const day = 60 * 60 * 24
+  const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
+
+  const url = isProd
+    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global"
+    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "global"
+
+  const sceneURL = isProd
+    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "scenes/top"
+    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "scenes/top"
+
+  // TODO refactor below!
+
+  // prod endpoint
+  if (process.env.NEXT_PUBLIC_STAGING === "false") {
+    const response = await axios
+      .get(url, {
+        method: "get",
+        proxy: {
+          protocol: "http",
+          host: process.env.FIXIE_HOST,
+          port: 80,
+          auth: {
+            username: "fixie",
+            password: process.env.FIXIE_TOKEN,
+          },
+        },
+      })
+      .catch((error) => {
+        console.log(error)
+        return { props: { data: staticGlobal }, revalidate: day }
+      })
+
+    if (response.status === 200) {
+      // this doeesn't work on runtime - only works on build time!
+      fs.writeFileSync(
+        "./public/data/cached_global_response.json",
+        JSON.stringify(response.data)
+      )
+
+      // save file endpoint
+      const targetURL = isProd
+        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT
+        : process.env.NEXT_PUBLIC_DEV_ENDPOINT
+
+      await fetch(targetURL + "/api/write-file", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data: response.data, name: "global" }),
+      })
+    } else if (response.status !== 200) {
+      sendNotification(response, "global", "error")
+    }
+
+    const sceneResponse = await axios
+      .get(sceneURL, {
+        method: "get",
+        proxy: {
+          protocol: "http",
+          host: process.env.FIXIE_HOST,
+          port: 80,
+          auth: {
+            username: "fixie",
+            password: process.env.FIXIE_TOKEN,
+          },
+        },
+      })
+      .catch((error) => {
+        console.log(error)
+        return { props: { data: staticScene }, revalidate: day }
+      })
+
+    if (sceneResponse.status === 200) {
+      fs.writeFileSync(
+        "./public/data/cached_scenes_top.json",
+        JSON.stringify(sceneResponse.data)
+      )
+    } else if (sceneResponse.status !== 200) {
+      sendNotification(sceneResponse, "scenes/top", "error")
+    }
+
+    const data = response.data
+    const sceneData = sceneResponse.data
+    return {
+      props: { data, sceneData },
+      revalidate: day,
+    }
+
+    // staging endpoint
+  } else if (
+    process.env.NEXT_PUBLIC_STAGING === "true" &&
+    process.env.LOCAL !== "true"
+  ) {
+    const response = await fetch(url)
+    const data = await response.json()
+    const sceneResponse = await fetch(sceneURL)
+    const sceneData = await sceneResponse.json()
+
+    if (response.status !== 200 || sceneResponse.status !== 200) {
+      sendNotification(response, "global", "error")
+      return {
+        props: { data: staticGlobal, sceneData: staticScene },
+        revalidate: day,
+      }
+    }
+    return {
+      props: { data, sceneData },
+      revalidate: day,
+    }
+    // use static data
+  } else {
+    const data = staticGlobal
+    const sceneData = staticScene
+    return {
+      props: { data, sceneData },
+      revalidate: day,
+    }
+  }
+}
+
+const Scenes = (props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
-  const [data] = useAtom(DataAtom)
-  const [sceneData] = useAtom(SceneDataAtom)
+  // const [data] = useAtom(DataAtom)
+  // const [sceneData] = useAtom(SceneDataAtom)
   const [isDataLoading] = useAtom(LoadingStateAtom)
-  const result = data.length !== 0 ? data : staticGlobal
-  const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
+  // const result = data.length !== 0 ? data : staticGlobal
+  // const sceneResult = sceneData.length !== 0 ? sceneData : staticScene
+  const result = props.data
+  const sceneResult = props.sceneData
 
   return (
     <Layout>

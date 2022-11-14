@@ -58,8 +58,11 @@ export async function getStaticProps() {
       )
 
       // save file endpoint
-      // FIXME endpoint should target prod later
-      await fetch(process.env.NEXT_PUBLIC_DEV_ENDPOINT + "/api/write-file", {
+      const targetURL = isProd
+        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT
+        : process.env.NEXT_PUBLIC_DEV_ENDPOINT
+
+      await fetch(targetURL + "/api/write-file", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
