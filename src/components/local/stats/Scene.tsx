@@ -51,7 +51,7 @@ const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
     if (visitorValue === 0) {
       setIsEmpty(true)
     } else {
-      setIsEmpty(true)
+      setIsEmpty(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [res])
