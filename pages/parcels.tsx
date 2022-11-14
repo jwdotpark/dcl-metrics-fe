@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useBreakpointValue, Grid, useColorModeValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import staticGlobal from "../public/data/cached_global_response.json"
@@ -10,6 +9,9 @@ import AvgTimeSpentParcel from "../src/components/local/stats/parcels/AvgTimeSpe
 import LogInTimeSpentParcel from "../src/components/local/stats/parcels/LogInTimeSpentParcel"
 import LogOutTimeSpentParcel from "../src/components/local/stats/parcels/LogOutTimeSpentParcel"
 import MostVisitedParcel from "../src/components/local/stats/parcels/MostVisitedParcel"
+import { sendNotification } from "../src/lib/hooks/sendNotification"
+const axios = require("axios").default
+import fs from "fs"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24

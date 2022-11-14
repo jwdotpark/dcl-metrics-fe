@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useBreakpointValue, Grid, useColorModeValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import staticGlobal from "../public/data/cached_global_response.json"
@@ -6,6 +5,9 @@ import Explorer from "../src/components/local/stats/Explorer"
 import MarathonUsers from "../src/components/local/stats/MarathonUsers"
 import { useAtom } from "jotai"
 import { DataAtom, LoadingStateAtom } from "../src/lib/hooks/atoms"
+import { sendNotification } from "../src/lib/hooks/sendNotification"
+const axios = require("axios").default
+import fs from "fs"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24

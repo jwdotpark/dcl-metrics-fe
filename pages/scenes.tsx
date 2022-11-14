@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useBreakpointValue, Grid, useColorModeValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import staticGlobal from "../public/data/cached_global_response.json"
@@ -9,6 +8,9 @@ import {
   LoadingStateAtom,
   SceneDataAtom,
 } from "../src/lib/hooks/atoms"
+import { sendNotification } from "../src/lib/hooks/sendNotification"
+const axios = require("axios").default
+import fs from "fs"
 
 import Scene from "../src/components/local/stats/Scene"
 import ScenesLogin from "../src/components/local/stats/scenes/ScenesLogin"
