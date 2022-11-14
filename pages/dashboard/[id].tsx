@@ -14,7 +14,6 @@ export async function getStaticPaths() {
   return {
     paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
     fallback: "blocking",
-    revalidate: day,
   }
 }
 
