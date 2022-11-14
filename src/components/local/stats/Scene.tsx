@@ -6,8 +6,9 @@ import {
   useBreakpointValue,
   Spacer,
   Spinner,
+  Center,
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import GridBox from "../GridBox"
 import SceneMap from "./partials/scene/SceneMap"
 import SceneLineChart from "./partials/scene/SceneLineChart"
@@ -43,6 +44,32 @@ const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
   }
 
   const hasMultipleScenes = res.length > 1 ? true : false
+
+  const [isEmpty, setIsEmpty] = useState(false)
+  useEffect(() => {
+    const visitorValue = res[selectedScene].visitors
+    if (visitorValue === 0) {
+      setIsEmpty(true)
+    } else {
+      setIsEmpty(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [res])
+
+  const EmptyScene = () => {
+    return (
+      <Center
+        h={["100px", "300px", "450px"]}
+        bg={useColorModeValue("gray.200", "gray.700")}
+        borderRadius="xl"
+        shadow="md"
+      >
+        <Text m="4" fontSize={["md", "xl", "2xl", "3xl"]}>
+          {name} had no visitors on {moment(date).format("MMMM D")}!
+        </Text>
+      </Center>
+    )
+  }
 
   return (
     <Box h="100%" mb="4" mx={[-4, 0]}>
@@ -116,10 +143,13 @@ const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
               h={["100%", "100%", "100%", "450px"]}
               mt={[4, 4, 4, 0]}
             >
-              <StatBox
-                data={res[selectedScene]}
-                selectedScene={selectedScene}
-              />
+              {isEmpty && <EmptyScene />}
+              {!isEmpty && (
+                <StatBox
+                  data={res[selectedScene]}
+                  selectedScene={selectedScene}
+                />
+              )}
             </Box>
           </Flex>
           <Flex
@@ -135,13 +165,17 @@ const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
             mb="4"
           >
             <Box w={["100%", "100%", "100%", "35%"]}>
-              <SceneParcelsHeatmap
-                data={parcels_heatmap}
-                selectedScene={selectedScene}
-              />
+              {!isEmpty && (
+                <SceneParcelsHeatmap
+                  data={parcels_heatmap}
+                  selectedScene={selectedScene}
+                />
+              )}
             </Box>
             <Box w={["100%", "100%", "100%", "65%"]} h="435px" mt={[4, 4, 0]}>
-              <SceneLineChart data={res} selectedScene={selectedScene} />
+              {!isEmpty && (
+                <SceneLineChart data={res} selectedScene={selectedScene} />
+              )}
             </Box>
           </Flex>
           <Flex
@@ -156,17 +190,19 @@ const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
             h="auto"
           >
             <Box w={["100%", "100%", "100%", "50%"]} h="520" mt={[4, 4, 8, 0]}>
-              <SceneMarathonUsers data={marathon_users} />
+              {!isEmpty && <SceneMarathonUsers data={marathon_users} />}
             </Box>
             <Box
               w={["100%", "100%", "100%", "50%"]}
               h="520px"
               mb={[4, 4, 4, 0]}
             >
-              <SceneBarChart
-                visitors_by_hour_histogram={visitors_by_hour_histogram}
-                selectedScene={selectedScene}
-              />
+              {!isEmpty && (
+                <SceneBarChart
+                  visitors_by_hour_histogram={visitors_by_hour_histogram}
+                  selectedScene={selectedScene}
+                />
+              )}
             </Box>
           </Flex>
         </Box>
