@@ -18,13 +18,6 @@ export async function getStaticPaths() {
   }
 }
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [],
-//     fallback: true,
-//   }
-// }
-
 export async function getStaticProps(context) {
   const day = 60 * 60 * 24
   const name = context.params.id
