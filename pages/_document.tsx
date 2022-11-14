@@ -7,10 +7,10 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
-          <link
+          {/* <link
             href="https://fonts.googleapis.com/css2?family=intertight&display=optional"
             rel="stylesheet"
-          />
+          /> */}
         </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
