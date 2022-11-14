@@ -8,19 +8,19 @@ import { decrypt } from "../../src/lib/hooks/utils"
 import moment from "moment"
 const axios = require("axios").default
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
-//     fallback: false,
-//   }
-// }
-
 export async function getStaticPaths() {
   return {
-    paths: [],
-    fallback: true,
+    paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
+    fallback: false,
   }
 }
+
+// export async function getStaticPaths() {
+//   return {
+//     paths: [],
+//     fallback: true,
+//   }
+// }
 
 export async function getStaticProps(context) {
   const day = 60 * 60 * 24
