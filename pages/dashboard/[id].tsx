@@ -5,12 +5,14 @@ import { Box, Text, Center } from "@chakra-ui/react"
 import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
+import moment from "moment"
+import { daysInWeek } from "date-fns"
 const axios = require("axios").default
 
 export async function getStaticPaths() {
   return {
     paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
-    fallback: false,
+    fallback: "blocking",
   }
 }
 
@@ -19,25 +21,30 @@ export async function getStaticProps(context) {
   const name = context.params.id
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
   const url = isProd
-    ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}`
-    : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}`
+    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "dashboard/" + name
+    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "dashboard/" + name
 
   if (process.env.NEXT_PUBLIC_STAGING === "false") {
-    const response = await axios.get(url, {
-      method: "get",
-      proxy: {
-        protocol: "http",
-        host: process.env.FIXIE_HOST,
-        port: 80,
-        auth: {
-          username: "fixie",
-          password: process.env.FIXIE_TOKEN,
+    const response = await axios
+      .get(url, {
+        method: "get",
+        proxy: {
+          protocol: "http",
+          host: process.env.FIXIE_HOST,
+          port: 80,
+          auth: {
+            username: "fixie",
+            password: process.env.FIXIE_TOKEN,
+          },
         },
-      },
-    })
-    const data = await response.json()
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+    const data = await response.data // data property is axios thing?
     return {
-      props: { data, name },
+      props: { data, name, updatedAt: Date.now() },
       revalidate: day,
     }
   }
@@ -45,7 +52,7 @@ export async function getStaticProps(context) {
     const response = await fetch(url)
     const data = await response.json()
     return {
-      props: { data, name },
+      props: { data, name, updatedAt: Date.now() },
       revalidate: day,
     }
   }
@@ -53,7 +60,7 @@ export async function getStaticProps(context) {
 
 const DashboardPage = (props) => {
   const router = useRouter()
-  const { data, name } = props
+  const { data, name, updatedAt } = props
   const dashboard = data
 
   const availableDate = dashboard.available_dates
@@ -66,6 +73,7 @@ const DashboardPage = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [date, setDate] = useState(new Date(latestDay))
+  const updateTime = moment(updatedAt).format("YYYY MMM DD HH:mm")
 
   useEffect(() => {
     const target = new Date(date)
