@@ -10,7 +10,6 @@ import { daysInWeek } from "date-fns"
 const axios = require("axios").default
 
 export async function getStaticPaths() {
-  const day = 60 * 60 * 24
   return {
     paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
     fallback: "blocking",
