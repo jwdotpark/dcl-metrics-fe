@@ -7,10 +7,17 @@ import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
 const axios = require("axios").default
 
+// export async function getStaticPaths() {
+//   return {
+//     paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
+//     fallback: false,
+//   }
+// }
+
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
-    fallback: false,
+    paths: [],
+    fallback: true,
   }
 }
 
@@ -19,8 +26,8 @@ export async function getStaticProps(context) {
   const name = context.params.id
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
   const url = isProd
-    ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}`
-    : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}`
+    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "dashboard/" + name
+    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "dashboard/" + name
 
   if (process.env.NEXT_PUBLIC_STAGING === "false") {
     const response = await axios
