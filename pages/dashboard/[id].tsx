@@ -6,8 +6,9 @@ import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
 import moment from "moment"
-import { daysInWeek } from "date-fns"
+import { sendNotification } from "../../src/lib/hooks/sendNotification"
 const axios = require("axios").default
+import fs from "fs"
 
 export async function getStaticPaths() {
   return {
@@ -41,6 +42,15 @@ export async function getStaticProps(context) {
       .catch((error) => {
         console.log(error)
       })
+
+    if (response.status === 200) {
+      fs.writeFileSync(
+        `./public/data/cached_${name}.json`,
+        JSON.stringify(response.data)
+      )
+    } else if (response.status !== 200) {
+      sendNotification(response, name, "error")
+    }
 
     const data = await response.data // data property is axios thing?
     return {
