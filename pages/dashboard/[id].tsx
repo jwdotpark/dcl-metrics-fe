@@ -5,6 +5,7 @@ import { Box, Text, Center } from "@chakra-ui/react"
 import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
+import moment from "moment"
 const axios = require("axios").default
 
 // export async function getStaticPaths() {
@@ -49,7 +50,7 @@ export async function getStaticProps(context) {
 
     const data = await response.data // data property is axios thing?
     return {
-      props: { data, name },
+      props: { data, name, updatedAt: Date.now() },
       revalidate: day,
     }
   }
@@ -57,7 +58,7 @@ export async function getStaticProps(context) {
     const response = await fetch(url)
     const data = await response.json()
     return {
-      props: { data, name },
+      props: { data, name, updatedAt: Date.now() },
       revalidate: day,
     }
   }
@@ -65,7 +66,7 @@ export async function getStaticProps(context) {
 
 const DashboardPage = (props) => {
   const router = useRouter()
-  const { data, name } = props
+  const { data, name, updatedAt } = props
   const dashboard = data
 
   const availableDate = dashboard.available_dates
@@ -78,6 +79,7 @@ const DashboardPage = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [date, setDate] = useState(new Date(latestDay))
+  const updateTime = moment(updatedAt).format("YYYY MMM DD HH:mm")
 
   useEffect(() => {
     const target = new Date(date)
