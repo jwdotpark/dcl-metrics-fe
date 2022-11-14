@@ -9,11 +9,11 @@ import fs from "fs"
 export async function getStaticProps() {
   const day = 60 * 60 * 24
   const url =
-    process.env.NEXT_PUBLIC_STAGING !== "true"
+    process.env.NEXT_PUBLIC_STAGING === "false"
       ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "peer_status"
       : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "peer_status"
 
-  if (process.env.NEXT_PUBLIC_ENV === "prod") {
+  if (process.env.NEXT_PUBLIC_STAGING === "false") {
     const response = await axios
       .get(url, {
         method: "get",
@@ -40,13 +40,17 @@ export async function getStaticProps() {
     } else {
       sendNotification(response, "peer_status", "error")
     }
+
     const data = response.data
     return {
       props: { data },
       revalidate: day,
     }
-  } else {
-    const data = staticPeerStatus
+  }
+
+  if (process.env.NEXT_PUBLIC_STAGING === "true") {
+    const response = await fetch(url)
+    const data = await response.json()
     return {
       props: { data },
       revalidate: day,

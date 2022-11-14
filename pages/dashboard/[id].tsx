@@ -1,71 +1,95 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Layout from "../../src/components/layout/layout"
 import { useRouter } from "next/router"
 import { Box, Text, Center } from "@chakra-ui/react"
 import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
+import moment from "moment"
+import { sendNotification } from "../../src/lib/hooks/sendNotification"
+const axios = require("axios").default
+import fs from "fs"
 
-export async function getServerSideProps(context) {
-  const name = context.query.id
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
+    fallback: "blocking",
+  }
+}
+
+export async function getStaticProps(context) {
+  const day = 60 * 60 * 24
+  const name = context.params.id
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
   const url = isProd
-    ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}`
-    : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}`
+    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "dashboard/" + name
+    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "dashboard/" + name
 
-  const absURL = "https://dcl-metrics.com/api/fetch"
-  const res = await fetch(absURL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ url: url }),
-  })
+  if (process.env.NEXT_PUBLIC_STAGING === "false") {
+    const response = await axios
+      .get(url, {
+        method: "get",
+        proxy: {
+          protocol: "http",
+          host: process.env.FIXIE_HOST,
+          port: 80,
+          auth: {
+            username: "fixie",
+            password: process.env.FIXIE_TOKEN,
+          },
+        },
+      })
+      .catch((error) => {
+        console.log(error)
+      })
 
-  const dashboard = await res.json()
-  return {
-    props: { dashboard, name },
+    if (response.status === 200) {
+      fs.writeFileSync(
+        `./public/data/cached_${name}.json`,
+        JSON.stringify(response.data)
+      )
+    } else if (response.status !== 200) {
+      sendNotification(response, name, "error")
+    }
+
+    const data = await response.data // data property is axios thing?
+    return {
+      props: { data, name, updatedAt: Date.now() },
+      revalidate: day,
+    }
+  }
+  if (process.env.NEXT_PUBLIC_STAGING === "true") {
+    const response = await fetch(url)
+    const data = await response.json()
+    return {
+      props: { data, name, updatedAt: Date.now() },
+      revalidate: day,
+    }
   }
 }
 
 const DashboardPage = (props) => {
   const router = useRouter()
-  const { dashboard, name } = props
-  const [res, setRes] = useState([dashboard.data.result])
-  const availableDate = dashboard.data.available_dates
+  const { data, name, updatedAt } = props
+  const dashboard = data
+
+  const availableDate = dashboard.available_dates
+  const latestDay = availableDate[availableDate.length - 1].replace(/-/g, "/")
+
+  const [res, setRes] = useState([
+    dashboard.result[availableDate[availableDate.length - 1]],
+  ])
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const d = new Date(availableDate[availableDate.length - 1])
-  const [date, setDate] = useState(
-    d.setTime(d.getTime() + d.getTimezoneOffset() * 60 * 1000)
-  )
-
-  const fetchResult = async (url) => {
-    setIsLoading(true)
-    const response = await fetch("/api/fetch", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ url: url }),
-    })
-    const data = await response.json()
-    setRes([data.data.result])
-    setIsLoading(false)
-  }
+  const [date, setDate] = useState(new Date(latestDay))
+  const updateTime = moment(updatedAt).format("YYYY MMM DD HH:mm")
 
   useEffect(() => {
-    const target = new Date(date).toISOString().split("T")[0]
-    const nextDay = new Date(target)
-    nextDay.setDate(nextDay.getDate() + 1)
-    const res = nextDay.toISOString().split("T")[0]
-
-    const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
-    const url = isProd
-      ? `${process.env.NEXT_PUBLIC_PROD_ENDPOINT}dashboard/${name}?date=${res}`
-      : `${process.env.NEXT_PUBLIC_DEV_ENDPOINT}dashboard/${name}?date=${res}`
-    fetchResult(url)
-    // eslint-disable-next-line
+    const target = new Date(date)
+    target.setDate(target.getDate() + 1)
+    const targetString = target.toISOString().split("T")[0]
+    setRes([dashboard.result[targetString]])
   }, [date])
 
   useEffect(() => {
@@ -77,7 +101,6 @@ const DashboardPage = (props) => {
     } else {
       setIsLoggedIn(true)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -94,7 +117,7 @@ const DashboardPage = (props) => {
         </Box>
       ) : (
         <Center h="calc(100vh - 6rem)">
-          <Text fontSize="3xl">You are not authenticated</Text>
+          <Text fontSize="3xl"></Text>
         </Center>
       )}
     </Layout>

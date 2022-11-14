@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react"
 import type { NextPage } from "next"
-import {
-  Grid,
-  useBreakpointValue,
-  Accordion,
-  Box,
-  Button,
-} from "@chakra-ui/react"
+import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 import staticScene from "../public/data/cached_scenes_top.json"
 import { useAtom } from "jotai"
@@ -25,12 +19,20 @@ import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
-  if (process.env.NEXT_PUBLIC_ENV === "prod") {
-    // global endpoint
-    const url =
-      process.env.NEXT_PUBLIC_STAGING !== "true"
-        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global"
-        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "global"
+  const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
+
+  const url = isProd
+    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global"
+    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "global"
+
+  const sceneURL = isProd
+    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "scenes/top"
+    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "scenes/top"
+
+  // TODO refactor below!
+
+  // prod endpoint
+  if (process.env.NEXT_PUBLIC_STAGING === "false") {
     const response = await axios
       .get(url, {
         method: "get",
@@ -49,23 +51,16 @@ export async function getStaticProps() {
         return { props: { data: staticGlobal }, revalidate: day }
       })
 
-    // TODO check if response.data's each property is not empty
-    // if empty, return the cached data
-
     if (response.status === 200) {
+      // this doeesn't work on runtime - only works on build time!
       fs.writeFileSync(
         "./public/data/cached_global_response.json",
         JSON.stringify(response.data)
       )
-    } else {
+    } else if (response.status !== 200) {
       sendNotification(response, "global", "error")
     }
 
-    // /scenes/top
-    const sceneURL =
-      process.env.NEXT_PUBLIC_STAGING !== "true"
-        ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "scenes/top"
-        : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "scenes/top"
     const sceneResponse = await axios
       .get(sceneURL, {
         method: "get",
@@ -84,15 +79,12 @@ export async function getStaticProps() {
         return { props: { data: staticScene }, revalidate: day }
       })
 
-    // TODO check if sceneResponse.data's each property is not empty
-    // if empty, return the cached data
-
     if (sceneResponse.status === 200) {
       fs.writeFileSync(
         "./public/data/cached_scenes_top.json",
         JSON.stringify(sceneResponse.data)
       )
-    } else {
+    } else if (sceneResponse.status !== 200) {
       sendNotification(sceneResponse, "scenes/top", "error")
     }
 
@@ -102,6 +94,29 @@ export async function getStaticProps() {
       props: { data, sceneData },
       revalidate: day,
     }
+
+    // staging endpoint
+  } else if (
+    process.env.NEXT_PUBLIC_STAGING === "true" &&
+    process.env.LOCAL !== "true"
+  ) {
+    const response = await fetch(url)
+    const data = await response.json()
+    const sceneResponse = await fetch(sceneURL)
+    const sceneData = await sceneResponse.json()
+
+    if (response.status !== 200 || sceneResponse.status !== 200) {
+      sendNotification(response, "global", "error")
+      return {
+        props: { data: staticGlobal, sceneData: staticScene },
+        revalidate: day,
+      }
+    }
+    return {
+      props: { data, sceneData },
+      revalidate: day,
+    }
+    // use static data
   } else {
     const data = staticGlobal
     const sceneData = staticScene

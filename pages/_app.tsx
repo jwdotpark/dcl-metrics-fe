@@ -17,10 +17,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <Head>
           <title>DCL Metrics</title>
           <link rel="shortcut icon" sizes="32x32" href="/images/favicon.ico" />
-          {/* <link
-            href="https://fonts.googleapis.com/css2?family=intertight&display=optional"
-            rel="stylesheet"
-          /> */}
           <meta
             name="description"
             content="We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
