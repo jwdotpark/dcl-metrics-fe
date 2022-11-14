@@ -62,7 +62,7 @@ export async function getStaticProps() {
         ? process.env.NEXT_PUBLIC_PROD_ENDPOINT
         : process.env.NEXT_PUBLIC_DEV_ENDPOINT
 
-      await fetch(targetURL + "/api/write-file", {
+      await fetch(targetURL + "api/write-file", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
