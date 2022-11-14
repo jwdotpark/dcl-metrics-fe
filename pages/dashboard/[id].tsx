@@ -6,12 +6,15 @@ import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
 import moment from "moment"
+import { daysInWeek } from "date-fns"
 const axios = require("axios").default
 
 export async function getStaticPaths() {
+  const day = 60 * 60 * 24
   return {
     paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
-    fallback: false,
+    fallback: "blocking",
+    revalidate: day,
   }
 }
 
