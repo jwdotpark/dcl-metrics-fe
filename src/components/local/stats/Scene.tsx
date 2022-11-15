@@ -92,7 +92,7 @@ const Scene = ({
               </Box>
               <Spacer />
               {!hasMultipleScenes && !isLoading && (
-                <Box>
+                <Box mr="-1">
                   <DatePicker
                     date={date}
                     setDate={setDate}
@@ -132,8 +132,8 @@ const Scene = ({
             h="auto"
             mb="4"
           >
-            <Box w="100%" mb="2" p="4">
-              {!isEmpty && <SceneUserLineChart data={dailyUsers} />}
+            <Box w="100%" pt="4" px="4">
+              <SceneUserLineChart data={dailyUsers} />
             </Box>
           </Flex>
         )}

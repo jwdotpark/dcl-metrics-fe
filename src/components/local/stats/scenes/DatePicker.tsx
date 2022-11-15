@@ -13,6 +13,7 @@ const DatePicker = ({ date, setDate, availableDate }) => {
       border="2px solid"
       borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
+      shadow="md"
     >
       <SingleDatepicker
         minDate={minDate}

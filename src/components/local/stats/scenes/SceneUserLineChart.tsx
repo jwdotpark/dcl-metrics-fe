@@ -8,9 +8,9 @@ import AvgStat from "../partials/AvgStat"
 
 const SceneUserLineChart = ({ data }) => {
   const box = {
-    h: 400,
+    h: "auto",
     w: "100%",
-    bg: useColorModeValue("gray.100", "gray.700"),
+    bg: useColorModeValue("gray.50", "gray.700"),
   }
 
   const [avgData, setAvgData] = useState(0)
@@ -55,17 +55,16 @@ const SceneUserLineChart = ({ data }) => {
   return (
     <GridBox box={box}>
       <Box
-        bg={useColorModeValue("gray.100", "gray.700")}
         border="1px solid"
-        borderColor={useColorModeValue("gray.200", "gray.600")}
+        borderColor={useColorModeValue("gray.100", "gray.600")}
         borderRadius="xl"
-        shadow="md"
+        // shadow="md"
       >
         <Flex pos="relative" mt="4" mx="5">
           <Flex w="100%">
             <Box>
               <Text fontSize="2xl">
-                <b>User</b>
+                <b>Unique Visitors</b>
               </Text>
             </Box>
             <Spacer />
@@ -74,7 +73,7 @@ const SceneUserLineChart = ({ data }) => {
         </Flex>
         <Box ml="6">
           <Text color="gray.500" fontSize="sm">
-            Users in the scene
+            Unique vistors per day in the last period
           </Text>
         </Box>
         <LineChartDateRange
