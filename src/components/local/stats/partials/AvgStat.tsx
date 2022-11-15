@@ -28,9 +28,6 @@ const AvgStat = ({ avg, data }) => {
     <Box pos="absolute" right="0">
       <Box>
         <Flex>
-          {/* <Text fontSize="2xl" mr="2">
-            Average:
-          </Text> */}
           <Tooltip
             p="2"
             fontSize="sm"
