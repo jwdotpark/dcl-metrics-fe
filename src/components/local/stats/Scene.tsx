@@ -19,6 +19,7 @@ import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
 import DatePicker from "./scenes/DatePicker"
+import SceneUserLineChart from "./scenes/SceneUserLineChart"
 
 const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
   const [selectedScene, setSelectedScene] = useState(0)
@@ -178,6 +179,26 @@ const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
               )}
             </Box>
           </Flex>
+
+          {/* new */}
+          {!hasMultipleScenes && (
+            <Flex
+              sx={{
+                "& > * + *": {
+                  ml: [0, 0, 0, 4],
+                  mt: [4, 4, 4, 0],
+                },
+              }}
+              direction={["column", "column", "column", "row"]}
+              w="100%"
+              h="auto"
+              mb="4"
+            >
+              <Box w="100%">{!isEmpty && <SceneUserLineChart />}</Box>
+            </Flex>
+          )}
+          {/* new */}
+
           <Flex
             sx={{
               "& > * + *": {
