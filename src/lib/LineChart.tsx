@@ -49,7 +49,7 @@ const LineChart = ({ data, color }) => {
           },
         },
       }}
-      animate={true}
+      animate={false}
       pointSize={4}
       margin={{ top: 40, right: 25, bottom: 60, left: 55 }}
       xScale={{ type: "point" }}
