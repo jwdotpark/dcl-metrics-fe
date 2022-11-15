@@ -50,7 +50,6 @@ const SceneUserLineChart = ({ data }) => {
     const sum = slicedData().reduce((acc, cur) => acc + cur.users, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
-    console.log(slicedData())
   }, [dateRange])
 
   return (
