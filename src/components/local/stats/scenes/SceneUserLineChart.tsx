@@ -52,6 +52,10 @@ const SceneUserLineChart = ({ data }) => {
     setAvgData(result)
   }, [dateRange])
 
+  const validLegnth = chartData.filter(
+    (item) => item.active_scenes !== 0
+  ).length
+
   return (
     <GridBox box={box}>
       <Box
@@ -79,7 +83,7 @@ const SceneUserLineChart = ({ data }) => {
         <LineChartDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
-          validLegnth={90}
+          validLegnth={validLegnth}
           name="scene_users"
         />
         <Box h="300" mb="2">
