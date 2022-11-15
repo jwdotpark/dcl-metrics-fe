@@ -39,7 +39,7 @@ const LineChart = ({ data, color }) => {
     <ResponsiveLine
       data={data}
       theme={{
-        textColor: useColorModeValue("gray.800", "white"),
+        textColor: useColorModeValue("black", "white"),
         fontSize: 12,
         grid: {
           line: {
@@ -83,7 +83,7 @@ const LineChart = ({ data, color }) => {
               x={tick.x - 37}
               y={tick.y + 4}
               fontSize="11px"
-              fill={colorMode === "light" ? "gray.800" : "white"}
+              fill={useColorModeValue("black", "white")}
             >
               {tick.value
                 .toString()
