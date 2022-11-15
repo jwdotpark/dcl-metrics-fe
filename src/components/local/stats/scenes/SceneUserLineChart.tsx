@@ -28,7 +28,7 @@ const SceneUserLineChart = ({ data }) => {
 
   const slicedData = () => {
     if (chartData.length - dateRange > 0) {
-      return chartData.splice(chartData.length - dateRange, chartData.length)
+      return chartData.slice(chartData.length - dateRange, chartData.length)
     } else {
       return chartData
     }
