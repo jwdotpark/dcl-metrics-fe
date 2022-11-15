@@ -82,7 +82,7 @@ const SceneUserLineChart = ({ data }) => {
           validLegnth={90}
           name="scene_users"
         />
-        <Box h="300">
+        <Box h="300" mb="2">
           <LineChart data={result} color={color} />
         </Box>
       </Box>
