@@ -194,7 +194,9 @@ const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
               h="auto"
               mb="4"
             >
-              <Box w="100%">{!isEmpty && <SceneUserLineChart />}</Box>
+              <Box w="100%">
+                {!isEmpty && <SceneUserLineChart data={res} />}
+              </Box>
             </Flex>
           )}
           {/* new */}

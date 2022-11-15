@@ -3,9 +3,9 @@ import { GridItem, useColorModeValue } from "@chakra-ui/react"
 import LineChart from "../../../../lib/LineChart"
 import tempUser from "../../../../../public/data/temp_user.json"
 
-const SceneUserLineChart = () => {
-  const [dateRange, setDateRange] = useState(90)
-  const userData = tempUser && Object.entries(tempUser.daily_users)
+const SceneUserLineChart = ({ data }) => {
+  // const userData = tempUser && Object.entries(tempUser.daily_users)
+  const userData = data.daily_users && Object.entries(data.daily_users)
   const chartData = []
   userData.map((item) => {
     chartData.push({
