@@ -45,6 +45,10 @@ const SceneUserLineChart = ({ data }) => {
     },
   ]
 
+  const validLegnth = chartData.filter(
+    (item) => item.active_scenes !== 0
+  ).length
+
   useEffect(() => {
     const data = slicedData()
     const sum = slicedData().reduce((acc, cur) => acc + cur.users, 0)
@@ -52,17 +56,12 @@ const SceneUserLineChart = ({ data }) => {
     setAvgData(result)
   }, [dateRange])
 
-  const validLegnth = chartData.filter(
-    (item) => item.active_scenes !== 0
-  ).length
-
   return (
     <GridBox box={box}>
       <Box
         border="1px solid"
         borderColor={useColorModeValue("gray.100", "gray.600")}
         borderRadius="xl"
-        // shadow="md"
       >
         <Flex pos="relative" mt="4" mx="5">
           <Flex w="100%">
@@ -72,7 +71,7 @@ const SceneUserLineChart = ({ data }) => {
               </Text>
             </Box>
             <Spacer />
-            <AvgStat avg={avgData} data={slicedData()} />
+            <AvgStat avg={avgData} data={chartData} />
           </Flex>
         </Flex>
         <Box ml="6">
@@ -80,12 +79,12 @@ const SceneUserLineChart = ({ data }) => {
             Unique vistors per day in the last period
           </Text>
         </Box>
-        <LineChartDateRange
+        {/* <LineChartDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
           validLegnth={validLegnth}
           name="scene_users"
-        />
+        /> */}
         <Box h="300" mb="2">
           <LineChart data={result} color={color} />
         </Box>
