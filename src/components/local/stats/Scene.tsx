@@ -119,7 +119,24 @@ const Scene = ({
             </Text>
           )}
         </Box>
-
+        {!hasMultipleScenes && (
+          <Flex
+            sx={{
+              "& > * + *": {
+                ml: [0, 0, 0, 4],
+                mt: [4, 4, 4, 0],
+              },
+            }}
+            direction={["column", "column", "column", "row"]}
+            w="100%"
+            h="auto"
+            mb="4"
+          >
+            <Box w="100%" mb="2" p="4">
+              {!isEmpty && <SceneUserLineChart data={dailyUsers} />}
+            </Box>
+          </Flex>
+        )}
         <Box m="4">
           <Flex
             sx={{
@@ -186,26 +203,6 @@ const Scene = ({
               )}
             </Box>
           </Flex>
-
-          {!hasMultipleScenes && (
-            <Flex
-              sx={{
-                "& > * + *": {
-                  ml: [0, 0, 0, 4],
-                  mt: [4, 4, 4, 0],
-                },
-              }}
-              direction={["column", "column", "column", "row"]}
-              w="100%"
-              h="auto"
-              mb="4"
-            >
-              <Box w="100%">
-                {!isEmpty && <SceneUserLineChart data={dailyUsers} />}
-              </Box>
-            </Flex>
-          )}
-
           <Flex
             sx={{
               "& > * + *": {
