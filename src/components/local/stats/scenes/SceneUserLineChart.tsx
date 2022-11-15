@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { GridItem, useColorModeValue } from "@chakra-ui/react"
 import LineChart from "../../../../lib/LineChart"
-import tempUser from "../../../../../public/data/temp_user.json"
+// import tempData from "../../../../../public/data/cached_ups_store.json"
 
 const SceneUserLineChart = ({ data }) => {
-  // const userData = tempUser && Object.entries(tempUser.daily_users)
-  const userData = data.daily_users && Object.entries(data.daily_users)
+  // const userData = tempData && Object.entries(tempData.daily_users)
+  const userData = data && Object.entries(data)
   const chartData = []
   userData.map((item) => {
     chartData.push({
@@ -24,6 +24,7 @@ const SceneUserLineChart = ({ data }) => {
       })),
     },
   ]
+
   return (
     <GridItem
       w="100%"

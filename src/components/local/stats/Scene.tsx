@@ -21,7 +21,14 @@ import moment from "moment"
 import DatePicker from "./scenes/DatePicker"
 import SceneUserLineChart from "./scenes/SceneUserLineChart"
 
-const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
+const Scene = ({
+  res,
+  date,
+  setDate,
+  availableDate,
+  isLoading,
+  dailyUsers,
+}) => {
   const [selectedScene, setSelectedScene] = useState(0)
   const {
     name,
@@ -180,7 +187,6 @@ const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
             </Box>
           </Flex>
 
-          {/* new */}
           {!hasMultipleScenes && (
             <Flex
               sx={{
@@ -195,11 +201,10 @@ const Scene = ({ res, date, setDate, availableDate, isLoading }) => {
               mb="4"
             >
               <Box w="100%">
-                {!isEmpty && <SceneUserLineChart data={res} />}
+                {!isEmpty && <SceneUserLineChart data={dailyUsers} />}
               </Box>
             </Flex>
           )}
-          {/* new */}
 
           <Flex
             sx={{
