@@ -15,8 +15,8 @@ const SceneUserLineChart = ({ data }) => {
 
   const [avgData, setAvgData] = useState(0)
   const [dateRange, setDateRange] = useState<number>(30)
-
   const userData = data && Object.entries(data)
+
   const chartData = []
   userData.map((item) => {
     chartData.push({
@@ -34,9 +34,13 @@ const SceneUserLineChart = ({ data }) => {
     }
   }
 
+  const randomId = () => {
+    return Math.random().toString(36).substring(7)
+  }
+
   const result = [
     {
-      id: "users",
+      id: randomId(),
       color: "hsl(90, 70%, 50%)",
       data: slicedData().map((item) => ({
         id: item.date,
@@ -80,12 +84,12 @@ const SceneUserLineChart = ({ data }) => {
             Unique vistors per day in the last period
           </Text>
         </Box>
-        {/* <LineChartDateRange
+        <LineChartDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
           validLegnth={validLegnth}
           name=""
-        /> */}
+        />
         <Box h="300" mb="2">
           <LineChart data={result} color={color} />
         </Box>
