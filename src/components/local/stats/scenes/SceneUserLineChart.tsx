@@ -80,12 +80,12 @@ const SceneUserLineChart = ({ data }) => {
             Unique vistors per day in the last period
           </Text>
         </Box>
-        <LineChartDateRange
+        {/* <LineChartDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
           validLegnth={validLegnth}
           name=""
-        />
+        /> */}
         <Box h="300" mb="2">
           <LineChart data={result} color={color} />
         </Box>
