@@ -39,6 +39,7 @@ const SceneUserLineChart = ({ data }) => {
       id: "users",
       color: "hsl(90, 70%, 50%)",
       data: slicedData().map((item) => ({
+        id: item.date,
         x: item.date,
         y: item.users,
       })),
@@ -79,12 +80,12 @@ const SceneUserLineChart = ({ data }) => {
             Unique vistors per day in the last period
           </Text>
         </Box>
-        {/* <LineChartDateRange
+        <LineChartDateRange
           dateRange={dateRange}
           setDateRange={setDateRange}
           validLegnth={validLegnth}
-          name="scene_users"
-        /> */}
+          name=""
+        />
         <Box h="300" mb="2">
           <LineChart data={result} color={color} />
         </Box>

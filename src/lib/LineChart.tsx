@@ -7,7 +7,6 @@ import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import moment from "moment"
 
 const LineChart = ({ data, color }) => {
-  const { colorMode } = useColorMode()
   const min = Math.min(...data[0].data.map((item) => item.y))
   const dateRange = data[0].data.length
 
