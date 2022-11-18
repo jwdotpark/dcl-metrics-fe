@@ -161,7 +161,11 @@ const Scene = ({
                   />
                 </Box>
               )}
-              <SceneMap url={map_url} height={!hasMultipleScenes ? 450 : 405} />
+              <SceneMap
+                url={map_url}
+                height={!hasMultipleScenes ? 450 : 405}
+                name={name}
+              />
             </Box>
             <Box
               w={["100%", "100%", "100%", "65%"]}

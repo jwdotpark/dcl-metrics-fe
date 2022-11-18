@@ -21,7 +21,7 @@ import {
 import GridBox from "../../../GridBox"
 
 const SceneMap = (props) => {
-  const { url, height } = props
+  const { url, height, name } = props
   const { isOpen, onToggle, onClose } = useDisclosure()
 
   const centerCoord = url.split("center=")[1].split("&")[0].split(",")
@@ -60,18 +60,15 @@ const SceneMap = (props) => {
             border="1px solid"
             borderColor={useColorModeValue("gray.50", "gray.900")}
           />
-          <PopoverCloseButton size="md" />
-          <PopoverHeader>Confirmation!</PopoverHeader>
           <PopoverBody>
             <Flex dir="column">
               <Box>
-                <Text>Are you sure you want to jump in to the scene?</Text>
+                <Text>Would you like to jump into {name}?</Text>
               </Box>
             </Flex>
           </PopoverBody>
           <PopoverFooter justifyContent="flex-end" display="flex">
             <ButtonGroup size="sm">
-              {/* <Button variant="outline">Cancel</Button> */}
               <Button colorScheme="green">
                 <a target="_blank" href={jumpInUrl} rel="noopener noreferrer">
                   Jump In!
