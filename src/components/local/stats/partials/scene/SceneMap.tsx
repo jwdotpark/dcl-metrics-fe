@@ -69,7 +69,10 @@ const SceneMap = (props) => {
           </PopoverBody>
           <PopoverFooter justifyContent="flex-end" display="flex">
             <ButtonGroup size="sm">
-              <Button colorScheme="green">
+              <Button
+                color={useColorModeValue("#fff", "#fff")}
+                bg={useColorModeValue("#6272a4", "#bd93f9")}
+              >
                 <a target="_blank" href={jumpInUrl} rel="noopener noreferrer">
                   Jump In!
                 </a>
