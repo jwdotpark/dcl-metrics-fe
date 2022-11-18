@@ -55,7 +55,11 @@ const SceneMap = (props) => {
           borderColor={useColorModeValue("gray.300", "gray.800")}
           shadow="md"
         >
-          <PopoverArrow />
+          <PopoverArrow
+            bg={useColorModeValue("gray.50", "gray.900")}
+            border="1px solid"
+            borderColor={useColorModeValue("gray.50", "gray.900")}
+          />
           <PopoverCloseButton size="md" />
           <PopoverHeader>Confirmation!</PopoverHeader>
           <PopoverBody>
