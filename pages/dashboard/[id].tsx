@@ -5,7 +5,6 @@ import { Box, Text, Center } from "@chakra-ui/react"
 import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
-import moment from "moment"
 import { sendNotification } from "../../src/lib/hooks/sendNotification"
 const axios = require("axios").default
 import fs from "fs"
@@ -79,11 +78,11 @@ const DashboardPage = (props) => {
   const [res, setRes] = useState([
     dashboard.result[availableDate[availableDate.length - 1]],
   ])
+  const dailyUsers = data.daily_users
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [date, setDate] = useState(new Date(latestDay))
-  const updateTime = moment(updatedAt).format("YYYY MMM DD HH:mm")
 
   useEffect(() => {
     const target = new Date(date)
@@ -113,6 +112,7 @@ const DashboardPage = (props) => {
             setDate={setDate}
             availableDate={availableDate}
             isLoading={isLoading}
+            dailyUsers={dailyUsers}
           />
         </Box>
       ) : (

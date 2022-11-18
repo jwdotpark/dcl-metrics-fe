@@ -35,7 +35,7 @@ const PrivateDashboardButton = () => {
           size="lg"
           variant="link"
         >
-          <Text>{title}</Text>
+          <Text display={["none", "flex"]}>{title}</Text>
         </Button>
       </Tooltip>
     </>
