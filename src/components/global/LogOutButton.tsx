@@ -17,7 +17,12 @@ const LogOutButton = () => {
         label="Log Out"
         placement="auto"
       >
-        <Button onClick={handleClick} size="lg" variant="link">
+        <Button
+          display={["none", "flex"]}
+          onClick={handleClick}
+          size="lg"
+          variant="link"
+        >
           <FiLogOut />
         </Button>
       </Tooltip>
