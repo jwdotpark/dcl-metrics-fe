@@ -12,11 +12,11 @@ import {
   Spacer,
   Spinner,
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import "react-tile-map/lib/styles.css"
 import { Coord, Layer, TileMap, TileMapProps } from "react-tile-map"
 
-const Map = ({ h, coord, setCoord }) => {
+const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -62,6 +62,7 @@ const Map = ({ h, coord, setCoord }) => {
   const [tiles, setTiles] = useState([])
   const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
+  const [isMapExpanded, setIsMapExpanded] = useState(false)
 
   const layers = []
   const highlights = []
@@ -73,14 +74,15 @@ const Map = ({ h, coord, setCoord }) => {
     })
   }
 
-  const onClickAtlasHandler = (x: number, y: number) => {
-    if (!tiles) return
-    const land = getLandById(x, y)
-    if (land) {
-      // land?.landId && setSelectedId && setSelectedId(land.landId)
-      // setClickedLandId && setClickedLandId(x, y)
-    }
-  }
+  // const onClickAtlasHandler = (x: number, y: number) => {
+  //   if (!tiles) return
+  //   const land = getLandById(x, y)
+  //   if (land) {
+  //     console.log(land)
+  //     // land?.landId && setSelectedId && setSelectedId(land.landId)
+  //     // setClickedLandId && setClickedLandId(x, y)
+  //   }
+  // }
 
   const [selected, setSelected] = useState([])
   const isSelected = (x: number, y: number) => {
@@ -96,10 +98,12 @@ const Map = ({ h, coord, setCoord }) => {
   }
 
   const handleClick = (x: number, y: number) => {
+    const id = x + "," + y
+    setSelectedParcel(tiles[id])
     if (isSelected(x, y)) {
       setSelected(selected.filter((coord) => coord.x !== x && coord.y !== y))
     } else {
-      setSelected([...selected, { x, y }])
+      setSelected([{ x, y }])
     }
   }
 
@@ -115,6 +119,7 @@ const Map = ({ h, coord, setCoord }) => {
     setIsMapLoading(false)
   }
 
+  // memoize layer
   const layer = (x, y) => {
     const id = x + "," + y
     if (tiles && id in tiles) {
@@ -124,6 +129,10 @@ const Map = ({ h, coord, setCoord }) => {
         top: !!tile.top,
         left: !!tile.left,
         topLeft: !!tile.topLeft,
+        owner: tile.owner,
+        estateId: tile.estateId,
+        tokenId: tile.tokenId,
+        type: tile.type,
       }
     } else {
       return {
@@ -132,6 +141,7 @@ const Map = ({ h, coord, setCoord }) => {
     }
   }
 
+  // trigger fetchTiles() once and never call it again if it's called successfully
   useEffect(() => {
     fetchTiles()
   }, [])
@@ -141,19 +151,20 @@ const Map = ({ h, coord, setCoord }) => {
   }
 
   return (
-    <Box w={["100%", "100%", "100%", "80%"]} h="auto">
-      <GridItem
-        sx={mapBoxCss}
-        w={box.w}
-        h="100%"
-        bg={box.bg}
-        borderRadius="xl"
-        shadow="md"
-      >
+    <Box
+      w={["100%", "100%", "100%", "70%"]}
+      h="auto"
+      border="solid 1px"
+      borderColor={useColorModeValue("gray.200", "gray.600")}
+      borderRadius="xl"
+      shadow="md"
+    >
+      <GridItem sx={mapBoxCss} w={box.w} h="100%" bg={box.bg} borderRadius="xl">
         <Box p="4">
           <Box
             overflow="hidden"
-            h="400"
+            h={!isMapExpanded ? "400" : "800"}
+            bg="#25232A"
             borderRadius="xl"
             shadow="md"
             onMouseEnter={() => {
@@ -178,11 +189,22 @@ const Map = ({ h, coord, setCoord }) => {
                         Reset
                       </Button>
                     </Box>
+                    <Box>
+                      <Button
+                        bg={useColorModeValue("gray.200", "gray.600")}
+                        borderRadius="xl"
+                        onClick={() => setIsMapExpanded(!isMapExpanded)}
+                        size="sm"
+                        variant="solid"
+                      >
+                        {isMapExpanded ? "Collapse" : "Expand"}
+                      </Button>
+                    </Box>
                   </Flex>
                 )}
                 {isHover && (
                   <Box pos="absolute" zIndex="banner" bottom="4" left="4">
-                    <Text>
+                    <Text color={useColorModeValue("white", "black")}>
                       [{tempCoord.x}, {tempCoord.y}]
                     </Text>
                   </Box>
@@ -200,12 +222,12 @@ const Map = ({ h, coord, setCoord }) => {
                   onClick={(x, y) => {
                     setCoord({ x, y })
                     handleClick(x, y)
-                    onClickAtlasHandler(x, y)
+                    // onClickAtlasHandler(x, y)
                   }}
                 />
               </>
             ) : (
-              <Center h="400">
+              <Center h="100%">
                 <Spinner />
               </Center>
             )}
