@@ -111,7 +111,7 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     url: string = "https://api.decentraland.org/v2/tiles"
   ) => {
     if (!window.fetch) return {}
-    console.log("fetching tiles..")
+    // console.log("fetching tiles..")
     setIsMapLoading(true)
     const resp = await window.fetch(url)
     const json = await resp.json()
@@ -159,7 +159,7 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
       borderRadius="xl"
       shadow="md"
     >
-      <GridItem sx={mapBoxCss} w={box.w} h="100%" bg={box.bg} borderRadius="xl">
+      <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
         <Box p="4">
           <Box
             overflow="hidden"
@@ -227,7 +227,7 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                 />
               </>
             ) : (
-              <Center h="100%">
+              <Center h="400">
                 <Spinner />
               </Center>
             )}

@@ -11,6 +11,7 @@ import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 import moment from "moment"
 import MapInfoTable from "./partials/MapInfoTable"
+import MapImage from "./partials/MapImage"
 
 const MapInfo = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const box = {
@@ -35,7 +36,6 @@ const MapInfo = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const { name, id, updatedAt, owner, tokenId } = selectedParcel
   useEffect(() => {
     fetchParcelInfo()
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coord])
 
@@ -44,7 +44,6 @@ const MapInfo = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   return (
     <Box
       w={["100%", "100%", "100%", "30%"]}
-      // h={["35vh", "35vh"]}
       border="solid 1px"
       borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
@@ -59,23 +58,7 @@ const MapInfo = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
               </a>
             </Text>
           </Box>
-          <Box w="100%" h={[125, 150, 175]} p="2">
-            <Center h="100%">
-              {isPicLoading ? (
-                <Spinner />
-              ) : (
-                <Box overflow="hidden" w="100%" borderRadius="xl" shadow="md">
-                  <Image
-                    minW="100%"
-                    h={[150, 175, 200]}
-                    objectFit="cover"
-                    alt={name}
-                    src={image}
-                  />
-                </Box>
-              )}
-            </Center>
-          </Box>
+          <MapImage isPicLoading={isPicLoading} name={name} image={image} />
           <MapInfoTable
             selectedParcel={selectedParcel}
             description={description}
