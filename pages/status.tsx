@@ -1,4 +1,4 @@
-import { Box, Button } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import staticPeerStatus from "../public/data/cached_peerstats.json"
 import StatusBox from "../src/components/local/status/StatusBox"
@@ -63,13 +63,6 @@ const Status = (props) => {
   return (
     <Layout>
       <Box>
-        <Button
-          onClick={() => {
-            throw Error("this is error message")
-          }}
-        >
-          Make Error
-        </Button>
         <StatusBox data={data} />
       </Box>
     </Layout>
