@@ -11,9 +11,10 @@ import {
   Spinner,
   ButtonGroup,
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
+import tempParcel from "../../../../public/data/temp_parcel.json"
 
 const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const box = {
@@ -50,15 +51,24 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
   const [isMapExpanded, setIsMapExpanded] = useState(false)
-
+  const [zoom, setZoom] = useState(1)
+  const btnBg = "#6272a4"
   const layers = []
   const highlights = []
+  const mapHeight = {
+    collapsed: 500,
+    expanded: 750,
+  }
 
-  const getLandById = (x: number, y: number) => {
-    const id = `${x},${y}`
-    return highlights.find((coord) => {
-      return coord.id === id
-    })
+  // const getLandById = (x: number, y: number) => {
+  //   const id = `${x},${y}`
+  //   return highlights.find((coord) => {
+  //     return coord.id === id
+  //   })
+  // }
+
+  const onResetClick = () => {
+    setSelected([])
   }
 
   const [selected, setSelected] = useState([])
@@ -97,6 +107,18 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     setIsMapLoading(false)
   }
 
+  const tempParcelKeys = Object.keys(tempParcel)
+  const injectTempParcel = () => {
+    console.count("injected")
+    tempParcelKeys.forEach((key) => {
+      const parcel = tempParcel[key]
+      const id = parcel.x + "," + parcel.y
+      tiles[id] = parcel
+    })
+  }
+
+  console.count("rerendered")
+
   // memoize layer
   const layer = (x, y) => {
     const id = x + "," + y
@@ -121,20 +143,9 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
 
   useEffect(() => {
     fetchTiles()
+    injectTempParcel()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const onResetClick = () => {
-    setSelected([])
-  }
-
-  const mapHeight = {
-    collapsed: 500,
-    expanded: 750,
-  }
-
-  const [zoom, setZoom] = useState(1)
-  // const btnBg = useColorModeValue("#6272a4", "#44475a")
-  const btnBg = "#6272a4"
 
   return (
     <Box
@@ -263,4 +274,4 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   )
 }
 
-export default Map
+export default memo(Map)

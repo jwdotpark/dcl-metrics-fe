@@ -1,0 +1,77 @@
+{
+  "0, 0": {
+    "x": 0,
+    "y": 0,
+    "deploy_count": 2,
+    "total_visitors": 999,
+    "total_avg_time_spent": 999,
+    "total_avg_time_spent_afk": 999,
+    "total_logins": 10,
+    "total_logouts": 20,
+    "scenes": [
+      {
+        "name": "0,0 place",
+        "cids": [
+          "1d5c1b19f",
+          "xxx"
+        ],
+        "deploys": 2,
+        "visitors": 999,
+        "avg_time_spent": 999,
+        "avg_time_spent_afk": 999,
+        "logins": 10,
+        "logouts": 20
+      }
+    ]
+  },
+  "0, 1": {
+    "x": 0,
+    "y": 1,
+    "deploy_count": 1,
+    "total_visitors": 122,
+    "total_avg_time_spent": 182,
+    "total_avg_time_spent_afk": 381,
+    "total_logins": 398,
+    "total_logouts": 12,
+    "scenes": [
+      {
+        "name": "Genesis Plaza",
+        "cids": [
+          "2d5c1b18",
+          "xxx"
+        ],
+        "deploys": 2,
+        "visitors": 124,
+        "avg_time_spent": 823,
+        "avg_time_spent_afk": 573,
+        "logins": 101,
+        "logouts": 201
+      }
+    ]
+  },
+  "-5, 5": {
+    "x": -5,
+    "y": 5,
+    "deploy_count": 1,
+    "total_visitors": 122,
+    "total_avg_time_spent": 182,
+    "total_avg_time_spent_afk": 381,
+    "total_logins": 398,
+    "total_logouts": 12,
+    "scenes": [
+      {
+        "name": "Some other place",
+        "cids": [
+          "2d5c1b18",
+          "xxx"
+        ],
+        "deploys": 2,
+        "visitors": 124,
+        "avg_time_spent": 823,
+        "avg_time_spent_afk": 573,
+        "logins": 101,
+        "logouts": 201
+      }
+    ]
+  }
+}
