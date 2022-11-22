@@ -1,13 +1,26 @@
-import { Image, Box, Center, Spinner } from "@chakra-ui/react"
+import {
+  Image,
+  Box,
+  Center,
+  Spinner,
+  useColorModeValue,
+} from "@chakra-ui/react"
 
 const MapImage = ({ isPicLoading, name, image }) => {
   return (
-    <Box w="100%" h={[125, 150, 175]} p="2">
-      <Center h="100%">
+    <Box w="100%" minH={[150, 175, 200]} p="2">
+      <Center minH={[150, 175, 200]}>
         {isPicLoading ? (
           <Spinner />
         ) : (
-          <Box overflow="hidden" w="100%" borderRadius="xl">
+          <Box
+            overflow="hidden"
+            w="100%"
+            border="2px solid"
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            borderColor={useColorModeValue("gray.300", "gray.600")}
+            borderRadius="xl"
+          >
             <Image
               minW="100%"
               h={[150, 175, 200]}

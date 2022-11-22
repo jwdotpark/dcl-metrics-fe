@@ -7,12 +7,12 @@ import {
   Flex,
   GridItem,
   useColorModeValue,
-  useBreakpointValue,
   Button,
   Spacer,
   Spinner,
+  ButtonGroup,
 } from "@chakra-ui/react"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 import "react-tile-map/lib/styles.css"
 import { Coord, Layer, TileMap, TileMapProps } from "react-tile-map"
 
@@ -21,19 +21,6 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     h: "auto",
     w: "100%",
     bg: useColorModeValue("gray.200", "gray.700"),
-  }
-
-  const mapBoxCss = {
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
-    scrollbarWidth: "none",
-    "-webkit-touch-callout": "none",
-    "-webkit-user-select": "none",
-    "-khtml-user-select": "none",
-    "-moz-user-select": "none",
-    "-ms-user-select": "none",
-    "user-select": "none",
   }
 
   const COLOR_BY_TYPE: Record<number | string, string> = {
@@ -59,6 +46,7 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     x: 0,
     y: 0,
   })
+
   const [tiles, setTiles] = useState([])
   const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
@@ -73,16 +61,6 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
       return coord.id === id
     })
   }
-
-  // const onClickAtlasHandler = (x: number, y: number) => {
-  //   if (!tiles) return
-  //   const land = getLandById(x, y)
-  //   if (land) {
-  //     console.log(land)
-  //     // land?.landId && setSelectedId && setSelectedId(land.landId)
-  //     // setClickedLandId && setClickedLandId(x, y)
-  //   }
-  // }
 
   const [selected, setSelected] = useState([])
   const isSelected = (x: number, y: number) => {
@@ -111,9 +89,10 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     url: string = "https://api.decentraland.org/v2/tiles"
   ) => {
     if (!window.fetch) return {}
-    // console.log("fetching tiles..")
     setIsMapLoading(true)
-    const resp = await window.fetch(url)
+    const resp = await fetch(url, {
+      cache: "force-cache",
+    })
     const json = await resp.json()
     setTiles(json.data)
     setIsMapLoading(false)
@@ -141,7 +120,6 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     }
   }
 
-  // trigger fetchTiles() once and never call it again if it's called successfully
   useEffect(() => {
     fetchTiles()
   }, [])
@@ -149,6 +127,13 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const onResetClick = () => {
     setSelected([])
   }
+
+  const mapHeight = {
+    collapsed: 500,
+    expanded: 750,
+  }
+
+  const [zoom, setZoom] = useState(1)
 
   return (
     <Box
@@ -163,8 +148,10 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
         <Box p="4">
           <Box
             overflow="hidden"
-            h={!isMapExpanded ? "400" : "800"}
+            h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
             bg="#25232A"
+            border="2px solid"
+            borderColor={useColorModeValue("gray.200", "gray.600")}
             borderRadius="xl"
             shadow="md"
             onMouseEnter={() => {
@@ -200,16 +187,44 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                         {isMapExpanded ? "Collapse" : "Expand"}
                       </Button>
                     </Box>
+                    <Spacer />
+                    <Box>
+                      <ButtonGroup isAttached>
+                        <Button
+                          bg={useColorModeValue("gray.200", "gray.600")}
+                          borderRadius="xl"
+                          onClick={() =>
+                            setZoom(Number((zoom - 0.2).toFixed(1)))
+                          }
+                          size="sm"
+                          variant="solid"
+                        >
+                          -
+                        </Button>
+                        <Button
+                          bg={useColorModeValue("gray.200", "gray.600")}
+                          borderRadius="xl"
+                          onClick={() =>
+                            setZoom(Number((zoom + 0.2).toFixed(1)))
+                          }
+                          size="sm"
+                          variant="solid"
+                        >
+                          +
+                        </Button>
+                      </ButtonGroup>
+                    </Box>
                   </Flex>
                 )}
                 {isHover && (
                   <Box pos="absolute" zIndex="banner" bottom="4" left="4">
-                    <Text color={useColorModeValue("white", "black")}>
+                    <Text color="gray.100">
                       [{tempCoord.x}, {tempCoord.y}]
                     </Text>
                   </Box>
                 )}
                 <TileMap
+                  zoom={zoom}
                   layers={[
                     layer,
                     selectedStrokeLayer,
@@ -222,7 +237,6 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                   onClick={(x, y) => {
                     setCoord({ x, y })
                     handleClick(x, y)
-                    // onClickAtlasHandler(x, y)
                   }}
                 />
               </>

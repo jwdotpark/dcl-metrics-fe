@@ -22,9 +22,8 @@ const LandPicker = () => {
     bg: useColorModeValue("white", "gray.800"),
   }
 
-  // const h = useBreakpointValue({ base: 300, md: 400, lg: "auto" })
   const h = "auto"
-  
+
   const [coord, setCoord] = useState({
     x: 0,
     y: 0,
@@ -44,7 +43,7 @@ const LandPicker = () => {
     owner: "0x4eac6325e1dbf1ac90434d39766e164dca71139e",
     tokenId: "0",
   }
-  
+
   const [selectedParcel, setSelectedParcel] = useState(defaultParcel)
 
   return (
