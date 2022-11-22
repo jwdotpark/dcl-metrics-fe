@@ -4,6 +4,7 @@ import Script from "next/script"
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
+import ErrorBoundary from "../src/components/error/ErrorBoundary"
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const telemetry = () => {
@@ -39,7 +40,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
             // data-domains="dcl-metrics.com/"
           ></Script>
         )}
-        <Component {...pageProps} />
+        <ErrorBoundary>
+          <Component {...pageProps} />
+        </ErrorBoundary>
         {/* </SafeHydrate> */}
       </Provider>
     </ChakraProvider>
