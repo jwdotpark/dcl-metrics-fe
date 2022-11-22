@@ -1,16 +1,5 @@
-import {
-  Button,
-  Text,
-  Image,
-  Box,
-  GridItem,
-  useColorModeValue,
-  Center,
-  Spinner,
-} from "@chakra-ui/react"
+import { Button, Box, GridItem, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import Link from "next/link"
-import moment from "moment"
 import MapInfoTable from "./partials/MapInfoTable"
 import MapImage from "./partials/MapImage"
 

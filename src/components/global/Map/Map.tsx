@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
-  Image,
   Box,
   Text,
   Center,
@@ -14,7 +13,7 @@ import {
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import "react-tile-map/lib/styles.css"
-import { Coord, Layer, TileMap, TileMapProps } from "react-tile-map"
+import { Layer, TileMap } from "react-tile-map"
 
 const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const box = {
@@ -134,6 +133,8 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   }
 
   const [zoom, setZoom] = useState(1)
+  // const btnBg = useColorModeValue("#6272a4", "#44475a")
+  const btnBg = "#6272a4"
 
   return (
     <Box
@@ -167,8 +168,10 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                   <Flex pos="absolute" zIndex="banner" w="100%" p="2">
                     <Box mr="2">
                       <Button
-                        bg={useColorModeValue("gray.200", "gray.600")}
+                        color="gray.100"
+                        bg={btnBg}
                         borderRadius="xl"
+                        shadow="md"
                         onClick={() => onResetClick()}
                         size="sm"
                         variant="solid"
@@ -178,8 +181,10 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                     </Box>
                     <Box>
                       <Button
-                        bg={useColorModeValue("gray.200", "gray.600")}
+                        color="gray.100"
+                        bg={btnBg}
                         borderRadius="xl"
+                        shadow="md"
                         onClick={() => setIsMapExpanded(!isMapExpanded)}
                         size="sm"
                         variant="solid"
@@ -191,8 +196,10 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                     <Box>
                       <ButtonGroup isAttached>
                         <Button
-                          bg={useColorModeValue("gray.200", "gray.600")}
+                          color="gray.100"
+                          bg={btnBg}
                           borderRadius="xl"
+                          shadow="md"
                           onClick={() =>
                             setZoom(Number((zoom - 0.2).toFixed(1)))
                           }
@@ -202,8 +209,10 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                           -
                         </Button>
                         <Button
-                          bg={useColorModeValue("gray.200", "gray.600")}
+                          color="gray.100"
+                          bg={btnBg}
                           borderRadius="xl"
+                          shadow="md"
                           onClick={() =>
                             setZoom(Number((zoom + 0.2).toFixed(1)))
                           }
@@ -241,7 +250,9 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                 />
               </>
             ) : (
-              <Center h="400">
+              <Center
+                h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}
+              >
                 <Spinner />
               </Center>
             )}

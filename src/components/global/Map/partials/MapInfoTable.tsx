@@ -1,17 +1,4 @@
-import {
-  Text,
-  Table,
-  TableCaption,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
-  Tfoot,
-  Box,
-  TableContainer,
-  useBreakpointValue,
-} from "@chakra-ui/react"
+import { Text, Table, Tr, Tbody, Td, TableContainer } from "@chakra-ui/react"
 import moment from "moment"
 
 const MapInfoTable = ({ selectedParcel, description }) => {
@@ -47,7 +34,6 @@ const MapInfoTable = ({ selectedParcel, description }) => {
           <Tr>
             <Td>Updated At</Td>
             <Td isNumeric>
-              {/* updatedAt unix time convert */}
               <Text>{moment.unix(updatedAt).format("YYYY MMM. D HH:MM")}</Text>
             </Td>
           </Tr>
