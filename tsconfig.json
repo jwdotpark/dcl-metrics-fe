@@ -23,7 +23,8 @@
     "pages/404.jsx",
     "src/components/global/ErrorBoundary.tsx",
     "pages/_error.js",
-    "pages/404.js"
-, "src/components/error/ErrorBoundary.jsx"  ],
+    "src/components/error/ErrorBoundary.js",
+    "src/components/error/ErrorBoundary.jsx"
+  ],
   "exclude": ["node_modules"]
 }

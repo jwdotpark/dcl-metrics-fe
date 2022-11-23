@@ -58,8 +58,7 @@ export async function getStaticProps() {
   }
 }
 
-const Status = (props) => {
-  const data = props.data
+const Status = ({ data }) => {
   return (
     <Layout>
       <Box>

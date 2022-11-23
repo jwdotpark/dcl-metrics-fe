@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <ChakraProvider>
       <Provider>
-        {/* <SafeHydrate> */}
         <Head>
           <title>DCL Metrics</title>
           <link rel="shortcut icon" sizes="32x32" href="/images/favicon.ico" />
@@ -43,7 +42,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <ErrorBoundary>
           <Component {...pageProps} />
         </ErrorBoundary>
-        {/* </SafeHydrate> */}
       </Provider>
     </ChakraProvider>
   )

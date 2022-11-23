@@ -1,40 +1,78 @@
 import React from "react"
+import Layout from "../layout/layout"
+import {
+  Box,
+  Flex,
+  Center,
+  Text,
+  Button,
+  Container,
+  Divider,
+  VStack,
+  StackDivider,
+} from "@chakra-ui/react"
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
-
-    // Define a state variable to track whether is an error or not
-    this.state = { hasError: false }
+    this.state = { hasError: false, error: null, errorInfo: null }
   }
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI
 
+  static getDerivedStateFromError(error) {
     return { hasError: true }
   }
+
   componentDidCatch(error, errorInfo) {
-    // You can use your own error logging service here
-    console.log({ error, errorInfo })
+    this.setState({
+      error: error,
+      errorInfo: errorInfo,
+    })
+    console.log("error", error)
+    console.log("errorInfo", errorInfo)
   }
+
   render() {
-    // Check if the error is thrown
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
+    if (this.state.errorInfo) {
+      // fallback ui
       return (
-        <div>
-          <h2>Oops, there is an error!</h2>
-          <button
-            type="button"
-            onClick={() => this.setState({ hasError: false })}
+        <Container maxW={["xl", "2xl", "4xl", "8xl"]} mt="20">
+          <VStack
+            align="stretch"
+            divider={<StackDivider borderColor="gray.600" />}
+            spacing={4}
           >
-            Try again?
-          </button>
-        </div>
+            <Box maxW="md" p="4" px={[8, 0, 0, 0]}>
+              <Text fontSize="4xl">Sorry, there is an error!</Text>
+            </Box>
+            <Box maxW="md" p="4" px={[8, 0, 0, 0]}>
+              <Text mb="2" fontSize="4xl">
+                Error
+              </Text>
+              <Text as="kbd">
+                {this.state.error && this.state.error.toString()}
+              </Text>
+            </Box>
+            <Box maxW="md" p="4" px={[8, 0, 0, 0]}>
+              <Text mb="2" fontSize="4xl">
+                Error Stack
+              </Text>
+              <Text as="kbd">
+                {this.state.errorInfo.componentStack.toString()}
+              </Text>
+            </Box>
+            <Box pt="8">
+              <Button
+                borderRadius="xl"
+                onClick={() => this.setState({ errorInfo: null })}
+                type="button"
+              >
+                Try again?
+              </Button>
+            </Box>
+          </VStack>
+        </Container>
       )
     }
-
-    // Return children components in case of no error
-
     return this.props.children
   }
 }
