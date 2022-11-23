@@ -30,7 +30,9 @@ class ErrorBoundary extends React.Component {
     })
     console.log("error", error)
     console.log("errorInfo", errorInfo)
-    sendError(error, errorInfo)
+    if (process.env.NEXT_PUBLIC_STAGING !== "true") {
+      sendError(error, errorInfo)
+    }
   }
 
   render() {
