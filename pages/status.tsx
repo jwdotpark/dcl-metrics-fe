@@ -64,17 +64,22 @@ const Status = ({ data }) => {
   // if (count === 3) {
   //   throw new Error("waa waaa")
   // }
+  // const TestButton = () => {
+  //   return (
+  //     <Button
+  //       onClick={() => {
+  //         setCount(count + 1)
+  //       }}
+  //     >
+  //       count {count}
+  //     </Button>
+  //   )
+  // }
 
   return (
     <Layout>
       <Box>
-        {/* <Button
-          onClick={() => {
-            setCount(count + 1)
-          }}
-        >
-          count {count}
-        </Button> */}
+        {/* <TestButton /> */}
         <StatusBox data={data} />
       </Box>
     </Layout>
