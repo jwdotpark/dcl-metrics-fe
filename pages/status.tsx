@@ -62,7 +62,7 @@ export async function getStaticProps() {
 const Status = ({ data }) => {
   const [count, setCount] = useState(0)
   if (count === 3) {
-    throw new Error("Some error message")
+    throw new Error("waa waaa")
   }
 
   return (

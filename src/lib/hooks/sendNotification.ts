@@ -28,7 +28,7 @@ export const sendError = async (error, errorInfo) => {
     mode: "no-cors",
     body: JSON.stringify({
       level: "Error",
-      message: `${error} - ${errorInfo}`,
+      message: `${error} - ${errorInfo.componentStack.toString()}`,
       payload: {
         status: error,
       },
