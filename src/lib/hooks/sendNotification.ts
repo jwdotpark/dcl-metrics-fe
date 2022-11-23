@@ -4,6 +4,7 @@ const headers = {
   "Access-Control-Allow-Origin": "*",
 }
 
+// server
 export const sendNotification = async (response, name, status) => {
   const data = await fetch(URI, {
     method: "POST",
@@ -19,10 +20,12 @@ export const sendNotification = async (response, name, status) => {
   await data.json()
 }
 
+// client
 export const sendError = async (error, errorInfo) => {
   const data = await fetch(URI, {
     method: "POST",
     headers: headers,
+    mode: "no-cors",
     body: JSON.stringify({
       level: "Error",
       message: `${error} - ${errorInfo}`,
