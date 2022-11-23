@@ -11,6 +11,7 @@ import {
   VStack,
   StackDivider,
 } from "@chakra-ui/react"
+import { sendError } from "../../../src/lib/hooks/sendNotification"
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -29,11 +30,11 @@ class ErrorBoundary extends React.Component {
     })
     console.log("error", error)
     console.log("errorInfo", errorInfo)
+    sendError(error, errorInfo)
   }
 
   render() {
     if (this.state.errorInfo) {
-      // fallback ui
       return (
         <Container maxW={["xl", "2xl", "4xl", "8xl"]} mt="20">
           <VStack

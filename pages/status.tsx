@@ -1,10 +1,11 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Button } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import staticPeerStatus from "../public/data/cached_peerstats.json"
 import StatusBox from "../src/components/local/status/StatusBox"
 import { sendNotification } from "../src/lib/hooks/sendNotification"
 const axios = require("axios").default
 import fs from "fs"
+import { useState } from "react"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24
@@ -59,9 +60,21 @@ export async function getStaticProps() {
 }
 
 const Status = ({ data }) => {
+  const [count, setCount] = useState(0)
+  if (count === 3) {
+    throw new Error("Some error message")
+  }
+
   return (
     <Layout>
       <Box>
+        <Button
+          onClick={() => {
+            setCount(count + 1)
+          }}
+        >
+          count {count}
+        </Button>
         <StatusBox data={data} />
       </Box>
     </Layout>
