@@ -51,9 +51,9 @@ export async function getStaticProps(context) {
       sendNotification(response, name, "error")
     }
 
-    const data = await response.data // data property is axios thing?
+    const data = await response.data
     return {
-      props: { data, name, updatedAt: Date.now() },
+      props: { data },
       revalidate: day,
     }
   }
@@ -61,7 +61,7 @@ export async function getStaticProps(context) {
     const response = await fetch(url)
     const data = await response.json()
     return {
-      props: { data, name, updatedAt: Date.now() },
+      props: { data },
       revalidate: day,
     }
   }
@@ -69,7 +69,7 @@ export async function getStaticProps(context) {
 
 const DashboardPage = (props) => {
   const router = useRouter()
-  const { data, name, updatedAt } = props
+  const { data } = props
   const dashboard = data
 
   const availableDate = dashboard.available_dates

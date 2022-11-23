@@ -84,10 +84,7 @@ const LineChart = ({ data, color }) => {
               fontSize="11px"
               fill={useColorModeValue("black", "white")}
             >
-              {tick.value
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-                .replace(/00$/, "k")}
+              {tick.value.toFixed(0)}
             </text>
           )
         },

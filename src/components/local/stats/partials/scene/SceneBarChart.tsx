@@ -97,6 +97,18 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
             legend: "Number of Users",
             legendPosition: "end",
             legendOffset: 5,
+            renderTick: (tick) => {
+              return (
+                <text
+                  x={tick.x - 20}
+                  y={tick.y + 4}
+                  fontSize="11px"
+                  fill={useColorModeValue("black", "white")}
+                >
+                  {tick.value.toFixed(0)}
+                </text>
+              )
+            },
           }}
           labelSkipWidth={10}
           labelSkipHeight={10}
