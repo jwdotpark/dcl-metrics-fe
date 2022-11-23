@@ -84,7 +84,7 @@ const LineChart = ({ data, color }) => {
               fontSize="11px"
               fill={useColorModeValue("black", "white")}
             >
-              {tick.value}
+              {tick.value.toFixed(0)}
             </text>
           )
         },
