@@ -30,7 +30,7 @@ export const sendError = async (error, errorInfo) => {
       level: "Error",
       message: `${error} - ${errorInfo.componentStack.toString()}`,
       payload: {
-        status: error,
+        status: error.toString(),
       },
     }),
   })
