@@ -60,21 +60,21 @@ export async function getStaticProps() {
 }
 
 const Status = ({ data }) => {
-  const [count, setCount] = useState(0)
-  if (count === 3) {
-    throw new Error("waa waaa")
-  }
+  // const [count, setCount] = useState(0)
+  // if (count === 3) {
+  //   throw new Error("waa waaa")
+  // }
 
   return (
     <Layout>
       <Box>
-        <Button
+        {/* <Button
           onClick={() => {
             setCount(count + 1)
           }}
         >
           count {count}
-        </Button>
+        </Button> */}
         <StatusBox data={data} />
       </Box>
     </Layout>
