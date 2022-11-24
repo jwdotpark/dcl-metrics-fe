@@ -6,9 +6,16 @@ import {
   MenuItem,
   Button,
   Box,
+  useColorModeValue,
 } from "@chakra-ui/react"
 
-const MapMenu = ({ properties, selectedProp, setSelectedProp }) => {
+const MapMenu = ({
+  properties,
+  selectedProp,
+  setSelectedProp,
+  btnBg,
+  textColor,
+}) => {
   const formatName = (name) => {
     return name.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())
   }
@@ -25,8 +32,6 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp }) => {
           return (
             <MenuItem
               key={index}
-              color="gray.100"
-              _hover={{ bg: "gray.700" }}
               icon={<PropIcon property={property} />}
               onClick={() => {
                 setSelectedProp(property)
@@ -44,10 +49,6 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp }) => {
     <Menu>
       <MenuButton
         as={Button}
-        color="gray.100"
-        bg="gray.800"
-        _hover={{ bg: "gray.900" }}
-        _active={{ bg: "gray.900" }}
         aria-label="Options"
         leftIcon={<PropIcon property={selectedProp} />}
         size="sm"
@@ -55,7 +56,7 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp }) => {
       >
         {formatName(selectedProp.name)}
       </MenuButton>
-      <MenuList bg="gray.800" border="none">
+      <MenuList border="none">
         <MapMenuList />
       </MenuList>
     </Menu>

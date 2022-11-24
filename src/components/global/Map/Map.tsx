@@ -16,6 +16,7 @@ import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
 import tempParcel from "../../../../public/data/temp_parcel.json"
 import MapMenu from "./partials/MapMenu"
+import MapButtonGroup from "./partials/MapButtonGroup"
 
 const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const box = {
@@ -60,7 +61,8 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const [isMapLoading, setIsMapLoading] = useState(false)
   const [isMapExpanded, setIsMapExpanded] = useState(false)
   const [zoom, setZoom] = useState(1)
-  const btnBg = "gray.800"
+  const btnBg = useColorModeValue("gray.800", "gray.400")
+  const textColor = useColorModeValue("gray.100", "gray.900")
   const layers = []
   const mapHeight = {
     collapsed: 500,
@@ -200,52 +202,18 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
             {!isMapLoading ? (
               <>
                 {isHover && (
-                  <Flex pos="absolute" zIndex="banner" w="100%" p="2">
-                    <Box>
-                      <Button
-                        color="gray.100"
-                        bg={btnBg}
-                        borderRadius="xl"
-                        shadow="md"
-                        onClick={() => setIsMapExpanded(!isMapExpanded)}
-                        size="sm"
-                        variant="solid"
-                      >
-                        {isMapExpanded ? "Collapse" : "Expand"}
-                      </Button>
-                    </Box>
-                    <Spacer />
-                    <Box>
-                      <ButtonGroup isAttached>
-                        <Button
-                          color="gray.100"
-                          bg={btnBg}
-                          borderRadius="xl"
-                          shadow="md"
-                          onClick={() =>
-                            setZoom(Number((zoom - 0.2).toFixed(1)))
-                          }
-                          size="sm"
-                          variant="solid"
-                        >
-                          -
-                        </Button>
-                        <Button
-                          color="gray.100"
-                          bg={btnBg}
-                          borderRadius="xl"
-                          shadow="md"
-                          onClick={() =>
-                            setZoom(Number((zoom + 0.2).toFixed(1)))
-                          }
-                          size="sm"
-                          variant="solid"
-                        >
-                          +
-                        </Button>
-                      </ButtonGroup>
-                    </Box>
-                  </Flex>
+                  <MapButtonGroup
+                    isMapExpanded={isMapExpanded}
+                    setIsMapExpanded={setIsMapExpanded}
+                    zoom={zoom}
+                    setZoom={setZoom}
+                    tempCoord={tempCoord}
+                    properties={properties}
+                    selectedProp={selectedProp}
+                    setSelectedProp={setSelectedProp}
+                    textColor={textColor}
+                    btnBg={btnBg}
+                  />
                 )}
                 {isHover && (
                   <Flex>
@@ -263,6 +231,8 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                       shadow="md"
                     >
                       <MapMenu
+                        textColor={textColor}
+                        btnBg={btnBg}
                         properties={properties}
                         selectedProp={selectedProp}
                         setSelectedProp={setSelectedProp}
