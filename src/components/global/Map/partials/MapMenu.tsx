@@ -4,25 +4,60 @@ import {
   IconButton,
   MenuList,
   MenuItem,
+  Button,
+  Box,
 } from "@chakra-ui/react"
 import { FiMenu } from "react-icons/fi"
 
-const MapMenu = () => {
+const MapMenu = ({ properties, selectedProp, setSelectedProp }) => {
+  const formatName = (name) => {
+    return name.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())
+  }
+
+  const PropIcon = ({ property }) => {
+    const { color } = property
+    return <Box w="4" h="4" bg={color && color} borderRadius="sm" />
+  }
+
+  const MapMenuList = () => {
+    return (
+      <>
+        {properties.map((property, index) => {
+          return (
+            <MenuItem
+              key={index}
+              color="gray.100"
+              _hover={{ bg: "gray.700" }}
+              icon={<PropIcon property={property} />}
+              onClick={() => {
+                setSelectedProp(property)
+              }}
+            >
+              {formatName(property.name)}
+            </MenuItem>
+          )
+        })}
+      </>
+    )
+  }
+
   return (
     <Menu>
       <MenuButton
-        as={IconButton}
+        as={Button}
+        color="gray.100"
         bg="gray.800"
+        _hover={{ bg: "gray.700" }}
+        _active={{ bg: "gray.700" }}
         aria-label="Options"
-        icon={<FiMenu />}
+        leftIcon={<PropIcon property={selectedProp} />}
         size="sm"
-        variant="outline"
-      />
-      <MenuList bg="gray.800">
-        <MenuItem>New Tab</MenuItem>
-        <MenuItem>New Window</MenuItem>
-        <MenuItem>Open Closed Tab</MenuItem>
-        <MenuItem>Open File...</MenuItem>
+        variant="solid"
+      >
+        {formatName(selectedProp.name)}
+      </MenuButton>
+      <MenuList bg="gray.800" border="none">
+        <MapMenuList />
       </MenuList>
     </Menu>
   )

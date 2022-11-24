@@ -62,15 +62,19 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const [zoom, setZoom] = useState(1)
   const btnBg = "gray.800"
   const layers = []
-  const highlights = []
   const mapHeight = {
     collapsed: 500,
     expanded: 750,
   }
 
-  const onResetClick = () => {
-    setSelected([])
-  }
+  const properties = [
+    { name: "total_avg_time_spent", color: "red" },
+    { name: "total_avg_time_spent_afk", color: "orange" },
+    { name: "total_logins", color: "yellow" },
+    { name: "total_logouts", color: "green" },
+    { name: "total_visitors", color: "purple" },
+    { name: "deploy_count", color: "navy" },
+  ]
 
   const [selected, setSelected] = useState([])
   const isSelected = (x: number, y: number) => {
@@ -112,6 +116,8 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     })
   }
 
+  const [selectedProp, setSelectedProp] = useState(properties[0])
+
   const layer = (x, y) => {
     const id = x + "," + y
     if (tiles && id in tiles) {
@@ -121,18 +127,9 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
         if (!tile.total_visitors) {
           return COLOR_BY_TYPE[tile.type]
         } else if (tile.total_visitors > 0) {
-          const properties = [
-            "total_avg_time_spent",
-            "total_avg_time_spent_afk",
-            "total_logins",
-            "total_logouts",
-            "total_visitors",
-            "deploy_count",
-          ]
           for (let i = 0; i < properties.length; i++) {
-            console.log(tile[properties[i]])
-            if (tile[properties[i]] > 0) {
-              return COLOR_BY_TYPE[properties[i]]
+            if (tile[properties[i].name] > 0) {
+              return COLOR_BY_TYPE[properties[i].name]
             }
           }
         }
@@ -204,19 +201,6 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
               <>
                 {isHover && (
                   <Flex pos="absolute" zIndex="banner" w="100%" p="2">
-                    <Box mr="2">
-                      <Button
-                        color="gray.100"
-                        bg={btnBg}
-                        borderRadius="xl"
-                        shadow="md"
-                        onClick={() => onResetClick()}
-                        size="sm"
-                        variant="solid"
-                      >
-                        Reset
-                      </Button>
-                    </Box>
                     <Box>
                       <Button
                         color="gray.100"
@@ -265,14 +249,18 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                 )}
                 {isHover && (
                   <Flex>
-                    <Box pos="absolute" zIndex="banner" bottom="4" left="4">
+                    <Box pos="absolute" zIndex="banner" bottom="2" left="2">
                       <Text color="gray.100">
                         [{tempCoord.x}, {tempCoord.y}]
                       </Text>
                     </Box>
                     <Spacer />
-                    <Box pos="absolute" zIndex="banner" right="4" bottom="4">
-                      <MapMenu />
+                    <Box pos="absolute" zIndex="banner" right="2" bottom="2">
+                      <MapMenu
+                        properties={properties}
+                        selectedProp={selectedProp}
+                        setSelectedProp={setSelectedProp}
+                      />
                     </Box>
                   </Flex>
                 )}
