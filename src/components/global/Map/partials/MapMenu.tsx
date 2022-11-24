@@ -7,7 +7,6 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react"
-import { FiMenu } from "react-icons/fi"
 
 const MapMenu = ({ properties, selectedProp, setSelectedProp }) => {
   const formatName = (name) => {
@@ -47,8 +46,8 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp }) => {
         as={Button}
         color="gray.100"
         bg="gray.800"
-        _hover={{ bg: "gray.700" }}
-        _active={{ bg: "gray.700" }}
+        _hover={{ bg: "gray.900" }}
+        _active={{ bg: "gray.900" }}
         aria-label="Options"
         leftIcon={<PropIcon property={selectedProp} />}
         size="sm"

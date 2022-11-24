@@ -250,12 +250,18 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                 {isHover && (
                   <Flex>
                     <Box pos="absolute" zIndex="banner" bottom="2" left="2">
-                      <Text color="gray.100">
+                      <Text color="gray.100" textShadow="md">
                         [{tempCoord.x}, {tempCoord.y}]
                       </Text>
                     </Box>
                     <Spacer />
-                    <Box pos="absolute" zIndex="banner" right="2" bottom="2">
+                    <Box
+                      pos="absolute"
+                      zIndex="banner"
+                      right="2"
+                      bottom="2"
+                      shadow="md"
+                    >
                       <MapMenu
                         properties={properties}
                         selectedProp={selectedProp}
