@@ -15,6 +15,7 @@ import { memo, useEffect, useState } from "react"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
 import tempParcel from "../../../../public/data/temp_parcel.json"
+import MapMenu from "./partials/MapMenu"
 
 const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const box = {
@@ -39,6 +40,13 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     12: "#18141a", // background
     13: "#110e13", // loading odd
     14: "#0d0b0e", // loading even
+    // new properties
+    total_avg_time_spent: "red",
+    total_avg_time_spent_afk: "orange",
+    total_logins: "yellow",
+    total_logouts: "green",
+    total_visitors: "purple",
+    deploy_count: "navy",
   }
 
   // const { layers = [], onChange, onPopup, onClick, ...rest } = props
@@ -52,20 +60,13 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const [isMapLoading, setIsMapLoading] = useState(false)
   const [isMapExpanded, setIsMapExpanded] = useState(false)
   const [zoom, setZoom] = useState(1)
-  const btnBg = "#6272a4"
+  const btnBg = "gray.800"
   const layers = []
   const highlights = []
   const mapHeight = {
     collapsed: 500,
     expanded: 750,
   }
-
-  // const getLandById = (x: number, y: number) => {
-  //   const id = `${x},${y}`
-  //   return highlights.find((coord) => {
-  //     return coord.id === id
-  //   })
-  // }
 
   const onResetClick = () => {
     setSelected([])
@@ -77,11 +78,7 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   }
 
   const selectedStrokeLayer: Layer = (x, y) => {
-    return isSelected(x, y) ? { color: "#ff0044", scale: 1.2 } : null
-  }
-
-  const selectedFillLayer: Layer = (x, y) => {
-    return isSelected(x, y) ? { color: "#ff9990", scale: 1.2 } : null
+    return isSelected(x, y) ? { color: "#ff004450", scale: 1 } : null
   }
 
   const handleClick = (x: number, y: number) => {
@@ -107,25 +104,43 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     setIsMapLoading(false)
   }
 
-  const tempParcelKeys = Object.keys(tempParcel)
-  const injectTempParcel = () => {
-    console.count("injected")
-    tempParcelKeys.forEach((key) => {
-      const parcel = tempParcel[key]
-      const id = parcel.x + "," + parcel.y
-      tiles[id] = parcel
+  const injectTiles = () => {
+    // @ts-ignore
+    tempParcel.map((tile) => {
+      const id = tile.coordinates
+      tiles[id] = { ...tiles[id], ...tile }
     })
   }
 
-  console.count("rerendered")
-
-  // memoize layer
   const layer = (x, y) => {
     const id = x + "," + y
     if (tiles && id in tiles) {
       const tile = tiles[id]
+
+      const sceneColor = () => {
+        if (!tile.total_visitors) {
+          return COLOR_BY_TYPE[tile.type]
+        } else if (tile.total_visitors > 0) {
+          const properties = [
+            "total_avg_time_spent",
+            "total_avg_time_spent_afk",
+            "total_logins",
+            "total_logouts",
+            "total_visitors",
+            "deploy_count",
+          ]
+          for (let i = 0; i < properties.length; i++) {
+            console.log(tile[properties[i]])
+            if (tile[properties[i]] > 0) {
+              return COLOR_BY_TYPE[properties[i]]
+            }
+          }
+        }
+      }
+
       return {
-        color: COLOR_BY_TYPE[tile.type],
+        // color: COLOR_BY_TYPE[tile.type],
+        color: sceneColor(),
         top: !!tile.top,
         left: !!tile.left,
         topLeft: !!tile.topLeft,
@@ -133,6 +148,14 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
         estateId: tile.estateId,
         tokenId: tile.tokenId,
         type: tile.type,
+        coordinate: tile?.coordinate,
+        deploy_count: tile?.deploy_count,
+        total_avg_time_spent: tile.total_avg_time_spent,
+        total_avg_time_spent_afk: tile.total_avg_time_spent,
+        total_logins: tile.total_logins,
+        total_logouts: tile.total_logouts,
+        total_visitors: tile.total_visitors,
+        scenes: tile.scenes,
       }
     } else {
       return {
@@ -143,9 +166,13 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
 
   useEffect(() => {
     fetchTiles()
-    injectTempParcel()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    injectTiles()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tiles])
 
   return (
     <Box
@@ -237,20 +264,21 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
                   </Flex>
                 )}
                 {isHover && (
-                  <Box pos="absolute" zIndex="banner" bottom="4" left="4">
-                    <Text color="gray.100">
-                      [{tempCoord.x}, {tempCoord.y}]
-                    </Text>
-                  </Box>
+                  <Flex>
+                    <Box pos="absolute" zIndex="banner" bottom="4" left="4">
+                      <Text color="gray.100">
+                        [{tempCoord.x}, {tempCoord.y}]
+                      </Text>
+                    </Box>
+                    <Spacer />
+                    <Box pos="absolute" zIndex="banner" right="4" bottom="4">
+                      <MapMenu />
+                    </Box>
+                  </Flex>
                 )}
                 <TileMap
                   zoom={zoom}
-                  layers={[
-                    layer,
-                    selectedStrokeLayer,
-                    selectedFillLayer,
-                    ...layers,
-                  ]}
+                  layers={[layer, selectedStrokeLayer, ...layers]}
                   onHover={(x, y) => {
                     setTempCoord({ x, y })
                   }}

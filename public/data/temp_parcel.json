@@ -1,77 +1,395 @@
-{
-  "0, 0": {
-    "x": 0,
-    "y": 0,
+[
+  {
+    "coordinates": "0,0",
     "deploy_count": 2,
-    "total_visitors": 999,
-    "total_avg_time_spent": 999,
-    "total_avg_time_spent_afk": 999,
-    "total_logins": 10,
-    "total_logouts": 20,
-    "scenes": [
-      {
-        "name": "0,0 place",
-        "cids": [
-          "1d5c1b19f",
-          "xxx"
-        ],
-        "deploys": 2,
-        "visitors": 999,
-        "avg_time_spent": 999,
-        "avg_time_spent_afk": 999,
-        "logins": 10,
-        "logouts": 20
-      }
-    ]
-  },
-  "0, 1": {
-    "x": 0,
-    "y": 1,
-    "deploy_count": 1,
-    "total_visitors": 122,
-    "total_avg_time_spent": 182,
-    "total_avg_time_spent_afk": 381,
-    "total_logins": 398,
-    "total_logouts": 12,
+    "total_visitors": 2,
+    "total_avg_time_spent": "100",
+    "total_avg_time_spent_afk": "200",
+    "total_logins": "300",
+    "total_logouts": "50",
     "scenes": [
       {
         "name": "Genesis Plaza",
+        "parcels": [
+          "0,0",
+          "0,1"
+        ],
         "cids": [
-          "2d5c1b18",
-          "xxx"
+          "bafkreia7j2mxjv3d6ffwtk7iglmd64j6yztnwnchsykpeerhdhcrb2a7wy",
+          "bafkreiah3oqocuzczdt5hcdh7t7mdpya3h4ar57ivxjqwefopsnvcqna74"
         ],
         "deploys": 2,
-        "visitors": 124,
-        "avg_time_spent": 823,
-        "avg_time_spent_afk": 573,
-        "logins": 101,
-        "logouts": 201
+        "visitors": 2
       }
     ]
   },
-  "-5, 5": {
-    "x": -5,
-    "y": 5,
-    "deploy_count": 1,
-    "total_visitors": 122,
-    "total_avg_time_spent": 182,
-    "total_avg_time_spent_afk": 381,
-    "total_logins": 398,
-    "total_logouts": 12,
+  {
+    "coordinates": "0,1",
+    "deploy_count": 2,
+    "total_visitors": 2,
+    "total_avg_time_spent": "100",
+    "total_avg_time_spent_afk": "200",
+    "total_logins": "300",
+    "total_logouts": "50",
     "scenes": [
       {
-        "name": "Some other place",
+        "name": "Genesis Plaza 2",
+        "parcels": [
+          "0,0",
+          "0,1"
+        ],
         "cids": [
-          "2d5c1b18",
-          "xxx"
+          "bafkreia7j2mxjv3d6ffwtk7iglmd64j6yztnwnchsykpeerhdhcrb2a7wy",
+          "bafkreiah3oqocuzczdt5hcdh7t7mdpya3h4ar57ivxjqwefopsnvcqna74"
         ],
         "deploys": 2,
-        "visitors": 124,
-        "avg_time_spent": 823,
-        "avg_time_spent_afk": 573,
-        "logins": 101,
-        "logouts": 201
+        "visitors": 2
+      }
+    ]
+  },
+  {
+    "coordinates": "20,-35",
+    "deploy_count": 2,
+    "total_visitors": 2,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "club smp",
+        "parcels": [
+          "20,-35",
+          "20,-34"
+        ],
+        "cids": [
+          "bafkreia7j2mxjv3d6ffwtk7iglmd64j6yztnwnchsykpeerhdhcrb2a7wy",
+          "bafkreiah3oqocuzczdt5hcdh7t7mdpya3h4ar57ivxjqwefopsnvcqna74"
+        ],
+        "deploys": 2,
+        "visitors": 2
+      }
+    ]
+  },
+  {
+    "coordinates": "160,125",
+    "deploy_count": 2,
+    "total_visitors": 13,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "8MetaBalls & 8MetaPawns",
+        "parcels": [
+          "159,124",
+          "159,125",
+          "159,126",
+          "160,124",
+          "160,125",
+          "160,126",
+          "161,123",
+          "161,124",
+          "161,125"
+        ],
+        "cids": [
+          "bafkreiaglwnpoaacrobzlu534azjbw4wpa5hcx6cfav743w6u2nfsvmxou",
+          "bafkreiftqb3l4e7h5titrz7iuz2abjlvl5vcuv2ekxeupdq7ur7k6z25da"
+        ],
+        "deploys": 2,
+        "visitors": 13
+      }
+    ]
+  },
+  {
+    "coordinates": "22,89",
+    "deploy_count": 8,
+    "total_visitors": 15,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "Crypto Chicken Collective",
+        "parcels": [
+          "22,89"
+        ],
+        "cids": [
+          "bafkreia4qyxr36cqxqqn7alh3iso57ir2srvwy3zhoqji24ywm32crd4wi",
+          "bafkreiacdm7c7pocih4si7wsbfkhh675cne5ximahyjjdtxl6c2okc4rma",
+          "bafkreibnqxkun46oiixid6nev2tq32j7amsvxypqvqgcvggszsbgglro6u",
+          "bafkreici7pzrztjnhlzmun242t4leh54b4chhcbtu3beinmehp7q6y3fhi",
+          "bafkreicrduufybeu43wy3e2xp2f6lwev2mkgpx4xnwuuyr6o5c2jhvc4cy",
+          "bafkreicnjheiz2kwinmrcp53uho646qmbaiyijrxizfzrfnuvhjh5erjoi",
+          "bafkreif42pn4mcdad4r3pp2szfhd6mly6d5b4cuqh5c33mw465jwma34ie",
+          "bafkreifwiynyswyevn6vx4kokfajtfb7ano4chrxrplfbmnxkwyqoxmbsy"
+        ],
+        "deploys": 8,
+        "visitors": 15
+      }
+    ]
+  },
+  {
+    "coordinates": "159,126",
+    "deploy_count": 3,
+    "total_visitors": 8,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "8MetaBalls & 8MetaPawns",
+        "parcels": [
+          "159,124",
+          "159,125",
+          "159,126",
+          "160,124",
+          "160,125",
+          "160,126",
+          "161,123",
+          "161,124",
+          "161,125"
+        ],
+        "cids": [
+          "bafkreiaglwnpoaacrobzlu534azjbw4wpa5hcx6cfav743w6u2nfsvmxou",
+          "bafkreigcnivtystmqed4cwpdigavqg6ofntp3nnxrlpmcq6662wzb4oequ",
+          "bafkreiftqb3l4e7h5titrz7iuz2abjlvl5vcuv2ekxeupdq7ur7k6z25da"
+        ],
+        "deploys": 3,
+        "visitors": 8
+      }
+    ]
+  },
+  {
+    "coordinates": "159,125",
+    "deploy_count": 2,
+    "total_visitors": 28,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "8MetaBalls & 8MetaPawns",
+        "parcels": [
+          "159,124",
+          "159,125",
+          "159,126",
+          "160,124",
+          "160,125",
+          "160,126",
+          "161,123",
+          "161,124",
+          "161,125"
+        ],
+        "cids": [
+          "bafkreiaglwnpoaacrobzlu534azjbw4wpa5hcx6cfav743w6u2nfsvmxou",
+          "bafkreiftqb3l4e7h5titrz7iuz2abjlvl5vcuv2ekxeupdq7ur7k6z25da"
+        ],
+        "deploys": 2,
+        "visitors": 28
+      }
+    ]
+  },
+  {
+    "coordinates": "61,24",
+    "deploy_count": 4,
+    "total_visitors": 109,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "rarible",
+        "parcels": [
+          "60,25",
+          "61,25",
+          "62,25",
+          "60,24",
+          "61,24",
+          "62,24"
+        ],
+        "cids": [
+          "bafkreiaopkv6vfwr2dhpszyxkukludfm7bst3p6jviv7ccxowk5tj427fu",
+          "bafkreia55d4r6t6xjouat24pywutlt7nhqdkuym7walrd4ajhsfuomqhte",
+          "bafkreiduz7ggccdekdlez6r6fw5n7yqzm26ez6q6wigbytna7ig2xosnoe",
+          "bafkreifo64vttguteguuozfcovtwf6yku4vdeffgxtq45dixqm5pmnn2ua"
+        ],
+        "deploys": 4,
+        "visitors": 109
+      }
+    ]
+  },
+  {
+    "coordinates": "-95,-88",
+    "deploy_count": 7,
+    "total_visitors": 58,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "Goldeneye",
+        "parcels": [
+          "-95,-89",
+          "-95,-88",
+          "-95,-87",
+          "-94,-89",
+          "-94,-88",
+          "-94,-87"
+        ],
+        "cids": [
+          "bafkreia56ig6zht5ee5rqkw7lltuy2cf6yqymsa6jxhsklsfoqbr3rjg7u",
+          "bafkreiaxic5arwhnnz6vgg5etifldwb5yepa5sxzfhbqh7mvan5hsxbvbq",
+          "bafkreibnx3rua6uflja5wzlfbxx52z74enrwl3fsoozcilorthabgl4hni",
+          "bafkreid5kpbtig2x2cyugxjtmhebuy7usyvbrlii34gvek3qtf6guuwltq",
+          "bafkreidtnbv3wpybvqxxivhlkcjqyha2vni24ewhaodhrtev6gof3bzdvu",
+          "bafkreidpd3xsmjha6c2j6r7agzp6ht7klf3ilbzrlzbybrjyrfza2tzyze",
+          "bafkreiehs2pknendoox5wbtg5mtcctvuth6j3rudsubfeq73fsejpfhiom"
+        ],
+        "deploys": 7,
+        "visitors": 58
+      }
+    ]
+  },
+  {
+    "coordinates": "-142,-150",
+    "deploy_count": 3,
+    "total_visitors": 3,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "The Tower of Redeemus",
+        "parcels": [
+          "-142,-150"
+        ],
+        "cids": [
+          "bafkreia5w7d7humavn26ueo6ccfbapazmfqbsrn3rq5i2nxw7quodpccea",
+          "bafkreib6rprp4sirmeulvwhihvrnxnxnvhx5nbv32oayktndk5mgg7uyom",
+          "bafkreieip3xmak2f6ibwjt5ozge3e7b2t7pbf7gdj2mco7onok5yhohlfq"
+        ],
+        "deploys": 3,
+        "visitors": 3
+      }
+    ]
+  },
+  {
+    "coordinates": "-95,-87",
+    "deploy_count": 5,
+    "total_visitors": 22,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "Goldeneye",
+        "parcels": [
+          "-95,-89",
+          "-95,-88",
+          "-95,-87",
+          "-94,-89",
+          "-94,-88",
+          "-94,-87"
+        ],
+        "cids": [
+          "bafkreiaflqtvotbdgn32czqdl6hd2rj6hpripojy2wyxwwgclcc5gtavwi",
+          "bafkreibnx3rua6uflja5wzlfbxx52z74enrwl3fsoozcilorthabgl4hni",
+          "bafkreid5kpbtig2x2cyugxjtmhebuy7usyvbrlii34gvek3qtf6guuwltq",
+          "bafkreidpd3xsmjha6c2j6r7agzp6ht7klf3ilbzrlzbybrjyrfza2tzyze",
+          "bafkreiehs2pknendoox5wbtg5mtcctvuth6j3rudsubfeq73fsejpfhiom"
+        ],
+        "deploys": 5,
+        "visitors": 22
+      }
+    ]
+  },
+  {
+    "coordinates": "-16,-111",
+    "deploy_count": 19,
+    "total_visitors": 20,
+    "total_avg_time_spent": "need user activities",
+    "total_avg_time_spent_afk": "need user activities",
+    "total_logins": "need user activities",
+    "total_logouts": "need user activities",
+    "scenes": [
+      {
+        "name": "The Hive",
+        "parcels": [
+          "-16,-111"
+        ],
+        "cids": [
+          "bafkreia3a55pztd4jutssqffc6ids6klst6phvbfs6i5l6i6pvjxzqzm5q",
+          "bafkreidkho5wutrjfn3lse2hlt2b5m5zccqutcdysy6xfvsz52tsy4msyq",
+          "bafkreiee75ueg7seem56nngvd5oxza4mst74izd4qfngp3z67yisd3zoqy",
+          "bafkreiefna2tnlofdegyitidyi3likgnarchzgtjb7fhc3r35jwwcobg4e"
+        ],
+        "deploys": 4,
+        "visitors": 4
+      },
+      {
+        "name": "The Hive DCL",
+        "parcels": [
+          "-16,-111"
+        ],
+        "cids": [
+          "bafkreia5jnur6bownaya6cnii2ck6ydd535izp3dicr45sjpxfxctnvuim",
+          "bafkreiar6vejjo567v6vc4jcgtkfvqhc574af66fka4n2pmn7dndrortxy",
+          "bafkreibnup2q3cb25ejfqoiwg3d25yqf3fzg22uhzsvurntbuiwtfmyto4",
+          "bafkreicjzc7bd6zxwjsxef2kgzbgki5if2p2my7zrjom5jsykuvs4r6w6m",
+          "bafkreid2kyfbn7erz4dcx5ardtawzxemzo3pnvmzmark4amxuxkcgq34lq",
+          "bafkreicuwhdhqws2gjnc4hzc4lcfy6sakbocauj5m7ibhupjvlhzsvc7ly",
+          "bafkreicunfore6256yqsqpehrt2ozx7h2wqxt4ydjurhorwduypwo7g5l4",
+          "bafkreieoj2ecsqz4tapbnjppjpn47blitjzf2jyuxhnaruagqhbslus7qe",
+          "bafkreif4nlpv5mktm7vocch7ux6qegcp73mroefwrqzh7sjguxuaciug6e",
+          "bafkreigfuijbts4tqizhypi73xc5p4pi2bjlcd4kjshx2xvnmmyfqvjefa"
+        ],
+        "deploys": 10,
+        "visitors": 11
+      },
+      {
+        "name": "demo",
+        "parcels": [
+          "-16,-111"
+        ],
+        "cids": [
+          "bafkreibsoqfdazjsxoithkprmvk5q7dsqybb55rominmezmiebcyrzo6ti"
+        ],
+        "deploys": 1,
+        "visitors": 1
+      },
+      {
+        "name": "hive",
+        "parcels": [
+          "-16,-111"
+        ],
+        "cids": [
+          "bafkreicrdsverzrdgh4gzm73vmdxbpfqkuxlaff563jvl7nspw4g5ckefa"
+        ],
+        "deploys": 1,
+        "visitors": 1
+      },
+      {
+        "name": "Empty",
+        "parcels": [
+          "-16,-111"
+        ],
+        "cids": [
+          "bafkreifbzfct7z4ajpjew6sjrjb2zdp2i7sb6t7cwdbgv42tbab43shxoq",
+          "bafkreifr4xtk3josro5vnvjoyuw3hw56ekrkr6jlslcvd23uytpro44kje",
+          "bafkreihuxcmkco55y4t4xxndmyehtkawcqm7q6xxlzalnriij5psncgrjm"
+        ],
+        "deploys": 3,
+        "visitors": 3
       }
     ]
   }
-}
+]
