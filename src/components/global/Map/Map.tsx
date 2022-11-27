@@ -180,7 +180,8 @@ const Map = ({
 
   useEffect(() => {
     injectTiles()
-  }, [injectTiles, selectedProp])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedProp])
 
   return (
     <Box
