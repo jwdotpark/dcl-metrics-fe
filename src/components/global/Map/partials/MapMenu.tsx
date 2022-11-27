@@ -49,6 +49,7 @@ const MapMenu = ({
     <Menu>
       <MenuButton
         as={Button}
+        bg={btnBg}
         aria-label="Options"
         leftIcon={<PropIcon property={selectedProp} />}
         size="sm"

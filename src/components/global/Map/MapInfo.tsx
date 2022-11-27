@@ -3,7 +3,15 @@ import { useEffect, useState } from "react"
 import MapInfoTable from "./partials/MapInfoTable"
 import MapImage from "./partials/MapImage"
 
-const MapInfo = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
+const MapInfo = ({
+  h,
+  coord,
+  setCoord,
+  selectedParcel,
+  setSelectedParcel,
+  isMapExpanded,
+  setIsMapExpanded,
+}) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -73,7 +81,9 @@ const MapInfo = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
       <GridItem w={box.w} h="100%" mb="4" borderRadius="xl">
         <Box p="2">
           <MapInfoNameBox />
-          <MapImage isPicLoading={isPicLoading} name={name} image={image} />
+          {isMapExpanded && (
+            <MapImage isPicLoading={isPicLoading} name={name} image={image} />
+          )}
           <MapInfoTable
             selectedParcel={selectedParcel}
             description={description}

@@ -30,21 +30,22 @@ const LandPicker = () => {
   })
 
   const defaultParcel = {
-    // id: "0,0",
-    // x: 0,
-    // y: 0,
-    // updatedAt: 1637965747,
-    // type: "plaza",
-    // top: true,
-    // left: true,
-    // topLeft: true,
-    // name: "Genesis Plaza",
-    // estateId: "1164",
-    // owner: "0x4eac6325e1dbf1ac90434d39766e164dca71139e",
-    // tokenId: "0",
+    id: "0,0",
+    x: 0,
+    y: 0,
+    updatedAt: 1637965747,
+    type: "plaza",
+    top: true,
+    left: true,
+    topLeft: true,
+    name: "Genesis Plaza",
+    estateId: "1164",
+    owner: "0x4eac6325e1dbf1ac90434d39766e164dca71139e",
+    tokenId: "0",
   }
 
   const [selectedParcel, setSelectedParcel] = useState(defaultParcel)
+  const [isMapExpanded, setIsMapExpanded] = useState(false)
 
   return (
     <GridBox box={box}>
@@ -78,6 +79,8 @@ const LandPicker = () => {
         >
           <Map
             h={h}
+            isMapExpanded={isMapExpanded}
+            setIsMapExpanded={setIsMapExpanded}
             coord={coord}
             setCoord={setCoord}
             selectedParcel={selectedParcel}
@@ -85,6 +88,8 @@ const LandPicker = () => {
           />
           <MapInfo
             h={h}
+            isMapExpanded={isMapExpanded}
+            setIsMapExpanded={setIsMapExpanded}
             coord={coord}
             setCoord={setCoord}
             selectedParcel={selectedParcel}

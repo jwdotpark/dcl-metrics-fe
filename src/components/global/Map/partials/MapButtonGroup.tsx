@@ -18,6 +18,7 @@ const MapButtonGroup = ({
       <Flex pos="absolute" zIndex="banner" w="100%" p="2">
         <Box>
           <Button
+            bg={btnBg}
             borderRadius="xl"
             shadow="md"
             onClick={() => setIsMapExpanded(!isMapExpanded)}
@@ -31,6 +32,7 @@ const MapButtonGroup = ({
         <Box>
           <ButtonGroup isAttached>
             <Button
+              bg={btnBg}
               borderRadius="xl"
               shadow="md"
               onClick={() => setZoom(Number((zoom - 0.2).toFixed(1)))}
@@ -40,6 +42,7 @@ const MapButtonGroup = ({
               -
             </Button>
             <Button
+              bg={btnBg}
               borderRadius="xl"
               shadow="md"
               onClick={() => setZoom(Number((zoom + 0.2).toFixed(1)))}

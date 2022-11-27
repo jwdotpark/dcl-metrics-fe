@@ -8,8 +8,8 @@ import {
 
 const MapImage = ({ isPicLoading, name, image }) => {
   return (
-    <Box w="100%" minH={[150, 175, 200]} p="2">
-      <Center minH={[150, 175, 200]}>
+    <Box w="100%" minH={[150, 175, 400]} p="2">
+      <Center minH={[150, 175, 400]}>
         {isPicLoading ? (
           <Spinner />
         ) : (
@@ -23,7 +23,7 @@ const MapImage = ({ isPicLoading, name, image }) => {
           >
             <Image
               minW="100%"
-              h={[150, 175, 200]}
+              h={[150, 175, 400]}
               objectFit="cover"
               alt={name}
               src={image}

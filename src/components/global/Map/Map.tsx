@@ -11,14 +11,22 @@ import {
   Spinner,
   ButtonGroup,
 } from "@chakra-ui/react"
-import { memo, useEffect, useState } from "react"
+import { memo, useEffect, useMemo, useState } from "react"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
 import tempParcel from "../../../../public/data/temp_parcel.json"
 import MapMenu from "./partials/MapMenu"
 import MapButtonGroup from "./partials/MapButtonGroup"
 
-const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
+const Map = ({
+  h,
+  coord,
+  setCoord,
+  selectedParcel,
+  setSelectedParcel,
+  isMapExpanded,
+  setIsMapExpanded,
+}) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -59,14 +67,14 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   const [tiles, setTiles] = useState([])
   const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
-  const [isMapExpanded, setIsMapExpanded] = useState(false)
+  // const [isMapExpanded, setIsMapExpanded] = useState(false)
   const [zoom, setZoom] = useState(1)
-  const btnBg = useColorModeValue("gray.800", "gray.400")
+  const btnBg = useColorModeValue("gray.100", "gray.900")
   const textColor = useColorModeValue("gray.100", "gray.900")
   const layers = []
   const mapHeight = {
     collapsed: 500,
-    expanded: 750,
+    expanded: "1000",
   }
 
   const properties = [
@@ -85,7 +93,13 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
 
   const selectedStrokeLayer: Layer = (x, y) => {
     return isSelected(x, y)
-      ? { color: "#f1fa8c", scale: 0.9, top: true, topLeft: true, left: true }
+      ? {
+          color: "#f1fa8c",
+          scale: 1,
+          top: true,
+          topLeft: true,
+          left: true,
+        }
       : null
   }
 
@@ -122,22 +136,21 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
 
   const [selectedProp, setSelectedProp] = useState(properties[0])
 
+  const tileColor = (tile) => {
+    if (!tile[selectedProp.name]) {
+      return COLOR_BY_TYPE[tile.type]
+    } else if (tile[selectedProp.name] > 0) {
+      return COLOR_BY_TYPE[selectedProp.name]
+    }
+  }
+
   const layer = (x, y) => {
     const id = x + "," + y
     if (tiles && id in tiles) {
       const tile = tiles[id]
-
-      const tileColor = () => {
-        if (!tile[selectedProp.name]) {
-          return COLOR_BY_TYPE[tile.type]
-        } else if (tile[selectedProp.name] > 0) {
-          return COLOR_BY_TYPE[selectedProp.name]
-        }
-      }
-
       return {
         // color: COLOR_BY_TYPE[tile.type],
-        color: tileColor(),
+        color: tileColor(tile),
         top: !!tile.top,
         left: !!tile.left,
         topLeft: !!tile.topLeft,
