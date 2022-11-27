@@ -84,7 +84,9 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   }
 
   const selectedStrokeLayer: Layer = (x, y) => {
-    return isSelected(x, y) ? { color: "#f1fa8c", scale: 0.95 } : null
+    return isSelected(x, y)
+      ? { color: "#f1fa8c", scale: 0.9, top: true, topLeft: true, left: true }
+      : null
   }
 
   const handleClick = (x: number, y: number) => {
