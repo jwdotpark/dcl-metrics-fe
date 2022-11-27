@@ -42,12 +42,12 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     13: "#110e13", // loading odd
     14: "#0d0b0e", // loading even
     // new properties
-    total_avg_time_spent: "red",
-    total_avg_time_spent_afk: "orange",
-    total_logins: "yellow",
-    total_logouts: "green",
-    total_visitors: "purple",
-    deploy_count: "navy",
+    total_avg_time_spent: "#8be9fd",
+    total_avg_time_spent_afk: "#50fa7b",
+    total_logins: "#ffb86c",
+    total_logouts: "#ff79c6",
+    total_visitors: "#bd93f9",
+    deploy_count: "#ff5555",
   }
 
   // const { layers = [], onChange, onPopup, onClick, ...rest } = props
@@ -70,12 +70,12 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   }
 
   const properties = [
-    { name: "total_avg_time_spent", color: "red" },
-    { name: "total_avg_time_spent_afk", color: "orange" },
-    { name: "total_logins", color: "yellow" },
-    { name: "total_logouts", color: "green" },
-    { name: "total_visitors", color: "purple" },
-    { name: "deploy_count", color: "navy" },
+    { name: "total_avg_time_spent", color: "#8be9fd" },
+    { name: "total_avg_time_spent_afk", color: "#50fa7b" },
+    { name: "total_logins", color: "#ffb86c" },
+    { name: "total_logouts", color: "#ff79c6" },
+    { name: "total_visitors", color: "#bd93f9" },
+    { name: "deploy_count", color: "#ff5555" },
   ]
 
   const [selected, setSelected] = useState([])
@@ -84,7 +84,7 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   }
 
   const selectedStrokeLayer: Layer = (x, y) => {
-    return isSelected(x, y) ? { color: "#ff004450", scale: 1 } : null
+    return isSelected(x, y) ? { color: "#f1fa8c", scale: 0.95 } : null
   }
 
   const handleClick = (x: number, y: number) => {
@@ -125,21 +125,17 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
     if (tiles && id in tiles) {
       const tile = tiles[id]
 
-      const sceneColor = () => {
-        if (!tile.total_visitors) {
+      const tileColor = () => {
+        if (!tile[selectedProp.name]) {
           return COLOR_BY_TYPE[tile.type]
-        } else if (tile.total_visitors > 0) {
-          for (let i = 0; i < properties.length; i++) {
-            if (tile[properties[i].name] > 0) {
-              return COLOR_BY_TYPE[properties[i].name]
-            }
-          }
+        } else if (tile[selectedProp.name] > 0) {
+          return COLOR_BY_TYPE[selectedProp.name]
         }
       }
 
       return {
         // color: COLOR_BY_TYPE[tile.type],
-        color: sceneColor(),
+        color: tileColor(),
         top: !!tile.top,
         left: !!tile.left,
         topLeft: !!tile.topLeft,
@@ -171,7 +167,7 @@ const Map = ({ h, coord, setCoord, selectedParcel, setSelectedParcel }) => {
   useEffect(() => {
     injectTiles()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tiles])
+  }, [selectedProp, tiles])
 
   return (
     <Box
