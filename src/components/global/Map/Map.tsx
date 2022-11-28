@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
@@ -56,6 +57,7 @@ const Map = ({
     total_logouts: "#ff79c6",
     total_visitors: "#bd93f9",
     deploy_count: "#ff5555",
+    selected_scene: "pink",
   }
 
   // const { layers = [], onChange, onPopup, onClick, ...rest } = props
@@ -102,14 +104,22 @@ const Map = ({
       : null
   }
 
+  const [selectedScene, setSelectedScene] = useState([])
+
+  let prevScene = []
   const handleClick = (x: number, y: number) => {
     const id = x + "," + y
     setSelectedParcel(tiles[id])
+
     if (isSelected(x, y)) {
       setSelected(selected.filter((coord) => coord.x !== x && coord.y !== y))
     } else {
       setSelected([{ x, y }])
     }
+    if (selectedParcel.scenes) {
+      setSelectedScene(selectedParcel.scenes[0].parcels)
+    }
+    prevScene = selectedScene
   }
 
   const fetchTiles = async (
@@ -127,6 +137,7 @@ const Map = ({
 
   const injectTiles = () => {
     console.log("injecting tiles")
+    // @ts-ignore
     tempParcel.map((tile) => {
       const id = tile.coordinates
       tiles[id] = { ...tiles[id], ...tile }
@@ -136,17 +147,14 @@ const Map = ({
   const [selectedProp, setSelectedProp] = useState(properties[0])
 
   const tileColor = (tile) => {
-    // non-injected tile - check if it has additional property
     if (!tile[selectedProp.name]) {
       return COLOR_BY_TYPE[tile.type]
-      // injected tile
-    } else if (tile[selectedProp.name] > 0) {
+    }
+    if (tile[selectedProp.name] > 0) {
       return COLOR_BY_TYPE[selectedProp.name]
     }
   }
 
-  // FIXME this function is getting called on each parcel i.e. 300*300 times
-  // should be processed before rendering so that it can be called instantly?
   const layer = (x, y) => {
     const id = x + "," + y
     if (tiles && id in tiles) {
@@ -156,6 +164,7 @@ const Map = ({
         top: !!tile.top,
         left: !!tile.left,
         topLeft: !!tile.topLeft,
+        scale: 0.95,
         owner: tile.owner,
         estateId: tile.estateId,
         tokenId: tile.tokenId,
@@ -178,14 +187,25 @@ const Map = ({
 
   useEffect(() => {
     fetchTiles()
-    // injectTiles()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     injectTiles()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tiles])
+
+  useEffect(() => {
+    if (selectedParcel.scenes) {
+      selectedParcel.scenes.map((parcel) => {
+        const sceneParcels = parcel.parcels
+        sceneParcels.map((tile) => {
+          tiles[tile].type = "selected_scene"
+        })
+      })
+    }
+    // TODO
+    // when selected parcel is changed, reset the previous selected scene
+    
+  }, [selectedParcel])
 
   return (
     <Box
@@ -266,7 +286,6 @@ const Map = ({
                   }}
                   onChange={(e) => {
                     setZoom(e.zoom)
-                    console.log(e.zoom)
                   }}
                 />
               </>
