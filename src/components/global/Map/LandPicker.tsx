@@ -11,7 +11,9 @@ import {
 import GridBox from "../../local/GridBox"
 import Loading from "../../local/Loading"
 import dynamic from "next/dynamic"
-const Map = dynamic(() => import("./Map"), { ssr: false })
+// const Map = dynamic(() => import("./Map"), { ssr: false })
+// import MapWrapper from "./Map"
+const MapWrapper = dynamic(() => import("./Map"), { ssr: false })
 import MapInfo from "./MapInfo"
 import { useState } from "react"
 
@@ -77,7 +79,7 @@ const LandPicker = () => {
           m="4"
           mb="4"
         >
-          <Map
+          <MapWrapper
             h={h}
             isMapExpanded={isMapExpanded}
             setIsMapExpanded={setIsMapExpanded}

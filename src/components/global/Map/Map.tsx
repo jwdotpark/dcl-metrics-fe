@@ -11,7 +11,7 @@ import {
   Spinner,
   ButtonGroup,
 } from "@chakra-ui/react"
-import { memo, useEffect, useMemo, useState } from "react"
+import { memo, useEffect, useMemo, useRef, useState } from "react"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
 import tempParcel from "../../../../public/data/temp_parcel.json"
@@ -67,7 +67,6 @@ const Map = ({
   const [tiles, setTiles] = useState([])
   const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
-  // const [isMapExpanded, setIsMapExpanded] = useState(false)
   const [zoom, setZoom] = useState(1)
   const btnBg = useColorModeValue("gray.100", "gray.900")
   const textColor = useColorModeValue("gray.100", "gray.900")
@@ -127,7 +126,7 @@ const Map = ({
   }
 
   const injectTiles = () => {
-    // @ts-ignore
+    console.log("injecting tiles")
     tempParcel.map((tile) => {
       const id = tile.coordinates
       tiles[id] = { ...tiles[id], ...tile }
@@ -137,23 +136,26 @@ const Map = ({
   const [selectedProp, setSelectedProp] = useState(properties[0])
 
   const tileColor = (tile) => {
+    // non-injected tile - check if it has additional property
     if (!tile[selectedProp.name]) {
       return COLOR_BY_TYPE[tile.type]
+      // injected tile
     } else if (tile[selectedProp.name] > 0) {
       return COLOR_BY_TYPE[selectedProp.name]
     }
   }
 
+  // FIXME this function is getting called on each parcel i.e. 300*300 times
+  // should be processed before rendering so that it can be called instantly?
   const layer = (x, y) => {
     const id = x + "," + y
     if (tiles && id in tiles) {
       const tile = tiles[id]
       return {
-        // color: COLOR_BY_TYPE[tile.type],
         color: tileColor(tile),
-        top: !!tile.top,
-        left: !!tile.left,
-        topLeft: !!tile.topLeft,
+        top: true,
+        left: true,
+        topLeft: true,
         owner: tile.owner,
         estateId: tile.estateId,
         tokenId: tile.tokenId,
@@ -176,6 +178,8 @@ const Map = ({
 
   useEffect(() => {
     fetchTiles()
+    // injectTiles()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -184,96 +188,106 @@ const Map = ({
   }, [tiles])
 
   return (
-    <Box
-      w={["100%", "100%", "100%", "70%"]}
-      h="auto"
-      border="solid 1px"
-      borderColor={useColorModeValue("gray.200", "gray.600")}
-      borderRadius="xl"
-      shadow="md"
-    >
-      <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
-        <Box p="4">
-          <Box
-            overflow="hidden"
-            h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
-            bg="#25232A"
-            border="2px solid"
-            borderColor={useColorModeValue("gray.200", "gray.600")}
-            borderRadius="xl"
-            shadow="md"
-            onMouseEnter={() => {
-              setIsHover(true)
-            }}
-            onMouseLeave={() => {
-              setIsHover(false)
-            }}
-          >
-            {!isMapLoading ? (
-              <>
-                {isHover && (
-                  <MapButtonGroup
-                    isMapExpanded={isMapExpanded}
-                    setIsMapExpanded={setIsMapExpanded}
-                    zoom={zoom}
-                    setZoom={setZoom}
-                    tempCoord={tempCoord}
-                    properties={properties}
-                    selectedProp={selectedProp}
-                    setSelectedProp={setSelectedProp}
-                    textColor={textColor}
-                    btnBg={btnBg}
-                  />
-                )}
-                {isHover && (
-                  <Flex>
-                    <Box pos="absolute" zIndex="banner" bottom="2" left="2">
-                      <Text color="gray.100" textShadow="md">
-                        [{tempCoord.x}, {tempCoord.y}]
-                      </Text>
-                    </Box>
-                    <Spacer />
-                    <Box
-                      pos="absolute"
-                      zIndex="banner"
-                      right="2"
-                      bottom="2"
-                      shadow="md"
-                    >
-                      <MapMenu
-                        textColor={textColor}
-                        btnBg={btnBg}
+    <div className="container">
+      <div className="mapWrapper">
+        <Box
+          w={["100%", "100%", "100%", "70%"]}
+          h="auto"
+          border="solid 1px"
+          borderColor={useColorModeValue("gray.200", "gray.600")}
+          borderRadius="xl"
+          shadow="md"
+        >
+          <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
+            <Box p="4">
+              <Box
+                overflow="hidden"
+                h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
+                bg="#25232A"
+                border="2px solid"
+                borderColor={useColorModeValue("gray.200", "gray.600")}
+                borderRadius="xl"
+                shadow="md"
+                onMouseEnter={() => {
+                  setIsHover(true)
+                }}
+                onMouseLeave={() => {
+                  setIsHover(false)
+                }}
+              >
+                {!isMapLoading ? (
+                  <>
+                    {isHover && (
+                      <MapButtonGroup
+                        isMapExpanded={isMapExpanded}
+                        setIsMapExpanded={setIsMapExpanded}
+                        zoom={zoom}
+                        setZoom={setZoom}
+                        tempCoord={tempCoord}
                         properties={properties}
                         selectedProp={selectedProp}
                         setSelectedProp={setSelectedProp}
+                        textColor={textColor}
+                        btnBg={btnBg}
                       />
-                    </Box>
-                  </Flex>
+                    )}
+                    {isHover && (
+                      <Flex>
+                        <Box pos="absolute" zIndex="banner" bottom="2" left="2">
+                          <Text color="gray.100" textShadow="md">
+                            [{tempCoord.x}, {tempCoord.y}]
+                          </Text>
+                        </Box>
+                        <Spacer />
+                        <Box
+                          pos="absolute"
+                          zIndex="banner"
+                          right="2"
+                          bottom="2"
+                          shadow="md"
+                        >
+                          <MapMenu
+                            textColor={textColor}
+                            btnBg={btnBg}
+                            properties={properties}
+                            selectedProp={selectedProp}
+                            setSelectedProp={setSelectedProp}
+                          />
+                        </Box>
+                      </Flex>
+                    )}
+                    <TileMap
+                      zoom={zoom}
+                      layers={[layer, selectedStrokeLayer, ...layers]}
+                      onHover={(x, y) => {
+                        setTempCoord({ x, y })
+                      }}
+                      onClick={(x, y) => {
+                        setCoord({ x, y })
+                        handleClick(x, y)
+                      }}
+                      onChange={(e) => {
+                        setZoom(e.zoom)
+                        console.log(e.zoom)
+                      }}
+                    />
+                  </>
+                ) : (
+                  <Center
+                    h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}
+                  >
+                    <Spinner />
+                  </Center>
                 )}
-                <TileMap
-                  zoom={zoom}
-                  layers={[layer, selectedStrokeLayer, ...layers]}
-                  onHover={(x, y) => {
-                    setTempCoord({ x, y })
-                  }}
-                  onClick={(x, y) => {
-                    setCoord({ x, y })
-                    handleClick(x, y)
-                  }}
-                />
-              </>
-            ) : (
-              <Center
-                h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}
-              >
-                <Spinner />
-              </Center>
-            )}
-          </Box>
+              </Box>
+            </Box>
+          </GridItem>
         </Box>
-      </GridItem>
-    </Box>
+      </div>
+    </div>
   )
 }
 
-export default memo(Map)
+export const MapWrapper = memo(Map)
+// export default memo(Map)
+export default MapWrapper
