@@ -16,6 +16,7 @@ import dynamic from "next/dynamic"
 const MapWrapper = dynamic(() => import("./Map"), { ssr: false })
 import MapInfo from "./MapInfo"
 import { useState } from "react"
+import { usePrev } from "../../../lib/hooks/usePrev"
 
 const LandPicker = () => {
   const box = {
@@ -47,6 +48,7 @@ const LandPicker = () => {
   }
 
   const [selectedParcel, setSelectedParcel] = useState(defaultParcel)
+  const prevParcel = usePrev(selectedParcel)
   const [isMapExpanded, setIsMapExpanded] = useState(false)
 
   return (
@@ -87,6 +89,7 @@ const LandPicker = () => {
             setCoord={setCoord}
             selectedParcel={selectedParcel}
             setSelectedParcel={setSelectedParcel}
+            prevParcel={prevParcel}
           />
           <MapInfo
             h={h}

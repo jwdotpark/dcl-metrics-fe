@@ -13,6 +13,7 @@ import {
   ButtonGroup,
 } from "@chakra-ui/react"
 import { memo, useEffect, useMemo, useRef, useState } from "react"
+import { usePrev } from "../../../lib/hooks/usePrev"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
 import tempParcel from "../../../../public/data/temp_parcel.json"
@@ -27,6 +28,7 @@ const Map = ({
   setSelectedParcel,
   isMapExpanded,
   setIsMapExpanded,
+  prevParcel,
 }) => {
   const box = {
     h: "auto",
@@ -57,7 +59,7 @@ const Map = ({
     total_logouts: "#ff79c6",
     total_visitors: "#bd93f9",
     deploy_count: "#ff5555",
-    selected_scene: "pink",
+    selected_scene: "#FF9990",
   }
 
   // const { layers = [], onChange, onPopup, onClick, ...rest } = props
@@ -105,8 +107,8 @@ const Map = ({
   }
 
   const [selectedScene, setSelectedScene] = useState([])
+  const prevScene = usePrev(selectedScene)
 
-  let prevScene = []
   const handleClick = (x: number, y: number) => {
     const id = x + "," + y
     setSelectedParcel(tiles[id])
@@ -119,7 +121,6 @@ const Map = ({
     if (selectedParcel.scenes) {
       setSelectedScene(selectedParcel.scenes[0].parcels)
     }
-    prevScene = selectedScene
   }
 
   const fetchTiles = async (
@@ -136,7 +137,6 @@ const Map = ({
   }
 
   const injectTiles = () => {
-    console.log("injecting tiles")
     // @ts-ignore
     tempParcel.map((tile) => {
       const id = tile.coordinates
@@ -193,19 +193,31 @@ const Map = ({
     injectTiles()
   }, [tiles])
 
+  const [prevTileType, setPrevTileType] = useState("")
+  const previousTileType = usePrev(prevTileType)
+
   useEffect(() => {
     if (selectedParcel.scenes) {
-      selectedParcel.scenes.map((parcel) => {
-        const sceneParcels = parcel.parcels
+      if (selectedParcel.type !== "selected_scene") {
+        setPrevTileType(selectedParcel.type)
+      }
+      selectedParcel.scenes.map((scene) => {
+        const sceneParcels = scene.parcels
         sceneParcels.map((tile) => {
           tiles[tile].type = "selected_scene"
         })
       })
     }
-    // TODO
-    // when selected parcel is changed, reset the previous selected scene
-    
-  }, [selectedParcel])
+  }, [isSelected])
+
+  useEffect(() => {
+    if (prevScene) {
+      // @ts-ignore
+      prevScene.map((parcel) => {
+        tiles[parcel].type = "owned"
+      })
+    }
+  }, [isSelected])
 
   return (
     <Box
@@ -218,6 +230,7 @@ const Map = ({
     >
       <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
         <Box p="4">
+          {prevTileType}
           <Box
             overflow="hidden"
             h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
