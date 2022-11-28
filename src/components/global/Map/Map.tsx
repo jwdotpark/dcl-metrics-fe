@@ -153,9 +153,9 @@ const Map = ({
       const tile = tiles[id]
       return {
         color: tileColor(tile),
-        top: true,
-        left: true,
-        topLeft: true,
+        top: !!tile.top,
+        left: !!tile.left,
+        topLeft: !!tile.topLeft,
         owner: tile.owner,
         estateId: tile.estateId,
         tokenId: tile.tokenId,
@@ -188,103 +188,99 @@ const Map = ({
   }, [tiles])
 
   return (
-    <div className="container">
-      <div className="mapWrapper">
-        <Box
-          w={["100%", "100%", "100%", "70%"]}
-          h="auto"
-          border="solid 1px"
-          borderColor={useColorModeValue("gray.200", "gray.600")}
-          borderRadius="xl"
-          shadow="md"
-        >
-          <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
-            <Box p="4">
-              <Box
-                overflow="hidden"
-                h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
-                bg="#25232A"
-                border="2px solid"
-                borderColor={useColorModeValue("gray.200", "gray.600")}
-                borderRadius="xl"
-                shadow="md"
-                onMouseEnter={() => {
-                  setIsHover(true)
-                }}
-                onMouseLeave={() => {
-                  setIsHover(false)
-                }}
-              >
-                {!isMapLoading ? (
-                  <>
-                    {isHover && (
-                      <MapButtonGroup
-                        isMapExpanded={isMapExpanded}
-                        setIsMapExpanded={setIsMapExpanded}
-                        zoom={zoom}
-                        setZoom={setZoom}
-                        tempCoord={tempCoord}
+    <Box
+      w={["100%", "100%", "100%", "70%"]}
+      h="auto"
+      border="solid 1px"
+      borderColor={useColorModeValue("gray.200", "gray.600")}
+      borderRadius="xl"
+      shadow="md"
+    >
+      <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
+        <Box p="4">
+          <Box
+            overflow="hidden"
+            h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
+            bg="#25232A"
+            border="2px solid"
+            borderColor={useColorModeValue("gray.200", "gray.600")}
+            borderRadius="xl"
+            shadow="md"
+            onMouseEnter={() => {
+              setIsHover(true)
+            }}
+            onMouseLeave={() => {
+              setIsHover(false)
+            }}
+          >
+            {!isMapLoading ? (
+              <>
+                {isHover && (
+                  <MapButtonGroup
+                    isMapExpanded={isMapExpanded}
+                    setIsMapExpanded={setIsMapExpanded}
+                    zoom={zoom}
+                    setZoom={setZoom}
+                    tempCoord={tempCoord}
+                    properties={properties}
+                    selectedProp={selectedProp}
+                    setSelectedProp={setSelectedProp}
+                    textColor={textColor}
+                    btnBg={btnBg}
+                  />
+                )}
+                {isHover && (
+                  <Flex>
+                    <Box pos="absolute" zIndex="banner" bottom="2" left="2">
+                      <Text color="gray.100" textShadow="md">
+                        [{tempCoord.x}, {tempCoord.y}]
+                      </Text>
+                    </Box>
+                    <Spacer />
+                    <Box
+                      pos="absolute"
+                      zIndex="banner"
+                      right="2"
+                      bottom="2"
+                      shadow="md"
+                    >
+                      <MapMenu
+                        textColor={textColor}
+                        btnBg={btnBg}
                         properties={properties}
                         selectedProp={selectedProp}
                         setSelectedProp={setSelectedProp}
-                        textColor={textColor}
-                        btnBg={btnBg}
                       />
-                    )}
-                    {isHover && (
-                      <Flex>
-                        <Box pos="absolute" zIndex="banner" bottom="2" left="2">
-                          <Text color="gray.100" textShadow="md">
-                            [{tempCoord.x}, {tempCoord.y}]
-                          </Text>
-                        </Box>
-                        <Spacer />
-                        <Box
-                          pos="absolute"
-                          zIndex="banner"
-                          right="2"
-                          bottom="2"
-                          shadow="md"
-                        >
-                          <MapMenu
-                            textColor={textColor}
-                            btnBg={btnBg}
-                            properties={properties}
-                            selectedProp={selectedProp}
-                            setSelectedProp={setSelectedProp}
-                          />
-                        </Box>
-                      </Flex>
-                    )}
-                    <TileMap
-                      zoom={zoom}
-                      layers={[layer, selectedStrokeLayer, ...layers]}
-                      onHover={(x, y) => {
-                        setTempCoord({ x, y })
-                      }}
-                      onClick={(x, y) => {
-                        setCoord({ x, y })
-                        handleClick(x, y)
-                      }}
-                      onChange={(e) => {
-                        setZoom(e.zoom)
-                        console.log(e.zoom)
-                      }}
-                    />
-                  </>
-                ) : (
-                  <Center
-                    h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}
-                  >
-                    <Spinner />
-                  </Center>
+                    </Box>
+                  </Flex>
                 )}
-              </Box>
-            </Box>
-          </GridItem>
+                <TileMap
+                  zoom={zoom}
+                  layers={[layer, selectedStrokeLayer, ...layers]}
+                  onHover={(x, y) => {
+                    setTempCoord({ x, y })
+                  }}
+                  onClick={(x, y) => {
+                    setCoord({ x, y })
+                    handleClick(x, y)
+                  }}
+                  onChange={(e) => {
+                    setZoom(e.zoom)
+                    console.log(e.zoom)
+                  }}
+                />
+              </>
+            ) : (
+              <Center
+                h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}
+              >
+                <Spinner />
+              </Center>
+            )}
+          </Box>
         </Box>
-      </div>
-    </div>
+      </GridItem>
+    </Box>
   )
 }
 
