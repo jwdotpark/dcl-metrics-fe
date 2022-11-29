@@ -62,24 +62,10 @@ const Map = ({
     selected_scene: "#FF9990",
   }
 
-  // const { layers = [], onChange, onPopup, onClick, ...rest } = props
   const [tempCoord, setTempCoord] = useState({
     x: 0,
     y: 0,
   })
-
-  const [tiles, setTiles] = useState([])
-  const [isHover, setIsHover] = useState(false)
-  const [isMapLoading, setIsMapLoading] = useState(false)
-  const [zoom, setZoom] = useState(1)
-  const btnBg = useColorModeValue("gray.100", "gray.900")
-  const textColor = useColorModeValue("gray.100", "gray.900")
-  const layers = []
-  const mapHeight = {
-    collapsed: 500,
-    expanded: "1000",
-  }
-
   const properties = [
     { name: "total_avg_time_spent", color: "#8be9fd" },
     { name: "total_avg_time_spent_afk", color: "#50fa7b" },
@@ -89,7 +75,24 @@ const Map = ({
     { name: "deploy_count", color: "#ff5555" },
   ]
 
+  const [tiles, setTiles] = useState([])
+  const [isHover, setIsHover] = useState(false)
+  const [isMapLoading, setIsMapLoading] = useState(false)
+  const [zoom, setZoom] = useState(1)
+  const btnBg = useColorModeValue("gray.100", "gray.900")
+  const textColor = useColorModeValue("gray.100", "gray.900")
   const [selected, setSelected] = useState([])
+  const [selectedScene, setSelectedScene] = useState([])
+  const prevScene = usePrev(selectedScene)
+  const isIncluded = selectedScene.includes(selectedParcel.id)
+  const [selectedProp, setSelectedProp] = useState(properties[0])
+  const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
+  const layers = []
+  const mapHeight = {
+    collapsed: 500,
+    expanded: "1000",
+  }
+
   const isSelected = (x: number, y: number) => {
     return selected.some((coord) => coord.x === x && coord.y === y)
   }
@@ -97,7 +100,7 @@ const Map = ({
   const selectedStrokeLayer: Layer = (x, y) => {
     return isSelected(x, y)
       ? {
-          color: "#f1fa8c",
+          color: "red",
           scale: 1,
           top: true,
           topLeft: true,
@@ -105,10 +108,6 @@ const Map = ({
         }
       : null
   }
-
-  const [selectedScene, setSelectedScene] = useState([])
-  const prevScene = usePrev(selectedScene)
-
   const handleClick = (x: number, y: number) => {
     const id = x + "," + y
     setSelectedParcel(tiles[id])
@@ -143,8 +142,6 @@ const Map = ({
       tiles[id] = { ...tiles[id], ...tile }
     })
   }
-
-  const [selectedProp, setSelectedProp] = useState(properties[0])
 
   const tileColor = (tile) => {
     if (!tile[selectedProp.name]) {
@@ -193,14 +190,15 @@ const Map = ({
     injectTiles()
   }, [tiles])
 
-  const [prevTileType, setPrevTileType] = useState("")
-  const previousTileType = usePrev(prevTileType)
+  useEffect(() => {
+    if (selectedParcel.type !== "selected_scene") {
+      sessionStorage.setItem("selectedParcel", selectedParcel.id)
+      sessionStorage.setItem("selectedParcelType", selectedParcel.type)
+    }
+  }, [selectedParcel])
 
   useEffect(() => {
     if (selectedParcel.scenes) {
-      if (selectedParcel.type !== "selected_scene") {
-        setPrevTileType(selectedParcel.type)
-      }
       selectedParcel.scenes.map((scene) => {
         const sceneParcels = scene.parcels
         sceneParcels.map((tile) => {
@@ -208,16 +206,16 @@ const Map = ({
         })
       })
     }
-  }, [isSelected])
+  }, [selectedParcel])
 
   useEffect(() => {
-    if (prevScene) {
+    if (prevScene && !isIncluded) {
       // @ts-ignore
       prevScene.map((parcel) => {
-        tiles[parcel].type = "owned"
+        tiles[parcel].type = prevTile
       })
     }
-  }, [isSelected])
+  }, [prevScene])
 
   return (
     <Box
@@ -230,7 +228,6 @@ const Map = ({
     >
       <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
         <Box p="4">
-          {prevTileType}
           <Box
             overflow="hidden"
             h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
