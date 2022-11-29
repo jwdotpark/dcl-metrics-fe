@@ -31,8 +31,8 @@ const Scene = ({
 }) => {
   const [selectedScene, setSelectedScene] = useState(0)
   const {
-    name,
     map_url,
+    name,
     marathon_users,
     parcels_heatmap,
     visitors_by_hour_histogram,
