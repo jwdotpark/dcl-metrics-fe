@@ -101,7 +101,7 @@ const Map = ({
     return isSelected(x, y)
       ? {
           color: "red",
-          scale: 1,
+          scale: 0.9,
           top: true,
           topLeft: true,
           left: true,
@@ -225,6 +225,7 @@ const Map = ({
       borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
       shadow="md"
+     
     >
       <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
         <Box p="4">
