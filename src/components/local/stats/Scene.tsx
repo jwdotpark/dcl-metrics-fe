@@ -73,7 +73,7 @@ const Scene = ({
         shadow="md"
       >
         <Text m="4" fontSize={["md", "xl", "2xl", "3xl"]}>
-          {name} had no visitors on {moment(date).format("MMMM D")}!
+          {name && name} had no visitors on {moment(date).format("MMMM D")}!
         </Text>
       </Center>
     )
@@ -87,7 +87,7 @@ const Scene = ({
             <Flex direction={["column", "row"]} w="100%">
               <Box>
                 <Text fontSize={["md", "2xl"]}>
-                  <b>{name}</b>
+                  <b>{name && name}</b>
                 </Text>
               </Box>
               <Spacer />
@@ -155,7 +155,7 @@ const Scene = ({
                 <Box mb="2">
                   <SceneSelector
                     res={res}
-                    name={name}
+                    name={name && name}
                     selectedScene={selectedScene}
                     setSelectedScene={setSelectedScene}
                   />
@@ -164,7 +164,7 @@ const Scene = ({
               <SceneMap
                 url={map_url}
                 height={!hasMultipleScenes ? 450 : 405}
-                name={name}
+                name={name && name}
               />
             </Box>
             <Box
