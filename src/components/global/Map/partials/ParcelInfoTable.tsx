@@ -1,7 +1,17 @@
-import { Text, Table, Tr, Tbody, Td, TableContainer } from "@chakra-ui/react"
+import {
+  Text,
+  Table,
+  Tr,
+  Tbody,
+  Td,
+  TableContainer,
+  Box,
+  Button,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import moment from "moment"
 
-const MapInfoTable = ({ selectedParcel, description }) => {
+const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
   const { name, id, updatedAt, owner, tokenId } = selectedParcel
 
   return (
@@ -9,15 +19,15 @@ const MapInfoTable = ({ selectedParcel, description }) => {
       <Table h="100%" size="sm" variant="simple">
         <Tbody>
           <Tr>
-            <Td>Name</Td>
-            <Td isNumeric>
-              <Text>{name ? name : "N/A"}</Text>
-            </Td>
-          </Tr>
-          <Tr>
             <Td>Coordinate</Td>
             <Td isNumeric>
-              <Text as="kbd">[{id}]</Text>
+              <a target="_blank" rel="noopener noreferrer" href={external_url}>
+                <Text
+                  _hover={{ color: useColorModeValue("gray.800", "gray.400") }}
+                >
+                  [{id}]
+                </Text>
+              </a>
             </Td>
           </Tr>
           <Tr>
@@ -111,4 +121,4 @@ const MapInfoTable = ({ selectedParcel, description }) => {
   )
 }
 
-export default MapInfoTable
+export default ParcelInfoTable
