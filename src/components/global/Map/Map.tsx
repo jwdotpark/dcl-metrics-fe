@@ -16,6 +16,7 @@ import { memo, useEffect, useMemo, useRef, useState } from "react"
 import { usePrev } from "../../../lib/hooks/usePrev"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
+import { heatmapColor } from "../../../lib/hooks/utils"
 import tempParcel from "../../../../public/data/temp_parcel.json"
 import MapMenu from "./partials/MapMenu"
 import MapButtonGroup from "./partials/MapButtonGroup"
@@ -35,6 +36,11 @@ const Map = ({
     w: "100%",
     bg: useColorModeValue("gray.200", "gray.700"),
   }
+
+  const [tempCoord, setTempCoord] = useState({
+    x: 0,
+    y: 0,
+  })
 
   const COLOR_BY_TYPE: Record<number | string, string> = {
     0: "#ff9990", // my parcels
@@ -60,19 +66,25 @@ const Map = ({
     total_visitors: "#bd93f9",
     deploy_count: "#ff5555",
     selected_scene: "#FF9990",
+    // login_intensity: "red",
+    // logout_intensity: "blue",
+    // visitor_intensity: "green",
+    // time_spent_afk_intensity: "yellow",
+    // time_spent_intensity: "purple",
   }
 
-  const [tempCoord, setTempCoord] = useState({
-    x: 0,
-    y: 0,
-  })
   const properties = [
-    { name: "total_avg_time_spent", color: "#8be9fd" },
-    { name: "total_avg_time_spent_afk", color: "#50fa7b" },
-    { name: "total_logins", color: "#ffb86c" },
-    { name: "total_logouts", color: "#ff79c6" },
-    { name: "total_visitors", color: "#bd93f9" },
-    { name: "deploy_count", color: "#ff5555" },
+    // { name: "total_avg_time_spent", color: "#8be9fd" },
+    // { name: "total_avg_time_spent_afk", color: "#50fa7b" },
+    // { name: "total_logins", color: "#ffb86c" },
+    // { name: "total_logouts", color: "#ff79c6" },
+    // { name: "total_visitors", color: "#bd93f9" },
+    // { name: "deploy_count", color: "#ff5555" },
+    { name: "login_intensity", color: "#8be9fd" },
+    { name: "logout_intensity", color: "#50fa7b" },
+    { name: "visitor_intensity", color: "#ffb86c" },
+    { name: "time_spent_afk_intensity", color: "#ff79c6" },
+    { name: "time_spent_intensity", color: "#ff5555" },
   ]
 
   const [tiles, setTiles] = useState([])
@@ -148,7 +160,9 @@ const Map = ({
       return COLOR_BY_TYPE[tile.type]
     }
     if (tile[selectedProp.name] > 0) {
-      return COLOR_BY_TYPE[selectedProp.name]
+      // return COLOR_BY_TYPE[selectedProp.name]
+      const value = tile[selectedProp.name]
+      return heatmapColor(value)
     }
   }
 
