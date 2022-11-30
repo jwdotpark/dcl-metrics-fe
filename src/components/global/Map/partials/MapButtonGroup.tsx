@@ -15,9 +15,10 @@ const MapButtonGroup = ({
 }) => {
   return (
     <>
-      <Flex pos="absolute" zIndex="banner" w="100%" p="2">
+      <Flex pos="absolute" w="100%" p="2">
         <Box>
           <Button
+            zIndex="banner"
             bg={btnBg}
             borderRadius="xl"
             shadow="md"
@@ -32,6 +33,7 @@ const MapButtonGroup = ({
         <Box>
           <ButtonGroup isAttached>
             <Button
+              zIndex="banner"
               bg={btnBg}
               borderRadius="xl"
               shadow="md"
@@ -43,6 +45,7 @@ const MapButtonGroup = ({
             </Button>
 
             <Button
+              zIndex="banner"
               bg={btnBg}
               borderRadius="xl"
               shadow="md"
