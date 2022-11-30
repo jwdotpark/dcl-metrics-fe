@@ -110,13 +110,18 @@ const Map = ({
   }
 
   const selectedStrokeLayer: Layer = (x, y) => {
+    const id = x + "," + y
+    const tile = tiles[id]
     return isSelected(x, y)
       ? {
           color: "red",
-          scale: 0.9,
-          top: true,
-          topLeft: true,
-          left: true,
+          scale: 0.6,
+          // top: true,
+          // topLeft: false,
+          // left: true,
+          top: !!tile.top,
+          left: !!tile.left,
+          topLeft: !!tile.topLeft,
         }
       : null
   }
