@@ -209,15 +209,21 @@ const Map = ({
       sessionStorage.setItem("selectedParcel", selectedParcel.id)
       sessionStorage.setItem("selectedParcelType", selectedParcel.type)
     }
-  }, [selectedParcel])
 
-  useEffect(() => {
     if (selectedParcel.scene) {
       selectedParcel.scene.parcels.map((tile) => {
         tiles[tile].type = "selected_scene"
       })
     }
   }, [selectedParcel])
+
+  // useEffect(() => {
+  //   if (selectedParcel.scene) {
+  //     selectedParcel.scene.parcels.map((tile) => {
+  //       tiles[tile].type = "selected_scene"
+  //     })
+  //   }
+  // }, [selectedParcel])
 
   useEffect(() => {
     if (prevScene && !isIncluded) {

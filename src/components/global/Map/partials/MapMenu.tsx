@@ -80,7 +80,7 @@ const MapMenu = ({
                   shadow="sm"
                 />
               </Center>
-              <Flex as="kbd" w="100%" pl="1" fontSize="sm" dir="row">
+              <Flex as="kbd" w="100%" pl="1" fontSize="xs" dir="row">
                 <Box>0</Box>
                 <Spacer />
                 <Box>25</Box>

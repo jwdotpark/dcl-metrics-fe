@@ -39,6 +39,6 @@ export const decrypt = (ciphertext) => {
 }
 
 export const heatmapColor = (value) => {
-  const h = (1.0 - value) * 240
+  const h = (1.0 - value / 100) * 240
   return "hsl(" + h + ", 100%, 50%)"
 }
