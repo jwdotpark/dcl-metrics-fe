@@ -112,7 +112,7 @@ const MapMenu = ({
                 setSelectedProp(property)
               }}
             >
-              {formatName(property.name)}
+              <Text fontSize="sm">{formatName(property.name)}</Text>
             </MenuItem>
           )
         })}
@@ -134,7 +134,10 @@ const MapMenu = ({
         >
           {formatName(selectedProp.name)}
         </MenuButton>
-        <MenuList bg={useColorModeValue("gray.50", "gray.900")} border="none">
+        <MenuList
+          bg={useColorModeValue("gray.50", "gray.900")}
+          rootProps={{ width: "100%" }}
+        >
           <MapMenuList />
         </MenuList>
       </Menu>

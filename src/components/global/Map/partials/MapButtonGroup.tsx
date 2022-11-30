@@ -1,4 +1,12 @@
-import { Text, Box, Flex, Button, Spacer, ButtonGroup } from "@chakra-ui/react"
+import {
+  Text,
+  Box,
+  Flex,
+  Button,
+  Spacer,
+  ButtonGroup,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import MapMenu from "./MapMenu"
 
 const MapButtonGroup = ({
@@ -59,11 +67,20 @@ const MapButtonGroup = ({
         </Box>
       </Flex>
       <Flex>
-        <Box pos="absolute" zIndex="banner" bottom="2" left="2">
-          <Text color="gray.100" textShadow="md">
-            [{tempCoord.x}, {tempCoord.y}]
+        <Button
+          pos="absolute"
+          zIndex="banner"
+          bottom="2"
+          left="2"
+          bg={useColorModeValue("gray.50", "gray.900")}
+          borderRadius="xl"
+          shadow="md"
+          size="sm"
+        >
+          <Text as="kbd" color={useColorModeValue("black", "white")}>
+            [{tempCoord.x},{tempCoord.y}]
           </Text>
-        </Box>
+        </Button>
         <Spacer />
         <Box pos="absolute" zIndex="banner" right="2" bottom="2" shadow="md">
           <MapMenu

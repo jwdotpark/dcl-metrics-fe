@@ -258,31 +258,6 @@ const Map = ({
                     btnBg={btnBg}
                   />
                 )}
-                {isHover && (
-                  <Flex>
-                    <Box pos="absolute" zIndex="banner" bottom="2" left="2">
-                      <Text color="gray.100" textShadow="md">
-                        [{tempCoord.x}, {tempCoord.y}]
-                      </Text>
-                    </Box>
-                    <Spacer />
-                    <Box
-                      pos="absolute"
-                      zIndex="banner"
-                      right="2"
-                      bottom="2"
-                      shadow="md"
-                    >
-                      <MapMenu
-                        textColor={textColor}
-                        btnBg={btnBg}
-                        properties={properties}
-                        selectedProp={selectedProp}
-                        setSelectedProp={setSelectedProp}
-                      />
-                    </Box>
-                  </Flex>
-                )}
                 <TileMap
                   zoom={zoom}
                   layers={[layer, selectedStrokeLayer, ...layers]}
@@ -313,5 +288,4 @@ const Map = ({
 }
 
 export const MapWrapper = memo(Map)
-// export default memo(Map)
 export default MapWrapper
