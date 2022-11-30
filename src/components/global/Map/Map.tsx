@@ -117,8 +117,8 @@ const Map = ({
     } else {
       setSelected([{ x, y }])
     }
-    if (selectedParcel.scenes) {
-      setSelectedScene(selectedParcel.scenes[0].parcels)
+    if (selectedParcel.scene) {
+      setSelectedScene(selectedParcel.scene.parcels)
     }
   }
 
@@ -173,7 +173,7 @@ const Map = ({
         total_logins: tile.total_logins,
         total_logouts: tile.total_logouts,
         total_visitors: tile.total_visitors,
-        scenes: tile.scenes,
+        scene: tile.scene,
       }
     } else {
       return {
@@ -198,12 +198,9 @@ const Map = ({
   }, [selectedParcel])
 
   useEffect(() => {
-    if (selectedParcel.scenes) {
-      selectedParcel.scenes.map((scene) => {
-        const sceneParcels = scene.parcels
-        sceneParcels.map((tile) => {
-          tiles[tile].type = "selected_scene"
-        })
+    if (selectedParcel.scene) {
+      selectedParcel.scene.parcels.map((tile) => {
+        tiles[tile].type = "selected_scene"
       })
     }
   }, [selectedParcel])
@@ -225,7 +222,6 @@ const Map = ({
       borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
       shadow="md"
-     
     >
       <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
         <Box p="4">
