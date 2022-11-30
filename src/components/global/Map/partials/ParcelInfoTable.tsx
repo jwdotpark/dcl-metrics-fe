@@ -12,17 +12,18 @@ import {
 import moment from "moment"
 
 const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
-  const { name, id, updatedAt, owner, tokenId } = selectedParcel
+  const { id, updatedAt, owner } = selectedParcel
 
   return (
     <TableContainer whiteSpace="pre-wrap">
-      <Table h="100%" size="sm" variant="simple">
+      <Table h="100%" fontSize="xs" size="sm" variant="simple">
         <Tbody>
           <Tr>
             <Td>Coordinate</Td>
             <Td isNumeric>
               <a target="_blank" rel="noopener noreferrer" href={external_url}>
                 <Text
+                  fontWeight="medium"
                   _hover={{ color: useColorModeValue("gray.800", "gray.400") }}
                 >
                   [{id}]

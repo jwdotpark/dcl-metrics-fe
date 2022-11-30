@@ -2,60 +2,12 @@ import { Box, Text, Button, useColorModeValue, Center } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import MapImage from "./MapImage"
 import MapInfoTable from "./ParcelInfoTable"
+import SceneInfoTable from "./SceneInfoTable"
 
 const SceneInfoBox = ({ isMapExpanded, selectedParcel, coord, isIncluded }) => {
-  const [fetchedInfo, setfetchedInfo] = useState({})
-  const [isPicLoading, setIsPicLoading] = useState(false)
-
-  const fetchParcel = async () => {
-    setIsPicLoading(true)
-    const baseUrl = `https://api.decentraland.org/v2/parcels/${coord.x}/${coord.y}`
-    try {
-      const res = await fetch(baseUrl, {
-        cache: "force-cache",
-      })
-      const json = await res.json()
-      setfetchedInfo(json)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setIsPicLoading(false)
-    }
-  }
-
-  // @ts-ignore
-  const { description, external_url, image } = fetchedInfo
-  const { name, id, updatedAt, owner, tokenId } = selectedParcel
-
-  useEffect(() => {
-    fetchParcel()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [coord])
-
-  const MapInfoNameBox = () => {
-    return (
-      <Box p="2">
-        <Button
-          w="100%"
-          color="gray.100"
-          fontSize="xl"
-          bg="#6272A4"
-          borderRadius="xl"
-          shadow="md"
-          _hover={{
-            bg: "#4A5568",
-          }}
-          wordBreak="break-all"
-          noOfLines={1}
-          variant="solid"
-        >
-          <a target="_blank" rel="noopener noreferrer" href={external_url}>
-            {name ? name : "N/A"}
-          </a>
-        </Button>
-      </Box>
-    )
-  }
+  const { estateId } = selectedParcel
+  const { name } = selectedParcel.scene
+  const baseUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`
 
   return (
     <Box
@@ -72,12 +24,10 @@ const SceneInfoBox = ({ isMapExpanded, selectedParcel, coord, isIncluded }) => {
           Scene
         </Text>
       </Center>
-      {/* <MapInfoNameBox /> */}
       {isMapExpanded && (
-        <MapImage isPicLoading={isPicLoading} name={name} image={image} />
+        <MapImage isPicLoading={false} name={name} image={baseUrl} />
       )}
-      
-      {/* <MapInfoTable selectedParcel={selectedParcel} description={description} /> */}
+      <SceneInfoTable selectedParcel={selectedParcel} />
     </Box>
   )
 }

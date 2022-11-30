@@ -27,7 +27,6 @@ const MapInfo = ({
   }
 
   const isIncluded = selectedParcel.scene ? true : false
-  console.log(isIncluded)
 
   return (
     <Box
