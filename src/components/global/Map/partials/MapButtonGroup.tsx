@@ -37,7 +37,7 @@ const MapButtonGroup = ({
               bg={btnBg}
               borderRadius="xl"
               shadow="md"
-              onClick={() => setZoom(Number((zoom - 0.2).toFixed(1)))}
+              onClick={() => setZoom(Number((zoom - 0.5).toFixed(1)))}
               size="sm"
               variant="solid"
             >
@@ -49,7 +49,7 @@ const MapButtonGroup = ({
               bg={btnBg}
               borderRadius="xl"
               shadow="md"
-              onClick={() => setZoom(Number((zoom + 0.2).toFixed(1)))}
+              onClick={() => setZoom(Number((zoom + 0.5).toFixed(1)))}
               size="sm"
               variant="solid"
             >
