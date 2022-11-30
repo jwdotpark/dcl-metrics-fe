@@ -68,12 +68,14 @@ const Map = ({
     selected_scene: "#FF9990",
   }
 
+  // TODO remove color property
   const properties = [
     { name: "login_intensity", color: "#8be9fd" },
     { name: "logout_intensity", color: "#50fa7b" },
     { name: "visitor_intensity", color: "#ffb86c" },
     { name: "time_spent_afk_intensity", color: "#ff79c6" },
     { name: "time_spent_intensity", color: "#ff5555" },
+    { name: "max_concurrent_users" },
   ]
 
   const [tiles, setTiles] = useState([])
