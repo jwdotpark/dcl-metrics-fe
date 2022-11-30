@@ -66,20 +66,9 @@ const Map = ({
     total_visitors: "#bd93f9",
     deploy_count: "#ff5555",
     selected_scene: "#FF9990",
-    // login_intensity: "red",
-    // logout_intensity: "blue",
-    // visitor_intensity: "green",
-    // time_spent_afk_intensity: "yellow",
-    // time_spent_intensity: "purple",
   }
 
   const properties = [
-    // { name: "total_avg_time_spent", color: "#8be9fd" },
-    // { name: "total_avg_time_spent_afk", color: "#50fa7b" },
-    // { name: "total_logins", color: "#ffb86c" },
-    // { name: "total_logouts", color: "#ff79c6" },
-    // { name: "total_visitors", color: "#bd93f9" },
-    // { name: "deploy_count", color: "#ff5555" },
     { name: "login_intensity", color: "#8be9fd" },
     { name: "logout_intensity", color: "#50fa7b" },
     { name: "visitor_intensity", color: "#ffb86c" },
@@ -114,11 +103,8 @@ const Map = ({
     const tile = tiles[id]
     return isSelected(x, y)
       ? {
-          color: "red",
+          color: "#F7007C",
           scale: 0.6,
-          // top: true,
-          // topLeft: false,
-          // left: true,
           top: !!tile.top,
           left: !!tile.left,
           topLeft: !!tile.topLeft,
@@ -214,21 +200,12 @@ const Map = ({
       sessionStorage.setItem("selectedParcel", selectedParcel.id)
       sessionStorage.setItem("selectedParcelType", selectedParcel.type)
     }
-
     if (selectedParcel.scene) {
       selectedParcel.scene.parcels.map((tile) => {
         tiles[tile].type = "selected_scene"
       })
     }
   }, [selectedParcel])
-
-  // useEffect(() => {
-  //   if (selectedParcel.scene) {
-  //     selectedParcel.scene.parcels.map((tile) => {
-  //       tiles[tile].type = "selected_scene"
-  //     })
-  //   }
-  // }, [selectedParcel])
 
   useEffect(() => {
     if (prevScene && !isIncluded) {
