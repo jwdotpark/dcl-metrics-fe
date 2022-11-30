@@ -104,7 +104,7 @@ const Map = ({
     return isSelected(x, y)
       ? {
           color: "#F7007C",
-          scale: 0.6,
+          scale: 0.75,
           top: !!tile.top,
           left: !!tile.left,
           topLeft: !!tile.topLeft,
