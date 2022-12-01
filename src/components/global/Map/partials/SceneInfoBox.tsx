@@ -4,7 +4,13 @@ import MapImage from "./MapImage"
 import MapInfoTable from "./ParcelInfoTable"
 import SceneInfoTable from "./SceneInfoTable"
 
-const SceneInfoBox = ({ isMapExpanded, selectedParcel, coord, isIncluded }) => {
+const SceneInfoBox = ({
+  isMapExpanded,
+  selectedParcel,
+  coord,
+  isIncluded,
+  mapHeight,
+}) => {
   const { estateId } = selectedParcel
   const { name } = selectedParcel.scene
   const baseUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`
@@ -12,9 +18,7 @@ const SceneInfoBox = ({ isMapExpanded, selectedParcel, coord, isIncluded }) => {
   return (
     <Box
       w="100%"
-      mr="4"
-      ml="2"
-      my="4"
+      h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
       p="2"
       bg={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"

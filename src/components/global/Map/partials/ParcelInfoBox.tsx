@@ -1,5 +1,6 @@
 import { Box, Text, Button, useColorModeValue, Center } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
+import { isMap } from "util/types"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
 
@@ -8,6 +9,7 @@ const ParcelInfoBox = ({
   selectedParcel,
   coord,
   isIncluded,
+  mapHeight,
 }) => {
   const [fetchedInfo, setfetchedInfo] = useState({})
   const [isPicLoading, setIsPicLoading] = useState(false)
@@ -40,9 +42,7 @@ const ParcelInfoBox = ({
   return (
     <Box
       w="100%"
-      mr="2"
-      ml="4"
-      my="4"
+      h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
       p="2"
       bg={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"

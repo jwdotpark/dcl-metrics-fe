@@ -1,18 +1,6 @@
-import {
-  Text,
-  Box,
-  useColorModeValue,
-  Flex,
-  Spacer,
-  Center,
-  GridItem,
-  useBreakpointValue,
-} from "@chakra-ui/react"
+import { Text, Box, useColorModeValue, Flex, Spacer } from "@chakra-ui/react"
 import GridBox from "../../local/GridBox"
-import Loading from "../../local/Loading"
 import dynamic from "next/dynamic"
-// const Map = dynamic(() => import("./Map"), { ssr: false })
-// import MapWrapper from "./Map"
 const MapWrapper = dynamic(() => import("./Map"), { ssr: false })
 import MapInfo from "./MapInfo"
 import { useState } from "react"
@@ -50,6 +38,14 @@ const LandPicker = () => {
   const [selectedParcel, setSelectedParcel] = useState(defaultParcel)
   const prevParcel = usePrev(selectedParcel)
   const [isMapExpanded, setIsMapExpanded] = useState(false)
+  const mapBoxVerticalSize = {
+    map: "60%",
+    info: "40%",
+  }
+  const mapHeight = {
+    collapsed: 500,
+    expanded: "1000",
+  }
 
   return (
     <GridBox box={box}>
@@ -90,6 +86,8 @@ const LandPicker = () => {
             selectedParcel={selectedParcel}
             setSelectedParcel={setSelectedParcel}
             prevParcel={prevParcel}
+            mapBoxVerticalSize={mapBoxVerticalSize}
+            mapHeight={mapHeight}
           />
           <MapInfo
             h={h}
@@ -99,6 +97,8 @@ const LandPicker = () => {
             setCoord={setCoord}
             selectedParcel={selectedParcel}
             setSelectedParcel={setSelectedParcel}
+            mapBoxVerticalSize={mapBoxVerticalSize}
+            mapHeight={mapHeight}
           />
         </Flex>
       </Box>

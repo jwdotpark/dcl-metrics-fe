@@ -1,13 +1,4 @@
-import {
-  Button,
-  Box,
-  GridItem,
-  useColorModeValue,
-  Flex,
-} from "@chakra-ui/react"
-import { useEffect, useState } from "react"
-import MapInfoTable from "./partials/ParcelInfoTable"
-import MapImage from "./partials/MapImage"
+import { Box, useColorModeValue, SimpleGrid } from "@chakra-ui/react"
 import ParcelInfoBox from "./partials/ParcelInfoBox"
 import SceneInfoBox from "./partials/SceneInfoBox"
 
@@ -19,6 +10,8 @@ const MapInfo = ({
   setSelectedParcel,
   isMapExpanded,
   setIsMapExpanded,
+  mapBoxVerticalSize,
+  mapHeight,
 }) => {
   const box = {
     h: "auto",
@@ -30,19 +23,20 @@ const MapInfo = ({
 
   return (
     <Box
-      w={["100%", "100%", "100%", "50%"]}
+      w={["100%", "100%", "100%", mapBoxVerticalSize.info]}
       bg={box.bg}
       border="solid 1px"
       borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
       shadow="md"
     >
-      <Flex h="100%" mb="4" borderRadius="xl">
+      <SimpleGrid p="4" columns={isIncluded ? 2 : 1} spacing={4}>
         <ParcelInfoBox
           isIncluded={isIncluded}
           isMapExpanded={isMapExpanded}
           selectedParcel={selectedParcel}
           coord={coord}
+          mapHeight={mapHeight}
         />
         {isIncluded && (
           <SceneInfoBox
@@ -50,9 +44,10 @@ const MapInfo = ({
             isMapExpanded={isMapExpanded}
             selectedParcel={selectedParcel}
             coord={coord}
+            mapHeight={mapHeight}
           />
         )}
-      </Flex>
+      </SimpleGrid>
     </Box>
   )
 }

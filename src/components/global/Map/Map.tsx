@@ -30,6 +30,8 @@ const Map = ({
   isMapExpanded,
   setIsMapExpanded,
   prevParcel,
+  mapBoxVerticalSize,
+  mapHeight,
 }) => {
   const box = {
     h: "auto",
@@ -91,10 +93,6 @@ const Map = ({
   const [selectedProp, setSelectedProp] = useState(properties[0])
   const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
   const layers = []
-  const mapHeight = {
-    collapsed: 500,
-    expanded: "1000",
-  }
 
   const isSelected = (x: number, y: number) => {
     return selected.some((coord) => coord.x === x && coord.y === y)
@@ -125,6 +123,7 @@ const Map = ({
     if (selectedParcel.scene) {
       setSelectedScene(selectedParcel.scene.parcels)
     }
+    console.log("selected tile", tiles[id])
   }
 
   const fetchTiles = async (
@@ -220,7 +219,7 @@ const Map = ({
 
   return (
     <Box
-      w={["100%", "100%", "100%", "50%"]}
+      w={["100%", "100%", "100%", mapBoxVerticalSize.map]}
       h="auto"
       border="solid 1px"
       borderColor={useColorModeValue("gray.200", "gray.600")}
