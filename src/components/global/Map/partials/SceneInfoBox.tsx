@@ -1,7 +1,5 @@
-import { Box, Text, Button, useColorModeValue, Center } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { Box, Text, useColorModeValue, Center } from "@chakra-ui/react"
 import MapImage from "./MapImage"
-import MapInfoTable from "./ParcelInfoTable"
 import SceneInfoTable from "./SceneInfoTable"
 
 const SceneInfoBox = ({
@@ -23,9 +21,10 @@ const SceneInfoBox = ({
       p="2"
       bg={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
+      shadow="md"
     >
-      <Center>
-        <Text fontSize="xl" fontWeight="bold">
+      <Center px="4">
+        <Text fontSize="xl" fontWeight="bold" noOfLines={1}>
           {name ? name : "Scene"}
         </Text>
       </Center>

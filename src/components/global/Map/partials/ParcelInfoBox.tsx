@@ -47,6 +47,7 @@ const ParcelInfoBox = ({
       p="2"
       bg={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
+      shadow="md"
     >
       <Center>
         <Text fontSize="xl" fontWeight="bold">
