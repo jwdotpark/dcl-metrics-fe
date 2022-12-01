@@ -41,6 +41,7 @@ const ParcelInfoBox = ({
 
   return (
     <Box
+      overflowY="scroll"
       w="100%"
       h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
       p="2"
@@ -52,9 +53,10 @@ const ParcelInfoBox = ({
           Parcel
         </Text>
       </Center>
-      {isMapExpanded && (
+      {/* {isMapExpanded && (
         <MapImage isPicLoading={isPicLoading} name={name} image={image} />
-      )}
+      )} */}
+      <MapImage isPicLoading={isPicLoading} name={name} image={image} />
       <ParcelInfoTable
         external_url={external_url}
         selectedParcel={selectedParcel}

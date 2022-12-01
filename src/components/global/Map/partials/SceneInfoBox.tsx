@@ -17,6 +17,7 @@ const SceneInfoBox = ({
 
   return (
     <Box
+      overflowY="scroll"
       w="100%"
       h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
       p="2"
@@ -28,9 +29,10 @@ const SceneInfoBox = ({
           Scene
         </Text>
       </Center>
-      {isMapExpanded && (
+      {/* {isMapExpanded && (
         <MapImage isPicLoading={false} name={name} image={baseUrl} />
-      )}
+      )} */}
+      <MapImage isPicLoading={false} name={name} image={baseUrl} />
       <SceneInfoTable selectedParcel={selectedParcel} />
     </Box>
   )
