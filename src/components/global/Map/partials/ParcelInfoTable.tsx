@@ -13,6 +13,7 @@ import moment from "moment"
 
 const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
   const { id, updatedAt, owner } = selectedParcel
+  // const { name, visitors, deploys } = selectedParcel.scene
 
   return (
     <TableContainer whiteSpace="pre-wrap">
@@ -31,6 +32,30 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
               </a>
             </Td>
           </Tr>
+          {selectedParcel.scene && (
+            <>
+              <Tr>
+                <Td>Name</Td>
+                <Td isNumeric>
+                  <Text wordBreak="break-all" noOfLines={1}>
+                    {selectedParcel.scene.name}
+                  </Text>
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>Visitors</Td>
+                <Td isNumeric>
+                  <Text as="kbd">{selectedParcel.scene.visitors}</Text>
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>Deploys</Td>
+                <Td isNumeric>
+                  <Text as="kbd">{selectedParcel.scene.deploys}</Text>
+                </Td>
+              </Tr>
+            </>
+          )}
           <Tr>
             <Td>Owner</Td>
             <Td isNumeric>
@@ -43,13 +68,6 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
             <Td>Description</Td>
             <Td isNumeric>{description ? description : "N/A"}</Td>
           </Tr>
-          <Tr>
-            <Td>Updated At</Td>
-            <Td isNumeric>
-              <Text>{moment.unix(updatedAt).format("YYYY MMM. D HH:MM")}</Text>
-            </Td>
-          </Tr>
-
           {selectedParcel.total_visitors ? (
             <>
               <Tr>
@@ -100,15 +118,6 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
                   </Text>
                 </Td>
               </Tr>
-
-              <Tr>
-                <Td>Deploy Count</Td>
-                <Td isNumeric>
-                  <Text>
-                    {selectedParcel.deploy_count && selectedParcel.deploy_count}
-                  </Text>
-                </Td>
-              </Tr>
             </>
           ) : (
             <Tr>
@@ -116,6 +125,12 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
               <Td isNumeric>N/A</Td>
             </Tr>
           )}
+          <Tr>
+            <Td>Updated At</Td>
+            <Td isNumeric>
+              <Text>{moment.unix(updatedAt).format("YYYY MMM. D HH:MM")}</Text>
+            </Td>
+          </Tr>
         </Tbody>
       </Table>
     </TableContainer>

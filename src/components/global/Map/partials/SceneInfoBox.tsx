@@ -10,7 +10,7 @@ const SceneInfoBox = ({
   mapHeight,
 }) => {
   const { estateId } = selectedParcel
-  const { name } = selectedParcel.scene
+  // const { name } = selectedParcel.scene
   const baseUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`
 
   return (
@@ -25,7 +25,7 @@ const SceneInfoBox = ({
     >
       <Center px="4">
         <Text fontSize="xl" fontWeight="bold" noOfLines={1}>
-          {name ? name : "Scene"}
+          {/* {name ? name : "Scene"} */}
         </Text>
       </Center>
       {/* {isMapExpanded && (

@@ -26,9 +26,9 @@ const LandPicker = () => {
     y: 0,
     updatedAt: 1637965747,
     type: "plaza",
-    top: true,
-    left: true,
-    topLeft: true,
+    // top: true,
+    // left: true,
+    // topLeft: true,
     name: "Genesis Plaza",
     estateId: "1164",
     owner: "0x4eac6325e1dbf1ac90434d39766e164dca71139e",
@@ -39,12 +39,12 @@ const LandPicker = () => {
   const prevParcel = usePrev(selectedParcel)
   const [isMapExpanded, setIsMapExpanded] = useState(false)
   const mapBoxVerticalSize = {
-    map: "60%",
-    info: "40%",
+    map: isMapExpanded ? "100%" : "70%",
+    info: isMapExpanded ? "100%" : "30%",
   }
   const mapHeight = {
     collapsed: 500,
-    expanded: "1000",
+    expanded: 750,
   }
 
   return (
@@ -69,11 +69,17 @@ const LandPicker = () => {
         <Flex
           sx={{
             "& > * + *": {
-              ml: [0, 0, 0, 0, 4],
+              ml: [0, 0, 0, 0, 0],
               mt: [4, 4, 4, 0],
             },
           }}
-          direction={["column", "column", "column", "column", "row"]}
+          direction={[
+            "column",
+            "column",
+            "column",
+            "column",
+            isMapExpanded ? "column" : "row",
+          ]}
           m="4"
           mb="4"
         >

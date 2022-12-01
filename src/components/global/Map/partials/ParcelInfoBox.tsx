@@ -1,4 +1,12 @@
-import { Box, Text, Button, useColorModeValue, Center } from "@chakra-ui/react"
+import {
+  Box,
+  Text,
+  Button,
+  useColorModeValue,
+  Center,
+  Flex,
+  Spacer,
+} from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { isMap } from "util/types"
 import MapImage from "./MapImage"
@@ -32,7 +40,16 @@ const ParcelInfoBox = ({
 
   // @ts-ignore
   const { description, external_url, image } = fetchedInfo
-  const { name, id, updatedAt, owner, tokenId } = selectedParcel
+  const { name, id, updatedAt, owner, tokenId, estateId } = selectedParcel
+  const baseUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`
+
+  const trimName = (name) => {
+    if (name.length > 15) {
+      return name.slice(0, 16) + ".."
+    } else {
+      return name
+    }
+  }
 
   useEffect(() => {
     fetchParcel()
@@ -42,8 +59,9 @@ const ParcelInfoBox = ({
   return (
     <Box
       overflowY="scroll"
-      w="100%"
-      h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
+      // w="100%"
+      h={!isMapExpanded ? mapHeight.collapsed : 400}
+      m="4"
       p="2"
       bg={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
@@ -51,13 +69,22 @@ const ParcelInfoBox = ({
     >
       <Center>
         <Text fontSize="xl" fontWeight="bold">
-          {selectedParcel ? "[" + selectedParcel.id + "]" : "Parcel"}
+          {selectedParcel.scene && trimName(selectedParcel.scene.name) + " - "}
+          {"[" + selectedParcel.id + "]"}
         </Text>
       </Center>
-      {/* {isMapExpanded && (
-        <MapImage isPicLoading={isPicLoading} name={name} image={image} />
-      )} */}
-      <MapImage isPicLoading={isPicLoading} name={name} image={image} />
+
+      <Flex>
+        <Box w="100%">
+          <MapImage isPicLoading={isPicLoading} name={name} image={image} />
+        </Box>
+        <Spacer />
+        {isIncluded && (
+          <Box w="100%">
+            <MapImage isPicLoading={isPicLoading} name={name} image={baseUrl} />
+          </Box>
+        )}
+      </Flex>
       <ParcelInfoTable
         external_url={external_url}
         selectedParcel={selectedParcel}
