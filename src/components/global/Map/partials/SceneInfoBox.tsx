@@ -26,7 +26,7 @@ const SceneInfoBox = ({
     >
       <Center>
         <Text fontSize="xl" fontWeight="bold">
-          Scene
+          {name ? name : "Scene"}
         </Text>
       </Center>
       {/* {isMapExpanded && (

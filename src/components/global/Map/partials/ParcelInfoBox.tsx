@@ -50,7 +50,7 @@ const ParcelInfoBox = ({
     >
       <Center>
         <Text fontSize="xl" fontWeight="bold">
-          Parcel
+          {selectedParcel ? "[" + selectedParcel.id + "]" : "Parcel"}
         </Text>
       </Center>
       {/* {isMapExpanded && (
