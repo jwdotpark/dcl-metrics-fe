@@ -84,7 +84,6 @@ const MapButtonGroup = ({
         <Spacer />
         <Box pos="absolute" zIndex="banner" right="2" bottom="2" shadow="md">
           <MapMenu
-            textColor={textColor}
             btnBg={btnBg}
             properties={properties}
             selectedProp={selectedProp}
