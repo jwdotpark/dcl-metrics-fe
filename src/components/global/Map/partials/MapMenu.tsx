@@ -41,7 +41,7 @@ const MapMenu = ({
         <PopoverTrigger>
           <Button
             zIndex="banner"
-            w="40"
+            w={[20, 20, 20, 40]}
             h="auto"
             mr="2"
             bg={useColorModeValue("gray.200", "gray.900")}

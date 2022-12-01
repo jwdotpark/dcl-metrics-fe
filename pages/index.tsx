@@ -154,7 +154,7 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       <Box w="100%">
-        <Box mb="4">
+        <Box mb="4" mx={[-4, 0, 0, 0]}>
           <LandPicker />
         </Box>
         <Box mb="4">

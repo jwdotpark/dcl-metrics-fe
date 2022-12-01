@@ -65,7 +65,7 @@ const LandPicker = () => {
         </Text>
       </Box>
 
-      <Box h="100%">
+      <Box h="100%" mx={[-4, 0, 0, 0]}>
         <Flex
           sx={{
             "& > * + *": {

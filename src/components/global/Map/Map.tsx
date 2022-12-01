@@ -2,23 +2,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
-  Text,
   Center,
-  Flex,
   GridItem,
   useColorModeValue,
-  Button,
-  Spacer,
   Spinner,
-  ButtonGroup,
 } from "@chakra-ui/react"
-import { memo, useEffect, useMemo, useRef, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import { usePrev } from "../../../lib/hooks/usePrev"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
 import { heatmapColor } from "../../../lib/hooks/utils"
 import tempParcel from "../../../../public/data/temp_parcel.json"
-import MapMenu from "./partials/MapMenu"
 import MapButtonGroup from "./partials/MapButtonGroup"
 
 const Map = ({
