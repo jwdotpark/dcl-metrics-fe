@@ -6,10 +6,11 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 
-const MapImage = ({ isPicLoading, name, image }) => {
+const MapImage = ({ isPicLoading, name, image, isMapExpanded }) => {
+  const mapHeight = isMapExpanded ? 200 : 100
   return (
-    <Box w="100%" minH={[100, 125, 125]} p="2">
-      <Center minH={[100, 125, 125]}>
+    <Box w="100%" minH={[100, 125, mapHeight]} p="2">
+      <Center minH={[100, 125, mapHeight]}>
         {isPicLoading ? (
           <Spinner />
         ) : (
@@ -24,7 +25,7 @@ const MapImage = ({ isPicLoading, name, image }) => {
           >
             <Image
               minW="100%"
-              h={[100, 125, 125]}
+              h={[100, 125, mapHeight]}
               objectFit="cover"
               alt={name}
               src={image}

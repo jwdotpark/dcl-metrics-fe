@@ -44,7 +44,7 @@ const ParcelInfoBox = ({
   const baseUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`
 
   const trimName = (name) => {
-    if (name.length > 15) {
+    if (!isMapExpanded && name.length > 15) {
       return name.slice(0, 16) + ".."
     } else {
       return name
@@ -58,38 +58,69 @@ const ParcelInfoBox = ({
 
   return (
     <Box
-      overflowY="scroll"
-      // w="100%"
-      h={!isMapExpanded ? mapHeight.collapsed : 400}
+      overflowY={isMapExpanded ? "hidden" : "scroll"}
+      h={!isMapExpanded ? mapHeight.collapsed : "auto"}
       m="4"
-      p="2"
+      p="4"
       bg={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
       shadow="md"
     >
       <Center>
-        <Text fontSize="xl" fontWeight="bold">
-          {selectedParcel.scene && trimName(selectedParcel.scene.name) + " - "}
-          {"[" + selectedParcel.id + "]"}
-        </Text>
+        <Button
+          w="100%"
+          mb="4"
+          color="gray.50"
+          bg="#6272a4"
+          // colorScheme="teal"
+          borderRadius="xl"
+          shadow="md"
+        >
+          <Text fontSize="xl" fontWeight="bold">
+            {selectedParcel.scene &&
+              trimName(selectedParcel.scene.name) + " - "}
+            {"[" + selectedParcel.id + "]"}
+          </Text>
+        </Button>
       </Center>
-
-      <Flex>
-        <Box w="100%">
-          <MapImage isPicLoading={isPicLoading} name={name} image={image} />
+      <Flex
+        direction={isMapExpanded ? "row" : "column"}
+        p="2"
+        bg={useColorModeValue("gray.300", "gray.800")}
+        borderRadius="xl"
+        shadow="md"
+      >
+        <Box w={isMapExpanded ? "50%" : "100%"}>
+          <Flex direction={isMapExpanded ? "column" : "row"}>
+            <Box w="100%">
+              <MapImage
+                isMapExpanded={isMapExpanded}
+                isPicLoading={isPicLoading}
+                name={name}
+                image={image}
+              />
+            </Box>
+            <Spacer />
+            {isIncluded && (
+              <Box w="100%">
+                <MapImage
+                  isMapExpanded={isMapExpanded}
+                  isPicLoading={isPicLoading}
+                  name={name}
+                  image={baseUrl}
+                />
+              </Box>
+            )}
+          </Flex>
         </Box>
-        <Spacer />
-        {isIncluded && (
-          <Box w="100%">
-            <MapImage isPicLoading={isPicLoading} name={name} image={baseUrl} />
-          </Box>
-        )}
+        <Box w={isMapExpanded ? "50%" : "100%"}>
+          <ParcelInfoTable
+            external_url={external_url}
+            selectedParcel={selectedParcel}
+            description={description}
+          />
+        </Box>
       </Flex>
-      <ParcelInfoTable
-        external_url={external_url}
-        selectedParcel={selectedParcel}
-        description={description}
-      />
     </Box>
   )
 }

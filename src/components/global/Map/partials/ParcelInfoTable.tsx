@@ -16,8 +16,14 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
   // const { name, visitors, deploys } = selectedParcel.scene
 
   return (
-    <TableContainer whiteSpace="pre-wrap">
-      <Table h="100%" fontSize="xs" size="sm" variant="simple">
+    <TableContainer p="2" whiteSpace="pre-wrap">
+      <Table
+        h="100%"
+        fontSize="xs"
+        colorScheme="gray"
+        size="sm"
+        // variant="striped"
+      >
         <Tbody>
           <Tr>
             <Td>Coordinate</Td>
@@ -35,7 +41,7 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
           {selectedParcel.scene && (
             <>
               <Tr>
-                <Td>Name</Td>
+                <Td>Scene Name</Td>
                 <Td isNumeric>
                   <Text wordBreak="break-all" noOfLines={1}>
                     {selectedParcel.scene.name}
@@ -49,7 +55,7 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
                 </Td>
               </Tr>
               <Tr>
-                <Td>Deploys</Td>
+                <Td>Deployed</Td>
                 <Td isNumeric>
                   <Text as="kbd">{selectedParcel.scene.deploys}</Text>
                 </Td>

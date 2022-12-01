@@ -31,7 +31,7 @@ const SceneInfoBox = ({
       {/* {isMapExpanded && (
         <MapImage isPicLoading={false} name={name} image={baseUrl} />
       )} */}
-      <MapImage isPicLoading={false} name={name} image={baseUrl} />
+      {/* <MapImage isPicLoading={false} name={name} image={baseUrl} /> */}
       <SceneInfoTable selectedParcel={selectedParcel} />
     </Box>
   )
