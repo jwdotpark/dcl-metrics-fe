@@ -16,7 +16,7 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
   // const { name, visitors, deploys } = selectedParcel.scene
 
   return (
-    <TableContainer p="2" whiteSpace="pre-wrap">
+    <TableContainer mt="4" px="-2" py="2" whiteSpace="pre-wrap">
       <Table
         h="100%"
         fontSize="xs"
