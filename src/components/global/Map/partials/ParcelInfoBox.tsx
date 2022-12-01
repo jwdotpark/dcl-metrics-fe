@@ -6,9 +6,15 @@ import {
   Center,
   Flex,
   Spacer,
+  useDisclosure,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
-import { isMap } from "util/types"
+import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
 
@@ -21,6 +27,8 @@ const ParcelInfoBox = ({
 }) => {
   const [fetchedInfo, setfetchedInfo] = useState({})
   const [isPicLoading, setIsPicLoading] = useState(false)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = useRef()
 
   const fetchParcel = async () => {
     setIsPicLoading(true)
@@ -40,8 +48,9 @@ const ParcelInfoBox = ({
 
   // @ts-ignore
   const { description, external_url, image } = fetchedInfo
-  const { name, id, updatedAt, owner, tokenId, estateId } = selectedParcel
+  const { name, estateId } = selectedParcel
   const baseUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`
+  const jumpInUrl = `https://play.decentraland.org/?position=${coord.x}%2C${coord.y}`
 
   const trimName = (name) => {
     if (!isMapExpanded && name.length > 15) {
@@ -56,25 +65,65 @@ const ParcelInfoBox = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coord])
 
+  const AlertJumpIn = () => {
+    return (
+      <>
+        <AlertDialog
+          isCentered
+          isOpen={isOpen}
+          leastDestructiveRef={cancelRef}
+          motionPreset="slideInBottom"
+          onClose={onClose}
+        >
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <AlertDialogBody mt="4">
+                Do you want to visit{" "}
+                {selectedParcel.scene && selectedParcel.scene.name + " on "} [
+                {selectedParcel.id}]?
+              </AlertDialogBody>
+
+              <AlertDialogFooter>
+                <Button ref={cancelRef} onClick={onClose}>
+                  Cancel
+                </Button>
+                <Button
+                  ml={3}
+                  colorScheme="purple"
+                  // on click open new tab external_url
+                  onClick={() => {
+                    window.open(jumpInUrl, "_blank")
+                    onClose()
+                  }}
+                >
+                  Jump In
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+        </AlertDialog>
+      </>
+    )
+  }
+
   return (
     <Box
       overflowY={isMapExpanded ? "hidden" : "scroll"}
-      h={!isMapExpanded ? mapHeight.collapsed : "auto"}
-      m="4"
+      h={!isMapExpanded ? mapHeight.collapsed + 15 : "auto"}
       p="4"
-      bg={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
-      shadow="md"
     >
+      <AlertJumpIn />
       <Center>
         <Button
           w="100%"
           mb="4"
           color="gray.50"
           bg="#6272a4"
-          // colorScheme="teal"
           borderRadius="xl"
           shadow="md"
+          onClick={() => onOpen()}
+          // onClick={() => window.open(external_url)}
         >
           <Text fontSize="xl" fontWeight="bold">
             {selectedParcel.scene &&
@@ -83,6 +132,7 @@ const ParcelInfoBox = ({
           </Text>
         </Button>
       </Center>
+
       <Flex
         direction={isMapExpanded ? "row" : "column"}
         p="2"

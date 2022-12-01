@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react"
 
 const MapImage = ({ isPicLoading, name, image, isMapExpanded }) => {
-  const mapHeight = isMapExpanded ? 200 : 100
+  const mapHeight = isMapExpanded ? 250 : 100
   return (
     <Box w="100%" h={[100, 125, mapHeight]} mb={isMapExpanded && 4} p="2">
       <Center h={[100, 125, mapHeight]}>

@@ -1,6 +1,5 @@
-import { Box, useColorModeValue, SimpleGrid } from "@chakra-ui/react"
+import { Box, useColorModeValue } from "@chakra-ui/react"
 import ParcelInfoBox from "./partials/ParcelInfoBox"
-import SceneInfoBox from "./partials/SceneInfoBox"
 
 const MapInfo = ({
   h,

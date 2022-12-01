@@ -17,13 +17,7 @@ import {
   Spacer,
 } from "@chakra-ui/react"
 
-const MapMenu = ({
-  properties,
-  selectedProp,
-  setSelectedProp,
-  btnBg,
-  textColor,
-}) => {
+const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
   const formatName = (name) => {
     return name
       .replace(/_/g, " ")

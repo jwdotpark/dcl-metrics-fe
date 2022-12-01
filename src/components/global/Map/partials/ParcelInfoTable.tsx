@@ -10,10 +10,10 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import moment from "moment"
+import { convertSeconds } from "../../../../lib/hooks/utils"
 
 const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
   const { id, updatedAt, owner } = selectedParcel
-  // const { name, visitors, deploys } = selectedParcel.scene
 
   return (
     <TableContainer mt="4" px="-2" py="2" whiteSpace="pre-wrap">
@@ -85,17 +85,38 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
                   </Text>
                 </Td>
               </Tr>
-
               <Tr>
-                <Td>Total AVG Time Spent</Td>
+                <Td>Max Concurrent User</Td>
                 <Td isNumeric>
-                  <Text>
-                    {selectedParcel.total_avg_time_spent &&
-                      selectedParcel.total_avg_time_spent}
+                  <Text as="kbd">
+                    {selectedParcel.max_concurrent_users &&
+                      selectedParcel.max_concurrent_users}
                   </Text>
                 </Td>
               </Tr>
 
+              <Tr>
+                <Td>Total AVG Time Spent</Td>
+                <Td isNumeric>
+                  <Text as="kbd">
+                    {selectedParcel.total_avg_time_spent &&
+                      convertSeconds(
+                        selectedParcel.total_avg_time_spent.toFixed(0)
+                      )}
+                  </Text>
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>Total AVG Time Spent AFK</Td>
+                <Td isNumeric>
+                  <Text as="kbd">
+                    {selectedParcel.total_avg_time_spent_afk &&
+                      convertSeconds(
+                        selectedParcel.total_avg_time_spent_afk.toFixed(0)
+                      )}
+                  </Text>
+                </Td>
+              </Tr>
               <Tr>
                 <Td>Total Logins</Td>
                 <Td isNumeric>
@@ -104,23 +125,12 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
                   </Text>
                 </Td>
               </Tr>
-
               <Tr>
                 <Td>Total Logouts</Td>
                 <Td isNumeric>
                   <Text>
                     {selectedParcel.total_logouts &&
                       selectedParcel.total_logouts}
-                  </Text>
-                </Td>
-              </Tr>
-
-              <Tr>
-                <Td>Total AVG Time Spent AFK</Td>
-                <Td isNumeric>
-                  <Text>
-                    {selectedParcel.total_avg_time_spent_afk &&
-                      selectedParcel.total_avg_time_spent_afk}
                   </Text>
                 </Td>
               </Tr>

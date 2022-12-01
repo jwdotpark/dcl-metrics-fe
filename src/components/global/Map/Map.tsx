@@ -117,7 +117,6 @@ const Map = ({
     if (selectedParcel.scene) {
       setSelectedScene(selectedParcel.scene.parcels)
     }
-    console.log("selected tile", tiles[id])
   }
 
   const fetchTiles = async (
