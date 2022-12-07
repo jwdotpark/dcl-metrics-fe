@@ -1,4 +1,5 @@
 import {
+  Tooltip,
   Text,
   Table,
   Tr,
@@ -81,13 +82,17 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
             <Tr>
               <Td>Scene Name</Td>
               <Td isNumeric>
-                <Text
-                  wordBreak="break-all"
-                  noOfLines={1}
-                  // onClick={() => handleToast(scene.name)}
+                <Tooltip
+                  p="2"
+                  fontSize="sm"
+                  borderRadius="md"
+                  label={scene.name}
+                  placement="auto"
                 >
-                  {scene.name}
-                </Text>
+                  <Text wordBreak="break-all" noOfLines={1}>
+                    {scene.name}
+                  </Text>
+                </Tooltip>
               </Td>
             </Tr>
           )}

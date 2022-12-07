@@ -209,8 +209,6 @@ const Map = ({
     }
   }, [prevScene])
 
-  console.log(tiles["0,0"])
-
   return (
     <Box
       w={["100%", "100%", "100%", mapBoxVerticalSize.map]}
