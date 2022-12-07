@@ -22,18 +22,11 @@ const LandPicker = () => {
 
   const defaultParcel = {
     id: "0,0",
-    // x: 0,
-    // y: 0,
-    // updatedAt: 1637965747,
-    // type: "plaza",
-    // name: "Genesis Plaza",
-    // estateId: "1164",
-    // owner: "0x4eac6325e1dbf1ac90434d39766e164dca71139e",
-    // tokenId: "0",
+    name: "Genesis Plaza",
+    owner: "0x4eac6325e1dbf1ac90434d39766e164dca71139e",
   }
 
   const [selectedParcel, setSelectedParcel] = useState(defaultParcel)
-  const prevParcel = usePrev(selectedParcel)
   const [isMapExpanded, setIsMapExpanded] = useState(false)
   const mapBoxVerticalSize = {
     map: isMapExpanded ? "100%" : "70%",
@@ -88,7 +81,6 @@ const LandPicker = () => {
             setCoord={setCoord}
             selectedParcel={selectedParcel}
             setSelectedParcel={setSelectedParcel}
-            prevParcel={prevParcel}
             mapBoxVerticalSize={mapBoxVerticalSize}
             mapHeight={mapHeight}
           />

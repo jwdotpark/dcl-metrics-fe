@@ -23,7 +23,6 @@ const Map = ({
   setSelectedParcel,
   isMapExpanded,
   setIsMapExpanded,
-  prevParcel,
   mapBoxVerticalSize,
   mapHeight,
 }) => {
@@ -209,6 +208,8 @@ const Map = ({
       })
     }
   }, [prevScene])
+
+  console.log(tiles["0,0"])
 
   return (
     <Box

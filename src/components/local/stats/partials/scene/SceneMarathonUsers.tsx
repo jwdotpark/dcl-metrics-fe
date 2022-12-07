@@ -52,7 +52,7 @@ const SceneMarathonUsers = ({ data }) => {
   const MarathonUserTable = () => {
     return (
       <Box
-        overflowX="scroll"
+        overflow="hidden"
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"

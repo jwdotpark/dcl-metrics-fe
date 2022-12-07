@@ -44,7 +44,7 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
 
   return (
     <TableContainer
-      overflowX="scroll"
+      // overflowX="scroll"
       m="2"
       p="2"
       py="4"

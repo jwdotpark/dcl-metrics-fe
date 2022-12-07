@@ -5,7 +5,6 @@ import {
   Spinner,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { isMap } from "util/types"
 
 const MapImage = ({ isPicLoading, name, image, isMapExpanded, isIncluded }) => {
   // const mapHeight = isMapExpanded ? 250 : 100
