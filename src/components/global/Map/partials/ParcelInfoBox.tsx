@@ -147,6 +147,7 @@ const ParcelInfoBox = ({
                 isPicLoading={isPicLoading}
                 name={name}
                 image={image}
+                isIncluded={isIncluded}
               />
             </Box>
             <Spacer />
@@ -157,6 +158,7 @@ const ParcelInfoBox = ({
                   isPicLoading={isPicLoading}
                   name={name}
                   image={baseUrl}
+                  isIncluded={isIncluded}
                 />
               </Box>
             )}

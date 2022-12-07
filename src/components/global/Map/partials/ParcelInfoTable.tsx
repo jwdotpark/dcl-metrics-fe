@@ -14,13 +14,26 @@ import moment from "moment"
 import { convertSeconds } from "../../../../lib/hooks/utils"
 
 const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
-  const { id, updatedAt, owner } = selectedParcel
+  const {
+    id,
+    name,
+    updatedAt,
+    owner,
+    visitors,
+    max_concurrent_users,
+    avg_time_spent,
+    avg_time_spent_afk,
+    logins,
+    logouts,
+    deploy_count,
+    scene,
+  } = selectedParcel
 
   const toast = useToast()
   const handleToast = async (value) => {
     await navigator.clipboard.writeText(value)
     toast({
-      description: "Address " + value + " is copied to the clipboard.",
+      description: "Value is copied to the clipboard.",
       duration: 2000,
       isClosable: true,
       position: "bottom-right",
@@ -42,93 +55,132 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
       shadow="md"
       whiteSpace="pre-wrap"
     >
-      <Table h="350" size="sm" variant="simple">
+      <Table h="350" colorScheme="blackAlpha" size="sm">
         <Tbody>
-          {/* PARCEL */}
           <Tr>
             <Td>Coordinate</Td>
             <Td isNumeric>
-              <a target="_blank" rel="noopener noreferrer" href={external_url}>
+              <Text as="kbd">[{id}]</Text>
+            </Td>
+          </Tr>
+          {name && (
+            <Tr>
+              <Td>Parcel Name</Td>
+              <Td isNumeric>
                 <Text
-                  fontWeight="medium"
-                  _hover={{ color: useColorModeValue("gray.800", "gray.400") }}
+                  wordBreak="break-all"
+                  noOfLines={1}
+                  onClick={() => handleToast(name)}
                 >
-                  [{id}]
+                  {name}
                 </Text>
-              </a>
-            </Td>
-          </Tr>
-          <Tr>
-            <Td>Visitors</Td>
-            <Td isNumeric>
-              <Text as="kbd">{selectedParcel.visitors}</Text>
-            </Td>
-          </Tr>
-          <Tr>
-            <Td>Max Concurrent User</Td>
-            <Td isNumeric>
-              <Text as="kbd">
-                {selectedParcel.max_concurrent_users &&
-                  selectedParcel.max_concurrent_users}
-              </Text>
-            </Td>
-          </Tr>
-          <Tr>
-            <Td>Deploy Count</Td>
-            <Td isNumeric>
-              <Text as="kbd">{selectedParcel.deploy_count}</Text>
-            </Td>
-          </Tr>
-          <Tr>
-            <Td>Logins</Td>
-            <Td isNumeric>
-              <Text as="kbd">{selectedParcel.logins}</Text>
-            </Td>
-          </Tr>
-          <Tr>
-            <Td>Logins</Td>
-            <Td isNumeric>
-              <Text as="kbd">{selectedParcel.logouts}</Text>
-            </Td>
-          </Tr>
-          {/* additional SCENE */}
-          {selectedParcel.scene && (
-            <>
-              <Tr>
-                <Td>Scene Name</Td>
-                <Td isNumeric>
-                  <Text wordBreak="break-all" noOfLines={1}>
-                    {selectedParcel.scene.name}
-                  </Text>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Last Deployed At</Td>
-                <Td isNumeric>
-                  <Text wordBreak="break-all" noOfLines={1}>
-                    {selectedParcel.scene.last_deployed_at &&
-                      selectedParcel.scene.last_deployed_at}
-                  </Text>
-                </Td>
-              </Tr>
-            </>
+              </Td>
+            </Tr>
           )}
-          <Tr>
-            <Td>Owner</Td>
-            <Td isNumeric>
-              <Text
-                as="kbd"
-                _hover={{ cursor: "grab", color: "gray.600" }}
-                wordBreak="break-all"
-                noOfLines={1}
-                onClick={() => {
-                  handleToast(owner)
-                }}
-              >
-                {owner}
-              </Text>
-            </Td>
-          </Tr>
+          {scene && scene.name && (
+            <Tr>
+              <Td>Scene Name</Td>
+              <Td isNumeric>
+                <Text
+                  wordBreak="break-all"
+                  noOfLines={1}
+                  // onClick={() => handleToast(scene.name)}
+                >
+                  {scene.name}
+                </Text>
+              </Td>
+            </Tr>
+          )}
+          {visitors > 0 && (
+            <Tr>
+              <Td>Visitors</Td>
+              <Td isNumeric>
+                <Text as="kbd">{visitors}</Text>
+              </Td>
+            </Tr>
+          )}
+
+          {max_concurrent_users > 0 && (
+            <Tr>
+              <Td>Max Concurrent User</Td>
+              <Td isNumeric>
+                <Text as="kbd">{max_concurrent_users}</Text>
+              </Td>
+            </Tr>
+          )}
+
+          {avg_time_spent > 0 && (
+            <Tr>
+              <Td>AVG Time Spent</Td>
+              <Td isNumeric>
+                <Text as="kbd">{convertSeconds(avg_time_spent)}</Text>
+              </Td>
+            </Tr>
+          )}
+
+          {avg_time_spent_afk > 0 && (
+            <Tr>
+              <Td>AVG Time Spent AFK</Td>
+              <Td isNumeric>
+                <Text as="kbd">{convertSeconds(avg_time_spent_afk)}</Text>
+              </Td>
+            </Tr>
+          )}
+
+          {logins > 0 && (
+            <Tr>
+              <Td>Logins</Td>
+              <Td isNumeric>
+                <Text as="kbd">{logins}</Text>
+              </Td>
+            </Tr>
+          )}
+
+          {logouts > 0 && (
+            <Tr>
+              <Td>Logouts</Td>
+              <Td isNumeric>
+                <Text as="kbd">{logouts}</Text>
+              </Td>
+            </Tr>
+          )}
+
+          {deploy_count > 0 && (
+            <Tr>
+              <Td>Deploy Count</Td>
+              <Td isNumeric>
+                <Text as="kbd">{deploy_count}</Text>
+              </Td>
+            </Tr>
+          )}
+
+          {owner && (
+            <Tr>
+              <Td>Owner</Td>
+              <Td isNumeric>
+                <Text
+                  as="kbd"
+                  _hover={{ cursor: "grab", color: "gray.600" }}
+                  wordBreak="break-all"
+                  noOfLines={1}
+                  onClick={() => handleToast(owner)}
+                >
+                  {owner}
+                </Text>
+              </Td>
+            </Tr>
+          )}
+
+          {scene && scene.last_deployed_at && (
+            <Tr>
+              <Td>Last Deployed At</Td>
+              <Td isNumeric>
+                <Text wordBreak="break-all" noOfLines={1}>
+                  {scene.last_deployed_at && scene.last_deployed_at}
+                </Text>
+              </Td>
+            </Tr>
+          )}
           <Tr>
             <Td>Description</Td>
             <Td isNumeric>{description ? description : "N/A"}</Td>

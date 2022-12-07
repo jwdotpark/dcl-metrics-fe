@@ -41,7 +41,7 @@ const LandPicker = () => {
   }
   const mapHeight = {
     collapsed: 500,
-    expanded: 750,
+    expanded: 650,
   }
 
   return (
