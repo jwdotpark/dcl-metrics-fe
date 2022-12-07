@@ -4,9 +4,8 @@ import dynamic from "next/dynamic"
 const MapWrapper = dynamic(() => import("./Map"), { ssr: false })
 import MapInfo from "./MapInfo"
 import { useState } from "react"
-import { usePrev } from "../../../lib/hooks/usePrev"
 
-const LandPicker = () => {
+const LandPicker = ({ parcelData }) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -83,6 +82,7 @@ const LandPicker = () => {
             setSelectedParcel={setSelectedParcel}
             mapBoxVerticalSize={mapBoxVerticalSize}
             mapHeight={mapHeight}
+            parcelData={parcelData}
           />
           <MapInfo
             h={h}

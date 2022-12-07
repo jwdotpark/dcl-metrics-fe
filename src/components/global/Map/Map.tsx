@@ -12,7 +12,6 @@ import { usePrev } from "../../../lib/hooks/usePrev"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
 import { heatmapColor } from "../../../lib/hooks/utils"
-import tempParcel from "../../../../public/data/temp_parcel.json"
 import MapButtonGroup from "./partials/MapButtonGroup"
 
 const Map = ({
@@ -25,6 +24,7 @@ const Map = ({
   setIsMapExpanded,
   mapBoxVerticalSize,
   mapHeight,
+  parcelData,
 }) => {
   const box = {
     h: "auto",
@@ -133,7 +133,7 @@ const Map = ({
 
   const injectTiles = () => {
     // @ts-ignore
-    tempParcel.map((tile) => {
+    parcelData.map((tile) => {
       const id = tile.coordinates
       tiles[id] = { ...tiles[id], ...tile }
     })
