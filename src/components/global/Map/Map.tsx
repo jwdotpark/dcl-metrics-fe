@@ -68,8 +68,8 @@ const Map = ({
   const properties = [
     { name: "max_concurrent_users" },
     { name: "visitor_intensity" },
-    { name: "time_spent_intensity" },
-    { name: "time_spent_afk_intensity" },
+    { name: "avg_time_spent_intensity" },
+    { name: "avg_time_spent_afk_intensity" },
     { name: "login_intensity" },
     { name: "logout_intensity" },
   ]
