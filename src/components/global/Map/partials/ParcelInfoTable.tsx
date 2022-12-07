@@ -8,6 +8,7 @@ import {
   Box,
   Button,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react"
 import moment from "moment"
 import { convertSeconds } from "../../../../lib/hooks/utils"
@@ -15,9 +16,33 @@ import { convertSeconds } from "../../../../lib/hooks/utils"
 const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
   const { id, updatedAt, owner } = selectedParcel
 
+  const toast = useToast()
+  const handleToast = async (value) => {
+    await navigator.clipboard.writeText(value)
+    toast({
+      description: "Address " + value + " is copied to the clipboard.",
+      duration: 2000,
+      isClosable: true,
+      position: "bottom-right",
+      status: "success",
+      variant: "subtle",
+    })
+  }
+
   return (
-    <TableContainer mt="4" px="-2" py="2" whiteSpace="pre-wrap">
-      <Table h="100%" fontSize="xs" colorScheme="gray" size="sm">
+    <TableContainer
+      overflowX="scroll"
+      m="2"
+      p="2"
+      py="4"
+      bg={useColorModeValue("gray.50", "gray.700")}
+      border="1px solid"
+      borderColor={useColorModeValue("gray.200", "gray.600")}
+      borderRadius="xl"
+      shadow="md"
+      whiteSpace="pre-wrap"
+    >
+      <Table h="350" size="sm" variant="simple">
         <Tbody>
           {/* PARCEL */}
           <Tr>
@@ -91,7 +116,15 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
           <Tr>
             <Td>Owner</Td>
             <Td isNumeric>
-              <Text as="kbd" wordBreak="break-all" noOfLines={1}>
+              <Text
+                as="kbd"
+                _hover={{ cursor: "grab", color: "gray.600" }}
+                wordBreak="break-all"
+                noOfLines={1}
+                onClick={() => {
+                  handleToast(owner)
+                }}
+              >
                 {owner}
               </Text>
             </Td>

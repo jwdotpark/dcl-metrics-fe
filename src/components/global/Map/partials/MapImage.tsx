@@ -5,9 +5,11 @@ import {
   Spinner,
   useColorModeValue,
 } from "@chakra-ui/react"
+import { isMap } from "util/types"
 
 const MapImage = ({ isPicLoading, name, image, isMapExpanded }) => {
-  const mapHeight = isMapExpanded ? 250 : 100
+  // const mapHeight = isMapExpanded ? 250 : 100
+  const mapHeight = isMapExpanded ? 385 : 150
   return (
     <Box w="100%" h={[100, 125, mapHeight]} mb={isMapExpanded && 4} p="2">
       <Center h={[100, 125, mapHeight]}>

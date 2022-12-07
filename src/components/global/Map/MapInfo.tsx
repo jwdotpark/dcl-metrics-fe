@@ -1,5 +1,16 @@
-import { Box, useColorModeValue } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  Spacer,
+  useColorModeValue,
+} from "@chakra-ui/react"
+import image from "next/image"
+import { description } from "../../../lib/data/sceneInfo"
+import MapImage from "./partials/MapImage"
 import ParcelInfoBox from "./partials/ParcelInfoBox"
+import ParcelInfoTable from "./partials/ParcelInfoTable"
 
 const MapInfo = ({
   h,
@@ -19,7 +30,6 @@ const MapInfo = ({
   }
 
   const isIncluded = selectedParcel.scene ? true : false
-  console.log("selectedParcl", selectedParcel)
   return (
     <Box
       w={["100%", "100%", "100%", mapBoxVerticalSize.info]}

@@ -140,7 +140,7 @@ const ParcelInfoBox = ({
         shadow="md"
       >
         <Box w={isMapExpanded ? "40%" : "100%"}>
-          <Flex direction={isMapExpanded ? "column" : "row"} h="100%">
+          <Flex direction={isMapExpanded ? "row" : "row"} h="100%">
             <Box w="100%">
               <MapImage
                 isMapExpanded={isMapExpanded}
@@ -162,7 +162,7 @@ const ParcelInfoBox = ({
             )}
           </Flex>
         </Box>
-        <Box w={isMapExpanded ? "60%" : "100%"}>
+        <Box w={isMapExpanded ? "60%" : "100%"} mt={isMapExpanded ? 0 : 4}>
           <ParcelInfoTable
             external_url={external_url}
             selectedParcel={selectedParcel}
