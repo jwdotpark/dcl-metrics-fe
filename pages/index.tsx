@@ -18,7 +18,7 @@ import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 
 export async function getStaticProps() {
-  const day = 60 * 60 * 24
+  const day = 60 * 60 * 24 * 365
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
 
   const url = isProd
