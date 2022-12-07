@@ -14,7 +14,7 @@ const axios = require("axios").default
 import fs from "fs"
 
 export async function getStaticProps() {
-  const day = 60 * 60 * 24
+  const day = 60 * 60 * 24 * 365
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
 
   const url = isProd
