@@ -123,7 +123,6 @@ const ParcelInfoBox = ({
           borderRadius="xl"
           shadow="md"
           onClick={() => onOpen()}
-          // onClick={() => window.open(external_url)}
         >
           <Text fontSize="xl" fontWeight="bold">
             {selectedParcel.scene &&
@@ -141,13 +140,14 @@ const ParcelInfoBox = ({
         shadow="md"
       >
         <Box w={isMapExpanded ? "40%" : "100%"}>
-          <Flex direction={isMapExpanded ? "column" : "row"} h="100%">
+          <Flex direction={isMapExpanded ? "row" : "row"} h="100%">
             <Box w="100%">
               <MapImage
                 isMapExpanded={isMapExpanded}
                 isPicLoading={isPicLoading}
                 name={name}
                 image={image}
+                isIncluded={isIncluded}
               />
             </Box>
             <Spacer />
@@ -158,12 +158,13 @@ const ParcelInfoBox = ({
                   isPicLoading={isPicLoading}
                   name={name}
                   image={baseUrl}
+                  isIncluded={isIncluded}
                 />
               </Box>
             )}
           </Flex>
         </Box>
-        <Box w={isMapExpanded ? "60%" : "100%"}>
+        <Box w={isMapExpanded ? "60%" : "100%"} mt={isMapExpanded ? 0 : 4}>
           <ParcelInfoTable
             external_url={external_url}
             selectedParcel={selectedParcel}
