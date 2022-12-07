@@ -17,14 +17,9 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
 
   return (
     <TableContainer mt="4" px="-2" py="2" whiteSpace="pre-wrap">
-      <Table
-        h="100%"
-        fontSize="xs"
-        colorScheme="gray"
-        size="sm"
-        // variant="striped"
-      >
+      <Table h="100%" fontSize="xs" colorScheme="gray" size="sm">
         <Tbody>
+          {/* PARCEL */}
           <Tr>
             <Td>Coordinate</Td>
             <Td isNumeric>
@@ -38,6 +33,40 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
               </a>
             </Td>
           </Tr>
+          <Tr>
+            <Td>Visitors</Td>
+            <Td isNumeric>
+              <Text as="kbd">{selectedParcel.visitors}</Text>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Max Concurrent User</Td>
+            <Td isNumeric>
+              <Text as="kbd">
+                {selectedParcel.max_concurrent_users &&
+                  selectedParcel.max_concurrent_users}
+              </Text>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Deploy Count</Td>
+            <Td isNumeric>
+              <Text as="kbd">{selectedParcel.deploy_count}</Text>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Logins</Td>
+            <Td isNumeric>
+              <Text as="kbd">{selectedParcel.logins}</Text>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Logins</Td>
+            <Td isNumeric>
+              <Text as="kbd">{selectedParcel.logouts}</Text>
+            </Td>
+          </Tr>
+          {/* additional SCENE */}
           {selectedParcel.scene && (
             <>
               <Tr>
@@ -49,15 +78,12 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
                 </Td>
               </Tr>
               <Tr>
-                <Td>Visitors</Td>
+                <Td>Last Deployed At</Td>
                 <Td isNumeric>
-                  <Text as="kbd">{selectedParcel.scene.visitors}</Text>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Deployed</Td>
-                <Td isNumeric>
-                  <Text as="kbd">{selectedParcel.scene.deploys}</Text>
+                  <Text wordBreak="break-all" noOfLines={1}>
+                    {selectedParcel.scene.last_deployed_at &&
+                      selectedParcel.scene.last_deployed_at}
+                  </Text>
                 </Td>
               </Tr>
             </>
@@ -73,79 +99,6 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
           <Tr>
             <Td>Description</Td>
             <Td isNumeric>{description ? description : "N/A"}</Td>
-          </Tr>
-          {selectedParcel.total_visitors ? (
-            <>
-              <Tr>
-                <Td>Total Visitors</Td>
-                <Td isNumeric>
-                  <Text>
-                    {selectedParcel.total_visitors &&
-                      selectedParcel.total_visitors}
-                  </Text>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Max Concurrent User</Td>
-                <Td isNumeric>
-                  <Text as="kbd">
-                    {selectedParcel.max_concurrent_users &&
-                      selectedParcel.max_concurrent_users}
-                  </Text>
-                </Td>
-              </Tr>
-
-              <Tr>
-                <Td>Total AVG Time Spent</Td>
-                <Td isNumeric>
-                  <Text as="kbd">
-                    {selectedParcel.total_avg_time_spent &&
-                      convertSeconds(
-                        selectedParcel.total_avg_time_spent.toFixed(0)
-                      )}
-                  </Text>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Total AVG Time Spent AFK</Td>
-                <Td isNumeric>
-                  <Text as="kbd">
-                    {selectedParcel.total_avg_time_spent_afk &&
-                      convertSeconds(
-                        selectedParcel.total_avg_time_spent_afk.toFixed(0)
-                      )}
-                  </Text>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Total Logins</Td>
-                <Td isNumeric>
-                  <Text>
-                    {selectedParcel.total_logins && selectedParcel.total_logins}
-                  </Text>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Total Logouts</Td>
-                <Td isNumeric>
-                  <Text>
-                    {selectedParcel.total_logouts &&
-                      selectedParcel.total_logouts}
-                  </Text>
-                </Td>
-              </Tr>
-            </>
-          ) : (
-            <Tr>
-              <Td>Additional Data</Td>
-              <Td isNumeric>N/A</Td>
-            </Tr>
-          )}
-          <Tr>
-            <Td>Updated At</Td>
-            <Td isNumeric>
-              <Text>{moment.unix(updatedAt).format("YYYY MMM. D HH:MM")}</Text>
-            </Td>
           </Tr>
         </Tbody>
       </Table>

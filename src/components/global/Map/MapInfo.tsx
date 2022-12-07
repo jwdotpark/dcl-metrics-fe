@@ -19,6 +19,7 @@ const MapInfo = ({
   }
 
   const isIncluded = selectedParcel.scene ? true : false
+  console.log("selectedParcl", selectedParcel)
   return (
     <Box
       w={["100%", "100%", "100%", mapBoxVerticalSize.info]}

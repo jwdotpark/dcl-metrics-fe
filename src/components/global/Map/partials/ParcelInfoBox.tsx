@@ -123,7 +123,6 @@ const ParcelInfoBox = ({
           borderRadius="xl"
           shadow="md"
           onClick={() => onOpen()}
-          // onClick={() => window.open(external_url)}
         >
           <Text fontSize="xl" fontWeight="bold">
             {selectedParcel.scene &&
