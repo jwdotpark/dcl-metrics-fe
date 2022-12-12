@@ -34,7 +34,7 @@ const PSA = ({ setIsPSAVisible }) => {
               <Box display="inline-block">
                 <Link href="/map">
                   <Text
-                    color="blue.600"
+                    color={useColorModeValue("blue.600", "blue.200")}
                     _hover={{ color: "blue", cursor: "pointer" }}
                   >
                     Try out new scene map!

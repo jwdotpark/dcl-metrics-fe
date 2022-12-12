@@ -2,7 +2,6 @@ import { Text, Box, useColorModeValue, Flex, Spacer } from "@chakra-ui/react"
 import GridBox from "../../local/GridBox"
 import dynamic from "next/dynamic"
 const MapWrapper = dynamic(() => import("./Map"), { ssr: false })
-import MapInfo from "./MapInfo"
 import { useEffect, useState } from "react"
 
 const LandPicker = ({ parcelData, isPage }) => {
@@ -33,7 +32,7 @@ const LandPicker = ({ parcelData, isPage }) => {
   }
   const mapHeight = {
     collapsed: 500,
-    expanded: "75vh",
+    expanded: "80vh",
   }
 
   useEffect(() => {
