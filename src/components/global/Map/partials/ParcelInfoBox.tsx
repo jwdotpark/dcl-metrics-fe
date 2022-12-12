@@ -116,8 +116,8 @@ const ParcelInfoBox = ({
           <Button
             w="100%"
             mb="4"
-            color="gray.50"
-            bg="#6272a4"
+            color={useColorModeValue("gray.50", "gray.50")}
+            bg="#44475a"
             borderRadius="xl"
             shadow="md"
             onClick={() => onOpen()}
@@ -132,7 +132,7 @@ const ParcelInfoBox = ({
             w="15"
             mb="4"
             color="gray.50"
-            bg="#282a36"
+            bg="#ff5555"
             borderRadius="xl"
             shadow="md"
             {...getButtonProps()}

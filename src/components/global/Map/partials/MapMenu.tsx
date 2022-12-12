@@ -38,7 +38,7 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
             zIndex="banner"
             w={[20, 20, 20, 40]}
             h="auto"
-            mr="2"
+            ml="2"
             bg={useColorModeValue("gray.200", "gray.900")}
             borderRadius="xl"
             shadow="md"
@@ -117,7 +117,6 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
 
   return (
     <Flex dir="row">
-      <HeatmapLegend />
       <Menu isLazy={true}>
         <MenuButton
           as={Button}
@@ -125,7 +124,7 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
           borderRadius="xl"
           shadow="md"
           aria-label="Options"
-          rightIcon={<FiMenu />}
+          leftIcon={<FiMenu />}
           size="sm"
           variant="solid"
         >
@@ -133,11 +132,13 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
         </MenuButton>
         <MenuList
           bg={useColorModeValue("gray.50", "gray.900")}
+          borderRadius="xl"
           rootProps={{ width: "100%" }}
         >
           <MapMenuList />
         </MenuList>
       </Menu>
+      <HeatmapLegend />
     </Flex>
   )
 }
