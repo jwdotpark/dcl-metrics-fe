@@ -38,32 +38,13 @@ const MapButtonGroup = ({
           </Button>
         </Box>
         <Spacer />
-        <Box>
-          <ButtonGroup isAttached>
-            <Button
-              zIndex="docked"
-              bg={btnBg}
-              borderRadius="xl"
-              shadow="md"
-              onClick={() => setZoom(Number((zoom - 0.5).toFixed(1)))}
-              size="sm"
-              variant="solid"
-            >
-              -
-            </Button>
-
-            <Button
-              zIndex="docked"
-              bg={btnBg}
-              borderRadius="xl"
-              shadow="md"
-              onClick={() => setZoom(Number((zoom + 0.5).toFixed(1)))}
-              size="sm"
-              variant="solid"
-            >
-              +
-            </Button>
-          </ButtonGroup>
+        <Box pos="absolute" zIndex="docked" top="2" right="2">
+          <MapMenu
+            btnBg={btnBg}
+            properties={properties}
+            selectedProp={selectedProp}
+            setSelectedProp={setSelectedProp}
+          />
         </Box>
       </Flex>
       <Flex>
@@ -83,12 +64,30 @@ const MapButtonGroup = ({
         </Button>
         <Spacer />
         <Box pos="absolute" zIndex="docked" right="2" bottom="2" shadow="md">
-          <MapMenu
-            btnBg={btnBg}
-            properties={properties}
-            selectedProp={selectedProp}
-            setSelectedProp={setSelectedProp}
-          />
+          <ButtonGroup isAttached>
+            <Button
+              zIndex="docked"
+              bg={btnBg}
+              borderRadius="xl"
+              shadow="md"
+              onClick={() => setZoom(Number((zoom - 0.5).toFixed(1)))}
+              size="sm"
+              variant="solid"
+            >
+              -
+            </Button>
+            <Button
+              zIndex="docked"
+              bg={btnBg}
+              borderRadius="xl"
+              shadow="md"
+              onClick={() => setZoom(Number((zoom + 0.5).toFixed(1)))}
+              size="sm"
+              variant="solid"
+            >
+              +
+            </Button>
+          </ButtonGroup>
         </Box>
       </Flex>
     </>

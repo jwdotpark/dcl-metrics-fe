@@ -248,22 +248,22 @@ const Map = ({
           >
             {!isMapLoading ? (
               <>
-                {isHover && (
-                  <Box>
-                    <MapButtonGroup
-                      isMapExpanded={isMapExpanded}
-                      setIsMapExpanded={setIsMapExpanded}
-                      zoom={zoom}
-                      setZoom={setZoom}
-                      tempCoord={tempCoord}
-                      properties={properties}
-                      selectedProp={selectedProp}
-                      setSelectedProp={setSelectedProp}
-                      textColor={textColor}
-                      btnBg={btnBg}
-                    />
-                  </Box>
-                )}
+                {/* {isHover && ( */}
+                <Box>
+                  <MapButtonGroup
+                    isMapExpanded={isMapExpanded}
+                    setIsMapExpanded={setIsMapExpanded}
+                    zoom={zoom}
+                    setZoom={setZoom}
+                    tempCoord={tempCoord}
+                    properties={properties}
+                    selectedProp={selectedProp}
+                    setSelectedProp={setSelectedProp}
+                    textColor={textColor}
+                    btnBg={btnBg}
+                  />
+                </Box>
+                {/* )} */}
                 <TileMap
                   zoom={zoom}
                   layers={[layer, selectedStrokeLayer, ...layers]}

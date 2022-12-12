@@ -16,6 +16,7 @@ import {
   PopoverTrigger,
   Spacer,
 } from "@chakra-ui/react"
+import { FiMenu } from "react-icons/fi"
 
 const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
   const formatName = (name) => {
@@ -122,7 +123,9 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
           as={Button}
           bg={btnBg}
           borderRadius="xl"
+          shadow="md"
           aria-label="Options"
+          rightIcon={<FiMenu />}
           size="sm"
           variant="solid"
         >
