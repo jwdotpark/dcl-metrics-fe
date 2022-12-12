@@ -8,7 +8,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import MapMenu from "./MapMenu"
-import { FullScreen, useFullScreenHandle } from "react-full-screen"
+import { FiChevronsDown, FiChevronsUp } from "react-icons/fi"
+import { useEffect } from "react"
 
 const MapButtonGroup = ({
   isMapExpanded,
@@ -26,14 +27,19 @@ const MapButtonGroup = ({
 }) => {
   const handleFullscreen = () => {
     if (!handle.active) {
-      setMapHeight({ expanded: "100vh", collapsed: "100vh" })
+      setMapHeight({ expanded: "98vh", collapsed: "98vh" })
       handle.enter()
     } else {
-      // default map height
       setMapHeight({ collapsed: 500, expanded: "80vh" })
       handle.exit()
     }
   }
+
+  useEffect(() => {
+    if (!handle.active) {
+      setMapHeight({ collapsed: 500, expanded: "80vh" })
+    }
+  }, [handle.active, setMapHeight])
 
   return (
     <>
@@ -49,7 +55,7 @@ const MapButtonGroup = ({
             size="sm"
             variant="solid"
           >
-            {isMapExpanded ? "Collapse" : "Expand"}
+            {isMapExpanded ? <FiChevronsUp /> : <FiChevronsDown />}
           </Button>
           <Button
             zIndex="docked"
