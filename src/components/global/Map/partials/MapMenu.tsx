@@ -99,6 +99,7 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
         {properties.map((property, index) => {
           return (
             <MenuItem
+              className={`umami--click--heatmap` + property.name}
               key={property.name}
               justifyContent="flex-end"
               // eslint-disable-next-line react-hooks/rules-of-hooks

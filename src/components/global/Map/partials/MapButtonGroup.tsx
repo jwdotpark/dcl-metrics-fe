@@ -59,6 +59,7 @@ const MapButtonGroup = ({
             {isMapExpanded ? <FiChevronsUp /> : <FiChevronsDown />}
           </Button>
           <Button
+            className={`umami--click--fullscreen-button`}
             zIndex="docked"
             bg={btnBg}
             borderRadius="xl"
