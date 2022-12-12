@@ -19,7 +19,13 @@ const PSA = ({ setIsPSAVisible }) => {
   }
   return (
     <GridBox box={box}>
-      <Box px="4" py="2">
+      <Box
+        px="4"
+        py="2"
+        border="1px solid"
+        borderColor={useColorModeValue("green.300", "green.700")}
+        borderRadius="xl"
+      >
         <Flex dir="row">
           <Center>
             <Text color={useColorModeValue("black", "white")}>
