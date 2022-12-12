@@ -14,7 +14,7 @@ import {
   AlertDialogFooter,
   AlertDialogOverlay,
 } from "@chakra-ui/react"
-import { FiLogOut } from "react-icons/fi"
+import { FiChevronsRight } from "react-icons/fi"
 import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
@@ -137,7 +137,7 @@ const ParcelInfoBox = ({
             shadow="md"
             {...getButtonProps()}
           >
-            <FiLogOut />
+            <FiChevronsRight />
           </Button>
         </ButtonGroup>
       </Center>

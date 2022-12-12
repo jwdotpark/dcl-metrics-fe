@@ -45,7 +45,6 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
 
   return (
     <TableContainer
-      // overflowX="scroll"
       m="2"
       p="2"
       py="4"
@@ -56,7 +55,7 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
       shadow="md"
       whiteSpace="pre-wrap"
     >
-      <Table h="350" colorScheme="blackAlpha" size="sm">
+      <Table h="auto" colorScheme="blackAlpha" size="sm">
         <Tbody>
           <Tr>
             <Td>Coordinate</Td>
