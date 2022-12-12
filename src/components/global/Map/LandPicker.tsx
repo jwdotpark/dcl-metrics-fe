@@ -3,9 +3,9 @@ import GridBox from "../../local/GridBox"
 import dynamic from "next/dynamic"
 const MapWrapper = dynamic(() => import("./Map"), { ssr: false })
 import MapInfo from "./MapInfo"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-const LandPicker = ({ parcelData }) => {
+const LandPicker = ({ parcelData, isPage }) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -35,6 +35,12 @@ const LandPicker = ({ parcelData }) => {
     collapsed: 500,
     expanded: "75vh",
   }
+
+  useEffect(() => {
+    if (isPage) {
+      setIsMapExpanded(true)
+    }
+  }, [isPage])
 
   return (
     <GridBox box={box}>

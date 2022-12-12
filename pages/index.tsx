@@ -224,7 +224,7 @@ const GlobalPage: NextPage = (props) => {
         </Grid>
 
         <Box mb="4" mx={[-4, 0, 0, 0]}>
-          <LandPicker parcelData={parcelData} />
+          <LandPicker parcelData={parcelData} isPage={false} />
         </Box>
 
         <Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
