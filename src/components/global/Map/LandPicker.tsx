@@ -30,10 +30,12 @@ const LandPicker = ({ parcelData, isPage }) => {
     map: isMapExpanded ? "100%" : "100%",
     info: isMapExpanded ? "100%" : "100%",
   }
-  const mapHeight = {
+
+  const defaultMapHeight = {
     collapsed: 500,
     expanded: "80vh",
   }
+  const [mapHeight, setMapHeight] = useState(defaultMapHeight)
 
   useEffect(() => {
     if (isPage) {
@@ -87,6 +89,7 @@ const LandPicker = ({ parcelData, isPage }) => {
             setSelectedParcel={setSelectedParcel}
             mapBoxVerticalSize={mapBoxVerticalSize}
             mapHeight={mapHeight}
+            setMapHeight={setMapHeight}
             parcelData={parcelData}
           />
         </Flex>
