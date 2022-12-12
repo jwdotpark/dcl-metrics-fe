@@ -43,8 +43,9 @@ const CollapsibleMapBox = ({
           whiteSpace: "nowrap",
           position: "absolute",
           right: "0",
-          height: "100%",
+          height: isMapExpanded ? "auto" : "100%",
           top: "0",
+          borderRadius: "0 0 0 16px",
         }}
       >
         <MapInfo

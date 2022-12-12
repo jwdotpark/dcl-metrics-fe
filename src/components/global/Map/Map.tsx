@@ -248,7 +248,6 @@ const Map = ({
           >
             {!isMapLoading ? (
               <>
-                {/* {isHover && ( */}
                 <Box>
                   <MapButtonGroup
                     isMapExpanded={isMapExpanded}
@@ -263,7 +262,6 @@ const Map = ({
                     btnBg={btnBg}
                   />
                 </Box>
-                {/* )} */}
                 <TileMap
                   zoom={zoom}
                   layers={[layer, selectedStrokeLayer, ...layers]}
