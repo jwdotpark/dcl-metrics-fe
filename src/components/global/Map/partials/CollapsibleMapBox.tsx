@@ -40,7 +40,7 @@ const CollapsibleMapBox = ({
         style={{
           zIndex: 9000,
           backdropFilter: "blur(20px)",
-          overflowY: "scroll",
+          overflowY: isMapExpanded ? "hidden" : "scroll",
           whiteSpace: "nowrap",
           position: "absolute",
           right: "0",
