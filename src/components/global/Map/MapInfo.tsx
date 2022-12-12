@@ -5,21 +5,16 @@ import {
   Flex,
   Spacer,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react"
-import image from "next/image"
-import { description } from "../../../lib/data/sceneInfo"
-import MapImage from "./partials/MapImage"
 import ParcelInfoBox from "./partials/ParcelInfoBox"
-import ParcelInfoTable from "./partials/ParcelInfoTable"
+import { motion } from "framer-motion"
+import { useState } from "react"
 
 const MapInfo = ({
-  h,
   coord,
-  setCoord,
   selectedParcel,
-  setSelectedParcel,
   isMapExpanded,
-  setIsMapExpanded,
   mapBoxVerticalSize,
   mapHeight,
 }) => {
@@ -30,6 +25,7 @@ const MapInfo = ({
   }
 
   const isIncluded = selectedParcel.scene ? true : false
+
   return (
     <Box
       w={["100%", "100%", "100%", mapBoxVerticalSize.info]}

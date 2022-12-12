@@ -28,8 +28,8 @@ const LandPicker = ({ parcelData }) => {
   const [selectedParcel, setSelectedParcel] = useState(defaultParcel)
   const [isMapExpanded, setIsMapExpanded] = useState(false)
   const mapBoxVerticalSize = {
-    map: isMapExpanded ? "100%" : "70%",
-    info: isMapExpanded ? "100%" : "30%",
+    map: isMapExpanded ? "100%" : "100%",
+    info: isMapExpanded ? "100%" : "100%",
   }
   const mapHeight = {
     collapsed: 500,
@@ -84,7 +84,7 @@ const LandPicker = ({ parcelData }) => {
             mapHeight={mapHeight}
             parcelData={parcelData}
           />
-          <MapInfo
+          {/* <MapInfo
             h={h}
             isMapExpanded={isMapExpanded}
             setIsMapExpanded={setIsMapExpanded}
@@ -94,7 +94,7 @@ const LandPicker = ({ parcelData }) => {
             setSelectedParcel={setSelectedParcel}
             mapBoxVerticalSize={mapBoxVerticalSize}
             mapHeight={mapHeight}
-          />
+          /> */}
         </Flex>
       </Box>
     </GridBox>

@@ -6,6 +6,7 @@ import {
   GridItem,
   useColorModeValue,
   Spinner,
+  useDisclosure,
 } from "@chakra-ui/react"
 import { memo, useEffect, useState } from "react"
 import { usePrev } from "../../../lib/hooks/usePrev"
@@ -13,6 +14,7 @@ import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
 import { heatmapColor } from "../../../lib/hooks/utils"
 import MapButtonGroup from "./partials/MapButtonGroup"
+import CollapsibleMapBox from "./partials/CollapsibleMapBox"
 
 const Map = ({
   h,
@@ -85,6 +87,10 @@ const Map = ({
   const isIncluded = selectedScene.includes(selectedParcel.id)
   const [selectedProp, setSelectedProp] = useState(properties[0])
   const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
+  // infobox
+  const { getButtonProps, getDisclosureProps, isOpen, onToggle } =
+    useDisclosure()
+  const [hidden, setHidden] = useState(!isOpen)
   const layers = []
 
   const isSelected = (x: number, y: number) => {
@@ -113,6 +119,11 @@ const Map = ({
     } else {
       setSelected([{ x, y }])
     }
+
+    if (!isOpen) {
+      onToggle()
+    }
+
     if (selectedParcel.scene) {
       setSelectedScene(selectedParcel.scene.parcels)
     }
@@ -211,7 +222,7 @@ const Map = ({
 
   return (
     <Box
-      w={["100%", "100%", "100%", mapBoxVerticalSize.map]}
+      w={["100%", "100%", "100%", "100%"]}
       h="auto"
       border="solid 1px"
       borderColor={useColorModeValue("gray.200", "gray.600")}
@@ -264,6 +275,18 @@ const Map = ({
                   onChange={(e) => {
                     setZoom(e.zoom)
                   }}
+                />
+                <CollapsibleMapBox
+                  getButtonProps={getButtonProps}
+                  getDisclosureProps={getDisclosureProps}
+                  isOpen={isOpen}
+                  hidden={hidden}
+                  setHidden={setHidden}
+                  coord={coord}
+                  selectedParcel={selectedParcel}
+                  isMapExpanded={isMapExpanded}
+                  mapBoxVerticalSize={mapBoxVerticalSize}
+                  mapHeight={mapHeight}
                 />
               </>
             ) : (
