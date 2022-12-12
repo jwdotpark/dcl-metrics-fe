@@ -55,8 +55,8 @@ const ParcelInfoBox = ({
   const jumpInUrl = `https://play.decentraland.org/?position=${coord.x}%2C${coord.y}`
 
   const trimName = (name) => {
-    if (!isMapExpanded && name.length > 14) {
-      return name.slice(0, 14) + ".."
+    if (!isMapExpanded && name.length > 12) {
+      return name.slice(0, 12) + ".."
     } else {
       return name
     }

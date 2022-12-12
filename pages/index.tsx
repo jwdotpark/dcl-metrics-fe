@@ -10,6 +10,7 @@ const axios = require("axios").default
 import fs from "fs"
 import { sendNotification } from "../src/lib/hooks/sendNotification"
 import Layout from "../src/components/layout/layout"
+import PSA from "../src/components/global/PSA"
 import LandPicker from "../src/components/global/Map/LandPicker"
 import UserLayout from "../src/components/layout/global/UserLayout"
 import SceneLayout from "../src/components/layout/global/SceneLayout"
@@ -192,6 +193,9 @@ const GlobalPage: NextPage = (props) => {
   const [res, setRes] = useAtom(DataAtom)
   const [sceneRes, setSceneRes] = useAtom(SceneDataAtom)
 
+  // make PSA component blink and disappear
+  const [isPSAVisible, setIsPSAVisible] = useState(true)
+
   useEffect(() => {
     setRes(result)
     setSceneRes(sceneResult)
@@ -201,6 +205,12 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       <Box w="100%">
+        {isPSAVisible && (
+          <Box mb="4" mx={[-4, 0, 0, 0]}>
+            <PSA setIsPSAVisible={setIsPSAVisible} />
+          </Box>
+        )}
+
         <Box mb="4">
           <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         </Box>
