@@ -1,5 +1,6 @@
 import {
   Box,
+  ButtonGroup,
   Text,
   Button,
   useColorModeValue,
@@ -11,9 +12,9 @@ import {
   AlertDialogBody,
   AlertDialogContent,
   AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogOverlay,
 } from "@chakra-ui/react"
+import { FiLogOut } from "react-icons/fi"
 import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
@@ -24,6 +25,7 @@ const ParcelInfoBox = ({
   coord,
   isIncluded,
   mapHeight,
+  getButtonProps,
 }) => {
   const [fetchedInfo, setfetchedInfo] = useState({})
   const [isPicLoading, setIsPicLoading] = useState(false)
@@ -53,8 +55,8 @@ const ParcelInfoBox = ({
   const jumpInUrl = `https://play.decentraland.org/?position=${coord.x}%2C${coord.y}`
 
   const trimName = (name) => {
-    if (!isMapExpanded && name.length > 15) {
-      return name.slice(0, 16) + ".."
+    if (!isMapExpanded && name.length > 14) {
+      return name.slice(0, 14) + ".."
     } else {
       return name
     }
@@ -107,40 +109,48 @@ const ParcelInfoBox = ({
   }
 
   return (
-    <Box
-      overflowY={isMapExpanded ? "hidden" : "scroll"}
-      h={!isMapExpanded ? mapHeight.collapsed + 15 : "auto"}
-      p="4"
-      borderRadius="xl"
-    >
+    <Box h="100%" p="4" borderRadius="xl">
       <AlertJumpIn />
       <Center>
-        <Button
-          w="100%"
-          mb="4"
-          color="gray.50"
-          bg="#6272a4"
-          borderRadius="xl"
-          shadow="md"
-          onClick={() => onOpen()}
-        >
-          <Text fontSize="xl" fontWeight="bold">
-            {selectedParcel.scene &&
-              trimName(selectedParcel.scene.name) + " - "}
-            {"[" + selectedParcel.id + "]"}
-          </Text>
-        </Button>
+        <ButtonGroup w="100%">
+          <Button
+            w="100%"
+            mb="4"
+            color="gray.50"
+            bg="#6272a4"
+            borderRadius="xl"
+            shadow="md"
+            onClick={() => onOpen()}
+          >
+            <Text fontSize="xl" fontWeight="bold">
+              {selectedParcel.scene &&
+                trimName(selectedParcel.scene.name) + " - "}
+              {"[" + selectedParcel.id + "]"}
+            </Text>
+          </Button>
+          <Button
+            w="15"
+            mb="4"
+            color="gray.50"
+            bg="#282a36"
+            borderRadius="xl"
+            shadow="md"
+            {...getButtonProps()}
+          >
+            <FiLogOut />
+          </Button>
+        </ButtonGroup>
       </Center>
 
       <Flex
-        direction={isMapExpanded ? "row" : "column"}
+        direction="column"
         p="2"
         bg={useColorModeValue("gray.300", "gray.800")}
         borderRadius="xl"
         shadow="md"
       >
-        <Box w={isMapExpanded ? "40%" : "100%"}>
-          <Flex direction={isMapExpanded ? "row" : "row"} h="100%">
+        <Box w="100%">
+          <Flex h="100%" dir="row">
             <Box w="100%">
               <MapImage
                 isMapExpanded={isMapExpanded}
@@ -164,7 +174,7 @@ const ParcelInfoBox = ({
             )}
           </Flex>
         </Box>
-        <Box w={isMapExpanded ? "60%" : "100%"} mt={isMapExpanded ? 0 : 4}>
+        <Box w="100%" mt="4">
           <ParcelInfoTable
             external_url={external_url}
             selectedParcel={selectedParcel}

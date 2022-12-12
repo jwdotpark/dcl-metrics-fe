@@ -33,7 +33,7 @@ const LandPicker = ({ parcelData }) => {
   }
   const mapHeight = {
     collapsed: 500,
-    expanded: 650,
+    expanded: "75vh",
   }
 
   return (
@@ -84,17 +84,6 @@ const LandPicker = ({ parcelData }) => {
             mapHeight={mapHeight}
             parcelData={parcelData}
           />
-          {/* <MapInfo
-            h={h}
-            isMapExpanded={isMapExpanded}
-            setIsMapExpanded={setIsMapExpanded}
-            coord={coord}
-            setCoord={setCoord}
-            selectedParcel={selectedParcel}
-            setSelectedParcel={setSelectedParcel}
-            mapBoxVerticalSize={mapBoxVerticalSize}
-            mapHeight={mapHeight}
-          /> */}
         </Flex>
       </Box>
     </GridBox>

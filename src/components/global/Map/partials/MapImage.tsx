@@ -7,18 +7,16 @@ import {
 } from "@chakra-ui/react"
 
 const MapImage = ({ isPicLoading, name, image, isMapExpanded, isIncluded }) => {
-  // const mapHeight = isMapExpanded ? 250 : 100
-  const mapHeight = isMapExpanded ? (isIncluded ? "100%" : 385) : 150
   return (
-    <Box w="100%" h={[100, 125, mapHeight]} mb={isMapExpanded && 4} p="2">
-      <Center h={[100, 125, mapHeight]}>
+    <Box w="100%" h={[100, 125, 150]} p="2">
+      <Center h={[100, 125, 150]}>
         {isPicLoading ? (
           <Spinner />
         ) : (
           <Box
             overflow="hidden"
             w="100%"
-            h={[100, 125, mapHeight]}
+            h={[100, 125, 150]}
             border="2px solid"
             // eslint-disable-next-line react-hooks/rules-of-hooks
             borderColor={useColorModeValue("gray.200", "gray.700")}
@@ -27,7 +25,7 @@ const MapImage = ({ isPicLoading, name, image, isMapExpanded, isIncluded }) => {
           >
             <Image
               minW="100%"
-              h={[100, 125, mapHeight]}
+              h={[100, 125, 150]}
               objectFit="cover"
               alt={name}
               src={image}

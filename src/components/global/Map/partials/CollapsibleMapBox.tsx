@@ -1,6 +1,5 @@
 import { Box, useDisclosure, Button, useColorModeValue } from "@chakra-ui/react"
 import { motion } from "framer-motion"
-import { useState } from "react"
 import MapInfo from "../MapInfo"
 
 const CollapsibleMapBox = ({
@@ -15,10 +14,8 @@ const CollapsibleMapBox = ({
   mapBoxVerticalSize,
   mapHeight,
 }) => {
-  // const { getButtonProps, getDisclosureProps, isOpen } = useDisclosure()
-  // const [hidden, setHidden] = useState(!isOpen)
   return (
-    <Box zIndex="banner">
+    <Box zIndex="docked">
       <motion.div
         {...getDisclosureProps()}
         hidden={hidden}
@@ -27,8 +24,9 @@ const CollapsibleMapBox = ({
         onAnimationComplete={() => setHidden(!isOpen)}
         animate={{ width: isOpen ? 500 : 0 }}
         style={{
-          background: "#4A5568",
-          overflow: "hidden",
+          zIndex: 9000,
+          backdropFilter: "blur(20px)",
+          overflowY: "scroll",
           whiteSpace: "nowrap",
           position: "absolute",
           right: "0",
@@ -36,10 +34,8 @@ const CollapsibleMapBox = ({
           top: "0",
         }}
       >
-        <Button zIndex="popover" {...getButtonProps()}>
-          Close
-        </Button>
         <MapInfo
+          getButtonProps={getButtonProps}
           coord={coord}
           selectedParcel={selectedParcel}
           isMapExpanded={isMapExpanded}

@@ -26,7 +26,7 @@ const MapButtonGroup = ({
       <Flex pos="absolute" w="100%" p="2">
         <Box>
           <Button
-            zIndex="banner"
+            zIndex="docked"
             bg={btnBg}
             borderRadius="xl"
             shadow="md"
@@ -41,7 +41,7 @@ const MapButtonGroup = ({
         <Box>
           <ButtonGroup isAttached>
             <Button
-              zIndex="banner"
+              zIndex="docked"
               bg={btnBg}
               borderRadius="xl"
               shadow="md"
@@ -53,7 +53,7 @@ const MapButtonGroup = ({
             </Button>
 
             <Button
-              zIndex="banner"
+              zIndex="docked"
               bg={btnBg}
               borderRadius="xl"
               shadow="md"
@@ -69,7 +69,7 @@ const MapButtonGroup = ({
       <Flex>
         <Button
           pos="absolute"
-          zIndex="banner"
+          zIndex="docked"
           bottom="2"
           left="2"
           bg={useColorModeValue("gray.50", "gray.900")}
@@ -82,7 +82,7 @@ const MapButtonGroup = ({
           </Text>
         </Button>
         <Spacer />
-        <Box pos="absolute" zIndex="banner" right="2" bottom="2" shadow="md">
+        <Box pos="absolute" zIndex="docked" right="2" bottom="2" shadow="md">
           <MapMenu
             btnBg={btnBg}
             properties={properties}

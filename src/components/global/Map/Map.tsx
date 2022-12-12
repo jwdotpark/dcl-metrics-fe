@@ -249,18 +249,20 @@ const Map = ({
             {!isMapLoading ? (
               <>
                 {isHover && (
-                  <MapButtonGroup
-                    isMapExpanded={isMapExpanded}
-                    setIsMapExpanded={setIsMapExpanded}
-                    zoom={zoom}
-                    setZoom={setZoom}
-                    tempCoord={tempCoord}
-                    properties={properties}
-                    selectedProp={selectedProp}
-                    setSelectedProp={setSelectedProp}
-                    textColor={textColor}
-                    btnBg={btnBg}
-                  />
+                  <Box>
+                    <MapButtonGroup
+                      isMapExpanded={isMapExpanded}
+                      setIsMapExpanded={setIsMapExpanded}
+                      zoom={zoom}
+                      setZoom={setZoom}
+                      tempCoord={tempCoord}
+                      properties={properties}
+                      selectedProp={selectedProp}
+                      setSelectedProp={setSelectedProp}
+                      textColor={textColor}
+                      btnBg={btnBg}
+                    />
+                  </Box>
                 )}
                 <TileMap
                   zoom={zoom}
