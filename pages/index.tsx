@@ -206,7 +206,7 @@ const GlobalPage: NextPage = (props) => {
     <Layout>
       <Box w="100%">
         {isPSAVisible && (
-          <Box mb="4" mx={[-4, 0, 0, 0]}>
+          <Box mb="4">
             <PSA setIsPSAVisible={setIsPSAVisible} />
           </Box>
         )}

@@ -222,7 +222,7 @@ const Map = ({
 
   return (
     <Box
-      w={["100%", "100%", "100%", "100%"]}
+      w="100%"
       h="auto"
       border="solid 1px"
       borderColor={useColorModeValue("gray.200", "gray.600")}

@@ -1,4 +1,10 @@
-import { Box, useDisclosure, Button, useColorModeValue } from "@chakra-ui/react"
+import {
+  Box,
+  useDisclosure,
+  Button,
+  useColorModeValue,
+  useBreakpointValue,
+} from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import MapInfo from "../MapInfo"
 
@@ -14,6 +20,13 @@ const CollapsibleMapBox = ({
   mapBoxVerticalSize,
   mapHeight,
 }) => {
+  const mobileWidth = useBreakpointValue({
+    base: "100%",
+    sm: 300,
+    md: 500,
+    lg: 500,
+    xl: 500,
+  })
   return (
     <Box zIndex="docked">
       <motion.div
@@ -22,7 +35,7 @@ const CollapsibleMapBox = ({
         initial={false}
         onAnimationStart={() => setHidden(false)}
         onAnimationComplete={() => setHidden(!isOpen)}
-        animate={{ width: isOpen ? 500 : 0 }}
+        animate={{ width: isOpen ? mobileWidth : 0 }}
         style={{
           zIndex: 9000,
           backdropFilter: "blur(20px)",
