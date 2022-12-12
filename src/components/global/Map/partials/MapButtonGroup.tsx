@@ -47,6 +47,7 @@ const MapButtonGroup = ({
         <Box>
           <Button
             zIndex="docked"
+            display={handle.active ? "none" : "inline-block"}
             mr="2"
             bg={btnBg}
             borderRadius="xl"

@@ -8,7 +8,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import GridBox from "../local/GridBox"
-import { FiCoffee, FiLogOut } from "react-icons/fi"
+import { FiCoffee } from "react-icons/fi"
+import { AiFillCloseCircle } from "react-icons/ai"
 import Link from "next/link"
 
 const PSA = ({ setIsPSAVisible }) => {
@@ -36,14 +37,14 @@ const PSA = ({ setIsPSAVisible }) => {
               >
                 <FiCoffee color={useColorModeValue("black", "white")} />
               </Box>
-              Land picker is added.{" "}
+              We&apos;ve added a land picker tool,{" "}
               <Box display="inline-block">
                 <Link href="/map">
                   <Text
                     color={useColorModeValue("blue.600", "blue.200")}
                     _hover={{ color: "blue", cursor: "pointer" }}
                   >
-                    Try out new scene map!
+                    try it out on the new scene map!
                   </Text>
                 </Link>
               </Box>
@@ -57,7 +58,10 @@ const PSA = ({ setIsPSAVisible }) => {
               size="sm"
               variant="ghost"
             >
-              <FiLogOut color={useColorModeValue("black", "white")} />
+              <AiFillCloseCircle
+                color={useColorModeValue("black", "white")}
+                size="20"
+              />
             </Button>
           </Box>
         </Flex>

@@ -294,6 +294,7 @@ const Map = ({
                     isMapExpanded={isMapExpanded}
                     mapBoxVerticalSize={mapBoxVerticalSize}
                     mapHeight={mapHeight}
+                    handle={handle}
                   />
                 </>
               ) : (

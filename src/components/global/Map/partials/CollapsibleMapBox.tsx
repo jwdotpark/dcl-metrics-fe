@@ -19,6 +19,7 @@ const CollapsibleMapBox = ({
   isMapExpanded,
   mapBoxVerticalSize,
   mapHeight,
+  handle,
 }) => {
   const mobileWidth = useBreakpointValue({
     base: "100%",
@@ -43,7 +44,7 @@ const CollapsibleMapBox = ({
           whiteSpace: "nowrap",
           position: "absolute",
           right: "0",
-          height: isMapExpanded ? "auto" : "100%",
+          height: isMapExpanded ? "auto" : handle.active ? "auto" : "100%",
           top: "0",
           borderRadius: "0 0 0 16px",
         }}

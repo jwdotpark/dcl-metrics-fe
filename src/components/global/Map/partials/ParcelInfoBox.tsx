@@ -14,7 +14,7 @@ import {
   AlertDialogFooter,
   AlertDialogOverlay,
 } from "@chakra-ui/react"
-import { FiChevronsRight } from "react-icons/fi"
+import { AiFillCloseCircle } from "react-icons/ai"
 import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
@@ -132,12 +132,12 @@ const ParcelInfoBox = ({
             w="15"
             mb="4"
             color="gray.50"
-            bg="#FF6F6F"
+            bg="red.300"
             borderRadius="xl"
             shadow="md"
             {...getButtonProps()}
           >
-            <FiChevronsRight />
+            <AiFillCloseCircle size="20" />
           </Button>
         </ButtonGroup>
       </Center>
