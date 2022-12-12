@@ -201,9 +201,6 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       <Box w="100%">
-        <Box mb="4" mx={[-4, 0, 0, 0]}>
-          <LandPicker parcelData={parcelData} />
-        </Box>
         <Box mb="4">
           <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
         </Box>
@@ -215,6 +212,10 @@ const GlobalPage: NextPage = (props) => {
           />
           <ActiveScenes data={result.global} visitorLoading={isDataLoading} />
         </Grid>
+
+        <Box mb="4" mx={[-4, 0, 0, 0]}>
+          <LandPicker parcelData={parcelData} />
+        </Box>
 
         <Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
