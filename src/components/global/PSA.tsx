@@ -1,0 +1,73 @@
+import {
+  Center,
+  Spacer,
+  Flex,
+  Button,
+  Box,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react"
+import GridBox from "../local/GridBox"
+import { FiCoffee } from "react-icons/fi"
+import { AiFillCloseCircle } from "react-icons/ai"
+import Link from "next/link"
+
+const PSA = ({ setIsPSAVisible }) => {
+  const box = {
+    h: "auto",
+    w: "100%",
+    bg: useColorModeValue("green.200", "green.800"),
+  }
+  return (
+    <GridBox box={box}>
+      <Box
+        px="4"
+        py="2"
+        border="1px solid"
+        borderColor={useColorModeValue("green.300", "green.700")}
+        borderRadius="xl"
+      >
+        <Flex dir="row">
+          <Center>
+            <Text color={useColorModeValue("black", "white")}>
+              <Box
+                sx={{ transform: "translateY(2px)" }}
+                display="inline-block"
+                mr="2"
+              >
+                <FiCoffee color={useColorModeValue("black", "white")} />
+              </Box>
+              We&apos;ve added a land picker tool,{" "}
+              <Box display="inline-block">
+                <Link href="/map">
+                  <Text
+                    color={useColorModeValue("blue.600", "blue.200")}
+                    _hover={{ color: "blue", cursor: "pointer" }}
+                  >
+                    try it out on the new scene map!
+                  </Text>
+                </Link>
+              </Box>
+            </Text>
+          </Center>
+          <Spacer />
+          <Box>
+            <Button
+              borderRadius="xl"
+              onClick={() => setIsPSAVisible(false)}
+              size="sm"
+              variant="ghost"
+            >
+              <AiFillCloseCircle
+                color={useColorModeValue("black", "white")}
+                size="20"
+              />
+            </Button>
+          </Box>
+        </Flex>
+      </Box>
+    </GridBox>
+  )
+}
+
+export default PSA

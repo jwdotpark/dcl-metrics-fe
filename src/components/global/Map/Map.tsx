@@ -1,40 +1,47 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
-  Image,
   Box,
-  Text,
   Center,
-  Flex,
   GridItem,
   useColorModeValue,
-  useBreakpointValue,
-  Button,
-  Spacer,
   Spinner,
+  useDisclosure,
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
+import { usePrev } from "../../../lib/hooks/usePrev"
 import "react-tile-map/lib/styles.css"
-import { Coord, Layer, TileMap, TileMapProps } from "react-tile-map"
+import { Layer, TileMap } from "react-tile-map"
+import { heatmapColor } from "../../../lib/hooks/utils"
+import MapButtonGroup from "./partials/MapButtonGroup"
+import CollapsibleMapBox from "./partials/CollapsibleMapBox"
+import { FullScreen, useFullScreenHandle } from "react-full-screen"
 
-const Map = ({ h, coord, setCoord }) => {
+const Map = ({
+  h,
+  coord,
+  setCoord,
+  selectedParcel,
+  setSelectedParcel,
+  isMapExpanded,
+  setIsMapExpanded,
+  mapBoxVerticalSize,
+  mapHeight,
+  parcelData,
+  setMapHeight,
+}) => {
   const box = {
     h: "auto",
     w: "100%",
     bg: useColorModeValue("gray.200", "gray.700"),
   }
 
-  const mapBoxCss = {
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
-    scrollbarWidth: "none",
-    "-webkit-touch-callout": "none",
-    "-webkit-user-select": "none",
-    "-khtml-user-select": "none",
-    "-moz-user-select": "none",
-    "-ms-user-select": "none",
-    "user-select": "none",
-  }
+  const [tempCoord, setTempCoord] = useState({
+    x: 0,
+    y: 0,
+  })
+
+  const handle = useFullScreenHandle()
 
   const COLOR_BY_TYPE: Record<number | string, string> = {
     0: "#ff9990", // my parcels
@@ -52,54 +59,80 @@ const Map = ({ h, coord, setCoord }) => {
     12: "#18141a", // background
     13: "#110e13", // loading odd
     14: "#0d0b0e", // loading even
+    // new properties
+    total_avg_time_spent: "#8be9fd",
+    total_avg_time_spent_afk: "#50fa7b",
+    total_logins: "#ffb86c",
+    total_logouts: "#ff79c6",
+    total_visitors: "#bd93f9",
+    deploy_count: "#ff5555",
+    selected_scene: "#FF9990",
   }
 
-  // const { layers = [], onChange, onPopup, onClick, ...rest } = props
-  const [tempCoord, setTempCoord] = useState({
-    x: 0,
-    y: 0,
-  })
+  const properties = [
+    { name: "max_concurrent_users" },
+    { name: "visitor_intensity" },
+    { name: "avg_time_spent_intensity" },
+    { name: "avg_time_spent_afk_intensity" },
+    { name: "login_intensity" },
+    { name: "logout_intensity" },
+  ]
+
   const [tiles, setTiles] = useState([])
   const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
-
-  const layers = []
-  const highlights = []
-
-  const getLandById = (x: number, y: number) => {
-    const id = `${x},${y}`
-    return highlights.find((coord) => {
-      return coord.id === id
-    })
-  }
-
-  const onClickAtlasHandler = (x: number, y: number) => {
-    if (!tiles) return
-    const land = getLandById(x, y)
-    if (land) {
-      // land?.landId && setSelectedId && setSelectedId(land.landId)
-      // setClickedLandId && setClickedLandId(x, y)
-    }
-  }
-
+  const [zoom, setZoom] = useState(1)
+  const btnBg = useColorModeValue("gray.100", "gray.900")
+  const textColor = useColorModeValue("gray.100", "gray.900")
   const [selected, setSelected] = useState([])
+  const [selectedScene, setSelectedScene] = useState([])
+  const prevScene = usePrev(selectedScene)
+  const isIncluded = selectedScene.includes(selectedParcel.id)
+  const [selectedProp, setSelectedProp] = useState(properties[0])
+  const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
+  const [center, setCenter] = useState({ x: 0, y: 0 })
+
+  // infobox
+  const { getButtonProps, getDisclosureProps, isOpen, onToggle } =
+    useDisclosure()
+  const [hidden, setHidden] = useState(!isOpen)
+  const layers = []
+
   const isSelected = (x: number, y: number) => {
     return selected.some((coord) => coord.x === x && coord.y === y)
   }
 
   const selectedStrokeLayer: Layer = (x, y) => {
-    return isSelected(x, y) ? { color: "#ff0044", scale: 1.2 } : null
+    const id = x + "," + y
+    const tile = tiles[id]
+    return isSelected(x, y)
+      ? {
+          color: "#F7007C",
+          scale: 0.75,
+          top: !!tile.top,
+          left: !!tile.left,
+          topLeft: !!tile.topLeft,
+        }
+      : null
   }
-
-  const selectedFillLayer: Layer = (x, y) => {
-    return isSelected(x, y) ? { color: "#ff9990", scale: 1.2 } : null
-  }
-
   const handleClick = (x: number, y: number) => {
+    const id = x + "," + y
+    setSelectedParcel(tiles[id])
+
     if (isSelected(x, y)) {
       setSelected(selected.filter((coord) => coord.x !== x && coord.y !== y))
     } else {
-      setSelected([...selected, { x, y }])
+      setSelected([{ x, y }])
+    }
+
+    if (!isOpen) {
+      onToggle()
+    }
+
+    setCenter({ x: x, y: y })
+
+    if (selectedParcel.scene) {
+      setSelectedScene(selectedParcel.scene.parcels)
     }
   }
 
@@ -107,12 +140,32 @@ const Map = ({ h, coord, setCoord }) => {
     url: string = "https://api.decentraland.org/v2/tiles"
   ) => {
     if (!window.fetch) return {}
-    console.log("fetching tiles..")
     setIsMapLoading(true)
-    const resp = await window.fetch(url)
+    const resp = await fetch(url, {
+      cache: "force-cache",
+    })
     const json = await resp.json()
     setTiles(json.data)
     setIsMapLoading(false)
+  }
+
+  const injectTiles = () => {
+    // @ts-ignore
+    parcelData.map((tile) => {
+      const id = tile.coordinates
+      tiles[id] = { ...tiles[id], ...tile }
+    })
+  }
+
+  const tileColor = (tile) => {
+    if (!tile[selectedProp.name]) {
+      return COLOR_BY_TYPE[tile.type]
+    }
+    if (tile[selectedProp.name] > 0) {
+      // return COLOR_BY_TYPE[selectedProp.name]
+      const value = tile[selectedProp.name]
+      return heatmapColor(value)
+    }
   }
 
   const layer = (x, y) => {
@@ -120,10 +173,23 @@ const Map = ({ h, coord, setCoord }) => {
     if (tiles && id in tiles) {
       const tile = tiles[id]
       return {
-        color: COLOR_BY_TYPE[tile.type],
+        color: tileColor(tile),
         top: !!tile.top,
         left: !!tile.left,
         topLeft: !!tile.topLeft,
+        scale: 0.95,
+        owner: tile.owner,
+        estateId: tile.estateId,
+        tokenId: tile.tokenId,
+        type: tile.type,
+        coordinate: tile?.coordinate,
+        deploy_count: tile?.deploy_count,
+        total_avg_time_spent: tile.total_avg_time_spent,
+        total_avg_time_spent_afk: tile.total_avg_time_spent,
+        total_logins: tile.total_logins,
+        total_logouts: tile.total_logouts,
+        total_visitors: tile.total_visitors,
+        scene: tile.scene,
       }
     } else {
       return {
@@ -136,84 +202,121 @@ const Map = ({ h, coord, setCoord }) => {
     fetchTiles()
   }, [])
 
-  const onResetClick = () => {
-    setSelected([])
-  }
+  useEffect(() => {
+    injectTiles()
+  }, [tiles])
+
+  useEffect(() => {
+    if (selectedParcel.type !== "selected_scene") {
+      sessionStorage.setItem("selectedParcel", selectedParcel.id)
+      sessionStorage.setItem("selectedParcelType", selectedParcel.type)
+    }
+    if (selectedParcel.scene) {
+      selectedParcel.scene.parcels.map((tile) => {
+        tiles[tile].type = "selected_scene"
+      })
+    }
+  }, [selectedParcel])
+
+  useEffect(() => {
+    if (prevScene && !isIncluded) {
+      // @ts-ignore
+      prevScene.map((parcel) => {
+        tiles[parcel].type = prevTile
+      })
+    }
+  }, [prevScene])
 
   return (
-    <Box w={["100%", "100%", "100%", "80%"]} h="auto">
-      <GridItem
-        sx={mapBoxCss}
-        w={box.w}
-        h="100%"
-        bg={box.bg}
-        borderRadius="xl"
-        shadow="md"
-      >
-        <Box p="4">
-          <Box
-            overflow="hidden"
-            h="400"
-            borderRadius="xl"
-            shadow="md"
-            onMouseEnter={() => {
-              setIsHover(true)
-            }}
-            onMouseLeave={() => {
-              setIsHover(false)
-            }}
-          >
-            {!isMapLoading ? (
-              <>
-                {isHover && (
-                  <Flex pos="absolute" zIndex="banner" w="100%" p="2">
-                    <Box mr="2">
-                      <Button
-                        bg={useColorModeValue("gray.200", "gray.600")}
-                        borderRadius="xl"
-                        onClick={() => onResetClick()}
-                        size="sm"
-                        variant="solid"
-                      >
-                        Reset
-                      </Button>
-                    </Box>
-                  </Flex>
-                )}
-                {isHover && (
-                  <Box pos="absolute" zIndex="banner" bottom="4" left="4">
-                    <Text>
-                      [{tempCoord.x}, {tempCoord.y}]
-                    </Text>
+    <Box
+      w="100%"
+      h="auto"
+      border="solid 1px"
+      borderColor={useColorModeValue("gray.200", "gray.600")}
+      borderRadius="xl"
+      shadow="md"
+    >
+      <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
+        <FullScreen handle={handle}>
+          <Box p="4">
+            <Box
+              overflow="hidden"
+              h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
+              bg="#25232A"
+              border="2px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
+              borderRadius="xl"
+              shadow="md"
+              onMouseEnter={() => {
+                setIsHover(true)
+              }}
+              onMouseLeave={() => {
+                setIsHover(false)
+              }}
+            >
+              {!isMapLoading ? (
+                <>
+                  <Box>
+                    <MapButtonGroup
+                      isMapExpanded={isMapExpanded}
+                      setIsMapExpanded={setIsMapExpanded}
+                      zoom={zoom}
+                      setZoom={setZoom}
+                      tempCoord={tempCoord}
+                      properties={properties}
+                      selectedProp={selectedProp}
+                      setSelectedProp={setSelectedProp}
+                      textColor={textColor}
+                      btnBg={btnBg}
+                      handle={handle}
+                      setMapHeight={setMapHeight}
+                    />
                   </Box>
-                )}
-                <TileMap
-                  layers={[
-                    layer,
-                    selectedStrokeLayer,
-                    selectedFillLayer,
-                    ...layers,
-                  ]}
-                  onHover={(x, y) => {
-                    setTempCoord({ x, y })
-                  }}
-                  onClick={(x, y) => {
-                    setCoord({ x, y })
-                    handleClick(x, y)
-                    onClickAtlasHandler(x, y)
-                  }}
-                />
-              </>
-            ) : (
-              <Center h="400">
-                <Spinner />
-              </Center>
-            )}
+                  <TileMap
+                    zoom={zoom}
+                    layers={[layer, selectedStrokeLayer, ...layers]}
+                    onHover={(x, y) => {
+                      setTempCoord({ x, y })
+                    }}
+                    onClick={(x, y) => {
+                      setCoord({ x, y })
+                      handleClick(x, y)
+                    }}
+                    onChange={(e) => {
+                      setZoom(e.zoom)
+                      setCenter(e.center)
+                    }}
+                    x={center.x}
+                    y={center.y}
+                  />
+                  <CollapsibleMapBox
+                    getButtonProps={getButtonProps}
+                    getDisclosureProps={getDisclosureProps}
+                    isOpen={isOpen}
+                    hidden={hidden}
+                    setHidden={setHidden}
+                    coord={coord}
+                    selectedParcel={selectedParcel}
+                    isMapExpanded={isMapExpanded}
+                    mapBoxVerticalSize={mapBoxVerticalSize}
+                    mapHeight={mapHeight}
+                    handle={handle}
+                  />
+                </>
+              ) : (
+                <Center
+                  h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}
+                >
+                  <Spinner />
+                </Center>
+              )}
+            </Box>
           </Box>
-        </Box>
+        </FullScreen>
       </GridItem>
     </Box>
   )
 }
 
-export default Map
+export const MapWrapper = memo(Map)
+export default MapWrapper

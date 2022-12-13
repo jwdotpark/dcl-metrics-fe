@@ -7,6 +7,7 @@ import {
   FiPackage,
   FiActivity,
   FiLock,
+  FiGrid,
 } from "react-icons/fi"
 
 export const sidebarList = {
@@ -25,7 +26,7 @@ export const sidebarList = {
   scenes: {
     label: "Scenes",
     name: "scenes",
-    icon: FiMapPin,
+    icon: FiGrid,
     subItem: true,
   },
   parcels: {
@@ -34,12 +35,12 @@ export const sidebarList = {
     icon: FiPackage,
     subItem: true,
   },
-  // private: {
-  //   label: "Private Dashboard",
-  //   name: "dashboard",
-  //   icon: FiLock,
-  //   subItem: false,
-  // },
+  map: {
+    label: "Map",
+    name: "map",
+    icon: FiMapPin,
+    subItem: false,
+  },
   status: {
     label: "Status",
     name: "status",
