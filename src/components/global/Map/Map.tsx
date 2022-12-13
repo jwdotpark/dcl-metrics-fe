@@ -128,6 +128,8 @@ const Map = ({
       onToggle()
     }
 
+    setCenter({ x: x, y: y })
+
     if (selectedParcel.scene) {
       setSelectedScene(selectedParcel.scene.parcels)
     }
@@ -194,6 +196,8 @@ const Map = ({
       }
     }
   }
+
+  const [center, setCenter] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     fetchTiles()
@@ -281,7 +285,10 @@ const Map = ({
                     }}
                     onChange={(e) => {
                       setZoom(e.zoom)
+                      setCenter(e.center)
                     }}
+                    x={center.x}
+                    y={center.y}
                   />
                   <CollapsibleMapBox
                     getButtonProps={getButtonProps}
