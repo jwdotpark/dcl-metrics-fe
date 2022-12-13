@@ -91,6 +91,8 @@ const Map = ({
   const isIncluded = selectedScene.includes(selectedParcel.id)
   const [selectedProp, setSelectedProp] = useState(properties[0])
   const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
+  const [center, setCenter] = useState({ x: 0, y: 0 })
+
   // infobox
   const { getButtonProps, getDisclosureProps, isOpen, onToggle } =
     useDisclosure()
@@ -196,8 +198,6 @@ const Map = ({
       }
     }
   }
-
-  const [center, setCenter] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     fetchTiles()
