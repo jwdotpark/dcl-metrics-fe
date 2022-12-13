@@ -69,7 +69,6 @@ const Map = ({
     selected_scene: "#FF9990",
   }
 
-  // TODO remove color property
   const properties = [
     { name: "max_concurrent_users" },
     { name: "visitor_intensity" },
