@@ -12,7 +12,7 @@ import fs from "fs"
 export async function getStaticPaths() {
   return {
     paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
-    fallback: "blocking",
+    fallback: false,
   }
 }
 
@@ -58,7 +58,7 @@ export async function getStaticProps(context) {
     const data = await response.data
     return {
       props: { data },
-      // revalidate: day,
+      revalidate: day,
     }
   }
   if (process.env.NEXT_PUBLIC_STAGING === "true") {
@@ -69,13 +69,12 @@ export async function getStaticProps(context) {
     console.log("dev response", response)
     return {
       props: { data },
-      // revalidate: day,
+      revalidate: day,
     }
   }
 }
 
 const DashboardPage = (props) => {
-  console.log("initializing")
   const router = useRouter()
   const { data } = props
   const dashboard = data
@@ -109,8 +108,6 @@ const DashboardPage = (props) => {
       setIsLoggedIn(true)
     }
   }, [])
-
-  console.log("rendered")
 
   return (
     <Layout>
