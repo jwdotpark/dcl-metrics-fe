@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const day = 60 * 60 * 24
+  const day = 60 * 60 * 24 * 365
   const name = context.params.id
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
   const url = isProd
@@ -26,6 +26,7 @@ export async function getStaticProps(context) {
 
   if (process.env.NEXT_PUBLIC_STAGING === "false") {
     console.log("fetching prod with fixie")
+    console.log("url", url)
     const response = await axios
       .get(url, {
         method: "get",
@@ -57,17 +58,18 @@ export async function getStaticProps(context) {
     const data = await response.data
     return {
       props: { data },
-      revalidate: day,
+      // revalidate: day,
     }
   }
   if (process.env.NEXT_PUBLIC_STAGING === "true") {
     console.log("fetching dev w/o fixie")
+    console.log("url", url)
     const response = await fetch(url)
     const data = await response.json()
     console.log("dev response", response)
     return {
       props: { data },
-      revalidate: day,
+      // revalidate: day,
     }
   }
 }
