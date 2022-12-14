@@ -25,6 +25,7 @@ export async function getStaticProps(context) {
     : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "dashboard/" + name
 
   if (process.env.NEXT_PUBLIC_STAGING === "false") {
+    console.log("fetching prod with fixie")
     const response = await axios
       .get(url, {
         method: "get",
@@ -42,6 +43,8 @@ export async function getStaticProps(context) {
         console.log(error)
       })
 
+    console.log("prod response", response)
+
     if (response.status === 200) {
       fs.writeFileSync(
         `./public/data/cached_${name}.json`,
@@ -58,8 +61,10 @@ export async function getStaticProps(context) {
     }
   }
   if (process.env.NEXT_PUBLIC_STAGING === "true") {
+    console.log("fetching dev w/o fixie")
     const response = await fetch(url)
     const data = await response.json()
+    console.log("dev response", response)
     return {
       props: { data },
       revalidate: day,
@@ -68,6 +73,7 @@ export async function getStaticProps(context) {
 }
 
 const DashboardPage = (props) => {
+  console.log("initializing")
   const router = useRouter()
   const { data } = props
   const dashboard = data
@@ -101,6 +107,8 @@ const DashboardPage = (props) => {
       setIsLoggedIn(true)
     }
   }, [])
+
+  console.log("rendered")
 
   return (
     <Layout>
