@@ -1,19 +1,10 @@
-import {
-  Button,
-  VStack,
-  Center,
-  Text,
-  Box,
-  Flex,
-  Spacer,
-} from "@chakra-ui/react"
+import { Button, VStack, Center, Text, Box, Spacer } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import { useRouter } from "next/router"
 
 const NotFoundPage = () => {
   const router = useRouter()
   const url = router.asPath
-  console.log(router)
   return (
     <Layout>
       <Center h="calc(100vh - 8rem)">
