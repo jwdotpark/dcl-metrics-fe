@@ -11,7 +11,11 @@ import fs from "fs"
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { id: "ups_store" } }, { params: { id: "goldfish" } }],
+    paths: [
+      { params: { id: "ups_store" } },
+      { params: { id: "goldfish" } },
+      { params: { id: "edifice" } },
+    ],
     fallback: false,
   }
 }
