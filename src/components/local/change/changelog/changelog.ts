@@ -53,8 +53,22 @@ export const minorchangeTemplate = [
         icon: FiPackage,
         day: "2022 October",
         title: "Build Metrics for Scenes",
-        description: `I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised`,
+        description: "I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised",
       },
     ],
+    date: "2022 Q4",
+    contents: [
+      {
+        icon: FiUsers,
+        title: "Incorporate and work with Atlas Corporation's new data warehouse",
+        description: "Increase data fidelity by pulling at higher frequency as well as reduce strain on DCL's catalyst servers",
+      },
+      {
+        icon: FiPackage,
+        title:
+          "Build metrics for all users/parcels/scenes not just top 10 lists",
+        description: "With the scene map, we've begun displaying data for all parcels and scenes and user data and dashboards will be added in the next iteration",
+      },
+    ]
   },
 ]
