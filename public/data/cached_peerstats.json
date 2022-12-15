@@ -1,1 +1,192 @@
-{"stats/parcels":[{"date":"2022-11-13","url":"https://peer-ap1.decentraland.org/stats/parcels","host":"peer-ap1.decentraland.org","statuses":{"200":1417},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1417,"total_count":1417},{"date":"2022-11-13","url":"https://peer.kyllian.me/stats/parcels","host":"peer.kyllian.me","statuses":{"200":1417},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1417,"total_count":1417},{"date":"2022-11-13","url":"https://peer.uadevops.com/stats/parcels","host":"peer.uadevops.com","statuses":{"200":1417},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1417,"total_count":1417},{"date":"2022-11-13","url":"https://peer.dclnodes.io/stats/parcels","host":"peer.dclnodes.io","statuses":{"200":1417},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1417,"total_count":1417},{"date":"2022-11-13","url":"https://peer-ec1.decentraland.org/stats/parcels","host":"peer-ec1.decentraland.org","statuses":{"200":1415},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1415,"total_count":1415},{"date":"2022-11-13","url":"https://peer-ec2.decentraland.org/stats/parcels","host":"peer-ec2.decentraland.org","statuses":{"200":1415},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1415,"total_count":1415},{"date":"2022-11-13","url":"https://peer-wc1.decentraland.org/stats/parcels","host":"peer-wc1.decentraland.org","statuses":{"200":1416},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1416,"total_count":1416},{"date":"2022-11-13","url":"https://peer-eu1.decentraland.org/stats/parcels","host":"peer-eu1.decentraland.org","statuses":{"200":1417},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1417,"total_count":1417},{"date":"2022-11-13","url":"https://interconnected.online/stats/parcels","host":"interconnected.online","statuses":{"200":1417},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1417,"total_count":1417},{"date":"2022-11-13","url":"https://peer.decentral.io/stats/parcels","host":"peer.decentral.io","statuses":{"200":1417},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1417,"total_count":1417},{"date":"2022-11-13","url":"https://peer.melonwave.com/stats/parcels","host":"peer.melonwave.com","statuses":{"200":1417},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":1417,"total_count":1417}],"entities/scene":[{"date":"2022-11-13","url":"https://peer.decentraland.org/content/entities/scene","host":"peer.decentraland.org","statuses":{"200":13765},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":13765,"total_count":13765}],"comms/peers":[{"date":"2022-11-13","url":"https://peer-eu1.decentraland.org/comms/peers","host":"peer-eu1.decentraland.org","statuses":{"200":966},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":966,"total_count":966},{"date":"2022-11-13","url":"https://peer-ap1.decentraland.org/comms/peers","host":"peer-ap1.decentraland.org","statuses":{"200":965},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":965,"total_count":965},{"date":"2022-11-13","url":"https://interconnected.online/comms/peers","host":"interconnected.online","statuses":{"200":965,"429":1},"failure_count":1,"failure_rate":0.10351966873706005,"success_rate":99.89648033126294,"success_count":965,"total_count":966},{"date":"2022-11-13","url":"https://peer.decentral.io/comms/peers","host":"peer.decentral.io","statuses":{"200":965},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":965,"total_count":965},{"date":"2022-11-13","url":"https://peer.melonwave.com/comms/peers","host":"peer.melonwave.com","statuses":{"200":966},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":966,"total_count":966},{"date":"2022-11-13","url":"https://peer.kyllian.me/comms/peers","host":"peer.kyllian.me","statuses":{"200":964,"429":1},"failure_count":1,"failure_rate":0.10362694300518134,"success_rate":99.89637305699482,"success_count":964,"total_count":965},{"date":"2022-11-13","url":"https://peer.uadevops.com/comms/peers","host":"peer.uadevops.com","statuses":{"200":965},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":965,"total_count":965},{"date":"2022-11-13","url":"https://peer-ec1.decentraland.org/comms/peers","host":"peer-ec1.decentraland.org","statuses":{"200":966},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":966,"total_count":966},{"date":"2022-11-13","url":"https://peer-ec2.decentraland.org/comms/peers","host":"peer-ec2.decentraland.org","statuses":{"200":964},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":964,"total_count":964},{"date":"2022-11-13","url":"https://peer-wc1.decentraland.org/comms/peers","host":"peer-wc1.decentraland.org","statuses":{"200":966},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":966,"total_count":966},{"date":"2022-11-13","url":"https://peer.dclnodes.io/comms/peers","host":"peer.dclnodes.io","statuses":{"200":965},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":965,"total_count":965}],"lambdas/profiles":[{"date":"2022-11-13","url":"https://peer-ec1.decentraland.org/lambdas/profiles","host":"peer-ec1.decentraland.org","statuses":{"200":11673},"failure_count":0,"failure_rate":0,"success_rate":100,"success_count":11673,"total_count":11673}]}
+{
+  "stats/parcels": [
+    {
+      "date": "2022-12-14",
+      "url": "https://peer.kyllian.me/stats/parcels",
+      "host": "peer.kyllian.me",
+      "statuses": {
+        "200": 1437
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1437,
+      "total_count": 1437
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://peer-eu1.decentraland.org/stats/parcels",
+      "host": "peer-eu1.decentraland.org",
+      "statuses": {
+        "200": 1438
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1438,
+      "total_count": 1438
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://peer-ap1.decentraland.org/stats/parcels",
+      "host": "peer-ap1.decentraland.org",
+      "statuses": {
+        "200": 1437
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1437,
+      "total_count": 1437
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://peer-ec1.decentraland.org/stats/parcels",
+      "host": "peer-ec1.decentraland.org",
+      "statuses": {
+        "200": 1438
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1438,
+      "total_count": 1438
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://peer-wc1.decentraland.org/stats/parcels",
+      "host": "peer-wc1.decentraland.org",
+      "statuses": {
+        "200": 1439
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1439,
+      "total_count": 1439
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://interconnected.online/stats/parcels",
+      "host": "interconnected.online",
+      "statuses": {
+        "200": 1438
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1438,
+      "total_count": 1438
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://peer.uadevops.com/stats/parcels",
+      "host": "peer.uadevops.com",
+      "statuses": {
+        "200": 1436
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1436,
+      "total_count": 1436
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://peer.dclnodes.io/stats/parcels",
+      "host": "peer.dclnodes.io",
+      "statuses": {
+        "200": 1438
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1438,
+      "total_count": 1438
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://peer-ec2.decentraland.org/stats/parcels",
+      "host": "peer-ec2.decentraland.org",
+      "statuses": {
+        "200": 1439
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1439,
+      "total_count": 1439
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://peer.decentral.io/stats/parcels",
+      "host": "peer.decentral.io",
+      "statuses": {
+        "200": 1438
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1438,
+      "total_count": 1438
+    },
+    {
+      "date": "2022-12-14",
+      "url": "https://peer.melonwave.com/stats/parcels",
+      "host": "peer.melonwave.com",
+      "statuses": {
+        "200": 1438
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1438,
+      "total_count": 1438
+    }
+  ],
+  "entities/scene": [
+    {
+      "date": "2022-12-14",
+      "url": "https://peer.decentraland.org/content/entities/scene",
+      "host": "peer.decentraland.org",
+      "statuses": {
+        "200": 15411
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 15411,
+      "total_count": 15411
+    }
+  ],
+  "lambdas/profiles": [
+    {
+      "date": "2022-12-14",
+      "url": "https://peer-ec1.decentraland.org/lambdas/profiles",
+      "host": "peer-ec1.decentraland.org",
+      "statuses": {
+        "200": 210
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 210,
+      "total_count": 210
+    }
+  ],
+  "islands-history": [
+    {
+      "date": "2022-12-14",
+      "url": "https://dao-data.atlascorp.io/islands-history",
+      "host": "dao-data.atlascorp.io",
+      "statuses": {
+        "200": 1440
+      },
+      "failure_count": 0,
+      "failure_rate": 0,
+      "success_rate": 100,
+      "success_count": 1440,
+      "total_count": 1440
+    }
+  ]
+}
