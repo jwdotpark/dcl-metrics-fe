@@ -56,6 +56,8 @@ export const minorchangeTemplate = [
         description: "I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised",
       },
     ],
+  },
+  {
     date: "2022 Q4",
     contents: [
       {
@@ -70,5 +72,5 @@ export const minorchangeTemplate = [
         description: "With the scene map, we've begun displaying data for all parcels and scenes and user data and dashboards will be added in the next iteration",
       },
     ]
-  },
+  }
 ]
