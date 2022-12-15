@@ -17,13 +17,6 @@ export const roadmap = [
     date: "2022 Q4",
     contents: [
       {
-        icon: FiPackage,
-
-        title:
-          "Build metrics for all users/parcels/scenes not just top 10 lists",
-        description: "",
-      },
-      {
         icon: FiHome,
 
         title: "Introduce Daily New Users to global tracking",
@@ -69,13 +62,6 @@ export const roadmap = [
 
         title: "Advanced user analytics",
         description: "Wearbles, POAPs, DAO Activity",
-      },
-      {
-        icon: FiUsers,
-
-        title:
-          "Incorporate and work with Atlas Corporation's new data warehouse",
-        description: "",
       },
     ],
   },
