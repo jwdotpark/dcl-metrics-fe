@@ -23,6 +23,8 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const day = 60 * 60 * 24 * 365
   const name = context.params.id
+  const staticData = require(`../../public/data/cached_${name}.json`)
+
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
   const url = isProd
     ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "dashboard/" + name
@@ -44,6 +46,7 @@ export async function getStaticProps(context) {
       })
       .catch((error) => {
         console.log(error)
+        return { props: { data: staticData }, revalidate: day }
       })
 
     if (response.status === 200) {
@@ -72,6 +75,11 @@ export async function getStaticProps(context) {
 }
 
 const DashboardPage = (props) => {
+  
+  if (Object.keys(props.data).length === 0) {
+    throw Error("Page prop is missing!")
+  }
+
   const router = useRouter()
   const { data } = props
   const dashboard = data
