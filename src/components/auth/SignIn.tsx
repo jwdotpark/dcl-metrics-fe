@@ -39,26 +39,21 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     setBtnMsg("Signing In...")
-    // const result = await fetch("/api/validate", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    // const res = await result.json()
-    // if (res.isAuthenticated === true) {
-    //   setIsAuthenticated(encrypt("/dashboard/" + data.account))
-    //   localStorage.setItem("account", data.account)
-    //   router.push("/dashboard/[id]", `/dashboard/${data.account}`)
-    // } else {
-    //   setBtnMsg("Invalid account or password")
-    // }
-
-    // bypass validation and go straight to {data.account} name dashboard
-    setIsAuthenticated(encrypt("/dashboard/" + data.account))
-    localStorage.setItem("account", data.account)
-    router.push("/dashboard/[id]", `/dashboard/${data.account}`)
+    const result = await fetch("/api/validate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    const res = await result.json()
+    if (res.isAuthenticated === true) {
+      setIsAuthenticated(encrypt("/dashboard/" + data.account))
+      localStorage.setItem("account", data.account)
+      router.push("/dashboard/[id]", `/dashboard/${data.account}`)
+    } else {
+      setBtnMsg("Invalid account or password")
+    }
   }
 
   return (
