@@ -117,15 +117,15 @@ const DashboardPage = (props) => {
     <Layout>
       {isLoggedIn ? (
         <Box minH="calc(100vh - 7rem)">
-          {JSON.stringify(props)}
-          {/* <Scene
+          {/* {JSON.stringify(props)} */}
+          <Scene
             res={res}
             date={date}
             setDate={setDate}
             availableDate={availableDate}
             isLoading={isLoading}
             dailyUsers={dailyUsers}
-          /> */}
+          />
         </Box>
       ) : (
         <Center h="calc(100vh - 6rem)">
