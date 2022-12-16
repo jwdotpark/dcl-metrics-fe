@@ -13,7 +13,7 @@ export const sendNotification = async (response, name, status) => {
       level: "warning",
       message: `${name} endpoint request is ${response.status} - ${status}`,
       payload: {
-        status: response.status,
+        status: response.statusText,
       },
     }),
   })

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Layout from "../../src/components/layout/layout"
 import { useRouter } from "next/router"
-import { Box, Text, Center } from "@chakra-ui/react"
+import { Flex, Button, Box, Text, Center, Spacer } from "@chakra-ui/react"
 import Scene from "../../src/components/local/stats/Scene"
 import { useEffect, useState } from "react"
 import { decrypt } from "../../src/lib/hooks/utils"
@@ -95,6 +95,18 @@ const DashboardPage = (props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [date, setDate] = useState(new Date(latestDay))
 
+  const tempErrorReport = () => {
+    const response = {
+      status: 404,
+      statusText: "Page prop is missing",
+    }
+    sendNotification(
+      response,
+      "dashboard",
+      "dashboard page is failed to render"
+    )
+  }
+
   useEffect(() => {
     const target = new Date(date)
     target.setDate(target.getDate() + 1)
@@ -113,11 +125,27 @@ const DashboardPage = (props) => {
     }
   }, [])
 
+  if (!props) {
+    return (
+      <Layout>
+        <Center minH="calc(100vh - 7rem)">
+          <Box>
+            <Text my="4" fontSize="8xl">
+              Missing Page Props
+            </Text>
+            <Button w="100%" my="4" onClick={() => tempErrorReport()}>
+              Report Error
+            </Button>
+          </Box>
+        </Center>
+      </Layout>
+    )
+  }
+
   return (
     <Layout>
       {isLoggedIn ? (
         <Box minH="calc(100vh - 7rem)">
-          {/* {JSON.stringify(props)} */}
           <Scene
             res={res}
             date={date}
