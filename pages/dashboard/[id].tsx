@@ -117,7 +117,7 @@ const DashboardPage = (props) => {
     <Layout>
       {isLoggedIn ? (
         <Box minH="calc(100vh - 7rem)">
-          {JSON.stringify(res)}
+          {JSON.stringify(props)}
           {/* <Scene
             res={res}
             date={date}
