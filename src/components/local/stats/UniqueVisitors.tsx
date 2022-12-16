@@ -30,11 +30,11 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     chartData.push({
       date: item[0],
       degraded: item[1].degraded,
-      unique_users: item[1].unique_users,
-      // unique_users: item[1].users.unique_users,
-      // new_users: item[1].users.new_users,
-      // named_users: item[1].users.named_users,
-      // guest_users: item[1].users.guest_users,
+      // unique_users: item[1].unique_users,
+      unique_users: item[1].users.unique_users,
+      new_users: item[1].users.new_users,
+      named_users: item[1].users.named_users,
+      guest_users: item[1].users.guest_users,
     })
   })
 
@@ -59,14 +59,41 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
   }, [dateRange])
 
   const LineChartComponent = ({ box, res }) => {
-    const color = "#A6CEE3FF"
+    // const color = ["#A6CEE3", "#ff79c6", "#ff5555", "#6272a4"]
+    const color = useColorModeValue(
+      ["#A6CEE3", "#ff79c6", "#ff5555", "#6272a4"],
+      ["#6272a4", "#ff5555", "#ff79c6", "#A6CEE3"]
+    )
     const result = [
       {
         id: "Unique Users",
-        color: "hsl(90, 70%, 50%)",
         data: slicedData().map((item) => ({
           x: item.date,
           y: item.unique_users,
+          degraded: item.degraded,
+        })),
+      },
+      {
+        id: "New Users",
+        data: slicedData().map((item) => ({
+          x: item.date,
+          y: item.new_users,
+          degraded: item.degraded,
+        })),
+      },
+      {
+        id: "Named Users",
+        data: slicedData().map((item) => ({
+          x: item.date,
+          y: item.named_users,
+          degraded: item.degraded,
+        })),
+      },
+      {
+        id: "Guest Users",
+        data: slicedData().map((item) => ({
+          x: item.date,
+          y: item.guest_users,
           degraded: item.degraded,
         })),
       },

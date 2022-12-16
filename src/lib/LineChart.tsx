@@ -1,7 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
-import { Box, useColorModeValue, useColorMode } from "@chakra-ui/react"
+import {
+  Text,
+  Box,
+  Center,
+  useColorModeValue,
+  useColorMode,
+} from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import moment from "moment"
@@ -116,21 +122,25 @@ const LineChart = ({ data, color }) => {
       enableSlices="x"
       sliceTooltip={({ slice }) => {
         return (
-          <Box>
+          <Box
+            sx={{ backdropFilter: "blur(5px)" }}
+            p="2"
+            color={useColorModeValue("black", "white")}
+          >
+            <Center mb="1">
+              <Text fontSize="sm" fontWeight="bold">
+                {slice.points[0].data.xFormatted}
+              </Text>
+            </Center>
             {slice.points.map((point, i) => (
-              <Box
-                key={i}
-                sx={{ backdropFilter: "blur(5px)" }}
-                pt="2"
-                color={useColorModeValue("black", "white")}
-                borderRadius="xl"
-                shadow="md"
-              >
+              <Box key={point.serieId}>
                 <TooltipTable
                   p="2"
-                  date={point.data.xFormatted}
+                  // date={point.data.xFormatted}
+                  name={point.serieId}
                   count={point.data.yFormatted}
                   degraded={point.data.degraded}
+                  color={color[i]}
                 />
               </Box>
             ))}

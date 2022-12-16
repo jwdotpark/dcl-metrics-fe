@@ -56,7 +56,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
   }, [dateRange])
 
   const LineChartComponent = ({ box, res }) => {
-    const color = "#CAB2D6FF"
+    const color = ["#CAB2D6FF"]
     const result = [
       {
         id: "Parcels Visited",

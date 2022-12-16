@@ -62,7 +62,7 @@ const ActiveScenes = ({ visitorLoading, data }) => {
   ).length
 
   const LineChartComponent = ({ box, res }) => {
-    const color = "#ffb86c"
+    const color = ["#ffb86c"]
     const result = [
       {
         id: "Active Scenes",
