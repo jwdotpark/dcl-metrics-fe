@@ -25,7 +25,6 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
 
   const chartData = []
   const dataArr = Object.entries(data)
-  console.log("chart data:", chartData)
 
   dataArr.map((item) => {
     chartData.push({
