@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react"
 import type { NextPage } from "next"
-import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
+import {
+  Flex,
+  Grid,
+  useBreakpointValue,
+  Accordion,
+  Box,
+} from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 import staticScene from "../public/data/cached_scenes_top.json"
 import staticParcel from "../public/data/cached_parcel.json"
@@ -18,6 +24,7 @@ import ParcelLayout from "../src/components/layout/global/ParcelLayout"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
+import AvgStatBox from "../src/components/local/stats/partials/AvgStatBox"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24 * 365
@@ -211,9 +218,21 @@ const GlobalPage: NextPage = (props) => {
           </Box>
         )}
 
-        <Box mb="4">
+        <Flex
+          sx={{
+            "& > * + *": {
+              ml: [0, 0, 0, 4],
+              mt: [4, 4, 4, 0],
+            },
+          }}
+          direction={["column", "column", "column", "row"]}
+          mb="4"
+        >
           <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
-        </Box>
+          <Box w={["100%", "100%", "100%", "20%"]}>
+            <AvgStatBox />
+          </Box>
+        </Flex>
 
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <UniqueVisitedParcels

@@ -79,7 +79,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
   }
 
   return (
-    <>
+    <Box w={["100%", "100%", "100%", "80%"]}>
       <GridBox box={box}>
         <Flex pos="relative" mt="4" mx="5">
           <Flex w="100%">
@@ -113,7 +113,7 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
           </Center>
         )}
       </GridBox>
-    </>
+    </Box>
   )
 }
 
