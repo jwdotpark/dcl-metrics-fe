@@ -75,7 +75,6 @@ export async function getStaticProps(context) {
 }
 
 const DashboardPage = (props) => {
-  
   if (Object.keys(props.data).length === 0) {
     throw Error("Page prop is missing!")
   }
@@ -118,14 +117,15 @@ const DashboardPage = (props) => {
     <Layout>
       {isLoggedIn ? (
         <Box minH="calc(100vh - 7rem)">
-          <Scene
+          {JSON.stringify(res)}
+          {/* <Scene
             res={res}
             date={date}
             setDate={setDate}
             availableDate={availableDate}
             isLoading={isLoading}
             dailyUsers={dailyUsers}
-          />
+          /> */}
         </Box>
       ) : (
         <Center h="calc(100vh - 6rem)">
