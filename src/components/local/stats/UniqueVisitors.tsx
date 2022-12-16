@@ -31,10 +31,11 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     chartData.push({
       date: item[0],
       degraded: item[1].degraded,
-      unique_users: item[1].users.unique_users,
-      new_users: item[1].users.new_users,
-      named_users: item[1].users.named_users,
-      guest_users: item[1].users.guest_users,
+      unique_users: item[1].unique_users,
+      // unique_users: item[1].users.unique_users,
+      // new_users: item[1].users.new_users,
+      // named_users: item[1].users.named_users,
+      // guest_users: item[1].users.guest_users,
     })
   })
 
