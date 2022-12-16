@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Flex,
   Text,
@@ -24,14 +25,16 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
 
   const chartData = []
   const dataArr = Object.entries(data)
+  console.log("chart data:", chartData)
 
   dataArr.map((item) => {
     chartData.push({
       date: item[0],
-      // @ts-ignore
-      unique_users: item[1].unique_users,
-      // @ts-ignore
       degraded: item[1].degraded,
+      unique_users: item[1].users.unique_users,
+      new_users: item[1].users.new_users,
+      named_users: item[1].users.named_users,
+      guest_users: item[1].users.guest_users,
     })
   })
 
