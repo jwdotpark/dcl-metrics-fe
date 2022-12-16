@@ -129,13 +129,20 @@ const DashboardPage = (props) => {
     return (
       <Layout>
         <Center minH="calc(100vh - 7rem)">
-          <Box>
+          <Box
+            className="umami--view--dashboard-missing-props"
+            textAlign="center"
+          >
             <Text my="4" fontSize="8xl">
               Missing Page Props
             </Text>
-            <Button w="100%" my="4" onClick={() => tempErrorReport()}>
-              Report Error
-            </Button>
+            <Text my="4" fontSize="xl">
+              This only happens in specific region at the moment, related data
+              and error message has been reported. We are working on it.
+            </Text>
+            <Text my="4" fontSize="xl">
+              Sorry for the inconvenience!
+            </Text>
           </Box>
         </Center>
       </Layout>
@@ -146,14 +153,16 @@ const DashboardPage = (props) => {
     <Layout>
       {isLoggedIn ? (
         <Box minH="calc(100vh - 7rem)">
-          <Scene
-            res={res}
-            date={date}
-            setDate={setDate}
-            availableDate={availableDate}
-            isLoading={isLoading}
-            dailyUsers={dailyUsers}
-          />
+          {props && (
+            <Scene
+              res={res}
+              date={date}
+              setDate={setDate}
+              availableDate={availableDate}
+              isLoading={isLoading}
+              dailyUsers={dailyUsers}
+            />
+          )}
         </Box>
       ) : (
         <Center h="calc(100vh - 6rem)">
