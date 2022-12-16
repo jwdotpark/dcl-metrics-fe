@@ -134,7 +134,7 @@ const DashboardPage = (props) => {
             textAlign="center"
           >
             <Text my="4" fontSize="8xl">
-              Missing Page Props
+              Page can&apos;t download the data for charts!
             </Text>
             <Text my="4" fontSize="xl">
               This only happens in specific region at the moment, related data
