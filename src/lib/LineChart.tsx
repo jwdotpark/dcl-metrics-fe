@@ -129,14 +129,15 @@ const LineChart = ({ data, color }) => {
           >
             <Center mb="1">
               <Text fontSize="sm" fontWeight="bold">
-                {slice.points[0].data.xFormatted}
+                {slice.points[0].data.xFormatted}{" "}
+                <Text display="inline-block" fontSize="xs">
+                  {slice.points[0].data.degraded && "degraded!"}
+                </Text>
               </Text>
             </Center>
             {slice.points.map((point, i) => (
               <Box key={point.serieId}>
                 <TooltipTable
-                  p="2"
-                  // date={point.data.xFormatted}
                   name={point.serieId}
                   count={point.data.yFormatted}
                   degraded={point.data.degraded}

@@ -88,7 +88,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
               </Text>
             </Box>
             <Spacer />
-            <AvgStat avg={avgData} data={slicedData()} />
+            {/* <AvgStat avg={avgData} data={slicedData()} /> */}
           </Flex>
         </Flex>
         <Box ml="6">

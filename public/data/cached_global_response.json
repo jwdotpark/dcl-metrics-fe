@@ -3,7 +3,7 @@
     "2022-11-14": {
       "active_parcels": 7454,
       "active_scenes": 1755,
-      "degraded": false,
+      "degraded": true,
       "users": {
         "unique_users": 7887,
         "new_users": 2436,

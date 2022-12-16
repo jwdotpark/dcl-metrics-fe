@@ -48,22 +48,47 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     }
   }
 
-  const [avgData, setAvgData] = useState(0)
+  const [avgData, setAvgData] = useState([])
 
   useEffect(() => {
-    const data = slicedData()
-    const sum = slicedData().reduce((acc, cur) => acc + cur.unique_users, 0)
-    const result = Math.floor(sum / data.length)
+    const validLength = slicedData().length
+    const sumUniqueUsers = slicedData().reduce(
+      (acc, cur) => acc + cur.unique_users,
+      0
+    )
+    const sumNewUsers = slicedData().reduce(
+      (acc, cur) => acc + cur.new_users,
+      0
+    )
+    const sumNamedUsers = slicedData().reduce(
+      (acc, cur) => acc + cur.named_users,
+      0
+    )
+    const sumGuestUsers = slicedData().reduce(
+      (acc, cur) => acc + cur.guest_users,
+      0
+    )
+
+    const result = () => {
+      return [
+        { id: "Unique Users", value: Math.floor(sumUniqueUsers / validLength) },
+        { id: "New Users", value: Math.floor(sumNewUsers / validLength) },
+        { id: "Named Users", value: Math.floor(sumNamedUsers / validLength) },
+        { id: "Guest Users", value: Math.floor(sumGuestUsers / validLength) },
+      ]
+    }
     setAvgData(result)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
+  const color = useColorModeValue(
+    ["#A6CEE3", "#ff79c6", "#ff5555", "#6272a4"],
+    ["#6272a4", "#ff5555", "#ff79c6", "#A6CEE3"]
+  )
+
   const LineChartComponent = ({ box, res }) => {
     // const color = ["#A6CEE3", "#ff79c6", "#ff5555", "#6272a4"]
-    const color = useColorModeValue(
-      ["#A6CEE3", "#ff79c6", "#ff5555", "#6272a4"],
-      ["#6272a4", "#ff5555", "#ff79c6", "#A6CEE3"]
-    )
+
     const result = [
       {
         id: "Unique Users",
@@ -106,41 +131,43 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
   }
 
   return (
-    <Box w={["100%", "100%", "100%", "80%"]}>
-      <GridBox box={box}>
-        <Flex pos="relative" mt="4" mx="5">
-          <Flex w="100%">
+    <GridBox box={box}>
+      <Flex direction={["column", "column", "column", "row"]}>
+        <Box>
+          <Flex direction="column" mt="4" mx="5">
             <Box>
               <Text fontSize="2xl">
                 <b>Unique Visitors </b>
               </Text>
             </Box>
-            <Spacer />
-            <AvgStat avg={avgData} data={slicedData()} />
+            <Box>
+              <Text color="gray.500" fontSize="sm">
+                Unique vistors per day in the last period
+              </Text>
+            </Box>
           </Flex>
-        </Flex>
-        <Box ml="6">
-          <Text color="gray.500" fontSize="sm">
-            Unique vistors per day in the last period
-          </Text>
         </Box>
-        <LineChartDateRange
-          dateRange={dateRange}
-          setDateRange={setDateRange}
-          validLegnth={90}
-          name="global_unique_visitors"
-        />
-        {chartData.length > 0 && !visitorLoading ? (
-          <Box h="100%">
-            <LineChartComponent box={box} res={chartData} />
-          </Box>
-        ) : (
-          <Center h={box.h}>
-            <Loading />
-          </Center>
-        )}
-      </GridBox>
-    </Box>
+        <Spacer />
+        <Box m="4">
+          <AvgStat avg={avgData} data={slicedData()} color={color} />
+        </Box>
+      </Flex>
+      <LineChartDateRange
+        dateRange={dateRange}
+        setDateRange={setDateRange}
+        validLegnth={90}
+        name="global_unique_visitors"
+      />
+      {chartData.length > 0 && !visitorLoading ? (
+        <Box h="100%">
+          <LineChartComponent box={box} res={chartData} />
+        </Box>
+      ) : (
+        <Center h={box.h}>
+          <Loading />
+        </Center>
+      )}
+    </GridBox>
   )
 }
 

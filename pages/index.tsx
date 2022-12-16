@@ -218,21 +218,9 @@ const GlobalPage: NextPage = (props) => {
           </Box>
         )}
 
-        <Flex
-          sx={{
-            "& > * + *": {
-              ml: [0, 0, 0, 4],
-              mt: [4, 4, 4, 0],
-            },
-          }}
-          direction={["column", "column", "column", "row"]}
-          mb="4"
-        >
+        <Box mb="4">
           <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
-          <Box w={["100%", "100%", "100%", "20%"]}>
-            <AvgStatBox />
-          </Box>
-        </Flex>
+        </Box>
 
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <UniqueVisitedParcels
