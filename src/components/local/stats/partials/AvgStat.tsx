@@ -32,8 +32,10 @@ const AvgStat = ({ avg, data, color }) => {
             return (
               <Box key={item.id} fontSize={["xs", "sm", "md", "md"]}>
                 <Flex direction="row">
-                  <Box mr="2">{item.id}</Box>
-                  <Box mr="2" color={color[i]} fontWeight="bold">
+                  {/* <Box mr="2">
+                    <Text fontSize="xs">{item.id}</Text>
+                  </Box> */}
+                  <Box mr="2" color={color[i]} fontSize="lg" fontWeight="bold">
                     <CountUp end={item.value} duration={0.5} />
                   </Box>
                 </Flex>
