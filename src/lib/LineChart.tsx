@@ -12,9 +12,16 @@ import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import moment from "moment"
 
-const LineChart = ({ data, color }) => {
-  const min = Math.min(...data[0].data.map((item) => item.y))
+const LineChart = ({ data, color, name }) => {
+  // const min = Math.min(...data[0].data.map((item) => item.y))
+  // calculate min value that is the lowest value in the data
+  const min = useMemo(() => {
+    return Math.min(...data[0].data.map((item) => item.y))
+  }, [data])
+
   const dateRange = data[0].data.length
+
+  console.log(min)
 
   const avg = useMemo(() => {
     const sum = data[0].data.reduce((acc, item) => acc + item.y, 0)
@@ -54,7 +61,7 @@ const LineChart = ({ data, color }) => {
           },
         },
       }}
-      animate={true}
+      animate={false}
       pointSize={4}
       margin={{ top: 40, right: 25, bottom: 60, left: 55 }}
       xScale={{ type: "point" }}
@@ -62,7 +69,7 @@ const LineChart = ({ data, color }) => {
         type: "linear",
         min: "auto",
         max: "auto",
-        stacked: true,
+        stacked: false,
         reverse: false,
       }}
       axisTop={null}
@@ -101,23 +108,10 @@ const LineChart = ({ data, color }) => {
       pointLabelYOffset={-12}
       useMesh={true}
       colors={color}
-      enableArea={true}
+      enableArea={name === "uniqueVisitors" ? false : true}
       areaBaselineValue={min}
       areaOpacity={0.25}
-      markers={[
-        {
-          axis: "y",
-          value: avg,
-          lineStyle: {
-            stroke: useColorModeValue("#ff5555", "#50fa7b"),
-            strokeWidth: 2,
-            height: 10,
-            strokeDasharray: "8 8",
-          },
-          legendOrientation: "horizontal",
-        },
-      ]}
-      curve="basis"
+      curve={name === "uniqueVisitors" ? "linear" : "basis"}
       enablePoints={false}
       enableSlices="x"
       sliceTooltip={({ slice }) => {

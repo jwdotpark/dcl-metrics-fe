@@ -9,6 +9,7 @@ import {
   Spacer,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
+import moment from "moment"
 import GridBox from "../GridBox"
 import LineChartDateRange from "./daterange/LineChartDateRange"
 import AvgStat from "./partials/AvgStat"
@@ -81,14 +82,14 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
-  const color = useColorModeValue(
-    ["#A6CEE3", "#ff79c6", "#ff5555", "#6272a4"],
-    ["#6272a4", "#ff5555", "#ff79c6", "#A6CEE3"]
-  )
+  const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
+
+  const date = {
+    first: moment(slicedData()[0].date).format("MMM. D"),
+    last: moment(slicedData()[slicedData().length - 1].date).format("MMM. D"),
+  }
 
   const LineChartComponent = ({ box, res }) => {
-    // const color = ["#A6CEE3", "#ff79c6", "#ff5555", "#6272a4"]
-
     const result = [
       {
         id: "Unique Users",
@@ -124,15 +125,15 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
       },
     ]
     return (
-      <GridItem w={box.w} h="300" mb="4" bg={box.bg} borderRadius="xl">
-        <LineChart data={result} color={color} />
+      <GridItem w={box.w} h="350" mb="4" bg={box.bg} borderRadius="xl">
+        <LineChart data={result} color={color} name="uniqueVisitors" />
       </GridItem>
     )
   }
 
   return (
     <GridBox box={box}>
-      <Flex direction={["column", "column", "column", "row"]}>
+      <Flex direction={["column", "column", "row", "row"]}>
         <Box>
           <Flex direction="column" mt="4" mx="5">
             <Box>
@@ -142,13 +143,13 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
             </Box>
             <Box>
               <Text color="gray.500" fontSize="sm">
-                Unique vistors per day in the last period
+                Unique vistors from {date.first} to {date.last}
               </Text>
             </Box>
           </Flex>
         </Box>
         <Spacer />
-        <Box m="4">
+        <Box mt={[2, 0, 4, 4]} mr="4" ml="5">
           <AvgStat avg={avgData} data={slicedData()} color={color} />
         </Box>
       </Flex>
