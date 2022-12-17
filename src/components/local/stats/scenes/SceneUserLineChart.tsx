@@ -76,7 +76,7 @@ const SceneUserLineChart = ({ data }) => {
               </Text>
             </Box>
             <Spacer />
-            <AvgStat avg={avgData} data={chartData} />
+            <AvgStat avg={avgData} data={chartData} color={color} />
           </Flex>
         </Flex>
         <Box ml="6">
@@ -91,7 +91,7 @@ const SceneUserLineChart = ({ data }) => {
           name=""
         />
         <Box h="300" mb="2">
-          <LineChart data={result} color={color} />
+          <LineChart data={result} color={color} name="sceneUserLineChart" />
         </Box>
       </Box>
     </GridBox>
