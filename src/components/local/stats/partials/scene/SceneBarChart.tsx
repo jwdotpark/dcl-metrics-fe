@@ -129,12 +129,12 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
                 borderRadius="xl"
                 shadow="md"
               >
-                <TooltipTable
+                {/* <TooltipTable
                   bar={true}
                   date={e.indexValue}
                   count={e.value}
                   degraded={false}
-                />
+                /> */}
               </Box>
             )
           }}
