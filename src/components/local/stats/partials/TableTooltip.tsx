@@ -1,17 +1,4 @@
-import {
-  TableContainer,
-  Table,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
-  Box,
-  Text,
-  Flex,
-  Spacer,
-  Center,
-} from "@chakra-ui/react"
+import { Box, Text, Flex, Spacer, Center } from "@chakra-ui/react"
 
 const TooltipTable = ({ date, count, degraded, bar, name, color }) => {
   return (
