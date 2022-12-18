@@ -14,15 +14,31 @@ import CountUp from "react-countup"
 import { FiInfo } from "react-icons/fi"
 
 const AvgStat = ({ avg, data, color }) => {
+  if (typeof avg === "number") {
+    avg = [
+      {
+        id: "Average Value",
+        value: avg,
+      },
+    ]
+  }
   return (
     <Box>
       <Box>
         <Flex>
-          <Center>
-            <Tooltip label="Hover me">
-              <FiInfo size="16" />
+          {avg.length > 1 && (
+            <Tooltip
+              p="2"
+              fontSize="sm"
+              borderRadius="xl"
+              label={`Average value for ${data.length} days`}
+              placement="top"
+            >
+              <Box w="100%" mr="-2" pt="1">
+                <FiInfo size="14px" />
+              </Box>
             </Tooltip>
-          </Center>
+          )}
           {typeof avg === "object" &&
             avg.map((item, i) => {
               return (
@@ -52,20 +68,6 @@ const AvgStat = ({ avg, data, color }) => {
                 </Box>
               )
             })}
-          {typeof avg === "number" && (
-            <>
-              {/* <Text mr="2" fontSize={["xl", "xl", "2xl", "2xl"]}></Text> */}
-              <Box
-                mr="2"
-                color={color[0]}
-                fontSize={["xl", "xl", "2xl", "2xl"]}
-                fontWeight="bold"
-                textAlign={["start", "start", "end", "end"]}
-              >
-                <CountUp end={avg} duration={0.5} />
-              </Box>
-            </>
-          )}
         </Flex>
       </Box>
     </Box>
