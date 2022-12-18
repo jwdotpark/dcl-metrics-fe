@@ -98,12 +98,12 @@ const ActiveScenes = ({ visitorLoading, data }) => {
             <Flex direction="column">
               <Box>
                 <Text fontSize="2xl">
-                  <b>Unique Visitors </b>
+                  <b>Scenes Visited </b>
                 </Text>
               </Box>
               <Box>
                 <Text color="gray.500" fontSize="sm">
-                  Parcels visited from {date.first} to {date.last}
+                  Scenes visited from {date.first} to {date.last}
                 </Text>
               </Box>
             </Flex>

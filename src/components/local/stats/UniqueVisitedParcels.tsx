@@ -92,7 +92,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
             <Flex direction="column">
               <Box>
                 <Text fontSize="2xl">
-                  <b>Unique Visitors </b>
+                  <b>Parcels Visitors </b>
                 </Text>
               </Box>
               <Box>
