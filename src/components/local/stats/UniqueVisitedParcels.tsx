@@ -55,8 +55,9 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
+  const color = ["#CAB2D6FF"]
+
   const LineChartComponent = ({ box, res }) => {
-    const color = ["#CAB2D6FF"]
     const result = [
       {
         id: "Parcels Visited",
@@ -88,7 +89,7 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
               </Text>
             </Box>
             <Spacer />
-            {/* <AvgStat avg={avgData} data={slicedData()} /> */}
+            <AvgStat avg={avgData} data={slicedData()} color={color} />
           </Flex>
         </Flex>
         <Box ml="6">

@@ -74,8 +74,8 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
       return [
         { id: "Unique Users", value: Math.floor(sumUniqueUsers / validLength) },
         { id: "New Users", value: Math.floor(sumNewUsers / validLength) },
-        { id: "Named Users", value: Math.floor(sumNamedUsers / validLength) },
         { id: "Guest Users", value: Math.floor(sumGuestUsers / validLength) },
+        { id: "Named Users", value: Math.floor(sumNamedUsers / validLength) },
       ]
     }
     setAvgData(result)
@@ -108,18 +108,18 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
         })),
       },
       {
-        id: "Named Users",
-        data: slicedData().map((item) => ({
-          x: item.date,
-          y: item.named_users,
-          degraded: item.degraded,
-        })),
-      },
-      {
         id: "Guest Users",
         data: slicedData().map((item) => ({
           x: item.date,
           y: item.guest_users,
+          degraded: item.degraded,
+        })),
+      },
+      {
+        id: "Named Users",
+        data: slicedData().map((item) => ({
+          x: item.date,
+          y: item.named_users,
           degraded: item.degraded,
         })),
       },
