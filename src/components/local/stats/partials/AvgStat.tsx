@@ -1,15 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {
-  Box,
-  Text,
-  Flex,
-  Tooltip,
-  Spacer,
-  Center,
-  useColorModeValue,
-  useBreakpointValue,
-} from "@chakra-ui/react"
-import moment from "moment"
+import { Box, Text, Flex, Tooltip } from "@chakra-ui/react"
 import CountUp from "react-countup"
 import { FiInfo } from "react-icons/fi"
 
@@ -34,7 +24,7 @@ const AvgStat = ({ avg, data, color }) => {
               label={`Average value for ${data.length} days`}
               placement="top"
             >
-              <Box w="100%" mr="-2" pt="1">
+              <Box w="100%" pt="1">
                 <FiInfo size="14px" />
               </Box>
             </Tooltip>
@@ -51,7 +41,7 @@ const AvgStat = ({ avg, data, color }) => {
                 >
                   <Flex direction="column" minW={[0, 0, 75, 100]}>
                     <Box mr="2" textAlign={["start", "start", "end", "end"]}>
-                      <Text fontSize="xs" noOfLines={1}>
+                      <Text fontSize="sm" noOfLines={1}>
                         {item.id}
                       </Text>
                     </Box>

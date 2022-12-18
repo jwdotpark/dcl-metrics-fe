@@ -8,6 +8,7 @@ import {
   Spacer,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
+import moment from "moment"
 import GridBox from "../GridBox"
 import LineChartDateRange from "./daterange/LineChartDateRange"
 import AvgStat from "./partials/AvgStat"
@@ -61,8 +62,14 @@ const ActiveScenes = ({ visitorLoading, data }) => {
     (item) => item.active_scenes !== 0
   ).length
 
+  const color = ["#ffb86c"]
+
+  const date = {
+    first: moment(slicedData()[0].date).format("MMM. D"),
+    last: moment(slicedData()[slicedData().length - 1].date).format("MMM. D"),
+  }
+
   const LineChartComponent = ({ box, res }) => {
-    const color = ["#ffb86c"]
     const result = [
       {
         id: "Active Scenes",
@@ -86,21 +93,25 @@ const ActiveScenes = ({ visitorLoading, data }) => {
   return (
     <>
       <GridBox box={box}>
-        <Flex pos="relative" mt="4" mx="5">
-          <Flex w="100%">
-            <Box>
-              <Text fontSize="2xl">
-                <b>Scenes Visited</b>
-              </Text>
-            </Box>
+        <Box>
+          <Flex direction="row" mt="4" mx="5">
+            <Flex direction="column">
+              <Box>
+                <Text fontSize="2xl">
+                  <b>Unique Visitors </b>
+                </Text>
+              </Box>
+              <Box>
+                <Text color="gray.500" fontSize="sm">
+                  Parcels visited from {date.first} to {date.last}
+                </Text>
+              </Box>
+            </Flex>
             <Spacer />
-            {/* <AvgStat avg={avgData} data={slicedData()} /> */}
+            <Box>
+              <AvgStat avg={avgData} data={slicedData()} color={color} />
+            </Box>
           </Flex>
-        </Flex>
-        <Box ml="6">
-          <Text color="gray.500" fontSize="sm">
-            Scenes visited per day in the last period
-          </Text>
         </Box>
         <LineChartDateRange
           dateRange={dateRange}

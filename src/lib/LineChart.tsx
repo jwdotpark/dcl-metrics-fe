@@ -1,32 +1,19 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
-import {
-  Text,
-  Box,
-  Center,
-  useColorModeValue,
-  useColorMode,
-} from "@chakra-ui/react"
-import { useState, useEffect, useMemo } from "react"
+import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
+import { useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import moment from "moment"
 
 const LineChart = ({ data, color, name }) => {
-  // const min = Math.min(...data[0].data.map((item) => item.y))
-  // calculate min value that is the lowest value in the data
   const min = useMemo(() => {
-    return Math.min(...data[0].data.map((item) => item.y))
+    const lastData = data[data.length - 1].data
+    const lastDataY = lastData.map((item) => item.y)
+    return Math.min(...lastDataY)
   }, [data])
 
   const dateRange = data[0].data.length
-
-  console.log(min)
-
-  const avg = useMemo(() => {
-    const sum = data[0].data.reduce((acc, item) => acc + item.y, 0)
-    return Math.floor(sum / data[0].data.length)
-  }, [data])
 
   const yAxisLabel = (value) => {
     const lastChar = value.toString().slice(-2)
@@ -108,10 +95,10 @@ const LineChart = ({ data, color, name }) => {
       pointLabelYOffset={-12}
       useMesh={true}
       colors={color}
-      enableArea={name === "uniqueVisitors" ? false : true}
+      enableArea={name === "uniqueVisitors" ? true : true}
       areaBaselineValue={min}
       areaOpacity={0.25}
-      curve={name === "uniqueVisitors" ? "linear" : "linear"}
+      curve="step"
       enablePoints={false}
       enableSlices="x"
       sliceTooltip={({ slice }) => {
@@ -129,16 +116,19 @@ const LineChart = ({ data, color, name }) => {
                 </Text>
               </Text>
             </Center>
-            {slice.points.map((point, i) => (
-              <Box key={point.serieId}>
-                <TooltipTable
-                  name={point.serieId}
-                  count={point.data.yFormatted}
-                  degraded={point.data.degraded}
-                  color={color[i]}
-                />
-              </Box>
-            ))}
+            {slice.points
+              .slice(0)
+              .reverse()
+              .map((point, i) => (
+                <Box key={point.serieId}>
+                  <TooltipTable
+                    name={point.serieId}
+                    count={point.data.yFormatted}
+                    degraded={point.data.degraded}
+                    color={color[i]}
+                  />
+                </Box>
+              ))}
           </Box>
         )
       }}

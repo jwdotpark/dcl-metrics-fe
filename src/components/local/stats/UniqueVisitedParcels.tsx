@@ -13,6 +13,7 @@ import LineChartDateRange from "./daterange/LineChartDateRange"
 import AvgStat from "./partials/AvgStat"
 import Loading from "../Loading"
 import LineChart from "../../../lib/LineChart"
+import moment from "moment"
 
 // active_parcels
 const UniqueVisitedParcels = ({ visitorLoading, data }) => {
@@ -57,6 +58,11 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
 
   const color = ["#CAB2D6FF"]
 
+  const date = {
+    first: moment(slicedData()[0].date).format("MMM. D"),
+    last: moment(slicedData()[slicedData().length - 1].date).format("MMM. D"),
+  }
+
   const LineChartComponent = ({ box, res }) => {
     const result = [
       {
@@ -81,21 +87,25 @@ const UniqueVisitedParcels = ({ visitorLoading, data }) => {
   return (
     <>
       <GridBox box={box}>
-        <Flex pos="relative" mt="4" mx="5">
-          <Flex w="100%">
-            <Box>
-              <Text fontSize="2xl">
-                <b>Parcels Visited</b>
-              </Text>
-            </Box>
+        <Box>
+          <Flex direction="row" mt="4" mx="5">
+            <Flex direction="column">
+              <Box>
+                <Text fontSize="2xl">
+                  <b>Unique Visitors </b>
+                </Text>
+              </Box>
+              <Box>
+                <Text color="gray.500" fontSize="sm">
+                  Parcels visited from {date.first} to {date.last}
+                </Text>
+              </Box>
+            </Flex>
             <Spacer />
-            <AvgStat avg={avgData} data={slicedData()} color={color} />
+            <Box>
+              <AvgStat avg={avgData} data={slicedData()} color={color} />
+            </Box>
           </Flex>
-        </Flex>
-        <Box ml="6">
-          <Text color="gray.500" fontSize="sm">
-            Parcels visited per day in the last period
-          </Text>
         </Box>
         <LineChartDateRange
           dateRange={dateRange}

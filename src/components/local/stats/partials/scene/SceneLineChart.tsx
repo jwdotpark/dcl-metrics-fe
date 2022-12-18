@@ -219,27 +219,30 @@ const MyResponsiveLine = ({ res, selectedScene }) => {
                       </Tr>
                     </Thead>
 
-                    {slice.points.map((point, i) => (
-                      <Tbody key={i}>
-                        <Tr>
-                          <Td>
-                            <Box
-                              display="inline-block"
-                              boxSize="12px"
-                              mr="2"
-                              bg={point.serieColor}
-                              borderRadius="xl"
-                            />
-                            {point.serieId}
-                          </Td>
-                          <Td isNumeric>
-                            <Text as="kbd">
-                              <b>{Number(point.data.yFormatted)}</b>
-                            </Text>
-                          </Td>
-                        </Tr>
-                      </Tbody>
-                    ))}
+                    {slice.points
+                      .slice(0)
+                      .reverse()
+                      .map((point, i) => (
+                        <Tbody key={i}>
+                          <Tr>
+                            <Td>
+                              <Box
+                                display="inline-block"
+                                boxSize="12px"
+                                mr="2"
+                                bg={point.serieColor}
+                                borderRadius="xl"
+                              />
+                              {point.serieId}
+                            </Td>
+                            <Td isNumeric>
+                              <Text as="kbd">
+                                <b>{Number(point.data.yFormatted)}</b>
+                              </Text>
+                            </Td>
+                          </Tr>
+                        </Tbody>
+                      ))}
                   </Table>
                 </TableContainer>
               </Box>
