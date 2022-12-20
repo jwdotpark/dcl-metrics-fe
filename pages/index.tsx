@@ -42,8 +42,6 @@ export async function getStaticProps() {
     ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "parcels/all"
     : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "parcels/all"
 
-  // TODO refactor below!
-  // prod endpoint
   if (process.env.NEXT_PUBLIC_STAGING === "false") {
     const response = await axios
       .get(url, {
@@ -64,7 +62,6 @@ export async function getStaticProps() {
       })
 
     if (response.status === 200) {
-      // this doeesn't work on runtime - only works on build time!
       fs.writeFileSync(
         "./public/data/cached_global_response.json",
         JSON.stringify(response.data)
@@ -100,7 +97,6 @@ export async function getStaticProps() {
       sendNotification(sceneResponse, "scenes/top", "error")
     }
 
-    // FIXME change url to prod
     const parcelResponse = await axios
       .get(parcelUrl, {
         method: "get",
@@ -135,8 +131,6 @@ export async function getStaticProps() {
       props: { data, sceneData, parcelData },
       revalidate: day,
     }
-
-    // staging endpoint
   } else if (
     process.env.NEXT_PUBLIC_STAGING === "true" &&
     process.env.LOCAL !== "true"
