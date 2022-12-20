@@ -6,6 +6,7 @@ const nextConfig = {
   images: {
     domains: ["https://api.decentraland.org/"],
   },
+  staticPageGenerationTimeout: 60000,
 }
 
 module.exports = nextConfig
