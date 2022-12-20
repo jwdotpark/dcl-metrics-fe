@@ -8,6 +8,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     // need to bundle things up
     await res.revalidate("/")
+    await res.revalidate("/map")
     await res.revalidate("/users")
     await res.revalidate("/scenes")
     await res.revalidate("/parcels")

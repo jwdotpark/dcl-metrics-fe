@@ -98,7 +98,7 @@ const LineChart = ({ data, color, name }) => {
       enableArea={name === "uniqueVisitors" ? true : true}
       areaBaselineValue={min}
       areaOpacity={0.25}
-      curve="step"
+      curve="linear"
       enablePoints={false}
       enableSlices="x"
       sliceTooltip={({ slice }) => {
