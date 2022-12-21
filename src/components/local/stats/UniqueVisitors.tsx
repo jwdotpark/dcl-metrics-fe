@@ -71,12 +71,22 @@ const UniqueVisitors = ({ visitorLoading, data }) => {
     )
 
     const result = () => {
-      return [
-        { id: "Unique Users", value: Math.floor(sumUniqueUsers / validLength) },
-        { id: "New Users", value: Math.floor(sumNewUsers / validLength) },
-        { id: "Guest Users", value: Math.floor(sumGuestUsers / validLength) },
-        { id: "Named Users", value: Math.floor(sumNamedUsers / validLength) },
+      const value = {
+        unique_users: Math.floor(sumUniqueUsers / validLength),
+        new_users: Math.floor(sumNewUsers / validLength),
+        named_users: Math.floor(sumNamedUsers / validLength),
+        guest_users: Math.floor(sumGuestUsers / validLength),
+      }
+      const result = [
+        { id: "Unique Users", value: value.unique_users },
+        { id: "New Users", value: value.new_users },
+        { id: "Guest Users", value: value.guest_users },
+        { id: "Named Users", value: value.named_users },
       ]
+      result.sort((a, b) => {
+        return b.value - a.value
+      })
+      return result
     }
     setAvgData(result)
     // eslint-disable-next-line react-hooks/exhaustive-deps
