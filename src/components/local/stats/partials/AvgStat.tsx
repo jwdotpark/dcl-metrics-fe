@@ -31,7 +31,7 @@ const AvgStat = ({ avg, data, color }) => {
                       p="2"
                       fontSize="sm"
                       borderRadius="xl"
-                      label={`Average ${item.id} value for ${data.length} days`}
+                      label={`${item.id} for ${data.length} days`}
                       placement="top"
                     >
                       <Box
