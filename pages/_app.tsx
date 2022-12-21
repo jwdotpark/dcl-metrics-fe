@@ -6,13 +6,12 @@ import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
 import ErrorBoundary from "../src/components/error/ErrorBoundary"
+const myFont = localFont({ src: "../public/font/Mona-Sans-Medium.woff2" })
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const telemetry = () => {
     return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }
-
-  // const myFont = localFont({ src: "./font/Mona-Sans.woff2" })
 
   return (
     <ChakraProvider>
@@ -43,7 +42,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           ></Script>
         )}
         <ErrorBoundary>
-          <Component {...pageProps} />
+          <main className={myFont.className}>
+            <Component {...pageProps} />
+          </main>
         </ErrorBoundary>
       </Provider>
     </ChakraProvider>

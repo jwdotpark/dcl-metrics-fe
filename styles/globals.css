@@ -26,3 +26,9 @@ a {
   }
 }
 
+@font-face {
+  font-family: 'Mona Sans !imprtant';
+  src: url("../public/font/Mona-Sans-Medium.woff2");
+  font-style: normal;
+}
+
