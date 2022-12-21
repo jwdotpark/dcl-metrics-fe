@@ -18,6 +18,7 @@
     "@chakra-ui/react": "^2.2.4",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@next/font": "^13.0.7",
     "@nivo/bar": "^0.79.1",
     "@nivo/bump": "^0.80.0",
     "@nivo/core": "^0.80.0",

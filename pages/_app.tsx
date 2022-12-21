@@ -1,4 +1,5 @@
 import "../styles/globals.css"
+import localFont from "@next/font/local"
 import Head from "next/head"
 import Script from "next/script"
 import type { AppProps } from "next/app"
@@ -10,6 +11,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const telemetry = () => {
     return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }
+
+  const myFont = localFont({ src: "./font/Mona-Sans.woff2" })
 
   return (
     <ChakraProvider>
