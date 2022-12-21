@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }
 
-  const myFont = localFont({ src: "./font/Mona-Sans.woff2" })
+  // const myFont = localFont({ src: "./font/Mona-Sans.woff2" })
 
   return (
     <ChakraProvider>

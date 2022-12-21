@@ -143,7 +143,7 @@ const SidebarContent = ({
         placement="right"
       >
         <Box ml={sidebarOpen && subItem && "4"}>
-          <Link href={"/" + name} passHref>
+          <Link href={"/" + name} passHref legacyBehavior>
             <a>
               <NavItem
                 height="3rem"
@@ -188,7 +188,7 @@ const SidebarContent = ({
         ml="4"
         cursor="pointer"
       >
-        <Link href="/" passHref>
+        <Link href="/" passHref legacyBehavior>
           <HStack>
             <Image boxSize="26px" shadow="md" alt="logo" src={logo.src} />
             <Text

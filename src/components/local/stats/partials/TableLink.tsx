@@ -18,7 +18,7 @@ const TableLink = (data) => {
   return (
     <Box>
       <ButtonGroup size="sm">
-        <Link href={dclLink}>
+        <Link href={dclLink} legacyBehavior>
           <a target="_blank" rel="noopener noreferrer">
             <Tooltip
               p="2"
@@ -39,8 +39,8 @@ const TableLink = (data) => {
                   <Image
                     src={dclLogo}
                     alt="link logo"
-                    width="18px"
-                    height="18px"
+                    width="18"
+                    height="18"
                     objectFit="cover"
                   />
                 </Center>
@@ -49,7 +49,7 @@ const TableLink = (data) => {
           </a>
         </Link>
 
-        <Link href={etherscanLink}>
+        <Link href={etherscanLink} legacyBehavior>
           <a target="_blank" rel="noopener noreferrer">
             <Tooltip
               p="2"
@@ -70,8 +70,8 @@ const TableLink = (data) => {
                   <Image
                     src={etherscanLogo}
                     alt="link logo"
-                    width="18px"
-                    height="18px"
+                    width="18"
+                    height="18"
                     objectFit="cover"
                   />
                 </Center>
