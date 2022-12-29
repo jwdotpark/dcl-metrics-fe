@@ -118,7 +118,7 @@ const LineChart = ({ data, color, name }) => {
             </Center>
             {slice.points
               .slice(0)
-              .reverse()
+              .sort((a, b) => b.data.yFormatted - a.data.yFormatted)
               .map((point, i) => (
                 <Box key={point.serieId}>
                   <TooltipTable
