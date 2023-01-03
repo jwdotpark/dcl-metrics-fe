@@ -12,7 +12,8 @@
     "lint": "next lint",
     "prod": "yarn build && yarn start",
     "test": "jest --coverage --silent",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.4",
@@ -56,6 +57,7 @@
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/parser": "^5.39.0",
+    "cypress": "^12.2.0",
     "eslint": "8.20.0",
     "eslint-config-next": "^13.0.7",
     "eslint-plugin-chakra-ui": "^0.7.5",
