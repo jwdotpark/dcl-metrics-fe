@@ -12,7 +12,8 @@
     "lint": "next lint",
     "prod": "yarn build && yarn start",
     "test": "jest --coverage --silent",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "test:e2e": "cypress run --headless"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.4",
