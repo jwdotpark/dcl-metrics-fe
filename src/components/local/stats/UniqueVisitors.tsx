@@ -3,7 +3,11 @@ import { useEffect, useState } from "react"
 import moment from "moment"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
-import { defaultDateRange } from "../../../lib/data/chartInfo"
+import {
+  defaultDateRange,
+  sliceData,
+  dateFormat,
+} from "../../../lib/data/chartInfo"
 import LineChartDateRange from "./daterange/LineChartDateRange"
 import LineChart from "../../../lib/LineChart"
 
@@ -34,19 +38,20 @@ const UniqueVisitors = ({ data }) => {
     }
   }
 
+  const partial = sliceData(chartData, dateRange)
+
   const date = {
-    first: moment(slicedData()[0].date).format("MMM. D"),
-    last: moment(slicedData()[slicedData().length - 1].date).format("MMM. D"),
+    first: moment(partial[0].date).format(dateFormat),
+    last: moment(partial[partial.length - 1].date).format(dateFormat),
   }
 
   useEffect(() => {
-    const validLength = slicedData().length
-
+    const validLength = partial.length
     const sum = {
-      uniqueUsers: slicedData().reduce((acc, cur) => acc + cur.unique_users, 0),
-      newUsers: slicedData().reduce((acc, cur) => acc + cur.new_users, 0),
-      namedUsers: slicedData().reduce((acc, cur) => acc + cur.named_users, 0),
-      guestUsers: slicedData().reduce((acc, cur) => acc + cur.guest_users, 0),
+      uniqueUsers: partial.reduce((acc, cur) => acc + cur.unique_users, 0),
+      newUsers: partial.reduce((acc, cur) => acc + cur.new_users, 0),
+      namedUsers: partial.reduce((acc, cur) => acc + cur.named_users, 0),
+      guestUsers: partial.reduce((acc, cur) => acc + cur.guest_users, 0),
     }
 
     const result = () => {
