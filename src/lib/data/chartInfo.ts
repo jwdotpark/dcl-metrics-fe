@@ -12,14 +12,12 @@ export const sliceData = (chartData: [], dateRange: number) => {
   }
 }
 
-export const date = (chartData, dateRange) => {
+// TODO type this
+export const date = (chartData: [], dateRange: number) => {
   const partial = sliceData(chartData, dateRange)
   // @ts-ignore
-  // TODO type this
   const first = moment(partial[0].date).format(dateFormat)
   // @ts-ignore
-  // TODO type this
   const last = moment(partial[partial.length - 1].date).format(dateFormat)
-  console.log(first, last)
   return { date: { first: first, last: last } }
 }
