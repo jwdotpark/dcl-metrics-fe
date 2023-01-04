@@ -30,13 +30,13 @@ const UniqueVisitors = ({ data }) => {
     })
   })
 
-  const slicedData = () => {
-    if (chartData.length - dateRange > 0) {
-      return chartData.slice(chartData.length - dateRange, chartData.length)
-    } else {
-      return chartData
-    }
-  }
+  //const slicedData = () => {
+  //  if (chartData.length - dateRange > 0) {
+  //    return chartData.slice(chartData.length - dateRange, chartData.length)
+  //  } else {
+  //    return chartData
+  //  }
+  //}
 
   const partial = sliceData(chartData, dateRange)
 
@@ -45,8 +45,44 @@ const UniqueVisitors = ({ data }) => {
     last: moment(partial[partial.length - 1].date).format(dateFormat),
   }
 
+  const result = [
+    {
+      id: "Unique Users",
+      data: partial.map((item) => ({
+        x: item.date,
+        y: item.unique_users,
+        degraded: item.degraded,
+      })),
+    },
+    {
+      id: "New Users",
+      data: partial.map((item) => ({
+        x: item.date,
+        y: item.new_users,
+        degraded: item.degraded,
+      })),
+    },
+    {
+      id: "Guest Users",
+      data: partial.map((item) => ({
+        x: item.date,
+        y: item.guest_users,
+        degraded: item.degraded,
+      })),
+    },
+    {
+      id: "Named Users",
+      data: partial.map((item) => ({
+        x: item.date,
+        y: item.named_users,
+        degraded: item.degraded,
+      })),
+    },
+  ]
+
   useEffect(() => {
     const validLength = partial.length
+
     const sum = {
       uniqueUsers: partial.reduce((acc, cur) => acc + cur.unique_users, 0),
       newUsers: partial.reduce((acc, cur) => acc + cur.new_users, 0),
@@ -61,13 +97,13 @@ const UniqueVisitors = ({ data }) => {
         named_users: Math.floor(sum.namedUsers / validLength),
         guest_users: Math.floor(sum.guestUsers / validLength),
       }
+
       const map = [
         { id: "Unique Users", value: value.unique_users },
         { id: "New Users", value: value.new_users },
         { id: "Guest Users", value: value.guest_users },
         { id: "Named Users", value: value.named_users },
-      ]
-      map.sort((a, b) => {
+      ].sort((a, b) => {
         return b.value - a.value
       })
       return map
@@ -77,47 +113,12 @@ const UniqueVisitors = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
-  const result = [
-    {
-      id: "Unique Users",
-      data: slicedData().map((item) => ({
-        x: item.date,
-        y: item.unique_users,
-        degraded: item.degraded,
-      })),
-    },
-    {
-      id: "New Users",
-      data: slicedData().map((item) => ({
-        x: item.date,
-        y: item.new_users,
-        degraded: item.degraded,
-      })),
-    },
-    {
-      id: "Guest Users",
-      data: slicedData().map((item) => ({
-        x: item.date,
-        y: item.guest_users,
-        degraded: item.degraded,
-      })),
-    },
-    {
-      id: "Named Users",
-      data: slicedData().map((item) => ({
-        x: item.date,
-        y: item.named_users,
-        degraded: item.degraded,
-      })),
-    },
-  ]
-
   return (
     <BoxWrapper>
       <BoxTitle
         date={date}
         avgData={avgData}
-        slicedData={slicedData()}
+        slicedData={partial}
         color={color}
       />
       <LineChartDateRange
