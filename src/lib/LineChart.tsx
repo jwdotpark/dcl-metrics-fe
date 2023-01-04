@@ -5,6 +5,7 @@ import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
 import { useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import moment from "moment"
+import { chartHeight } from "../lib/data/chartInfo"
 
 const LineChart = ({ data, color, name }) => {
   const min = useMemo(() => {
@@ -35,104 +36,106 @@ const LineChart = ({ data, color, name }) => {
   }
 
   return (
-    <ResponsiveLine
-      data={data}
-      theme={{
-        textColor: useColorModeValue("black", "white"),
-        fontSize: 12,
-        grid: {
-          line: {
-            stroke: "gray",
-            opacity: 0.25,
-            strokeDasharray: "1 1",
+    <Box h={chartHeight}>
+      <ResponsiveLine
+        data={data}
+        theme={{
+          textColor: useColorModeValue("black", "white"),
+          fontSize: 12,
+          grid: {
+            line: {
+              stroke: "gray",
+              opacity: 0.25,
+              strokeDasharray: "1 1",
+            },
           },
-        },
-      }}
-      animate={false}
-      pointSize={4}
-      margin={{ top: 40, right: 25, bottom: 60, left: 55 }}
-      xScale={{ type: "point" }}
-      yScale={{
-        type: "linear",
-        min: "auto",
-        max: "auto",
-        stacked: false,
-        reverse: false,
-      }}
-      axisTop={null}
-      axisRight={null}
-      axisBottom={{
-        orient: "bottom",
-        tickSize: 5,
-        tickPadding: 10,
-        tickRotation: yAxisLabelDegree(),
-        format: (value) => yAxisLabel(value),
-      }}
-      axisLeft={{
-        orient: "left",
-        tickSize: 5,
-        tickPadding: 10,
-        tickRotation: 0,
-        legend: "Visit Count",
-        legendOffset: -60,
-        legendPosition: "middle",
-        renderTick: (tick) => {
+        }}
+        animate={false}
+        pointSize={4}
+        margin={{ top: 40, right: 25, bottom: 60, left: 55 }}
+        xScale={{ type: "point" }}
+        yScale={{
+          type: "linear",
+          min: "auto",
+          max: "auto",
+          stacked: false,
+          reverse: false,
+        }}
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+          orient: "bottom",
+          tickSize: 5,
+          tickPadding: 10,
+          tickRotation: yAxisLabelDegree(),
+          format: (value) => yAxisLabel(value),
+        }}
+        axisLeft={{
+          orient: "left",
+          tickSize: 5,
+          tickPadding: 10,
+          tickRotation: 0,
+          legend: "Visit Count",
+          legendOffset: -60,
+          legendPosition: "middle",
+          renderTick: (tick) => {
+            return (
+              <text
+                x={tick.x - 37}
+                y={tick.y + 4}
+                fontSize="11px"
+                fill={useColorModeValue("black", "white")}
+              >
+                {tick.value.toFixed(0)}
+              </text>
+            )
+          },
+        }}
+        pointColor={{ theme: "background" }}
+        pointBorderWidth={2}
+        pointBorderColor={{ from: "serieColor" }}
+        pointLabelYOffset={-12}
+        useMesh={true}
+        colors={color}
+        enableArea={name === "uniqueVisitors" ? true : true}
+        areaBaselineValue={min}
+        areaOpacity={0.25}
+        curve="linear"
+        enablePoints={false}
+        enableSlices="x"
+        sliceTooltip={({ slice }) => {
           return (
-            <text
-              x={tick.x - 37}
-              y={tick.y + 4}
-              fontSize="11px"
-              fill={useColorModeValue("black", "white")}
+            <Box
+              sx={{ backdropFilter: "blur(5px)" }}
+              p="2"
+              color={useColorModeValue("black", "white")}
             >
-              {tick.value.toFixed(0)}
-            </text>
-          )
-        },
-      }}
-      pointColor={{ theme: "background" }}
-      pointBorderWidth={2}
-      pointBorderColor={{ from: "serieColor" }}
-      pointLabelYOffset={-12}
-      useMesh={true}
-      colors={color}
-      enableArea={name === "uniqueVisitors" ? true : true}
-      areaBaselineValue={min}
-      areaOpacity={0.25}
-      curve="linear"
-      enablePoints={false}
-      enableSlices="x"
-      sliceTooltip={({ slice }) => {
-        return (
-          <Box
-            sx={{ backdropFilter: "blur(5px)" }}
-            p="2"
-            color={useColorModeValue("black", "white")}
-          >
-            <Center mb="1">
-              <Text fontSize="sm" fontWeight="bold">
-                {slice.points[0].data.xFormatted}{" "}
-                <Text display="inline-block" fontSize="xs">
-                  {slice.points[0].data.degraded && "degraded!"}
+              <Center mb="1">
+                <Text fontSize="sm" fontWeight="bold">
+                  {slice.points[0].data.xFormatted}{" "}
+                  <Text display="inline-block" fontSize="xs">
+                    {slice.points[0].data.degraded && "degraded!"}
+                  </Text>
                 </Text>
-              </Text>
-            </Center>
-            {slice.points
-              .slice(0)
-              .sort((a, b) => b.data.yFormatted - a.data.yFormatted)
-              .map((point, i) => (
-                <Box key={point.serieId}>
-                  <TooltipTable
-                    name={point.serieId}
-                    count={point.data.yFormatted}
-                    degraded={point.data.degraded}
-                    color={color[i]}
-                  />
-                </Box>
-              ))}
-          </Box>
-        )
-      }}
-    />
+              </Center>
+              {slice.points
+                .slice(0)
+                .sort((a, b) => b.data.yFormatted - a.data.yFormatted)
+                .map((point, i) => (
+                  <Box key={point.serieId}>
+                    <TooltipTable
+                      name={point.serieId}
+                      count={point.data.yFormatted}
+                      degraded={point.data.degraded}
+                      color={color[i]}
+                    />
+                  </Box>
+                ))}
+            </Box>
+          )
+        }}
+      />
+    </Box>
   )
 }
 

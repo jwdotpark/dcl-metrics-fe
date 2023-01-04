@@ -17,7 +17,7 @@ import fs from "fs"
 import { sendNotification } from "../src/lib/hooks/sendNotification"
 import Layout from "../src/components/layout/layout"
 import PSA from "../src/components/global/PSA"
-import LandPicker from "../src/components/global/Map/LandPicker"
+import LandPicker from "../src/components/global/map/LandPicker"
 import UserLayout from "../src/components/layout/global/UserLayout"
 import SceneLayout from "../src/components/layout/global/SceneLayout"
 import ParcelLayout from "../src/components/layout/global/ParcelLayout"
@@ -25,6 +25,8 @@ import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedPar
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import AvgStatBox from "../src/components/local/stats/partials/AvgStatBox"
+
+import LineChartBox from "../src/components/chart/LineChartBox"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24 * 365
@@ -206,6 +208,7 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       <Box w="100%">
+        <LineChartBox />
         {isPSAVisible && (
           <Box mb="4">
             <PSA setIsPSAVisible={setIsPSAVisible} />
@@ -213,7 +216,7 @@ const GlobalPage: NextPage = (props) => {
         )}
 
         <Box mb="4">
-          <UniqueVisitors data={result.global} visitorLoading={isDataLoading} />
+          <UniqueVisitors data={result.global} />
         </Box>
 
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">

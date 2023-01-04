@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react"
-import LandPicker from "../src/components/global/Map/LandPicker"
+import LandPicker from "../src/components/global/map/LandPicker"
 import Layout from "../src/components/layout/layout"
 import staticParcel from "../public/data/cached_parcel.json"
 const axios = require("axios").default
