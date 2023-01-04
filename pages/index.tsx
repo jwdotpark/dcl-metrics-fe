@@ -26,8 +26,6 @@ import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import AvgStatBox from "../src/components/local/stats/partials/AvgStatBox"
 
-import LineChartBox from "../src/components/chart/LineChartBox"
-
 export async function getStaticProps() {
   const day = 60 * 60 * 24 * 365
   const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
@@ -208,7 +206,6 @@ const GlobalPage: NextPage = (props) => {
   return (
     <Layout>
       <Box w="100%">
-        <LineChartBox />
         {isPSAVisible && (
           <Box mb="4">
             <PSA setIsPSAVisible={setIsPSAVisible} />

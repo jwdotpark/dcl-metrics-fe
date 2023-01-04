@@ -1,24 +1,16 @@
 // @ts-nocheck
-import {
-  Flex,
-  Text,
-  Box,
-  GridItem,
-  Center,
-  useColorModeValue,
-  Spacer,
-} from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import moment from "moment"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
+import { defaultDateRange } from "../../../lib/data/chartInfo"
 import LineChartDateRange from "./daterange/LineChartDateRange"
 import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ data }) => {
   const chartData = []
   const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
-  const [dateRange, setDateRange] = useState(30)
+  const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
   const dataArr = Object.entries(data)
 
@@ -115,48 +107,6 @@ const UniqueVisitors = ({ data }) => {
     },
   ]
 
-  const LineChartComponent = ({ box }) => {
-    //const result = [
-    //  {
-    //    id: "Unique Users",
-    //    data: slicedData().map((item) => ({
-    //      x: item.date,
-    //      y: item.unique_users,
-    //      degraded: item.degraded,
-    //    })),
-    //  },
-    //  {
-    //    id: "New Users",
-    //    data: slicedData().map((item) => ({
-    //      x: item.date,
-    //      y: item.new_users,
-    //      degraded: item.degraded,
-    //    })),
-    //  },
-    //  {
-    //    id: "Guest Users",
-    //    data: slicedData().map((item) => ({
-    //      x: item.date,
-    //      y: item.guest_users,
-    //      degraded: item.degraded,
-    //    })),
-    //  },
-    //  {
-    //    id: "Named Users",
-    //    data: slicedData().map((item) => ({
-    //      x: item.date,
-    //      y: item.named_users,
-    //      degraded: item.degraded,
-    //    })),
-    //  },
-    //]
-    return (
-      <Box h="350">
-        <LineChart data={result} color={color} name="uniqueVisitors" />
-      </Box>
-    )
-  }
-
   return (
     <BoxWrapper>
       <BoxTitle
@@ -171,7 +121,6 @@ const UniqueVisitors = ({ data }) => {
         validLegnth={90}
         name="global_unique_visitors"
       />
-      {/*<LineChartComponent box={box} />*/}
       <LineChart data={result} color={color} name="uniqueVisitors" />
     </BoxWrapper>
   )
