@@ -7,6 +7,7 @@ import {
   defaultDateRange,
   sliceData,
   dateFormat,
+  date,
 } from "../../../lib/data/chartInfo"
 import LineChartDateRange from "./daterange/LineChartDateRange"
 import LineChart from "../../../lib/LineChart"
@@ -30,54 +31,25 @@ const UniqueVisitors = ({ data }) => {
     })
   })
 
-  //const slicedData = () => {
-  //  if (chartData.length - dateRange > 0) {
-  //    return chartData.slice(chartData.length - dateRange, chartData.length)
-  //  } else {
-  //    return chartData
-  //  }
-  //}
-
   const partial = sliceData(chartData, dateRange)
+  const dateString = date(chartData, dateRange).date
 
-  const date = {
-    first: moment(partial[0].date).format(dateFormat),
-    last: moment(partial[partial.length - 1].date).format(dateFormat),
+  const mapData = (id, key) => {
+    return {
+      id,
+      data: partial.map((item) => ({
+        x: item.date,
+        y: item[key],
+        degraded: item.degraded,
+      })),
+    }
   }
 
   const result = [
-    {
-      id: "Unique Users",
-      data: partial.map((item) => ({
-        x: item.date,
-        y: item.unique_users,
-        degraded: item.degraded,
-      })),
-    },
-    {
-      id: "New Users",
-      data: partial.map((item) => ({
-        x: item.date,
-        y: item.new_users,
-        degraded: item.degraded,
-      })),
-    },
-    {
-      id: "Guest Users",
-      data: partial.map((item) => ({
-        x: item.date,
-        y: item.guest_users,
-        degraded: item.degraded,
-      })),
-    },
-    {
-      id: "Named Users",
-      data: partial.map((item) => ({
-        x: item.date,
-        y: item.named_users,
-        degraded: item.degraded,
-      })),
-    },
+    mapData("Unique Users", "unique_users"),
+    mapData("New Users", "new_users"),
+    mapData("Guest Users", "guest_users"),
+    mapData("Named Users", "named_users"),
   ]
 
   useEffect(() => {
@@ -116,7 +88,7 @@ const UniqueVisitors = ({ data }) => {
   return (
     <BoxWrapper>
       <BoxTitle
-        date={date}
+        date={dateString}
         avgData={avgData}
         slicedData={partial}
         color={color}
