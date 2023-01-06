@@ -1,14 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Box, Text, Flex, Tooltip } from "@chakra-ui/react"
 import CountUp from "react-countup"
-import { FiInfo } from "react-icons/fi"
 
-const AvgStat = ({ avg, data, color }) => {
-  if (typeof avg === "number") {
-    avg = [
+const AvgStat = ({ avgData, data, color }) => {
+  if (typeof avgData === "number") {
+    avgData = [
       {
         id: "Average Value",
-        value: avg,
+        value: avgData,
       },
     ]
   }
@@ -16,8 +15,8 @@ const AvgStat = ({ avg, data, color }) => {
     <Box>
       <Box>
         <Flex>
-          {typeof avg === "object" &&
-            avg.map((item, i) => {
+          {typeof avgData === "object" &&
+            avgData.map((item, i) => {
               return (
                 <Box
                   key={item.id}

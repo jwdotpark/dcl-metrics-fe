@@ -3,15 +3,15 @@ import { useEffect, useState } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
-import LineChartDateRange from "./daterange/LineChartDateRange"
+import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ data }) => {
+  const dataArr = Object.entries(data)
   const chartData = []
   const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
-  const dataArr = Object.entries(data)
 
   // TODO type this
   dataArr.map((item) => {
@@ -72,20 +72,20 @@ const UniqueVisitors = ({ data }) => {
   }
 
   useEffect(() => {
-    const avgData = calculateAverages(partial)
-    setAvgData(avgData)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setAvgData(calculateAverages(partial))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
   return (
     <BoxWrapper>
       <BoxTitle
+        name="Unique Visitors"
         date={dateString}
         avgData={avgData}
         slicedData={partial}
         color={color}
       />
-      <LineChartDateRange
+      <DateRangeButton
         dateRange={dateRange}
         setDateRange={setDateRange}
         validLegnth={90}
