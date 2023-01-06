@@ -13,7 +13,7 @@ const BoxTitle = ({ name, date, avgData, slicedData, color }) => {
           </Box>
           <Box>
             <Text color="gray.500" fontSize="sm">
-              {name} from {date.first} to {date.last}
+              {name} from {date.first} - {date.last}
             </Text>
           </Box>
         </Flex>
