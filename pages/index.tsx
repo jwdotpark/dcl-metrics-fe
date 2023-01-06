@@ -194,7 +194,6 @@ const GlobalPage: NextPage = (props) => {
   const [res, setRes] = useAtom(DataAtom)
   const [sceneRes, setSceneRes] = useAtom(SceneDataAtom)
 
-  // make PSA component blink and disappear
   const [isPSAVisible, setIsPSAVisible] = useState(true)
 
   useEffect(() => {

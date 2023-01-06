@@ -76,7 +76,7 @@ const SceneUserLineChart = ({ data }) => {
               </Text>
             </Box>
             <Spacer />
-            <AvgStat avg={avgData} data={chartData} color={color} />
+            <AvgStat avgData={avgData} data={chartData} color={color} />
           </Flex>
         </Flex>
         <Box ml="6">
