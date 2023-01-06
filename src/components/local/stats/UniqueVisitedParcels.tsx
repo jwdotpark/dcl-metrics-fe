@@ -16,6 +16,7 @@ const UniqueVisitedParcels = ({ data }) => {
 
   dataArr.map((item) => {
     chartData.push({
+      id: item[0],
       date: item[0],
       active_parcels: item[1].active_parcels,
       degraded: item[1].degraded,

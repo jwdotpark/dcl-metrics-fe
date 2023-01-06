@@ -16,6 +16,7 @@ const UniqueVisitors = ({ data }) => {
   // TODO type this
   dataArr.map((item) => {
     chartData.push({
+      id: item[0],
       date: item[0],
       degraded: item[1].degraded,
       unique_users: item[1].users.unique_users,
