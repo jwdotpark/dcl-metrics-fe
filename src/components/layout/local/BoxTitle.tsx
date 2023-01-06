@@ -1,7 +1,7 @@
 import { Box, Text, Flex, Spacer, color } from "@chakra-ui/react"
 import AvgStat from "../../local/stats/partials/AvgStat"
 
-const BoxTitle = ({ name, date, avgData, slicedData, color }) => {
+const BoxTitle = ({ name, description, date, avgData, slicedData, color }) => {
   return (
     <Flex direction={["column", "column", "row", "row"]}>
       <Box>
@@ -11,11 +11,19 @@ const BoxTitle = ({ name, date, avgData, slicedData, color }) => {
               <b>{name}</b>
             </Text>
           </Box>
-          <Box>
-            <Text color="gray.500" fontSize="sm">
-              {name} from {date.first} - {date.last}
-            </Text>
-          </Box>
+          {name !== "Land Picker" ? (
+            <Box>
+              <Text color="gray.500" fontSize="sm">
+                {name} from {date.first} - {date.last}
+              </Text>
+            </Box>
+          ) : (
+            <Box>
+              <Text color="gray.500" fontSize="sm">
+                {description}
+              </Text>
+            </Box>
+          )}
         </Flex>
       </Box>
       <Spacer />

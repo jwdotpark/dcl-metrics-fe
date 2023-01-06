@@ -1,9 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
+  Flex,
   Center,
-  GridItem,
   useColorModeValue,
   Spinner,
   useDisclosure,
@@ -129,11 +127,11 @@ const Map = ({
       onToggle()
     }
 
-    setCenter({ x: x, y: y })
-
     if (selectedParcel.scene) {
       setSelectedScene(selectedParcel.scene.parcels)
     }
+
+    setCenter({ x: x, y: y })
   }
 
   const fetchTiles = async (
@@ -149,6 +147,7 @@ const Map = ({
     setIsMapLoading(false)
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const injectTiles = () => {
     // @ts-ignore
     parcelData.map((tile) => {
@@ -204,7 +203,7 @@ const Map = ({
 
   useEffect(() => {
     injectTiles()
-  }, [tiles])
+  }, [injectTiles, tiles])
 
   useEffect(() => {
     if (selectedParcel.type !== "selected_scene") {
@@ -216,7 +215,7 @@ const Map = ({
         tiles[tile].type = "selected_scene"
       })
     }
-  }, [selectedParcel])
+  }, [selectedParcel, tiles])
 
   useEffect(() => {
     if (prevScene && !isIncluded) {
@@ -225,96 +224,109 @@ const Map = ({
         tiles[parcel].type = prevTile
       })
     }
-  }, [prevScene])
+  }, [isIncluded, prevScene, prevTile, tiles])
 
   return (
-    <Box
-      w="100%"
-      h="auto"
-      border="solid 1px"
-      borderColor={useColorModeValue("gray.200", "gray.600")}
-      borderRadius="xl"
-      shadow="md"
+    <Flex
+      sx={{
+        "& > * + *": {
+          ml: [0, 0, 0, 0, 0],
+          mt: [4, 4, 4, 0],
+        },
+      }}
+      direction={[
+        "column",
+        "column",
+        "column",
+        "column",
+        isMapExpanded ? "column" : "row",
+      ]}
+      m="4"
     >
-      <GridItem w={box.w} h="100%" bg={box.bg} borderRadius="xl">
+      <Box
+        w="100%"
+        h="auto"
+        border="solid 1px"
+        borderColor={useColorModeValue("gray.200", "gray.600")}
+        borderRadius="xl"
+        shadow="md"
+      >
         <FullScreen handle={handle}>
-          <Box p="4">
-            <Box
-              overflow="hidden"
-              h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
-              bg="#25232A"
-              border="2px solid"
-              borderColor={useColorModeValue("gray.200", "gray.600")}
-              borderRadius="xl"
-              shadow="md"
-              onMouseEnter={() => {
-                setIsHover(true)
-              }}
-              onMouseLeave={() => {
-                setIsHover(false)
-              }}
-            >
-              {!isMapLoading ? (
-                <>
-                  <Box>
-                    <MapButtonGroup
-                      isMapExpanded={isMapExpanded}
-                      setIsMapExpanded={setIsMapExpanded}
-                      zoom={zoom}
-                      setZoom={setZoom}
-                      tempCoord={tempCoord}
-                      properties={properties}
-                      selectedProp={selectedProp}
-                      setSelectedProp={setSelectedProp}
-                      textColor={textColor}
-                      btnBg={btnBg}
-                      handle={handle}
-                      setMapHeight={setMapHeight}
-                    />
-                  </Box>
-                  <TileMap
-                    zoom={zoom}
-                    layers={[layer, selectedStrokeLayer, ...layers]}
-                    onHover={(x, y) => {
-                      setTempCoord({ x, y })
-                    }}
-                    onClick={(x, y) => {
-                      setCoord({ x, y })
-                      handleClick(x, y)
-                    }}
-                    onChange={(e) => {
-                      setZoom(e.zoom)
-                      setCenter(e.center)
-                    }}
-                    x={center.x}
-                    y={center.y}
-                  />
-                  <CollapsibleMapBox
-                    getButtonProps={getButtonProps}
-                    getDisclosureProps={getDisclosureProps}
-                    isOpen={isOpen}
-                    hidden={hidden}
-                    setHidden={setHidden}
-                    coord={coord}
-                    selectedParcel={selectedParcel}
+          <Box
+            overflow="hidden"
+            h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
+            bg="#25232A"
+            border="2px solid"
+            borderColor={useColorModeValue("gray.200", "gray.600")}
+            borderRadius="xl"
+            shadow="md"
+            onMouseEnter={() => {
+              setIsHover(true)
+            }}
+            onMouseLeave={() => {
+              setIsHover(false)
+            }}
+          >
+            {!isMapLoading ? (
+              <>
+                <Box>
+                  <MapButtonGroup
                     isMapExpanded={isMapExpanded}
-                    mapBoxVerticalSize={mapBoxVerticalSize}
-                    mapHeight={mapHeight}
+                    setIsMapExpanded={setIsMapExpanded}
+                    zoom={zoom}
+                    setZoom={setZoom}
+                    tempCoord={tempCoord}
+                    properties={properties}
+                    selectedProp={selectedProp}
+                    setSelectedProp={setSelectedProp}
+                    textColor={textColor}
+                    btnBg={btnBg}
                     handle={handle}
+                    setMapHeight={setMapHeight}
                   />
-                </>
-              ) : (
-                <Center
-                  h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}
-                >
-                  <Spinner />
-                </Center>
-              )}
-            </Box>
+                </Box>
+                <TileMap
+                  zoom={zoom}
+                  layers={[layer, selectedStrokeLayer, ...layers]}
+                  onHover={(x, y) => {
+                    setTempCoord({ x, y })
+                  }}
+                  onClick={(x, y) => {
+                    setCoord({ x, y })
+                    handleClick(x, y)
+                  }}
+                  onChange={(e) => {
+                    setZoom(e.zoom)
+                    setCenter(e.center)
+                  }}
+                  x={center.x}
+                  y={center.y}
+                />
+                <CollapsibleMapBox
+                  getButtonProps={getButtonProps}
+                  getDisclosureProps={getDisclosureProps}
+                  isOpen={isOpen}
+                  hidden={hidden}
+                  setHidden={setHidden}
+                  coord={coord}
+                  selectedParcel={selectedParcel}
+                  isMapExpanded={isMapExpanded}
+                  mapBoxVerticalSize={mapBoxVerticalSize}
+                  mapHeight={mapHeight}
+                  handle={handle}
+                />
+              </>
+            ) : (
+              <Center
+                h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}
+              >
+                <Spinner />
+              </Center>
+            )}
           </Box>
         </FullScreen>
-      </GridItem>
-    </Box>
+      </Box>
+    </Flex>
   )
 }
 
