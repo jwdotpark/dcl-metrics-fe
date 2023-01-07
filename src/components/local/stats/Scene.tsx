@@ -20,6 +20,9 @@ import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
 import DatePicker from "./scenes/DatePicker"
 import SceneUserLineChart from "./scenes/SceneUserLineChart"
+import BoxWrapper from "../../layout/local/BoxWrapper"
+import SceneTitle from "../../layout/local/SceneTitle"
+import { date } from "../../../lib/data/chartInfo"
 
 const Scene = ({
   res,
@@ -38,31 +41,10 @@ const Scene = ({
     visitors_by_hour_histogram,
   } = res[selectedScene]
 
-  const isMobile = useBreakpointValue({
-    base: true,
-    sm: true,
-    md: false,
-    lg: false,
-  })
-
-  const box = {
-    h: "100%",
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
-
+  // for private dashboard
   const hasMultipleScenes = res.length > 1 ? true : false
-
   const [isEmpty, setIsEmpty] = useState(false)
-  useEffect(() => {
-    const visitorValue = res[selectedScene].visitors
-    if (visitorValue === 0) {
-      setIsEmpty(true)
-    } else {
-      setIsEmpty(false)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [res])
+  const latest = moment(res[selectedScene].date).format("dddd, MMM. Do")
 
   const EmptyScene = () => {
     return (
@@ -79,46 +61,28 @@ const Scene = ({
     )
   }
 
+  useEffect(() => {
+    const visitorValue = res[selectedScene].visitors
+    if (visitorValue === 0) {
+      setIsEmpty(true)
+    } else {
+      setIsEmpty(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [res])
+
   return (
     <Box h="100%" mb="4" mx={[-4, 0]}>
-      <GridBox box={box}>
-        <Flex pos="relative" mx="5">
-          <Flex direction={isMobile ? "column" : "row"} w="100%" mt="4">
-            <Flex direction={["column", "row"]} w="100%">
-              <Box>
-                <Text fontSize={["md", "2xl"]}>
-                  <b>{name && name}</b>
-                </Text>
-              </Box>
-              <Spacer />
-              {!hasMultipleScenes && !isLoading && (
-                <Box mr="-1">
-                  <DatePicker
-                    date={date}
-                    setDate={setDate}
-                    availableDate={availableDate}
-                  />
-                </Box>
-              )}
-              {isLoading && (
-                <Box pt="4" pr="4">
-                  <Spinner />
-                </Box>
-              )}
-            </Flex>
-            <Spacer />
-          </Flex>
-        </Flex>
-        <Box ml="5" mx="6">
-          {hasMultipleScenes && (
-            <Text color="gray.500" fontSize={["xs", "sm"]}>
-              Most populated scene in Decentraland on{" "}
-              <i>
-                {moment(res[selectedScene].date).format("dddd MMM. Do YYYY")}
-              </i>
-            </Text>
-          )}
-        </Box>
+      <BoxWrapper>
+        <SceneTitle
+          name={name}
+          date={latest}
+          dateForPicker={date}
+          setDate={setDate}
+          availableDate={availableDate}
+          hasMultipleScenes={hasMultipleScenes}
+        />
+
         {!hasMultipleScenes && (
           <Flex
             sx={{
@@ -235,7 +199,7 @@ const Scene = ({
             </Box>
           </Flex>
         </Box>
-      </GridBox>
+      </BoxWrapper>
     </Box>
   )
 }
