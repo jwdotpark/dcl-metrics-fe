@@ -1,4 +1,5 @@
 import CryptoJS from "crypto-js"
+import { v4 as uuidv4 } from "uuid"
 
 export const convertSeconds = (seconds: number) => {
   const hrs = `0${Math.floor(seconds / 3600)}`.slice(-3)

@@ -12,7 +12,7 @@ const SceneSelector = ({ res, selectedScene, setSelectedScene, name }) => {
   const umamiEvent = `umami--click--${selectorName}`
 
   return (
-    <Box>
+    <Box mb="2">
       <Select
         className={umamiEvent}
         border="2px solid"

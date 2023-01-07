@@ -1,21 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Flex, Text, Spacer, useColorModeValue } from "@chakra-ui/react"
+import moment from "moment"
 import { useEffect, useState } from "react"
 import LineChart from "../../../../lib/LineChart"
+import { dateFormat } from "../../../../lib/data/chartInfo"
+import BoxTitle from "../../../layout/local/BoxTitle"
+import BoxWrapper from "../../../layout/local/BoxWrapper"
+import SceneTitle from "../../../layout/local/SceneTitle"
 import GridBox from "../../GridBox"
 import LineChartDateRange from "../daterange/LineChartDateRange"
 import AvgStat from "../partials/AvgStat"
+import DateRangeButton from "../daterange/DateRangeButton"
 
 const SceneUserLineChart = ({ data }) => {
-  const box = {
-    h: "auto",
-    w: "100%",
-    bg: useColorModeValue("gray.50", "gray.700"),
-  }
-
   const [avgData, setAvgData] = useState(0)
   const [dateRange, setDateRange] = useState<number>(30)
   const userData = data && Object.entries(data)
+  const color = "rgba(80, 150, 123)"
 
   const chartData = []
   userData.map((item) => {
@@ -24,7 +25,6 @@ const SceneUserLineChart = ({ data }) => {
       users: item[1],
     })
   })
-  const color = "rgba(80, 150, 123)"
 
   const slicedData = () => {
     if (chartData.length - dateRange > 0) {
@@ -34,13 +34,8 @@ const SceneUserLineChart = ({ data }) => {
     }
   }
 
-  const randomId = () => {
-    return Math.random().toString(36).substring(7)
-  }
-
   const result = [
     {
-      id: randomId(),
       color: "hsl(90, 70%, 50%)",
       data: slicedData().map((item) => ({
         id: item.date,
@@ -54,6 +49,11 @@ const SceneUserLineChart = ({ data }) => {
     (item) => item.active_scenes !== 0
   ).length
 
+  // grab the lastest from data
+  const date = moment(result[0].data[result[0].data.length - 1].x).format(
+    dateFormat
+  )
+
   useEffect(() => {
     const data = slicedData()
     const sum = slicedData().reduce((acc, cur) => acc + cur.users, 0)
@@ -62,39 +62,43 @@ const SceneUserLineChart = ({ data }) => {
   }, [dateRange])
 
   return (
-    <GridBox box={box}>
-      <Box
-        border="1px solid"
-        borderColor={useColorModeValue("gray.100", "gray.600")}
-        borderRadius="xl"
-      >
-        <Flex pos="relative" mt="4" mx="5">
-          <Flex w="100%">
-            <Box>
-              <Text fontSize="2xl">
-                <b>Unique Visitors</b>
-              </Text>
-            </Box>
-            <Spacer />
-            <AvgStat avgData={avgData} data={chartData} color={color} />
-          </Flex>
-        </Flex>
-        <Box ml="6">
-          <Text color="gray.500" fontSize="sm">
-            Unique vistors per day in the last period
-          </Text>
-        </Box>
-        <LineChartDateRange
-          dateRange={dateRange}
-          setDateRange={setDateRange}
-          validLegnth={validLegnth}
-          name=""
-        />
-        <Box h="300" mb="2">
+    <Flex
+      sx={{
+        "& > * + *": {
+          ml: [0, 0, 0, 4],
+          mt: [4, 4, 4, 0],
+        },
+      }}
+      direction={["column", "column", "column", "row"]}
+      w="100%"
+      h="auto"
+      mb="4"
+    >
+      <Box w="100%" pt="4" px="4">
+        <Box
+          border="1px solid"
+          borderColor={useColorModeValue("gray.100", "gray.600")}
+          borderRadius="xl"
+        >
+          <SceneTitle
+            name="Unique Scene Visitors"
+            date={date}
+            dateForPicker=""
+            setDate=""
+            availableDate={false}
+            hasMultipleScenes={true}
+          />
+
+          <DateRangeButton
+            dateRange={dateRange}
+            setDateRange={setDateRange}
+            validLegnth={validLegnth}
+            name=""
+          />
           <LineChart data={result} color={color} name="sceneUserLineChart" />
         </Box>
       </Box>
-    </GridBox>
+    </Flex>
   )
 }
 

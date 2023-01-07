@@ -82,25 +82,8 @@ const Scene = ({
           availableDate={availableDate}
           hasMultipleScenes={hasMultipleScenes}
         />
-
-        {!hasMultipleScenes && (
-          <Flex
-            sx={{
-              "& > * + *": {
-                ml: [0, 0, 0, 4],
-                mt: [4, 4, 4, 0],
-              },
-            }}
-            direction={["column", "column", "column", "row"]}
-            w="100%"
-            h="auto"
-            mb="4"
-          >
-            <Box w="100%" pt="4" px="4">
-              <SceneUserLineChart data={dailyUsers} />
-            </Box>
-          </Flex>
-        )}
+        {/* main scene user chart on private dashboard */}
+        {!hasMultipleScenes && <SceneUserLineChart data={dailyUsers} />}
         <Box m="4">
           <Flex
             sx={{
@@ -116,14 +99,12 @@ const Scene = ({
           >
             <Box w={["100%", "100%", "100%", "35%"]}>
               {hasMultipleScenes && (
-                <Box mb="2">
-                  <SceneSelector
-                    res={res}
-                    name={name && name}
-                    selectedScene={selectedScene}
-                    setSelectedScene={setSelectedScene}
-                  />
-                </Box>
+                <SceneSelector
+                  res={res}
+                  name={name && name}
+                  selectedScene={selectedScene}
+                  setSelectedScene={setSelectedScene}
+                />
               )}
               <SceneMap
                 url={map_url}
