@@ -1,6 +1,5 @@
 import {
   Text,
-  Image,
   Box,
   FlexProps,
   Flex,
@@ -8,7 +7,7 @@ import {
   IconButton,
   HStack,
 } from "@chakra-ui/react"
-import logo from "public/images/logo.png"
+import Image from "next/image"
 import { FiMenu } from "react-icons/fi"
 import ColorButton from "../ColorButton"
 import LogOutButton from "../LogOutButton"
@@ -49,7 +48,10 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
         fontWeight="bold"
       >
         <HStack>
-          <Image boxSize="26px" shadow="md" alt="logo" src={logo.src} />
+          <Box shadow="md">
+            <Image width="26" height="26" alt="logo" src={"/images/logo.png"} />
+          </Box>
+          {/*<Image boxSize="26px" shadow="md" alt="logo" src={logo.src} />*/}
           <Text
             fontSize="20px"
             fontWeight="extrabold"

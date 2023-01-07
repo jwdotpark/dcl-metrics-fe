@@ -7,11 +7,10 @@ import {
   CloseButton,
   Spacer,
   Text,
-  Image,
   BoxProps,
 } from "@chakra-ui/react"
+import Image from "next/image"
 import Link from "next/link"
-import logo from "public/images/logo.png"
 import { useRouter } from "next/router"
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi"
 import { sidebarList } from "../sidebarList"
@@ -94,10 +93,17 @@ const SidebarContent = ({
       >
         <Link href="/" passHref legacyBehavior>
           <HStack>
-            <Image boxSize="26px" shadow="md" alt="logo" src={logo.src} />
+            <Box sx={{ transform: "translateY(-3px)" }} shadow="md">
+              <Image
+                width="26"
+                height="26"
+                alt="logo"
+                src={"/images/logo.png"}
+              />
+            </Box>
             <Text
               fontSize="18px"
-              fontWeight="extrabold"
+              fontWeight="bold"
               wordBreak="keep-all"
               css={{ transform: "translateY(-1px)" }}
               data-testid="sidebar-title"

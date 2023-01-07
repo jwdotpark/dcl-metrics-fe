@@ -24,7 +24,6 @@ import ParcelLayout from "../src/components/layout/global/ParcelLayout"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
-import AvgStatBox from "../src/components/local/stats/partials/AvgStatBox"
 
 export async function getStaticProps() {
   const day = 60 * 60 * 24 * 365
