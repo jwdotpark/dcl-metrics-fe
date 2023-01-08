@@ -10,7 +10,7 @@ const DatePicker = ({ date, setDate, availableDate }) => {
   return (
     <Box
       w={["100%", "150px"]}
-      border="2px solid"
+      border="1px solid"
       borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
       shadow="md"

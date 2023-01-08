@@ -2,33 +2,21 @@
 import {
   Box,
   useColorModeValue,
-  SimpleGrid,
   Flex,
-  useBreakpointValue,
   Text,
-  Spacer,
-  Center,
-  Tooltip,
   Table,
   Tbody,
   Td,
   Tr,
-  Thead,
-  Th,
-  TableCaption,
 } from "@chakra-ui/react"
 import moment from "moment"
-import { useState } from "react"
 import SceneHelpTooltip from "./SceneHelpTooltip"
 import { description, name } from "../../../../../lib/data/sceneInfo"
 import momentDurationFormatSetup from "moment-duration-format"
 
 const StatBox = ({ data, selectedScene }) => {
   momentDurationFormatSetup(moment)
-
-  // const [dataArr, setDataArr] = useState(Object.entries(data))
   const dataArr = Object.entries(data)
-
   const stats = dataArr.map((item, index) => {
     return {
       id: index,
@@ -77,12 +65,7 @@ const StatBox = ({ data, selectedScene }) => {
           borderRadius="xl"
           shadow="md"
         >
-          <Table
-            minH="420px"
-            colorScheme="blackAlpha"
-            size="sm"
-            variant="striped"
-          >
+          <Table h="420px" colorScheme="blackAlpha" size="sm" variant="striped">
             <Tbody>
               {filteredStats
                 .slice(1, filteredStats.length / 2 + 1)
@@ -93,25 +76,18 @@ const StatBox = ({ data, selectedScene }) => {
                         <Flex>
                           <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["md", "sm", "md", "md"]}>
-                              {name}
-                            </Text>
+                            <Text fontSize={["xs", "sm"]}>{name}</Text>
                           </Box>
                         </Flex>
                       </Td>
                       <Td borderBottom="none" isNumeric>
                         <Box>
-                          {/* @ts-ignore */}
-                          <Text
-                            fontSize={["md", "sm", "md", "md"]}
-                            fontWeight="bold"
-                          >
+                          <Text fontSize={["xs", "sm"]} fontWeight="bold">
                             {name === "Avg Time Spent" ||
                             name === "Avg Time Spent AFK"
-                              ?
-                              moment.duration(Number(value), 'seconds').format(
-                                "h[h] m[m] s[s]",
-                              )
+                              ? moment
+                                  .duration(Number(value), "seconds")
+                                  .format("h[h] m[m] s[s]")
                               : value}
                             {name === "Visitors" && " users"}
                             {name === "Share of Global Visitors" && "%"}
@@ -148,9 +124,7 @@ const StatBox = ({ data, selectedScene }) => {
                         <Flex>
                           <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["md", "sm", "md", "md"]}>
-                              {name}
-                            </Text>
+                            <Text fontSize={["xs", "sm"]}>{name}</Text>
                           </Box>
                         </Flex>
                       </Td>
@@ -158,13 +132,13 @@ const StatBox = ({ data, selectedScene }) => {
                         <Box>
                           <Text
                             minW="100px"
-                            fontSize={["md", "sm", "md", "md"]}
+                            fontSize={["xs", "sm"]}
                             fontWeight="bold"
                           >
-                            {/* @ts-ignore */}
                             {name === "Avg Complete Session Duration"
-                              ?
-                              moment.duration(Number(value), 'seconds').format("h[h] m[m] s[s]",)
+                              ? moment
+                                  .duration(Number(value), "seconds")
+                                  .format("h[h] m[m] s[s]")
                               : value}
                           </Text>
                         </Box>

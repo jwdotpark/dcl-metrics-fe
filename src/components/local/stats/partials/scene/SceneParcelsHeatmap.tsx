@@ -8,17 +8,17 @@ import {
   Tooltip,
 } from "@chakra-ui/react"
 import { SceneColor } from "../../../../../lib/hooks/utils"
-// import CountUp from "react-countup"
-// import { ColumnSizing } from "@tanstack/react-table"
 
 const SceneParcelsHeatmap = ({ data, selectedScene }) => {
+  const heatmapHeight = 400
+
   const minX = Math.min(...Object.keys(data).map((d) => d.split(",")[0]))
   const maxX = Math.max(...Object.keys(data).map((d) => d.split(",")[0]))
   const minY = Math.min(...Object.keys(data).map((d) => d.split(",")[1]))
   const maxY = Math.max(...Object.keys(data).map((d) => d.split(",")[1]))
 
-  // create a grid map
   const grid = []
+
   for (let y = minY; y <= maxY; y++) {
     const row = []
     for (let x = minX; x <= maxX; x++) {
@@ -27,18 +27,19 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
     grid.push(row)
   }
 
-  // normalize data's value into a new array from 0 to 100
   const normalizedData = grid.flat().map((d) => d.value)
-  const min = Math.min(...normalizedData)
-  const max = Math.max(...normalizedData)
+  const normalizedMin = Math.min(...normalizedData)
+  const normalizedMax = Math.max(...normalizedData)
   const normalizedGrid = grid.map((row) =>
     row.map((d) => {
-      const normalizedValue = Math.floor(((d.value - min) / (max - min)) * 100)
+      const normalizedValue = Math.floor(
+        ((d.value - normalizedMin) / (normalizedMax - normalizedMin)) * 100
+      )
       return { ...d, normalizedValue }
     })
   )
 
-  const setBgColor = (value) => {
+  const setBgColor = (value: string) => {
     const i = selectedScene
     const res =
       SceneColor[i].substring(0, SceneColor[i].toString().length - 1) +
@@ -47,8 +48,6 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
       ")"
     return res
   }
-
-  const heatmapHeight = 400
 
   return (
     <Tooltip
@@ -89,8 +88,8 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                         borderRadius="md"
                         shadow="xl"
                         hasArrow
-                        label={`[${cell.x}, ${cell.y}] : ${cell.value} counts`}
-                        placement="auto"
+                        label={`[${cell.x}, ${cell.y}]`}
+                        placement="top"
                       >
                         <Box
                           w="100%"
