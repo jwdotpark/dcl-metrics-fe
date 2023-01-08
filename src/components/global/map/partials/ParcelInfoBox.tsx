@@ -24,7 +24,6 @@ const ParcelInfoBox = ({
   selectedParcel,
   coord,
   isIncluded,
-  mapHeight,
   getButtonProps,
 }) => {
   const [fetchedInfo, setfetchedInfo] = useState({})
@@ -55,8 +54,9 @@ const ParcelInfoBox = ({
   const jumpInUrl = `https://play.decentraland.org/?position=${coord.x}%2C${coord.y}`
 
   const trimName = (name) => {
-    if (!isMapExpanded && name.length > 12) {
-      return name.slice(0, 12) + ".."
+    const stringLength = 30
+    if (!isMapExpanded && name.length > stringLength) {
+      return name.slice(0, stringLength) + ".."
     } else {
       return name
     }
@@ -92,7 +92,6 @@ const ParcelInfoBox = ({
                 <Button
                   ml={3}
                   colorScheme="purple"
-                  // on click open new tab external_url
                   onClick={() => {
                     window.open(jumpInUrl, "_blank")
                     onClose()
@@ -122,17 +121,17 @@ const ParcelInfoBox = ({
             shadow="md"
             onClick={() => onOpen()}
           >
-            <Text fontSize="xl" fontWeight="bold">
-              {selectedParcel.scene &&
-                trimName(selectedParcel.scene.name) + " - "}
-              {"[" + selectedParcel.id + "]"}
+            <Text fontSize="md" fontWeight="bold">
+              {selectedParcel.scene
+                ? trimName(selectedParcel.scene.name)
+                : "[" + selectedParcel.id + "] "}
             </Text>
           </Button>
           <Button
             w="15"
             mb="4"
             color="gray.50"
-            bg="red.300"
+            bg="red.500"
             borderRadius="xl"
             shadow="md"
             {...getButtonProps()}

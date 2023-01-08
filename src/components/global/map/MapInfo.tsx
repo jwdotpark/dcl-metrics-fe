@@ -18,7 +18,6 @@ const MapInfo = ({
         isMapExpanded={isMapExpanded}
         selectedParcel={selectedParcel}
         coord={coord}
-        mapHeight={mapHeight}
       />
     </Box>
   )
