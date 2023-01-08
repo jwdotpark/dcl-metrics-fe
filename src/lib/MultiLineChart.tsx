@@ -197,7 +197,7 @@ const MultiLineChart = ({ res, selectedScene }) => {
                 shadow="md"
               >
                 <Box size="sm" variant="simple">
-                  <Box fontSize="xs">
+                  <Box fontSize="sm">
                     <Center
                       mb="2"
                       borderColor="#2D374850"
@@ -237,7 +237,7 @@ const MultiLineChart = ({ res, selectedScene }) => {
                               sx={{ transform: "translateY(-3px)" }}
                               isNumeric
                             >
-                              <Text as="kbd" fontSize="md" fontWeight="bold">
+                              <Text as="kbd" fontSize="sm" fontWeight="bold">
                                 <b>{Number(point.data.yFormatted)}</b>
                               </Text>
                             </Box>

@@ -1,22 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-// @ts-nocheck
-import { useMemo } from "react"
-import {
-  Tooltip,
-  Box,
-  useColorModeValue,
-  Text,
-  TableContainer,
-  Table,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
-  useBreakpointValue,
-} from "@chakra-ui/react"
-import { ResponsiveLine } from "@nivo/line"
-import { SceneColor } from "../../../../../lib/hooks/utils"
+import { Box } from "@chakra-ui/react"
 import MultiLineChart from "../../../../../lib/MultiLineChart"
 
 const SceneLineChart = ({ data, selectedScene }) => {
