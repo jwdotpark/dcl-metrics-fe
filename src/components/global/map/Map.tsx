@@ -256,8 +256,6 @@ const Map = ({
             overflow="hidden"
             h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
             bg="#25232A"
-            border="2px solid"
-            borderColor={useColorModeValue("gray.200", "gray.600")}
             borderRadius="xl"
             shadow="md"
             onMouseEnter={() => {

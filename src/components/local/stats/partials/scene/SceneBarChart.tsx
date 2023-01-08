@@ -70,7 +70,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
           colors={colorOpacity}
           theme={{
             textColor: useColorModeValue("black", "white"),
-            fontSize: isMobile ? 10 : 12,
+            fontSize: 12,
             grid: {
               line: {
                 stroke: "gray",
@@ -85,7 +85,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
             tickSize: 5,
             tickPadding: 1,
             tickRotation: 90,
-            legend: "All times are in UTC",
+            legend: "UTC",
             legendPosition: "middle",
             legendOffset: isMobile ? 50 : 40,
             format: (value) => value + ":00",
@@ -96,7 +96,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
             tickRotation: 0,
             legend: "Number of Users",
             legendPosition: "end",
-            legendOffset: 5,
+            legendOffset: 10,
             renderTick: (tick) => {
               return (
                 <text
