@@ -43,16 +43,16 @@ const SceneMarathonUsers = ({ data }) => {
   const dataArr = Object.entries(data)
 
   const addressWidth = useBreakpointValue({
-    base: 8,
-    sm: 10,
-    md: 20,
-    lg: 10,
+    base: 15,
+    sm: 15,
+    md: 25,
+    lg: 25,
   })
 
   const MarathonUserTable = () => {
     return (
       <Box
-        overflow="hidden"
+        overflowY="hidden"
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
