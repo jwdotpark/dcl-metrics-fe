@@ -1,189 +1,53 @@
-import {
-  Spacer,
-  Flex,
-  Box,
-  Center,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  Image,
-  useColorModeValue,
-} from "@chakra-ui/react"
-import Loading from "../../Loading"
-import { useMemo, useState } from "react"
-import { useTable, useSortBy, usePagination } from "react-table"
-import TableMap from "../partials/TableMap"
-import ParcelDateRange from "../daterange/ParcelDateRange"
-import GridBox from "../../GridBox"
+import { useState } from "react"
+import BoxWrapper from "../../../layout/local/BoxWrapper"
+import BoxTitle from "../../../../components/layout/local/BoxTitle"
+import DateRangeButton from "../daterange/DateRangeButton"
+import { defaultDateRange } from "../../../../lib/data/chartInfo"
+import { dateRangeStr, baseUrl, mapUrl } from "../../../../lib/data/tableInfo"
+import TableComponent from "../partials/TableComponent"
 
-const MostVisitedParcel = ({ parcel, isParcelLoading }) => {
-  const box = {
-    // h: "630",
-    h: "auto",
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
+const MostVisitedParcel = ({ parcel }) => {
+  const [dateRange, setDateRange] = useState(defaultDateRange)
+  const headList = ["Scenes Map", "Coord", "Visit Count"]
+  const bodyList = ["map_url", "coord", "visit_count"]
 
-  // 0 yesterday 1 last_week 2 last_month 3 last_quarter
-  const [dateRange, setDateRange] = useState(0)
-
-  const baseUrl = "https://api.decentraland.org/v1/parcels/"
-  const mapUrl = "/map.png?width=auto&height=auto&size=15"
-
-  const data = Object.entries(parcel)
-  const dataArr = []
-
-  const parcelDataRange = data[dateRange]
-
-  // @ts-ignore
-  const timeSpentAFKData = parcelDataRange[1].visitors
-  // make an array with timeSpentAFKData
-  for (const [key, value] of Object.entries(timeSpentAFKData)) {
-    dataArr.push({
-      mapUrl: baseUrl + key.replace(",", "/") + mapUrl,
+  const date = dateRangeStr(dateRange)
+  let tableData = parcel[date]["visitors"]
+  const result = []
+  for (const key in tableData) {
+    result.push({
       coord: key,
-      visitors: value,
+      map_url: baseUrl + key.replace(",", "/") + mapUrl,
+      visit_count: tableData[key],
     })
   }
-
-  const COLUMNS = [
-    {
-      Header: "Parcel Map",
-      accessor: "mapUrl",
-      disableSortBy: true,
-      Cell: ({ value }) => {
-        return <TableMap mapUrl={value} />
-      },
-    },
-    {
-      Header: "Coordinate",
-      accessor: "coord",
-      disableSortBy: true,
-      Cell: ({ value }) => {
-        return <Text as="kbd">{`[${value}]`}</Text>
-      },
-    },
-    {
-      Header: "Visit Count",
-      accessor: "visitors",
-      Cell: ({ value }) => {
-        return (
-          <Text as="kbd" fontWeight="bold">
-            {Number(value)}
-          </Text>
-        )
-      },
-    },
-  ]
-
-  // eslint-disable-next-line
-  const columns = useMemo(() => COLUMNS, [])
-  // eslint-disable-next-line
-  const memoizedData = useMemo(() => dataArr, [dateRange])
-
-  const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
-    useTable(
-      {
-        columns: columns,
-        data: memoizedData,
-        initialState: {
-          pageSize: 5,
-        },
-      },
-      useSortBy,
-      usePagination
-    )
-
-  const TableComponent = () => {
-    return (
-      <>
-        <TableContainer mt="2" borderColor="gray.400" whiteSpace="nowrap">
-          <Table
-            {...getTableProps()}
-            overflowX="hidden"
-            colorScheme="gray"
-            size="sm"
-            // height="520"
-            variant="striped"
-          >
-            <Thead>
-              {headerGroups.map((headerGroup, i) => (
-                <Tr {...headerGroup.getHeaderGroupProps()} key={i}>
-                  {headerGroup.headers.map((column, j) => (
-                    <Th
-                      key={j}
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
-                    >
-                      {column.render("Header")}
-                    </Th>
-                  ))}
-                </Tr>
-              ))}
-            </Thead>
-            <Tbody {...getTableBodyProps()}>
-              {page.map((row, i) => {
-                prepareRow(row)
-                return (
-                  <Tr {...row.getRowProps()} key={i}>
-                    {row.cells.map((cell, j) => {
-                      return (
-                        <Td key={j} {...cell.getCellProps()}>
-                          {cell.render("Cell")}
-                        </Td>
-                      )
-                    })}
-                  </Tr>
-                )
-              })}
-            </Tbody>
-          </Table>
-        </TableContainer>
-      </>
-    )
-  }
+  tableData = result
 
   return (
-    <>
-      <GridBox box={box}>
-        <Flex pos="relative" mt="4" mx="5">
-          <Flex w="100%">
-            <Box>
-              <Text fontSize="2xl">
-                <b>Most Visited Parcel</b>
-              </Text>
-            </Box>
-          </Flex>
-        </Flex>
-        <Box ml="6">
-          <Text color="gray.500" fontSize="sm">
-            Parcels with the most visit count in the last period
-          </Text>
-        </Box>
-        <ParcelDateRange
-          dateRange={dateRange}
-          setDateRange={setDateRange}
-          name="parcels_most_visited_parcel"
-        />
-        {dataArr.length > 0 && !isParcelLoading && (
-          <Box mb="8" mx="4">
-            <TableComponent />
-          </Box>
-        )}
-        {dataArr.length === 0 && !isParcelLoading && (
-          <Center h="450px">Not Available</Center>
-        )}
-        {isParcelLoading && (
-          <Center h="100%">
-            <Loading />
-          </Center>
-        )}
-      </GridBox>
-    </>
+    <BoxWrapper>
+      <BoxTitle
+        name="Most Visited Parcel"
+        date=""
+        avgData=""
+        slicedData=""
+        color=""
+        description="Parcels with the most visit count in the last period"
+      />
+      <DateRangeButton
+        dateRange={dateRange}
+        setDateRange={setDateRange}
+        validLegnth={90}
+        name="parcels_most_visited_parcel"
+        yesterday={true}
+      />
+      <TableComponent
+        data={tableData}
+        dateRange={dateRange}
+        propertyName={bodyList[0]}
+        headList={headList}
+        bodyList={bodyList}
+      />
+    </BoxWrapper>
   )
 }
 

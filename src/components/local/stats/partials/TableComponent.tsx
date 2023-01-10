@@ -174,6 +174,14 @@ const renderTd = (body, row) => {
           <Text fontSize="md">[{row.coord}]</Text>
         </Td>
       )
+    case "visit_count":
+      return (
+        <Td key={body}>
+          <Text fontSize="md">
+            <b>{row.visit_count}</b>
+          </Text>
+        </Td>
+      )
     default:
       return null
   }
