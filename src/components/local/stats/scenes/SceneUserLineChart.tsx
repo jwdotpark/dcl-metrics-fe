@@ -94,6 +94,7 @@ const SceneUserLineChart = ({ data }) => {
             setDateRange={setDateRange}
             validLegnth={validLegnth}
             name=""
+            yesterday={false}
           />
           <LineChart data={result} color={color} name="sceneUserLineChart" />
         </Box>

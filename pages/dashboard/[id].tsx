@@ -159,7 +159,6 @@ const DashboardPage = (props) => {
               date={date}
               setDate={setDate}
               availableDate={availableDate}
-              isLoading={isLoading}
               dailyUsers={dailyUsers}
             />
           )}

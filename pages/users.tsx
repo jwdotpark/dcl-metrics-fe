@@ -86,8 +86,8 @@ const Users = (props) => {
   return (
     <Layout>
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <MarathonUsers res={result.users} isLoading={isDataLoading} />
-        <Explorer res={result.users} isLoading={isDataLoading} />
+        <MarathonUsers res={result.users} />
+        <Explorer res={result.users} />
       </Grid>
     </Layout>
   )

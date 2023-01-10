@@ -136,7 +136,6 @@ const Scenes = (props) => {
         date=""
         setDate={{}}
         availableDate={[]}
-        isLoading={false}
         dailyUsers={{}}
       />
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
