@@ -5,12 +5,11 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 import DateRangeButton from "../daterange/DateRangeButton"
 import { defaultDateRange } from "../../../../lib/data/chartInfo"
 import { dateRangeStr } from "../../../../lib/data/tableInfo"
-
 import TableComponent from "../partials/TableComponent"
 
 const TopScenesVisitors = ({ res }) => {
   const [dateRange, setDateRange] = useState(defaultDateRange)
-  const headList = ["Scenes with Most Unique Visitors", "Name", "Visit Count"]
+  const headList = ["Scenes Map", "Name", "Visit Count"]
   const bodyList = ["visitors", "map_url", "scene_name", "unique_addresses"]
 
   // mapping data

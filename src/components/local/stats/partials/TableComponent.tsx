@@ -31,7 +31,7 @@ const TableComponent = ({
   const date = dateRangeStr(dateRange)
   let tableData
 
-  if (headList[0] === "Scenes with Most Unique Visitors") {
+  if (headList[0] === "Scenes Map") {
     tableData = data
   } else {
     tableData = data[date][propertyName]
@@ -134,6 +134,14 @@ const renderTd = (body, row) => {
       return (
         <Td key={body}>
           <TableMap mapUrl={row.map_url} />
+        </Td>
+      )
+    case "avg_time_spent":
+      return (
+        <Td key={body}>
+          <Text fontSize="md">
+            <b>{convertSeconds(row.avg_time_spent)}</b>
+          </Text>
         </Td>
       )
     default:
