@@ -1,28 +1,5 @@
-import {
-  Text,
-  Box,
-  TableContainer,
-  Table,
-  Thead,
-  Tbody,
-  Td,
-  Th,
-  Tr,
-  Center,
-  useColorModeValue,
-  useColorMode,
-  Flex,
-  useToast,
-} from "@chakra-ui/react"
 import { useState } from "react"
 import { defaultDateRange } from "../../../lib/data/chartInfo"
-import { convertSeconds } from "../../../lib/hooks/utils"
-import ProfilePicture from "../ProfilePicture"
-import TableLink from "./partials/TableLink"
-import { useMemo } from "react"
-import { useTable, useSortBy } from "react-table"
-import TableDateRange from "./daterange/TableDateRange"
-import TruncateName from "./partials/TruncatedName"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import TableComponent from "./partials/TableComponent"
