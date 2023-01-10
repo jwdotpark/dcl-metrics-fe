@@ -144,6 +144,22 @@ const renderTd = (body, row) => {
           </Text>
         </Td>
       )
+    case "logins":
+      return (
+        <Td key={body}>
+          <Text fontSize="md">
+            <b>{row.total_logins}</b>
+          </Text>
+        </Td>
+      )
+    case "logouts":
+      return (
+        <Td key={body}>
+          <Text fontSize="md">
+            <b>{row.total_logouts}</b>
+          </Text>
+        </Td>
+      )
     default:
       return null
   }
