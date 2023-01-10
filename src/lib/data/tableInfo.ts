@@ -12,7 +12,7 @@ export const dateRangeStr = (value) => {
 
 export const sliceStr = (value) => {
   const length = 30
-  if (value.length > length) {
+  if (value && value.length > length) {
     return value.slice(0, length) + "..."
   } else {
     return value
@@ -22,20 +22,16 @@ export const sliceStr = (value) => {
 export const normalizeValue = (data) => {
   const valueArr = []
   const normalizedValueArr = []
-
   for (let i = 0; i < data.length; i++) {
     valueArr.push(data[i].time_spent)
   }
-
   const max = Math.max(...valueArr)
   const min = Math.min(...valueArr)
   const range = max - min
-
   for (let i = 0; i < valueArr.length; i++) {
     normalizedValueArr.push(
       Math.round(((valueArr[i] - min) / range) * (100 - 20) + 20)
     )
   }
-
   return normalizedValueArr
 }
