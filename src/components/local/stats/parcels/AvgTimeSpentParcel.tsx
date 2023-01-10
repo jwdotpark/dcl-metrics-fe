@@ -1,26 +1,4 @@
-import {
-  Spacer,
-  Flex,
-  Box,
-  Center,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  Image,
-  useColorModeValue,
-} from "@chakra-ui/react"
-import { convertSeconds } from "../../../../lib/hooks/utils"
-import Loading from "../../Loading"
-import { useMemo, useState } from "react"
-import { useTable, useSortBy, usePagination } from "react-table"
-import TableMap from "../partials/TableMap"
-import ParcelDateRange from "../daterange/ParcelDateRange"
-import GridBox from "../../GridBox"
+import { useState } from "react"
 
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import BoxTitle from "../../../../components/layout/local/BoxTitle"
