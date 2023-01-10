@@ -161,7 +161,6 @@ const Map = ({
       return COLOR_BY_TYPE[tile.type]
     }
     if (tile[selectedProp.name] > 0) {
-      // return COLOR_BY_TYPE[selectedProp.name]
       const value = tile[selectedProp.name]
       return heatmapColor(value)
     }

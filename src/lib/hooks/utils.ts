@@ -1,5 +1,4 @@
 import CryptoJS from "crypto-js"
-import { v4 as uuidv4 } from "uuid"
 
 export const convertSeconds = (seconds: number) => {
   const hrs = `0${Math.floor(seconds / 3600)}`.slice(-3)
@@ -39,7 +38,37 @@ export const decrypt = (ciphertext) => {
   }
 }
 
+//export const heatmapColor = (value) => {
+//  if (value === 1) return
+//  const h = (1.0 - value / 100) * 240
+//  return "hsl(" + h + ", 100%, 50%)"
+//}
+
+//export const heatmapColor = (value) => {
+//  let h
+//  if (value === 1) {
+//    h = 240
+//  } else if (value < 10) {
+//    h = (1.0 - value + 20 / 100) * 240
+//  } else {
+//    h = (1.0 - value / 100) * 240
+//  }
+//  return "hsl(" + h + ", 100%, 50%)"
+//}
+
 export const heatmapColor = (value) => {
-  const h = (1.0 - value / 100) * 240
+  let h
+  //if (value === 1) {
+  //  return
+  //}
+  if (value < 25) {
+    h = (1.0 - value / 25) * 240
+  } else if (value < 50) {
+    h = (1.0 - (value - 25) / 25) * 120 + 240
+  } else if (value < 75) {
+    h = (1.0 - (value - 50) / 25) * 60 + 360
+  } else {
+    h = (1.0 - value / 100) * 240
+  }
   return "hsl(" + h + ", 100%, 50%)"
 }
