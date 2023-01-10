@@ -24,14 +24,7 @@ import BoxWrapper from "../../layout/local/BoxWrapper"
 import SceneTitle from "../../layout/local/SceneTitle"
 import { date } from "../../../lib/data/chartInfo"
 
-const Scene = ({
-  res,
-  date,
-  setDate,
-  availableDate,
-  isLoading,
-  dailyUsers,
-}) => {
+const Scene = ({ res, date, setDate, availableDate, dailyUsers }) => {
   const [selectedScene, setSelectedScene] = useState(0)
   const {
     map_url,
