@@ -168,6 +168,12 @@ const renderTd = (body, row) => {
           </Text>
         </Td>
       )
+    case "coord":
+      return (
+        <Td key={body}>
+          <Text fontSize="md">[{row.coord}]</Text>
+        </Td>
+      )
     default:
       return null
   }

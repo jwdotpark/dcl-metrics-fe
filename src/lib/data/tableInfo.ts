@@ -35,3 +35,6 @@ export const normalizeValue = (data) => {
   }
   return normalizedValueArr
 }
+
+export const baseUrl = "https://api.decentraland.org/v1/parcels/"
+export const mapUrl = "/map.png?width=auto&height=auto&size=25"
