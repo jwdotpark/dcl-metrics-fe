@@ -30,6 +30,47 @@ const TableComponent = ({
   const date = dateRangeStr(dateRange)
   const tableData = data[date][propertyName]
 
+  const renderTd = (body, row) => {
+    switch (body) {
+      case "time_spent":
+        return (
+          <Td key={body}>
+            <b>{convertSeconds(row[body])}</b>
+          </Td>
+        )
+      case "parcels_visited":
+        return (
+          <Td key={body}>
+            <b>{row[body]}</b>
+          </Td>
+        )
+      case "name":
+        return (
+          <Td key={body}>
+            <Flex>
+              <ProfilePicture
+                address={row.avatar_url}
+                verified={row.verified_user}
+                guest={row.guest_user}
+              />
+              <Center>{sliceStr(row.name)}</Center>
+            </Flex>
+          </Td>
+        )
+      case "address":
+        return (
+          <>
+            <Td key={body}>{sliceStr(row.address)}</Td>
+            <Td key={body}>
+              <TableLink address={row.address} />
+            </Td>
+          </>
+        )
+      default:
+        return null
+    }
+  }
+
   const TableHead = () => {
     return (
       <Tr>
@@ -53,31 +94,7 @@ const TableComponent = ({
             }}
           >
             {bodyList.map((body) => (
-              <>
-                {body === "time_spent" && (
-                  <Td key={body}>{convertSeconds(row[body])}</Td>
-                )}
-                {body === "name" && (
-                  <Td key={body}>
-                    <Flex>
-                      <ProfilePicture
-                        address={row.avatar_url}
-                        verified={row.verified_user}
-                        guest={row.guest_user}
-                      />
-                      <Center>{sliceStr(row.name)}</Center>
-                    </Flex>
-                  </Td>
-                )}
-                {body === "address" && (
-                  <>
-                    <Td key={body}>{sliceStr(row.address)}</Td>
-                    <Td key={body}>
-                      <TableLink address={row.address} />
-                    </Td>
-                  </>
-                )}
-              </>
+              <>{renderTd(body, row)}</>
             ))}
           </Tr>
         ))}
@@ -87,7 +104,7 @@ const TableComponent = ({
 
   return (
     <TableContainer mt="2" mx="4">
-      <Table h="auto" mb="4" borderBottom="none" size="sm" variant="simple">
+      <Table h="auto" my="2" borderBottom="none" size="sm" variant="simple">
         <TableHead />
         <TableBody />
       </Table>

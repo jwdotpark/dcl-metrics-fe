@@ -5,7 +5,7 @@ const BoxTitle = ({ name, description, date, avgData, slicedData, color }) => {
   return (
     <Flex direction={["column", "column", "row", "row"]}>
       <Box>
-        <Flex direction="column" mt="4" mx="5">
+        <Flex direction="column" mt="2" mx="5">
           <Box>
             <Text fontSize="2xl">
               <b>{name}</b>
