@@ -5,6 +5,7 @@ import BoxTitle from "../../layout/local/BoxTitle"
 import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
 import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
+import { BarItem } from "@nivo/bar"
 
 const UniqueVisitors = ({ data }) => {
   const dataArr = Object.entries(data)
@@ -51,20 +52,20 @@ const UniqueVisitors = ({ data }) => {
     const validLength = partial.length
     const sum = {
       uniqueUsers: partial.reduce((acc, cur) => acc + cur.unique_users, 0),
+      guestUsers: partial.reduce((acc, cur) => acc + cur.guest_users, 0),
       newUsers: partial.reduce((acc, cur) => acc + cur.new_users, 0),
       namedUsers: partial.reduce((acc, cur) => acc + cur.named_users, 0),
-      guestUsers: partial.reduce((acc, cur) => acc + cur.guest_users, 0),
     }
     const value = {
       unique_users: Math.floor(sum.uniqueUsers / validLength),
+      guest_users: Math.floor(sum.guestUsers / validLength),
       new_users: Math.floor(sum.newUsers / validLength),
       named_users: Math.floor(sum.namedUsers / validLength),
-      guest_users: Math.floor(sum.guestUsers / validLength),
     }
     const map = [
       { id: "Unique Users", value: value.unique_users },
-      { id: "New Users", value: value.new_users },
       { id: "Guest Users", value: value.guest_users },
+      { id: "New Users", value: value.new_users },
       { id: "Named Users", value: value.named_users },
     ].sort((a, b) => {
       return b.value - a.value
