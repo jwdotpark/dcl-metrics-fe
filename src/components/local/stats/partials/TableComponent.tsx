@@ -160,6 +160,14 @@ const renderTd = (body, row) => {
           </Text>
         </Td>
       )
+    case "avg_time_spent_afk":
+      return (
+        <Td key={body}>
+          <Text fontSize="md">
+            <b>{convertSeconds(row.avg_time_spent_afk)}</b>
+          </Text>
+        </Td>
+      )
     default:
       return null
   }
