@@ -139,14 +139,11 @@ const Scenes = (props) => {
         dailyUsers={{}}
       />
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <TopScenesVisitors res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesTimeSpent res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesLogin res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesLogout res={result.scenes} isSceneLoading={isDataLoading} />
-        <ScenesTimeSpentAFK
-          res={result.scenes}
-          isSceneLoading={isDataLoading}
-        />
+        <TopScenesVisitors res={result.scenes} />
+        <ScenesTimeSpent res={result.scenes} />
+        <ScenesLogin res={result.scenes} />
+        <ScenesLogout res={result.scenes} />
+        <ScenesTimeSpentAFK res={result.scenes} />
       </Grid>
     </Layout>
   )
