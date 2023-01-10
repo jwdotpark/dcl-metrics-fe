@@ -6,7 +6,13 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 
-const DateRangeButton = ({ dateRange, setDateRange, validLegnth, name }) => {
+const DateRangeButton = ({
+  dateRange,
+  setDateRange,
+  validLegnth,
+  name,
+  yesterday,
+}) => {
   const btnColor = useColorModeValue("gray.200", "gray.600")
   const umamiEvent = `umami--click--${name}`
 
@@ -23,6 +29,16 @@ const DateRangeButton = ({ dateRange, setDateRange, validLegnth, name }) => {
             size="sm"
             variant="outline"
           >
+            {yesterday && (
+              <Button
+                w="100%"
+                bgColor={dateRange === 1 && btnColor}
+                onClick={() => setDateRange(1)}
+              >
+                1d
+              </Button>
+            )}
+
             <Button
               w="100%"
               bgColor={dateRange === 7 && btnColor}
@@ -30,13 +46,15 @@ const DateRangeButton = ({ dateRange, setDateRange, validLegnth, name }) => {
             >
               7d
             </Button>
-            <Button
-              w="100%"
-              bgColor={dateRange === 14 && btnColor}
-              onClick={() => setDateRange(14)}
-            >
-              14d
-            </Button>
+            {!yesterday && (
+              <Button
+                w="100%"
+                bgColor={dateRange === 14 && btnColor}
+                onClick={() => setDateRange(14)}
+              >
+                14d
+              </Button>
+            )}
             <Button
               w="100%"
               bgColor={dateRange === 30 && btnColor}

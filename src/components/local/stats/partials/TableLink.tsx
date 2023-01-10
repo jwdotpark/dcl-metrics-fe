@@ -11,9 +11,9 @@ import Image from "next/image"
 import dclLogo from "../../../../../public/dcl-logo.svg"
 import etherscanLogo from "../../../../../public/etherscan-logo.svg"
 
-const TableLink = (data) => {
-  const dclLink = "https://market.decentraland.org/accounts/" + data.address
-  const etherscanLink = "https://etherscan.io/address/" + data.address
+const TableLink = ({ address }) => {
+  const dclLink = "https://market.decentraland.org/accounts/" + address
+  const etherscanLink = "https://etherscan.io/address/" + address
 
   return (
     <Box>

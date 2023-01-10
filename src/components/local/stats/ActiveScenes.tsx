@@ -69,6 +69,7 @@ const ActiveScenes = ({ data }) => {
         setDateRange={setDateRange}
         validLegnth={90}
         name="global_scenes_visited"
+        yesterday={false}
       />
       <LineChart data={result} color={color} name="activeScenes" />
     </BoxWrapper>

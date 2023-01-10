@@ -1,4 +1,4 @@
-import { Box, Text, Flex, Spacer, color } from "@chakra-ui/react"
+import { Box, Text, Flex, Spacer } from "@chakra-ui/react"
 import AvgStat from "../../local/stats/partials/AvgStat"
 
 const BoxTitle = ({ name, description, date, avgData, slicedData, color }) => {
@@ -11,13 +11,14 @@ const BoxTitle = ({ name, description, date, avgData, slicedData, color }) => {
               <b>{name}</b>
             </Text>
           </Box>
-          {name !== "Land Picker" ? (
+          {date !== "" && name !== "Land Picker" && (
             <Box>
               <Text color="gray.500" fontSize="sm">
                 {name} from {date.first} - {date.last}
               </Text>
             </Box>
-          ) : (
+          )}
+          {date === "" && (
             <Box>
               <Text color="gray.500" fontSize="sm">
                 {description}

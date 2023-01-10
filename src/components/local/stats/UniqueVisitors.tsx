@@ -92,6 +92,7 @@ const UniqueVisitors = ({ data }) => {
         setDateRange={setDateRange}
         validLegnth={90}
         name="global_unique_visitors"
+        yesterday={false}
       />
       <LineChart data={result} color={color} name="uniqueVisitors" />
     </BoxWrapper>

@@ -25,7 +25,7 @@ import DateRange from "./daterange/TableDateRange"
 import TableLink from "./partials/TableLink"
 import TruncateName from "./partials/TruncatedName"
 
-const Explorer = ({ isLoading, res }) => {
+const Explorer = ({ res }) => {
   // leave it in case customize size of component dimension
   const box = {
     h: "auto",
@@ -272,7 +272,8 @@ const Explorer = ({ isLoading, res }) => {
         setDateRange={setDateRange}
         name="users_explorers"
       />
-      {dataArr.length > 0 && !isLoading && <TableComponent />}
+      <TableComponent />
+      {/*{dataArr.length > 0 && !isLoading && }
       {dataArr.length === 0 && !isLoading && (
         <Center h="450px">Not Available</Center>
       )}
@@ -280,7 +281,7 @@ const Explorer = ({ isLoading, res }) => {
         <Center h="100%">
           <Loading />
         </Center>
-      )}
+      )}*/}
     </GridBox>
   )
 }

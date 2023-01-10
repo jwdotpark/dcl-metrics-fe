@@ -70,6 +70,7 @@ const UniqueVisitedParcels = ({ data }) => {
         setDateRange={setDateRange}
         validLegnth={90}
         name="global_parcels_visited"
+        yesterday={false}
       />
       <LineChart data={result} color={color} name="uniqueVisitors" />
     </BoxWrapper>
