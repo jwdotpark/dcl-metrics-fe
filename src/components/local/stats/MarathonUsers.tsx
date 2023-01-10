@@ -31,7 +31,7 @@ const MarathonUsers = ({ res }) => {
       <TableComponent
         data={res}
         dateRange={dateRange}
-        propertyName="time_spent"
+        propertyName={bodyList[0]}
         headList={headList}
         bodyList={bodyList}
       />

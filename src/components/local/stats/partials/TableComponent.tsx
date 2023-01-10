@@ -87,7 +87,7 @@ const TableComponent = ({
 
   return (
     <TableContainer mt="2" mx="4">
-      <Table h="auto" borderBottom="none" size="sm" variant="simple">
+      <Table h="auto" mb="4" borderBottom="none" size="sm" variant="simple">
         <TableHead />
         <TableBody />
       </Table>
