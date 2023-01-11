@@ -223,11 +223,7 @@ const GlobalPage: NextPage = (props) => {
 
         <Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={result} isDataLoading={isDataLoading} />
-          <SceneLayout
-            result={result}
-            sceneResult={sceneResult}
-            isDataLoading={isDataLoading}
-          />
+          <SceneLayout result={result} sceneResult={sceneResult} />
           <ParcelLayout result={result} isDataLoading={isDataLoading} />
         </Accordion>
       </Box>

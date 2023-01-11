@@ -5,9 +5,7 @@ import {
   Grid,
   useBreakpointValue,
   useDisclosure,
-  Box,
   Collapse,
-  Button,
 } from "@chakra-ui/react"
 import Scene from "../../local/stats/Scene"
 import ScenesLogin from "../../local/stats/scenes/ScenesLogin"
@@ -18,7 +16,7 @@ import TopScenesVisitors from "../../local/stats/scenes/TopScenesVisitors"
 import AccordionLabel from "../global/partials/AccordionLabel"
 import AccordionViewMore from "../global/partials/AccordionViewMore"
 
-const SceneLayout = ({ result, sceneResult, isDataLoading }) => {
+const SceneLayout = ({ result, sceneResult }) => {
   const gridColumn = useBreakpointValue({
     md: 1,
     lg: 2,

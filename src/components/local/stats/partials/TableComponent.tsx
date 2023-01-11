@@ -48,13 +48,14 @@ const TableComponent = ({
   }
 
   const TableBody = () => {
+    const barColor = headList[0] === "Time Spent" ? "#70AC7650" : "#bd93f950"
     return (
       <Tbody>
         {tableData.map((row, i) => (
           <Tr
-            key={row.time_spent}
+            key={row.time_spent ? row.time_spent : row.parcels_visited}
             style={{
-              background: `linear-gradient(90deg, #61CDBB50 ${
+              background: `linear-gradient(90deg, ${barColor} ${
                 normalizeValue(tableData)[i]
               }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
             }}

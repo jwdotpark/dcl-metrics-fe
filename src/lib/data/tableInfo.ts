@@ -23,7 +23,9 @@ export const normalizeValue = (data) => {
   const valueArr = []
   const normalizedValueArr = []
   for (let i = 0; i < data.length; i++) {
-    valueArr.push(data[i].time_spent)
+    valueArr.push(
+      data[i].time_spent ? data[i].time_spent : data[i].parcels_visited
+    )
   }
   const max = Math.max(...valueArr)
   const min = Math.min(...valueArr)
