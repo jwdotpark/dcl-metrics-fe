@@ -38,29 +38,14 @@ const ParcelLayout = ({ result, isDataLoading }) => {
         borderBottomRadius="xl"
       >
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <AvgTimeSpentParcel
-            parcel={result.parcels}
-            isParcelLoading={isDataLoading}
-          />
-          <MostVisitedParcel
-            parcel={result.parcels}
-            isParcelLoading={isDataLoading}
-          />
+          <AvgTimeSpentParcel parcel={result.parcels} />
+          <MostVisitedParcel parcel={result.parcels} />
         </Grid>
         <Collapse animateOpacity in={isOpen}>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <LogInTimeSpentParcel
-              parcel={result.parcels}
-              isParcelLoading={isDataLoading}
-            />
-            <AFKTimeSpentParcel
-              parcel={result.parcels}
-              isParcelLoading={isDataLoading}
-            />
-            <LogOutTimeSpentParcel
-              parcel={result.parcels}
-              isParcelLoading={isDataLoading}
-            />
+            <LogInTimeSpentParcel parcel={result.parcels} />
+            <AFKTimeSpentParcel parcel={result.parcels} />
+            <LogOutTimeSpentParcel parcel={result.parcels} />
           </Grid>
         </Collapse>
         <AccordionViewMore isOpen={isOpen} onToggle={onToggle} />
