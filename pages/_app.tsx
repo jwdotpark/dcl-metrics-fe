@@ -1,12 +1,15 @@
 import "../styles/globals.css"
-import localFont from "@next/font/local"
 import Head from "next/head"
 import Script from "next/script"
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
 import ErrorBoundary from "../src/components/error/ErrorBoundary"
-const myFont = localFont({ src: "../public/font/Mona-Sans-Medium.woff2" })
+import { Inter } from "@next/font/google"
+
+const inter = Inter({
+  subsets: ["latin"],
+})
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const telemetry = () => {
@@ -42,7 +45,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           ></Script>
         )}
         <ErrorBoundary>
-          <main className={myFont.className}>
+          <main className={inter.className}>
             <Component {...pageProps} />
           </main>
         </ErrorBoundary>
