@@ -19,6 +19,7 @@ import ProfilePicture from "../../ProfilePicture"
 import { convertSeconds } from "../../../../lib/hooks/utils"
 import TableLink from "./TableLink"
 import TableMap from "./TableMap"
+import { isSafari, isMobileSafari } from "react-device-detect"
 
 const TableComponent = ({
   data,
@@ -49,25 +50,20 @@ const TableComponent = ({
 
   const TableBody = () => {
     const barColor = headList[0] === "Time Spent" ? "#70AC7650" : "#bd93f950"
-    const isSafari =
-      navigator.vendor &&
-      navigator.vendor.indexOf("Apple") > -1 &&
-      navigator.userAgent &&
-      navigator.userAgent.indexOf("CriOS") == -1 &&
-      navigator.userAgent.indexOf("FxiOS") == -1
-
+    const detectSafari = isSafari || isMobileSafari ? true : false
+    const barChartStyle = (index) => {
+      return {
+        background: `linear-gradient(90deg, ${barColor} ${
+          normalizeValue(tableData)[index]
+        }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
+      }
+    }
     return (
       <Tbody>
         {tableData.map((row, i) => (
           <Tr
             key={row.time_spent ? row.time_spent : row.parcels_visited}
-            style={
-              !isSafari && {
-                background: `linear-gradient(90deg, ${barColor} ${
-                  normalizeValue(tableData)[i]
-                }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
-              }
-            }
+            style={detectSafari ? {} : barChartStyle(i)}
           >
             {bodyList.map((body) => (
               <>{renderTd(body, row)}</>

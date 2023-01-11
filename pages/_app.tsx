@@ -5,10 +5,10 @@ import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
 import ErrorBoundary from "../src/components/error/ErrorBoundary"
-import localFont from "@next/font/local"
+import { Noto_Sans_Display } from "@next/font/google"
 
-const myFont = localFont({
-  src: "../public/font/Mona-Sans.woff2",
+const openSans = Noto_Sans_Display({
+  subsets: ["latin"],
 })
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           ></Script>
         )}
         <ErrorBoundary>
-          <main className={myFont.className}>
+          <main className={openSans.className}>
             <Component {...pageProps} />
           </main>
         </ErrorBoundary>
