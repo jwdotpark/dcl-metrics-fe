@@ -1,7 +1,4 @@
 import { GridItem, useColorModeValue } from "@chakra-ui/react"
-import { useAtom } from "jotai"
-import { useEffect } from "react"
-import { BoxAtom } from "../../../lib/hooks/atoms"
 
 const BoxWrapper = ({ children }) => {
   const box = {
@@ -13,19 +10,16 @@ const BoxWrapper = ({ children }) => {
     borderColor: useColorModeValue("gray.300", "gray.700"),
     borderRadius: "xl",
     shadow: "md",
+    pb: 4,
   }
-
-  const [boxAtom, setBoxAtom] = useAtom(BoxAtom)
-  useEffect(() => {
-    setBoxAtom(box)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <GridItem
+      overflowX="hidden"
       w={box.w}
       h={box.h}
       p={box.p}
+      pb={box.pb}
       bg={box.bg}
       border={box.border}
       borderColor={box.borderColor}

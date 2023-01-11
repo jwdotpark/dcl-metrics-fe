@@ -29,7 +29,7 @@ const LineChart = ({ data, color, name }) => {
 
   const yAxisLabelDegree = () => {
     if (data[0].data.length > 7) {
-      return 90
+      return 60
     } else {
       return 0
     }

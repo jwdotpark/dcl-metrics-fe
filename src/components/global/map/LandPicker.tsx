@@ -38,7 +38,7 @@ const LandPicker = ({ parcelData, isPage }) => {
   }, [isPage])
 
   return (
-    <Box mb="4" mx={[-4, 0, 0, 0]}>
+    <Box mb="4">
       <BoxWrapper>
         <BoxTitle
           name="Land Picker"
@@ -48,7 +48,7 @@ const LandPicker = ({ parcelData, isPage }) => {
           slicedData=""
           color=""
         />
-        <Box h="100%" mx={[-4, 0, 0, 0]}>
+        <Box h="100%">
           <MapWrapper
             h="auto"
             isMapExpanded={isMapExpanded}

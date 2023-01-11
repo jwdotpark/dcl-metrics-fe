@@ -3,7 +3,7 @@ import AvgStat from "../../local/stats/partials/AvgStat"
 
 const BoxTitle = ({ name, description, date, avgData, slicedData, color }) => {
   return (
-    <Flex direction={["column", "column", "row", "row"]}>
+    <Flex direction={["column", "column", "row", "row"]} w="100%">
       <Box mt="4">
         <Flex direction="column" ml="5">
           <Box>
@@ -28,7 +28,7 @@ const BoxTitle = ({ name, description, date, avgData, slicedData, color }) => {
         </Flex>
       </Box>
       <Spacer />
-      <Box mt={[2, 4, 4, 4]} mr={[4, 4, 4, 4]} ml={[4, 4, 0, 4]}>
+      <Box mt={[2, 4, 4, 4]} mr={[4, 4, 4, 4]} ml={[5, 4, 4, 4]}>
         <AvgStat avgData={avgData} data={slicedData} color={color} />
       </Box>
     </Flex>

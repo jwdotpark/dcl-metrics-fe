@@ -7,7 +7,9 @@ import { Provider } from "jotai"
 import ErrorBoundary from "../src/components/error/ErrorBoundary"
 import localFont from "@next/font/local"
 
-const myFont = localFont({ src: "../public/font/Mona-Sans.woff2" })
+const myFont = localFont({
+  src: "../public/font/Mona-Sans.woff2",
+})
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const telemetry = () => {
