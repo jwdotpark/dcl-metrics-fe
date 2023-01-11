@@ -6,8 +6,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     max-width: 100%;
     min-width: 100%;
-    overflow-x: hidden;
-    
+    overflow-x: hidden;    
 }
 
 a {
@@ -17,16 +16,8 @@ a {
 
 * {
   box-sizing: border-box;
-  font-family: 'Mona Sans', !important;
 }
 
-/* kbd {
-  font-size: 16px !important;
-}
-
-table {
-  font-size: 16px !important;
-} */
 
 @media (prefers-color-scheme: dark) {
   html {
