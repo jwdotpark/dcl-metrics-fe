@@ -76,13 +76,18 @@ const StatBox = ({ data, selectedScene }) => {
                         <Flex>
                           <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["xs", "sm"]}>{name}</Text>
+                            <Text fontSize={["sm", "sm", "md", "lg"]}>
+                              {name}
+                            </Text>
                           </Box>
                         </Flex>
                       </Td>
                       <Td borderBottom="none" isNumeric>
                         <Box>
-                          <Text fontSize={["xs", "sm"]} fontWeight="bold">
+                          <Text
+                            fontSize={["sm", "sm", "md", "lg"]}
+                            fontWeight="bold"
+                          >
                             {name === "Avg Time Spent" ||
                             name === "Avg Time Spent AFK"
                               ? moment
@@ -124,7 +129,9 @@ const StatBox = ({ data, selectedScene }) => {
                         <Flex>
                           <SceneHelpTooltip description={description} />
                           <Box>
-                            <Text fontSize={["xs", "sm"]}>{name}</Text>
+                            <Text fontSize={["sm", "sm", "md", "lg"]}>
+                              {name}
+                            </Text>
                           </Box>
                         </Flex>
                       </Td>
@@ -132,7 +139,7 @@ const StatBox = ({ data, selectedScene }) => {
                         <Box>
                           <Text
                             minW="100px"
-                            fontSize={["xs", "sm"]}
+                            fontSize={["sm", "sm", "md", "lg"]}
                             fontWeight="bold"
                           >
                             {name === "Avg Complete Session Duration"
