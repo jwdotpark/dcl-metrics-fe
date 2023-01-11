@@ -5,15 +5,15 @@ const headers = {
 }
 
 // server
-export const sendNotification = async (response, name, status) => {
+export const sendNotification = async (error, name, status) => {
   const data = await fetch(URI, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({
       level: "warning",
-      message: `${name} endpoint request is ${response.status} - ${status}`,
+      message: `${name} endpoint request is ${error.response} - ${status}`,
       payload: {
-        status: response.statusText,
+        status: status,
       },
     }),
   })

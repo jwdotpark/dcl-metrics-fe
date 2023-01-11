@@ -1,19 +1,9 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import type { NextPage } from "next"
-import {
-  Flex,
-  Grid,
-  useBreakpointValue,
-  Accordion,
-  Box,
-} from "@chakra-ui/react"
+import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 import staticScene from "../public/data/cached_scenes_top.json"
 import staticParcel from "../public/data/cached_parcel.json"
-import { useAtom } from "jotai"
-import { DataAtom, SceneDataAtom } from "../src/lib/hooks/atoms"
-const axios = require("axios").default
-import fs from "fs"
 import { sendNotification } from "../src/lib/hooks/sendNotification"
 import Layout from "../src/components/layout/layout"
 import PSA from "../src/components/global/PSA"
@@ -24,122 +14,38 @@ import ParcelLayout from "../src/components/layout/global/ParcelLayout"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
+import { writeFile, getDataWithProxy } from "../src/lib/data/fetch"
+import {
+  time,
+  isProd,
+  isDev,
+  isLocal,
+  url,
+  sceneURL,
+  parcelURL,
+} from "../src/lib/data/constant"
 
 export async function getStaticProps() {
-  const day = 60 * 60 * 24 * 365
-  const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
+  if (isProd) {
+    const globalRes = getDataWithProxy(url, "/global", staticGlobal)
+    const sceneRes = getDataWithProxy(sceneURL, "/scenes/top", staticScene)
+    const parcelRes = getDataWithProxy(parcelURL, "/parcels/all", staticParcel)
 
-  const url = isProd
-    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global"
-    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "global"
+    writeFile("cached_global_response.json", globalRes)
+    writeFile("cached_scene_top.json", sceneRes)
+    writeFile("cached_parcel.json", parcelRes)
 
-  const sceneURL = isProd
-    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "scenes/top"
-    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "scenes/top"
-
-  const parcelUrl = isProd
-    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "parcels/all"
-    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "parcels/all"
-
-  if (process.env.NEXT_PUBLIC_STAGING === "false") {
-    const response = await axios
-      .get(url, {
-        method: "get",
-        proxy: {
-          protocol: "http",
-          host: process.env.FIXIE_HOST,
-          port: 80,
-          auth: {
-            username: "fixie",
-            password: process.env.FIXIE_TOKEN,
-          },
-        },
-      })
-      .catch((error) => {
-        console.log(error)
-        return { props: { data: staticGlobal }, revalidate: day }
-      })
-
-    if (response.status === 200) {
-      fs.writeFileSync(
-        "./public/data/cached_global_response.json",
-        JSON.stringify(response.data)
-      )
-    } else if (response.status !== 200) {
-      sendNotification(response, "global", "error")
-    }
-
-    const sceneResponse = await axios
-      .get(sceneURL, {
-        method: "get",
-        proxy: {
-          protocol: "http",
-          host: process.env.FIXIE_HOST,
-          port: 80,
-          auth: {
-            username: "fixie",
-            password: process.env.FIXIE_TOKEN,
-          },
-        },
-      })
-      .catch((error) => {
-        console.log(error)
-        return { props: { data: staticScene }, revalidate: day }
-      })
-
-    if (sceneResponse.status === 200) {
-      fs.writeFileSync(
-        "./public/data/cached_scenes_top.json",
-        JSON.stringify(sceneResponse.data)
-      )
-    } else if (sceneResponse.status !== 200) {
-      sendNotification(sceneResponse, "scenes/top", "error")
-    }
-
-    const parcelResponse = await axios
-      .get(parcelUrl, {
-        method: "get",
-        proxy: {
-          protocol: "http",
-          host: process.env.FIXIE_HOST,
-          port: 80,
-          auth: {
-            username: "fixie",
-            password: process.env.FIXIE_TOKEN,
-          },
-        },
-      })
-      .catch((error) => {
-        console.log(error)
-        return { props: { data: staticParcel }, revalidate: day }
-      })
-
-    if (parcelResponse.status === 200) {
-      fs.writeFileSync(
-        "./public/data/cached_parcel.json",
-        JSON.stringify(parcelResponse.data)
-      )
-    } else if (parcelResponse.status !== 200) {
-      sendNotification(parcelResponse, "parcels", "error")
-    }
-
-    const data = response.data
-    const sceneData = sceneResponse.data
-    const parcelData = parcelResponse.data
     return {
-      props: { data, sceneData, parcelData },
-      revalidate: day,
+      props: { globalRes, sceneRes, parcelRes },
+      revalidate: time,
     }
-  } else if (
-    process.env.NEXT_PUBLIC_STAGING === "true" &&
-    process.env.LOCAL !== "true"
-  ) {
+  } else if (isDev) {
     const response = await fetch(url)
-    const data = await response.json()
     const sceneResponse = await fetch(sceneURL)
-    const sceneData = await sceneResponse.json()
-    const parcelResponse = await fetch(parcelUrl)
-    const parcelData = await parcelResponse.json()
+    const parcelResponse = await fetch(parcelURL)
+    const globalRes = await response.json()
+    const sceneRes = await sceneResponse.json()
+    const parcelRes = await parcelResponse.json()
 
     if (
       response.status !== 200 ||
@@ -153,28 +59,25 @@ export async function getStaticProps() {
           sceneData: staticScene,
           parcelData: staticParcel,
         },
-        revalidate: day,
+        revalidate: time,
       }
     }
     return {
-      props: { data, sceneData, parcelData },
-      revalidate: day,
+      props: { globalRes, sceneRes, parcelRes },
+      revalidate: time,
     }
-    // use static data
-  } else {
-    const data = staticGlobal
-    const sceneData = staticScene
-    const parcelData = staticParcel
+  } else if (isLocal) {
+    const globalRes = staticGlobal
+    const sceneRes = staticScene
+    const parcelRes = staticParcel
     return {
-      props: { data, sceneData, parcelData },
-      revalidate: day,
+      props: { globalRes, sceneRes, parcelRes },
+      revalidate: time,
     }
   }
 }
 
 const GlobalPage: NextPage = (props) => {
-  const [isDataLoading, setIsDataLoading] = useState(false)
-
   const gridColumn = useBreakpointValue({
     base: 1,
     sm: 1,
@@ -183,48 +86,29 @@ const GlobalPage: NextPage = (props) => {
     xl: 2,
   })
 
-  // @ts-ignore
-  const result = props.data
-  // @ts-ignore
-  const sceneResult = props.sceneData
-  // @ts-ignore
-  const parcelData = props.parcelData
-
-  const [res, setRes] = useAtom(DataAtom)
-  const [sceneRes, setSceneRes] = useAtom(SceneDataAtom)
-
   const [isPSAVisible, setIsPSAVisible] = useState(true)
-
-  useEffect(() => {
-    setRes(result)
-    setSceneRes(sceneResult)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // @ts-ignore
+  const { globalRes, sceneRes, parcelRes } = props
 
   return (
     <Layout>
       <Box w="100%">
-        {isPSAVisible && (
-          <Box mb="4">
-            <PSA setIsPSAVisible={setIsPSAVisible} />
-          </Box>
-        )}
-
+        {isPSAVisible && <PSA setIsPSAVisible={setIsPSAVisible} />}
         <Box mb="4">
-          <UniqueVisitors data={result.global} />
+          <UniqueVisitors data={globalRes.global} />
         </Box>
 
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <UniqueVisitedParcels data={result.global} />
-          <ActiveScenes data={result.global} />
+          <UniqueVisitedParcels data={globalRes.global} />
+          <ActiveScenes data={globalRes.global} />
         </Grid>
 
-        <LandPicker parcelData={parcelData} isPage={false} />
+        <LandPicker parcelData={parcelRes} isPage={false} />
 
         <Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
-          <UserLayout result={result} isDataLoading={isDataLoading} />
-          <SceneLayout result={result} sceneResult={sceneResult} />
-          <ParcelLayout result={result} isDataLoading={isDataLoading} />
+          <UserLayout result={globalRes} />
+          <SceneLayout result={globalRes} sceneResult={sceneRes} />
+          <ParcelLayout result={globalRes} />
         </Accordion>
       </Box>
     </Layout>

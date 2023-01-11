@@ -14,7 +14,7 @@ import UniqueVisitedParcels from "../../local/stats/UniqueVisitedParcels"
 import AccordionLabel from "../global/partials/AccordionLabel"
 import AccordionLink from "../global/partials/AccordionLink"
 
-const UserLayout = ({ result, isDataLoading }) => {
+const UserLayout = ({ result }) => {
   const gridColumn = useBreakpointValue({
     base: 1,
     sm: 1,

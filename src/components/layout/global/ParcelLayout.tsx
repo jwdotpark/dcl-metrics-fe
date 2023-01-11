@@ -20,7 +20,7 @@ import AccordionLabel from "./partials/AccordionLabel"
 // import AccordionLink from "../global/partials/AccordionLink"
 import AccordionViewMore from "../global/partials/AccordionViewMore"
 
-const ParcelLayout = ({ result, isDataLoading }) => {
+const ParcelLayout = ({ result }) => {
   const gridColumn = useBreakpointValue({
     md: 1,
     lg: 2,
