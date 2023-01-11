@@ -7,7 +7,7 @@ import { Provider } from "jotai"
 import ErrorBoundary from "../src/components/error/ErrorBoundary"
 import { Noto_Sans_Display } from "@next/font/google"
 
-const openSans = Noto_Sans_Display({
+const notoSansDisplay = Noto_Sans_Display({
   subsets: ["latin"],
 })
 
@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           ></Script>
         )}
         <ErrorBoundary>
-          <main className={openSans.className}>
+          <main className={notoSansDisplay.className}>
             <Component {...pageProps} />
           </main>
         </ErrorBoundary>
