@@ -1,5 +1,4 @@
-import { Text, Box, useColorModeValue, Flex, Spacer } from "@chakra-ui/react"
-import GridBox from "../../local/GridBox"
+import { Box } from "@chakra-ui/react"
 import dynamic from "next/dynamic"
 const MapWrapper = dynamic(() => import("./Map"), { ssr: false })
 import { useEffect, useState } from "react"

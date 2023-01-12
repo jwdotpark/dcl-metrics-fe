@@ -1,5 +1,9 @@
 import CryptoJS from "crypto-js"
 
+export const isServer = () => {
+  return typeof window === "undefined"
+}
+
 export const convertSeconds = (seconds: number) => {
   const hrs = `0${Math.floor(seconds / 3600)}`.slice(-3)
   const min =
@@ -37,24 +41,6 @@ export const decrypt = (ciphertext) => {
     return originalText
   }
 }
-
-//export const heatmapColor = (value) => {
-//  if (value === 1) return
-//  const h = (1.0 - value / 100) * 240
-//  return "hsl(" + h + ", 100%, 50%)"
-//}
-
-//export const heatmapColor = (value) => {
-//  let h
-//  if (value === 1) {
-//    h = 240
-//  } else if (value < 10) {
-//    h = (1.0 - value + 20 / 100) * 240
-//  } else {
-//    h = (1.0 - value / 100) * 240
-//  }
-//  return "hsl(" + h + ", 100%, 50%)"
-//}
 
 export const heatmapColor = (value) => {
   let h
