@@ -10,10 +10,9 @@ function getEndpoint(path) {
 }
 
 export const url = getEndpoint("global")
-export const globalDaily = getEndpoint("global/daily")
-export const globalParcel = getEndpoint("global/parcels")
-export const globalScenes = getEndpoint("global/scenes")
-export const globalUsers = getEndpoint("global/users")
-export const parcels = getEndpoint("global/dailystats")
+export const globalDailyURL = getEndpoint("global/daily")
+export const globalParcelURL = getEndpoint("global/parcels")
+export const globalScenesURL = getEndpoint("global/scenes")
+export const globalUsersURL = getEndpoint("global/users")
 export const sceneURL = getEndpoint("scenes/top")
 export const parcelURL = getEndpoint("parcels/all")

@@ -20,60 +20,60 @@ import fs from "fs"
 //  }
 //}
 
-export async function getStaticProps(context) {
-  //const day = 60 * 60 * 24 * 365
-  //const name = context.params.id
-  //const staticData = require(`../../public/data/cached_${name}.json`)
+//export async function getStaticProps(context) {
+//const day = 60 * 60 * 24 * 365
+//const name = context.params.id
+//const staticData = require(`../../public/data/cached_${name}.json`)
 
-  //const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
-  //const url = isProd
-  //  ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "dashboard/" + name
-  //  : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "dashboard/" + name
+//const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
+//const url = isProd
+//  ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "dashboard/" + name
+//  : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "dashboard/" + name
 
-  //if (process.env.NEXT_PUBLIC_STAGING === "false") {
-  //  const response = await axios
-  //    .get(url, {
-  //      method: "get",
-  //      proxy: {
-  //        protocol: "http",
-  //        host: process.env.FIXIE_HOST,
-  //        port: 80,
-  //        auth: {
-  //          username: "fixie",
-  //          password: process.env.FIXIE_TOKEN,
-  //        },
-  //      },
-  //    })
-  //    .catch((error) => {
-  //      console.log(error)
-  //      return { props: { data: staticData }, revalidate: day }
-  //    })
+//if (process.env.NEXT_PUBLIC_STAGING === "false") {
+//  const response = await axios
+//    .get(url, {
+//      method: "get",
+//      proxy: {
+//        protocol: "http",
+//        host: process.env.FIXIE_HOST,
+//        port: 80,
+//        auth: {
+//          username: "fixie",
+//          password: process.env.FIXIE_TOKEN,
+//        },
+//      },
+//    })
+//    .catch((error) => {
+//      console.log(error)
+//      return { props: { data: staticData }, revalidate: day }
+//    })
 
-  //  if (response.status === 200) {
-  //    fs.writeFileSync(
-  //      `./public/data/cached_${name}.json`,
-  //      JSON.stringify(response.data)
-  //    )
-  //  } else if (response.status !== 200) {
-  //    sendNotification(response, name, "error")
-  //  }
+//  if (response.status === 200) {
+//    fs.writeFileSync(
+//      `./public/data/cached_${name}.json`,
+//      JSON.stringify(response.data)
+//    )
+//  } else if (response.status !== 200) {
+//    sendNotification(response, name, "error")
+//  }
 
-  //  const data = await response.data
-  //  return {
-  //    props: { data },
-  //    revalidate: day,
-  //  }
-  //}
-  //if (process.env.NEXT_PUBLIC_STAGING === "true") {
-  //  const response = await fetch(url)
-  //  const data = await response.json()
-  //  return {
-  //    props: { data },
-  //    revalidate: day,
-  //  }
-  //}
-  return { props: { data: {} } }
-}
+//  const data = await response.data
+//  return {
+//    props: { data },
+//    revalidate: day,
+//  }
+//}
+//if (process.env.NEXT_PUBLIC_STAGING === "true") {
+//  const response = await fetch(url)
+//  const data = await response.json()
+//  return {
+//    props: { data },
+//    revalidate: day,
+//  }
+//}
+//return { props: { data: {} } }
+//}
 
 const DashboardPage = (props) => {
   ////if (Object.keys(props.data).length === 0) {

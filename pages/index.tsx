@@ -26,10 +26,10 @@ import {
   isDev,
   isLocal,
   url,
-  globalDaily,
-  globalParcel,
-  globalScenes,
-  globalUsers,
+  globalDailyURL,
+  globalParcelURL,
+  globalScenesURL,
+  globalUsersURL,
   sceneURL,
   parcelURL,
 } from "../src/lib/data/constant"
@@ -38,25 +38,25 @@ export async function getStaticProps() {
   if (isProd) {
     //const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
     const globalDailyRes = await getDataWithProxy(
-      globalDaily,
+      globalDailyURL,
       "/global/daily",
       staticGlobalDaily
     )
 
     const globalParcelRes = await getDataWithProxy(
-      globalParcel,
+      globalParcelURL,
       "/global/parcels",
       staticGlobalParcels
     )
 
     const globalSceneRes = await getDataWithProxy(
-      globalScenes,
+      globalScenesURL,
       "/global/scenes",
       staticGlobalScenes
     )
 
     const globalUserRes = await getDataWithProxy(
-      globalUsers,
+      globalUsersURL,
       "/global/users",
       staticGlobalUsers
     )
@@ -72,7 +72,6 @@ export async function getStaticProps() {
       staticParcel
     )
 
-    //writeFile("cached_global_response.json", globalDaily)
     writeFile("staticGlobalDaily.json", globalDailyRes)
     writeFile("staticGlobalParcels.json", globalParcelRes)
     writeFile("staticGlobalScenes.json", globalSceneRes)
@@ -88,32 +87,88 @@ export async function getStaticProps() {
       sceneRes,
       parcelRes,
     }
-    
+
     return {
       props: result,
       revalidate: time,
     }
   } else if (isDev && !isLocal) {
-    const globalRes = await getData(url, "/global", staticGlobal)
+    //const globalRes = await getData(url, "/global", staticGlobal)
+
+    const globalDailyRes = await getData(
+      globalDailyURL,
+      "/global/daily",
+      staticGlobalDaily
+    )
+    const globalParcelRes = await getData(
+      globalParcelURL,
+      "/global/parcels",
+      staticGlobalParcels
+    )
+
+    const globalSceneRes = await getData(
+      globalScenesURL,
+      "/global/scenes",
+      staticGlobalScenes
+    )
+
+    const globalUserRes = await getData(
+      globalUsersURL,
+      "/global/users",
+      staticGlobalUsers
+    )
+
     const sceneRes = await getData(sceneURL, "/scenes/top", staticScene)
     const parcelRes = await getData(parcelURL, "/parcels/all", staticParcel)
 
+    const result = {
+      globalDailyRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
+      parcelRes,
+    }
+
     return {
-      props: { globalRes, sceneRes, parcelRes },
+      props: result,
       revalidate: time,
     }
   } else if (isLocal) {
-    const globalRes = staticGlobal
+    //const globalRes = staticGlobal
+    const globalDailyRes = staticGlobalDaily
+    const globalParcelRes = staticGlobalParcels
+    const globalSceneRes = staticGlobalScenes
+    const globalUserRes = staticGlobalUsers
     const sceneRes = staticScene
     const parcelRes = staticParcel
+
+    const result = {
+      globalDailyRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
+      parcelRes,
+    }
+
     return {
-      props: { globalRes, sceneRes, parcelRes },
+      props: result,
       revalidate: time,
     }
   }
 }
 
-const GlobalPage: NextPage = (props) => {
+type Props = {
+  globalDailyRes: {}
+  globalParcelRes: {}
+  globalSceneRes: {}
+  globalUserRes: {}
+  sceneRes: {}
+  parcelRes: {}
+}
+
+const GlobalPage: NextPage = (props: Props) => {
   const gridColumn = useBreakpointValue({
     base: 1,
     sm: 1,
@@ -123,30 +178,35 @@ const GlobalPage: NextPage = (props) => {
   })
 
   const [isPSAVisible, setIsPSAVisible] = useState(true)
-  // @ts-ignore
-  const { globalRes, sceneRes, parcelRes } = props
 
-  console.log(globalRes)
+  const {
+    globalDailyRes,
+    globalParcelRes,
+    globalSceneRes,
+    globalUserRes,
+    sceneRes,
+    parcelRes,
+  } = props
 
   return (
     <Layout>
       <Box w="100%">
         {isPSAVisible && <PSA setIsPSAVisible={setIsPSAVisible} />}
         <Box mb="4">
-          <UniqueVisitors data={globalRes.global} />
+          <UniqueVisitors data={globalDailyRes} />
         </Box>
 
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <UniqueVisitedParcels data={globalRes.global} />
-          <ActiveScenes data={globalRes.global} />
+          <UniqueVisitedParcels data={globalDailyRes} />
+          <ActiveScenes data={globalDailyRes} />
         </Grid>
 
         <LandPicker parcelData={parcelRes} isPage={false} />
 
         <Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
-          <UserLayout result={globalRes} />
-          <SceneLayout result={globalRes} sceneResult={sceneRes} />
-          <ParcelLayout result={globalRes} />
+          <UserLayout result={globalUserRes} />
+          <SceneLayout result={globalSceneRes} sceneResult={sceneRes} />
+          <ParcelLayout result={globalParcelRes} />
         </Accordion>
       </Box>
     </Layout>
