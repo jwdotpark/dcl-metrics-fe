@@ -14,7 +14,7 @@ import ParcelLayout from "../src/components/layout/global/ParcelLayout"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
-import { writeFile, getDataWithProxy } from "../src/lib/data/fetch"
+import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import {
   time,
   isProd,
@@ -40,28 +40,10 @@ export async function getStaticProps() {
       revalidate: time,
     }
   } else if (isDev && !isLocal) {
-    const response = await fetch(url)
-    const sceneResponse = await fetch(sceneURL)
-    const parcelResponse = await fetch(parcelURL)
-    const globalRes = await response.json()
-    const sceneRes = await sceneResponse.json()
-    const parcelRes = await parcelResponse.json()
+    const globalRes = getData(url, "/global", staticGlobal)
+    const sceneRes = getData(sceneURL, "/scenes/top", staticScene)
+    const parcelRes = getData(parcelURL, "/parcels/all", staticParcel)
 
-    if (
-      response.status !== 200 ||
-      sceneResponse.status !== 200 ||
-      parcelResponse.status !== 200
-    ) {
-      sendNotification(response, "global", "error")
-      return {
-        props: {
-          data: staticGlobal,
-          sceneData: staticScene,
-          parcelData: staticParcel,
-        },
-        revalidate: time,
-      }
-    }
     return {
       props: { globalRes, sceneRes, parcelRes },
       revalidate: time,

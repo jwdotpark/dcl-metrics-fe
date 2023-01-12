@@ -8,17 +8,20 @@ import { DataAtom, LoadingStateAtom } from "../src/lib/hooks/atoms"
 import { sendNotification } from "../src/lib/hooks/sendNotification"
 const axios = require("axios").default
 import fs from "fs"
+import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
+import {
+  time,
+  isProd,
+  isDev,
+  isLocal,
+  url,
+  sceneURL,
+  parcelURL,
+} from "../src/lib/data/constant"
 
 export async function getStaticProps() {
-  const day = 60 * 60 * 24 * 365
-  const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
-
-  const url = isProd
-    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global"
-    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + "global"
-
   // TODO refactor point
-  if (process.env.NEXT_PUBLIC_STAGING === "false") {
+  if (isProd) {
     const response = await axios
       .get(url, {
         method: "get",
@@ -34,7 +37,7 @@ export async function getStaticProps() {
       })
       .catch((error) => {
         console.log(error)
-        return { props: { data: staticGlobal }, revalidate: day }
+        return { props: { data: staticGlobal }, revalidate: time }
       })
 
     if (response.status !== 200) {
@@ -44,7 +47,7 @@ export async function getStaticProps() {
     const data = response.data
     return {
       props: { data },
-      revalidate: day,
+      revalidate: time,
     }
 
     // staging endpoint
@@ -59,19 +62,19 @@ export async function getStaticProps() {
       sendNotification(response, "global", "error")
       return {
         props: { data: staticGlobal },
-        revalidate: day,
+        revalidate: time,
       }
     }
     return {
       props: { data },
-      revalidate: day,
+      revalidate: time,
     }
     // use static data
   } else {
     const data = staticGlobal
     return {
       props: { data },
-      revalidate: day,
+      revalidate: time,
     }
   }
 }

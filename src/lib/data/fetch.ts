@@ -27,3 +27,13 @@ export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
     return { props: { data: staticFile }, revalidate: time }
   })
 }
+
+export const getData = async (targetUrl, endpoint, staticFile) => {
+  const response = await fetch(targetUrl)
+  const result = await response.json()
+  if (response.status !== 200) {
+    sendNotification(response, `${endpoint}`, "error")
+    return staticFile
+  }
+  return result
+}
