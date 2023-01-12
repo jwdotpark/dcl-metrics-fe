@@ -1,0 +1,214 @@
+{
+  "stats/parcels": [
+    {
+      "date": "2023-01-11",
+      "url": "https://peer.uadevops.com/stats/parcels",
+      "host": "peer.uadevops.com",
+      "statuses": {
+        "200": 1440
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1440,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://peer-ec1.decentraland.org/stats/parcels",
+      "host": "peer-ec1.decentraland.org",
+      "statuses": {
+        "200": 1439,
+        "521": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.06944444444444445,
+      "success_rate": 99.93055555555556,
+      "success_count": 1439,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://peer-ec2.decentraland.org/stats/parcels",
+      "host": "peer-ec2.decentraland.org",
+      "statuses": {
+        "200": 1440
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1440,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://peer-wc1.decentraland.org/stats/parcels",
+      "host": "peer-wc1.decentraland.org",
+      "statuses": {
+        "200": 1439,
+        "521": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.06944444444444445,
+      "success_rate": 99.93055555555556,
+      "success_count": 1439,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://peer-eu1.decentraland.org/stats/parcels",
+      "host": "peer-eu1.decentraland.org",
+      "statuses": {
+        "200": 1439,
+        "521": 1
+      },
+      "failure_count": 1,
+      "failure_rate": 0.06944444444444445,
+      "success_rate": 99.93055555555556,
+      "success_count": 1439,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://peer-ap1.decentraland.org/stats/parcels",
+      "host": "peer-ap1.decentraland.org",
+      "statuses": {
+        "200": 1440
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1440,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://interconnected.online/stats/parcels",
+      "host": "interconnected.online",
+      "statuses": {
+        "200": 1437,
+        "521": 3
+      },
+      "failure_count": 3,
+      "failure_rate": 0.20833333333333334,
+      "success_rate": 99.79166666666667,
+      "success_count": 1437,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://peer.decentral.io/stats/parcels",
+      "host": "peer.decentral.io",
+      "statuses": {
+        "200": 1440
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1440,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://peer.melonwave.com/stats/parcels",
+      "host": "peer.melonwave.com",
+      "statuses": {
+        "200": 1440
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1440,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://peer.kyllian.me/stats/parcels",
+      "host": "peer.kyllian.me",
+      "statuses": {
+        "200": 1440
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1440,
+      "total_count": 1440
+    },
+    {
+      "date": "2023-01-11",
+      "url": "https://peer.dclnodes.io/stats/parcels",
+      "host": "peer.dclnodes.io",
+      "statuses": {
+        "200": 1440
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1440,
+      "total_count": 1440
+    }
+  ],
+  "v1/nfts": [
+    {
+      "date": "2023-01-11",
+      "url": "https://nft-api.decentraland.org/v1/nfts",
+      "host": "nft-api.decentraland.org",
+      "statuses": {
+        "200": 35065,
+        "500": 6
+      },
+      "failure_count": 10,
+      "failure_rate": 0.02851033499643621,
+      "success_rate": 99.97148966500356,
+      "success_count": 35065,
+      "total_count": 35075
+    }
+  ],
+  "islands-history": [
+    {
+      "date": "2023-01-11",
+      "url": "https://dao-data.atlascorp.io/islands-history",
+      "host": "dao-data.atlascorp.io",
+      "statuses": {
+        "200": 1440
+      },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 1440,
+      "total_count": 1440
+    }
+  ],
+  "lambdas/profiles": [
+    {
+      "date": "2023-01-11",
+      "url": "https://peer-ec1.decentraland.org/lambdas/profiles",
+      "host": "peer-ec1.decentraland.org",
+      "statuses": {
+        "200": 1260,
+        "502": 3
+      },
+      "failure_count": 3,
+      "failure_rate": 0.23752969121140144,
+      "success_rate": 99.7624703087886,
+      "success_count": 1260,
+      "total_count": 1263
+    }
+  ],
+  "entities/scene": [
+    {
+      "date": "2023-01-11",
+      "url": "https://peer.decentraland.org/content/entities/scene",
+      "host": "peer.decentraland.org",
+      "statuses": {
+        "200": 13359,
+        "521": 9
+      },
+      "failure_count": 9,
+      "failure_rate": 0.06732495511669659,
+      "success_rate": 99.9326750448833,
+      "success_count": 13359,
+      "total_count": 13368
+    }
+  ]
+}

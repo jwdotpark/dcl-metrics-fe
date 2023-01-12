@@ -37,25 +37,25 @@ import {
 export async function getStaticProps() {
   if (isProd) {
     //const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
-    const globalDailyRes = await getDataWithProxy(
+    const globalDailyRes = getDataWithProxy(
       globalDailyURL,
       "/global/daily",
       staticGlobalDaily
     )
 
-    const globalParcelRes = await getDataWithProxy(
+    const globalParcelRes = getDataWithProxy(
       globalParcelURL,
       "/global/parcels",
       staticGlobalParcels
     )
 
-    const globalSceneRes = await getDataWithProxy(
+    const globalSceneRes = getDataWithProxy(
       globalScenesURL,
       "/global/scenes",
       staticGlobalScenes
     )
 
-    const globalUserRes = await getDataWithProxy(
+    const globalUserRes = getDataWithProxy(
       globalUsersURL,
       "/global/users",
       staticGlobalUsers
