@@ -4,7 +4,6 @@ import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
 import staticScene from "../public/data/cached_scenes_top.json"
 import staticParcel from "../public/data/cached_parcel.json"
-import { sendNotification } from "../src/lib/hooks/sendNotification"
 import Layout from "../src/components/layout/layout"
 import PSA from "../src/components/global/PSA"
 import LandPicker from "../src/components/global/map/LandPicker"
@@ -27,9 +26,17 @@ import {
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalRes = getDataWithProxy(url, "/global", staticGlobal)
-    const sceneRes = getDataWithProxy(sceneURL, "/scenes/top", staticScene)
-    const parcelRes = getDataWithProxy(parcelURL, "/parcels/all", staticParcel)
+    const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
+    const sceneRes = await getDataWithProxy(
+      sceneURL,
+      "/scenes/top",
+      staticScene
+    )
+    const parcelRes = await getDataWithProxy(
+      parcelURL,
+      "/parcels/all",
+      staticParcel
+    )
 
     writeFile("cached_global_response.json", globalRes)
     writeFile("cached_scene_top.json", sceneRes)
@@ -40,9 +47,9 @@ export async function getStaticProps() {
       revalidate: time,
     }
   } else if (isDev && !isLocal) {
-    const globalRes = getData(url, "/global", staticGlobal)
-    const sceneRes = getData(sceneURL, "/scenes/top", staticScene)
-    const parcelRes = getData(parcelURL, "/parcels/all", staticParcel)
+    const globalRes = await getData(url, "/global", staticGlobal)
+    const sceneRes = await getData(sceneURL, "/scenes/top", staticScene)
+    const parcelRes = await getData(parcelURL, "/parcels/all", staticParcel)
 
     return {
       props: { globalRes, sceneRes, parcelRes },

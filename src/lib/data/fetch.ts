@@ -1,7 +1,6 @@
 import axios from "axios"
 import fs from "fs"
 import { sendNotification } from "../hooks/sendNotification"
-import { time } from "./constant"
 
 export const axiosOptions = {
   method: "get",
@@ -21,11 +20,12 @@ export const writeFile = (name, response) => {
 }
 
 export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
-  await axios.get(targetURL, axiosOptions).catch((error) => {
+  const result = await axios.get(targetURL, axiosOptions).catch((error) => {
     console.log(error)
     sendNotification(error, `${endpoint}`, "error")
-    return { props: { data: staticFile }, revalidate: time }
+    return staticFile
   })
+  return result
 }
 
 export const getData = async (targetUrl, endpoint, staticFile) => {
