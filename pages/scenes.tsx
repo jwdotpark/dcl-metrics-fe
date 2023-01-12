@@ -31,7 +31,7 @@ import staticGlobalScenes from "../public/data/staticGlobalScene.json"
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalSceneRes = getDataWithProxy(
+    const globalSceneRes = await getDataWithProxy(
       globalScenesURL,
       "/global/scenes",
       staticGlobalScenes
@@ -172,10 +172,8 @@ export async function getStaticProps() {
   //}
 }
 
-const Scenes = (props) => {
+const Scenes = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
-  //const result = props.data
-  //const sceneResult = props.sceneData
   const { globalSceneRes, sceneRes } = props
 
   return (

@@ -37,25 +37,25 @@ import {
 export async function getStaticProps() {
   if (isProd) {
     //const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
-    const globalDailyRes = getDataWithProxy(
+    const globalDailyRes = await getDataWithProxy(
       globalDailyURL,
       "/global/daily",
       staticGlobalDaily
     )
 
-    const globalParcelRes = getDataWithProxy(
+    const globalParcelRes = await getDataWithProxy(
       globalParcelURL,
       "/global/parcels",
       staticGlobalParcels
     )
 
-    const globalSceneRes = getDataWithProxy(
+    const globalSceneRes = await getDataWithProxy(
       globalScenesURL,
       "/global/scenes",
       staticGlobalScenes
     )
 
-    const globalUserRes = getDataWithProxy(
+    const globalUserRes = await getDataWithProxy(
       globalUsersURL,
       "/global/users",
       staticGlobalUsers
@@ -72,12 +72,12 @@ export async function getStaticProps() {
       staticParcel
     )
 
-    writeFile("staticGlobalDaily.json", globalDailyRes)
-    writeFile("staticGlobalParcels.json", globalParcelRes)
-    writeFile("staticGlobalScenes.json", globalSceneRes)
-    writeFile("staticGlobalUsers.json", globalUserRes)
-    writeFile("cached_scene_top.json", sceneRes)
-    writeFile("cached_parcel.json", parcelRes)
+    //writeFile("staticGlobalDaily", globalDailyRes)
+    //writeFile("staticGlobalParcels", globalParcelRes)
+    //writeFile("staticGlobalScenes", globalSceneRes)
+    //writeFile("staticGlobalUsers", globalUserRes)
+    //writeFile("cached_scene_top", sceneRes)
+    //writeFile("cached_parcel", parcelRes)
 
     const result = {
       globalDailyRes,
@@ -157,15 +157,6 @@ export async function getStaticProps() {
       revalidate: time,
     }
   }
-}
-
-type Props = {
-  globalDailyRes: {}
-  globalParcelRes: {}
-  globalSceneRes: {}
-  globalUserRes: {}
-  sceneRes: {}
-  parcelRes: {}
 }
 
 const GlobalPage: NextPage = (props: Props) => {

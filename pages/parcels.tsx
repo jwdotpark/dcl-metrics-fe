@@ -24,7 +24,7 @@ import { getData, getDataWithProxy } from "../src/lib/data/fetch"
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalParcelRes = getDataWithProxy(
+    const globalParcelRes = await getDataWithProxy(
       globalParcelURL,
       "/global/parcels",
       staticGlobalParcels
@@ -119,9 +119,8 @@ export async function getStaticProps() {
   //}
 }
 
-const Parcels = (props) => {
+const Parcels = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
-  //const result = props.data
   const { globalParcelRes } = props
 
   return (

@@ -113,7 +113,7 @@ export async function getStaticProps() {
   //}
 }
 
-const MapPage = (props) => {
+const MapPage = (props: Props) => {
   const { parcelRes } = props
   return (
     <Layout>

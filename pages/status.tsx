@@ -82,7 +82,7 @@ export async function getStaticProps() {
   //}
 }
 
-const Status = (props) => {
+const Status = (props: Props) => {
   const { statusRes } = props
 
   return (

@@ -23,7 +23,7 @@ import {
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalUserRes = getDataWithProxy(
+    const globalUserRes = await getDataWithProxy(
       globalUsersURL,
       "/global/users",
       staticGlobalUsers
@@ -93,12 +93,8 @@ export async function getStaticProps() {
   }
 }
 
-const Users = (props) => {
+const Users = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
-  const [isDataLoading] = useAtom(LoadingStateAtom)
-  // const [data] = useAtom(DataAtom)
-  // const result = data.length !== 0 ? data : staticGlobal
-  //const result = props.data
   const { globalUserRes } = props
 
   return (
