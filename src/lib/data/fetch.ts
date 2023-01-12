@@ -36,18 +36,11 @@ export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
 }
 
 export const getData = async (targetUrl, endpoint, staticFile) => {
-  try {
-    const response = await fetch(targetUrl)
-    const result = await response.json()
-    return result
-  } catch (error) {
-    console.log(error)
-    sendNotification(error, `${endpoint}`, "error")
+  const response = await fetch(targetUrl)
+  const result = await response.json()
+  if (response.status !== 200) {
+    sendNotification(response, `${endpoint}`, "error")
     return staticFile
   }
-
-  //if (response.status !== 200) {
-  //  sendNotification(response, `${endpoint}`, "error")
-  //  return staticFile
-  //}
+  return result
 }
