@@ -24,7 +24,7 @@ export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
     const result = await axios.get(targetURL, axiosOptions)
     return result
   } catch (error) {
-    console.log(error)
+    console.log("error", error.response.status, error.response.statusText)
     sendNotification(error, `${endpoint}`, "error")
     return staticFile
   }

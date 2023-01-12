@@ -2,6 +2,12 @@ import { useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
+
+import staticGlobalDaily from "../public/data/staticGlobalDaily.json"
+import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
+import staticGlobalScenes from "../public/data/staticGlobalScene.json"
+import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
+
 import staticScene from "../public/data/cached_scenes_top.json"
 import staticParcel from "../public/data/cached_parcel.json"
 import Layout from "../src/components/layout/layout"
@@ -20,13 +26,41 @@ import {
   isDev,
   isLocal,
   url,
+  globalDaily,
+  globalParcel,
+  globalScenes,
+  globalUsers,
   sceneURL,
   parcelURL,
 } from "../src/lib/data/constant"
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
+    //const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
+    const globalDailyRes = await getDataWithProxy(
+      globalDaily,
+      "/global/daily",
+      staticGlobalDaily
+    )
+
+    const globalParcelRes = await getDataWithProxy(
+      globalParcel,
+      "/global/parcels",
+      staticGlobalParcels
+    )
+
+    const globalSceneRes = await getDataWithProxy(
+      globalScenes,
+      "/global/scenes",
+      staticGlobalScenes
+    )
+
+    const globalUserRes = await getDataWithProxy(
+      globalUsers,
+      "/global/users",
+      staticGlobalUsers
+    )
+
     const sceneRes = await getDataWithProxy(
       sceneURL,
       "/scenes/top",
@@ -38,12 +72,25 @@ export async function getStaticProps() {
       staticParcel
     )
 
-    writeFile("cached_global_response.json", globalRes)
+    //writeFile("cached_global_response.json", globalDaily)
+    writeFile("staticGlobalDaily.json", globalDailyRes)
+    writeFile("staticGlobalParcels.json", globalParcelRes)
+    writeFile("staticGlobalScenes.json", globalSceneRes)
+    writeFile("staticGlobalUsers.json", globalUserRes)
     writeFile("cached_scene_top.json", sceneRes)
     writeFile("cached_parcel.json", parcelRes)
 
+    const result = {
+      globalDailyRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
+      parcelRes,
+    }
+    
     return {
-      props: { globalRes, sceneRes, parcelRes },
+      props: result,
       revalidate: time,
     }
   } else if (isDev && !isLocal) {
@@ -78,6 +125,8 @@ const GlobalPage: NextPage = (props) => {
   const [isPSAVisible, setIsPSAVisible] = useState(true)
   // @ts-ignore
   const { globalRes, sceneRes, parcelRes } = props
+
+  console.log(globalRes)
 
   return (
     <Layout>
