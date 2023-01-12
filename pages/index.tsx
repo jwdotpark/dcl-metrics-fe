@@ -39,7 +39,7 @@ export async function getStaticProps() {
       props: { globalRes, sceneRes, parcelRes },
       revalidate: time,
     }
-  } else if (isDev) {
+  } else if (isDev && !isLocal) {
     const response = await fetch(url)
     const sceneResponse = await fetch(sceneURL)
     const parcelResponse = await fetch(parcelURL)
