@@ -1,13 +1,10 @@
 import { useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
-import staticGlobal from "../public/data/cached_global_response.json"
-
 import staticGlobalDaily from "../public/data/staticGlobalDaily.json"
 import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
 import staticGlobalScenes from "../public/data/staticGlobalScene.json"
 import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
-
 import staticScene from "../public/data/cached_scenes_top.json"
 import staticParcel from "../public/data/cached_parcel.json"
 import Layout from "../src/components/layout/layout"
@@ -20,66 +17,24 @@ import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedPar
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
-import {
-  time,
-  isProd,
-  isDev,
-  isLocal,
-  url,
-  globalDailyURL,
-  globalParcelURL,
-  globalScenesURL,
-  globalUsersURL,
-  sceneURL,
-  parcelURL,
-} from "../src/lib/data/constant"
+import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
+import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
 
 export async function getStaticProps() {
   if (isProd) {
-    //const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
-    const globalDailyRes = await getDataWithProxy(
-      globalDailyURL,
-      "/global/daily",
-      staticGlobalDaily
+    const [
+      globalDailyRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
+      parcelRes,
+    ] = await Promise.all(
+      globalRequestList.map(({ url, endpoint, staticData }) =>
+        getDataWithProxy(url, endpoint, staticData)
+      )
     )
 
-    const globalParcelRes = await getDataWithProxy(
-      globalParcelURL,
-      "/global/parcels",
-      staticGlobalParcels
-    )
-
-    const globalSceneRes = await getDataWithProxy(
-      globalScenesURL,
-      "/global/scenes",
-      staticGlobalScenes
-    )
-
-    const globalUserRes = await getDataWithProxy(
-      globalUsersURL,
-      "/global/users",
-      staticGlobalUsers
-    )
-
-    const sceneRes = await getDataWithProxy(
-      sceneURL,
-      "/scenes/top",
-      staticScene
-    )
-    const parcelRes = await getDataWithProxy(
-      parcelURL,
-      "/parcels/all",
-      staticParcel
-    )
-
-    const fileArr = [
-      "staticGlobalDaily",
-      "staticGlobalParcel",
-      "staticGlobalScene",
-      "staticGlobalUsers",
-      "cached_scenes_top",
-      "cached_parcel",
-    ]
     const resultArr = [
       globalDailyRes,
       globalParcelRes,
@@ -89,8 +44,8 @@ export async function getStaticProps() {
       parcelRes,
     ]
 
-    for (let i = 0; i < fileArr.length; i++) {
-      writeFile(fileArr[i], resultArr[i])
+    for (let i = 0; i < globalFileNameArr.length; i++) {
+      writeFile(globalFileNameArr[i], resultArr[i])
     }
 
     const result = {
@@ -107,33 +62,18 @@ export async function getStaticProps() {
       revalidate: time,
     }
   } else if (isDev && !isLocal) {
-    //const globalRes = await getData(url, "/global", staticGlobal)
-
-    const globalDailyRes = await getData(
-      globalDailyURL,
-      "/global/daily",
-      staticGlobalDaily
+    const [
+      globalDailyRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
+      parcelRes,
+    ] = await Promise.all(
+      globalRequestList.map(({ url, endpoint, staticData }) =>
+        getData(url, endpoint, staticData)
+      )
     )
-    const globalParcelRes = await getData(
-      globalParcelURL,
-      "/global/parcels",
-      staticGlobalParcels
-    )
-
-    const globalSceneRes = await getData(
-      globalScenesURL,
-      "/global/scenes",
-      staticGlobalScenes
-    )
-
-    const globalUserRes = await getData(
-      globalUsersURL,
-      "/global/users",
-      staticGlobalUsers
-    )
-
-    const sceneRes = await getData(sceneURL, "/scenes/top", staticScene)
-    const parcelRes = await getData(parcelURL, "/parcels/all", staticParcel)
 
     const result = {
       globalDailyRes,
@@ -149,7 +89,6 @@ export async function getStaticProps() {
       revalidate: time,
     }
   } else if (isLocal) {
-    //const globalRes = staticGlobal
     const globalDailyRes = staticGlobalDaily
     const globalParcelRes = staticGlobalParcels
     const globalSceneRes = staticGlobalScenes

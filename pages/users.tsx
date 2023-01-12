@@ -1,23 +1,14 @@
-import { useBreakpointValue, Grid, useColorModeValue } from "@chakra-ui/react"
+import { useBreakpointValue, Grid } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-import staticGlobal from "../public/data/cached_global_response.json"
 import Explorer from "../src/components/local/stats/Explorer"
 import MarathonUsers from "../src/components/local/stats/MarathonUsers"
-import { useAtom } from "jotai"
-import { DataAtom, LoadingStateAtom } from "../src/lib/hooks/atoms"
-import { sendNotification } from "../src/lib/hooks/sendNotification"
-const axios = require("axios").default
-import fs from "fs"
 import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
-import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
+import { getDataWithProxy, getData } from "../src/lib/data/fetch"
 import {
   time,
   isProd,
   isDev,
   isLocal,
-  url,
-  sceneURL,
-  parcelURL,
   globalUsersURL,
 } from "../src/lib/data/constant"
 
@@ -33,35 +24,6 @@ export async function getStaticProps() {
       props: result,
       revalidate: time,
     }
-    //const response = await axios
-    //  .get(url, {
-    //    method: "get",
-    //    proxy: {
-    //      protocol: "http",
-    //      host: process.env.FIXIE_HOST,
-    //      port: 80,
-    //      auth: {
-    //        username: "fixie",
-    //        password: process.env.FIXIE_TOKEN,
-    //      },
-    //    },
-    //  })
-    //  .catch((error) => {
-    //    console.log(error)
-    //    return { props: { data: staticGlobal }, revalidate: time }
-    //  })
-
-    //if (response.status !== 200) {
-    //  sendNotification(response, "global", "error")
-    //}
-
-    //const data = response.data
-    //return {
-    //  props: { data },
-    //  revalidate: time,
-    //}
-
-    // staging endpoint
   } else if (isDev && !isLocal) {
     const globalUserRes = await getData(
       globalUsersURL,
@@ -69,16 +31,6 @@ export async function getStaticProps() {
       staticGlobalUsers
     )
     const result = { globalUserRes }
-    //const response = await fetch(url)
-    //const data = await response.json()
-
-    //if (response.status !== 200) {
-    //  sendNotification(response, "global", "error")
-    //  return {
-    //    props: { data: staticGlobal },
-    //    revalidate: time,
-    //  }
-    //}
     return {
       props: result,
       revalidate: time,
