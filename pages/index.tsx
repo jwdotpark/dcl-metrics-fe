@@ -72,12 +72,12 @@ export async function getStaticProps() {
       staticParcel
     )
 
-    //writeFile("staticGlobalDaily", globalDailyRes)
-    //writeFile("staticGlobalParcels", globalParcelRes)
-    //writeFile("staticGlobalScenes", globalSceneRes)
-    //writeFile("staticGlobalUsers", globalUserRes)
-    //writeFile("cached_scene_top", sceneRes)
-    //writeFile("cached_parcel", parcelRes)
+    writeFile("staticGlobalDaily", globalDailyRes)
+    writeFile("staticGlobalParcels", globalParcelRes)
+    writeFile("staticGlobalScenes", globalSceneRes)
+    writeFile("staticGlobalUsers", globalUserRes)
+    writeFile("cached_scene_top", sceneRes)
+    writeFile("cached_parcel", parcelRes)
 
     const result = {
       globalDailyRes,
