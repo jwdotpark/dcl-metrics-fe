@@ -72,12 +72,26 @@ export async function getStaticProps() {
       staticParcel
     )
 
-    //writeFile("staticGlobalDaily", globalDailyRes)
-    //writeFile("staticGlobalParcels", globalParcelRes)
-    //writeFile("staticGlobalScenes", globalSceneRes)
-    //writeFile("staticGlobalUsers", globalUserRes)
-    //writeFile("cached_scene_top", sceneRes)
-    //writeFile("cached_parcel", parcelRes)
+    const fileArr = [
+      "staticGlobalDaily",
+      "staticGlobalParcel",
+      "staticGlobalScene",
+      "staticGlobalUsers",
+      "cached_scenes_top",
+      "cached_parcel",
+    ]
+    const resultArr = [
+      globalDailyRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
+      parcelRes,
+    ]
+
+    for (let i = 0; i < fileArr.length; i++) {
+      writeFile(fileArr[i], resultArr[i])
+    }
 
     const result = {
       globalDailyRes,
