@@ -2,12 +2,14 @@
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
 import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
-import { useMemo } from "react"
+import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import moment from "moment"
 import { chartHeight } from "../lib/data/chartInfo"
 
 const LineChart = ({ data, color, name }) => {
+  const [localData, setLocalData] = useState([])
+
   const min = useMemo(() => {
     const lastData = data[data.length - 1].data
     const lastDataY = lastData.map((item) => item.y)
@@ -35,10 +37,14 @@ const LineChart = ({ data, color, name }) => {
     }
   }
 
+  useEffect(() => {
+    setLocalData(data)
+  }, [data])
+
   return (
     <Box h={chartHeight}>
       <ResponsiveLine
-        data={data}
+        data={localData}
         theme={{
           textColor: useColorModeValue("black", "white"),
           fontSize: 12,
@@ -50,7 +56,7 @@ const LineChart = ({ data, color, name }) => {
             },
           },
         }}
-        animate={false}
+        animate={true}
         pointSize={4}
         margin={{ top: 40, right: 25, bottom: 60, left: 55 }}
         xScale={{ type: "point" }}

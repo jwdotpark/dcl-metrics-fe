@@ -1,11 +1,10 @@
 // @ts-nocheck
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
 import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
-import { BarItem } from "@nivo/bar"
 
 const UniqueVisitors = ({ data }) => {
   const dataArr = Object.entries(data)
@@ -32,7 +31,7 @@ const UniqueVisitors = ({ data }) => {
 
   const mapData = (id: string, key: number) => {
     return {
-      id,
+      id: id,
       data: partial.map((item) => ({
         x: item.date,
         y: item[key],
