@@ -1,6 +1,6 @@
 import moment from "moment"
 
-export const chartHeight = 300
+export const chartHeight = 350
 export const defaultDateRange = 90
 export const dateFormat = "MMM. Do"
 
