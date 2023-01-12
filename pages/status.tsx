@@ -8,13 +8,24 @@ import {
   statusURL,
   time,
 } from "../src/lib/data/constant"
-import { getData, writeFile } from "../src/lib/data/fetch"
+import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
 import staticPeerStatus from "../public/data/staticPeerStatus.json"
 
 export async function getStaticProps() {
-  if (isProd || isDev) {
-    const statusRes = await getData(statusURL, "/peer_status", staticPeerStatus)
+  if (isProd) {
+    const statusRes = await getDataWithProxy(
+      statusURL,
+      "/peer_status",
+      staticPeerStatus
+    )
     writeFile("staticPeerStatus", statusRes)
+    const result = { statusRes }
+    return {
+      props: result,
+      revalidate: time,
+    }
+  } else if (isDev && !isLocal) {
+    const statusRes = await getData(statusURL, "/peer_status", staticPeerStatus)
     const result = { statusRes }
     return {
       props: result,
