@@ -36,14 +36,14 @@ const SceneLayout = ({ result, sceneResult }) => {
           dailyUsers={{}}
         />
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <TopScenesVisitors res={result.scenes} />
-          <ScenesTimeSpent res={result.scenes} />
+          <TopScenesVisitors res={result} />
+          <ScenesTimeSpent res={result} />
         </Grid>
         <Collapse animateOpacity in={isOpen}>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <ScenesLogin res={result.scenes} />
-            <ScenesLogout res={result.scenes} />
-            <ScenesTimeSpentAFK res={result.scenes} />
+            <ScenesLogin res={result} />
+            <ScenesLogout res={result} />
+            <ScenesTimeSpentAFK res={result} />
           </Grid>
         </Collapse>
         <AccordionViewMore isOpen={isOpen} onToggle={onToggle} />

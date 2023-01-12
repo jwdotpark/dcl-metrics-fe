@@ -27,8 +27,8 @@ const UserLayout = ({ result }) => {
       <AccordionLabel name="Users" />
       <AccordionPanel pb={4} bg={useColorModeValue("gray.300", "gray.600")}>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <MarathonUsers res={result.users} />
-          <Explorer res={result.users} />
+          <MarathonUsers res={result} />
+          <Explorer res={result} />
         </Grid>
       </AccordionPanel>
     </AccordionItem>

@@ -2,6 +2,12 @@ import { useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobal from "../public/data/cached_global_response.json"
+
+import staticGlobalDaily from "../public/data/staticGlobalDaily.json"
+import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
+import staticGlobalScenes from "../public/data/staticGlobalScene.json"
+import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
+
 import staticScene from "../public/data/cached_scenes_top.json"
 import staticParcel from "../public/data/cached_parcel.json"
 import Layout from "../src/components/layout/layout"
@@ -20,13 +26,41 @@ import {
   isDev,
   isLocal,
   url,
+  globalDailyURL,
+  globalParcelURL,
+  globalScenesURL,
+  globalUsersURL,
   sceneURL,
   parcelURL,
 } from "../src/lib/data/constant"
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
+    //const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
+    const globalDailyRes = await getDataWithProxy(
+      globalDailyURL,
+      "/global/daily",
+      staticGlobalDaily
+    )
+
+    const globalParcelRes = await getDataWithProxy(
+      globalParcelURL,
+      "/global/parcels",
+      staticGlobalParcels
+    )
+
+    const globalSceneRes = await getDataWithProxy(
+      globalScenesURL,
+      "/global/scenes",
+      staticGlobalScenes
+    )
+
+    const globalUserRes = await getDataWithProxy(
+      globalUsersURL,
+      "/global/users",
+      staticGlobalUsers
+    )
+
     const sceneRes = await getDataWithProxy(
       sceneURL,
       "/scenes/top",
@@ -38,35 +72,94 @@ export async function getStaticProps() {
       staticParcel
     )
 
-    writeFile("cached_global_response.json", globalRes)
-    writeFile("cached_scene_top.json", sceneRes)
-    writeFile("cached_parcel.json", parcelRes)
+    //writeFile("staticGlobalDaily", globalDailyRes)
+    //writeFile("staticGlobalParcels", globalParcelRes)
+    //writeFile("staticGlobalScenes", globalSceneRes)
+    //writeFile("staticGlobalUsers", globalUserRes)
+    //writeFile("cached_scene_top", sceneRes)
+    //writeFile("cached_parcel", parcelRes)
+
+    const result = {
+      globalDailyRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
+      parcelRes,
+    }
 
     return {
-      props: { globalRes, sceneRes, parcelRes },
+      props: result,
       revalidate: time,
     }
   } else if (isDev && !isLocal) {
-    const globalRes = await getData(url, "/global", staticGlobal)
+    //const globalRes = await getData(url, "/global", staticGlobal)
+
+    const globalDailyRes = await getData(
+      globalDailyURL,
+      "/global/daily",
+      staticGlobalDaily
+    )
+    const globalParcelRes = await getData(
+      globalParcelURL,
+      "/global/parcels",
+      staticGlobalParcels
+    )
+
+    const globalSceneRes = await getData(
+      globalScenesURL,
+      "/global/scenes",
+      staticGlobalScenes
+    )
+
+    const globalUserRes = await getData(
+      globalUsersURL,
+      "/global/users",
+      staticGlobalUsers
+    )
+
     const sceneRes = await getData(sceneURL, "/scenes/top", staticScene)
     const parcelRes = await getData(parcelURL, "/parcels/all", staticParcel)
 
+    const result = {
+      globalDailyRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
+      parcelRes,
+    }
+
     return {
-      props: { globalRes, sceneRes, parcelRes },
+      props: result,
       revalidate: time,
     }
   } else if (isLocal) {
-    const globalRes = staticGlobal
+    //const globalRes = staticGlobal
+    const globalDailyRes = staticGlobalDaily
+    const globalParcelRes = staticGlobalParcels
+    const globalSceneRes = staticGlobalScenes
+    const globalUserRes = staticGlobalUsers
     const sceneRes = staticScene
     const parcelRes = staticParcel
+
+    const result = {
+      globalDailyRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
+      parcelRes,
+    }
+
     return {
-      props: { globalRes, sceneRes, parcelRes },
+      props: result,
       revalidate: time,
     }
   }
 }
 
-const GlobalPage: NextPage = (props) => {
+const GlobalPage: NextPage = (props: Props) => {
   const gridColumn = useBreakpointValue({
     base: 1,
     sm: 1,
@@ -76,28 +169,35 @@ const GlobalPage: NextPage = (props) => {
   })
 
   const [isPSAVisible, setIsPSAVisible] = useState(true)
-  // @ts-ignore
-  const { globalRes, sceneRes, parcelRes } = props
+
+  const {
+    globalDailyRes,
+    globalParcelRes,
+    globalSceneRes,
+    globalUserRes,
+    sceneRes,
+    parcelRes,
+  } = props
 
   return (
     <Layout>
       <Box w="100%">
         {isPSAVisible && <PSA setIsPSAVisible={setIsPSAVisible} />}
         <Box mb="4">
-          <UniqueVisitors data={globalRes.global} />
+          <UniqueVisitors data={globalDailyRes} />
         </Box>
 
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <UniqueVisitedParcels data={globalRes.global} />
-          <ActiveScenes data={globalRes.global} />
+          <UniqueVisitedParcels data={globalDailyRes} />
+          <ActiveScenes data={globalDailyRes} />
         </Grid>
 
         <LandPicker parcelData={parcelRes} isPage={false} />
 
         <Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
-          <UserLayout result={globalRes} />
-          <SceneLayout result={globalRes} sceneResult={sceneRes} />
-          <ParcelLayout result={globalRes} />
+          <UserLayout result={globalUserRes} />
+          <SceneLayout result={globalSceneRes} sceneResult={sceneRes} />
+          <ParcelLayout result={globalParcelRes} />
         </Accordion>
       </Box>
     </Layout>

@@ -17,7 +17,6 @@ import LogInTimeSpentParcel from "../../local/stats/parcels/LogInTimeSpentParcel
 import LogOutTimeSpentParcel from "../../local/stats/parcels/LogOutTimeSpentParcel"
 import MostVisitedParcel from "../../local/stats/parcels/MostVisitedParcel"
 import AccordionLabel from "./partials/AccordionLabel"
-// import AccordionLink from "../global/partials/AccordionLink"
 import AccordionViewMore from "../global/partials/AccordionViewMore"
 
 const ParcelLayout = ({ result }) => {
@@ -38,14 +37,14 @@ const ParcelLayout = ({ result }) => {
         borderBottomRadius="xl"
       >
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <AvgTimeSpentParcel parcel={result.parcels} />
-          <MostVisitedParcel parcel={result.parcels} />
+          <AvgTimeSpentParcel parcel={result} />
+          <MostVisitedParcel parcel={result} />
         </Grid>
         <Collapse animateOpacity in={isOpen}>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <LogInTimeSpentParcel parcel={result.parcels} />
-            <AFKTimeSpentParcel parcel={result.parcels} />
-            <LogOutTimeSpentParcel parcel={result.parcels} />
+            <LogInTimeSpentParcel parcel={result} />
+            <AFKTimeSpentParcel parcel={result} />
+            <LogOutTimeSpentParcel parcel={result} />
           </Grid>
         </Collapse>
         <AccordionViewMore isOpen={isOpen} onToggle={onToggle} />
