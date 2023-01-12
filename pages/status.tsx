@@ -3,7 +3,6 @@ import Layout from "../src/components/layout/layout"
 import StatusBox from "../src/components/local/status/StatusBox"
 import { sendNotification } from "../src/lib/hooks/sendNotification"
 const axios = require("axios").default
-import fs from "fs"
 import { useState } from "react"
 import {
   isDev,
@@ -12,12 +11,13 @@ import {
   statusURL,
   time,
 } from "../src/lib/data/constant"
-import { getData } from "../src/lib/data/fetch"
+import { getData, writeFile } from "../src/lib/data/fetch"
 import staticPeerStatus from "../public/data/staticPeerStatus.json"
 
 export async function getStaticProps() {
   if (isProd || isDev) {
     const statusRes = await getData(statusURL, "/peer_status", staticPeerStatus)
+    writeFile("staticPeerStatus", statusRes)
     const result = { statusRes }
     return {
       props: result,

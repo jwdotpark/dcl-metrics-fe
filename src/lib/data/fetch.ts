@@ -18,7 +18,7 @@ export const axiosOptions = {
 export const writeFile = (name, response) => {
   const path = "./public/data/"
   const file = `${name}.json`
-  fs.writeFileSync(path + file, JSON.stringify(response.data))
+  fs.writeFileSync(path + file, JSON.stringify(response))
 }
 
 export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
