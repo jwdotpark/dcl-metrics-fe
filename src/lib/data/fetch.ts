@@ -20,11 +20,6 @@ export const writeFile = (name, response) => {
 }
 
 export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
-  //const result = await axios.get(targetURL, axiosOptions).catch((error) => {
-  //  console.log(error)
-  //  sendNotification(error, `${endpoint}`, "error")
-  //  return staticFile
-  //})
   try {
     const result = await axios.get(targetURL, axiosOptions)
     return result
