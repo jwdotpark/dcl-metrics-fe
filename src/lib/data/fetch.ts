@@ -20,20 +20,34 @@ export const writeFile = (name, response) => {
 }
 
 export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
-  const result = await axios.get(targetURL, axiosOptions).catch((error) => {
+  //const result = await axios.get(targetURL, axiosOptions).catch((error) => {
+  //  console.log(error)
+  //  sendNotification(error, `${endpoint}`, "error")
+  //  return staticFile
+  //})
+  try {
+    const result = await axios.get(targetURL, axiosOptions)
+    return result
+  } catch (error) {
     console.log(error)
     sendNotification(error, `${endpoint}`, "error")
     return staticFile
-  })
-  return result
+  }
 }
 
 export const getData = async (targetUrl, endpoint, staticFile) => {
-  const response = await fetch(targetUrl)
-  const result = await response.json()
-  if (response.status !== 200) {
-    sendNotification(response, `${endpoint}`, "error")
+  try {
+    const response = await fetch(targetUrl)
+    const result = await response.json()
+    return result
+  } catch (error) {
+    console.log(error)
+    sendNotification(error, `${endpoint}`, "error")
     return staticFile
   }
-  return result
+
+  //if (response.status !== 200) {
+  //  sendNotification(response, `${endpoint}`, "error")
+  //  return staticFile
+  //}
 }

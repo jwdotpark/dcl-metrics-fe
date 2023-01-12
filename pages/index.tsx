@@ -26,17 +26,43 @@ import {
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
-    const sceneRes = await getDataWithProxy(
-      sceneURL,
-      "/scenes/top",
-      staticScene
-    )
-    const parcelRes = await getDataWithProxy(
-      parcelURL,
-      "/parcels/all",
-      staticParcel
-    )
+    //const globalRes = await getDataWithProxy(url, "/global", staticGlobal)
+    //const sceneRes = await getDataWithProxy(
+    //  sceneURL,
+    //  "/scenes/top",
+    //  staticScene
+    //)
+    //const parcelRes = await getDataWithProxy(
+    //  parcelURL,
+    //  "/parcels/all",
+    //  staticParcel
+    //)
+    const endpoints = [
+      { url: url, path: "/global", static: staticGlobal },
+      { url: sceneURL, path: "/scenes/top", static: staticScene },
+      { url: parcelURL, path: "/parcels/all", static: staticParcel },
+    ]
+
+    let globalRes, sceneRes, parcelRes
+    
+    for (let endpoint of endpoints) {
+      const data = await getDataWithProxy(
+        endpoint.url,
+        endpoint.path,
+        endpoint.static
+      )
+      switch (endpoint.path) {
+        case "/global":
+          globalRes = data
+          break
+        case "/scenes/top":
+          sceneRes = data
+          break
+        case "/parcels/all":
+          parcelRes = data
+          break
+      }
+    }
 
     writeFile("cached_global_response.json", globalRes)
     writeFile("cached_scene_top.json", sceneRes)
