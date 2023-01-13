@@ -9,7 +9,7 @@ import TableComponent from "../partials/TableComponent"
 const LogInTimeSpentParcel = ({ parcel }) => {
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const headList = ["Scenes Map", "Coord", "Logins"]
-  const bodyList = ["map_url", "coord", "avg_time_spent"]
+  const bodyList = ["map_url", "coord", "logins"]
 
   const date = dateRangeStr(dateRange)
   let tableData = parcel[date]["logins"]
@@ -18,7 +18,7 @@ const LogInTimeSpentParcel = ({ parcel }) => {
     result.push({
       coord: key,
       map_url: baseUrl + key.replace(",", "/") + mapUrl,
-      avg_time_spent: tableData[key],
+      total_logins: tableData[key],
     })
   }
   tableData = result
