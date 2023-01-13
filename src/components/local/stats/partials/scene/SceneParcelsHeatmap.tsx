@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Center,
   Box,
@@ -8,14 +7,23 @@ import {
   Tooltip,
 } from "@chakra-ui/react"
 import { SceneColor } from "../../../../../lib/hooks/utils"
+import { heatmapColor } from "../../../../../lib/hooks/utils"
 
 const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   const heatmapHeight = 400
 
-  const minX = Math.min(...Object.keys(data).map((d) => d.split(",")[0]))
-  const maxX = Math.max(...Object.keys(data).map((d) => d.split(",")[0]))
-  const minY = Math.min(...Object.keys(data).map((d) => d.split(",")[1]))
-  const maxY = Math.max(...Object.keys(data).map((d) => d.split(",")[1]))
+  const minX = Math.min(
+    ...Object.keys(data).map((d) => Number(d.split(",")[0]))
+  )
+  const maxX = Math.max(
+    ...Object.keys(data).map((d) => Number(d.split(",")[0]))
+  )
+  const minY = Math.min(
+    ...Object.keys(data).map((d) => Number(d.split(",")[1]))
+  )
+  const maxY = Math.max(
+    ...Object.keys(data).map((d) => Number(d.split(",")[1]))
+  )
 
   const grid = []
 
@@ -39,7 +47,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
     })
   )
 
-  const setBgColor = (value: string) => {
+  const setBgColor = (value: number) => {
     const i = selectedScene
     const res =
       SceneColor[i].substring(0, SceneColor[i].toString().length - 1) +

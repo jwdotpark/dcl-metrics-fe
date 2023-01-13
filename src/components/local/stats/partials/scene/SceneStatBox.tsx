@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Box,
   useColorModeValue,
@@ -92,6 +91,7 @@ const StatBox = ({ data, selectedScene }) => {
                             name === "Avg Time Spent AFK"
                               ? moment
                                   .duration(Number(value), "seconds")
+                                  // @ts-ignore
                                   .format("h[h] m[m] s[s]")
                               : value}
                             {name === "Visitors" && " users"}
@@ -145,6 +145,7 @@ const StatBox = ({ data, selectedScene }) => {
                             {name === "Avg Complete Session Duration"
                               ? moment
                                   .duration(Number(value), "seconds")
+                                  // @ts-ignore
                                   .format("h[h] m[m] s[s]")
                               : value}
                           </Text>

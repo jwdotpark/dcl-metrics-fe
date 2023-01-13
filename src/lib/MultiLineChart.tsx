@@ -7,14 +7,7 @@ import {
   useColorModeValue,
   Flex,
   Spacer,
-  TableContainer,
-  Table,
   Text,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
 } from "@chakra-ui/react"
 import { ResponsiveLine } from "@nivo/line"
 import { useMemo } from "react"

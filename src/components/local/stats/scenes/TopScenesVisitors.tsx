@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useState } from "react"
 import BoxTitle from "../../../../components/layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"

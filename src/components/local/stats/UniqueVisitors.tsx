@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useEffect, useState, useMemo } from "react"
+import { useEffect, useState } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
