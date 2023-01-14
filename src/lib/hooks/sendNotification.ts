@@ -11,7 +11,7 @@ export const sendNotification = async (res, name, status) => {
     headers: headers,
     body: JSON.stringify({
       level: "warning",
-      message: `${name} endpoint request is ${res.toString()} - ${status}`,
+      message: `${name} endpoint request is ${res.toString()}`,
       payload: {
         status: status,
       },
