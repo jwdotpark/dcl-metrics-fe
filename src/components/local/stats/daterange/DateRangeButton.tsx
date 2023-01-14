@@ -3,7 +3,7 @@ import {
   Box,
   Button,
   ButtonGroup,
-  useColorModeValue,
+  useColorMode,
 } from "@chakra-ui/react"
 
 const DateRangeButton = ({
@@ -13,8 +13,16 @@ const DateRangeButton = ({
   name,
   yesterday,
 }) => {
-  const btnColor = useColorModeValue("gray.200", "gray.600")
+  const { colorMode } = useColorMode()
   const umamiEvent = `umami--click--${name}`
+
+  const buttonColor = (value: boolean) => {
+    if (value) {
+      return colorMode === "light" ? "gray.300" : "gray.900"
+    } else {
+      return colorMode === "light" ? "gray.100" : "gray.700"
+    }
+  }
 
   return (
     <Box w="100%" mt="4" mx="4" pr="8">
@@ -32,7 +40,7 @@ const DateRangeButton = ({
             {yesterday && (
               <Button
                 w="100%"
-                bgColor={dateRange === 1 && btnColor}
+                bg={buttonColor(dateRange === 1)}
                 onClick={() => setDateRange(1)}
               >
                 1d
@@ -41,7 +49,7 @@ const DateRangeButton = ({
 
             <Button
               w="100%"
-              bgColor={dateRange === 7 && btnColor}
+              bg={buttonColor(dateRange === 7)}
               onClick={() => setDateRange(7)}
             >
               7d
@@ -49,7 +57,7 @@ const DateRangeButton = ({
             {!yesterday && (
               <Button
                 w="100%"
-                bgColor={dateRange === 14 && btnColor}
+                bg={buttonColor(dateRange === 14)}
                 onClick={() => setDateRange(14)}
               >
                 14d
@@ -57,14 +65,14 @@ const DateRangeButton = ({
             )}
             <Button
               w="100%"
-              bgColor={dateRange === 30 && btnColor}
+              bg={buttonColor(dateRange === 30)}
               onClick={() => setDateRange(30)}
             >
               30d
             </Button>
             <Button
               w="100%"
-              bgColor={dateRange === validLegnth && btnColor}
+              bg={buttonColor(dateRange === validLegnth)}
               onClick={() => setDateRange(validLegnth)}
             >
               {validLegnth}d
