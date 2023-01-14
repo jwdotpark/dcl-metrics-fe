@@ -1,14 +1,24 @@
 # DCL-Metrics
 
-## Library used
+This is a repository for dcl-metrics.com frontend.
 
-| name      | description             | memo                          |
-| --------- | ----------------------- | ----------------------------- |
-| react     |                         | ui framework                  |
-| chakra ui | https://chakra-ui.com/  | component based css framework |
-| nivo      | https://nivo.rocks/pie/ | chart library                 |
+## Dependencies & Installation
 
-## Instances
+Please refer to `package.json` for the list of dependencies.
 
-- [Development](https://dcl-metrics-fe-stage.herokuapp.com/)
-- [Production](https://dcl-metrics.com/)
+## Authors
+
+- [daxadax](https://github.com/daxadax)
+- [jwdotpark](https://github.com/jwdotpark)
+
+## Version History
+
+Please refer to our [changelog and roadmap](https://dcl-metrics.com/roadmap) for information on the versions.
+
+## License
+
+This project is licensed under the MIT License - see the `LICENSE.md` file for details.
+
+## Misc
+
+- [Decentraland Land API reference](https://docs.decentraland.org/player/market/api/)
