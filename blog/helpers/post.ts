@@ -22,7 +22,10 @@ export const getPosts = () => {
 }
 
 export const getPost = (slug) => {
-  const fileContents = fs.readFileSync(path.join(`posts/${slug}.mdx`), "utf8")
+  const fileContents = fs.readFileSync(
+    path.join(`./blog/posts/${slug}.mdx`),
+    "utf8"
+  )
   const { data, content } = matter(fileContents)
   return {
     data,

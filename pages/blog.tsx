@@ -13,7 +13,6 @@ export const getStaticProps = () => {
 }
 
 const BlogPage = ({ posts }) => {
-  console.log(posts)
   return (
     <Layout>
       <Center w="100%">

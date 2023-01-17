@@ -8,6 +8,7 @@ import {
   FiActivity,
   FiLock,
   FiGrid,
+  FiPenTool,
 } from "react-icons/fi"
 
 export const sidebarList = {
@@ -39,6 +40,12 @@ export const sidebarList = {
     label: "Map",
     name: "map",
     icon: FiMapPin,
+    subItem: false,
+  },
+  blog: {
+    label: "Blog",
+    name: "blog",
+    icon: FiPenTool,
     subItem: false,
   },
   status: {
