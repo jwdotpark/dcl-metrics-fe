@@ -1,13 +1,13 @@
 import { useBreakpointValue, Grid } from "@chakra-ui/react"
-import Layout from "../src/components/layout/layout"
-import staticScene from "../public/data/cached_scenes_top.json"
-import Scene from "../src/components/local/stats/Scene"
-import ScenesLogin from "../src/components/local/stats/scenes/ScenesLogin"
-import ScenesLogout from "../src/components/local/stats/scenes/ScenesLogout"
-import ScenesTimeSpent from "../src/components/local/stats/scenes/ScenesTimeSpent"
-import ScenesTimeSpentAFK from "../src/components/local/stats/scenes/ScenesTimeSpentAFK"
-import TopScenesVisitors from "../src/components/local/stats/scenes/TopScenesVisitors"
-import { getData, getDataWithProxy } from "../src/lib/data/fetch"
+import Layout from "../../src/components/layout/layout"
+import staticScene from "../../public/data/cached_scenes_top.json"
+import Scene from "../../src/components/local/stats/Scene"
+import ScenesLogin from "../../src/components/local/stats/scenes/ScenesLogin"
+import ScenesLogout from "../../src/components/local/stats/scenes/ScenesLogout"
+import ScenesTimeSpent from "../../src/components/local/stats/scenes/ScenesTimeSpent"
+import ScenesTimeSpentAFK from "../../src/components/local/stats/scenes/ScenesTimeSpentAFK"
+import TopScenesVisitors from "../../src/components/local/stats/scenes/TopScenesVisitors"
+import { getData, getDataWithProxy } from "../../src/lib/data/fetch"
 import {
   globalScenesURL,
   isDev,
@@ -15,8 +15,8 @@ import {
   isProd,
   sceneURL,
   time,
-} from "../src/lib/data/constant"
-import staticGlobalScenes from "../public/data/staticGlobalScene.json"
+} from "../../src/lib/data/constant"
+import staticGlobalScenes from "../../public/data/staticGlobalScene.json"
 
 export async function getStaticProps() {
   if (isProd) {

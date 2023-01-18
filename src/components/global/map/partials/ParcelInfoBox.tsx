@@ -18,6 +18,7 @@ import { AiFillCloseCircle } from "react-icons/ai"
 import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
+import { useRouter } from "next/router"
 
 const ParcelInfoBox = ({
   isMapExpanded,
@@ -26,6 +27,7 @@ const ParcelInfoBox = ({
   isIncluded,
   getButtonProps,
 }) => {
+  const router = useRouter()
   const [fetchedInfo, setfetchedInfo] = useState({})
   const [isPicLoading, setIsPicLoading] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -113,7 +115,7 @@ const ParcelInfoBox = ({
       <Center>
         <ButtonGroup w="100%">
           <Button
-            w="100%"
+            w="40"
             mb="4"
             color={useColorModeValue("gray.50", "gray.50")}
             bg={useColorModeValue("gray.500", "#44475a")}
@@ -122,10 +124,28 @@ const ParcelInfoBox = ({
             onClick={() => onOpen()}
           >
             <Text fontSize="md" fontWeight="bold">
-              {selectedParcel.scene
+              Jump In
+              {/*{selectedParcel.scene
                 ? trimName(selectedParcel.scene.name)
-                : "[" + selectedParcel.id + "] "}
+                : "[" + selectedParcel.id + "] "}*/}
             </Text>
+          </Button>
+
+          <Button
+            w="100%"
+            mb="4"
+            color={useColorModeValue("gray.50", "gray.50")}
+            bg={useColorModeValue("gray.500", "#44475a")}
+            borderRadius="xl"
+            shadow="md"
+            onClick={() =>
+              router.push({
+                pathname: `/scenes/${selectedParcel.scene.cid}`,
+                //query: { cid: selectedParcel.scene.cid },
+              })
+            }
+          >
+            {selectedParcel.scene && trimName(selectedParcel.scene.name)}
           </Button>
           <Button
             w="15"
