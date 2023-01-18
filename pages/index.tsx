@@ -24,10 +24,10 @@ export async function getStaticProps() {
   if (isProd) {
     const [
       globalDailyRes,
-      globalParcelRes,
-      globalSceneRes,
-      globalUserRes,
-      sceneRes,
+      //globalParcelRes,
+      //globalSceneRes,
+      //globalUserRes,
+      //sceneRes,
       parcelRes,
     ] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
@@ -37,10 +37,10 @@ export async function getStaticProps() {
 
     const resultArr = [
       globalDailyRes,
-      globalParcelRes,
-      globalSceneRes,
-      globalUserRes,
-      sceneRes,
+      //globalParcelRes,
+      //globalSceneRes,
+      //globalUserRes,
+      //sceneRes,
       parcelRes,
     ]
 
@@ -50,10 +50,10 @@ export async function getStaticProps() {
 
     const result = {
       globalDailyRes,
-      globalParcelRes,
-      globalSceneRes,
-      globalUserRes,
-      sceneRes,
+      //globalParcelRes,
+      //globalSceneRes,
+      //globalUserRes,
+      //sceneRes,
       parcelRes,
     }
 
@@ -64,10 +64,10 @@ export async function getStaticProps() {
   } else if (isDev && !isLocal) {
     const [
       globalDailyRes,
-      globalParcelRes,
-      globalSceneRes,
-      globalUserRes,
-      sceneRes,
+      //globalParcelRes,
+      //globalSceneRes,
+      //globalUserRes,
+      //sceneRes,
       parcelRes,
     ] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
@@ -77,10 +77,10 @@ export async function getStaticProps() {
 
     const result = {
       globalDailyRes,
-      globalParcelRes,
-      globalSceneRes,
-      globalUserRes,
-      sceneRes,
+      //globalParcelRes,
+      //globalSceneRes,
+      //globalUserRes,
+      //sceneRes,
       parcelRes,
     }
 
@@ -90,18 +90,18 @@ export async function getStaticProps() {
     }
   } else if (isLocal) {
     const globalDailyRes = staticGlobalDaily
-    const globalParcelRes = staticGlobalParcels
-    const globalSceneRes = staticGlobalScenes
-    const globalUserRes = staticGlobalUsers
-    const sceneRes = staticScene
+    //const globalParcelRes = staticGlobalParcels
+    //const globalSceneRes = staticGlobalScenes
+    //const globalUserRes = staticGlobalUsers
+    //const sceneRes = staticScene
     const parcelRes = staticParcel
 
     const result = {
       globalDailyRes,
-      globalParcelRes,
-      globalSceneRes,
-      globalUserRes,
-      sceneRes,
+      //globalParcelRes,
+      //globalSceneRes,
+      //globalUserRes,
+      //sceneRes,
       parcelRes,
     }
 
@@ -125,10 +125,10 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const {
     globalDailyRes,
-    globalParcelRes,
-    globalSceneRes,
-    globalUserRes,
-    sceneRes,
+    //globalParcelRes,
+    //globalSceneRes,
+    //globalUserRes,
+    //sceneRes,
     parcelRes,
   } = props
 
@@ -147,11 +147,11 @@ const GlobalPage: NextPage = (props: Props) => {
 
         <LandPicker parcelData={parcelRes} isPage={false} />
 
-        <Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
+        {/*<Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={globalUserRes} />
           <SceneLayout result={globalSceneRes} sceneResult={sceneRes} />
           <ParcelLayout result={globalParcelRes} />
-        </Accordion>
+        </Accordion>*/}
       </Box>
     </Layout>
   )
