@@ -2,10 +2,10 @@ import { useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobalDaily from "../public/data/staticGlobalDaily.json"
-//import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
-//import staticGlobalScenes from "../public/data/staticGlobalScene.json"
-//import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
-//import staticScene from "../public/data/cached_scenes_top.json"
+import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
+import staticGlobalScenes from "../public/data/staticGlobalScene.json"
+import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
+import staticScene from "../public/data/cached_scenes_top.json"
 import staticParcel from "../public/data/cached_parcel.json"
 import Layout from "../src/components/layout/layout"
 import PSA from "../src/components/global/PSA"
@@ -18,9 +18,51 @@ import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
-import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
+//import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
+import {
+  globalDailyURL,
+  //globalParcelURL,
+  //globalScenesURL,
+  //globalUsersURL,
+  //sceneURL,
+  parcelURL,
+} from "../src/lib/data/constant"
 
 export async function getStaticProps() {
+  const globalRequestList = [
+    {
+      url: globalDailyURL,
+      endpoint: "/global/daily",
+      staticData: staticGlobalDaily,
+    },
+    //{
+    //  url: globalParcelURL,
+    //  endpoint: "/global/parcels",
+    //  staticData: staticGlobalParcels,
+    //},
+    //{
+    //  url: globalScenesURL,
+    //  endpoint: "/global/scenes",
+    //  staticData: staticGlobalScenes,
+    //},
+    //{
+    //  url: globalUsersURL,
+    //  endpoint: "/global/users",
+    //  staticData: staticGlobalUsers,
+    //},
+    //{ url: sceneURL, endpoint: "/scenes/top", staticData: staticScene },
+    { url: parcelURL, endpoint: "/parcels/all", staticData: staticParcel },
+  ]
+
+  const globalFileNameArr = [
+    "staticGlobalDaily",
+    //"staticGlobalParcel",
+    //"staticGlobalScene",
+    //"staticGlobalUsers",
+    //"cached_scenes_top",
+    "cached_parcel",
+  ]
+
   if (isProd) {
     const [
       globalDailyRes,
