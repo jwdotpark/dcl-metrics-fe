@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
   ButtonGroup,
@@ -13,12 +14,16 @@ import {
   AlertDialogContent,
   AlertDialogFooter,
   AlertDialogOverlay,
+  Tooltip,
 } from "@chakra-ui/react"
 import { AiFillCloseCircle } from "react-icons/ai"
 import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
 import { useRouter } from "next/router"
+import { mutateStringToURL } from "../../../../lib/hooks/utils"
+import dclLogo from "../../../../../public/dcl-logo.svg"
+import Image from "next/image"
 
 const ParcelInfoBox = ({
   isMapExpanded,
@@ -64,11 +69,6 @@ const ParcelInfoBox = ({
     }
   }
 
-  const mutateStringToURL = (string) => {
-    // mutate whitespace into '-' and lowercase
-    return string.replace(/\s+/g, "-").toLowerCase()
-  }
-
   useEffect(() => {
     fetchParcel()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -89,7 +89,7 @@ const ParcelInfoBox = ({
               <AlertDialogBody mt="4">
                 Do you want to visit{" "}
                 {selectedParcel.scene && selectedParcel.scene.name + " on "} [
-                {selectedParcel.id}]?
+                {selectedParcel.id}] on Decentraland?
               </AlertDialogBody>
 
               <AlertDialogFooter>
@@ -120,52 +120,57 @@ const ParcelInfoBox = ({
       <Center>
         <ButtonGroup w="100%">
           <Button
-            w="40"
+            w={selectedParcel.scene ? "auto" : "100%"}
             mb="4"
             color={useColorModeValue("gray.50", "gray.50")}
-            bg={useColorModeValue("gray.500", "#44475a")}
+            bg="gray.600"
             borderRadius="xl"
             shadow="md"
             onClick={() => onOpen()}
           >
-            <Text fontSize="md" fontWeight="bold">
-              Jump In
-              {/*{selectedParcel.scene
-                ? trimName(selectedParcel.scene.name)
-                : "[" + selectedParcel.id + "] "}*/}
-            </Text>
+            <Image src={dclLogo} width="20" height="20" alt="dcl logo" />
+            {!selectedParcel.scene && (
+              <Text ml="2" fontSize="md" fontWeight="bold">
+                Jump In
+              </Text>
+            )}
           </Button>
-
-          <Button
-            w="100%"
-            mb="4"
-            color={useColorModeValue("gray.50", "gray.50")}
-            bg={useColorModeValue("gray.500", "#44475a")}
-            borderRadius="xl"
-            shadow="md"
-            onClick={() =>
-              router.push({
-                pathname: `/scenes/${mutateStringToURL(
-                  selectedParcel.scene.name
-                )}`,
-                query: { cid: selectedParcel.scene.cid },
-              })
-            }
-          >
-            {selectedParcel.scene && trimName(selectedParcel.scene.name)}
-          </Button>
-          <Button
-            w="15"
-            mb="4"
-            color="gray.50"
-            bg="red.500"
-            borderRadius="xl"
-            shadow="md"
-            {...getButtonProps()}
-          >
-            <AiFillCloseCircle size="20" />
-          </Button>
+          {selectedParcel.scene && (
+            <Button
+              w="100%"
+              mb="4"
+              color={useColorModeValue("gray.50", "gray.50")}
+              //bg={useColorModeValue("gray.500", "#ea9a97")}
+              bg="#FF9990"
+              borderRadius="xl"
+              shadow="md"
+              onClick={() =>
+                router.push({
+                  pathname: `/scenes/${mutateStringToURL(
+                    selectedParcel.scene.name
+                  )}`,
+                  query: { cid: selectedParcel.scene.cid },
+                })
+              }
+            >
+              <Text px="4">
+                {selectedParcel.scene && trimName(selectedParcel.scene.name)}
+              </Text>
+            </Button>
+          )}
         </ButtonGroup>
+        <Button
+          w="15"
+          mb="4"
+          ml="2"
+          color="gray.50"
+          bg="red.500"
+          borderRadius="xl"
+          shadow="md"
+          {...getButtonProps()}
+        >
+          <AiFillCloseCircle size="20" />
+        </Button>
       </Center>
 
       <Flex

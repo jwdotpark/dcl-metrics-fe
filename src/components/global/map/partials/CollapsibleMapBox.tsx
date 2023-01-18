@@ -29,7 +29,7 @@ const CollapsibleMapBox = ({
     xl: 500,
   })
   return (
-    <Box zIndex="docked">
+    <Box zIndex="auto">
       <motion.div
         {...getDisclosureProps()}
         hidden={hidden}
