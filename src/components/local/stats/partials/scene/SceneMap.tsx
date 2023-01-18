@@ -1,24 +1,19 @@
 import {
-  Tooltip,
   Flex,
   Image,
   Box,
   useColorModeValue,
-  Center,
   Button,
   Popover,
   PopoverArrow,
   PopoverBody,
-  PopoverCloseButton,
   PopoverContent,
-  PopoverHeader,
   PopoverTrigger,
   ButtonGroup,
   Text,
   useDisclosure,
   PopoverFooter,
 } from "@chakra-ui/react"
-import GridBox from "../../../GridBox"
 
 const SceneMap = (props) => {
   const { url, height, name } = props

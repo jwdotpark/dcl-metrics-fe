@@ -27,7 +27,7 @@ const SceneTitle = ({
         </Flex>
       </Box>
       <Spacer />
-      {!hasMultipleScenes && (
+      {/*{!hasMultipleScenes && (
         <Box m="4">
           <DatePicker
             date={dateForPicker}
@@ -35,7 +35,7 @@ const SceneTitle = ({
             availableDate={availableDate}
           />
         </Box>
-      )}
+      )}*/}
     </Flex>
   )
 }

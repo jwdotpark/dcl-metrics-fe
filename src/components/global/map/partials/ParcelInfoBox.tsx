@@ -64,6 +64,11 @@ const ParcelInfoBox = ({
     }
   }
 
+  const mutateStringToURL = (string) => {
+    // mutate whitespace into '-' and lowercase
+    return string.replace(/\s+/g, "-").toLowerCase()
+  }
+
   useEffect(() => {
     fetchParcel()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -140,8 +145,10 @@ const ParcelInfoBox = ({
             shadow="md"
             onClick={() =>
               router.push({
-                pathname: `/scenes/${selectedParcel.scene.cid}`,
-                //query: { cid: selectedParcel.scene.cid },
+                pathname: `/scenes/${mutateStringToURL(
+                  selectedParcel.scene.name
+                )}`,
+                query: { cid: selectedParcel.scene.cid },
               })
             }
           >
