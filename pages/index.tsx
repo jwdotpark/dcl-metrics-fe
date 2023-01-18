@@ -2,10 +2,10 @@ import { useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
 import staticGlobalDaily from "../public/data/staticGlobalDaily.json"
-//import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
-//import staticGlobalScenes from "../public/data/staticGlobalScene.json"
-//import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
-//import staticScene from "../public/data/cached_scenes_top.json"
+import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
+import staticGlobalScenes from "../public/data/staticGlobalScene.json"
+import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
+import staticScene from "../public/data/cached_scenes_top.json"
 import staticParcel from "../public/data/cached_parcel.json"
 import Layout from "../src/components/layout/layout"
 import PSA from "../src/components/global/PSA"
@@ -24,10 +24,10 @@ export async function getStaticProps() {
   if (isProd) {
     const [
       globalDailyRes,
-      //globalParcelRes,
-      //globalSceneRes,
-      //globalUserRes,
-      //sceneRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
       parcelRes,
     ] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
@@ -37,10 +37,10 @@ export async function getStaticProps() {
 
     const resultArr = [
       globalDailyRes,
-      //globalParcelRes,
-      //globalSceneRes,
-      //globalUserRes,
-      //sceneRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
       parcelRes,
     ]
 
@@ -50,10 +50,10 @@ export async function getStaticProps() {
 
     const result = {
       globalDailyRes,
-      //globalParcelRes,
-      //globalSceneRes,
-      //globalUserRes,
-      //sceneRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
       parcelRes,
     }
 
@@ -64,10 +64,10 @@ export async function getStaticProps() {
   } else if (isDev && !isLocal) {
     const [
       globalDailyRes,
-      //globalParcelRes,
-      //globalSceneRes,
-      //globalUserRes,
-      //sceneRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
       parcelRes,
     ] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
@@ -77,10 +77,10 @@ export async function getStaticProps() {
 
     const result = {
       globalDailyRes,
-      //globalParcelRes,
-      //globalSceneRes,
-      //globalUserRes,
-      //sceneRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
       parcelRes,
     }
 
@@ -90,18 +90,18 @@ export async function getStaticProps() {
     }
   } else if (isLocal) {
     const globalDailyRes = staticGlobalDaily
-    //const globalParcelRes = staticGlobalParcels
-    //const globalSceneRes = staticGlobalScenes
-    //const globalUserRes = staticGlobalUsers
-    //const sceneRes = staticScene
+    const globalParcelRes = staticGlobalParcels
+    const globalSceneRes = staticGlobalScenes
+    const globalUserRes = staticGlobalUsers
+    const sceneRes = staticScene
     const parcelRes = staticParcel
 
     const result = {
       globalDailyRes,
-      //globalParcelRes,
-      //globalSceneRes,
-      //globalUserRes,
-      //sceneRes,
+      globalParcelRes,
+      globalSceneRes,
+      globalUserRes,
+      sceneRes,
       parcelRes,
     }
 
@@ -125,10 +125,10 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const {
     globalDailyRes,
-    //globalParcelRes,
-    //globalSceneRes,
-    //globalUserRes,
-    //sceneRes,
+    globalParcelRes,
+    globalSceneRes,
+    globalUserRes,
+    sceneRes,
     parcelRes,
   } = props
 
