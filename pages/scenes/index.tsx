@@ -63,8 +63,6 @@ const Scenes = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const { globalSceneRes, sceneRes } = props
 
-  console.log(sceneRes)
-
   return (
     <Layout>
       <Scene
