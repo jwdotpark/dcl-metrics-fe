@@ -18,7 +18,7 @@ import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
-//import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
+import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
 import {
   globalDailyURL,
   //globalParcelURL,
@@ -29,40 +29,6 @@ import {
 } from "../src/lib/data/constant"
 
 export async function getStaticProps() {
-  const globalRequestList = [
-    {
-      url: globalDailyURL,
-      endpoint: "/global/daily",
-      staticData: staticGlobalDaily,
-    },
-    //{
-    //  url: globalParcelURL,
-    //  endpoint: "/global/parcels",
-    //  staticData: staticGlobalParcels,
-    //},
-    //{
-    //  url: globalScenesURL,
-    //  endpoint: "/global/scenes",
-    //  staticData: staticGlobalScenes,
-    //},
-    //{
-    //  url: globalUsersURL,
-    //  endpoint: "/global/users",
-    //  staticData: staticGlobalUsers,
-    //},
-    //{ url: sceneURL, endpoint: "/scenes/top", staticData: staticScene },
-    { url: parcelURL, endpoint: "/parcels/all", staticData: staticParcel },
-  ]
-
-  const globalFileNameArr = [
-    "staticGlobalDaily",
-    //"staticGlobalParcel",
-    //"staticGlobalScene",
-    //"staticGlobalUsers",
-    //"cached_scenes_top",
-    "cached_parcel",
-  ]
-
   if (isProd) {
     const [
       globalDailyRes,
