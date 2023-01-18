@@ -19,22 +19,22 @@ export const globalRequestList = [
     endpoint: "/global/daily",
     staticData: staticGlobalDaily,
   },
-  {
-    url: globalParcelURL,
-    endpoint: "/global/parcels",
-    staticData: staticGlobalParcels,
-  },
-  {
-    url: globalScenesURL,
-    endpoint: "/global/scenes",
-    staticData: staticGlobalScenes,
-  },
-  {
-    url: globalUsersURL,
-    endpoint: "/global/users",
-    staticData: staticGlobalUsers,
-  },
-  { url: sceneURL, endpoint: "/scenes/top", staticData: staticScene },
+  //{
+  //  url: globalParcelURL,
+  //  endpoint: "/global/parcels",
+  //  staticData: staticGlobalParcels,
+  //},
+  //{
+  //  url: globalScenesURL,
+  //  endpoint: "/global/scenes",
+  //  staticData: staticGlobalScenes,
+  //},
+  //{
+  //  url: globalUsersURL,
+  //  endpoint: "/global/users",
+  //  staticData: staticGlobalUsers,
+  //},
+  //{ url: sceneURL, endpoint: "/scenes/top", staticData: staticScene },
   { url: parcelURL, endpoint: "/parcels/all", staticData: staticParcel },
 ]
 
