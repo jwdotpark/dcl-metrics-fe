@@ -123,7 +123,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
           tooltip={(e) => {
             return (
               <Box
-                sx={{ backdropFilter: "blur(5px)" }}
+                sx={{ backdropFilter: "blur(20px)" }}
                 pt="2"
                 color={useColorModeValue("black", "white")}
                 borderRadius="xl"

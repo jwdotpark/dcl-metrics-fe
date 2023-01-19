@@ -182,7 +182,7 @@ const MultiLineChart = ({ res, selectedScene }) => {
             return (
               <Box
                 key={slice.points[0].data.xFormatted}
-                sx={{ backdropFilter: "blur(5px)" }}
+                sx={{ backdropFilter: "blur(20px)" }}
                 p="2"
                 // eslint-disable-next-line react-hooks/rules-of-hooks
                 color={useColorModeValue("black", "white")}

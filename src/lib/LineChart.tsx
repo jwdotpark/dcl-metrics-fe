@@ -112,7 +112,7 @@ const LineChart = ({ data, color, name }) => {
         sliceTooltip={({ slice }) => {
           return (
             <Box
-              sx={{ backdropFilter: "blur(5px)" }}
+              sx={{ backdropFilter: "blur(20px)" }}
               p="2"
               color={useColorModeValue("black", "white")}
             >
