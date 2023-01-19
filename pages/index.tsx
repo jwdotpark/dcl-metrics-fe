@@ -162,9 +162,10 @@ const GlobalPage: NextPage = (props: Props) => {
           <UniqueVisitedParcels data={globalDailyRes} />
           <ActiveScenes data={globalDailyRes} />
         </Grid>
-
+        <Box mb="4">
+          <Rental data={rentalRes} />
+        </Box>
         <LandPicker parcelData={parcelRes} isPage={false} />
-        <Rental data={rentalRes} />
 
         {/*<Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={globalUserRes} />
