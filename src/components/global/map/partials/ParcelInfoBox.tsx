@@ -131,7 +131,9 @@ const ParcelInfoBox = ({
           <Button
             w={selectedParcel.scene ? "auto" : "100%"}
             mb="4"
-            bg="#FF9990"
+            bg={selectedParcel.scene ? "#FF9990" : "#3D3946"}
+            border="2px solid"
+            borderColor="gray.600"
             borderRadius="xl"
             shadow="md"
             aria-label="dcl logo"
@@ -140,14 +142,22 @@ const ParcelInfoBox = ({
             <Box shadow="md">
               <Image src={dclLogo} width="25" alt="dcl logo" />
             </Box>
-            {!selectedParcel.scene && (
+            {/*{!selectedParcel.scene && (
               <Text ml="2" fontSize="md" fontWeight="bold">
                 Jump In
               </Text>
-            )}
+            )}*/}
           </Button>
           {selectedParcel.scene && (
-            <Button w="100%" mb="4" bg="#FF9990" borderRadius="xl" shadow="md">
+            <Button
+              w="100%"
+              mb="4"
+              bg="#FF9990"
+              border="2px solid"
+              borderColor="gray.600"
+              borderRadius="xl"
+              shadow="md"
+            >
               <Link href={sceneHandle} target="_blank">
                 <Text px="4" color="#000" fontWeight="bold">
                   {selectedParcel.scene && trimName(selectedParcel.scene.name)}
@@ -162,6 +172,8 @@ const ParcelInfoBox = ({
           ml="2"
           color="gray.50"
           bg="#ff5555"
+          border="2px solid"
+          borderColor="gray.600"
           borderRadius="xl"
           shadow="md"
           {...getButtonProps()}
