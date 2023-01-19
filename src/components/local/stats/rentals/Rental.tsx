@@ -1,3 +1,5 @@
+// @ts-nocheck
+import { useEffect, useState, useMemo } from "react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box } from "@chakra-ui/react"
 import LineChart from "../../../../lib/LineChart"
@@ -7,35 +9,34 @@ import {
   defaultDateRange,
   sliceData,
 } from "../../../../lib/data/chartInfo"
-import { useEffect, useState } from "react"
 import DateRangeButton from "../daterange/DateRangeButton"
 
 const Rental = ({ data }) => {
   const chartData = []
-  const color = ["blue", "yellow", "green"]
+  const dataArr = Object.entries(data)
+  const color = ["#eb6f92", "#f6c177", "#31748f"]
+
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
 
-  data.map((item) => {
+  dataArr.map((item) => {
     chartData.push({
-      id: item.date,
-      date: item.date,
+      id: item[1].date,
+      date: item[1].date,
       degraded: false,
-      floor: item.floor,
-      seven_day_avg: item.seven_day_avg,
-      thirty_day_avg: item.thirty_day_avg,
+      floor: item[1].floor,
+      seven_day_avg: item[1].seven_day_avg,
+      thirty_day_avg: item[1].thirty_day_avg,
     })
   })
 
-  // @ts-ignore
   const partial = sliceData(chartData, dateRange)
-  // @ts-ignore
   const dateString = date(chartData, dateRange).date
 
   const mapData = (id: string, key) => {
     return {
       id: id,
-      data: data.map((item) => ({
+      data: partial.map((item) => ({
         x: item.date,
         y: item[key],
         degraded: false,
@@ -44,27 +45,27 @@ const Rental = ({ data }) => {
   }
 
   const result = [
-    mapData("floor", "floor"),
-    mapData("seven_day_avg", "seven_day_avg"),
-    mapData("thirty_day_avg", "thirty_day_avg"),
+    mapData("7 Days AVG", "seven_day_avg"),
+    mapData("30 Days AVG", "thirty_day_avg"),
+    mapData("Floor", "floor"),
   ]
 
   const calculateAverages = (partial) => {
     const validLength = partial.length
     const sum = {
-      floor: partial.reduce((acc, cur) => acc + cur.floor, 0),
       sevenDayAvg: partial.reduce((acc, cur) => acc + cur.seven_day_avg, 0),
       thirtyDayAvg: partial.reduce((acc, cur) => acc + cur.thirty_day_avg, 0),
+      floor: partial.reduce((acc, cur) => acc + cur.floor, 0),
     }
     const value = {
-      floor: Math.floor(sum.floor / validLength),
       sevenDayAvg: Math.floor(sum.sevenDayAvg / validLength),
       thirtyDayAvg: Math.floor(sum.thirtyDayAvg / validLength),
+      floor: Math.floor(sum.floor / validLength),
     }
     const map = [
-      { id: "Floor", value: value.floor },
       { id: "7 Day Avg", value: value.sevenDayAvg },
       { id: "30 Day Avg", value: value.thirtyDayAvg },
+      { id: "Floor", value: value.floor },
     ].sort((a, b) => {
       return b.value - a.value
     })
@@ -90,7 +91,7 @@ const Rental = ({ data }) => {
         <DateRangeButton
           dateRange={dateRange}
           setDateRange={setDateRange}
-          validLegnth={90}
+          validLegnth={chartData.length}
           name="rentals"
           yesterday={false}
         />

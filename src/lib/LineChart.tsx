@@ -13,7 +13,8 @@ const LineChart = ({ data, color, name }) => {
   const min = useMemo(() => {
     const lastData = data[data.length - 1].data
     const lastDataY = lastData.map((item) => item.y)
-    return Math.min(...lastDataY)
+    const res = Math.min(...lastDataY)
+    return res
   }, [data])
 
   const dateRange = data[0].data.length

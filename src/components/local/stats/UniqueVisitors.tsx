@@ -8,6 +8,7 @@ import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ data }) => {
   const dataArr = Object.entries(data)
+
   const chartData = []
   const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
