@@ -15,6 +15,7 @@ import {
   AlertDialogFooter,
   AlertDialogOverlay,
   Tooltip,
+  IconButton,
 } from "@chakra-ui/react"
 import { AiFillCloseCircle } from "react-icons/ai"
 import { useEffect, useRef, useState } from "react"
@@ -24,6 +25,8 @@ import { useRouter } from "next/router"
 import { mutateStringToURL } from "../../../../lib/hooks/utils"
 import dclLogo from "../../../../../public/dcl-logo.svg"
 import Image from "next/image"
+import { sceneURL } from "../../../../lib/data/constant"
+import Link from "next/link"
 
 const ParcelInfoBox = ({
   isMapExpanded,
@@ -68,6 +71,12 @@ const ParcelInfoBox = ({
       return name
     }
   }
+
+  const sceneHandle =
+    selectedParcel.scene &&
+    `/scenes/${mutateStringToURL(selectedParcel.scene.name)}?cid=${
+      selectedParcel.scene.cid
+    }`
 
   useEffect(() => {
     fetchParcel()
@@ -122,13 +131,15 @@ const ParcelInfoBox = ({
           <Button
             w={selectedParcel.scene ? "auto" : "100%"}
             mb="4"
-            color={useColorModeValue("gray.50", "gray.50")}
-            bg="gray.600"
+            bg="#FF9990"
             borderRadius="xl"
             shadow="md"
+            aria-label="dcl logo"
             onClick={() => onOpen()}
           >
-            <Image src={dclLogo} width="20" height="20" alt="dcl logo" />
+            <Box shadow="md">
+              <Image src={dclLogo} width="25" alt="dcl logo" />
+            </Box>
             {!selectedParcel.scene && (
               <Text ml="2" fontSize="md" fontWeight="bold">
                 Jump In
@@ -136,41 +147,26 @@ const ParcelInfoBox = ({
             )}
           </Button>
           {selectedParcel.scene && (
-            <Button
-              w="100%"
-              mb="4"
-              color={useColorModeValue("gray.50", "gray.50")}
-              //bg={useColorModeValue("gray.500", "#ea9a97")}
-              bg="#FF9990"
-              borderRadius="xl"
-              shadow="md"
-              onClick={() =>
-                router.push({
-                  pathname: `/scenes/${mutateStringToURL(
-                    selectedParcel.scene.name
-                  )}`,
-                  query: { cid: selectedParcel.scene.cid },
-                })
-              }
-            >
-              <Text px="4">
-                {selectedParcel.scene && trimName(selectedParcel.scene.name)}
-              </Text>
+            <Button w="100%" mb="4" bg="#FF9990" borderRadius="xl" shadow="md">
+              <Link href={sceneHandle} target="_blank">
+                <Text px="4" color="#000" fontWeight="bold">
+                  {selectedParcel.scene && trimName(selectedParcel.scene.name)}
+                </Text>
+              </Link>
             </Button>
           )}
         </ButtonGroup>
-        <Button
+        <IconButton
           w="15"
           mb="4"
           ml="2"
           color="gray.50"
-          bg="red.500"
+          bg="#ff5555"
           borderRadius="xl"
           shadow="md"
           {...getButtonProps()}
-        >
-          <AiFillCloseCircle size="20" />
-        </Button>
+          icon={<AiFillCloseCircle size="20" />}
+        ></IconButton>
       </Center>
 
       <Flex
