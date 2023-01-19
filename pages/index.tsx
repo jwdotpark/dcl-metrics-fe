@@ -7,6 +7,7 @@ import staticGlobalScenes from "../public/data/staticGlobalScene.json"
 import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
 import staticScene from "../public/data/cached_scenes_top.json"
 import staticParcel from "../public/data/cached_parcel.json"
+import staticRental from "../public/data/staticRental.json"
 import Layout from "../src/components/layout/layout"
 import PSA from "../src/components/global/PSA"
 import LandPicker from "../src/components/global/map/LandPicker"
@@ -16,6 +17,7 @@ import LandPicker from "../src/components/global/map/LandPicker"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
+import Rental from "../src/components/local/stats/rentals/Rental"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
 import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
@@ -37,6 +39,7 @@ export async function getStaticProps() {
       //globalUserRes,
       //sceneRes,
       parcelRes,
+      rentalRes,
     ] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
         getDataWithProxy(url, endpoint, staticData)
@@ -50,6 +53,7 @@ export async function getStaticProps() {
       //globalUserRes,
       //sceneRes,
       parcelRes,
+      rentalRes,
     ]
 
     for (let i = 0; i < globalFileNameArr.length; i++) {
@@ -63,6 +67,7 @@ export async function getStaticProps() {
       //globalUserRes,
       //sceneRes,
       parcelRes,
+      rentalRes,
     }
 
     return {
@@ -77,6 +82,7 @@ export async function getStaticProps() {
       //globalUserRes,
       //sceneRes,
       parcelRes,
+      rentalRes,
     ] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
         getData(url, endpoint, staticData)
@@ -90,6 +96,7 @@ export async function getStaticProps() {
       //globalUserRes,
       //sceneRes,
       parcelRes,
+      rentalRes,
     }
 
     return {
@@ -103,6 +110,7 @@ export async function getStaticProps() {
     //const globalUserRes = staticGlobalUsers
     //const sceneRes = staticScene
     const parcelRes = staticParcel
+    const rentalRes = staticRental
 
     const result = {
       globalDailyRes,
@@ -111,6 +119,7 @@ export async function getStaticProps() {
       //globalUserRes,
       //sceneRes,
       parcelRes,
+      rentalRes,
     }
 
     return {
@@ -138,6 +147,7 @@ const GlobalPage: NextPage = (props: Props) => {
     //globalUserRes,
     //sceneRes,
     parcelRes,
+    rentalRes,
   } = props
 
   return (
@@ -154,6 +164,7 @@ const GlobalPage: NextPage = (props: Props) => {
         </Grid>
 
         <LandPicker parcelData={parcelRes} isPage={false} />
+        <Rental data={rentalRes} />
 
         {/*<Accordion mx={[-4, 0]} allowMultiple defaultIndex={[0, 1, 2]}>
           <UserLayout result={globalUserRes} />
