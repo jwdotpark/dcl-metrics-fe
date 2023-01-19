@@ -4,18 +4,15 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box } from "@chakra-ui/react"
 import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
-import {
-  date,
-  defaultDateRange,
-  sliceData,
-} from "../../../../lib/data/chartInfo"
+import { date, sliceData } from "../../../../lib/data/chartInfo"
 import DateRangeButton from "../daterange/DateRangeButton"
 
 const Rental = ({ data }) => {
   const chartData = []
   const dataArr = Object.entries(data)
-  const color = ["#eb6f92", "#f6c177", "#31748f"]
+  const color = ["#eb6f92", "#ea9d34", "#31748f"]
 
+  const defaultDateRange = dataArr.length - 1
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
 
@@ -82,11 +79,11 @@ const Rental = ({ data }) => {
       <Box h="auto">
         <BoxTitle
           name="Rentals"
-          date={dateString}
+          date={""}
           avgData={avgData}
           slicedData={partial}
           color={color}
-          description="rentals"
+          description="Average rental price in the last period"
         />
         <DateRangeButton
           dateRange={dateRange}
