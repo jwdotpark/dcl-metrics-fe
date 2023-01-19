@@ -88,7 +88,7 @@ const Rental = ({ data }) => {
         <DateRangeButton
           dateRange={dateRange}
           setDateRange={setDateRange}
-          validLegnth={chartData.length}
+          validLegnth={chartData.length - 1}
           name="rentals"
           yesterday={false}
         />
