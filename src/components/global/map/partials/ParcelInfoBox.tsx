@@ -129,25 +129,34 @@ const ParcelInfoBox = ({
       <Center>
         <ButtonGroup w="100%">
           <Button
-            w={selectedParcel.scene ? "auto" : "100%"}
+            w={selectedParcel.scene ? 30 : "100%"}
             mb="4"
-            bg={selectedParcel.scene ? "#FF9990" : "#3D3946"}
+            //bg={selectedParcel.scene ? "#3D3A46" : "#3D3946"}
             border="2px solid"
             borderColor="gray.600"
-            borderRadius="xl"
+            borderRadius="full"
             shadow="md"
+            _hover={{ filter: "brightness(75%)" }}
             aria-label="dcl logo"
+            bgColor={useColorModeValue("gray.300", "gray.500")}
             onClick={() => onOpen()}
+            size="md"
+            variant="unstyled"
           >
-            <Box shadow="md">
-              <Image src={dclLogo} width="25" alt="dcl logo" />
-            </Box>
-            {/*{!selectedParcel.scene && (
-              <Text ml="2" fontSize="md" fontWeight="bold">
-                Jump In
-              </Text>
-            )}*/}
+            <Center w="100%" h="100%">
+              <Image
+                src={dclLogo}
+                alt="link logo"
+                width={selectedParcel.scene ? 25 : 20}
+              />
+              {!selectedParcel.scene && (
+                <Text sx={{ transform: "translateY(-2px)" }} ml="2">
+                  [{selectedParcel.id}]
+                </Text>
+              )}
+            </Center>
           </Button>
+
           {selectedParcel.scene && (
             <Button
               w="100%"
@@ -171,10 +180,10 @@ const ParcelInfoBox = ({
           mb="4"
           ml="2"
           color="gray.50"
-          bg="#ff5555"
+          bg="red.500"
           border="2px solid"
           borderColor="gray.600"
-          borderRadius="xl"
+          borderRadius="full"
           shadow="md"
           {...getButtonProps()}
           icon={<AiFillCloseCircle size="20" />}
