@@ -77,6 +77,8 @@ const UniqueVisitors = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
+  //console.log("linechart", result)
+
   return (
     <BoxWrapper>
       <BoxTitle
