@@ -18,6 +18,7 @@ import {
   IconButton,
 } from "@chakra-ui/react"
 import { AiFillCloseCircle } from "react-icons/ai"
+import { FiChevronsRight } from "react-icons/fi"
 import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
@@ -131,9 +132,6 @@ const ParcelInfoBox = ({
           <Button
             w={selectedParcel.scene ? 30 : "100%"}
             mb="4"
-            //bg={selectedParcel.scene ? "#3D3A46" : "#3D3946"}
-            border="1px solid"
-            borderColor="gray.500"
             borderRadius="full"
             shadow="md"
             _hover={{ filter: "brightness(75%)" }}
@@ -147,7 +145,7 @@ const ParcelInfoBox = ({
               <Image
                 src={dclLogo}
                 alt="link logo"
-                width={selectedParcel.scene ? 25 : 20}
+                width={selectedParcel.scene ? 50 : 20}
               />
               {!selectedParcel.scene && (
                 <Text sx={{ transform: "translateY(-2px)" }} ml="2">
@@ -158,15 +156,7 @@ const ParcelInfoBox = ({
           </Button>
 
           {selectedParcel.scene && (
-            <Button
-              w="100%"
-              mb="4"
-              bg="#FF9990"
-              border="1px solid"
-              borderColor="gray.500"
-              borderRadius="xl"
-              shadow="md"
-            >
+            <Button w="100%" mb="4" bg="#FF9990" borderRadius="xl" shadow="md">
               <Link href={sceneHandle} target="_blank">
                 <Text px="4" color="#000" fontWeight="bold">
                   {selectedParcel.scene && trimName(selectedParcel.scene.name)}
@@ -181,12 +171,10 @@ const ParcelInfoBox = ({
           ml="2"
           color="gray.50"
           bg="red.500"
-          border="1px solid"
-          borderColor="gray.500"
           borderRadius="full"
           shadow="md"
           {...getButtonProps()}
-          icon={<AiFillCloseCircle size="20" />}
+          icon={<FiChevronsRight size="20" />}
         ></IconButton>
       </Center>
 
