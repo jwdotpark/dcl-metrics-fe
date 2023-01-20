@@ -4,14 +4,11 @@ import RentalDay from "./RentalDay"
 import RentTotal from "./RentalTotal"
 
 const Rental = ({ data }) => {
-  console.log(data)
   return (
-    <BoxWrapper>
-      <Flex direction={["column", "row"]} w="100%" h="auto" m="2">
-        <RentalDay data={data} />
-        <RentTotal data={data} />
-      </Flex>
-    </BoxWrapper>
+    <Flex direction={["column", "row"]} w="100%" h="auto">
+      <RentalDay data={data.analyticsDayDatas} />
+      <RentTotal data={data.analyticsTotalDatas} />
+    </Flex>
   )
 }
 
