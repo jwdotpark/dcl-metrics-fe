@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useEffect, useState, useMemo } from "react"
+import { useEffect, useState } from "react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box } from "@chakra-ui/react"
 import LineChart from "../../../../lib/LineChart"
@@ -28,7 +28,7 @@ const LandSales = ({ data }) => {
   })
 
   const partial = sliceData(chartData, dateRange)
-  const dateString = date(chartData, dateRange).date
+  //const dateString = date(chartData, dateRange).date
 
   const mapData = (id: string, key) => {
     return {

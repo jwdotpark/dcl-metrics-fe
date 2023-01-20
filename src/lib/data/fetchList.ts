@@ -4,7 +4,7 @@ import staticGlobalScenes from "../../../public/data/staticGlobalScene.json"
 import staticGlobalUsers from "../../../public/data/staticGlobalUsers.json"
 import staticScene from "../../../public/data/cached_scenes_top.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
-import staticRental from "../../../public/data/staticRental.json"
+import staticLandSales from "../../../public/data/staticLandSales.json"
 import {
   globalDailyURL,
   globalParcelURL,
@@ -40,7 +40,7 @@ export const globalRequestList = [
   {
     url: "https://www.dcl-property.rentals/api/price_data",
     endpoint: "/dcl-property.rentals",
-    staticData: staticRental,
+    staticData: staticLandSales,
   },
 ]
 
@@ -51,5 +51,5 @@ export const globalFileNameArr = [
   //"staticGlobalUsers",
   //"cached_scenes_top",
   "cached_parcel",
-  "staticRental",
+  "staticLandSales",
 ]

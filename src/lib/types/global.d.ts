@@ -6,5 +6,5 @@ declare type Props = {
   sceneRes: {}
   parcelRes: {}
   statusRes: {}
-  rentalRes: {}
+  landSalesRes: {}
 }
