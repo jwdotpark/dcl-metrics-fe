@@ -15,6 +15,7 @@ import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
 import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
 
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 //export async function getStaticProps() {
 //  if (isProd) {
 //    const [globalDailyRes, parcelRes] = await Promise.all(
@@ -117,11 +118,69 @@ export async function getStaticProps() {
     }
   }
 
+  const client = new ApolloClient({
+    uri: "https://api.thegraph.com/subgraphs/name/decentraland/rentals-ethereum-mainnet",
+    cache: new InMemoryCache(),
+  })
+
+  // @ts-ignore
+  const { data } = await client.query({
+    query: gql`
+      query {
+        analyticsTotalDatas {
+          rentals
+          volume
+          lessorEarnings
+          feeCollectorEarnings
+        }
+        analyticsDayDatas {
+          date
+          rentals
+          volume
+          lessorEarnings
+          feeCollectorEarnings
+        }
+      }
+    `,
+  })
+
+  console.log("total stats:", data)
+
+  // @ts-ignore
+  //const { dailyStats } = await client.query({
+  //  query: gql`
+  //query analyticsDayDatas {
+  //  date
+  //  rentals
+  //  volume
+  //  lessorEarnings
+  //  feeCollectorEarnings
+  //}
+  //  `,
+  //})
+
+  //// total stats
+  //curl 'https://api.thegraph.com/subgraphs/name/decentraland/rentals-ethereum-mainnet' \
+  //  -X POST \
+  //  -H 'content-type: application/json' \
+  //  --data '{
+  //    "query": "{ analyticsTotalDatas { rentals volume lessorEarnings feeCollectorEarnings } }"
+  //  }'
+
+  //// daily stats
+  //curl 'https://api.thegraph.com/subgraphs/name/decentraland/rentals-ethereum-mainnet' \
+  //  -X POST \
+  //  -H 'content-type: application/json' \
+  //  --data '{
+  //    "query": "{ analyticsDayDatas { date rentals volume lessorEarnings feeCollectorEarnings } }"
+  //  }'
+
   return {
     props: {
       globalDailyRes,
       parcelRes,
       landSalesRes,
+      gql: data,
     },
     revalidate: time,
   }
@@ -138,7 +197,9 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const [isPSAVisible, setIsPSAVisible] = useState(true)
 
-  const { globalDailyRes, parcelRes, landSalesRes } = props
+  const { globalDailyRes, parcelRes, landSalesRes, gql } = props
+
+  console.log(gql)
 
   return (
     <Layout>

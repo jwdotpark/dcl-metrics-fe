@@ -16,6 +16,7 @@
     "test:e2e": "cypress run --headless"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.4",
     "@chakra-ui/react": "^2.2.4",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -35,6 +36,7 @@
     "date-fns": "^2.29.3",
     "dayzed": "^3.2.3",
     "framer-motion": "^6.5.1",
+    "graphql": "^16.6.0",
     "jotai": "^1.8.4",
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
