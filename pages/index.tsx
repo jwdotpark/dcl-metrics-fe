@@ -17,7 +17,7 @@ import LandPicker from "../src/components/global/map/LandPicker"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
-import Rental from "../src/components/local/stats/rentals/Rental"
+import LandSales from "../src/components/local/stats/rentals/LandSales"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
 import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
@@ -163,7 +163,7 @@ const GlobalPage: NextPage = (props: Props) => {
           <ActiveScenes data={globalDailyRes} />
         </Grid>
         <Box mb="4">
-          <Rental data={rentalRes} />
+          <LandSales data={rentalRes} />
         </Box>
         <LandPicker parcelData={parcelRes} isPage={false} />
 

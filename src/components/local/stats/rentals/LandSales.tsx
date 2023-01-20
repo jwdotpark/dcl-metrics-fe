@@ -7,7 +7,7 @@ import BoxTitle from "../../../layout/local/BoxTitle"
 import { date, sliceData } from "../../../../lib/data/chartInfo"
 import DateRangeButton from "../daterange/DateRangeButton"
 
-const Rental = ({ data }) => {
+const LandSales = ({ data }) => {
   const chartData = []
   const dataArr = Object.entries(data)
   const color = ["#eb6f92", "#ea9d34", "#31748f"]
@@ -98,4 +98,4 @@ const Rental = ({ data }) => {
   )
 }
 
-export default Rental
+export default LandSales
