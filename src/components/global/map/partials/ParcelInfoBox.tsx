@@ -17,7 +17,6 @@ import {
   Tooltip,
   IconButton,
 } from "@chakra-ui/react"
-import { AiFillCloseCircle } from "react-icons/ai"
 import { FiChevronsRight } from "react-icons/fi"
 import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
@@ -26,7 +25,6 @@ import { useRouter } from "next/router"
 import { mutateStringToURL } from "../../../../lib/hooks/utils"
 import dclLogo from "../../../../../public/dcl-logo.svg"
 import Image from "next/image"
-import { sceneURL } from "../../../../lib/data/constant"
 import Link from "next/link"
 
 const ParcelInfoBox = ({
