@@ -1,6 +1,6 @@
 import { useState } from "react"
 import type { NextPage } from "next"
-import { Grid, useBreakpointValue, Accordion, Box } from "@chakra-ui/react"
+import { Grid, useBreakpointValue, Box } from "@chakra-ui/react"
 import staticGlobalDaily from "../public/data/staticGlobalDaily.json"
 import staticParcel from "../public/data/cached_parcel.json"
 import staticLandSales from "../public/data/staticLandSales.json"
@@ -11,76 +11,11 @@ import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedPar
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import LandSales from "../src/components/local/stats/rentals/LandSales"
+import Rental from "../src/components/local/stats/rentals/Rental"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
 import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
-
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
-//export async function getStaticProps() {
-//  if (isProd) {
-//    const [globalDailyRes, parcelRes] = await Promise.all(
-//      globalRequestList.map(({ url, endpoint, staticData }) =>
-//        getDataWithProxy(url, endpoint, staticData)
-//      )
-//    )
-
-//    // land sales is not using fixie
-//    const landSalesRes = await getData(
-//      "https://www.dcl-property.rentals/api/price_data",
-//      "https://www.dcl-property.rentals/api/price_data",
-//      staticLandSales
-//    )
-
-//    const resultArr = [globalDailyRes, parcelRes, landSalesRes]
-
-//    for (let i = 0; i < globalFileNameArr.length; i++) {
-//      writeFile(globalFileNameArr[i], resultArr[i])
-//    }
-
-//    const result = {
-//      globalDailyRes,
-//      parcelRes,
-//      landSalesRes,
-//    }
-
-//    return {
-//      props: result,
-//      revalidate: time,
-//    }
-//  } else if (isDev && !isLocal) {
-//    const [globalDailyRes, parcelRes, landSalesRes] = await Promise.all(
-//      globalRequestList.map(({ url, endpoint, staticData }) =>
-//        getData(url, endpoint, staticData)
-//      )
-//    )
-
-//    const result = {
-//      globalDailyRes,
-//      parcelRes,
-//      landSalesRes,
-//    }
-
-//    return {
-//      props: result,
-//      revalidate: time,
-//    }
-//  } else if (isLocal) {
-//    const globalDailyRes = staticGlobalDaily
-//    const parcelRes = staticParcel
-//    const landSalesRes = staticLandSales
-
-//    const result = {
-//      globalDailyRes,
-//      parcelRes,
-//      landSalesRes,
-//    }
-
-//    return {
-//      props: result,
-//      revalidate: time,
-//    }
-//  }
-//}
 
 export async function getStaticProps() {
   let globalDailyRes, parcelRes, landSalesRes
@@ -118,13 +53,12 @@ export async function getStaticProps() {
     }
   }
 
-  const client = new ApolloClient({
+  const theGraphClient = new ApolloClient({
     uri: "https://api.thegraph.com/subgraphs/name/decentraland/rentals-ethereum-mainnet",
     cache: new InMemoryCache(),
   })
 
-  // @ts-ignore
-  const { data } = await client.query({
+  const { data } = await theGraphClient.query({
     query: gql`
       query {
         analyticsTotalDatas {
@@ -144,43 +78,12 @@ export async function getStaticProps() {
     `,
   })
 
-  console.log("total stats:", data)
-
-  // @ts-ignore
-  //const { dailyStats } = await client.query({
-  //  query: gql`
-  //query analyticsDayDatas {
-  //  date
-  //  rentals
-  //  volume
-  //  lessorEarnings
-  //  feeCollectorEarnings
-  //}
-  //  `,
-  //})
-
-  //// total stats
-  //curl 'https://api.thegraph.com/subgraphs/name/decentraland/rentals-ethereum-mainnet' \
-  //  -X POST \
-  //  -H 'content-type: application/json' \
-  //  --data '{
-  //    "query": "{ analyticsTotalDatas { rentals volume lessorEarnings feeCollectorEarnings } }"
-  //  }'
-
-  //// daily stats
-  //curl 'https://api.thegraph.com/subgraphs/name/decentraland/rentals-ethereum-mainnet' \
-  //  -X POST \
-  //  -H 'content-type: application/json' \
-  //  --data '{
-  //    "query": "{ analyticsDayDatas { date rentals volume lessorEarnings feeCollectorEarnings } }"
-  //  }'
-
   return {
     props: {
       globalDailyRes,
       parcelRes,
       landSalesRes,
-      gql: data,
+      graphRes: data,
     },
     revalidate: time,
   }
@@ -197,9 +100,7 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const [isPSAVisible, setIsPSAVisible] = useState(true)
 
-  const { globalDailyRes, parcelRes, landSalesRes, gql } = props
-
-  console.log(gql)
+  const { globalDailyRes, parcelRes, landSalesRes, graphRes } = props
 
   return (
     <Layout>
@@ -214,6 +115,9 @@ const GlobalPage: NextPage = (props: Props) => {
         </Grid>
         <Box mb="4">
           <LandSales data={landSalesRes} />
+        </Box>
+        <Box mb="4">
+          <Rental data={graphRes} />
         </Box>
         <LandPicker parcelData={parcelRes} isPage={false} />
       </Box>
