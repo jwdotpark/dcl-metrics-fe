@@ -77,7 +77,7 @@ export default BarChart
 const PopoverTooltip = (value) => {
   return (
     <Flex
-      sx={{ backdropFilter: "blur(20px)" }}
+      sx={{ backdropFilter: "blur(5px)" }}
       gap="1rem"
       m="2"
       mx="4"

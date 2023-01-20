@@ -60,9 +60,9 @@ const Rental = ({ data }) => {
       floor: Math.floor(sum.floor / validLength),
     }
     const map = [
-      { id: "7 Day Avg", value: value.sevenDayAvg },
-      { id: "30 Day Avg", value: value.thirtyDayAvg },
-      { id: "Floor", value: value.floor },
+      { id: "7 Day AVG", value: value.sevenDayAvg },
+      { id: "30 Day AVG", value: value.thirtyDayAvg },
+      { id: "Floor AVG", value: value.floor },
     ].sort((a, b) => {
       return b.value - a.value
     })
@@ -78,12 +78,12 @@ const Rental = ({ data }) => {
     <BoxWrapper>
       <Box h="auto">
         <BoxTitle
-          name="Rentals"
+          name="Land Sales"
           date={""}
           avgData={avgData}
           slicedData={partial}
           color={color}
-          description="Average rental price in the last period"
+          description="Data from Opensea, prices in MANA"
         />
         <DateRangeButton
           dateRange={dateRange}

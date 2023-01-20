@@ -39,7 +39,7 @@ const CollapsibleMapBox = ({
         animate={{ width: isOpen ? mobileWidth : 0 }}
         style={{
           zIndex: 9000,
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(5px)",
           overflowY: isMapExpanded ? "hidden" : "scroll",
           whiteSpace: "nowrap",
           position: "absolute",
