@@ -73,8 +73,8 @@ const ParcelInfoBox = ({
 
   const sceneHandle =
     selectedParcel.scene &&
-    `/scenes/${mutateStringToURL(selectedParcel.scene.name)}?cid=${
-      selectedParcel.scene.cid
+    `/scenes/${mutateStringToURL(selectedParcel.scene.name)}?scene_uuid=${
+      selectedParcel.scene.scene_uuid
     }`
 
   useEffect(() => {

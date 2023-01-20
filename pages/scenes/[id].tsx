@@ -31,15 +31,14 @@ const SingleScenePage = (result) => {
 export default SingleScenePage
 
 export async function getServerSideProps(context) {
-  const cid = context.query.cid
-
+  const id = context.query.scene_uuid
   // TODO change url later
   //const endpoint = isProd
   //  ? process.env.NEXT_PUBLIC_PROD_ENDPOINT
   //  : process.env.NEXT_PUBLIC_DEV_ENDPOINT
 
   const endPoint = process.env.NEXT_PUBLIC_PROD_ENDPOINT
-  const path = "scenes/" + cid
+  const path = "scenes/" + id
   const url = endPoint + path
   const result = await getDataWithProxy(url, path, {})
   return {
