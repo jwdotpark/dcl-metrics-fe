@@ -43,10 +43,10 @@ const SceneMarathonUsers = ({ data }) => {
   const dataArr = Object.entries(data)
 
   const addressWidth = useBreakpointValue({
-    base: 15,
-    sm: 15,
-    md: 25,
-    lg: 25,
+    base: 25,
+    sm: 25,
+    md: 35,
+    lg: 50,
   })
 
   const MarathonUserTable = () => {
@@ -75,7 +75,7 @@ const SceneMarathonUsers = ({ data }) => {
                   </Flex>
                 </Td>
                 <Td>
-                  <Text fontSize="sm" fontWeight="bold">
+                  <Text fontWeight="bold">
                     {item[1].name ? TruncateName(item[1].name) : "N/A"}
                   </Text>
                 </Td>
@@ -85,7 +85,7 @@ const SceneMarathonUsers = ({ data }) => {
                   }
                 >
                   <Text
-                    as="kbd"
+                    //as="kbd"
                     // eslint-disable-next-line
                     color={useColorModeValue("gray.800", "gray.200")}
                     _hover={{ color: "gray.600", cursor: "pointer" }}
@@ -96,7 +96,7 @@ const SceneMarathonUsers = ({ data }) => {
                   </Text>
                 </Td>
                 <Td isNumeric>
-                  <Text as="kbd" wordBreak="keep-all">
+                  <Text wordBreak="keep-all">
                     {moment
                       .duration(item[1].time_spent, "minutes")
                       .format("dd:hh:mm:ss")}
@@ -123,7 +123,7 @@ const SceneMarathonUsers = ({ data }) => {
     >
       <Tooltip
         p="2"
-        fontSize="sm"
+        //fontSize="sm"
         borderRadius="md"
         shadow="xl"
         hasArrow
