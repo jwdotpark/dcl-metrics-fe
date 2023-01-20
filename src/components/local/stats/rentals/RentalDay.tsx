@@ -22,8 +22,8 @@ const RentalDay = ({ data }) => {
       date: item[1].date,
       feeCollectorEarnings: item[1].feeCollectorEarnings,
       lessorEarnings: item[1].lessorEarnings,
-      rentals: item[1].rentals,
       volume: item[1].volume,
+      rentals: item[1].rentals,
     })
   })
 
@@ -41,10 +41,10 @@ const RentalDay = ({ data }) => {
   }
 
   const result = [
-    mapData("Rentals", "rentals"),
     mapData("Volume", "volume"),
     mapData("Lessor Earnings", "lessorEarnings"),
     mapData("Fee Collector Earnings", "feeCollectorEarnings"),
+    mapData("Rentals", "rentals"),
   ]
 
   console.log("day rental", result)
@@ -67,7 +67,7 @@ const RentalDay = ({ data }) => {
           name="global_unique_visitors"
           yesterday={false}
         />
-        <LineChart data={result} color={color} name="daily_rental" />
+        <LineChart data={result} color={color} name="daily_rental" log={true} />
       </BoxWrapper>
     </Box>
   )

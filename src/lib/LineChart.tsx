@@ -7,13 +7,14 @@ import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import moment from "moment"
 import { chartHeight } from "../lib/data/chartInfo"
 
-const LineChart = ({ data, color, name }) => {
+const LineChart = ({ data, color, name, log }) => {
   const [localData, setLocalData] = useState([])
 
   const min = useMemo(() => {
     const lastData = data[data.length - 1].data
     const lastDataY = lastData.map((item) => item.y)
     const res = Math.min(...lastDataY)
+
     return res
   }, [data])
 
