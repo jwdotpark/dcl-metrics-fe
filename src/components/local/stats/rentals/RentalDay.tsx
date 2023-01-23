@@ -14,16 +14,18 @@ const RentalDay = ({ data }) => {
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
 
-  const value = 1000000000000000
+  const value = 10000000000000000000
+  const value2 = 100000000000000000
+  const value3 = 100
   dataArr.map((item) => {
     chartData.push({
       id: "Day Data",
       degraded: false,
       date: item[1].date,
-      feeCollectorEarnings: item[1].feeCollectorEarnings,
-      lessorEarnings: item[1].lessorEarnings,
-      volume: item[1].volume,
-      rentals: item[1].rentals,
+      lessorEarnings: Math.round(item[1].lessorEarnings / value),
+      volume: Math.round(item[1].volume / value),
+      feeCollectorEarnings: Math.round(item[1].feeCollectorEarnings / value2),
+      rentals: item[1].rentals * value3,
     })
   })
 
@@ -46,8 +48,6 @@ const RentalDay = ({ data }) => {
     mapData("Fee Collector Earnings", "feeCollectorEarnings"),
     mapData("Rentals", "rentals"),
   ]
-
-  console.log("day rental", result)
 
   return (
     <Box w={["100%", "100%"]} mr={[0, 4]}>
