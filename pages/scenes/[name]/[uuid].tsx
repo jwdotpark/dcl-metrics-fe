@@ -1,7 +1,7 @@
 import { Box, Button, Center, Flex, Spacer, Text } from "@chakra-ui/react"
-import Layout from "../../src/components/layout/layout"
-import Scene from "../../src/components/local/stats/Scene"
-import { getDataWithProxy } from "../../src/lib/data/fetch"
+import Layout from "../../../src/components/layout/layout"
+import Scene from "../../../src/components/local/stats/Scene"
+import { getDataWithProxy } from "../../../src/lib/data/fetch"
 
 const SingleScenePage = (result) => {
   const res = [result]
@@ -31,8 +31,10 @@ const SingleScenePage = (result) => {
 export default SingleScenePage
 
 export async function getServerSideProps(context) {
-  const uuid = context.query.id
-  
+  console.log("ctx", context.query.uuid)
+
+  const uuid = context.query.uuid
+
   // TODO change url later
   //const endpoint = isProd
   //  ? process.env.NEXT_PUBLIC_PROD_ENDPOINT
