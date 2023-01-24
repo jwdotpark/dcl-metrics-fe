@@ -28,6 +28,15 @@ const LineChart = ({ data, color, name, log }) => {
     if (dateRange > 30 && (lastChar % 2 !== 0 || lastChar % 3 !== 0)) {
       return ""
     }
+    if (
+      dateRange > 90 &&
+      (lastChar % 2 !== 0 ||
+        lastChar % 3 !== 0 ||
+        lastChar % 4 !== 0 ||
+        lastChar % 1 !== 0)
+    ) {
+      return ""
+    }
     return moment(value).format("MMM. D")
   }
 
