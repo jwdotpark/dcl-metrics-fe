@@ -31,8 +31,6 @@ const SingleScenePage = (result) => {
 export default SingleScenePage
 
 export async function getServerSideProps(context) {
-  console.log("ctx", context.query.uuid)
-
   const uuid = context.query.uuid
 
   // TODO change url later
