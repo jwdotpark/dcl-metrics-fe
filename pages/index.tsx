@@ -151,9 +151,9 @@ const GlobalPage: NextPage = (props: Props) => {
           <UniqueVisitedParcels data={globalDailyRes} />
           <ActiveScenes data={globalDailyRes} />
         </Grid>
-        <Box mb="4">
+        {/*<Box mb="4">
           <LandSales data={landSalesRes} />
-        </Box>
+        </Box>*/}
         <LandPicker parcelData={parcelRes} isPage={false} />
       </Box>
     </Layout>
