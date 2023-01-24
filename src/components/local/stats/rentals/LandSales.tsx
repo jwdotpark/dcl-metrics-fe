@@ -41,6 +41,8 @@ const LandSales = ({ data }) => {
     }
   }
 
+  console.log(partial)
+
   const result = [
     mapData("7 Days AVG", "seven_day_avg"),
     mapData("30 Days AVG", "thirty_day_avg"),

@@ -21,11 +21,14 @@ const LineChart = ({ data, color, name, log }) => {
   const dateRange = data[0].data.length
 
   const yAxisLabel = (value) => {
-    const lastChar = value.toString().slice(-2)
+    const lastChar = value.toString().slice(-1)
     if (dateRange === 30 && lastChar % 2 !== 0) {
       return ""
     }
-    if (dateRange > 30 && (lastChar % 2 !== 0 || lastChar % 3 !== 0)) {
+    if (dateRange === 31 && lastChar % 2 !== 0) {
+      return ""
+    }
+    if (dateRange > 32 && (lastChar % 2 !== 0 || lastChar % 3 !== 0)) {
       return ""
     }
     if (

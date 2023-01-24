@@ -53,12 +53,12 @@ export async function getStaticProps() {
     }
   }
 
-  const theGraphClient = new ApolloClient({
+  const rental = new ApolloClient({
     uri: "https://api.thegraph.com/subgraphs/name/decentraland/rentals-ethereum-mainnet",
     cache: new InMemoryCache(),
   })
 
-  const { data } = await theGraphClient.query({
+  const { data } = await rental.query({
     query: gql`
       query {
         analyticsTotalDatas {
@@ -83,7 +83,7 @@ export async function getStaticProps() {
       globalDailyRes,
       parcelRes,
       landSalesRes,
-      graphRes: data,
+      rental: data,
     },
     revalidate: time,
   }
@@ -100,7 +100,7 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const [isPSAVisible, setIsPSAVisible] = useState(false)
 
-  const { globalDailyRes, parcelRes, landSalesRes, graphRes } = props
+  const { globalDailyRes, parcelRes, landSalesRes, rental } = props
 
   return (
     <Layout>
@@ -117,7 +117,7 @@ const GlobalPage: NextPage = (props: Props) => {
           <LandSales data={landSalesRes} />
         </Box>
         <Box mb="4">
-          <Rental data={graphRes} />
+          <Rental data={rental} />
         </Box>
         <LandPicker parcelData={parcelRes} isPage={false} />
       </Box>

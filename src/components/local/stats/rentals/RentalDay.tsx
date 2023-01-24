@@ -6,6 +6,7 @@ import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import DateRangeButton from "../daterange/DateRangeButton"
+import moment from "moment"
 
 const RentalDay = ({ data }) => {
   const dataArr = Object.entries(data)
@@ -14,14 +15,14 @@ const RentalDay = ({ data }) => {
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
 
-  const value = 10000000000000000000
+  const value = 1000000000000000000
   const value2 = 100000000000000000
   const value3 = 100
   dataArr.map((item) => {
     chartData.push({
-      id: "Day Data",
+      id: item[1].date,
       degraded: false,
-      date: item[1].date,
+      date: moment.unix(item[1].date).format("YYYY-MM-DD"),
       lessorEarnings: Math.round(item[1].lessorEarnings / value),
       volume: Math.round(item[1].volume / value),
       feeCollectorEarnings: Math.round(item[1].feeCollectorEarnings / value2),
@@ -61,10 +62,10 @@ const RentalDay = ({ data }) => {
           description="Daily rental data"
         />
         <DateRangeButton
-          dateRange={""}
+          dateRange={dateRange}
           setDateRange={setDateRange}
-          validLegnth={90}
-          name="global_unique_visitors"
+          validLegnth={chartData.length}
+          name="rental_day"
           yesterday={false}
         />
         <LineChart data={result} color={color} name="daily_rental" log={true} />
