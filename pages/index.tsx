@@ -136,7 +136,7 @@ const GlobalPage: NextPage = (props: Props) => {
     xl: 2,
   })
 
-  const [isPSAVisible, setIsPSAVisible] = useState(true)
+  const [isPSAVisible, setIsPSAVisible] = useState(false)
 
   const { globalDailyRes, parcelRes, landSalesRes } = props
 
