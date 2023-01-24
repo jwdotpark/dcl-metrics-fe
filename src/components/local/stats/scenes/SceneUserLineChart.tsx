@@ -96,7 +96,7 @@ const SceneUserLineChart = ({ data }) => {
             name=""
             yesterday={false}
           />
-          <LineChart data={result} color={color} name="sceneUserLineChart" />
+          <LineChart data={result} color={color} name="sceneUserLineChart"  />
         </Box>
       </Box>
     </Flex>
