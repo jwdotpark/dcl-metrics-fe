@@ -21,9 +21,9 @@ const LandSales = ({ data }) => {
       id: item[1].date,
       date: item[1].date,
       degraded: false,
-      floor: item[1].floor,
-      seven_day_avg: item[1].seven_day_avg,
       thirty_day_avg: item[1].thirty_day_avg,
+      seven_day_avg: item[1].seven_day_avg,
+      floor: item[1].floor,
     })
   })
 
@@ -44,30 +44,28 @@ const LandSales = ({ data }) => {
   console.log(partial)
 
   const result = [
-    mapData("7 Days AVG", "seven_day_avg"),
     mapData("30 Days AVG", "thirty_day_avg"),
+    mapData("7 Days AVG", "seven_day_avg"),
     mapData("Floor", "floor"),
   ]
 
   const calculateAverages = (partial) => {
     const validLength = partial.length
     const sum = {
-      sevenDayAvg: partial.reduce((acc, cur) => acc + cur.seven_day_avg, 0),
       thirtyDayAvg: partial.reduce((acc, cur) => acc + cur.thirty_day_avg, 0),
+      sevenDayAvg: partial.reduce((acc, cur) => acc + cur.seven_day_avg, 0),
       floor: partial.reduce((acc, cur) => acc + cur.floor, 0),
     }
     const value = {
-      sevenDayAvg: Math.floor(sum.sevenDayAvg / validLength),
       thirtyDayAvg: Math.floor(sum.thirtyDayAvg / validLength),
+      sevenDayAvg: Math.floor(sum.sevenDayAvg / validLength),
       floor: Math.floor(sum.floor / validLength),
     }
     const map = [
-      { id: "7 Day AVG", value: value.sevenDayAvg },
       { id: "30 Day AVG", value: value.thirtyDayAvg },
+      { id: "7 Day AVG", value: value.sevenDayAvg },
       { id: "Floor AVG", value: value.floor },
-    ].sort((a, b) => {
-      return b.value - a.value
-    })
+    ]
     return map
   }
 

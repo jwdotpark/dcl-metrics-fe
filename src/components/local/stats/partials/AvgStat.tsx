@@ -13,9 +13,10 @@ const AvgStat = ({ avgData, data, color }) => {
   }
 
   // FIXME
-  if (color.length === 4) {
-    color = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
-  }
+  //if (color.length === 4) {
+  //  color = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
+  //}
+
 
   return (
     <Box>
