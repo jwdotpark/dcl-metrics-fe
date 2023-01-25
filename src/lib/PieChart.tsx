@@ -3,7 +3,6 @@ import { ResponsivePie } from "@nivo/pie"
 import { chartHeight } from "./data/chartInfo"
 
 const PieChart = ({ data, color }) => {
-  console.log(data)
   return (
     <Box h={chartHeight + 47}>
       <ResponsivePie

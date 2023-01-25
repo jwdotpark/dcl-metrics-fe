@@ -52,18 +52,18 @@ const LineChart = ({ data, color, name, rentalData }) => {
   }
 
   const CustomLayer = (props) => {
-    const { innerWidth, innerHeight } = props
+    const { innerWidth, innerHeight, width } = props
     return (
       <>
         {rentalData &&
           rentalData.data.map((item, i) => (
             <g key={item.date}>
               <rect
-                x={i * (innerWidth / rentalData.data.length + 1)}
+                x={i * Math.min(innerWidth / dateRange) + 10}
                 y={chartHeight - item.y * 10 - 100}
-                rx={3}
-                ry={3}
-                width={20}
+                rx={2}
+                ry={2}
+                width={dateRange > 30 ? 15 : 20}
                 height={item.y * 10}
                 fill="#9F7AEA90"
                 stroke="#9F7AEA"

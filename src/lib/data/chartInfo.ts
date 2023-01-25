@@ -24,35 +24,41 @@ export const date = (chartData: [], dateRange: number) => {
 
 export const plotMissingDates = (data) => {
   // Get the minimum and maximum dates from the data
-  const minDate = new Date(
-    Math.min.apply(
-      null,
-      data.map((d) => new Date(d.date))
-    )
+  const minTimestamp = Math.min.apply(
+    null,
+    data.map((d) => d.date)
+  )
+  const maxTimestamp = Math.max.apply(
+    null,
+    data.map((d) => d.date)
   )
 
-  const maxDate = new Date(
-    Math.max.apply(
-      null,
-      data.map((d) => new Date(d.date))
-    )
-  )
-
-  // Create an array of all dates between the minimum and maximum dates
-  const allDates = []
-  for (let d = new Date(minDate); d <= maxDate; d.setDate(d.getDate() + 1)) {
-    allDates.push(new Date(d).toISOString().slice(0, 10))
+  // Create an array of all timestamps between the minimum and maximum timestamps
+  const allTimestamps = []
+  for (
+    let timestamp = minTimestamp;
+    timestamp <= maxTimestamp;
+    timestamp += 86400
+  ) {
+    allTimestamps.push(timestamp)
   }
 
-  // Add an empty object with the missing date to the data array
-  allDates.forEach((date) => {
-    if (!data.find((d) => d.date === date)) {
-      data.push({ id: date, date: date, volume: 0, rentals: 0 })
+  // Add an empty object with the missing timestamp to the data array
+  allTimestamps.forEach((timestamp) => {
+    if (!data.find((d) => d.date === timestamp)) {
+      console.log(
+        "Missing timestamp: " + moment.unix(timestamp).format("YYYY-MM-DD")
+      )
+      data.push({
+        date: timestamp,
+        id: 0,
+        rentals: 0,
+        volume: 0,
+      })
     }
   })
 
-  // Sort the data array by date
-  // @ts-ignore
-  data.sort((a, b) => new Date(a.date) - new Date(b.date))
+  // Sort the data array by timestamp
+  data.sort((a, b) => a.date - b.date)
   return data
 }

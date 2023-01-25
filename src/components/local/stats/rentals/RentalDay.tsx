@@ -10,10 +10,11 @@ import { plotMissingDates } from "../../../../lib/data/chartInfo"
 import moment from "moment"
 
 const RentalDay = ({ data }) => {
-  const dataArr = Object.entries(data)
+  const plottedData = plotMissingDates(data)
+  const dataArr = Object.entries(plottedData)
   const chartData = []
   const color = ["#48BB78", "#4299E1", "#F56565", "#9F7AEA"]
-  const [dateRange, setDateRange] = useState(31)
+  const [dateRange, setDateRange] = useState(plottedData.length - 1)
   const [avgData, setAvgData] = useState([])
 
   dataArr.map((item) => {
@@ -21,7 +22,8 @@ const RentalDay = ({ data }) => {
       id: item[1].date,
       degraded: false,
       date: moment.unix(item[1].date).format("YYYY-MM-DD"),
-      volume: Number(item[1].volume.slice(0, -18)),
+      volume:
+        item[1].volume.length > 0 ? Number(item[1].volume.slice(0, -18)) : 0,
       rentals: item[1].rentals,
     })
   })
@@ -40,6 +42,7 @@ const RentalDay = ({ data }) => {
   }
 
   const result = [mapData("Volume", "volume"), mapData("Rentals", "rentals")]
+  const rentalData = result[result.length - 1]
 
   const calculateAverages = (partial) => {
     const validLength = partial.length
@@ -61,8 +64,6 @@ const RentalDay = ({ data }) => {
     return map
   }
 
-  const rentalData = result[result.length - 1]
-
   useEffect(() => {
     setAvgData(calculateAverages(partial))
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -82,7 +83,7 @@ const RentalDay = ({ data }) => {
         <DateRangeButton
           dateRange={dateRange}
           setDateRange={setDateRange}
-          validLegnth={chartData.length}
+          validLegnth={chartData.length - 1}
           name="rental_day"
           yesterday={false}
         />
