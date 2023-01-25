@@ -4,7 +4,6 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 import PieChart from "../../../../lib/PieChart"
 
 const RentalTotal = ({ data }) => {
-  console.log(data)
   const chartData = []
   const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
 
@@ -17,8 +16,6 @@ const RentalTotal = ({ data }) => {
       volume: item.volume,
     })
   })
-
-  console.log("chart data", chartData)
 
   const mapData = (id: string, key: number) => {
     return {

@@ -77,8 +77,6 @@ const ParcelInfoBox = ({
       selectedParcel.scene.scene_uuid
     }`
 
-  console.log(sceneHandle)
-
   useEffect(() => {
     fetchParcel()
     // eslint-disable-next-line react-hooks/exhaustive-deps

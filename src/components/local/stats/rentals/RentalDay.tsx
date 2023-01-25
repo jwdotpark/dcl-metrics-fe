@@ -20,9 +20,9 @@ const RentalDay = ({ data }) => {
       id: item[1].date,
       degraded: false,
       date: moment.unix(item[1].date).format("YYYY-MM-DD"),
-      lessorEarnings: item[1].lessorEarnings.slice(0, -18),
-      volume: item[1].volume.slice(0, -18),
-      feeCollectorEarnings: item[1].feeCollectorEarnings.slice(0, -18),
+      lessorEarnings: Number(item[1].lessorEarnings.slice(0, -18)),
+      volume: Number(item[1].volume.slice(0, -18)),
+      feeCollectorEarnings: Number(item[1].feeCollectorEarnings.slice(0, -18)),
       rentals: item[1].rentals,
     })
   })
@@ -77,7 +77,6 @@ const RentalDay = ({ data }) => {
 
   useEffect(() => {
     setAvgData(calculateAverages(partial))
-    console.log(avgData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
