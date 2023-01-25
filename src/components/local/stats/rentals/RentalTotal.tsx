@@ -6,6 +6,8 @@ import PieChart from "../../../../lib/PieChart"
 const RentalTotal = ({ data }) => {
   const chartData = []
   const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
+  const totalColor = ["#4299E1", "#F56565"]
+  const restTotalColor = ["#48BB78", "#9F7AEA"]
 
   data.map((item) => {
     chartData.push({
@@ -27,24 +29,42 @@ const RentalTotal = ({ data }) => {
   }
 
   const result = [
-    mapData("Volume", chartData[0].volume),
-    mapData("Lessor Earnings", chartData[0].lessorEarnings),
-    mapData("Fee Collector Earnings", chartData[0].feeCollectorEarnings),
-    mapData("Rentals", chartData[0].rentals),
+    //mapData("Volume", chartData[0].volume),
+    mapData("Lessor Earnings", chartData[0].lessorEarnings.slice(0, -18)),
+    mapData(
+      "Fee Collector Earnings",
+      chartData[0].feeCollectorEarnings.slice(0, -18)
+    ),
+    //mapData("Rentals", chartData[0].rentals),
+  ]
+
+  const avgData = [
+    {
+      id: "Total Volume",
+      label: "Total Volume",
+      value: Number(chartData[0].volume.slice(0, -18)),
+      color: totalColor[0],
+    },
+    {
+      id: "Total Rentals",
+      label: "Total Rentals",
+      value: Number(chartData[0].rentals),
+      color: totalColor[1],
+    },
   ]
 
   return (
     <Box w={["100%", "50%"]}>
       <BoxWrapper>
         <BoxTitle
-          name="Rental Total"
+          name="Rentals Total"
           date={""}
-          avgData={""}
+          avgData={avgData}
           slicedData={""}
-          color={""}
+          color={restTotalColor}
           description="Total rental data"
         />
-        <PieChart data={result} />
+        <PieChart data={result} color={totalColor} />
       </BoxWrapper>
     </Box>
   )

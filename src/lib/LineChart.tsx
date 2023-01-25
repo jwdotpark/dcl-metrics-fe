@@ -7,7 +7,7 @@ import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import moment from "moment"
 import { chartHeight } from "../lib/data/chartInfo"
 
-const LineChart = ({ data, color, name }) => {
+const LineChart = ({ data, color, name, rentalData }) => {
   const [localData, setLocalData] = useState([])
 
   const min = useMemo(() => {
@@ -51,6 +51,29 @@ const LineChart = ({ data, color, name }) => {
     }
   }
 
+  const CustomLayer = (props) => {
+    const { innerWidth, innerHeight } = props
+    return (
+      <>
+        {rentalData &&
+          rentalData.data.map((item, i) => (
+            <g key={item.date}>
+              <rect
+                x={i * (innerWidth / rentalData.data.length + 1)}
+                y={chartHeight - item.y * 10 - 100}
+                rx={3}
+                ry={3}
+                width={20}
+                height={item.y * 10}
+                fill="#9F7AEA90"
+                stroke="#9F7AEA"
+              ></rect>
+            </g>
+          ))}
+      </>
+    )
+  }
+
   useEffect(() => {
     setLocalData(data)
   }, [data])
@@ -70,9 +93,20 @@ const LineChart = ({ data, color, name }) => {
             },
           },
         }}
+        layers={[
+          CustomLayer,
+          "grid",
+          "markers",
+          "areas",
+          "lines",
+          "slices",
+          "points",
+          "axes",
+          "legends",
+        ]}
         animate={true}
         pointSize={4}
-        margin={{ top: 40, right: 25, bottom: 60, left: 55 }}
+        margin={{ top: 40, right: rentalData ? 50 : 25, bottom: 60, left: 55 }}
         xScale={{ type: "point" }}
         yScale={{
           type: "linear",
@@ -82,7 +116,27 @@ const LineChart = ({ data, color, name }) => {
           reverse: false,
         }}
         axisTop={null}
-        axisRight={null}
+        axisRight={
+          rentalData && {
+            orient: "left",
+            tickSize: 0,
+            tickPadding: 0,
+            tickRotation: 0,
+            legend: "Rentals Count",
+            renderTick: (tick) => {
+              return (
+                <text
+                  x={tick.x + 20}
+                  y={tick.y + 4}
+                  fontSize="11px"
+                  fill={useColorModeValue("black", "white")}
+                >
+                  {tick.tickIndex * 2}
+                </text>
+              )
+            },
+          }
+        }
         axisBottom={{
           orient: "bottom",
           tickSize: 5,
