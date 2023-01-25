@@ -15,23 +15,17 @@ const RentalDay = ({ data }) => {
   const [dateRange, setDateRange] = useState(31)
   const [avgData, setAvgData] = useState([])
 
-  // TODO clarify these value with later
-  const value = 1000000000000000000
-  const value2 = 100000000000000000
-  const value3 = 100
-
   dataArr.map((item) => {
     chartData.push({
       id: item[1].date,
       degraded: false,
       date: moment.unix(item[1].date).format("YYYY-MM-DD"),
-      lessorEarnings: Math.round(item[1].lessorEarnings / value),
-      volume: Math.round(item[1].volume / value),
-      feeCollectorEarnings: Math.round(item[1].feeCollectorEarnings / value2),
-      rentals: item[1].rentals * value3,
+      lessorEarnings: item[1].lessorEarnings.slice(0, -18),
+      volume: item[1].volume.slice(0, -18),
+      feeCollectorEarnings: item[1].feeCollectorEarnings.slice(0, -18),
+      rentals: item[1].rentals,
     })
   })
-
   const partial = sliceData(chartData, dateRange)
 
   const mapData = (id: string, key: number) => {
@@ -83,6 +77,7 @@ const RentalDay = ({ data }) => {
 
   useEffect(() => {
     setAvgData(calculateAverages(partial))
+    console.log(avgData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
