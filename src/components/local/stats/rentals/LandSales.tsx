@@ -60,9 +60,9 @@ const LandSales = ({ data }) => {
       floor: Math.floor(sum.floor / validLength),
     }
     const map = [
-      { id: "30 Day AVG", value: value.thirtyDayAvg },
-      { id: "7 Day AVG", value: value.sevenDayAvg },
-      { id: "Floor AVG", value: value.floor },
+      { id: "30 Day", value: value.thirtyDayAvg },
+      { id: "7 Day", value: value.sevenDayAvg },
+      { id: "Floor", value: value.floor },
     ]
     return map
   }

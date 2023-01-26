@@ -42,9 +42,6 @@ export const plotMissingDates = (data) => {
 
   allTimestamps.forEach((timestamp) => {
     if (!data.find((d) => d.date === timestamp)) {
-      console.log(
-        "Missing timestamp: " + moment.unix(timestamp).format("YYYY-MM-DD")
-      )
       data.push({
         date: timestamp,
         id: 0,

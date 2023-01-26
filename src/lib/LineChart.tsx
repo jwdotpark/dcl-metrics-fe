@@ -28,7 +28,10 @@ const LineChart = ({ data, color, name, rentalData }) => {
     if (dateRange === 31 && lastChar % 2 !== 0) {
       return ""
     }
-    if (dateRange > 32 && (lastChar % 2 !== 0 || lastChar % 3 !== 0)) {
+    if (
+      dateRange > 32 &&
+      (lastChar % 2 !== 0 || lastChar % 1 !== 0 || lastChar % 6 !== 0)
+    ) {
       return ""
     }
     if (
@@ -36,7 +39,10 @@ const LineChart = ({ data, color, name, rentalData }) => {
       (lastChar % 2 !== 0 ||
         lastChar % 3 !== 0 ||
         lastChar % 4 !== 0 ||
-        lastChar % 1 !== 0)
+        lastChar % 1 !== 0 ||
+        lastChar % 5 !== 0 ||
+        lastChar % 6 !== 0 ||
+        lastChar % 7 !== 0)
     ) {
       return ""
     }

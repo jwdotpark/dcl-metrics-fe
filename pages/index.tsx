@@ -16,6 +16,8 @@ import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
 import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
+import RentalDay from "../src/components/local/stats/rentals/RentalDay"
+import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
 
 export async function getStaticProps() {
   let globalDailyRes, parcelRes, landSalesRes
@@ -116,9 +118,10 @@ const GlobalPage: NextPage = (props: Props) => {
         <Box mb="4">
           <LandSales data={landSalesRes} />
         </Box>
-        <Box mb="4">
-          <Rental data={rental} />
-        </Box>
+        <Grid gap={4} templateColumns={`repeat(2, 1fr)`} mb="4">
+          <RentalDay data={rental} />
+          <RentalTotal data={rental} />
+        </Grid>
         <LandPicker parcelData={parcelRes} isPage={false} />
       </Box>
     </Layout>

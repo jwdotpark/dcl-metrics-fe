@@ -9,8 +9,9 @@ import DateRangeButton from "../daterange/DateRangeButton"
 import { plotMissingDates } from "../../../../lib/data/chartInfo"
 import moment from "moment"
 
-const RentalDay = ({ data, color }) => {
-  const plottedData = plotMissingDates(data)
+const RentalDay = ({ data }) => {
+  const { analyticsDayDatas } = data
+  const plottedData = plotMissingDates(analyticsDayDatas)
   const dataArr = Object.entries(plottedData)
   const chartData = []
   //const color = ["#48BB78", "#4299E1", "#F56565", "#9F7AEA"]
@@ -23,7 +24,7 @@ const RentalDay = ({ data, color }) => {
       degraded: false,
       date: moment.unix(item[1].date).format("YYYY-MM-DD"),
       volume:
-        item[1].volume.length > 0 ? Number(item[1].volume.slice(0, -18)) : 0,
+        item[1].volume.length > 0 ? Number(item[1].volume.slice(0, -17)) : 0,
       rentals: item[1].rentals,
     })
   })
@@ -57,12 +58,14 @@ const RentalDay = ({ data, color }) => {
     }
 
     const map = [
-      { id: "Volume", value: value.volume },
-      { id: "Rentals", value: value.rentals },
+      { id: "Avg Volume", value: value.volume },
+      { id: "Avg Rentals", value: value.rentals },
     ].sort((a, b) => b.value - a.value)
 
     return map
   }
+
+  const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
 
   useEffect(() => {
     setAvgData(calculateAverages(partial))
@@ -70,36 +73,30 @@ const RentalDay = ({ data, color }) => {
   }, [dateRange])
 
   return (
-    <Box
-      w={["100%", "100%", "100%", "100%", "100%", "66%"]}
-      mr={[0, 4]}
-      mb={[4, 4, 4, 4, 0]}
-    >
-      <BoxWrapper>
-        <BoxTitle
-          name="Rentals Daily"
-          date={""}
-          avgData={avgData}
-          slicedData={partial}
-          color={color}
-          description="Daily rentals and volume in the last period"
-        />
-        <DateRangeButton
-          dateRange={dateRange}
-          setDateRange={setDateRange}
-          validLegnth={chartData.length - 1}
-          name="rental_day"
-          yesterday={false}
-        />
-        <LineChart
-          data={result}
-          color={color}
-          name="daily_rental"
-          log={true}
-          rentalData={rentalData}
-        />
-      </BoxWrapper>
-    </Box>
+    <BoxWrapper>
+      <BoxTitle
+        name="Rentals Daily"
+        date={""}
+        avgData={avgData}
+        slicedData={partial}
+        color={color}
+        description="Daily rentals and volume in the last period"
+      />
+      <DateRangeButton
+        dateRange={dateRange}
+        setDateRange={setDateRange}
+        validLegnth={chartData.length - 1}
+        name="rental_day"
+        yesterday={false}
+      />
+      <LineChart
+        data={result}
+        color={color}
+        name="daily_rental"
+        log={true}
+        rentalData={rentalData}
+      />
+    </BoxWrapper>
   )
 }
 

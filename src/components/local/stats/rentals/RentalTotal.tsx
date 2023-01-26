@@ -2,14 +2,17 @@ import { Box } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import PieChart from "../../../../lib/PieChart"
+import moment from "moment"
 
-const RentalTotal = ({ data, color }) => {
+const RentalTotal = ({ data }) => {
+  const { analyticsTotalDatas } = data
   const chartData = []
-  //const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
-  //const rentalDailyColor = ["#4299E1", "#9F7AEA"]
-  //const rentalTotalColor = ["#48BB78", "#9F7AEA"]
+  const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
+  const firstDate = moment
+    .unix(data.analyticsDayDatas[0].date)
+    .format("YYYY MMM. D")
 
-  data.map((item) => {
+  analyticsTotalDatas.map((item) => {
     chartData.push({
       id: item.__typename,
       feeCollectorEarnings: item.feeCollectorEarnings,
@@ -28,18 +31,17 @@ const RentalTotal = ({ data, color }) => {
   }
 
   const result = [
-    mapData("Lessor Earnings", chartData[0].lessorEarnings.slice(0, -18)),
+    mapData("Lessor Earnings", chartData[0].lessorEarnings.slice(0, -17)),
     mapData(
       "Fee Collector Earnings",
-      chartData[0].feeCollectorEarnings.slice(0, -18)
+      chartData[0].feeCollectorEarnings.slice(0, -17)
     ),
   ]
 
-  console.log(chartData[0].volume)
   const avgData = [
     {
-      id: "Total Volume",
-      label: "Total Volume",
+      id: "Mana",
+      label: "Mana",
       value: Number(chartData[0].volume.slice(0, -17)),
       color: color[2],
     },
@@ -52,19 +54,17 @@ const RentalTotal = ({ data, color }) => {
   ]
 
   return (
-    <Box w={["100%", "100%", "100%", "100%", "100%", "33%"]}>
-      <BoxWrapper>
-        <BoxTitle
-          name="Rentals Total"
-          date={""}
-          avgData={avgData}
-          slicedData={""}
-          color={color}
-          description="Total rental data since YY MMM. DD"
-        />
-        <PieChart data={result} color={color} />
-      </BoxWrapper>
-    </Box>
+    <BoxWrapper>
+      <BoxTitle
+        name="Rentals Total"
+        date={""}
+        avgData={avgData}
+        slicedData={""}
+        color={color}
+        description={`Total rentals data since ${firstDate}`}
+      />
+      <PieChart data={result} color={color} />
+    </BoxWrapper>
   )
 }
 
