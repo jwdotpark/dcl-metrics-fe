@@ -70,7 +70,11 @@ const RentalDay = ({ data }) => {
   }, [dateRange])
 
   return (
-    <Box w={["100%", "100%"]} mr={[0, 4]}>
+    <Box
+      w={["100%", "100%", "100%", "100%", "100%", "66%"]}
+      mr={[0, 4]}
+      mb={[4, 4, 4, 4, 0]}
+    >
       <BoxWrapper>
         <BoxTitle
           name="Rentals Daily"

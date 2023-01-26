@@ -54,7 +54,7 @@ const RentalTotal = ({ data }) => {
   ]
 
   return (
-    <Box w={["100%", "50%"]}>
+    <Box w={["100%", "100%", "100%", "100%", "100%", "33%"]}>
       <BoxWrapper>
         <BoxTitle
           name="Rentals Total"

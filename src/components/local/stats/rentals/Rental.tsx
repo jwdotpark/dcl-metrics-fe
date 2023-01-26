@@ -5,7 +5,11 @@ import RentTotal from "./RentalTotal"
 
 const Rental = ({ data }) => {
   return (
-    <Flex direction={["column", "row"]} w="100%" h="auto">
+    <Flex
+      direction={["column", "column", "column", "column", "row"]}
+      w="100%"
+      h="auto"
+    >
       <RentalDay data={data.analyticsDayDatas} />
       <RentTotal data={data.analyticsTotalDatas} />
     </Flex>

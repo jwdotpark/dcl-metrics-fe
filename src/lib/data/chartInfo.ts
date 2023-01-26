@@ -12,7 +12,6 @@ export const sliceData = (chartData: [], dateRange: number) => {
   }
 }
 
-// TODO type this
 export const date = (chartData: [], dateRange: number) => {
   const partial = sliceData(chartData, dateRange)
   // @ts-ignore
@@ -23,7 +22,6 @@ export const date = (chartData: [], dateRange: number) => {
 }
 
 export const plotMissingDates = (data) => {
-  // Get the minimum and maximum dates from the data
   const minTimestamp = Math.min.apply(
     null,
     data.map((d) => d.date)
@@ -33,7 +31,6 @@ export const plotMissingDates = (data) => {
     data.map((d) => d.date)
   )
 
-  // Create an array of all timestamps between the minimum and maximum timestamps
   const allTimestamps = []
   for (
     let timestamp = minTimestamp;
@@ -43,7 +40,6 @@ export const plotMissingDates = (data) => {
     allTimestamps.push(timestamp)
   }
 
-  // Add an empty object with the missing timestamp to the data array
   allTimestamps.forEach((timestamp) => {
     if (!data.find((d) => d.date === timestamp)) {
       console.log(
@@ -58,7 +54,6 @@ export const plotMissingDates = (data) => {
     }
   })
 
-  // Sort the data array by timestamp
   data.sort((a, b) => a.date - b.date)
   return data
 }
