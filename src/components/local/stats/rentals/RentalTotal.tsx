@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import PieChart from "../../../../lib/PieChart"
