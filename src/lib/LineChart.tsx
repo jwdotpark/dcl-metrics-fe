@@ -65,7 +65,7 @@ const LineChart = ({ data, color, name, rentalData }) => {
           rentalData.data.map((item, i) => (
             <g key={item.date}>
               <rect
-                x={i * Math.min(innerWidth / dateRange) + 10}
+                x={i * Math.min(innerWidth / dateRange) + 5}
                 y={chartHeight - item.y * 10 - 100}
                 rx={2}
                 ry={2}
