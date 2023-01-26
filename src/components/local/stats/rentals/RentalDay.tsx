@@ -9,11 +9,11 @@ import DateRangeButton from "../daterange/DateRangeButton"
 import { plotMissingDates } from "../../../../lib/data/chartInfo"
 import moment from "moment"
 
-const RentalDay = ({ data }) => {
+const RentalDay = ({ data, color }) => {
   const plottedData = plotMissingDates(data)
   const dataArr = Object.entries(plottedData)
   const chartData = []
-  const color = ["#48BB78", "#4299E1", "#F56565", "#9F7AEA"]
+  //const color = ["#48BB78", "#4299E1", "#F56565", "#9F7AEA"]
   const [dateRange, setDateRange] = useState(plottedData.length - 1)
   const [avgData, setAvgData] = useState([])
 
@@ -82,7 +82,7 @@ const RentalDay = ({ data }) => {
           avgData={avgData}
           slicedData={partial}
           color={color}
-          description="Daily rental data"
+          description="Daily rentals and volume in the last period"
         />
         <DateRangeButton
           dateRange={dateRange}
