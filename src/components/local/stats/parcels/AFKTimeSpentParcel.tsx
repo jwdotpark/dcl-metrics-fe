@@ -24,7 +24,7 @@ const AFKtimeSpentAFKParcel = ({ parcel }) => {
   tableData = result
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Parcels with Most AFK"
         date=""

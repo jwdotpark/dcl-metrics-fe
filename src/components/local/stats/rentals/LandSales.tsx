@@ -73,7 +73,7 @@ const LandSales = ({ data }) => {
   }, [dateRange])
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <Box h="auto">
         <BoxTitle
           name="Land Sales"

@@ -24,7 +24,7 @@ const ScenesTimeSpentAFK = ({ res }) => {
   tableData = result
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Scenes with AFK Time Spent"
         date=""

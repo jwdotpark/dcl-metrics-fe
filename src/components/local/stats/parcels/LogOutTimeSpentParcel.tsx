@@ -24,7 +24,7 @@ const LogOutTimeSpentParcel = ({ parcel }) => {
   tableData = result
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Parcels with Most Logouts"
         date=""

@@ -66,7 +66,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers }) => {
 
   return (
     <Box h="100%" mb="4" mx={[-4, 0]}>
-      <BoxWrapper>
+      <BoxWrapper colSpan={0}>
         <SceneTitle
           name={name}
           date={latest}

@@ -56,7 +56,7 @@ const ActiveScenes = ({ data }) => {
   }, [dateRange])
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={3}>
       <BoxTitle
         name="Scenes Visited"
         date={dateString}

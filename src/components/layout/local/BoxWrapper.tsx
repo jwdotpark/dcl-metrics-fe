@@ -1,6 +1,6 @@
 import { GridItem, useColorModeValue } from "@chakra-ui/react"
 
-const BoxWrapper = ({ children }) => {
+const BoxWrapper = ({ children, colSpan }) => {
   const box = {
     h: "auto",
     w: "100%",
@@ -11,6 +11,7 @@ const BoxWrapper = ({ children }) => {
     borderRadius: "xl",
     shadow: "md",
     pb: 4,
+    colSpan: colSpan,
   }
 
   return (
@@ -25,6 +26,7 @@ const BoxWrapper = ({ children }) => {
       borderColor={box.borderColor}
       borderRadius={box.borderRadius}
       shadow={box.shadow}
+      colSpan={box.colSpan}
     >
       {children}
     </GridItem>

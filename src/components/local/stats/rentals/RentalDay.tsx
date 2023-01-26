@@ -73,7 +73,7 @@ const RentalDay = ({ data }) => {
   }, [dateRange])
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={4}>
       <BoxTitle
         name="Rentals Daily"
         date={""}

@@ -24,7 +24,7 @@ const AvgTimeSpentParcel = ({ parcel }) => {
   tableData = result
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Parcels Average Time Spent"
         date=""

@@ -78,7 +78,7 @@ const UniqueVisitors = ({ data }) => {
   }, [dateRange])
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Unique Visitors"
         date={dateString}

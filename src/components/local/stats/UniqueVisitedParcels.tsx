@@ -57,7 +57,7 @@ const UniqueVisitedParcels = ({ data }) => {
   }, [dateRange])
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={3}>
       <BoxTitle
         name="Parcel Visitors"
         date={dateString}

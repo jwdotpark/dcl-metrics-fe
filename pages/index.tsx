@@ -97,7 +97,7 @@ const GlobalPage: NextPage = (props: Props) => {
     sm: 1,
     md: 1,
     lg: 2,
-    xl: 2,
+    xl: 6,
   })
 
   const [isPSAVisible, setIsPSAVisible] = useState(false)

@@ -11,7 +11,7 @@ const MarathonUsers = ({ res }) => {
   const bodyList = ["time_spent", "name", "address", "Link"]
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Marathon Users"
         date=""
