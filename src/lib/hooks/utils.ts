@@ -58,3 +58,15 @@ export const heatmapColor = (value) => {
   }
   return "hsl(" + h + ", 100%, 50%)"
 }
+
+export const mutateStringToURL = (string: string) => {
+  string = string.toLowerCase()
+  string = string.replace(/[^a-z0-9]+/g, "-")
+  string = string.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  string = string.replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue")
+  string = encodeURIComponent(string)
+  if (string.slice(-1) === "-") {
+    string = string.slice(0, -1)
+  }
+  return string
+}

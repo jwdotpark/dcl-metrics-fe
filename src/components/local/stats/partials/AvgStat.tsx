@@ -12,9 +12,17 @@ const AvgStat = ({ avgData, data, color }) => {
     ]
   }
 
-  // FIXME
+  //FIXME
   if (color.length === 4) {
     color = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
+  }
+
+  const dateStr = (val) => {
+    if (typeof val === "number") {
+      return val
+    } else {
+      return val.length
+    }
   }
 
   return (
@@ -36,7 +44,7 @@ const AvgStat = ({ avgData, data, color }) => {
                       p="2"
                       fontSize="sm"
                       borderRadius="xl"
-                      label={`${item.id} for ${data.length} days`}
+                      label={`${item.id} for ${dateStr(data)} days`}
                       placement="top"
                     >
                       <Box

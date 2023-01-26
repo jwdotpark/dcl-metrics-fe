@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
   ButtonGroup,
@@ -13,11 +14,18 @@ import {
   AlertDialogContent,
   AlertDialogFooter,
   AlertDialogOverlay,
+  Tooltip,
+  IconButton,
 } from "@chakra-ui/react"
-import { AiFillCloseCircle } from "react-icons/ai"
+import { FiChevronsRight } from "react-icons/fi"
 import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
+import { useRouter } from "next/router"
+import { mutateStringToURL } from "../../../../lib/hooks/utils"
+import dclLogo from "../../../../../public/dcl-logo.svg"
+import Image from "next/image"
+import Link from "next/link"
 
 const ParcelInfoBox = ({
   isMapExpanded,
@@ -26,6 +34,7 @@ const ParcelInfoBox = ({
   isIncluded,
   getButtonProps,
 }) => {
+  const router = useRouter()
   const [fetchedInfo, setfetchedInfo] = useState({})
   const [isPicLoading, setIsPicLoading] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -62,6 +71,12 @@ const ParcelInfoBox = ({
     }
   }
 
+  const sceneHandle =
+    selectedParcel.scene &&
+    `/scenes/${mutateStringToURL(selectedParcel.scene.name)}/${
+      selectedParcel.scene.scene_uuid
+    }`
+
   useEffect(() => {
     fetchParcel()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -82,7 +97,7 @@ const ParcelInfoBox = ({
               <AlertDialogBody mt="4">
                 Do you want to visit{" "}
                 {selectedParcel.scene && selectedParcel.scene.name + " on "} [
-                {selectedParcel.id}]?
+                {selectedParcel.id}] on Decentraland?
               </AlertDialogBody>
 
               <AlertDialogFooter>
@@ -113,32 +128,52 @@ const ParcelInfoBox = ({
       <Center>
         <ButtonGroup w="100%">
           <Button
-            w="100%"
+            w={selectedParcel.scene ? 30 : "100%"}
             mb="4"
-            color={useColorModeValue("gray.50", "gray.50")}
-            bg={useColorModeValue("gray.500", "#44475a")}
-            borderRadius="xl"
+            borderRadius="full"
             shadow="md"
+            _hover={{ filter: "brightness(75%)" }}
+            aria-label="dcl logo"
+            bgColor={useColorModeValue("gray.300", "gray.500")}
             onClick={() => onOpen()}
+            size="md"
+            variant="unstyled"
           >
-            <Text fontSize="md" fontWeight="bold">
-              {selectedParcel.scene
-                ? trimName(selectedParcel.scene.name)
-                : "[" + selectedParcel.id + "] "}
-            </Text>
+            <Center w="100%" h="100%">
+              <Image
+                src={dclLogo}
+                alt="link logo"
+                width={selectedParcel.scene ? 50 : 20}
+              />
+              {!selectedParcel.scene && (
+                <Text sx={{ transform: "translateY(-2px)" }} ml="2">
+                  [{selectedParcel.id}]
+                </Text>
+              )}
+            </Center>
           </Button>
-          <Button
-            w="15"
-            mb="4"
-            color="gray.50"
-            bg="red.500"
-            borderRadius="xl"
-            shadow="md"
-            {...getButtonProps()}
-          >
-            <AiFillCloseCircle size="20" />
-          </Button>
+
+          {selectedParcel.scene && (
+            <Button w="100%" mb="4" bg="#FF9990" borderRadius="xl" shadow="md">
+              <Link href={sceneHandle} target="_blank">
+                <Text px="4" color="#000" fontWeight="bold">
+                  {selectedParcel.scene && trimName(selectedParcel.scene.name)}
+                </Text>
+              </Link>
+            </Button>
+          )}
         </ButtonGroup>
+        <IconButton
+          w="15"
+          mb="4"
+          ml="2"
+          color="gray.50"
+          bg="red.500"
+          borderRadius="full"
+          shadow="md"
+          {...getButtonProps()}
+          icon={<FiChevronsRight size="20" />}
+        ></IconButton>
       </Center>
 
       <Flex

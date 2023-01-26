@@ -44,7 +44,7 @@ const AboutList = () => {
     >
       <Center>
         <Container
-          sx={{ backdropFilter: "blur(20px)" }}
+          sx={{ backdropFilter: "blur(5px)" }}
           maxW={"8xl"}
           borderRadius="xl"
         >

@@ -32,8 +32,8 @@ const PSA = ({ setIsPSAVisible }) => {
             >
               <FiCoffee color={useColorModeValue("black", "white")} />
             </Box>
-            We&apos;ve added a land picker tool,{" "}
-            <Box display="inline-block">
+            We&lsquo;ve added a LAND sales chart. Check it out!
+            {/*<Box display="inline-block">
               <Link href="/map">
                 <Text
                   color={useColorModeValue("blue.600", "blue.200")}
@@ -42,7 +42,7 @@ const PSA = ({ setIsPSAVisible }) => {
                   try it out on the new scene map!
                 </Text>
               </Link>
-            </Box>
+            </Box>*/}
           </Text>
         </Center>
         <Spacer />

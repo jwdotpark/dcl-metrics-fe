@@ -38,7 +38,7 @@ const LandPicker = ({ parcelData, isPage }) => {
 
   return (
     <Box mb="4">
-      <BoxWrapper>
+      <BoxWrapper colSpan={0}>
         <BoxTitle
           name="Land Picker"
           description="Choose the land!"

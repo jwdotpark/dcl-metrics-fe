@@ -24,7 +24,7 @@ const ScenesTimeSpent = ({ res }) => {
   tableData = result
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Scenes with AVG Time Spent"
         date=""

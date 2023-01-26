@@ -7,23 +7,43 @@ import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import moment from "moment"
 import { chartHeight } from "../lib/data/chartInfo"
 
-const LineChart = ({ data, color, name }) => {
+const LineChart = ({ data, color, name, rentalData }) => {
   const [localData, setLocalData] = useState([])
 
   const min = useMemo(() => {
     const lastData = data[data.length - 1].data
     const lastDataY = lastData.map((item) => item.y)
-    return Math.min(...lastDataY)
+    const res = Math.min(...lastDataY)
+
+    return res
   }, [data])
 
   const dateRange = data[0].data.length
 
   const yAxisLabel = (value) => {
-    const lastChar = value.toString().slice(-2)
+    const lastChar = value.toString().slice(-1)
     if (dateRange === 30 && lastChar % 2 !== 0) {
       return ""
     }
-    if (dateRange > 30 && (lastChar % 2 !== 0 || lastChar % 3 !== 0)) {
+    if (dateRange === 31 && lastChar % 2 !== 0) {
+      return ""
+    }
+    if (
+      dateRange > 32 &&
+      (lastChar % 2 !== 0 || lastChar % 1 !== 0 || lastChar % 6 !== 0)
+    ) {
+      return ""
+    }
+    if (
+      dateRange > 90 &&
+      (lastChar % 2 !== 0 ||
+        lastChar % 3 !== 0 ||
+        lastChar % 4 !== 0 ||
+        lastChar % 1 !== 0 ||
+        lastChar % 5 !== 0 ||
+        lastChar % 6 !== 0 ||
+        lastChar % 7 !== 0)
+    ) {
       return ""
     }
     return moment(value).format("MMM. D")
@@ -35,6 +55,29 @@ const LineChart = ({ data, color, name }) => {
     } else {
       return 0
     }
+  }
+
+  const CustomLayer = (props) => {
+    const { innerWidth, innerHeight, width } = props
+    return (
+      <>
+        {rentalData &&
+          rentalData.data.map((item, i) => (
+            <g key={item.date}>
+              <rect
+                x={i * Math.min(innerWidth / dateRange) + 5}
+                y={chartHeight - item.y * 10 - 100}
+                rx={2}
+                ry={2}
+                width={dateRange > 30 ? 15 : 20}
+                height={item.y * 10}
+                fill="#9F7AEA90"
+                stroke="#9F7AEA"
+              ></rect>
+            </g>
+          ))}
+      </>
+    )
   }
 
   useEffect(() => {
@@ -56,9 +99,20 @@ const LineChart = ({ data, color, name }) => {
             },
           },
         }}
+        layers={[
+          CustomLayer,
+          "grid",
+          "markers",
+          "areas",
+          "lines",
+          "slices",
+          "points",
+          "axes",
+          "legends",
+        ]}
         animate={true}
         pointSize={4}
-        margin={{ top: 40, right: 25, bottom: 60, left: 55 }}
+        margin={{ top: 40, right: rentalData ? 50 : 25, bottom: 60, left: 55 }}
         xScale={{ type: "point" }}
         yScale={{
           type: "linear",
@@ -68,7 +122,27 @@ const LineChart = ({ data, color, name }) => {
           reverse: false,
         }}
         axisTop={null}
-        axisRight={null}
+        axisRight={
+          rentalData && {
+            orient: "left",
+            tickSize: 0,
+            tickPadding: 0,
+            tickRotation: 0,
+            legend: "Rentals Count",
+            renderTick: (tick) => {
+              return (
+                <text
+                  x={tick.x + 20}
+                  y={tick.y + 4}
+                  fontSize="11px"
+                  fill={useColorModeValue("black", "white")}
+                >
+                  {tick.tickIndex * 2}
+                </text>
+              )
+            },
+          }
+        }
         axisBottom={{
           orient: "bottom",
           tickSize: 5,

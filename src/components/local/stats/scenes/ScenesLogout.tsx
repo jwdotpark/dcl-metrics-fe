@@ -24,7 +24,7 @@ const ScenesLogout = ({ res }) => {
   tableData = result
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Scenes with Most Logouts"
         date=""

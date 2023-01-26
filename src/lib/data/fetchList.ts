@@ -4,6 +4,7 @@ import staticGlobalScenes from "../../../public/data/staticGlobalScene.json"
 import staticGlobalUsers from "../../../public/data/staticGlobalUsers.json"
 import staticScene from "../../../public/data/cached_scenes_top.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
+import staticLandSales from "../../../public/data/staticLandSales.json"
 import {
   globalDailyURL,
   globalParcelURL,
@@ -19,31 +20,36 @@ export const globalRequestList = [
     endpoint: "/global/daily",
     staticData: staticGlobalDaily,
   },
-  {
-    url: globalParcelURL,
-    endpoint: "/global/parcels",
-    staticData: staticGlobalParcels,
-  },
-  {
-    url: globalScenesURL,
-    endpoint: "/global/scenes",
-    staticData: staticGlobalScenes,
-  },
-  {
-    url: globalUsersURL,
-    endpoint: "/global/users",
-    staticData: staticGlobalUsers,
-  },
-  { url: sceneURL, endpoint: "/scenes/top", staticData: staticScene },
+  //{
+  //  url: globalParcelURL,
+  //  endpoint: "/global/parcels",
+  //  staticData: staticGlobalParcels,
+  //},
+  //{
+  //  url: globalScenesURL,
+  //  endpoint: "/global/scenes",
+  //  staticData: staticGlobalScenes,
+  //},
+  //{
+  //  url: globalUsersURL,
+  //  endpoint: "/global/users",
+  //  staticData: staticGlobalUsers,
+  //},
+  //{ url: sceneURL, endpoint: "/scenes/top", staticData: staticScene },
   { url: parcelURL, endpoint: "/parcels/all", staticData: staticParcel },
+  {
+    url: "https://www.dcl-property.rentals/api/price_data",
+    endpoint: "/dcl-property.rentals",
+    staticData: staticLandSales,
+  },
 ]
 
 export const globalFileNameArr = [
   "staticGlobalDaily",
-  "staticGlobalParcel",
-  "staticGlobalScene",
-  "staticGlobalUsers",
-  "cached_scenes_top",
+  //"staticGlobalParcel",
+  //"staticGlobalScene",
+  //"staticGlobalUsers",
+  //"cached_scenes_top",
   "cached_parcel",
+  "staticLandSales",
 ]
-

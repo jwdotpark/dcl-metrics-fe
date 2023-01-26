@@ -12,7 +12,6 @@ export const sliceData = (chartData: [], dateRange: number) => {
   }
 }
 
-// TODO type this
 export const date = (chartData: [], dateRange: number) => {
   const partial = sliceData(chartData, dateRange)
   // @ts-ignore
@@ -20,4 +19,38 @@ export const date = (chartData: [], dateRange: number) => {
   // @ts-ignore
   const last = moment(partial[partial.length - 1].date).format(dateFormat)
   return { date: { first: first, last: last } }
+}
+
+export const plotMissingDates = (data) => {
+  const minTimestamp = Math.min.apply(
+    null,
+    data.map((d) => d.date)
+  )
+  const maxTimestamp = Math.max.apply(
+    null,
+    data.map((d) => d.date)
+  )
+
+  const allTimestamps = []
+  for (
+    let timestamp = minTimestamp;
+    timestamp <= maxTimestamp;
+    timestamp += 86400
+  ) {
+    allTimestamps.push(timestamp)
+  }
+
+  allTimestamps.forEach((timestamp) => {
+    if (!data.find((d) => d.date === timestamp)) {
+      data.push({
+        date: timestamp,
+        id: 0,
+        rentals: 0,
+        volume: 0,
+      })
+    }
+  })
+
+  data.sort((a, b) => a.date - b.date)
+  return data
 }

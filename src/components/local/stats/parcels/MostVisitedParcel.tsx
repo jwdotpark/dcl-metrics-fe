@@ -24,7 +24,7 @@ const MostVisitedParcel = ({ parcel }) => {
   tableData = result
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Most Visited Parcel"
         date=""

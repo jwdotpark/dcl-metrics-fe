@@ -11,7 +11,7 @@ const Explorer = ({ res }) => {
   const bodyList = ["parcels_visited", "name", "address", "Link"]
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Explorers"
         date=""

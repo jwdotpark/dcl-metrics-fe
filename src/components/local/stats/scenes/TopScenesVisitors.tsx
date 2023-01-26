@@ -25,7 +25,7 @@ const TopScenesVisitors = ({ res }) => {
   tableData = result
 
   return (
-    <BoxWrapper>
+    <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Scenes with Most Unique Visitors"
         date=""
