@@ -65,7 +65,7 @@ const RentalDay = ({ data }) => {
     return map
   }
 
-  const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
+  const color = ["#48BB78", "#9F7AEA", "#F56565", "#4299E1"]
 
   useEffect(() => {
     setAvgData(calculateAverages(partial))
