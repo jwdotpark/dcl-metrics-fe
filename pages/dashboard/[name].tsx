@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useState } from "react"
 import Layout from "../../src/components/layout/layout"
 import Scene from "../../src/components/local/stats/Scene"
 import { getDataWithProxy } from "../../src/lib/data/fetch"
@@ -20,13 +21,17 @@ export async function getServerSideProps(context) {
 }
 
 const DashboardPage = ({ historyResult, sceneResult }) => {
+  const availableDate = historyResult.map((item) => item.date)
+  const [date, setDate] = useState(new Date(availableDate[0]))
+  console.log("dashboard date", date)
+
   return (
     <Layout>
       <Scene
         res={[sceneResult]}
-        date={""}
-        setDate={""}
-        availableDate={""}
+        date={date}
+        setDate={setDate}
+        availableDate={availableDate}
         dailyUsers={historyResult}
       />
     </Layout>

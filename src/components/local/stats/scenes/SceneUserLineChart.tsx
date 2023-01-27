@@ -1,22 +1,15 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { Box, Flex, Text, Spacer, useColorModeValue } from "@chakra-ui/react"
-import moment from "moment"
+import { Box, Flex, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import LineChart from "../../../../lib/LineChart"
-import { dateFormat } from "../../../../lib/data/chartInfo"
 import BoxTitle from "../../../layout/local/BoxTitle"
-import BoxWrapper from "../../../layout/local/BoxWrapper"
 import SceneTitle from "../../../layout/local/SceneTitle"
-import GridBox from "../../GridBox"
-import LineChartDateRange from "../daterange/LineChartDateRange"
-import AvgStat from "../partials/AvgStat"
 import DateRangeButton from "../daterange/DateRangeButton"
-import DatePicker from "./DatePicker"
+import moment from "moment"
+import { dateFormat } from "../../../../lib/data/chartInfo"
 
 const SceneUserLineChart = ({ data }) => {
-  console.log("scene user line chart", data)
   const [avgData, setAvgData] = useState(0)
-  const [dateRange, setDateRange] = useState<number>(30)
+  const [dateRange, setDateRange] = useState<number>(data.length)
   const userData = data && Object.entries(data)
   const color = "rgba(80, 150, 123)"
 
@@ -40,6 +33,7 @@ const SceneUserLineChart = ({ data }) => {
 
   const result = [
     {
+      id: "Unique Visitors",
       color: "hsl(90, 70%, 50%)",
       data: slicedData().map((item) => ({
         id: item.date,
@@ -53,16 +47,12 @@ const SceneUserLineChart = ({ data }) => {
     (item) => item.active_scenes !== 0
   ).length
 
-  // grab the lastest from data
-  const date = moment(result[0].data[result[0].data.length - 1].x).format(
-    dateFormat
-  )
-
   useEffect(() => {
     const data = slicedData()
     const sum = slicedData().reduce((acc, cur) => acc + cur.users, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
   return (
@@ -80,19 +70,20 @@ const SceneUserLineChart = ({ data }) => {
     >
       <Box w="100%" pt="4" px="4">
         <Box
+          p="2"
+          bg={useColorModeValue("gray.50", "gray.900")}
           border="1px solid"
-          borderColor={useColorModeValue("gray.100", "gray.600")}
+          borderColor={useColorModeValue("gray.100", "gray.700")}
           borderRadius="xl"
         >
-          <SceneTitle
+          <BoxTitle
             name="Unique Scene Visitors"
-            date={date}
-            dateForPicker=""
-            setDate=""
-            availableDate={false}
-            hasMultipleScenes={true}
+            description="The number of unique visitors in the last period"
+            date={""}
+            avgData={[]}
+            slicedData={{}}
+            color=""
           />
-
           <DateRangeButton
             dateRange={dateRange}
             setDateRange={setDateRange}

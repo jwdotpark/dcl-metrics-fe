@@ -9,6 +9,7 @@ const SceneTitle = ({
   setDate,
   availableDate,
   hasMultipleScenes,
+  description,
 }) => {
   return (
     <Flex direction={["column", "column", "row", "row"]}>
@@ -21,13 +22,13 @@ const SceneTitle = ({
           </Box>
           <Box>
             <Text color="gray.500" fontSize="sm">
-              Scene data for {date}
+              {description}
             </Text>
           </Box>
         </Flex>
       </Box>
       <Spacer />
-      {/*{!hasMultipleScenes && (
+      {!hasMultipleScenes && (
         <Box m="4">
           <DatePicker
             date={dateForPicker}
@@ -35,7 +36,7 @@ const SceneTitle = ({
             availableDate={availableDate}
           />
         </Box>
-      )}*/}
+      )}
     </Flex>
   )
 }

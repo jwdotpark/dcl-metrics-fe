@@ -1,15 +1,5 @@
-import {
-  Flex,
-  Text,
-  Box,
-  useColorModeValue,
-  useBreakpointValue,
-  Spacer,
-  Spinner,
-  Center,
-} from "@chakra-ui/react"
+import { Flex, Text, Box, useColorModeValue, Center } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import GridBox from "../GridBox"
 import SceneMap from "./partials/scene/SceneMap"
 import SceneLineChart from "./partials/scene/SceneLineChart"
 import SceneSelector from "./partials/scene/SceneSelector"
@@ -18,11 +8,9 @@ import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
-import DatePicker from "./scenes/DatePicker"
 import SceneUserLineChart from "./scenes/SceneUserLineChart"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import SceneTitle from "../../layout/local/SceneTitle"
-import { date } from "../../../lib/data/chartInfo"
 
 const Scene = ({ res, date, setDate, availableDate, dailyUsers }) => {
   const [selectedScene, setSelectedScene] = useState(0)
@@ -69,12 +57,14 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers }) => {
       <BoxWrapper colSpan={0}>
         <SceneTitle
           name={name}
-          date={latest}
+          date={moment(date).format("MMM. D")}
           dateForPicker={date}
           setDate={setDate}
           availableDate={availableDate}
           hasMultipleScenes={hasMultipleScenes}
+          description={`${name} data on ${moment(date).format("MMMM D")}`}
         />
+
         {/* main scene user chart on private dashboard */}
         {!hasMultipleScenes && <SceneUserLineChart data={dailyUsers} />}
         <Box m="4">
