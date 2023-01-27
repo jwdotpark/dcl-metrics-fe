@@ -47,8 +47,6 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
     fetchData()
   }, [date])
 
-  console.log(data)
-
   return (
     <Layout>
       <Scene
