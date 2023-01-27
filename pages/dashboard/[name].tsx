@@ -34,8 +34,6 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
     return new Date(a.date) - new Date(b.date)
   })
 
-  console.log(availableDate)
-
   const targetDate = moment(date).format("YYYY-MM-DD")
   const endpoint = `https://dcl-metrics-be-staging.herokuapp.com/scenes/${uuid}?date=${targetDate}`
 
@@ -48,6 +46,8 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
   useEffect(() => {
     fetchData()
   }, [date])
+
+  console.log(data)
 
   return (
     <Layout>
