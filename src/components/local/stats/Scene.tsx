@@ -66,7 +66,9 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers }) => {
         />
 
         {/* main scene user chart on private dashboard */}
-        {!hasMultipleScenes && <SceneUserLineChart data={dailyUsers} />}
+        {!hasMultipleScenes && (
+          <SceneUserLineChart data={dailyUsers} name={name} />
+        )}
         <Box m="4">
           <Flex
             sx={{
