@@ -2,8 +2,8 @@ import { Box, useColorModeValue } from "@chakra-ui/react"
 import { SingleDatepicker } from "chakra-dayzed-datepicker"
 
 const DatePicker = ({ date, setDate, availableDate }) => {
-  const max = new Date(availableDate[0].replace(/-/g, "/"))
-  const min = new Date(
+  const min = new Date(availableDate[0].replace(/-/g, "/"))
+  const max = new Date(
     availableDate[availableDate.length - 1].replace(/-/g, "/")
   )
 
