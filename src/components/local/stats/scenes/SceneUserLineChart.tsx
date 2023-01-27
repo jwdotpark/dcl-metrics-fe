@@ -7,7 +7,7 @@ import DateRangeButton from "../daterange/DateRangeButton"
 import moment from "moment"
 import { dateFormat } from "../../../../lib/data/chartInfo"
 
-const SceneUserLineChart = ({ data }) => {
+const SceneUserLineChart = ({ data, name }) => {
   const [avgData, setAvgData] = useState(0)
   const [dateRange, setDateRange] = useState<number>(data.length)
   const userData = data && Object.entries(data)
@@ -77,7 +77,7 @@ const SceneUserLineChart = ({ data }) => {
           borderRadius="xl"
         >
           <BoxTitle
-            name="Unique Scene Visitors"
+            name={`Unique ${name} Visitors`}
             description="The number of unique visitors in the last period"
             date={""}
             avgData={[]}
