@@ -75,6 +75,7 @@ const SceneUserLineChart = ({ data, name }) => {
           border="1px solid"
           borderColor={useColorModeValue("gray.100", "gray.700")}
           borderRadius="xl"
+          shadow="md"
         >
           <BoxTitle
             name={`Unique ${name} Visitors`}
