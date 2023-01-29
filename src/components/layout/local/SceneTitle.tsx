@@ -5,13 +5,6 @@ import {
   Spacer,
   IconButton,
   Tooltip,
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogCloseButton,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
   Button,
   useDisclosure,
   Modal,
@@ -71,7 +64,7 @@ const SceneTitle = ({
         </Flex>
       </Box>
       <Spacer />
-      {uuid.length > 0 && (
+      {uuid && (
         <Flex m="4">
           <Box mr="2">
             <Modal isCentered isOpen={isOpen} onClose={onClose}>

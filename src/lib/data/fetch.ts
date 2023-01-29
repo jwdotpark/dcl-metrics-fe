@@ -29,7 +29,7 @@ export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
     return data
   } catch (error) {
     console.log("error", error.response.status, error.response.statusText)
-    sendNotification(error, `${endpoint}`, "error")
+    //sendNotification(error, `${endpoint}`, "error")
     return staticFile
   }
 }

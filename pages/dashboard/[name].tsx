@@ -3,13 +3,15 @@ import { useEffect, useState } from "react"
 import Layout from "../../src/components/layout/layout"
 import Scene from "../../src/components/local/stats/Scene"
 import { getDataWithProxy } from "../../src/lib/data/fetch"
-import { findUUID } from "../../src/lib/data/sceneID"
+import { findUUID, sceneID } from "../../src/lib/data/sceneID"
 import moment from "moment"
 import { getEndpoint } from "../../src/lib/data/constant"
+import { useRouter } from "next/router"
 
 export async function getServerSideProps(context) {
   const { name } = context.query
   const uuid = findUUID(name)
+
   const historyUrl = `https://dcl-metrics-be-staging.herokuapp.com/scenes/${uuid}/history`
   const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
 
@@ -17,12 +19,14 @@ export async function getServerSideProps(context) {
   const path = "scenes/" + uuid
   const url = endPoint + path
   const sceneResult = await getDataWithProxy(url, path, {})
+
   return {
     props: { historyResult, sceneResult, uuid },
   }
 }
 
 const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
+  const router = useRouter()
   const availableDate = historyResult.map((item) => item.date)
   const [data, setData] = useState([sceneResult])
   const [date, setDate] = useState(
@@ -45,22 +49,31 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
     setData([data.result])
   }
 
-  console.log(uuid)
-
   useEffect(() => {
     fetchData()
   }, [date])
 
+  useEffect(() => {
+    const name = router.query.name
+    const authID = sceneID[localStorage.getItem("account")].name
+    if (name !== authID) {
+      router.push("/dashboard/")
+    } else {
+    }
+  }, [])
+
   return (
     <Layout>
-      <Scene
-        res={data}
-        date={date}
-        setDate={setDate}
-        availableDate={availableDate}
-        dailyUsers={historyResult}
-        uuid={uuid}
-      />
+      {uuid && (
+        <Scene
+          res={data}
+          date={date}
+          setDate={setDate}
+          availableDate={availableDate}
+          dailyUsers={historyResult}
+          uuid={uuid}
+        />
+      )}
     </Layout>
   )
 }

@@ -23,6 +23,7 @@ import { useRouter } from "next/router"
 import { AuthAtom } from "../../lib/hooks/atoms"
 import { useAtom } from "jotai"
 import { encrypt } from "../../lib/hooks/utils"
+import { sceneID } from "../../lib/data/sceneID"
 
 const SignIn = () => {
   const router = useRouter()
@@ -39,7 +40,7 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     setBtnMsg("Signing In...")
-    const result = await fetch("/api/validate", {
+    const result = await fetch("/api/auth/validate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +51,11 @@ const SignIn = () => {
     if (res.isAuthenticated === true) {
       setIsAuthenticated(encrypt("/dashboard/" + data.account))
       localStorage.setItem("account", data.account)
-      router.push("/dashboard/[id]", `/dashboard/${data.account}`)
+
+      router.push(
+        "/dashboard/[name]",
+        `/dashboard/${sceneID[data.account].name}`
+      )
     } else {
       setBtnMsg("Invalid account or password")
     }
@@ -120,7 +125,6 @@ const SignIn = () => {
                     onClick={handleClick}
                     rounded="xl"
                     size="sm"
-                    // type="submit"
                   >
                     {show ? "Hide" : "Show"}
                   </Button>
