@@ -11,8 +11,11 @@ import moment from "moment"
 import SceneUserLineChart from "./scenes/SceneUserLineChart"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import SceneTitle from "../../layout/local/SceneTitle"
+import { useRouter } from "next/router"
 
 const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
+  const router = useRouter()
+
   const [selectedScene, setSelectedScene] = useState(0)
   const {
     map_url,
@@ -65,11 +68,8 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
           uuid={uuid}
           description={`${name} data on ${moment(date).format("MMMM D")}`}
         />
-
         {/* main scene user chart on private dashboard */}
-        {uuid.length > 0 && (
-          <SceneUserLineChart data={dailyUsers} name={name} />
-        )}
+        {uuid && <SceneUserLineChart data={dailyUsers} name={name} />}
         <Box m="4">
           <Flex
             sx={{
