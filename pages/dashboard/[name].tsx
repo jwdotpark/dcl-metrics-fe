@@ -5,6 +5,7 @@ import Scene from "../../src/components/local/stats/Scene"
 import { getDataWithProxy } from "../../src/lib/data/fetch"
 import { findUUID } from "../../src/lib/data/sceneID"
 import moment from "moment"
+import { getEndpoint } from "../../src/lib/data/constant"
 
 export async function getServerSideProps(context) {
   const { name } = context.query
@@ -35,7 +36,8 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
   })
 
   const targetDate = moment(date).format("YYYY-MM-DD")
-  const endpoint = `https://dcl-metrics-be-staging.herokuapp.com/scenes/${uuid}?date=${targetDate}`
+  const path = `scenes/${uuid}?date=${targetDate}`
+  const endpoint = getEndpoint(path)
 
   const fetchData = async () => {
     const result = await fetch(`/api/fetch?url=${endpoint}`)
@@ -46,8 +48,6 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
   useEffect(() => {
     fetchData()
   }, [date])
-
-  console.log(data)
 
   return (
     <Layout>
