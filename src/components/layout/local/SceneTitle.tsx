@@ -1,6 +1,7 @@
-import { Box, Text, Flex, Spacer, color } from "@chakra-ui/react"
+import { Box, Text, Flex, Spacer, Button, IconButton } from "@chakra-ui/react"
 import AvgStat from "../../local/stats/partials/AvgStat"
 import DatePicker from "../../local/stats/scenes/DatePicker"
+import { FiDownload } from "react-icons/fi"
 
 const SceneTitle = ({
   name,
@@ -10,7 +11,9 @@ const SceneTitle = ({
   availableDate,
   hasMultipleScenes,
   description,
+  uuid,
 }) => {
+  console.log(uuid)
   return (
     <Flex direction={["column", "column", "row", "row"]}>
       <Box>
@@ -28,14 +31,27 @@ const SceneTitle = ({
         </Flex>
       </Box>
       <Spacer />
-      {!hasMultipleScenes && (
-        <Box m="4">
-          <DatePicker
-            date={dateForPicker}
-            setDate={setDate}
-            availableDate={availableDate}
-          />
-        </Box>
+      {uuid.length > 0 && (
+        <Flex m="4">
+          <Box mr="2">
+            <IconButton
+              sx={{ transform: "translateY(1px)" }}
+              border="2px solid"
+              borderRadius="lg"
+              shadow="md"
+              aria-label="Download"
+              icon={<FiDownload />}
+              variant="outline"
+            />
+          </Box>
+          <Box w="100%">
+            <DatePicker
+              date={dateForPicker}
+              setDate={setDate}
+              availableDate={availableDate}
+            />
+          </Box>
+        </Flex>
       )}
     </Flex>
   )

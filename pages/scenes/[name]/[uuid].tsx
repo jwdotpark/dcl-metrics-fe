@@ -22,6 +22,7 @@ const SingleScenePage = (result) => {
           setDate={{}}
           availableDate={[]}
           dailyUsers={{}}
+          uuid={""}
         />
       )}
     </Layout>

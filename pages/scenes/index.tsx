@@ -71,6 +71,7 @@ const Scenes = (props: Props) => {
         setDate={{}}
         availableDate={[]}
         dailyUsers={{}}
+        uuid={""}
       />
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <TopScenesVisitors res={globalSceneRes} />

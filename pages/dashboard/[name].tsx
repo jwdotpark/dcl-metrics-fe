@@ -45,6 +45,8 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
     setData([data.result])
   }
 
+  console.log(uuid)
+
   useEffect(() => {
     fetchData()
   }, [date])
@@ -57,6 +59,7 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
         setDate={setDate}
         availableDate={availableDate}
         dailyUsers={historyResult}
+        uuid={uuid}
       />
     </Layout>
   )
