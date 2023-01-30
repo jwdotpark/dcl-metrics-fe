@@ -67,7 +67,7 @@ const Scenes = (props: Props) => {
     <Layout>
       <Scene
         res={sceneRes}
-        date=""
+        date={""}
         setDate={{}}
         availableDate={[]}
         dailyUsers={{}}

@@ -11,11 +11,8 @@ import moment from "moment"
 import SceneUserLineChart from "./scenes/SceneUserLineChart"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import SceneTitle from "../../layout/local/SceneTitle"
-import { useRouter } from "next/router"
 
 const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
-  const router = useRouter()
-
   const [selectedScene, setSelectedScene] = useState(0)
   const {
     map_url,
@@ -28,7 +25,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   // for private dashboard
   const hasMultipleScenes = res.length > 1 ? true : false
   const [isEmpty, setIsEmpty] = useState(false)
-  const latest = moment(res[selectedScene].date).format("dddd, MMM. Do")
+  const latest = moment(res[selectedScene].date).format("MMM. Do")
 
   const EmptyScene = () => {
     return (
@@ -55,18 +52,21 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [res])
 
+  console.log(latest)
+
   return (
     <Box h="100%" mb="4" mx={[-4, 0]}>
       <BoxWrapper colSpan={0}>
         <SceneTitle
           name={name}
-          date={moment(date).format("MMM. D")}
+          //date={moment(date).format("MMM. D")}
+          date={latest}
           dateForPicker={date}
           setDate={setDate}
           availableDate={availableDate}
           hasMultipleScenes={hasMultipleScenes}
           uuid={uuid}
-          description={`${name} data on ${moment(date).format("MMMM D")}`}
+          description={`${name} data on ${latest}`}
         />
         {/* main scene user chart on private dashboard */}
         {uuid && <SceneUserLineChart data={dailyUsers} name={name} />}
