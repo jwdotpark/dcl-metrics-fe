@@ -42,8 +42,8 @@ const LandSales = ({ data }) => {
   }
 
   const result = [
-    mapData("30 Days AVG", "thirty_day_avg"),
-    mapData("7 Days AVG", "seven_day_avg"),
+    mapData("30 Days", "thirty_day_avg"),
+    mapData("7 Days", "seven_day_avg"),
     mapData("Floor", "floor"),
   ]
 
@@ -60,9 +60,9 @@ const LandSales = ({ data }) => {
       floor: Math.floor(sum.floor / validLength),
     }
     const map = [
-      { id: "30 Day Avg", value: value.thirtyDayAvg },
-      { id: "7 Day Avg", value: value.sevenDayAvg },
-      { id: "Floor Avg", value: value.floor },
+      { id: "30 Day", value: value.thirtyDayAvg },
+      { id: "7 Day", value: value.sevenDayAvg },
+      { id: "Floor", value: value.floor },
     ]
     return map
   }

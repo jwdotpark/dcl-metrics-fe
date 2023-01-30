@@ -25,6 +25,17 @@ const AvgStat = ({ avgData, data, color }) => {
     }
   }
 
+  const tooltipStr = (id: string, data: number) => {
+    if (
+      id === "Total Volume of Mana" ||
+      id === "Total Rentals" ||
+      id === "Average Value"
+    ) {
+      return `${id} for ${dateStr(data)} days`
+    }
+    return `${id} average for ${dateStr(data)} days`
+  }
+
   return (
     <Box>
       <Box>
@@ -45,7 +56,7 @@ const AvgStat = ({ avgData, data, color }) => {
                       p="2"
                       fontSize="sm"
                       borderRadius="xl"
-                      label={`${item.id} for ${dateStr(data)} days`}
+                      label={tooltipStr(item.id, data)}
                       placement="top"
                     >
                       <Box
