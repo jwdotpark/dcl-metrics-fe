@@ -12,13 +12,12 @@ export async function getServerSideProps(context) {
   const { name } = context.query
   const uuid = findUUID(name)
 
-  const historyUrl = `https://dcl-metrics-be-staging.herokuapp.com/scenes/${uuid}/history`
+  //const historyUrl = `https://dcl-metrics-be-staging.herokuapp.com/scenes/${uuid}/history`
+  const historyUrl = getEndpoint(`scenes/${uuid}/history`)
   const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
 
-  const endPoint = process.env.NEXT_PUBLIC_PROD_ENDPOINT
-  const path = "scenes/" + uuid
-  const url = endPoint + path
-  const sceneResult = await getDataWithProxy(url, path, {})
+  const sceneUrl = getEndpoint(`scenes/${uuid}`)
+  const sceneResult = await getDataWithProxy(sceneUrl, sceneUrl, {})
 
   return {
     props: { historyResult, sceneResult, uuid },
