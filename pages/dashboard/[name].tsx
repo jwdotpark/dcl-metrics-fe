@@ -10,7 +10,9 @@ import { useRouter } from "next/router"
 
 export async function getServerSideProps(context) {
   const { name } = context.query
+  console.log(name)
   const uuid = findUUID(name)
+  console.log(uuid)
 
   const historyUrl = getEndpoint(`scenes/${uuid}/history`)
   const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
@@ -51,14 +53,14 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
     fetchData()
   }, [date])
 
-  useEffect(() => {
-    const name = router.query.name
-    const authID = sceneID[localStorage.getItem("account")].name
-    if (name !== authID) {
-      router.push("/dashboard/")
-    } else {
-    }
-  }, [])
+  //useEffect(() => {
+  //  const name = router.query.name
+  //  const authID = sceneID[localStorage.getItem("account")].name
+  //  if (name !== authID) {
+  //    router.push("/dashboard/")
+  //  } else {
+  //  }
+  //}, [])
 
   return (
     <Layout>
