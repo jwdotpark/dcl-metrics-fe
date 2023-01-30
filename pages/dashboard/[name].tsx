@@ -12,7 +12,6 @@ export async function getServerSideProps(context) {
   const { name } = context.query
   const uuid = findUUID(name)
 
-  //const historyUrl = `https://dcl-metrics-be-staging.herokuapp.com/scenes/${uuid}/history`
   const historyUrl = getEndpoint(`scenes/${uuid}/history`)
   const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
 

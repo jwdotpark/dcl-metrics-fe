@@ -44,7 +44,7 @@ const RentalTotal = ({ data }) => {
 
   const avgData = [
     {
-      id: "Total Mana",
+      id: "Total Volume of Mana",
       label: "Total Mana",
       value: Number(chartData[0].volume.slice(0, -17)),
       color: color[2],
@@ -58,7 +58,7 @@ const RentalTotal = ({ data }) => {
   ]
 
   return (
-    <BoxWrapper colSpan={[4, 4, 4, 4, 2]}>
+    <BoxWrapper colSpan={[4, 4, 4, 4, 3]}>
       <BoxTitle
         name="Rentals Total"
         date={""}
