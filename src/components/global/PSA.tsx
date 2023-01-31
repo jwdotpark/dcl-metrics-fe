@@ -32,7 +32,7 @@ const PSA = ({ setIsPSAVisible }) => {
             >
               <FiCoffee color={useColorModeValue("black", "white")} />
             </Box>
-            We&lsquo;ve added a LAND sales chart. Check it out!
+            We&lsquo;ve added a LAND sales & Rentals chart. Check it out!
             {/*<Box display="inline-block">
               <Link href="/map">
                 <Text

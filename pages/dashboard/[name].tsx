@@ -10,9 +10,7 @@ import { useRouter } from "next/router"
 
 export async function getServerSideProps(context) {
   const { name } = context.query
-  console.log(name)
   const uuid = findUUID(name)
-  console.log(uuid)
 
   const historyUrl = getEndpoint(`scenes/${uuid}/history`)
   const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
