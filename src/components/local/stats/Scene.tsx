@@ -52,8 +52,6 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [res])
 
-  console.log(latest)
-
   return (
     <Box h="100%" mb="4" mx={[-4, 0]}>
       <BoxWrapper colSpan={0}>
