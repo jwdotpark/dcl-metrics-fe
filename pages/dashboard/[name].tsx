@@ -31,12 +31,6 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
     new Date(availableDate[availableDate.length - 1])
   )
 
-  // TODO sort by date on BE
-  historyResult.sort((a, b) => {
-    // @ts-ignore
-    return new Date(a.date) - new Date(b.date)
-  })
-
   const targetDate = moment(date).format("YYYY-MM-DD")
   const path = `scenes/${uuid}?date=${targetDate}`
   const endpoint = getEndpoint(path)
