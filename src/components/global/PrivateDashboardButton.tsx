@@ -3,14 +3,15 @@ import { FiBriefcase } from "react-icons/fi"
 import { useRouter } from "next/router"
 import { decrypt } from "../../lib/hooks/utils"
 import { useEffect, useState } from "react"
+import { sceneID } from "../../lib/data/sceneID"
 
 const PrivateDashboardButton = () => {
   const router = useRouter()
   const [dashboardName, setDashboardName] = useState("")
 
   const handleClick = () => {
-    const path = decrypt(JSON.parse(localStorage.getItem("auth")))
-    router.push(path)
+    const path = sceneID[localStorage.getItem("account")].name
+    router.push(`/dashboard/${path}`)
   }
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const PrivateDashboardButton = () => {
     setDashboardName(name)
   }, [])
 
-  const title = localStorage.getItem("account")
+  const title = sceneID[localStorage.getItem("account")].name
 
   return (
     <>

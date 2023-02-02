@@ -31,6 +31,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
+      <Center h="calc(100vh - 8rem)">{/*<SignIn />*/}</Center>
       {/*<Center h="calc(100vh - 8rem)">
         {isLoggedIn && <Text>{msg}</Text>}
         {!isLoggedIn && <SignIn />}

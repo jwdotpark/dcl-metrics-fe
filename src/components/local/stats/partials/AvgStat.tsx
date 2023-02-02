@@ -25,6 +25,17 @@ const AvgStat = ({ avgData, data, color }) => {
     }
   }
 
+  const tooltipStr = (id: string, data: number) => {
+    if (
+      id === "Total Volume of Mana" ||
+      id === "Total Rentals" ||
+      id === "Average Value"
+    ) {
+      return `${id} for ${dateStr(data)} days`
+    }
+    return `${id} average for ${dateStr(data)} days`
+  }
+
   return (
     <Box>
       <Box>
@@ -36,15 +47,16 @@ const AvgStat = ({ avgData, data, color }) => {
                   key={item.id}
                   w="100%"
                   minW={[0, 0, 100, 100]}
+                  ml="2"
                   color="gray.500"
                   fontSize="sm"
                 >
-                  <Flex direction="column" minW={[0, 0, 100, 100]}>
+                  <Flex direction="column">
                     <Tooltip
                       p="2"
                       fontSize="sm"
                       borderRadius="xl"
-                      label={`${item.id} for ${dateStr(data)} days`}
+                      label={tooltipStr(item.id, data)}
                       placement="top"
                     >
                       <Box
@@ -58,8 +70,16 @@ const AvgStat = ({ avgData, data, color }) => {
                         <CountUp end={item.value} duration={0.5} />
                       </Box>
                     </Tooltip>
-                    <Box mr="2" textAlign={["start", "start", "end", "end"]}>
-                      <Text fontSize={[10, "sm"]} noOfLines={1}>
+                    <Box
+                      minW={[0, 0, "auto", 140]}
+                      mr="2"
+                      textAlign={["start", "start", "end", "end"]}
+                    >
+                      <Text
+                        display="inline-block"
+                        fontSize={[10, "sm"]}
+                        noOfLines={1}
+                      >
                         {item.id}
                       </Text>
                     </Box>

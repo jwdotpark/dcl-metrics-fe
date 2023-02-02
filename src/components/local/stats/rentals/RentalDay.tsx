@@ -58,8 +58,8 @@ const RentalDay = ({ data }) => {
     }
 
     const map = [
-      { id: "Avg Volume", value: value.volume },
-      { id: "Avg Rentals", value: value.rentals },
+      { id: "Volume", value: value.volume },
+      { id: "Rentals", value: value.rentals },
     ].sort((a, b) => b.value - a.value)
 
     return map
@@ -73,7 +73,7 @@ const RentalDay = ({ data }) => {
   }, [dateRange])
 
   return (
-    <BoxWrapper colSpan={4}>
+    <BoxWrapper colSpan={3}>
       <BoxTitle
         name="Rentals Daily"
         date={""}

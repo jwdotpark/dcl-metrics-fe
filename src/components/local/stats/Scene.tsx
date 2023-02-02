@@ -1,15 +1,5 @@
-import {
-  Flex,
-  Text,
-  Box,
-  useColorModeValue,
-  useBreakpointValue,
-  Spacer,
-  Spinner,
-  Center,
-} from "@chakra-ui/react"
+import { Flex, Text, Box, useColorModeValue, Center } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import GridBox from "../GridBox"
 import SceneMap from "./partials/scene/SceneMap"
 import SceneLineChart from "./partials/scene/SceneLineChart"
 import SceneSelector from "./partials/scene/SceneSelector"
@@ -18,13 +8,11 @@ import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
-import DatePicker from "./scenes/DatePicker"
 import SceneUserLineChart from "./scenes/SceneUserLineChart"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import SceneTitle from "../../layout/local/SceneTitle"
-import { date } from "../../../lib/data/chartInfo"
 
-const Scene = ({ res, date, setDate, availableDate, dailyUsers }) => {
+const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   const [selectedScene, setSelectedScene] = useState(0)
   const {
     map_url,
@@ -37,7 +25,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers }) => {
   // for private dashboard
   const hasMultipleScenes = res.length > 1 ? true : false
   const [isEmpty, setIsEmpty] = useState(false)
-  const latest = moment(res[selectedScene].date).format("dddd, MMM. Do")
+  const latest = moment(res[selectedScene].date).format("MMM. Do")
 
   const EmptyScene = () => {
     return (
@@ -69,14 +57,17 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers }) => {
       <BoxWrapper colSpan={0}>
         <SceneTitle
           name={name}
+          //date={moment(date).format("MMM. D")}
           date={latest}
           dateForPicker={date}
           setDate={setDate}
           availableDate={availableDate}
           hasMultipleScenes={hasMultipleScenes}
+          uuid={uuid}
+          description={`${name} data on ${latest}`}
         />
         {/* main scene user chart on private dashboard */}
-        {/*{!hasMultipleScenes && <SceneUserLineChart data={dailyUsers} />}*/}
+        {uuid && <SceneUserLineChart data={dailyUsers} name={name} />}
         <Box m="4">
           <Flex
             sx={{

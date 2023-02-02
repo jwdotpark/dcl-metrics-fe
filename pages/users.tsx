@@ -3,7 +3,7 @@ import Layout from "../src/components/layout/layout"
 import Explorer from "../src/components/local/stats/Explorer"
 import MarathonUsers from "../src/components/local/stats/MarathonUsers"
 import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
-import { getDataWithProxy, getData } from "../src/lib/data/fetch"
+import { getDataWithProxy, getData, writeFile } from "../src/lib/data/fetch"
 import {
   time,
   isProd,
@@ -19,6 +19,9 @@ export async function getStaticProps() {
       "/global/users",
       staticGlobalUsers
     )
+
+    writeFile("staticGlobalUsers", globalUserRes)
+    
     const result = { globalUserRes }
     return {
       props: result,

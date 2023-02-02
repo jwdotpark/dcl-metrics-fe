@@ -29,7 +29,7 @@ export async function getStaticProps() {
       )
     )
     // not using fixie
-    landSalesRes = await getData(
+    landSalesRes = await getDataWithProxy(
       "https://www.dcl-property.rentals/api/price_data",
       "https://www.dcl-property.rentals/api/price_data",
       staticLandSales
@@ -100,7 +100,7 @@ const GlobalPage: NextPage = (props: Props) => {
     xl: 6,
   })
 
-  const [isPSAVisible, setIsPSAVisible] = useState(false)
+  const [isPSAVisible, setIsPSAVisible] = useState(true)
 
   const { globalDailyRes, parcelRes, landSalesRes, rental } = props
 

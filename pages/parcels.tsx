@@ -17,7 +17,7 @@ import {
   time,
 } from "../src/lib/data/constant"
 import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
-import { getData, getDataWithProxy } from "../src/lib/data/fetch"
+import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -26,6 +26,9 @@ export async function getStaticProps() {
       "/global/parcels",
       staticGlobalParcels
     )
+    
+    writeFile("staticGlobalParcels", globalParcelRes)
+
     const result = { globalParcelRes }
     return {
       props: result,

@@ -9,7 +9,7 @@ import {
   parcelURL,
   time,
 } from "../src/lib/data/constant"
-import { getData, getDataWithProxy } from "../src/lib/data/fetch"
+import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -18,6 +18,9 @@ export async function getStaticProps() {
       "/parcels/all",
       staticParcel
     )
+
+    writeFile("staticParcel", parcelRes)
+
     const result = { parcelRes }
     return {
       props: result,

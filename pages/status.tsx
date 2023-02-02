@@ -18,7 +18,9 @@ export async function getStaticProps() {
       "/peer_status",
       staticPeerStatus
     )
+
     writeFile("staticPeerStatus", statusRes)
+    
     const result = { statusRes }
     return {
       props: result,
