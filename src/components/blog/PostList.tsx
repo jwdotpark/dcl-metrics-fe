@@ -11,7 +11,7 @@ const PostList = ({ posts }) => {
         .map((post) => (
           <Box key={post.slug} mb="4">
             <Link href={`/blog/` + post.slug}>
-              <BoxWrapper>
+              <BoxWrapper colSpan={6}>
                 <Flex mx="4" dir="row">
                   <Box>
                     <Text fontSize={["lg", "xl", "2xl", "3xl"]} noOfLines={1}>

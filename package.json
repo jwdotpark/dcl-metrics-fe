@@ -37,6 +37,7 @@
     "dayzed": "^3.2.3",
     "framer-motion": "^6.5.1",
     "graphql": "^16.6.0",
+    "gray-matter": "^4.0.3",
     "jotai": "^1.8.4",
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",

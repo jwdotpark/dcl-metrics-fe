@@ -10,7 +10,7 @@ function Post({ data, content }) {
   const router = useRouter()
   return (
     <Layout>
-      <BoxWrapper>
+      <BoxWrapper colSpan={6}>
         <Box>
           <Box m="4">
             <Text>{data.title}</Text>
