@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Center,
   Image,
   Flex,
@@ -23,20 +22,24 @@ const PostList = ({ posts }) => {
               <BoxWrapper colSpan={6}>
                 <Flex direction="column" mx="4">
                   <Flex my="4">
-                    <Box>
-                      <Text fontSize={["lg", "xl", "2xl", "3xl"]} noOfLines={1}>
+                    <Box w={["70%", "85%"]}>
+                      <Text
+                        fontSize={["lg", "xl", "2xl", "3xl"]}
+                        fontWeight="bold"
+                        noOfLines={1}
+                      >
                         {post.data.title}
                       </Text>
                     </Box>
                     <Spacer />
                     <Center h="auto">
-                      <Text>{post.data.date}</Text>
+                      <Text wordBreak="keep-all">{post.data.date}</Text>
                     </Center>
                   </Flex>
                   <Box
                     pos="relative"
                     overflow="clip"
-                    h="400px"
+                    h={[200, 400, 500]}
                     border="1px solid"
                     // eslint-disable-next-line react-hooks/rules-of-hooks
                     borderColor={useColorModeValue("gray.200", "gray.600")}
@@ -51,7 +54,7 @@ const PostList = ({ posts }) => {
                   </Box>
                   <Spacer />
                 </Flex>
-                <Box m="4">
+                <Box m="4" ml="6">
                   <Text noOfLines={1}>{post.data.description}</Text>
                 </Box>
               </BoxWrapper>
