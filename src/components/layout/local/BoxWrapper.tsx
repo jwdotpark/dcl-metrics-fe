@@ -12,6 +12,13 @@ const BoxWrapper = ({ children, colSpan }) => {
     shadow: "md",
     pb: 4,
     colSpan: colSpan,
+    hover: {
+      shadow: "lg",
+      outline: "2px solid",
+      outlineColor: useColorModeValue("gray.300", "gray.800"),
+      transition: "outline .5s ease-in-out",
+    },
+    transition: "box-shadow 0.25s ease-in-out",
   }
 
   return (
@@ -26,6 +33,8 @@ const BoxWrapper = ({ children, colSpan }) => {
       borderColor={box.borderColor}
       borderRadius={box.borderRadius}
       shadow={box.shadow}
+      _hover={box.hover}
+      transition={box.transition}
       colSpan={box.colSpan}
     >
       {children}
