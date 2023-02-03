@@ -1,29 +1,55 @@
-import { Box, Button, Flex, Spacer, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Center,
+  Image,
+  Flex,
+  Spacer,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import Link from "next/link"
 import BoxWrapper from "../../components/layout/local/BoxWrapper"
 
 const PostList = ({ posts }) => {
   return (
-    <Box>
+    <Box w={["100%", "100%", "100%", 1080]}>
       {posts
         .slice(0)
         .reverse()
         .map((post) => (
-          <Box key={post.slug} mb="4">
+          <Box key={post.slug} mb="4" borderRadius="xl">
             <Link href={`/blog/` + post.slug}>
               <BoxWrapper colSpan={6}>
-                <Flex mx="4" dir="row">
-                  <Box>
-                    <Text fontSize={["lg", "xl", "2xl", "3xl"]} noOfLines={1}>
-                      {post.data.title}
-                    </Text>
+                <Flex direction="column" mx="4">
+                  <Flex my="4">
+                    <Box>
+                      <Text fontSize={["lg", "xl", "2xl", "3xl"]} noOfLines={1}>
+                        {post.data.title}
+                      </Text>
+                    </Box>
+                    <Spacer />
+                    <Center h="auto">
+                      <Text>{post.data.date}</Text>
+                    </Center>
+                  </Flex>
+                  <Box
+                    pos="relative"
+                    overflow="clip"
+                    h="400px"
+                    border="1px solid"
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    borderColor={useColorModeValue("gray.200", "gray.600")}
+                    borderRadius="xl"
+                    shadow="md"
+                  >
+                    <Image
+                      objectFit="cover"
+                      alt={`${post.data.title} preview picture`}
+                      src={post.data.previewImage}
+                    />
                   </Box>
                   <Spacer />
-                  <Box>
-                    <Text m="2" fontStyle="italic" noOfLines={1}>
-                      {post.data.date}
-                    </Text>
-                  </Box>
                 </Flex>
                 <Box m="4">
                   <Text noOfLines={1}>{post.data.description}</Text>
