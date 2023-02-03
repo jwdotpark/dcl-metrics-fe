@@ -1380,7 +1380,15 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@mdx-js/mdx@^2.2.1":
+"@mdx-js/loader@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-2.2.1.tgz#71634e87659cd29240933d174a151a4d4ab3b70c"
+  integrity sha512-J4E8A5H+xtk4otZiEZ5AXl61Tj04Avm5MqLQazITdI3+puVXVnTTuZUKM1oNHTtfDIfOl0uMt+o/Ij+x6Fvf+g==
+  dependencies:
+    "@mdx-js/mdx" "^2.0.0"
+    source-map "^0.7.0"
+
+"@mdx-js/mdx@^2.0.0", "@mdx-js/mdx@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-2.2.1.tgz#611af1b68135c94eb467eb07e006fa1d8eebe029"
   integrity sha512-hZ3ex7exYLJn6FfReq8yTvA6TE53uW9UHJQM9IlSauOuS55J9y8RtA7W+dzp6Yrzr00/U1sd7q+Wf61q6SfiTQ==
@@ -1480,6 +1488,13 @@
   version "13.0.7"
   resolved "https://registry.yarnpkg.com/@next/font/-/font-13.0.7.tgz#e0046376edb0ce592d9cfddea8f4ab321eb1515a"
   integrity sha512-39SzuoMI6jbrIzPs3KtXdKX03OrVp6Y7kRHcoVmOg69spiBzruPJ5x5DQSfN+OXqznbvVBNZBXnmdnSqs3qXiA==
+
+"@next/mdx@^13.1.6":
+  version "13.1.6"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-13.1.6.tgz#53488d2117532d9d4789718cdbbba9c36fa20fd0"
+  integrity sha512-ZLhXXDJeHbudFpSZT68eYQRzOaNwkaw+NuO7Zvnm5XKB6P7hKSj2dS47ZtitrY0JaL3KxR4FoxUSYeLvdoRwtQ==
+  dependencies:
+    source-map "^0.7.0"
 
 "@next/swc-android-arm-eabi@13.0.7":
   version "13.0.7"
