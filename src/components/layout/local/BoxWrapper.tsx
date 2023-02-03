@@ -12,11 +12,12 @@ const BoxWrapper = ({ children, colSpan }) => {
     shadow: "md",
     pb: 4,
     colSpan: colSpan,
+    initial: { outlineColor: useColorModeValue("gray.300", "gray.700") },
     hover: {
       shadow: "lg",
-      outline: "2px solid",
-      outlineColor: useColorModeValue("gray.300", "gray.800"),
-      transition: "outline .5s ease-in-out",
+      outline: "3px solid",
+      outlineColor: useColorModeValue("gray.300", "gray.700"),
+      transition: "outline 0.25s ease-in-out",
     },
     transition: "box-shadow 0.25s ease-in-out",
   }
@@ -36,6 +37,7 @@ const BoxWrapper = ({ children, colSpan }) => {
       _hover={box.hover}
       transition={box.transition}
       colSpan={box.colSpan}
+      outlineColor={box.initial.outlineColor}
     >
       {children}
     </GridItem>
