@@ -33,6 +33,12 @@ export const theme = extendTheme({
         marginBottom: "1rem",
         marginTop: "1rem",
       },
+      h6: {
+        fontSize: "lg",
+        fontWeight: "bold",
+        marginBottom: "1rem",
+        marginTop: "1rem",
+      },
     },
   },
 })
