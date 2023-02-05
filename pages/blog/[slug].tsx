@@ -22,11 +22,12 @@ function Post({ data, content }) {
                   <Text fontSize={["lg", "xl", "2xl", "3xl"]} fontWeight="bold">
                     {data.title}
                   </Text>
+                  <Box>
+                    <Text>
+                      {data.author} posted on {data.date}
+                    </Text>
+                  </Box>
                 </Box>
-                <Spacer />
-                <Center h="auto">
-                  <Text wordBreak="keep-all">{data.date}</Text>
-                </Center>
               </Flex>
 
               <Box m="4" mx="8">

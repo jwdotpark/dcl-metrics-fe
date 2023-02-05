@@ -1,6 +1,7 @@
 import "../styles/globals.css"
 import Head from "next/head"
 import Script from "next/script"
+import { theme } from "../src/lib/theme/theme"
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   }
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Provider>
         <Head>
           <title>DCL Metrics</title>
