@@ -13,7 +13,9 @@ import {
 } from "@chakra-ui/react"
 import { useState } from "react"
 import CountUp from "react-countup"
-import GridBox from "../GridBox"
+//import GridBox from "../GridBox"
+import BoxWrapper from "../../layout/local/BoxWrapper"
+
 import ErrorBox from "../stats/error/ErrorBox"
 
 const StatusBox = ({ data }) => {
@@ -56,7 +58,7 @@ const StatusBox = ({ data }) => {
                 {/* @ts-ignore */}
                 {category[1].map((item, j) => {
                   return (
-                    <GridBox box={box} key={j}>
+                    <BoxWrapper colSpan={1} key={j}>
                       <Box m="4">
                         <Flex mb="4">
                           <Box mx="2">
@@ -118,7 +120,7 @@ const StatusBox = ({ data }) => {
                           </Table>
                         </Box>
                       </Box>
-                    </GridBox>
+                    </BoxWrapper>
                   )
                 })}
               </SimpleGrid>

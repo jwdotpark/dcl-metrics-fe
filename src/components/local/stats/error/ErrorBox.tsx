@@ -6,7 +6,6 @@ import {
   AlertIcon,
   AlertTitle,
 } from "@chakra-ui/react"
-import GridBox from "../../GridBox"
 
 const Okay = () => {
   return (
@@ -65,10 +64,14 @@ const ErrorBox = ({ error }) => {
   }
 
   return (
-    <Box mb="4" borderRadius="xl">
-      <GridBox box={box}>
-        <Box h="100%">{error ? <Warning /> : <Okay />}</Box>
-      </GridBox>
+    <Box
+      mb="4"
+      border="1px solid"
+      borderColor={useColorModeValue("green.200", "green.900")}
+      borderRadius="xl"
+      shadow="md"
+    >
+      <Box h="100%">{error ? <Warning /> : <Okay />}</Box>
     </Box>
   )
 }
