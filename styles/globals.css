@@ -26,3 +26,15 @@ a {
 }
 
 
+.markdown a {
+  color: #4299e1;
+  margin-bottom: 1rem;
+}
+
+.markdown ul {
+  margin-left: 0rem;
+}
+
+.markdown li {
+  margin-left: 1rem;
+}

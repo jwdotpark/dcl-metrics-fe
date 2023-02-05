@@ -17,20 +17,23 @@ function Post({ data, content }) {
         <Center w={["100%", "100%", "100%", 1080]}>
           <BoxWrapper colSpan={6}>
             <Box>
-              <Flex m="4" mb="8">
-                <Box w={["70%", "85%"]}>
+              <Flex m="4" mb="8" mx="6">
+                <Box>
                   <Text fontSize={["lg", "xl", "2xl", "3xl"]} fontWeight="bold">
                     {data.title}
                   </Text>
-                  <Box>
-                    <Text>
-                      {data.author} posted on {data.date}
-                    </Text>
-                  </Box>
+                  <Flex>
+                    <Spacer />
+                    <Box>
+                      <Text ml="1">
+                        {data.author} posted on <i>{data.date}</i>
+                      </Text>
+                    </Box>
+                  </Flex>
                 </Box>
               </Flex>
 
-              <Box m="4" mx="8">
+              <Box className="markdown" m="4" mx="8">
                 <MDXRemote {...content} />
               </Box>
               <Box m="4">

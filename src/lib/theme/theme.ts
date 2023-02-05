@@ -1,34 +1,40 @@
 import { extendTheme, useColorModeValue } from "@chakra-ui/react"
 
 export const theme = extendTheme({
-  fonts: {
-    //heading: "Roboto",
-    //body: "Roboto",
-  },
   styles: {
     global: {
       h1: {
-        fontSize: "3xl",
+        fontSize: "5xl",
         fontWeight: "bold",
+        marginBottom: "2rem",
+        marginTop: "2rem",
       },
       h2: {
-        fontSize: "2xl",
+        fontSize: "4xl",
         fontWeight: "bold",
+        marginBottom: "1rem",
+        marginTop: "1rem",
       },
       h3: {
-        fontSize: "xl",
+        fontSize: "3xl",
         fontWeight: "bold",
+        marginBottom: "1rem",
+        marginTop: "1rem",
       },
       h4: {
-        fontSize: "lg",
+        fontSize: "2xl",
         fontWeight: "bold",
+        marginBottom: "1rem",
+        marginTop: "1rem",
       },
       h5: {
-        fontSize: "md",
+        fontSize: "xl",
         fontWeight: "bold",
+        marginBottom: "1rem",
+        marginTop: "1rem",
       },
-      body: {
-        fontSize: "md",
+      p: {
+        fontSize: "lg",
         fontWeight: "normal",
       },
     },
