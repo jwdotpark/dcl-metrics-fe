@@ -1,15 +1,10 @@
 import { Box, useColorModeValue } from "@chakra-ui/react"
-import GridBox from "../../GridBox"
+import BoxWrapper from "../../../layout/local/BoxWrapper"
 
 const AccordionBox = ({ children }) => {
-  const box = {
-    h: "auto",
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
   return (
     <Box mb="4" borderRadius="xl">
-      <GridBox box={box}>{children}</GridBox>
+      <BoxWrapper colSpan={6}>{children}</BoxWrapper>
     </Box>
   )
 }

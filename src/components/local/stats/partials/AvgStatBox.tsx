@@ -1,20 +1,14 @@
-import { Box, useColorModeValue } from "@chakra-ui/react"
-import GridBox from "../../GridBox"
+import { Box } from "@chakra-ui/react"
+import BoxWrapper from "../../../layout/local/BoxWrapper"
 
 const AvgStatBox = () => {
-  const box = {
-    h: "auto",
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
-
   return (
     <Box>
-      <GridBox box={box}>
+      <BoxWrapper colSpan={6}>
         <Box h={["auto", "auto", "auto", "auto", 400]} p="4">
           avg stag box
         </Box>
-      </GridBox>
+      </BoxWrapper>
     </Box>
   )
 }
