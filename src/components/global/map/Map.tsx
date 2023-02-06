@@ -15,6 +15,7 @@ import { heatmapColor } from "../../../lib/hooks/utils"
 import MapButtonGroup from "./partials/MapButtonGroup"
 import CollapsibleMapBox from "./partials/CollapsibleMapBox"
 import { FullScreen, useFullScreenHandle } from "react-full-screen"
+import { searchTiles } from "../../../lib/data/searchMap"
 
 const Map = ({
   h,
@@ -29,17 +30,10 @@ const Map = ({
   parcelData,
   setMapHeight,
 }) => {
-  const box = {
-    h: "auto",
-    w: "100%",
-    bg: useColorModeValue("gray.200", "gray.700"),
-  }
-
   const [tempCoord, setTempCoord] = useState({
     x: 0,
     y: 0,
   })
-
   const handle = useFullScreenHandle()
 
   const COLOR_BY_TYPE: Record<number | string, string> = {
@@ -90,6 +84,8 @@ const Map = ({
   const [selectedProp, setSelectedProp] = useState(properties[0])
   const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
   const [center, setCenter] = useState({ x: 0, y: 0 })
+  const [searchResult, setSearchResult] = useState([])
+  const [keyword, setKeyword] = useState("")
 
   // infobox
   const { getButtonProps, getDisclosureProps, isOpen, onToggle } =
@@ -198,6 +194,13 @@ const Map = ({
   }
 
   useEffect(() => {
+    setTimeout(() => {
+      setSearchResult(searchTiles(tiles, keyword))
+    }, 500)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [keyword])
+
+  useEffect(() => {
     fetchTiles()
   }, [])
 
@@ -287,6 +290,9 @@ const Map = ({
                     btnBg={btnBg}
                     handle={handle}
                     setMapHeight={setMapHeight}
+                    keyword={keyword}
+                    setKeyword={setKeyword}
+                    searchResult={searchResult}
                   />
                 </Box>
                 <TileMap

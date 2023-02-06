@@ -7,10 +7,14 @@ import {
   ButtonGroup,
   useColorModeValue,
   Input,
+  InputGroup,
+  InputLeftElement,
+  Center,
 } from "@chakra-ui/react"
 import MapMenu from "./MapMenu"
-import { FiChevronsDown, FiChevronsUp } from "react-icons/fi"
+import { FiChevronsDown, FiChevronsUp, FiSearch } from "react-icons/fi"
 import { useEffect } from "react"
+import SearchBox from "./SearchBox"
 
 const MapButtonGroup = ({
   isMapExpanded,
@@ -25,6 +29,9 @@ const MapButtonGroup = ({
   btnBg,
   handle,
   setMapHeight,
+  keyword,
+  setKeyword,
+  searchResult,
 }) => {
   const handleFullscreen = () => {
     if (!handle.active) {
@@ -35,6 +42,8 @@ const MapButtonGroup = ({
       handle.exit()
     }
   }
+
+  // check if searchResult array is empty
 
   useEffect(() => {
     if (!handle.active) {
@@ -82,12 +91,29 @@ const MapButtonGroup = ({
           borderRadius="xl"
           shadow="md"
         >
-          <Input
-            borderRadius="xl"
-            placeholder="Genesis Plaza"
-            size="sm"
-            variant="filled"
-          />
+          <InputGroup>
+            <InputLeftElement
+              // eslint-disable-next-line react/no-children-prop
+              children={
+                <Box sx={{ transform: "translateY(-4px)" }}>
+                  <FiSearch />
+                </Box>
+              }
+            />
+            <Input
+              minW="300"
+              borderTopRadius="xl"
+              borderBottomRadius={searchResult.length > 0 ? "0" : "xl"}
+              onChange={(e) => setKeyword(e.target.value)}
+              placeholder="Genesis Plaza"
+              size="sm"
+              type="text"
+              variant="filled"
+            />
+          </InputGroup>
+          {searchResult.length !== 0 && (
+            <SearchBox searchResult={searchResult} />
+          )}
         </Box>
       </Flex>
       <Flex>
