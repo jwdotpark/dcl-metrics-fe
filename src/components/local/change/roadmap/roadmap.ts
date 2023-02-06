@@ -14,52 +14,30 @@ import {
 
 export const roadmap = [
   {
-    date: "2022 Q4",
+    date: "2023 Q1",
     contents: [
       {
         icon: FiHome,
-
         title: "Introduce Daily New Users to global tracking",
         description: "",
       },
       {
-        icon: FiPackage,
-
-        title: "Introduce Concurrent Users histogram globally and by scene",
-        description: "",
-      },
-      {
-        icon: FiTrendingUp,
-
-        title: "Increase daily metrics calculation interval",
-        description: "",
-      },
-      {
         icon: FiTarget,
-
         title: "Incorporate land sales and rental data",
         description: "",
       },
     ],
   },
   {
-    date: "2023 Q1",
+    date: "2023 Q2",
     contents: [
       {
-        icon: FiUserPlus,
-
-        title: "Personalized metric dashboards",
-        description: "",
-      },
-      {
         icon: FiZoomIn,
-
         title: "More detailed parcel and scene-based metrics",
         description: "Z-axis analytics",
       },
       {
         icon: FiPackage,
-
         title: "Advanced user analytics",
         description: "Wearbles, POAPs, DAO Activity",
       },

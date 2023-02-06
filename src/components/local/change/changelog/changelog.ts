@@ -53,7 +53,8 @@ export const minorchangeTemplate = [
         icon: FiPackage,
         day: "2022 October",
         title: "Build Metrics for Scenes",
-        description: "I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised",
+        description:
+          "I.e. Wilderness P2E as a whole rather than each of the 20 parcels of which it is comprised",
       },
     ],
   },
@@ -62,15 +63,44 @@ export const minorchangeTemplate = [
     contents: [
       {
         icon: FiUsers,
-        title: "Incorporate and work with Atlas Corporation's new data warehouse",
-        description: "Increase data fidelity by pulling at higher frequency as well as reduce strain on DCL's catalyst servers",
+        title:
+          "Incorporate and work with Atlas Corporation's new data warehouse",
+        description:
+          "Increase data fidelity by pulling at higher frequency as well as reduce strain on DCL's catalyst servers",
       },
       {
         icon: FiPackage,
         title:
           "Build metrics for all users/parcels/scenes not just top 10 lists",
-        description: "With the scene map, we've begun displaying data for all parcels and scenes and user data and dashboards will be added in the next iteration",
+        description:
+          "With the scene map, we've begun displaying data for all parcels and scenes and user data and dashboards will be added in the next iteration",
       },
-    ]
-  }
+    ],
+  },
+  {
+    date: "2023 Q1",
+    contents: [
+      {
+        icon: FiPackage,
+        title: "Introduce Concurrent Users histogram globally and by scene",
+        description: "",
+      },
+      {
+        icon: FiPackage,
+        title: "Added dedicated page for scene metrics",
+        description:
+          "Most scene metrics are now available on the scene page via map",
+      },
+      {
+        icon: FiUserPlus,
+        title: "Introduce map component for navigating to scenes and parcels",
+        description: "",
+      },
+      {
+        icon: FiTrendingUp,
+        title: "Added LAND sales and Rental data metrics",
+        description: ""
+      }
+    ],
+  },
 ]
