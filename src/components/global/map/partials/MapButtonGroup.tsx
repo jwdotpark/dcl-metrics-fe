@@ -6,6 +6,7 @@ import {
   Spacer,
   ButtonGroup,
   useColorModeValue,
+  Input,
 } from "@chakra-ui/react"
 import MapMenu from "./MapMenu"
 import { FiChevronsDown, FiChevronsUp } from "react-icons/fi"
@@ -72,19 +73,22 @@ const MapButtonGroup = ({
           </Button>
         </Box>
         <Spacer />
-        <Button
+        <Box
           pos="absolute"
           zIndex="docked"
           top="2"
           right="2"
           bg={btnBg}
           borderRadius="xl"
-          size="sm"
+          shadow="md"
         >
-          <Text as="kbd" color={useColorModeValue("black", "white")}>
-            [{tempCoord.x},{tempCoord.y}]
-          </Text>
-        </Button>
+          <Input
+            borderRadius="xl"
+            placeholder="Genesis Plaza"
+            size="sm"
+            variant="filled"
+          />
+        </Box>
       </Flex>
       <Flex>
         <Box pos="absolute" zIndex="docked" bottom="2" left="2">
@@ -108,6 +112,18 @@ const MapButtonGroup = ({
               variant="solid"
             >
               -
+            </Button>
+            <Button
+              zIndex="docked"
+              minW="70"
+              bg={btnBg}
+              borderRadius="xl"
+              shadow="md"
+              //isDisabled
+              size="sm"
+              variant="solid"
+            >
+              [{tempCoord.x},{tempCoord.y}]
             </Button>
             <Button
               zIndex="docked"

@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Button } from "@chakra-ui/react"
 import dynamic from "next/dynamic"
 const MapWrapper = dynamic(() => import("./Map"), { ssr: false })
 import { useEffect, useState } from "react"
