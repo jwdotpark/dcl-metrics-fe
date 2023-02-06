@@ -40,6 +40,15 @@ export const plotMissingDates = (data) => {
     allTimestamps.push(timestamp)
   }
 
+  const yesterday = moment().subtract(1, "days").unix()
+  for (
+    let timestamp = maxTimestamp;
+    timestamp <= yesterday;
+    timestamp += 86400
+  ) {
+    allTimestamps.push(timestamp)
+  }
+
   allTimestamps.forEach((timestamp) => {
     if (!data.find((d) => d.date === timestamp)) {
       data.push({

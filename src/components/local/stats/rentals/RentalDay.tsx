@@ -14,7 +14,6 @@ const RentalDay = ({ data }) => {
   const plottedData = plotMissingDates(analyticsDayDatas)
   const dataArr = Object.entries(plottedData)
   const chartData = []
-  //const color = ["#48BB78", "#4299E1", "#F56565", "#9F7AEA"]
   const [dateRange, setDateRange] = useState(plottedData.length - 1)
   const [avgData, setAvgData] = useState([])
 

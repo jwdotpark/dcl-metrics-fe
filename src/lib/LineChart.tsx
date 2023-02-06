@@ -69,7 +69,7 @@ const LineChart = ({ data, color, name, rentalData }) => {
                 y={chartHeight - item.y * 10 - 100}
                 rx={2}
                 ry={2}
-                width={dateRange > 30 ? 15 : 20}
+                width={dateRange > 30 ? 5 : 10}
                 height={item.y * 10}
                 fill="#9F7AEA90"
                 stroke="#9F7AEA"

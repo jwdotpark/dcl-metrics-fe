@@ -104,6 +104,7 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const { globalDailyRes, parcelRes, landSalesRes, rental } = props
 
+
   return (
     <Layout>
       <Box w="100%">
