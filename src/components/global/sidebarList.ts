@@ -40,14 +40,14 @@ export const sidebarList = {
     label: "Map",
     name: "map",
     icon: FiMapPin,
-    subItem: false,
+    subItem: true,
   },
-  blog: {
-    label: "Blog",
-    name: "blog",
-    icon: FiPenTool,
-    subItem: false,
-  },
+  //blog: {
+  //  label: "Blog",
+  //  name: "blog",
+  //  icon: FiPenTool,
+  //  subItem: false,
+  //},
   status: {
     label: "Status",
     name: "status",
