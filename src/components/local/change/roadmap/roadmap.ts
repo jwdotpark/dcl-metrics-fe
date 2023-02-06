@@ -17,13 +17,8 @@ export const roadmap = [
     date: "2023 Q1",
     contents: [
       {
-        icon: FiHome,
-        title: "Introduce Daily New Users to global tracking",
-        description: "",
-      },
-      {
-        icon: FiTarget,
-        title: "Incorporate land sales and rental data",
+        icon: FiPackage,
+        title: "Introduce Concurrent Users histogram globally and by scene",
         description: "",
       },
     ],

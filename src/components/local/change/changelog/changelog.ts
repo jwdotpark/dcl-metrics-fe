@@ -75,16 +75,16 @@ export const minorchangeTemplate = [
         description:
           "With the scene map, we've begun displaying data for all parcels and scenes and user data and dashboards will be added in the next iteration",
       },
+      {
+        icon: FiHome,
+        title: "Introduce Daily New Users to global tracking",
+        description: "",
+      },
     ],
   },
   {
     date: "2023 Q1",
     contents: [
-      {
-        icon: FiPackage,
-        title: "Introduce Concurrent Users histogram globally and by scene",
-        description: "",
-      },
       {
         icon: FiPackage,
         title: "Added dedicated page for scene metrics",
@@ -97,10 +97,10 @@ export const minorchangeTemplate = [
         description: "",
       },
       {
-        icon: FiTrendingUp,
-        title: "Added LAND sales and Rental data metrics",
-        description: ""
-      }
+        icon: FiUserPlus,
+        title: "Incorporate land sales and rental data",
+        description: "",
+      },
     ],
   },
 ]
