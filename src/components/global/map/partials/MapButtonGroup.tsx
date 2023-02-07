@@ -54,39 +54,11 @@ const MapButtonGroup = ({
   return (
     <>
       <Flex pos="absolute" w="100%" p="2">
-        <Box>
-          <Button
-            zIndex="docked"
-            display={handle.active ? "none" : "inline-block"}
-            mr="2"
-            bg={btnBg}
-            borderRadius="xl"
-            shadow="md"
-            onClick={() => setIsMapExpanded(!isMapExpanded)}
-            size="sm"
-            variant="solid"
-          >
-            {isMapExpanded ? <FiChevronsUp /> : <FiChevronsDown />}
-          </Button>
-          <Button
-            className={`umami--click--fullscreen-button`}
-            zIndex="docked"
-            bg={btnBg}
-            borderRadius="xl"
-            shadow="md"
-            onClick={() => handleFullscreen()}
-            size="sm"
-            variant="solid"
-          >
-            {handle.active ? "Exit Fullscreen" : "Fullscreen"}
-          </Button>
-        </Box>
-        <Spacer />
         <Box
           pos="absolute"
           zIndex="docked"
           top="2"
-          right="2"
+          left="2"
           bg={btnBg}
           borderRadius="xl"
           shadow="md"
@@ -114,6 +86,34 @@ const MapButtonGroup = ({
           {searchResult.length !== 0 && (
             <SearchBox searchResult={searchResult} />
           )}
+        </Box>
+        <Spacer />
+        <Box>
+          <Button
+            className={`umami--click--fullscreen-button`}
+            zIndex="docked"
+            mr="2"
+            bg={btnBg}
+            borderRadius="xl"
+            shadow="md"
+            onClick={() => handleFullscreen()}
+            size="sm"
+            variant="solid"
+          >
+            {handle.active ? "Exit Fullscreen" : "Fullscreen"}
+          </Button>
+          <Button
+            zIndex="docked"
+            display={handle.active ? "none" : "inline-block"}
+            bg={btnBg}
+            borderRadius="xl"
+            shadow="md"
+            onClick={() => setIsMapExpanded(!isMapExpanded)}
+            size="sm"
+            variant="solid"
+          >
+            {isMapExpanded ? <FiChevronsUp /> : <FiChevronsDown />}
+          </Button>
         </Box>
       </Flex>
       <Flex>

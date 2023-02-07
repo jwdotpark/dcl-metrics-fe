@@ -196,7 +196,7 @@ const Map = ({
   useEffect(() => {
     setTimeout(() => {
       setSearchResult(searchTiles(tiles, keyword))
-    }, 500)
+    }, 250)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword])
 

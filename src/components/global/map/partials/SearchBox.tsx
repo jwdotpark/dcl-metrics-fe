@@ -26,7 +26,7 @@ const SearchBox = ({ searchResult }) => {
             m="2"
             borderRadius="xl"
             // eslint-disable-next-line react-hooks/rules-of-hooks
-            _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
+            _hover={{ bg: useColorModeValue("gray.200", "gray.700") }}
           >
             <Link href={address(result)} target="_blank">
               <Text ml="2" fontSize="sm">
