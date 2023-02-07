@@ -36,7 +36,8 @@ export async function getServerSideProps(context) {
   const endPoint = process.env.NEXT_PUBLIC_PROD_ENDPOINT
   const path = "scenes/" + uuid
   const url = endPoint + path
-  const result = await getDataWithProxy(url, path, {})
+  const result = uuid && (await getDataWithProxy(url, path, {}))
+
   return {
     props: result,
   }
