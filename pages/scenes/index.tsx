@@ -17,6 +17,7 @@ import {
   time,
 } from "../../src/lib/data/constant"
 import staticGlobalScenes from "../../public/data/staticGlobalScene.json"
+import SceneTable from "../../src/components/local/stats/SceneTable"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -70,16 +71,19 @@ const Scenes = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const { globalSceneRes, sceneRes } = props
 
+  console.log(sceneRes)
+
   return (
     <Layout>
-      <Scene
+      {/*<Scene
         res={sceneRes}
         date={""}
         setDate={{}}
         availableDate={[]}
         dailyUsers={{}}
         uuid={""}
-      />
+      />*/}
+      <SceneTable data={sceneRes} />
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <TopScenesVisitors res={globalSceneRes} />
         <ScenesTimeSpent res={globalSceneRes} />
