@@ -141,7 +141,7 @@ const ParcelInfoBox = ({
                 shadow="md"
                 _hover={{ filter: "brightness(75%)" }}
                 aria-label="dcl logo"
-                bgColor={useColorModeValue("gray.300", "gray.500")}
+                bgColor={useColorModeValue("gray.200", "gray.500")}
                 onClick={() => onOpen()}
                 size="sm"
                 variant="unstyled"
@@ -153,7 +153,7 @@ const ParcelInfoBox = ({
                     width={selectedParcel.scene ? 30 : 20}
                   />
                   {!selectedParcel.scene && (
-                    <Text sx={{ transform: "translateY(-2px)" }} ml="2">
+                    <Text sx={{ transform: "translateY(0px)" }} ml="2">
                       [{selectedParcel.id}]
                     </Text>
                   )}
@@ -180,12 +180,13 @@ const ParcelInfoBox = ({
                 ml="2"
                 color="gray.50"
                 bg="red.500"
+                border="1px solid"
                 borderColor="gray.400"
                 borderRadius="full"
                 shadow="md"
-                borde="1px solid"
                 size="sm"
                 {...getButtonProps()}
+                dropShadow="md"
                 icon={<FiChevronsRight size="20" />}
               />
             </ButtonGroup>
