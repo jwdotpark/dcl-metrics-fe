@@ -123,67 +123,73 @@ const ParcelInfoBox = ({
   }
 
   return (
-    <Box h="100%" p="4" borderRadius="xl">
+    <Box h="100%">
       <AlertJumpIn />
-      <Center>
-        <ButtonGroup w="100%">
-          <Button
-            w={selectedParcel.scene ? 30 : "100%"}
-            mb="4"
-            borderRadius="full"
-            shadow="md"
-            _hover={{ filter: "brightness(75%)" }}
-            aria-label="dcl logo"
-            bgColor={useColorModeValue("gray.300", "gray.500")}
-            onClick={() => onOpen()}
-            size="md"
-            variant="unstyled"
-          >
-            <Center w="100%" h="100%">
-              <Image
-                src={dclLogo}
-                alt="link logo"
-                width={selectedParcel.scene ? 50 : 20}
-              />
-              {!selectedParcel.scene && (
-                <Text sx={{ transform: "translateY(-2px)" }} ml="2">
-                  [{selectedParcel.id}]
-                </Text>
-              )}
-            </Center>
-          </Button>
-
-          {selectedParcel.scene && (
-            <Button w="100%" mb="4" bg="#FF9990" borderRadius="xl" shadow="md">
-              <Link href={sceneHandle} target="_blank">
-                <Text px="4" color="#000" fontWeight="bold">
-                  {selectedParcel.scene && trimName(selectedParcel.scene.name)}
-                </Text>
-              </Link>
-            </Button>
-          )}
-        </ButtonGroup>
-        <IconButton
-          w="15"
-          mb="4"
-          ml="2"
-          color="gray.50"
-          bg="red.500"
-          borderRadius="full"
-          shadow="md"
-          {...getButtonProps()}
-          icon={<FiChevronsRight size="20" />}
-        ></IconButton>
-      </Center>
-
       <Flex
         direction="column"
         p="2"
         bg={useColorModeValue("gray.300", "gray.800")}
-        borderRadius="xl"
+        borderBottomLeftRadius="xl"
         shadow="md"
       >
         <Box w="100%">
+          <Center mt="2" mx="2">
+            <ButtonGroup w="100%" mb="2">
+              <Button
+                w={selectedParcel.scene ? 30 : "100%"}
+                borderRadius="full"
+                shadow="md"
+                _hover={{ filter: "brightness(75%)" }}
+                aria-label="dcl logo"
+                bgColor={useColorModeValue("gray.300", "gray.500")}
+                onClick={() => onOpen()}
+                size="sm"
+                variant="unstyled"
+              >
+                <Center w="100%" h="100%">
+                  <Image
+                    src={dclLogo}
+                    alt="link logo"
+                    width={selectedParcel.scene ? 30 : 20}
+                  />
+                  {!selectedParcel.scene && (
+                    <Text sx={{ transform: "translateY(-2px)" }} ml="2">
+                      [{selectedParcel.id}]
+                    </Text>
+                  )}
+                </Center>
+              </Button>
+
+              {selectedParcel.scene && (
+                <Button
+                  w="100%"
+                  bg="#FF9990"
+                  borderRadius="xl"
+                  shadow="md"
+                  size="sm"
+                >
+                  <Link href={sceneHandle} target="_blank">
+                    <Text px="4" color="#000" fontWeight="bold">
+                      {selectedParcel.scene &&
+                        trimName(selectedParcel.scene.name)}
+                    </Text>
+                  </Link>
+                </Button>
+              )}
+              <IconButton
+                ml="2"
+                color="gray.50"
+                bg="red.500"
+                borderColor="gray.400"
+                borderRadius="full"
+                shadow="md"
+                borde="1px solid"
+                size="sm"
+                {...getButtonProps()}
+                icon={<FiChevronsRight size="20" />}
+              />
+            </ButtonGroup>
+          </Center>
           <Flex h="100%" dir="row">
             <Box w="100%">
               <MapImage

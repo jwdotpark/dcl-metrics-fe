@@ -70,3 +70,11 @@ export const mutateStringToURL = (string: string) => {
   }
   return string
 }
+
+export const strToCoord = (val: string) => {
+  const coord = {
+    x: Number(val.split(",")[0]),
+    y: Number(val.split(",")[1]),
+  }
+  return coord
+}

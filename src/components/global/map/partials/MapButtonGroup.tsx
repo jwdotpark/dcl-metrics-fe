@@ -32,6 +32,7 @@ const MapButtonGroup = ({
   keyword,
   setKeyword,
   searchResult,
+  setSearchResultID,
 }) => {
   const handleFullscreen = () => {
     if (!handle.active) {
@@ -42,8 +43,6 @@ const MapButtonGroup = ({
       handle.exit()
     }
   }
-
-  // check if searchResult array is empty
 
   useEffect(() => {
     if (!handle.active) {
@@ -84,7 +83,10 @@ const MapButtonGroup = ({
             />
           </InputGroup>
           {searchResult.length !== 0 && (
-            <SearchBox searchResult={searchResult} />
+            <SearchBox
+              searchResult={searchResult}
+              setSearchResultID={setSearchResultID}
+            />
           )}
         </Box>
         <Spacer />

@@ -1,8 +1,7 @@
 import { Box, Divider, Text, useColorModeValue } from "@chakra-ui/react"
-import { mutateStringToURL } from "../../../../lib/hooks/utils"
-import Link from "next/link"
+import { strToCoord } from "../../../../lib/hooks/utils"
 
-const SearchBox = ({ searchResult }) => {
+const SearchBox = ({ searchResult, setSearchResultID }) => {
   const truncateName = (name: string) => {
     const nameLength = 35
     if (name && name.length > nameLength) {
@@ -11,30 +10,29 @@ const SearchBox = ({ searchResult }) => {
     return name
   }
 
-  const address = (data) => {
-    return `/scenes/${mutateStringToURL(data.scene.name)}/${
-      data.scene.scene_uuid
-    }`
+  const clickSearchResult = (data: string) => {
+    const coord = strToCoord(data)
+    setSearchResultID({ x: coord.x, y: coord.y })
   }
 
   return (
-    <Box w="200">
+    <Box w="auto" mt="2" pb="2">
       {searchResult.slice(0, 100).map((result) => {
         return (
           <Box
             key={result.id}
-            m="2"
-            borderRadius="xl"
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            _hover={{ bg: useColorModeValue("gray.200", "gray.700") }}
+            mx="2"
+            _hover={{
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              bg: useColorModeValue("gray.200", "gray.700"),
+              cursor: "pointer",
+            }}
           >
-            <Link href={address(result)} target="_blank">
-              <Text ml="2" fontSize="sm">
+            <Box onClick={() => clickSearchResult(result.id)}>
+              <Text ml="2" pb="1" fontSize="sm">
                 {truncateName(result.scene.name)}
               </Text>
-              {/*<Text ml="2" fontSize="sm">Visitors: {result.visitors}</Text>*/}
-              {/*<Text ml="2" fontSize="sm">avg time spent: {result.avg_time_spent}</Text>*/}
-            </Link>
+            </Box>
             <Divider />
           </Box>
         )

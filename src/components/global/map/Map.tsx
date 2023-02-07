@@ -86,6 +86,7 @@ const Map = ({
   const [center, setCenter] = useState({ x: 0, y: 0 })
   const [searchResult, setSearchResult] = useState([])
   const [keyword, setKeyword] = useState("")
+  const [searchResultID, setSearchResultID] = useState({ x: 0, y: 0 })
 
   // infobox
   const { getButtonProps, getDisclosureProps, isOpen, onToggle } =
@@ -124,7 +125,7 @@ const Map = ({
       onToggle()
     }
 
-    if (selectedParcel.scene) {
+    if (selectedParcel && selectedParcel.scene) {
       setSelectedScene(selectedParcel.scene.parcels)
     }
 
@@ -192,6 +193,14 @@ const Map = ({
       }
     }
   }
+
+  useEffect(() => {
+    if (searchResultID.x !== 0 && searchResultID.y !== 0) {
+      setCenter({ x: searchResultID.x, y: searchResultID.y })
+      handleClick(searchResultID.x, searchResultID.y)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchResultID])
 
   useEffect(() => {
     setTimeout(() => {
@@ -293,6 +302,7 @@ const Map = ({
                     keyword={keyword}
                     setKeyword={setKeyword}
                     searchResult={searchResult}
+                    setSearchResultID={setSearchResultID}
                   />
                 </Box>
                 <TileMap
