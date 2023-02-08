@@ -32,6 +32,8 @@ import {
   FiArrowRightCircle,
   FiArrowRight,
   FiArrowLeft,
+  FiChevronUp,
+  FiChevronDown,
 } from "react-icons/fi"
 
 const SceneTable = ({ sceneRes }) => {
@@ -193,13 +195,17 @@ const SceneTable = ({ sceneRes }) => {
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                   >
                     {column.render("Header")}
-                    <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? " 🔽"
-                          : " 🔼"
-                        : ""}
-                    </span>
+                    <Box display="inline-block">
+                      {column.isSorted ? (
+                        column.isSortedDesc ? (
+                          <FiChevronDown />
+                        ) : (
+                          <FiChevronUp />
+                        )
+                      ) : (
+                        ""
+                      )}
+                    </Box>
                   </Th>
                 ))}
               </Tr>
