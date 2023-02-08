@@ -1,7 +1,7 @@
 import { Box, Divider, Text, useColorModeValue } from "@chakra-ui/react"
 import { strToCoord } from "../../../../lib/hooks/utils"
 
-const SearchBox = ({ searchResult, setSearchResultID }) => {
+const SearchBox = ({ searchResult, setSearchResultID, isMapExpanded }) => {
   const truncateName = (name: string) => {
     const nameLength = 35
     if (name && name.length > nameLength) {
@@ -37,7 +37,7 @@ const SearchBox = ({ searchResult, setSearchResultID }) => {
 
   return (
     <Box w="auto" mt="2" pb="2">
-      {searchResult.slice(0, 100).map((result) => {
+      {searchResult.slice(0, isMapExpanded ? 30 : 15).map((result) => {
         return (
           <Box
             key={result.id}

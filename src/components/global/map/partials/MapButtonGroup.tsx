@@ -95,6 +95,7 @@ const MapButtonGroup = ({
             <SearchBox
               searchResult={searchResult}
               setSearchResultID={setSearchResultID}
+              isMapExpanded={isMapExpanded}
             />
           )}
         </Box>
