@@ -44,6 +44,13 @@ const MapButtonGroup = ({
     }
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault()
+      document.getElementById("search-result").focus()
+    }
+  }
+
   useEffect(() => {
     if (!handle.active) {
       setMapHeight({ collapsed: 500, expanded: "80vh" })
@@ -75,7 +82,9 @@ const MapButtonGroup = ({
               minW="300"
               borderTopRadius="xl"
               borderBottomRadius={searchResult.length > 0 ? "0" : "xl"}
+              id="search-input"
               onChange={(e) => setKeyword(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e)}
               placeholder="Genesis Plaza"
               size="sm"
               type="text"
