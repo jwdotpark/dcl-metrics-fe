@@ -6,24 +6,37 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
-  TableContainer,
+  ButtonGroup,
+  Button,
+  Center,
+  Flex,
+  Spacer,
 } from "@chakra-ui/react"
 import Link from "next/link"
 import { useMemo } from "react"
-import { useTable } from "react-table"
+import {
+  useTable,
+  usePagination,
+  useSortBy,
+  useGlobalFilter,
+} from "react-table"
 import { convertSeconds, mutateStringToURL } from "../../../lib/hooks/utils"
 import BoxTitle from "../../layout/local/BoxTitle"
 import BoxWrapper from "../../layout/local/BoxWrapper"
+import GlobalTableFilter from "./partials/scene/GlobalTableFilter"
+import {
+  FiArrowLeftCircle,
+  FiArrowRightCircle,
+  FiArrowRight,
+  FiArrowLeft,
+} from "react-icons/fi"
 
 const SceneTable = ({ sceneRes }) => {
   const data = useMemo(() => sceneRes, [sceneRes])
 
-  console.log(data)
   const columns = useMemo(
     () => [
       {
@@ -59,34 +72,42 @@ const SceneTable = ({ sceneRes }) => {
             </Link>
           </Text>
         ),
+        accessor: "name",
       },
       {
         Header: "Visitors",
         Cell: ({ row }) => <Text>{row.original.visitors}</Text>,
+        accessor: "visitors",
       },
       {
         Header: "Complete Sessions",
         Cell: ({ row }) => <Text>{row.original.complete_sessions}</Text>,
+        accessor: "complete_sessions",
       },
       {
         Header: "Share of Global Visitors",
         Cell: ({ row }) => <Text>{row.original.share_of_global_visitors}</Text>,
+        accessor: "share_of_global_visitors",
       },
       {
         Header: "Unique Logins",
         Cell: ({ row }) => <Text>{row.original.unique_logins}</Text>,
+        accessor: "unique_logins",
       },
       {
         Header: "Unique Logouts",
         Cell: ({ row }) => <Text>{row.original.unique_logouts}</Text>,
+        accessor: "unique_logouts",
       },
       {
         Header: "Total Logins",
         Cell: ({ row }) => <Text>{row.original.total_logins}</Text>,
+        accessor: "total_logins",
       },
       {
         Header: "Total Logouts",
         Cell: ({ row }) => <Text>{row.original.total_logouts}</Text>,
+        accessor: "total_logouts",
       },
       {
         Header: "Average Session Duration",
@@ -95,12 +116,14 @@ const SceneTable = ({ sceneRes }) => {
             {convertSeconds(row.original.avg_complete_session_duration)}
           </Text>
         ),
+        accessor: "avg_complete_session_duration",
       },
       {
         Header: "Avg. Time Spent",
         Cell: ({ row }) => (
           <Text>{convertSeconds(row.original.avg_time_spent)}</Text>
         ),
+        accessor: "avg_time_spent",
       },
       {
         Header: "Avg. Time Spent AFK",
@@ -109,21 +132,43 @@ const SceneTable = ({ sceneRes }) => {
             {convertSeconds(row.original.avg_time_spent_afk)}
           </Text>
         ),
+        accessor: "avg_time_spent_afk",
       },
     ],
     []
   )
 
-  const tableInstance = useTable({ columns, data })
+  const tableInstance = useTable(
+    { columns, data },
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  )
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
+    state,
+    gotoPage,
+    pageCount,
+    setGlobalFilter,
+    prepareRow,
+  } = tableInstance
+
+  const { pageIndex, globalFilter } = state
 
   return (
     <BoxWrapper colSpan={6}>
-      <Box overflowY="hidden">
+      <Box overflowY="hidden" pb="4">
         <BoxTitle
-          name="Scenes with Most Unique Visitors"
+          name="Top 50 Scenes"
           date=""
           avgData=""
           slicedData=""
@@ -142,8 +187,18 @@ const SceneTable = ({ sceneRes }) => {
             {headerGroups.map((headerGroup, i) => (
               <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column, j) => (
-                  <Th key={j} {...column.getHeaderProps()}>
+                  <Th
+                    key={j}
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                  >
                     {column.render("Header")}
+                    <span>
+                      {column.isSorted
+                        ? column.isSortedDesc
+                          ? " 🔽"
+                          : " 🔼"
+                        : ""}
+                    </span>
                   </Th>
                 ))}
               </Tr>
@@ -151,7 +206,7 @@ const SceneTable = ({ sceneRes }) => {
           </Thead>
 
           <Tbody {...getTableBodyProps()}>
-            {rows.map((row, i) => {
+            {page.map((row, i) => {
               prepareRow(row)
               return (
                 <Tr
@@ -172,6 +227,40 @@ const SceneTable = ({ sceneRes }) => {
             })}
           </Tbody>
         </Table>
+        <Center w="100%" mt="2" mx="4">
+          <ButtonGroup borderRadius="xl" isAttached size="sm">
+            <Button
+              borderRadius="xl"
+              disabled={!canPreviousPage}
+              onClick={() => gotoPage(0)}
+            >
+              <FiArrowLeftCircle />
+            </Button>
+            <Button disabled={!canPreviousPage} onClick={() => previousPage()}>
+              <FiArrowLeft />
+            </Button>
+            <Button>
+              <b>{pageIndex + 1}</b>/{pageOptions.length}
+            </Button>
+            <Button disabled={!canNextPage} onClick={() => nextPage()}>
+              <FiArrowRight />
+            </Button>
+            <Button
+              borderRadius="xl"
+              disabled={!canNextPage}
+              onClick={() => gotoPage(pageCount - 1)}
+            >
+              <FiArrowRightCircle />
+            </Button>
+          </ButtonGroup>
+          <Flex w="100%" mr="8">
+            <Spacer />
+            <GlobalTableFilter
+              filter={globalFilter}
+              setFilter={setGlobalFilter}
+            />
+          </Flex>
+        </Center>
       </Box>
     </BoxWrapper>
   )
