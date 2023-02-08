@@ -75,14 +75,14 @@ const Scenes = (props: Props) => {
 
   return (
     <Layout>
-      {/*<Scene
+      <Scene
         res={sceneRes}
         date={""}
         setDate={{}}
         availableDate={[]}
         dailyUsers={{}}
         uuid={""}
-      />*/}
+      />
       <SceneTable data={sceneRes} />
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <TopScenesVisitors res={globalSceneRes} />
