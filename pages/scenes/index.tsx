@@ -1,4 +1,4 @@
-import { useBreakpointValue, Grid } from "@chakra-ui/react"
+import { useBreakpointValue, Grid, Box } from "@chakra-ui/react"
 import Layout from "../../src/components/layout/layout"
 import staticScene from "../../public/data/cached_scenes_top.json"
 import Scene from "../../src/components/local/stats/Scene"
@@ -71,19 +71,19 @@ const Scenes = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const { globalSceneRes, sceneRes } = props
 
-  console.log(sceneRes)
-
   return (
     <Layout>
-      <Scene
+      {/*<Scene
         res={sceneRes}
         date={""}
         setDate={{}}
         availableDate={[]}
         dailyUsers={{}}
         uuid={""}
-      />
-      <SceneTable data={sceneRes} />
+      />*/}
+      <Box mb="4">
+        <SceneTable sceneRes={sceneRes} />
+      </Box>
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <TopScenesVisitors res={globalSceneRes} />
         <ScenesTimeSpent res={globalSceneRes} />
