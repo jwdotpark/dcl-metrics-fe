@@ -173,7 +173,7 @@ const SceneTable = ({ sceneRes }) => {
           avgData=""
           slicedData=""
           color=""
-          description="Scenes with the most unique visits in the last period"
+          description="Check out the busiest top scenes at a glance, with various metrics included"
         />
         <Table
           {...getTableProps()}
