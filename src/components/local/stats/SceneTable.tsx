@@ -168,7 +168,18 @@ const SceneTable = ({ sceneRes }) => {
 
   return (
     <BoxWrapper colSpan={6}>
-      <Box overflowY="hidden" pb="4">
+      <Box
+        sx={{
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          msOverflowStyle: "none",
+          scrollbarWidth: "none",
+        }}
+        overflowY="auto"
+        // hide scrollbar
+        pb="4"
+      >
         <BoxTitle
           name="Top 50 Scenes"
           date=""
