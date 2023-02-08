@@ -176,6 +176,7 @@ const SceneTable = ({ sceneRes }) => {
           description="Check out the busiest top scenes at a glance, with various metrics included"
         />
         <Table
+          h={["auto", 850]}
           {...getTableProps()}
           w="auto"
           mb="2"
