@@ -35,6 +35,7 @@ import {
   FiChevronUp,
   FiChevronDown,
 } from "react-icons/fi"
+import moment from "moment"
 
 const SceneTable = ({ sceneRes }) => {
   const data = useMemo(() => sceneRes, [sceneRes])
@@ -166,6 +167,9 @@ const SceneTable = ({ sceneRes }) => {
 
   const { pageIndex, globalFilter } = state
 
+  const yesterday = moment(data[0].date).format("YYYY MMMM D")
+  console.log(data)
+
   return (
     <BoxWrapper colSpan={6}>
       <Box
@@ -177,7 +181,6 @@ const SceneTable = ({ sceneRes }) => {
           scrollbarWidth: "none",
         }}
         overflowY="auto"
-        // hide scrollbar
         pb="4"
       >
         <BoxTitle
@@ -186,7 +189,7 @@ const SceneTable = ({ sceneRes }) => {
           avgData=""
           slicedData=""
           color=""
-          description="Check out the busiest top scenes at a glance, with various metrics included"
+          description={`Check out the busiest top scenes on ${yesterday}`}
         />
         <Table
           h={["auto", 850]}
