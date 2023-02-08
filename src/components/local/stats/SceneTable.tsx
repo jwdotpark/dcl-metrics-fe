@@ -168,7 +168,6 @@ const SceneTable = ({ sceneRes }) => {
   const { pageIndex, globalFilter } = state
 
   const yesterday = moment(data[0].date).format("YYYY MMMM D")
-  console.log(data)
 
   return (
     <BoxWrapper colSpan={6}>
