@@ -8,6 +8,7 @@ import { useRouter } from "next/router"
 import externalLinks from "remark-external-links"
 import smartypants from "remark-smartypants"
 import remarkGfm from "remark-gfm"
+import moment from "moment"
 
 function Post({ data, content }) {
   const router = useRouter()
@@ -19,33 +20,39 @@ function Post({ data, content }) {
             <Box>
               <Flex m="4" mb="8" mx="6">
                 <Box>
-                  <Text fontSize={["lg", "xl", "2xl", "3xl"]} fontWeight="bold">
+                  <Text
+                    mb="2"
+                    fontSize={["lg", "xl", "2xl", "3xl"]}
+                    fontWeight="bold"
+                  >
                     {data.title}
+                  </Text>
+                  <Text mb="2" ml="1">
+                    {data.author} on{" "}
+                    {moment(data.date).format("MMMM D dddd, YYYY")}
                   </Text>
                   <Flex>
                     <Spacer />
-                    <Box>
-                      <Text ml="1">
-                        {data.author} posted on <i>{data.date}</i>
-                      </Text>
-                    </Box>
                   </Flex>
                 </Box>
               </Flex>
 
-              <Box className="markdown" m="4" mx="8">
+              <Box className="markdown" m="4" mb="8" mx="8">
                 <MDXRemote {...content} />
               </Box>
-              <Box m="4">
+              <Flex m="4">
+                <Spacer />
                 <Button
-                  w="100%"
+                  //w="100%"
+                  borderRadius="xl"
+                  shadow="md"
                   onClick={() => {
                     router.push("/blog")
                   }}
                 >
                   Go Back
                 </Button>
-              </Box>
+              </Flex>
             </Box>
           </BoxWrapper>
         </Center>

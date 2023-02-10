@@ -7,11 +7,14 @@ import moment from "moment"
 export const getStaticProps = () => {
   const posts = getPosts()
 
-  posts
-    .sort((a, b) => {
-      return moment(b.data.date).unix() - moment(a.data.date).unix()
-    })
-    .reverse()
+  posts.sort((a, b) => {
+    return moment(b.data.date).unix() - moment(a.data.date).unix()
+  })
+
+  // log isPublished property
+  posts.forEach((post) => {
+    console.log(post.data.title, post.data.published)
+  })
 
   return {
     props: {
