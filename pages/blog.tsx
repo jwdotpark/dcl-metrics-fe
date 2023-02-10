@@ -11,11 +11,6 @@ export const getStaticProps = () => {
     return moment(b.data.date).unix() - moment(a.data.date).unix()
   })
 
-  // log isPublished property
-  posts.forEach((post) => {
-    console.log(post.data.title, post.data.published)
-  })
-
   return {
     props: {
       posts,
