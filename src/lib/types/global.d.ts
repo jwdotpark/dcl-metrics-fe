@@ -8,4 +8,9 @@ declare type Props = {
   statusRes: {}
   landSalesRes: {}
   rental: {}
+  latestPost: {
+    data: {
+      description: string
+    }
+  }
 }

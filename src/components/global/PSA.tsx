@@ -6,12 +6,14 @@ import {
   Box,
   Text,
   useColorModeValue,
+  Link,
 } from "@chakra-ui/react"
 import { FiCoffee } from "react-icons/fi"
 import { AiFillCloseCircle } from "react-icons/ai"
-import Link from "next/link"
+import moment from "moment"
 
-const PSA = ({ setIsPSAVisible }) => {
+const PSA = ({ setIsPSAVisible, latestPost }) => {
+  const { description } = latestPost.data
   return (
     <Box
       mb="4"
@@ -25,24 +27,19 @@ const PSA = ({ setIsPSAVisible }) => {
       <Flex dir="row">
         <Center>
           <Text color={useColorModeValue("black", "white")}>
-            <Box
-              sx={{ transform: "translateY(2px)" }}
-              display="inline-block"
-              mr="2"
-            >
-              <FiCoffee color={useColorModeValue("black", "white")} />
-            </Box>
-            We&lsquo;ve added a LAND sales & Rentals chart. Check it out!
-            {/*<Box display="inline-block">
-              <Link href="/map">
-                <Text
-                  color={useColorModeValue("blue.600", "blue.200")}
-                  _hover={{ color: "blue", cursor: "pointer" }}
+            <Box display="inline-block" mr="2">
+              <Box display="inline"></Box>
+              <Text>
+                <Box
+                  sx={{ transform: "translateY(2px)" }}
+                  display="inline-block"
+                  mr="2"
                 >
-                  try it out on the new scene map!
-                </Text>
-              </Link>
-            </Box>*/}
+                  <FiCoffee color={useColorModeValue("black", "white")} />
+                </Box>
+                <Link href={`/blog/${latestPost.slug}`}>{description}</Link>
+              </Text>
+            </Box>
           </Text>
         </Center>
         <Spacer />

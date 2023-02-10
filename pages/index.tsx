@@ -18,6 +18,8 @@ import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
+import { getPosts } from "../blog/helpers/post"
+import moment from "moment"
 
 export async function getStaticProps() {
   let globalDailyRes, parcelRes, landSalesRes
@@ -80,12 +82,17 @@ export async function getStaticProps() {
     `,
   })
 
+  const latestPost = getPosts().sort((a, b) => {
+    return moment(b.data.date).unix() - moment(a.data.date).unix()
+  })[0]
+
   return {
     props: {
       globalDailyRes,
       parcelRes,
       landSalesRes,
       rental: data,
+      latestPost: latestPost,
     },
     revalidate: time,
   }
@@ -102,13 +109,14 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const [isPSAVisible, setIsPSAVisible] = useState(true)
 
-  const { globalDailyRes, parcelRes, landSalesRes, rental } = props
-
+  const { globalDailyRes, parcelRes, landSalesRes, rental, latestPost } = props
 
   return (
     <Layout>
       <Box w="100%">
-        {isPSAVisible && <PSA setIsPSAVisible={setIsPSAVisible} />}
+        {isPSAVisible && (
+          <PSA latestPost={latestPost} setIsPSAVisible={setIsPSAVisible} />
+        )}
         <Box mb="4">
           <UniqueVisitors data={globalDailyRes} />
         </Box>

@@ -11,7 +11,6 @@ import Link from "next/link"
 import BoxWrapper from "../../components/layout/local/BoxWrapper"
 
 const PostList = ({ posts }) => {
-  console.log(posts)
   return (
     <Box w={["100%", "100%", "100%", 1080]}>
       {posts.map((post) => (
