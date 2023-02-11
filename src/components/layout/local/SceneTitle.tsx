@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react"
 import DatePicker from "../../local/stats/scenes/DatePicker"
 import { FiDownload } from "react-icons/fi"
-import moment from "moment"
 
 const SceneTitle = ({
   name,
