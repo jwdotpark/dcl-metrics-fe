@@ -18,9 +18,7 @@ import {
 } from "@chakra-ui/react"
 import DatePicker from "../../local/stats/scenes/DatePicker"
 import { FiDownload } from "react-icons/fi"
-import { getEndpoint } from "../../../lib/data/constant"
-import React, { useState } from "react"
-import { getDataWithProxy } from "../../../lib/data/fetch"
+import moment from "moment"
 
 const SceneTitle = ({
   name,
@@ -39,25 +37,14 @@ const SceneTitle = ({
   }
 
   const handleSaveClick = async () => {
-    const path = `reports/${uuid}`
-    const endpoint = getEndpoint(path)
-
-    const response = await fetch(endpoint, {
-      headers: {
-        Accept: "text/csv",
-      },
-      mode: "no-cors",
-    })
-
-    const csvData = await response.text()
-    console.log(csvData)
-
-    const blob = new Blob([csvData], { type: "text/csv" })
-
-    const tempLink = document.createElement("a")
-    tempLink.href = URL.createObjectURL(blob)
-    tempLink.download = "report.csv"
-    tempLink.click()
+    const response = await fetch("/api/csv?uuid=" + uuid)
+    const data = await response.text()
+    const blob = new Blob([data], { type: "text/csv" })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.download = `${name}.csv`
+    link.href = url
+    link.click()
 
     onClose()
   }
