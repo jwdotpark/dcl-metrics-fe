@@ -36,10 +36,15 @@ const SceneTitle = ({
     onOpen()
   }
 
-  const handleSaveClick = () => {
-    const path = `reports/${uuid}`
-    const endpoint = getEndpoint(path)
-    window.open(endpoint)
+  const handleSaveClick = async () => {
+    const response = await fetch("/api/csv?uuid=" + uuid)
+    const data = await response.text()
+    const blob = new Blob([data], { type: "text/csv" })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.download = `${name}.csv`
+    link.href = url
+    link.click()
     onClose()
   }
 
