@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react"
 import { FiCoffee } from "react-icons/fi"
 import { AiFillCloseCircle } from "react-icons/ai"
-import moment from "moment"
 
 const PSA = ({ setIsPSAVisible, latestPost }) => {
   const { description } = latestPost.data
