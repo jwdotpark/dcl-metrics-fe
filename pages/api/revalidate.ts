@@ -12,7 +12,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     await res.revalidate("/scenes")
     await res.revalidate("/parcels")
     await res.revalidate("/status")
-    await res.revalidate("/dashboard/edifice")
     return res.json({ revalidated: true })
   } catch (err) {
     return res.status(500).send("Error revalidating")
