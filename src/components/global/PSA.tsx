@@ -36,7 +36,9 @@ const PSA = ({ setIsPSAVisible, latestPost }) => {
                 >
                   <FiCoffee color={useColorModeValue("black", "white")} />
                 </Box>
-                <Link href={`/blog/${latestPost.slug}`}>{description}</Link>
+                {/*<Link href={`/blog/${latestPost.slug}`}>{description}</Link>*/}
+                Search feature on Land Picker is added! You can now search for a
+                land by name.
               </Text>
             </Box>
           </Text>

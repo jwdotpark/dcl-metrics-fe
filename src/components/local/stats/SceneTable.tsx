@@ -45,6 +45,7 @@ const SceneTable = ({ sceneRes }) => {
       {
         Header: "#",
         Cell: ({ row }) => <Text>{row.index + 1}</Text>,
+        accessor: "index",
       },
       {
         Header: "Map",
@@ -167,7 +168,7 @@ const SceneTable = ({ sceneRes }) => {
 
   const { pageIndex, globalFilter } = state
 
-  const yesterday = moment(data[0].date).format("YYYY MMMM D")
+  const yesterday = moment(data[0].date).format("YYYY MMM. D")
 
   return (
     <BoxWrapper colSpan={6}>
@@ -194,6 +195,7 @@ const SceneTable = ({ sceneRes }) => {
           h={["auto", 850]}
           {...getTableProps()}
           w="auto"
+          mt="2"
           mb="2"
           mx={[2, 2, 4]}
           size="sm"

@@ -42,12 +42,12 @@ export const sidebarList = {
     icon: FiMapPin,
     subItem: true,
   },
-  blog: {
-    label: "Blog",
-    name: "blog",
-    icon: FiPenTool,
-    subItem: false,
-  },
+  //blog: {
+  //  label: "Blog",
+  //  name: "blog",
+  //  icon: FiPenTool,
+  //  subItem: false,
+  //},
   status: {
     label: "Status",
     name: "status",

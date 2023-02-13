@@ -5,8 +5,10 @@ const GlobalTableFilter = ({ filter, setFilter }) => {
     <Box>
       <Input
         bg={useColorModeValue("gray.200", "gray.700")}
-        borderRadius="md"
+        borderRadius="xl"
+        shadow="md"
         onChange={(e) => setFilter(e.target.value)}
+        placeholder="Search..."
         size="sm"
         value={filter || ""}
         variant="outline"
