@@ -18,8 +18,6 @@ import {
 } from "@chakra-ui/react"
 import DatePicker from "../../local/stats/scenes/DatePicker"
 import { FiDownload } from "react-icons/fi"
-import { getEndpoint } from "../../../lib/data/constant"
-import React from "react"
 
 const SceneTitle = ({
   name,
@@ -32,6 +30,7 @@ const SceneTitle = ({
   uuid,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+
   const handleCSVClick = () => {
     onOpen()
   }
@@ -93,7 +92,12 @@ const SceneTitle = ({
                       colorScheme="green"
                       onClick={handleSaveClick}
                     >
+                      {/*<a
+                        href={`${getEndpoint(`reports/${uuid}`)}`}
+                        download={`${name}.csv`}
+                      >*/}
                       Download
+                      {/*</a>*/}
                     </Button>
                     <Button borderRadius="xl" onClick={handleCloseClick}>
                       Cancel

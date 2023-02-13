@@ -1,4 +1,4 @@
-import { useBreakpointValue, Grid } from "@chakra-ui/react"
+import { useBreakpointValue, Grid, Box } from "@chakra-ui/react"
 import Layout from "../../src/components/layout/layout"
 import staticScene from "../../public/data/cached_scenes_top.json"
 import Scene from "../../src/components/local/stats/Scene"
@@ -17,6 +17,7 @@ import {
   time,
 } from "../../src/lib/data/constant"
 import staticGlobalScenes from "../../public/data/staticGlobalScene.json"
+//import SceneTable from "../../src/components/local/stats/SceneTable"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -80,6 +81,9 @@ const Scenes = (props: Props) => {
         dailyUsers={{}}
         uuid={""}
       />
+      {/*<Box mb="4">
+        <SceneTable sceneRes={sceneRes} />
+      </Box>*/}
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <TopScenesVisitors res={globalSceneRes} />
         <ScenesTimeSpent res={globalSceneRes} />

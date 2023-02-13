@@ -6,10 +6,15 @@ import {
   Spacer,
   ButtonGroup,
   useColorModeValue,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Center,
 } from "@chakra-ui/react"
 import MapMenu from "./MapMenu"
-import { FiChevronsDown, FiChevronsUp } from "react-icons/fi"
+import { FiChevronsDown, FiChevronsUp, FiSearch } from "react-icons/fi"
 import { useEffect } from "react"
+import SearchBox from "./SearchBox"
 
 const MapButtonGroup = ({
   isMapExpanded,
@@ -24,6 +29,10 @@ const MapButtonGroup = ({
   btnBg,
   handle,
   setMapHeight,
+  keyword,
+  setKeyword,
+  searchResult,
+  setSearchResultID,
 }) => {
   const handleFullscreen = () => {
     if (!handle.active) {
@@ -32,6 +41,13 @@ const MapButtonGroup = ({
     } else {
       setMapHeight({ collapsed: 500, expanded: "80vh" })
       handle.exit()
+    }
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault()
+      document.getElementById("search-result").focus()
     }
   }
 
@@ -44,23 +60,51 @@ const MapButtonGroup = ({
   return (
     <>
       <Flex pos="absolute" w="100%" p="2">
+        <Box
+          pos="absolute"
+          zIndex="docked"
+          top="2"
+          left="2"
+          bg={btnBg}
+          borderRadius="xl"
+          shadow="md"
+        >
+          <InputGroup>
+            <InputLeftElement
+              // eslint-disable-next-line react/no-children-prop
+              children={
+                <Box sx={{ transform: "translateY(-4px)" }}>
+                  <FiSearch />
+                </Box>
+              }
+            />
+            <Input
+              minW="300"
+              borderTopRadius="xl"
+              borderBottomRadius={searchResult.length > 0 ? "0" : "xl"}
+              id="search-input"
+              onChange={(e) => setKeyword(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e)}
+              placeholder="Genesis Plaza"
+              size="sm"
+              type="text"
+              variant="filled"
+            />
+          </InputGroup>
+          {searchResult.length !== 0 && (
+            <SearchBox
+              searchResult={searchResult}
+              setSearchResultID={setSearchResultID}
+              isMapExpanded={isMapExpanded}
+            />
+          )}
+        </Box>
+        <Spacer />
         <Box>
-          <Button
-            zIndex="docked"
-            display={handle.active ? "none" : "inline-block"}
-            mr="2"
-            bg={btnBg}
-            borderRadius="xl"
-            shadow="md"
-            onClick={() => setIsMapExpanded(!isMapExpanded)}
-            size="sm"
-            variant="solid"
-          >
-            {isMapExpanded ? <FiChevronsUp /> : <FiChevronsDown />}
-          </Button>
           <Button
             className={`umami--click--fullscreen-button`}
             zIndex="docked"
+            mr="2"
             bg={btnBg}
             borderRadius="xl"
             shadow="md"
@@ -70,21 +114,19 @@ const MapButtonGroup = ({
           >
             {handle.active ? "Exit Fullscreen" : "Fullscreen"}
           </Button>
+          <Button
+            zIndex="docked"
+            display={handle.active ? "none" : "inline-block"}
+            bg={btnBg}
+            borderRadius="xl"
+            shadow="md"
+            onClick={() => setIsMapExpanded(!isMapExpanded)}
+            size="sm"
+            variant="solid"
+          >
+            {isMapExpanded ? <FiChevronsUp /> : <FiChevronsDown />}
+          </Button>
         </Box>
-        <Spacer />
-        <Button
-          pos="absolute"
-          zIndex="docked"
-          top="2"
-          right="2"
-          bg={btnBg}
-          borderRadius="xl"
-          size="sm"
-        >
-          <Text as="kbd" color={useColorModeValue("black", "white")}>
-            [{tempCoord.x},{tempCoord.y}]
-          </Text>
-        </Button>
       </Flex>
       <Flex>
         <Box pos="absolute" zIndex="docked" bottom="2" left="2">
@@ -108,6 +150,18 @@ const MapButtonGroup = ({
               variant="solid"
             >
               -
+            </Button>
+            <Button
+              zIndex="docked"
+              minW="70"
+              bg={btnBg}
+              borderRadius="xl"
+              shadow="md"
+              //isDisabled
+              size="sm"
+              variant="solid"
+            >
+              [{tempCoord.x},{tempCoord.y}]
             </Button>
             <Button
               zIndex="docked"

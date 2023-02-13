@@ -1,1 +1,2248 @@
-[{"name":"Genesis Plaza","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=-1,-1&selected=-1,-1;-1,-2;-1,-3;-1,-4;-1,-5;-1,-6;-1,-7;-1,-8;-1,-9;-1,0;-1,1;-1,2;-1,3;-1,4;-1,5;-1,6;-1,7;-1,8;-1,9;-2,-1;-2,-2;-2,-3;-2,-4;-2,-5;-2,-6;-2,-7;-2,-8;-2,-9;-2,0;-2,1;-2,2;-2,3;-2,4;-2,5;-2,6;-2,7;-2,8;-2,9;-3,-1;-3,-2;-3,-3;-3,-4;-3,-5;-3,-6;-3,-7;-3,-8;-3,-9;-3,0;-3,1;-3,2;-3,3;-3,4;-3,5;-3,6;-3,7;-3,8;-3,9;-4,-1;-4,-2;-4,-3;-4,-4;-4,-5;-4,-6;-4,-7;-4,-8;-4,-9;-4,0;-4,1;-4,2;-4,3;-4,4;-4,5;-4,6;-4,7;-4,8;-4,9;-5,-1;-5,-2;-5,-3;-5,-4;-5,-5;-5,-6;-5,-7;-5,-8;-5,-9;-5,0;-5,1;-5,2;-5,3;-5,4;-5,5;-5,6;-5,7;-5,8;-5,9;-6,-1;-6,-2;-6,-3;-6,-4;-6,-5;-6,-6;-6,-7;-6,-8;-6,-9;-6,0;-6,1;-6,2;-6,3;-6,4;-6,5;-6,6;-6,7;-6,8;-6,9;-7,-1;-7,-2;-7,-3;-7,-4;-7,-5;-7,-6;-7,-7;-7,-8;-7,-9;-7,0;-7,1;-7,2;-7,3;-7,4;-7,5;-7,6;-7,7;-7,8;-7,9;-8,-1;-8,-2;-8,-3;-8,-4;-8,-5;-8,-6;-8,-7;-8,-8;-8,-9;-8,0;-8,1;-8,2;-8,3;-8,4;-8,5;-8,6;-8,7;-8,8;-8,9;-9,-1;-9,-2;-9,-3;-9,-4;-9,-5;-9,-6;-9,-7;-9,-8;-9,-9;-9,0;-9,1;-9,2;-9,3;-9,4;-9,5;-9,6;-9,7;-9,8;-9,9;0,-1;0,-2;0,-3;0,-4;0,-5;0,-6;0,-7;0,-8;0,-9;0,0;0,1;0,2;0,3;0,4;0,5;0,6;0,7;0,8;0,9;1,-1;1,-2;1,-3;1,-4;1,-5;1,-6;1,-7;1,-8;1,-9;1,0;1,1;1,2;1,3;1,4;1,5;1,6;1,7;1,8;1,9;10,-1;10,-2;10,-3;10,-4;10,-5;10,-6;10,-7;10,-8;10,-9;10,0;10,1;10,2;10,3;10,4;10,5;10,6;10,7;10,8;10,9;2,-1;2,-2;2,-3;2,-4;2,-5;2,-6;2,-7;2,-8;2,-9;2,0;2,1;2,2;2,3;2,4;2,5;2,6;2,7;2,8;2,9;3,-1;3,-2;3,-3;3,-4;3,-5;3,-6;3,-7;3,-8;3,-9;3,0;3,1;3,2;3,3;3,4;3,5;3,6;3,7;3,8;3,9;4,-1;4,-2;4,-3;4,-4;4,-5;4,-6;4,-7;4,-8;4,-9;4,0;4,1;4,2;4,3;4,4;4,5;4,6;4,7;4,8;4,9;5,-1;5,-2;5,-3;5,-4;5,-5;5,-6;5,-7;5,-8;5,-9;5,0;5,1;5,2;5,3;5,4;5,5;5,6;5,7;5,8;5,9;6,-1;6,-2;6,-3;6,-4;6,-5;6,-6;6,-7;6,-8;6,-9;6,0;6,1;6,2;6,3;6,4;6,5;6,6;6,7;6,8;6,9;7,-1;7,-2;7,-3;7,-4;7,-5;7,-6;7,-7;7,-8;7,-9;7,0;7,1;7,2;7,3;7,4;7,5;7,6;7,7;7,8;7,9;8,-1;8,-2;8,-3;8,-4;8,-5;8,-6;8,-7;8,-8;8,-9;8,0;8,1;8,2;8,3;8,4;8,5;8,6;8,7;8,8;8,9;9,-1;9,-2;9,-3;9,-4;9,-5;9,-6;9,-7;9,-8;9,-9;9,0;9,1;9,2;9,3;9,4;9,5;9,6;9,7;9,8;9,9","visitors":2627,"share_of_global_visitors":24,"avg_time_spent":2987,"avg_time_spent_afk":1653,"total_logins":2305,"unique_logins":2064,"total_logouts":980,"unique_logouts":892,"complete_sessions":943,"avg_complete_session_duration":2260,"marathon_users":[{"address":"0x231735c91518c9659ffd8cad0c97be477756f9b2","avatar_url":"https://peer-ec1.decentraland.org/content/contents/QmXDzX9cP7PCYScGUYYqkAbQiubYaPCsmTq9XukPh1UZqm","guest_user":true,"name":"Hioranth","verified_user":false,"time_spent":1410},{"address":"0x6c086b79e39a14d3780ad137958e38b79b0581d3","avatar_url":"https://peer-ec1.decentraland.org/content/contents/Qmafhwchg5jH75w8JpmVNGtnmFXWgc1bLUmJNFrgCxVSbP","guest_user":true,"name":"Maestro","verified_user":false,"time_spent":1341},{"address":"0xd8f7ee012ac8471727a9a73c4e7327ab9e1db523","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidthmwwreafwh4dp6x5cst6dnq5ksli24dcvoln6uksumu3lfc7aa","guest_user":false,"name":"TrickStar","verified_user":true,"time_spent":1252},{"address":"0xcbd9228aec474a0afb8999a0b7e08659d9db7781","avatar_url":null,"guest_user":true,"name":"fst360","verified_user":false,"time_spent":1229},{"address":"0x7765b6ba6ce7f634331470190b8a1d7dac67ad7c","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreihin525p67436hmd4j3dsbeuuabhkixhrf4lbqonn53lw5pvbd2wm","guest_user":false,"name":"JoseCarlos#ad7c","verified_user":false,"time_spent":1187},{"address":"0xbc80b946303fd03baf6dc9624ed4631693fba954","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreihlf42d4lukcihvcyqfefsbyasitxyiqdsik3xfogdblvpu2p4zoy","guest_user":true,"name":"Legga#a954","verified_user":false,"time_spent":1183},{"address":"0x830e641210e18bde34c1bc9d540c7508926a4a3e","avatar_url":null,"guest_user":true,"name":"JJAAA","verified_user":false,"time_spent":1178},{"address":"0x6d5e5ba88861df8dba0eb53ebad1ba89eb4b238b","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreighgrdzo3qzolzjpbwlku43bzqjwtmsj7v2zrlz3nva37mtauuqri","guest_user":false,"name":"ckbubbles","verified_user":true,"time_spent":1140},{"address":"0xeb71f468c3a1ca71def78e23d8b4a2ac08573667","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifh63rmlvhhqgwgud2iey7wucdbqu76hw7gc5clezhzt5klhyhtti","guest_user":false,"name":"jeffrey","verified_user":false,"time_spent":1099},{"address":"0x01329be6b7da850fae6e6e88e98194c9a684ce6c","avatar_url":null,"guest_user":true,"name":"destopk","verified_user":false,"time_spent":1045}],"time_spent_histogram":[[0,2094],[1,123],[2,48],[3,32],[4,17],[5,21],[6,17],[7,12],[8,11],[9,8],[10,3],[11,9],[12,6],[13,6],[14,4],[15,2],[16,3],[17,5],[18,2],[19,3],[20,2],[22,1],[23,1]],"visitors_by_hour_histogram":{"10":115,"11":114,"12":121,"13":134,"14":173,"15":133,"16":156,"17":133,"18":124,"19":106,"20":101,"21":95,"22":110,"23":89,"00":61,"01":72,"02":76,"03":72,"04":63,"05":87,"06":82,"07":83,"08":109,"09":96},"parcels_heatmap":{"0,0":552,"0,1":134,"0,2":4,"0,3":10,"0,4":2,"0,5":1,"0,6":3,"0,7":8,"0,8":1,"0,9":2,"1,0":691,"1,1":157,"1,2":12,"1,3":9,"1,4":14,"1,5":6,"1,6":19,"1,7":5,"1,8":2,"1,9":2,"2,0":74,"2,1":25,"2,2":11,"2,3":2,"2,4":3,"2,5":17,"2,6":9,"2,7":4,"2,8":1,"3,0":34,"3,1":4,"3,2":8,"3,3":5,"3,4":5,"3,5":12,"3,6":5,"3,7":1,"3,9":1,"4,0":16,"4,1":3,"4,2":5,"4,3":6,"4,4":4,"4,5":3,"4,6":5,"4,8":2,"5,0":11,"5,1":1,"5,2":6,"5,3":7,"5,4":6,"5,5":1,"5,7":2,"5,8":2,"6,0":8,"6,1":5,"6,2":6,"6,3":6,"6,4":1,"6,5":4,"6,7":1,"6,8":1,"6,9":1,"7,0":2,"7,1":3,"7,2":3,"7,3":2,"7,4":2,"7,5":3,"7,6":9,"7,7":3,"8,0":5,"8,1":1,"8,3":3,"8,6":4,"8,7":3,"8,8":1,"9,2":2,"9,3":2,"9,6":2,"-1,0":65,"-1,1":26,"-1,2":3,"-1,3":7,"-1,4":1,"-1,5":6,"-1,6":4,"-1,7":5,"-1,8":7,"-2,0":32,"-2,1":10,"-2,2":9,"-2,3":4,"-2,4":5,"-2,5":3,"-2,7":3,"-2,8":9,"-3,0":20,"-3,1":10,"-3,2":2,"-3,3":2,"-3,4":3,"-3,5":1,"-3,6":1,"-3,7":2,"-3,8":2,"-4,0":6,"-4,1":2,"-4,2":3,"-4,3":2,"-4,4":1,"-4,6":2,"-5,0":4,"-5,2":2,"-5,4":1,"-5,5":2,"-5,6":2,"-5,7":1,"-5,8":1,"-6,0":9,"-6,1":1,"-6,2":1,"-6,3":2,"-6,4":5,"-6,5":5,"-6,6":2,"-6,7":1,"-7,0":8,"-7,1":3,"-7,2":4,"-7,4":3,"-7,7":8,"-7,8":1,"-8,0":6,"-8,3":6,"-9,0":5,"-9,1":1,"-9,3":1,"-9,4":2,"-9,5":1,"-9,6":1,"0,-1":1729,"0,-2":36,"0,-3":13,"0,-4":24,"0,-5":13,"0,-6":9,"0,-7":4,"0,-8":4,"0,-9":7,"1,-1":1723,"1,-2":31,"1,-3":16,"1,-4":7,"1,-5":16,"1,-6":7,"1,-7":6,"1,-8":1,"1,-9":2,"2,-1":16,"2,-2":6,"2,-3":6,"2,-4":3,"2,-5":22,"2,-6":6,"2,-7":2,"2,-8":2,"3,-1":10,"3,-2":7,"3,-3":6,"3,-4":8,"3,-5":1,"3,-6":6,"3,-7":4,"3,-9":2,"4,-1":5,"4,-2":2,"4,-3":6,"4,-4":3,"4,-5":5,"4,-6":5,"4,-7":5,"5,-1":10,"5,-2":5,"5,-3":2,"5,-4":6,"5,-5":5,"5,-6":2,"5,-7":2,"6,-1":9,"6,-2":4,"6,-3":7,"6,-4":7,"6,-5":4,"6,-6":9,"6,-7":10,"6,-8":3,"7,-1":18,"7,-2":22,"7,-3":7,"7,-4":3,"7,-6":8,"7,-7":46,"7,-8":19,"7,-9":2,"8,-1":24,"8,-2":21,"8,-3":4,"8,-5":1,"8,-6":12,"8,-7":25,"8,-8":13,"8,-9":1,"9,-1":15,"9,-2":41,"9,-3":2,"9,-6":2,"9,-7":4,"9,-8":1,"-1,-1":13,"-1,-2":3,"-1,-3":5,"-1,-4":11,"-1,-5":6,"-1,-6":5,"-1,-7":3,"-1,-8":2,"-1,-9":4,"-2,-1":3,"-2,-2":3,"-2,-3":21,"-2,-4":3,"-2,-5":1,"-2,-6":1,"-2,-7":8,"-2,-8":5,"-2,-9":5,"-3,-1":9,"-3,-2":16,"-3,-3":2,"-3,-4":1,"-3,-5":1,"-3,-6":5,"-3,-7":1,"-3,-8":1,"-4,-1":11,"-4,-2":8,"-4,-3":2,"-4,-4":3,"-4,-5":3,"-4,-6":4,"-4,-8":4,"-4,-9":1,"-5,-1":12,"-5,-2":2,"-5,-3":4,"-5,-4":7,"-5,-5":3,"-5,-6":5,"-5,-7":2,"-5,-9":2,"-6,-1":5,"-6,-2":4,"-6,-3":1,"-6,-4":1,"-6,-5":4,"-6,-6":2,"-6,-7":8,"-6,-8":1,"-6,-9":2,"-7,-1":4,"-7,-2":5,"-7,-4":1,"-7,-7":4,"-8,-1":1,"-8,-3":1,"-8,-6":1,"-8,-7":1,"-9,-1":1,"-9,-2":3,"-9,-3":1,"-9,-4":2,"-9,-8":1,"-9,-9":1,"10,-3":1,"10,-4":1,"10,-6":2,"10,-7":2,"10,-8":1,"10,-9":1}},{"name":"ICE Poker - The Stronghold","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=-100,126&selected=-100,126;-100,127;-100,128;-100,129;-101,126;-101,127;-101,128;-101,129;-102,126;-102,127;-102,128;-102,129;-99,126;-99,127;-99,128;-99,129","visitors":2186,"share_of_global_visitors":20,"avg_time_spent":15129,"avg_time_spent_afk":14425,"total_logins":2099,"unique_logins":1698,"total_logouts":2308,"unique_logouts":1891,"complete_sessions":2023,"avg_complete_session_duration":10097,"marathon_users":[{"address":"0xbf5099c0477c3dffaeb176ff2359c03a6dc35638","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifnbd23kdj6wspd27wtvnspfwq6ol25634t7ay4fg5b4qbcoafigy","guest_user":false,"name":"Cocky","verified_user":false,"time_spent":1419},{"address":"0xccc4cc08b6e1bb42d450c7a3ac856335659379d6","avatar_url":null,"guest_user":true,"name":"BitrazAKQJ","verified_user":false,"time_spent":1414},{"address":"0x5895a2e722df6c0e121a6e42cecc6f109de383f9","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiesyx2zsg426emijx26l4pyp66tnr5xskxdl3xfc7y3cozvalyjyq","guest_user":false,"name":"Penguin#83f9","verified_user":false,"time_spent":1414},{"address":"0x16e98c341709758d12c17ee4e3b845cf1c924f15","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiewiytd7hsk6v2bug5mty6ujzaz3gkktbsny4a7qegtst5d6abxs4","guest_user":false,"name":"djskhffudh","verified_user":false,"time_spent":1412},{"address":"0x63255c82247032b56be02c5303bb1982640c3431","avatar_url":null,"guest_user":true,"name":"joyi","verified_user":false,"time_spent":1404},{"address":"0xacc0d42d988b7b0afa44265a0d41ec0faa9db068","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreibfsyvbuf5carrrawllzpicf3y2jmlwqklhuhbs3kcpwrzif4uikq","guest_user":false,"name":"ROOOD","verified_user":false,"time_spent":1387},{"address":"0x19c2612c0483b83246a85beb3e4eccf8440459c6","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreicuikrhs3n5nyccmq7d66fc4oyulinycwsfrrzxpdur325agwbqte","guest_user":false,"name":"Delphi","verified_user":false,"time_spent":1381},{"address":"0x8b574cbac29ef83a9b5fb9ac4dad0c92d8d4675d","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreibar23f75kcrocswbiynlexf2wqil2wbit3upssjvlsb4os25zxay","guest_user":false,"name":"Ignaa","verified_user":false,"time_spent":1377},{"address":"0x3b5dbfce2dbcdf22a7e01df0106db088260b46a1","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreibtkmxnzlu5iwfudmlz5w6chs65s2xyh6dxpr5xslmbxmnk7yv24i","guest_user":false,"name":"LaPlebDeLaPleb#46a1","verified_user":false,"time_spent":1373},{"address":"0x4e5ae882d5979c7a7de13ebc938e3ff4f9bd2b31","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreib62ziebrwdut3wkqq7ccrv2ivjzypvvnqutl2mwtbforcjqirqqu","guest_user":false,"name":"Chandler","verified_user":false,"time_spent":1371}],"time_spent_histogram":[[0,612],[1,485],[2,212],[3,116],[4,70],[5,71],[6,51],[7,44],[8,54],[9,43],[10,33],[11,21],[12,21],[13,20],[14,24],[15,30],[16,23],[17,21],[18,18],[19,21],[20,7],[21,15],[22,20],[23,7]],"visitors_by_hour_histogram":{"10":222,"11":220,"12":223,"13":272,"14":272,"15":254,"16":275,"17":262,"18":227,"19":224,"20":218,"21":208,"22":228,"23":200,"00":159,"01":185,"02":192,"03":250,"04":181,"05":171,"06":169,"07":136,"08":145,"09":186},"parcels_heatmap":{"-99,126":24,"-99,127":248,"-99,128":325,"-99,129":27,"-100,126":404,"-100,127":2144,"-100,128":917,"-100,129":373,"-101,126":482,"-101,127":1349,"-101,128":966,"-101,129":875,"-102,126":36,"-102,127":120,"-102,128":105,"-102,129":42}},{"name":"Australian Open","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=-125,69&selected=-125,69;-125,70;-125,71;-125,72;-125,73;-125,74;-126,69;-126,70;-126,71;-126,72;-126,73;-126,74;-127,69;-127,70;-127,71;-127,72;-127,73;-127,74;-128,69;-128,70;-128,71;-128,72;-128,73;-128,74;-129,69;-129,70;-129,71;-129,72;-129,73;-129,74;-130,69;-130,70;-130,71;-130,72;-130,73","visitors":2031,"share_of_global_visitors":16,"avg_time_spent":1271,"avg_time_spent_afk":776,"total_logins":626,"unique_logins":609,"total_logouts":645,"unique_logouts":629,"complete_sessions":177,"avg_complete_session_duration":2720,"marathon_users":[{"address":"0x3421daffaf5d9c84c73bd6d1db87c92275d4c57a","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreicbgo4w6bwndylupkr5uaap274lldzst4fee5a7xkczsusyktubjq","guest_user":false,"name":"Mike#c57a","verified_user":false,"time_spent":1214},{"address":"0x2e0d71b64702a0a0a04f67d32fed0ca2e35d0a93","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiafvlczp7o6tfxjsqnqculkjjnefklyopdqlbtt26725ohp3gl3ne","guest_user":false,"name":"JE#0a93","verified_user":false,"time_spent":1157},{"address":"0x46af5d180f7dc34bddb8fbeba78340709d3a250b","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreibzjq3kfzpzkkd6paptxwfky4ukibfgcr4wvqxequl3g6uerc2iha","guest_user":false,"name":"MetaRobert#250b","verified_user":false,"time_spent":1153},{"address":"0x3074fcd8b520567abcfb68c2316419bc070841a2","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreicutiyhsgmab5u2szqu3io2orsmte43h6wemlwjvjiusrpvxiyqli","guest_user":false,"name":"Dovile","verified_user":true,"time_spent":1012},{"address":"0xb0c4eb0a8bf91d5dfe8db6fef070b522f2a03a9b","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifndondgnygxxq5zqoakgo7hknsaxxltcwiw2xy3z5mpnshqakjoe","guest_user":false,"name":"Otaku","verified_user":false,"time_spent":968},{"address":"0xb248140d89ee4a1feabdd28f2f3ef23e2bd4b469","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiaxcp6psv74otmfwrdcjavspijs7lqvguyigdadnipnfu7wmklxzm","guest_user":false,"name":"theCast91","verified_user":true,"time_spent":880},{"address":"0x01d1caa915cbb6dea512537fa3e22578e9a5991b","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreick4i67m44y6w2hm57eav53gnh5i7lacudzhoiekuyw2ronicvutm","guest_user":false,"name":"FURRYPAWSNFT","verified_user":false,"time_spent":869},{"address":"0x2838b2f12e73b9b988ea58409299f184f147615a","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreieyy34p3edzt7pc553j7r2ch4pwefox2e23ulhgphj7k5s5yan4xq","guest_user":false,"name":"MENTZS","verified_user":false,"time_spent":854},{"address":"0xae3b4e35b5d741e0ae44b81d028a59f993f646e7","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreid7rkzaqwsb6cv2tnigqdwycrel2ekf346ihurdjc5digwcwpgbbm","guest_user":false,"name":"Ben#46e7","verified_user":false,"time_spent":706},{"address":"0x0636211443e91468ee3657e1d7faede7059c4843","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreickisooeiet432n5vsxk46xo7nglff5flogm73zydagkfz57q3yxm","guest_user":false,"name":"AO","verified_user":true,"time_spent":705}],"time_spent_histogram":[[0,1500],[1,29],[2,17],[3,8],[4,6],[5,5],[6,2],[7,8],[8,2],[10,2],[11,4],[14,3],[16,2],[19,2],[20,1]],"visitors_by_hour_histogram":{"10":82,"11":91,"12":93,"13":109,"14":55,"15":43,"16":101,"17":121,"18":100,"19":128,"20":99,"21":109,"22":107,"23":106,"00":25,"01":59,"02":52,"03":37,"04":26,"05":22,"06":54,"07":97,"08":125,"09":114},"parcels_heatmap":{"-125,69":15,"-125,70":6,"-125,71":8,"-125,72":4,"-125,73":11,"-125,74":13,"-126,69":9,"-126,71":1,"-126,73":2,"-126,74":4,"-127,69":17,"-127,70":4,"-127,72":1,"-127,73":2,"-127,74":2,"-128,69":25,"-128,70":193,"-128,71":697,"-128,72":17,"-128,73":8,"-128,74":21,"-129,69":42,"-129,70":229,"-129,71":197,"-129,72":44,"-129,73":15,"-129,74":8,"-130,69":100,"-130,70":108,"-130,71":245,"-130,72":241,"-130,73":42}},{"name":"Australian Open","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=-128,65&selected=-128,65;-128,66;-128,67;-129,65;-129,66;-129,67","visitors":1914,"share_of_global_visitors":15,"avg_time_spent":672,"avg_time_spent_afk":271,"total_logins":575,"unique_logins":574,"total_logouts":570,"unique_logouts":569,"complete_sessions":177,"avg_complete_session_duration":291,"marathon_users":[{"address":"0x38dd53279a7831afd1fbc428f68ff352727cc2ba","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiduyixwnjijr7mgktjautwaj7nz34o35gvhtcus3ijlogkwq66c6q","guest_user":false,"name":"kuangmo","verified_user":false,"time_spent":1084},{"address":"0xa5b929b1a457725e91d6da52b90a4bcbd7ff4d94","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidf32rvqht2py3athd5ascjz6wzlmjjmo3yahhtvjfragbgp2aaae","guest_user":false,"name":"BingoBob#4d94","verified_user":false,"time_spent":964},{"address":"0x23dbe4407a2bb2caa9b95d73fe6aa682905fca28","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreib5faaqx3yxl74voe7cy5wosj36kkqh7gqsdbd6prsihvppk42mky","guest_user":false,"name":"Peterpaul#ca28","verified_user":false,"time_spent":933},{"address":"0xd0bd81e24d4f97e39b497cb45ac9f10b450b2c9e","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidorctshp7hpgpnahqhuohns7waiimebeoqjpbjhxzoolgyd3zvyy","guest_user":false,"name":"SFDK","verified_user":false,"time_spent":903},{"address":"0x28d340f1359a1413888d25d777e90744a698bd4e","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreigtgidapvgyaemnfi5alxygxrmhyg7ns7hzoivotc5dhcdwduxnqq","guest_user":false,"name":"BlueMerle#bd4e","verified_user":false,"time_spent":693},{"address":"0xc50b10ff74fe66938ba2b6e4ca087703ecad3880","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreibc4awmvne2tfr3caa7uewwjlxppggkzhce57fwpxtvp6ed7deer4","guest_user":false,"name":"qiezi","verified_user":false,"time_spent":610},{"address":"0xf195c6ac823d9ae36a6c4170d7c15f84df1a79c8","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidthmwwreafwh4dp6x5cst6dnq5ksli24dcvoln6uksumu3lfc7aa","guest_user":false,"name":"Aimy#79c8","verified_user":false,"time_spent":607},{"address":"0x0b81347ec5d389af37677ea44f42f42a0d0cee0a","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreigg6346brllkugab222nbacsmjmsztbc2r4555rifzahacmysqvr4","guest_user":false,"name":"littlewing","verified_user":false,"time_spent":576},{"address":"0x683792c37e60906ba4ed304dde382778a1a18530","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidthmwwreafwh4dp6x5cst6dnq5ksli24dcvoln6uksumu3lfc7aa","guest_user":false,"name":"lel","verified_user":true,"time_spent":546},{"address":"0xd7a07be84c3c555d2d5e02eceef8e5b0e3b57684","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreif7dyazlzbaulscnzatpxctweqpino4w3u2hoibavrarrkwrfhjli","guest_user":true,"name":"Ednut","verified_user":false,"time_spent":457}],"time_spent_histogram":[[0,1477],[1,8],[2,9],[3,1],[4,4],[6,4],[7,2],[9,2],[10,2],[11,1],[15,2],[16,1],[18,1]],"visitors_by_hour_histogram":{"10":70,"11":56,"12":78,"13":106,"14":51,"15":40,"16":106,"17":95,"18":81,"19":122,"20":96,"21":111,"22":104,"23":73,"00":28,"01":103,"02":72,"03":32,"04":16,"05":8,"06":51,"07":82,"08":92,"09":118},"parcels_heatmap":{"-128,65":27,"-128,66":31,"-128,67":41,"-129,65":28,"-129,66":530,"-129,67":44}},{"name":"WonderMine Crafting Game","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=-25,55&selected=-25,55;-25,56;-25,57;-25,58;-25,59;-25,60;-25,61;-25,62;-26,55;-26,56;-26,57;-26,58;-26,59;-26,60;-26,61;-26,62;-27,55;-27,56;-27,57;-27,58;-27,59;-27,60;-27,61;-27,62;-28,55;-28,56;-28,57;-28,58;-28,59;-28,60;-28,61;-28,62;-29,55;-29,56;-29,57;-29,58;-29,59;-29,60;-29,61;-29,62","visitors":1217,"share_of_global_visitors":10,"avg_time_spent":11987,"avg_time_spent_afk":9375,"total_logins":730,"unique_logins":558,"total_logouts":994,"unique_logouts":789,"complete_sessions":616,"avg_complete_session_duration":7477,"marathon_users":[{"address":"0xd72e2a8b1a33b6689ccb7a929cbebf3a530dc5d7","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreib7gp5wufcrontxvzio5jjow5begfzo7x6mlwtev5zcucpzuhhppq","guest_user":false,"name":"rhagde","verified_user":true,"time_spent":1389},{"address":"0x11d0acf9f779e329d9f202be8e31ddef26d191d1","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreid4tahgci3v47jfqaas3uio7t2bvs6pnrjkgqt3evgcjgbja5ucra","guest_user":false,"name":"Daniel","verified_user":false,"time_spent":1378},{"address":"0xa12ec5e0fef29032d3e038631a99fe879c8f759f","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifwsyh4wyfkhgkbq5epkqdh3arf2f2hby3irjr537l4m2u52dttpu","guest_user":false,"name":"Blakezodoq","verified_user":true,"time_spent":1374},{"address":"0x564ad6c282efdf52cb2e03cd3f9c32690240d2e7","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreid3wps44p5yngjuuaerwdqbtzpmig7u6dfiwilrgxf4ufmiyapwta","guest_user":false,"name":"Gorilla","verified_user":false,"time_spent":1368},{"address":"0xf17fd40b7d8d33fd662e96c66e52c409b87e2b3c","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreicwgpusmjn7ckceerhmmnrdcrvbtjze36phvftgf3b6v2klqqsfs4","guest_user":false,"name":"5","verified_user":false,"time_spent":1362},{"address":"0xa99b46cf22868a7f115f34001140bfd948f3652d","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifban2dbsmhdf74i7vtqiwrjvjkwgasntpakilealz652mmozvz4e","guest_user":false,"name":"cryptojer#652d","verified_user":false,"time_spent":1355},{"address":"0x659c2a1d984db13aaa79fc7cf8ac6c3041332aeb","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidbchkulpi4lrztklfq7mlljsbb3siqij2gjszn4nublhrassrqua","guest_user":false,"name":"Yione","verified_user":false,"time_spent":1355},{"address":"0x3a03ba2e9865c99de9f429f16f88141fcfa959ae","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiea5tgnx74cgyp546aydjczpn37v6egcpgmefcfwa2kkxp6cmacha","guest_user":false,"name":"TheBoardy99#59ae","verified_user":false,"time_spent":1342},{"address":"0x2450bbd3577f17c0e2f7359e5369260bf32c4a46","avatar_url":"https://peer-ec1.decentraland.org/content/contents/QmVoUJVhuaqA7D8DpocDtJdJ1RESmEjC2njQ1UhfE1sH3W","guest_user":true,"name":"lindsey#4a46","verified_user":false,"time_spent":1316},{"address":"0x4e7bfa03f2b25ded9014572696d565f486a0746f","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreif2npnjz6j74bmootbk7urrz77ldvdbxh7mhr5gc7vtoz6prj3ylm","guest_user":false,"name":"pouria","verified_user":false,"time_spent":1310}],"time_spent_histogram":[[0,546],[1,159],[2,48],[3,31],[4,18],[5,20],[6,16],[7,13],[8,7],[9,13],[10,17],[11,10],[12,11],[13,9],[14,13],[15,19],[16,5],[17,7],[18,10],[19,5],[20,11],[21,9],[22,7],[23,1]],"visitors_by_hour_histogram":{"10":80,"11":94,"12":83,"13":93,"14":129,"15":108,"16":103,"17":97,"18":92,"19":88,"20":90,"21":80,"22":95,"23":73,"00":67,"01":83,"02":80,"03":68,"04":75,"05":68,"06":63,"07":74,"08":45,"09":76},"parcels_heatmap":{"-25,55":35,"-25,56":108,"-25,57":128,"-25,58":137,"-25,59":102,"-25,60":89,"-25,61":53,"-25,62":12,"-26,55":207,"-26,56":640,"-26,57":714,"-26,58":737,"-26,59":724,"-26,60":692,"-26,61":533,"-26,62":46,"-27,55":217,"-27,56":743,"-27,57":848,"-27,58":861,"-27,59":866,"-27,60":765,"-27,61":594,"-27,62":60,"-28,55":256,"-28,56":771,"-28,57":784,"-28,58":762,"-28,59":711,"-28,60":662,"-28,61":443,"-28,62":27,"-29,55":1145,"-29,56":241,"-29,57":155,"-29,58":285,"-29,59":103,"-29,60":61,"-29,61":38,"-29,62":13}},{"name":"New Ads","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=129,-125&selected=129,-125","visitors":847,"share_of_global_visitors":7,"avg_time_spent":12449,"avg_time_spent_afk":8369,"total_logins":578,"unique_logins":530,"total_logouts":554,"unique_logouts":503,"complete_sessions":450,"avg_complete_session_duration":5860,"marathon_users":[{"address":"0xbdb2179b7f5292a9105d200763de0256901cae78","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiarcryu7ah2dqhw5ouy2ad26noaf27gueii2apvxwx7a75moyfiuu","guest_user":false,"name":"dfhdfh","verified_user":false,"time_spent":1342},{"address":"0x5f89c2b44af710615c1a51bf70339203dbe21463","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreify4b7cfuudkdv7eetcm4n3n3haknepe5utbpoywm5i2sbzqqhqwi","guest_user":false,"name":"jfjfgbh","verified_user":false,"time_spent":1333},{"address":"0xfc14fbdf3497520838706143c1e64c0a1a5951e7","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreife3y6waveyvdervrrwzbmc4j5scwcgunbpm2bxlkfnlnj3tdfkzm","guest_user":false,"name":"dfhdfh","verified_user":false,"time_spent":1314},{"address":"0x67f1b8857a729767a4ba83e84569e95b9d26e8d6","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreigd7voljtr52eerz6lgu5uxecb37ftsiy7frd5aelunferoxclwee","guest_user":false,"name":"dfhdfh","verified_user":false,"time_spent":1286},{"address":"0x3c9bcca62421eea75fdabb760f9275da1570c199","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreihzea2vdiutmrfpzr3eqdpr3xontghobjhfyrbubjhlohebuqpmpa","guest_user":false,"name":"fjfhff","verified_user":false,"time_spent":1283},{"address":"0x16bcecb0e76bfe107481eccdd4d65b4e10548e9c","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidute7fulpolpoyteow4fxiipiejblxn66pgp6yqzl4ybhe2tatce","guest_user":false,"name":"jfjfgbh","verified_user":false,"time_spent":1280},{"address":"0x4c966259312ecc0eb7cc6a1c35575f1886ba5821","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreigeorr3vkadm56xbf4cu32xoojhxbe4nnn6jtcmvfxvaahdmmw3x4","guest_user":false,"name":"hfgdhdf","verified_user":false,"time_spent":1274},{"address":"0x2ad6bea7d6c5b3a111f306e5a1e078bb4663aad7","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifyx2x7yeokxqwcn5yyf753qxt6tcnk3jkfk5vyol5fx3t6mxogdy","guest_user":false,"name":"fhjhjfd","verified_user":false,"time_spent":1256},{"address":"0x244963718fc78eac5b5213fad36680a67582a9ac","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiakezpuqlpkokbpulzyktj3w7ghoobhlnuomewz4urzq2bb4jlqby","guest_user":false,"name":"fjfhff","verified_user":false,"time_spent":1250},{"address":"0x449cbe0fbaed3015edb592c09b9e613f539f52c8","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidotzd3m6mlcn42vhs6y7hzglqojklmn2iurht2fdyeqjwpv242ve","guest_user":false,"name":"hfgdhdf","verified_user":false,"time_spent":1229}],"time_spent_histogram":[[0,481],[1,12],[2,11],[3,10],[4,13],[5,11],[6,6],[7,5],[8,11],[9,4],[10,8],[11,12],[12,11],[13,12],[14,17],[15,8],[16,15],[17,8],[18,9],[19,15],[20,4],[21,5],[22,2]],"visitors_by_hour_histogram":{"10":41,"13":42,"14":51,"15":52,"16":53,"17":52,"18":53,"19":52,"20":48,"21":48,"22":48,"23":48,"00":46,"01":49,"02":52,"03":53,"04":54,"05":53,"06":48,"07":49,"08":50,"09":50},"parcels_heatmap":{"129,-125":847}},{"name":"Butterfly Prawn Farming Game","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=96,-131&selected=96,-131;96,-132;97,-131;97,-132;98,-131;98,-132","visitors":354,"share_of_global_visitors":3,"avg_time_spent":14975,"avg_time_spent_afk":9155,"total_logins":199,"unique_logins":118,"total_logouts":266,"unique_logouts":176,"complete_sessions":131,"avg_complete_session_duration":11472,"marathon_users":[{"address":"0x1276cd7c9a8a6c3dfefc4b38ff0fb01d924bc953","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifmqs6tlg5fey6v6bni23k2ilgdffnv3cezcwcfb525zjavtkqjda","guest_user":false,"name":"popo","verified_user":false,"time_spent":1417},{"address":"0xef36210839f3e0636a4dccbc60872d2dbc5912fd","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreigfkcwhx7j64oi77z2vad34sxliekslx3mggjraxhjgmquy7mqzhq","guest_user":false,"name":"Sarsen","verified_user":false,"time_spent":1404},{"address":"0x4b78b54671ee885814be88a10a1a1b7e7c2e60ed","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiflh6nv2anaswkpinaf22uk2mzuzx2orxsif6tespskfxihxkwgni","guest_user":false,"name":"Amontu#60ed","verified_user":false,"time_spent":1398},{"address":"0x641c3b74392bf2bcc393ae4d18b0c5b87bc56520","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiavdeqnwafyzhm7slzi4ar3s54nocsnysbdrtdqjfbemendsrkmdm","guest_user":false,"name":"jeymi","verified_user":true,"time_spent":1315},{"address":"0x9e171a151b6744144d154b050515218abaa51bc4","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifd5wvmjp2ajslj4s67zobvfuni4l3svhteyl7kf7scfzxsgawkuq","guest_user":false,"name":"DMak#1bc4","verified_user":false,"time_spent":1295},{"address":"0x9608c8dff83c4e0bc4d240651bf39a69b57a7e6d","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiagl6bmcksixxl3ilxyiqbqw74lmsk3rnx4zptvhaxsh3ozo2glze","guest_user":false,"name":"PLegend#7e6d","verified_user":false,"time_spent":1270},{"address":"0x557b888d38a3b385bc2ef42b70804acc421b0169","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifea5osdhmpoluyfwdunw62mdh2iu45svs63f6y44dqnl43nkupg4","guest_user":false,"name":"Marbi","verified_user":false,"time_spent":1270},{"address":"0xe7965f3a444e0f07fac5726d4503717d0d3adf75","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreif5ck5uiesow56iiobmtdjmdotcfwoeb2xuiblvymwhkkmnjegt5u","guest_user":false,"name":"Ladybug","verified_user":true,"time_spent":1229},{"address":"0xe2589c52954f671b2aa21d7535d32b6606dc8944","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreibudj7qlrt66egmxd2pyxebg5f3hs3knkoxzag7ndqoesmosblkmq","guest_user":false,"name":"Hugo","verified_user":false,"time_spent":1228},{"address":"0x7cd59571eec11c42b39ee6b8a4fe26247bf041aa","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiartnro4y6hvvi3utf5v4son4ohzo5e676olpnadfpecnwvd5pewm","guest_user":false,"name":"Madison","verified_user":false,"time_spent":1219}],"time_spent_histogram":[[0,187],[1,16],[2,9],[3,8],[4,7],[5,4],[6,6],[7,1],[8,6],[9,8],[10,6],[11,5],[12,10],[13,4],[14,9],[15,5],[16,1],[17,1],[18,3],[19,6],[20,5],[21,4],[23,3]],"visitors_by_hour_histogram":{"10":40,"11":61,"12":52,"13":38,"14":57,"15":52,"16":59,"17":53,"18":38,"19":55,"20":41,"21":50,"22":45,"23":47,"00":32,"01":34,"02":41,"03":32,"04":39,"05":34,"06":31,"07":29,"08":31,"09":36},"parcels_heatmap":{"96,-131":177,"96,-132":343,"97,-131":133,"97,-132":329,"98,-131":13,"98,-132":31}},{"name":"MetaZoo Intl. Temple of Beats","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=95,100&selected=95,100;95,101;95,98;95,99;96,100;96,101;96,98;96,99;97,100;97,101;97,98;97,99;98,100;98,101;98,98;98,99","visitors":337,"share_of_global_visitors":2,"avg_time_spent":11648,"avg_time_spent_afk":7839,"total_logins":132,"unique_logins":117,"total_logouts":186,"unique_logouts":164,"complete_sessions":80,"avg_complete_session_duration":7744,"marathon_users":[{"address":"0x313d2a2e869acb93207b90dda03f412eb65db2d9","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiedg47yhnpark6j7evrk7jrrdv4t62b52rhfkrj5endq74lmokxwi","guest_user":false,"name":"PepeGawd","verified_user":true,"time_spent":1417},{"address":"0x861b2af7d666afdbd686a0d2034401dfac839871","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreieqvhzv6vjhcdwe6esoc6i3ct4u72fghelslw562lae7quuboxk4m","guest_user":false,"name":"OrcSlayer","verified_user":false,"time_spent":1352},{"address":"0x1771e483fc81a4a35fb659f18e75a55e8af0cde8","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreibycmohb6jdwskezvvz7m7mi32syejzpm6ptvsac57ctj7wroslcq","guest_user":false,"name":"AmarZHEST","verified_user":false,"time_spent":1336},{"address":"0xd689478d44a438798ee0dc07657cce2135c0aef7","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreib26swm7bfp6qqqicbm2uww37d2wjg4isgchs2d4hj5iinvboiblu","guest_user":false,"name":"iZoo","verified_user":true,"time_spent":1317},{"address":"0xc19ca072e758602e880983dc513a24440b9cedc4","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiem6trrykgblqsjamw357xl27hfybri4yulsys2hycfkdgrvbcf6i","guest_user":false,"name":"Jaigar1312","verified_user":false,"time_spent":1276},{"address":"0xba825fd4b94250d3d03b83e64605ba5903d20386","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreia7y7swtqmvmnoy74aj3tdwwnqa7vh6jixbtbjs4rhbf2ugttlgoy","guest_user":false,"name":"Dhino","verified_user":true,"time_spent":1251},{"address":"0x5af8f36884fe34f9413a1a7b7ded764eec121888","avatar_url":null,"guest_user":true,"name":"Fearless85","verified_user":false,"time_spent":1209},{"address":"0x154620ddfdcd6ab15dd9c1682386debad1eef536","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreicylidobvi42pxyzyhvumv3m6nb26yc4ipy2qv7jxfsgohwe37nj4","guest_user":false,"name":"Murphjestic","verified_user":true,"time_spent":1154},{"address":"0xaa6d90c3589473b278f47cc8586f8d2b9bff7f29","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidy5rujgiplg5mt6o2tlzmyetsvhtvhgrofa4q6hzwrzvn2kmpnzq","guest_user":false,"name":"GrindJunkies","verified_user":false,"time_spent":1123},{"address":"0x5b310b6837a32da144355d63b4558b59d378393d","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreie34hwhmylaphex5gvl2s5f53vvtldrvr4ocyja7w46azy5nyp7p4","guest_user":false,"name":"Hayabusa","verified_user":true,"time_spent":1118}],"time_spent_histogram":[[0,165],[1,22],[2,13],[3,5],[4,4],[6,1],[7,5],[8,2],[9,6],[10,3],[11,4],[12,3],[13,3],[14,4],[15,3],[16,1],[17,2],[18,5],[19,1],[20,2],[21,2],[22,2],[23,1]],"visitors_by_hour_histogram":{"10":20,"11":13,"12":14,"13":18,"14":8,"15":9,"16":13,"17":10,"18":4,"19":16,"20":4,"21":7,"22":50,"23":41,"00":57,"01":21,"02":38,"03":48,"04":27,"05":30,"06":14,"07":10,"08":10,"09":19},"parcels_heatmap":{"95,98":71,"95,99":79,"96,98":95,"96,99":109,"97,98":127,"97,99":113,"98,98":78,"98,99":77,"95,100":77,"95,101":60,"96,100":102,"96,101":62,"97,100":102,"97,101":72,"98,100":68,"98,101":50}},{"name":"Australian Open","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=-131,65&selected=-131,65;-131,66;-131,67;-131,68;-131,69;-132,65;-132,66;-132,67;-132,68;-132,69","visitors":323,"share_of_global_visitors":2,"avg_time_spent":2621,"avg_time_spent_afk":1329,"total_logins":11,"unique_logins":10,"total_logouts":37,"unique_logouts":36,"complete_sessions":2,"avg_complete_session_duration":327,"marathon_users":[{"address":"0xb528c573ddd7acaba1a1da77a4fd5a1ea4a32990","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreihky3uq7ncmb3adxn5yyotbow7owytnffugggf6boyojepdzfpzpy","guest_user":false,"name":"Joshd","verified_user":true,"time_spent":1389},{"address":"0xfdc8b2c922398c9ac2392b93d74aa9cb264549ce","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreid4orzyszaondpf6p4qjmjolncv2uf43jt4noysw3a2f54uuw7454","guest_user":false,"name":"melon","verified_user":true,"time_spent":1128},{"address":"0xd543fd933a4cce1107130a8c0423aa37b29a5535","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreibkvxp53pi3rdfmlf34vcf3ruzpatcmefi36iyr54xasr522kmyay","guest_user":false,"name":"PaganViking","verified_user":false,"time_spent":937},{"address":"0xfba5c049896285f2bd21063bfe2206d13a952fb4","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiab67amlg5iw3uw3bnzm3p6axrwe5gqhndphrpo5nojix7sr32r7q","guest_user":false,"name":"KingDrako","verified_user":true,"time_spent":921},{"address":"0x7f0d8507fe62a4c0110c0d99995efbaa6d3bda95","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreicbbqoeunat3n5j2gqniqdyce6qvfechzuoyhqrz56zl2dm6sdzva","guest_user":false,"name":"FROTA#da95","verified_user":false,"time_spent":879},{"address":"0xf59767c0ec69400fe087ae11ac80ae747459bf8b","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreienojey56dgzlziohviuh4qnyvu5hbhdnmf2am4apbwdcydw6x6he","guest_user":false,"name":"247","verified_user":false,"time_spent":791},{"address":"0x837a95c88429c10b8cafdc587f8eb0720295b8d9","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreibiqo42crwn34hdpoym3ztllccnt7y773af6bd2h2knmmp22e4vgm","guest_user":false,"name":"PrincesCripto#b8d9","verified_user":false,"time_spent":731},{"address":"0xef9861d1f503dea8c630017cba2b95e30cde486d","avatar_url":"https://peer-ec1.decentraland.org/content/contents/QmYvXGX31HjqaZbsK72Xw1fKX989EL7d3qsnkHbQpDEaVk","guest_user":true,"name":"Juper#486d","verified_user":false,"time_spent":639},{"address":"0x318b4ef7d225d1ebeca385fa73535442b5be4c50","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidsegpzgkt623rhhf3aa45i5lzudawt5e36ohp3gxkbwvbykq2jee","guest_user":false,"name":"WaifuLover217","verified_user":false,"time_spent":629},{"address":"0x554333cb53e657f010a104c4e61bf4cc7db26f4c","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreiadmvgapozvflzrbunxcmsmqijk5qi3xpyjijpsagwcfl6gyucgxe","guest_user":false,"name":"BigStrongGuy","verified_user":true,"time_spent":551}],"time_spent_histogram":[[0,242],[1,5],[2,4],[3,1],[4,2],[5,1],[9,1],[10,2],[12,1],[13,1],[14,1],[15,2],[18,1],[23,1]],"visitors_by_hour_histogram":{"10":7,"11":6,"12":7,"13":7,"14":11,"15":5,"16":6,"17":7,"18":8,"19":9,"20":6,"21":9,"22":7,"23":4,"00":10,"01":27,"02":16,"03":14,"04":7,"05":3,"06":13,"07":7,"08":12,"09":7},"parcels_heatmap":{"-131,65":14,"-131,66":8,"-131,67":16,"-131,68":27,"-131,69":28,"-132,65":14,"-132,66":8,"-132,67":24,"-132,68":17,"-132,69":14}},{"name":"Australian Open","date":"2023-01-16","map_url":"https://api.decentraland.org/v2/map.png?center=-125,68&selected=-125,68;-126,68;-127,68;-128,68;-129,68;-130,65;-130,66;-130,67;-130,68","visitors":310,"share_of_global_visitors":2,"avg_time_spent":2529,"avg_time_spent_afk":1086,"total_logins":12,"unique_logins":12,"total_logouts":19,"unique_logouts":19,"complete_sessions":2,"avg_complete_session_duration":2290,"marathon_users":[{"address":"0x61b20982f388ee48237d3372cdfbf34625a5ef8b","avatar_url":null,"guest_user":true,"name":"NzedKiwi","verified_user":false,"time_spent":1258},{"address":"0x9f0d0bcf22b96dc72ae306c10f929719c91896de","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreihepx6meicgh7qylxroycrr73buwq5xqlcszmmp33eb4fsy4vjpvm","guest_user":false,"name":"Raccoon","verified_user":false,"time_spent":1059},{"address":"0x3a55404f3b6b40876512fe612711e76d3714f49b","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreib2qndbh6y34ouvrtsvvkqzzp4zke2qj2jqebhwhjf6pqouldyisi","guest_user":false,"name":"CJTRAX","verified_user":true,"time_spent":976},{"address":"0x80b90dffeeb84de2012ee8381d155bcea98f2b3f","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidt2jku7efnabfi5kanosvgbp2fry4jdm5kff2bctzky3u3fqhdve","guest_user":false,"name":"Mucinex","verified_user":false,"time_spent":720},{"address":"0xabd685c9cd1a1e80bfdf1d289bba4aa51f7e4317","avatar_url":"https://peer-ec1.decentraland.org/content/contents/QmNLtZabru3bUKq4mX8sqt4kPm3iktH9qHZJrkuVKQHFyi","guest_user":true,"name":"Werrie#4317","verified_user":false,"time_spent":654},{"address":"0x08ebb1d468f9524ddbd078b680c3e2a40dd3d9e3","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreicg7t7v3ztgxmx5dux5l4u7ojnzetwgxny36okievvdgtyqaoewni","guest_user":false,"name":"MJ","verified_user":false,"time_spent":556},{"address":"0xf96c6ad12b22dc349013bdffb751f898d2ac46e6","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreihqtxw44srslmpdy7fdgs3g5mnmgenxlbp5mmzs5icdm4ujzyaqym","guest_user":false,"name":"tomi","verified_user":false,"time_spent":546},{"address":"0xe76c29fbee2a4a0d1eb64dd8fca69a50641f9295","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreic5szebmektarqj4rax6hjn5sr4oxvlxndpr56ytxfdzqpcmjwd5u","guest_user":false,"name":"Veselovskiy","verified_user":false,"time_spent":529},{"address":"0xf48394c4ef62bc55e01a60ce02545f36338d01bb","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreib2cljig5m5ui7o6pfhcwou7h647u4sbcr5wios525cb6miwq4aq4","guest_user":false,"name":"Cat#01bb","verified_user":false,"time_spent":482},{"address":"0x5f702f65028630a3937d73ebf91697a7f451bedd","avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreifoclhmpn46ta4tdwz4ghp43wenjebauwfu67kdkpjmfuhjunws3u","guest_user":false,"name":"foz#bedd","verified_user":false,"time_spent":256}],"time_spent_histogram":[[0,207],[1,4],[2,3],[3,3],[4,1],[8,2],[9,2],[10,1],[12,1],[16,1],[17,1],[20,1]],"visitors_by_hour_histogram":{"10":6,"11":7,"12":8,"13":5,"14":7,"15":5,"16":2,"17":3,"18":5,"19":8,"20":6,"21":4,"22":7,"23":3,"00":12,"01":30,"02":18,"03":13,"04":6,"05":4,"06":7,"07":5,"08":9,"09":7},"parcels_heatmap":{"-125,68":20,"-126,68":37,"-127,68":42,"-128,68":102,"-129,68":118,"-130,65":53,"-130,66":49,"-130,67":59,"-130,68":105}}]
+[
+  {
+    "name": "ICE Poker - The Stronghold",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=-100,126&selected=-100,126;-100,127;-100,128;-100,129;-101,126;-101,127;-101,128;-101,129;-102,126;-102,127;-102,128;-102,129;-99,126;-99,127;-99,128;-99,129",
+    "visitors": 2038,
+    "share_of_global_visitors": 43,
+    "avg_time_spent": 14080,
+    "avg_time_spent_afk": 14874,
+    "total_logins": 1890,
+    "unique_logins": 1690,
+    "total_logouts": 2067,
+    "unique_logouts": 1851,
+    "complete_sessions": 1858,
+    "avg_complete_session_duration": 11667,
+    "marathon_users": [
+      {
+        "address": "0x52b7317a38a0d63b64af8e2c0a434a981329d047",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibah2higjy6gimf6zukvps6ffgeooy4npfoilb4g5vk5vsr2wueeu",
+        "guest_user": false,
+        "name": "Limittedfox",
+        "verified_user": false,
+        "time_spent": 1428
+      },
+      {
+        "address": "0x5c18a3206c516cddb226fe853e8ac16ac2844eda",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibotimklsrp6bycpbttahruulkknknle3ucwerppruw6hochycaby",
+        "guest_user": false,
+        "name": "DonCharro",
+        "verified_user": true,
+        "time_spent": 1428
+      },
+      {
+        "address": "0xa99544bd58cf2518ebf5325999c7ac17dc5219f1",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihq6btgqcccnf2iexgkkhf4xfg54we54jx6kjvzgl2uubrcskliv4",
+        "guest_user": false,
+        "name": "chunckymonkey",
+        "verified_user": false,
+        "time_spent": 1426
+      },
+      {
+        "address": "0x6ff603089ef66215a1fe80c50dabf7f415c1d9f2",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreicvq3crnbbmvb3a3auouqoky4hdkrzlhltjby3xzouqyqzuuxqyce",
+        "guest_user": false,
+        "name": "Leopard",
+        "verified_user": false,
+        "time_spent": 1423
+      },
+      {
+        "address": "0xc5dc7f25f9e4842471143ea721f3deb3ff5621b7",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "AcE",
+        "verified_user": false,
+        "time_spent": 1413
+      },
+      {
+        "address": "0xd0e1d0d05e46663b4c9ec34eac2108302e340a8c",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiexovc33i3bov6lcr5p354e6s5owqh4npphaylvge53eh26tsjq6y",
+        "guest_user": false,
+        "name": "Pigar",
+        "verified_user": false,
+        "time_spent": 1400
+      },
+      {
+        "address": "0xc0d2f4e6156c169b63cc70deb2baf8d86e8aa8be",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreicledxnck67wi2ece7zk4txlyustom4n47qjuinr236mxmq4k4a24",
+        "guest_user": false,
+        "name": "Silversig",
+        "verified_user": false,
+        "time_spent": 1397
+      },
+      {
+        "address": "0x6a4472d95370cfaa7ed0828064dc507183fc1161",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidl7deyoc7ij4tuoa3hwidwjjgw7w3mvkbaysst5pib32n4dvfczi",
+        "guest_user": false,
+        "name": "WishAKQJ10",
+        "verified_user": false,
+        "time_spent": 1394
+      },
+      {
+        "address": "0x9b398768f355df48c0d586b66cae8a15d8bba777",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreicsev4spnu6oxlcwox6m2nclktmwlpa2hrpvyi4xfrxh3iehlokge",
+        "guest_user": false,
+        "name": "JAMES",
+        "verified_user": false,
+        "time_spent": 1391
+      },
+      {
+        "address": "0xc90379369be7272d3cdb9a6b6966fca14527bb59",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreigvvb6tg6yvykxa4rcnii73yv5ntafsvgg6jay2kpoxaroy52ouci",
+        "guest_user": false,
+        "name": "ChipsTakers",
+        "verified_user": false,
+        "time_spent": 1391
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        583
+      ],
+      [
+        1,
+        566
+      ],
+      [
+        2,
+        212
+      ],
+      [
+        3,
+        86
+      ],
+      [
+        4,
+        58
+      ],
+      [
+        5,
+        36
+      ],
+      [
+        6,
+        37
+      ],
+      [
+        7,
+        44
+      ],
+      [
+        8,
+        39
+      ],
+      [
+        9,
+        21
+      ],
+      [
+        10,
+        29
+      ],
+      [
+        11,
+        22
+      ],
+      [
+        12,
+        24
+      ],
+      [
+        13,
+        17
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        17,
+        9
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        19,
+        19
+      ],
+      [
+        20,
+        13
+      ],
+      [
+        21,
+        16
+      ],
+      [
+        22,
+        19
+      ],
+      [
+        23,
+        12
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 173,
+      "01": 187,
+      "02": 187,
+      "03": 190,
+      "04": 135,
+      "05": 162,
+      "06": 175,
+      "07": 146,
+      "08": 141,
+      "09": 161,
+      "10": 170,
+      "11": 189,
+      "12": 194,
+      "13": 199,
+      "14": 204,
+      "15": 185,
+      "16": 186,
+      "17": 177,
+      "18": 160,
+      "19": 139,
+      "20": 145,
+      "21": 134,
+      "22": 138,
+      "23": 139
+    },
+    "parcels_heatmap": {
+      "-99,126": 27,
+      "-99,127": 210,
+      "-99,128": 280,
+      "-99,129": 27,
+      "-100,126": 337,
+      "-100,127": 1839,
+      "-100,128": 825,
+      "-100,129": 324,
+      "-101,126": 378,
+      "-101,127": 1185,
+      "-101,128": 792,
+      "-101,129": 699,
+      "-102,126": 27,
+      "-102,127": 83,
+      "-102,128": 60,
+      "-102,129": 39
+    }
+  },
+  {
+    "name": "Genesis Plaza",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=-1,-1&selected=-1,-1;-1,-2;-1,-3;-1,-4;-1,-5;-1,-6;-1,-7;-1,-8;-1,-9;-1,0;-1,1;-1,2;-1,3;-1,4;-1,5;-1,6;-1,7;-1,8;-1,9;-2,-1;-2,-2;-2,-3;-2,-4;-2,-5;-2,-6;-2,-7;-2,-8;-2,-9;-2,0;-2,1;-2,2;-2,3;-2,4;-2,5;-2,6;-2,7;-2,8;-2,9;-3,-1;-3,-2;-3,-3;-3,-4;-3,-5;-3,-6;-3,-7;-3,-8;-3,-9;-3,0;-3,1;-3,2;-3,3;-3,4;-3,5;-3,6;-3,7;-3,8;-3,9;-4,-1;-4,-2;-4,-3;-4,-4;-4,-5;-4,-6;-4,-7;-4,-8;-4,-9;-4,0;-4,1;-4,2;-4,3;-4,4;-4,5;-4,6;-4,7;-4,8;-4,9;-5,-1;-5,-2;-5,-3;-5,-4;-5,-5;-5,-6;-5,-7;-5,-8;-5,-9;-5,0;-5,1;-5,2;-5,3;-5,4;-5,5;-5,6;-5,7;-5,8;-5,9;-6,-1;-6,-2;-6,-3;-6,-4;-6,-5;-6,-6;-6,-7;-6,-8;-6,-9;-6,0;-6,1;-6,2;-6,3;-6,4;-6,5;-6,6;-6,7;-6,8;-6,9;-7,-1;-7,-2;-7,-3;-7,-4;-7,-5;-7,-6;-7,-7;-7,-8;-7,-9;-7,0;-7,1;-7,2;-7,3;-7,4;-7,5;-7,6;-7,7;-7,8;-7,9;-8,-1;-8,-2;-8,-3;-8,-4;-8,-5;-8,-6;-8,-7;-8,-8;-8,-9;-8,0;-8,1;-8,2;-8,3;-8,4;-8,5;-8,6;-8,7;-8,8;-8,9;-9,-1;-9,-2;-9,-3;-9,-4;-9,-5;-9,-6;-9,-7;-9,-8;-9,-9;-9,0;-9,1;-9,2;-9,3;-9,4;-9,5;-9,6;-9,7;-9,8;-9,9;0,-1;0,-2;0,-3;0,-4;0,-5;0,-6;0,-7;0,-8;0,-9;0,0;0,1;0,2;0,3;0,4;0,5;0,6;0,7;0,8;0,9;1,-1;1,-2;1,-3;1,-4;1,-5;1,-6;1,-7;1,-8;1,-9;1,0;1,1;1,2;1,3;1,4;1,5;1,6;1,7;1,8;1,9;10,-1;10,-2;10,-3;10,-4;10,-5;10,-6;10,-7;10,-8;10,-9;10,0;10,1;10,2;10,3;10,4;10,5;10,6;10,7;10,8;10,9;2,-1;2,-2;2,-3;2,-4;2,-5;2,-6;2,-7;2,-8;2,-9;2,0;2,1;2,2;2,3;2,4;2,5;2,6;2,7;2,8;2,9;3,-1;3,-2;3,-3;3,-4;3,-5;3,-6;3,-7;3,-8;3,-9;3,0;3,1;3,2;3,3;3,4;3,5;3,6;3,7;3,8;3,9;4,-1;4,-2;4,-3;4,-4;4,-5;4,-6;4,-7;4,-8;4,-9;4,0;4,1;4,2;4,3;4,4;4,5;4,6;4,7;4,8;4,9;5,-1;5,-2;5,-3;5,-4;5,-5;5,-6;5,-7;5,-8;5,-9;5,0;5,1;5,2;5,3;5,4;5,5;5,6;5,7;5,8;5,9;6,-1;6,-2;6,-3;6,-4;6,-5;6,-6;6,-7;6,-8;6,-9;6,0;6,1;6,2;6,3;6,4;6,5;6,6;6,7;6,8;6,9;7,-1;7,-2;7,-3;7,-4;7,-5;7,-6;7,-7;7,-8;7,-9;7,0;7,1;7,2;7,3;7,4;7,5;7,6;7,7;7,8;7,9;8,-1;8,-2;8,-3;8,-4;8,-5;8,-6;8,-7;8,-8;8,-9;8,0;8,1;8,2;8,3;8,4;8,5;8,6;8,7;8,8;8,9;9,-1;9,-2;9,-3;9,-4;9,-5;9,-6;9,-7;9,-8;9,-9;9,0;9,1;9,2;9,3;9,4;9,5;9,6;9,7;9,8;9,9",
+    "visitors": 1387,
+    "share_of_global_visitors": 27,
+    "avg_time_spent": 2494,
+    "avg_time_spent_afk": 1229,
+    "total_logins": 1081,
+    "unique_logins": 1019,
+    "total_logouts": 350,
+    "unique_logouts": 348,
+    "complete_sessions": 333,
+    "avg_complete_session_duration": 2272,
+    "marathon_users": [
+      {
+        "address": "0x4feea7ea16c08ecb5a7d8df382ce876744b6ff55",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidb67nlsxb55he7phgfizy5ote4iolmqrsozhldwmpgidnk7omsfa",
+        "guest_user": false,
+        "name": "Friedrickzzz",
+        "verified_user": false,
+        "time_spent": 1148
+      },
+      {
+        "address": "0x6f29d330aad3a2f411daf406269e61d4640c44e4",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreignnybxeh7lnsou5dtv6coiuh3bz66l63osujhaw7xvhbjefcseyu",
+        "guest_user": true,
+        "name": "Paco#44e4",
+        "verified_user": false,
+        "time_spent": 1136
+      },
+      {
+        "address": "0x9b7ffb0842644aa920694ee20e46dcb9595c5406",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiceuwjzaansetkcil33cdy3obchywjnrszipkgr46uvrjck6hpg7y",
+        "guest_user": false,
+        "name": "NiSan#5406",
+        "verified_user": false,
+        "time_spent": 1122
+      },
+      {
+        "address": "0x333f2ba1e49bcea8b1ad9f0d5083df596896cbed",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihr6y6pgldogxta3ce6ky5u37tf7uv43jhlior4zqlpab4lmkqzy4",
+        "guest_user": false,
+        "name": "Lucascol",
+        "verified_user": true,
+        "time_spent": 1015
+      },
+      {
+        "address": "0xeb71f468c3a1ca71def78e23d8b4a2ac08573667",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreifh63rmlvhhqgwgud2iey7wucdbqu76hw7gc5clezhzt5klhyhtti",
+        "guest_user": false,
+        "name": "jeffrey",
+        "verified_user": false,
+        "time_spent": 997
+      },
+      {
+        "address": "0x5895a2e722df6c0e121a6e42cecc6f109de383f9",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiesyx2zsg426emijx26l4pyp66tnr5xskxdl3xfc7y3cozvalyjyq",
+        "guest_user": false,
+        "name": "GodsUnchained",
+        "verified_user": false,
+        "time_spent": 980
+      },
+      {
+        "address": "0x75f78fc1ea8d522f90ccbe761b7e484672474d59",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidw3canjmfszjv3c7toixeuueqjwgvgdfqbz3uksokevpadfbv5tm",
+        "guest_user": false,
+        "name": "Grozn#4d59",
+        "verified_user": false,
+        "time_spent": 824
+      },
+      {
+        "address": "0x22170aa7b6f1578fd112a1436e26abc9fe2537a0",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiefo5j7opw4m7ij32jh2fplc5u7qcbscihxk4hehjlatmqiv7sz2e",
+        "guest_user": false,
+        "name": "Nikola#37a0",
+        "verified_user": false,
+        "time_spent": 784
+      },
+      {
+        "address": "0x1f65d635913eb4db25ce04cebce911cf73e448bc",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreichqohaso3b27wusx5eeaszev6pbz7i5xndxctalenwvrxno5pmum",
+        "guest_user": false,
+        "name": "hami",
+        "verified_user": false,
+        "time_spent": 768
+      },
+      {
+        "address": "0xa01d51e047cd9b69850ebe2b472c54d458b378c2",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiduzpehcigf4zcsrzgufst3xbgu7vwrm6o6es342bvvn2nr5pys3u",
+        "guest_user": false,
+        "name": "Huepow",
+        "verified_user": true,
+        "time_spent": 727
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        1060
+      ],
+      [
+        1,
+        55
+      ],
+      [
+        2,
+        25
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        16,
+        3
+      ],
+      [
+        18,
+        2
+      ],
+      [
+        19,
+        1
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 40,
+      "01": 31,
+      "02": 31,
+      "03": 27,
+      "04": 29,
+      "05": 36,
+      "06": 34,
+      "07": 45,
+      "08": 36,
+      "09": 44,
+      "10": 55,
+      "11": 48,
+      "12": 58,
+      "13": 56,
+      "14": 53,
+      "15": 56,
+      "16": 57,
+      "17": 65,
+      "18": 65,
+      "19": 49,
+      "20": 45,
+      "21": 53,
+      "22": 43,
+      "23": 34
+    },
+    "parcels_heatmap": {
+      "0,0": 368,
+      "0,1": 66,
+      "0,2": 1,
+      "0,3": 2,
+      "0,5": 2,
+      "0,7": 3,
+      "0,8": 1,
+      "0,9": 1,
+      "1,0": 356,
+      "1,1": 83,
+      "1,2": 1,
+      "1,3": 3,
+      "1,4": 1,
+      "1,5": 1,
+      "1,6": 14,
+      "1,7": 5,
+      "1,8": 1,
+      "1,9": 1,
+      "2,0": 20,
+      "2,1": 3,
+      "2,2": 3,
+      "2,3": 2,
+      "2,5": 12,
+      "2,6": 7,
+      "2,7": 3,
+      "3,0": 12,
+      "3,1": 2,
+      "3,2": 1,
+      "3,3": 3,
+      "3,4": 3,
+      "3,5": 13,
+      "3,6": 1,
+      "3,7": 1,
+      "3,8": 1,
+      "4,0": 4,
+      "4,1": 2,
+      "4,2": 1,
+      "4,3": 3,
+      "4,4": 3,
+      "4,6": 2,
+      "4,8": 2,
+      "4,9": 2,
+      "5,0": 9,
+      "5,1": 1,
+      "5,2": 3,
+      "5,3": 3,
+      "5,4": 2,
+      "5,8": 1,
+      "6,0": 6,
+      "6,1": 4,
+      "6,2": 4,
+      "6,3": 2,
+      "6,4": 2,
+      "6,5": 1,
+      "6,6": 1,
+      "6,7": 1,
+      "6,8": 1,
+      "7,0": 1,
+      "7,1": 1,
+      "7,2": 1,
+      "7,4": 1,
+      "7,5": 2,
+      "7,6": 4,
+      "7,8": 1,
+      "8,0": 2,
+      "8,3": 1,
+      "8,4": 1,
+      "8,5": 1,
+      "8,7": 2,
+      "9,6": 1,
+      "-1,0": 20,
+      "-1,1": 3,
+      "-1,2": 1,
+      "-1,3": 2,
+      "-1,4": 1,
+      "-1,5": 5,
+      "-1,6": 2,
+      "-1,7": 4,
+      "-1,8": 3,
+      "-2,0": 7,
+      "-2,1": 3,
+      "-2,2": 2,
+      "-2,3": 1,
+      "-2,4": 4,
+      "-2,5": 2,
+      "-2,7": 2,
+      "-2,8": 8,
+      "-3,0": 9,
+      "-3,1": 7,
+      "-3,3": 2,
+      "-3,4": 1,
+      "-3,5": 1,
+      "-3,6": 1,
+      "-3,7": 1,
+      "-3,8": 1,
+      "-4,0": 3,
+      "-4,1": 3,
+      "-4,2": 6,
+      "-4,3": 1,
+      "-4,4": 2,
+      "-4,5": 2,
+      "-4,6": 2,
+      "-4,7": 1,
+      "-5,0": 2,
+      "-5,2": 2,
+      "-5,3": 1,
+      "-5,5": 4,
+      "-5,7": 2,
+      "-6,0": 2,
+      "-6,2": 1,
+      "-6,4": 2,
+      "-6,5": 3,
+      "-6,7": 1,
+      "-6,8": 1,
+      "-7,0": 4,
+      "-7,1": 2,
+      "-7,2": 3,
+      "-7,3": 1,
+      "-7,4": 1,
+      "-7,5": 1,
+      "-7,7": 5,
+      "-8,1": 1,
+      "-8,2": 1,
+      "-8,3": 1,
+      "-8,4": 1,
+      "-8,5": 1,
+      "-8,7": 1,
+      "-9,0": 2,
+      "0,-1": 770,
+      "0,-2": 14,
+      "0,-3": 6,
+      "0,-4": 6,
+      "0,-5": 6,
+      "0,-6": 1,
+      "0,-7": 2,
+      "0,-8": 3,
+      "0,-9": 2,
+      "1,-1": 788,
+      "1,-2": 5,
+      "1,-3": 9,
+      "1,-4": 2,
+      "1,-5": 8,
+      "1,-6": 5,
+      "1,-8": 1,
+      "10,0": 1,
+      "2,-1": 2,
+      "2,-2": 4,
+      "2,-3": 1,
+      "2,-4": 2,
+      "2,-5": 8,
+      "2,-6": 5,
+      "2,-8": 1,
+      "3,-1": 2,
+      "3,-3": 2,
+      "3,-4": 2,
+      "3,-5": 1,
+      "3,-6": 2,
+      "3,-7": 1,
+      "3,-9": 1,
+      "4,-1": 1,
+      "4,-2": 1,
+      "4,-3": 1,
+      "4,-4": 3,
+      "4,-6": 2,
+      "5,-1": 6,
+      "5,-2": 4,
+      "5,-3": 3,
+      "5,-5": 5,
+      "5,-6": 5,
+      "6,-1": 2,
+      "6,-3": 2,
+      "6,-4": 3,
+      "6,-5": 6,
+      "6,-6": 3,
+      "6,-7": 4,
+      "6,-8": 2,
+      "6,-9": 2,
+      "7,-1": 4,
+      "7,-2": 5,
+      "7,-3": 2,
+      "7,-4": 2,
+      "7,-6": 4,
+      "7,-7": 15,
+      "7,-8": 4,
+      "7,-9": 1,
+      "8,-1": 8,
+      "8,-2": 6,
+      "8,-4": 2,
+      "8,-6": 4,
+      "8,-7": 8,
+      "8,-8": 7,
+      "8,-9": 1,
+      "9,-1": 1,
+      "9,-2": 10,
+      "9,-4": 1,
+      "9,-5": 1,
+      "9,-6": 1,
+      "9,-7": 3,
+      "9,-8": 3,
+      "-1,-1": 2,
+      "-1,-2": 1,
+      "-1,-3": 2,
+      "-1,-4": 4,
+      "-1,-5": 2,
+      "-2,-1": 2,
+      "-2,-2": 1,
+      "-2,-3": 3,
+      "-2,-4": 1,
+      "-2,-6": 3,
+      "-2,-7": 8,
+      "-2,-8": 5,
+      "-2,-9": 2,
+      "-3,-1": 4,
+      "-3,-2": 13,
+      "-3,-4": 1,
+      "-3,-5": 1,
+      "-3,-6": 4,
+      "-3,-7": 3,
+      "-3,-8": 2,
+      "-4,-1": 3,
+      "-4,-2": 3,
+      "-4,-3": 1,
+      "-4,-5": 1,
+      "-4,-7": 2,
+      "-4,-8": 1,
+      "-5,-1": 3,
+      "-5,-2": 1,
+      "-5,-3": 1,
+      "-5,-4": 4,
+      "-5,-5": 3,
+      "-6,-1": 1,
+      "-6,-2": 6,
+      "-6,-3": 1,
+      "-6,-4": 4,
+      "-6,-5": 1,
+      "-6,-7": 7,
+      "-6,-8": 1,
+      "-7,-2": 5,
+      "-7,-4": 1,
+      "-7,-7": 3,
+      "-7,-9": 1,
+      "-8,-1": 2,
+      "-8,-3": 1,
+      "-8,-7": 1,
+      "-9,-1": 1,
+      "-9,-3": 1,
+      "10,-2": 1
+    }
+  },
+  {
+    "name": "WonderMine Crafting Game",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=-25,55&selected=-25,55;-25,56;-25,57;-25,58;-25,59;-25,60;-25,61;-25,62;-26,55;-26,56;-26,57;-26,58;-26,59;-26,60;-26,61;-26,62;-27,55;-27,56;-27,57;-27,58;-27,59;-27,60;-27,61;-27,62;-28,55;-28,56;-28,57;-28,58;-28,59;-28,60;-28,61;-28,62;-29,55;-29,56;-29,57;-29,58;-29,59;-29,60;-29,61;-29,62",
+    "visitors": 1169,
+    "share_of_global_visitors": 23,
+    "avg_time_spent": 12807,
+    "avg_time_spent_afk": 8735,
+    "total_logins": 880,
+    "unique_logins": 706,
+    "total_logouts": 1014,
+    "unique_logouts": 822,
+    "complete_sessions": 761,
+    "avg_complete_session_duration": 7110,
+    "marathon_users": [
+      {
+        "address": "0x4267e3844143331def2dce7ff3a282a9f9dfcefc",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidb3b2bpj6mv5mgktbjbwf2a73jgmqcnrq5l6zpoasdkn4tuy5xyy",
+        "guest_user": false,
+        "name": "ElCreador",
+        "verified_user": true,
+        "time_spent": 1411
+      },
+      {
+        "address": "0x7ed6ac35bbf448f6d3b40209a1b109d3242efd1f",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreic7uqqbbo5ceis3khh3hyryfajxvwbzayt2e5wuizfzyncuowcxhe",
+        "guest_user": false,
+        "name": "Whereismael#fd1f",
+        "verified_user": false,
+        "time_spent": 1407
+      },
+      {
+        "address": "0x4572d458bac955a480b0b7284e8c9b8250885fe9",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibbq5anla42b65kmcavb7va4rc2lglytxcfalyzrlctr53ecvxio4",
+        "guest_user": false,
+        "name": "ElonTusk",
+        "verified_user": false,
+        "time_spent": 1400
+      },
+      {
+        "address": "0x5b934dd91713cc3780402f887921be331950d0b0",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidwxvlk3aye2sdoxbav5pj3bly3khfhylafegqp4by73i64hkbmby",
+        "guest_user": false,
+        "name": "Mettwurst",
+        "verified_user": false,
+        "time_spent": 1385
+      },
+      {
+        "address": "0xacb20653ab5bbd7b664e8a8ed541df9f34a0536a",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreig3gl63dairyvnlefcgobrlo7m6lweocd7f25y2idxeutz5ssfcfm",
+        "guest_user": false,
+        "name": "Frog#536a",
+        "verified_user": false,
+        "time_spent": 1382
+      },
+      {
+        "address": "0x6bec1d28fce162091ec3a1f7e7f2f9b41fc6ce36",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreie7mtgnhubw2h6tfidsokb453ndefk7wpddzyz3ehajvclcqw7spe",
+        "guest_user": false,
+        "name": "TheMagician#ce36",
+        "verified_user": false,
+        "time_spent": 1369
+      },
+      {
+        "address": "0x35828db78a7a186dc4c8be14af5f6f896f358204",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibvekfvd3zsneif6ucrh3jbtcx3wy2rz7btdmxieyyork6vzjyxyi",
+        "guest_user": false,
+        "name": "Art",
+        "verified_user": false,
+        "time_spent": 1367
+      },
+      {
+        "address": "0x009255de16f337807228955e9811dd20e3e69e55",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreie4wag6dwm22inltb3okltkui4ug4qwc7zuqzneuohx4bhnvzlcna",
+        "guest_user": false,
+        "name": "AL3X",
+        "verified_user": false,
+        "time_spent": 1367
+      },
+      {
+        "address": "0x046efac550ba0fba50099c6a823a3d4ec989c4ab",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreid77mkuwyyyavruvxhkn7ibc6tiujwrlodullrbso7sdymlqzy7n4",
+        "guest_user": false,
+        "name": "CoTplanet#c4ab",
+        "verified_user": false,
+        "time_spent": 1366
+      },
+      {
+        "address": "0x1a33cdf7711e404cd160782feb027a5159f126b7",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreib7lvtxp5umejzm4auc4xjdkcrmgiwgyahtxameapkowrndwqt4jq",
+        "guest_user": false,
+        "name": "Al3x",
+        "verified_user": false,
+        "time_spent": 1364
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        532
+      ],
+      [
+        1,
+        178
+      ],
+      [
+        2,
+        36
+      ],
+      [
+        3,
+        22
+      ],
+      [
+        4,
+        14
+      ],
+      [
+        5,
+        18
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        8,
+        28
+      ],
+      [
+        9,
+        23
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        11,
+        22
+      ],
+      [
+        12,
+        22
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        14,
+        13
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        16,
+        7
+      ],
+      [
+        17,
+        2
+      ],
+      [
+        18,
+        4
+      ],
+      [
+        19,
+        2
+      ],
+      [
+        20,
+        3
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        23,
+        5
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 68,
+      "01": 50,
+      "02": 56,
+      "03": 43,
+      "04": 39,
+      "05": 56,
+      "06": 52,
+      "07": 65,
+      "08": 66,
+      "09": 69,
+      "10": 70,
+      "11": 79,
+      "12": 86,
+      "13": 89,
+      "14": 100,
+      "15": 93,
+      "16": 89,
+      "17": 89,
+      "18": 94,
+      "19": 92,
+      "20": 86,
+      "21": 72,
+      "22": 68,
+      "23": 76
+    },
+    "parcels_heatmap": {
+      "-25,55": 33,
+      "-25,56": 119,
+      "-25,57": 289,
+      "-25,58": 164,
+      "-25,59": 117,
+      "-25,60": 115,
+      "-25,61": 56,
+      "-25,62": 13,
+      "-26,55": 171,
+      "-26,56": 650,
+      "-26,57": 740,
+      "-26,58": 743,
+      "-26,59": 735,
+      "-26,60": 694,
+      "-26,61": 507,
+      "-26,62": 33,
+      "-27,55": 212,
+      "-27,56": 767,
+      "-27,57": 853,
+      "-27,58": 896,
+      "-27,59": 855,
+      "-27,60": 791,
+      "-27,61": 542,
+      "-27,62": 47,
+      "-28,55": 219,
+      "-28,56": 762,
+      "-28,57": 756,
+      "-28,58": 770,
+      "-28,59": 739,
+      "-28,60": 687,
+      "-28,61": 460,
+      "-28,62": 27,
+      "-29,55": 993,
+      "-29,56": 268,
+      "-29,57": 145,
+      "-29,58": 280,
+      "-29,59": 112,
+      "-29,60": 63,
+      "-29,61": 43,
+      "-29,62": 13
+    }
+  },
+  {
+    "name": "Butterfly Prawn Farming Game",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=96,-131&selected=96,-131;96,-132;97,-131;97,-132;98,-131;98,-132",
+    "visitors": 315,
+    "share_of_global_visitors": 6,
+    "avg_time_spent": 13812,
+    "avg_time_spent_afk": 10126,
+    "total_logins": 197,
+    "unique_logins": 128,
+    "total_logouts": 206,
+    "unique_logouts": 136,
+    "complete_sessions": 115,
+    "avg_complete_session_duration": 10326,
+    "marathon_users": [
+      {
+        "address": "0x334e507c999a149c5d0e8ebda472eb810c6c4d6d",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreicu4e2bbayrcggezm7gp6khm44u5q5yaymstvyx3s2tvc4w3u66yq",
+        "guest_user": false,
+        "name": "JadedGamer31",
+        "verified_user": false,
+        "time_spent": 1400
+      },
+      {
+        "address": "0x797520f471de8ec7b1e771e014149c4fd408367c",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreichytqzdbblvhc6gv65rx3vzywctzonamvdtxpg62pd6nle42qs2m",
+        "guest_user": false,
+        "name": "Fredarme",
+        "verified_user": true,
+        "time_spent": 1365
+      },
+      {
+        "address": "0x197dc017caec645f9a09bb2288227fe663a13d25",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreigsn2mfvjmwuxfjd2uwyezwyluhwg7bpuk7p7hbnxly2nx5yhkc5y",
+        "guest_user": false,
+        "name": "Blade",
+        "verified_user": false,
+        "time_spent": 1262
+      },
+      {
+        "address": "0xfcbc19e23800cde3f9d3bc06b15c7c3658698b0d",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiebrmdy2csnchndhhnmed3sdacy5twtxkm5srn33mdunes73swfke",
+        "guest_user": false,
+        "name": "happybyrd#8b0d",
+        "verified_user": false,
+        "time_spent": 1257
+      },
+      {
+        "address": "0x0458381631c256ce1018a7867f3195d2052dfb75",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreie45iszvsxr2zuxubbzatjy7cc2dhxrhin2be6g2svv5fthum32vu",
+        "guest_user": false,
+        "name": "Pine",
+        "verified_user": false,
+        "time_spent": 1193
+      },
+      {
+        "address": "0x4583698fd7369574820f894b5db39e873cc3c782",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihrwgm6j2jyp5qdfdzqszrb4z7m7owxqcy5u4ohu7oeovlejzip2i",
+        "guest_user": false,
+        "name": "Moki",
+        "verified_user": false,
+        "time_spent": 1181
+      },
+      {
+        "address": "0x9666c7ea8eeb34a348f1e747871a1aa5e607905c",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibjpdk2tqu37ll22heg4qkv34rsvim4vyv6hjxnsegm545bwyzc5q",
+        "guest_user": false,
+        "name": "Toddf1",
+        "verified_user": false,
+        "time_spent": 1163
+      },
+      {
+        "address": "0xa090109ed85adb14e92fe7976b50d6b5b0df1ddd",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreib4vjs57lj3lzajjyqtrivh6hzpjzgofujcq56dz5nrq7jrwek5rm",
+        "guest_user": false,
+        "name": "Stella",
+        "verified_user": false,
+        "time_spent": 1159
+      },
+      {
+        "address": "0x5b55fc6ad30387a6687dba770fa6c2af2b1ce414",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreib5zgubezcgxdrj3yd73ym2fcro5kgbjs6fibds7pl3qxwnido7ym",
+        "guest_user": false,
+        "name": "Weight",
+        "verified_user": false,
+        "time_spent": 1152
+      },
+      {
+        "address": "0xe7965f3a444e0f07fac5726d4503717d0d3adf75",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreif5ck5uiesow56iiobmtdjmdotcfwoeb2xuiblvymwhkkmnjegt5u",
+        "guest_user": false,
+        "name": "Ladybug",
+        "verified_user": true,
+        "time_spent": 1148
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        160
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        2,
+        13
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        12,
+        5
+      ],
+      [
+        13,
+        6
+      ],
+      [
+        14,
+        2
+      ],
+      [
+        15,
+        6
+      ],
+      [
+        16,
+        6
+      ],
+      [
+        17,
+        2
+      ],
+      [
+        19,
+        6
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        23,
+        1
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 27,
+      "01": 33,
+      "02": 22,
+      "03": 31,
+      "04": 32,
+      "05": 22,
+      "06": 28,
+      "07": 26,
+      "08": 21,
+      "09": 28,
+      "10": 34,
+      "11": 34,
+      "12": 44,
+      "13": 47,
+      "14": 41,
+      "15": 37,
+      "16": 37,
+      "17": 44,
+      "18": 36,
+      "19": 30,
+      "20": 36,
+      "21": 36,
+      "22": 46,
+      "23": 49
+    },
+    "parcels_heatmap": {
+      "96,-131": 158,
+      "96,-132": 294,
+      "97,-131": 141,
+      "97,-132": 287,
+      "98,-131": 19,
+      "98,-132": 33
+    }
+  },
+  {
+    "name": "WonderZone East Wall",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=-24,55&selected=-24,55;-24,56;-24,57;-24,58;-24,59;-24,60",
+    "visitors": 147,
+    "share_of_global_visitors": 2,
+    "avg_time_spent": 2691,
+    "avg_time_spent_afk": 924,
+    "total_logins": 5,
+    "unique_logins": 4,
+    "total_logouts": 6,
+    "unique_logouts": 6,
+    "complete_sessions": 0,
+    "avg_complete_session_duration": 0,
+    "marathon_users": [
+      {
+        "address": "0x641c3b74392bf2bcc393ae4d18b0c5b87bc56520",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiavdeqnwafyzhm7slzi4ar3s54nocsnysbdrtdqjfbemendsrkmdm",
+        "guest_user": false,
+        "name": "jeymi",
+        "verified_user": true,
+        "time_spent": 958
+      },
+      {
+        "address": "0xd02bb8968f95a29e512c6e0aff5888d045e5b527",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreifbb7vot3xorjlokahhqdoc5sxaszojqywtqgeb2tlzvzvgeff3ge",
+        "guest_user": false,
+        "name": "GNIK",
+        "verified_user": false,
+        "time_spent": 635
+      },
+      {
+        "address": "0xf5539cc0e7df19a77299d740f8d7a845863df99c",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreids6ixgcpj3t3vagxup4s73e5c2f225juwsxa73ha64rfud6m4rcu",
+        "guest_user": false,
+        "name": "anichcha#f99c",
+        "verified_user": false,
+        "time_spent": 465
+      },
+      {
+        "address": "0x86beef878dca7b6f3a3ae7b1f216486e27fd72e3",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/Qmcj4okH8ve8rUH2osAzSAhwyNqbqY4NeBL7JpoMZcC2KN",
+        "guest_user": true,
+        "name": "GoldHeartDimond",
+        "verified_user": false,
+        "time_spent": 354
+      },
+      {
+        "address": "0x34c060b31ef8aefc9cf8457a61e01fd204fee74e",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidxceu7ghfc6yhbgyhkubhotlsbubm2hh54bguqofybsiwcicr3k4",
+        "guest_user": false,
+        "name": "FeliXXX#e74e",
+        "verified_user": false,
+        "time_spent": 322
+      },
+      {
+        "address": "0xa9ca6f7f79156572aaf6857e17a8c2d3f13ab0a6",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibl47xwsziqrmtndjb3cgydqpffkt7wy42cp4dhxsmed5c6a7txqa",
+        "guest_user": false,
+        "name": "MRGOODLIFE",
+        "verified_user": true,
+        "time_spent": 311
+      },
+      {
+        "address": "0x71b9a812309eaa84618243e554924263ce100d9e",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibl27cax7tu7slcd57u2oqbps6yjopxanhytwhge3loda5mwfvw5y",
+        "guest_user": false,
+        "name": "Dolphin#0d9e",
+        "verified_user": false,
+        "time_spent": 250
+      },
+      {
+        "address": "0xbe23ccd70bc2bb4afb0fd6314c7c8cb2f8e83260",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreih5lc7vq7j3qtlayvx7gn5ymgcoefj4azi5njhlcseleds6unrqd4",
+        "guest_user": false,
+        "name": "Me",
+        "verified_user": false,
+        "time_spent": 87
+      },
+      {
+        "address": "0x8aaf3ee49d56cf430ad1c843867db0b3e270e91f",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreifpia5ol2tqs26yhtrbdr7adj6dcz4fz3olxw4cnk2bfvyq4pchka",
+        "guest_user": false,
+        "name": "beauty",
+        "verified_user": false,
+        "time_spent": 72
+      },
+      {
+        "address": "0xde4ae59422b5311d8acfcc92f8cf3347ff2235e2",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreih5rfhazwnh26vi5qv5ubivezhmxqzjjq3q5e4lnl7wkwxd52cjnm",
+        "guest_user": false,
+        "name": "siswyd",
+        "verified_user": false,
+        "time_spent": 71
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        80
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        15,
+        1
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 1,
+      "01": 4,
+      "02": 3,
+      "03": 3,
+      "04": 4,
+      "05": 2,
+      "06": 3,
+      "07": 7,
+      "08": 1,
+      "09": 6,
+      "10": 12,
+      "11": 3,
+      "12": 6,
+      "13": 8,
+      "14": 8,
+      "15": 7,
+      "16": 6,
+      "17": 9,
+      "18": 8,
+      "19": 6,
+      "20": 3,
+      "21": 2,
+      "22": 4,
+      "23": 2
+    },
+    "parcels_heatmap": {
+      "-24,55": 5,
+      "-24,56": 13,
+      "-24,57": 102,
+      "-24,58": 14,
+      "-24,59": 23,
+      "-24,60": 9
+    }
+  },
+  {
+    "name": "Meta GamiMall ",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=145,60&selected=145,60;145,61;145,62;145,63;145,64;145,65;146,60;146,61;146,62;146,63;146,64;146,65;147,60;147,61;147,62;147,63;147,64;147,65;148,60;148,61;148,62;148,63;148,64;148,65;149,60;149,61;149,62;149,63;149,64;149,65",
+    "visitors": 132,
+    "share_of_global_visitors": 2,
+    "avg_time_spent": 15325,
+    "avg_time_spent_afk": 8802,
+    "total_logins": 52,
+    "unique_logins": 38,
+    "total_logouts": 87,
+    "unique_logouts": 66,
+    "complete_sessions": 47,
+    "avg_complete_session_duration": 14675,
+    "marathon_users": [
+      {
+        "address": "0x6800f562e1f51823fec46a108b9e43063c50df15",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "Budsmokes",
+        "verified_user": false,
+        "time_spent": 1300
+      },
+      {
+        "address": "0xbbb8230c5c9cd641952448a57e5785e1f8f9366a",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "LeBronJames",
+        "verified_user": false,
+        "time_spent": 1246
+      },
+      {
+        "address": "0x2d260f7b1df94fdf4cc95bd9d1f08e4891fb5d30",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "StephenCurry",
+        "verified_user": false,
+        "time_spent": 1246
+      },
+      {
+        "address": "0x6e28797d48497edb92a13d4cbfbc977c5b5cec4d",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidkve5wlnkilwkkslzy5qoelwshdp4umkx7mgu5q7bvqlnnnka3di",
+        "guest_user": false,
+        "name": "Thy5thHorseman",
+        "verified_user": false,
+        "time_spent": 1234
+      },
+      {
+        "address": "0x0fc0ab6417860ecbcd8328feb6e53d94a9cd2016",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreight4smsi3c5ubkxvsme72vxx737dypqfzlqxlizfdgnpldemygn4",
+        "guest_user": false,
+        "name": "Enigma#2016",
+        "verified_user": false,
+        "time_spent": 1105
+      },
+      {
+        "address": "0x2d3bf3b8dff653f6c32ca87f058bc766991f58c5",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibh4ghpmmw76fh6hbhsrd7izxwf54qzqr72ze5dzmvtlloekfgxe4",
+        "guest_user": false,
+        "name": "DOOR",
+        "verified_user": false,
+        "time_spent": 1093
+      },
+      {
+        "address": "0xedbe5b2a0366d57d5a01a84923be295a70e008bc",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreic5ajzsraokua7nlqkayg22gumkpuxqwht6qc6ydssfodra3scav4",
+        "guest_user": false,
+        "name": "DoitwithRan#08bc",
+        "verified_user": false,
+        "time_spent": 1000
+      },
+      {
+        "address": "0x32ea50d107678eb3c461f3f8364f55bdbc5d40db",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "JohnnyCashaNova",
+        "verified_user": false,
+        "time_spent": 966
+      },
+      {
+        "address": "0x035172e12d33d37edc067010a4e1102a74a8e184",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiefkijoh7ec7unh6kmj62ajr6t6h3zddle2rma333n5v6ri66nfte",
+        "guest_user": false,
+        "name": "Ubbiaranth",
+        "verified_user": false,
+        "time_spent": 888
+      },
+      {
+        "address": "0x28587b1fc3a17981e845373de22b8d5a1981f734",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "qdd",
+        "verified_user": false,
+        "time_spent": 865
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        46
+      ],
+      [
+        1,
+        14
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        14,
+        5
+      ],
+      [
+        16,
+        2
+      ],
+      [
+        18,
+        2
+      ],
+      [
+        20,
+        3
+      ],
+      [
+        21,
+        1
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 16,
+      "01": 15,
+      "02": 17,
+      "03": 14,
+      "04": 17,
+      "05": 14,
+      "06": 18,
+      "07": 17,
+      "08": 16,
+      "09": 14,
+      "10": 17,
+      "11": 29,
+      "12": 31,
+      "13": 23,
+      "14": 21,
+      "15": 21,
+      "16": 24,
+      "17": 19,
+      "18": 20,
+      "19": 17,
+      "20": 22,
+      "21": 24,
+      "22": 20,
+      "23": 18
+    },
+    "parcels_heatmap": {
+      "145,60": 95,
+      "145,61": 84,
+      "145,62": 3,
+      "145,63": 13,
+      "145,64": 12,
+      "146,60": 95,
+      "146,61": 106,
+      "146,62": 95,
+      "146,63": 89,
+      "146,64": 93,
+      "146,65": 3,
+      "147,60": 112,
+      "147,61": 47,
+      "147,62": 26,
+      "147,63": 69,
+      "147,64": 11,
+      "147,65": 4,
+      "148,60": 7,
+      "148,61": 36,
+      "148,62": 49,
+      "148,63": 91,
+      "148,64": 86,
+      "148,65": 89,
+      "149,60": 6,
+      "149,61": 8,
+      "149,62": 16,
+      "149,63": 91,
+      "149,64": 3,
+      "149,65": 2
+    }
+  },
+  {
+    "name": "Exodus",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=126,44&selected=126,44;126,45;126,46;126,47;126,48;126,49;126,50;127,44;127,45;127,46;127,47;127,48;127,49;127,50;128,44;128,45;128,46;128,47;128,48;128,49;128,50;129,44;129,45;129,46;129,47;129,48;129,49;129,50;130,44;130,45;130,46;130,47;130,48;130,49;130,50;131,44;131,45;131,46;131,47;131,48;131,49;131,50;132,44;132,45;132,46;132,47;132,48;132,49;132,50",
+    "visitors": 120,
+    "share_of_global_visitors": 2,
+    "avg_time_spent": 24814,
+    "avg_time_spent_afk": 18000,
+    "total_logins": 45,
+    "unique_logins": 38,
+    "total_logouts": 72,
+    "unique_logouts": 63,
+    "complete_sessions": 33,
+    "avg_complete_session_duration": 16248,
+    "marathon_users": [
+      {
+        "address": "0xbecdc5b5a3276db399cbed84c447ad7ce84fefac",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihqwpxad5nlqflavg4ndh6hng4uqybou54vaxjtrl55veo3va3rbq",
+        "guest_user": false,
+        "name": "innate",
+        "verified_user": true,
+        "time_spent": 1376
+      },
+      {
+        "address": "0x5985eb4a8e0e1f7bca9cc0d7ae81c2943fb205bd",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiec3dmr3ebctve3qtzhrolukegtcs53syrgvuhq7fjjgepex6wyzq",
+        "guest_user": false,
+        "name": "helpimstreaming",
+        "verified_user": true,
+        "time_spent": 1372
+      },
+      {
+        "address": "0x4ed043f3ac20610633cc1d0e69c8ed37cd168209",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiaytnykbmrdru4kabjvrmvpgrtjvtt47w2m3x46s7xmd6xhik7sqq",
+        "guest_user": false,
+        "name": "WAGMI",
+        "verified_user": false,
+        "time_spent": 1350
+      },
+      {
+        "address": "0x39841efe232d80db1f02a532b589041c1978f3f6",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreifg6f4v2su5qfmr4kpkswzuyirfeg3e5bqr5apqgwzco7w4jsixwm",
+        "guest_user": false,
+        "name": "Ruscrypt",
+        "verified_user": false,
+        "time_spent": 1336
+      },
+      {
+        "address": "0x29eaccfbd33ed104a372fb904ccd0babf4ce4088",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihbqzc4dpjnke3cgxm57xtnscbrvklsuhneswj4zolmy4ifieliqu",
+        "guest_user": false,
+        "name": "Cryptonick",
+        "verified_user": true,
+        "time_spent": 1332
+      },
+      {
+        "address": "0x9eb18874c0432c0f4f42c3dd7daa3ad8ca4a42da",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreifab6ikycam5jlkb3vwxh6obq3jltgsa62i2jxsaezc4aubmfkldm",
+        "guest_user": false,
+        "name": "SurudoiRyu#42da",
+        "verified_user": false,
+        "time_spent": 1330
+      },
+      {
+        "address": "0x80b90dffeeb84de2012ee8381d155bcea98f2b3f",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidt2jku7efnabfi5kanosvgbp2fry4jdm5kff2bctzky3u3fqhdve",
+        "guest_user": false,
+        "name": "Mucinex",
+        "verified_user": false,
+        "time_spent": 1321
+      },
+      {
+        "address": "0x8d39244c76e06b7431f7eb8909b669da6335b6b7",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiakdn35pmqlfhhl73cowxoozvdyszr66odysrqvjpjrnl2662v67q",
+        "guest_user": false,
+        "name": "BlahzayBla",
+        "verified_user": false,
+        "time_spent": 1308
+      },
+      {
+        "address": "0x9381caa558f19a821a2360c59fdf3db60c09ff52",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibacseu4r545scrl7vrdyrktgf7ichebp3wpvv3v3zm4jrw2hrsea",
+        "guest_user": false,
+        "name": "JTV",
+        "verified_user": true,
+        "time_spent": 1279
+      },
+      {
+        "address": "0x837a95c88429c10b8cafdc587f8eb0720295b8d9",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibiqo42crwn34hdpoym3ztllccnt7y773af6bd2h2knmmp22e4vgm",
+        "guest_user": false,
+        "name": "PrincesCripto#b8d9",
+        "verified_user": false,
+        "time_spent": 1275
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        38
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        5
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        2
+      ],
+      [
+        17,
+        1
+      ],
+      [
+        19,
+        3
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        22,
+        7
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 21,
+      "01": 19,
+      "02": 22,
+      "03": 18,
+      "04": 14,
+      "05": 12,
+      "06": 6,
+      "07": 4,
+      "08": 6,
+      "09": 11,
+      "10": 18,
+      "11": 18,
+      "12": 22,
+      "13": 22,
+      "14": 31,
+      "15": 35,
+      "16": 32,
+      "17": 32,
+      "18": 30,
+      "19": 31,
+      "20": 29,
+      "21": 19
+    },
+    "parcels_heatmap": {
+      "126,44": 16,
+      "126,45": 12,
+      "126,46": 18,
+      "126,47": 19,
+      "126,48": 22,
+      "126,49": 17,
+      "126,50": 2,
+      "127,44": 110,
+      "127,45": 37,
+      "127,46": 30,
+      "127,47": 31,
+      "127,48": 17,
+      "127,49": 27,
+      "127,50": 16,
+      "128,44": 57,
+      "128,45": 58,
+      "128,46": 40,
+      "128,47": 37,
+      "128,48": 41,
+      "128,49": 34,
+      "128,50": 18,
+      "129,44": 34,
+      "129,45": 55,
+      "129,46": 73,
+      "129,47": 86,
+      "129,48": 58,
+      "129,49": 39,
+      "129,50": 22,
+      "130,44": 34,
+      "130,45": 42,
+      "130,46": 65,
+      "130,47": 88,
+      "130,48": 59,
+      "130,49": 52,
+      "130,50": 21,
+      "131,44": 40,
+      "131,45": 37,
+      "131,46": 51,
+      "131,47": 59,
+      "131,48": 51,
+      "131,49": 37,
+      "131,50": 18,
+      "132,44": 37,
+      "132,45": 38,
+      "132,46": 27,
+      "132,47": 33,
+      "132,48": 16,
+      "132,49": 26,
+      "132,50": 19
+    }
+  },
+  {
+    "name": "BCBGMAXAZRIA X Maeve Reilly Fashion Show",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=-7,144&selected=-7,144;-7,145;-7,146;-8,144;-8,145;-8,146;-9,144;-9,145;-9,146",
+    "visitors": 117,
+    "share_of_global_visitors": 1,
+    "avg_time_spent": 1110,
+    "avg_time_spent_afk": 891,
+    "total_logins": 18,
+    "unique_logins": 18,
+    "total_logouts": 35,
+    "unique_logouts": 34,
+    "complete_sessions": 9,
+    "avg_complete_session_duration": 3021,
+    "marathon_users": [
+      {
+        "address": "0x3284f9f93cd38f05306169cac2b110638d66118b",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihpiqb7cd4r5n6pfzhlz52dfeeyft37azq5wkjpo5t5gibijdchka",
+        "guest_user": false,
+        "name": "RianDana",
+        "verified_user": false,
+        "time_spent": 440
+      },
+      {
+        "address": "0xb9f2c26856734dd306fe33d4b284a0d215a2e10f",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibqwq5yict3mwmeuhtt3m7g7xcbhmkjcydyo64shqfn7hwqazmk7a",
+        "guest_user": false,
+        "name": "MetaSurfer07",
+        "verified_user": false,
+        "time_spent": 175
+      },
+      {
+        "address": "0xb27a79ecd3ceb61bab602c2b7e5dabe6945f7152",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidvqyz63stbzcz53nljtj2djr6iy5bxc6hsp4uwbm675qrcvaatty",
+        "guest_user": true,
+        "name": "john#7152",
+        "verified_user": false,
+        "time_spent": 161
+      },
+      {
+        "address": "0xcdffd935792f7d9706dde373145f6591ea33daab",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "Farah",
+        "verified_user": false,
+        "time_spent": 159
+      },
+      {
+        "address": "0x0650152f8d60be25bd5e95f523528a090fe58d1f",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidgwqlqqbm2rdx4igbgpoo2t6dgsnlwr6y4mcdogv53aqxolafwpi",
+        "guest_user": false,
+        "name": "Matrix#8d1f",
+        "verified_user": false,
+        "time_spent": 149
+      },
+      {
+        "address": "0xca7a6a53d5576102765a0281c723f863d881dc96",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreigto5ebrw3zj6ruxpacncta5zio23g6has5b7nv2btrsm5fwrnv7m",
+        "guest_user": false,
+        "name": "PokerStars",
+        "verified_user": true,
+        "time_spent": 137
+      },
+      {
+        "address": "0x021cd6e21865c919164d76e310b1352252b8c6ad",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreig34yxedsacxbebvn4hvv3bystwfvqyge2c554ghehje7oi55sjpu",
+        "guest_user": false,
+        "name": "JudasJudas",
+        "verified_user": true,
+        "time_spent": 26
+      },
+      {
+        "address": "0x256ac8bd6514eb45b55618643df62759a4473f09",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreie77mjzpwu7u2zq4yivly3si7z4qe6hnbk5snbmzl6fjeesmw6y3m",
+        "guest_user": false,
+        "name": "Yenniedoll#3f09",
+        "verified_user": false,
+        "time_spent": 26
+      },
+      {
+        "address": "0x6a8e5dd6a7f6163a7b5c14489417d7e1bfac4b6b",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "Guest User",
+        "verified_user": false,
+        "time_spent": 25
+      },
+      {
+        "address": "0xb0c4eb0a8bf91d5dfe8db6fef070b522f2a03a9b",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreifndondgnygxxq5zqoakgo7hknsaxxltcwiw2xy3z5mpnshqakjoe",
+        "guest_user": false,
+        "name": "Otaku",
+        "verified_user": false,
+        "time_spent": 20
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        81
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        7,
+        1
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 4,
+      "01": 7,
+      "02": 6,
+      "03": 1,
+      "04": 3,
+      "05": 3,
+      "06": 3,
+      "07": 6,
+      "08": 3,
+      "09": 3,
+      "10": 8,
+      "11": 4,
+      "12": 9,
+      "13": 6,
+      "14": 7,
+      "15": 3,
+      "16": 8,
+      "17": 11,
+      "18": 10,
+      "19": 8,
+      "20": 11,
+      "21": 10,
+      "22": 4,
+      "23": 5
+    },
+    "parcels_heatmap": {
+      "-7,144": 7,
+      "-7,145": 104,
+      "-7,146": 7,
+      "-8,144": 11,
+      "-8,145": 68,
+      "-8,146": 37,
+      "-9,144": 4,
+      "-9,145": 18,
+      "-9,146": 5
+    }
+  },
+  {
+    "name": "The House of Wonder",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=-27,52&selected=-27,52;-27,53;-27,54;-28,52;-28,53;-28,54;-29,52;-29,53;-29,54",
+    "visitors": 106,
+    "share_of_global_visitors": 1,
+    "avg_time_spent": 1061,
+    "avg_time_spent_afk": 184,
+    "total_logins": 1,
+    "unique_logins": 1,
+    "total_logouts": 5,
+    "unique_logouts": 5,
+    "complete_sessions": 0,
+    "avg_complete_session_duration": 0,
+    "marathon_users": [
+      {
+        "address": "0x701cf23bc5b2a8a3f861af0f5dc4d17af413b572",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibqpnkveux3rk2tswt5exdmngwtveavsdhtjsmnmzz6cevpepp3ou",
+        "guest_user": false,
+        "name": "aayko",
+        "verified_user": false,
+        "time_spent": 679
+      },
+      {
+        "address": "0x240c0b4f94a3fcf964259aa1ddb8268cd8a550c6",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "Guest User",
+        "verified_user": false,
+        "time_spent": 123
+      },
+      {
+        "address": "0x02e2111b6f8b92ef642cc5fd458fab76757a6656",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "Guest User",
+        "verified_user": false,
+        "time_spent": 29
+      },
+      {
+        "address": "0x03babb3497cb198087653af2966ab3f7a2287936",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "sergey24Car333",
+        "verified_user": false,
+        "time_spent": 24
+      },
+      {
+        "address": "0xcd631ab36d5e8881626b5e5f6bf0bef6a1926d45",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidwzqoysvkqz242ngnjxxbouutgfz4rii4zrgpkmwltkm44wwbnqq",
+        "guest_user": false,
+        "name": "Clammy",
+        "verified_user": true,
+        "time_spent": 18
+      },
+      {
+        "address": "0x40cc27b995e1ec914b7ced9d2e1b923f4057d762",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "Guest User",
+        "verified_user": false,
+        "time_spent": 15
+      },
+      {
+        "address": "0x02f24d4dedd69d63c8356a3387a58768b6824659",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreiglxfssm6x5gpiliczmyumc3ua5v6q2ac64hwc537smtkokyo34ju",
+        "guest_user": false,
+        "name": "Tsuss",
+        "verified_user": false,
+        "time_spent": 10
+      },
+      {
+        "address": "0xf6a092f55ef52d9b5b2993902f97ff923381184c",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "happy",
+        "verified_user": false,
+        "time_spent": 9
+      },
+      {
+        "address": "0x4519c0fc3e06830c1061759c9dd283ec2c15b462",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreic42zjfanp4z32csnsyvkghrawyiuvcorwhoiyk4o6yv4zl3sx6qm",
+        "guest_user": false,
+        "name": "PositiveTreX",
+        "verified_user": false,
+        "time_spent": 9
+      },
+      {
+        "address": "0xdb429705ef18469e77586108f8305f14aaf0abf1",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "Otilico",
+        "verified_user": false,
+        "time_spent": 8
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        55
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        11,
+        1
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 1,
+      "01": 3,
+      "02": 4,
+      "03": 3,
+      "04": 1,
+      "05": 2,
+      "06": 7,
+      "07": 1,
+      "08": 1,
+      "09": 2,
+      "10": 5,
+      "11": 2,
+      "12": 1,
+      "13": 2,
+      "14": 5,
+      "15": 2,
+      "16": 1,
+      "17": 3,
+      "18": 2,
+      "19": 2,
+      "20": 7,
+      "21": 3,
+      "22": 4,
+      "23": 3
+    },
+    "parcels_heatmap": {
+      "-27,52": 1,
+      "-27,53": 26,
+      "-27,54": 47,
+      "-28,52": 3,
+      "-28,53": 37,
+      "-28,54": 17,
+      "-29,52": 5,
+      "-29,53": 7,
+      "-29,54": 38
+    }
+  },
+  {
+    "name": "Lantern Festival Torii",
+    "date": "2023-02-12",
+    "map_url": "https://api.decentraland.org/v2/map.png?center=15,-18&selected=15,-18;15,-19;16,-18;16,-19;17,-18;17,-19",
+    "visitors": 94,
+    "share_of_global_visitors": 1,
+    "avg_time_spent": 793,
+    "avg_time_spent_afk": 757,
+    "total_logins": 37,
+    "unique_logins": 36,
+    "total_logouts": 25,
+    "unique_logouts": 25,
+    "complete_sessions": 14,
+    "avg_complete_session_duration": 108,
+    "marathon_users": [
+      {
+        "address": "0xa6c6dc29b99e8e7c919a5d2ea426874ad15ea0ed",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihdvbftvsak4ymfmp3c6itcwxaszo6dhrbneiczlyijstpcam74hy",
+        "guest_user": false,
+        "name": "zlw",
+        "verified_user": false,
+        "time_spent": 636
+      },
+      {
+        "address": "0x8444ddf02ee80927dc89fd01d7d7d3343d073832",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreifbyynjh4wcpw5uvqrx5mayaxm4pqmc4flwpcgiipigjv5smiidvm",
+        "guest_user": false,
+        "name": "dreahier#3832",
+        "verified_user": false,
+        "time_spent": 213
+      },
+      {
+        "address": "0x867c2cb59cbd8c080fa4c4cf430a18b6a7521bbb",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibhex3ujif3wjxa24mc7j6lzd3grmu3vlmtbzmvigz5sc6nsv3ck4",
+        "guest_user": false,
+        "name": "tomatoes",
+        "verified_user": false,
+        "time_spent": 10
+      },
+      {
+        "address": "0x32519e94150dde732bd90ff87107c08b56d4e70d",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreidddgd2u4jdkgdj6bos4723wdl56uwmuxa3yrukwcdxdrqz3lps7e",
+        "guest_user": false,
+        "name": "Viclegacy92",
+        "verified_user": false,
+        "time_spent": 8
+      },
+      {
+        "address": "0xa988612376214e731de1d2cbe9c16515374caeb2",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihfsozvvdw7jjez5btzaa3ezzd3lly36wuwy34r7dvlajx47obany",
+        "guest_user": false,
+        "name": "luvlee17#aeb2",
+        "verified_user": false,
+        "time_spent": 4
+      },
+      {
+        "address": "0xb1521720b1eb5d3e80537532ece646068d899dff",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreib2knmc7eft2a6lbpxredlhvhjl6v35xs6knew7svpxdph6pdeway",
+        "guest_user": false,
+        "name": "Rhinoceros",
+        "verified_user": false,
+        "time_spent": 3
+      },
+      {
+        "address": "0xc720427c80fc12fa191faaf63690964965c427d2",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreifs4axblovrtazvxl3fgiozet56pol5bsakv5tokbgg75yagvx2xa",
+        "guest_user": false,
+        "name": "Octopus",
+        "verified_user": false,
+        "time_spent": 3
+      },
+      {
+        "address": "0xec615dcf54ecc49d7fcef58f2a45b4604aefb173",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihm2qqz35kbjeziyl3rhu6jtuuq5vsz6ggd5tpw3b22mswng5spl4",
+        "guest_user": false,
+        "name": "Elephant",
+        "verified_user": false,
+        "time_spent": 2
+      },
+      {
+        "address": "0x27ce15f63c60210feea89013d78fafb56b9c2f46",
+        "avatar_url": null,
+        "guest_user": true,
+        "name": "Cory",
+        "verified_user": false,
+        "time_spent": 2
+      },
+      {
+        "address": "0xe61c47200e4edf0232cd66a655757ee6254a3b78",
+        "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreibttl3tgxce2tu6naj3mrratnwcttyomfrba2nflalcz6chz5mfau",
+        "guest_user": false,
+        "name": "Ixarel",
+        "verified_user": false,
+        "time_spent": 2
+      }
+    ],
+    "time_spent_histogram": [
+      [
+        0,
+        68
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        10,
+        1
+      ]
+    ],
+    "visitors_by_hour_histogram": {
+      "00": 10,
+      "01": 11,
+      "02": 12,
+      "03": 1,
+      "04": 2,
+      "05": 6,
+      "06": 2,
+      "07": 2,
+      "08": 5,
+      "09": 2,
+      "10": 1,
+      "11": 2,
+      "12": 1,
+      "14": 1,
+      "15": 2,
+      "17": 1,
+      "19": 2,
+      "20": 11,
+      "21": 12,
+      "22": 5,
+      "23": 1
+    },
+    "parcels_heatmap": {
+      "15,-18": 6,
+      "15,-19": 81,
+      "16,-18": 7,
+      "16,-19": 3,
+      "17,-18": 4,
+      "17,-19": 2
+    }
+  }
+]

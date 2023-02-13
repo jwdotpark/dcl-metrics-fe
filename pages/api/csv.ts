@@ -6,6 +6,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const uuid = req.query.uuid
+
   const path = `reports/${uuid}`
   const endpoint = getEndpoint(path)
 

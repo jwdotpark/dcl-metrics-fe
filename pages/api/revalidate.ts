@@ -6,17 +6,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   try {
-    // need to bundle things up
     await res.revalidate("/")
     await res.revalidate("/map")
     await res.revalidate("/users")
     await res.revalidate("/scenes")
     await res.revalidate("/parcels")
     await res.revalidate("/status")
-    await res.revalidate("/dashboard/ups_store")
-    await res.revalidate("/dashboard/goldfish")
     await res.revalidate("/dashboard/edifice")
-
     return res.json({ revalidated: true })
   } catch (err) {
     return res.status(500).send("Error revalidating")
