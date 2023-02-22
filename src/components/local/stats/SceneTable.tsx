@@ -51,8 +51,10 @@ const SceneTable = ({ sceneRes }) => {
         Header: "Map",
         Cell: ({ row }) => (
           <Image
-            w="100"
-            h="50"
+            minW="25"
+            maxW="50"
+            minH="25"
+            maxH="50"
             borderRadius="md"
             alt={row.original.name}
             src={row.original.map_url}
