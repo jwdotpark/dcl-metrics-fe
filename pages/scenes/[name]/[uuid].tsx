@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Spacer, Text } from "@chakra-ui/react"
+import { Box, Center, Text } from "@chakra-ui/react"
 import Layout from "../../../src/components/layout/layout"
 import Scene from "../../../src/components/local/stats/Scene"
 import { getDataWithProxy } from "../../../src/lib/data/fetch"

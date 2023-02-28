@@ -6,13 +6,12 @@ import { getDataWithProxy } from "../../src/lib/data/fetch"
 import { findUUID, sceneID } from "../../src/lib/data/sceneID"
 import moment from "moment"
 import { getEndpoint } from "../../src/lib/data/constant"
-import { useRouter } from "next/router"
 
 export async function getServerSideProps(context) {
   const { name } = context.query
   const uuid = findUUID(name)
 
-  const historyUrl = getEndpoint(`scenes/${uuid}/history`)
+  const historyUrl = getEndpoint(`scenes/${uuid}/visitor_history`)
   const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
 
   const sceneUrl = getEndpoint(`scenes/${uuid}`)
@@ -24,7 +23,6 @@ export async function getServerSideProps(context) {
 }
 
 const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
-  const router = useRouter()
   const availableDate = historyResult.map((item) => item.date)
   const [data, setData] = useState([sceneResult])
   const [date, setDate] = useState(
@@ -44,15 +42,6 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
   useEffect(() => {
     fetchData()
   }, [date])
-
-  //useEffect(() => {
-  //  const name = router.query.name
-  //  const authID = sceneID[localStorage.getItem("account")].name
-  //  if (name !== authID) {
-  //    router.push("/dashboard/")
-  //  } else {
-  //  }
-  //}, [])
 
   return (
     <Layout>
