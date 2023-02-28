@@ -78,7 +78,7 @@ const SceneUserLineChart = ({ data, name }) => {
           shadow="md"
         >
           <BoxTitle
-            name={`Unique ${name} Visitors`}
+            name={`Unique Visitors`}
             description="The number of unique visitors in the last period"
             date={""}
             avgData={[]}
