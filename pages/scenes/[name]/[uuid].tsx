@@ -8,7 +8,6 @@ const SingleScenePage = ({ result, historyResult }) => {
   const res = [result]
   const isResultEmpty = Object.keys(result).length === 0
 
-  console.log(historyResult)
   return (
     <Layout>
       {isResultEmpty ? (

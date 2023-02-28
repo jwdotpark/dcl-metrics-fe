@@ -14,11 +14,9 @@ export default async function handler(
 
   const response = await fetch(endpoint)
   const data = await response.json()
-  //console.log("data", data)
 
   // convert data to CSV format
   const csvData = data.map((d) => Object.values(d).join(",")).join("\n")
-  console.log(csvData)
 
   // set response headers
   res.setHeader("Content-Disposition", `attachment; filename="name.csv"`)
