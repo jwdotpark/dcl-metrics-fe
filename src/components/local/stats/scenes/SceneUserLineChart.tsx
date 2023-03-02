@@ -19,7 +19,7 @@ const SceneUserLineChart = ({ data, name }) => {
       // @ts-ignore
       date: item[1].date,
       // @ts-ignore
-      unique_visitors: item[1].unique_visitors,
+      visitors: item[1].visitors,
     })
   })
 
@@ -38,7 +38,7 @@ const SceneUserLineChart = ({ data, name }) => {
       data: slicedData().map((item) => ({
         id: item.date,
         x: item.date,
-        y: item.unique_visitors,
+        y: item.visitors,
       })),
     },
   ]
@@ -78,7 +78,7 @@ const SceneUserLineChart = ({ data, name }) => {
           shadow="md"
         >
           <BoxTitle
-            name={`Unique ${name} Visitors`}
+            name={`Unique Visitors`}
             description="The number of unique visitors in the last period"
             date={""}
             avgData={[]}

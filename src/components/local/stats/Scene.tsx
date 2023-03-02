@@ -67,7 +67,9 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
           description={`${name} data on ${latest}`}
         />
         {/* main scene user chart on private dashboard */}
-        {uuid && <SceneUserLineChart data={dailyUsers} name={name} />}
+        {dailyUsers.length > 0 && (
+          <SceneUserLineChart data={dailyUsers} name={name} />
+        )}
         <Box m="4">
           <Flex
             sx={{

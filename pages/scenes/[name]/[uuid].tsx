@@ -1,9 +1,10 @@
-import { Box, Button, Center, Flex, Spacer, Text } from "@chakra-ui/react"
+import { Box, Center, Text } from "@chakra-ui/react"
 import Layout from "../../../src/components/layout/layout"
 import Scene from "../../../src/components/local/stats/Scene"
+import { getEndpoint } from "../../../src/lib/data/constant"
 import { getDataWithProxy } from "../../../src/lib/data/fetch"
 
-const SingleScenePage = (result) => {
+const SingleScenePage = ({ result, historyResult }) => {
   const res = [result]
   const isResultEmpty = Object.keys(result).length === 0
 
@@ -21,7 +22,7 @@ const SingleScenePage = (result) => {
           date=""
           setDate={{}}
           availableDate={[]}
-          dailyUsers={{}}
+          dailyUsers={historyResult}
           uuid={""}
         />
       )}
@@ -33,12 +34,13 @@ export default SingleScenePage
 
 export async function getServerSideProps(context) {
   const uuid = context.query.uuid
-  const endPoint = process.env.NEXT_PUBLIC_PROD_ENDPOINT
-  const path = "scenes/" + uuid
-  const url = endPoint + path
-  const result = uuid && (await getDataWithProxy(url, path, {}))
+  const url = getEndpoint("scenes/" + uuid)
+  const result = uuid && (await getDataWithProxy(url, "scenes/" + uuid, {}))
+
+  const historyUrl = getEndpoint(`scenes/${uuid}/visitor_history`)
+  const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
 
   return {
-    props: result,
+    props: { result, historyResult },
   }
 }
