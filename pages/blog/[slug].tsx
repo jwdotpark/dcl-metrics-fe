@@ -26,13 +26,7 @@ function Post({ data, content }) {
         <Center w={["100%", "100%", "100%", 1080]}>
           <BoxWrapper colSpan={6}>
             <Box>
-              <Flex
-                m="4"
-                mb="8"
-                mx="8"
-                borderColor={useColorModeValue("red.200", "red.600")}
-                borderBottom="1px solid"
-              >
+              <Flex m="4" mb="8" mx="8">
                 <Box>
                   <Text
                     mb="2"
