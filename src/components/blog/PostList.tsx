@@ -39,7 +39,7 @@ const PostList = ({ posts }) => {
                   </Center>
                 </Flex>
                 {post.data.previewImage.length > 0 && (
-                  <Box
+                  <Image
                     pos="relative"
                     overflow="clip"
                     h={[200, 400, 500]}
@@ -48,13 +48,10 @@ const PostList = ({ posts }) => {
                     borderColor={useColorModeValue("gray.200", "gray.600")}
                     borderRadius="xl"
                     shadow="md"
-                  >
-                    <Image
-                      objectFit="cover"
-                      alt={`${post.data.title} preview picture`}
-                      src={post.data.previewImage}
-                    />
-                  </Box>
+                    objectFit="cover"
+                    alt={`${post.data.title} preview picture`}
+                    src={post.data.previewImage}
+                  />
                 )}
                 <Spacer />
               </Flex>
