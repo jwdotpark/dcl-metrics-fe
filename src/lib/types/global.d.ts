@@ -13,4 +13,5 @@ declare type Props = {
       description: string
     }
   }
+  onlineUserData: {}
 }

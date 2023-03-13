@@ -84,6 +84,20 @@ export async function getStaticProps() {
     `,
   })
 
+  // status.decentraland.org/
+  const onlineUsers = await fetch(
+    "https://public-metrics.decentraland.org/onlineUsers30d",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        mode: "no-cors",
+      },
+    }
+  )
+  const onlineUserData = await onlineUsers.json()
+
+  // blog PSA
   const latestPost = getPosts().sort((a, b) => {
     return moment(b.data.date).unix() - moment(a.data.date).unix()
   })[0]
@@ -95,6 +109,7 @@ export async function getStaticProps() {
       landSalesRes,
       rental: data,
       latestPost: latestPost,
+      onlineUserData: onlineUserData,
     },
     revalidate: time,
   }
@@ -111,7 +126,14 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const [isPSAVisible, setIsPSAVisible] = useState(true)
 
-  const { globalDailyRes, parcelRes, landSalesRes, rental, latestPost } = props
+  const {
+    globalDailyRes,
+    parcelRes,
+    landSalesRes,
+    rental,
+    latestPost,
+    onlineUserData,
+  } = props
 
   return (
     <Layout>
@@ -127,7 +149,7 @@ const GlobalPage: NextPage = (props: Props) => {
           <ActiveScenes data={globalDailyRes} />
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <OnlineUsers />
+          <OnlineUsers data={onlineUserData} />
           <ActiveUsers />
         </Grid>
         <Box mb="4">

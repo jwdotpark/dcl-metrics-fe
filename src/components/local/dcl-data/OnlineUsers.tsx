@@ -1,25 +1,17 @@
 // @ts-nocheck
-import { Box, Center, Spinner } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
-import useSWR from "swr"
 import BoxTitle from "../../layout/local/BoxTitle"
 import LineChart from "../../../lib/LineChart"
 import { useState, useEffect } from "react"
 import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
 import moment from "moment"
-import { useMemo } from "react"
 
-const OnlineUsers = () => {
+const OnlineUsers = ({ data }) => {
   const chartData = []
   const color = ["#9ccfd8"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
-
-  const fetcher = (url) => fetch(url).then((r) => r.json())
-  const endpoint = "https://public-metrics.decentraland.org/onlineUsers30d"
-
-  const { data, error, isLoading } = useSWR(endpoint, fetcher)
-
   const dataArr = data && data.data.result[0].values
 
   if (dataArr !== undefined) {
@@ -80,17 +72,9 @@ const OnlineUsers = () => {
         color={color}
         description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
       />
-      {!isLoading && !error ? (
-        <Box mb="4">
-          <LineChart data={result} color={color} name="onlineUsers" />
-        </Box>
-      ) : (
-        <Box>
-          <Center h="350">
-            <Spinner />
-          </Center>
-        </Box>
-      )}
+      <Box mb="4">
+        <LineChart data={result} color={color} name="onlineUsers" />
+      </Box>
     </BoxWrapper>
   )
 }
