@@ -24,8 +24,6 @@ const ActiveUsers = () => {
       })
     })
 
-  console.log("chart", chartData)
-
   return (
     <BoxWrapper colSpan={3}>
       <BoxTitle
@@ -36,7 +34,7 @@ const ActiveUsers = () => {
         color={color}
         description={`Unique users that have logged into Decentraland and moved out of their initial tile`}
       />
-      {!isLoading ? (
+      {!isLoading && !error ? (
         <Box mb="4">
           <MyResponsiveBar data={chartData} />
         </Box>

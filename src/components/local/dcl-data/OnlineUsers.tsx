@@ -80,7 +80,7 @@ const OnlineUsers = () => {
         color={color}
         description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
       />
-      {!isLoading ? (
+      {!isLoading && !error ? (
         <Box mb="4">
           <LineChart data={result} color={color} name="onlineUsers" />
         </Box>
