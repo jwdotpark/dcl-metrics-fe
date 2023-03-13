@@ -7,6 +7,7 @@ import LineChart from "../../../lib/LineChart"
 import { useState, useEffect } from "react"
 import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
 import moment from "moment"
+import { useMemo } from "react"
 
 const OnlineUsers = () => {
   const chartData = []
@@ -67,7 +68,7 @@ const OnlineUsers = () => {
   useEffect(() => {
     setAvgData(calculateAverages(partial))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [partial])
+  }, [data])
 
   return (
     <BoxWrapper colSpan={3}>
