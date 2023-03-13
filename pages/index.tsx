@@ -21,6 +21,7 @@ import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
 import { getPosts } from "../blog/helpers/post"
 import moment from "moment"
+import ActiveUsers from "../src/components/local/dcl-data/ActiveUsers"
 
 export async function getStaticProps() {
   let globalDailyRes, parcelRes, landSalesRes
@@ -127,6 +128,7 @@ const GlobalPage: NextPage = (props: Props) => {
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <OnlineUsers />
+          <ActiveUsers />
         </Grid>
         <Box mb="4">
           <LandSales data={landSalesRes} />

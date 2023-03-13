@@ -47,7 +47,7 @@ const OnlineUsers = () => {
     }
   }
 
-  const result = [mapData("Online Users", "online_users")]
+  const result = [mapData("Online Users")]
 
   const calculateAverages = (partial) => {
     const validLength = partial.length
@@ -78,7 +78,7 @@ const OnlineUsers = () => {
         avgData={avgData}
         slicedData={{}}
         color={color}
-        description={`Number of users online from ${dateString.first} to ${dateString.last}, data from status.decentraland.org`}
+        description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
       />
       {!isLoading ? (
         <Box mb="4">
