@@ -21,32 +21,37 @@ const LineChart = ({ data, color, name, rentalData }) => {
   const dateRange = data[0].data.length
 
   const yAxisLabel = (value) => {
-    const lastChar = value.toString().slice(-1)
-    if (dateRange === 30 && lastChar % 2 !== 0) {
+    const lastChar = parseInt(value.toString().slice(-1))
+    const isEven = (num) => num % 2 === 0
+    const isMultipleOf = (num, factor) => num % factor === 0
+
+    if ((dateRange === 30 || dateRange === 31) && isEven(lastChar)) {
       return ""
     }
-    if (dateRange === 31 && lastChar % 2 !== 0) {
-      return ""
-    }
-    if (
-      dateRange > 32 &&
-      (lastChar % 2 !== 0 || lastChar % 1 !== 0 || lastChar % 6 !== 0)
-    ) {
+    if (dateRange > 32 && (!isEven(lastChar) || !isMultipleOf(lastChar, 6))) {
       return ""
     }
     if (
       dateRange > 90 &&
-      (lastChar % 2 !== 0 ||
-        lastChar % 3 !== 0 ||
-        lastChar % 4 !== 0 ||
-        lastChar % 1 !== 0 ||
-        lastChar % 5 !== 0 ||
-        lastChar % 6 !== 0 ||
-        lastChar % 7 !== 0)
+      (!isEven(lastChar) ||
+        !isMultipleOf(lastChar, 1) ||
+        !isMultipleOf(lastChar, 3) ||
+        !isMultipleOf(lastChar, 4) ||
+        !isMultipleOf(lastChar, 5) ||
+        !isMultipleOf(lastChar, 6) ||
+        !isMultipleOf(lastChar, 7))
     ) {
       return ""
     }
-    return moment(value).format("MMM. D")
+    if (value.length > 12) {
+      const hr = parseInt(value.slice(-5, -3))
+      if (isEven(hr)) {
+        return value.slice(5, 10)
+      } else {
+        return ""
+      }
+    }
+    return moment(value).format("MM-DD")
   }
 
   const yAxisLabelDegree = () => {
@@ -113,7 +118,7 @@ const LineChart = ({ data, color, name, rentalData }) => {
         animate={true}
         pointSize={4}
         margin={{ top: 40, right: rentalData ? 50 : 25, bottom: 60, left: 55 }}
-        xScale={{ type: "point" }}
+        xScale={{ type: "point", useUTC: false }}
         yScale={{
           type: "linear",
           min: "auto",
@@ -165,6 +170,7 @@ const LineChart = ({ data, color, name, rentalData }) => {
                 y={tick.y + 4}
                 fontSize="11px"
                 fill={useColorModeValue("black", "white")}
+                key={tick.x}
               >
                 {tick.value.toFixed(0)}
               </text>

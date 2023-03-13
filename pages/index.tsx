@@ -11,7 +11,8 @@ import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedPar
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import LandSales from "../src/components/local/stats/rentals/LandSales"
-import Rental from "../src/components/local/stats/rentals/Rental"
+//import Rental from "../src/components/local/stats/rentals/Rental"
+import OnlineUsers from "../src/components/local/dcl-data/OnlineUsers"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
 import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
@@ -123,6 +124,9 @@ const GlobalPage: NextPage = (props: Props) => {
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <UniqueVisitedParcels data={globalDailyRes} />
           <ActiveScenes data={globalDailyRes} />
+        </Grid>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <OnlineUsers />
         </Grid>
         <Box mb="4">
           <LandSales data={landSalesRes} />
