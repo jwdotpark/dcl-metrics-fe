@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Box } from "@chakra-ui/react"
+import { Box, Center, Spinner } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import useSWR from "swr"
 import BoxTitle from "../../layout/local/BoxTitle"
@@ -10,7 +10,7 @@ import moment from "moment"
 
 const OnlineUsers = () => {
   const chartData = []
-  const color = ["#48BB78"]
+  const color = ["#9ccfd8"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
 
@@ -67,10 +67,10 @@ const OnlineUsers = () => {
   useEffect(() => {
     setAvgData(calculateAverages(partial))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [partial])
 
   return (
-    <BoxWrapper colSpan={6}>
+    <BoxWrapper colSpan={3}>
       <BoxTitle
         name={`Online Users`}
         date={""}
@@ -79,9 +79,17 @@ const OnlineUsers = () => {
         color={color}
         description={`Number of users online from ${dateString.first} to ${dateString.last}, data from status.decentraland.org`}
       />
-      <Box mb="4">
-        <LineChart data={result} color={color} name="onlineUsers" />
-      </Box>
+      {!isLoading ? (
+        <Box mb="4">
+          <LineChart data={result} color={color} name="onlineUsers" />
+        </Box>
+      ) : (
+        <Box>
+          <Center h="350">
+            <Spinner />
+          </Center>
+        </Box>
+      )}
     </BoxWrapper>
   )
 }
