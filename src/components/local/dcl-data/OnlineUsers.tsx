@@ -33,14 +33,14 @@ const OnlineUsers = () => {
   }
 
   const partial = sliceData(chartData, dateRange)
-  //const dateString = date(partial, dateRange).date
+  const dateString = partial.length > 0 && date(partial, dateRange).date
 
-  const mapData = (id: string, key: number) => {
+  const mapData = (id: string) => {
     return {
       id: id,
       data: partial.map((item) => ({
         x: item.date,
-        y: item.value,
+        y: Number(item.value).toFixed(0),
         degraded: item.degraded,
       })),
     }
@@ -51,7 +51,7 @@ const OnlineUsers = () => {
   const calculateAverages = (partial) => {
     const validLength = partial.length
     const sum = {
-      onlineUsers: partial.reduce((acc, cur) => acc + cur.online_users, 0),
+      onlineUsers: partial.reduce((acc, cur) => acc + Number(cur.value), 0),
     }
     const value = {
       online_users: Math.floor(sum.onlineUsers / validLength),
@@ -72,14 +72,12 @@ const OnlineUsers = () => {
   return (
     <BoxWrapper colSpan={6}>
       <BoxTitle
-        name="Online Users"
+        name={`Online Users`}
         date={""}
         avgData={avgData}
         slicedData={{}}
         color={color}
-        description={
-          "Number of users online, data from status.decentraland.org"
-        }
+        description={`Number of users online from ${dateString.first} to ${dateString.last}, data from status.decentraland.org`}
       />
       <Box mb="4">
         <LineChart data={result} color={color} name="onlineUsers" />
