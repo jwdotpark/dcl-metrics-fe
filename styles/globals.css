@@ -25,17 +25,35 @@ a {
   }
 }
 
+.markdown {
+  line-height: 1.5;
+  font-size: 1.1rem;
+  /*padding-left: 1rem;*/
+  /*padding-right: 1rem;*/
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 
 .markdown a {
   color: #4299e1;
   margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .markdown ul {
-  margin-left: 0rem;
+  margin-left: 2rem;
+  margin-bottom: 0.25rem;
 }
 
 .markdown li {
-  margin-left: 1rem;
+  margin-left: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.markdown img {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
