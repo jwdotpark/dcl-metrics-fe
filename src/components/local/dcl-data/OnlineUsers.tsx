@@ -13,15 +13,14 @@ import {
 import moment from "moment"
 
 const OnlineUsers = () => {
-  const [data, setData] = useState(null)
-  const [isLoading, setLoading] = useState(false)
-  const url = "https://public-metrics.decentraland.org/onlineUsers30d"
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const chartData = []
   const color = ["#9ccfd8"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
-  const dataArr = data && data.data.result[0].values
+  const dataArr = (data.result && data.result.data.result[0].values) || []
 
   if (dataArr !== null) {
     dataArr.map((item) => {
@@ -71,14 +70,24 @@ const OnlineUsers = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
+  const fetchData = async () => {
+    setIsLoading(true)
+
+    const url = "https://public-metrics.decentraland.org/onlineUsers30d"
+    const res = await fetch(`/api/client-fetch?url=${url}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        mode: "no-cors",
+      },
+    })
+    const data = await res.json()
+    setData(data)
+    setIsLoading(false)
+  }
+
   useEffect(() => {
-    setLoading(true)
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
+    fetchData()
   }, [])
 
   return (
