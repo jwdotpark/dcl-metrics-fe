@@ -1,20 +1,29 @@
 // @ts-nocheck
-import { Box } from "@chakra-ui/react"
+import { Box, Center, Spinner } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import LineChart from "../../../lib/LineChart"
 import { useState, useEffect } from "react"
-import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
+import {
+  defaultDateRange,
+  sliceData,
+  date,
+  chartHeight,
+} from "../../../lib/data/chartInfo"
 import moment from "moment"
 
-const OnlineUsers = ({ data }) => {
+const OnlineUsers = () => {
+  const [data, setData] = useState(null)
+  const [isLoading, setLoading] = useState(false)
+  const url = "https://public-metrics.decentraland.org/onlineUsers30d"
+
   const chartData = []
   const color = ["#9ccfd8"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
   const dataArr = data && data.data.result[0].values
 
-  if (dataArr !== undefined) {
+  if (dataArr !== null) {
     dataArr.map((item) => {
       chartData.push({
         id: item[0],
@@ -62,6 +71,16 @@ const OnlineUsers = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
+  useEffect(() => {
+    setLoading(true)
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+        setLoading(false)
+      })
+  }, [])
+
   return (
     <BoxWrapper colSpan={3}>
       <BoxTitle
@@ -72,8 +91,14 @@ const OnlineUsers = ({ data }) => {
         color={color}
         description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
       />
-      <Box mb="4">
-        <LineChart data={result} color={color} name="onlineUsers" />
+      <Box>
+        {!isLoading ? (
+          <LineChart data={result} color={color} name="onlineUsers" />
+        ) : (
+          <Center h={chartHeight}>
+            <Spinner />
+          </Center>
+        )}
       </Box>
     </BoxWrapper>
   )

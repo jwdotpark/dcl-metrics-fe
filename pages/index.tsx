@@ -149,7 +149,7 @@ const GlobalPage: NextPage = (props: Props) => {
           <ActiveScenes data={globalDailyRes} />
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <OnlineUsers data={onlineUserData} />
+          <OnlineUsers />
           <ActiveUsers />
         </Grid>
         <Box mb="4">
