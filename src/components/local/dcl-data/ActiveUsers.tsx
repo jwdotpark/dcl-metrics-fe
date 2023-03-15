@@ -4,6 +4,7 @@ import useSWR from "swr"
 import { ResponsiveBar } from "@nivo/bar"
 import { Box, Text, Center, Spinner, useColorModeValue } from "@chakra-ui/react"
 import moment from "moment"
+import BottomLegend from "./partial/BottomLegend"
 
 const ActiveUsers = () => {
   const chartData = []
@@ -37,6 +38,9 @@ const ActiveUsers = () => {
       {!isLoading && !error ? (
         <Box mb="4">
           <MyResponsiveBar data={chartData} />
+          <BottomLegend
+            description={"Source from status.decentraland.org/metrics"}
+          />
         </Box>
       ) : (
         <Box>
@@ -57,7 +61,7 @@ const MyResponsiveBar = ({ data }) => (
       data={data}
       keys={["value"]}
       indexBy="id"
-      margin={{ top: 30, right: 20, bottom: 40, left: 70 }}
+      margin={{ top: 30, right: 20, bottom: 50, left: 70 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
@@ -94,7 +98,7 @@ const MyResponsiveBar = ({ data }) => (
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        format: (value) => moment(value).format("YYYY MMMM"),
+        format: (value) => moment(value).format("YYYY MMM"),
       }}
       axisLeft={{
         tickSize: 5,

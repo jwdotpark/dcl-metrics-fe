@@ -6,9 +6,9 @@ import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
 import ErrorBoundary from "../src/components/error/ErrorBoundary"
-import { Noto_Sans_Display } from "@next/font/google"
+import { Inter } from "@next/font/google"
 
-const notoSansDisplay = Noto_Sans_Display({
+const InterFont = Inter({
   subsets: ["latin"],
 })
 
@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           ></Script>
         )}
         <ErrorBoundary>
-          <main className={notoSansDisplay.className}>
+          <main className={InterFont.className}>
             <Component {...pageProps} />
           </main>
         </ErrorBoundary>

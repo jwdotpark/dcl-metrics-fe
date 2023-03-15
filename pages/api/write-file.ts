@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import fs from "fs"
-import { writeFile } from "fs"
 
 // save body to json file in /public/data
 async function handler(req: NextApiRequest, res: NextApiResponse) {

@@ -1,20 +1,25 @@
 // @ts-nocheck
-import { Box } from "@chakra-ui/react"
+import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import LineChart from "../../../lib/LineChart"
 import { useState, useEffect } from "react"
-import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
+import { sliceData, date, chartHeight } from "../../../lib/data/chartInfo"
 import moment from "moment"
+import BottomLegend from "./partial/BottomLegend"
 
-const OnlineUsers = ({ data }) => {
+const OnlineUsers = () => {
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+
   const chartData = []
   const color = ["#9ccfd8"]
-  const [dateRange, setDateRange] = useState(defaultDateRange)
-  const [avgData, setAvgData] = useState([])
-  const dataArr = data && data.data.result[0].values
 
-  if (dataArr !== undefined) {
+  const [avgData, setAvgData] = useState([])
+  const dataArr = (data.result && data.result.data.result[0].values) || []
+  const dateRange = useState(dataArr.length - 1)
+
+  if (dataArr !== null) {
     dataArr.map((item) => {
       chartData.push({
         id: item[0],
@@ -62,6 +67,26 @@ const OnlineUsers = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
+  const fetchData = async () => {
+    setIsLoading(true)
+
+    const url = "https://public-metrics.decentraland.org/onlineUsers30d"
+    const res = await fetch(`/api/client-fetch?url=${url}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        mode: "no-cors",
+      },
+    })
+    const data = await res.json()
+    setData(data)
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <BoxWrapper colSpan={3}>
       <BoxTitle
@@ -72,8 +97,17 @@ const OnlineUsers = ({ data }) => {
         color={color}
         description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
       />
-      <Box mb="4">
-        <LineChart data={result} color={color} name="onlineUsers" />
+      <Box>
+        {!isLoading ? (
+          <>
+            <LineChart data={result} color={color} name="onlineUsers" />
+            <BottomLegend description="UTC, source from status.decentraland.org/metrics" />
+          </>
+        ) : (
+          <Center h={chartHeight}>
+            <Spinner />
+          </Center>
+        )}
       </Box>
     </BoxWrapper>
   )
