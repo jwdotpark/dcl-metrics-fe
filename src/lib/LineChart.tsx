@@ -29,7 +29,7 @@ const LineChart = ({ data, color, name, rentalData }) => {
             <g key={item.date}>
               <rect
                 x={i * Math.min(innerWidth / dateRange) + 5}
-                y={chartHeight - item.y * 10 - 100}
+                y={chartHeight - item.y * 10 - 90}
                 rx={2}
                 ry={2}
                 width={dateRange > 30 ? 5 : 10}
