@@ -1,16 +1,12 @@
 // @ts-nocheck
-import { Box, Center, Spinner } from "@chakra-ui/react"
+import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import LineChart from "../../../lib/LineChart"
 import { useState, useEffect } from "react"
-import {
-  defaultDateRange,
-  sliceData,
-  date,
-  chartHeight,
-} from "../../../lib/data/chartInfo"
+import { sliceData, date, chartHeight } from "../../../lib/data/chartInfo"
 import moment from "moment"
+import BottomLegend from "./partial/BottomLegend"
 
 const OnlineUsers = () => {
   const [data, setData] = useState([])
@@ -18,9 +14,10 @@ const OnlineUsers = () => {
 
   const chartData = []
   const color = ["#9ccfd8"]
-  const [dateRange, setDateRange] = useState(defaultDateRange)
+
   const [avgData, setAvgData] = useState([])
   const dataArr = (data.result && data.result.data.result[0].values) || []
+  const dateRange = useState(dataArr.length - 1)
 
   if (dataArr !== null) {
     dataArr.map((item) => {
@@ -102,7 +99,10 @@ const OnlineUsers = () => {
       />
       <Box>
         {!isLoading ? (
-          <LineChart data={result} color={color} name="onlineUsers" />
+          <>
+            <LineChart data={result} color={color} name="onlineUsers" />
+            <BottomLegend description="UTC, source from status.decentraland.org/metrics" />
+          </>
         ) : (
           <Center h={chartHeight}>
             <Spinner />

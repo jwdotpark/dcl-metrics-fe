@@ -85,7 +85,12 @@ const LineChart = ({ data, color, name, rentalData }) => {
         ]}
         animate={true}
         pointSize={4}
-        margin={{ top: 40, right: rentalData ? 50 : 25, bottom: 60, left: 70 }}
+        margin={{
+          top: 40,
+          right: rentalData ? 50 : 25,
+          bottom: 50,
+          left: 70,
+        }}
         xScale={{
           type: "time",
           format: dataName === "Online Users" ? "%Y-%m-%d %H:%M" : "%Y-%m-%d",
@@ -126,12 +131,12 @@ const LineChart = ({ data, color, name, rentalData }) => {
         }
         axisBottom={{
           tickRotation: 60,
-          format: dataName === "Online Users" ? "%H:%M" : "%b %d",
+          format: dataName === "Online Users" ? "%b %d" : "%b %d",
           tickValues:
             dataName === "Online Users"
-              ? "every 3 hours"
+              ? "every day"
               : `every ${dateRangeLabelNumber()} day`,
-          legend: "UTC",
+          legend: "",
           legendOffset: -12,
         }}
         pointColor={{ theme: "background" }}
