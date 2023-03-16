@@ -17,7 +17,7 @@ const OnlineUsers = () => {
 
   const [avgData, setAvgData] = useState([])
   const dataArr = (data.result && data.result.data.result[0].values) || []
-  const dateRange = useState(dataArr.length - 1)
+  const dateRange = dataArr.length - 1
 
   if (dataArr !== null) {
     dataArr.map((item) => {
