@@ -1,4 +1,12 @@
-import { Box, Button, Center, Flex, Spacer, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  Spacer,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
 import { getPost, getPosts } from "../../blog/helpers/post"
 import { serialize } from "next-mdx-remote/serialize"
@@ -18,7 +26,7 @@ function Post({ data, content }) {
         <Center w={["100%", "100%", "100%", 1080]}>
           <BoxWrapper colSpan={6}>
             <Box>
-              <Flex m="4" mb="8" mx="6">
+              <Flex m="4" mb="8" mx="8">
                 <Box>
                   <Text
                     mb="2"
@@ -27,10 +35,8 @@ function Post({ data, content }) {
                   >
                     {data.title}
                   </Text>
-                  <Text mb="2" ml="1">
-                    {data.author} on{" "}
-                    {moment(data.date).format("MMMM D dddd, YYYY")}
-                  </Text>
+                  <Text>{data.author}</Text>
+                  <Text mb="4">{moment(data.date).format("MMMM D, YYYY")}</Text>
                   <Flex>
                     <Spacer />
                   </Flex>
@@ -43,14 +49,13 @@ function Post({ data, content }) {
               <Flex m="4">
                 <Spacer />
                 <Button
-                  //w="100%"
                   borderRadius="xl"
                   shadow="md"
                   onClick={() => {
                     router.push("/blog")
                   }}
                 >
-                  Go Back
+                  To article list
                 </Button>
               </Flex>
             </Box>

@@ -1,0 +1,111 @@
+---
+title: "Project Update #1"
+date: "Sep 9, 2022"
+description: "We've solidified our roadmap and closed 43 tickets in the last month, pertaining mainly to platform stability."
+previewImage: "https://img.freepik.com/free-vector/tiny-programmers-upgrading-operation-system-computer-isolated-flat-illustration_74855-11138.jpg?w=1380&t=st=1678809405~exp=1678810005~hmac=1d2313beba6fcd0dc03b393e1f3e5f43af8429761c929ca96261c2a7bda6d36e"
+author: "Dax"
+published: true
+---
+
+![Decentraland](https://img.freepik.com/free-vector/tiny-programmers-upgrading-operation-system-computer-isolated-flat-illustration_74855-11138.jpg?w=1380&t=st=1678809405~exp=1678810005~hmac=1d2313beba6fcd0dc03b393e1f3e5f43af8429761c929ca96261c2a7bda6d36e)
+
+## Introduction
+
+Firstly, I'd like to thank everyone who took part in the voting and discussion, everyone who has messaged me with feedback or ideas and the DAO for making this opportunity possible.
+
+<br />
+Since our grant was approved, we've been busy adding a lot of behind the scenes changes
+for platform stability and data integrity.
+
+<br />
+Our first major release on 2022-09-09 made the last 90 days of global statistics
+available with an updated UI and more easy-to-understand data breakdowns.
+<br />
+
+[https://www.dcl-metrics.com/](https://www.dcl-metrics.com/)
+
+<br />
+
+## Highlights
+
+#### TL;DR: we've solidified our roadmap and closed 43 tickets in the last month, pertaining mainly to platform stability.
+
+Our user-facing changelog is available at [https://www.dcl-metrics.com/roadmap](https://www.dcl-metrics.com/roadmap).
+
+<br />
+
+Before submitting our grant proposal, JW and I worked hard and fast to put together an MVP to showcase what we could do -
+I believe we accomplished that well but after the grant was approved **we knew we had to spend some time refactoring**.
+That includes things like the following:
+
+<br />
+
+- Error handling and tracking
+- Cleaning up MVP code for long-term maintenance and adding more automated tests
+- Building staging pipelines to test new code before production deployment
+- Internal metrics and notifications so we are aware if something breaks
+- HTTPS everywhere
+- Aggressive caching to keep resource usage in check and provide fast loading times
+- Locked API access to prevent malicious D/DOS attacks on our server
+
+<br />
+We have spent some time on **user-facing** features as well. These include:
+<br />
+
+- Adding new components to the global dashboard
+- Roadmap / Changelog so users can see where we are and what is coming next
+- Expanded data range (up to 90 days)
+- Updated user data formatting
+
+<br />
+
+## Blockers
+
+Our main blocker in the past month was the uncertainty re: the catalyst endpoints from which we pull our data - if the `/comms/peers` endpoint
+was deprecated completely, would it still make sense to continue? What data would we show? Could we find that data from other sources?
+
+<br />
+Unfortunately this took quite a lot of bandwidth, however I feel relatively confident
+that the issue will be sorted out over a long enough time frame that even in the
+worst case scenario we will have time to adapt and continue providing useful data
+to the community.
+
+## Next steps
+
+Our immediate next concern is showing scene-based metrics. We have already begun pulling tickets related to this and our goal is to have this implemented in production by mid-October 2022.
+
+<br />
+After that we will implement a land-picker tool which will open up the possibility
+of displaying metrics for all parcels and scenes, not just "top 10" lists. We have
+already done some ideation and research work in this direction.
+
+<br />
+Beyond that we want to provide more rich daily stats such as daily/weekly/monthly
+average users, concurrent users and traffic histograms globally and by scene Additional
+notes and links
+
+## Additional notes and links
+
+We're seeing relatively steady traffic, but haven't been pushing the site very hard
+in terms of sharing links or making announcements. You can see spikes in traffic
+around the time that our grant was approved and yesterday (09 September) when we
+announced our first major update.
+
+<br />
+
+![Usage breakdown](https://i.imgur.com/idzgY0j.png)
+
+<br />
+The usage breakdown is also relatively as expected with the majority of users using
+Chrome on either desktop or laptop. I am somewhat surprised that linux is the second
+most represented OS, but that is somewhat skewed because JW and I both use linux
+and check the site at least once a day :D
+
+<br />
+
+![Usage breakdown 2](https://i.imgur.com/ROKL4Jc.png)
+
+<br />
+Thank you once again to the DAO for the opportunity to build this project! If you
+have any questions, feedback, feature requests or just want to say hi, please feel
+free to contact me in the discord!

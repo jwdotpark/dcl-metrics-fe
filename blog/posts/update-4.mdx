@@ -1,0 +1,69 @@
+---
+title: "Project Update #4"
+date: "Dec 10, 2022"
+description: "We were able to ship a v1 of our scene map which gives basic stats about all parcels in the world and sets the stage for a lot of cool new features in the next months."
+previewImage: "https://i.imgur.com/nZmQnF8.png"
+author: "Dax"
+published: true
+---
+
+## Introduction
+
+This has been another good month for us! We were able to ship a v1 of our scene map
+which gives basic stats about all parcels in the world and sets the stage for a lot
+of cool new features in the next months. We also took care of some bug fixes and
+handled a few other roadmap items, such as switching our data consumption away from
+the catalyst network and onto Atlas Corp's data warehouse.
+
+<br />
+[https://www.dcl-metrics.com/](https://www.dcl-metrics.com/)
+
+## Highlights
+
+### Completed:
+
+#### backend:
+
+- start pulling user data as well as building records of dcl nfts held by the user
+- start tracking `max_concurrent_users` per parcel
+- tighten up SQL queries for better performance
+- update job processing to allow for updating data multiple times per day
+- enhance user activity and parcel traffic calculations for greater metrics accuracy
+- switch to pulling data from atlas corp
+
+#### frontend:
+
+- add 'jump-in' functionality to scene component
+- work on dashboards feature (preparation for displaying data about any scene)
+- build land picker (scene map) component using [tiles-map](https://github.com/decentraland/tile-map)
+- general UI improvements
+- develop heatmap feature for scene map
+- error handling updates
+
+![Land picker](https://i.imgur.com/nZmQnF8.png)
+
+## Blockers
+
+Jongwoo and I (and most of Europe) have been sick on and off this month and it's
+definitely slowed us down a bit - mitigation strategy: vitamin c?
+
+## Next steps
+
+### Next in the pipeline:
+
+- adding daily new users (plus additional user data!) to the global user stats (EOY)
+- refactoring both the frontend and backend
+- open sourcing the code in early Q1 2023
+- stability and performance improvements
+- updates to the scene map for quality and additional features
+- user profiles (nft data, dao data, user specific stats)
+
+## Additional notes and links
+
+Internal metrics for the past 30 days:
+
+![Metrics 1](https://i.imgur.com/JqS9X3E.png)
+![Metrics 2](https://i.imgur.com/oXFR4JW.png)
+![Metrics 3](https://i.imgur.com/815Ef3h.png)
+![Metrics 4](https://i.imgur.com/lCWJCat.png)
+![Metrics 5](https://i.imgur.com/9GsVoub.png)

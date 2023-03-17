@@ -1,0 +1,122 @@
+---
+title: "Project Update #3"
+date: "Nov 9, 2022"
+description: "We were working on a scene component to show the top ten scenes as well as a status component to track our our data consumption and how healthy the sources we draw from are."
+previewImage: "https://i.imgur.com/idwQquW.png"
+author: "Dax"
+published: true
+---
+
+## Introduction
+
+We have been working very hard in the past month and I'm extremely proud to give
+this update as we have many new features available as well as a lot of exciting features
+in the pipeline.
+
+<br />
+Traffic has evened out since the huge spike last month (charts at the bottom), but
+we continue to see good user engagement with an average of of just about 200 views
+a day in the past month. This is quite validating - people are interested in dcl
+metrics!
+
+<br />
+[https://www.dcl-metrics.com/](https://www.dcl-metrics.com/)
+
+## Highlights
+
+As mentioned in the last update, we were working on a scene component to show the
+top ten scenes as well as a status component to track our our data consumption and
+how healthy the sources we draw from are.
+
+<br />
+I'm very happy to report that we have released both of those features as well as
+making good progress on our next roadmap objectives 🎉
+<br />
+First the scenes component:
+
+![Scene component](https://i.imgur.com/idwQquW.png)
+
+<br />
+There is a huge wealth of information captured by this component - from top left
+we have:
+
+<br />
+
+1. the map - where is it oriented within DCL?
+2. stats breakdown - all the high-level metrics for the given scene on this day
+3. scene heatmap - where did players visit in the scene? were those visits evenly distributed?
+4. time spent histogram - how long did players spend in this scene? in the example scene above, the majority of players spent less than 2hrs in this scene, but there were a few players who spent considerably more
+5. marathon users - those "players who spent considerably more" time are broken down here, including their avatar image, the time they spent and links to their decentraland and etherscan profiles. You can also see at a glance if they are verified users (ie, they own a DCLENS token) or guest users (ie, they are not signed in via a web3 wallet). The last user is an example of a verified user, with a green check next to the avatar image.
+6. visits histogram - When was the scene most popular? Was there a spike at certain times in the day or fairly consistent traffic throughout the day? These times are all in UTC
+
+<br />
+This component is the template we will use for showing data for any scene in the
+world once we get there - and I believe that will occur by the time of the next update!
+
+<br />
+Next the status page:
+
+![Status page](https://i.imgur.com/Hz8vo2t.png)
+
+This component tracks our data consumption (what apis do we pull from? how many times
+a day do we pull?) as well as the health of the data source we pull from - you can
+think of the percentage like the uptime of the data source, it is our success rate
+in making requests to that source. This data is mostly for information purposes at
+the moment, but as we incorporate new data sources, it will help the community to
+see the health of the data eco-system at a glance.{" "}
+
+<br />
+[https://www.dcl-metrics.com/status](https://www.dcl-metrics.com/status)
+
+## Blockers
+
+There haven't been any majo blockers in the past month!
+
+## Next steps
+
+We are working to roll out data for every scene in Decentraland, and there are two
+major efforts on that front.
+
+<br />
+The first is a scene picker tool so that you can select from the thousands of parcels
+and scenes which make up Decentraland. We think this is the best way as it's visually
+similar (we are using the same library as DCL uses) for users navigating around the
+map at a high level and should therefore provide an easy to intuit user experience.
+
+![Land picker](https://i.imgur.com/Gy5fiQ1.png)
+
+The second is from the backend side to make sure that data is packaged well and performant
+enough to serve all users without delay during traffic peaks. This is likely to be
+a work in progress, but so far we have had good results, with most api requests clocking
+under 100ms.
+
+<br />
+We have done some experimenting with showing individual scenes - here is an image
+of how that looks at the moment (subject to change):
+
+![Scene page](https://i.imgur.com/wi0CcJr.png)
+
+Another exciting work in progress is that we are beginning to parse user data, including
+information about DCL assets (land, names and wearables) as well as basic DAO activity.
+This data can be used to create extremely complex data constellations (are users
+that bought land in the genesis auction still active today? are they more active
+in-world than in the DAO (or vice-versa)? do users with names enter the world more
+often?) as well as user pages to give at a glance information about a given user.
+
+<br />
+We also plan to migrate part of our data consumption to Atlas Corps' API - hopefully
+by the end of the year!{" "}
+
+## Additional notes and links
+
+Here are some internal metrics about the site in the last 30 days. I've also included
+90 day for visit data to show the spike in context and how we've evened out since
+then. You can also see an additional internal metric we've created to see which components
+users are most interested in.
+
+![Metrics 1](https://i.imgur.com/7kCqC8T.png)
+![Metrics 2](https://i.imgur.com/cZx9pBx.png)
+![Metrics 3](https://i.imgur.com/K1tX23E.png)
+![Metrics 4](https://i.imgur.com/INZZDdA.png)
+![Metrics 5](https://i.imgur.com/I9RmCvI.png)
+![Metrics 6](https://i.imgur.com/QA0kkid.png)

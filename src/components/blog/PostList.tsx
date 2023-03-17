@@ -38,25 +38,24 @@ const PostList = ({ posts }) => {
                     <Text wordBreak="keep-all">{post.data.date}</Text>
                   </Center>
                 </Flex>
-                <Box
-                  pos="relative"
-                  overflow="clip"
-                  h={[200, 400, 500]}
-                  border="1px solid"
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                  borderColor={useColorModeValue("gray.200", "gray.600")}
-                  borderRadius="xl"
-                  shadow="md"
-                >
+                {post.data.previewImage.length > 0 && (
                   <Image
+                    pos="relative"
+                    overflow="clip"
+                    h={[200, 400, 500]}
+                    border="1px solid"
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    borderColor={useColorModeValue("gray.200", "gray.600")}
+                    borderRadius="xl"
+                    shadow="md"
                     objectFit="cover"
                     alt={`${post.data.title} preview picture`}
                     src={post.data.previewImage}
                   />
-                </Box>
+                )}
                 <Spacer />
               </Flex>
-              <Box m="4" ml="6">
+              <Box m="4" ml="4">
                 <Text noOfLines={1}>{post.data.description}</Text>
               </Box>
             </BoxWrapper>

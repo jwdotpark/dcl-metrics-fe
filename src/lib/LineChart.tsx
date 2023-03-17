@@ -4,10 +4,10 @@ import { ResponsiveLine } from "@nivo/line"
 import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
-import moment from "moment"
 import { chartHeight } from "../lib/data/chartInfo"
 
 const LineChart = ({ data, color, name, rentalData }) => {
+  const dataName = data[0].id
   const [localData, setLocalData] = useState([])
 
   const min = useMemo(() => {
@@ -20,45 +20,8 @@ const LineChart = ({ data, color, name, rentalData }) => {
 
   const dateRange = data[0].data.length
 
-  const yAxisLabel = (value) => {
-    const lastChar = value.toString().slice(-1)
-    if (dateRange === 30 && lastChar % 2 !== 0) {
-      return ""
-    }
-    if (dateRange === 31 && lastChar % 2 !== 0) {
-      return ""
-    }
-    if (
-      dateRange > 32 &&
-      (lastChar % 2 !== 0 || lastChar % 1 !== 0 || lastChar % 6 !== 0)
-    ) {
-      return ""
-    }
-    if (
-      dateRange > 90 &&
-      (lastChar % 2 !== 0 ||
-        lastChar % 3 !== 0 ||
-        lastChar % 4 !== 0 ||
-        lastChar % 1 !== 0 ||
-        lastChar % 5 !== 0 ||
-        lastChar % 6 !== 0 ||
-        lastChar % 7 !== 0)
-    ) {
-      return ""
-    }
-    return moment(value).format("MMM. D")
-  }
-
-  const yAxisLabelDegree = () => {
-    if (data[0].data.length > 7) {
-      return 60
-    } else {
-      return 0
-    }
-  }
-
   const CustomLayer = (props) => {
-    const { innerWidth, innerHeight, width } = props
+    const { innerWidth } = props
     return (
       <>
         {rentalData &&
@@ -66,7 +29,7 @@ const LineChart = ({ data, color, name, rentalData }) => {
             <g key={item.date}>
               <rect
                 x={i * Math.min(innerWidth / dateRange) + 5}
-                y={chartHeight - item.y * 10 - 100}
+                y={chartHeight - item.y * 10 - 90}
                 rx={2}
                 ry={2}
                 width={dateRange > 30 ? 5 : 10}
@@ -78,6 +41,16 @@ const LineChart = ({ data, color, name, rentalData }) => {
           ))}
       </>
     )
+  }
+
+  const dateRangeLabelNumber = () => {
+    if (dateRange > 30) {
+      return 5
+    } else if (dateRange > 15) {
+      return 3
+    } else {
+      return ""
+    }
   }
 
   useEffect(() => {
@@ -112,14 +85,27 @@ const LineChart = ({ data, color, name, rentalData }) => {
         ]}
         animate={true}
         pointSize={4}
-        margin={{ top: 40, right: rentalData ? 50 : 25, bottom: 60, left: 55 }}
-        xScale={{ type: "point" }}
+        margin={{
+          top: 40,
+          right: rentalData ? 50 : 25,
+          bottom: 50,
+          left: 70,
+        }}
+        xScale={{
+          type: "time",
+          format: dataName === "Online Users" ? "%Y-%m-%d %H:%M" : "%Y-%m-%d",
+          useUTC: false,
+          precision: dataName === "Online Users" ? "minute" : "day",
+        }}
+        xFormat={
+          dataName === "Online Users" ? "time:%Y-%m-%d %H:%M" : "time:%Y-%m-%d"
+        }
         yScale={{
           type: "linear",
-          min: "auto",
-          max: "auto",
           stacked: false,
           reverse: false,
+          min: "auto",
+          max: "auto",
         }}
         axisTop={null}
         axisRight={
@@ -144,32 +130,14 @@ const LineChart = ({ data, color, name, rentalData }) => {
           }
         }
         axisBottom={{
-          orient: "bottom",
-          tickSize: 5,
-          tickPadding: 10,
-          tickRotation: yAxisLabelDegree(),
-          format: (value) => yAxisLabel(value),
-        }}
-        axisLeft={{
-          orient: "left",
-          tickSize: 5,
-          tickPadding: 10,
-          tickRotation: 0,
-          legend: "Visit Count",
-          legendOffset: -60,
-          legendPosition: "middle",
-          renderTick: (tick) => {
-            return (
-              <text
-                x={tick.x - 37}
-                y={tick.y + 4}
-                fontSize="11px"
-                fill={useColorModeValue("black", "white")}
-              >
-                {tick.value.toFixed(0)}
-              </text>
-            )
-          },
+          tickRotation: 45,
+          format: dataName === "Online Users" ? "%b %d" : "%b %d",
+          tickValues:
+            dataName === "Online Users"
+              ? "every day"
+              : `every ${dateRangeLabelNumber()} day`,
+          legend: "",
+          legendOffset: -12,
         }}
         pointColor={{ theme: "background" }}
         pointBorderWidth={2}
@@ -177,11 +145,12 @@ const LineChart = ({ data, color, name, rentalData }) => {
         pointLabelYOffset={-12}
         useMesh={true}
         colors={color}
-        enableArea={name === "uniqueVisitors" ? true : true}
+        enableArea={true}
         areaBaselineValue={min}
         areaOpacity={0.25}
         curve="linear"
         enablePoints={false}
+        enablePointLabel={false}
         enableSlices="x"
         sliceTooltip={({ slice }) => {
           return (
