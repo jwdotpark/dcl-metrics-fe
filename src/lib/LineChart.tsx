@@ -130,7 +130,7 @@ const LineChart = ({ data, color, name, rentalData }) => {
           }
         }
         axisBottom={{
-          tickRotation: 60,
+          tickRotation: 45,
           format: dataName === "Online Users" ? "%b %d" : "%b %d",
           tickValues:
             dataName === "Online Users"
