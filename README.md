@@ -13,7 +13,7 @@ Please refer to `package.json` for the list of dependencies.
 
 ## Version History
 
-Please refer to our [changelog and roadmap](https://dcl-metrics.com/roadmap) for information on the versions.
+Please refer to our [changelog and roadmap](https://dcl-metrics.com/roadmap) or our [blog](https://dcl-metrics.com/blog) for information on the versions.
 
 ## License
 
