@@ -142,23 +142,11 @@ const Map = ({
     })
     const json = await resp.json()
     setTiles(json.data)
-
-    // if tiles is not empty, log 'success'
-    if (Object.keys(tiles).length !== 0) {
-      console.log("tiles fetched", tiles)
-    }
-
     setIsMapLoading(false)
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const injectTiles = () => {
-    if (!parcelData) {
-      console.log("no parcel data")
-    } else if (parcelData) {
-      console.log("parcel data", parcelData)
-    }
-
     // @ts-ignore
     parcelData.map((tile) => {
       const id = tile.coordinates
@@ -223,6 +211,7 @@ const Map = ({
 
   useEffect(() => {
     fetchTiles()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
