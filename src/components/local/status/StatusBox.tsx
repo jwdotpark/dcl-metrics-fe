@@ -13,18 +13,11 @@ import {
 } from "@chakra-ui/react"
 import { useState } from "react"
 import CountUp from "react-countup"
-//import GridBox from "../GridBox"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 
 import ErrorBox from "../stats/error/ErrorBox"
 
 const StatusBox = ({ data }) => {
-  const box = {
-    h: "auto",
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
-
   const [error, setError] = useState(false)
 
   const successRate = (success, total) => {
@@ -112,7 +105,6 @@ const StatusBox = ({ data }) => {
                               <Tr>
                                 <Td>Failure Count</Td>
                                 <Td isNumeric>
-                                  {/* <b>{item.success_count}</b> */}
                                   <b>{item.failure_count}</b>
                                 </Td>
                               </Tr>
