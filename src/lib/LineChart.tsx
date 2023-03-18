@@ -80,8 +80,8 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
         legendOffsetX: 5,
         legendOrientation: "horizontal",
         textStyle: {
-          fill: setColor()[i],
-          fontSize: 14,
+          fill: "#000",
+          fontSize: 12,
           stroke: "#000",
           strokeWidth: 0.15,
           fontWeight: 500,
