@@ -55,6 +55,8 @@ const SceneUserLineChart = ({ data, name }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
+  console.log(avgData)
+
   return (
     <Flex
       sx={{
@@ -97,6 +99,7 @@ const SceneUserLineChart = ({ data, name }) => {
             color={color}
             name="sceneUserLineChart"
             rentalData={false}
+            avgData={[]}
           />
         </Box>
       </Box>

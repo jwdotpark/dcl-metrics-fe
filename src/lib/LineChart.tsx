@@ -62,28 +62,30 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
     }
   }
 
-  const markerData = avgData.map((item, i) => {
-    return {
-      axis: "y",
-      value: item.value,
-      lineStyle: {
-        stroke: setColor()[i],
-        strokeWidth: 2,
-        strokeDasharray: "4 4",
-      },
-      legend: item.id,
-      legendOffsetY: 10,
-      legendOffsetX: 5,
-      legendOrientation: "horizontal",
-      textStyle: {
-        fill: setColor()[i],
-        fontSize: 14,
-        stroke: "#000",
-        strokeWidth: 0.15,
-        fontWeight: 500,
-      },
-    }
-  })
+  const markerData =
+    avgData !== typeof number &&
+    avgData.map((item, i) => {
+      return {
+        axis: "y",
+        value: item.value,
+        lineStyle: {
+          stroke: setColor()[i],
+          strokeWidth: 2,
+          strokeDasharray: "4 4",
+        },
+        legend: item.id,
+        legendOffsetY: 10,
+        legendOffsetX: 5,
+        legendOrientation: "horizontal",
+        textStyle: {
+          fill: setColor()[i],
+          fontSize: 14,
+          stroke: "#000",
+          strokeWidth: 0.15,
+          fontWeight: 500,
+        },
+      }
+    })
 
   useEffect(() => {
     setLocalData(data)

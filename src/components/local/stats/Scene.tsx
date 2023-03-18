@@ -57,7 +57,6 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
       <BoxWrapper colSpan={0}>
         <SceneTitle
           name={name}
-          //date={moment(date).format("MMM. D")}
           date={latest}
           dateForPicker={date}
           setDate={setDate}
