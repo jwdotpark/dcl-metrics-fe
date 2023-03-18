@@ -4,13 +4,13 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box } from "@chakra-ui/react"
 import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
-import { date, sliceData } from "../../../../lib/data/chartInfo"
+import { sliceData } from "../../../../lib/data/chartInfo"
 import DateRangeButton from "../daterange/DateRangeButton"
 
 const LandSales = ({ data }) => {
   const chartData = []
   const dataArr = Object.entries(data)
-  const color = ["#eb6f92", "#ea9d34", "#31748f"]
+  const color = ["#48BB78", "#9F7AEA", "#4299E1"]
 
   const defaultDateRange = dataArr.length - 1
   const [dateRange, setDateRange] = useState(defaultDateRange)

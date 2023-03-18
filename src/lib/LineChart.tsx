@@ -1,13 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
-import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
+import { Button, Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import { chartHeight } from "../lib/data/chartInfo"
+import AverageBtn from "../components/local/chart-partial/AverageBtn"
 
 const LineChart = ({ data, color, name, rentalData, avgData }) => {
   const dataName = data[0].id
+  const [toggleMarker, setToggleMarker] = useState(true)
   const [localData, setLocalData] = useState([])
 
   const min = useMemo(() => {
@@ -92,7 +94,14 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
   }, [data])
 
   return (
-    <Box h={chartHeight}>
+    <Box pos="relative" h={chartHeight}>
+      {avgData.length > 0 && (
+        <AverageBtn
+          toggleMarker={toggleMarker}
+          setToggleMarker={setToggleMarker}
+        />
+      )}
+
       <ResponsiveLine
         data={localData}
         theme={{
@@ -189,7 +198,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
         enablePoints={false}
         enablePointLabel={false}
         enableSlices="x"
-        markers={markerData}
+        markers={toggleMarker && markerData}
         sliceTooltip={({ slice }) => {
           return (
             <Box
