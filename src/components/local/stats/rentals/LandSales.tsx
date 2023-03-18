@@ -90,7 +90,12 @@ const LandSales = ({ data }) => {
           name="rentals"
           yesterday={false}
         />
-        <LineChart data={result} color={color} name="rental" />
+        <LineChart
+          data={result}
+          color={color}
+          name="rental"
+          avgData={avgData}
+        />
       </Box>
     </BoxWrapper>
   )

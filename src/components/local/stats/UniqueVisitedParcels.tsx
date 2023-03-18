@@ -72,7 +72,12 @@ const UniqueVisitedParcels = ({ data }) => {
         name="global_parcels_visited"
         yesterday={false}
       />
-      <LineChart data={result} color={color} name="uniqueVisitors" />
+      <LineChart
+        data={result}
+        color={color}
+        name="uniqueVisitors"
+        avgData={avgData}
+      />
     </BoxWrapper>
   )
 }

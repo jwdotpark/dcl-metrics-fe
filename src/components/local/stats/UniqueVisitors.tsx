@@ -93,7 +93,12 @@ const UniqueVisitors = ({ data }) => {
         name="global_unique_visitors"
         yesterday={false}
       />
-      <LineChart data={result} color={color} name="uniqueVisitors" />
+      <LineChart
+        data={result}
+        color={color}
+        name="uniqueVisitors"
+        avgData={avgData}
+      />
     </BoxWrapper>
   )
 }

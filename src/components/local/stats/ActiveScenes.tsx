@@ -71,7 +71,12 @@ const ActiveScenes = ({ data }) => {
         name="global_scenes_visited"
         yesterday={false}
       />
-      <LineChart data={result} color={color} name="activeScenes" />
+      <LineChart
+        data={result}
+        color={color}
+        name="activeScenes"
+        avgData={avgData}
+      />
     </BoxWrapper>
   )
 }

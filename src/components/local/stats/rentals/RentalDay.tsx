@@ -94,6 +94,7 @@ const RentalDay = ({ data }) => {
         name="daily_rental"
         log={true}
         rentalData={rentalData}
+        avgData={avgData}
       />
     </BoxWrapper>
   )

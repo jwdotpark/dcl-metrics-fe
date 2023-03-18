@@ -100,7 +100,12 @@ const OnlineUsers = () => {
       <Box>
         {!isLoading ? (
           <>
-            <LineChart data={result} color={color} name="onlineUsers" />
+            <LineChart
+              data={result}
+              color={color}
+              name="onlineUsers"
+              avgData={avgData}
+            />
             <BottomLegend description="UTC, source from status.decentraland.org/metrics" />
           </>
         ) : (

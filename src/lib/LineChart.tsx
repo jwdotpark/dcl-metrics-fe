@@ -6,7 +6,7 @@ import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import { chartHeight } from "../lib/data/chartInfo"
 
-const LineChart = ({ data, color, name, rentalData }) => {
+const LineChart = ({ data, color, name, rentalData, avgData }) => {
   const dataName = data[0].id
   const [localData, setLocalData] = useState([])
 
@@ -53,6 +53,38 @@ const LineChart = ({ data, color, name, rentalData }) => {
     }
   }
 
+  const setColor = () => {
+    let colors = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
+    if (avgData.length > 1) {
+      return colors
+    } else {
+      return color
+    }
+  }
+
+  const markerData = avgData.map((item, i) => {
+    return {
+      axis: "y",
+      value: item.value,
+      lineStyle: {
+        stroke: setColor()[i],
+        strokeWidth: 2,
+        strokeDasharray: "4 4",
+      },
+      legend: item.id,
+      legendOffsetY: 10,
+      legendOffsetX: 5,
+      legendOrientation: "horizontal",
+      textStyle: {
+        fill: setColor()[i],
+        fontSize: 14,
+        stroke: "#000",
+        strokeWidth: 0.15,
+        fontWeight: 500,
+      },
+    }
+  })
+
   useEffect(() => {
     setLocalData(data)
   }, [data])
@@ -81,6 +113,7 @@ const LineChart = ({ data, color, name, rentalData }) => {
           "slices",
           "points",
           "axes",
+          "crosshair",
           "legends",
         ]}
         animate={true}
@@ -146,12 +179,15 @@ const LineChart = ({ data, color, name, rentalData }) => {
         useMesh={true}
         colors={color}
         enableArea={true}
+        enableCrosshair={true}
+        crosshairType="bottom-left"
         areaBaselineValue={min}
         areaOpacity={0.25}
         curve="linear"
         enablePoints={false}
         enablePointLabel={false}
         enableSlices="x"
+        markers={markerData}
         sliceTooltip={({ slice }) => {
           return (
             <Box
