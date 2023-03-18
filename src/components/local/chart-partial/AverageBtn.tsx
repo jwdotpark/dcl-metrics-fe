@@ -13,6 +13,7 @@ const AverageBtn = ({ toggleMarker, setToggleMarker }) => {
           ? useColorModeValue("gray.300", "gray.700")
           : useColorModeValue("gray.100", "gray.500")
       }
+      border={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
       shadow="md"
       onClick={() => setToggleMarker(!toggleMarker)}
