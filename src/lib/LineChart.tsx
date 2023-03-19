@@ -9,6 +9,7 @@ import AverageBtn from "../components/local/chart-partial/AverageBtn"
 import AreaBtn from "../components/local/chart-partial/AreaBtn"
 import PointBtn from "../components/local/chart-partial/PointBtn"
 import CurveBtn from "../components/local/chart-partial/CurveBtn"
+import HeightBtn from "../components/local/chart-partial/HeightBtn"
 
 const LineChart = ({ data, color, name, rentalData, avgData }) => {
   const dataName = data[0].id
@@ -16,6 +17,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
   const [toggleArea, setToggleArea] = useState(true)
   const [togglePoint, setTogglePoint] = useState(false)
   const [curve, setCurve] = useState("linear")
+  const [height, setHeight] = useState(false)
   const [localData, setLocalData] = useState([])
 
   const min = useMemo(() => {
@@ -100,7 +102,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
   }, [data])
 
   return (
-    <Box pos="relative" h={chartHeight}>
+    <Box pos="relative" h={!height ? 350 : 700}>
       {avgData.length > 0 && (
         <Box pos="absolute" zIndex="2" top="2" right="2">
           <AverageBtn
@@ -109,6 +111,8 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
           />
           <AreaBtn toggleArea={toggleArea} setToggleArea={setToggleArea} />
           <PointBtn togglePoint={togglePoint} setTogglePoint={setTogglePoint} />
+          <HeightBtn height={height} setHeight={setHeight} />
+
           <CurveBtn setCurve={setCurve} />
         </Box>
       )}
