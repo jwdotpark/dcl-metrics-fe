@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-// @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
 import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
@@ -11,12 +9,11 @@ import PointBtn from "../components/local/chart-partial/PointBtn"
 import CurveBtn from "../components/local/chart-partial/CurveBtn"
 
 const LineChart = ({ data, color, name, rentalData, avgData }) => {
-  const dataName = data[0].id
+  const dataName = data[0]?.id
   const [toggleMarker, setToggleMarker] = useState(true)
   const [toggleArea, setToggleArea] = useState(true)
   const [togglePoint, setTogglePoint] = useState(false)
   const [curve, setCurve] = useState("linear")
-  const [height, setHeight] = useState(false)
   const [localData, setLocalData] = useState([])
 
   const min = useMemo(() => {
@@ -72,7 +69,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
   }
 
   const markerData =
-    avgData !== typeof number &&
+    avgData !== typeof Number &&
     avgData.map((item, i) => {
       return {
         axis: "y",
@@ -87,6 +84,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
         legendOffsetX: 5,
         legendOrientation: "horizontal",
         textStyle: {
+          // eslint-disable-next-line react-hooks/rules-of-hooks
           fill: useColorModeValue("black", "white"),
           fontSize: 12,
           stroke: "#000",
@@ -101,7 +99,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
   }, [data])
 
   return (
-    <Box pos="relative" h={!height ? 350 : 700}>
+    <Box pos="relative" h={chartHeight}>
       {avgData.length > 0 && (
         <Box pos="absolute" zIndex="2" top="2" right="2">
           <AverageBtn
@@ -113,7 +111,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
           <CurveBtn setCurve={setCurve} />
         </Box>
       )}
-
+      {/* @ts-ignore */}
       <ResponsiveLine
         data={localData}
         theme={{
@@ -176,6 +174,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
                   x={tick.x + 20}
                   y={tick.y + 4}
                   fontSize="11px"
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
                   fill={useColorModeValue("black", "white")}
                 >
                   {tick.tickIndex * 2}
@@ -217,12 +216,14 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
             <Box
               sx={{ backdropFilter: "blur(5px)" }}
               p="2"
+              // eslint-disable-next-line react-hooks/rules-of-hooks
               color={useColorModeValue("black", "white")}
             >
               <Center mb="1">
                 <Text fontSize="sm" fontWeight="bold">
                   {slice.points[0].data.xFormatted}{" "}
                   <Text display="inline-block" fontSize="xs">
+                    {/* @ts-ignore */}
                     {slice.points[0].data.degraded && "degraded!"}
                   </Text>
                 </Text>
@@ -230,14 +231,18 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
               {slice.points
                 .slice(0)
                 .reverse()
+                // @ts-ignore
                 .sort((a, b) => b.data.yFormatted - a.data.yFormatted)
                 .map((point, i) => (
                   <Box key={point.serieId}>
                     <TooltipTable
                       name={point.serieId}
                       count={point.data.yFormatted}
+                      // @ts-ignore
                       degraded={point.data.degraded}
                       color={point.borderColor}
+                      date={undefined}
+                      bar={undefined}
                     />
                   </Box>
                 ))}
