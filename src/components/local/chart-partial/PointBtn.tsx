@@ -7,8 +7,8 @@ const PointBtn = ({ togglePoint, setTogglePoint }) => {
       mr="2"
       bg={
         togglePoint
-          ? useColorModeValue("gray.300", "gray.700")
-          : useColorModeValue("gray.100", "gray.500")
+          ? useColorModeValue("gray.300", "gray.500")
+          : useColorModeValue("gray.100", "gray.700")
       }
       border={useColorModeValue("gray.200", "gray.600")}
       borderRadius="md"

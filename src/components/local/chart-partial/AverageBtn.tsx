@@ -7,8 +7,8 @@ const AverageBtn = ({ toggleMarker, setToggleMarker }) => {
       mr="2"
       bg={
         toggleMarker
-          ? useColorModeValue("gray.300", "gray.700")
-          : useColorModeValue("gray.100", "gray.500")
+          ? useColorModeValue("gray.300", "gray.500")
+          : useColorModeValue("gray.100", "gray.700")
       }
       border={useColorModeValue("gray.200", "gray.600")}
       borderRadius="md"
