@@ -9,7 +9,6 @@ import AverageBtn from "../components/local/chart-partial/AverageBtn"
 import AreaBtn from "../components/local/chart-partial/AreaBtn"
 import PointBtn from "../components/local/chart-partial/PointBtn"
 import CurveBtn from "../components/local/chart-partial/CurveBtn"
-import HeightBtn from "../components/local/chart-partial/HeightBtn"
 
 const LineChart = ({ data, color, name, rentalData, avgData }) => {
   const dataName = data[0].id
@@ -111,8 +110,6 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
           />
           <AreaBtn toggleArea={toggleArea} setToggleArea={setToggleArea} />
           <PointBtn togglePoint={togglePoint} setTogglePoint={setTogglePoint} />
-          <HeightBtn height={height} setHeight={setHeight} />
-
           <CurveBtn setCurve={setCurve} />
         </Box>
       )}
