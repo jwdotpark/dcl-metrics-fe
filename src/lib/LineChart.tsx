@@ -1,15 +1,19 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import { ResponsiveLine } from "@nivo/line"
-import { Button, Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
+import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import { chartHeight } from "../lib/data/chartInfo"
 import AverageBtn from "../components/local/chart-partial/AverageBtn"
+import AreaBtn from "../components/local/chart-partial/AreaBtn"
+import PointBtn from "../components/local/chart-partial/PointBtn"
 
 const LineChart = ({ data, color, name, rentalData, avgData }) => {
   const dataName = data[0].id
   const [toggleMarker, setToggleMarker] = useState(true)
+  const [toggleArea, setToggleArea] = useState(true)
+  const [togglePoint, setTogglePoint] = useState(false)
   const [localData, setLocalData] = useState([])
 
   const min = useMemo(() => {
@@ -96,17 +100,21 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
   return (
     <Box pos="relative" h={chartHeight}>
       {avgData.length > 0 && (
-        <AverageBtn
-          toggleMarker={toggleMarker}
-          setToggleMarker={setToggleMarker}
-        />
+        <Box pos="absolute" zIndex="2" top="2" right="2">
+          <AverageBtn
+            toggleMarker={toggleMarker}
+            setToggleMarker={setToggleMarker}
+          />
+          <AreaBtn toggleArea={toggleArea} setToggleArea={setToggleArea} />
+          <PointBtn togglePoint={togglePoint} setTogglePoint={setTogglePoint} />
+        </Box>
       )}
 
       <ResponsiveLine
         data={localData}
         theme={{
           textColor: useColorModeValue("black", "white"),
-          fontSize: 12,
+          fontSize: 11,
           grid: {
             line: {
               stroke: "gray",
@@ -128,9 +136,8 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
           "legends",
         ]}
         animate={true}
-        pointSize={4}
         margin={{
-          top: 40,
+          top: 50,
           right: rentalData ? 50 : 25,
           bottom: 50,
           left: 70,
@@ -184,19 +191,21 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
           legendOffset: -12,
         }}
         pointColor={{ theme: "background" }}
-        pointBorderWidth={2}
         pointBorderColor={{ from: "serieColor" }}
-        pointLabelYOffset={-12}
         useMesh={true}
         colors={color}
-        enableArea={true}
+        enableArea={toggleArea}
         enableCrosshair={true}
         crosshairType="bottom-left"
         areaBaselineValue={min}
         areaOpacity={0.25}
         curve="linear"
-        enablePoints={false}
-        enablePointLabel={false}
+        enablePoints={togglePoint}
+        enablePointLabel={togglePoint}
+        pointLabelSize={12}
+        pointLabelYOffset={-4}
+        pointBorderWidth={4}
+        pointSize={2}
         enableSlices="x"
         markers={toggleMarker && markerData}
         sliceTooltip={({ slice }) => {
