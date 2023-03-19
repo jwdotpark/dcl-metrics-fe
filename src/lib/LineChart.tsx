@@ -50,9 +50,11 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
   }
 
   const dateRangeLabelNumber = () => {
-    if (dateRange > 30) {
+    if (dateRange > 91) {
+      return 15
+    } else if (dateRange > 30) {
       return 5
-    } else if (dateRange > 15) {
+    } else if (dateRange > 10) {
       return 3
     } else {
       return ""
