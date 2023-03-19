@@ -5,10 +5,6 @@ const PointBtn = ({ togglePoint, setTogglePoint }) => {
   return (
     <Button
       mr="2"
-      //pos="absolute"
-      //zIndex="2"
-      //top="2"
-      //right="35"
       bg={
         togglePoint
           ? useColorModeValue("gray.300", "gray.700")

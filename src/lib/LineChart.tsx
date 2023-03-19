@@ -8,12 +8,14 @@ import { chartHeight } from "../lib/data/chartInfo"
 import AverageBtn from "../components/local/chart-partial/AverageBtn"
 import AreaBtn from "../components/local/chart-partial/AreaBtn"
 import PointBtn from "../components/local/chart-partial/PointBtn"
+import CurveBtn from "../components/local/chart-partial/CurveBtn"
 
 const LineChart = ({ data, color, name, rentalData, avgData }) => {
   const dataName = data[0].id
   const [toggleMarker, setToggleMarker] = useState(true)
   const [toggleArea, setToggleArea] = useState(true)
   const [togglePoint, setTogglePoint] = useState(false)
+  const [curve, setCurve] = useState("linear")
   const [localData, setLocalData] = useState([])
 
   const min = useMemo(() => {
@@ -35,7 +37,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
             <g key={item.date}>
               <rect
                 x={i * Math.min(innerWidth / dateRange) + 5}
-                y={chartHeight - item.y * 10 - 90}
+                y={chartHeight - item.y * 10 - 100}
                 rx={2}
                 ry={2}
                 width={dateRange > 30 ? 5 : 10}
@@ -79,7 +81,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
           strokeWidth: 2,
           strokeDasharray: "4 4",
         },
-        legend: item.id,
+        legend: item.id + " : " + item.value,
         legendOffsetY: 10,
         legendOffsetX: 5,
         legendOrientation: "horizontal",
@@ -107,6 +109,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
           />
           <AreaBtn toggleArea={toggleArea} setToggleArea={setToggleArea} />
           <PointBtn togglePoint={togglePoint} setTogglePoint={setTogglePoint} />
+          <CurveBtn setCurve={setCurve} />
         </Box>
       )}
 
@@ -199,7 +202,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
         crosshairType="bottom-left"
         areaBaselineValue={min}
         areaOpacity={0.25}
-        curve="linear"
+        curve={curve}
         enablePoints={togglePoint}
         enablePointLabel={togglePoint}
         pointLabelSize={12}

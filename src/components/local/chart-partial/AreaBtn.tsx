@@ -5,10 +5,6 @@ const AreaBtn = ({ toggleArea, setToggleArea }) => {
   return (
     <Button
       mr="2"
-      //pos="absolute"
-      //zIndex="2"
-      //top="2"
-      //right="20"
       bg={
         toggleArea
           ? useColorModeValue("gray.300", "gray.700")
