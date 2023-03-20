@@ -47,7 +47,6 @@ export default SettingsButton
 
 const SettingsMenu = () => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
-  console.log(chartProps)
 
   return (
     <VStack align="stretch" fontSize="sm" spacing={-2}>
@@ -87,7 +86,6 @@ const SettingsMenu = () => {
         <Switch
           colorScheme={useColorModeValue("teal", "green")}
           id="area"
-          //onChange={(e) => console.log(e.target)}
           onChange={() => {
             setChartProps((prev) => ({
               ...prev,
@@ -112,7 +110,6 @@ const SettingsMenu = () => {
               curveType: (e.target as HTMLInputElement).value,
             }))
           }}
-          //onClick={(e) => setCurve((e.target as HTMLInputElement).value)}
           size="xs"
           variant="solid"
         >
@@ -126,39 +123,5 @@ const SettingsMenu = () => {
         </Select>
       </Flex>
     </VStack>
-
-    //<Box fontSize="sm">
-    //  <Flex>
-    //    <Box>Area</Box>
-    //    <Spacer />
-    //    <Switch
-    //      colorScheme={useColorModeValue("teal", "green")}
-    //      id="area"
-    //      onChange={(e) => console.log(e.target)}
-    //      size="md"
-    //    />
-    //  </Flex>
-    //  <Flex>
-    //    <Box>Average Marker</Box>
-    //    <Spacer />
-    //    <Switch
-    //      colorScheme={useColorModeValue("teal", "green")}
-    //      id="area"
-    //      onChange={(e) => console.log(e.target)}
-    //      size="md"
-    //    />
-    //  </Flex>
-    //  <Flex>
-    //    <Box>Chart Height</Box>
-    //    <Spacer />
-    //    <Switch
-    //      colorScheme={useColorModeValue("teal", "green")}
-    //      id="area"
-    //      onChange={(e) => console.log(e.target)}
-    //      size="md"
-    //    />
-    //  </Flex>
-
-    //</Box>
   )
 }
