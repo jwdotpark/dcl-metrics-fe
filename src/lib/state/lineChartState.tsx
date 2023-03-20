@@ -1,6 +1,6 @@
-import { atom } from "jotai"
+import { atomWithStorage } from "jotai/utils"
 
-export const lineChartAtom = atom({
+export const lineChartAtom = atomWithStorage("chart", {
   toggleMarker: true,
   toggleArea: true,
   height: 350,
