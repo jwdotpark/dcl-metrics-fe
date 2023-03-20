@@ -124,8 +124,8 @@ const SettingsMenu = () => {
           <option value="cardinal">Cardianal</option>
           <option value="natural">Natural</option>
           <option value="step">Step</option>
-          <option value="stepAfter">stepAfter</option>
-          <option value="stepBefore">stepBefore</option>
+          <option value="stepAfter">Step After</option>
+          <option value="stepBefore">Step Before</option>
         </Select>
       </Flex>
     </VStack>
