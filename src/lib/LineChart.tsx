@@ -2,19 +2,14 @@ import { ResponsiveLine } from "@nivo/line"
 import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
-import { chartHeight } from "../lib/data/chartInfo"
-import AverageBtn from "../components/local/chart-partial/AverageBtn"
-import AreaBtn from "../components/local/chart-partial/AreaBtn"
-import PointBtn from "../components/local/chart-partial/PointBtn"
-import CurveBtn from "../components/local/chart-partial/CurveBtn"
+import { lineChartAtom } from "../lib/state/lineChartState"
+import { useAtom } from "jotai"
 
 const LineChart = ({ data, color, name, rentalData, avgData }) => {
-  const dataName = data[0]?.id
-  const [toggleMarker, setToggleMarker] = useState(true)
-  const [toggleArea, setToggleArea] = useState(true)
-  const [togglePoint, setTogglePoint] = useState(false)
-  const [curve, setCurve] = useState("linear")
   const [localData, setLocalData] = useState([])
+  const dataName = data[0]?.id
+
+  const [chartProps, setChartProps] = useAtom(lineChartAtom)
 
   const min = useMemo(() => {
     const lastData = data[data.length - 1].data
@@ -35,7 +30,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
             <g key={item.date}>
               <rect
                 x={i * Math.min(innerWidth / dateRange) + 5}
-                y={chartHeight - item.y * 10 - 100}
+                y={chartProps.height - item.y * 10 - 100}
                 rx={2}
                 ry={2}
                 width={dateRange > 30 ? 5 : 10}
@@ -81,7 +76,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
           strokeWidth: 2,
           strokeDasharray: "4 4",
         },
-        legend: item.id + " : " + item.value,
+        //legend: item.id + " : " + item.value,
         legendOffsetY: 10,
         legendOffsetX: 5,
         legendOrientation: "horizontal",
@@ -101,18 +96,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
   }, [data])
 
   return (
-    <Box pos="relative" h={chartHeight}>
-      {avgData.length > 0 && (
-        <Box pos="absolute" zIndex="2" top="2" right="2">
-          <AverageBtn
-            toggleMarker={toggleMarker}
-            setToggleMarker={setToggleMarker}
-          />
-          <AreaBtn toggleArea={toggleArea} setToggleArea={setToggleArea} />
-          <PointBtn togglePoint={togglePoint} setTogglePoint={setTogglePoint} />
-          <CurveBtn setCurve={setCurve} />
-        </Box>
-      )}
+    <Box pos="relative" h={chartProps.height}>
       {/* @ts-ignore */}
       <ResponsiveLine
         data={localData}
@@ -165,7 +149,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
         axisTop={null}
         axisRight={
           rentalData && {
-            orient: "left",
+            //orient: "left",
             tickSize: 0,
             tickPadding: 0,
             tickRotation: 0,
@@ -199,20 +183,15 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
         pointBorderColor={{ from: "serieColor" }}
         useMesh={true}
         colors={color}
-        enableArea={toggleArea}
+        enableArea={chartProps.toggleArea}
         enableCrosshair={true}
         crosshairType="bottom-left"
         areaBaselineValue={min}
         areaOpacity={0.25}
-        curve={curve}
-        enablePoints={togglePoint}
-        enablePointLabel={togglePoint}
-        pointLabelSize={12}
-        pointLabelYOffset={-4}
-        pointBorderWidth={4}
-        pointSize={2}
+        // @ts-ignore
+        curve={chartProps.curveType}
         enableSlices="x"
-        markers={toggleMarker && markerData}
+        markers={chartProps.toggleMarker && markerData}
         sliceTooltip={({ slice }) => {
           return (
             <Box

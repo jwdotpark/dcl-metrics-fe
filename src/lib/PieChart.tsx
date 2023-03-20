@@ -1,11 +1,14 @@
 import { Box, Text, useColorModeValue, useColorMode } from "@chakra-ui/react"
 import { ResponsivePie } from "@nivo/pie"
 import { chartHeight } from "./data/chartInfo"
+import { lineChartAtom } from "./state/lineChartState"
+import { useAtom } from "jotai"
 
-const PieChart = ({ data, color }) => {
+const PieChart = ({ data }) => {
   const { colorMode } = useColorMode()
+  const [chartProps, setChartProps] = useAtom(lineChartAtom)
   return (
-    <Box h={chartHeight + 47}>
+    <Box h={chartProps.height + 47}>
       <ResponsivePie
         data={data}
         colors={{ scheme: "pastel1" }}

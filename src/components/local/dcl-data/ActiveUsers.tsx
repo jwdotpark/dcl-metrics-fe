@@ -5,6 +5,8 @@ import { ResponsiveBar } from "@nivo/bar"
 import { Box, Text, Center, Spinner, useColorModeValue } from "@chakra-ui/react"
 import moment from "moment"
 import BottomLegend from "./partial/BottomLegend"
+import { lineChartAtom } from "../../../lib/state/lineChartState"
+import { useAtom } from "jotai"
 
 const ActiveUsers = () => {
   const chartData = []
@@ -55,88 +57,91 @@ const ActiveUsers = () => {
 
 export default ActiveUsers
 
-const MyResponsiveBar = ({ data }) => (
-  <Box h="350">
-    <ResponsiveBar
-      data={data}
-      keys={["value"]}
-      indexBy="id"
-      margin={{ top: 30, right: 20, bottom: 50, left: 70 }}
-      padding={0.3}
-      valueScale={{ type: "linear" }}
-      indexScale={{ type: "band", round: true }}
-      colors={["#6272a495"]}
-      borderRadius={0}
-      borderWidth={2}
-      defs={[
-        {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "#38bcb2",
-          size: 4,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "#eed312",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
-      borderColor={{
-        from: "color",
-        modifiers: [["darker", 1.6]],
-      }}
-      axisTop={null}
-      axisRight={null}
-      axisBottom={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        format: (value) => moment(value).format("YYYY MMM"),
-      }}
-      axisLeft={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-      }}
-      labelSkipWidth={12}
-      labelSkipHeight={12}
-      labelTextColor={{
-        from: "color",
-        modifiers: [["darker", 1.6]],
-      }}
-      ariaLabel="active users bar chart"
-      theme={{
-        textColor: useColorModeValue("black", "white"),
-        fontSize: 12,
-        grid: {
-          line: {
-            stroke: "gray",
-            opacity: 0.25,
-            strokeDasharray: "1 1",
+const MyResponsiveBar = ({ data }) => {
+  const [chartProps, setChartProps] = useAtom(lineChartAtom)
+  return (
+    <Box h={chartProps.height}>
+      <ResponsiveBar
+        data={data}
+        keys={["value"]}
+        indexBy="id"
+        margin={{ top: 30, right: 20, bottom: 50, left: 70 }}
+        padding={0.3}
+        valueScale={{ type: "linear" }}
+        indexScale={{ type: "band", round: true }}
+        colors={["#6272a495"]}
+        borderRadius={0}
+        borderWidth={2}
+        defs={[
+          {
+            id: "dots",
+            type: "patternDots",
+            background: "inherit",
+            color: "#38bcb2",
+            size: 4,
+            padding: 1,
+            stagger: true,
           },
-        },
-      }}
-      tooltip={({ label, value }) => (
-        <Box sx={{ backdropFilter: "blur(10px)" }} p={2} borderRadius="md">
-          <Box mb="1" fontWeight="bold">
-            <Text fontSize="sm">
-              {moment(label.slice(-10)).format("YYYY MMMM")}
-            </Text>
+          {
+            id: "lines",
+            type: "patternLines",
+            background: "inherit",
+            color: "#eed312",
+            rotation: -45,
+            lineWidth: 6,
+            spacing: 10,
+          },
+        ]}
+        borderColor={{
+          from: "color",
+          modifiers: [["darker", 1.6]],
+        }}
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          format: (value) => moment(value).format("YYYY MMM"),
+        }}
+        axisLeft={{
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+        }}
+        labelSkipWidth={12}
+        labelSkipHeight={12}
+        labelTextColor={{
+          from: "color",
+          modifiers: [["darker", 1.6]],
+        }}
+        ariaLabel="active users bar chart"
+        theme={{
+          textColor: useColorModeValue("black", "white"),
+          fontSize: 12,
+          grid: {
+            line: {
+              stroke: "gray",
+              opacity: 0.25,
+              strokeDasharray: "1 1",
+            },
+          },
+        }}
+        tooltip={({ label, value }) => (
+          <Box sx={{ backdropFilter: "blur(10px)" }} p={2} borderRadius="md">
+            <Box mb="1" fontWeight="bold">
+              <Text fontSize="sm">
+                {moment(label.slice(-10)).format("YYYY MMMM")}
+              </Text>
+            </Box>
+            <Center>
+              <Box boxSize="15px" mr="2" bg="#6272a4" borderRadius="full" />
+              <Text fontSize="sm">Users: {value}</Text>
+            </Center>
           </Box>
-          <Center>
-            <Box boxSize="15px" mr="2" bg="#6272a4" borderRadius="full" />
-            <Text fontSize="sm">Users: {value}</Text>
-          </Center>
-        </Box>
-      )}
-      animate={true}
-    />
-  </Box>
-)
+        )}
+        animate={true}
+      />
+    </Box>
+  )
+}

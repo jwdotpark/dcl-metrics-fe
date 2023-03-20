@@ -12,13 +12,14 @@ import { FiMenu } from "react-icons/fi"
 import ColorButton from "../ColorButton"
 import LogOutButton from "../LogOutButton"
 import PrivateDashboardButton from "../PrivateDashboardButton"
+import SettingsButton from "../SettingsButton"
 
 interface MobileProps extends FlexProps {
   sidebarStatus: string
   onOpen: () => void
 }
 
-const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
+const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
   const auth = JSON.parse(localStorage.getItem("auth"))
   return (
     <Flex
@@ -69,10 +70,12 @@ const MobileNav = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
             <LogOutButton />
           </>
         )}
+        {/* insert item */}
+        <SettingsButton />
         <ColorButton />
       </HStack>
     </Flex>
   )
 }
 
-export default MobileNav
+export default TopBar

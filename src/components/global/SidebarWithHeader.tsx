@@ -8,7 +8,7 @@ import {
   DrawerContent,
   useDisclosure,
 } from "@chakra-ui/react"
-import MobileNav from "./sidebar/MobileNav"
+import TopBar from "./sidebar/TopBar"
 import SidebarContent from "./sidebar/SidebarContent"
 
 export default function SidebarWithHeader({
@@ -78,7 +78,8 @@ export default function SidebarWithHeader({
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <MobileNav onOpen={onOpen} sidebarStatus={sidebarStatus} />
+
+      <TopBar onOpen={onOpen} sidebarStatus={sidebarStatus} />
       <Flex
         align="center"
         justify="center"

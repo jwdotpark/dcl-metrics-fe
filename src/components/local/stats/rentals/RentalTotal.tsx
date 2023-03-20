@@ -67,7 +67,7 @@ const RentalTotal = ({ data }) => {
         color={color}
         description={`Total rentals data since ${firstDate}`}
       />
-      <PieChart data={result} color={color} />
+      <PieChart data={result} />
     </BoxWrapper>
   )
 }
