@@ -38,11 +38,17 @@ const LineChart = ({
             <g key={item.date}>
               <rect
                 x={i * Math.min(innerWidth / dateRange) + 5}
-                y={chartProps.height - item.y * 10 - 100}
+                y={
+                  chartProps.height === 700
+                    ? chartProps.height - item.y * 10 - 200
+                    : chartProps.height - item.y * 10 - 100
+                }
                 rx={2}
                 ry={2}
                 width={dateRange > 30 ? 5 : 10}
-                height={item.y * 10}
+                height={
+                  chartProps.height === 700 ? item.y * 10 + 100 : item.y * 10
+                }
                 fill="#9F7AEA90"
                 stroke="#9F7AEA"
               ></rect>
