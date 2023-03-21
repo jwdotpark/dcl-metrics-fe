@@ -63,3 +63,13 @@ export const plotMissingDates = (data) => {
   data.sort((a, b) => a.date - b.date)
   return data
 }
+
+export const findFalse = (obj) => {
+  const falseKeys = []
+  for (let key in obj) {
+    if (obj[key] === false) {
+      falseKeys.push(key)
+    }
+  }
+  return falseKeys
+}

@@ -4,7 +4,7 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box } from "@chakra-ui/react"
 import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
-import { sliceData } from "../../../../lib/data/chartInfo"
+import { sliceData, findFalse } from "../../../../lib/data/chartInfo"
 import DateRangeButton from "../daterange/DateRangeButton"
 
 const LandSales = ({ data }) => {
@@ -15,6 +15,9 @@ const LandSales = ({ data }) => {
   const defaultDateRange = dataArr.length - 1
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
+
+  const [lineColor, setLineColor] = useState(color)
+  const [avgColor, setAvgColor] = useState(color)
 
   dataArr.map((item) => {
     chartData.push({
@@ -47,6 +50,16 @@ const LandSales = ({ data }) => {
     mapData("Floor", "floor"),
   ]
 
+  result.map((item, i) => {
+    item.color = color[i]
+  })
+
+  const lineVisibility = result.map((item, i) => {
+    return true
+  })
+
+  const [line, setLine] = useState(lineVisibility)
+
   const calculateAverages = (partial) => {
     const validLength = partial.length
     const sum = {
@@ -67,10 +80,32 @@ const LandSales = ({ data }) => {
     return map
   }
 
+  const filteredResult = result.filter((item, i) => {
+    return line[i]
+  })
+
   useEffect(() => {
     setAvgData(calculateAverages(partial))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
+
+  useEffect(() => {
+    const res = findFalse(line)
+    const newChartColor = color.filter((item, i) => {
+      return !res.includes(i.toString())
+    })
+    const newAvgColor = color.map((item, i) => {
+      if (res.includes(i.toString())) {
+        return "gray.400"
+      } else {
+        return item
+      }
+    })
+
+    setLineColor(newChartColor)
+    setAvgColor(newAvgColor)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [line])
 
   return (
     <BoxWrapper colSpan={0}>
@@ -80,8 +115,10 @@ const LandSales = ({ data }) => {
           date={""}
           avgData={avgData}
           slicedData={partial}
-          color={color}
+          color={avgColor}
           description="Data from Opensea, prices in MANA"
+          line={line}
+          setLine={setLine}
         />
         <DateRangeButton
           dateRange={dateRange}
@@ -91,10 +128,12 @@ const LandSales = ({ data }) => {
           yesterday={false}
         />
         <LineChart
-          data={result}
-          color={color}
+          data={filteredResult}
+          color={lineColor}
           name="rental"
           avgData={avgData}
+          line={line}
+          avgColor={avgColor}
         />
       </Box>
     </BoxWrapper>

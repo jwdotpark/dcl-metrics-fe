@@ -124,19 +124,21 @@ const GlobalPage: NextPage = (props: Props) => {
           <UniqueVisitors data={globalDailyRes} />
         </Box>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          {/*<UniqueVisitedParcels data={globalDailyRes} />*/}
-          {/*<ActiveScenes data={globalDailyRes} />*/}
+          <UniqueVisitedParcels data={globalDailyRes} />
+          <ActiveScenes data={globalDailyRes} />
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          {/*<OnlineUsers />*/}
-          {/*<ActiveUsers />*/}
+          <OnlineUsers />
+          <ActiveUsers />
         </Grid>
-        <Box mb="4">{/*<LandSales data={landSalesRes} />*/}</Box>
+        <Box mb="4">
+          <LandSales data={landSalesRes} />
+        </Box>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          {/*<RentalDay data={rental} />*/}
-          {/*<RentalTotal data={rental} />*/}
+          <RentalDay data={rental} />
+          <RentalTotal data={rental} />
         </Grid>
-        {/*<LandPicker parcelData={parcelRes} isPage={false} />*/}
+        <LandPicker parcelData={parcelRes} isPage={false} />
       </Box>
     </Layout>
   )

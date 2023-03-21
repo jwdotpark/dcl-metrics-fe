@@ -31,16 +31,6 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
     return `${id} average for ${dateStr(data)} days`
   }
 
-  const orderIndex = (val) => {
-    if (val === 1) {
-      return 2
-    } else if (val === 2) {
-      return 1
-    } else {
-      return val
-    }
-  }
-
   return (
     <Box>
       <Box>
@@ -72,7 +62,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
                         textAlign={["start", "start", "end", "end"]}
                         _hover={{ cursor: "pointer" }}
                         onClick={() => {
-                          if (Object.keys(line).length - 1 !== i)
+                          if (line && Object.keys(line).length - 1 !== i)
                             setLine({
                               ...line,
                               [i]: !line[i],

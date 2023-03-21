@@ -1,7 +1,12 @@
 // @ts-nocheck
 import { useEffect, useState } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
-import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
+import {
+  defaultDateRange,
+  sliceData,
+  date,
+  findFalse,
+} from "../../../lib/data/chartInfo"
 import BoxTitle from "../../layout/local/BoxTitle"
 import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
@@ -12,6 +17,9 @@ const ActiveScenes = ({ data }) => {
   const [avgData, setAvgData] = useState([])
   const chartData = []
   const dataArr = Object.entries(data)
+
+  const [lineColor, setLineColor] = useState(color)
+  const [avgColor, setAvgColor] = useState(color)
 
   dataArr.map((item) => {
     chartData.push({
@@ -38,6 +46,16 @@ const ActiveScenes = ({ data }) => {
 
   const result = [mapData("Scene Visitors", "active_scenes")]
 
+  result.map((item, i) => {
+    item.color = color[i]
+  })
+
+  const lineVisibility = result.map((item, i) => {
+    return true
+  })
+
+  const [line, setLine] = useState(lineVisibility)
+
   const calculateAverages = (partial) => {
     const validLength = partial.length
     const sum = {
@@ -50,10 +68,32 @@ const ActiveScenes = ({ data }) => {
     return map
   }
 
+  const filteredResult = result.filter((item, i) => {
+    return line[i]
+  })
+
   useEffect(() => {
     setAvgData(calculateAverages(partial))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
+
+  useEffect(() => {
+    const res = findFalse(line)
+    const newChartColor = color.filter((item, i) => {
+      return !res.includes(i.toString())
+    })
+    const newAvgColor = color.map((item, i) => {
+      if (res.includes(i.toString())) {
+        return "gray.400"
+      } else {
+        return item
+      }
+    })
+
+    setLineColor(newChartColor)
+    setAvgColor(newAvgColor)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [line])
 
   return (
     <BoxWrapper colSpan={3}>
@@ -62,7 +102,9 @@ const ActiveScenes = ({ data }) => {
         date={dateString}
         avgData={avgData}
         slicedData={partial}
-        color={color}
+        color={avgColor}
+        line={line}
+        setLine={setLine}
       />
       <DateRangeButton
         dateRange={dateRange}
@@ -73,9 +115,11 @@ const ActiveScenes = ({ data }) => {
       />
       <LineChart
         data={result}
-        color={color}
+        color={lineColor}
         name="activeScenes"
         avgData={avgData}
+        line={line}
+        avgColor={avgColor}
       />
     </BoxWrapper>
   )

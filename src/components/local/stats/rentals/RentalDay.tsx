@@ -11,11 +11,15 @@ import moment from "moment"
 
 const RentalDay = ({ data }) => {
   const { analyticsDayDatas } = data
+  const color = ["#48BB78", "#9F7AEA", "#F56565", "#4299E1"]
   const plottedData = plotMissingDates(analyticsDayDatas)
   const dataArr = Object.entries(plottedData)
   const chartData = []
   const [dateRange, setDateRange] = useState(plottedData.length - 1)
   const [avgData, setAvgData] = useState([])
+
+  const [lineColor, setLineColor] = useState(color)
+  const [avgColor, setAvgColor] = useState(color)
 
   dataArr.map((item) => {
     chartData.push({
@@ -42,6 +46,17 @@ const RentalDay = ({ data }) => {
   }
 
   const result = [mapData("Volume", "volume"), mapData("Rentals", "rentals")]
+
+  result.map((item, i) => {
+    item.color = color[i]
+  })
+
+  const lineVisibility = result.map((item, i) => {
+    return true
+  })
+
+  const [line, setLine] = useState(lineVisibility)
+
   const rentalData = result[result.length - 1]
 
   const calculateAverages = (partial) => {
@@ -64,7 +79,9 @@ const RentalDay = ({ data }) => {
     return map
   }
 
-  const color = ["#48BB78", "#9F7AEA", "#F56565", "#4299E1"]
+  const filteredResult = result.filter((item, i) => {
+    return line[i]
+  })
 
   useEffect(() => {
     setAvgData(calculateAverages(partial))
@@ -80,6 +97,8 @@ const RentalDay = ({ data }) => {
         slicedData={partial}
         color={color}
         description="Daily rentals and volume in the last period"
+        line={line}
+        setLine={setLine}
       />
       <DateRangeButton
         dateRange={dateRange}
@@ -95,6 +114,8 @@ const RentalDay = ({ data }) => {
         log={true}
         rentalData={rentalData}
         avgData={avgData}
+        avgColor={{}}
+        line={{}}
       />
     </BoxWrapper>
   )

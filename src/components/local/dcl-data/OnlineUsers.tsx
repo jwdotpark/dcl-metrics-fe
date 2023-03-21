@@ -4,7 +4,12 @@ import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import LineChart from "../../../lib/LineChart"
 import { useState, useEffect } from "react"
-import { sliceData, date, chartHeight } from "../../../lib/data/chartInfo"
+import {
+  sliceData,
+  date,
+  chartHeight,
+  findFalse,
+} from "../../../lib/data/chartInfo"
 import moment from "moment"
 import BottomLegend from "./partial/BottomLegend"
 
@@ -18,6 +23,9 @@ const OnlineUsers = () => {
   const [avgData, setAvgData] = useState([])
   const dataArr = (data.result && data.result.data.result[0].values) || []
   const dateRange = dataArr.length - 1
+
+  const [lineColor, setLineColor] = useState(color)
+  const [avgColor, setAvgColor] = useState(color)
 
   if (dataArr !== null) {
     dataArr.map((item) => {
@@ -46,6 +54,16 @@ const OnlineUsers = () => {
 
   const result = [mapData("Online Users")]
 
+  result.map((item, i) => {
+    item.color = color[i]
+  })
+
+  const lineVisibility = result.map((item, i) => {
+    return true
+  })
+
+  const [line, setLine] = useState(lineVisibility)
+
   const calculateAverages = (partial) => {
     const validLength = partial.length
     const sum = {
@@ -62,11 +80,6 @@ const OnlineUsers = () => {
     return map
   }
 
-  useEffect(() => {
-    setAvgData(calculateAverages(partial))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data])
-
   const fetchData = async () => {
     setIsLoading(true)
 
@@ -82,6 +95,29 @@ const OnlineUsers = () => {
     setData(data)
     setIsLoading(false)
   }
+
+  useEffect(() => {
+    setAvgData(calculateAverages(partial))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data])
+
+  useEffect(() => {
+    const res = findFalse(line)
+    const newChartColor = color.filter((item, i) => {
+      return !res.includes(i.toString())
+    })
+    const newAvgColor = color.map((item, i) => {
+      if (res.includes(i.toString())) {
+        return "gray.400"
+      } else {
+        return item
+      }
+    })
+
+    setLineColor(newChartColor)
+    setAvgColor(newAvgColor)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [line])
 
   useEffect(() => {
     fetchData()
@@ -105,6 +141,8 @@ const OnlineUsers = () => {
               color={color}
               name="onlineUsers"
               avgData={avgData}
+              avgColor={avgColor}
+              line={line}
             />
             <BottomLegend description="UTC, source from status.decentraland.org/metrics" />
           </>

@@ -66,6 +66,8 @@ const RentalTotal = ({ data }) => {
         slicedData={diff}
         color={color}
         description={`Total rentals data since ${firstDate}`}
+        line={{}}
+        setLine={() => {}}
       />
       <PieChart data={result} />
     </BoxWrapper>

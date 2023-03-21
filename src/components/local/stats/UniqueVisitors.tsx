@@ -2,7 +2,12 @@
 import { useEffect, useState } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
-import { defaultDateRange, sliceData, date } from "../../../lib/data/chartInfo"
+import {
+  defaultDateRange,
+  sliceData,
+  date,
+  findFalse,
+} from "../../../lib/data/chartInfo"
 import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
 
@@ -10,10 +15,11 @@ const UniqueVisitors = ({ data }) => {
   const dataArr = Object.entries(data)
   const chartData = []
   const color = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
-  const [lineColor, setLineColor] = useState(color)
-  const [avgColor, setAvgColor] = useState(color)
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
+
+  const [lineColor, setLineColor] = useState(color)
+  const [avgColor, setAvgColor] = useState(color)
 
   // TODO type this
   dataArr.map((item, i) => {
@@ -84,25 +90,14 @@ const UniqueVisitors = ({ data }) => {
     return map
   }
 
-  useEffect(() => {
-    setAvgData(calculateAverages(partial))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange])
-
-  // filter result's values to only include the ones that are true in line
   const filteredResult = result.filter((item, i) => {
     return line[i]
   })
 
-  const findFalse = (obj) => {
-    const falseKeys = []
-    for (let key in obj) {
-      if (obj[key] === false) {
-        falseKeys.push(key)
-      }
-    }
-    return falseKeys
-  }
+  useEffect(() => {
+    setAvgData(calculateAverages(partial))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateRange])
 
   useEffect(() => {
     const res = findFalse(line)

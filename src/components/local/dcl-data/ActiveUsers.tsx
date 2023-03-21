@@ -36,6 +36,8 @@ const ActiveUsers = () => {
         slicedData={{}}
         color={color}
         description={`Unique users that have logged into Decentraland and moved out of their initial tile`}
+        line={{}}
+        setLine={{}}
       />
       {!isLoading && !error ? (
         <Box mb="4">
