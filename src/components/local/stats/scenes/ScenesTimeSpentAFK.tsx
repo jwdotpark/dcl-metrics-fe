@@ -33,6 +33,8 @@ const ScenesTimeSpentAFK = ({ res }) => {
         color=""
         description="Scenes with the most average AFK time spent on them in the last
         period"
+        line={undefined}
+        setLine={undefined}
       />
       <DateRangeButton
         dateRange={dateRange}

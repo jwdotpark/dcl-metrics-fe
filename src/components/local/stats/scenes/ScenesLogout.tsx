@@ -32,6 +32,8 @@ const ScenesLogout = ({ res }) => {
         slicedData=""
         color=""
         description="Scenes with the most logouts in the last period"
+        line={undefined}
+        setLine={undefined}
       />
       <DateRangeButton
         dateRange={dateRange}

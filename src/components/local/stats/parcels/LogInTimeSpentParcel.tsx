@@ -32,6 +32,8 @@ const LogInTimeSpentParcel = ({ parcel }) => {
         slicedData=""
         color=""
         description="Parcels with the most logins in the last period"
+        line={undefined}
+        setLine={undefined}
       />
       <DateRangeButton
         dateRange={dateRange}

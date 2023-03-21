@@ -32,6 +32,8 @@ const LogOutTimeSpentParcel = ({ parcel }) => {
         slicedData=""
         color=""
         description="Parcels with the most logouts in the last period"
+        line={undefined}
+        setLine={undefined}
       />
 
       <DateRangeButton

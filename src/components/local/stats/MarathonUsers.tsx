@@ -18,8 +18,7 @@ const MarathonUsers = ({ res }) => {
         avgData=""
         slicedData=""
         color=""
-        description="Users with most online time in the last period"
-      />
+        description="Users with most online time in the last period" line={undefined} setLine={undefined}      />
       <DateRangeButton
         dateRange={dateRange}
         setDateRange={setDateRange}

@@ -32,6 +32,8 @@ const MostVisitedParcel = ({ parcel }) => {
         slicedData=""
         color=""
         description="Parcels with the most visit count in the last period"
+        line={undefined}
+        setLine={undefined}
       />
       <DateRangeButton
         dateRange={dateRange}

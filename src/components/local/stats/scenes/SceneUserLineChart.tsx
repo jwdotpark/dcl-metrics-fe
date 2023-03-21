@@ -84,6 +84,8 @@ const SceneUserLineChart = ({ data, name }) => {
             avgData={[]}
             slicedData={{}}
             color=""
+            line={undefined}
+            setLine={undefined}
           />
           <DateRangeButton
             dateRange={dateRange}
@@ -98,6 +100,8 @@ const SceneUserLineChart = ({ data, name }) => {
             name="sceneUserLineChart"
             rentalData={false}
             avgData={[]}
+            avgColor={undefined}
+            line={undefined}
           />
         </Box>
       </Box>

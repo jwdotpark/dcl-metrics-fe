@@ -46,6 +46,8 @@ const LandPicker = ({ parcelData, isPage }) => {
           avgData=""
           slicedData=""
           color=""
+          line={undefined}
+          setLine={undefined}
         />
         <Box h="100%">
           <MapWrapper

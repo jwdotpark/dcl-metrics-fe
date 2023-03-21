@@ -19,6 +19,8 @@ const Explorer = ({ res }) => {
         slicedData=""
         color=""
         description="Users that visited the most parcels in the last period"
+        line={undefined}
+        setLine={undefined}
       />
       <DateRangeButton
         dateRange={dateRange}

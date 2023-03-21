@@ -31,8 +31,7 @@ const AFKtimeSpentAFKParcel = ({ parcel }) => {
         avgData=""
         slicedData=""
         color=""
-        description="Parcels with the most idle time spent on them in the last period"
-      />
+        description="Parcels with the most idle time spent on them in the last period" line={undefined} setLine={undefined}      />
       <DateRangeButton
         dateRange={dateRange}
         setDateRange={setDateRange}

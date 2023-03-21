@@ -192,6 +192,8 @@ const SceneTable = ({ sceneRes }) => {
           slicedData=""
           color=""
           description={`Check out the busiest top scenes on ${yesterday}`}
+          line={undefined}
+          setLine={undefined}
         />
         <Table
           h={["auto", 850]}

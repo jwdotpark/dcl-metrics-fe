@@ -32,6 +32,8 @@ const ScenesTimeSpent = ({ res }) => {
         slicedData=""
         color=""
         description="Scenes with the most average time spent on them in the last period"
+        line={undefined}
+        setLine={undefined}
       />
       <DateRangeButton
         dateRange={dateRange}
