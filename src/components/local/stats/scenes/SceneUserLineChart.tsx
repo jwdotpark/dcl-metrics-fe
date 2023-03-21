@@ -55,8 +55,6 @@ const SceneUserLineChart = ({ data, name }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
-  console.log(avgData)
-
   return (
     <Flex
       sx={{

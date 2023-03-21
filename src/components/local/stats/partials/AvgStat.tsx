@@ -2,7 +2,7 @@
 import { Box, Text, Flex, Tooltip } from "@chakra-ui/react"
 import CountUp from "react-countup"
 
-const AvgStat = ({ avgData, data, color }) => {
+const AvgStat = ({ avgData, data, color, line, setLine }) => {
   if (typeof avgData === "number") {
     avgData = [
       {
@@ -10,11 +10,6 @@ const AvgStat = ({ avgData, data, color }) => {
         value: avgData,
       },
     ]
-  }
-
-  //FIXME
-  if (color.length === 4) {
-    color = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
   }
 
   const dateStr = (val) => {
@@ -34,6 +29,16 @@ const AvgStat = ({ avgData, data, color }) => {
       return `${id} for ${dateStr(data)} days`
     }
     return `${id} average for ${dateStr(data)} days`
+  }
+
+  const orderIndex = (val) => {
+    if (val === 1) {
+      return 2
+    } else if (val === 2) {
+      return 1
+    } else {
+      return val
+    }
   }
 
   return (
@@ -66,6 +71,13 @@ const AvgStat = ({ avgData, data, color }) => {
                         fontWeight="bold"
                         textAlign={["start", "start", "end", "end"]}
                         _hover={{ cursor: "pointer" }}
+                        onClick={() => {
+                          if (Object.keys(line).length - 1 !== i)
+                            setLine({
+                              ...line,
+                              [i]: !line[i],
+                            })
+                        }}
                       >
                         <CountUp end={item.value} duration={0.5} />
                       </Box>

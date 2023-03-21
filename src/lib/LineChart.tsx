@@ -5,7 +5,15 @@ import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import { lineChartAtom } from "../lib/state/lineChartState"
 import { useAtom } from "jotai"
 
-const LineChart = ({ data, color, name, rentalData, avgData }) => {
+const LineChart = ({
+  data,
+  color,
+  avgColor,
+  name,
+  rentalData,
+  avgData,
+  line,
+}) => {
   const [localData, setLocalData] = useState([])
   const dataName = data[0]?.id
 
@@ -56,40 +64,34 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
     }
   }
 
-  const setColor = () => {
-    let colors = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
-    if (avgData.length > 1) {
-      return colors
-    } else {
-      return color
-    }
-  }
-
   const markerData =
     avgData !== typeof Number &&
-    avgData.map((item, i) => {
-      return {
-        axis: "y",
-        value: item.value,
-        lineStyle: {
-          stroke: setColor()[i],
-          strokeWidth: 2,
-          strokeDasharray: "4 4",
-        },
-        //legend: item.id + " : " + item.value,
-        legendOffsetY: 10,
-        legendOffsetX: 5,
-        legendOrientation: "horizontal",
-        textStyle: {
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          fill: useColorModeValue("black", "white"),
-          fontSize: 12,
-          stroke: "#000",
-          strokeWidth: 0.15,
-          fontWeight: 500,
-        },
-      }
-    })
+    avgData
+      .map((item, i) => {
+        return {
+          axis: "y",
+          value: item.value,
+          lineStyle: {
+            stroke: avgColor[i],
+            strokeWidth: 2,
+            strokeDasharray: "4 4",
+          },
+          legendOffsetY: 10,
+          legendOffsetX: 5,
+          legendOrientation: "horizontal",
+          textStyle: {
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            fill: useColorModeValue("black", "white"),
+            fontSize: 12,
+            stroke: "#000",
+            strokeWidth: 0.15,
+            fontWeight: 500,
+          },
+        }
+      })
+      .filter((item, i) => {
+        return line[i]
+      })
 
   useEffect(() => {
     setLocalData(data)
@@ -149,7 +151,6 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
         axisTop={null}
         axisRight={
           rentalData && {
-            //orient: "left",
             tickSize: 0,
             tickPadding: 0,
             tickRotation: 0,
@@ -183,6 +184,7 @@ const LineChart = ({ data, color, name, rentalData, avgData }) => {
         pointBorderColor={{ from: "serieColor" }}
         useMesh={true}
         colors={color}
+        //colorBy={(d) => d.color}
         enableArea={chartProps.toggleArea}
         enableCrosshair={true}
         crosshairType="bottom-left"

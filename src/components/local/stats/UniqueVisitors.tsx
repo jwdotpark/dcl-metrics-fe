@@ -9,12 +9,14 @@ import LineChart from "../../../lib/LineChart"
 const UniqueVisitors = ({ data }) => {
   const dataArr = Object.entries(data)
   const chartData = []
-  const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
+  const color = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
+  const [lineColor, setLineColor] = useState(color)
+  const [avgColor, setAvgColor] = useState(color)
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
 
   // TODO type this
-  dataArr.map((item) => {
+  dataArr.map((item, i) => {
     chartData.push({
       id: item[0],
       date: item[0],
@@ -29,7 +31,7 @@ const UniqueVisitors = ({ data }) => {
   const partial = sliceData(chartData, dateRange)
   const dateString = date(chartData, dateRange).date
 
-  const mapData = (id: string, key: number) => {
+  const mapData = (id: string, key: string) => {
     return {
       id: id,
       data: partial.map((item) => ({
@@ -42,10 +44,20 @@ const UniqueVisitors = ({ data }) => {
 
   const result = [
     mapData("Unique Users", "unique_users"),
-    mapData("New Users", "new_users"),
     mapData("Guest Users", "guest_users"),
+    mapData("New Users", "new_users"),
     mapData("Named Users", "named_users"),
   ]
+
+  result.map((item, i) => {
+    item.color = color[i]
+  })
+
+  const lineVisibility = result.map((item, i) => {
+    return true
+  })
+
+  const [line, setLine] = useState(lineVisibility)
 
   const calculateAverages = (partial) => {
     const validLength = partial.length
@@ -77,6 +89,39 @@ const UniqueVisitors = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
+  // filter result's values to only include the ones that are true in line
+  const filteredResult = result.filter((item, i) => {
+    return line[i]
+  })
+
+  const findFalse = (obj) => {
+    const falseKeys = []
+    for (let key in obj) {
+      if (obj[key] === false) {
+        falseKeys.push(key)
+      }
+    }
+    return falseKeys
+  }
+
+  useEffect(() => {
+    const res = findFalse(line)
+    const newChartColor = color.filter((item, i) => {
+      return !res.includes(i.toString())
+    })
+    const newAvgColor = color.map((item, i) => {
+      if (res.includes(i.toString())) {
+        return "gray.400"
+      } else {
+        return item
+      }
+    })
+
+    setLineColor(newChartColor)
+    setAvgColor(newAvgColor)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [line])
+
   return (
     <BoxWrapper colSpan={0}>
       <BoxTitle
@@ -84,7 +129,9 @@ const UniqueVisitors = ({ data }) => {
         date={dateString}
         avgData={avgData}
         slicedData={partial}
-        color={color}
+        color={avgColor}
+        line={line}
+        setLine={setLine}
       />
       <DateRangeButton
         dateRange={dateRange}
@@ -94,10 +141,12 @@ const UniqueVisitors = ({ data }) => {
         yesterday={false}
       />
       <LineChart
-        data={result}
-        color={color}
+        data={filteredResult}
+        color={lineColor}
+        avgColor={avgColor}
         name="uniqueVisitors"
         avgData={avgData}
+        line={line}
       />
     </BoxWrapper>
   )
