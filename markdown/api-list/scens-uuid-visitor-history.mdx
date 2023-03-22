@@ -1,0 +1,43 @@
+---
+category: "scenes"
+subcategory: "uuid"
+title: "visitor_history"
+issue: 10
+description: "GET /scenes/uuid/visitor_history"
+published: true
+---
+
+# GET /scenes/:uuid/visitor_history
+
+Stripped down visitor stats for the last 90 days for scene with given UUID. It
+can be the case that there are holes in the data if we have no data for a given
+scene on a particular day
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/scenes/:uuid/visitor_history`
+
+#### SAMPLE DATA
+
+The expected response, as json:
+
+```json
+[
+  {
+    "date": "2022-10-12",
+    "visitors": 2493
+  },
+  {
+    "date": "2022-10-13",
+    "visitors": 2292
+  },
+  {
+    // there is no data for 2022-10-14, it's simply skipped
+    "date": "2022-10-15",
+    "visitors": 1292
+  },
+  {
+    // additional scenes
+  }
+]
+```

@@ -1,0 +1,28 @@
+---
+category: ""
+subcategory: ""
+title: "API Basics"
+issue: 11
+description: ""
+published: true
+---
+
+# API Basics
+
+This document shows how to make calls to api.dcl-metrics.com
+
+## API Key
+
+API keys are currently only on a test basis, so there is no automated way to
+request one at the present time. API keys are given in [UUID format](https://en.wikipedia.org/wiki/Universally_unique_identifier) and
+have both an expiration date and permissions associated with them.
+
+## How to call
+
+Assuming your API key is `eb759b1d-8060-4d76-9e38-384103dccf15`, you would call
+the API like this:
+
+```
+curl -H "API_KEY: eb759b1d-8060-4d76-9e38-384103dccf15" \
+"https://api.dcl-metrics.com/scenes/search?name=ICE%20Poker&coordinates=-101,128"
+```

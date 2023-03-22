@@ -1,0 +1,51 @@
+---
+category: ""
+subcategory: ""
+title: "Peer Status"
+issue: 12
+description: ""
+published: true
+---
+
+# GET /peer_status
+
+Data about yesterday's api responses
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/peer_status`
+
+#### SAMPLE DATA
+
+The expected response, as json:
+
+```json
+{
+  "comms/peers": [
+    {
+      "date": "2022-10-17",
+      "url": "https://peer.dclnodes.io/comms/peers",
+      "host": "peer.dclnodes.io",
+      "statuses": { "200": 966 },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 966,
+      "total_count": 966
+    },
+    {
+      "date": "2022-10-17",
+      "url": "https://peer-ec1.decentraland.org/comms/peers",
+      "host": "peer-ec1.decentraland.org",
+      "statuses": { "200": 961 },
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "success_rate": 100.0,
+      "success_count": 961,
+      "total_count": 961
+    }
+  ],
+  "stats/parcels": []
+  // ...
+}
+```
