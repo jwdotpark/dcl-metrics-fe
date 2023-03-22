@@ -1,4 +1,11 @@
-import { Box, Text, useColorModeValue } from "@chakra-ui/react"
+import {
+  Box,
+  Divider,
+  OrderedList,
+  Text,
+  UnorderedList,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import ChakraUIRenderer from "chakra-ui-markdown-renderer"
 import ReactMarkdown from "react-markdown"
@@ -9,13 +16,14 @@ const ApiExample = ({ selectedItem }) => {
   const content = selectedItem.content
   const { description } = selectedItem.data
 
+  console.log(selectedItem.data)
   const newTheme = {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || "")
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const syntaxColor = useColorModeValue(oneLight, oneDark)
       return !inline && match ? (
-        <Box overflow="clip" my="4" borderRadius="xl">
+        <Box overflow="clip" mb="4" borderRadius="xl">
           <SyntaxHighlighter
             style={syntaxColor}
             language={match[1]}
@@ -31,6 +39,63 @@ const ApiExample = ({ selectedItem }) => {
         </code>
       )
     },
+    ul: ({ children }) => {
+      return <UnorderedList my="8">{children}</UnorderedList>
+    },
+    ol: ({ children }) => {
+      return <OrderedList my="8">{children}</OrderedList>
+    },
+    p: ({ children }) => {
+      return <Text mb="8">{children}</Text>
+    },
+    h1: ({ children }) => {
+      return (
+        <Text as="h1" mb="8" fontSize="4xl">
+          {children}
+          <Divider />
+        </Text>
+      )
+    },
+    h2: ({ children }) => {
+      return (
+        <Text as="h2" mb="8" fontSize="3xl">
+          {children}
+          <Divider mb="4" />
+        </Text>
+      )
+    },
+    h3: ({ children }) => {
+      return (
+        <Text as="h3" mb="8" fontSize="2xl">
+          {children}
+          <Divider mb="4" />
+        </Text>
+      )
+    },
+    h4: ({ children }) => {
+      return (
+        <Text as="h4" mb="8" fontSize="xl">
+          {children}
+          <Divider mb="4" />
+        </Text>
+      )
+    },
+    h5: ({ children }) => {
+      return (
+        <Text as="h5" mb="8" fontSize="lg">
+          {children}
+          <Divider mb="4" />
+        </Text>
+      )
+    },
+    h6: ({ children }) => {
+      return (
+        <Text as="h6" mb="8" fontSize="md">
+          {children}
+          <Divider mb="4" />
+        </Text>
+      )
+    },
   }
 
   return (
@@ -40,6 +105,7 @@ const ApiExample = ({ selectedItem }) => {
           <Text as="kbd" fontSize="6xl" fontWeight="bold">
             {description}
           </Text>
+          <Divider mb="4" />
         </Box>
         <ReactMarkdown components={ChakraUIRenderer(newTheme)} skipHtml>
           {content}

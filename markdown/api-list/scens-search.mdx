@@ -1,0 +1,45 @@
+---
+category: "scenes"
+title: "search"
+issue: 6
+description: "GET /scenes/search"
+published: true
+---
+
+# GET /scenes/search
+
+Search for scenes by name or coordinates. This endpoint returns the first 10
+results for a given query.
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/scenes/search`
+
+## QUERY PARAMS
+
+- **name**: The name of the scene you're searching for. Case-sensitive! Ex: `Genesis`
+- **coordinates**: Coordinates of the scene you're search for. Ex: `1,-1`
+
+Queries can be combined, such as search for scenes with names containing `Ice`
+at coordiates `-101,128`. The results will be better if you only search for one
+coordinate at a time (ie, not multiple coordinates)
+
+### ex: `https://api.dcl-metrics.com/scenes/search?name=ICE%20Poker&coordinates=-101,128`
+
+#### SAMPLE DATA
+
+The expected response, as json:
+
+```json
+[
+  {
+    "name":"ICE Poker - The Stronghold",
+    "first_seen_at": null // this occurs on scenes that were deployed before we started tracking scenes
+    "coordinates": "-100,126;-100,127;-100,128;-100,129;-101,126;-101,127;-101,128;-101,129;-102,126;-102,127;-102,128;-102,129;-99,126;-99,127;-99,128;-99,129",
+    "uuid": "6c3717aa-b658-4ece-8ae0-84d3d9f24d3b"
+  },
+  {
+    // additional scenes
+  }
+]
+```
