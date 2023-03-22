@@ -19,7 +19,7 @@ import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
-import { getPosts } from "../blog/helpers/post"
+import { getPosts } from "../markdown/helpers/post"
 import moment from "moment"
 import ActiveUsers from "../src/components/local/dcl-data/ActiveUsers"
 

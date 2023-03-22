@@ -1,5 +1,5 @@
 import { Center } from "@chakra-ui/react"
-import { getPosts } from "../blog/helpers/post"
+import { getPosts } from "../markdown/helpers/post"
 import Layout from "../src/components/layout/layout"
 import PostList from "../src/components/blog/PostList"
 import moment from "moment"

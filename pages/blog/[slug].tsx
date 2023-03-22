@@ -1,6 +1,6 @@
 import { Box, Button, Center, Flex, Spacer, Text } from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
-import { getPost, getPosts } from "../../blog/helpers/post"
+import { getPost, getPosts } from "../../markdown/helpers/post"
 import { serialize } from "next-mdx-remote/serialize"
 import Layout from "../../src/components/layout/layout"
 import BoxWrapper from "../../src/components/layout/local/BoxWrapper"

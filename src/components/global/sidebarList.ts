@@ -43,12 +43,6 @@ export const sidebarList = {
     icon: FiMapPin,
     subItem: true,
   },
-  blog: {
-    label: "Blog",
-    name: "blog",
-    icon: FiPenTool,
-    subItem: false,
-  },
   docs: {
     label: "API Documentation",
     name: "api-docs",
@@ -59,6 +53,12 @@ export const sidebarList = {
     label: "Status",
     name: "status",
     icon: FiActivity,
+    subItem: false,
+  },
+  blog: {
+    label: "Blog",
+    name: "blog",
+    icon: FiPenTool,
     subItem: false,
   },
   roadmap: {
