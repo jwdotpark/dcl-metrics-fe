@@ -6,10 +6,13 @@ import {
   useColorModeValue,
   Divider,
 } from "@chakra-ui/react"
+import { useState } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 
 const ApiList = ({ data, setSelectedItem }) => {
+  const [itemIndex, setItemIndex] = useState(0)
   const categories = []
+
   data.map((item) => {
     if (!categories.includes(item.data.category)) {
       categories.push(item.data.category)
@@ -28,7 +31,7 @@ const ApiList = ({ data, setSelectedItem }) => {
                 </Text>
               </Box>
               <List spacing={4}>
-                {data.map((item) => {
+                {data.map((item, i) => {
                   if (item.data.category === category) {
                     return (
                       <ListItem
@@ -36,6 +39,11 @@ const ApiList = ({ data, setSelectedItem }) => {
                         w="100%"
                         px="4"
                         py="2"
+                        bg={
+                          itemIndex === i &&
+                          // eslint-disable-next-line react-hooks/rules-of-hooks
+                          useColorModeValue("gray.200", "gray.700")
+                        }
                         borderRadius="xl"
                         _hover={{
                           // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -44,6 +52,7 @@ const ApiList = ({ data, setSelectedItem }) => {
                         }}
                         onClick={() => {
                           setSelectedItem(item)
+                          setItemIndex(i)
                         }}
                       >
                         <Text fontSize="lg">{item.data.title}</Text>
