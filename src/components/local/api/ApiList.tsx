@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 
-const ApiList = ({ data }) => {
+const ApiList = ({ data, setSelectedItem }) => {
   const categories = []
   data.map((item) => {
     if (!categories.includes(item.data.category)) {
@@ -43,7 +43,7 @@ const ApiList = ({ data }) => {
                           cursor: "pointer",
                         }}
                         onClick={() => {
-                          console.log("clicked")
+                          setSelectedItem(item)
                         }}
                       >
                         <Text fontSize="lg">{item.data.title}</Text>

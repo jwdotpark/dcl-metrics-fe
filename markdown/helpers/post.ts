@@ -44,7 +44,6 @@ export const getApiLists = () => {
     )
     const { data, content } = matter(fileContents)
     return {
-      slug,
       data,
       content,
     }

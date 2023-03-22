@@ -3,7 +3,6 @@ import Layout from "../src/components/layout/layout"
 import ApiList from "../src/components/local/api/ApiList"
 import ApiExample from "../src/components/local/api/ApiExample"
 import MobileApiList from "../src/components/local/api/MobileApiList"
-import moment from "moment"
 import { getApiLists } from "../markdown/helpers/post"
 import { useState } from "react"
 
@@ -31,19 +30,18 @@ const API = ({ apiList }) => {
     lg: 2,
     xl: 6,
   })
-
-  const [selectedItem, setSelectedItem] = useState(apiList[0].data)
-  console.log("current", selectedItem)
+  const isMobile = gridColumn === 1
+  const [selectedItem, setSelectedItem] = useState(apiList[0])
 
   return (
     <Layout>
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        {gridColumn === 1 ? (
+        {isMobile ? (
           <MobileApiList data={apiList} />
         ) : (
-          <ApiList data={apiList} />
+          <ApiList data={apiList} setSelectedItem={setSelectedItem} />
         )}
-        <ApiExample apiList={apiList} />
+        <ApiExample selectedItem={selectedItem} />
       </Grid>
     </Layout>
   )
