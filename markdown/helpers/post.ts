@@ -32,3 +32,35 @@ export const getPost = (slug) => {
     content,
   }
 }
+
+export const getApiLists = () => {
+  const files = fs.readdirSync(path.join("./markdown/api-list/"))
+
+  const allPostsData = files.map((fileName) => {
+    const slug = fileName.replace(".mdx", "")
+    const fileContents = fs.readFileSync(
+      path.join(`./markdown/api-list/${slug}.mdx`),
+      "utf8"
+    )
+    const { data, content } = matter(fileContents)
+    return {
+      slug,
+      data,
+      content,
+    }
+  })
+
+  return allPostsData
+}
+
+export const getApi = (slug) => {
+  const fileContents = fs.readFileSync(
+    path.join(`./markdown/api-list/${slug}.mdx`),
+    "utf8"
+  )
+  const { data, content } = matter(fileContents)
+  return {
+    data,
+    content,
+  }
+}

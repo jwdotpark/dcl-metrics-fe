@@ -1,0 +1,36 @@
+---
+category: "global"
+title: "daily"
+issue: 2
+description: "GET /global/daily"
+published: true
+---
+
+<CallOut>This is API #1</CallOut>
+
+# GET /global/daily
+
+Returns the last 90 days of global stats computed once per day, currently at 1am UTC
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/global/daily`
+
+#### SAMPLE DATA
+
+```json
+{
+  "2023-01-12": {
+    "active_parcels": 7524,
+    "active_scenes": 1670,
+    "users": {
+      "guest_users": 2381,
+      "named_users": 369,
+      "new_users": 1237,
+      "unique_users": 7273
+    },
+    "degraded": false // refers to the health of data sources on this day
+  }
+  // ...
+}
+```

@@ -1,0 +1,71 @@
+---
+category: "global"
+title: "parcels"
+issue: 2
+description: "GET /global/parcels"
+published: true
+---
+
+# GET /global/parcels
+
+Returns the last 90 days of global parcel stats computed once per day, currently 1am UTC
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/global/parcels`
+
+#### SAMPLE DATA
+
+Time is always returned in seconds
+
+```json
+{
+  "yesterday": {
+    "logins": {
+      "-100,127": 1916,
+      "1,-1": 1128,
+      "0,-1": 1088,
+      "129,-125": 510,
+      "-29,55": 494
+    },
+    "logouts": {
+      "-100,127": 816,
+      "-101,127": 427,
+      "1,-1": 411,
+      "129,-125": 402,
+      "-107,-89": 394
+    },
+    "time_spent": {
+      "-20,17": 78660,
+      "103,-101": 78037,
+      "-146,-120": 75170,
+      "100,13": 73031,
+      "44,78": 64303
+    },
+    "time_spent_afk": {
+      "100,13": 72534,
+      "-111,-36": 63958,
+      "-100,130": 61782,
+      "47,-52": 60074,
+      "38,103": 56838
+    },
+    "visitors": {
+      "-100,127": 2129,
+      "1,-1": 1712,
+      "0,-1": 1641,
+      "-101,127": 1358,
+      "-29,55": 1159
+    },
+    "max_concurrent_users": {
+      "-100,127": 78,
+      "-101,127": 56,
+      "-101,129": 37,
+      "-103,-97": 32,
+      "1,-1": 32
+    }
+  },
+  "last_week": {},
+  "last_month": {},
+  "last_quarter": {}
+}
+```

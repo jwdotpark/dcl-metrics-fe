@@ -1,0 +1,89 @@
+---
+category: "global"
+title: "scenes"
+issue: 3
+description: "GET /global/scenes"
+published: true
+---
+
+# GET /global/scenes
+
+Returns the last 90 days of global scene stats computed once per day, currently at 1am UTC
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/global/scenes`
+
+#### SAMPLE DATA
+
+The map url returned is often very long, so it's altered here. it is returned
+from the endpoint in the following format:
+
+`https://api.decentraland.org/v2/map.png?center=x,y&selected=x,y`
+
+Time is always returned in seconds
+
+```json
+{
+  "yesterday": {
+    "logins": {
+      "Genesis Plaza": {
+        "total_logins": 2283,
+        "map_url": "xxx"
+      },
+      "ICE Poker - The Stronghold": {
+        "total_logins": 2161,
+        "map_url": "xxx"
+      },
+      // + 3 more results
+    },
+    "logouts": {
+      "ICE Poker - The Stronghold": {
+        "total_logouts": 2373,
+        "map_url": "xxx"
+      },
+      "Genesis Plaza": {
+        "total_logouts": 1019,
+        "map_url": "xxx"
+      },
+      // + 3 more results
+    },
+    "time_spent": {
+      "grab-objects": {
+        "avg_time_spent": 72349,
+        "map_url": "xxx"
+      },
+      "Laydeez": {
+        "avg_time_spent": 54966,
+        "map_url":"xxx"
+      },
+      // + 3 more results
+    },
+    "time_spent_afk": {
+      "grab-objects": {
+        "avg_time_spent_afk": 70323,
+        "map_url": "xxx"
+      },
+      "Theatre": {
+        "avg_time_spent_afk": 45098,
+        "map_url": "xxx"
+      }
+      // + 3 more results
+    }
+    "visitors": {
+      "Genesis Plaza": {
+        "unique_addresses": 2422,
+        "map_url": "xxx"
+      },
+      "ICE Poker - The Stronghold": {
+        "unique_addresses": 2196,
+        "map_url": "xxx"
+      },
+      // + 3 more results
+    }
+  },
+  "last_week": {},
+  "last_month": {},
+  "last_quarter": {}
+}
+```

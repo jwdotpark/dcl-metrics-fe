@@ -1,0 +1,91 @@
+---
+category: "parcels"
+title: "all"
+issue: 5
+description: "GET /parcels/all"
+published: true
+---
+
+# GET /parcels/all
+
+Collated data about yesterday's traffic, broken down by parcel. The response size is
+currently around 3MB!
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/parcels/all`
+
+## QUERY PARAMS
+
+- **date**: Date to return data for. Defaults to yesterday if not given, format `YYYY-MM-DD`
+
+#### SAMPLE DATA
+
+Time is always returned in seconds
+`*_intensity` metrics are on a scale of 1-100
+
+```json
+[
+  {
+    "date": "2023-01-12",
+    "scene": {
+      "cid": "bafkreibwsy44mobeybhnnjqzookhhjl32evetabcpprtisfhrntpvygrly",
+      "name": "TEMPLE",
+      "parcels": [
+        "-69,28",
+        "-69,29",
+        "-69,30",
+        "-69,31",
+        "-68,28",
+        "-68,29",
+        "-68,30",
+        "-68,31",
+        "-67,28",
+        "-67,29",
+        "-67,30",
+        "-67,31",
+        "-66,28",
+        "-66,29",
+        "-66,30",
+        "-66,31",
+        "-65,28",
+        "-65,29",
+        "-65,30",
+        "-65,31",
+        "-64,28",
+        "-64,29",
+        "-64,30",
+        "-64,31",
+        "-63,28",
+        "-63,29",
+        "-63,30",
+        "-63,31",
+        "-62,28",
+        "-62,29",
+        "-62,30",
+        "-62,31",
+        "-61,28",
+        "-61,29",
+        "-61,30",
+        "-61,31"
+      ],
+      "last_deployed_at": "2023-01-08 00:31:51 UTC"
+    },
+    "avg_time_spent": 414,
+    "avg_time_spent_afk": 316,
+    "avg_time_spent_afk_intensity": 1,
+    "avg_time_spent_intensity": 1,
+    "coordinates": "-62,30",
+    "deploy_count": 0,
+    "login_intensity": 1,
+    "logins": 0,
+    "logout_intensity": 1,
+    "logouts": 3,
+    "max_concurrent_user_intensity": 6,
+    "max_concurrent_users": 5,
+    "visitor_intensity": 1,
+    "visitors": 20
+  }
+  // many, many more
+]
+```

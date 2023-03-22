@@ -1,10 +1,11 @@
 import { Box } from "@chakra-ui/react"
+import BoxWrapper from "../../layout/local/BoxWrapper"
 
-const ApiExample = () => {
+const ApiExample = ({ apiList }) => {
   return (
-    <Box w="100%" border="1px solid">
-      <Box p="4">asdf</Box>
-    </Box>
+    <BoxWrapper colSpan={[6, 6, 6, 4]}>
+      <Box>api example</Box>
+    </BoxWrapper>
   )
 }
 
