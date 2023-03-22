@@ -58,11 +58,12 @@ const SidebarContent = ({
                 }
                 overflow="hidden"
               >
-                {/* @ts-ignore */}
-                <Text as={router.pathname === "/" + name && "u"} fontSize="lg">
-                  {name
-                    ? name.charAt(0).toUpperCase() + name.slice(1)
-                    : "Global"}
+                <Text
+                  // @ts-ignore
+                  as={router.pathname === "/" + name && "u"}
+                  fontSize="md"
+                >
+                  {name.toUpperCase() ? name.toUpperCase() : "GLOBAL"}
                 </Text>
               </NavItem>
             </a>

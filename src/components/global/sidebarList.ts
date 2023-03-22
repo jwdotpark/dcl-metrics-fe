@@ -9,6 +9,7 @@ import {
   FiLock,
   FiGrid,
   FiPenTool,
+  FiFileText,
 } from "react-icons/fi"
 
 export const sidebarList = {
@@ -46,6 +47,12 @@ export const sidebarList = {
     label: "Blog",
     name: "blog",
     icon: FiPenTool,
+    subItem: false,
+  },
+  docs: {
+    label: "API Documentation",
+    name: "api",
+    icon: FiFileText,
     subItem: false,
   },
   status: {
