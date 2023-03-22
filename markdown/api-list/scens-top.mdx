@@ -1,0 +1,46 @@
+---
+category: "scenes"
+title: "top"
+issue: 7
+description: "GET /scenes/top"
+published: true
+---
+
+# GET /scenes/top
+
+Data about yesterday's top scenes
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/scenes/top`
+
+## QUERY PARAMS
+
+- **date**: Date to return top scenes for. Defaults to yesterday if not given, format `YYYY-MM-DD`
+
+#### SAMPLE DATA
+
+The expected response, as json:
+
+```json
+[
+  {
+    "name": "ICE Poker - The Stronghold",
+    "date": "2022-10-13",
+    "map_url": "https://...",
+    "visitors": 2493,
+    "share_of_global_visitors": 33,
+    "avg_time_spent": 17380,
+    "avg_time_spent_afk": 14011,
+    "total_logins": 2691,
+    "unique_logins": 2001,
+    "total_logouts": 2872,
+    "unique_logouts": 2147,
+    "complete_sessions": 2596,
+    "avg_complete_session_duration": 10111
+  },
+  {
+    // additional scenes
+  }
+]
+```

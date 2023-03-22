@@ -32,7 +32,10 @@ const ApiList = ({ data, setSelectedItem }) => {
               </Box>
               <List spacing={4}>
                 {data.map((item, i) => {
-                  if (item.data.category === category) {
+                  if (
+                    item.data.category === category &&
+                    !item.data.subCategory
+                  ) {
                     return (
                       <ListItem
                         key={item.data.title}
@@ -55,7 +58,9 @@ const ApiList = ({ data, setSelectedItem }) => {
                           setItemIndex(i)
                         }}
                       >
-                        <Text fontSize="lg">{item.data.title}</Text>
+                        <Text fontSize="lg" fontWeight="semibold">
+                          {item.data.title}
+                        </Text>
                         <Text as="kbd">{item.data.description}</Text>
                       </ListItem>
                     )

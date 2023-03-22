@@ -50,8 +50,8 @@ const ApiExample = ({ selectedItem }) => {
     },
     h1: ({ children }) => {
       return (
-        <Text as="h1" mb="8" fontSize="4xl">
-          {children}
+        <Text as="h1" mb="8" fontSize="6xl">
+          <kbd>{children}</kbd>
           <Divider />
         </Text>
       )
@@ -66,9 +66,8 @@ const ApiExample = ({ selectedItem }) => {
     },
     h3: ({ children }) => {
       return (
-        <Text as="h3" mb="8" fontSize="2xl">
+        <Text as="h3" mb="8" color="blue.600" fontSize="2xl">
           {children}
-          <Divider mb="4" />
         </Text>
       )
     },
@@ -101,12 +100,12 @@ const ApiExample = ({ selectedItem }) => {
   return (
     <BoxWrapper colSpan={[6, 6, 6, 4]}>
       <Box p="4">
-        <Box mb="8">
+        {/*<Box mb="8">
           <Text as="kbd" fontSize="6xl" fontWeight="bold">
             {description}
           </Text>
           <Divider mb="4" />
-        </Box>
+        </Box>*/}
         <ReactMarkdown components={ChakraUIRenderer(newTheme)} skipHtml>
           {content}
         </ReactMarkdown>

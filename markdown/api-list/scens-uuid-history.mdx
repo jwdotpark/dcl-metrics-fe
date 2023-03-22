@@ -1,0 +1,58 @@
+---
+category: "scenes"
+subcategory: "uuid"
+title: "history"
+issue: 9
+description: "GET /scenes/uuid/history"
+published: true
+---
+
+# GET /scenes/:uuid/history
+
+Return historical data for a scene with given UUID
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/scenes/:uuid/history`
+
+## QUERY PARAMS
+
+- **limit**: Defaults to 30, max 30
+- **offset**: Defaults to 0
+- **basic_data_only**: When set to true, does NOT return the following computed data:
+  - `marathon_users`
+  - `time_spent_histogram`
+  - `visitors_by_hour_histogram`
+  - `parcels_heatmap`
+
+### ex: `https://api.dcl-metrics.com/scenes/:uuid/history
+
+#### SAMPLE DATA
+
+The expected response, as json:
+
+```json
+{
+  total: 46, // total number of scenes matching UUID in db
+  data: [ // LIMIT number of serialized scenes
+    {
+      "name":"ICE Poker - The Stronghold",
+      "date": "2023-01-28",
+      "map_url":"https://...",
+      "visitors":2493,
+      "share_of_global_visitors":33,
+      "avg_time_spent":17380,
+      "avg_time_spent_afk":14011,
+      "total_logins":2691,
+      "unique_logins":2001,
+      "total_logouts":2872,
+      "unique_logouts":2147,
+      "complete_sessions":2596,
+      "avg_complete_session_duration":10111,
+    },
+    {
+      ...
+    }
+  ]
+}
+```

@@ -1,0 +1,133 @@
+---
+category: "scenes"
+title: "uuid"
+issue: 8
+description: "GET /scenes/uuid"
+published: true
+---
+
+# GET /scenes/:uuid
+
+Fetch data about a scene with a given UUID
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/scenes/:uuid`
+
+## QUERY PARAMS
+
+- **date**: Fetch data about a given date in format `YYYY-MM-DD`
+- **basic_data_only**: When set to true, does NOT return the following computed data:
+  - `marathon_users`
+  - `time_spent_histogram`
+  - `visitors_by_hour_histogram`
+  - `parcels_heatmap`
+
+### ex: `https://api.dcl-metrics.com/scenes/search?date=2023-01-28&basic_data_only=false`
+
+#### SAMPLE DATA
+
+The expected response, as json:
+
+```json
+[
+  {
+    "name": "ICE Poker - The Stronghold",
+    "date": "2023-01-28",
+    "map_url": "https://...",
+    "visitors": 2493,
+    "share_of_global_visitors": 33,
+    "avg_time_spent": 17380,
+    "avg_time_spent_afk": 14011,
+    "total_logins": 2691,
+    "unique_logins": 2001,
+    "total_logouts": 2872,
+    "unique_logouts": 2147,
+    "complete_sessions": 2596,
+    "avg_complete_session_duration": 10111,
+    "marathon_users": {
+      "0x4c9af8842c3bd60c509030f1a7b4cb80397ef8af": 1438.8166666666666,
+      "0xf6d5578e6076ed7def570a63a23dfae9e79e811e": 1436.05,
+      "0xd9eb8e4594434395c8ac88622cffdf4fd1070a27": 1434.6166666666666,
+      "0x70bcb97e161a77a93e45012d0d5e78d0b7880042": 1431.9833333333333
+      // ...
+    },
+    "time_spent_histogram": [
+      // [ hours spent in scene, count of users ]
+      [0, 578],
+      [1, 484],
+      [2, 281],
+      [3, 147],
+      [4, 101],
+      [5, 60],
+      [6, 47],
+      [7, 58],
+      [8, 28],
+      [9, 39],
+      [10, 31],
+      [11, 40],
+      [12, 39],
+      [13, 30],
+      [14, 26],
+      [15, 31],
+      [16, 25],
+      [17, 23],
+      [18, 28],
+      [19, 19],
+      [20, 15],
+      [21, 20],
+      [22, 21],
+      [23, 40]
+    ],
+    "visitors_by_hour_histogram": {
+      // hour of day in UTC : count of users
+      "00": 197,
+      "01": 138,
+      "02": 143,
+      "03": 189,
+      "04": 121,
+      "05": 151,
+      "06": 161,
+      "07": 143,
+      "08": 188,
+      "09": 196,
+      "10": 184,
+      "11": 208,
+      "12": 199,
+      "13": 204,
+      "14": 203,
+      "15": 188,
+      "16": 229,
+      "17": 236,
+      "18": 187,
+      "19": 166,
+      "20": 171,
+      "21": 200,
+      "22": 186,
+      "23": 196
+    },
+    "parcels_heatmap": {
+      // coordinate : number of visitors
+      "-99,126": 26,
+      "-99,127": 233,
+      "-99,128": 275,
+      "-99,129": 88,
+      "-100,126": 381,
+      "-100,127": 2086,
+      "-100,128": 903,
+      "-100,129": 320,
+      "-101,126": 470,
+      "-101,127": 1506,
+      "-101,128": 1027,
+      "-101,129": 990,
+      "-102,126": 25,
+      "-102,127": 82,
+      "-102,128": 84,
+      "-102,129": 30
+    }
+  },
+  {
+    // additional scenes
+  }
+]
+```
