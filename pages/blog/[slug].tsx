@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  Spacer,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react"
+import { Box, Button, Center, Flex, Spacer, Text } from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
 import { getPost, getPosts } from "../../blog/helpers/post"
 import { serialize } from "next-mdx-remote/serialize"
@@ -17,6 +9,7 @@ import externalLinks from "remark-external-links"
 import smartypants from "remark-smartypants"
 import remarkGfm from "remark-gfm"
 import moment from "moment"
+import { CallOut } from "../../src/components/markdown"
 
 function Post({ data, content }) {
   const router = useRouter()
@@ -44,7 +37,12 @@ function Post({ data, content }) {
               </Flex>
 
               <Box className="markdown" m="4" mb="8" mx="8">
-                <MDXRemote {...content} />
+                <MDXRemote
+                  {...content}
+                  components={{
+                    CallOut,
+                  }}
+                />
               </Box>
               <Flex m="4">
                 <Spacer />
