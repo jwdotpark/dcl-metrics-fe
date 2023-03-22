@@ -37,6 +37,15 @@ const SidebarContent = ({
   const router = useRouter()
 
   const SidebarItem = ({ label, name, icon, subItem }) => {
+    const setItemName = (name: string) => {
+      if (name === "") {
+        return "Global"
+      } else if (name === "api-docs") {
+        return "API"
+      } else {
+        return name.charAt(0).toUpperCase() + name.slice(1)
+      }
+    }
     return (
       <Tooltip
         p="2"
@@ -53,7 +62,8 @@ const SidebarContent = ({
                 shadow={router.pathname === "/" + name && "md"}
                 icon={icon}
                 bg={
-                  router.pathname === "/" + name && // eslint-disable-next-line
+                  router.pathname === "/" + name &&
+                  // eslint-disable-next-line
                   useColorModeValue("gray.200", "gray.700")
                 }
                 overflow="hidden"
@@ -63,7 +73,7 @@ const SidebarContent = ({
                   as={router.pathname === "/" + name && "u"}
                   fontSize="md"
                 >
-                  {name.toUpperCase() ? name.toUpperCase() : "GLOBAL"}
+                  {setItemName(name)}
                 </Text>
               </NavItem>
             </a>

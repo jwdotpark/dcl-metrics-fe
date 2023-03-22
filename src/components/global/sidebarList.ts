@@ -51,7 +51,7 @@ export const sidebarList = {
   },
   docs: {
     label: "API Documentation",
-    name: "api",
+    name: "api-docs",
     icon: FiFileText,
     subItem: false,
   },
