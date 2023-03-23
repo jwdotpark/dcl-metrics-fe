@@ -12,11 +12,11 @@ const ApiItem = ({ apiList }) => {
   const router = useRouter()
   const cursor = router.query.item
   const [category, title] = String(cursor).split("-")
-  
+
   const foundItem = apiList.find(
     (item) => item.data.category === category && item.data.title === title
   )
-  
+
   const [selectedItem, setSelectedItem] = useState(foundItem)
 
   return (
@@ -34,6 +34,13 @@ export default ApiItem
 
 export async function getStaticProps() {
   const apiList = getApiLists()
+
+  apiList
+    .sort((a, b) => {
+      return b.data.issue - a.data.issue
+    })
+    .reverse()
+
   return {
     props: {
       apiList,

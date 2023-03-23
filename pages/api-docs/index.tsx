@@ -31,6 +31,7 @@ const API = ({ children, apiList }) => {
       setSelectedItem={setSelectedItem}
       apiList={apiList}
     >
+      <ApiExample selectedItem={selectedItem} />
       {children}
     </ApiLayout>
   )
