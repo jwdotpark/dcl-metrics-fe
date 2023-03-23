@@ -9,7 +9,7 @@ import externalLinks from "remark-external-links"
 import smartypants from "remark-smartypants"
 import remarkGfm from "remark-gfm"
 import moment from "moment"
-import { CallOut } from "../../src/components/markdown"
+import { CallOut, MDYoutube } from "../../src/components/markdown"
 
 function Post({ data, content }) {
   const router = useRouter()
@@ -41,6 +41,7 @@ function Post({ data, content }) {
                   {...content}
                   components={{
                     CallOut,
+                    MDYoutube,
                   }}
                 />
               </Box>
