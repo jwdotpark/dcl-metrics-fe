@@ -1,8 +1,6 @@
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import Layout from "../layout/layout"
-import ApiExample from "../local/api/ApiExample"
 import ApiList from "../local/api/ApiList"
-import MobileApiList from "../local/api/MobileApiList"
 
 const ApiLayout = ({ children, apiList, selectedItem, setSelectedItem }) => {
   const gridColumn = useBreakpointValue({
@@ -12,17 +10,17 @@ const ApiLayout = ({ children, apiList, selectedItem, setSelectedItem }) => {
     lg: 2,
     xl: 6,
   })
+
   const isMobile = gridColumn === 1
 
   return (
     <Layout>
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        {/*{isMobile ? (
-          <MobileApiList data={apiList} />
-        ) : (
-          <ApiList data={apiList} setSelectedItem={setSelectedItem} />
-        )}*/}
-        <ApiList data={apiList} setSelectedItem={setSelectedItem} />
+        <ApiList
+          data={apiList}
+          setSelectedItem={setSelectedItem}
+          isMobile={isMobile}
+        />
         {children}
       </Grid>
     </Layout>

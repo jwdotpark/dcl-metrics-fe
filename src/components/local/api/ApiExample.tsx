@@ -48,8 +48,10 @@ const ApiExample = ({ selectedItem }) => {
     },
     h1: ({ children }) => {
       return (
-        <Text as="h1" mb="8" fontSize="6xl">
-          <kbd>{children}</kbd>
+        <Text as="h1" mb="8" fontSize={["2xl", "3xl", "4xl", "5xl"]}>
+          <kbd>
+            <u>{children}</u>
+          </kbd>
           <Divider />
         </Text>
       )

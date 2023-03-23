@@ -16,7 +16,13 @@ import {
 import { useState } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 
-const MobileApiList = ({ data }) => {
+const MobileApiList = ({
+  categories,
+  data,
+  itemIndex,
+  setItemIndex,
+  setSelectedItem,
+}) => {
   return (
     <GridItem w="100%" colSpan={6}>
       <ApiListDrawer />
