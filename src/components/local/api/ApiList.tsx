@@ -3,8 +3,8 @@ import DesktopApiList from "./DesktopApiList"
 import MobileApiList from "./MobileApiList"
 
 const ApiList = ({ data, selectedItem, setSelectedItem, isMobile }) => {
-  const selectedItemIssueNumber = selectedItem.data.issue
-  const [itemIndex, setItemIndex] = useState(selectedItemIssueNumber)
+  const { issue } = selectedItem.data
+  const [itemIndex, setItemIndex] = useState(issue - 1)
   const categories = []
 
   data.map((item) => {
