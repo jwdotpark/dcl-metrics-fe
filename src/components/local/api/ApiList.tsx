@@ -2,8 +2,9 @@ import { useState } from "react"
 import DesktopApiList from "./DesktopApiList"
 import MobileApiList from "./MobileApiList"
 
-const ApiList = ({ data, setSelectedItem, isMobile }) => {
-  const [itemIndex, setItemIndex] = useState(0)
+const ApiList = ({ data, selectedItem, setSelectedItem, isMobile }) => {
+  const selectedItemIssueNumber = selectedItem.data.issue
+  const [itemIndex, setItemIndex] = useState(selectedItemIssueNumber)
   const categories = []
 
   data.map((item) => {

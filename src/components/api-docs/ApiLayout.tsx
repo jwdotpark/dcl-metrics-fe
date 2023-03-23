@@ -18,6 +18,7 @@ const ApiLayout = ({ children, apiList, selectedItem, setSelectedItem }) => {
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <ApiList
           data={apiList}
+          selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           isMobile={isMobile}
         />
