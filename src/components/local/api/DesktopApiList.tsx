@@ -6,7 +6,6 @@ import {
   useColorModeValue,
   Divider,
 } from "@chakra-ui/react"
-import { data } from "cypress/types/jquery"
 import Link from "next/link"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 

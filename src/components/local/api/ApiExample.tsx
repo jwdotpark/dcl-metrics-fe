@@ -48,7 +48,7 @@ const ApiExample = ({ selectedItem }) => {
     },
     h1: ({ children }) => {
       return (
-        <Text as="h1" mb="8" fontSize={["2xl", "3xl", "4xl", "5xl"]}>
+        <Text as="h1" mb="8" fontSize={["xl", "xl", "2xl", "3xl"]}>
           <kbd>
             <u>{children}</u>
           </kbd>
