@@ -163,7 +163,8 @@ const LineChart = ({
                   // eslint-disable-next-line react-hooks/rules-of-hooks
                   fill={useColorModeValue("black", "white")}
                 >
-                  {tick.tickIndex * 10}
+                  {chartProps.height === 700 && tick.tickIndex * 10}
+                  {chartProps.height !== 700 && tick.tickIndex * 4}
                 </text>
               )
             },
