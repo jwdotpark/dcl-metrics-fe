@@ -206,7 +206,9 @@ const LineChart = ({
               sx={{ backdropFilter: "blur(5px)" }}
               p="2"
               // eslint-disable-next-line react-hooks/rules-of-hooks
-              color={useColorModeValue("black", "white")}
+              bg={useColorModeValue("whiteAlpha.700", "blackAlpha.500")}
+              borderRadius="xl"
+              shadow="md"
             >
               <Center mb="1">
                 <Text fontSize="sm" fontWeight="bold">

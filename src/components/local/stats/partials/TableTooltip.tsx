@@ -11,7 +11,9 @@ const TooltipTable = ({ date, count, degraded, bar, name, color }) => {
       </Box>
       <Spacer />
       <Box ml="2" color={degraded && "red"}>
-        <Text as="kbd">{count}</Text>
+        <Text as="kbd">
+          <b>{count}</b>
+        </Text>
       </Box>
     </Flex>
   )

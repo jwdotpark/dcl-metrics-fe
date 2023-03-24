@@ -1,4 +1,10 @@
-import { Box, Text, useColorModeValue, useColorMode } from "@chakra-ui/react"
+import {
+  Box,
+  Text,
+  useColorModeValue,
+  useColorMode,
+  Center,
+} from "@chakra-ui/react"
 import { ResponsivePie } from "@nivo/pie"
 import { chartHeight } from "./data/chartInfo"
 import { lineChartAtom } from "./state/lineChartState"
@@ -57,10 +63,24 @@ const PieChart = ({ data }) => {
           },
         ]}
         tooltip={({ datum: { id, value } }) => (
-          <Box sx={{ backdropFilter: "blur(20px)" }} p="2" borderRadius="xl">
-            <Text display="inline-blocks" fontSize="sm">
-              Total {id}: <b>{value}</b>
-            </Text>
+          <Box
+            sx={{ backdropFilter: "blur(5px)" }}
+            p="2"
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            bg={useColorModeValue("whiteAlpha.700", "blackAlpha.500")}
+            borderRadius="xl"
+            shadow="md"
+          >
+            <Center w="100%">
+              <Text display="inline-blocks" fontSize="sm">
+                Total {id}
+              </Text>
+            </Center>
+            <Center w="100%">
+              <Text>
+                <b>{value}</b>
+              </Text>
+            </Center>
           </Box>
         )}
         theme={{
