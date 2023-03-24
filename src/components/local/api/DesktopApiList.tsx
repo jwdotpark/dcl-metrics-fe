@@ -29,10 +29,7 @@ const DesktopApiList = ({
               </Box>
               <List spacing={4}>
                 {data.map((item, i) => {
-                  if (
-                    item.data.category === category &&
-                    !item.data.subCategory
-                  ) {
+                  if (item.data.category === category) {
                     return (
                       <Link
                         href={`/api-docs/${item.data.category}-${item.data.title}`}
