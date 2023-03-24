@@ -150,7 +150,7 @@ const SidebarContent = ({
               onClick={handleSidebar}
               overflow="hidden"
             >
-              <Text fontSize="xl">Collapse</Text>
+              <Text>Collapse</Text>
             </NavItem>
           </Box>
         </Tooltip>
