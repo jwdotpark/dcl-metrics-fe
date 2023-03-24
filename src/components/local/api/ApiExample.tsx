@@ -98,7 +98,7 @@ const ApiExample = ({ selectedItem }) => {
   }
 
   return (
-    <BoxWrapper colSpan={[6, 6, 6, 4]}>
+    <BoxWrapper colSpan={[6, 6, 6, 4, 4]}>
       <Box p="4">
         <ReactMarkdown components={ChakraUIRenderer(customized)} skipHtml>
           {content}

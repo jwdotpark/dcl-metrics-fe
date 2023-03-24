@@ -7,7 +7,7 @@ const ApiLayout = ({ children, apiList, selectedItem, setSelectedItem }) => {
     base: 1,
     sm: 1,
     md: 1,
-    lg: 2,
+    lg: 6,
     xl: 6,
   })
 

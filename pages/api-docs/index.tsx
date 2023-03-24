@@ -21,7 +21,6 @@ export const getStaticProps = () => {
 
 const API = ({ children, apiList }) => {
   const [selectedItem, setSelectedItem] = useState(apiList[0])
-  console.log(selectedItem.data.issue)
   return (
     <ApiLayout
       selectedItem={selectedItem}

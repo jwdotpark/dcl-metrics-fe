@@ -17,7 +17,7 @@ const DesktopApiList = ({
   setSelectedItem,
 }) => {
   return (
-    <BoxWrapper colSpan={2}>
+    <BoxWrapper colSpan={[6, 6, 6, 2, 2]}>
       <Box m="4">
         {categories.map((category) => {
           return (
