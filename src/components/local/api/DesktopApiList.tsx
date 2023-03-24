@@ -41,6 +41,7 @@ const DesktopApiList = ({
                         <ListItem
                           key={item.data.title}
                           w="100%"
+                          mb="2"
                           px="4"
                           py="2"
                           bg={
