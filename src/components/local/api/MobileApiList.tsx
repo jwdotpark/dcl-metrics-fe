@@ -15,6 +15,7 @@ import {
   Text,
 } from "@chakra-ui/react"
 import Link from "next/link"
+import SingleListItem from "./SingleListItem"
 
 const MobileApiList = (props) => {
   return (
@@ -58,44 +59,50 @@ const ApiListDrawer = (props) => {
                     </Box>
                     <List spacing={4}>
                       {data.map((item, i) => {
-                        if (
-                          item.data.category === category &&
-                          !item.data.subCategory
-                        ) {
+                        if (item.data.category === category) {
                           return (
-                            <Link
-                              href={`/api-docs/${item.data.category}-${item.data.title}`}
-                              key={item.data.title}
-                              onClick={onClose}
-                            >
-                              <ListItem
-                                key={item.data.title}
-                                w="100%"
-                                mb="2"
-                                px="4"
-                                py="2"
-                                bg={
-                                  itemIndex === i &&
-                                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                                  useColorModeValue("gray.200", "gray.700")
-                                }
-                                borderRadius="xl"
-                                _hover={{
-                                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                                  bg: useColorModeValue("gray.200", "gray.600"),
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  setSelectedItem(item)
-                                  setItemIndex(i)
-                                }}
-                              >
-                                <Text fontSize="lg" fontWeight="semibold">
-                                  {item.data.title}
-                                </Text>
-                                <Text as="kbd">{item.data.description}</Text>
-                              </ListItem>
-                            </Link>
+                            <Box key={item.data.title} onClick={onClose}>
+                              <SingleListItem
+                                item={item}
+                                itemIndex={itemIndex}
+                                setItemIndex={setItemIndex}
+                                setSelectedItem={setSelectedItem}
+                                i={item.data.issue}
+                              />
+                            </Box>
+                            //<Link
+                            //  href={`/api-docs/${item.data.category}-${item.data.title}`}
+                            //  key={item.data.title}
+                            //  onClick={onClose}
+                            //>
+                            //  <ListItem
+                            //    key={item.data.title}
+                            //    w="100%"
+                            //    mb="2"
+                            //    px="4"
+                            //    py="2"
+                            //    bg={
+                            //      itemIndex === i &&
+                            //      // eslint-disable-next-line react-hooks/rules-of-hooks
+                            //      useColorModeValue("gray.200", "gray.700")
+                            //    }
+                            //    borderRadius="xl"
+                            //    _hover={{
+                            //      // eslint-disable-next-line react-hooks/rules-of-hooks
+                            //      bg: useColorModeValue("gray.200", "gray.600"),
+                            //      cursor: "pointer",
+                            //    }}
+                            //    onClick={() => {
+                            //      setSelectedItem(item)
+                            //      setItemIndex(i)
+                            //    }}
+                            //  >
+                            //    <Text fontSize="lg" fontWeight="semibold">
+                            //      {item.data.title}
+                            //    </Text>
+                            //    <Text as="kbd">{item.data.description}</Text>
+                            //  </ListItem>
+                            //</Link>
                           )
                         }
                       })}

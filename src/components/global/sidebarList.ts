@@ -43,12 +43,12 @@ export const sidebarList = {
     icon: FiMapPin,
     subItem: true,
   },
-  docs: {
-    label: "API Documentation",
-    name: "api-docs",
-    icon: FiFileText,
-    subItem: false,
-  },
+  //docs: {
+  //  label: "API Documentation",
+  //  name: "api-docs",
+  //  icon: FiFileText,
+  //  subItem: false,
+  //},
   status: {
     label: "Status",
     name: "status",
