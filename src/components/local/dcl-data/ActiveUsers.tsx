@@ -130,7 +130,14 @@ const MyResponsiveBar = ({ data }) => {
           },
         }}
         tooltip={({ label, value }) => (
-          <Box sx={{ backdropFilter: "blur(10px)" }} p={2} borderRadius="md">
+          <Box
+            sx={{ backdropFilter: "blur(5px)" }}
+            p="2"
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            bg={useColorModeValue("whiteAlpha.700", "blackAlpha.500")}
+            borderRadius="xl"
+            shadow="md"
+          >
             <Box mb="1" fontWeight="bold">
               <Text fontSize="sm">
                 {moment(label.slice(-10)).format("YYYY MMMM")}
