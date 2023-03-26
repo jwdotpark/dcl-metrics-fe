@@ -4,6 +4,7 @@ import { Grid, useBreakpointValue, Box } from "@chakra-ui/react"
 import staticGlobalDaily from "../public/data/staticGlobalDaily.json"
 import staticParcel from "../public/data/cached_parcel.json"
 import staticLandSales from "../public/data/staticLandSales.json"
+import staticMetaGameHubRes from "../public/data/staticMetaGameHub.json"
 import Layout from "../src/components/layout/layout"
 import PSA from "../src/components/global/PSA"
 import LandPicker from "../src/components/global/map/LandPicker"
@@ -11,7 +12,6 @@ import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedPar
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import LandSales from "../src/components/local/stats/rentals/LandSales"
-//import Rental from "../src/components/local/stats/rentals/Rental"
 import OnlineUsers from "../src/components/local/ext-data/OnlineUsers"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
@@ -22,9 +22,10 @@ import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
 import { getPosts } from "../markdown/helpers/post"
 import moment from "moment"
 import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
+import TopLand from "../src/components/local/ext-data/TopLand"
 
 export async function getStaticProps() {
-  let globalDailyRes, parcelRes, landSalesRes
+  let globalDailyRes, parcelRes, landSalesRes, metaGameHubRes
 
   if (isProd) {
     ;[globalDailyRes, parcelRes] = await Promise.all(
@@ -38,23 +39,31 @@ export async function getStaticProps() {
       "https://www.dcl-property.rentals/api/price_data",
       staticLandSales
     )
-  } else if (isDev && !isLocal) {
-    ;[globalDailyRes, parcelRes, landSalesRes] = await Promise.all(
-      globalRequestList.map(({ url, endpoint, staticData }) =>
-        getData(url, endpoint, staticData)
-      )
+
+    metaGameHubRes = await getDataWithProxy(
+      "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
+      "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
+      staticMetaGameHubRes
     )
+  } else if (isDev && !isLocal) {
+    ;[globalDailyRes, parcelRes, landSalesRes, metaGameHubRes] =
+      await Promise.all(
+        globalRequestList.map(({ url, endpoint, staticData }) =>
+          getData(url, endpoint, staticData)
+        )
+      )
   } else if (isLocal) {
     globalDailyRes = staticGlobalDaily
     parcelRes = staticParcel
     landSalesRes = staticLandSales
+    metaGameHubRes = staticMetaGameHubRes
   }
 
   if (isProd) {
     for (let i = 0; i < globalFileNameArr.length; i++) {
       writeFile(
         globalFileNameArr[i],
-        [globalDailyRes, parcelRes, landSalesRes][i]
+        [globalDailyRes, parcelRes, landSalesRes, metaGameHubRes][i]
       )
     }
   }
@@ -94,6 +103,7 @@ export async function getStaticProps() {
       globalDailyRes,
       parcelRes,
       landSalesRes,
+      metaGameHubRes,
       rental: data,
       latestPost: latestPost,
     },
@@ -112,7 +122,14 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const [isPSAVisible, setIsPSAVisible] = useState(true)
 
-  const { globalDailyRes, parcelRes, landSalesRes, rental, latestPost } = props
+  const {
+    globalDailyRes,
+    parcelRes,
+    landSalesRes,
+    metaGameHubRes,
+    rental,
+    latestPost,
+  } = props
 
   return (
     <Layout>
@@ -138,6 +155,10 @@ const GlobalPage: NextPage = (props: Props) => {
           <RentalDay data={rental} />
           <RentalTotal data={rental} />
         </Grid>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <TopLand data={metaGameHubRes} />
+        </Grid>
+
         <LandPicker parcelData={parcelRes} isPage={false} />
       </Box>
     </Layout>

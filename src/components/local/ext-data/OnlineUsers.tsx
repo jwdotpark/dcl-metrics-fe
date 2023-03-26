@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Box, Center, Spinner, Text, useColorModeValue } from "@chakra-ui/react"
+import { Box, Center, Spinner } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import LineChart from "../../../lib/LineChart"
