@@ -12,7 +12,7 @@ import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import LandSales from "../src/components/local/stats/rentals/LandSales"
 //import Rental from "../src/components/local/stats/rentals/Rental"
-import OnlineUsers from "../src/components/local/dcl-data/OnlineUsers"
+import OnlineUsers from "../src/components/local/ext-data/OnlineUsers"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
 import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
 import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
@@ -21,7 +21,7 @@ import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
 import { getPosts } from "../markdown/helpers/post"
 import moment from "moment"
-import ActiveUsers from "../src/components/local/dcl-data/ActiveUsers"
+import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 
 export async function getStaticProps() {
   let globalDailyRes, parcelRes, landSalesRes
