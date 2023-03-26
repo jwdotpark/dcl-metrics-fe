@@ -7,6 +7,8 @@ export const dateRangeStr = (value) => {
     return "last_month"
   } else if (value === 90) {
     return "last_quarter"
+  } else if (value === "totalTop") {
+    return "totalTop"
   }
 }
 

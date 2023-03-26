@@ -1,29 +1,57 @@
+import { useState } from "react"
 import BoxTitle from "../../layout/local/BoxTitle"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import TableComponent from "../stats/partials/TableComponent"
 import BottomLegend from "./partial/BottomLegend"
 
 const TopLand = ({ data }) => {
-  console.log(data)
+  const [dateRange, setDateRange] = useState("totalTop")
+  const dataArr = data[dateRange]
+  const tableData = []
+
+  const extractCoord = (str) => {
+    const regex = /x:(-?\d+), y:(-?\d+)/
+    const match = str.match(regex)
+    if (match) {
+      return `${match[1]},${match[2]}`
+    } else {
+      return ""
+    }
+  }
+
+  dataArr.map((item) => {
+    tableData.push({
+      image: item.dataTable.image,
+      date: item.dataTable.date,
+      coord: extractCoord(item.dataTable.asset),
+      buyer: item.dataTable.buyer,
+      eth_price: item.dataTable.eth_price,
+      landId: item.dataTable.landId,
+      symbol: item.dataTable.symbol,
+      valuation: item.dataTable.valuation,
+    })
+  })
+
+  console.log(tableData)
 
   const headList = [
-    "Image",
+    "Scenes Map",
     "Date",
     "Coord",
     "Buyer",
     "ETH Price",
-    "Land ID",
+    //"Land ID",
     "Symbol",
     "Valuation",
   ]
 
   const bodyList = [
-    "image",
+    "map",
     "date",
-    "asset",
+    "coord",
     "buyer",
     "eth_price",
-    "landId",
+    //"landId",
     "symbol",
     "valuation",
   ]
@@ -40,13 +68,13 @@ const TopLand = ({ data }) => {
         line={false}
         setLine={false}
       />
-      {/*<TableComponent
+      <TableComponent
         data={tableData}
         dateRange={dateRange}
         propertyName={bodyList[0]}
         headList={headList}
         bodyList={bodyList}
-      />*/}
+      />
       <BottomLegend description="some bottom description" />
     </BoxWrapper>
   )

@@ -9,6 +9,9 @@ import {
   Th,
   Tr,
   useColorMode,
+  Image,
+  useColorModeValue,
+  Box,
 } from "@chakra-ui/react"
 import {
   dateRangeStr,
@@ -20,6 +23,9 @@ import { convertSeconds } from "../../../../lib/hooks/utils"
 import TableLink from "./TableLink"
 import TableMap from "./TableMap"
 import { isSafari, isMobileSafari } from "react-device-detect"
+import moment from "moment"
+import { lineChartAtom } from "../../../../lib/state/lineChartState"
+import { useAtom } from "jotai"
 
 const TableComponent = ({
   data,
@@ -29,6 +35,7 @@ const TableComponent = ({
   bodyList,
 }) => {
   const { colorMode } = useColorMode()
+
   const date = dateRangeStr(dateRange)
   let tableData
 
@@ -58,15 +65,21 @@ const TableComponent = ({
         }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
       }
     }
+
+    const [chartProps, setChartProps] = useAtom(lineChartAtom)
+    const chartState = JSON.parse(localStorage.getItem("chart") || "{}")
+
     return (
       <Tbody>
         {tableData.map((row, i) => (
           <Tr
-            key={row.time_spent ? row.time_spent : row.parcels_visited}
+            key={
+              row.time_spent ? row.time_spent : row.parcels_visited || row.date
+            }
             style={detectSafari ? {} : barChartStyle(i)}
           >
             {bodyList.map((body) => (
-              <>{renderTd(body, row)}</>
+              <>{renderTd(body, row, chartProps)}</>
             ))}
           </Tr>
         ))}
@@ -86,7 +99,7 @@ const TableComponent = ({
 
 export default TableComponent
 
-const renderTd = (body, row) => {
+const renderTd = (body, row, chartProps) => {
   switch (body) {
     case "time_spent":
       return (
@@ -186,6 +199,73 @@ const renderTd = (body, row) => {
           <Text fontSize="md">
             <b>{row.visit_count}</b>
           </Text>
+        </Td>
+      )
+    case "map":
+      return (
+        <Td key={body}>
+          <Box
+            sx={{
+              "&::-webkit-scrollbar": {
+                display: "none",
+              },
+              msOverflfowStyle: "none",
+              scrollbarWidth: "none",
+            }}
+            overflow="hidden"
+            w={["100px", "125px", "150px", "300px"]}
+            //h={chartProps.height === 700 ? 150 : 75}
+            h="75"
+            border="2px solid"
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            borderColor={useColorModeValue("gray.200", "gray.600")}
+            borderRadius="xl"
+          >
+            <Center h="100%">
+              <Image
+                borderRadius="xl"
+                objectFit="cover"
+                alt="map image"
+                src={row.image}
+              />
+            </Center>
+          </Box>
+        </Td>
+      )
+    case "date":
+      return (
+        <Td key={body}>
+          <Text fontSize="md">{moment(row.date).format("YYYY MMM. D")}</Text>
+        </Td>
+      )
+    case "buyer":
+      return (
+        <Td key={body}>
+          <Text>{row.buyer}</Text>
+        </Td>
+      )
+    case "eth_price":
+      return (
+        <Td key={body}>
+          <Text>{row.eth_price}</Text>
+        </Td>
+      )
+    //case "landId":
+    //  return (
+    //    <Td key={body}>
+    //      <Text>{row.landId}</Text>
+    //    </Td>
+    //  )
+    case "symbol":
+      return (
+        <Td key={body}>
+          <Text>{row.symbol}</Text>
+        </Td>
+      )
+    case "valuation":
+      return (
+        <Td key={body}>
+          <Text>{row.valuation}</Text>
         </Td>
       )
     default:
