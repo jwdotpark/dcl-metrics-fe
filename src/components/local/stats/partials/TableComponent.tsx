@@ -38,11 +38,10 @@ const TableComponent = ({
   bodyList,
 }) => {
   const { colorMode } = useColorMode()
-
   const date = dateRangeStr(dateRange)
   let tableData
 
-  if (headList[0] === "Scenes Map") {
+  if (headList[0] === "Scenes Map" || "Map") {
     tableData = data
   } else {
     tableData = data[date][propertyName]
@@ -62,13 +61,21 @@ const TableComponent = ({
     const [chartProps, setChartProps] = useAtom(lineChartAtom)
     const chartState = JSON.parse(localStorage.getItem("chart") || "{}")
 
+    const barColor = headList[0] === "Time Spent" ? "#70AC7650" : "#bd93f950"
+    const detectSafari = isSafari || isMobileSafari ? true : false
+    const barChartStyle = (index) => {
+      return {
+        background: `linear-gradient(90deg, ${barColor} ${
+          normalizeValue(tableData)[index]
+        }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
+      }
+    }
     return (
       <Tbody>
         {tableData.map((row, i) => (
           <Tr
-            key={
-              row.time_spent ? row.time_spent : row.parcels_visited || row.date
-            }
+            key={row.time_spent ? row.time_spent : row.parcels_visited}
+            style={detectSafari ? {} : barChartStyle(i)}
           >
             {bodyList.map((body) => (
               <>{renderTd(body, row, chartProps)}</>
@@ -291,6 +298,16 @@ const renderTd = (body, row, chartProps) => {
       return (
         <Td key={body}>
           <Text as="kbd">{Math.round(row.valuation * 100) / 100}</Text>
+        </Td>
+      )
+    case "current_price":
+      return (
+        <Td key={body}>
+          <Text as="kbd">
+            {row.current_price
+              ? Math.round(row.current_price * 100) / 100
+              : "N/A"}
+          </Text>
         </Td>
       )
     default:

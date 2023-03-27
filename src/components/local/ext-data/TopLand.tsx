@@ -34,7 +34,7 @@ const TopLand = ({ data }) => {
   })
 
   const headList = [
-    "Scenes Map",
+    "Map",
     "Date",
     "Coord",
     "Buyer",
