@@ -12,6 +12,7 @@ import {
   Image,
   useColorModeValue,
   Box,
+  Tooltip,
 } from "@chakra-ui/react"
 import {
   dateRangeStr,
@@ -58,16 +59,6 @@ const TableComponent = ({
   }
 
   const TableBody = () => {
-    const barColor = headList[0] === "Time Spent" ? "#70AC7650" : "#bd93f950"
-    const detectSafari = isSafari || isMobileSafari ? true : false
-    const barChartStyle = (index) => {
-      return {
-        background: `linear-gradient(90deg, ${barColor} ${
-          normalizeValue(tableData)[index]
-        }%, ${colorMode === "light" ? "white" : "#1A202C"} 0%`,
-      }
-    }
-
     const [chartProps, setChartProps] = useAtom(lineChartAtom)
     const chartState = JSON.parse(localStorage.getItem("chart") || "{}")
 
@@ -78,7 +69,6 @@ const TableComponent = ({
             key={
               row.time_spent ? row.time_spent : row.parcels_visited || row.date
             }
-            style={detectSafari ? {} : barChartStyle(i)}
           >
             {bodyList.map((body) => (
               <>{renderTd(body, row, chartProps)}</>
@@ -205,7 +195,7 @@ const renderTd = (body, row, chartProps) => {
       )
     case "map":
       return (
-        <Td key={body}>
+        <Td key={body} maxW="275">
           <Box
             sx={{
               "&::-webkit-scrollbar": {
@@ -236,7 +226,7 @@ const renderTd = (body, row, chartProps) => {
     case "date":
       return (
         <Td key={body}>
-          <Text>{moment(row.date).format("YYYY MMM. D")}</Text>
+          <Text as="kbd">{moment(row.date).format("YYYY-MM-DD")}</Text>
         </Td>
       )
     case "buyer":
@@ -262,13 +252,20 @@ const renderTd = (body, row, chartProps) => {
                 verified={false}
                 guest={false}
               />
+
               <Center
-                sx={{ transform: "translateY(3px)" }}
+                sx={{ transform: "translateY(5px)" }}
                 display="inline-block"
-                w="100%"
-                h="100%"
               >
-                <Text>{name ? name : "N/A"}</Text>
+                <Tooltip
+                  p="2"
+                  fontSize="sm"
+                  borderRadius="xl"
+                  label={`User does not have a name for Decentraland`}
+                  placement="top"
+                >
+                  <Text>{name ? name : "N/A"}</Text>
+                </Tooltip>
               </Center>
             </Link>
           </Box>
@@ -277,19 +274,23 @@ const renderTd = (body, row, chartProps) => {
     case "eth_price":
       return (
         <Td key={body}>
-          <Text as="kbd">{row.eth_price}</Text>
+          <Box minW="150">
+            <Text as="kbd">{row.eth_price}</Text>
+          </Box>
         </Td>
       )
     case "symbol":
       return (
         <Td key={body}>
-          <Text>{row.symbol}</Text>
+          <Flex>
+            <Text>{row.symbol}</Text>
+          </Flex>
         </Td>
       )
     case "valuation":
       return (
         <Td key={body}>
-          <Text as="kbd">{row.valuation}</Text>
+          <Text as="kbd">{Math.round(row.valuation * 100) / 100}</Text>
         </Td>
       )
     default:

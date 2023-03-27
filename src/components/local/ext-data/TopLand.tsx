@@ -1,6 +1,8 @@
+import { Box, Button } from "@chakra-ui/react"
 import { useState } from "react"
 import BoxTitle from "../../layout/local/BoxTitle"
 import BoxWrapper from "../../layout/local/BoxWrapper"
+import TopLandDateRange from "../stats/daterange/TopLandDateRange"
 import TableComponent from "../stats/partials/TableComponent"
 import BottomLegend from "./partial/BottomLegend"
 
@@ -37,8 +39,8 @@ const TopLand = ({ data }) => {
     "Date",
     "Coord",
     "Buyer",
-    "ETH Price",
     "Symbol",
+    "ETH Price",
     "Valuation",
   ]
 
@@ -47,22 +49,27 @@ const TopLand = ({ data }) => {
     "date",
     "coord",
     "buyer",
-    "eth_price",
     "symbol",
+    "eth_price",
     "valuation",
   ]
 
   return (
     <BoxWrapper colSpan={6}>
       <BoxTitle
-        name="Top Land"
-        description="some description"
+        name="Top Valuated Land"
+        description="Land parcels in Decentraland that have the highest market value"
         date={""}
         avgData={[]}
         slicedData={[]}
         color={[]}
         line={false}
         setLine={false}
+      />
+      <TopLandDateRange
+        dateRange={dateRange}
+        setDateRange={setDateRange}
+        name="top-land"
       />
       <TableComponent
         data={tableData}
@@ -71,7 +78,7 @@ const TopLand = ({ data }) => {
         headList={headList}
         bodyList={bodyList}
       />
-      <BottomLegend description="some bottom description" />
+      <BottomLegend description="Source from MetaGameHub DAO" />
     </BoxWrapper>
   )
 }

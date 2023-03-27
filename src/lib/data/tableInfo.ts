@@ -1,14 +1,15 @@
 export const dateRangeStr = (value) => {
-  if (value === 1) {
-    return "yesterday"
-  } else if (value === 7) {
-    return "last_week"
-  } else if (value === 30) {
-    return "last_month"
-  } else if (value === 90) {
-    return "last_quarter"
-  } else if (value === "totalTop") {
-    return "totalTop"
+  switch (value) {
+    case 1:
+      return "yesterday"
+    case 7:
+      return "last_week"
+    case 30:
+      return "last_month"
+    case 90:
+      return "last_quarter"
+    default:
+      return null
   }
 }
 
