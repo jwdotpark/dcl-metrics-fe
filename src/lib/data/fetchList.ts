@@ -5,7 +5,7 @@ import staticGlobalUsers from "../../../public/data/staticGlobalUsers.json"
 import staticScene from "../../../public/data/cached_scenes_top.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
 import staticLandSales from "../../../public/data/staticLandSales.json"
-import staticMetaGameHub from "../../../public/data/staticMetaGameHub.json"
+import staticTopLand from "../../../public/data/staticTopLand.json"
 import {
   globalDailyURL,
   globalParcelURL,
@@ -47,7 +47,7 @@ export const globalRequestList = [
     url: "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
     endpint:
       "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
-    staticData: staticMetaGameHub,
+    staticData: staticTopLand,
   },
 ]
 
@@ -59,5 +59,5 @@ export const globalFileNameArr = [
   //"cached_scenes_top",
   "cached_parcel",
   "staticLandSales",
-  "staticMetaGameHub",
+  "staticTopLand",
 ]

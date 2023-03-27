@@ -1,4 +1,3 @@
-import { Box, Button } from "@chakra-ui/react"
 import { useState } from "react"
 import BoxTitle from "../../layout/local/BoxTitle"
 import BoxWrapper from "../../layout/local/BoxWrapper"

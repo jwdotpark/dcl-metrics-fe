@@ -4,7 +4,8 @@ import { Grid, useBreakpointValue, Box } from "@chakra-ui/react"
 import staticGlobalDaily from "../public/data/staticGlobalDaily.json"
 import staticParcel from "../public/data/cached_parcel.json"
 import staticLandSales from "../public/data/staticLandSales.json"
-import staticMetaGameHubRes from "../public/data/staticMetaGameHub.json"
+import staticTopLand from "../public/data/staticTopLand.json"
+import staticTopPick from "../public/data/staticTopPick.json"
 import Layout from "../src/components/layout/layout"
 import PSA from "../src/components/global/PSA"
 import LandPicker from "../src/components/global/map/LandPicker"
@@ -23,9 +24,10 @@ import { getPosts } from "../markdown/helpers/post"
 import moment from "moment"
 import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 import TopLand from "../src/components/local/ext-data/TopLand"
+import TopPick from "../src/components/local/ext-data/TopPick"
 
 export async function getStaticProps() {
-  let globalDailyRes, parcelRes, landSalesRes, metaGameHubRes
+  let globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes
 
   if (isProd) {
     ;[globalDailyRes, parcelRes] = await Promise.all(
@@ -40,13 +42,19 @@ export async function getStaticProps() {
       staticLandSales
     )
 
-    metaGameHubRes = await getDataWithProxy(
+    topLandRes = await getDataWithProxy(
       "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
       "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
-      staticMetaGameHubRes
+      staticTopLand
+    )
+
+    topPickRes = await getDataWithProxy(
+      "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
+      "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
+      staticTopPick
     )
   } else if (isDev && !isLocal) {
-    ;[globalDailyRes, parcelRes, landSalesRes, metaGameHubRes] =
+    ;[globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes] =
       await Promise.all(
         globalRequestList.map(({ url, endpoint, staticData }) =>
           getData(url, endpoint, staticData)
@@ -56,14 +64,15 @@ export async function getStaticProps() {
     globalDailyRes = staticGlobalDaily
     parcelRes = staticParcel
     landSalesRes = staticLandSales
-    metaGameHubRes = staticMetaGameHubRes
+    topLandRes = staticTopLand
+    topPickRes = staticTopPick
   }
 
   if (isProd) {
     for (let i = 0; i < globalFileNameArr.length; i++) {
       writeFile(
         globalFileNameArr[i],
-        [globalDailyRes, parcelRes, landSalesRes, metaGameHubRes][i]
+        [globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes][i]
       )
     }
   }
@@ -103,7 +112,8 @@ export async function getStaticProps() {
       globalDailyRes,
       parcelRes,
       landSalesRes,
-      metaGameHubRes,
+      topLandRes,
+      topPickRes,
       rental: data,
       latestPost: latestPost,
     },
@@ -126,7 +136,8 @@ const GlobalPage: NextPage = (props: Props) => {
     globalDailyRes,
     parcelRes,
     landSalesRes,
-    metaGameHubRes,
+    topLandRes,
+    topPickRes,
     rental,
     latestPost,
   } = props
@@ -156,7 +167,11 @@ const GlobalPage: NextPage = (props: Props) => {
           <RentalTotal data={rental} />
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <TopLand data={metaGameHubRes} />
+          <TopLand data={topLandRes} />
+        </Grid>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          {/* @ts-ignore */}
+          <TopPick data={topPickRes.slice(0, 10)} />
         </Grid>
 
         <LandPicker parcelData={parcelRes} isPage={false} />

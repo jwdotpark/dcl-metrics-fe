@@ -7,7 +7,8 @@ declare type Props = {
   parcelRes: {}
   statusRes: {}
   landSalesRes: {}
-  metaGameHubRes: {}
+  topLandRes: []
+  topPickRes: {}
   rental: {}
   latestPost: {
     data: {

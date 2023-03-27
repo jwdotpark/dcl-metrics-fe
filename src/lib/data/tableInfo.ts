@@ -8,6 +8,8 @@ export const dateRangeStr = (value) => {
       return "last_month"
     case 90:
       return "last_quarter"
+    case "":
+      return "all_time"
     default:
       return null
   }
