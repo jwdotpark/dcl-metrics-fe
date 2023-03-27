@@ -16,7 +16,7 @@ const withMDX = require("@next/mdx")({
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   swcMinify: true,
   images: {

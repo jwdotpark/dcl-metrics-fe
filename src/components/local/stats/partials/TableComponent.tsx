@@ -26,6 +26,8 @@ import { isSafari, isMobileSafari } from "react-device-detect"
 import moment from "moment"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
+import Link from "next/link"
+import useSWR from "swr"
 
 const TableComponent = ({
   data,
@@ -103,13 +105,13 @@ const renderTd = (body, row, chartProps) => {
   switch (body) {
     case "time_spent":
       return (
-        <Td key={body}>
+        <Td key={body} as="kbd">
           <b>{convertSeconds(row[body])}</b>
         </Td>
       )
     case "parcels_visited":
       return (
-        <Td key={body}>
+        <Td key={body} as="kbd">
           <b>{row[body]}</b>
         </Td>
       )
@@ -138,13 +140,13 @@ const renderTd = (body, row, chartProps) => {
     case "scene_name":
       return (
         <Td key={body}>
-          <Text fontSize="md">{row.scene_name}</Text>
+          <Text>{row.scene_name}</Text>
         </Td>
       )
     case "unique_addresses":
       return (
         <Td key={body}>
-          <Text fontSize="md">
+          <Text as="kbd">
             <b>{row.unique_addresses}</b>
           </Text>
         </Td>
@@ -158,7 +160,7 @@ const renderTd = (body, row, chartProps) => {
     case "avg_time_spent":
       return (
         <Td key={body}>
-          <Text fontSize="md">
+          <Text>
             <b>{convertSeconds(row.avg_time_spent)}</b>
           </Text>
         </Td>
@@ -166,7 +168,7 @@ const renderTd = (body, row, chartProps) => {
     case "logins":
       return (
         <Td key={body}>
-          <Text fontSize="md">
+          <Text as="kbd">
             <b>{row.total_logins}</b>
           </Text>
         </Td>
@@ -174,7 +176,7 @@ const renderTd = (body, row, chartProps) => {
     case "logouts":
       return (
         <Td key={body}>
-          <Text fontSize="md">
+          <Text as="kbd">
             <b>{row.total_logouts}</b>
           </Text>
         </Td>
@@ -182,7 +184,7 @@ const renderTd = (body, row, chartProps) => {
     case "avg_time_spent_afk":
       return (
         <Td key={body}>
-          <Text fontSize="md">
+          <Text>
             <b>{convertSeconds(row.avg_time_spent_afk)}</b>
           </Text>
         </Td>
@@ -190,13 +192,13 @@ const renderTd = (body, row, chartProps) => {
     case "coord":
       return (
         <Td key={body}>
-          <Text fontSize="md">[{row.coord}]</Text>
+          <Text as="kbd">[{row.coord}]</Text>
         </Td>
       )
     case "visit_count":
       return (
         <Td key={body}>
-          <Text fontSize="md">
+          <Text as="kbd">
             <b>{row.visit_count}</b>
           </Text>
         </Td>
@@ -214,8 +216,7 @@ const renderTd = (body, row, chartProps) => {
             }}
             overflow="hidden"
             w={["100px", "125px", "150px", "300px"]}
-            //h={chartProps.height === 700 ? 150 : 75}
-            h="75"
+            h={chartProps.height === 700 ? 150 : 75}
             border="2px solid"
             // eslint-disable-next-line react-hooks/rules-of-hooks
             borderColor={useColorModeValue("gray.200", "gray.600")}
@@ -235,27 +236,50 @@ const renderTd = (body, row, chartProps) => {
     case "date":
       return (
         <Td key={body}>
-          <Text fontSize="md">{moment(row.date).format("YYYY MMM. D")}</Text>
+          <Text>{moment(row.date).format("YYYY MMM. D")}</Text>
         </Td>
       )
     case "buyer":
+      const endpoint = "https://peer-ap1.decentraland.org/lambdas/profiles?id="
+      const url = endpoint + row.buyer
+      const fetcher = (url) => fetch(url).then((r) => r.json())
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const { data, error, isLoading } = useSWR(url, fetcher)
+
+      const { name, avatar } =
+        data && data.length > 0 ? data[0].avatars[0] : "no data"
+      const profileImage = avatar?.snapshots?.face256
+
       return (
         <Td key={body}>
-          <Text>{row.buyer}</Text>
+          <Box>
+            <Link
+              href={`https://market.decentraland.org/accounts/${row.buyer}`}
+              target="_blank"
+            >
+              <ProfilePicture
+                address={profileImage}
+                verified={false}
+                guest={false}
+              />
+              <Center
+                sx={{ transform: "translateY(3px)" }}
+                display="inline-block"
+                w="100%"
+                h="100%"
+              >
+                <Text>{name ? name : "N/A"}</Text>
+              </Center>
+            </Link>
+          </Box>
         </Td>
       )
     case "eth_price":
       return (
         <Td key={body}>
-          <Text>{row.eth_price}</Text>
+          <Text as="kbd">{row.eth_price}</Text>
         </Td>
       )
-    //case "landId":
-    //  return (
-    //    <Td key={body}>
-    //      <Text>{row.landId}</Text>
-    //    </Td>
-    //  )
     case "symbol":
       return (
         <Td key={body}>
@@ -265,7 +289,7 @@ const renderTd = (body, row, chartProps) => {
     case "valuation":
       return (
         <Td key={body}>
-          <Text>{row.valuation}</Text>
+          <Text as="kbd">{row.valuation}</Text>
         </Td>
       )
     default:

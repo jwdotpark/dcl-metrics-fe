@@ -32,15 +32,12 @@ const TopLand = ({ data }) => {
     })
   })
 
-  console.log(tableData)
-
   const headList = [
     "Scenes Map",
     "Date",
     "Coord",
     "Buyer",
     "ETH Price",
-    //"Land ID",
     "Symbol",
     "Valuation",
   ]
@@ -51,7 +48,6 @@ const TopLand = ({ data }) => {
     "coord",
     "buyer",
     "eth_price",
-    //"landId",
     "symbol",
     "valuation",
   ]
