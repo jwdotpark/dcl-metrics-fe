@@ -170,7 +170,6 @@ const GlobalPage: NextPage = (props: Props) => {
           <TopLand data={topLandRes} />
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          {/* @ts-ignore */}
           <TopPick data={topPickRes} />
         </Grid>
 
