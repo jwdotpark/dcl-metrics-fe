@@ -171,7 +171,7 @@ const GlobalPage: NextPage = (props: Props) => {
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           {/* @ts-ignore */}
-          <TopPick data={topPickRes.slice(0, 10)} />
+          <TopPick data={topPickRes} />
         </Grid>
 
         <LandPicker parcelData={parcelRes} isPage={false} />

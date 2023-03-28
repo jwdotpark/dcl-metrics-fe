@@ -39,7 +39,7 @@ import moment from "moment"
 
 const SceneTable = ({ sceneRes }) => {
   console.log(sceneRes)
-  
+
   const data = useMemo(() => sceneRes, [sceneRes])
 
   const columns = useMemo(
@@ -255,7 +255,7 @@ const SceneTable = ({ sceneRes }) => {
             })}
           </Tbody>
         </Table>
-        <Center w="100%" mt="2" mx="4">
+        <Center w="100%" mx="4" my="4">
           <ButtonGroup borderRadius="xl" isAttached size="sm">
             <Button
               borderRadius="xl"
