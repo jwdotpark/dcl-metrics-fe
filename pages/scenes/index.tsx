@@ -73,14 +73,6 @@ const Scenes = (props: Props) => {
 
   return (
     <Layout>
-      {/*<Scene
-        res={sceneRes}
-        date={""}
-        setDate={{}}
-        availableDate={[]}
-        dailyUsers={{}}
-        uuid={""}
-      />*/}
       <Box mb="4">
         <SceneTable sceneRes={sceneRes} />
       </Box>

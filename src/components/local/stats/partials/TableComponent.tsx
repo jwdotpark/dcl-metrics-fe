@@ -41,7 +41,7 @@ const TableComponent = ({
   const date = dateRangeStr(dateRange)
   let tableData
 
-  if (headList[0] === ("Scenes Map" || "Map")) {
+  if (headList[0] === "Scenes Map" || headList[0] === "Map") {
     tableData = data
   } else {
     tableData = data[date][propertyName]
