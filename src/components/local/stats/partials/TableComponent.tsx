@@ -75,6 +75,8 @@ const TableComponent = ({
         {tableData.map((row, i) => (
           <Tr
             key={row.time_spent ? row.time_spent : row.parcels_visited}
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
             style={detectSafari ? {} : barChartStyle(i)}
           >
             {bodyList.map((body) => (
