@@ -46,7 +46,6 @@ const TopPick = ({ data }) => {
   console.log("top pick", data)
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const chartState = JSON.parse(localStorage.getItem("chart") || "{}")
-  //const tableData = useMemo(() => data, [data])
 
   const columns = useMemo(
     () => [
@@ -265,6 +264,7 @@ const TopPick = ({ data }) => {
         ),
       },
     ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
 
