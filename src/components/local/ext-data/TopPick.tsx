@@ -298,12 +298,21 @@ const TopPick = ({ data }) => {
   const startIndex = Math.max(0, pageIndex - Math.floor(MAX_BUTTONS / 2))
   const endIndex = Math.min(startIndex + MAX_BUTTONS, pageOptions.length)
 
+  const { colorMode } = useColorMode()
   for (let i = startIndex; i < endIndex; i++) {
     pageButtons.push(
       <Button
         key={i}
         w="16"
-        bg={i === pageIndex ? "gray.300" : "gray.100"}
+        bg={
+          i === pageIndex
+            ? colorMode === "light"
+              ? "gray.100"
+              : "gray.600"
+            : colorMode === "light"
+            ? "gray.200"
+            : "gray.700"
+        }
         onClick={() => gotoPage(i)}
       >
         {i + 1}
