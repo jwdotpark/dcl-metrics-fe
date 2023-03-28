@@ -1,0 +1,43 @@
+---
+category: "users"
+subcategory: "address"
+title: "nfts"
+issue: 13 // what is this?
+description: "GET /users/address/nfts"
+published: true
+---
+
+# GET /users/:address/nfts
+
+Fetch data about DCL-related nfts owned by a user with a given address
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/users/:address/nfts`
+
+### ex: `https://api.dcl-metrics.com/users/0xfe91C0c482E09600f2d1DBCA10FD705BC6de60bc/nfts`
+
+#### SAMPLE DATA
+
+```json
+{
+  "address":"0xfe91C0c482E09600f2d1DBCA10FD705BC6de60bc",
+  "name":"Yemel#60bc",
+  "avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidbx4b7wyp7qld47xr3iyiesdv6ptoqknmyrhcvqbsac4dygbmbiu",
+  "owns_nfts":true,
+  "owns_dclens":false,
+  "owns_land":false,
+  "owns_wearables":true,
+  "total_dclens":0,
+  "total_lands":0,
+  "total_wearables":1,
+  "first_dclens_acquired_at":"",
+  "first_land_acquired_at":"",
+  "first_wearable_acquired_at":"2022-05-17 11:52:48 UTC",
+  "participant_in_genesis_auction":false,
+  "og_user":false
+}
+```
+
+Note: an "OG" user refers to someone who acquired a land in the terraform
+auction OR dclens/wearables at the time of the launch in February 2020.

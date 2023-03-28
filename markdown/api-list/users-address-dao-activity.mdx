@@ -1,0 +1,106 @@
+---
+category: "users"
+subcategory: "address"
+title: "dao_activity"
+issue: 14 // what is this?
+description: "GET /users/address/dao_activity"
+published: true
+---
+
+# GET /users/:address/dao_activity
+
+Fetch data about DAO activity of a user with a given address
+
+## API ENDPOINT
+
+### `https://api.dcl-metrics.com/users/:address/dao_activity`
+
+### ex: `https://api.dcl-metrics.com/users/0xfe91C0c482E09600f2d1DBCA10FD705BC6de60bc/dao_activity`
+
+#### SAMPLE DATA
+
+```json
+{
+  "address":"0xfe91C0c482E09600f2d1DBCA10FD705BC6de60bc",
+  "name":"Yemel#60bc",
+  "avatar_url":"https://peer-ec1.decentraland.org/content/contents/bafkreidbx4b7wyp7qld47xr3iyiesdv6ptoqknmyrhcvqbsac4dygbmbiu",
+  "dao_member":true,
+  "title":"shrimp", // could be shark, whale, etc
+  "total_vp":0,
+  "delegated_vp":0,
+  "delegators":[],
+  "delegate":null,
+  "votes": {
+    "total_votes":3,
+    "first_vote_cast_at":"2022-06-14 21:49:18 UTC",
+    "latest_vote_cast_at":"2022-11-18 18:06:46 UTC"
+    },
+  "grants":{
+    "authored":{
+      "count":3,
+      "total_requested_usd":485000,
+      "total_enacted_usd":485000,
+      "data":[
+        {
+          "tier":6,
+          "title":"BeatBlox: Decentraland's Music Platform (resubmission)",
+          "amount":240000,
+          "health":"$0",
+          "status":"enacted",
+          "category":"Content Creator",
+          "ended_at":"2022-01-06T16:01:00.893Z",
+          "created_by":"0xfe91c0c482e09600f2d1dbca10fd705bc6de60bc",
+          "started_at":"2021-12-23T16:01:00.894Z",
+          "beneficiary":"0x9405cf5bde70bb78c0ddf1425aed6a2f110fc733",
+          "proposal_id":"903b6e60-6409-11ec-8188-4352ce3d30e7",
+          "snapshot_id":"QmV7x6T3NXWfuNVfqHC172ouefGtK2KLU2Q2z4nbBkU6q2",
+          "done_updates":0,
+          "late_updates":0,
+          "missed_updates":1,
+          "vesting_contract":"finished",
+          "vesting_released":0,
+          "remaining_updates":2022
+        }
+      ]
+    },
+    "beneficiary":{
+      "count":0,
+      "total_requested_usd":null,
+      "total_enacted_usd":null,
+      "data":[]
+    }
+  },
+  "proposals":{
+    "count":14,
+    "data":[
+      {
+        "title":"Restructuring Wearables Submission Fees",
+        "status":"enacted",
+        "category":"draft",
+        "end_time":"2022-06-08T18:53:00.108Z",
+        "total_vp":"2,576,585",
+        "created_by":"0xfe91c0c482e09600f2d1dbca10fd705bc6de60bc",
+        "start_time":"2022-06-01T18:53:00.111Z",
+        "proposal_id":"128084f0-e1dc-11ec-bdb6-655e1f599935",
+        "snapshot_id":"QmUe6WQJZDqfTZMWMA2iS42Q8iepHEf5mCQAR1boaCoi65",
+        "total_votes":67
+      }
+    ]
+  },
+  "active_dao_committee_member":true,
+  "teams":[
+    {
+      "team":"DAO Committee",
+      "active":true,
+      "address":"0xfe91c0c482e09600f2d1dbca10fd705bc6de60bc"
+    }
+  ],
+  "collection_creator":null,
+  "collections":[]
+  }
+}
+```
+
+Note: the "data" nodes are data coming directly from the DAO transparency sheet.
+Some values (like grant update related fields) don't necessarily make sense to
+me, but i've left them as is.
