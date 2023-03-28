@@ -256,7 +256,7 @@ const SceneTable = ({ sceneRes }) => {
           </Tbody>
         </Table>
         <Center w="100%" mx="4" my="4">
-          <ButtonGroup borderRadius="xl" isAttached size="sm">
+          <ButtonGroup borderRadius="xl" shadow="md" isAttached size="sm">
             <Button
               borderRadius="xl"
               disabled={!canPreviousPage}

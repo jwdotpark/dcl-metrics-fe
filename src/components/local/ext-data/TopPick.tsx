@@ -15,6 +15,7 @@ import {
   ButtonGroup,
   Center,
   Spacer,
+  useColorMode,
 } from "@chakra-ui/react"
 import {
   useTable,
@@ -83,9 +84,11 @@ const TopPick = ({ data }) => {
         Header: "Coord",
         Cell: ({ row }) => (
           <Box>
-            <Text as="kbd">
-              [{row.original.coords.x},{row.original.coords.y}]
-            </Text>
+            <Link href={``}>
+              <Text as="kbd">
+                [{row.original.coords.x},{row.original.coords.y}]
+              </Text>
+            </Link>
           </Box>
         ),
       },
@@ -285,11 +288,28 @@ const TopPick = ({ data }) => {
     state,
     gotoPage,
     pageCount,
-    setGlobalFilter,
     prepareRow,
   } = tableInstance
 
   const { pageIndex } = state
+
+  const pageButtons = []
+  const MAX_BUTTONS = 10
+  const startIndex = Math.max(0, pageIndex - Math.floor(MAX_BUTTONS / 2))
+  const endIndex = Math.min(startIndex + MAX_BUTTONS, pageOptions.length)
+
+  for (let i = startIndex; i < endIndex; i++) {
+    pageButtons.push(
+      <Button
+        key={i}
+        w="16"
+        bg={i === pageIndex ? "gray.300" : "gray.100"}
+        onClick={() => gotoPage(i)}
+      >
+        {i + 1}
+      </Button>
+    )
+  }
 
   return (
     <BoxWrapper colSpan={6}>
@@ -362,7 +382,7 @@ const TopPick = ({ data }) => {
         </Tbody>
       </Table>
       <Center w="100%" mx="4" my="4">
-        <ButtonGroup borderRadius="xl" isAttached size="sm">
+        <ButtonGroup borderRadius="xl" shadow="md" isAttached size="sm">
           <Button
             borderRadius="xl"
             disabled={!canPreviousPage}
@@ -373,9 +393,7 @@ const TopPick = ({ data }) => {
           <Button disabled={!canPreviousPage} onClick={() => previousPage()}>
             <FiArrowLeft />
           </Button>
-          <Button>
-            <b>{pageIndex + 1}</b>/{pageOptions.length}
-          </Button>
+          {pageButtons}
           <Button disabled={!canNextPage} onClick={() => nextPage()}>
             <FiArrowRight />
           </Button>
@@ -387,13 +405,6 @@ const TopPick = ({ data }) => {
             <FiArrowRightCircle />
           </Button>
         </ButtonGroup>
-        {/*<Flex w="100%" mr="8">
-          <Spacer />
-          <GlobalTableFilter
-            filter={globalFilter}
-            setFilter={setGlobalFilter}
-          />
-        </Flex>*/}
       </Center>
       <BottomLegend description="Source from MetaGameHub DAO" />
     </BoxWrapper>
