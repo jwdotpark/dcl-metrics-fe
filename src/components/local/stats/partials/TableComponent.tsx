@@ -39,9 +39,9 @@ const TableComponent = ({
 }) => {
   const { colorMode } = useColorMode()
   const date = dateRangeStr(dateRange)
-  let tableData = []
+  let tableData
 
-  if (headList[0] === "Scenes Map" || "Map") {
+  if (headList[0] === ("Scenes Map" || "Map")) {
     tableData = data
   } else {
     tableData = data[date][propertyName]
