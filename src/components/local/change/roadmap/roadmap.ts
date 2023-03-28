@@ -1,15 +1,6 @@
 // https://react-icons.github.io/react-icons/icons?name=fi
 import {
-  FiPackage,
-  FiHome,
-  FiBarChart2,
-  FiCheckCircle,
-  FiCloudDrizzle,
-  FiTrendingUp,
-  FiTarget,
-  FiUsers,
-  FiUserPlus,
-  FiZoomIn,
+  FiPackage, FiZoomIn
 } from "react-icons/fi"
 
 export const roadmap = [

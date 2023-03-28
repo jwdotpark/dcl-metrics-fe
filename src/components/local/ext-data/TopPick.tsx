@@ -6,7 +6,7 @@ const TopPick = ({ data }) => {
   return (
     <BoxWrapper colSpan={6}>
       <BoxTitle
-        name="Top 50 Scenes"
+        name="Top 50 Picked Land"
         date=""
         avgData=""
         slicedData=""

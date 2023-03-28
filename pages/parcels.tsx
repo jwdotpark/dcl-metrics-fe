@@ -1,9 +1,7 @@
-import { useBreakpointValue, Grid, useColorModeValue } from "@chakra-ui/react"
+import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-import staticGlobal from "../public/data/cached_global_response.json"
-import { useAtom } from "jotai"
-import { DataAtom, LoadingStateAtom } from "../src/lib/hooks/atoms"
 
+import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
 import AFKTimeSpentParcel from "../src/components/local/stats/parcels/AFKTimeSpentParcel"
 import AvgTimeSpentParcel from "../src/components/local/stats/parcels/AvgTimeSpentParcel"
 import LogInTimeSpentParcel from "../src/components/local/stats/parcels/LogInTimeSpentParcel"
@@ -16,7 +14,6 @@ import {
   isProd,
   time,
 } from "../src/lib/data/constant"
-import staticGlobalParcels from "../public/data/staticGlobalParcel.json"
 import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
 
 export async function getStaticProps() {
@@ -26,7 +23,7 @@ export async function getStaticProps() {
       "/global/parcels",
       staticGlobalParcels
     )
-    
+
     writeFile("staticGlobalParcels", globalParcelRes)
 
     const result = { globalParcelRes }
