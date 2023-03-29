@@ -14,7 +14,6 @@ import {
   Button,
   ButtonGroup,
   Center,
-  Spacer,
   useColorMode,
 } from "@chakra-ui/react"
 import {
@@ -35,15 +34,11 @@ import {
 import BoxTitle from "../../layout/local/BoxTitle"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BottomLegend from "./partial/BottomLegend"
-import { useAtom } from "jotai"
-import { lineChartAtom } from "../../../lib/state/lineChartState"
 import Link from "next/link"
 import useSWR from "swr"
 import ProfilePicture from "../ProfilePicture"
 
 const TopPick = ({ data }) => {
-  const [chartProps, setChartProps] = useAtom(lineChartAtom)
-
   const columns = useMemo(
     () => [
       {
@@ -59,7 +54,7 @@ const TopPick = ({ data }) => {
             }}
             overflow="hidden"
             w={["100px", "125px", "150px", "250px"]}
-            h={chartProps.height === 700 ? 150 : 75}
+            h="75"
             border="2px solid"
             // eslint-disable-next-line react-hooks/rules-of-hooks
             borderColor={useColorModeValue("gray.200", "gray.600")}
@@ -67,7 +62,7 @@ const TopPick = ({ data }) => {
           >
             <Image
               w={["100px", "125px", "150px", "250px"]}
-              h={chartProps.height === 700 ? 150 : 75}
+              h="75"
               borderRadius="md"
               objectFit="cover"
               alt={row.original.name}
@@ -170,12 +165,14 @@ const TopPick = ({ data }) => {
           const profileImage = avatar?.snapshots?.face256
 
           return (
-            <Box minW="200">
-              <ProfilePicture
-                address={profileImage}
-                verified={false}
-                guest={false}
-              />
+            <Flex>
+              <Box>
+                <ProfilePicture
+                  address={profileImage}
+                  verified={false}
+                  guest={false}
+                />
+              </Box>
               <Tooltip
                 display={name && "none"}
                 p="2"
@@ -188,15 +185,15 @@ const TopPick = ({ data }) => {
                   href={`https://market.decentraland.org/accounts/${row.original.owner}`}
                   target="_blank"
                 >
-                  <Box
+                  <Text
                     sx={{ transform: "translateY(3px)" }}
                     display="inline-block"
                   >
-                    <Text>{name ? name : "N/A"}</Text>
-                  </Box>
+                    {name ? name : "N/A"}
+                  </Text>
                 </Link>
               </Tooltip>
-            </Box>
+            </Flex>
           )
         },
       },
@@ -333,121 +330,117 @@ const TopPick = ({ data }) => {
         line={undefined}
         setLine={undefined}
       />
-
-      <Box overflowX="auto" w="100%">
-        <Box mx="4">
-          <Center w="100%" my="4">
-            <ButtonGroup
-              w="100%"
-              border="1px solid"
-              borderColor={useColorModeValue("gray.200", "gray.700")}
-              borderRadius="lg"
-              shadow="md"
-              isAttached
-              size="sm"
-            >
-              <Button
+      <Box mx="2">
+        <Box overflowX="scroll">
+          <Box mx="2">
+            <Center w="100%" my="4">
+              <ButtonGroup
                 w="100%"
-                bg={useColorModeValue("gray.200", "gray.700")}
                 border="1px solid"
-                borderColor={useColorModeValue("gray.200", "gray.600")}
-                disabled={!canPreviousPage}
-                onClick={() => gotoPage(0)}
+                borderColor={useColorModeValue("gray.200", "gray.700")}
+                borderRadius="lg"
+                shadow="md"
+                isAttached
+                size="sm"
               >
-                <FiArrowLeftCircle />
-              </Button>
-              <Button
-                w="100%"
-                bg={useColorModeValue("gray.200", "gray.700")}
-                border="1px solid"
-                borderColor={useColorModeValue("gray.200", "gray.600")}
-                disabled={!canPreviousPage}
-                onClick={() => previousPage()}
-              >
-                <FiArrowLeft />
-              </Button>
-              {pageButtons}
-              <Button
-                w="100%"
-                bg={useColorModeValue("gray.200", "gray.700")}
-                border="1px solid"
-                borderColor={useColorModeValue("gray.200", "gray.600")}
-                disabled={!canNextPage}
-                onClick={() => nextPage()}
-              >
-                <FiArrowRight />
-              </Button>
-              <Button
-                w="100%"
-                bg={useColorModeValue("gray.200", "gray.700")}
-                border="1px solid"
-                borderColor={useColorModeValue("gray.200", "gray.600")}
-                disabled={!canNextPage}
-                onClick={() => gotoPage(pageCount - 1)}
-              >
-                <FiArrowRightCircle />
-              </Button>
-            </ButtonGroup>
-          </Center>
-        </Box>
-        <Table
-          h={["auto", 850]}
-          {...getTableProps()}
-          w="100%"
-          mt="2"
-          mb="2"
-          mx={[2, 2, 4]}
-          size="sm"
-          variant="simple"
-        >
-          <Thead>
-            {headerGroups.map((headerGroup, i) => (
-              <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column, j) => (
-                  <Th
-                    key={j}
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                  >
-                    {column.render("Header")}
-                    <Box display="inline-block">
-                      {column.isSorted ? (
-                        column.isSortedDesc ? (
-                          <FiChevronDown />
-                        ) : (
-                          <FiChevronUp />
-                        )
-                      ) : (
-                        ""
-                      )}
-                    </Box>
-                  </Th>
-                ))}
-              </Tr>
-            ))}
-          </Thead>
-
-          <Tbody {...getTableBodyProps()}>
-            {page.map((row, i) => {
-              prepareRow(row)
-              return (
-                <Tr
-                  key={i}
-                  {...row.getRowProps()}
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                  _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
+                <Button
+                  w="100%"
+                  bg={useColorModeValue("gray.200", "gray.700")}
+                  border="1px solid"
+                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                  disabled={!canPreviousPage}
+                  onClick={() => gotoPage(0)}
                 >
-                  {row.cells.map((cell, j) => {
-                    return (
-                      <Td key={j} {...cell.getCellProps()}>
-                        {cell.render("Cell")}
-                      </Td>
-                    )
-                  })}
-                </Tr>
-              )
-            })}
-          </Tbody>
-        </Table>
+                  <FiArrowLeftCircle />
+                </Button>
+                <Button
+                  w="100%"
+                  bg={useColorModeValue("gray.200", "gray.700")}
+                  border="1px solid"
+                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                  disabled={!canPreviousPage}
+                  onClick={() => previousPage()}
+                >
+                  <FiArrowLeft />
+                </Button>
+                {pageButtons}
+                <Button
+                  w="100%"
+                  bg={useColorModeValue("gray.200", "gray.700")}
+                  border="1px solid"
+                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                  disabled={!canNextPage}
+                  onClick={() => nextPage()}
+                >
+                  <FiArrowRight />
+                </Button>
+                <Button
+                  w="100%"
+                  bg={useColorModeValue("gray.200", "gray.700")}
+                  border="1px solid"
+                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                  disabled={!canNextPage}
+                  onClick={() => gotoPage(pageCount - 1)}
+                >
+                  <FiArrowRightCircle />
+                </Button>
+              </ButtonGroup>
+            </Center>
+          </Box>
+          <Box mx="2">
+            <Table {...getTableProps()} my="2" size="sm" variant="simple">
+              <Thead>
+                {headerGroups.map((headerGroup, i) => (
+                  <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map((column, j) => (
+                      <Th
+                        key={j}
+                        {...column.getHeaderProps(
+                          column.getSortByToggleProps()
+                        )}
+                      >
+                        {column.render("Header")}
+                        <Box display="inline-block">
+                          {column.isSorted ? (
+                            column.isSortedDesc ? (
+                              <FiChevronDown />
+                            ) : (
+                              <FiChevronUp />
+                            )
+                          ) : (
+                            ""
+                          )}
+                        </Box>
+                      </Th>
+                    ))}
+                  </Tr>
+                ))}
+              </Thead>
+
+              <Tbody {...getTableBodyProps()}>
+                {page.map((row, i) => {
+                  prepareRow(row)
+                  return (
+                    <Tr
+                      key={i}
+                      {...row.getRowProps()}
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
+                      _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
+                    >
+                      {row.cells.map((cell, j) => {
+                        return (
+                          <Td key={j} {...cell.getCellProps()}>
+                            {cell.render("Cell")}
+                          </Td>
+                        )
+                      })}
+                    </Tr>
+                  )
+                })}
+              </Tbody>
+            </Table>
+          </Box>
+        </Box>
       </Box>
       <BottomLegend description="Source from MetaGameHub DAO" />
     </BoxWrapper>

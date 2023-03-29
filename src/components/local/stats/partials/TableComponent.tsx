@@ -209,7 +209,7 @@ const renderTd = (body, row) => {
               scrollbarWidth: "none",
             }}
             overflow="hidden"
-            w={["100px", "125px", "150px", "300px"]}
+            w={["100px", "125px", "150px", "250px"]}
             h="75"
             border="2px solid"
             // eslint-disable-next-line react-hooks/rules-of-hooks
