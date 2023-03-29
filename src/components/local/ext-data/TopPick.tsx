@@ -321,12 +321,12 @@ const TopPick = ({ data }) => {
   return (
     <BoxWrapper colSpan={6}>
       <BoxTitle
-        name="Top 50 Picked Land"
+        name="Highly Valuated Lands"
         date=""
         avgData=""
         slicedData=""
         color=""
-        description="top pick scenes"
+        description="High market value based on a variety of factors from MetaGameHub DAO"
         line={undefined}
         setLine={undefined}
       />
