@@ -40,11 +40,9 @@ import { lineChartAtom } from "../../../lib/state/lineChartState"
 import Link from "next/link"
 import useSWR from "swr"
 import ProfilePicture from "../ProfilePicture"
-import GlobalTableFilter from "../stats/partials/scene/GlobalTableFilter"
 
 const TopPick = ({ data }) => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
-  const chartState = JSON.parse(localStorage.getItem("chart") || "{}")
 
   const columns = useMemo(
     () => [
@@ -60,7 +58,7 @@ const TopPick = ({ data }) => {
               scrollbarWidth: "none",
             }}
             overflow="hidden"
-            w={["100px", "125px", "150px", "300px"]}
+            w={["100px", "125px", "150px", "250px"]}
             h={chartProps.height === 700 ? 150 : 75}
             border="2px solid"
             // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -68,7 +66,7 @@ const TopPick = ({ data }) => {
             borderRadius="xl"
           >
             <Image
-              w={["100px", "125px", "150px", "300px"]}
+              w={["100px", "125px", "150px", "250px"]}
               h={chartProps.height === 700 ? 150 : 75}
               borderRadius="md"
               objectFit="cover"
@@ -142,21 +140,21 @@ const TopPick = ({ data }) => {
         ),
         accessor: "gap",
       },
-      {
-        Header: "Floor Adjusted Predicted Price",
-        Cell: ({ row }) => (
-          <Box>
-            <Text as="kbd">
-              {row.original.floor_adjusted_predicted_price
-                ? Math.round(
-                    row.original.floor_adjusted_predicted_price * 100
-                  ) / 100
-                : "N/A"}
-            </Text>
-          </Box>
-        ),
-        accessor: "floor_adjusted_predicted_price",
-      },
+      //{
+      //  Header: "Floor Adjusted Predicted Price",
+      //  Cell: ({ row }) => (
+      //    <Box>
+      //      <Text as="kbd">
+      //        {row.original.floor_adjusted_predicted_price
+      //          ? Math.round(
+      //              row.original.floor_adjusted_predicted_price * 100
+      //            ) / 100
+      //          : "N/A"}
+      //      </Text>
+      //    </Box>
+      //  ),
+      //  accessor: "floor_adjusted_predicted_price",
+      //},
       {
         Header: "Owner",
         Cell: ({ row }) => {
@@ -302,16 +300,20 @@ const TopPick = ({ data }) => {
     pageButtons.push(
       <Button
         key={i}
-        w="16"
+        w="100%"
         bg={
           i === pageIndex
             ? colorMode === "light"
-              ? "gray.100"
-              : "gray.600"
+              ? "gray.300"
+              : "gray.900"
             : colorMode === "light"
-            ? "gray.200"
+            ? "gray.100"
             : "gray.700"
         }
+        border="1px solid"
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        borderColor={useColorModeValue("gray.200", "gray.600")}
+        borderRadius="xl"
         onClick={() => gotoPage(i)}
       >
         {i + 1}
@@ -331,89 +333,122 @@ const TopPick = ({ data }) => {
         line={undefined}
         setLine={undefined}
       />
-      <Table
-        h={["auto", 850]}
-        {...getTableProps()}
-        w="auto"
-        mt="2"
-        mb="2"
-        mx={[2, 2, 4]}
-        size="sm"
-        variant="simple"
-      >
-        <Thead>
-          {headerGroups.map((headerGroup, i) => (
-            <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column, j) => (
-                <Th
-                  key={j}
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                >
-                  {column.render("Header")}
-                  <Box display="inline-block">
-                    {column.isSorted ? (
-                      column.isSortedDesc ? (
-                        <FiChevronDown />
-                      ) : (
-                        <FiChevronUp />
-                      )
-                    ) : (
-                      ""
-                    )}
-                  </Box>
-                </Th>
-              ))}
-            </Tr>
-          ))}
-        </Thead>
 
-        <Tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
-            prepareRow(row)
-            return (
-              <Tr
-                key={i}
-                {...row.getRowProps()}
-                // eslint-disable-next-line react-hooks/rules-of-hooks
-                _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
+      <Box overflowX="auto" w="100%">
+        <Box mx="4">
+          <Center w="100%" my="4">
+            <ButtonGroup
+              w="100%"
+              border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.700")}
+              borderRadius="lg"
+              shadow="md"
+              isAttached
+              size="sm"
+            >
+              <Button
+                w="100%"
+                bg={useColorModeValue("gray.200", "gray.700")}
+                border="1px solid"
+                borderColor={useColorModeValue("gray.200", "gray.600")}
+                disabled={!canPreviousPage}
+                onClick={() => gotoPage(0)}
               >
-                {row.cells.map((cell, j) => {
-                  return (
-                    <Td key={j} {...cell.getCellProps()}>
-                      {cell.render("Cell")}
-                    </Td>
-                  )
-                })}
+                <FiArrowLeftCircle />
+              </Button>
+              <Button
+                w="100%"
+                bg={useColorModeValue("gray.200", "gray.700")}
+                border="1px solid"
+                borderColor={useColorModeValue("gray.200", "gray.600")}
+                disabled={!canPreviousPage}
+                onClick={() => previousPage()}
+              >
+                <FiArrowLeft />
+              </Button>
+              {pageButtons}
+              <Button
+                w="100%"
+                bg={useColorModeValue("gray.200", "gray.700")}
+                border="1px solid"
+                borderColor={useColorModeValue("gray.200", "gray.600")}
+                disabled={!canNextPage}
+                onClick={() => nextPage()}
+              >
+                <FiArrowRight />
+              </Button>
+              <Button
+                w="100%"
+                bg={useColorModeValue("gray.200", "gray.700")}
+                border="1px solid"
+                borderColor={useColorModeValue("gray.200", "gray.600")}
+                disabled={!canNextPage}
+                onClick={() => gotoPage(pageCount - 1)}
+              >
+                <FiArrowRightCircle />
+              </Button>
+            </ButtonGroup>
+          </Center>
+        </Box>
+        <Table
+          h={["auto", 850]}
+          {...getTableProps()}
+          w="100%"
+          mt="2"
+          mb="2"
+          mx={[2, 2, 4]}
+          size="sm"
+          variant="simple"
+        >
+          <Thead>
+            {headerGroups.map((headerGroup, i) => (
+              <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column, j) => (
+                  <Th
+                    key={j}
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                  >
+                    {column.render("Header")}
+                    <Box display="inline-block">
+                      {column.isSorted ? (
+                        column.isSortedDesc ? (
+                          <FiChevronDown />
+                        ) : (
+                          <FiChevronUp />
+                        )
+                      ) : (
+                        ""
+                      )}
+                    </Box>
+                  </Th>
+                ))}
               </Tr>
-            )
-          })}
-        </Tbody>
-      </Table>
-      <Center w="100%" mx="4" my="4">
-        <ButtonGroup borderRadius="xl" shadow="md" isAttached size="sm">
-          <Button
-            borderRadius="xl"
-            disabled={!canPreviousPage}
-            onClick={() => gotoPage(0)}
-          >
-            <FiArrowLeftCircle />
-          </Button>
-          <Button disabled={!canPreviousPage} onClick={() => previousPage()}>
-            <FiArrowLeft />
-          </Button>
-          {pageButtons}
-          <Button disabled={!canNextPage} onClick={() => nextPage()}>
-            <FiArrowRight />
-          </Button>
-          <Button
-            borderRadius="xl"
-            disabled={!canNextPage}
-            onClick={() => gotoPage(pageCount - 1)}
-          >
-            <FiArrowRightCircle />
-          </Button>
-        </ButtonGroup>
-      </Center>
+            ))}
+          </Thead>
+
+          <Tbody {...getTableBodyProps()}>
+            {page.map((row, i) => {
+              prepareRow(row)
+              return (
+                <Tr
+                  key={i}
+                  {...row.getRowProps()}
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
+                  _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
+                >
+                  {row.cells.map((cell, j) => {
+                    return (
+                      <Td key={j} {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </Td>
+                    )
+                  })}
+                </Tr>
+              )
+            })}
+          </Tbody>
+        </Table>
+      </Box>
       <BottomLegend description="Source from MetaGameHub DAO" />
     </BoxWrapper>
   )

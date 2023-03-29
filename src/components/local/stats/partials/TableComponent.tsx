@@ -204,7 +204,7 @@ const renderTd = (body, row, chartProps) => {
       )
     case "map":
       return (
-        <Td key={body} maxW="275">
+        <Td key={body} maxW="300">
           <Box
             sx={{
               "&::-webkit-scrollbar": {
