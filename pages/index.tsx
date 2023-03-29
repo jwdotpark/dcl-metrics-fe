@@ -35,7 +35,6 @@ export async function getStaticProps() {
         getDataWithProxy(url, endpoint, staticData)
       )
     )
-    // not using fixie
     landSalesRes = await getDataWithProxy(
       "https://www.dcl-property.rentals/api/price_data",
       "https://www.dcl-property.rentals/api/price_data",

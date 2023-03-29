@@ -43,7 +43,6 @@ import ProfilePicture from "../ProfilePicture"
 import GlobalTableFilter from "../stats/partials/scene/GlobalTableFilter"
 
 const TopPick = ({ data }) => {
-  console.log("top pick", data)
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const chartState = JSON.parse(localStorage.getItem("chart") || "{}")
 

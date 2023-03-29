@@ -6,6 +6,7 @@ import staticScene from "../../../public/data/cached_scenes_top.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
 import staticLandSales from "../../../public/data/staticLandSales.json"
 import staticTopLand from "../../../public/data/staticTopLand.json"
+import staticTopPick from "../../../public/data/staticTopPick.json"
 import {
   globalDailyURL,
   globalParcelURL,
@@ -48,6 +49,12 @@ export const globalRequestList = [
     endpint:
       "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
     staticData: staticTopLand,
+  },
+  {
+    url: "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
+    endpoint:
+      "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
+    staticData: staticTopPick,
   },
 ]
 
