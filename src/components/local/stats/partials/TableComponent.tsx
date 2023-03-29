@@ -25,8 +25,6 @@ import TableLink from "./TableLink"
 import TableMap from "./TableMap"
 import { isSafari, isMobileSafari } from "react-device-detect"
 import moment from "moment"
-import { lineChartAtom } from "../../../../lib/state/lineChartState"
-import { useAtom } from "jotai"
 import Link from "next/link"
 import useSWR from "swr"
 
@@ -58,9 +56,6 @@ const TableComponent = ({
   }
 
   const TableBody = () => {
-    const [chartProps, setChartProps] = useAtom(lineChartAtom)
-    const chartState = JSON.parse(localStorage.getItem("chart") || "{}")
-
     const barColor = headList[0] === "Time Spent" ? "#70AC7650" : "#bd93f950"
     const detectSafari = isSafari || isMobileSafari ? true : false
     const barChartStyle = (index) => {
@@ -80,7 +75,7 @@ const TableComponent = ({
             style={detectSafari ? {} : barChartStyle(i)}
           >
             {bodyList.map((body) => (
-              <>{renderTd(body, row, chartProps)}</>
+              <>{renderTd(body, row)}</>
             ))}
           </Tr>
         ))}
@@ -100,7 +95,7 @@ const TableComponent = ({
 
 export default TableComponent
 
-const renderTd = (body, row, chartProps) => {
+const renderTd = (body, row) => {
   switch (body) {
     case "time_spent":
       return (
@@ -215,7 +210,7 @@ const renderTd = (body, row, chartProps) => {
             }}
             overflow="hidden"
             w={["100px", "125px", "150px", "300px"]}
-            h={chartProps.height === 700 ? 150 : 75}
+            h="75"
             border="2px solid"
             // eslint-disable-next-line react-hooks/rules-of-hooks
             borderColor={useColorModeValue("gray.200", "gray.600")}
