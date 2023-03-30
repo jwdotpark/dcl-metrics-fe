@@ -4,9 +4,9 @@ import MobileApiList from "./MobileApiList"
 
 const ApiList = ({ data, selectedItem, setSelectedItem, isMobile }) => {
   const { issue } = selectedItem.data
-  const [itemIndex, setItemIndex] = useState(issue - 1)
+  const [itemIndex, setItemIndex] = useState(issue)
+  
   const categories = []
-
   data.map((item) => {
     if (!categories.includes(item.data.category)) {
       categories.push(item.data.category)
