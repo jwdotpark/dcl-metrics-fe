@@ -19,9 +19,10 @@ const PSA = ({ setIsPSAVisible, latestPost }) => {
       px="4"
       py="2"
       bg={useColorModeValue("green.300", "green.700")}
-      border="2px solid"
-      borderColor={useColorModeValue("green.300", "green.700")}
+      border="1px solid"
+      borderColor={useColorModeValue("green.100", "green.500")}
       borderRadius="xl"
+      shadow="md"
     >
       <Flex dir="row">
         <Center>
