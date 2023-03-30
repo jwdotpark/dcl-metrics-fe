@@ -305,7 +305,7 @@ const TopPick = ({ data }) => {
               ? "gray.300"
               : "gray.900"
             : colorMode === "light"
-            ? "gray.100"
+            ? "gray.200"
             : "gray.700"
         }
         border="1px solid"
@@ -419,6 +419,9 @@ const TopPick = ({ data }) => {
               <FiArrowLeft />
             </Button>
             <Input
+              bg={useColorModeValue("gray.200", "gray.700")}
+              border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
               defaultValue={pageIndex + 1}
               onChange={(e) => {
                 const pageNumber = e.target.value
@@ -429,6 +432,7 @@ const TopPick = ({ data }) => {
               placeholder="1"
               size="sm"
               type="number"
+              variant="filled"
             />
             {pageButtons}
             <Button
