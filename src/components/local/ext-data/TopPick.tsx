@@ -424,7 +424,7 @@ const TopPick = ({ data }) => {
                 const pageNumber = e.target.value
                   ? Number(e.target.value) - 0
                   : 0
-                gotoPage(pageNumber)
+                gotoPage(pageNumber - 1)
               }}
               placeholder="1"
               size="sm"
