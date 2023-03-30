@@ -332,7 +332,7 @@ const TopPick = ({ data }) => {
         setLine={undefined}
       />
       <Box mx="2">
-        <Box overflowX="scroll">
+        <Box overflowX="auto">
           <Box mx="2">
             <Table {...getTableProps()} my="2" size="sm" variant="simple">
               <Thead>
