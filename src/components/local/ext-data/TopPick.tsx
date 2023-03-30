@@ -385,74 +385,74 @@ const TopPick = ({ data }) => {
                 })}
               </Tbody>
             </Table>
-            <Box mx="2">
-              <Center w="100%" my="4">
-                <ButtonGroup
-                  border="1px solid"
-                  borderColor={useColorModeValue("gray.200", "gray.700")}
-                  borderRadius="lg"
-                  shadow="md"
-                  isAttached
-                  size="sm"
-                >
-                  <Button
-                    w="100%"
-                    bg={useColorModeValue("gray.200", "gray.700")}
-                    border="1px solid"
-                    borderColor={useColorModeValue("gray.200", "gray.600")}
-                    disabled={!canPreviousPage}
-                    onClick={() => gotoPage(0)}
-                  >
-                    <FiArrowLeftCircle />
-                  </Button>
-                  <Button
-                    w="100%"
-                    bg={useColorModeValue("gray.200", "gray.700")}
-                    border="1px solid"
-                    borderColor={useColorModeValue("gray.200", "gray.600")}
-                    disabled={!canPreviousPage}
-                    onClick={() => previousPage()}
-                  >
-                    <FiArrowLeft />
-                  </Button>
-                  <Input
-                    defaultValue={pageIndex + 1}
-                    onChange={(e) => {
-                      const pageNumber = e.target.value
-                        ? Number(e.target.value) - 0
-                        : 0
-                      gotoPage(pageNumber)
-                    }}
-                    placeholder="1"
-                    size="sm"
-                    type="number"
-                  />
-                  {pageButtons}
-                  <Button
-                    w="100%"
-                    bg={useColorModeValue("gray.200", "gray.700")}
-                    border="1px solid"
-                    borderColor={useColorModeValue("gray.200", "gray.600")}
-                    disabled={!canNextPage}
-                    onClick={() => nextPage()}
-                  >
-                    <FiArrowRight />
-                  </Button>
-                  <Button
-                    w="100%"
-                    bg={useColorModeValue("gray.200", "gray.700")}
-                    border="1px solid"
-                    borderColor={useColorModeValue("gray.200", "gray.600")}
-                    disabled={!canNextPage}
-                    onClick={() => gotoPage(pageCount - 1)}
-                  >
-                    <FiArrowRightCircle />
-                  </Button>
-                </ButtonGroup>
-              </Center>
-            </Box>
           </Box>
         </Box>
+      </Box>
+      <Box mx="2">
+        <Center w="100%" my="4">
+          <ButtonGroup
+            border="1px solid"
+            borderColor={useColorModeValue("gray.200", "gray.700")}
+            borderRadius="lg"
+            shadow="md"
+            isAttached
+            size="sm"
+          >
+            <Button
+              w="100%"
+              bg={useColorModeValue("gray.200", "gray.700")}
+              border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
+              disabled={!canPreviousPage}
+              onClick={() => gotoPage(0)}
+            >
+              <FiArrowLeftCircle />
+            </Button>
+            <Button
+              w="100%"
+              bg={useColorModeValue("gray.200", "gray.700")}
+              border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
+              disabled={!canPreviousPage}
+              onClick={() => previousPage()}
+            >
+              <FiArrowLeft />
+            </Button>
+            <Input
+              defaultValue={pageIndex + 1}
+              onChange={(e) => {
+                const pageNumber = e.target.value
+                  ? Number(e.target.value) - 0
+                  : 0
+                gotoPage(pageNumber)
+              }}
+              placeholder="1"
+              size="sm"
+              type="number"
+            />
+            {pageButtons}
+            <Button
+              w="100%"
+              bg={useColorModeValue("gray.200", "gray.700")}
+              border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
+              disabled={!canNextPage}
+              onClick={() => nextPage()}
+            >
+              <FiArrowRight />
+            </Button>
+            <Button
+              w="100%"
+              bg={useColorModeValue("gray.200", "gray.700")}
+              border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
+              disabled={!canNextPage}
+              onClick={() => gotoPage(pageCount - 1)}
+            >
+              <FiArrowRightCircle />
+            </Button>
+          </ButtonGroup>
+        </Center>
       </Box>
       <BottomLegend description="Source from MetaGameHub DAO" />
     </BoxWrapper>
