@@ -101,6 +101,11 @@ export const minorchangeTemplate = [
         title: "Incorporate land sales and rental data",
         description: "",
       },
+      {
+        icon: FiPackage,
+        title: "Introduce Concurrent Users histogram globally and by scene",
+        description: "",
+      },
     ],
   },
 ]

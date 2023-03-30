@@ -1,19 +1,7 @@
 // https://react-icons.github.io/react-icons/icons?name=fi
-import {
-  FiPackage, FiZoomIn
-} from "react-icons/fi"
+import { FiPackage, FiZoomIn } from "react-icons/fi"
 
 export const roadmap = [
-  {
-    date: "2023 Q1",
-    contents: [
-      {
-        icon: FiPackage,
-        title: "Introduce Concurrent Users histogram globally and by scene",
-        description: "",
-      },
-    ],
-  },
   {
     date: "2023 Q2",
     contents: [
