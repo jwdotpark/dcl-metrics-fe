@@ -1,8 +1,6 @@
-/* eslint-disable react/no-children-prop */
 import { useForm } from "react-hook-form"
 import {
   FormErrorMessage,
-  FormLabel,
   FormControl,
   Button,
   Box,
@@ -15,6 +13,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react"
 import { FiAtSign } from "react-icons/fi"
+import { sendFeedback } from "../../lib/hooks/sendNotification"
 
 const FeedbackMenu = () => {
   const {
@@ -27,10 +26,10 @@ const FeedbackMenu = () => {
   const onSubmit = (values) => {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
-        alert(JSON.stringify(values, null, 2))
+        sendFeedback(values)
         reset()
         resolve()
-      }, 3000)
+      }, 500)
     })
   }
 
@@ -67,11 +66,11 @@ const FeedbackMenu = () => {
                 maxLength: { value: 320, message: "Too long!" },
               })}
             />
-            <FormErrorMessage>
-              {/* @ts-ignore */}
-              {errors.msg && errors.msg.message}
-            </FormErrorMessage>
           </InputGroup>
+          <FormErrorMessage>
+            {/* @ts-ignore */}
+            {errors.sender && errors.sender.message}
+          </FormErrorMessage>
 
           <InputGroup mt="4">
             <Textarea
@@ -87,11 +86,11 @@ const FeedbackMenu = () => {
                 maxLength: { value: 1024, message: "Too long!" },
               })}
             />
-            <FormErrorMessage>
-              {/* @ts-ignore */}
-              {errors.msg && errors.msg.message}
-            </FormErrorMessage>
           </InputGroup>
+          <FormErrorMessage>
+            {/* @ts-ignore */}
+            {errors.msg && errors.msg.message}
+          </FormErrorMessage>
         </FormControl>
         <Button
           w="100%"
@@ -99,6 +98,7 @@ const FeedbackMenu = () => {
           borderRadius="xl"
           shadow="md"
           colorScheme={useColorModeValue("teal", "green")}
+          disabled={errors.sender || errors.msg ? true : false}
           isLoading={isSubmitting}
           type="submit"
         >
