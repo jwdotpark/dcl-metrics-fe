@@ -1,13 +1,7 @@
 import { Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import StatusBox from "../src/components/local/status/StatusBox"
-import {
-  isDev,
-  isLocal,
-  isProd,
-  statusURL,
-  time,
-} from "../src/lib/data/constant"
+import { isDev, isLocal, isProd, statusURL } from "../src/lib/data/constant"
 import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
 import staticPeerStatus from "../public/data/staticPeerStatus.json"
 

@@ -14,7 +14,6 @@ import {
   isLocal,
   isProd,
   sceneURL,
-  time,
 } from "../../src/lib/data/constant"
 import staticGlobalScenes from "../../public/data/staticGlobalScene.json"
 import SceneTable from "../../src/components/local/stats/SceneTable"

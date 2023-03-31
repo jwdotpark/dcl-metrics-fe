@@ -12,7 +12,6 @@ import {
   isDev,
   isLocal,
   isProd,
-  time,
 } from "../src/lib/data/constant"
 import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
 
