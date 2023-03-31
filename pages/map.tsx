@@ -24,21 +24,18 @@ export async function getStaticProps() {
     const result = { parcelRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isDev && !isLocal) {
     const parcelRes = await getData(parcelURL, "/parcels/all", staticParcel)
     const result = { parcelRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isLocal) {
     const parcelRes = staticParcel
     const result = { parcelRes }
     return {
       props: result,
-      revalidate: time,
     }
   }
 }

@@ -41,7 +41,6 @@ export async function getStaticProps() {
     const result = { globalSceneRes, sceneRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isDev && !isLocal) {
     const globalSceneRes = await getData(
@@ -54,7 +53,6 @@ export async function getStaticProps() {
     const result = { globalSceneRes, sceneRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isLocal) {
     const globalSceneRes = staticGlobalScenes
@@ -62,7 +60,6 @@ export async function getStaticProps() {
     const result = { globalSceneRes, sceneRes }
     return {
       props: result,
-      revalidate: time,
     }
   }
 }

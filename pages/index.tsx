@@ -116,7 +116,6 @@ export async function getStaticProps() {
       rental: data,
       latestPost: latestPost,
     },
-    revalidate: time,
   }
 }
 

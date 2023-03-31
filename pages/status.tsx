@@ -20,25 +20,22 @@ export async function getStaticProps() {
     )
 
     writeFile("staticPeerStatus", statusRes)
-    
+
     const result = { statusRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isDev && !isLocal) {
     const statusRes = await getData(statusURL, "/peer_status", staticPeerStatus)
     const result = { statusRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isLocal) {
     const statusRes = staticPeerStatus
     const result = { statusRes }
     return {
       props: result,
-      revalidate: time,
     }
   }
 }

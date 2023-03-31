@@ -21,11 +21,10 @@ export async function getStaticProps() {
     )
 
     writeFile("staticGlobalUsers", globalUserRes)
-    
+
     const result = { globalUserRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isDev && !isLocal) {
     const globalUserRes = await getData(
@@ -36,14 +35,12 @@ export async function getStaticProps() {
     const result = { globalUserRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isLocal) {
     const globalUserRes = staticGlobalUsers
     const result = { globalUserRes }
     return {
       props: result,
-      revalidate: time,
     }
   }
 }

@@ -1,4 +1,4 @@
-export const time = 60 * 60 * 24 * 365 // 1 year
+//export const time = 60 * 60 * 24 * 365 // 1 year
 export const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
 export const isDev = process.env.NEXT_PUBLIC_STAGING === "true"
 export const isLocal = process.env.LOCAL === "true"
