@@ -10,7 +10,7 @@ const BottomLegend = ({ description, link }) => {
       <Link href={link} target="_bkank">
         <Text
           ml="1"
-          color={useColorModeValue("blue.200", "blue.600")}
+          color={useColorModeValue("blue.400", "blue.200")}
           fontSize="xs"
           fontWeight="semibold"
         >
