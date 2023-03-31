@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
   Button,
@@ -16,29 +17,33 @@ import {
 import { FiSettings } from "react-icons/fi"
 import { lineChartAtom } from "../../lib/state/lineChartState"
 import { useAtom } from "jotai"
+import { useRouter } from "next/router"
 
 const SettingsButton = () => {
+  const router = useRouter()
   return (
     <>
-      <Popover placement="bottom-start" variant="responsive">
-        <PopoverTrigger>
-          <Button size="lg" variant="link">
-            <FiSettings />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent
-          bg={useColorModeValue("white", "gray.700")}
-          border="1px solid"
-          borderColor={useColorModeValue("gray.300", "gray.600")}
-          borderRadius="xl"
-          shadow="md"
-        >
-          <PopoverArrow />
-          <PopoverBody m="2">
-            <SettingsMenu />
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
+      {router.pathname === "/" && (
+        <Popover placement="bottom-start" variant="responsive">
+          <PopoverTrigger>
+            <Button size="lg" variant="link">
+              <FiSettings />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent
+            bg={useColorModeValue("white", "gray.700")}
+            border="1px solid"
+            borderColor={useColorModeValue("gray.300", "gray.600")}
+            borderRadius="xl"
+            shadow="md"
+          >
+            <PopoverArrow />
+            <PopoverBody m="2">
+              <SettingsMenu />
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+      )}
     </>
   )
 }
