@@ -91,7 +91,7 @@ const TopPick = ({ data }) => {
             <Text as="kbd">
               {row.original.current_price
                 ? Math.round(row.original.current_price * 100) / 100
-                : "N/A"}
+                : "Not For Sale"}
             </Text>
           </Box>
         ),
