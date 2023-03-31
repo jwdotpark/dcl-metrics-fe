@@ -43,7 +43,8 @@ const ActiveUsers = () => {
         <Box mb="4">
           <MyResponsiveBar data={chartData} />
           <BottomLegend
-            description={"Source from status.decentraland.org/metrics"}
+            description={"Source from"}
+            link="https://status.decentraland.org/metrics"
           />
         </Box>
       ) : (

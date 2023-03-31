@@ -6,7 +6,7 @@ import TableComponent from "../stats/partials/TableComponent"
 import BottomLegend from "./partial/BottomLegend"
 
 const TopLand = ({ data }) => {
-  const [dateRange, setDateRange] = useState("totalTop")
+  const [dateRange, setDateRange] = useState("yearTop")
   const dataArr = data[dateRange]
   const tableData = []
 
@@ -35,10 +35,10 @@ const TopLand = ({ data }) => {
 
   const headList = [
     "Map",
-    "Date",
+    "Last Sold At",
     "Coord",
     "Buyer",
-    "Symbol",
+    //"Symbol",
     "ETH Price",
     "Valuation",
   ]
@@ -48,7 +48,7 @@ const TopLand = ({ data }) => {
     "date",
     "coord",
     "buyer",
-    "symbol",
+    //"symbol",
     "eth_price",
     "valuation",
   ]
@@ -56,7 +56,7 @@ const TopLand = ({ data }) => {
   return (
     <BoxWrapper colSpan={6}>
       <BoxTitle
-        name="Top Valuated Land"
+        name="Top Valued Land"
         description="Land parcels in Decentraland that have the highest market value"
         date={""}
         avgData={[]}
@@ -65,11 +65,6 @@ const TopLand = ({ data }) => {
         line={false}
         setLine={false}
       />
-      <TopLandDateRange
-        dateRange={dateRange}
-        setDateRange={setDateRange}
-        name="top-land"
-      />
       <TableComponent
         data={tableData}
         dateRange={dateRange}
@@ -77,7 +72,7 @@ const TopLand = ({ data }) => {
         headList={headList}
         bodyList={bodyList}
       />
-      <BottomLegend description="Source from MetaGameHub DAO" />
+      <BottomLegend description="Source from" link="https://metagamehub.io" />
     </BoxWrapper>
   )
 }

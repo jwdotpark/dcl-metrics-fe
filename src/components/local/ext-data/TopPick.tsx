@@ -85,7 +85,7 @@ const TopPick = ({ data }) => {
         ),
       },
       {
-        Header: "Current Price",
+        Header: "Current Price(Mana)",
         Cell: ({ row }) => (
           <Box>
             <Text as="kbd">
@@ -98,7 +98,7 @@ const TopPick = ({ data }) => {
         accessor: "current_price",
       },
       {
-        Header: "Current Price ETH",
+        Header: "Current Price(ETH)",
         Cell: ({ row }) => (
           <Box>
             <Text as="kbd">
@@ -111,7 +111,7 @@ const TopPick = ({ data }) => {
         accessor: "current_price_eth",
       },
       {
-        Header: "ETH Predicted Price",
+        Header: "Predicted Price(ETH)",
         Cell: ({ row }) => (
           <Box>
             <Text as="kbd">
@@ -129,7 +129,7 @@ const TopPick = ({ data }) => {
           <Box>
             <Text as="kbd">
               {row.original.gap
-                ? Math.round(row.original.gap * 100) / 100
+                ? Math.round(row.original.gap * 100) / 100 + "%"
                 : "N/A"}
             </Text>
           </Box>
@@ -206,52 +206,12 @@ const TopPick = ({ data }) => {
               p="2"
               fontSize="sm"
               borderRadius="md"
-              label="OpenSea"
+              label="Decentraland"
               placement="top"
             >
-              <Link href={row.original.market_links.opensea} target="_blank">
+              <Link href={row.original.external_link} target="_blank">
                 <Button size="xs" variant="link">
-                  <Image
-                    boxSize="22px"
-                    alt="opensea"
-                    src="/images/opensea.png"
-                  />
-                </Button>
-              </Link>
-            </Tooltip>
-            <Tooltip
-              p="2"
-              fontSize="sm"
-              borderRadius="md"
-              label="LooksRare"
-              placement="top"
-            >
-              <Link href={row.original.market_links.looksrare} target="_blank">
-                <Button size="xs" variant="link">
-                  <Image
-                    boxSize="22px"
-                    ml="1"
-                    alt="LooksRare"
-                    src="/images/looksrare.png"
-                  />
-                </Button>
-              </Link>
-            </Tooltip>
-            <Tooltip
-              p="2"
-              fontSize="sm"
-              borderRadius="md"
-              label="X2Y2"
-              placement="top"
-            >
-              <Link href={row.original.market_links.X2Y2} target="_blank">
-                <Button size="xs" variant="link">
-                  <Image
-                    boxSize="22px"
-                    ml="1"
-                    alt="X2Y2"
-                    src="/images/x2y2.png"
-                  />
+                  <Image boxSize="22px" alt="opensea" src="/dcl-logo.svg" />
                 </Button>
               </Link>
             </Tooltip>
@@ -322,12 +282,12 @@ const TopPick = ({ data }) => {
   return (
     <BoxWrapper colSpan={6}>
       <BoxTitle
-        name="Highly Valuated Lands"
+        name="Top Market Deals"
         date=""
         avgData=""
         slicedData=""
         color=""
-        description="High market value based on a variety of factors from MetaGameHub DAO"
+        description="High market value based on a variety of factors"
         line={undefined}
         setLine={undefined}
       />
@@ -458,7 +418,7 @@ const TopPick = ({ data }) => {
           </ButtonGroup>
         </Center>
       </Box>
-      <BottomLegend description="Source from MetaGameHub DAO" />
+      <BottomLegend description="Source from" link="https://metagamehub.io" />
     </BoxWrapper>
   )
 }

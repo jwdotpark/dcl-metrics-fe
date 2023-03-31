@@ -283,14 +283,14 @@ const renderTd = (body, row) => {
           </Box>
         </Td>
       )
-    case "symbol":
-      return (
-        <Td key={body}>
-          <Flex>
-            <Text>{row.symbol}</Text>
-          </Flex>
-        </Td>
-      )
+    //case "symbol":
+    //  return (
+    //    <Td key={body}>
+    //      <Flex>
+    //        <Text>{row.symbol}</Text>
+    //      </Flex>
+    //    </Td>
+    //  )
     case "valuation":
       return (
         <Td key={body}>

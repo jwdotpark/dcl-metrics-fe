@@ -144,7 +144,10 @@ const OnlineUsers = () => {
               avgColor={avgColor}
               line={line}
             />
-            <BottomLegend description="UTC, source from status.decentraland.org/metrics" />
+            <BottomLegend
+              description="UTC, source from"
+              link="https://status.decentraland.org/metrics"
+            />
           </>
         ) : (
           <Center h={chartHeight}>
