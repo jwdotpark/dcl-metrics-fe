@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
 import {
+  Center,
   FormErrorMessage,
   FormControl,
   Button,
@@ -35,6 +36,9 @@ const FeedbackMenu = () => {
 
   return (
     <Box my="4">
+      <Center mb="4">
+        <Text fontWeight="bold">Feedback</Text>
+      </Center>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={errors.sender ? true : false}>
           <InputGroup size="sm">
@@ -48,6 +52,7 @@ const FeedbackMenu = () => {
               <InputLeftAddon
                 bg={useColorModeValue("gray.200", "gray.500")}
                 borderRadius="xl"
+                shadow="md"
               >
                 <Text fontSize="sm">
                   <FiAtSign />
@@ -58,6 +63,7 @@ const FeedbackMenu = () => {
               bg={useColorModeValue("gray.100", "gray.600")}
               borderTopRightRadius="xl"
               borderBottomRightRadius="xl"
+              shadow="md"
               id="sender"
               placeholder="user@site.com, @user "
               size="sm"
@@ -76,6 +82,7 @@ const FeedbackMenu = () => {
             <Textarea
               bg={useColorModeValue("gray.100", "gray.600")}
               borderRadius="xl"
+              shadow="md"
               id="msg"
               placeholder="Hi!"
               size="sm"
