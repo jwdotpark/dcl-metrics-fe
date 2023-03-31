@@ -164,12 +164,12 @@ const GlobalPage: NextPage = (props: Props) => {
           <RentalDay data={rental} />
           <RentalTotal data={rental} />
         </Grid>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+        {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopLand data={topLandRes} />
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopPick data={topPickRes} />
-        </Grid>
+        </Grid>*/}
 
         <LandPicker parcelData={parcelRes} isPage={false} />
       </Box>
