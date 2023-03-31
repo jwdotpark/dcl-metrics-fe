@@ -15,7 +15,7 @@ import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import LandSales from "../src/components/local/stats/rentals/LandSales"
 import OnlineUsers from "../src/components/local/ext-data/OnlineUsers"
 import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
-import { time, isProd, isDev, isLocal } from "../src/lib/data/constant"
+import { isProd, isDev, isLocal } from "../src/lib/data/constant"
 import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 import RentalDay from "../src/components/local/stats/rentals/RentalDay"
@@ -116,7 +116,6 @@ export async function getStaticProps() {
       rental: data,
       latestPost: latestPost,
     },
-    revalidate: time,
   }
 }
 
@@ -165,12 +164,12 @@ const GlobalPage: NextPage = (props: Props) => {
           <RentalDay data={rental} />
           <RentalTotal data={rental} />
         </Grid>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+        {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopLand data={topLandRes} />
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopPick data={topPickRes} />
-        </Grid>
+        </Grid>*/}
 
         <LandPicker parcelData={parcelRes} isPage={false} />
       </Box>

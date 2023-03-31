@@ -12,7 +12,6 @@ import {
   isDev,
   isLocal,
   isProd,
-  time,
 } from "../src/lib/data/constant"
 import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
 
@@ -29,7 +28,6 @@ export async function getStaticProps() {
     const result = { globalParcelRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isDev && !isLocal) {
     const globalParcelRes = await getData(
@@ -40,14 +38,12 @@ export async function getStaticProps() {
     const result = { globalParcelRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isLocal) {
     const globalParcelRes = staticGlobalParcels
     const result = { globalParcelRes }
     return {
       props: result,
-      revalidate: time,
     }
   }
 }

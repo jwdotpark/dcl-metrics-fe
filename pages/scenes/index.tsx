@@ -14,7 +14,6 @@ import {
   isLocal,
   isProd,
   sceneURL,
-  time,
 } from "../../src/lib/data/constant"
 import staticGlobalScenes from "../../public/data/staticGlobalScene.json"
 import SceneTable from "../../src/components/local/stats/SceneTable"
@@ -41,7 +40,6 @@ export async function getStaticProps() {
     const result = { globalSceneRes, sceneRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isDev && !isLocal) {
     const globalSceneRes = await getData(
@@ -54,7 +52,6 @@ export async function getStaticProps() {
     const result = { globalSceneRes, sceneRes }
     return {
       props: result,
-      revalidate: time,
     }
   } else if (isLocal) {
     const globalSceneRes = staticGlobalScenes
@@ -62,7 +59,6 @@ export async function getStaticProps() {
     const result = { globalSceneRes, sceneRes }
     return {
       props: result,
-      revalidate: time,
     }
   }
 }
