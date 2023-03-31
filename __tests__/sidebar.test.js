@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react"
 import SidebarWithHeader from "../src/components/global/SidebarWithHeader"
 import "@testing-library/jest-dom"
 
-// mock router status as in default state
 jest.mock("next/router", () => ({
   useRouter() {
     return {
