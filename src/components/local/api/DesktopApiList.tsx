@@ -1,12 +1,4 @@
-import {
-  Box,
-  Text,
-  List,
-  ListItem,
-  useColorModeValue,
-  Divider,
-} from "@chakra-ui/react"
-import Link from "next/link"
+import { Box, Text, List, Divider } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import SingleListItem from "./SingleListItem"
 
@@ -17,10 +9,6 @@ const DesktopApiList = ({
   setItemIndex,
   setSelectedItem,
 }) => {
-  const noneCategory = data.find((item) => item.data.category === "")
-  const noneCategoryIndex = data.indexOf(noneCategory)
-  console.log(noneCategoryIndex)
-
   return (
     <BoxWrapper colSpan={[6, 6, 6, 2, 2]}>
       <Box m="4">

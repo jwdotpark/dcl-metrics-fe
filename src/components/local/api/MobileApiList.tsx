@@ -5,16 +5,13 @@ import {
   Drawer,
   DrawerBody,
   DrawerContent,
-  DrawerHeader,
   DrawerOverlay,
   GridItem,
   List,
-  ListItem,
   useColorModeValue,
   useDisclosure,
   Text,
 } from "@chakra-ui/react"
-import Link from "next/link"
 import SingleListItem from "./SingleListItem"
 
 const MobileApiList = (props) => {
@@ -46,7 +43,6 @@ const ApiListDrawer = (props) => {
       <Drawer isOpen={isOpen} onClose={onClose} placement="top">
         <DrawerOverlay />
         <DrawerContent>
-          {/*<DrawerHeader borderBottomWidth="1px">API List</DrawerHeader>*/}
           <DrawerBody>
             <Box m="4">
               {categories.map((category) => {

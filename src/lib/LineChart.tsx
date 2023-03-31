@@ -30,28 +30,21 @@ const LineChart = ({
   const dateRange = data[0].data.length
 
   const CustomLayer = (props) => {
-    const { innerWidth } = props
+    const { innerWidth, innerHeight } = props
     return (
       <>
         {rentalData &&
           rentalData.data.map((item, i) => (
             <g key={item.date}>
               <rect
-                x={i * Math.min(innerWidth / dateRange) + 5}
-                y={
-                  chartProps.height === 700
-                    ? chartProps.height - item.y * 10 - 200
-                    : chartProps.height - item.y * 10 - 100
-                }
-                rx={2}
+                x={i * Math.min(innerWidth / dateRange)}
+                y={innerHeight - item.y * 10}
                 ry={2}
                 width={dateRange > 30 ? 5 : 10}
-                height={
-                  chartProps.height === 700 ? item.y * 10 + 100 : item.y * 10
-                }
+                height={item.y * 10}
                 fill="#9F7AEA90"
                 stroke="#9F7AEA"
-              ></rect>
+              />
             </g>
           ))}
       </>
@@ -170,7 +163,8 @@ const LineChart = ({
                   // eslint-disable-next-line react-hooks/rules-of-hooks
                   fill={useColorModeValue("black", "white")}
                 >
-                  {tick.tickIndex * 2}
+                  {chartProps.height === 700 && tick.tickIndex * 10}
+                  {chartProps.height !== 700 && tick.tickIndex * 4}
                 </text>
               )
             },
@@ -190,7 +184,6 @@ const LineChart = ({
         pointBorderColor={{ from: "serieColor" }}
         useMesh={true}
         colors={color}
-        //colorBy={(d) => d.color}
         enableArea={chartProps.toggleArea}
         enableCrosshair={true}
         crosshairType="bottom-left"
