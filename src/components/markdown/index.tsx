@@ -1,4 +1,13 @@
-import { Box, Text, useColorModeValue } from "@chakra-ui/react"
+import {
+  Box,
+  Text,
+  Divider,
+  OrderedList,
+  UnorderedList,
+  useColorModeValue,
+} from "@chakra-ui/react"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { oneDark, oneLight } from "../../../src/lib/data/syntaxHighlight"
 
 export const CallOut = ({ children }) => {
   return (
@@ -24,5 +33,94 @@ export const MDYoutube = ({ id }) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       ></iframe>
     </Box>
+  )
+}
+
+export const code = ({ node, inline, className, children, ...props }) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const syntaxColor = useColorModeValue(oneLight, oneDark)
+  const match = /language-(\w+)/.exec(className || "")
+  return !inline && match ? (
+    <Box overflow="clip" mb="4" borderRadius="xl">
+      <SyntaxHighlighter
+        style={syntaxColor}
+        language={match[1]}
+        PreTag="div"
+        {...props}
+      >
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    </Box>
+  ) : (
+    <code className={className} {...props}>
+      {children}
+    </code>
+  )
+}
+
+export const ul = ({ children }) => {
+  return <UnorderedList my="8">{children}</UnorderedList>
+}
+
+export const ol = ({ children }) => {
+  return <OrderedList my="8">{children}</OrderedList>
+}
+
+export const p = ({ children }) => {
+  return <Text mb="8">{children}</Text>
+}
+
+export const h1 = ({ children }) => {
+  return (
+    <Text as="h1" mb="8" fontSize={["xl", "xl", "2xl", "3xl"]}>
+      <kbd>
+        <u>{children}</u>
+      </kbd>
+      <Divider />
+    </Text>
+  )
+}
+
+export const h2 = ({ children }) => {
+  return (
+    <Text as="h2" mb="8" fontSize="3xl">
+      {children}
+      <Divider mb="4" />
+    </Text>
+  )
+}
+
+export const h3 = ({ children }) => {
+  return (
+    <Text as="h3" mb="8" color="blue.600" fontSize="2xl">
+      {children}
+    </Text>
+  )
+}
+
+export const h4 = ({ children }) => {
+  return (
+    <Text as="h4" mb="8" fontSize="xl">
+      {children}
+      <Divider mb="4" />
+    </Text>
+  )
+}
+
+export const h5 = ({ children }) => {
+  return (
+    <Text as="h5" mb="8" fontSize="lg">
+      {children}
+      <Divider mb="4" />
+    </Text>
+  )
+}
+
+export const h6 = ({ children }) => {
+  return (
+    <Text as="h6" mb="8" fontSize="md">
+      {children}
+      <Divider mb="4" />
+    </Text>
   )
 }
