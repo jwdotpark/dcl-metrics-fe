@@ -7,15 +7,41 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
 import ErrorBoundary from "../src/components/error/ErrorBoundary"
 import { Inter } from "@next/font/google"
+import { AnimatePresence } from "framer-motion"
+import Router from "next/router"
+import { useEffect, useState } from "react"
 
 const InterFont = Inter({
   subsets: ["latin"],
 })
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+function MyApp({
+  Component,
+  router,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   const telemetry = () => {
     return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }
+
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const start = () => {
+      setLoading(true)
+    }
+    const end = () => {
+      setLoading(false)
+    }
+    Router.events.on("routeChangeStart", start)
+    Router.events.on("routeChangeComplete", end)
+    Router.events.on("routeChangeError", end)
+    return () => {
+      Router.events.off("routeChangeStart", start)
+      Router.events.off("routeChangeComplete", end)
+      Router.events.off("routeChangeError", end)
+    }
+  }, [])
 
   return (
     <ChakraProvider theme={theme}>
@@ -46,9 +72,12 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           ></Script>
         )}
         <ErrorBoundary>
-          <main className={InterFont.className}>
-            <Component {...pageProps} />
-          </main>
+          {/* @ts-ignore */}
+          <AnimatePresence initial={false} mode="wait">
+            <main className={InterFont.className}>
+              <Component {...pageProps} key={router.asPath} />
+            </main>
+          </AnimatePresence>
         </ErrorBoundary>
       </Provider>
     </ChakraProvider>
