@@ -8,8 +8,6 @@ import { Provider } from "jotai"
 import ErrorBoundary from "../src/components/error/ErrorBoundary"
 import { Inter } from "@next/font/google"
 import { AnimatePresence } from "framer-motion"
-import Router from "next/router"
-import { useEffect, useState } from "react"
 
 const InterFont = Inter({
   subsets: ["latin"],
@@ -23,25 +21,6 @@ function MyApp({
   const telemetry = () => {
     return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }
-
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    const start = () => {
-      setLoading(true)
-    }
-    const end = () => {
-      setLoading(false)
-    }
-    Router.events.on("routeChangeStart", start)
-    Router.events.on("routeChangeComplete", end)
-    Router.events.on("routeChangeError", end)
-    return () => {
-      Router.events.off("routeChangeStart", start)
-      Router.events.off("routeChangeComplete", end)
-      Router.events.off("routeChangeError", end)
-    }
-  }, [])
 
   return (
     <ChakraProvider theme={theme}>
