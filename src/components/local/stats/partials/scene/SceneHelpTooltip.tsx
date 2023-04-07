@@ -1,5 +1,6 @@
 import { Tooltip, Box, useBreakpointValue } from "@chakra-ui/react"
 import { FiInfo } from "react-icons/fi"
+import ToolTip from "../../../../layout/local/ToolTip"
 
 const SceneHelpTooltip = (description) => {
   const helpTooltipSize = useBreakpointValue({
@@ -10,17 +11,11 @@ const SceneHelpTooltip = (description) => {
   })
 
   return (
-    <Tooltip
-      p="2"
-      fontSize="sm"
-      borderRadius="md"
-      label={description.description}
-      placement="auto"
-    >
+    <ToolTip label={description.description}>
       <Box mr="2">
         <FiInfo size={helpTooltipSize} />
       </Box>
-    </Tooltip>
+    </ToolTip>
   )
 }
 

@@ -1,6 +1,5 @@
 import {
   Box,
-  Tooltip,
   useColorModeValue,
   Flex,
   HStack,
@@ -15,6 +14,7 @@ import { useRouter } from "next/router"
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi"
 import { sidebarList } from "../sidebarList"
 import NavItem from "./NavItem"
+import ToolTip from "../../layout/local/ToolTip"
 
 interface SidebarProps extends BoxProps {
   onClose: () => void
@@ -47,13 +47,7 @@ const SidebarContent = ({
       }
     }
     return (
-      <Tooltip
-        p="2"
-        fontSize="sm"
-        borderRadius="xl"
-        label={label}
-        placement="right"
-      >
+      <ToolTip label={label}>
         <Box ml={sidebarOpen && subItem && "4"}>
           <Link href={"/" + name} passHref legacyBehavior>
             <a>
@@ -79,7 +73,7 @@ const SidebarContent = ({
             </a>
           </Link>
         </Box>
-      </Tooltip>
+      </ToolTip>
     )
   }
 
@@ -136,13 +130,7 @@ const SidebarContent = ({
           />
         ))}
         <Spacer />
-        <Tooltip
-          p="2"
-          fontSize="sm"
-          borderRadius="xl"
-          label={sidebarOpen ? "Collapse" : "Expand"}
-          placement="right"
-        >
+        <ToolTip label={sidebarOpen ? "Collapse" : "Expand"}>
           <Box display={{ base: "none", md: "block" }}>
             <NavItem
               height="3rem"
@@ -153,7 +141,7 @@ const SidebarContent = ({
               <Text>Collapse</Text>
             </NavItem>
           </Box>
-        </Tooltip>
+        </ToolTip>
       </Flex>
     </Box>
   )

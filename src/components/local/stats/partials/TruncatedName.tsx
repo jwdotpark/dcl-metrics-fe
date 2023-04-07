@@ -1,4 +1,5 @@
-import { Button, Tooltip, Text, useToast, Box } from "@chakra-ui/react"
+import { Text, useToast, Box } from "@chakra-ui/react"
+import ToolTip from "../../../layout/local/ToolTip"
 
 const TruncateName = (name: string) => {
   const toast = useToast()
@@ -22,14 +23,7 @@ const TruncateName = (name: string) => {
   const stringLimit = 13
   if (name.length > stringLimit) {
     return (
-      <Tooltip
-        p="2"
-        fontSize="sm"
-        borderRadius="xl"
-        aria-label="A tooltip"
-        label={name}
-        placement="top"
-      >
+      <ToolTip label={name}>
         <Text
           as="span"
           overflow="hidden"
@@ -40,7 +34,7 @@ const TruncateName = (name: string) => {
         >
           {name.slice(0, stringLimit) + ".."}
         </Text>
-      </Tooltip>
+      </ToolTip>
     )
   }
   return name

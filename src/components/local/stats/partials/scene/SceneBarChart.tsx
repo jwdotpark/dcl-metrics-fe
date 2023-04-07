@@ -8,6 +8,7 @@ import {
 import { ResponsiveBar } from "@nivo/bar"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 import TooltipTable from "../TableTooltip"
+import ToolTip from "../../../../layout/local/ToolTip"
 
 const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
   const chartData = Object.keys(visitors_by_hour_histogram).map((key) => {
@@ -34,15 +35,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
   })
 
   return (
-    <Tooltip
-      p="2"
-      fontSize="sm"
-      borderRadius="md"
-      shadow="xl"
-      hasArrow
-      label="This chart shows the number of users that is presented in each hour of the day"
-      placement="auto"
-    >
+    <ToolTip label="This chart shows the number of users that is presented in each hour of the day">
       <Box
         w="100%"
         h="520px"
@@ -140,7 +133,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
           }}
         />
       </Box>
-    </Tooltip>
+    </ToolTip>
   )
 }
 

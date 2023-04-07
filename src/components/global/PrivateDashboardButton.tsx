@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { decrypt } from "../../lib/hooks/utils"
 import { useEffect, useState } from "react"
 import { sceneID } from "../../lib/data/sceneID"
+import ToolTip from "../layout/local/ToolTip"
 
 const PrivateDashboardButton = () => {
   const router = useRouter()
@@ -22,24 +23,16 @@ const PrivateDashboardButton = () => {
   const title = sceneID[localStorage.getItem("account")].name
 
   return (
-    <>
-      <Tooltip
-        p="2"
-        fontSize="sm"
-        borderRadius="md"
-        label="Private Dashboard"
-        placement="auto"
+    <ToolTip label="Private Dashboard">
+      <Button
+        onClick={handleClick}
+        rightIcon={<FiBriefcase />}
+        size="lg"
+        variant="link"
       >
-        <Button
-          onClick={handleClick}
-          rightIcon={<FiBriefcase />}
-          size="lg"
-          variant="link"
-        >
-          <Text display={["none", "flex"]}>{title}</Text>
-        </Button>
-      </Tooltip>
-    </>
+        <Text display={["none", "flex"]}>{title}</Text>
+      </Button>
+    </ToolTip>
   )
 }
 

@@ -4,7 +4,6 @@ import {
   Flex,
   Spacer,
   IconButton,
-  Tooltip,
   Button,
   useDisclosure,
   Modal,
@@ -18,6 +17,7 @@ import {
 } from "@chakra-ui/react"
 import DatePicker from "../../local/stats/scenes/DatePicker"
 import { FiDownload } from "react-icons/fi"
+import ToolTip from "./ToolTip"
 
 const SceneTitle = ({
   name,
@@ -92,12 +92,7 @@ const SceneTitle = ({
                       colorScheme="green"
                       onClick={handleSaveClick}
                     >
-                      {/*<a
-                        href={`${getEndpoint(`reports/${uuid}`)}`}
-                        download={`${name}.csv`}
-                      >*/}
                       Download
-                      {/*</a>*/}
                     </Button>
                     <Button borderRadius="xl" onClick={handleCloseClick}>
                       Cancel
@@ -106,13 +101,7 @@ const SceneTitle = ({
                 </ModalFooter>
               </ModalContent>
             </Modal>
-            <Tooltip
-              p="2"
-              fontSize="sm"
-              borderRadius="md"
-              label="Download CSV"
-              placement="top"
-            >
+            <ToolTip label="Download CSV">
               <IconButton
                 sx={{ transform: "translateY(1px)" }}
                 border="2px solid"
@@ -123,7 +112,7 @@ const SceneTitle = ({
                 onClick={handleCSVClick}
                 variant="outline"
               />
-            </Tooltip>
+            </ToolTip>
           </Box>
           <Box w="100%">
             <DatePicker

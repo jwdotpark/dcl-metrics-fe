@@ -1,17 +1,10 @@
-import {
-  Text,
-  useColorModeValue,
-  Box,
-  Avatar,
-  Center,
-  Spinner,
-  Tooltip,
-} from "@chakra-ui/react"
+import { Box, Avatar, Center, Spinner, Tooltip } from "@chakra-ui/react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import verifiedBadge from "../../../../../../public/verified.svg"
 import guestBadge from "../../../../../../public/guest.svg"
 import staticAvatar from "../../../../../../public/avatar.png"
+import ToolTip from "../../../../layout/local/ToolTip"
 
 const SceneProfilePicture = ({ address, verified, guest }) => {
   const [pic, setPic] = useState<string>()
@@ -49,13 +42,7 @@ const SceneProfilePicture = ({ address, verified, guest }) => {
               src={pic}
             />
             {guest && (
-              <Tooltip
-                p="2"
-                fontSize="sm"
-                borderRadius="xl"
-                label="Guest user"
-                placement="auto"
-              >
+              <ToolTip label="Guest user">
                 <Box
                   display="inline-block"
                   boxSize="12px"
@@ -72,16 +59,10 @@ const SceneProfilePicture = ({ address, verified, guest }) => {
                     />
                   </Center>
                 </Box>
-              </Tooltip>
+              </ToolTip>
             )}
             {verified && (
-              <Tooltip
-                p="2"
-                fontSize="sm"
-                borderRadius="xl"
-                label="User owns DCL ENS token"
-                placement="auto"
-              >
+              <ToolTip label="User owns DCL ENS token">
                 <Box
                   display="inline-block"
                   css={{ transform: "translateX(12px) translateY(-12px)" }}
@@ -93,7 +74,7 @@ const SceneProfilePicture = ({ address, verified, guest }) => {
                     height="18"
                   />
                 </Box>
-              </Tooltip>
+              </ToolTip>
             )}
           </Box>
         )}

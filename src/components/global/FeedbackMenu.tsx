@@ -11,11 +11,11 @@ import {
   useColorModeValue,
   InputGroup,
   InputLeftAddon,
-  Tooltip,
   FormLabel,
 } from "@chakra-ui/react"
 import { FiAtSign, FiMessageCircle } from "react-icons/fi"
 import { sendFeedback } from "../../lib/hooks/sendNotification"
+import ToolTip from "../layout/local/ToolTip"
 
 const FeedbackMenu = () => {
   const {
@@ -69,13 +69,7 @@ const FeedbackMenu = () => {
           </InputGroup>
           <FormLabel>Contact</FormLabel>
           <InputGroup mb="2" size="sm">
-            <Tooltip
-              p="2"
-              fontSize="sm"
-              borderRadius="md"
-              label="Account that developers can contact you on"
-              placement="auto"
-            >
+            <ToolTip label="Account that we can contact you on">
               <InputLeftAddon
                 bg={useColorModeValue("gray.200", "gray.500")}
                 borderRadius="xl"
@@ -85,7 +79,7 @@ const FeedbackMenu = () => {
                   <FiAtSign />
                 </Text>
               </InputLeftAddon>
-            </Tooltip>
+            </ToolTip>
             <Input
               bg={useColorModeValue("gray.100", "gray.600")}
               borderTopRightRadius="xl"
