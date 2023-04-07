@@ -38,6 +38,7 @@ import BottomLegend from "./partial/BottomLegend"
 import Link from "next/link"
 import useSWR from "swr"
 import ProfilePicture from "../ProfilePicture"
+import ToolTip from "../../layout/local/ToolTip"
 
 const TopPick = ({ data }) => {
   const columns = useMemo(
@@ -174,13 +175,8 @@ const TopPick = ({ data }) => {
                   guest={false}
                 />
               </Box>
-              <Tooltip
-                display={name && "none"}
-                p="2"
-                fontSize="sm"
-                borderRadius="md"
-                label="User does not have a name for Decentraland"
-                placement="top"
+              <ToolTip
+                label={name ? "" : "User does not have a name for Decentraland"}
               >
                 <Link
                   href={`https://market.decentraland.org/accounts/${row.original.owner}`}
@@ -193,7 +189,7 @@ const TopPick = ({ data }) => {
                     {name ? name : "N/A"}
                   </Text>
                 </Link>
-              </Tooltip>
+              </ToolTip>
             </Flex>
           )
         },
@@ -202,19 +198,13 @@ const TopPick = ({ data }) => {
         Header: "Ext Link",
         Cell: ({ row }) => (
           <Flex>
-            <Tooltip
-              p="2"
-              fontSize="sm"
-              borderRadius="md"
-              label="Decentraland"
-              placement="top"
-            >
+            <ToolTip label="Decentraland">
               <Link href={row.original.external_link} target="_blank">
                 <Button size="xs" variant="link">
                   <Image boxSize="22px" alt="opensea" src="/dcl-logo.svg" />
                 </Button>
               </Link>
-            </Tooltip>
+            </ToolTip>
           </Flex>
         ),
       },

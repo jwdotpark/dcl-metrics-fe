@@ -12,7 +12,6 @@ import {
   Image,
   useColorModeValue,
   Box,
-  Tooltip,
 } from "@chakra-ui/react"
 import {
   dateRangeStr,
@@ -27,6 +26,7 @@ import { isSafari, isMobileSafari } from "react-device-detect"
 import moment from "moment"
 import Link from "next/link"
 import useSWR from "swr"
+import ToolTip from "../../../layout/local/ToolTip"
 
 const TableComponent = ({
   data,
@@ -261,15 +261,9 @@ const renderTd = (body, row) => {
                 sx={{ transform: "translateY(5px)" }}
                 display="inline-block"
               >
-                <Tooltip
-                  p="2"
-                  fontSize="sm"
-                  borderRadius="xl"
-                  label={`User does not have a name for Decentraland`}
-                  placement="top"
-                >
+                <ToolTip label="User does not have a name for Decentraland">
                   <Text>{name ? name : "N/A"}</Text>
-                </Tooltip>
+                </ToolTip>
               </Center>
             </Link>
           </Box>

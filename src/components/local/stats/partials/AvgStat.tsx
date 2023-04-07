@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Box, Text, Flex, Tooltip } from "@chakra-ui/react"
+import { Box, Text, Flex } from "@chakra-ui/react"
 import CountUp from "react-countup"
+import ToolTip from "../../../layout/local/ToolTip"
 
 const AvgStat = ({ avgData, data, color, line, setLine }) => {
   if (typeof avgData === "number") {
@@ -47,13 +48,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
                   fontSize="sm"
                 >
                   <Flex direction="column">
-                    <Tooltip
-                      p="2"
-                      fontSize="sm"
-                      borderRadius="xl"
-                      label={tooltipStr(item.id, data)}
-                      placement="top"
-                    >
+                    <ToolTip label={tooltipStr(item.id, data)}>
                       <Box
                         mr="2"
                         color={color[i]}
@@ -71,7 +66,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
                       >
                         <CountUp end={item.value} duration={0.5} />
                       </Box>
-                    </Tooltip>
+                    </ToolTip>
                     <Box
                       minW={[0, 0, "auto", 140]}
                       mr="2"

@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react"
 import SidebarWithHeader from "../src/components/global/SidebarWithHeader"
 import "@testing-library/jest-dom"
+import { act } from "react-dom/test-utils"
 
-// mock router status as in default state
 jest.mock("next/router", () => ({
   useRouter() {
     return {
@@ -39,7 +39,11 @@ describe("Sidebar", () => {
     render(<SidebarWithHeader />)
     const title = screen.getByTestId("sidebar-title")
     const collapseBtn = screen.getByText(/collapse/i)
-    collapseBtn.click()
+
+    await act(async () => {
+      collapseBtn.click()
+    })
+
     expect(title.classList.contains("collapsed")).toBe(false)
   })
 })

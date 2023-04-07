@@ -1,6 +1,7 @@
-import { Button, Tooltip } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { FiLogOut } from "react-icons/fi"
+import ToolTip from "../layout/local/ToolTip"
 
 const LogOutButton = () => {
   const router = useRouter()
@@ -9,24 +10,16 @@ const LogOutButton = () => {
     router.push("/")
   }
   return (
-    <>
-      <Tooltip
-        p="2"
-        fontSize="sm"
-        borderRadius="md"
-        label="Log Out"
-        placement="auto"
+    <ToolTip label="Log Out">
+      <Button
+        display={["none", "flex"]}
+        onClick={handleClick}
+        size="lg"
+        variant="link"
       >
-        <Button
-          display={["none", "flex"]}
-          onClick={handleClick}
-          size="lg"
-          variant="link"
-        >
-          <FiLogOut />
-        </Button>
-      </Tooltip>
-    </>
+        <FiLogOut />
+      </Button>
+    </ToolTip>
   )
 }
 

@@ -38,8 +38,6 @@ import {
 import moment from "moment"
 
 const SceneTable = ({ sceneRes }) => {
-  console.log(sceneRes)
-
   const data = useMemo(() => sceneRes, [sceneRes])
 
   const columns = useMemo(
