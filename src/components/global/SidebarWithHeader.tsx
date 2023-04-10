@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react"
 import TopBar from "./sidebar/TopBar"
 import SidebarContent from "./sidebar/SidebarContent"
+import { motion } from "framer-motion"
 
 export default function SidebarWithHeader({
   children,
@@ -87,7 +88,14 @@ export default function SidebarWithHeader({
         ml={{ base: 0, md: sidebarStatus }}
       >
         <Box w="100%" maxW="1920px" p="4" data-testid="sidebar">
-          {children}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            {children}
+          </motion.div>
         </Box>
       </Flex>
     </Box>
