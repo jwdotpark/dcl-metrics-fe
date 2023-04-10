@@ -55,9 +55,14 @@ export const sendFeedback = async (values) => {
       mode: "no-cors",
       body: JSON.stringify({
         level: "Feedback",
-        message: values.msg,
+        message: "Message: " + values.msg,
         payload: {
-          sender: values.sender ? values.sender : "Anonymous",
+          sender:
+            values.name || values.contact
+              ? `${values.name && values.name}(${
+                  values.contact && values.contact
+                })`
+              : "Anonymous",
         },
       }),
     })

@@ -161,6 +161,7 @@ const MapButtonGroup = ({
             <Button
               zIndex="docked"
               bg={btnBg}
+              border="none"
               borderRadius="xl"
               shadow="md"
               onClick={() => setZoom(Number((zoom - 0.5).toFixed(1)))}
@@ -181,7 +182,7 @@ const MapButtonGroup = ({
                 placeholder={tempCoord.x}
                 size="sm"
                 type="number"
-                variant="outline"
+                variant="filled"
               />
               <Input
                 w="50px"
@@ -195,7 +196,7 @@ const MapButtonGroup = ({
                 placeholder={tempCoord.y}
                 size="sm"
                 type="number"
-                variant="outline"
+                variant="filled"
               />
               <Button display="none" type="submit">
                 Submit
@@ -204,6 +205,7 @@ const MapButtonGroup = ({
             <Button
               zIndex="docked"
               bg={btnBg}
+              border="none"
               borderRadius="xl"
               shadow="md"
               onClick={() => setZoom(Number((zoom + 0.5).toFixed(1)))}

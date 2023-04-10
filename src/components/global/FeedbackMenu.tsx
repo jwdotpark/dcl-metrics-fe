@@ -41,7 +41,7 @@ const FeedbackMenu = () => {
         <Text fontWeight="bold">Feedback?</Text>
       </Center>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl isInvalid={errors.sender ? true : false}>
+        <FormControl isInvalid={errors.contact ? true : false}>
           <FormLabel>Your Name</FormLabel>
           <InputGroup mb="2" size="sm">
             <InputLeftAddon
@@ -85,18 +85,18 @@ const FeedbackMenu = () => {
               borderTopRightRadius="xl"
               borderBottomRightRadius="xl"
               shadow={useColorModeValue("sm", "md")}
-              id="sender"
+              id="contact"
               placeholder="user@site.com, @user "
               size="sm"
               variant="filled"
-              {...register("sender", {
+              {...register("contact", {
                 maxLength: { value: 320, message: "Too long!" },
               })}
             />
           </InputGroup>
           <FormErrorMessage>
             {/* @ts-ignore */}
-            {errors.sender && errors.sender.message}
+            {errors.contact && errors.contact.message}
           </FormErrorMessage>
 
           <FormLabel mb="2">Message</FormLabel>
@@ -127,7 +127,7 @@ const FeedbackMenu = () => {
           borderRadius="xl"
           shadow={useColorModeValue("sm", "md")}
           colorScheme={useColorModeValue("teal", "green")}
-          disabled={errors.sender || errors.msg ? true : false}
+          disabled={errors.contact || errors.msg ? true : false}
           isLoading={isSubmitting}
           type="submit"
         >
