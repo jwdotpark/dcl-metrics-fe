@@ -59,8 +59,8 @@ export const sendFeedback = async (values) => {
         payload: {
           sender:
             values.name || values.contact
-              ? `${values.name && values.name}(${
-                  values.contact && values.contact
+              ? `${values.name ? values.name : "No Name"}(${
+                  values.contact ? values.contact : "No Contact"
                 })`
               : "Anonymous",
         },
