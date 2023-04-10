@@ -7,12 +7,17 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
 import ErrorBoundary from "../src/components/error/ErrorBoundary"
 import { Inter } from "@next/font/google"
+import { AnimatePresence } from "framer-motion"
 
 const InterFont = Inter({
   subsets: ["latin"],
 })
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+function MyApp({
+  Component,
+  router,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   const telemetry = () => {
     return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }
@@ -46,9 +51,12 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           ></Script>
         )}
         <ErrorBoundary>
-          <main className={InterFont.className}>
-            <Component {...pageProps} />
-          </main>
+          {/* @ts-ignore */}
+          <AnimatePresence initial={false} mode="wait">
+            <main className={InterFont.className}>
+              <Component {...pageProps} key={router.asPath} />
+            </main>
+          </AnimatePresence>
         </ErrorBoundary>
       </Provider>
     </ChakraProvider>

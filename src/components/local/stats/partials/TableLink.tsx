@@ -10,6 +10,7 @@ import Link from "next/link"
 import Image from "next/image"
 import dclLogo from "../../../../../public/dcl-logo.svg"
 import etherscanLogo from "../../../../../public/etherscan-logo.svg"
+import ToolTip from "../../../layout/local/ToolTip"
 
 const TableLink = ({ address }) => {
   const dclLink = "https://market.decentraland.org/accounts/" + address
@@ -20,13 +21,7 @@ const TableLink = ({ address }) => {
       <ButtonGroup size="sm">
         <Link href={dclLink} legacyBehavior>
           <a target="_blank" rel="noopener noreferrer">
-            <Tooltip
-              p="2"
-              fontSize="sm"
-              borderRadius="xl"
-              label="Decentraland"
-              placement="auto"
-            >
+            <ToolTip label="Decentraland">
               <Button
                 borderRadius="full"
                 shadow="sm"
@@ -45,19 +40,13 @@ const TableLink = ({ address }) => {
                   />
                 </Center>
               </Button>
-            </Tooltip>
+            </ToolTip>
           </a>
         </Link>
 
         <Link href={etherscanLink} legacyBehavior>
           <a target="_blank" rel="noopener noreferrer">
-            <Tooltip
-              p="2"
-              fontSize="sm"
-              borderRadius="xl"
-              label="Etherscan"
-              placement="auto"
-            >
+            <ToolTip label="Etherscan">
               <Button
                 borderRadius="200"
                 shadow="sm"
@@ -76,7 +65,7 @@ const TableLink = ({ address }) => {
                   />
                 </Center>
               </Button>
-            </Tooltip>
+            </ToolTip>
           </a>
         </Link>
       </ButtonGroup>

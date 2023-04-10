@@ -12,6 +12,7 @@ import {
 import { ResponsiveLine } from "@nivo/line"
 import { useMemo } from "react"
 import { SceneColor } from "./hooks/utils"
+import ToolTip from "../components/layout/local/ToolTip"
 
 const MultiLineChart = ({ res, selectedScene }) => {
   const isMobile = useBreakpointValue({
@@ -73,15 +74,7 @@ const MultiLineChart = ({ res, selectedScene }) => {
   )
 
   return (
-    <Tooltip
-      p="2"
-      fontSize="sm"
-      borderRadius="md"
-      shadow="xl"
-      hasArrow
-      label="This chart shows the number of users and the time that user stayed in the scene"
-      placement="auto"
-    >
+    <ToolTip label="This chart shows the number of users and the time that user stayed in the scene">
       <Box
         h="435px"
         mt={[2, 2, 6, 0]}
@@ -244,7 +237,7 @@ const MultiLineChart = ({ res, selectedScene }) => {
           }}
         />
       </Box>
-    </Tooltip>
+    </ToolTip>
   )
 }
 

@@ -1,6 +1,5 @@
 // @ts-nocheck
 import {
-  Tooltip,
   Center,
   Flex,
   Text,
@@ -18,6 +17,7 @@ import TableLink from "../TableLink"
 import TruncateName from "../TruncatedName"
 import moment from "moment"
 import momentDurationFormatSetup from "moment-duration-format"
+import ToolTip from "../../../../layout/local/ToolTip"
 
 const SceneMarathonUsers = ({ data }) => {
   momentDurationFormatSetup(moment)
@@ -121,19 +121,11 @@ const SceneMarathonUsers = ({ data }) => {
       borderRadius="xl"
       shadow="md"
     >
-      <Tooltip
-        p="2"
-        //fontSize="sm"
-        borderRadius="md"
-        shadow="xl"
-        hasArrow
-        label="This table shows the top 10 users who have spent the most time in the scene"
-        placement="auto"
-      >
+      <ToolTip label="This table shows the top 10 users who have spent the most time in the scene">
         <Box p="4">
           <MarathonUserTable />
         </Box>
-      </Tooltip>
+      </ToolTip>
     </Box>
   )
 }

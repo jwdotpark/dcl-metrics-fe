@@ -44,9 +44,6 @@ export const decrypt = (ciphertext) => {
 
 export const heatmapColor = (value) => {
   let h
-  //if (value === 1) {
-  //  return
-  //}
   if (value < 25) {
     h = (1.0 - value / 25) * 240
   } else if (value < 50) {

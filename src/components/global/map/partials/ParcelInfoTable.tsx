@@ -6,13 +6,11 @@ import {
   Tbody,
   Td,
   TableContainer,
-  Box,
-  Button,
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react"
-import moment from "moment"
 import { convertSeconds } from "../../../../lib/hooks/utils"
+import ToolTip from "../../../layout/local/ToolTip"
 
 const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
   const {
@@ -81,17 +79,11 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
             <Tr>
               <Td>Scene Name</Td>
               <Td isNumeric>
-                <Tooltip
-                  p="2"
-                  fontSize="sm"
-                  borderRadius="md"
-                  label={scene.name}
-                  placement="auto"
-                >
+                <ToolTip label={scene.name}>
                   <Text wordBreak="break-all" noOfLines={1}>
                     {scene.name}
                   </Text>
-                </Tooltip>
+                </ToolTip>
               </Td>
             </Tr>
           )}
