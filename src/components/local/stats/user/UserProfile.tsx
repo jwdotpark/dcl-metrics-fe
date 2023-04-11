@@ -10,6 +10,8 @@ import {
   Td,
   Tr,
   useColorModeValue,
+  useBreakpointValue,
+  useToast,
 } from "@chakra-ui/react"
 
 const UserProfile = ({ data }) => {
@@ -24,12 +26,34 @@ const UserProfile = ({ data }) => {
     verified,
   } = data
 
+  const responsiveStr = useBreakpointValue({
+    xs: 5,
+    sm: 5,
+    md: 50,
+    lg: 20,
+    xl: 20,
+    base: 10,
+  })
+
   const truncateName = (name: string) => {
-    const nameLength = 35
-    if (name && name.length > nameLength) {
-      return name.slice(0, nameLength) + "..."
+    const nameLength = responsiveStr
+    if (name.length > nameLength) {
+      return name.slice(0, nameLength) + ".."
     }
     return name
+  }
+
+  const toast = useToast()
+
+  const handleToast = (value) => {
+    navigator.clipboard.writeText(value)
+    toast({
+      description: "Address " + value + " has been copied to the clipboard.",
+      duration: 2000,
+      isClosable: true,
+      position: "bottom-right",
+      status: "success",
+    })
   }
 
   return (
@@ -83,6 +107,19 @@ const UserProfile = ({ data }) => {
                     <b>{dao_member ? "Yes" : "No"}</b>
                   </Td>
                 </Tr>
+                <Tr>
+                  <Td>Address</Td>
+                  <Td isNumeric>
+                    <Box
+                      _hover={{ cursor: "pointer" }}
+                      onClick={() => handleToast(address)}
+                    >
+                      <Text as="kbd" noOfLines={1}>
+                        <b>{truncateName(address)}</b>
+                      </Text>
+                    </Box>
+                  </Td>
+                </Tr>
               </Tbody>
             </Table>
           </Box>
@@ -104,17 +141,23 @@ const UserProfile = ({ data }) => {
               <Tbody>
                 <Tr>
                   <Td>First Seen At</Td>
-                  <Td isNumeric>{first_seen}</Td>
+                  <Td isNumeric>
+                    <b>{first_seen}</b>
+                  </Td>
                 </Tr>
                 <Tr>
                   <Td>Last Seen At</Td>
-                  <Td isNumeric>{last_seen}</Td>
+                  <Td isNumeric>
+                    <b>{last_seen}</b>
+                  </Td>
                 </Tr>
                 <Tr>
                   <Td>Status</Td>
                   <Td isNumeric>
-                    {verified && "Verified"}
-                    {guest && "Guest User"}
+                    <b>
+                      {verified && "Verified"}
+                      {guest && "Guest User"}
+                    </b>
                   </Td>
                 </Tr>
               </Tbody>
