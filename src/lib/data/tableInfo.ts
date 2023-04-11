@@ -16,7 +16,7 @@ export const dateRangeStr = (value) => {
 }
 
 export const sliceStr = (value) => {
-  const length = 30
+  const length = 50
   if (value && value.length > length) {
     return value.slice(0, length) + "..."
   } else {

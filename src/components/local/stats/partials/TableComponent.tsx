@@ -125,7 +125,9 @@ const renderTd = (body, row) => {
     case "address":
       return (
         <>
-          <Td key={body}>{sliceStr(row.address)}</Td>
+          <Td key={body}>
+            <kbd>{sliceStr(row.address)}</kbd>
+          </Td>
           <Td key={body}>
             <TableLink address={row.address} />
           </Td>
