@@ -7,6 +7,7 @@ import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
+import UserNFT from "../../src/components/local/stats/user/UserNFT"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -47,7 +48,6 @@ export async function getServerSideProps(context) {
 const SingleUserPage = (props) => {
   const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
   const { userAddressRes, nftRes, daoActivityRes } = props
-  console.log(daoActivityRes)
 
   return (
     <Layout>
@@ -55,12 +55,8 @@ const SingleUserPage = (props) => {
         <UserProfile data={userAddressRes} />
         <UserInfo data={userAddressRes} />
       </Grid>
-      <Grid
-        gap={4}
-        templateColumns={`repeat(${gridColumn}, 1fr)`}
-        mb="4"
-      >
-        
+      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+        <UserNFT data={nftRes} />
       </Grid>
     </Layout>
   )

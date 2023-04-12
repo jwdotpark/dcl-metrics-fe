@@ -5,7 +5,7 @@ const UserProfile = ({ data }) => {
   const { avatar_url, name } = data
 
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 2, 3]}>
+    <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <Flex
         direction={["column", "column", "column", "row"]}
         mb={[-4, 0, 0, 0, 0]}

@@ -52,19 +52,19 @@ const UserInfo = ({ data }) => {
     })
   }
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 2, 3]}>
+    <BoxWrapper colSpan={[1, 1, 1, 2, 4]}>
       <Flex direction="column" w="auto" m="4">
         <Box w="100%">
           <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
             <Flex w="100%" h="100%">
-              <Box>Name</Box>
+              <Box>NAME</Box>
               <Spacer />
               <Box>
                 <b>{name}</b>
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
-              <Box>DAO Member?</Box>
+              <Box>DAO MEMBER?</Box>
               <Spacer />
               <Box>
                 <Text color={dao_member ? "green" : "red"}>
@@ -73,7 +73,7 @@ const UserInfo = ({ data }) => {
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
-              <Box>Address</Box>
+              <Box>ADDRESS</Box>
               <Spacer />
               <Box
                 _hover={{ cursor: "pointer" }}
@@ -86,7 +86,7 @@ const UserInfo = ({ data }) => {
             </Flex>
             <Box w="100%">
               <Flex w="100%">
-                <Box>First Seen At</Box>
+                <Box>FIRST SEEN AT</Box>
                 <Spacer />
                 <Box>
                   <b>{moment(first_seen).format("YYYY MMM. D")}</b>
@@ -95,7 +95,7 @@ const UserInfo = ({ data }) => {
             </Box>
             <Box w="100%">
               <Flex w="100%">
-                <Box>Last Seen At</Box>
+                <Box>LAST SEEN AT</Box>
                 <Spacer />
                 <Box>
                   <b>{moment(last_seen).fromNow(true)} ago</b>
@@ -104,7 +104,7 @@ const UserInfo = ({ data }) => {
             </Box>
             <Box w="100%">
               <Flex w="100%">
-                <Box>Status</Box>
+                <Box>STATUS</Box>
                 <Spacer />
                 <Box>
                   <Text color={verified ? "green" : "gray"}>
@@ -117,9 +117,6 @@ const UserInfo = ({ data }) => {
               </Flex>
             </Box>
           </VStack>
-        </Box>
-        <Box w="100%" mt={[-4, -4, -4, 0, 0]}>
-          <VStack align="stretch" m="4" spacing={4}></VStack>
         </Box>
       </Flex>
     </BoxWrapper>
