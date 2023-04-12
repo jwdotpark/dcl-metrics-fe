@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
       "users/" + address + "/dao_activity",
       {}
     )
-  } else if (isLocal) {
+  } else if (isDev && !isLocal) {
     userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
     nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
     daoActivityRes = await getDataWithApiKey(
@@ -55,7 +55,6 @@ const SingleUserPage = (props) => {
       <Box fontSize={["md", "md"]}>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <UserProfile data={userAddressRes} />
-          {/*<UserInfo data={userAddressRes} />*/}
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <UserInfo data={userAddressRes} />

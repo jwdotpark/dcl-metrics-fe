@@ -2,6 +2,7 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box, Flex, Spacer, VStack, Text } from "@chakra-ui/react"
 import CountUp from "react-countup"
 import BoxTitle from "../../../layout/local/BoxTitle"
+import moment from "moment"
 
 const UserNFT = ({ data }) => {
   const {
@@ -117,7 +118,7 @@ const UserNFT = ({ data }) => {
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
-              <Box>First DCLENS Acquired At</Box>
+              <Box>First DCLENS</Box>
               <Spacer />
               <Box>
                 <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
@@ -130,7 +131,7 @@ const UserNFT = ({ data }) => {
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
-              <Box>First Land Acquired At</Box>
+              <Box>First Land</Box>
               <Spacer />
               <Box>
                 <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
@@ -141,7 +142,7 @@ const UserNFT = ({ data }) => {
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
-              <Box>First Wearable Acquired At</Box>
+              <Box>First Wearable</Box>
               <Spacer />
               <Box>
                 <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
