@@ -9,6 +9,7 @@ import {
   Center,
 } from "@chakra-ui/react"
 import moment from "moment"
+import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 
 const UserInfo = ({ data }) => {
@@ -54,7 +55,17 @@ const UserInfo = ({ data }) => {
   }
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
-      <Flex direction="column" w="auto" m="4">
+      <BoxTitle
+        name="User Activity"
+        description={`${name}'s activity in Decentraland`}
+        date=""
+        avgData={[]}
+        slicedData={{}}
+        color={{}}
+        line={false}
+        setLine={{}}
+      />
+      <Flex direction="column" w="auto" m="4" mx="5">
         <Box w="100%">
           <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
             <Flex w="100%" h="100%">

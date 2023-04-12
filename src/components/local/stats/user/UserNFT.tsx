@@ -1,9 +1,11 @@
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box, Flex, Spacer, VStack, Text } from "@chakra-ui/react"
 import CountUp from "react-countup"
+import BoxTitle from "../../../layout/local/BoxTitle"
 
 const UserNFT = ({ data }) => {
   const {
+    name,
     og_user,
     owns_dclens,
     owns_land,
@@ -20,7 +22,17 @@ const UserNFT = ({ data }) => {
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
-      <Flex direction="column" w="auto" m="4">
+      <BoxTitle
+        name={`NFT`}
+        description={`Stats about NFTs owned by ${name}`}
+        date=""
+        avgData={[]}
+        slicedData={{}}
+        color={{}}
+        line={false}
+        setLine={{}}
+      />
+      <Flex direction="column" w="auto" m="4" mx="5">
         <Box w="100%">
           <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
             <Flex w="100%" h="100%">
