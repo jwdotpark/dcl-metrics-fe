@@ -15,7 +15,6 @@ import {
 import CollectionPopOverBody from "./CollectionPopOverBody"
 
 const UserDAOActivityCollection = ({ collections, delegators }) => {
-  console.log(collections)
   return (
     <Flex w="100%" h="100%">
       <Box>Collection</Box>

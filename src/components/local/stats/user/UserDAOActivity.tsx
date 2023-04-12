@@ -35,6 +35,7 @@ import ToolTip from "../../../layout/local/ToolTip"
 import moment from "moment"
 import UserDAOActivityCollection from "./partial/UserDAOActivityCollection"
 import UserDAOActivityDelegators from "./partial/UserDAOActivityDelegators"
+import UserActivityGrandPopOver from "./partial/UserActivityGrandPopOver"
 
 const UserDAOActivity = ({ data }) => {
   const {
@@ -53,23 +54,6 @@ const UserDAOActivity = ({ data }) => {
     proposals,
     teams,
   } = data
-
-  const responsiveStr = useBreakpointValue({
-    xs: 5,
-    sm: 5,
-    md: 50,
-    lg: 20,
-    xl: 50,
-    base: 20,
-  })
-
-  const truncateName = (name: string) => {
-    const nameLength = responsiveStr
-    if (name && name.length > nameLength) {
-      return name.slice(0, nameLength) + ".."
-    }
-    return name
-  }
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
@@ -184,6 +168,7 @@ const UserDAOActivity = ({ data }) => {
               </Box>
             </Flex>
             <UserDAOActivityDelegators delegators={delegators} />
+            <UserActivityGrandPopOver grants={grants} />
           </VStack>
         </Box>
       </Flex>
