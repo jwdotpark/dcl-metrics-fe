@@ -4,7 +4,7 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import { Grid, useBreakpointValue } from "@chakra-ui/react"
+import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
       "users/" + address + "/dao_activity",
       {}
     )
-  } else if (isDev && !isLocal) {
+  } else if (isLocal) {
     userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
     nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
     daoActivityRes = await getDataWithApiKey(
@@ -52,14 +52,17 @@ const SingleUserPage = (props) => {
 
   return (
     <Layout>
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <UserProfile data={userAddressRes} />
-        <UserInfo data={userAddressRes} />
-      </Grid>
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <UserNFT data={nftRes} />
-        <UserDAOActivity data={daoActivityRes} />
-      </Grid>
+      <Box fontSize={["md", "md"]}>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <UserProfile data={userAddressRes} />
+          {/*<UserInfo data={userAddressRes} />*/}
+        </Grid>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <UserInfo data={userAddressRes} />
+          <UserNFT data={nftRes} />
+          <UserDAOActivity data={daoActivityRes} />
+        </Grid>
+      </Box>
     </Layout>
   )
 }

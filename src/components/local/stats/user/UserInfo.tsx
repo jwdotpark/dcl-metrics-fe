@@ -28,13 +28,13 @@ const UserInfo = ({ data }) => {
     sm: 5,
     md: 50,
     lg: 20,
-    xl: 50,
-    base: 10,
+    xl: 20,
+    base: 20,
   })
 
   const truncateName = (name: string) => {
     const nameLength = responsiveStr
-    if (name.length > nameLength) {
+    if (name && name.length > nameLength) {
       return name.slice(0, nameLength) + ".."
     }
     return name
@@ -53,17 +53,10 @@ const UserInfo = ({ data }) => {
     })
   }
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 2, 4]}>
+    <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <Flex direction="column" w="auto" m="4">
         <Box w="100%">
           <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
-            <Flex w="100%" h="100%">
-              <Center w="100%">
-                <Text fontSize="4xl">
-                  <b>{name}</b>
-                </Text>
-              </Center>
-            </Flex>
             <Flex w="100%" h="100%">
               <Box>DAO Member?</Box>
               <Spacer />
@@ -110,7 +103,7 @@ const UserInfo = ({ data }) => {
                 <Box>
                   <Text color={verified ? "green" : "gray"}>
                     <b>
-                      {verified && "Verified"}
+                      {verified ? "Verified" : "N/A"}
                       {guest && "Guest User"}
                     </b>
                   </Text>

@@ -19,7 +19,7 @@ const UserNFT = ({ data }) => {
   } = data
 
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 2, 3]}>
+    <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <Flex direction="column" w="auto" m="4">
         <Box w="100%">
           <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
@@ -109,7 +109,11 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
-                  <b>{first_dclens_acquired_at}</b>
+                  <b>
+                    {first_dclens_acquired_at
+                      ? first_dclens_acquired_at
+                      : "N/A"}
+                  </b>
                 </Text>
               </Box>
             </Flex>
@@ -118,7 +122,9 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
-                  <b>{first_land_acquired_at}</b>
+                  <b>
+                    {first_land_acquired_at ? first_land_acquired_at : "N/A"}
+                  </b>
                 </Text>
               </Box>
             </Flex>
@@ -127,7 +133,11 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
-                  <b>{first_wearable_acquired_at}</b>
+                  <b>
+                    {first_wearable_acquired_at
+                      ? first_wearable_acquired_at
+                      : "N/A"}
+                  </b>
                 </Text>
               </Box>
             </Flex>

@@ -1,11 +1,19 @@
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import { Box, Center, Flex, Image, useColorModeValue } from "@chakra-ui/react"
+import {
+  Box,
+  Text,
+  Center,
+  Flex,
+  Image,
+  useColorModeValue,
+  Spacer,
+} from "@chakra-ui/react"
 
 const UserProfile = ({ data }) => {
   const { avatar_url, name } = data
 
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
+    <BoxWrapper colSpan={[1, 1, 1, 2, 6]}>
       <Flex
         direction={["column", "column", "column", "row"]}
         mb={[-4, 0, 0, 0, 0]}
@@ -24,7 +32,23 @@ const UserProfile = ({ data }) => {
               alt={name}
               src={avatar_url ? avatar_url : "/images/blank_profile.png"}
             />
+            <Center
+              display={["flex", "none"]}
+              mt="2"
+              fontSize="lg"
+              fontWeight="bold"
+            >
+              {name}
+            </Center>
           </Box>
+          <Center display={["none", "block"]} mt="2">
+            <Text
+              fontSize={["xl", "2xl", "4xl", "6xl", "8xl"]}
+              fontWeight="bold"
+            >
+              {name}
+            </Text>
+          </Center>
         </Center>
       </Flex>
     </BoxWrapper>
