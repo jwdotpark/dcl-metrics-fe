@@ -4,6 +4,7 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
+import UserInfo from "../../src/components/local/stats/user/UserInfo"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -37,13 +38,14 @@ export async function getServerSideProps(context) {
 }
 
 const SingleUserPage = (props) => {
-  const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
-  const { address, userAddressRes } = props
+  const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
+  const { userAddressRes } = props
 
   return (
     <Layout>
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <UserProfile data={userAddressRes} />
+        <UserInfo data={userAddressRes} />
       </Grid>
     </Layout>
   )
