@@ -1,51 +1,66 @@
 import Layout from "../../src/components/layout/layout"
-import { getDataWithProxy, getData, writeFile } from "../../src/lib/data/fetch"
+import { getDataWithApiKey } from "../../src/lib/data/fetch"
 import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
+import staticUserNFT from "../../public/data/staticUserNFT.json"
+import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
 import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
+
+  let userAddressRes, nftRes, daoActivityRes
+
   const addressUrl = `https://api.dcl-metrics.com/users/${address}`
   const nftsUrl = `https://api.dcl-metrics.com/users/${address}/nfts`
   const daoActivityUrl = `https://api.dcl-metrics.com/users/${address}/dao_activity`
 
-  let userAddressRes
-
   if (isProd) {
-    userAddressRes = getDataWithProxy(addressUrl, "users/" + address, {})
-    //const nftsResult = getDataWithProxy(
-    //  nftsUrl,
-    //  "users/" + address + "/nfts",
-    //  {}
-    //)
-    //const daoActivityResult = getDataWithProxy(
-    //  daoActivityUrl,
-    //  "users/" + address + "/dao_activity",
-    //  {}
-    //)
+    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
+    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
+    daoActivityRes = await getDataWithApiKey(
+      daoActivityUrl,
+      "users/" + address + "/dao_activity",
+      {}
+    )
   } else if (isDev && !isLocal) {
-    userAddressRes = getData(addressUrl, "users/" + address, {})
+    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
+    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
+    daoActivityRes = await getDataWithApiKey(
+      daoActivityUrl,
+      "users/" + address + "/dao_activity",
+      {}
+    )
   } else if (isLocal) {
     userAddressRes = staticUserAddress
+    nftRes = staticUserNFT
+    daoActivityRes = staticUserDAOActivity
   }
 
   return {
-    props: { address, userAddressRes },
+    props: { userAddressRes, nftRes, daoActivityRes },
   }
 }
 
 const SingleUserPage = (props) => {
   const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
-  const { userAddressRes } = props
+  const { userAddressRes, nftRes, daoActivityRes } = props
+  console.log(daoActivityRes)
 
   return (
     <Layout>
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <UserProfile data={userAddressRes} />
         <UserInfo data={userAddressRes} />
+      </Grid>
+      <Grid
+        gap={4}
+        templateColumns={`repeat(${gridColumn}, 1fr)`}
+        mb="4"
+      >
+        
       </Grid>
     </Layout>
   )

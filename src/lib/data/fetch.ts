@@ -47,3 +47,19 @@ export const getData = async (targetUrl, endpoint, staticFile) => {
   }
   return result
 }
+
+export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
+  const response = await fetch(targetUrl, {
+    headers: {
+      API_KEY: process.env.BE_API_KEY,
+    },
+  })
+  const result = await response.json()
+  if (response.status !== 200) {
+    if (isProd) {
+      sendNotification(response, `${endpoint}`, "error")
+    }
+    return staticFile
+  }
+  return result
+}

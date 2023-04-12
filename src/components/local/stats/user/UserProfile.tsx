@@ -19,8 +19,11 @@ const UserProfile = ({ data }) => {
           borderRadius="xl"
           shadow="md"
         >
-          <Box m="4">
-            <Image alt={name} src={avatar_url} />
+          <Box overflow="hidden" m="4" borderRadius="xl">
+            <Image
+              alt={name}
+              src={avatar_url ? avatar_url : "/images/blank_profile.png"}
+            />
           </Box>
         </Center>
       </Flex>

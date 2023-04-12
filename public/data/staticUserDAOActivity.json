@@ -1,0 +1,120 @@
+{
+  "address": "0x895Be97bDb9F8a244c472B18EA96DeE39ddf8fe5",
+  "name": "dax",
+  "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihdcv5bpvy5tbdfw7u5rlfdiyniudeg5tcdi7hyvrwk6bvbjis5pm",
+  "dao_member": true,
+  "title": "shark",
+  "total_vp": 182085,
+  "delegated_vp": 55118,
+  "delegators": [
+    "0xa0c2089a9ae1b0f7482a0ec740891bf908a1d00f",
+    "0x8f234b391a515ab315bd2ec9c7199c283e7e258a"
+  ],
+  "delegate": null,
+  "votes": {
+    "total_votes": 518,
+    "first_vote_cast_at": "2021-11-05 22:47:28 UTC",
+    "latest_vote_cast_at": "2023-03-28 15:03:14 UTC"
+  },
+  "grants": {
+    "authored": {
+      "count": 1,
+      "total_requested_usd": 48000,
+      "total_enacted_usd": 48000,
+      "data": [
+        {
+          "tier": 4,
+          "title": "Provide fundamental Decentraland metrics  to the community for free",
+          "amount": 48000,
+          "health": "$0",
+          "status": "enacted",
+          "category": "Community",
+          "ended_at": "2022-08-16T21:47:00.054Z",
+          "created_by": "0x895be97bdb9f8a244c472b18ea96dee39ddf8fe5",
+          "started_at": "2022-08-02T21:47:00.055Z",
+          "beneficiary": "0x895be97bdb9f8a244c472b18ea96dee39ddf8fe5",
+          "proposal_id": "ac2b57f0-12ac-11ed-affb-95d45c2147f8",
+          "snapshot_id": "bafkreihwwjnydjirhlcvqrve6e2jhowix5xcx25y65zwv7invn54vcjl2q",
+          "done_updates": 0,
+          "late_updates": 0,
+          "missed_updates": 6,
+          "vesting_contract": "in progress",
+          "vesting_released": 0,
+          "remaining_updates": 2023
+        }
+      ]
+    },
+    "beneficiary": {
+      "count": 1,
+      "total_requested_usd": 48000,
+      "total_enacted_usd": 48000,
+      "data": [
+        {
+          "tier": 4,
+          "title": "Provide fundamental Decentraland metrics  to the community for free",
+          "amount": 48000,
+          "health": "$0",
+          "status": "enacted",
+          "category": "Community",
+          "ended_at": "2022-08-16T21:47:00.054Z",
+          "created_by": "0x895be97bdb9f8a244c472b18ea96dee39ddf8fe5",
+          "started_at": "2022-08-02T21:47:00.055Z",
+          "beneficiary": "0x895be97bdb9f8a244c472b18ea96dee39ddf8fe5",
+          "proposal_id": "ac2b57f0-12ac-11ed-affb-95d45c2147f8",
+          "snapshot_id": "bafkreihwwjnydjirhlcvqrve6e2jhowix5xcx25y65zwv7invn54vcjl2q",
+          "done_updates": 0,
+          "late_updates": 0,
+          "missed_updates": 6,
+          "vesting_contract": "in progress",
+          "vesting_released": 0,
+          "remaining_updates": 2023
+        }
+      ]
+    }
+  },
+  "proposals": {
+    "count": 3,
+    "data": [
+      {
+        "title": "Community support for a paid pre-check on linked wearable proposals",
+        "status": "rejected",
+        "category": "poll",
+        "end_time": "2023-03-11T20:56:00.604Z",
+        "total_vp": "439,714",
+        "created_by": "0x895be97bdb9f8a244c472b18ea96dee39ddf8fe5",
+        "start_time": "2023-03-06T20:56:00.605Z",
+        "proposal_id": "6e426cd0-bc61-11ed-8c13-518b5c1940be",
+        "snapshot_id": "0xfad0ce3f336f9104fd8d5cc2cb3c012c21a2116d7f7b6a14ab8a70bd17aaa1bb",
+        "total_votes": 96
+      },
+      {
+        "title": "Provide fundamental Decentraland metrics  to the community for free",
+        "status": "enacted",
+        "category": "grant",
+        "end_time": "2022-08-16T21:47:00.054Z",
+        "total_vp": "3,671,639",
+        "created_by": "0x895be97bdb9f8a244c472b18ea96dee39ddf8fe5",
+        "start_time": "2022-08-02T21:47:00.055Z",
+        "proposal_id": "ac2b57f0-12ac-11ed-affb-95d45c2147f8",
+        "snapshot_id": "bafkreihwwjnydjirhlcvqrve6e2jhowix5xcx25y65zwv7invn54vcjl2q",
+        "total_votes": 77
+      },
+      {
+        "title": "Limit monetary allowances to Grant proposals",
+        "status": "passed",
+        "category": "poll",
+        "end_time": "2022-07-27T12:52:00.277Z",
+        "total_vp": "5,426,026",
+        "created_by": "0x895be97bdb9f8a244c472b18ea96dee39ddf8fe5",
+        "start_time": "2022-07-22T12:52:00.278Z",
+        "proposal_id": "19174de0-09bd-11ed-92a2-218eab5ea42b",
+        "snapshot_id": "bafkreifpw3z4ljuag54zvxjlrxu43zrgm362c6ip4apy4qqr64e3hveyyu",
+        "total_votes": 62
+      }
+    ]
+  },
+  "active_dao_committee_member": null,
+  "teams": [],
+  "collection_creator": null,
+  "collections": []
+}
