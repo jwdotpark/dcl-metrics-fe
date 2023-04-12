@@ -1,22 +1,10 @@
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import {
-  Box,
-  Center,
-  Flex,
-  Image,
-  Spacer,
-  useColorModeValue,
-  VStack,
-  Text,
-} from "@chakra-ui/react"
-import moment from "moment"
+import { Box, Flex, Spacer, VStack, Text } from "@chakra-ui/react"
+import CountUp from "react-countup"
 
 const UserNFT = ({ data }) => {
   const {
     og_user,
-    first_dclens_acquired_at,
-    first_land_acquired_at,
-    first_wearable_acquired_at,
     owns_dclens,
     owns_land,
     owns_nfts,
@@ -25,6 +13,9 @@ const UserNFT = ({ data }) => {
     total_dclens,
     total_lands,
     total_wearables,
+    first_dclens_acquired_at,
+    first_land_acquired_at,
+    first_wearable_acquired_at,
   } = data
 
   return (
@@ -33,7 +24,7 @@ const UserNFT = ({ data }) => {
         <Box w="100%">
           <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
             <Flex w="100%" h="100%">
-              <Box>OG User?</Box>
+              <Box>OG User</Box>
               <Spacer />
               <Box>
                 <Text color={og_user ? "green" : "red"}>
@@ -42,11 +33,101 @@ const UserNFT = ({ data }) => {
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
-              <Box>Owns dclens</Box>
+              <Box>Owns DCLENS</Box>
               <Spacer />
               <Box>
-                <Text color={og_user ? "green" : "red"}>
-                  <b>{og_user ? "Yes" : "No"}</b>
+                <Text color={owns_dclens ? "green" : "red"}>
+                  <b>{owns_dclens ? "Yes" : "No"}</b>
+                </Text>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>Owns Land</Box>
+              <Spacer />
+              <Box>
+                <Text color={owns_land ? "green" : "red"}>
+                  <b>{owns_land ? "Yes" : "No"}</b>
+                </Text>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>Owns NFT</Box>
+              <Spacer />
+              <Box>
+                <Text color={owns_nfts ? "green" : "red"}>
+                  <b>{owns_nfts ? "Yes" : "No"}</b>
+                </Text>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>Owns Wearable</Box>
+              <Spacer />
+              <Box>
+                <Text color={owns_wearables ? "green" : "red"}>
+                  <b>{owns_wearables ? "Yes" : "No"}</b>
+                </Text>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>Participants In Genesis Auciton</Box>
+              <Spacer />
+              <Box>
+                <Text color={participant_in_genesis_auction ? "green" : "red"}>
+                  <b>{participant_in_genesis_auction ? "Yes" : "No"}</b>
+                </Text>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>Total DCLENS</Box>
+              <Spacer />
+              <Box>
+                <b>
+                  <CountUp end={total_dclens} duration={0.5} decimals={0} />
+                </b>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>Total Lands</Box>
+              <Spacer />
+              <Box>
+                <b>
+                  <CountUp end={total_lands} duration={0.5} decimals={0} />
+                </b>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>Total Wearables</Box>
+              <Spacer />
+              <Box>
+                <b>
+                  <CountUp end={total_wearables} duration={0.5} decimals={0} />
+                </b>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>First DCLENS Acquired At</Box>
+              <Spacer />
+              <Box>
+                <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
+                  <b>{first_dclens_acquired_at}</b>
+                </Text>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>First Land Acquired At</Box>
+              <Spacer />
+              <Box>
+                <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
+                  <b>{first_land_acquired_at}</b>
+                </Text>
+              </Box>
+            </Flex>
+            <Flex w="100%" h="100%">
+              <Box>First Wearable Acquired At</Box>
+              <Spacer />
+              <Box>
+                <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
+                  <b>{first_wearable_acquired_at}</b>
                 </Text>
               </Box>
             </Flex>

@@ -6,6 +6,7 @@ import {
   Flex,
   VStack,
   Spacer,
+  Center,
 } from "@chakra-ui/react"
 import moment from "moment"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
@@ -57,14 +58,14 @@ const UserInfo = ({ data }) => {
         <Box w="100%">
           <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
             <Flex w="100%" h="100%">
-              <Box>NAME</Box>
-              <Spacer />
-              <Box>
-                <b>{name}</b>
-              </Box>
+              <Center w="100%">
+                <Text fontSize="4xl">
+                  <b>{name}</b>
+                </Text>
+              </Center>
             </Flex>
             <Flex w="100%" h="100%">
-              <Box>DAO MEMBER?</Box>
+              <Box>DAO Member?</Box>
               <Spacer />
               <Box>
                 <Text color={dao_member ? "green" : "red"}>
@@ -73,7 +74,7 @@ const UserInfo = ({ data }) => {
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
-              <Box>ADDRESS</Box>
+              <Box>Address</Box>
               <Spacer />
               <Box
                 _hover={{ cursor: "pointer" }}
@@ -86,16 +87,16 @@ const UserInfo = ({ data }) => {
             </Flex>
             <Box w="100%">
               <Flex w="100%">
-                <Box>FIRST SEEN AT</Box>
+                <Box>First Seen At</Box>
                 <Spacer />
                 <Box>
-                  <b>{moment(first_seen).format("YYYY MMM. D")}</b>
+                  <b>{moment(first_seen).format("YYYY MMMM D")}</b>
                 </Box>
               </Flex>
             </Box>
             <Box w="100%">
               <Flex w="100%">
-                <Box>LAST SEEN AT</Box>
+                <Box>Last Seen At</Box>
                 <Spacer />
                 <Box>
                   <b>{moment(last_seen).fromNow(true)} ago</b>
@@ -104,7 +105,7 @@ const UserInfo = ({ data }) => {
             </Box>
             <Box w="100%">
               <Flex w="100%">
-                <Box>STATUS</Box>
+                <Box>Status</Box>
                 <Spacer />
                 <Box>
                   <Text color={verified ? "green" : "gray"}>
