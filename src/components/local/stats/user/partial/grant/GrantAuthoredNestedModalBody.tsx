@@ -18,7 +18,7 @@ import {
 import moment from "moment"
 import { useState } from "react"
 
-const GrantNestedModalBody = ({ grants }) => {
+const GrantAuthoredNestedModalBody = ({ grants }) => {
   const toast = useToast()
 
   const handleToast = (value) => {
@@ -53,8 +53,8 @@ const GrantNestedModalBody = ({ grants }) => {
     <>
       {grants.authored.data.map((item) => {
         return (
-          <Box key={item.created_by}>
-            <Accordion allowMultiple>
+          <Box key={item.created_by} mx="-4">
+            <Accordion allowToggle>
               <AccordionItem>
                 <AccordionButton
                   _expanded={{
@@ -201,4 +201,4 @@ const GrantNestedModalBody = ({ grants }) => {
   )
 }
 
-export default GrantNestedModalBody
+export default GrantAuthoredNestedModalBody

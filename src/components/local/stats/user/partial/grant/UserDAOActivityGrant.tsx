@@ -11,6 +11,7 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  Center,
 } from "@chakra-ui/react"
 import GrandModalBody from "../grant/GrantModalBody"
 
@@ -47,7 +48,11 @@ const UserDAOActivityGrant = ({ name, grants }) => {
       >
         <ModalOverlay />
         <ModalContent borderRadius="xl">
-          <ModalHeader> {name} Grants</ModalHeader>
+          <ModalHeader>
+            <Center>
+              <Text fontSize="3xl">{name} Grants</Text>
+            </Center>
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <GrandModalBody grants={grants} />

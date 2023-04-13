@@ -21,7 +21,8 @@ import {
   Center,
 } from "@chakra-ui/react"
 import { useState } from "react"
-import GrandNestedModalBody from "./GrandNestedModalBody"
+import GrantAuthoredNestedModalBody from "./GrantAuthoredNestedModalBody"
+import GrantBeneficiaryNestedModalBody from "./GrantBeneficiaryNestedModalBody"
 
 const GrantModalBody = ({ grants }) => {
   console.log(grants)
@@ -58,7 +59,7 @@ const GrantModalBody = ({ grants }) => {
 
   return (
     <Box mb="4">
-      <Accordion>
+      <Accordion allowToggle>
         <AccordionItem>
           <AccordionButton
             _expanded={{
@@ -69,8 +70,8 @@ const GrantModalBody = ({ grants }) => {
           >
             <Box as="span" flex="1" textAlign="left">
               <Flex>
-                <Center w="40%" mr="2" fontSize="2xl">
-                  Authored
+                <Center mr="6" fontSize={["md", "xl"]}>
+                  {grants.authored.count} authored
                 </Center>
                 <Spacer />
                 <Box w="30%">
@@ -91,7 +92,7 @@ const GrantModalBody = ({ grants }) => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
-            <GrandNestedModalBody grants={grants} />
+            <GrantAuthoredNestedModalBody grants={grants} />
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem isFocusable>
@@ -103,19 +104,34 @@ const GrantModalBody = ({ grants }) => {
             }}
           >
             <Box as="span" flex="1" textAlign="left">
-              Beneficiary
+              <Flex>
+                <Center mr="2" fontSize={["md", "xl"]}>
+                  {grants.beneficiary.count} beneficiary
+                </Center>
+                <Spacer />
+                <Box w="30%">
+                  <Text fontSize={[10, "xs"]}>Total Requested</Text>
+                  <Text fontSize="sm">
+                    {grants.beneficiary.total_requested_usd
+                      ? grants.beneficiary.total_requested_usd + " USD"
+                      : "N/A"}
+                  </Text>
+                </Box>
+                <Spacer />
+                <Box w="30%">
+                  <Text fontSize={[10, 12]}>Total Enacted</Text>
+                  <Text fontSize="sm">
+                    {grants.beneficiary.total_enacted_usd
+                      ? grants.beneficiary.total_enacted_usd + " USD"
+                      : "N/A"}
+                  </Text>
+                </Box>
+              </Flex>
             </Box>
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
-            <Table size="sm" variant="simple">
-              <Tbody>
-                <Tr>
-                  <Td>Name</Td>
-                  <Td isNumeric>item</Td>
-                </Tr>
-              </Tbody>
-            </Table>
+            <GrantBeneficiaryNestedModalBody grants={grants} />
           </AccordionPanel>
         </AccordionItem>
       </Accordion>

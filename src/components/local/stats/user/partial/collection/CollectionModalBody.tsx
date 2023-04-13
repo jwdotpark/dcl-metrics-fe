@@ -36,7 +36,7 @@ const CollectionModalBody = ({ collections }) => {
       {collections.map((item) => {
         return (
           <Box key={item.collection_id}>
-            <Accordion allowMultiple>
+            <Accordion allowToggle>
               <AccordionItem isFocusable>
                 <AccordionButton
                   _expanded={{
