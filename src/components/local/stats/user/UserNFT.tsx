@@ -41,7 +41,7 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text color={og_user ? "green" : "red"}>
-                  <b>{og_user ? "Yes" : "No"}</b>
+                  {og_user ? "Yes" : "No"}
                 </Text>
               </Box>
             </Flex>
@@ -50,7 +50,7 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text color={owns_dclens ? "green" : "red"}>
-                  <b>{owns_dclens ? "Yes" : "No"}</b>
+                  {owns_dclens ? "Yes" : "No"}
                 </Text>
               </Box>
             </Flex>
@@ -59,7 +59,7 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text color={owns_land ? "green" : "red"}>
-                  <b>{owns_land ? "Yes" : "No"}</b>
+                  {owns_land ? "Yes" : "No"}
                 </Text>
               </Box>
             </Flex>
@@ -68,7 +68,7 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text color={owns_nfts ? "green" : "red"}>
-                  <b>{owns_nfts ? "Yes" : "No"}</b>
+                  {owns_nfts ? "Yes" : "No"}
                 </Text>
               </Box>
             </Flex>
@@ -77,7 +77,7 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text color={owns_wearables ? "green" : "red"}>
-                  <b>{owns_wearables ? "Yes" : "No"}</b>
+                  {owns_wearables ? "Yes" : "No"}
                 </Text>
               </Box>
             </Flex>
@@ -86,7 +86,7 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text color={participant_in_genesis_auction ? "green" : "red"}>
-                  <b>{participant_in_genesis_auction ? "Yes" : "No"}</b>
+                  {participant_in_genesis_auction ? "Yes" : "No"}
                 </Text>
               </Box>
             </Flex>
@@ -94,27 +94,21 @@ const UserNFT = ({ data }) => {
               <Box>Total DCLENS</Box>
               <Spacer />
               <Box>
-                <b>
-                  <CountUp end={total_dclens} duration={0.5} decimals={0} />
-                </b>
+                <CountUp end={total_dclens} duration={0.5} decimals={0} />
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
               <Box>Total Lands</Box>
               <Spacer />
               <Box>
-                <b>
-                  <CountUp end={total_lands} duration={0.5} decimals={0} />
-                </b>
+                <CountUp end={total_lands} duration={0.5} decimals={0} />
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
               <Box>Total Wearables</Box>
               <Spacer />
               <Box>
-                <b>
-                  <CountUp end={total_wearables} duration={0.5} decimals={0} />
-                </b>
+                <CountUp end={total_wearables} duration={0.5} decimals={0} />
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
@@ -122,11 +116,7 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
-                  <b>
-                    {first_dclens_acquired_at
-                      ? first_dclens_acquired_at
-                      : "N/A"}
-                  </b>
+                  {first_dclens_acquired_at ? first_dclens_acquired_at : "N/A"}
                 </Text>
               </Box>
             </Flex>
@@ -135,9 +125,7 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
-                  <b>
-                    {first_land_acquired_at ? first_land_acquired_at : "N/A"}
-                  </b>
+                  {first_land_acquired_at ? first_land_acquired_at : "N/A"}
                 </Text>
               </Box>
             </Flex>
@@ -146,11 +134,9 @@ const UserNFT = ({ data }) => {
               <Spacer />
               <Box>
                 <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
-                  <b>
-                    {first_wearable_acquired_at
-                      ? first_wearable_acquired_at
-                      : "N/A"}
-                  </b>
+                  {first_wearable_acquired_at
+                    ? first_wearable_acquired_at
+                    : "N/A"}
                 </Text>
               </Box>
             </Flex>

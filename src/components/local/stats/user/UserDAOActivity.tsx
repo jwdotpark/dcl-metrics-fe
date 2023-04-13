@@ -76,35 +76,29 @@ const UserDAOActivity = ({ data }) => {
               <Box>Title</Box>
               <Spacer />
               <Box>
-                <Text>
-                  <b>{title ? title : "N/A"}</b>
-                </Text>
+                <Text>{title ? title : "N/A"}</Text>
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
               <Box>Total VP</Box>
               <Spacer />
               <Box>
-                <b>
-                  <CountUp
-                    end={total_vp ? total_vp : "N/A"}
-                    duration={0.5}
-                    decimals={0}
-                  />
-                </b>
+                <CountUp
+                  end={total_vp ? total_vp : "N/A"}
+                  duration={0.5}
+                  decimals={0}
+                />
               </Box>
             </Flex>
             <Flex w="100%" h="100%">
               <Box>Delegated VP</Box>
               <Spacer />
               <Box>
-                <b>
-                  <CountUp
-                    end={delegated_vp ? delegated_vp : "N/A"}
-                    duration={0.5}
-                    decimals={0}
-                  />
-                </b>
+                <CountUp
+                  end={delegated_vp ? delegated_vp : "N/A"}
+                  duration={0.5}
+                  decimals={0}
+                />
               </Box>
             </Flex>
             {votes && (
@@ -113,31 +107,25 @@ const UserDAOActivity = ({ data }) => {
                   <Box>Total Votes</Box>
                   <Spacer />
                   <Box>
-                    <b>
-                      <CountUp
-                        end={votes.total_votes ? votes.total_votes : 0}
-                        duration={0.5}
-                        decimals={0}
-                      />
-                    </b>
+                    <CountUp
+                      end={votes.total_votes ? votes.total_votes : 0}
+                      duration={0.5}
+                      decimals={0}
+                    />
                   </Box>
                 </Flex>
                 <Flex w="100%" h="100%">
                   <Box>First Vote</Box>
                   <Spacer />
                   <Box>
-                    <Text as="kbd">
-                      <b>{votes.first_vote_cast_at}</b>
-                    </Text>
+                    <Text as="kbd">{votes.first_vote_cast_at}</Text>
                   </Box>
                 </Flex>
                 <Flex w="100%" h="100%">
                   <Box>Latest Vote</Box>
                   <Spacer />
                   <Box>
-                    <Text as="kbd">
-                      <b>{votes.latest_vote_cast_at}</b>
-                    </Text>
+                    <Text as="kbd">{votes.latest_vote_cast_at}</Text>
                   </Box>
                 </Flex>
               </>
@@ -147,7 +135,7 @@ const UserDAOActivity = ({ data }) => {
               <Spacer />
               <Box>
                 <Text color={active_dao_committee_member ? "green" : "red"}>
-                  <b>{active_dao_committee_member ? "Yes" : "No"}</b>
+                  {active_dao_committee_member ? "Yes" : "No"}
                 </Text>
               </Box>
             </Flex>
@@ -156,7 +144,7 @@ const UserDAOActivity = ({ data }) => {
               <Spacer />
               <Box>
                 <Text color={collection_creator ? "green" : "red"}>
-                  <b>{collection_creator ? "Yes" : "No"}</b>
+                  {collection_creator ? "Yes" : "No"}
                 </Text>
               </Box>
             </Flex>
@@ -167,21 +155,6 @@ const UserDAOActivity = ({ data }) => {
               delegators={delegators}
             />
             <UserDAOActivityGrant name={name} grants={grants} />
-            {/*<UserDAOActivityCollection
-              collections={collections}
-              delegators={delegators}
-            />*/}
-            {/*<Flex w="100%" h="100%">
-              <Box>Delegate</Box>
-              <Spacer />
-              <Box>
-                <Text color={delegate ? "green" : "red"}>
-                  <b>{delegate ? "Yes" : "No"}</b>
-                </Text>
-              </Box>
-            </Flex>
-            <UserDAOActivityDelegators delegators={delegators} />
-            <UserActivityGrantPopOver grants={grants} />*/}
           </VStack>
         </Box>
       </Flex>

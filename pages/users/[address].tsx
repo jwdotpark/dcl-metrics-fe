@@ -60,6 +60,7 @@ export async function getServerSideProps(context) {
 const SingleUserPage = (props) => {
   const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
   const { userAddressRes, nftRes, daoActivityRes, isError } = props
+  console.log(daoActivityRes)
 
   return (
     <Layout>

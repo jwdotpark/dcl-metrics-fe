@@ -7,6 +7,7 @@ import {
   VStack,
   Spacer,
   Center,
+  Button,
 } from "@chakra-ui/react"
 import moment from "moment"
 import BoxTitle from "../../../layout/local/BoxTitle"
@@ -30,7 +31,7 @@ const UserInfo = ({ data }) => {
     md: 50,
     lg: 20,
     xl: 20,
-    base: 20,
+    base: 10,
   })
 
   const truncateName = (name: string) => {
@@ -73,7 +74,7 @@ const UserInfo = ({ data }) => {
               <Spacer />
               <Box>
                 <Text color={dao_member ? "green" : "red"}>
-                  <b>{dao_member ? "Yes" : "No"}</b>
+                  {dao_member ? "Yes" : "No"}
                 </Text>
               </Box>
             </Flex>
@@ -84,27 +85,25 @@ const UserInfo = ({ data }) => {
                 _hover={{ cursor: "pointer" }}
                 onClick={() => handleToast(address)}
               >
-                <Text as="kbd" noOfLines={1}>
-                  <b>{truncateName(address)}</b>
-                </Text>
+                <Button variant="link">
+                  <Text as="kbd" noOfLines={1}>
+                    {truncateName(address)}
+                  </Text>
+                </Button>
               </Box>
             </Flex>
             <Box w="100%">
               <Flex w="100%">
                 <Box>First Seen At</Box>
                 <Spacer />
-                <Box>
-                  <b>{moment(first_seen).format("YYYY MMMM D")}</b>
-                </Box>
+                <Box>{moment(first_seen).format("YYYY MMMM D")}</Box>
               </Flex>
             </Box>
             <Box w="100%">
               <Flex w="100%">
                 <Box>Last Seen At</Box>
                 <Spacer />
-                <Box>
-                  <b>{moment(last_seen).fromNow(true)} ago</b>
-                </Box>
+                <Box>{moment(last_seen).fromNow(true)} ago</Box>
               </Flex>
             </Box>
             <Box w="100%">
@@ -113,10 +112,8 @@ const UserInfo = ({ data }) => {
                 <Spacer />
                 <Box>
                   <Text color={verified ? "green" : "gray"}>
-                    <b>
-                      {verified ? "Verified" : "Guest User"}
-                      {(!verified && !guest) ?? "N/A"}
-                    </b>
+                    {verified ? "Verified" : "Guest User"}
+                    {(!verified && !guest) ?? "N/A"}
                   </Text>
                 </Box>
               </Flex>
