@@ -21,8 +21,6 @@ import moment from "moment"
 import ToolTip from "../../../../layout/local/ToolTip"
 
 const UserActivityGrandPopOver = ({ grants }) => {
-  console.log("asdf", grants)
-
   const checkGrantActivated = () => {
     if (grants) {
       if (grants.beneficiary.count > 0 || grants.authored.count > 0) {

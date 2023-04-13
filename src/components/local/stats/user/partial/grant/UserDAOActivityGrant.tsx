@@ -1,36 +1,40 @@
 import {
-  Box,
+  Button,
   Text,
+  Box,
   Flex,
   Spacer,
-  Button,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
   ModalBody,
   ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react"
-import CollectionModalBody from "../partial/collection/CollectionModalBody"
+import GrandModalBody from "../grant/GrantModalBody"
 
-const UserDAOActivityCollection = ({ name, collections }) => {
+const UserDAOActivityGrant = ({ name, grants }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const isGrantValid =
+    grants.authored.count === 0 && grants.beneficiary.count === 0 ? true : false
 
   return (
     <Flex w="100%" h="100%">
-      <Box>Collections</Box>
+      <Box>Grant</Box>
       <Spacer />
       <Box>
         <Button
           borderRadius="xl"
-          disabled={collections.length > 0 ? false : true}
+          disabled={isGrantValid}
           onClick={onOpen}
           variant="link"
         >
-          <Text color={collections.length > 0 ? "green" : "red"}>
-            {(collections.length > 0 && collections.length + " collections") ||
-              "No collections"}
+          <Text color={!isGrantValid ? "green" : "red"}>
+            {isGrantValid
+              ? "N/A"
+              : `${grants.authored.count} authored, ${grants.beneficiary.count} beneficiary`}
           </Text>
         </Button>
       </Box>
@@ -43,10 +47,10 @@ const UserDAOActivityCollection = ({ name, collections }) => {
       >
         <ModalOverlay />
         <ModalContent borderRadius="xl">
-          <ModalHeader>{name} Collections</ModalHeader>
+          <ModalHeader> {name} Grants</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <CollectionModalBody collections={collections} />
+            <GrandModalBody grants={grants} />
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -54,4 +58,4 @@ const UserDAOActivityCollection = ({ name, collections }) => {
   )
 }
 
-export default UserDAOActivityCollection
+export default UserDAOActivityGrant

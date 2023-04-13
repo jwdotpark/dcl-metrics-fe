@@ -36,6 +36,8 @@ import moment from "moment"
 import UserDAOActivityCollection from "./partial/UserDAOActivityCollection"
 import UserDAOActivityDelegators from "./partial/UserDAOActivityDelegators"
 import UserActivityGrantPopOver from "./partial/UserActivityGrantPopOver"
+import UserDAOAvtivityDelegate from "./partial/delegate/UserDAOAvtivityDelegate"
+import UserDAOActivityGrant from "./partial/grant/UserDAOActivityGrant"
 
 const UserDAOActivity = ({ data }) => {
   const {
@@ -55,7 +57,6 @@ const UserDAOActivity = ({ data }) => {
     teams,
   } = data
 
-  console.log(collections)
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <BoxTitle
@@ -160,6 +161,12 @@ const UserDAOActivity = ({ data }) => {
               </Box>
             </Flex>
             <UserDAOActivityCollection name={name} collections={collections} />
+            <UserDAOAvtivityDelegate
+              name={name}
+              delegate={delegate}
+              delegators={delegators}
+            />
+            <UserDAOActivityGrant name={name} grants={grants} />
             {/*<UserDAOActivityCollection
               collections={collections}
               delegators={delegators}

@@ -18,8 +18,6 @@ import {
 import moment from "moment"
 
 const CollectionModalBody = ({ collections }) => {
-  console.log(collections)
-
   const toast = useToast()
 
   const handleToast = (value) => {
