@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
       "users/" + address + "/dao_activity",
       {}
     )
-    // TODo revert condition later
+    // TODO revert condition later
   } else if (isLocal) {
     userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
     nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
