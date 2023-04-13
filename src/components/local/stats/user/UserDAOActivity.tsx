@@ -1,41 +1,8 @@
-import {
-  Flex,
-  Divider,
-  Box,
-  Text,
-  VStack,
-  Spacer,
-  Button,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverHeader,
-  PopoverTrigger,
-  List,
-  ListItem,
-  UnorderedList,
-  useBreakpointValue,
-  Center,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Tr,
-  useToast,
-} from "@chakra-ui/react"
+import { Flex, Box, Text, VStack, Spacer } from "@chakra-ui/react"
 import CountUp from "react-countup"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import { useRouter } from "next/router"
-import Link from "next/link"
-import ToolTip from "../../../layout/local/ToolTip"
-import moment from "moment"
 import UserDAOActivityCollection from "./partial/UserDAOActivityCollection"
-import UserDAOActivityDelegators from "./partial/UserDAOActivityDelegators"
-import UserActivityGrantPopOver from "./partial/UserActivityGrantPopOver"
 import UserDAOAvtivityDelegate from "./partial/delegate/UserDAOAvtivityDelegate"
 import UserDAOActivityGrant from "./partial/grant/UserDAOActivityGrant"
 import { parseUTC } from "../../../../lib/hooks/utils"
@@ -57,6 +24,8 @@ const UserDAOActivity = ({ data }) => {
     proposals,
     teams,
   } = data
+
+  console.log(teams)
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>

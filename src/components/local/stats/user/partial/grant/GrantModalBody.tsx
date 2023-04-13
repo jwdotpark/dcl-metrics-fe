@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
-  Divider,
   Text,
   Box,
   Accordion,
@@ -9,54 +8,14 @@ import {
   useColorModeValue,
   AccordionIcon,
   AccordionPanel,
-  Table,
-  Tbody,
-  Tr,
-  Td,
-  Button,
-  useToast,
-  useBreakpointValue,
   Flex,
   Spacer,
   Center,
 } from "@chakra-ui/react"
-import { useState } from "react"
 import GrantAuthoredNestedModalBody from "./GrantAuthoredNestedModalBody"
 import GrantBeneficiaryNestedModalBody from "./GrantBeneficiaryNestedModalBody"
 
 const GrantModalBody = ({ grants }) => {
-  console.log(grants)
-
-  const toast = useToast()
-
-  const handleToast = (value) => {
-    navigator.clipboard.writeText(value)
-    toast({
-      description: "Value " + value + " has been copied to the clipboard.",
-      duration: 1000,
-      isClosable: true,
-      position: "bottom-right",
-      status: "success",
-    })
-  }
-
-  const responsiveStr = useBreakpointValue({
-    xs: 5,
-    sm: 5,
-    md: 50,
-    lg: 20,
-    xl: 50,
-    base: 20,
-  })
-
-  const truncateName = (name: string) => {
-    const nameLength = responsiveStr
-    if (name && name.length > nameLength) {
-      return name.slice(0, nameLength) + ".."
-    }
-    return name
-  }
-
   return (
     <Box mb="4">
       <Accordion allowToggle>

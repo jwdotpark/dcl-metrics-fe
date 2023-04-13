@@ -1,9 +1,3 @@
-//const GrantBeneficiaryNestedModalBody = ({ grants }) => {
-//  return <></>
-//}
-
-//export default GrantBeneficiaryNestedModalBody
-
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
@@ -22,7 +16,6 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import moment from "moment"
-import { useState } from "react"
 
 const GrantBeneficiaryNestedModalBody = ({ grants }) => {
   const toast = useToast()

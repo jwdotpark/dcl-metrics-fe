@@ -29,11 +29,6 @@ const UserActivityGrandPopOver = ({ grants }) => {
     } else {
       return false
     }
-    //if (grants.beneficiary.count > 0 || grants.authored.count > 0) {
-    //  return true
-    //} else {
-    //  return false
-    //}
   }
 
   const toast = useToast()
