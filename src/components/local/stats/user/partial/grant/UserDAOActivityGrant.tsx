@@ -44,7 +44,7 @@ const UserDAOActivityGrant = ({ name, grants }) => {
         isOpen={isOpen}
         motionPreset="slideInRight"
         onClose={onClose}
-        size={["xl", "sm", "md", "lg", "xl", "xl"]}
+        size={["full", "sm", "md", "lg", "xl", "xl"]}
       >
         <ModalOverlay />
         <ModalContent borderRadius="xl">
@@ -54,7 +54,7 @@ const UserDAOActivityGrant = ({ name, grants }) => {
             </Center>
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody overflowY="scroll" maxH="70vh">
             <GrandModalBody grants={grants} />
           </ModalBody>
         </ModalContent>

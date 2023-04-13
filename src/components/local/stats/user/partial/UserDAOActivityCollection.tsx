@@ -39,13 +39,13 @@ const UserDAOActivityCollection = ({ name, collections }) => {
         isOpen={isOpen}
         motionPreset="slideInRight"
         onClose={onClose}
-        size={["xl", "sm", "md", "lg", "xl", "xl"]}
+        size={["full", "sm", "md", "lg", "xl", "xl"]}
       >
         <ModalOverlay />
         <ModalContent borderRadius="xl">
           <ModalHeader>{name} Collections</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody overflowY="scroll" maxH="70vh">
             <CollectionModalBody collections={collections} />
           </ModalBody>
         </ModalContent>

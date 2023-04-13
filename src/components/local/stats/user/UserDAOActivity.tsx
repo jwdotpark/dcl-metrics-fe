@@ -38,6 +38,7 @@ import UserDAOActivityDelegators from "./partial/UserDAOActivityDelegators"
 import UserActivityGrantPopOver from "./partial/UserActivityGrantPopOver"
 import UserDAOAvtivityDelegate from "./partial/delegate/UserDAOAvtivityDelegate"
 import UserDAOActivityGrant from "./partial/grant/UserDAOActivityGrant"
+import { parseUTC } from "../../../../lib/hooks/utils"
 
 const UserDAOActivity = ({ data }) => {
   const {
@@ -118,14 +119,14 @@ const UserDAOActivity = ({ data }) => {
                   <Box>First Vote</Box>
                   <Spacer />
                   <Box>
-                    <Text as="kbd">{votes.first_vote_cast_at}</Text>
+                    <Text as="kbd">{parseUTC(votes.first_vote_cast_at)}</Text>
                   </Box>
                 </Flex>
                 <Flex w="100%" h="100%">
                   <Box>Latest Vote</Box>
                   <Spacer />
                   <Box>
-                    <Text as="kbd">{votes.latest_vote_cast_at}</Text>
+                    <Text as="kbd">{parseUTC(votes.latest_vote_cast_at)}</Text>
                   </Box>
                 </Flex>
               </>

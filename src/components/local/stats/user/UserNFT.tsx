@@ -3,6 +3,7 @@ import { Box, Flex, Spacer, VStack, Text } from "@chakra-ui/react"
 import CountUp from "react-countup"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import moment from "moment"
+import { parseUTC } from "../../../../lib/hooks/utils"
 
 const UserNFT = ({ data }) => {
   const {
@@ -115,8 +116,10 @@ const UserNFT = ({ data }) => {
               <Box>First DCLENS</Box>
               <Spacer />
               <Box>
-                <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
-                  {first_dclens_acquired_at ? first_dclens_acquired_at : "N/A"}
+                <Text as="kbd" align="right" noOfLines={1}>
+                  {first_dclens_acquired_at
+                    ? parseUTC(first_dclens_acquired_at)
+                    : "N/A"}
                 </Text>
               </Box>
             </Flex>
@@ -124,8 +127,10 @@ const UserNFT = ({ data }) => {
               <Box>First Land</Box>
               <Spacer />
               <Box>
-                <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
-                  {first_land_acquired_at ? first_land_acquired_at : "N/A"}
+                <Text as="kbd" align="right" noOfLines={1}>
+                  {first_land_acquired_at
+                    ? parseUTC(first_land_acquired_at)
+                    : "N/A"}
                 </Text>
               </Box>
             </Flex>
@@ -133,9 +138,9 @@ const UserNFT = ({ data }) => {
               <Box>First Wearable</Box>
               <Spacer />
               <Box>
-                <Text as="kbd" align="right" fontWeight="bold" noOfLines={1}>
+                <Text as="kbd" align="right" noOfLines={1}>
                   {first_wearable_acquired_at
-                    ? first_wearable_acquired_at
+                    ? parseUTC(first_wearable_acquired_at)
                     : "N/A"}
                 </Text>
               </Box>

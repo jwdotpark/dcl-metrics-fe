@@ -1,4 +1,5 @@
 import CryptoJS from "crypto-js"
+import moment from "moment"
 
 export const isServer = () => {
   return typeof window === "undefined"
@@ -74,4 +75,10 @@ export const strToCoord = (val: string) => {
     y: Number(val.split(",")[1]),
   }
   return coord
+}
+
+export const parseUTC = (date: string) => {
+  const parsedDate = moment.utc(date, "YYYY-MM-DD HH:mm:ss [UTC]")
+  const outputDate = parsedDate.format("YYYY MMM DD HH:mm")
+  return outputDate
 }
