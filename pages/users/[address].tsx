@@ -4,7 +4,7 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
+import { Box, Center, Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
@@ -27,7 +27,8 @@ export async function getServerSideProps(context) {
       "users/" + address + "/dao_activity",
       {}
     )
-  } else if (isDev && !isLocal) {
+    // TODo revert condition later
+  } else if (isLocal) {
     userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
     nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
     daoActivityRes = await getDataWithApiKey(
@@ -41,6 +42,16 @@ export async function getServerSideProps(context) {
     daoActivityRes = staticUserDAOActivity
   }
 
+  let isError = true
+  if (
+    Object.keys(userAddressRes).length === 0 ||
+    Object.keys(nftRes).length === 0 ||
+    Object.keys(daoActivityRes).length === 0
+  ) {
+    return {
+      props: { isError },
+    }
+  }
   return {
     props: { userAddressRes, nftRes, daoActivityRes },
   }
@@ -48,20 +59,24 @@ export async function getServerSideProps(context) {
 
 const SingleUserPage = (props) => {
   const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
-  const { userAddressRes, nftRes, daoActivityRes } = props
+  const { userAddressRes, nftRes, daoActivityRes, isError } = props
 
   return (
     <Layout>
-      <Box fontSize={["md", "md"]}>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <UserProfile data={userAddressRes} />
-        </Grid>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <UserInfo data={userAddressRes} />
-          <UserNFT data={nftRes} />
-          <UserDAOActivity data={daoActivityRes} />
-        </Grid>
-      </Box>
+      {!isError ? (
+        <Box fontSize={["md", "md"]}>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <UserProfile data={userAddressRes} />
+          </Grid>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <UserInfo data={userAddressRes} />
+            <UserNFT data={nftRes} />
+            <UserDAOActivity data={daoActivityRes} />
+          </Grid>
+        </Box>
+      ) : (
+        <Center h="calc(100vh - 10rem)">No User Found</Center>
+      )}
     </Layout>
   )
 }
