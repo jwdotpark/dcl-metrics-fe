@@ -35,7 +35,7 @@ import ToolTip from "../../../layout/local/ToolTip"
 import moment from "moment"
 import UserDAOActivityCollection from "./partial/UserDAOActivityCollection"
 import UserDAOActivityDelegators from "./partial/UserDAOActivityDelegators"
-import UserActivityGrandPopOver from "./partial/UserActivityGrandPopOver"
+import UserActivityGrantPopOver from "./partial/UserActivityGrantPopOver"
 
 const UserDAOActivity = ({ data }) => {
   const {
@@ -124,14 +124,18 @@ const UserDAOActivity = ({ data }) => {
                   <Box>First Vote</Box>
                   <Spacer />
                   <Box>
-                    <b>{votes.first_vote_cast_at}</b>
+                    <Text as="kbd">
+                      <b>{votes.first_vote_cast_at}</b>
+                    </Text>
                   </Box>
                 </Flex>
                 <Flex w="100%" h="100%">
                   <Box>Latest Vote</Box>
                   <Spacer />
                   <Box>
-                    <b>{votes.latest_vote_cast_at}</b>
+                    <Text as="kbd">
+                      <b>{votes.latest_vote_cast_at}</b>
+                    </Text>
                   </Box>
                 </Flex>
               </>
@@ -168,7 +172,7 @@ const UserDAOActivity = ({ data }) => {
               </Box>
             </Flex>
             <UserDAOActivityDelegators delegators={delegators} />
-            <UserActivityGrandPopOver grants={grants} />
+            <UserActivityGrantPopOver grants={grants} />
           </VStack>
         </Box>
       </Flex>

@@ -114,8 +114,8 @@ const UserInfo = ({ data }) => {
                 <Box>
                   <Text color={verified ? "green" : "gray"}>
                     <b>
-                      {verified ? "Verified" : "N/A"}
-                      {guest && "Guest User"}
+                      {verified ? "Verified" : "Guest User"}
+                      {(!verified && !guest) ?? "N/A"}
                     </b>
                   </Text>
                 </Box>

@@ -21,7 +21,11 @@ const UserProfile = ({ data }) => {
         <Center
           w={["auto", "auto", "auto", "100%", "100%"]}
           m={[4, 4, 4, 2, 2]}
-          bg={useColorModeValue("gray.200", "gray.600")}
+          //bg={useColorModeValue("gray.200", "gray.600")}
+          bg={useColorModeValue(
+            "linear-gradient(322deg, rgba(250,146,248,1) 0%, rgba(145,198,252,1) 49%, rgba(241,246,252,1) 100%)",
+            "linear-gradient(322deg, rgba(70,20,69,1) 0%, rgba(38,80,124,1) 49%, rgba(69,71,73,1) 100%)"
+          )}
           border="1px solid"
           borderColor={useColorModeValue("gray.300", "gray.500")}
           borderRadius="xl"

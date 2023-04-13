@@ -21,13 +21,21 @@ import moment from "moment"
 import ToolTip from "../../../../layout/local/ToolTip"
 
 const UserActivityGrandPopOver = ({ grants }) => {
-  console.log(grants)
+  console.log("asdf", grants)
+
   const checkGrantActivated = () => {
-    if (grants.beneficiary.count > 0 || grants.authored.count > 0) {
-      return true
+    if (grants) {
+      if (grants.beneficiary.count > 0 || grants.authored.count > 0) {
+        return true
+      }
     } else {
       return false
     }
+    //if (grants.beneficiary.count > 0 || grants.authored.count > 0) {
+    //  return true
+    //} else {
+    //  return false
+    //}
   }
 
   const toast = useToast()
@@ -65,7 +73,7 @@ const UserActivityGrandPopOver = ({ grants }) => {
               <Popover>
                 <PopoverTrigger>
                   <>
-                    {grants.authored.count > 0 && (
+                    {grants && grants.authored.count > 0 && (
                       <>
                         <Popover placement="left">
                           <PopoverTrigger>
@@ -254,7 +262,7 @@ const UserActivityGrandPopOver = ({ grants }) => {
                         </Popover>
                       </>
                     )}
-                    {grants.beneficiary.count > 0 && (
+                    {grants && grants.beneficiary.count > 0 && (
                       <Button w="100%" size="sm">
                         Beneficiary
                       </Button>
@@ -264,7 +272,7 @@ const UserActivityGrandPopOver = ({ grants }) => {
                 <PopoverContent>
                   <PopoverArrow />
                   <PopoverBody>
-                    {grants.authored.count > 0 && "Authored"}
+                    {grants && grants.authored.count > 0 && "Authored"}
                   </PopoverBody>
                 </PopoverContent>
               </Popover>
