@@ -104,7 +104,7 @@ const UserDAOActivity = ({ data }) => {
               <Box>Active DAO Committee Member</Box>
               <Spacer />
               <Box>
-                <Text color={active_dao_committee_member ? "green" : "red"}>
+                <Text color={active_dao_committee_member ? "green" : "gray"}>
                   {active_dao_committee_member ? "Yes" : "No"}
                 </Text>
               </Box>
@@ -113,7 +113,7 @@ const UserDAOActivity = ({ data }) => {
               <Box>Collection Creator</Box>
               <Spacer />
               <Box>
-                <Text color={collection_creator ? "green" : "red"}>
+                <Text color={collection_creator ? "green" : "gray"}>
                   {collection_creator ? "Yes" : "No"}
                 </Text>
               </Box>

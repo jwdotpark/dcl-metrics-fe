@@ -28,7 +28,7 @@ const UserDAOActivityCollection = ({ name, collections }) => {
           onClick={onOpen}
           variant="link"
         >
-          <Text color={collections.length > 0 ? "green" : "red"}>
+          <Text color={collections.length > 0 ? "green" : "gray"}>
             {(collections.length > 0 && collections.length + " collections") ||
               "No collections"}
           </Text>

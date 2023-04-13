@@ -41,7 +41,7 @@ const UserNFT = ({ data }) => {
               <Box>OG User</Box>
               <Spacer />
               <Box>
-                <Text color={og_user ? "green" : "red"}>
+                <Text color={og_user ? "green" : "gray"}>
                   {og_user ? "Yes" : "No"}
                 </Text>
               </Box>
@@ -50,7 +50,7 @@ const UserNFT = ({ data }) => {
               <Box>Owns DCLENS</Box>
               <Spacer />
               <Box>
-                <Text color={owns_dclens ? "green" : "red"}>
+                <Text color={owns_dclens ? "green" : "gray"}>
                   {owns_dclens ? "Yes" : "No"}
                 </Text>
               </Box>
@@ -59,7 +59,7 @@ const UserNFT = ({ data }) => {
               <Box>Owns Land</Box>
               <Spacer />
               <Box>
-                <Text color={owns_land ? "green" : "red"}>
+                <Text color={owns_land ? "green" : "gray"}>
                   {owns_land ? "Yes" : "No"}
                 </Text>
               </Box>
@@ -68,7 +68,7 @@ const UserNFT = ({ data }) => {
               <Box>Owns NFT</Box>
               <Spacer />
               <Box>
-                <Text color={owns_nfts ? "green" : "red"}>
+                <Text color={owns_nfts ? "green" : "gray"}>
                   {owns_nfts ? "Yes" : "No"}
                 </Text>
               </Box>
@@ -77,7 +77,7 @@ const UserNFT = ({ data }) => {
               <Box>Owns Wearable</Box>
               <Spacer />
               <Box>
-                <Text color={owns_wearables ? "green" : "red"}>
+                <Text color={owns_wearables ? "green" : "gray"}>
                   {owns_wearables ? "Yes" : "No"}
                 </Text>
               </Box>
@@ -86,7 +86,7 @@ const UserNFT = ({ data }) => {
               <Box>Participants In Genesis Auciton</Box>
               <Spacer />
               <Box>
-                <Text color={participant_in_genesis_auction ? "green" : "red"}>
+                <Text color={participant_in_genesis_auction ? "green" : "gray"}>
                   {participant_in_genesis_auction ? "Yes" : "No"}
                 </Text>
               </Box>
