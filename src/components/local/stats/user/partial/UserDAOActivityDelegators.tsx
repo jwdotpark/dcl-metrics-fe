@@ -51,7 +51,7 @@ const UserDAOActivityDelegators = ({ delegators }) => {
               </PopoverTrigger>
               <PopoverContent w="auto" borderRadius="xl">
                 <PopoverArrow />
-                <PopoverBody>
+                <PopoverBody overflowY="scroll">
                   <Box>
                     {delegators.length > 0 &&
                       delegators.map((item) => {

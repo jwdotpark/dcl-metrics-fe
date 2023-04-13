@@ -55,6 +55,7 @@ const UserDAOActivity = ({ data }) => {
     teams,
   } = data
 
+  console.log(collections)
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <BoxTitle
@@ -158,11 +159,12 @@ const UserDAOActivity = ({ data }) => {
                 </Text>
               </Box>
             </Flex>
-            <UserDAOActivityCollection
+            <UserDAOActivityCollection name={name} collections={collections} />
+            {/*<UserDAOActivityCollection
               collections={collections}
               delegators={delegators}
-            />
-            <Flex w="100%" h="100%">
+            />*/}
+            {/*<Flex w="100%" h="100%">
               <Box>Delegate</Box>
               <Spacer />
               <Box>
@@ -172,7 +174,7 @@ const UserDAOActivity = ({ data }) => {
               </Box>
             </Flex>
             <UserDAOActivityDelegators delegators={delegators} />
-            <UserActivityGrantPopOver grants={grants} />
+            <UserActivityGrantPopOver grants={grants} />*/}
           </VStack>
         </Box>
       </Flex>

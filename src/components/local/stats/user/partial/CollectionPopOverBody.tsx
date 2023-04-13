@@ -22,14 +22,14 @@ const CollectionPopOverBody = ({ item }) => {
     navigator.clipboard.writeText(value)
     toast({
       description: "Address " + value + " has been copied to the clipboard.",
-      duration: 2000,
+      duration: 1000,
       isClosable: true,
       position: "bottom-right",
       status: "success",
     })
   }
   return (
-    <PopoverBody>
+    <PopoverBody zIndex="toast">
       <Center w="auto" mb="2">
         <Text>{item.name}</Text>
       </Center>
@@ -54,9 +54,9 @@ const CollectionPopOverBody = ({ item }) => {
                   <Button
                     borderRadius="xl"
                     onClick={() => handleToast(item.collection_id)}
-                    size="sm"
+                    size="xs"
                   >
-                    ID
+                    Copy ID
                   </Button>
                 </ToolTip>
               </Td>
@@ -82,9 +82,9 @@ const CollectionPopOverBody = ({ item }) => {
                   <Button
                     borderRadius="xl"
                     onClick={() => handleToast(item.created_by)}
-                    size="sm"
+                    size="xs"
                   >
-                    Address
+                    Copy Address
                   </Button>
                 </ToolTip>
               </Td>

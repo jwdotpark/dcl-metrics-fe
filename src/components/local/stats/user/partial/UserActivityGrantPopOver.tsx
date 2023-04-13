@@ -44,7 +44,7 @@ const UserActivityGrandPopOver = ({ grants }) => {
     navigator.clipboard.writeText(value)
     toast({
       description: "Value " + value + " has been copied to the clipboard.",
-      duration: 2000,
+      duration: 1000,
       isClosable: true,
       position: "bottom-right",
       status: "success",
@@ -69,7 +69,7 @@ const UserActivityGrandPopOver = ({ grants }) => {
           </PopoverTrigger>
           <PopoverContent borderRadius="xl">
             <PopoverArrow />
-            <PopoverBody w="100%">
+            <PopoverBody overflowY="auto" w="100%">
               <Popover>
                 <PopoverTrigger>
                   <>
@@ -83,7 +83,7 @@ const UserActivityGrandPopOver = ({ grants }) => {
                           </PopoverTrigger>
                           <PopoverContent borderRadius="xl">
                             <PopoverArrow />
-                            <PopoverBody>
+                            <PopoverBody overflowY="auto">
                               <Center w="auto" mb="2">
                                 <Text>Authored</Text>
                               </Center>
@@ -271,7 +271,7 @@ const UserActivityGrandPopOver = ({ grants }) => {
                 </PopoverTrigger>
                 <PopoverContent>
                   <PopoverArrow />
-                  <PopoverBody>
+                  <PopoverBody overflowY="auto">
                     {grants && grants.authored.count > 0 && "Authored"}
                   </PopoverBody>
                 </PopoverContent>

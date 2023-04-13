@@ -24,7 +24,7 @@ const UserNFT = ({ data }) => {
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <BoxTitle
-        name={`NFT`}
+        name={`NFT Activity`}
         description={`Stats about NFTs owned by ${name}`}
         date=""
         avgData={[]}

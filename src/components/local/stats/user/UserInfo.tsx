@@ -47,7 +47,7 @@ const UserInfo = ({ data }) => {
     navigator.clipboard.writeText(value)
     toast({
       description: "Address " + value + " has been copied to the clipboard.",
-      duration: 2000,
+      duration: 1000,
       isClosable: true,
       position: "bottom-right",
       status: "success",

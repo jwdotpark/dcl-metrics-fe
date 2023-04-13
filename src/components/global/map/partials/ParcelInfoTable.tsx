@@ -33,7 +33,7 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
     await navigator.clipboard.writeText(value)
     toast({
       description: "Value is copied to the clipboard.",
-      duration: 2000,
+      duration: 1000,
       isClosable: true,
       position: "bottom-right",
       status: "success",
