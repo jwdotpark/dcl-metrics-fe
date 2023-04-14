@@ -29,7 +29,6 @@ import moment from "moment"
 import Link from "next/link"
 import useSWR from "swr"
 import ToolTip from "../../../layout/local/ToolTip"
-import { useRouter } from "next/router"
 
 const TableComponent = ({
   data,
