@@ -41,18 +41,18 @@ export async function getServerSideProps(context) {
     daoActivityRes = staticUserDAOActivity
   }
 
-  let isError = true
+  let isError
   if (
     Object.keys(userAddressRes).length === 0 ||
     Object.keys(nftRes).length === 0 ||
     Object.keys(daoActivityRes).length === 0
   ) {
-    return {
-      props: { isError },
-    }
+    isError = true
+  } else {
+    isError = false
   }
   return {
-    props: { userAddressRes, nftRes, daoActivityRes },
+    props: { userAddressRes, nftRes, daoActivityRes, isError },
   }
 }
 
