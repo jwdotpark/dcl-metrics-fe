@@ -33,45 +33,43 @@ const UserDAOActivityDelegators = ({ delegators }) => {
 
   return (
     <>
-      {delegators && (
-        <Flex w="100%" h="100%">
-          <Box>Delegators</Box>
-          <Spacer />
-          <Box>
-            <Popover placement="left">
-              <PopoverTrigger>
-                <Button
-                  borderRadius="xl"
-                  disabled={delegators.length > 0 ? false : true}
-                  size="sm"
-                  variant="solid"
-                >
-                  <b>{delegators.length > 0 ? delegators.length : "N/A"}</b>
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent w="auto" borderRadius="xl">
-                <PopoverArrow />
-                <PopoverBody overflowY="scroll">
-                  <Box>
-                    {delegators.length > 0 &&
-                      delegators.map((item) => {
-                        return (
-                          <Flex key={item} mb="2">
-                            <Button shadow="md" size="sm" variant="solid">
-                              <Link href={`/users/${item}`} target="_blank">
-                                <Text as="kbd">{truncateName(item)}</Text>
-                              </Link>
-                            </Button>
-                          </Flex>
-                        )
-                      })}
-                  </Box>
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
-          </Box>
-        </Flex>
-      )}
+      <Flex w="100%" h="100%">
+        <Box>Delegators</Box>
+        <Spacer />
+        <Box>
+          <Popover placement="left">
+            <PopoverTrigger>
+              <Button
+                borderRadius="xl"
+                disabled={delegators.length > 0 ? false : true}
+                size="sm"
+                variant="solid"
+              >
+                <Text>{delegators.length > 0 ? delegators.length : "N/A"}</Text>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent w="auto" borderRadius="xl">
+              <PopoverArrow />
+              <PopoverBody overflowY="scroll">
+                <Box>
+                  {delegators.length > 0 &&
+                    delegators.map((item) => {
+                      return (
+                        <Flex key={item} mb="2">
+                          <Button shadow="md" size="sm" variant="solid">
+                            <Link href={`/users/${item}`} target="_blank">
+                              <Text as="kbd">{truncateName(item)}</Text>
+                            </Link>
+                          </Button>
+                        </Flex>
+                      )
+                    })}
+                </Box>
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
+        </Box>
+      </Flex>
     </>
   )
 }

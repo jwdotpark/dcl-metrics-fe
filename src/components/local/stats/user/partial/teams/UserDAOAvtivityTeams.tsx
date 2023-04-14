@@ -49,7 +49,7 @@ const UserDAOActivityTeam = ({ name, teams }) => {
             </Center>
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody overflowY="scroll" maxH="90vh">
+          <ModalBody overflowY="scroll" maxH="80vh">
             <TeamModalBody teams={teams} />
           </ModalBody>
         </ModalContent>

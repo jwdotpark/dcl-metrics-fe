@@ -61,7 +61,9 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
             onClick={() => handleToast(delegate)}
             variant="link"
           >
-            <Text>{delegate ? truncateName(delegate) : "N/A"}</Text>
+            <Text ml="6" color={delegate ? "green" : "gray"}>
+              {delegate ? truncateName(delegate) : "N/A"}
+            </Text>
           </Button>
         </Box>
       </Flex>
@@ -75,7 +77,7 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
             onClick={onOpen}
             variant="link"
           >
-            <Text color={delegators.length > 0 ? "green" : "gray"}>
+            <Text ml="6" color={delegators.length > 0 ? "green" : "gray"}>
               {delegators.length > 0
                 ? delegators.length + " delegators"
                 : "N/A"}

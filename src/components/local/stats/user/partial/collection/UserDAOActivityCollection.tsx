@@ -29,9 +29,8 @@ const UserDAOActivityCollection = ({ name, collections }) => {
           onClick={onOpen}
           variant="link"
         >
-          <Text color={collections.length > 0 ? "green" : "gray"}>
-            {(collections.length > 0 && collections.length + " collections") ||
-              "N/A"}
+          <Text ml="6" color={collections.length > 0 ? "green" : "gray"}>
+            {collections.length > 0 ? collections.length : "N/A"}
           </Text>
         </Button>
       </Box>
@@ -50,7 +49,7 @@ const UserDAOActivityCollection = ({ name, collections }) => {
             </Center>
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody overflowY="scroll" maxH="90vh">
+          <ModalBody overflowY="scroll" maxH="80vh">
             <CollectionModalBody collections={collections} />
           </ModalBody>
         </ModalContent>
