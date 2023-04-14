@@ -6,6 +6,7 @@ import UserDAOActivityCollection from "./partial/UserDAOActivityCollection"
 import UserDAOAvtivityDelegate from "./partial/delegate/UserDAOAvtivityDelegate"
 import UserDAOActivityGrant from "./partial/grant/UserDAOActivityGrant"
 import { parseUTC } from "../../../../lib/hooks/utils"
+import UserDAOActivityTeam from "./partial/UserDAOAvtivityTeams"
 
 const UserDAOActivity = ({ data }) => {
   const {
@@ -25,7 +26,7 @@ const UserDAOActivity = ({ data }) => {
     teams,
   } = data
 
-  console.log(teams)
+  console.log("team", teams)
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
@@ -125,6 +126,7 @@ const UserDAOActivity = ({ data }) => {
               delegators={delegators}
             />
             <UserDAOActivityGrant name={name} grants={grants} />
+            <UserDAOActivityTeam name={name} teams={teams} />
           </VStack>
         </Box>
       </Flex>

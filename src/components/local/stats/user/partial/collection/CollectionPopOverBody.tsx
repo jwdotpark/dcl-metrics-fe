@@ -11,7 +11,7 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react"
-import ToolTip from "../../../../layout/local/ToolTip"
+import ToolTip from "../../../../../layout/local/ToolTip"
 import moment from "moment"
 
 const CollectionPopOverBody = ({ item }) => {

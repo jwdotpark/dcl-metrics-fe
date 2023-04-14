@@ -27,7 +27,8 @@ export async function getServerSideProps(context) {
       "users/" + address + "/dao_activity",
       {}
     )
-  } else if (isDev && !isLocal) {
+    // TODO change condition later
+  } else if (isLocal) {
     userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
     nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
     daoActivityRes = await getDataWithApiKey(
@@ -59,7 +60,6 @@ export async function getServerSideProps(context) {
 const SingleUserPage = (props) => {
   const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
   const { userAddressRes, nftRes, daoActivityRes, isError } = props
-  console.log(daoActivityRes)
 
   return (
     <Layout>
