@@ -27,7 +27,9 @@ export async function getStaticProps() {
     }
   } else if (isDev && !isLocal) {
     const globalUserRes = await getData(
-      globalUsersURL,
+      // FIXME reverrt to dev endpoint later
+      process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
+      //globalUsersURL,
       "/global/users",
       staticGlobalUsers
     )
