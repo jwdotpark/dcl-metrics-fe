@@ -13,6 +13,7 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  Center,
 } from "@chakra-ui/react"
 import DelegatorsModalBody from "./DelegatorsModalBody"
 
@@ -77,7 +78,7 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
             <Text color={delegators.length > 0 ? "green" : "gray"}>
               {delegators.length > 0
                 ? delegators.length + " delegators"
-                : "No delegators"}
+                : "N/A"}
             </Text>
           </Button>
         </Box>
@@ -90,7 +91,11 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
         >
           <ModalOverlay />
           <ModalContent borderRadius="xl">
-            <ModalHeader>Delegators</ModalHeader>
+            <ModalHeader>
+              <Center h="75px" fontSize="3xl">
+                Delegators
+              </Center>
+            </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <DelegatorsModalBody delegators={delegators} />

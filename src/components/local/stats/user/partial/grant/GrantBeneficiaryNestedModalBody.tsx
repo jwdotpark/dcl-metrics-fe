@@ -127,7 +127,7 @@ const GrantBeneficiaryNestedModalBody = ({ grants }) => {
                               }}
                               size="xs"
                             >
-                              Copy Snapshot ID
+                              Snapshot ID
                             </Button>
                           </Td>
                         </Tr>

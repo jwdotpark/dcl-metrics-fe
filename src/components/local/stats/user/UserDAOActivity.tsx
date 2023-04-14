@@ -53,24 +53,12 @@ const UserDAOActivity = ({ data }) => {
             <Flex w="100%" h="100%">
               <Box>Total VP</Box>
               <Spacer />
-              <Box>
-                <CountUp
-                  end={total_vp ? total_vp : "N/A"}
-                  duration={0.5}
-                  decimals={0}
-                />
-              </Box>
+              <Box>{total_vp ? total_vp : "N/A"}</Box>
             </Flex>
             <Flex w="100%" h="100%">
               <Box>Delegated VP</Box>
               <Spacer />
-              <Box>
-                <CountUp
-                  end={delegated_vp ? delegated_vp : "N/A"}
-                  duration={0.5}
-                  decimals={0}
-                />
-              </Box>
+              <Box>{delegated_vp ? delegated_vp : "N/A"}</Box>
             </Flex>
             {votes && (
               <>

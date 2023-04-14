@@ -55,7 +55,7 @@ const CollectionPopOverBody = ({ item }) => {
                     onClick={() => handleToast(item.collection_id)}
                     size="xs"
                   >
-                    Copy ID
+                    ID
                   </Button>
                 </ToolTip>
               </Td>
@@ -83,7 +83,7 @@ const CollectionPopOverBody = ({ item }) => {
                     onClick={() => handleToast(item.created_by)}
                     size="xs"
                   >
-                    Copy Address
+                    Address
                   </Button>
                 </ToolTip>
               </Td>

@@ -22,7 +22,7 @@ const GrantModalBody = ({ grants }) => {
         <AccordionItem>
           <AccordionButton
             _expanded={{
-              bg: useColorModeValue("gray.300", "gray.800"),
+              bg: useColorModeValue("gray.200", "gray.800"),
               color: useColorModeValue("black", "white"),
               fontWeight: "bold",
             }}
@@ -57,7 +57,7 @@ const GrantModalBody = ({ grants }) => {
         <AccordionItem isFocusable>
           <AccordionButton
             _expanded={{
-              bg: useColorModeValue("gray.300", "gray.800"),
+              bg: useColorModeValue("gray.200", "gray.800"),
               color: useColorModeValue("black", "white"),
               fontWeight: "bold",
             }}

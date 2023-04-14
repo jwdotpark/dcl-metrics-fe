@@ -31,7 +31,7 @@ const UserDAOActivityCollection = ({ name, collections }) => {
         >
           <Text color={collections.length > 0 ? "green" : "gray"}>
             {(collections.length > 0 && collections.length + " collections") ||
-              "No collections"}
+              "N/A"}
           </Text>
         </Button>
       </Box>
@@ -45,7 +45,9 @@ const UserDAOActivityCollection = ({ name, collections }) => {
         <ModalOverlay />
         <ModalContent borderRadius="xl">
           <ModalHeader>
-            <Center h="75px">{name} Collections</Center>
+            <Center h="75px" fontSize="3xl">
+              {name} Collections
+            </Center>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody overflowY="scroll" maxH="90vh">

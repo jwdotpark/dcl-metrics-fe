@@ -33,7 +33,7 @@ const UserDAOActivityGrant = ({ name, grants }) => {
           onClick={onOpen}
           variant="link"
         >
-          <Text color={!isGrantValid ? "green" : "red"}>
+          <Text ml="4" color={!isGrantValid ? "green" : "gray"}>
             {isGrantValid
               ? "N/A"
               : `${grants.authored.count} authored, ${grants.beneficiary.count} beneficiary`}
