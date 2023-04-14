@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import {
+  Button,
   Center,
   Flex,
   Text,
@@ -18,6 +20,7 @@ import TruncateName from "../TruncatedName"
 import moment from "moment"
 import momentDurationFormatSetup from "moment-duration-format"
 import ToolTip from "../../../../layout/local/ToolTip"
+import Link from "next/link"
 
 const SceneMarathonUsers = ({ data }) => {
   momentDurationFormatSetup(moment)
@@ -50,6 +53,21 @@ const SceneMarathonUsers = ({ data }) => {
   })
 
   const MarathonUserTable = () => {
+    const responsiveStr = useBreakpointValue({
+      xs: 5,
+      sm: 5,
+      md: 20,
+      lg: 20,
+      xl: 30,
+      base: 10,
+    })
+    const truncateName = (name: string) => {
+      const nameLength = responsiveStr
+      if (name && name.length > nameLength) {
+        return name.slice(0, nameLength) + ".."
+      }
+      return name
+    }
     return (
       <Box
         overflowY="hidden"
@@ -75,25 +93,25 @@ const SceneMarathonUsers = ({ data }) => {
                   </Flex>
                 </Td>
                 <Td>
-                  <Text fontWeight="bold">
-                    {item[1].name ? TruncateName(item[1].name) : "N/A"}
-                  </Text>
+                  <Link href={`/users/${item[1].address}`} rel="_blank">
+                    <Text fontWeight="bold">
+                      {item[1].name ? TruncateName(item[1].name) : "N/A"}
+                    </Text>
+                  </Link>
                 </Td>
                 <Td
                   onClick={() =>
                     handleToast(item[1].address ? item[1].address : "")
                   }
                 >
-                  <Text
-                    //as="kbd"
-                    // eslint-disable-next-line
-                    color={useColorModeValue("gray.800", "gray.200")}
-                    _hover={{ color: "gray.600", cursor: "pointer" }}
-                  >
-                    {item[1].address
-                      ? item[1].address.slice(0, addressWidth) + ".."
-                      : "N/A"}
-                  </Text>
+                  <Button size="xs" variant="link">
+                    <Text
+                      as="kbd"
+                      _hover={{ color: "gray.600", cursor: "pointer" }}
+                    >
+                      {item[1].address ? truncateName(item[1].address) : "N/A"}
+                    </Text>
+                  </Button>
                 </Td>
                 <Td isNumeric>
                   <Text wordBreak="keep-all">

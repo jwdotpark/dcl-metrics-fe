@@ -67,7 +67,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
       shadow="xl"
       hasArrow
       label="This chart shows the heatmap of each coordinate in this scene"
-      placement="auto"
+      placement="left"
     >
       <Box
         w="100%"

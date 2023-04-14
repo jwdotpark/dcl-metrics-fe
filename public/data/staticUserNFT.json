@@ -1,0 +1,17 @@
+{
+  "address": "0x895Be97bDb9F8a244c472B18EA96DeE39ddf8fe5",
+  "name": "dax",
+  "avatar_url": "https://peer-ec1.decentraland.org/content/contents/bafkreihdcv5bpvy5tbdfw7u5rlfdiyniudeg5tcdi7hyvrwk6bvbjis5pm",
+  "owns_nfts": true,
+  "owns_dclens": true,
+  "owns_land": true,
+  "owns_wearables": true,
+  "total_dclens": 13,
+  "total_lands": 40,
+  "total_wearables": 54,
+  "first_dclens_acquired_at": "2020-02-05 16:53:19 UTC",
+  "first_land_acquired_at": "2018-01-22 01:46:15 UTC",
+  "first_wearable_acquired_at": "2020-02-19 20:58:10 UTC",
+  "participant_in_genesis_auction": true,
+  "og_user": true
+}

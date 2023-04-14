@@ -1,15 +1,15 @@
 import { useBreakpointValue, Grid } from "@chakra-ui/react"
-import Layout from "../src/components/layout/layout"
-import Explorer from "../src/components/local/stats/Explorer"
-import MarathonUsers from "../src/components/local/stats/MarathonUsers"
-import staticGlobalUsers from "../public/data/staticGlobalUsers.json"
-import { getDataWithProxy, getData, writeFile } from "../src/lib/data/fetch"
+import Layout from "../../src/components/layout/layout"
+import Explorer from "../../src/components/local/stats/Explorer"
+import MarathonUsers from "../../src/components/local/stats/MarathonUsers"
+import staticGlobalUsers from "../../public/data/staticGlobalUsers.json"
+import { getDataWithProxy, getData, writeFile } from "../../src/lib/data/fetch"
 import {
   isProd,
   isDev,
   isLocal,
   globalUsersURL,
-} from "../src/lib/data/constant"
+} from "../../src/lib/data/constant"
 
 export async function getStaticProps() {
   if (isProd) {
