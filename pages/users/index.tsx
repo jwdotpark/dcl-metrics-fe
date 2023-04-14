@@ -3,7 +3,12 @@ import Layout from "../../src/components/layout/layout"
 import Explorer from "../../src/components/local/stats/Explorer"
 import MarathonUsers from "../../src/components/local/stats/MarathonUsers"
 import staticGlobalUsers from "../../public/data/staticGlobalUsers.json"
-import { getDataWithProxy, getData, writeFile } from "../../src/lib/data/fetch"
+import {
+  getDataWithProxy,
+  getData,
+  getDataWithApiKey,
+  writeFile,
+} from "../../src/lib/data/fetch"
 import {
   isProd,
   isDev,
@@ -26,13 +31,14 @@ export async function getStaticProps() {
       props: result,
     }
   } else if (isDev && !isLocal) {
-    const globalUserRes = await getData(
-      // FIXME reverrt to dev endpoint later
-      process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
+    const globalUserRes = await getDataWithApiKey(
+      // FIXME temporary fetch to main BE
+      process.env.NEXT_PUBLIC_PROD_ENDPOINT + "/global/users",
       //globalUsersURL,
       "/global/users",
       staticGlobalUsers
     )
+
     const result = { globalUserRes }
     return {
       props: result,
