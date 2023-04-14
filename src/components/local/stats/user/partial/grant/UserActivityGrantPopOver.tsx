@@ -18,7 +18,7 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import moment from "moment"
-import ToolTip from "../../../../layout/local/ToolTip"
+import ToolTip from "../../../../../layout/local/ToolTip"
 
 const UserActivityGrandPopOver = ({ grants }) => {
   const checkGrantActivated = () => {

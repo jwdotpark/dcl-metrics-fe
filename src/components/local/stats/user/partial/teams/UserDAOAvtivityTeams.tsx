@@ -1,37 +1,36 @@
 import {
-  Box,
   Text,
-  Flex,
-  Spacer,
+  Box,
   Button,
+  Center,
+  Flex,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
   ModalBody,
   ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Spacer,
   useDisclosure,
-  Center,
 } from "@chakra-ui/react"
-import CollectionModalBody from "../partial/collection/CollectionModalBody"
+import TeamModalBody from "./TeamModalBody"
 
-const UserDAOActivityCollection = ({ name, collections }) => {
+const UserDAOActivityTeam = ({ name, teams }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <Flex w="100%" h="100%">
-      <Box>Collections</Box>
+      <Box>Teams</Box>
       <Spacer />
       <Box>
         <Button
           borderRadius="xl"
-          disabled={collections.length > 0 ? false : true}
+          disabled={teams.length > 0 ? false : true}
           onClick={onOpen}
           variant="link"
         >
-          <Text color={collections.length > 0 ? "green" : "gray"}>
-            {(collections.length > 0 && collections.length + " collections") ||
-              "N/A"}
+          <Text ml="6" color={teams.length > 0 ? "green" : "gray"}>
+            {teams.length > 0 ? teams.length : "N/A"}
           </Text>
         </Button>
       </Box>
@@ -45,13 +44,13 @@ const UserDAOActivityCollection = ({ name, collections }) => {
         <ModalOverlay />
         <ModalContent borderRadius="xl">
           <ModalHeader>
-            <Center h="75px" fontSize="3xl">
-              {name} Collections
+            <Center h="75px">
+              <Text fontSize="3xl">Teams</Text>
             </Center>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody overflowY="scroll" maxH="90vh">
-            <CollectionModalBody collections={collections} />
+            <TeamModalBody teams={teams} />
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -59,4 +58,4 @@ const UserDAOActivityCollection = ({ name, collections }) => {
   )
 }
 
-export default UserDAOActivityCollection
+export default UserDAOActivityTeam

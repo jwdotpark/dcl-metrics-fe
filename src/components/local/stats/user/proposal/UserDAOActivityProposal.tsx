@@ -2,35 +2,35 @@ import {
   Text,
   Box,
   Button,
-  Center,
   Flex,
+  Spacer,
+  useDisclosure,
+  Center,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Spacer,
-  useDisclosure,
 } from "@chakra-ui/react"
-import TeamModalBody from "./teams/TeamModalBody"
+import ProposalModalBody from "./ProposalModalBody"
 
-const UserDAOActivityTeam = ({ name, teams }) => {
+const UserDAOActivityProposal = ({ name, proposals }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <Flex w="100%" h="100%">
-      <Box>Teams</Box>
+      <Box>Proposals</Box>
       <Spacer />
       <Box>
         <Button
           borderRadius="xl"
-          disabled={teams.length > 0 ? false : true}
+          disabled={proposals.count > 0 ? false : true}
           onClick={onOpen}
           variant="link"
         >
-          <Text ml="4" color={teams.length > 0 ? "green" : "gray"}>
-            {teams.length > 0 ? teams.length : "N/A"}
+          <Text ml="8" color={proposals.count > 0 ? "green" : "gray"}>
+            {proposals.count > 0 ? proposals.count : "N/A"}
           </Text>
         </Button>
       </Box>
@@ -45,12 +45,12 @@ const UserDAOActivityTeam = ({ name, teams }) => {
         <ModalContent borderRadius="xl">
           <ModalHeader>
             <Center h="75px">
-              <Text fontSize="3xl">{name} Teams</Text>
+              <Text fontSize="3xl">Proposals</Text>
             </Center>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody overflowY="scroll" maxH="90vh">
-            <TeamModalBody teams={teams} />
+            <ProposalModalBody proposals={proposals} />
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -58,4 +58,4 @@ const UserDAOActivityTeam = ({ name, teams }) => {
   )
 }
 
-export default UserDAOActivityTeam
+export default UserDAOActivityProposal

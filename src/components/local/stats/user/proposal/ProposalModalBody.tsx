@@ -1,23 +1,23 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
-  Text,
-  Box,
-  useColorModeValue,
   Accordion,
-  AccordionItem,
   AccordionButton,
-  AccordionPanel,
+  Text,
   AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Button,
   Table,
   Tbody,
   Td,
   Tr,
-  Button,
+  useColorModeValue,
   useToast,
 } from "@chakra-ui/react"
-import { parseUTC } from "../../../../../../lib/hooks/utils"
+import { parseUTC } from "../../../../../lib/hooks/utils"
 
-const CollectionModalBody = ({ collections }) => {
+const ProposalModalBody = ({ proposals }) => {
   const toast = useToast()
 
   const handleToast = (value) => {
@@ -33,9 +33,9 @@ const CollectionModalBody = ({ collections }) => {
 
   return (
     <Box mb="4">
-      {collections.map((item) => {
+      {proposals.data.map((item) => {
         return (
-          <Box key={item.collection_id}>
+          <Box key={item.proposal_id}>
             <Accordion allowToggle>
               <AccordionItem isFocusable>
                 <AccordionButton
@@ -46,7 +46,7 @@ const CollectionModalBody = ({ collections }) => {
                   }}
                 >
                   <Box as="span" flex="1" textAlign="left">
-                    {item.name}
+                    {item.title}
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
@@ -54,49 +54,31 @@ const CollectionModalBody = ({ collections }) => {
                   <Table size="sm" variant="simple">
                     <Tbody>
                       <Tr>
-                        <Td>Name</Td>
-                        <Td isNumeric>{item.name}</Td>
+                        <Td>Title</Td>
+                        <Td isNumeric>{item.title ? item.title : "N/A"}</Td>
                       </Tr>
                       <Tr>
-                        <Td>Symbol</Td>
-                        <Td isNumeric>{item.symbol}</Td>
-                      </Tr>
-                      <Tr>
-                        <Td>Items</Td>
-                        <Td isNumeric>{item.items}</Td>
-                      </Tr>
-                      <Tr>
-                        <Td>Approved</Td>
+                        <Td>Category</Td>
                         <Td isNumeric>
-                          <Text color={item.approved ? "green" : "red"}>
-                            {item.approved ? "Yes" : "No"}
+                          {item.category ? item.category : "N/A"}
+                        </Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Status</Td>
+                        <Td isNumeric>{item.status ? item.status : "N/A"}</Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Total Votes</Td>
+                        <Td isNumeric>
+                          <Text>
+                            {item.total_votes ? item.total_votes : "N/A"}
                           </Text>
                         </Td>
                       </Tr>
                       <Tr>
-                        <Td>Completed</Td>
+                        <Td>Total VP</Td>
                         <Td isNumeric>
-                          <Text color={item.completed ? "green" : "red"}>
-                            {item.completed ? "Yes" : "No"}
-                          </Text>
-                        </Td>
-                      </Tr>
-                      <Tr>
-                        <Td>Collection ID</Td>
-                        <Td isNumeric>
-                          <Button
-                            borderRadius="xl"
-                            onClick={() => handleToast(item.collection_id)}
-                            size="xs"
-                          >
-                            Collection ID
-                          </Button>
-                        </Td>
-                      </Tr>
-                      <Tr>
-                        <Td>Created At</Td>
-                        <Td isNumeric>
-                          <Text>{parseUTC(item.created_at)}</Text>
+                          <Text>{item.total_vp ? item.total_vp : "N/A"}</Text>
                         </Td>
                       </Tr>
                       <Tr>
@@ -107,8 +89,44 @@ const CollectionModalBody = ({ collections }) => {
                             onClick={() => handleToast(item.created_by)}
                             size="xs"
                           >
-                            Creator Address
+                            <Text>Address</Text>
                           </Button>
+                        </Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Proposal ID</Td>
+                        <Td isNumeric>
+                          <Button
+                            borderRadius="xl"
+                            onClick={() => handleToast(item.proposal_id)}
+                            size="xs"
+                          >
+                            <Text>Proposal ID</Text>
+                          </Button>
+                        </Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Snapshot ID</Td>
+                        <Td isNumeric>
+                          <Button
+                            borderRadius="xl"
+                            onClick={() => handleToast(item.snapshot_id)}
+                            size="xs"
+                          >
+                            <Text>Snapshot ID</Text>
+                          </Button>
+                        </Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Started At</Td>
+                        <Td isNumeric>
+                          <Text>{parseUTC(item.start_time)}</Text>
+                        </Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Ended At</Td>
+                        <Td isNumeric>
+                          <Text>{parseUTC(item.end_time)}</Text>
                         </Td>
                       </Tr>
                     </Tbody>
@@ -123,4 +141,4 @@ const CollectionModalBody = ({ collections }) => {
   )
 }
 
-export default CollectionModalBody
+export default ProposalModalBody

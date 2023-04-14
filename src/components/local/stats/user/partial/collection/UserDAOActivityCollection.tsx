@@ -1,42 +1,37 @@
 import {
-  useColorModeValue,
-  Button,
-  Text,
   Box,
+  Text,
   Flex,
   Spacer,
+  Button,
   Modal,
-  ModalBody,
-  ModalCloseButton,
+  ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalOverlay,
+  ModalBody,
+  ModalCloseButton,
   useDisclosure,
   Center,
 } from "@chakra-ui/react"
-import GrandModalBody from "../grant/GrantModalBody"
+import CollectionModalBody from "./CollectionModalBody"
 
-const UserDAOActivityGrant = ({ name, grants }) => {
+const UserDAOActivityCollection = ({ name, collections }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const isGrantValid =
-    grants.authored.count === 0 && grants.beneficiary.count === 0 ? true : false
 
   return (
     <Flex w="100%" h="100%">
-      <Box>Grant</Box>
+      <Box>Collections</Box>
       <Spacer />
       <Box>
         <Button
           borderRadius="xl"
-          disabled={isGrantValid}
+          disabled={collections.length > 0 ? false : true}
           onClick={onOpen}
           variant="link"
         >
-          <Text ml="4" color={!isGrantValid ? "green" : "gray"}>
-            {isGrantValid
-              ? "N/A"
-              : `${grants.authored.count} authored, ${grants.beneficiary.count} beneficiary`}
+          <Text color={collections.length > 0 ? "green" : "gray"}>
+            {(collections.length > 0 && collections.length + " collections") ||
+              "N/A"}
           </Text>
         </Button>
       </Box>
@@ -50,13 +45,13 @@ const UserDAOActivityGrant = ({ name, grants }) => {
         <ModalOverlay />
         <ModalContent borderRadius="xl">
           <ModalHeader>
-            <Center h="75px" mb="-4">
-              <Text fontSize="3xl">Grants</Text>
+            <Center h="75px" fontSize="3xl">
+              {name} Collections
             </Center>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody overflowY="scroll" maxH="90vh">
-            <GrandModalBody grants={grants} />
+            <CollectionModalBody collections={collections} />
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -64,4 +59,4 @@ const UserDAOActivityGrant = ({ name, grants }) => {
   )
 }
 
-export default UserDAOActivityGrant
+export default UserDAOActivityCollection

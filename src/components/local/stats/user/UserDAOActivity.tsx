@@ -2,11 +2,12 @@ import { Flex, Box, Text, VStack, Spacer } from "@chakra-ui/react"
 import CountUp from "react-countup"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import UserDAOActivityCollection from "./partial/UserDAOActivityCollection"
+import UserDAOActivityCollection from "./partial/collection/UserDAOActivityCollection"
 import UserDAOAvtivityDelegate from "./partial/delegate/UserDAOAvtivityDelegate"
 import UserDAOActivityGrant from "./partial/grant/UserDAOActivityGrant"
 import { parseUTC } from "../../../../lib/hooks/utils"
-import UserDAOActivityTeam from "./partial/UserDAOAvtivityTeams"
+import UserDAOActivityTeam from "./partial/teams/UserDAOAvtivityTeams"
+import UserDAOActivityProposal from "./proposal/UserDAOActivityProposal"
 
 const UserDAOActivity = ({ data }) => {
   const {
@@ -25,8 +26,6 @@ const UserDAOActivity = ({ data }) => {
     proposals,
     teams,
   } = data
-
-  console.log("team", teams)
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
@@ -115,6 +114,7 @@ const UserDAOActivity = ({ data }) => {
             />
             <UserDAOActivityGrant name={name} grants={grants} />
             <UserDAOActivityTeam name={name} teams={teams} />
+            <UserDAOActivityProposal name={name} proposals={proposals} />
           </VStack>
         </Box>
       </Flex>
