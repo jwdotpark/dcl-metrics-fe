@@ -9,6 +9,7 @@ import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
 import UserDAOActivity from "../../src/components/local/stats/user/UserDAOActivity"
+import { useEffect } from "react"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -36,30 +37,34 @@ export async function getServerSideProps(context) {
       {}
     )
   } else if (isLocal) {
-    userAddressRes = staticUserAddress
-    nftRes = staticUserNFT
-    daoActivityRes = staticUserDAOActivity
+    //userAddressRes = staticUserAddress
+    //nftRes = staticUserNFT
+    //daoActivityRes = staticUserDAOActivity
+    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
+    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
+    daoActivityRes = await getDataWithApiKey(
+      daoActivityUrl,
+      "users/" + address + "/dao_activity",
+      {}
+    )
   }
 
-  let isError
-  if (
-    Object.keys(userAddressRes).length === 0 ||
-    Object.keys(nftRes).length === 0 ||
-    Object.keys(daoActivityRes).length === 0
-  ) {
-    isError = true
-  } else {
-    isError = false
-  }
   return {
-    props: { userAddressRes, nftRes, daoActivityRes, isError },
+    props: { userAddressRes, nftRes, daoActivityRes },
   }
 }
 
 const SingleUserPage = (props) => {
   const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
   const { userAddressRes, nftRes, daoActivityRes, isError } = props
-  console.log(isError)
+
+  // TODO debugging data validity
+  useEffect(() => {
+    console.log("basic", userAddressRes)
+    console.log("nft", nftRes)
+    console.log("dao", daoActivityRes)
+  }, [daoActivityRes, nftRes, userAddressRes])
+
   return (
     <Layout>
       <Box fontSize={["md", "md"]}>
