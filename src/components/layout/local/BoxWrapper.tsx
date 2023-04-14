@@ -6,7 +6,7 @@ const BoxWrapper = ({ children, colSpan }) => {
     w: "100%",
     p: [0, 1, 1, 2, 2],
     bg: useColorModeValue("white", "gray.800"),
-    border: "2px solid",
+    border: "1px solid",
     borderColor: useColorModeValue("gray.300", "gray.600"),
     borderRadius: "xl",
     shadow: "md",
