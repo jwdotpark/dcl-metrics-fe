@@ -37,16 +37,17 @@ export async function getServerSideProps(context) {
       {}
     )
   } else if (isLocal) {
-    //userAddressRes = staticUserAddress
-    //nftRes = staticUserNFT
-    //daoActivityRes = staticUserDAOActivity
-    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
-    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
-    daoActivityRes = await getDataWithApiKey(
-      daoActivityUrl,
-      "users/" + address + "/dao_activity",
-      {}
-    )
+    // TODO revert fetching method later
+    userAddressRes = staticUserAddress
+    nftRes = staticUserNFT
+    daoActivityRes = staticUserDAOActivity
+    //userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
+    //nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
+    //daoActivityRes = await getDataWithApiKey(
+    //  daoActivityUrl,
+    //  "users/" + address + "/dao_activity",
+    //  {}
+    //)
   }
 
   return {
@@ -56,7 +57,7 @@ export async function getServerSideProps(context) {
 
 const SingleUserPage = (props) => {
   const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
-  const { userAddressRes, nftRes, daoActivityRes, isError } = props
+  const { userAddressRes, nftRes, daoActivityRes } = props
 
   // TODO debugging data validity
   useEffect(() => {
