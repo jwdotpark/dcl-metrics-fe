@@ -49,12 +49,12 @@ const UserDAOActivityGrant = ({ name, grants }) => {
         <ModalOverlay />
         <ModalContent borderRadius="xl">
           <ModalHeader>
-            <Center>
+            <Center h="75px" mb="-4">
               <Text fontSize="3xl">{name} Grants</Text>
             </Center>
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody overflowY="scroll" maxH="70vh">
+          <ModalBody overflowY="scroll" maxH="90vh">
             <GrandModalBody grants={grants} />
           </ModalBody>
         </ModalContent>
