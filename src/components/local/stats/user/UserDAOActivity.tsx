@@ -64,13 +64,7 @@ const UserDAOActivity = ({ data }) => {
                 <Flex w="100%" h="100%">
                   <Box>Total Votes</Box>
                   <Spacer />
-                  <Box>
-                    <CountUp
-                      end={votes.total_votes ? votes.total_votes : 0}
-                      duration={0.5}
-                      decimals={0}
-                    />
-                  </Box>
+                  <Box>{votes.total_votes ? votes.total_votes : 0}</Box>
                 </Flex>
                 <Flex w="100%" h="100%">
                   <Box>First Vote</Box>

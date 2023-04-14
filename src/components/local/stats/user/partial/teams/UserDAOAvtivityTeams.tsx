@@ -18,6 +18,8 @@ import TeamModalBody from "./TeamModalBody"
 const UserDAOActivityTeam = ({ name, teams }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
+  if (teams === undefined) return null
+
   return (
     <Flex w="100%" h="100%">
       <Box>Teams</Box>

@@ -18,6 +18,8 @@ import ProposalModalBody from "./ProposalModalBody"
 const UserDAOActivityProposal = ({ name, proposals }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
+  if (proposals === undefined) return null
+
   return (
     <Flex w="100%" h="100%">
       <Box>Proposals</Box>

@@ -19,6 +19,8 @@ import GrandModalBody from "../grant/GrantModalBody"
 const UserDAOActivityGrant = ({ name, grants }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
+  if (grants === undefined) return null
+
   const isGrantValid =
     grants.authored.count === 0 && grants.beneficiary.count === 0 ? true : false
 

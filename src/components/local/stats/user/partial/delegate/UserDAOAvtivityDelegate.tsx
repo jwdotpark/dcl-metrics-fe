@@ -50,6 +50,8 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
     })
   }
 
+  if (delegators === undefined && !delegate) return null
+
   return (
     <>
       <Flex w="100%" h="100%">

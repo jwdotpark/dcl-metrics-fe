@@ -94,23 +94,17 @@ const UserNFT = ({ data }) => {
             <Flex w="100%" h="100%">
               <Box>Total DCLENS</Box>
               <Spacer />
-              <Box>
-                <CountUp end={total_dclens} duration={0.5} decimals={0} />
-              </Box>
+              <Box>{total_dclens ? total_dclens : "N/A"}</Box>
             </Flex>
             <Flex w="100%" h="100%">
               <Box>Total Lands</Box>
               <Spacer />
-              <Box>
-                <CountUp end={total_lands} duration={0.5} decimals={0} />
-              </Box>
+              <Box>{total_lands ? total_lands : "N/A"}</Box>
             </Flex>
             <Flex w="100%" h="100%">
               <Box>Total Wearables</Box>
               <Spacer />
-              <Box>
-                <CountUp end={total_wearables} duration={0.5} decimals={0} />
-              </Box>
+              <Box>{total_wearables ? total_wearables : "N/A"}</Box>
             </Flex>
             <Flex w="100%" h="100%">
               <Box>First DCLENS</Box>
