@@ -33,9 +33,10 @@ const SingleScenePage = ({ result, historyResult }) => {
 export default SingleScenePage
 
 export async function getServerSideProps(context) {
-  const uuid = context.query.uuid
+  const { uuid, name } = context.query
   const url = getEndpoint("scenes/" + uuid)
-  const result = uuid && (await getDataWithProxy(url, "scenes/" + uuid, {}))
+  const result =
+    uuid && (await getDataWithProxy(url, `scenes/${name}/${uuid}`, {}))
 
   const historyUrl = getEndpoint(`scenes/${uuid}/visitor_history`)
   const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
