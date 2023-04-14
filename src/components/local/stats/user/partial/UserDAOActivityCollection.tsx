@@ -11,6 +11,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Center,
 } from "@chakra-ui/react"
 import CollectionModalBody from "../partial/collection/CollectionModalBody"
 
@@ -43,9 +44,11 @@ const UserDAOActivityCollection = ({ name, collections }) => {
       >
         <ModalOverlay />
         <ModalContent borderRadius="xl">
-          <ModalHeader>{name} Collections</ModalHeader>
+          <ModalHeader>
+            <Center h="75px">{name} Collections</Center>
+          </ModalHeader>
           <ModalCloseButton />
-          <ModalBody overflowY="scroll" maxH="70vh">
+          <ModalBody overflowY="scroll" maxH="90vh">
             <CollectionModalBody collections={collections} />
           </ModalBody>
         </ModalContent>

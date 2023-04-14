@@ -57,6 +57,7 @@ const GrantAuthoredNestedModalBody = ({ grants }) => {
             <Accordion allowToggle>
               <AccordionItem>
                 <AccordionButton
+                  bg={useColorModeValue("gray.300", "gray.700")}
                   _expanded={{
                     bg: useColorModeValue("gray.100", "gray.600"),
                     color: useColorModeValue("black", "white"),

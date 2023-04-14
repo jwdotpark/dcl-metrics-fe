@@ -16,6 +16,7 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import moment from "moment"
+import { parseUTC } from "../../../../../../lib/hooks/utils"
 
 const CollectionModalBody = ({ collections }) => {
   const toast = useToast()
@@ -97,10 +98,11 @@ const CollectionModalBody = ({ collections }) => {
                         <Td>Created At</Td>
                         <Td isNumeric>
                           <Text>
-                            {moment(item.created_at).format(
+                            {parseUTC(item.created_at)}
+                            {/*{moment(item.created_at).format(
                               "YYYY MMM. D hh:mm"
                             )}{" "}
-                            UTC
+                            UTC*/}
                           </Text>
                         </Td>
                       </Tr>

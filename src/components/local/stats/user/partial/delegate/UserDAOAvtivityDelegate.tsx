@@ -74,7 +74,7 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
             onClick={onOpen}
             variant="link"
           >
-            <Text color={delegators.length > 0 ? "green" : "red"}>
+            <Text color={delegators.length > 0 ? "green" : "gray"}>
               {delegators.length > 0
                 ? delegators.length + " delegators"
                 : "No delegators"}
