@@ -1,4 +1,5 @@
 import {
+  useToast,
   Center,
   Flex,
   Table,
@@ -12,6 +13,7 @@ import {
   Image,
   useColorModeValue,
   Box,
+  Button,
 } from "@chakra-ui/react"
 import {
   dateRangeStr,
@@ -27,6 +29,7 @@ import moment from "moment"
 import Link from "next/link"
 import useSWR from "swr"
 import ToolTip from "../../../layout/local/ToolTip"
+import { useRouter } from "next/router"
 
 const TableComponent = ({
   data,
@@ -75,7 +78,7 @@ const TableComponent = ({
             style={detectSafari ? {} : barChartStyle(i)}
           >
             {bodyList.map((body) => (
-              <>{renderTd(body, row)}</>
+              <>{RenderTd(body, row)}</>
             ))}
           </Tr>
         ))}
@@ -95,40 +98,65 @@ const TableComponent = ({
 
 export default TableComponent
 
-const renderTd = (body, row) => {
+const RenderTd = (body, row) => {
+  const toast = useToast()
+
+  const handleToast = (value) => {
+    navigator.clipboard.writeText(value)
+    toast({
+      description: "Value " + value + " has been copied to the clipboard.",
+      duration: 1000,
+      isClosable: true,
+      position: "bottom-right",
+      status: "success",
+    })
+  }
   switch (body) {
     case "time_spent":
       return (
-        <Td key={body} as="kbd">
-          <b>{convertSeconds(row[body])}</b>
+        <Td key={body}>
+          <Text as="kbd">
+            <b>{convertSeconds(row[body])}</b>
+          </Text>
         </Td>
       )
     case "parcels_visited":
       return (
-        <Td key={body} as="kbd">
-          <b>{row[body]}</b>
+        <Td key={body}>
+          <Text as="kbd">
+            <b>{row[body]}</b>
+          </Text>
         </Td>
       )
     case "name":
       return (
         <Td key={body}>
-          <Flex>
-            <ProfilePicture
-              address={row.avatar_url}
-              verified={row.verified_user}
-              guest={row.guest_user}
-            />
-            <Center>{sliceStr(row.name)}</Center>
-          </Flex>
+          <Link href={`/users/${row.address}`} target="_blank">
+            <Flex>
+              <ProfilePicture
+                address={row.avatar_url}
+                verified={row.verified_user}
+                guest={row.guest_user}
+              />
+              <Center>{sliceStr(row.name)}</Center>
+            </Flex>
+          </Link>
         </Td>
       )
     case "address":
       return (
         <>
           <Td key={body}>
-            <kbd>{sliceStr(row.address)}</kbd>
+            <Button
+              borderRadius="xl"
+              onClick={() => handleToast(row.address)}
+              size="xs"
+              variant="link"
+            >
+              <Text as="kbd">{sliceStr(row.address)}</Text>
+            </Button>
           </Td>
-          <Td key={body}>
+          <Td>
             <TableLink address={row.address} />
           </Td>
         </>

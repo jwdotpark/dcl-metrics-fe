@@ -15,7 +15,7 @@ import {
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react"
-import { parseUTC } from "../../../../../lib/hooks/utils"
+import { parseUTC } from "../../../../../../lib/hooks/utils"
 
 const ProposalModalBody = ({ proposals }) => {
   const toast = useToast()

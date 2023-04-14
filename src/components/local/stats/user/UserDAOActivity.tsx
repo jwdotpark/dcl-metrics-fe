@@ -7,7 +7,7 @@ import UserDAOAvtivityDelegate from "./partial/delegate/UserDAOAvtivityDelegate"
 import UserDAOActivityGrant from "./partial/grant/UserDAOActivityGrant"
 import { parseUTC } from "../../../../lib/hooks/utils"
 import UserDAOActivityTeam from "./partial/teams/UserDAOAvtivityTeams"
-import UserDAOActivityProposal from "./proposal/UserDAOActivityProposal"
+import UserDAOActivityProposal from "./partial/proposal/UserDAOActivityProposal"
 
 const UserDAOActivity = ({ data }) => {
   const {
