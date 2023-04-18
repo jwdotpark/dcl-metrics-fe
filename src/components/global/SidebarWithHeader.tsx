@@ -79,7 +79,6 @@ export default function SidebarWithHeader({
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-
       <TopBar onOpen={onOpen} sidebarStatus={sidebarStatus} />
       <Flex
         align="center"

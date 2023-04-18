@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Text,
   Box,
@@ -6,13 +7,20 @@ import {
   useColorModeValue,
   IconButton,
   HStack,
+  Spacer,
+  Button,
 } from "@chakra-ui/react"
+import { useAtomValue } from "jotai"
 import Image from "next/image"
 import { FiMenu } from "react-icons/fi"
+import { psaAtom } from "../../../lib/state/psaState"
 import ColorButton from "../ColorButton"
+import FeedbackButton from "../FeedbackButton"
 import LogOutButton from "../LogOutButton"
 import PrivateDashboardButton from "../PrivateDashboardButton"
 import SettingsButton from "../SettingsButton"
+import Link from "next/link"
+import { FiCoffee } from "react-icons/fi"
 
 interface MobileProps extends FlexProps {
   sidebarStatus: string
@@ -21,6 +29,7 @@ interface MobileProps extends FlexProps {
 
 const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
   const auth = JSON.parse(localStorage.getItem("auth"))
+  const psa = useAtomValue(psaAtom)
   return (
     <Flex
       align="center"
@@ -41,7 +50,6 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
         onClick={onOpen}
         variant="outline"
       />
-
       <Box
         display={{ base: "flex", md: "none" }}
         fontFamily="sans-serif"
@@ -52,7 +60,6 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
           <Box shadow="md">
             <Image width="26" height="26" alt="logo" src={"/images/logo.png"} />
           </Box>
-          {/*<Image boxSize="26px" shadow="md" alt="logo" src={logo.src} />*/}
           <Text
             fontSize="20px"
             fontWeight="extrabold"
@@ -63,7 +70,28 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
           </Text>
         </HStack>
       </Box>
-      <HStack spacing={{ base: "0", md: "6" }}>
+      <Box display={["none", "block"]} ml="2">
+        <Box
+          sx={{ transform: "translateY(3px)" }}
+          display="inline-block"
+          mr="2"
+        >
+          <FiCoffee color={useColorModeValue("black", "white")} />
+        </Box>
+        <Box display="inline-block">
+          <Link href={`/blog/${psa?.slug}`} target="_blank">
+            <Text>
+              <Button size="sm" variant="link">
+                <Text color={useColorModeValue("#000", "#fff")}>
+                  {psa?.data?.description}
+                </Text>
+              </Button>
+            </Text>
+          </Link>
+        </Box>
+      </Box>
+      <Spacer />
+      <HStack spacing={[-4, -1, 0, 1, 2]}>
         {auth && (
           <>
             <PrivateDashboardButton />
@@ -71,7 +99,9 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
           </>
         )}
         {/* insert item */}
+        <Spacer />
         <SettingsButton />
+        <FeedbackButton />
         <ColorButton />
       </HStack>
     </Flex>
