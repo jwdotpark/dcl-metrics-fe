@@ -27,8 +27,6 @@ const UserDAOActivity = ({ data }) => {
     teams,
   } = data
 
-  console.log(teams)
-
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <BoxTitle
@@ -51,11 +49,13 @@ const UserDAOActivity = ({ data }) => {
                 <Text>{title ? title : "N/A"}</Text>
               </Box>
             </Flex>
-            <Flex w="100%" h="100%">
-              <Box>Total VP</Box>
-              <Spacer />
-              <Box>{total_vp ? Math.round(total_vp) : "N/A"}</Box>
-            </Flex>
+            {total_vp > 0 && (
+              <Flex w="100%" h="100%">
+                <Box>Total VP</Box>
+                <Spacer />
+                <Box>{total_vp ? Math.round(total_vp) : "N/A"}</Box>
+              </Flex>
+            )}
             {delegated_vp !== 0 && (
               <Flex w="100%" h="100%">
                 <Box>Delegated VP</Box>

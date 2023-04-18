@@ -85,7 +85,7 @@ const UserInfo = ({ data }) => {
                 _hover={{ cursor: "pointer" }}
                 onClick={() => handleToast(address)}
               >
-                <Button variant="link">
+                <Button borderRadius="xl" size="xs">
                   <Text as="kbd" noOfLines={1}>
                     {truncateName(address)}
                   </Text>
