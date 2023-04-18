@@ -27,6 +27,8 @@ const UserDAOActivity = ({ data }) => {
     teams,
   } = data
 
+  console.log(teams)
+
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <BoxTitle
@@ -52,13 +54,15 @@ const UserDAOActivity = ({ data }) => {
             <Flex w="100%" h="100%">
               <Box>Total VP</Box>
               <Spacer />
-              <Box>{total_vp ? total_vp.toFixed(1) : "N/A"}</Box>
+              <Box>{total_vp ? Math.round(total_vp) : "N/A"}</Box>
             </Flex>
-            <Flex w="100%" h="100%">
-              <Box>Delegated VP</Box>
-              <Spacer />
-              <Box>{delegated_vp ? delegated_vp : "N/A"}</Box>
-            </Flex>
+            {delegated_vp !== 0 && (
+              <Flex w="100%" h="100%">
+                <Box>Delegated VP</Box>
+                <Spacer />
+                <Box>{delegated_vp ? delegated_vp : "N/A"}</Box>
+              </Flex>
+            )}
             {votes && (
               <>
                 <Flex w="100%" h="100%">
@@ -82,33 +86,47 @@ const UserDAOActivity = ({ data }) => {
                 </Flex>
               </>
             )}
-            <Flex w="100%" h="100%">
-              <Box>Active DAO Committee Member</Box>
-              <Spacer />
-              <Box>
-                <Text color={active_dao_committee_member ? "green" : "gray"}>
-                  {active_dao_committee_member ? "Yes" : "No"}
-                </Text>
-              </Box>
-            </Flex>
-            <Flex w="100%" h="100%">
-              <Box>Collection Creator</Box>
-              <Spacer />
-              <Box>
-                <Text color={collection_creator ? "green" : "gray"}>
-                  {collection_creator ? "Yes" : "No"}
-                </Text>
-              </Box>
-            </Flex>
-            <UserDAOActivityCollection name={name} collections={collections} />
+            {active_dao_committee_member && (
+              <Flex w="100%" h="100%">
+                <Box>Active DAO Committee Member</Box>
+                <Spacer />
+                <Box>
+                  <Text color={active_dao_committee_member ? "green" : "gray"}>
+                    {active_dao_committee_member ? "Yes" : "No"}
+                  </Text>
+                </Box>
+              </Flex>
+            )}
+            {collection_creator && (
+              <Flex w="100%" h="100%">
+                <Box>Collection Creator</Box>
+                <Spacer />
+                <Box>
+                  <Text color={collection_creator ? "green" : "gray"}>
+                    {collection_creator ? "Yes" : "No"}
+                  </Text>
+                </Box>
+              </Flex>
+            )}
+            {collections && collections.length > 0 && (
+              <UserDAOActivityCollection
+                name={name}
+                collections={collections}
+              />
+            )}
             <UserDAOAvtivityDelegate
               name={name}
               delegate={delegate}
               delegators={delegators}
             />
             <UserDAOActivityGrant name={name} grants={grants} />
-            <UserDAOActivityTeam name={name} teams={teams} />
-            <UserDAOActivityProposal name={name} proposals={proposals} />
+            {teams && teams.length > 0 && (
+              <UserDAOActivityTeam name={name} teams={teams} />
+            )}
+
+            {proposals && proposals.length > 0 && (
+              <UserDAOActivityProposal name={name} proposals={proposals} />
+            )}
           </VStack>
         </Box>
       </Flex>

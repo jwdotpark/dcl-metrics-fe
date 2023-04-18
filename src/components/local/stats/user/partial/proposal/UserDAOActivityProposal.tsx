@@ -18,45 +18,45 @@ import ProposalModalBody from "./ProposalModalBody"
 const UserDAOActivityProposal = ({ name, proposals }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  if (proposals === undefined) return null
-
   return (
-    <Flex w="100%" h="100%">
-      <Box>Proposals</Box>
-      <Spacer />
-      <Box>
-        <Button
-          borderRadius="xl"
-          disabled={proposals.count > 0 ? false : true}
-          onClick={onOpen}
-          variant="link"
+    proposals && (
+      <Flex w="100%" h="100%">
+        <Box>Proposals</Box>
+        <Spacer />
+        <Box>
+          <Button
+            borderRadius="xl"
+            disabled={proposals.count > 0 ? false : true}
+            onClick={onOpen}
+            variant="link"
+          >
+            <Text ml="8" color={proposals.count > 0 ? "green" : "gray"}>
+              {proposals.count > 0 ? proposals.count : "N/A"}
+            </Text>
+          </Button>
+        </Box>
+        <Modal
+          isCentered
+          isOpen={isOpen}
+          motionPreset="slideInRight"
+          onClose={onClose}
+          size={["full", "sm", "md", "lg", "xl", "xl"]}
         >
-          <Text ml="8" color={proposals.count > 0 ? "green" : "gray"}>
-            {proposals.count > 0 ? proposals.count : "N/A"}
-          </Text>
-        </Button>
-      </Box>
-      <Modal
-        isCentered
-        isOpen={isOpen}
-        motionPreset="slideInRight"
-        onClose={onClose}
-        size={["full", "sm", "md", "lg", "xl", "xl"]}
-      >
-        <ModalOverlay />
-        <ModalContent borderRadius="xl">
-          <ModalHeader>
-            <Center h="75px">
-              <Text fontSize="3xl">Proposals</Text>
-            </Center>
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody overflowY="scroll" maxH="80vh">
-            <ProposalModalBody proposals={proposals} />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-    </Flex>
+          <ModalOverlay />
+          <ModalContent borderRadius="xl">
+            <ModalHeader>
+              <Center h="75px">
+                <Text fontSize="3xl">Proposals</Text>
+              </Center>
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody overflowY="scroll" maxH="80vh">
+              <ProposalModalBody proposals={proposals} />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </Flex>
+    )
   )
 }
 

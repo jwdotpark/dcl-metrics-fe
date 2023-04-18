@@ -50,7 +50,8 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
     })
   }
 
-  if (delegators === undefined && !delegate) return null
+  console.log("de", delegators)
+  if (delegators === undefined || delegators.length === 0) return null
 
   return (
     <>
