@@ -62,7 +62,7 @@ const DelegatorsModalBody = ({ delegators }) => {
                   </Flex>
                   <Spacer />
                   <Flex mr="2">
-                    <Text>{item.vp}</Text>
+                    <Text>{item.vp ? item.vp + " VP" : ""}</Text>
                   </Flex>
                   <AccordionIcon />
                 </AccordionButton>
