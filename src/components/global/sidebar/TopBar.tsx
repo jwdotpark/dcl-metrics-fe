@@ -78,12 +78,12 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
           display="inline-block"
           mr="2"
         >
-          <FiCoffee color={useColorModeValue("black", "white")} />
+          <FiCoffee color={useColorModeValue("blac dk", "white")} />
         </Box>
         <Box display="inline-block">
           <Link href={`/blog/${psa?.slug}`} target="_blank">
             <Text>
-              <Button size="sm" variant="link">
+              <Button variant="link">
                 <Text color={useColorModeValue("#000", "#fff")}>
                   {psa?.data?.description}
                 </Text>
