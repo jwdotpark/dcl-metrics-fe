@@ -93,7 +93,7 @@ const SceneMarathonUsers = ({ data }) => {
                   </Flex>
                 </Td>
                 <Td>
-                  <Link href={`/users/${item[1].address}`} rel="_blank">
+                  <Link href={`/users/${item[1].address}`} target="_blank">
                     <Text fontWeight="bold">
                       {item[1].name ? TruncateName(item[1].name) : "N/A"}
                     </Text>
