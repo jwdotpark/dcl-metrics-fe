@@ -1,26 +1,23 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import {
+  Box,
   Button,
   Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverBody,
   PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { FiSettings } from "react-icons/fi"
-import { useRouter } from "next/router"
+import { FiMessageSquare } from "react-icons/fi"
 import FeedbackMenu from "./FeedbackMenu"
-import SettingsMenu from "./SettingsMenu"
 
-const SettingsButton = () => {
-  const router = useRouter()
+const FeedbackButton = () => {
   return (
     <>
       <Popover placement="bottom-start" variant="responsive">
         <PopoverTrigger>
           <Button size="lg" variant="link">
-            <FiSettings />
+            <FiMessageSquare />
           </Button>
         </PopoverTrigger>
         <PopoverContent
@@ -32,7 +29,7 @@ const SettingsButton = () => {
         >
           <PopoverArrow />
           <PopoverBody m="2">
-            {router.pathname === "/" && <SettingsMenu />}
+            <FeedbackMenu />
           </PopoverBody>
         </PopoverContent>
       </Popover>
@@ -40,4 +37,4 @@ const SettingsButton = () => {
   )
 }
 
-export default SettingsButton
+export default FeedbackButton
