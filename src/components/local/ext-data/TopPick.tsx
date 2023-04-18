@@ -16,6 +16,7 @@ import {
   Center,
   useColorMode,
   Input,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import {
   useTable,
@@ -239,7 +240,7 @@ const TopPick = ({ data }) => {
   const { pageIndex } = state
 
   const pageButtons = []
-  const MAX_BUTTONS = 10
+  const MAX_BUTTONS = useBreakpointValue({ base: 3, sm: 5, md: 7, lg: 9 })
   const startIndex = Math.max(0, pageIndex - Math.floor(MAX_BUTTONS / 2))
   const endIndex = Math.min(startIndex + MAX_BUTTONS, pageOptions.length)
 
