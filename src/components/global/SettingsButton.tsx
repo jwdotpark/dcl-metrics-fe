@@ -9,12 +9,9 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import { FiSettings } from "react-icons/fi"
-import { useRouter } from "next/router"
-import FeedbackMenu from "./FeedbackMenu"
 import SettingsMenu from "./SettingsMenu"
 
 const SettingsButton = () => {
-  const router = useRouter()
   return (
     <>
       <Popover placement="bottom-start" variant="responsive">
@@ -32,7 +29,7 @@ const SettingsButton = () => {
         >
           <PopoverArrow />
           <PopoverBody m="2">
-            {router.pathname === "/" && <SettingsMenu />}
+            <SettingsMenu />
           </PopoverBody>
         </PopoverContent>
       </Popover>

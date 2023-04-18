@@ -21,6 +21,7 @@ import PrivateDashboardButton from "../PrivateDashboardButton"
 import SettingsButton from "../SettingsButton"
 import Link from "next/link"
 import { FiCoffee } from "react-icons/fi"
+import { useRouter } from "next/router"
 
 interface MobileProps extends FlexProps {
   sidebarStatus: string
@@ -28,6 +29,7 @@ interface MobileProps extends FlexProps {
 }
 
 const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
+  const router = useRouter()
   const auth = JSON.parse(localStorage.getItem("auth"))
   const psa = useAtomValue(psaAtom)
   return (
@@ -100,7 +102,7 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
         )}
         {/* insert item */}
         <Spacer />
-        <SettingsButton />
+        {router.pathname === "/" && <SettingsButton />}
         <FeedbackButton />
         <ColorButton />
       </HStack>
