@@ -59,7 +59,7 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
         fontWeight="bold"
       >
         <HStack>
-          <Box shadow="md">
+          <Box ml={[2, 0]} shadow="md">
             <Image width="26" height="26" alt="logo" src={"/images/logo.png"} />
           </Box>
           <Text
