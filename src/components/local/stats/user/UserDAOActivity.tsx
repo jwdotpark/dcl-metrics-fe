@@ -52,7 +52,7 @@ const UserDAOActivity = ({ data }) => {
             <Flex w="100%" h="100%">
               <Box>Total VP</Box>
               <Spacer />
-              <Box>{total_vp ? total_vp : "N/A"}</Box>
+              <Box>{total_vp ? total_vp.toFixed(1) : "N/A"}</Box>
             </Flex>
             <Flex w="100%" h="100%">
               <Box>Delegated VP</Box>
