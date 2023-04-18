@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import {
   Text,
@@ -72,26 +73,28 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
           </Text>
         </HStack>
       </Box>
-      <Box display={["none", "block"]} ml="2">
-        <Box
-          sx={{ transform: "translateY(3px)" }}
-          display="inline-block"
-          mr="2"
-        >
-          <FiCoffee color={useColorModeValue("black", "white")} />
+      {router.pathname === "/" && (
+        <Box display={["none", "block"]}>
+          <Box
+            sx={{ transform: "translateY(3px)" }}
+            display="inline-block"
+            mr="2"
+          >
+            <FiCoffee color={useColorModeValue("black", "white")} />
+          </Box>
+          <Box display="inline-block">
+            <Link href={`/blog/${psa?.slug}`} target="_blank">
+              <Text>
+                <Button variant="link">
+                  <Text color={useColorModeValue("#000", "#fff")}>
+                    {psa?.data?.description}
+                  </Text>
+                </Button>
+              </Text>
+            </Link>
+          </Box>
         </Box>
-        <Box display="inline-block">
-          <Link href={`/blog/${psa?.slug}`} target="_blank">
-            <Text>
-              <Button size="sm" variant="link">
-                <Text color={useColorModeValue("#000", "#fff")}>
-                  {psa?.data?.description}
-                </Text>
-              </Button>
-            </Text>
-          </Link>
-        </Box>
-      </Box>
+      )}
       <Spacer />
       <HStack spacing={[-4, -1, 0, 1, 2]}>
         {auth && (
