@@ -15,6 +15,7 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react"
+import Link from "next/link"
 import { parseUTC } from "../../../../../../lib/hooks/utils"
 
 const CollectionModalBody = ({ collections }) => {
@@ -84,14 +85,14 @@ const CollectionModalBody = ({ collections }) => {
                       <Tr>
                         <Td>Collection ID</Td>
                         <Td isNumeric>
-                          <Button
-                            borderRadius="xl"
-                            shadow="md"
-                            onClick={() => handleToast(item.collection_id)}
-                            size="xs"
+                          <Link
+                            href={`https://market.decentraland.org/collections/${item.collection_id}`}
+                            target="_blank"
                           >
-                            Collection ID
-                          </Button>
+                            <Button borderRadius="xl" shadow="md" size="xs">
+                              Collection
+                            </Button>
+                          </Link>
                         </Td>
                       </Tr>
                       <Tr>
