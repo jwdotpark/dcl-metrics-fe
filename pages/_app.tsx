@@ -5,7 +5,6 @@ import { theme } from "../src/lib/theme/theme"
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
-import ErrorBoundary from "../src/components/error/ErrorBoundary"
 import { Inter } from "@next/font/google"
 import { AnimatePresence } from "framer-motion"
 
@@ -50,14 +49,12 @@ function MyApp({
             // data-domains="dcl-metrics.com/"
           ></Script>
         )}
-        <ErrorBoundary>
-          {/* @ts-ignore */}
-          <AnimatePresence initial={false} mode="wait">
-            <main className={InterFont.className}>
-              <Component {...pageProps} key={router.asPath} />
-            </main>
-          </AnimatePresence>
-        </ErrorBoundary>
+        {/* @ts-ignore */}
+        <AnimatePresence initial={false} mode="wait">
+          <main className={InterFont.className}>
+            <Component {...pageProps} key={router.asPath} />
+          </main>
+        </AnimatePresence>
       </Provider>
     </ChakraProvider>
   )
