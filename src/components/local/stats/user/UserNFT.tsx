@@ -52,8 +52,6 @@ const UserNFT = ({ data, address }) => {
     }
   }
 
-  console.log(checkFalsyData())
-
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <BoxTitle
