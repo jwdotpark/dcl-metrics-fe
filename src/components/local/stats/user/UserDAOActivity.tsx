@@ -17,6 +17,7 @@ import UserDAOActivityGrant from "./partial/grant/UserDAOActivityGrant"
 import { parseUTC } from "../../../../lib/hooks/utils"
 import UserDAOActivityTeam from "./partial/teams/UserDAOAvtivityTeams"
 import UserDAOActivityProposal from "./partial/proposal/UserDAOActivityProposal"
+import { FiAlertTriangle } from "react-icons/fi"
 
 const UserDAOActivity = ({ data }) => {
   const {
@@ -183,8 +184,20 @@ const UserDAOActivity = ({ data }) => {
           </Box>
         </Flex>
       ) : (
-        <Center h="225px">
-          <Text color={useColorModeValue("gray.200", "gray.600")}>No Data</Text>
+        <Center pt="2rem">
+          <Text
+            color={useColorModeValue("gray.600", "gray.200")}
+            fontSize={["xl", "2xl"]}
+          >
+            <Box
+              sx={{ transform: "translateY(4px)" }}
+              display="inline-block"
+              mr="2"
+            >
+              <FiAlertTriangle />
+            </Box>
+            No Data
+          </Text>
         </Center>
       )}
     </BoxWrapper>

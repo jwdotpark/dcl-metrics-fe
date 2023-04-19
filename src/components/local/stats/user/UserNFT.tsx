@@ -15,6 +15,7 @@ import BoxTitle from "../../../layout/local/BoxTitle"
 import { parseUTC } from "../../../../lib/hooks/utils"
 import Link from "next/link"
 import ToolTip from "../../../layout/local/ToolTip"
+import { FiAlertTriangle } from "react-icons/fi"
 
 const UserNFT = ({ data, address }) => {
   const {
@@ -276,8 +277,20 @@ const UserNFT = ({ data, address }) => {
           </Box>
         </Flex>
       ) : (
-        <Center h="225px">
-          <Text color={useColorModeValue("gray.200", "gray.600")}>No Data</Text>
+        <Center pt="2rem">
+          <Text
+            color={useColorModeValue("gray.600", "gray.200")}
+            fontSize={["xl", "2xl"]}
+          >
+            <Box
+              sx={{ transform: "translateY(4px)" }}
+              display="inline-block"
+              mr="2"
+            >
+              <FiAlertTriangle />
+            </Box>
+            No Data
+          </Text>
         </Center>
       )}
     </BoxWrapper>
