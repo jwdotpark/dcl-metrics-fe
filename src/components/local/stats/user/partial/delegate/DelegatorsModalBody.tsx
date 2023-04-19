@@ -73,7 +73,7 @@ const DelegatorsModalBody = ({ delegators }) => {
                         <Td>Name</Td>
                         <Td isNumeric>
                           <Link href={`/users/${item.address}`} target="_blank">
-                            <Button borderRadius="xl" size="xs">
+                            <Button borderRadius="xl" shadow="md" size="xs">
                               {item.name}
                             </Button>
                           </Link>
@@ -88,6 +88,7 @@ const DelegatorsModalBody = ({ delegators }) => {
                         <Td isNumeric>
                           <Button
                             borderRadius="xl"
+                            shadow="md"
                             onClick={() => handleToast(item.address)}
                             size="xs"
                           >

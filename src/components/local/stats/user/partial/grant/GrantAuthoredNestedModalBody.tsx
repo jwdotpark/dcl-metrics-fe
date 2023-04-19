@@ -85,7 +85,7 @@ const GrantAuthoredNestedModalBody = ({ grants }) => {
                               href={`/users/${item.beneficiary}`}
                               target="_blank"
                             >
-                              <Button borderRadius="xl" size="xs">
+                              <Button borderRadius="xl" shadow="md" size="xs">
                                 Beneficiary
                               </Button>
                             </Link>
@@ -98,7 +98,7 @@ const GrantAuthoredNestedModalBody = ({ grants }) => {
                               href={`https://governance.decentraland.org/proposal/?id=${item.proposal_id}`}
                               target="_blank"
                             >
-                              <Button borderRadius="xl" size="xs">
+                              <Button borderRadius="xl" shadow="md" size="xs">
                                 Proposal
                               </Button>
                             </Link>
@@ -109,6 +109,7 @@ const GrantAuthoredNestedModalBody = ({ grants }) => {
                           <Td isNumeric>
                             <Button
                               borderRadius="xl"
+                              shadow="md"
                               onClick={() => {
                                 handleToast(item.snapshot_id)
                               }}

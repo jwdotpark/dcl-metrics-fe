@@ -71,7 +71,7 @@ const TeamModalBody = ({ teams }) => {
                         <Td>Address</Td>
                         <Td isNumeric>
                           <Box onClick={() => handleToast(item.address)}>
-                            <Button borderRadius="xl" size="xs">
+                            <Button borderRadius="xl" shadow="md" size="xs">
                               Address
                             </Button>
                           </Box>

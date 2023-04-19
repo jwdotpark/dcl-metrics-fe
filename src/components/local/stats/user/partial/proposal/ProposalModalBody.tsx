@@ -89,7 +89,7 @@ const ProposalModalBody = ({ proposals }) => {
                             href={`https://governance.decentraland.org/proposal/?id=${item.proposal_id}`}
                             target="_blank"
                           >
-                            <Button borderRadius="xl" size="xs">
+                            <Button borderRadius="xl" shadow="md" size="xs">
                               <Text>Proposal</Text>
                             </Button>
                           </Link>
@@ -100,6 +100,7 @@ const ProposalModalBody = ({ proposals }) => {
                         <Td isNumeric>
                           <Button
                             borderRadius="xl"
+                            shadow="md"
                             onClick={() => handleToast(item.snapshot_id)}
                             size="xs"
                           >

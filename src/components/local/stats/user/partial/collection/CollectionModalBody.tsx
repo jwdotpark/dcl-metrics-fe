@@ -86,6 +86,7 @@ const CollectionModalBody = ({ collections }) => {
                         <Td isNumeric>
                           <Button
                             borderRadius="xl"
+                            shadow="md"
                             onClick={() => handleToast(item.collection_id)}
                             size="xs"
                           >

@@ -51,7 +51,7 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
               variant="link"
             >
               <Link href={`/users/${delegate}`} target="_blank">
-                <Button borderRadius="xl" size="xs">
+                <Button borderRadius="xl" shadow="md" size="xs">
                   <Text
                     // eslint-disable-next-line react-hooks/rules-of-hooks
                     color={useColorModeValue("#000", "#fff")}

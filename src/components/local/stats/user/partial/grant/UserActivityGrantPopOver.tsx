@@ -168,6 +168,7 @@ const UserActivityGrandPopOver = ({ grants }) => {
                                       <ToolTip label="Click to copy the snapshot ID">
                                         <Button
                                           borderRadius="xl"
+                                          shadow="md"
                                           onClick={() =>
                                             handleToast(
                                               grants.authored.data[0]

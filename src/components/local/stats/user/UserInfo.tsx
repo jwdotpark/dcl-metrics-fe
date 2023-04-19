@@ -85,10 +85,8 @@ const UserInfo = ({ data }) => {
                 _hover={{ cursor: "pointer" }}
                 onClick={() => handleToast(address)}
               >
-                <Button borderRadius="xl" size="xs">
-                  <Text as="kbd" noOfLines={1}>
-                    {truncateName(address)}
-                  </Text>
+                <Button borderRadius="xl" shadow="md" size="xs">
+                  <Text noOfLines={1}>Copy Address</Text>
                 </Button>
               </Box>
             </Flex>

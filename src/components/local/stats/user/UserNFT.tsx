@@ -144,7 +144,7 @@ const UserNFT = ({ data, address }) => {
                         href={`https://market.decentraland.org/accounts/${address}?assetType=nft&section=ens`}
                         target="_blank"
                       >
-                        <Button borderRadius="xl" size="xs">
+                        <Button borderRadius="xl" shadow="md" size="xs">
                           <Text fontWeight="bold">{owns_dclens && "Name"}</Text>
                         </Button>
                       </Link>
@@ -191,7 +191,7 @@ const UserNFT = ({ data, address }) => {
                       href={`https://market.decentraland.org/accounts/${address}?assetType=nft&section=wearable`}
                       target="_blank"
                     >
-                      <Button borderRadius="xl" size="xs">
+                      <Button borderRadius="xl" shadow="md" size="xs">
                         <Text fontWeight="bold">
                           {owns_wearables && "Wearable"}
                         </Text>
@@ -239,7 +239,7 @@ const UserNFT = ({ data, address }) => {
                         href={`https://market.decentraland.org/accounts/${address}?assetType=nft&section=land`}
                         target="_blank"
                       >
-                        <Button borderRadius="xl" size="xs">
+                        <Button borderRadius="xl" shadow="md" size="xs">
                           <Text fontWeight="bold">{owns_land && "Land"}</Text>
                         </Button>
                       </Link>
