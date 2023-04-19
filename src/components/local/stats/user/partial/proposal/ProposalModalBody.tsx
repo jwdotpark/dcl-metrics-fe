@@ -15,6 +15,7 @@ import {
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react"
+import Link from "next/link"
 import { parseUTC } from "../../../../../../lib/hooks/utils"
 
 const ProposalModalBody = ({ proposals }) => {
@@ -84,13 +85,14 @@ const ProposalModalBody = ({ proposals }) => {
                       <Tr>
                         <Td>Proposal ID</Td>
                         <Td isNumeric>
-                          <Button
-                            borderRadius="xl"
-                            onClick={() => handleToast(item.proposal_id)}
-                            size="xs"
+                          <Link
+                            href={`https://governance.decentraland.org/proposal/?id=${item.proposal_id}`}
+                            target="_blank"
                           >
-                            <Text>Proposal ID</Text>
-                          </Button>
+                            <Button borderRadius="xl" size="xs">
+                              <Text>Proposal</Text>
+                            </Button>
+                          </Link>
                         </Td>
                       </Tr>
                       <Tr>

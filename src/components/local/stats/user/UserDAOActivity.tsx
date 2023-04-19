@@ -123,8 +123,7 @@ const UserDAOActivity = ({ data }) => {
             {teams && teams.length > 0 && (
               <UserDAOActivityTeam name={name} teams={teams} />
             )}
-
-            {proposals && proposals.length > 0 && (
+            {proposals && proposals.count > 0 && (
               <UserDAOActivityProposal name={name} proposals={proposals} />
             )}
           </VStack>

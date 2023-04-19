@@ -81,29 +81,27 @@ const GrantAuthoredNestedModalBody = ({ grants }) => {
                         <Tr>
                           <Td>Beneficiary</Td>
                           <Td isNumeric>
-                            <Button
-                              onClick={() => {
-                                handleToast(item.beneficiary)
-                              }}
-                              size="sm"
-                              variant="link"
+                            <Link
+                              href={`/users/${item.beneficiary}`}
+                              target="_blank"
                             >
-                              {truncateName(item.beneficiary)}
-                            </Button>
+                              <Button borderRadius="xl" size="xs">
+                                Beneficiary
+                              </Button>
+                            </Link>
                           </Td>
                         </Tr>
                         <Tr>
-                          <Td>Proposal ID</Td>
+                          <Td>Proposal</Td>
                           <Td isNumeric>
-                            <Button
-                              onClick={() => {
-                                handleToast(item.proposal_id)
-                              }}
-                              size="sm"
-                              variant="link"
+                            <Link
+                              href={`https://governance.decentraland.org/proposal/?id=${item.proposal_id}`}
+                              target="_blank"
                             >
-                              {truncateName(item.proposal_id)}
-                            </Button>
+                              <Button borderRadius="xl" size="xs">
+                                Proposal
+                              </Button>
+                            </Link>
                           </Td>
                         </Tr>
                         <Tr>
