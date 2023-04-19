@@ -16,6 +16,7 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import moment from "moment"
+import Link from "next/link"
 import { useState } from "react"
 
 const GrantAuthoredNestedModalBody = ({ grants }) => {
@@ -88,20 +89,6 @@ const GrantAuthoredNestedModalBody = ({ grants }) => {
                               variant="link"
                             >
                               {truncateName(item.beneficiary)}
-                            </Button>
-                          </Td>
-                        </Tr>
-                        <Tr>
-                          <Td>Created By</Td>
-                          <Td isNumeric>
-                            <Button
-                              onClick={() => {
-                                handleToast(item.created_by)
-                              }}
-                              size="sm"
-                              variant="link"
-                            >
-                              {truncateName(item.created_by)}
                             </Button>
                           </Td>
                         </Tr>

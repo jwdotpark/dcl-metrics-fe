@@ -99,18 +99,6 @@ const CollectionModalBody = ({ collections }) => {
                           <Text>{parseUTC(item.created_at)}</Text>
                         </Td>
                       </Tr>
-                      <Tr>
-                        <Td>Created By</Td>
-                        <Td isNumeric>
-                          <Button
-                            borderRadius="xl"
-                            onClick={() => handleToast(item.created_by)}
-                            size="xs"
-                          >
-                            Creator Address
-                          </Button>
-                        </Td>
-                      </Tr>
                     </Tbody>
                   </Table>
                 </AccordionPanel>

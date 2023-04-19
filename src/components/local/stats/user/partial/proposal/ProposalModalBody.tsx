@@ -82,18 +82,6 @@ const ProposalModalBody = ({ proposals }) => {
                         </Td>
                       </Tr>
                       <Tr>
-                        <Td>Created By</Td>
-                        <Td isNumeric>
-                          <Button
-                            borderRadius="xl"
-                            onClick={() => handleToast(item.created_by)}
-                            size="xs"
-                          >
-                            <Text>Address</Text>
-                          </Button>
-                        </Td>
-                      </Tr>
-                      <Tr>
                         <Td>Proposal ID</Td>
                         <Td isNumeric>
                           <Button

@@ -90,20 +90,6 @@ const GrantBeneficiaryNestedModalBody = ({ grants }) => {
                           </Td>
                         </Tr>
                         <Tr>
-                          <Td>Created By</Td>
-                          <Td isNumeric>
-                            <Button
-                              onClick={() => {
-                                handleToast(item.created_by)
-                              }}
-                              size="sm"
-                              variant="link"
-                            >
-                              {truncateName(item.created_by)}
-                            </Button>
-                          </Td>
-                        </Tr>
-                        <Tr>
                           <Td>Proposal ID</Td>
                           <Td isNumeric>
                             <Button

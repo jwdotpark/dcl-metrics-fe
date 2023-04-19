@@ -120,24 +120,6 @@ const UserActivityGrandPopOver = ({ grants }) => {
                                     </Td>
                                   </Tr>
                                   <Tr>
-                                    <Td>Created By</Td>
-                                    <Td isNumeric>
-                                      <ToolTip label="Click to copy the address">
-                                        <Button
-                                          borderRadius="xl"
-                                          onClick={() =>
-                                            handleToast(
-                                              grants.authored.data[0].created_by
-                                            )
-                                          }
-                                          size="sm"
-                                        >
-                                          Address
-                                        </Button>
-                                      </ToolTip>
-                                    </Td>
-                                  </Tr>
-                                  <Tr>
                                     <Td>Amount</Td>
                                     <Td isNumeric>
                                       {grants.authored.data[0].amount}
