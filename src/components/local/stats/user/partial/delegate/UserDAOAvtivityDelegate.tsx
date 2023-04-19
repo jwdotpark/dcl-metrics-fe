@@ -14,29 +14,14 @@ import {
   ModalOverlay,
   useDisclosure,
   Center,
+  useColorModeValue,
+  Divider,
 } from "@chakra-ui/react"
 import Link from "next/link"
 import DelegatorsModalBody from "./DelegatorsModalBody"
 
 const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const responsiveStr = useBreakpointValue({
-    xs: 5,
-    sm: 20,
-    md: 50,
-    lg: 20,
-    xl: 30,
-    base: 20,
-  })
-
-  const truncateName = (name: string) => {
-    const nameLength = responsiveStr
-    if (name && name.length > nameLength) {
-      return name.slice(0, nameLength) + ".."
-    }
-    return name
-  }
 
   const toast = useToast()
 
@@ -53,8 +38,6 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
 
   if (delegators === undefined || delegators.length === 0) return null
 
-  console.log(delegate)
-
   return (
     <>
       {delegate && (
@@ -69,7 +52,13 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
             >
               <Link href={`/users/${delegate}`} target="_blank">
                 <Button borderRadius="xl" size="xs">
-                  <Text fontWeight="bold">Delegate</Text>
+                  <Text
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    color={useColorModeValue("#000", "#fff")}
+                    fontWeight="bold"
+                  >
+                    Delegate
+                  </Text>
                 </Button>
               </Link>
             </Button>

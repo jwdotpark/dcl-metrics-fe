@@ -7,8 +7,8 @@ import {
   VStack,
   Spacer,
   Center,
+  Divider,
 } from "@chakra-ui/react"
-import CountUp from "react-countup"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import UserDAOActivityCollection from "./partial/collection/UserDAOActivityCollection"
@@ -72,14 +72,18 @@ const UserDAOActivity = ({ data }) => {
           <Box w="100%">
             <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
               {title && (
-                <Flex w="100%" h="100%">
-                  <Box>Title</Box>
-                  <Spacer />
-                  <Box>
-                    <Text>{title ? title : "N/A"}</Text>
-                  </Box>
-                </Flex>
+                <>
+                  <Flex w="100%" h="100%">
+                    <Box>Title</Box>
+                    <Spacer />
+                    <Box>
+                      <Text>{title ? title : "N/A"}</Text>
+                    </Box>
+                  </Flex>
+                  <Divider />
+                </>
               )}
+
               {total_vp > 0 && (
                 <Flex w="100%" h="100%">
                   <Box>Total VP</Box>
@@ -88,12 +92,16 @@ const UserDAOActivity = ({ data }) => {
                 </Flex>
               )}
               {delegated_vp && (
-                <Flex w="100%" h="100%">
-                  <Box>Delegated VP</Box>
-                  <Spacer />
-                  <Box>{delegated_vp ? delegated_vp : "N/A"}</Box>
-                </Flex>
+                <>
+                  <Flex w="100%" h="100%">
+                    <Box>Delegated VP</Box>
+                    <Spacer />
+                    <Box>{delegated_vp ? delegated_vp : "N/A"}</Box>
+                  </Flex>
+                  <Divider />
+                </>
               )}
+
               {votes && (
                 <>
                   <Flex w="100%" h="100%">
@@ -117,21 +125,27 @@ const UserDAOActivity = ({ data }) => {
                       </Text>
                     </Box>
                   </Flex>
+                  <Divider />
                 </>
               )}
+
               {active_dao_committee_member && (
-                <Flex w="100%" h="100%">
-                  <Box>Active DAO Committee Member</Box>
-                  <Spacer />
-                  <Box>
-                    <Text
-                      color={active_dao_committee_member ? "green" : "gray"}
-                    >
-                      {active_dao_committee_member ? "Yes" : "No"}
-                    </Text>
-                  </Box>
-                </Flex>
+                <>
+                  <Flex w="100%" h="100%">
+                    <Box>Active DAO Committee Member</Box>
+                    <Spacer />
+                    <Box>
+                      <Text
+                        color={active_dao_committee_member ? "green" : "gray"}
+                      >
+                        {active_dao_committee_member ? "Yes" : "No"}
+                      </Text>
+                    </Box>
+                  </Flex>
+                  <Divider />
+                </>
               )}
+
               {collection_creator && (
                 <Flex w="100%" h="100%">
                   <Box>Collection Creator</Box>
@@ -144,16 +158,20 @@ const UserDAOActivity = ({ data }) => {
                 </Flex>
               )}
               {collections && collections.length > 0 && (
-                <UserDAOActivityCollection
-                  name={name}
-                  collections={collections}
-                />
+                <>
+                  <UserDAOActivityCollection
+                    name={name}
+                    collections={collections}
+                  />
+                  <Divider />
+                </>
               )}
               <UserDAOAvtivityDelegate
                 name={name}
                 delegate={delegate}
                 delegators={delegators}
               />
+
               <UserDAOActivityGrant name={name} grants={grants} />
               {teams && teams.length > 0 && (
                 <UserDAOActivityTeam name={name} teams={teams} />
