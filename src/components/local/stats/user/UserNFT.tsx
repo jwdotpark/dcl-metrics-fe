@@ -123,7 +123,7 @@ const UserNFT = ({ data }) => {
               <Flex w="100%" h="100%">
                 <Box>Total Wearables</Box>
                 <Spacer />
-                <Box>{total_wearables}</Box>
+                <Box>{total_wearables > 999 ? "1000+" : total_wearables}</Box>
               </Flex>
             )}
             {first_dclens_acquired_at && (
