@@ -1,11 +1,12 @@
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import { Box, Flex, Spacer, VStack, Text } from "@chakra-ui/react"
+import { Box, Flex, Spacer, VStack, Text, Button } from "@chakra-ui/react"
 import CountUp from "react-countup"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import moment from "moment"
 import { parseUTC } from "../../../../lib/hooks/utils"
+import Link from "next/link"
 
-const UserNFT = ({ data }) => {
+const UserNFT = ({ data, address }) => {
   const {
     name,
     og_user,
@@ -48,14 +49,28 @@ const UserNFT = ({ data }) => {
                 </Box>
               </Flex>
             )}
+            {owns_nfts && (
+              <Flex w="100%" h="100%">
+                <Box>Owns NFT</Box>
+                <Spacer />
+                <Box>
+                  <Text>{owns_nfts && "Yes"}</Text>
+                </Box>
+              </Flex>
+            )}
             {owns_dclens && (
               <Flex w="100%" h="100%">
                 <Box>Owns DCLENS</Box>
                 <Spacer />
                 <Box>
-                  <Text color={owns_dclens ? "green" : "gray"}>
-                    {owns_dclens ? "Yes" : "No"}
-                  </Text>
+                  <Link
+                    href={`https://market.decentraland.org/accounts/${address}?assetType=nft&section=ens`}
+                    target="_blank"
+                  >
+                    <Button borderRadius="xl" size="xs">
+                      <Text fontWeight="bold">{owns_dclens && "Name"}</Text>
+                    </Button>
+                  </Link>
                 </Box>
               </Flex>
             )}
@@ -64,31 +79,33 @@ const UserNFT = ({ data }) => {
                 <Box>Owns Land</Box>
                 <Spacer />
                 <Box>
-                  <Text color={owns_land ? "green" : "gray"}>
-                    {owns_land ? "Yes" : "No"}
-                  </Text>
+                  <Link
+                    href={`https://market.decentraland.org/accounts/${address}?assetType=nft&section=land`}
+                    target="_blank"
+                  >
+                    <Button borderRadius="xl" size="xs">
+                      <Text fontWeight="bold">{owns_land && "Land"}</Text>
+                    </Button>
+                  </Link>
                 </Box>
               </Flex>
             )}
-            {owns_nfts && (
-              <Flex w="100%" h="100%">
-                <Box>Owns NFT</Box>
-                <Spacer />
-                <Box>
-                  <Text color={owns_nfts ? "green" : "gray"}>
-                    {owns_nfts ? "Yes" : "No"}
-                  </Text>
-                </Box>
-              </Flex>
-            )}
+
             {owns_wearables && (
               <Flex w="100%" h="100%">
                 <Box>Owns Wearable</Box>
                 <Spacer />
                 <Box>
-                  <Text color={owns_wearables ? "green" : "gray"}>
-                    {owns_wearables ? "Yes" : "No"}
-                  </Text>
+                  <Link
+                    href={`https://market.decentraland.org/accounts/${address}?assetType=nft&section=wearable`}
+                    target="_blank"
+                  >
+                    <Button borderRadius="xl" size="xs">
+                      <Text fontWeight="bold">
+                        {owns_wearables && "Wearable"}
+                      </Text>
+                    </Button>
+                  </Link>
                 </Box>
               </Flex>
             )}

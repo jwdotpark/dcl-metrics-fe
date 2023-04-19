@@ -50,13 +50,13 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { userAddressRes, nftRes, daoActivityRes },
+    props: { address, userAddressRes, nftRes, daoActivityRes },
   }
 }
 
 const SingleUserPage = (props) => {
   const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
-  const { userAddressRes, nftRes, daoActivityRes } = props
+  const { address, userAddressRes, nftRes, daoActivityRes } = props
 
   return (
     <Layout>
@@ -66,7 +66,7 @@ const SingleUserPage = (props) => {
         </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <UserInfo data={userAddressRes} />
-          <UserNFT data={nftRes} />
+          <UserNFT data={nftRes} address={address} />
           <UserDAOActivity data={daoActivityRes} />
         </Grid>
       </Box>

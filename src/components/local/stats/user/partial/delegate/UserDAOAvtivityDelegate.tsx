@@ -15,6 +15,7 @@ import {
   useDisclosure,
   Center,
 } from "@chakra-ui/react"
+import Link from "next/link"
 import DelegatorsModalBody from "./DelegatorsModalBody"
 
 const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
@@ -52,23 +53,29 @@ const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
 
   if (delegators === undefined || delegators.length === 0) return null
 
+  console.log(delegate)
+
   return (
     <>
-      <Flex w="100%" h="100%">
-        <Box>Delegate</Box>
-        <Spacer />
-        <Box>
-          <Button
-            disabled={!delegate}
-            onClick={() => handleToast(delegate)}
-            variant="link"
-          >
-            <Text ml="6" color={delegate ? "green" : "gray"}>
-              {delegate ? truncateName(delegate) : "N/A"}
-            </Text>
-          </Button>
-        </Box>
-      </Flex>
+      {delegate && (
+        <Flex w="100%" h="100%">
+          <Box>Delegate</Box>
+          <Spacer />
+          <Box>
+            <Button
+              disabled={!delegate}
+              onClick={() => handleToast(delegate)}
+              variant="link"
+            >
+              <Link href={`/users/${delegate}`} target="_blank">
+                <Button borderRadius="xl" size="xs">
+                  <Text fontWeight="bold">Delegate</Text>
+                </Button>
+              </Link>
+            </Button>
+          </Box>
+        </Flex>
+      )}
       <Flex w="100%" h="100%">
         <Box>Delegators</Box>
         <Spacer />
