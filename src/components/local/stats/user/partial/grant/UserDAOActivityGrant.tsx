@@ -24,7 +24,6 @@ const UserDAOActivityGrant = ({ name, grants }) => {
   const isGrantValid =
     grants.authored.count === 0 && grants.beneficiary.count === 0 ? true : false
 
-  console.log(grants)
   return (
     !isGrantValid && (
       <Flex w="100%" h="100%">
