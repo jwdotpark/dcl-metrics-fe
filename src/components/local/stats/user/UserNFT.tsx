@@ -55,8 +55,6 @@ const UserNFT = ({ data, address }) => {
     }
   }
 
-  console.log(data)
-
   const toolTipText = {
     og_user:
       "User who bought land in genesis auction or acquired names or wearables at launch",
