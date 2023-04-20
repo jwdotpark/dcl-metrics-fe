@@ -4,12 +4,20 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import { Box, Center, Grid, useBreakpointValue } from "@chakra-ui/react"
+import {
+  Text,
+  Box,
+  Center,
+  Grid,
+  useBreakpointValue,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
 import UserDAOActivity from "../../src/components/local/stats/user/UserDAOActivity"
 import { useEffect } from "react"
+import { FiAlertTriangle } from "react-icons/fi"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -60,16 +68,34 @@ const SingleUserPage = (props) => {
 
   return (
     <Layout>
-      <Box fontSize={["md", "md"]}>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <UserProfile data={userAddressRes} />
-        </Grid>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <UserInfo data={userAddressRes} />
-          <UserNFT data={nftRes} address={address} />
-          <UserDAOActivity data={daoActivityRes} />
-        </Grid>
-      </Box>
+      {Object.keys(userAddressRes).length === 0 ? (
+        <Center h="calc(100vh - 4rem)">
+          <Text
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            color={useColorModeValue("gray.600", "gray.200")}
+          >
+            <Box
+              sx={{ transform: "translateY(3px)" }}
+              display="inline-block"
+              mr="2"
+            >
+              <FiAlertTriangle />
+            </Box>
+            No Data
+          </Text>
+        </Center>
+      ) : (
+        <Box fontSize={["md", "md"]}>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <UserProfile data={userAddressRes} />
+          </Grid>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <UserInfo data={userAddressRes} />
+            <UserNFT data={nftRes} address={address} />
+            <UserDAOActivity data={daoActivityRes} />
+          </Grid>
+        </Box>
+      )}
     </Layout>
   )
 }
