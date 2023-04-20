@@ -177,29 +177,31 @@ const UserNFT = ({ data, address }) => {
                       </Text>
                     </Box>
                   </Flex>
-                  <Divider />
                 </>
               )}
 
               {owns_wearables && (
-                <Flex w="100%" h="100%">
-                  <ToolTip label={toolTipText.owns_wearables}>
-                    <Box _hover={{ cursor: "help" }}>Wearable</Box>
-                  </ToolTip>
-                  <Spacer />
-                  <Box>
-                    <Link
-                      href={`https://market.decentraland.org/accounts/${address}?assetType=nft&section=wearable`}
-                      target="_blank"
-                    >
-                      <Button borderRadius="xl" shadow="md" size="xs">
-                        <Text fontWeight="bold">
-                          {owns_wearables && "Wearable"}
-                        </Text>
-                      </Button>
-                    </Link>
-                  </Box>
-                </Flex>
+                <>
+                  <Divider />
+                  <Flex w="100%" h="100%">
+                    <ToolTip label={toolTipText.owns_wearables}>
+                      <Box _hover={{ cursor: "help" }}>Wearable</Box>
+                    </ToolTip>
+                    <Spacer />
+                    <Box>
+                      <Link
+                        href={`https://market.decentraland.org/accounts/${address}?assetType=nft&section=wearable`}
+                        target="_blank"
+                      >
+                        <Button borderRadius="xl" shadow="md" size="xs">
+                          <Text fontWeight="bold">
+                            {owns_wearables && "Wearable"}
+                          </Text>
+                        </Button>
+                      </Link>
+                    </Box>
+                  </Flex>
+                </>
               )}
               {total_wearables && (
                 <Flex w="100%" h="100%">

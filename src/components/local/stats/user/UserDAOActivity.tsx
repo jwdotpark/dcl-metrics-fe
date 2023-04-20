@@ -81,16 +81,18 @@ const UserDAOActivity = ({ data }) => {
                       <Text>{title ? title : "N/A"}</Text>
                     </Box>
                   </Flex>
-                  <Divider />
                 </>
               )}
 
               {total_vp > 0 && (
-                <Flex w="100%" h="100%">
-                  <Box>Total VP</Box>
-                  <Spacer />
-                  <Box>{total_vp ? Math.round(total_vp) : "N/A"}</Box>
-                </Flex>
+                <>
+                  <Divider />
+                  <Flex w="100%" h="100%">
+                    <Box>Total VP</Box>
+                    <Spacer />
+                    <Box>{total_vp ? Math.round(total_vp) : "N/A"}</Box>
+                  </Flex>
+                </>
               )}
               {delegated_vp && (
                 <>
@@ -99,12 +101,12 @@ const UserDAOActivity = ({ data }) => {
                     <Spacer />
                     <Box>{delegated_vp ? delegated_vp : "N/A"}</Box>
                   </Flex>
-                  <Divider />
                 </>
               )}
 
               {votes && (
                 <>
+                  <Divider />
                   <Flex w="100%" h="100%">
                     <Box>Total Votes</Box>
                     <Spacer />
@@ -126,7 +128,6 @@ const UserDAOActivity = ({ data }) => {
                       </Text>
                     </Box>
                   </Flex>
-                  <Divider />
                 </>
               )}
 
