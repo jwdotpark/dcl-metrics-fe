@@ -81,7 +81,7 @@ const SingleUserPage = (props) => {
             >
               <FiAlertTriangle />
             </Box>
-            No Data
+            No data for {address}
           </Text>
         </Center>
       ) : (
