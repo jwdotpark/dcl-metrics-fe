@@ -8,11 +8,17 @@ import {
   Select,
 } from "@chakra-ui/react"
 import { useAtom } from "jotai"
+import { useEffect } from "react"
 import { lineChartAtom } from "../../lib/state/lineChartState"
 
 const SettingsMenu = () => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const chartState = JSON.parse(localStorage.getItem("chart") || "{}")
+
+  useEffect(() => {
+    localStorage.setItem("chart", JSON.stringify(chartProps))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <VStack align="stretch" fontSize="sm" spacing={-2}>

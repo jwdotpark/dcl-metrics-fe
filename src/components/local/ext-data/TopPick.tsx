@@ -16,6 +16,7 @@ import {
   Center,
   useColorMode,
   Input,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import {
   useTable,
@@ -164,33 +165,32 @@ const TopPick = ({ data }) => {
 
           const { name, avatar } =
             data && data.length > 0 ? data[0].avatars[0] : "no data"
+
           const profileImage = avatar?.snapshots?.face256
 
           return (
-            <Flex>
-              <Box>
-                <ProfilePicture
-                  address={profileImage}
-                  verified={false}
-                  guest={false}
-                />
-              </Box>
-              <ToolTip
-                label={name ? "" : "User does not have a name for Decentraland"}
-              >
-                <Link
-                  href={`https://market.decentraland.org/accounts/${row.original.owner}`}
-                  target="_blank"
+            <Link href={`/users/${row.original.owner}`} target="_blank">
+              <Flex>
+                <Box>
+                  <ProfilePicture
+                    address={profileImage}
+                    verified={false}
+                    guest={false}
+                  />
+                </Box>
+                <ToolTip
+                  label={
+                    name ? "" : "User does not have a name for Decentraland"
+                  }
                 >
-                  <Text
-                    sx={{ transform: "translateY(3px)" }}
-                    display="inline-block"
-                  >
-                    {name ? name : "N/A"}
-                  </Text>
-                </Link>
-              </ToolTip>
-            </Flex>
+                  <Box display="inline-block">
+                    <Text sx={{ transform: "translateY(3px)" }}>
+                      {name ? name : "N/A"}
+                    </Text>
+                  </Box>
+                </ToolTip>
+              </Flex>
+            </Link>
           )
         },
       },
@@ -239,7 +239,7 @@ const TopPick = ({ data }) => {
   const { pageIndex } = state
 
   const pageButtons = []
-  const MAX_BUTTONS = 10
+  const MAX_BUTTONS = useBreakpointValue({ base: 3, sm: 5, md: 7, lg: 9 })
   const startIndex = Math.max(0, pageIndex - Math.floor(MAX_BUTTONS / 2))
   const endIndex = Math.min(startIndex + MAX_BUTTONS, pageOptions.length)
 

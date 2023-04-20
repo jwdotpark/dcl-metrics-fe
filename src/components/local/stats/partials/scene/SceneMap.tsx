@@ -34,7 +34,7 @@ const SceneMap = (props) => {
       onMouseEnter={onToggle}
       onMouseLeave={onClose}
     >
-      <Popover isOpen={isOpen} onClose={onClose} placement="auto">
+      <Popover isOpen={isOpen} onClose={onClose} placement="left">
         <PopoverTrigger>
           <Image
             w="100%"

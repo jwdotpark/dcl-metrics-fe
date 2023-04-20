@@ -97,7 +97,7 @@ const MapButtonGroup = ({
               }
             />
             <Input
-              minW="300"
+              maxW={[200, "auto"]}
               borderTopRadius="xl"
               borderBottomRadius={searchResult.length > 0 ? "0" : "xl"}
               id="search-input"
@@ -118,7 +118,7 @@ const MapButtonGroup = ({
           )}
         </Box>
         <Spacer />
-        <Box>
+        <Box display={["none", "inherit"]}>
           <Button
             className={`umami--click--fullscreen-button`}
             zIndex="docked"
@@ -156,7 +156,14 @@ const MapButtonGroup = ({
           />
         </Box>
         <Spacer />
-        <Box pos="absolute" zIndex="docked" right="2" bottom="2" shadow="md">
+        <Box
+          pos="absolute"
+          zIndex="docked"
+          right="2"
+          bottom="2"
+          display={["none", "inherit"]}
+          shadow="md"
+        >
           <ButtonGroup isAttached>
             <Button
               zIndex="docked"

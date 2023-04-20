@@ -67,7 +67,7 @@ const SidebarContent = ({
                   as={router.pathname === "/" + name && "u"}
                   fontSize="md"
                 >
-                  {setItemName(name)}
+                  {sidebarOpen && setItemName(name)}
                 </Text>
               </NavItem>
             </a>

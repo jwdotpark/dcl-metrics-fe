@@ -11,14 +11,7 @@ const ProfilePicture = ({ address, verified, guest }) => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    setIsLoading(true)
-    if (process.env.NEXT_PUBLIC_ENV === "prod") {
-      setPic(address)
-    } else {
-      // @ts-ignore
-      setPic(staticAvatar.src)
-    }
-    setIsLoading(false)
+    setPic(address)
     // eslint-disable-next-line
   }, [])
 

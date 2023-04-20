@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Box } from "@chakra-ui/react"
 import staticGlobalDaily from "../public/data/staticGlobalDaily.json"
@@ -25,6 +25,8 @@ import moment from "moment"
 import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 import TopLand from "../src/components/local/ext-data/TopLand"
 import TopPick from "../src/components/local/ext-data/TopPick"
+import { useAtom } from "jotai"
+import { psaAtom } from "../src/lib/state/psaState"
 
 export async function getStaticProps() {
   let globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes
@@ -140,12 +142,19 @@ const GlobalPage: NextPage = (props: Props) => {
     latestPost,
   } = props
 
+  const [psa, setPSA] = useAtom(psaAtom)
+
+  useEffect(() => {
+    setPSA(latestPost)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Layout>
       <Box w="100%">
-        {isPSAVisible && (
+        {/*{isPSAVisible && (
           <PSA latestPost={latestPost} setIsPSAVisible={setIsPSAVisible} />
-        )}
+        )}*/}
         <Box mb="4">
           <UniqueVisitors data={globalDailyRes} />
         </Box>
@@ -167,10 +176,10 @@ const GlobalPage: NextPage = (props: Props) => {
         </Grid>
         {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopLand data={topLandRes} />
-        </Grid>
+        </Grid>*/}
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopPick data={topPickRes} />
-        </Grid>*/}
+        </Grid>
       </Box>
     </Layout>
   )

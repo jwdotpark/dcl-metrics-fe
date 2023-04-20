@@ -36,13 +36,12 @@ const FeedbackMenu = () => {
   }
 
   return (
-    <Box my="4">
-      <Center mt="2">
-        <Text fontWeight="bold">Feedback?</Text>
-      </Center>
+    <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={errors.contact ? true : false}>
-          <FormLabel>Your Name</FormLabel>
+          <FormLabel fontSize="sm">
+            <Text>Your Name</Text>
+          </FormLabel>
           <InputGroup mb="2" size="sm">
             <InputLeftAddon
               bg={useColorModeValue("gray.200", "gray.500")}
@@ -67,7 +66,7 @@ const FeedbackMenu = () => {
               })}
             />
           </InputGroup>
-          <FormLabel>Contact</FormLabel>
+          <FormLabel fontSize="sm">Contact</FormLabel>
           <InputGroup mb="2" size="sm">
             <ToolTip label="Account that we can contact you on">
               <InputLeftAddon
@@ -99,7 +98,9 @@ const FeedbackMenu = () => {
             {errors.contact && errors.contact.message}
           </FormErrorMessage>
 
-          <FormLabel mb="2">Message</FormLabel>
+          <FormLabel mb="2" fontSize="sm">
+            Message
+          </FormLabel>
           <InputGroup>
             <Textarea
               bg={useColorModeValue("gray.100", "gray.600")}

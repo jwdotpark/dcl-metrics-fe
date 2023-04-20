@@ -12,6 +12,7 @@ import moment from "moment"
 import SceneHelpTooltip from "./SceneHelpTooltip"
 import { description, name } from "../../../../../lib/data/sceneInfo"
 import momentDurationFormatSetup from "moment-duration-format"
+import ToolTip from "../../../../layout/local/ToolTip"
 
 const StatBox = ({ data, selectedScene }) => {
   momentDurationFormatSetup(moment)
@@ -67,26 +68,22 @@ const StatBox = ({ data, selectedScene }) => {
           <Table h="420px" colorScheme="blackAlpha" size="sm" variant="striped">
             <Tbody>
               {filteredStats
-                .slice(1, filteredStats.length / 2 + 1)
+                .slice(2, filteredStats.length / 2 + 1)
                 .map(({ label, name, value, description }) => {
                   return (
                     <Tr key={label}>
                       <Td borderBottom="none">
                         <Flex>
-                          <SceneHelpTooltip description={description} />
-                          <Box>
-                            <Text fontSize={["sm", "sm", "md", "lg"]}>
-                              {name}
-                            </Text>
-                          </Box>
+                          <ToolTip label={description}>
+                            <Box>
+                              <Text>{name}</Text>
+                            </Box>
+                          </ToolTip>
                         </Flex>
                       </Td>
                       <Td borderBottom="none" isNumeric>
                         <Box>
-                          <Text
-                            fontSize={["sm", "sm", "md", "lg"]}
-                            fontWeight="bold"
-                          >
+                          <Text fontWeight="bold">
                             {name === "Avg Time Spent" ||
                             name === "Avg Time Spent AFK"
                               ? moment
@@ -127,21 +124,16 @@ const StatBox = ({ data, selectedScene }) => {
                     <Tr key={label}>
                       <Td borderBottom="none">
                         <Flex>
-                          <SceneHelpTooltip description={description} />
-                          <Box>
-                            <Text fontSize={["sm", "sm", "md", "lg"]}>
-                              {name}
-                            </Text>
-                          </Box>
+                          <ToolTip label={description}>
+                            <Box>
+                              <Text>{name}</Text>
+                            </Box>
+                          </ToolTip>
                         </Flex>
                       </Td>
                       <Td borderBottom="none" isNumeric>
                         <Box>
-                          <Text
-                            minW="100px"
-                            fontSize={["sm", "sm", "md", "lg"]}
-                            fontWeight="bold"
-                          >
+                          <Text minW="100px" fontWeight="bold">
                             {name === "Avg Complete Session Duration"
                               ? moment
                                   .duration(Number(value), "seconds")

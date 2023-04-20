@@ -1,6 +1,7 @@
 import axios from "axios"
 import fs from "fs"
 import { sendNotification } from "../hooks/sendNotification"
+import { isDev, isProd } from "./constant"
 
 export const axiosOptions = {
   method: "get",
@@ -28,7 +29,9 @@ export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
     return data
   } catch (error) {
     console.log("error", error.response.status, error.response.statusText)
-    sendNotification(error, `${endpoint}`, "error")
+    if (isProd) {
+      sendNotification(error.response.statusText, `${endpoint}`, "error")
+    }
     return staticFile
   }
 }
@@ -37,7 +40,25 @@ export const getData = async (targetUrl, endpoint, staticFile) => {
   const response = await fetch(targetUrl)
   const result = await response.json()
   if (response.status !== 200) {
-    sendNotification(response, `${endpoint}`, "error")
+    if (isProd) {
+      sendNotification(response, `${endpoint}`, "error")
+    }
+    return staticFile
+  }
+  return result
+}
+
+export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
+  const response = await fetch(targetUrl, {
+    headers: {
+      API_KEY: process.env.BE_API_KEY,
+    },
+  })
+  const result = await response.json()
+  if (response.status !== 200) {
+    if (isProd) {
+      sendNotification(response, `${endpoint}`, "error")
+    }
     return staticFile
   }
   return result
