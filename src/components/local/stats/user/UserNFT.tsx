@@ -282,10 +282,10 @@ const UserNFT = ({ data, address }) => {
         <Center pt="2rem">
           <Text
             color={useColorModeValue("gray.600", "gray.200")}
-            fontSize={["xl", "2xl"]}
+            //fontSize={["xl", "2xl"]}
           >
             <Box
-              sx={{ transform: "translateY(4px)" }}
+              sx={{ transform: "translateY(3px)" }}
               display="inline-block"
               mr="2"
             >

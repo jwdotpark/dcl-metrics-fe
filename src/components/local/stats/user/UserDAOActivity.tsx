@@ -149,15 +149,18 @@ const UserDAOActivity = ({ data }) => {
               )}
 
               {collection_creator && (
-                <Flex w="100%" h="100%">
-                  <Box>Collection Creator</Box>
-                  <Spacer />
-                  <Box>
-                    <Text color={collection_creator ? "green" : "gray"}>
-                      {collection_creator ? "Yes" : "No"}
-                    </Text>
-                  </Box>
-                </Flex>
+                <>
+                  <Divider />
+                  <Flex w="100%" h="100%">
+                    <Box>Collection Creator</Box>
+                    <Spacer />
+                    <Box>
+                      <Text color={collection_creator ? "green" : "gray"}>
+                        {collection_creator ? "Yes" : "No"}
+                      </Text>
+                    </Box>
+                  </Flex>
+                </>
               )}
               {collections && collections.length > 0 && (
                 <>
@@ -165,7 +168,6 @@ const UserDAOActivity = ({ data }) => {
                     name={name}
                     collections={collections}
                   />
-                  <Divider />
                 </>
               )}
               <UserDAOAvtivityDelegate
@@ -186,12 +188,9 @@ const UserDAOActivity = ({ data }) => {
         </Flex>
       ) : (
         <Center pt="2rem">
-          <Text
-            color={useColorModeValue("gray.600", "gray.200")}
-            fontSize={["xl", "2xl"]}
-          >
+          <Text color={useColorModeValue("gray.600", "gray.200")}>
             <Box
-              sx={{ transform: "translateY(4px)" }}
+              sx={{ transform: "translateY(3px)" }}
               display="inline-block"
               mr="2"
             >
