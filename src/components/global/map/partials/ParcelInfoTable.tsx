@@ -8,8 +8,10 @@ import {
   TableContainer,
   useColorModeValue,
   useToast,
+  Button,
 } from "@chakra-ui/react"
-import { convertSeconds } from "../../../../lib/hooks/utils"
+import Link from "next/link"
+import { convertSeconds, parseUTC } from "../../../../lib/hooks/utils"
 import ToolTip from "../../../layout/local/ToolTip"
 
 const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
@@ -154,15 +156,18 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
             <Tr>
               <Td>Owner</Td>
               <Td isNumeric>
-                <Text
-                  as="kbd"
-                  _hover={{ cursor: "grab", color: "gray.600" }}
-                  wordBreak="break-all"
-                  noOfLines={1}
-                  onClick={() => handleToast(owner)}
-                >
-                  {owner}
-                </Text>
+                <Link href={`/users/${owner}`} target="_blank">
+                  <Button borderRadius="xl" shadow="md" size="xs">
+                    <Text
+                      //as="kbd"
+                      _hover={{ cursor: "grab", color: "gray.600" }}
+                      wordBreak="break-all"
+                      noOfLines={1}
+                    >
+                      Owner
+                    </Text>
+                  </Button>
+                </Link>
               </Td>
             </Tr>
           )}
@@ -172,7 +177,7 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
               <Td>Last Deployed At</Td>
               <Td isNumeric>
                 <Text wordBreak="break-all" noOfLines={1}>
-                  {scene.last_deployed_at && scene.last_deployed_at}
+                  {scene.last_deployed_at && parseUTC(scene.last_deployed_at)}
                 </Text>
               </Td>
             </Tr>
