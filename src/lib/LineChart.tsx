@@ -52,7 +52,9 @@ const LineChart = ({
   }
 
   const dateRangeLabelNumber = () => {
-    if (dateRange > 91) {
+    if (dateRange > 180) {
+      return 30
+    } else if (dateRange > 90) {
       return 15
     } else if (dateRange > 30) {
       return 5
@@ -91,6 +93,18 @@ const LineChart = ({
       .filter((item, i) => {
         return line[i]
       })
+
+  const setTickValues = () => {
+    if (dataName === "Online Users") {
+      return "every day"
+    } else if (dataName === "User Time Spent") {
+      return "every 20 day"
+    } else {
+      return `every ${dateRangeLabelNumber()} day`
+    }
+  }
+
+  console.log(dataName)
 
   useEffect(() => {
     setLocalData(data)
@@ -173,10 +187,7 @@ const LineChart = ({
         axisBottom={{
           tickRotation: 45,
           format: dataName === "Online Users" ? "%b %d" : "%b %d",
-          tickValues:
-            dataName === "Online Users"
-              ? "every day"
-              : `every ${dateRangeLabelNumber()} day`,
+          tickValues: setTickValues(),
           legend: "",
           legendOffset: -12,
         }}

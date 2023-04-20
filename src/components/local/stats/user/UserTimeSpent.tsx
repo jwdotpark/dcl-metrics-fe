@@ -2,18 +2,22 @@ import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserTimeSpent from "../../../../../public/data/staticUserTimeSpent.json"
 import { useState, useEffect } from "react"
-import { isProd, isDev } from "../../../../lib/data/constant"
+import { isProd, isDev, isLocal } from "../../../../lib/data/constant"
 import LineChart from "../../../../lib/LineChart"
 import DateRangeButton from "../daterange/DateRangeButton"
+import { Center, Spinner } from "@chakra-ui/react"
+import { lineChartAtom } from "../../../../lib/state/lineChartState"
+import { useAtom } from "jotai"
 
 const UserTimeSpent = ({ address }) => {
+  const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const timeSpentUrl = `https://api.dcl-metrics.com/users/${address}/activity/time_spent`
 
   const [avgData, setAvgData] = useState(0)
-  const [dateRange, setDateRange] = useState<number>(data.length)
-  const color = "rgba(80, 150, 123)"
+  const [dateRange, setDateRange] = useState(data.length)
+  const color = ["rgba(80, 150, 123)"]
 
   let chartData = []
 
@@ -21,8 +25,6 @@ const UserTimeSpent = ({ address }) => {
     chartData.push({
       date: item.date,
       time_spent: item.time_spent,
-      //date: item.date,
-      //timeSpent: item.time_spent,
     })
   })
 
@@ -61,22 +63,34 @@ const UserTimeSpent = ({ address }) => {
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
-      //if (isProd || isDev) {
-      if (false) {
+      if (isProd) {
         const url = `/api/server-fetch?url=${timeSpentUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
       } else {
-        console.log("og", staticUserTimeSpent)
+        //console.log("og", staticUserTimeSpent)
         setData(staticUserTimeSpent)
-        console.log("after data", data)
+        //console.log("after data", data)
       }
     }
     fetchData()
     setIsLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    const data = slicedData()
+
+    const sum = slicedData().reduce((acc, cur) => acc + cur.time_spent, 0)
+    const result = Math.floor(sum / data.length)
+    setAvgData(result)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateRange])
+
+  useEffect(() => {
+    setDateRange(data.length)
+  }, [data.length])
 
   return (
     <BoxWrapper colSpan={3}>
@@ -85,7 +99,7 @@ const UserTimeSpent = ({ address }) => {
         description={`User Time Spent description`}
         date=""
         avgData={avgData}
-        slicedData={[]}
+        slicedData={slicedData()}
         color={color}
         line={false}
         setLine={{}}
@@ -93,19 +107,25 @@ const UserTimeSpent = ({ address }) => {
       <DateRangeButton
         dateRange={dateRange}
         setDateRange={setDateRange}
-        validLegnth={[]}
+        validLegnth={validLegnth}
         name=""
         yesterday={false}
       />
-      <LineChart
-        data={result}
-        color={color}
-        name="userTimeSpent"
-        avgColor={undefined}
-        line={undefined}
-        rentalData={false}
-        avgData={[]}
-      />
+      {!isLoading ? (
+        <LineChart
+          data={result}
+          color={color}
+          name="userTimeSpent"
+          avgColor={undefined}
+          line={undefined}
+          rentalData={false}
+          avgData={[]}
+        />
+      ) : (
+        <Center h={chartProps.height}>
+          <Spinner />
+        </Center>
+      )}
     </BoxWrapper>
   )
 }
