@@ -279,11 +279,8 @@ const UserNFT = ({ data, address }) => {
           </Box>
         </Flex>
       ) : (
-        <Center pt="2rem">
-          <Text
-            color={useColorModeValue("gray.600", "gray.200")}
-            //fontSize={["xl", "2xl"]}
-          >
+        <Center py={["2rem", "2rem"]}>
+          <Text color={useColorModeValue("gray.600", "gray.200")}>
             <Box
               sx={{ transform: "translateY(3px)" }}
               display="inline-block"
