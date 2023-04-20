@@ -4,6 +4,10 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
+import staticUserTimeSpent from "../../public/data/staticUserTimeSpent.json"
+import staticUsercenesVisited from "../../public/data/staticUserScenesVisited.json"
+import staticUserTopScenes from "../../public/data/staticUserTopScenes.json"
+
 import {
   Text,
   Box,
@@ -16,17 +20,25 @@ import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
 import UserDAOActivity from "../../src/components/local/stats/user/UserDAOActivity"
-import { useEffect } from "react"
 import { FiAlertTriangle } from "react-icons/fi"
+import UserTimeSpent from "../../src/components/local/stats/user/UserTimeSpent"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
 
-  let userAddressRes, nftRes, daoActivityRes
+  let userAddressRes,
+    nftRes,
+    daoActivityRes,
+    timeSpentRes,
+    scenesVisitedRes,
+    topScenesRes
 
   const addressUrl = `https://api.dcl-metrics.com/users/${address}`
   const nftsUrl = `https://api.dcl-metrics.com/users/${address}/nfts`
   const daoActivityUrl = `https://api.dcl-metrics.com/users/${address}/dao_activity`
+  const timeSpentUrl = `https://api.dcl-metrics.com/users/${address}/activity/time_spent`
+  const scenesVisitedUrl = `https://api.dcl-metrics.com/users/${address}/activity/scenes_visited`
+  const topScenesUrl = `https://api.dcl-metrics.com/users/${address}/activity/top_scenes`
 
   if (isProd) {
     userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
@@ -45,20 +57,18 @@ export async function getServerSideProps(context) {
       {}
     )
   } else if (isLocal) {
-    //userAddressRes = staticUserAddress
-    //nftRes = staticUserNFT
-    //daoActivityRes = staticUserDAOActivity
-    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
-    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
-    daoActivityRes = await getDataWithApiKey(
-      daoActivityUrl,
-      "users/" + address + "/dao_activity",
-      {}
-    )
+    userAddressRes = staticUserAddress
+    nftRes = staticUserNFT
+    daoActivityRes = staticUserDAOActivity
   }
 
   return {
-    props: { address, userAddressRes, nftRes, daoActivityRes },
+    props: {
+      address,
+      userAddressRes,
+      nftRes,
+      daoActivityRes,
+    },
   }
 }
 
@@ -93,6 +103,9 @@ const SingleUserPage = (props) => {
             <UserInfo data={userAddressRes} />
             <UserNFT data={nftRes} address={address} />
             <UserDAOActivity data={daoActivityRes} />
+          </Grid>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <UserTimeSpent address={address} />
           </Grid>
         </Box>
       )}
