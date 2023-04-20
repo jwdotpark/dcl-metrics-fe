@@ -36,24 +36,26 @@ const UserNFT = ({ data, address }) => {
 
   const checkFalsyData = () => {
     if (
-      !og_user &&
-      !owns_dclens &&
-      !owns_land &&
-      !owns_nfts &&
-      !owns_wearables &&
-      !participant_in_genesis_auction &&
-      !total_dclens &&
-      !total_lands &&
-      !total_wearables &&
-      !first_dclens_acquired_at &&
-      !first_land_acquired_at &&
-      !first_wearable_acquired_at
+      !owns_nfts ||
+      (!og_user &&
+        !owns_dclens &&
+        !owns_land &&
+        !owns_wearables &&
+        !participant_in_genesis_auction &&
+        !total_dclens &&
+        !total_lands &&
+        !total_wearables &&
+        !first_dclens_acquired_at &&
+        !first_land_acquired_at &&
+        !first_wearable_acquired_at)
     ) {
       return false
     } else {
       return true
     }
   }
+
+  console.log(data)
 
   const toolTipText = {
     og_user:
