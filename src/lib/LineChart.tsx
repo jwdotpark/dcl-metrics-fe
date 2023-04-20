@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import { lineChartAtom } from "../lib/state/lineChartState"
 import { useAtom } from "jotai"
+import { convertSeconds } from "./hooks/utils"
 
 const LineChart = ({
   data,
@@ -104,7 +105,13 @@ const LineChart = ({
     }
   }
 
-  console.log(dataName)
+  const setMarginLeft = () => {
+    if (dataName === "User Time Spent") {
+      return 100
+    } else {
+      return 70
+    }
+  }
 
   useEffect(() => {
     setLocalData(data)
@@ -143,7 +150,7 @@ const LineChart = ({
           top: 50,
           right: rentalData ? 50 : 25,
           bottom: 50,
-          left: 70,
+          left: setMarginLeft(),
         }}
         xScale={{
           type: "time",
@@ -162,6 +169,23 @@ const LineChart = ({
           max: "auto",
         }}
         axisTop={null}
+        axisLeft={
+          dataName === "User Time Spent" && {
+            renderTick: (tick) => {
+              return (
+                <text
+                  x={tick.x - 80}
+                  y={tick.y + 15}
+                  fill="#fff"
+                  fontSize="11px"
+                >
+                  {convertSeconds(tick.value)}
+                  {/*{JSON.stringify(tick)}*/}
+                </text>
+              )
+            },
+          }
+        }
         axisRight={
           rentalData && {
             tickSize: 0,
