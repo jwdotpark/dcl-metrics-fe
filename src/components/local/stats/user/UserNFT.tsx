@@ -36,18 +36,18 @@ const UserNFT = ({ data, address }) => {
 
   const checkFalsyData = () => {
     if (
-      !og_user &&
-      !owns_dclens &&
-      !owns_land &&
-      !owns_nfts &&
-      !owns_wearables &&
-      !participant_in_genesis_auction &&
-      !total_dclens &&
-      !total_lands &&
-      !total_wearables &&
-      !first_dclens_acquired_at &&
-      !first_land_acquired_at &&
-      !first_wearable_acquired_at
+      !owns_nfts ||
+      (!og_user &&
+        !owns_dclens &&
+        !owns_land &&
+        !owns_wearables &&
+        !participant_in_genesis_auction &&
+        !total_dclens &&
+        !total_lands &&
+        !total_wearables &&
+        !first_dclens_acquired_at &&
+        !first_land_acquired_at &&
+        !first_wearable_acquired_at)
     ) {
       return false
     } else {
@@ -279,11 +279,8 @@ const UserNFT = ({ data, address }) => {
           </Box>
         </Flex>
       ) : (
-        <Center pt="2rem">
-          <Text
-            color={useColorModeValue("gray.600", "gray.200")}
-            //fontSize={["xl", "2xl"]}
-          >
+        <Center py={["2rem", "2rem"]}>
+          <Text color={useColorModeValue("gray.600", "gray.200")}>
             <Box
               sx={{ transform: "translateY(3px)" }}
               display="inline-block"

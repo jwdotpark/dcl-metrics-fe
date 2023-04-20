@@ -187,7 +187,7 @@ const UserDAOActivity = ({ data }) => {
           </Box>
         </Flex>
       ) : (
-        <Center pt="2rem">
+        <Center py={["2rem", "2rem"]}>
           <Text color={useColorModeValue("gray.600", "gray.200")}>
             <Box
               sx={{ transform: "translateY(3px)" }}
