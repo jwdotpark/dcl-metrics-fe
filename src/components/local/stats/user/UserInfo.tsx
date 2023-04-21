@@ -68,7 +68,7 @@ const UserInfo = ({ data }) => {
       />
       <Flex direction="column" w="auto" m="4" mx="5">
         <Box w="100%">
-          <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
+          <VStack align="stretch" spacing="4">
             <Flex w="100%" h="100%">
               <Box>DAO Member?</Box>
               <Spacer />

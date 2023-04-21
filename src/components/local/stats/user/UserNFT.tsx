@@ -86,7 +86,7 @@ const UserNFT = ({ data, address }) => {
       {checkFalsyData() ? (
         <Flex direction="column" w="auto" m="4" mx="5">
           <Box w="100%">
-            <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
+            <VStack align="stretch" spacing="4">
               {og_user && (
                 <Flex w="100%" h="100%">
                   <ToolTip label={toolTipText.og_user}>
