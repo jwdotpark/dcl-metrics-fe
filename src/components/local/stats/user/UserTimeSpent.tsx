@@ -121,7 +121,7 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
   console.log("result", result)
 
   return (
-    <BoxWrapper colSpan={3}>
+    <BoxWrapper colSpan={6}>
       <BoxTitle
         name="User Time Spent"
         description={`Historical data that shows the amount of time spent by ${userAddressRes.name}`}

@@ -95,11 +95,12 @@ const LineChart = ({
         return line[i]
       })
 
+  // TODO set for 7/14/30d
   const setTickValues = () => {
     if (dataName === "Online Users") {
       return "every day"
     } else if (dataName === "User Time Spent") {
-      return "every 20 day"
+      return "every 15 day"
     } else {
       return `every ${dateRangeLabelNumber()} day`
     }
