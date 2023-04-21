@@ -28,6 +28,29 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     })
   })
 
+  const plotMissingDataArr = (data) => {
+    const minDate = new Date(Math.min(...data.map((d) => new Date(d.date))))
+    const maxDate = new Date(Math.max(...data.map((d) => new Date(d.date))))
+    const dateRange = []
+    for (let d = minDate; d <= maxDate; d.setDate(d.getDate() + 1)) {
+      dateRange.push(new Date(d))
+    }
+
+    const dataByDate = {}
+    for (const d of data) {
+      dataByDate[d.date] = d
+    }
+
+    const plotData = []
+    for (const date of dateRange) {
+      const dateString = date.toISOString().slice(0, 10)
+      const time_spent = dataByDate[dateString]?.time_spent ?? 0
+      plotData.push({ date: dateString, time_spent })
+    }
+
+    return plotData
+  }
+
   const slicedData = () => {
     if (chartData.length - dateRange > 0) {
       return chartData.slice(chartData.length - dateRange, chartData.length)
@@ -75,7 +98,7 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
         setData(res.result)
       }
       {
-        setData(staticUserTimeSpent)
+        setData(plotMissingDataArr(staticUserTimeSpent))
       }
     }
     fetchData()
@@ -85,7 +108,6 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
 
   useEffect(() => {
     const data = slicedData()
-
     const sum = slicedData().reduce((acc, cur) => acc + cur.time_spent, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
@@ -95,6 +117,8 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
   useEffect(() => {
     setDateRange(data.length)
   }, [data.length])
+
+  console.log("result", result)
 
   return (
     <BoxWrapper colSpan={3}>

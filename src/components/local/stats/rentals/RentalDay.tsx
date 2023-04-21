@@ -11,6 +11,7 @@ import moment from "moment"
 
 const RentalDay = ({ data }) => {
   const { analyticsDayDatas } = data
+  console.log(analyticsDayDatas)
   const color = ["#48BB78", "#9F7AEA", "#F56565", "#4299E1"]
   const plottedData = plotMissingDates(analyticsDayDatas)
   const dataArr = Object.entries(plottedData)

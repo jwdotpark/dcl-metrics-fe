@@ -21,6 +21,32 @@ export const date = (chartData: [], dateRange: number) => {
   return { date: { first: first, last: last } }
 }
 
+export const plotMissingDataArr = (data) => {
+  // Create an array of dates in the range of the data
+  const minDate = new Date(Math.min(...data.map((d) => new Date(d.date))))
+  const maxDate = new Date(Math.max(...data.map((d) => new Date(d.date))))
+  const dateRange = []
+  for (let d = minDate; d <= maxDate; d.setDate(d.getDate() + 1)) {
+    dateRange.push(new Date(d))
+  }
+
+  // Create an object with the data indexed by date
+  const dataByDate = {}
+  for (const d of data) {
+    dataByDate[d.date] = d
+  }
+
+  // Plot the data, filling in missing dates with 0 time_spent
+  const plotData = []
+  for (const date of dateRange) {
+    const dateString = date.toISOString().slice(0, 10)
+    const time_spent = dataByDate[dateString]?.time_spent ?? 0
+    plotData.push({ date: dateString, time_spent })
+  }
+
+  return plotData
+}
+
 export const plotMissingDates = (data) => {
   const minTimestamp = Math.min.apply(
     null,
