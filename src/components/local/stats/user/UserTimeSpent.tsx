@@ -9,7 +9,7 @@ import { Center, Spinner } from "@chakra-ui/react"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 
-const UserTimeSpent = ({ address }) => {
+const UserTimeSpent = ({ address, userAddressRes }) => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -17,7 +17,7 @@ const UserTimeSpent = ({ address }) => {
 
   const [avgData, setAvgData] = useState(0)
   const [dateRange, setDateRange] = useState(data.length)
-  const color = ["rgba(80, 150, 123)"]
+  const color = ["#6272a4"]
 
   let chartData = []
 
@@ -68,10 +68,14 @@ const UserTimeSpent = ({ address }) => {
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
-      } else {
-        //console.log("og", staticUserTimeSpent)
+      } else if (isDev) {
+        const url = `/api/server-fetch?url=${timeSpentUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
+        const response = await fetch(url)
+        const res = await response.json()
+        setData(res.result)
+      }
+      {
         setData(staticUserTimeSpent)
-        //console.log("after data", data)
       }
     }
     fetchData()
@@ -96,7 +100,7 @@ const UserTimeSpent = ({ address }) => {
     <BoxWrapper colSpan={3}>
       <BoxTitle
         name="User Time Spent"
-        description={`User Time Spent description`}
+        description={`Historical data that shows the amount of time spent by ${userAddressRes.name}`}
         date=""
         avgData={avgData}
         slicedData={slicedData()}

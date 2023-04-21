@@ -176,11 +176,11 @@ const LineChart = ({
                 <text
                   x={tick.x - 80}
                   y={tick.y + 15}
-                  fill="#fff"
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
+                  fill={useColorModeValue("#000", "#fff")}
                   fontSize="11px"
                 >
                   {convertSeconds(tick.value)}
-                  {/*{JSON.stringify(tick)}*/}
                 </text>
               )
             },

@@ -1,4 +1,5 @@
 import { Box, Text, Flex, Spacer, Center } from "@chakra-ui/react"
+import { convertSeconds } from "../../../../lib/hooks/utils"
 
 const TooltipTable = ({ date, count, degraded, bar, name, color }) => {
   return (
@@ -12,7 +13,7 @@ const TooltipTable = ({ date, count, degraded, bar, name, color }) => {
       <Spacer />
       <Box ml="2" color={degraded && "red"}>
         <Text as="kbd">
-          <b>{count}</b>
+          {name === "User Time Spent" ? convertSeconds(count) : count}
         </Text>
       </Box>
     </Flex>

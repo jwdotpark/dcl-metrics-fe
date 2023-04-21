@@ -26,19 +26,14 @@ import UserTimeSpent from "../../src/components/local/stats/user/UserTimeSpent"
 export async function getServerSideProps(context) {
   const { address } = context.query
 
-  let userAddressRes,
-    nftRes,
-    daoActivityRes,
-    timeSpentRes,
-    scenesVisitedRes,
-    topScenesRes
+  let userAddressRes, nftRes, daoActivityRes
 
   const addressUrl = `https://api.dcl-metrics.com/users/${address}`
   const nftsUrl = `https://api.dcl-metrics.com/users/${address}/nfts`
   const daoActivityUrl = `https://api.dcl-metrics.com/users/${address}/dao_activity`
-  const timeSpentUrl = `https://api.dcl-metrics.com/users/${address}/activity/time_spent`
-  const scenesVisitedUrl = `https://api.dcl-metrics.com/users/${address}/activity/scenes_visited`
-  const topScenesUrl = `https://api.dcl-metrics.com/users/${address}/activity/top_scenes`
+  //const timeSpentUrl = `https://api.dcl-metrics.com/users/${address}/activity/time_spent`
+  //const scenesVisitedUrl = `https://api.dcl-metrics.com/users/${address}/activity/scenes_visited`
+  //const topScenesUrl = `https://api.dcl-metrics.com/users/${address}/activity/top_scenes`
 
   if (isProd) {
     userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
@@ -105,7 +100,7 @@ const SingleUserPage = (props) => {
             <UserDAOActivity data={daoActivityRes} />
           </Grid>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <UserTimeSpent address={address} />
+            <UserTimeSpent address={address} userAddressRes={userAddressRes} />
           </Grid>
         </Box>
       )}
