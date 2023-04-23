@@ -36,6 +36,8 @@ const UserDAOActivity = ({ data }) => {
     teams,
   } = data
 
+  console.log(votes)
+
   const checkFalsyData = () => {
     if (
       !total_vp &&
@@ -112,22 +114,28 @@ const UserDAOActivity = ({ data }) => {
                     <Spacer />
                     <Box>{votes.total_votes ? votes.total_votes : 0}</Box>
                   </Flex>
-                  <Flex w="100%" h="100%">
-                    <Box>First Vote</Box>
-                    <Spacer />
-                    <Box>
-                      <Text as="kbd">{parseUTC(votes.first_vote_cast_at)}</Text>
-                    </Box>
-                  </Flex>
-                  <Flex w="100%" h="100%">
-                    <Box>Latest Vote</Box>
-                    <Spacer />
-                    <Box>
-                      <Text as="kbd">
-                        {parseUTC(votes.latest_vote_cast_at)}
-                      </Text>
-                    </Box>
-                  </Flex>
+                  {votes.first_vote_cast_at !== "" && (
+                    <Flex w="100%" h="100%">
+                      <Box>First Vote</Box>
+                      <Spacer />
+                      <Box>
+                        <Text as="kbd">
+                          {parseUTC(votes.first_vote_cast_at)}
+                        </Text>
+                      </Box>
+                    </Flex>
+                  )}
+                  {votes.latest_vote_cast_at !== "" && (
+                    <Flex w="100%" h="100%">
+                      <Box>Latest Vote</Box>
+                      <Spacer />
+                      <Box>
+                        <Text as="kbd">
+                          {parseUTC(votes.latest_vote_cast_at)}
+                        </Text>
+                      </Box>
+                    </Flex>
+                  )}
                 </>
               )}
 
