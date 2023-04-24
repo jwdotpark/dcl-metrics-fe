@@ -46,6 +46,13 @@ const SidebarContent = ({
         return name.charAt(0).toUpperCase() + name.slice(1)
       }
     }
+
+    const isMobile = () => {
+      if (typeof window !== "undefined") {
+        return window.innerWidth < 768
+      }
+    }
+
     return (
       <ToolTip label={label}>
         <Box ml={sidebarOpen && subItem && "4"}>
@@ -67,6 +74,7 @@ const SidebarContent = ({
                   as={router.pathname === "/" + name && "u"}
                   fontSize="md"
                 >
+                  {isMobile() && name}
                   {sidebarOpen && setItemName(name)}
                 </Text>
               </NavItem>

@@ -148,7 +148,7 @@ const LineChart = ({
         ]}
         animate={true}
         margin={{
-          top: 50,
+          top: 20,
           right: rentalData ? 50 : 25,
           bottom: 50,
           left: setMarginLeft(),
@@ -171,21 +171,23 @@ const LineChart = ({
         }}
         axisTop={null}
         axisLeft={
-          dataName === "User Time Spent" && {
-            renderTick: (tick) => {
-              return (
-                <text
-                  x={tick.x - 80}
-                  y={tick.y + 15}
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                  fill={useColorModeValue("#000", "#fff")}
-                  fontSize="11px"
-                >
-                  {convertSeconds(tick.value)}
-                </text>
-              )
-            },
-          }
+          dataName === "User Time Spent"
+            ? {
+                renderTick: (tick) => {
+                  return (
+                    <text
+                      x={tick.x - 70}
+                      y={tick.y}
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
+                      fill={useColorModeValue("#000", "#fff")}
+                      fontSize="11px"
+                    >
+                      {convertSeconds(tick.value)}
+                    </text>
+                  )
+                },
+              }
+            : {}
         }
         axisRight={
           rentalData && {

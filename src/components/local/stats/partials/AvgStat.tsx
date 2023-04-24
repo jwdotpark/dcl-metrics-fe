@@ -43,6 +43,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
                   key={item.id}
                   w="100%"
                   minW={[0, 0, 100, 100]}
+                  mt="2"
                   ml="2"
                   color="gray.500"
                   fontSize="sm"
@@ -50,9 +51,8 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
                   <Flex direction="column">
                     <ToolTip label={tooltipStr(item.id, data)}>
                       <Box
-                        mr="2"
                         color={color[i]}
-                        fontSize={["xl", "xl", "2xl", "2xl"]}
+                        fontSize="xl"
                         fontWeight="bold"
                         textAlign={["start", "start", "end", "end"]}
                         _hover={{ cursor: "pointer" }}
@@ -67,14 +67,10 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
                         <CountUp end={item.value} duration={0.5} />
                       </Box>
                     </ToolTip>
-                    <Box
-                      minW={[0, 0, "auto", 140]}
-                      mr="2"
-                      textAlign={["start", "start", "end", "end"]}
-                    >
+                    <Box textAlign={["start", "start", "end", "end"]}>
                       <Text
                         display="inline-block"
-                        fontSize={[10, "sm"]}
+                        fontSize={["xs", "sm"]}
                         noOfLines={1}
                       >
                         {item.id}

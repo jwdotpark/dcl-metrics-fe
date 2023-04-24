@@ -36,8 +36,6 @@ const UserDAOActivity = ({ data }) => {
     teams,
   } = data
 
-  console.log(votes)
-
   const checkFalsyData = () => {
     if (
       !total_vp &&
