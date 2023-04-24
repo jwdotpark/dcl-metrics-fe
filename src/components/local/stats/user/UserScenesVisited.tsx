@@ -87,12 +87,12 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
     setIsLoading(true)
     const fetchData = async () => {
       if (isProd) {
-        const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
+        const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/scenes_visited/`
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
       } else if (isDev) {
-        const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
+        const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/scenes_visited/`
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
@@ -117,8 +117,6 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
   useEffect(() => {
     setDateRange(data.length)
   }, [data.length])
-
-  console.log(result)
 
   return (
     <BoxWrapper colSpan={3}>

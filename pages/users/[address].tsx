@@ -23,6 +23,7 @@ import UserDAOActivity from "../../src/components/local/stats/user/UserDAOActivi
 import { FiAlertTriangle } from "react-icons/fi"
 import UserTimeSpent from "../../src/components/local/stats/user/UserTimeSpent"
 import UserScenesVisited from "../../src/components/local/stats/user/UserScenesVisited"
+import UserTopScenes from "../../src/components/local/stats/user/UserTopScenes"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -106,6 +107,9 @@ const SingleUserPage = (props) => {
               address={address}
               userAddressRes={userAddressRes}
             />
+          </Grid>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <UserTopScenes address={address} userAddressRes={userAddressRes} />
           </Grid>
         </Box>
       )}
