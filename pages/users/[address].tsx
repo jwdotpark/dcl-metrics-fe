@@ -22,6 +22,7 @@ import UserNFT from "../../src/components/local/stats/user/UserNFT"
 import UserDAOActivity from "../../src/components/local/stats/user/UserDAOActivity"
 import { FiAlertTriangle } from "react-icons/fi"
 import UserTimeSpent from "../../src/components/local/stats/user/UserTimeSpent"
+import UserScenesVisited from "../../src/components/local/stats/user/UserScenesVisited"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -101,6 +102,10 @@ const SingleUserPage = (props) => {
           </Grid>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <UserTimeSpent address={address} userAddressRes={userAddressRes} />
+            <UserScenesVisited
+              address={address}
+              userAddressRes={userAddressRes}
+            />
           </Grid>
         </Box>
       )}

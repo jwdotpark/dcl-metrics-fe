@@ -9,7 +9,7 @@ import { Center, Spinner } from "@chakra-ui/react"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 
-const UserTimeSpent = ({ address, userAddressRes }) => {
+const UserScenesVisited = ({ address, userAddressRes }) => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -118,10 +118,11 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     setDateRange(data.length)
   }, [data.length])
 
+
   return (
-    <BoxWrapper colSpan={4}>
+    <BoxWrapper colSpan={2}>
       <BoxTitle
-        name={`${userAddressRes.name} Time Spent`}
+        name={`${userAddressRes.name} Scenes Visited`}
         description={`Historical data that represents the amount of time spent on a daily basis`}
         date=""
         avgData={avgData}
@@ -156,4 +157,4 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
   )
 }
 
-export default UserTimeSpent
+export default UserScenesVisited
