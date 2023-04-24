@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserTimeSpent from "../../../../../public/data/staticUserTimeSpent.json"
@@ -76,23 +77,14 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
   ).length
 
   useEffect(() => {
-    const data = slicedData()
-    const sum = slicedData().reduce((acc, cur) => acc + cur.users, 0)
-    const result = Math.floor(sum / data.length)
-    setAvgData(result)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange])
-
-  useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
+      const url = `/api/server-fetch?url=${timeSpentUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
       if (isProd) {
-        const url = `/api/server-fetch?url=${timeSpentUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
       } else if (isDev) {
-        const url = `/api/server-fetch?url=${timeSpentUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
@@ -103,7 +95,6 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     }
     fetchData()
     setIsLoading(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -111,7 +102,6 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     const sum = slicedData().reduce((acc, cur) => acc + cur.time_spent, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
   useEffect(() => {
@@ -121,8 +111,8 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
   return (
     <BoxWrapper colSpan={3}>
       <BoxTitle
-        name={`${userAddressRes.name} Time Spent`}
-        description={`Historical data that represents the amount of time spent on a daily basis`}
+        name={`User Time Spent`}
+        description={`Historical data that represents the amount of time ${userAddressRes.name} spent`}
         date=""
         avgData={avgData}
         slicedData={slicedData()}

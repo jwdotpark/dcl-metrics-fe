@@ -7,7 +7,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
   if (typeof avgData === "number") {
     avgData = [
       {
-        id: "Average Value",
+        id: "Average",
         value: avgData,
       },
     ]
@@ -64,7 +64,11 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
                             })
                         }}
                       >
-                        <CountUp end={item.value} duration={0.5} />
+                        <CountUp
+                          end={item.value}
+                          duration={0.5}
+                          decimals={color[0] === "#ff79c6" && 1}
+                        />
                       </Box>
                     </ToolTip>
                     <Box textAlign={["start", "start", "end", "end"]}>

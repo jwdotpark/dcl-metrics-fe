@@ -76,23 +76,14 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
   ).length
 
   useEffect(() => {
-    const data = slicedData()
-    const sum = slicedData().reduce((acc, cur) => acc + cur.users, 0)
-    const result = Math.floor(sum / data.length)
-    setAvgData(result)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange])
-
-  useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
+      const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/scenes_visited/`
       if (isProd) {
-        const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/scenes_visited/`
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
       } else if (isDev) {
-        const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/scenes_visited/`
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
@@ -109,7 +100,7 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
   useEffect(() => {
     const data = slicedData()
     const sum = slicedData().reduce((acc, cur) => acc + cur.count, 0)
-    const result = Math.floor(sum / data.length)
+    const result = sum / data.length
     setAvgData(result)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
@@ -121,8 +112,8 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
   return (
     <BoxWrapper colSpan={3}>
       <BoxTitle
-        name={`${userAddressRes.name} Scenes Visited`}
-        description={`The number of the scene user visited on a daily basis`}
+        name={`User Scenes Visited`}
+        description={`The number of the scene ${userAddressRes.name} visited`}
         date=""
         avgData={avgData}
         slicedData={slicedData()}

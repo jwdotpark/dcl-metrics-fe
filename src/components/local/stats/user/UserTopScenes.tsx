@@ -8,12 +8,11 @@ import {
   Image,
   Center,
   Spinner,
-  Table,
-  Tr,
-  Td,
   Box,
   useColorModeValue,
   Link,
+  Flex,
+  Spacer,
 } from "@chakra-ui/react"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
@@ -50,54 +49,58 @@ const UserTopScenes = ({ address, userAddressRes }) => {
   const UserSceneTable = () => {
     return (
       <Box mx="4">
-        <Table variant="simple">
+        <Box mb="2" fontSize="sm">
           {data.map((item, i) => {
             return (
-              <Tr
+              <Link
                 key={item.scene_uuid}
-                mb="2"
-                // eslint-disable-next-line react-hooks/rules-of-hooks
-                _hover={{ bg: useColorModeValue("gray.100", "gray.600") }}
+                href={`/scenes/${mutateStringToURL(item.scene_name)}/${
+                  item.scene_uuid
+                }`}
+                target="_blank"
               >
-                <Link
-                  href={`/scenes/${mutateStringToURL(item.scene_name)}/${
-                    item.scene_uuid
-                  }`}
-                  target="_blank"
+                <Flex
+                  direction="row"
+                  px="4"
+                  py="2"
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
+                  _hover={{ bg: useColorModeValue("gray.100", "gray.600") }}
                 >
-                  <Td>{i + 1}.</Td>
-                  <Td>
+                  <Center mr="4">{i + 1}.</Center>
+                  <Center>
                     <Box>
                       <Image
-                        w={["200px", "400px"]}
-                        h="100px"
+                        w={[100, 200, 200, 200]}
+                        h={[50, 75, 75]}
                         borderRadius="xl"
                         shadow="md"
                         objectFit="cover"
                         alt={item.scene_name}
                         src={item.map_url}
                       />
-                      <Center mt="2">{item.scene_name}</Center>
                     </Box>
-                  </Td>
-                  <Td>{item.visits}</Td>
-                  <Td>
-                    <Text>{convertSeconds(item.duration)}</Text>
-                  </Td>
-                </Link>
-              </Tr>
+                    <Center ml="6">{item.scene_name}</Center>
+                  </Center>
+                  <Spacer />
+                  <Center>
+                    <Text as="kbd" fontWeight="bold">
+                      {convertSeconds(item.duration)}
+                    </Text>
+                  </Center>
+                </Flex>
+              </Link>
             )
           })}
-        </Table>
+        </Box>
       </Box>
     )
   }
 
   return (
-    <BoxWrapper colSpan={2}>
+    <BoxWrapper colSpan={3}>
       <BoxTitle
-        name={`Scenes ${userAddressRes.name} visited`}
-        description={`Top ${data.length} list of scenes ${userAddressRes.name} visited`}
+        name={`Frequently Visited Scenes`}
+        description={`Top ${data.length} list of scenes ${userAddressRes.name} visited the most`}
         date=""
         avgData={""}
         slicedData={[]}
