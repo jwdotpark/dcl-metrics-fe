@@ -107,7 +107,7 @@ const LineChart = ({
   }
 
   const setMarginLeft = () => {
-    if (dataName === "User Time Spent") {
+    if (dataName === "Total Time Spent") {
       return 100
     } else {
       return 70
@@ -171,7 +171,7 @@ const LineChart = ({
         }}
         axisTop={null}
         axisLeft={
-          dataName === "User Time Spent"
+          dataName === "Total Time Spent"
             ? {
                 renderTick: (tick) => {
                   return (

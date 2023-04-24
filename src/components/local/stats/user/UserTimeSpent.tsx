@@ -61,7 +61,7 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
 
   const result = [
     {
-      id: "User Time Spent",
+      id: "Total Time Spent",
       color: "hsl(90, 70%, 50%)",
       data: slicedData().map((item) => ({
         id: item.date,
@@ -119,7 +119,7 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
   }, [data.length])
 
   return (
-    <BoxWrapper colSpan={4}>
+    <BoxWrapper colSpan={3}>
       <BoxTitle
         name={`${userAddressRes.name} Time Spent`}
         description={`Historical data that represents the amount of time spent on a daily basis`}

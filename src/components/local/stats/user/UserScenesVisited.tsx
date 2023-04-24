@@ -1,6 +1,6 @@
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import staticUserTimeSpent from "../../../../../public/data/staticUserTimeSpent.json"
+import staticUserScenesVisited from "../../../../../public/data/staticUserScenesVisited.json"
 import { useState, useEffect } from "react"
 import { isProd, isDev, isLocal } from "../../../../lib/data/constant"
 import LineChart from "../../../../lib/LineChart"
@@ -13,18 +13,18 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const timeSpentUrl = `https://api.dcl-metrics.com/users/${address}/activity/time_spent`
+  const scenesVisitedUrl = `https://api.dcl-metrics.com/users/${address}/activity/scenes_visited`
 
   const [avgData, setAvgData] = useState(0)
   const [dateRange, setDateRange] = useState(data.length)
-  const color = ["#6272a4"]
+  const color = ["#ff79c6"]
 
   let chartData = []
 
   data.map((item) => {
     chartData.push({
       date: item.date,
-      time_spent: item.time_spent,
+      count: item.count,
     })
   })
 
@@ -44,8 +44,8 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
     const plotData = []
     for (const date of dateRange) {
       const dateString = date.toISOString().slice(0, 10)
-      const time_spent = dataByDate[dateString]?.time_spent ?? 0
-      plotData.push({ date: dateString, time_spent })
+      const count = dataByDate[dateString]?.count ?? 0
+      plotData.push({ date: dateString, count })
     }
 
     return plotData
@@ -61,12 +61,12 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
 
   const result = [
     {
-      id: "User Time Spent",
+      id: "Number of Scenes Visited",
       color: "hsl(90, 70%, 50%)",
       data: slicedData().map((item) => ({
         id: item.date,
         x: item.date,
-        y: item.time_spent,
+        y: item.count,
       })),
     },
   ]
@@ -87,18 +87,18 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
     setIsLoading(true)
     const fetchData = async () => {
       if (isProd) {
-        const url = `/api/server-fetch?url=${timeSpentUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
+        const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
       } else if (isDev) {
-        const url = `/api/server-fetch?url=${timeSpentUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
+        const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
       }
       {
-        setData(plotMissingDataArr(staticUserTimeSpent))
+        setData(plotMissingDataArr(staticUserScenesVisited))
       }
     }
     fetchData()
@@ -108,7 +108,7 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
 
   useEffect(() => {
     const data = slicedData()
-    const sum = slicedData().reduce((acc, cur) => acc + cur.time_spent, 0)
+    const sum = slicedData().reduce((acc, cur) => acc + cur.count, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -118,12 +118,13 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
     setDateRange(data.length)
   }, [data.length])
 
+  console.log(result)
 
   return (
-    <BoxWrapper colSpan={2}>
+    <BoxWrapper colSpan={3}>
       <BoxTitle
         name={`${userAddressRes.name} Scenes Visited`}
-        description={`Historical data that represents the amount of time spent on a daily basis`}
+        description={`The number of the scene user visited on a daily basis`}
         date=""
         avgData={avgData}
         slicedData={slicedData()}
@@ -142,7 +143,7 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
         <LineChart
           data={result}
           color={color}
-          name="userTimeSpent"
+          name="userScenesVisited"
           avgColor={undefined}
           line={undefined}
           rentalData={false}
