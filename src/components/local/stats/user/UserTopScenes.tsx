@@ -17,6 +17,7 @@ import {
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
+import { FiAlertTriangle } from "react-icons/fi"
 
 const UserTopScenes = ({ address, userAddressRes }) => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
@@ -46,9 +47,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if (data.length === 0) {
-    return
-  }
+  console.log(data)
 
   const UserSceneTable = () => {
     return (
@@ -161,7 +160,25 @@ const UserTopScenes = ({ address, userAddressRes }) => {
       />
 
       {!isLoading ? (
-        <UserSceneTable />
+        data.length > 0 ? (
+          <UserSceneTable />
+        ) : (
+          <Center>
+            <Text
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              color={useColorModeValue("gray.600", "gray.200")}
+            >
+              <Box
+                sx={{ transform: "translateY(3px)" }}
+                display="inline-block"
+                mr="2"
+              >
+                <FiAlertTriangle />
+              </Box>
+              No Data
+            </Text>
+          </Center>
+        )
       ) : (
         <Center h={chartProps.height}>
           <Spinner />
