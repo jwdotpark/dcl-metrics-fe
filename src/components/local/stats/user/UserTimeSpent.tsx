@@ -88,8 +88,7 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
-      }
-      {
+      } else {
         setData(plotMissingDataArr(staticUserTimeSpent))
       }
     }
