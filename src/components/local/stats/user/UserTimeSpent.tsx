@@ -107,6 +107,10 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     setDateRange(data.length)
   }, [data.length])
 
+  if (data.length === 0) {
+    return
+  }
+
   return (
     <BoxWrapper colSpan={3}>
       <BoxTitle

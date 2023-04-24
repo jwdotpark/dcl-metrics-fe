@@ -46,58 +46,109 @@ const UserTopScenes = ({ address, userAddressRes }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  if (data.length === 0) {
+    return
+  }
+
   const UserSceneTable = () => {
     return (
-      <Box mx="4">
-        <Box mb="2" fontSize="sm">
-          {data.map((item, i) => {
+      <Flex direction="row">
+        <Box w="50%" mb="2" mx="4" fontSize="sm">
+          {data.slice(0, 10).map((item, i) => {
             return (
-              <Link
-                key={item.scene_uuid}
-                href={`/scenes/${mutateStringToURL(item.scene_name)}/${
-                  item.scene_uuid
-                }`}
-                target="_blank"
-              >
-                <Flex
-                  direction="row"
-                  px="4"
-                  py="2"
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                  _hover={{ bg: useColorModeValue("gray.100", "gray.600") }}
+              <Box key={item.scene_uuid}>
+                <Link
+                  href={`/scenes/${mutateStringToURL(item.scene_name)}/${
+                    item.scene_uuid
+                  }`}
+                  target="_blank"
                 >
-                  <Center mr="4">{i + 1}.</Center>
-                  <Center>
-                    <Box>
-                      <Image
-                        w={[100, 200, 200, 200]}
-                        h={[50, 75, 75]}
-                        borderRadius="xl"
-                        shadow="md"
-                        objectFit="cover"
-                        alt={item.scene_name}
-                        src={item.map_url}
-                      />
-                    </Box>
-                    <Center ml="6">{item.scene_name}</Center>
-                  </Center>
-                  <Spacer />
-                  <Center>
-                    <Text as="kbd" fontWeight="bold">
-                      {convertSeconds(item.duration)}
-                    </Text>
-                  </Center>
-                </Flex>
-              </Link>
+                  <Flex
+                    direction="row"
+                    px="4"
+                    py="2"
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    _hover={{ bg: useColorModeValue("gray.100", "gray.600") }}
+                  >
+                    <Center mr="4">{i + 1}.</Center>
+                    <Center>
+                      <Box>
+                        <Image
+                          w={[100, 200, 200, 200]}
+                          h={[50, 75, 75]}
+                          borderRadius="xl"
+                          shadow="md"
+                          objectFit="cover"
+                          alt={item.scene_name}
+                          src={item.map_url}
+                        />
+                      </Box>
+                      <Center ml="6">
+                        <Text>{item.scene_name}</Text>
+                      </Center>
+                    </Center>
+                    <Spacer />
+                    <Center>
+                      <Text as="kbd" fontWeight="bold">
+                        {convertSeconds(item.duration)}
+                      </Text>
+                    </Center>
+                  </Flex>
+                </Link>
+              </Box>
             )
           })}
         </Box>
-      </Box>
+        <Box w="50%" mb="2" mx="4" fontSize="sm">
+          {data.slice(10, data.length).map((item, i) => {
+            return (
+              <Box key={item.scene_uuid}>
+                <Link
+                  href={`/scenes/${mutateStringToURL(item.scene_name)}/${
+                    item.scene_uuid
+                  }`}
+                  target="_blank"
+                >
+                  <Flex
+                    direction="row"
+                    px="4"
+                    py="2"
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    _hover={{ bg: useColorModeValue("gray.100", "gray.600") }}
+                  >
+                    <Center mr="4">{i + 11}.</Center>
+                    <Center>
+                      <Box>
+                        <Image
+                          w={[100, 200, 200, 200]}
+                          h={[50, 75, 75]}
+                          borderRadius="xl"
+                          shadow="md"
+                          objectFit="cover"
+                          alt={item.scene_name}
+                          src={item.map_url}
+                        />
+                      </Box>
+                      <Center ml="6">{item.scene_name}</Center>
+                    </Center>
+                    <Spacer />
+                    <Center>
+                      <Text as="kbd" fontWeight="bold">
+                        {convertSeconds(item.duration)}
+                      </Text>
+                    </Center>
+                  </Flex>
+                </Link>
+              </Box>
+            )
+          })}
+        </Box>
+      </Flex>
     )
   }
 
   return (
-    <BoxWrapper colSpan={3}>
+    <BoxWrapper colSpan={6}>
       <BoxTitle
         name={`Frequently Visited Scenes`}
         description={`Top ${data.length} list of scenes ${userAddressRes.name} visited the most`}
