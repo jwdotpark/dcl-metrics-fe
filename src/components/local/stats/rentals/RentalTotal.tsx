@@ -58,7 +58,7 @@ const RentalTotal = ({ data }) => {
   ]
 
   return (
-    <BoxWrapper colSpan={[4, 4, 4, 4, 3]}>
+    <BoxWrapper colSpan={[4, 4, 4, 4, 2]}>
       <BoxTitle
         name="Rentals Total"
         date={""}
