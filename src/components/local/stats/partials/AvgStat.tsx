@@ -29,7 +29,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
     ) {
       return `${id} for ${dateStr(data)} days`
     }
-    return `${id} average for ${dateStr(data)} days`
+    return `${id} for ${dateStr(data)} days`
   }
 
   return (
