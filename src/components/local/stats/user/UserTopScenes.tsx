@@ -204,19 +204,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
           </Flex>
         ) : (
           <Center h={chartProps.height}>
-            <Text
-              // eslint-disable-next-line react-hooks/rules-of-hooks
-              color={useColorModeValue("gray.600", "gray.200")}
-            >
-              <Box
-                sx={{ transform: "translateY(3px)" }}
-                display="inline-block"
-                mr="2"
-              >
-                <FiAlertTriangle />
-              </Box>
-              <Spinner />
-            </Text>
+            <Spinner />
           </Center>
         )}
       </>
