@@ -19,8 +19,11 @@ import {
 import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
 import { FiAlertTriangle } from "react-icons/fi"
 import ToolTip from "../../../layout/local/ToolTip"
+import { lineChartAtom } from "../../../../lib/state/lineChartState"
+import { useAtom } from "jotai"
 
 const UserTopScenes = ({ address, userAddressRes }) => {
+  const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState([])
   const topScenesUrl = `https://api.dcl-metrics.com/users/${address}/activity/top_scenes`
@@ -217,7 +220,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
         data.length > 0 ? (
           <UserSceneTable />
         ) : (
-          <Center>
+          <Center h={chartProps.height}>
             <Text
               // eslint-disable-next-line react-hooks/rules-of-hooks
               color={useColorModeValue("gray.600", "gray.200")}
@@ -234,7 +237,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
           </Center>
         )
       ) : (
-        <Center h="500">
+        <Center h={chartProps.height}>
           <Spinner />
         </Center>
       )}
