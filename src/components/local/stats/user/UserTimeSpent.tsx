@@ -3,7 +3,12 @@ import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserTimeSpent from "../../../../../public/data/staticUserTimeSpent.json"
 import { useState, useEffect } from "react"
-import { isProd, isDev, isLocal } from "../../../../lib/data/constant"
+import {
+  isProd,
+  isDev,
+  isLocal,
+  getEndpoint,
+} from "../../../../lib/data/constant"
 import LineChart from "../../../../lib/LineChart"
 import DateRangeButton from "../daterange/DateRangeButton"
 import { Center, Spinner } from "@chakra-ui/react"
@@ -14,7 +19,7 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const timeSpentUrl = `https://api.dcl-metrics.com/users/${address}/activity/time_spent`
+  const timeSpentUrl = getEndpoint(`users/${address}/activity/time_spent`)
 
   const [avgData, setAvgData] = useState(0)
   const [dateRange, setDateRange] = useState(data.length)

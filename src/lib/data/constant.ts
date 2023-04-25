@@ -3,7 +3,7 @@ export const isProd = process.env.NEXT_PUBLIC_STAGING === "false"
 export const isDev = process.env.NEXT_PUBLIC_STAGING === "true"
 export const isLocal = process.env.NODE_ENV === "development"
 
-export function getEndpoint(path) {
+export function getEndpoint(path: string) {
   return isProd
     ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + path
     : process.env.NEXT_PUBLIC_DEV_ENDPOINT + path

@@ -3,7 +3,12 @@ import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserTopScenes from "../../../../../public/data/staticUserTopScenes.json"
 import { useState, useEffect } from "react"
-import { isProd, isDev, isLocal } from "../../../../lib/data/constant"
+import {
+  isProd,
+  isDev,
+  isLocal,
+  getEndpoint,
+} from "../../../../lib/data/constant"
 import {
   Text,
   Image,
@@ -26,7 +31,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState([])
-  const topScenesUrl = `https://api.dcl-metrics.com/users/${address}/activity/top_scenes`
+  const topScenesUrl = getEndpoint(`users/${address}/activity/top_scenes`)
 
   useEffect(() => {
     setIsLoading(true)
