@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserTopScenes from "../../../../../public/data/staticUserTopScenes.json"
@@ -13,6 +14,7 @@ import {
   Link,
   Flex,
   Spacer,
+  Divider,
 } from "@chakra-ui/react"
 import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
 import { FiAlertTriangle } from "react-icons/fi"
@@ -46,8 +48,13 @@ const UserTopScenes = ({ address, userAddressRes }) => {
 
   const UserSceneTable = () => {
     return (
-      <Flex direction="row">
-        <Box w="50%" mb="2" mx="4" fontSize="sm">
+      <Flex direction={["column", "column", "column", "column", "row"]}>
+        <Box
+          w={["auto", "auto", "auto", "auto", "50%"]}
+          mb="2"
+          mx="4"
+          fontSize="sm"
+        >
           {data.slice(0, 10).map((item, i) => {
             return (
               <Box key={item.scene_uuid}>
@@ -61,39 +68,57 @@ const UserTopScenes = ({ address, userAddressRes }) => {
                     direction="row"
                     px="4"
                     py="2"
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
-                    _hover={{ bg: useColorModeValue("gray.100", "gray.600") }}
+                    borderRadius="xl"
+                    _hover={{
+                      bg: useColorModeValue("gray.100", "gray.600"),
+                      shadow: "md",
+                    }}
                   >
                     <Center mr="4">{i + 1}.</Center>
-                    <Center>
-                      <Box>
+                    <Flex direction={["column", "row"]}>
+                      <Center
+                        overflow="hidden"
+                        w={["150px", "200px", "200px", "200px", "250px"]}
+                        h="100px"
+                        border="2px solid"
+                        borderColor={useColorModeValue("gray.200", "gray.600")}
+                        borderRadius="xl"
+                        shadow="md"
+                      >
                         <Image
-                          w={[100, 200, 200, 200]}
-                          h={[50, 75, 75]}
                           borderRadius="xl"
                           shadow="md"
                           objectFit="cover"
                           alt={item.scene_name}
                           src={item.map_url}
                         />
-                      </Box>
-                      <Center ml="6">
-                        <Text>{item.scene_name}</Text>
                       </Center>
-                    </Center>
+                      <Center ml="6">
+                        <Text fontSize={["xs", "sm"]} noOfLines={1}>
+                          {item.scene_name}
+                        </Text>
+                      </Center>
+                    </Flex>
                     <Spacer />
                     <Center>
-                      <Text as="kbd" fontWeight="bold">
+                      <Text as="kbd" fontSize={["xs", "sm"]} fontWeight="bold">
                         {convertSeconds(item.duration)}
                       </Text>
                     </Center>
                   </Flex>
                 </Link>
+                <Divider />
               </Box>
             )
           })}
         </Box>
-        <Box w="50%" mb="2" mx="4" fontSize="sm">
+
+        <Box
+          w={["auto", "auto", "auto", "auto", "50%"]}
+          mb="2"
+          mx="4"
+          fontSize="sm"
+        >
           {data.slice(10, data.length).map((item, i) => {
             return (
               <Box key={item.scene_uuid}>
@@ -107,32 +132,46 @@ const UserTopScenes = ({ address, userAddressRes }) => {
                     direction="row"
                     px="4"
                     py="2"
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
-                    _hover={{ bg: useColorModeValue("gray.100", "gray.600") }}
+                    borderRadius="xl"
+                    _hover={{
+                      bg: useColorModeValue("gray.100", "gray.600"),
+                      shadow: "md",
+                    }}
                   >
                     <Center mr="4">{i + 11}.</Center>
-                    <Center>
-                      <Box>
+                    <Flex direction={["column", "row"]}>
+                      <Center
+                        overflow="hidden"
+                        w={["150px", "200px", "200px", "200px", "250px"]}
+                        h="100px"
+                        border="2px solid"
+                        borderColor={useColorModeValue("gray.200", "gray.600")}
+                        borderRadius="xl"
+                        shadow="md"
+                      >
                         <Image
-                          w={[100, 200, 200, 200]}
-                          h={[50, 75, 75]}
                           borderRadius="xl"
                           shadow="md"
                           objectFit="cover"
                           alt={item.scene_name}
                           src={item.map_url}
                         />
-                      </Box>
-                      <Center ml="6">{item.scene_name}</Center>
-                    </Center>
+                      </Center>
+                      <Center ml="6">
+                        <Text fontSize={["xs", "sm"]} noOfLines={1}>
+                          {item.scene_name}
+                        </Text>
+                      </Center>
+                    </Flex>
                     <Spacer />
                     <Center>
-                      <Text as="kbd" fontWeight="bold">
+                      <Text as="kbd" fontSize={["xs", "sm"]} fontWeight="bold">
                         {convertSeconds(item.duration)}
                       </Text>
                     </Center>
                   </Flex>
                 </Link>
+                <Divider />
               </Box>
             )
           })}
