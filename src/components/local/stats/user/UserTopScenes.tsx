@@ -22,7 +22,6 @@ import {
   Divider,
 } from "@chakra-ui/react"
 import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
-import { FiAlertTriangle } from "react-icons/fi"
 import ToolTip from "../../../layout/local/ToolTip"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
@@ -32,6 +31,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState([])
   const topScenesUrl = getEndpoint(`users/${address}/activity/top_scenes`)
+  console.log(topScenesUrl)
 
   useEffect(() => {
     setIsLoading(true)
