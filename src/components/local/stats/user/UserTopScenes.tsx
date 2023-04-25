@@ -215,7 +215,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
               >
                 <FiAlertTriangle />
               </Box>
-              No Data
+              <Spinner />
             </Text>
           </Center>
         )}
