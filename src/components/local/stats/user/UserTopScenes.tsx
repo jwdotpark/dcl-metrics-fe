@@ -2,7 +2,7 @@ import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserTopScenes from "../../../../../public/data/staticUserTopScenes.json"
 import { useState, useEffect } from "react"
-import { isProd, isDev } from "../../../../lib/data/constant"
+import { isProd, isDev, isLocal } from "../../../../lib/data/constant"
 import {
   Text,
   Image,
@@ -14,13 +14,10 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/react"
-import { lineChartAtom } from "../../../../lib/state/lineChartState"
-import { useAtom } from "jotai"
 import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
 import { FiAlertTriangle } from "react-icons/fi"
 
 const UserTopScenes = ({ address, userAddressRes }) => {
-  const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState([])
   const topScenesUrl = `https://api.dcl-metrics.com/users/${address}/activity/top_scenes`
@@ -34,11 +31,11 @@ const UserTopScenes = ({ address, userAddressRes }) => {
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
-      } else if (isDev) {
+      } else if (isDev && !isLocal) {
         const response = await fetch(url)
         const res = await response.json()
         setData(res.result)
-      } else {
+      } else if (isLocal) {
         setData(staticUserTopScenes)
       }
     }
@@ -46,8 +43,6 @@ const UserTopScenes = ({ address, userAddressRes }) => {
     setIsLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  console.log(data)
 
   const UserSceneTable = () => {
     return (
@@ -180,7 +175,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
           </Center>
         )
       ) : (
-        <Center h={chartProps.height}>
+        <Center h="500">
           <Spinner />
         </Center>
       )}
