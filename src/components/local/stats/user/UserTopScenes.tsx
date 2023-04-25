@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react"
 import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
 import { FiAlertTriangle } from "react-icons/fi"
+import ToolTip from "../../../layout/local/ToolTip"
 
 const UserTopScenes = ({ address, userAddressRes }) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -58,55 +59,64 @@ const UserTopScenes = ({ address, userAddressRes }) => {
           {data.slice(0, 10).map((item, i) => {
             return (
               <Box key={item.scene_uuid}>
-                <Link
-                  href={`/scenes/${mutateStringToURL(item.scene_name)}/${
-                    item.scene_uuid
-                  }`}
-                  target="_blank"
-                >
-                  <Flex
-                    direction="row"
-                    px="4"
-                    py="2"
-                    borderRadius="xl"
-                    _hover={{
-                      bg: useColorModeValue("gray.100", "gray.600"),
-                      shadow: "md",
-                    }}
+                <ToolTip label={`Open ${item.scene_name} page`}>
+                  <Link
+                    href={`/scenes/${mutateStringToURL(item.scene_name)}/${
+                      item.scene_uuid
+                    }`}
+                    target="_blank"
                   >
-                    <Center mr="4">{i + 1}.</Center>
-                    <Flex direction={["column", "row"]}>
-                      <Center
-                        overflow="hidden"
-                        w={["150px", "200px", "200px", "200px", "250px"]}
-                        h="100px"
-                        border="2px solid"
-                        borderColor={useColorModeValue("gray.200", "gray.600")}
-                        borderRadius="xl"
-                        shadow="md"
-                      >
-                        <Image
+                    <Flex
+                      direction="row"
+                      px="4"
+                      py="2"
+                      borderRadius="xl"
+                      _hover={{
+                        bg: useColorModeValue("gray.100", "gray.600"),
+                        shadow: "md",
+                      }}
+                    >
+                      <Center mr="4">{i + 1}.</Center>
+                      <Flex direction={["column", "row"]}>
+                        <Center
+                          overflow="hidden"
+                          w={["150px", "200px", "200px", "200px", "250px"]}
+                          h="100px"
+                          border="2px solid"
+                          borderColor={useColorModeValue(
+                            "gray.200",
+                            "gray.600"
+                          )}
                           borderRadius="xl"
                           shadow="md"
-                          objectFit="cover"
-                          alt={item.scene_name}
-                          src={item.map_url}
-                        />
-                      </Center>
-                      <Center ml="6">
-                        <Text fontSize={["xs", "sm"]} noOfLines={1}>
-                          {item.scene_name}
+                        >
+                          <Image
+                            borderRadius="xl"
+                            shadow="md"
+                            objectFit="cover"
+                            alt={item.scene_name}
+                            src={item.map_url}
+                          />
+                        </Center>
+                        <Center ml="6">
+                          <Text fontSize={["xs", "sm"]} noOfLines={1}>
+                            {item.scene_name}
+                          </Text>
+                        </Center>
+                      </Flex>
+                      <Spacer />
+                      <Center>
+                        <Text
+                          as="kbd"
+                          fontSize={["xs", "sm"]}
+                          fontWeight="bold"
+                        >
+                          {convertSeconds(item.duration)}
                         </Text>
                       </Center>
                     </Flex>
-                    <Spacer />
-                    <Center>
-                      <Text as="kbd" fontSize={["xs", "sm"]} fontWeight="bold">
-                        {convertSeconds(item.duration)}
-                      </Text>
-                    </Center>
-                  </Flex>
-                </Link>
+                  </Link>
+                </ToolTip>
                 <Divider />
               </Box>
             )
@@ -122,55 +132,65 @@ const UserTopScenes = ({ address, userAddressRes }) => {
           {data.slice(10, data.length).map((item, i) => {
             return (
               <Box key={item.scene_uuid}>
-                <Link
-                  href={`/scenes/${mutateStringToURL(item.scene_name)}/${
-                    item.scene_uuid
-                  }`}
-                  target="_blank"
-                >
-                  <Flex
-                    direction="row"
-                    px="4"
-                    py="2"
-                    borderRadius="xl"
-                    _hover={{
-                      bg: useColorModeValue("gray.100", "gray.600"),
-                      shadow: "md",
-                    }}
+                <ToolTip label={`Open ${item.scene_name} page`}>
+                  <Link
+                    href={`/scenes/${mutateStringToURL(item.scene_name)}/${
+                      item.scene_uuid
+                    }`}
+                    target="_blank"
                   >
-                    <Center mr="4">{i + 11}.</Center>
-                    <Flex direction={["column", "row"]}>
-                      <Center
-                        overflow="hidden"
-                        w={["150px", "200px", "200px", "200px", "250px"]}
-                        h="100px"
-                        border="2px solid"
-                        borderColor={useColorModeValue("gray.200", "gray.600")}
-                        borderRadius="xl"
-                        shadow="md"
-                      >
-                        <Image
+                    <Flex
+                      direction="row"
+                      px="4"
+                      py="2"
+                      borderRadius="xl"
+                      _hover={{
+                        bg: useColorModeValue("gray.100", "gray.600"),
+                        shadow: "md",
+                      }}
+                    >
+                      <Center mr="4">{i + 11}.</Center>
+                      <Flex direction={["column", "row"]}>
+                        <Center
+                          overflow="hidden"
+                          w={["150px", "200px", "200px", "200px", "250px"]}
+                          h="100px"
+                          border="2px solid"
+                          borderColor={useColorModeValue(
+                            "gray.200",
+                            "gray.600"
+                          )}
                           borderRadius="xl"
                           shadow="md"
-                          objectFit="cover"
-                          alt={item.scene_name}
-                          src={item.map_url}
-                        />
-                      </Center>
-                      <Center ml="6">
-                        <Text fontSize={["xs", "sm"]} noOfLines={1}>
-                          {item.scene_name}
+                        >
+                          <Image
+                            borderRadius="xl"
+                            shadow="md"
+                            objectFit="cover"
+                            alt={item.scene_name}
+                            src={item.map_url}
+                          />
+                        </Center>
+                        <Center ml="6">
+                          <Text fontSize={["xs", "sm"]} noOfLines={1}>
+                            {item.scene_name}
+                          </Text>
+                        </Center>
+                      </Flex>
+                      <Spacer />
+                      <Center>
+                        <Text
+                          as="kbd"
+                          fontSize={["xs", "sm"]}
+                          fontWeight="bold"
+                        >
+                          {convertSeconds(item.duration)}
                         </Text>
                       </Center>
                     </Flex>
-                    <Spacer />
-                    <Center>
-                      <Text as="kbd" fontSize={["xs", "sm"]} fontWeight="bold">
-                        {convertSeconds(item.duration)}
-                      </Text>
-                    </Center>
-                  </Flex>
-                </Link>
+                  </Link>
+                </ToolTip>
+
                 <Divider />
               </Box>
             )
