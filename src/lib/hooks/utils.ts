@@ -6,13 +6,20 @@ export const isServer = () => {
 }
 
 export const convertSeconds = (seconds: number) => {
-  const hrs = `${Math.floor(seconds / 3600)}`.slice(-3)
-  const min =
-    Math.floor((seconds % 3600) / 60) < 10
-      ? `0${Math.floor((seconds % 3600) / 60)}`
-      : Math.floor((seconds % 3600) / 60)
-  const sec = seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60
-  return `${hrs}h ${min}m ${sec}s`
+  const duration = moment.duration(seconds, "seconds")
+  const hours = duration.hours()
+  const minutes = duration.minutes()
+  const formattedSeconds = duration.seconds()
+  //const result = `${hours}:${minutes}:${formattedSeconds}`
+  const formattedDuration = [
+    hours > 0 ? `${hours}h` : null,
+    minutes > 0 ? `${minutes}m` : null,
+    formattedSeconds > 0 ? `${formattedSeconds}s` : null,
+  ]
+    .filter(Boolean)
+    .join(" ")
+
+  return formattedDuration
 }
 
 export const SceneColor = [

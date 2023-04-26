@@ -6,11 +6,16 @@ import {
   strToCoord,
 } from "../src/lib/hooks/utils"
 
-describe("convertSeconds", () => {
-  test("should convert seconds to hours, minutes, and seconds", () => {
-    expect(convertSeconds(3661)).toBe("1h 01m 01s")
-    expect(convertSeconds(7200)).toBe("2h 00m 00s")
-    expect(convertSeconds(70)).toBe("0h 01m 10s")
+describe("formatSeconds", () => {
+  it("formats seconds into hours, minutes, and seconds", () => {
+    expect(convertSeconds(120)).toBe("2m")
+    expect(convertSeconds(3661)).toBe("1h 1m 1s")
+  })
+
+  it("omits units that are zero", () => {
+    expect(convertSeconds(60)).toBe("1m")
+    expect(convertSeconds(3600)).toBe("1h")
+    expect(convertSeconds(3660)).toBe("1h 1m")
   })
 })
 

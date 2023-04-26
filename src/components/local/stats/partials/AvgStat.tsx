@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Box, Text, Flex } from "@chakra-ui/react"
 import CountUp from "react-countup"
+import { convertSeconds } from "../../../../lib/hooks/utils"
 import ToolTip from "../../../layout/local/ToolTip"
 
 const AvgStat = ({ avgData, data, color, line, setLine }) => {
@@ -64,11 +65,15 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
                             })
                         }}
                       >
-                        <CountUp
-                          end={item.value}
-                          duration={0.5}
-                          decimals={color[0] === "#ff79c6" && 1}
-                        />
+                        {color[0] === "#ff5555" ? (
+                          convertSeconds(item.value)
+                        ) : (
+                          <CountUp
+                            end={item.value}
+                            duration={0.5}
+                            decimals={color[0] === "#ff79c6" && 1}
+                          />
+                        )}
                       </Box>
                     </ToolTip>
                     <Box textAlign={["start", "start", "end", "end"]}>

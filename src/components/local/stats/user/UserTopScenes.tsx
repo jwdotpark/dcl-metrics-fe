@@ -131,7 +131,6 @@ const UserTopScenes = ({ address, userAddressRes }) => {
                 )
               })}
             </Box>
-
             <Box
               w={["auto", "auto", "auto", "auto", "50%"]}
               mb="2"

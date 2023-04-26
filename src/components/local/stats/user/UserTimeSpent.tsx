@@ -23,7 +23,7 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
 
   const [avgData, setAvgData] = useState(0)
   const [dateRange, setDateRange] = useState(data.length)
-  const color = ["#6272a4"]
+  const color = ["#ff5555"]
 
   let chartData = []
 
