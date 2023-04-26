@@ -116,7 +116,7 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
   }, [data.length])
 
   return (
-    <BoxWrapper colSpan={3}>
+    <BoxWrapper colSpan={[1, 1, 1, 4, 3]}>
       <BoxTitle
         name={`User Scenes Visited`}
         description={`The number of the scene ${userAddressRes.name} visited`}

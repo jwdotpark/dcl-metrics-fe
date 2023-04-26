@@ -57,7 +57,7 @@ const UserDAOActivity = ({ data }) => {
   }
 
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
+    <BoxWrapper colSpan={[1, 1, 1, 4, 2]}>
       <BoxTitle
         name="DAO Activity"
         description={`${name}'s DAO activity`}

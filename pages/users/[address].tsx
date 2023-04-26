@@ -33,9 +33,6 @@ export async function getServerSideProps(context) {
   const addressUrl = `https://api.dcl-metrics.com/users/${address}`
   const nftsUrl = `https://api.dcl-metrics.com/users/${address}/nfts`
   const daoActivityUrl = `https://api.dcl-metrics.com/users/${address}/dao_activity`
-  //const timeSpentUrl = `https://api.dcl-metrics.com/users/${address}/activity/time_spent`
-  //const scenesVisitedUrl = `https://api.dcl-metrics.com/users/${address}/activity/scenes_visited`
-  //const topScenesUrl = `https://api.dcl-metrics.com/users/${address}/activity/top_scenes`
 
   if (isProd) {
     userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
@@ -70,11 +67,27 @@ export async function getServerSideProps(context) {
 }
 
 const SingleUserPage = (props) => {
-  const gridColumn = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 4, xl: 6 })
+  const gridColumn = useBreakpointValue({
+    base: 1,
+    xs: 1,
+    sm: 1,
+    md: 1,
+    lg: 4,
+    xl: 6,
+  })
   const { address, userAddressRes, nftRes, daoActivityRes } = props
+
+  const breakpoint = useBreakpointValue({
+    base: "base",
+    sm: "sm",
+    md: "md",
+    lg: "lg",
+    xl: "xl",
+  })
 
   return (
     <Layout>
+      {breakpoint}
       {Object.keys(userAddressRes).length === 0 ? (
         <Center h="calc(100vh - 4rem)">
           <Text
