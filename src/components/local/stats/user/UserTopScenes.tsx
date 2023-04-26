@@ -55,15 +55,6 @@ const UserTopScenes = ({ address, userAddressRes }) => {
   const [data, setData] = useState([])
   const topScenesUrl = getEndpoint(`users/${address}/activity/top_scenes`)
 
-  const isMobileView = useBreakpointValue({
-    xs: true,
-    sm: true,
-    md: false,
-    lg: false,
-    xl: false,
-    base: false,
-  })
-
   const columns = useMemo(
     () => [
       {

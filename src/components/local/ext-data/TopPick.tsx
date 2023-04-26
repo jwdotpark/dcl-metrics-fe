@@ -214,7 +214,7 @@ const TopPick = ({ data }) => {
   )
 
   const tableInstance = useTable(
-    { columns, data },
+    { columns, data, initialState: { pageSize: 5 } },
     useGlobalFilter,
     useSortBy,
     usePagination
