@@ -2,7 +2,7 @@
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserTopScenes from "../../../../../public/data/staticUserTopScenes.json"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import {
   isProd,
   isDev,
@@ -20,17 +20,241 @@ import {
   Flex,
   Spacer,
   Divider,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  Button,
+  ButtonGroup,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
 import ToolTip from "../../../layout/local/ToolTip"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
+import {
+  useTable,
+  usePagination,
+  useSortBy,
+  useGlobalFilter,
+} from "react-table"
+import {
+  FiArrowLeft,
+  FiArrowLeftCircle,
+  FiArrowRight,
+  FiArrowRightCircle,
+  FiChevronDown,
+  FiChevronUp,
+} from "react-icons/fi"
 
 const UserTopScenes = ({ address, userAddressRes }) => {
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState([])
   const topScenesUrl = getEndpoint(`users/${address}/activity/top_scenes`)
+
+  const isMobileView = useBreakpointValue({
+    xs: true,
+    sm: true,
+    md: false,
+    lg: false,
+    xl: false,
+    base: false,
+  })
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: "#",
+        Cell: ({ row }) => <Text>{row.index + 1}</Text>,
+        accessor: "index",
+      },
+      {
+        Header: "Map",
+        Cell: ({ row }) => (
+          <Box
+            border="2px solid"
+            borderColor={useColorModeValue("gray.200", "gray.600")}
+            borderRadius="xl"
+            shadow="md"
+          >
+            <Image
+              w="100%"
+              minW={[100, 200, 200, 200, 300]}
+              h="100px"
+              borderRadius="xl"
+              objectFit="cover"
+              alt={row.original.name}
+              src={row.original.map_url}
+            />
+          </Box>
+        ),
+      },
+      {
+        Header: "Scene",
+        Cell: ({ row }) => (
+          <Flex>
+            <Box>
+              <Text
+                color={useColorModeValue("blue.600", "blue.200")}
+                fontWeight="medium"
+              >
+                <Link
+                  href={`/scenes/${mutateStringToURL(
+                    row.original.scene_name
+                  )}/${row.original.scene_uuid}`}
+                  target="_blank"
+                >
+                  {row.original.scene_name}
+                </Link>
+              </Text>
+            </Box>
+          </Flex>
+        ),
+      },
+      {
+        Header: "Time Spent",
+        Cell: ({ row }) => (
+          <Flex>
+            <Box>
+              <Text as="kbd" fontWeight="medium">
+                {convertSeconds(row.original.duration)}
+              </Text>
+            </Box>
+          </Flex>
+        ),
+        accessor: "duration",
+      },
+    ],
+    []
+  )
+
+  const tableInstance = useTable(
+    { columns, data, initialState: { pageSize: 5 } },
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  )
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
+    state,
+    gotoPage,
+    pageCount,
+    prepareRow,
+  } = tableInstance
+
+  const { pageIndex } = state
+
+  const UserSceneTable = () => {
+    return (
+      <Box
+        sx={{
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          msOverflowStyle: "none",
+          scrollbarWidth: "none",
+        }}
+        overflowY="auto"
+        mx="4"
+      >
+        <Table
+          {...getTableProps()}
+          h={chartProps.height}
+          mt="2"
+          mb="2"
+          size="sm"
+          variant="simple"
+        >
+          <Thead>
+            {headerGroups.map((headerGroup, i) => (
+              <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column, j) => (
+                  <Th
+                    key={j}
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                  >
+                    {column.render("Header")}
+                    <Box display="inline-block">
+                      {column.isSorted ? (
+                        column.isSortedDesc ? (
+                          <FiChevronDown />
+                        ) : (
+                          <FiChevronUp />
+                        )
+                      ) : (
+                        ""
+                      )}
+                    </Box>
+                  </Th>
+                ))}
+              </Tr>
+            ))}
+          </Thead>
+
+          <Tbody {...getTableBodyProps()}>
+            {page.map((row, i) => {
+              prepareRow(row)
+              return (
+                <Tr
+                  key={i}
+                  {...row.getRowProps()}
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
+                  _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
+                >
+                  {row.cells.map((cell, j) => {
+                    return (
+                      <Td key={j} {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </Td>
+                    )
+                  })}
+                </Tr>
+              )
+            })}
+          </Tbody>
+        </Table>
+        <Center w="100%" mx="4" my="4">
+          <ButtonGroup borderRadius="xl" shadow="md" isAttached size="sm">
+            <Button
+              borderRadius="xl"
+              disabled={!canPreviousPage}
+              onClick={() => gotoPage(0)}
+            >
+              <FiArrowLeftCircle />
+            </Button>
+            <Button disabled={!canPreviousPage} onClick={() => previousPage()}>
+              <FiArrowLeft />
+            </Button>
+            <Button>
+              <b>{pageIndex + 1}</b>/{pageOptions.length}
+            </Button>
+            <Button disabled={!canNextPage} onClick={() => nextPage()}>
+              <FiArrowRight />
+            </Button>
+            <Button
+              borderRadius="xl"
+              disabled={!canNextPage}
+              onClick={() => gotoPage(pageCount - 1)}
+            >
+              <FiArrowRightCircle />
+            </Button>
+          </ButtonGroup>
+        </Center>
+      </Box>
+    )
+  }
 
   useEffect(() => {
     setIsLoading(true)
@@ -54,168 +278,8 @@ const UserTopScenes = ({ address, userAddressRes }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const UserSceneTable = () => {
-    return (
-      <>
-        {data.length > 0 ? (
-          <Flex direction={["column", "column", "column", "column", "row"]}>
-            <Box
-              w={["auto", "auto", "auto", "auto", "50%"]}
-              mb="2"
-              mx="4"
-              fontSize="sm"
-            >
-              {data.slice(0, 10).map((item, i) => {
-                return (
-                  <Box key={item.scene_uuid}>
-                    <ToolTip label={`Open ${item.scene_name} page`}>
-                      <Link
-                        href={`/scenes/${mutateStringToURL(item.scene_name)}/${
-                          item.scene_uuid
-                        }`}
-                        target="_blank"
-                      >
-                        <Flex
-                          direction="row"
-                          px="4"
-                          py="2"
-                          borderRadius="xl"
-                          _hover={{
-                            bg: useColorModeValue("gray.100", "gray.600"),
-                            shadow: "md",
-                          }}
-                        >
-                          <Center mr="4">{i + 1}.</Center>
-                          <Flex direction={["column", "row"]}>
-                            <Center
-                              overflow="hidden"
-                              w={["150px", "200px", "200px", "200px", "250px"]}
-                              h="100px"
-                              border="2px solid"
-                              borderColor={useColorModeValue(
-                                "gray.200",
-                                "gray.600"
-                              )}
-                              borderRadius="xl"
-                              shadow="md"
-                            >
-                              <Image
-                                borderRadius="xl"
-                                shadow="md"
-                                objectFit="cover"
-                                alt={item.scene_name}
-                                src={item.map_url}
-                              />
-                            </Center>
-                            <Center ml="6">
-                              <Text fontSize={["xs", "sm"]} noOfLines={1}>
-                                {item.scene_name}
-                              </Text>
-                            </Center>
-                          </Flex>
-                          <Spacer />
-                          <Center>
-                            <Text
-                              as="kbd"
-                              fontSize={["xs", "sm"]}
-                              fontWeight="bold"
-                            >
-                              {convertSeconds(item.duration)}
-                            </Text>
-                          </Center>
-                        </Flex>
-                      </Link>
-                    </ToolTip>
-                    <Divider />
-                  </Box>
-                )
-              })}
-            </Box>
-            <Box
-              w={["auto", "auto", "auto", "auto", "50%"]}
-              mb="2"
-              mx="4"
-              fontSize="sm"
-            >
-              {data.slice(10, data.length).map((item, i) => {
-                return (
-                  <Box key={item.scene_uuid}>
-                    <ToolTip label={`Open ${item.scene_name} page`}>
-                      <Link
-                        href={`/scenes/${mutateStringToURL(item.scene_name)}/${
-                          item.scene_uuid
-                        }`}
-                        target="_blank"
-                      >
-                        <Flex
-                          direction="row"
-                          px="4"
-                          py="2"
-                          borderRadius="xl"
-                          _hover={{
-                            bg: useColorModeValue("gray.100", "gray.600"),
-                            shadow: "md",
-                          }}
-                        >
-                          <Center mr="4">{i + 11}.</Center>
-                          <Flex direction={["column", "row"]}>
-                            <Center
-                              overflow="hidden"
-                              w={["150px", "200px", "200px", "200px", "250px"]}
-                              h="100px"
-                              border="2px solid"
-                              borderColor={useColorModeValue(
-                                "gray.200",
-                                "gray.600"
-                              )}
-                              borderRadius="xl"
-                              shadow="md"
-                            >
-                              <Image
-                                borderRadius="xl"
-                                shadow="md"
-                                objectFit="cover"
-                                alt={item.scene_name}
-                                src={item.map_url}
-                              />
-                            </Center>
-                            <Center ml="6">
-                              <Text fontSize={["xs", "sm"]} noOfLines={1}>
-                                {item.scene_name}
-                              </Text>
-                            </Center>
-                          </Flex>
-                          <Spacer />
-                          <Center>
-                            <Text
-                              as="kbd"
-                              fontSize={["xs", "sm"]}
-                              fontWeight="bold"
-                            >
-                              {convertSeconds(item.duration)}
-                            </Text>
-                          </Center>
-                        </Flex>
-                      </Link>
-                    </ToolTip>
-
-                    <Divider />
-                  </Box>
-                )
-              })}
-            </Box>
-          </Flex>
-        ) : (
-          <Center h={chartProps.height}>
-            <Spinner />
-          </Center>
-        )}
-      </>
-    )
-  }
-
   return (
-    <BoxWrapper colSpan={6}>
+    <BoxWrapper colSpan={[1, 1, 1, 4, 3]}>
       <BoxTitle
         name={`Frequently Visited Scenes`}
         description={`Top ${data.length} list of scenes ${userAddressRes.name} visited the most`}
@@ -238,3 +302,6 @@ const UserTopScenes = ({ address, userAddressRes }) => {
 }
 
 export default UserTopScenes
+function useBreakPointValue(arg0: { base: boolean; sm: boolean; md: boolean }) {
+  throw new Error("Function not implemented.")
+}
