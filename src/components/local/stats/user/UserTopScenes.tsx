@@ -18,8 +18,6 @@ import {
   useColorModeValue,
   Link,
   Flex,
-  Spacer,
-  Divider,
   Table,
   Tbody,
   Td,
@@ -28,10 +26,8 @@ import {
   Tr,
   Button,
   ButtonGroup,
-  useBreakpointValue,
 } from "@chakra-ui/react"
 import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
-import ToolTip from "../../../layout/local/ToolTip"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 import {
