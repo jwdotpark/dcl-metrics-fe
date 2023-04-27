@@ -77,17 +77,8 @@ const SingleUserPage = (props) => {
   })
   const { address, userAddressRes, nftRes, daoActivityRes } = props
 
-  const breakpoint = useBreakpointValue({
-    base: "base",
-    sm: "sm",
-    md: "md",
-    lg: "lg",
-    xl: "xl",
-  })
-
   return (
     <Layout>
-      {breakpoint}
       {Object.keys(userAddressRes).length === 0 ? (
         <Center h="calc(100vh - 4rem)">
           <Text
