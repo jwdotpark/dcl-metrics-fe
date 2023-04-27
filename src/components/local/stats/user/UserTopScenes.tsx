@@ -289,6 +289,3 @@ const UserTopScenes = ({ address, userAddressRes }) => {
 }
 
 export default UserTopScenes
-function useBreakPointValue(arg0: { base: boolean; sm: boolean; md: boolean }) {
-  throw new Error("Function not implemented.")
-}
