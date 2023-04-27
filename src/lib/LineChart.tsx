@@ -176,8 +176,9 @@ const LineChart = ({
                 renderTick: (tick) => {
                   return (
                     <text
-                      x={tick.x - 70}
-                      y={tick.y}
+                      x={tick.x - 10}
+                      y={tick.y + 10}
+                      textAnchor="end"
                       // eslint-disable-next-line react-hooks/rules-of-hooks
                       fill={useColorModeValue("#000", "#fff")}
                       fontSize="11px"
