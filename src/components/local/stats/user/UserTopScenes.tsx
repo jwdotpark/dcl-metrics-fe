@@ -278,12 +278,16 @@ const UserTopScenes = ({ address, userAddressRes }) => {
         line={false}
         setLine={{}}
       />
-      {isLoading ? (
+      {!isLoading ? (
+        data.length !== 0 ? (
+          <UserSceneTable />
+        ) : (
+          <Center h={chartProps.height}>No Data</Center>
+        )
+      ) : (
         <Center h={chartProps.height}>
           <Spinner />
         </Center>
-      ) : (
-        <UserSceneTable />
       )}
     </BoxWrapper>
   )

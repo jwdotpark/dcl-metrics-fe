@@ -128,27 +128,33 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
         line={false}
         setLine={{}}
       />
-      <DateRangeButton
-        dateRange={dateRange}
-        setDateRange={setDateRange}
-        validLegnth={validLegnth}
-        name=""
-        yesterday={false}
-      />
-      {!isLoading ? (
-        <LineChart
-          data={result}
-          color={color}
-          name="userTimeSpent"
-          avgColor={undefined}
-          line={undefined}
-          rentalData={false}
-          avgData={[]}
-        />
+      {data.length !== 0 ? (
+        <>
+          <DateRangeButton
+            dateRange={dateRange}
+            setDateRange={setDateRange}
+            validLegnth={validLegnth}
+            name=""
+            yesterday={false}
+          />
+          {!isLoading ? (
+            <LineChart
+              data={result}
+              color={color}
+              name="userTimeSpent"
+              avgColor={undefined}
+              line={undefined}
+              rentalData={false}
+              avgData={[]}
+            />
+          ) : (
+            <Center h={chartProps.height}>
+              <Spinner />
+            </Center>
+          )}
+        </>
       ) : (
-        <Center h={chartProps.height}>
-          <Spinner />
-        </Center>
+        <Center h={chartProps.height}>No Data</Center>
       )}
     </BoxWrapper>
   )
