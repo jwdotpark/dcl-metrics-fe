@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Box } from "@chakra-ui/react"
@@ -7,7 +8,6 @@ import staticLandSales from "../public/data/staticLandSales.json"
 import staticTopLand from "../public/data/staticTopLand.json"
 import staticTopPick from "../public/data/staticTopPick.json"
 import Layout from "../src/components/layout/layout"
-import PSA from "../src/components/global/PSA"
 import LandPicker from "../src/components/global/map/LandPicker"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
@@ -23,7 +23,6 @@ import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
 import { getPosts } from "../markdown/helpers/post"
 import moment from "moment"
 import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
-import TopLand from "../src/components/local/ext-data/TopLand"
 import TopPick from "../src/components/local/ext-data/TopPick"
 import { useAtom } from "jotai"
 import { psaAtom } from "../src/lib/state/psaState"
@@ -69,6 +68,7 @@ export async function getStaticProps() {
     topPickRes = staticTopPick
   }
 
+  // write heavy res for cache
   if (isProd) {
     for (let i = 0; i < globalFileNameArr.length; i++) {
       writeFile(
@@ -130,8 +130,6 @@ const GlobalPage: NextPage = (props: Props) => {
     xl: 6,
   })
 
-  const [isPSAVisible, setIsPSAVisible] = useState(true)
-
   const {
     globalDailyRes,
     parcelRes,
@@ -146,15 +144,11 @@ const GlobalPage: NextPage = (props: Props) => {
 
   useEffect(() => {
     setPSA(latestPost)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <Layout>
       <Box w="100%">
-        {/*{isPSAVisible && (
-          <PSA latestPost={latestPost} setIsPSAVisible={setIsPSAVisible} />
-        )}*/}
         <Box mb="4">
           <UniqueVisitors data={globalDailyRes} />
         </Box>
@@ -174,9 +168,6 @@ const GlobalPage: NextPage = (props: Props) => {
           <RentalDay data={rental} />
           <RentalTotal data={rental} />
         </Grid>
-        {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <TopLand data={topLandRes} />
-        </Grid>*/}
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopPick data={topPickRes} />
         </Grid>
