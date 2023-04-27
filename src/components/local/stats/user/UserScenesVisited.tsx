@@ -89,11 +89,11 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
       if (isProd) {
         const response = await fetch(url)
         const res = await response.json()
-        setData(res.result)
+        setData(plotMissingDataArr(res.result))
       } else if (isDev && !isLocal) {
         const response = await fetch(url)
         const res = await response.json()
-        setData(res.result)
+        setData(plotMissingDataArr(res.result))
       } else if (isLocal) {
         setData(plotMissingDataArr(staticUserScenesVisited))
       }
