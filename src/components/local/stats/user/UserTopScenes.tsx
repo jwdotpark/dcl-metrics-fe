@@ -243,23 +243,24 @@ const UserTopScenes = ({ address, userAddressRes }) => {
     )
   }
 
+  const fetchData = async () => {
+    const url = `/api/server-fetch?url=${topScenesUrl}&address=${address}&endpoint=${address}/activity/top_scenes/`
+
+    if (isProd) {
+      const response = await fetch(url)
+      const res = await response.json()
+      setData(res.result)
+    } else if (isDev && !isLocal) {
+      const response = await fetch(url)
+      const res = await response.json()
+      setData(res.result)
+    } else if (isLocal) {
+      setData(staticUserTopScenes)
+    }
+  }
+
   useEffect(() => {
     setIsLoading(true)
-    const fetchData = async () => {
-      const url = `/api/server-fetch?url=${topScenesUrl}&address=${address}&endpoint=${address}/activity/top_scenes/`
-
-      if (isProd) {
-        const response = await fetch(url)
-        const res = await response.json()
-        setData(res.result)
-      } else if (isDev && !isLocal) {
-        const response = await fetch(url)
-        const res = await response.json()
-        setData(res.result)
-      } else if (isLocal) {
-        setData(staticUserTopScenes)
-      }
-    }
     fetchData()
     setIsLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps

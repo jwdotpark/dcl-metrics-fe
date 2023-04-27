@@ -102,14 +102,18 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
   }, [])
 
   useEffect(() => {
+    setIsLoading(true)
     const data = slicedData()
     const sum = slicedData().reduce((acc, cur) => acc + cur.time_spent, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
+    setIsLoading(false)
   }, [dateRange])
 
   useEffect(() => {
+    setIsLoading(true)
     setDateRange(data.length)
+    setIsLoading(false)
   }, [data.length])
 
   return (

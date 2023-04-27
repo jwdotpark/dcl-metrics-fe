@@ -104,15 +104,19 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
   }, [])
 
   useEffect(() => {
+    setIsLoading(true)
     const data = slicedData()
     const sum = slicedData().reduce((acc, cur) => acc + cur.count, 0)
     const result = sum / data.length
     setAvgData(result)
+    setIsLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
   useEffect(() => {
+    setIsLoading(true)
     setDateRange(data.length)
+    setIsLoading(false)
   }, [data.length])
 
   return (
