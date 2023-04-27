@@ -18,6 +18,8 @@ import { parseUTC } from "../../../../lib/hooks/utils"
 import UserDAOActivityTeam from "./partial/teams/UserDAOAvtivityTeams"
 import UserDAOActivityProposal from "./partial/proposal/UserDAOActivityProposal"
 import { FiAlertTriangle } from "react-icons/fi"
+import { lineChartAtom } from "../../../../lib/state/lineChartState"
+import { useAtom } from "jotai"
 
 const UserDAOActivity = ({ data }) => {
   const {
@@ -55,6 +57,8 @@ const UserDAOActivity = ({ data }) => {
       return true
     }
   }
+
+  const [chartProps, setChartProps] = useAtom(lineChartAtom)
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 4, 2]}>
@@ -193,18 +197,7 @@ const UserDAOActivity = ({ data }) => {
           </Box>
         </Flex>
       ) : (
-        <Center py={["2rem", "2rem"]}>
-          <Text color={useColorModeValue("gray.600", "gray.200")}>
-            <Box
-              sx={{ transform: "translateY(3px)" }}
-              display="inline-block"
-              mr="2"
-            >
-              <FiAlertTriangle />
-            </Box>
-            No Data
-          </Text>
-        </Center>
+        <Center h={chartProps.height}>No Data</Center>
       )}
     </BoxWrapper>
   )

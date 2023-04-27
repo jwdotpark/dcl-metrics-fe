@@ -34,14 +34,6 @@ const UserInfo = ({ data }) => {
     base: 10,
   })
 
-  const truncateName = (name: string) => {
-    const nameLength = responsiveStr
-    if (name && name.length > nameLength) {
-      return name.slice(0, nameLength) + ".."
-    }
-    return name
-  }
-
   const toast = useToast()
 
   const handleToast = (value) => {

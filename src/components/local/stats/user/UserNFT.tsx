@@ -16,6 +16,8 @@ import { parseUTC } from "../../../../lib/hooks/utils"
 import Link from "next/link"
 import ToolTip from "../../../layout/local/ToolTip"
 import { FiAlertTriangle } from "react-icons/fi"
+import { lineChartAtom } from "../../../../lib/state/lineChartState"
+import { useAtom } from "jotai"
 
 const UserNFT = ({ data, address }) => {
   const {
@@ -70,6 +72,8 @@ const UserNFT = ({ data, address }) => {
     total_lands: "Total number of lands owned by user",
     first_land_acquired_at: "Date of first land acquisition",
   }
+
+  const [chartProps, setChartProps] = useAtom(lineChartAtom)
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
@@ -279,18 +283,7 @@ const UserNFT = ({ data, address }) => {
           </Box>
         </Flex>
       ) : (
-        <Center py={["2rem", "2rem"]}>
-          <Text color={useColorModeValue("gray.600", "gray.200")}>
-            <Box
-              sx={{ transform: "translateY(3px)" }}
-              display="inline-block"
-              mr="2"
-            >
-              <FiAlertTriangle />
-            </Box>
-            No Data
-          </Text>
-        </Center>
+        <Center h={chartProps.height}>No Data</Center>
       )}
     </BoxWrapper>
   )
