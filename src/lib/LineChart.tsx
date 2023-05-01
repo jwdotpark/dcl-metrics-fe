@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import { lineChartAtom } from "../lib/state/lineChartState"
 import { useAtom } from "jotai"
-import { convertSeconds } from "./hooks/utils"
+import { convertHours, convertSeconds } from "./hooks/utils"
 
 const LineChart = ({
   data,
@@ -108,7 +108,7 @@ const LineChart = ({
 
   const setMarginLeft = () => {
     if (dataName === "Total Time Spent") {
-      return 100
+      return 70
     } else {
       return 70
     }
@@ -177,13 +177,13 @@ const LineChart = ({
                   return (
                     <text
                       x={tick.x - 10}
-                      y={tick.y + 10}
+                      y={tick.y}
                       textAnchor="end"
                       // eslint-disable-next-line react-hooks/rules-of-hooks
                       fill={useColorModeValue("#000", "#fff")}
                       fontSize="11px"
                     >
-                      {convertSeconds(tick.value)}
+                      {convertHours(tick.value)} hrs
                     </text>
                   )
                 },

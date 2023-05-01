@@ -22,6 +22,12 @@ export const convertSeconds = (seconds: number) => {
   return formattedDuration
 }
 
+export const convertHours = (seconds: number) => {
+  const duration = moment.duration(seconds, "seconds")
+  const hours = duration.hours()
+  return hours
+}
+
 export const SceneColor = [
   "rgba(80, 150, 123)",
   "rgba(255, 121, 198)",
