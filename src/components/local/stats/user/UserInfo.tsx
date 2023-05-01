@@ -34,14 +34,6 @@ const UserInfo = ({ data }) => {
     base: 10,
   })
 
-  const truncateName = (name: string) => {
-    const nameLength = responsiveStr
-    if (name && name.length > nameLength) {
-      return name.slice(0, nameLength) + ".."
-    }
-    return name
-  }
-
   const toast = useToast()
 
   const handleToast = (value) => {
@@ -68,7 +60,7 @@ const UserInfo = ({ data }) => {
       />
       <Flex direction="column" w="auto" m="4" mx="5">
         <Box w="100%">
-          <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
+          <VStack align="stretch" spacing="4">
             <Flex w="100%" h="100%">
               <Box>DAO Member?</Box>
               <Spacer />

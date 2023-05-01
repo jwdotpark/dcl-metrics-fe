@@ -16,6 +16,8 @@ import { parseUTC } from "../../../../lib/hooks/utils"
 import Link from "next/link"
 import ToolTip from "../../../layout/local/ToolTip"
 import { FiAlertTriangle } from "react-icons/fi"
+import { lineChartAtom } from "../../../../lib/state/lineChartState"
+import { useAtom } from "jotai"
 
 const UserNFT = ({ data, address }) => {
   const {
@@ -71,6 +73,8 @@ const UserNFT = ({ data, address }) => {
     first_land_acquired_at: "Date of first land acquisition",
   }
 
+  const [chartProps, setChartProps] = useAtom(lineChartAtom)
+
   return (
     <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
       <BoxTitle
@@ -86,7 +90,7 @@ const UserNFT = ({ data, address }) => {
       {checkFalsyData() ? (
         <Flex direction="column" w="auto" m="4" mx="5">
           <Box w="100%">
-            <VStack align="stretch" spacing={[2, 2, 2, 5, 5]}>
+            <VStack align="stretch" spacing="4">
               {og_user && (
                 <Flex w="100%" h="100%">
                   <ToolTip label={toolTipText.og_user}>
@@ -279,18 +283,7 @@ const UserNFT = ({ data, address }) => {
           </Box>
         </Flex>
       ) : (
-        <Center py={["2rem", "2rem"]}>
-          <Text color={useColorModeValue("gray.600", "gray.200")}>
-            <Box
-              sx={{ transform: "translateY(3px)" }}
-              display="inline-block"
-              mr="2"
-            >
-              <FiAlertTriangle />
-            </Box>
-            No Data
-          </Text>
-        </Center>
+        <Center h={chartProps.height}>No Data</Center>
       )}
     </BoxWrapper>
   )

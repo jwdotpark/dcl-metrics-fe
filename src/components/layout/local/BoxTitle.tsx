@@ -24,20 +24,20 @@ const BoxTitle = ({
         <Box mt="4">
           <Flex direction="column" ml="5">
             <Box>
-              <Text fontSize={["2xl", "xl"]}>
+              <Text fontSize="xl">
                 <b>{name}</b>
               </Text>
             </Box>
             {date !== "" && name !== "Land Picker" && (
-              <Box>
-                <Text color="gray.500" fontSize="sm">
+              <Box mr="4">
+                <Text color="gray.500" fontSize={["xs", "sm"]}>
                   {name} from {date.first} - {date.last}
                 </Text>
               </Box>
             )}
             {date === "" && (
-              <Box>
-                <Text color="gray.500" fontSize="sm">
+              <Box mr="4">
+                <Text color="gray.500" fontSize={["xs", "sm"]}>
                   {description}
                 </Text>
               </Box>
@@ -45,7 +45,7 @@ const BoxTitle = ({
           </Flex>
         </Box>
         <Spacer />
-        <Box mt={[2, 4, 4, 4]} mr={[4, 4, 4, 4]} ml={[5, 4, 4, 4]}>
+        <Box mt={[0, 2]} mr="4" pl={[3, 0]}>
           <AvgStat
             avgData={avgData}
             data={slicedData}

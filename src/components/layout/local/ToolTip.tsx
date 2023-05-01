@@ -13,7 +13,7 @@ const ToolTip = ({ children, label }) => {
       borderRadius="xl"
       shadow="md"
       label={label}
-      placement="left"
+      placement="auto"
     >
       {children}
     </Tooltip>

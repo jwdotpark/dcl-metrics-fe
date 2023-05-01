@@ -14,7 +14,7 @@ const PieChart = ({ data }) => {
   const { colorMode } = useColorMode()
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   return (
-    <Box h={chartProps.height + 47}>
+    <Box h={chartProps.height}>
       <ResponsivePie
         data={data}
         colors={{ scheme: "pastel1" }}

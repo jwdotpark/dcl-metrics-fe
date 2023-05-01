@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import { lineChartAtom } from "../lib/state/lineChartState"
 import { useAtom } from "jotai"
+import { convertSeconds } from "./hooks/utils"
 
 const LineChart = ({
   data,
@@ -52,7 +53,9 @@ const LineChart = ({
   }
 
   const dateRangeLabelNumber = () => {
-    if (dateRange > 91) {
+    if (dateRange > 180) {
+      return 30
+    } else if (dateRange > 90) {
       return 15
     } else if (dateRange > 30) {
       return 5
@@ -92,6 +95,25 @@ const LineChart = ({
         return line[i]
       })
 
+  // TODO set for 7/14/30d
+  const setTickValues = () => {
+    if (dataName === "Online Users") {
+      return "every day"
+    } else if (dataName === "User Time Spent") {
+      return "every 15 day"
+    } else {
+      return `every ${dateRangeLabelNumber()} day`
+    }
+  }
+
+  const setMarginLeft = () => {
+    if (dataName === "Total Time Spent") {
+      return 100
+    } else {
+      return 70
+    }
+  }
+
   useEffect(() => {
     setLocalData(data)
   }, [data])
@@ -126,10 +148,10 @@ const LineChart = ({
         ]}
         animate={true}
         margin={{
-          top: 50,
+          top: 20,
           right: rentalData ? 50 : 25,
           bottom: 50,
-          left: 70,
+          left: setMarginLeft(),
         }}
         xScale={{
           type: "time",
@@ -148,6 +170,26 @@ const LineChart = ({
           max: "auto",
         }}
         axisTop={null}
+        axisLeft={
+          dataName === "Total Time Spent"
+            ? {
+                renderTick: (tick) => {
+                  return (
+                    <text
+                      x={tick.x - 10}
+                      y={tick.y + 10}
+                      textAnchor="end"
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
+                      fill={useColorModeValue("#000", "#fff")}
+                      fontSize="11px"
+                    >
+                      {convertSeconds(tick.value)}
+                    </text>
+                  )
+                },
+              }
+            : {}
+        }
         axisRight={
           rentalData && {
             tickSize: 0,
@@ -173,10 +215,7 @@ const LineChart = ({
         axisBottom={{
           tickRotation: 45,
           format: dataName === "Online Users" ? "%b %d" : "%b %d",
-          tickValues:
-            dataName === "Online Users"
-              ? "every day"
-              : `every ${dateRangeLabelNumber()} day`,
+          tickValues: setTickValues(),
           legend: "",
           legendOffset: -12,
         }}
