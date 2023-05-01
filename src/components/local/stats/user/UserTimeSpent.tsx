@@ -50,7 +50,15 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     const plotData = []
     for (const date of dateRange) {
       const dateString = date.toISOString().slice(0, 10)
-      const time_spent = dataByDate[dateString]?.time_spent ?? 0
+      //const time_spent = dataByDate[dateString]?.time_spent ?? 0
+
+      // FIXME temporary solution for value bigger than 24h
+      let time_spent = dataByDate[dateString]?.time_spent ?? 0
+      const day = 60 * 60 * 24
+      if (time_spent > day) {
+        time_spent = day
+      }
+
       plotData.push({ date: dateString, time_spent })
     }
 
