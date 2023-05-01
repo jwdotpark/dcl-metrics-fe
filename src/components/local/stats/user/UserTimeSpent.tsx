@@ -51,14 +51,14 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     for (const date of dateRange) {
       const dateString = date.toISOString().slice(0, 10)
       //const time_spent = dataByDate[dateString]?.time_spent ?? 0
-      
+
       // FIXME temporary solution for value bigger than 24h
       let time_spent = dataByDate[dateString]?.time_spent ?? 0
       const day = 60 * 60 * 24
       if (time_spent > day) {
         time_spent = day
       }
-      
+
       plotData.push({ date: dateString, time_spent })
     }
 
@@ -102,10 +102,7 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
         const res = await response.json()
         setData(plotMissingDataArr(res.result))
       } else if (isLocal) {
-        //setData(plotMissingDataArr(staticUserTimeSpent))
-        const response = await fetch(url)
-        const res = await response.json()
-        setData(plotMissingDataArr(res.result))
+        setData(plotMissingDataArr(staticUserTimeSpent))
       }
     }
     fetchData()
