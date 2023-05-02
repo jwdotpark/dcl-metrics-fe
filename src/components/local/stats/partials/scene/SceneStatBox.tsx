@@ -65,7 +65,7 @@ const StatBox = ({ data, selectedScene }) => {
           borderRadius="xl"
           shadow="md"
         >
-          <Table h="420px" colorScheme="blackAlpha" size="sm" variant="striped">
+          <Table h="420px" colorScheme="blackAlpha" size="md" variant="striped">
             <Tbody>
               {filteredStats
                 .slice(2, filteredStats.length / 2 + 1)
@@ -113,7 +113,7 @@ const StatBox = ({ data, selectedScene }) => {
           <Table
             minH="420px"
             colorScheme="blackAlpha"
-            size="sm"
+            size="md"
             variant="striped"
           >
             <Tbody>
