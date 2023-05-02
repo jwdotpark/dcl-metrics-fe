@@ -10,7 +10,6 @@ export const convertSeconds = (seconds: number) => {
   const hours = duration.hours()
   const minutes = duration.minutes()
   const formattedSeconds = duration.seconds()
-  //const result = `${hours}:${minutes}:${formattedSeconds}`
   const formattedDuration = [
     hours > 0 ? `${hours}h` : null,
     minutes > 0 ? `${minutes}m` : null,
