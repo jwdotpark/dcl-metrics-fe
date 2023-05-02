@@ -22,7 +22,7 @@ const TooltipTable = ({ date, count, degraded, bar, name, color }) => {
       <Spacer />
       <Box ml="2" color={degraded && "red"}>
         <Text as="kbd">
-          {name === "Total Time Spent" && formatCount(count)}
+          {name === "Total Time Spent" ? formatCount(count) : count}
         </Text>
       </Box>
     </Flex>
