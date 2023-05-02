@@ -53,6 +53,7 @@ export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
     headers: {
       API_KEY: process.env.BE_API_KEY,
     },
+    cache: "only-if-cached",
   })
   const result = await response.json()
   if (response.status >= 300) {
