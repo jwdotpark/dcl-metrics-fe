@@ -26,8 +26,13 @@ import {
   Tr,
   Button,
   ButtonGroup,
+  Spacer,
 } from "@chakra-ui/react"
-import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
+import {
+  convertSeconds,
+  mutateStringToURL,
+  formatTime,
+} from "../../../../lib/hooks/utils"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 import {
@@ -69,7 +74,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
           >
             <Image
               w="100%"
-              minW={[100, 200, 200, 200, 300]}
+              minW={[100, 200, 200, 200, 200]}
               h="100px"
               borderRadius="xl"
               objectFit="cover"
@@ -105,9 +110,11 @@ const UserTopScenes = ({ address, userAddressRes }) => {
         Header: "Time Spent",
         Cell: ({ row }) => (
           <Flex>
-            <Box>
+            <Box w="100%">
               <Text as="kbd" fontWeight="medium">
-                {convertSeconds(row.original.duration)}
+                {/*{row.original.duration}*/}
+                {/*{convertSeconds(row.original.duration)}*/}
+                {formatTime(Number(row.original.duration))}
               </Text>
             </Box>
           </Flex>

@@ -7,11 +7,12 @@ export const isServer = () => {
 
 export const convertSeconds = (seconds: number) => {
   const duration = moment.duration(seconds, "seconds")
+  const days = duration.days()
   const hours = duration.hours()
   const minutes = duration.minutes()
   const formattedSeconds = duration.seconds()
-  //const result = `${hours}:${minutes}:${formattedSeconds}`
   const formattedDuration = [
+    days > 0 ? `${days}d` : null,
     hours > 0 ? `${hours}h` : null,
     minutes > 0 ? `${minutes}m` : null,
     formattedSeconds > 0 ? `${formattedSeconds}s` : null,
@@ -20,6 +21,17 @@ export const convertSeconds = (seconds: number) => {
     .join(" ")
 
   return formattedDuration
+}
+
+export const formatTime = (seconds: number) => {
+  const days = Math.floor(seconds / (60 * 60 * 24))
+  seconds -= days * (60 * 60 * 24)
+  const hours = Math.floor(seconds / (60 * 60))
+  seconds -= hours * (60 * 60)
+  const minutes = Math.floor(seconds / 60)
+  seconds -= minutes * 60
+  const result = `${days}d ${hours}h ${minutes}m ${seconds}s`
+  return result
 }
 
 export const convertHours = (seconds: number) => {

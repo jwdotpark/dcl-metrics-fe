@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { ResponsiveLine } from "@nivo/line"
 import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"
 import { useState, useEffect, useMemo } from "react"
 import TooltipTable from "../components/local/stats/partials/TableTooltip"
 import { lineChartAtom } from "../lib/state/lineChartState"
 import { useAtom } from "jotai"
-import { convertHours, convertSeconds } from "./hooks/utils"
+import { convertHours } from "./hooks/utils"
 
 const LineChart = ({
   data,
@@ -82,7 +83,6 @@ const LineChart = ({
           legendOffsetX: 5,
           legendOrientation: "horizontal",
           textStyle: {
-            // eslint-disable-next-line react-hooks/rules-of-hooks
             fill: useColorModeValue("black", "white"),
             fontSize: 12,
             stroke: "#000",
@@ -179,7 +179,6 @@ const LineChart = ({
                       x={tick.x - 10}
                       y={tick.y}
                       textAnchor="end"
-                      // eslint-disable-next-line react-hooks/rules-of-hooks
                       fill={useColorModeValue("#000", "#fff")}
                       fontSize="11px"
                     >
@@ -237,7 +236,6 @@ const LineChart = ({
             <Box
               sx={{ backdropFilter: "blur(5px)" }}
               p="2"
-              // eslint-disable-next-line react-hooks/rules-of-hooks
               bg={useColorModeValue("whiteAlpha.700", "blackAlpha.500")}
               borderRadius="xl"
               shadow="md"
