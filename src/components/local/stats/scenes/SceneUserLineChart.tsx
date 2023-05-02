@@ -9,7 +9,7 @@ import { dateFormat } from "../../../../lib/data/chartInfo"
 
 const SceneUserLineChart = ({ data, name }) => {
   const [avgData, setAvgData] = useState(0)
-  const [dateRange, setDateRange] = useState<number>(data.length)
+  const [dateRange, setDateRange] = useState<number>(data.length - 1)
   const userData = data && Object.entries(data)
   const color = "rgba(80, 150, 123)"
 
@@ -90,7 +90,7 @@ const SceneUserLineChart = ({ data, name }) => {
           <DateRangeButton
             dateRange={dateRange}
             setDateRange={setDateRange}
-            validLegnth={validLegnth}
+            validLegnth={validLegnth - 1}
             name=""
             yesterday={false}
           />
