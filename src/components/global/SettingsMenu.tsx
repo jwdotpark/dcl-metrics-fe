@@ -27,6 +27,7 @@ const SettingsMenu = () => {
         <Spacer />
         <Switch
           colorScheme={useColorModeValue("teal", "green")}
+          data-testid="toggleArea"
           isChecked={chartState.toggleArea}
           onChange={() => {
             setChartProps((prev) => ({
@@ -42,6 +43,7 @@ const SettingsMenu = () => {
         <Spacer />
         <Switch
           colorScheme={useColorModeValue("teal", "green")}
+          data-testid="toggleMarker"
           isChecked={chartState.toggleMarker}
           onChange={() => {
             setChartProps((prev) => ({
@@ -57,7 +59,8 @@ const SettingsMenu = () => {
         <Spacer />
         <Switch
           colorScheme={useColorModeValue("teal", "green")}
-          id="area"
+          data-testid="heightSwitch"
+          id="height"
           isChecked={chartState.height !== 350}
           onChange={() => {
             setChartProps((prev) => ({

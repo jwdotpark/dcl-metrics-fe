@@ -12,8 +12,8 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prod": "yarn build && yarn start",
-    "test": "jest --verbose",
-    "test:watch": "jest --verbose --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "test:e2e": "cypress run --headless",
     "prepare": "husky install"
   },
