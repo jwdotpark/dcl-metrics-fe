@@ -27,36 +27,38 @@ export const plotMissingDates = (data) => {
   const timestamps = data.map((d) => d.date)
   const minTimestamp = Math.min(...timestamps)
   const maxTimestamp = Math.max(...timestamps)
-
   const allTimestamps = Array.from(
     { length: maxTimestamp - minTimestamp + 1 },
     (_, i) => minTimestamp + i
   )
-
   const yesterday = moment().subtract(1, "days").unix()
   const missingTimestamps = allTimestamps.filter(
     (timestamp) => timestamp > maxTimestamp && timestamp <= yesterday
   )
-
   const missingData = missingTimestamps.map((timestamp) => ({
     date: timestamp,
     id: 0,
     rentals: 0,
     volume: 0,
   }))
-
   const newData = [...data, ...missingData]
 
   return newData.sort((a, b) => a.date - b.date)
 }
 
+// FIXME type checking
 export const findFalse = (obj) => {
+  if (typeof obj !== "object" || obj === null) {
+    throw new TypeError("not an object")
+  }
+
   const falseKeys = []
   for (let key in obj) {
-    if (obj[key] === false) {
+    if (Object.prototype.hasOwnProperty.call(obj, key) && !obj[key]) {
       falseKeys.push(key)
     }
   }
+
   return falseKeys
 }
 
