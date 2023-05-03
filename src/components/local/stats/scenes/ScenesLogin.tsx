@@ -19,6 +19,7 @@ const ScenesLogin = ({ res }) => {
       scene_name: key,
       map_url: tableData[key].map_url,
       total_logins: tableData[key].total_logins,
+      uuid: tableData[key].uuid,
     })
   }
   tableData = result

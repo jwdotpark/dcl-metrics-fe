@@ -11,6 +11,7 @@ const TopScenesVisitors = ({ res }) => {
   const headList = ["Scenes Map", "Name", "Visit Count"]
   const bodyList = ["visitors", "map_url", "scene_name", "unique_addresses"]
 
+
   // mapping data
   const date = dateRangeStr(dateRange)
   let tableData = res[date][bodyList[0]]
@@ -20,6 +21,7 @@ const TopScenesVisitors = ({ res }) => {
       scene_name: key,
       map_url: tableData[key].map_url,
       unique_addresses: tableData[key].unique_addresses,
+      uuid: tableData[key].uuid,
     })
   }
   tableData = result
