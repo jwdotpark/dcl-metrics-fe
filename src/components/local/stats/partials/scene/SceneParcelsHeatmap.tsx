@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Center,
   Box,
@@ -125,6 +126,10 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                           borderBottomLeftRadius={
                             i === normalizedGrid.length - 1 && j === 0 && "xl"
                           }
+                          _hover={{
+                            bg: setBgColor(cell.normalizedValue / 50),
+                            cursor: "crosshair",
+                          }}
                         >
                           <Center h="100%">
                             <Text

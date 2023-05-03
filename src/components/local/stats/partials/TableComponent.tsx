@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   useToast,
   Center,
@@ -21,7 +22,7 @@ import {
   normalizeValue,
 } from "../../../../lib/data/tableInfo"
 import ProfilePicture from "../../ProfilePicture"
-import { convertSeconds } from "../../../../lib/hooks/utils"
+import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
 import TableLink from "./TableLink"
 import TableMap from "./TableMap"
 import { isSafari, isMobileSafari } from "react-device-detect"
@@ -163,7 +164,17 @@ const RenderTd = (body, row) => {
     case "scene_name":
       return (
         <Td key={body}>
-          <Text>{row.scene_name}</Text>
+          <Link
+            href={`/scenes/${mutateStringToURL(row.scene_name)}/${row.uuid}`}
+            target="_blank"
+          >
+            <Text
+              color={useColorModeValue("blue.500", "blue.300")}
+              fontWeight="semibold"
+            >
+              {row.scene_name}
+            </Text>
+          </Link>
         </Td>
       )
     case "unique_addresses":

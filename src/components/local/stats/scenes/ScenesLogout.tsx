@@ -19,6 +19,7 @@ const ScenesLogout = ({ res }) => {
       scene_name: key,
       map_url: tableData[key].map_url,
       total_logouts: tableData[key].total_logouts,
+      uuid: tableData[key].uuid,
     })
   }
   tableData = result

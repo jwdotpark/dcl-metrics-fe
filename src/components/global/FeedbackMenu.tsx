@@ -57,6 +57,7 @@ const FeedbackMenu = () => {
               borderTopRightRadius="xl"
               borderBottomRightRadius="xl"
               shadow={useColorModeValue("sm", "md")}
+              data-testid="name"
               id="name"
               placeholder="John Doe"
               size="sm"
@@ -66,7 +67,9 @@ const FeedbackMenu = () => {
               })}
             />
           </InputGroup>
-          <FormLabel fontSize="sm">Contact</FormLabel>
+          <FormLabel fontSize="sm" aria-labelledby="contact">
+            Contact
+          </FormLabel>
           <InputGroup mb="2" size="sm">
             <ToolTip label="Account that we can contact you on">
               <InputLeftAddon
@@ -84,6 +87,7 @@ const FeedbackMenu = () => {
               borderTopRightRadius="xl"
               borderBottomRightRadius="xl"
               shadow={useColorModeValue("sm", "md")}
+              data-testid="contact"
               id="contact"
               placeholder="user@site.com, @user "
               size="sm"
@@ -106,6 +110,7 @@ const FeedbackMenu = () => {
               bg={useColorModeValue("gray.100", "gray.600")}
               borderRadius="xl"
               shadow={useColorModeValue("sm", "md")}
+              data-testid="msg"
               id="msg"
               placeholder="Please share your feedback with us!"
               size="sm"

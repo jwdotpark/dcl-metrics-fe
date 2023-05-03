@@ -19,6 +19,7 @@ const ScenesTimeSpentAFK = ({ res }) => {
       scene_name: key,
       map_url: tableData[key].map_url,
       avg_time_spent_afk: tableData[key].avg_time_spent_afk,
+      uuid: tableData[key].uuid,
     })
   }
   tableData = result

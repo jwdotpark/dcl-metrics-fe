@@ -19,6 +19,7 @@ const ScenesTimeSpent = ({ res }) => {
       scene_name: key,
       map_url: tableData[key].map_url,
       avg_time_spent: tableData[key].avg_time_spent,
+      uuid: tableData[key].uuid,
     })
   }
   tableData = result

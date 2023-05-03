@@ -1,16 +1,7 @@
 import { Box, Text, Flex, Spacer, Center } from "@chakra-ui/react"
-import { convertSeconds } from "../../../../lib/hooks/utils"
+import { formatCount } from "../../../../lib/data/chartInfo"
 
 const TooltipTable = ({ date, count, degraded, bar, name, color }) => {
-  const formatCount = (val) => {
-    if (Number(val) === 0) {
-      return "None"
-    } else if (val < 60 * 60 * 24) {
-      return convertSeconds(val)
-    } else {
-      return "24h"
-    }
-  }
   return (
     <Flex fontSize="sm">
       <Center mr="2">
@@ -22,7 +13,7 @@ const TooltipTable = ({ date, count, degraded, bar, name, color }) => {
       <Spacer />
       <Box ml="2" color={degraded && "red"}>
         <Text as="kbd">
-          {name === "Total Time Spent" && formatCount(count)}
+          {name === "Total Time Spent" ? formatCount(count) : count}
         </Text>
       </Box>
     </Flex>
