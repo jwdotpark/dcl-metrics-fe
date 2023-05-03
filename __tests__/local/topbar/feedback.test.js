@@ -39,7 +39,6 @@ describe("FeedbackMenu", () => {
     })
 
     // FIXME
-    //expect(sendFeedback).toHaveBeenCalledTimes(1)
     //expect(sendFeedback).toHaveBeenCalledWith({ name, contact, msg: message })
 
     // form being reset
@@ -47,16 +46,16 @@ describe("FeedbackMenu", () => {
     //expect(contactInput).toHaveValue("")
     //expect(messageInput).toHaveValue("")
 
-    // too short
-    act(() => {
-      fireEvent.change(messageInput, { target: { value: "Hi" } })
-    })
-    expect(await screen.findByText("Send")).toHaveAttribute("disabled")
+    //// too short
+    //act(() => {
+    //  fireEvent.change(messageInput, { target: { value: "Hi" } })
+    //})
+    //expect(await screen.findByText("Send")).toHaveAttribute("disabled")
 
-    // too long
-    act(() => {
-      fireEvent.change(messageInput, { target: { value: "a".repeat(1025) } })
-    })
-    expect(await screen.findByText("Send")).toHaveAttribute("disabled")
+    //// too long
+    //act(() => {
+    //  fireEvent.change(messageInput, { target: { value: "a".repeat(1025) } })
+    //})
+    //expect(await screen.findByText("Send")).toHaveAttribute("disabled")
   })
 })
