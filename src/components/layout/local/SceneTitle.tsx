@@ -14,10 +14,13 @@ import {
   ModalHeader,
   ModalOverlay,
   ButtonGroup,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import DatePicker from "../../local/stats/scenes/DatePicker"
 import { FiDownload } from "react-icons/fi"
 import ToolTip from "./ToolTip"
+import BoxWrapper from "./BoxWrapper"
+import moment from "moment"
 
 const SceneTitle = ({
   name,
@@ -51,22 +54,35 @@ const SceneTitle = ({
     onClose()
   }
 
+  console.log(moment(date).fromNow())
+
   return (
     <Flex direction={["column", "column", "row", "row"]}>
-      <Box>
-        <Flex direction="column" mt="4" mx="5">
-          <Box>
-            <Text fontSize="2xl">
-              <b>{name}</b>
-            </Text>
-          </Box>
-          <Box>
-            <Text color="gray.500" fontSize="sm">
-              {description}
-            </Text>
-          </Box>
+      <Flex
+        direction={["column", "column", "column", "column", "row"]}
+        w="calc(100% - 2rem)"
+        m="4"
+        mb="0"
+        p="4"
+        bg={useColorModeValue("gray.50", "gray.700")}
+        border="1px solid"
+        borderColor={useColorModeValue("gray.200", "gray.800")}
+        borderRadius="xl"
+        shadow="md"
+      >
+        <Box h="100%" fontSize={["xl", "2xl", "3xl"]} fontWeight="semibold">
+          <Text noOfLines={1}>{name}</Text>
+        </Box>
+        <Spacer />
+        <Flex align="center" h="100%">
+          <ToolTip
+            label={`Updated on ${moment(date).format("YYYY/MM/DD hh:mm")}`}
+          >
+            <Text>Last Update {moment(date).fromNow()}</Text>
+          </ToolTip>
         </Flex>
-      </Box>
+      </Flex>
+
       <Spacer />
       {uuid && (
         <Flex m="4">

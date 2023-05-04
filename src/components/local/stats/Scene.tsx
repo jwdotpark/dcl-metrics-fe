@@ -25,7 +25,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   // for private dashboard
   const hasMultipleScenes = res.length > 1 ? true : false
   const [isEmpty, setIsEmpty] = useState(false)
-  const latest = moment(res[selectedScene].date).format("MMM. Do")
+  const latest = moment(res[selectedScene].date)
 
   const EmptyScene = () => {
     return (
@@ -63,7 +63,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
           availableDate={availableDate}
           hasMultipleScenes={hasMultipleScenes}
           uuid={uuid}
-          description={`${name} data on ${latest}`}
+          description={`Last update ${latest}`}
         />
         {/* main scene user chart on private dashboard */}
         {dailyUsers.length > 0 && (
