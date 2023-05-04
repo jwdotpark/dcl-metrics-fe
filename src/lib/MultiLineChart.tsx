@@ -79,7 +79,7 @@ const MultiLineChart = ({ res, selectedScene }) => {
         h="435px"
         mt={[2, 2, 6, 0]}
         pt="4"
-        bg={useColorModeValue("gray.100", "gray.700")}
+        bg={useColorModeValue("white", "gray.700")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"

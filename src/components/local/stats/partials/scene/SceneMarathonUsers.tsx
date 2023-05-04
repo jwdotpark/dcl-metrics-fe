@@ -133,9 +133,9 @@ const SceneMarathonUsers = ({ data }) => {
   return (
     <Box
       h="520px"
-      bg={useColorModeValue("gray.100", "gray.700")}
-      border="2px solid"
-      borderColor={useColorModeValue("gray.200", "gray.700")}
+      bg={useColorModeValue("white", "gray.700")}
+      border="1px solid"
+      borderColor={useColorModeValue("gray.200", "gray.600")}
       borderRadius="xl"
       shadow="md"
     >
