@@ -42,7 +42,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
         mt={[2, 2, 2, 0]}
         bg={useColorModeValue("white", "gray.700")}
         border="1px solid"
-        borderColor={useColorModeValue("gray.200", "gray.700")}
+        borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
         shadow="md"
       >

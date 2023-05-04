@@ -19,7 +19,6 @@ import {
 import DatePicker from "../../local/stats/scenes/DatePicker"
 import { FiDownload } from "react-icons/fi"
 import ToolTip from "./ToolTip"
-import BoxWrapper from "./BoxWrapper"
 import moment from "moment"
 
 const SceneTitle = ({
@@ -54,8 +53,6 @@ const SceneTitle = ({
     onClose()
   }
 
-  console.log(moment(date).fromNow())
-
   return (
     <Flex direction={["column", "column", "row", "row"]}>
       <Flex
@@ -66,7 +63,7 @@ const SceneTitle = ({
         p="4"
         bg={useColorModeValue("white", "gray.700")}
         border="1px solid"
-        borderColor={useColorModeValue("gray.200", "gray.800")}
+        borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
         shadow="md"
       >
