@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Layout from "../../src/components/layout/layout"
 import { getDataWithApiKey } from "../../src/lib/data/fetch"
 import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
@@ -15,6 +16,7 @@ import {
   Grid,
   useBreakpointValue,
   useColorModeValue,
+  Flex,
 } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
@@ -79,21 +81,23 @@ const SingleUserPage = (props) => {
 
   return (
     <Layout>
-      {Object.keys(userAddressRes).length === 0 ? (
-        <Center h="calc(100vh - 4rem)">
-          <Text
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            color={useColorModeValue("gray.600", "gray.200")}
-          >
-            <Box
-              sx={{ transform: "translateY(3px)" }}
-              display="inline-block"
-              mr="2"
-            >
-              <FiAlertTriangle />
-            </Box>
-            No data for {address}
-          </Text>
+      {Object.keys(userAddressRes).length !== 0 ? (
+        <Center h="calc(100vh - 8rem)">
+          <Flex direction="column" w="100%">
+            <Center mb="8">
+              <Text fontSize={["3xl", "6xl"]} fontWeight="bold">
+                User Not Found
+              </Text>
+            </Center>
+            <Center w="100%" px={[0, 20]} fontSize={["xs", "md"]}>
+              <Text>
+                User <kbd>{address}</kbd> is not in our system yet. This usually
+                means that they have never logged into Decentraland client. If
+                you think this is an error,{" "}
+                <b>please contact us using feedback menu on the top.</b>
+              </Text>
+            </Center>
+          </Flex>
         </Center>
       ) : (
         <Box fontSize={["md", "md"]}>
