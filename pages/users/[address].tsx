@@ -81,7 +81,7 @@ const SingleUserPage = (props) => {
 
   return (
     <Layout>
-      {Object.keys(userAddressRes).length === 0 ? (
+      {Object.keys(userAddressRes).length !== 0 ? (
         <Center h="calc(100vh - 8rem)">
           <Flex direction="column" w="100%">
             <Center mb="8">
@@ -90,12 +90,20 @@ const SingleUserPage = (props) => {
               </Text>
             </Center>
             <Center w="100%" px={[0, 20]} fontSize={["xs", "md"]}>
-              <Text>
-                User <kbd>{address}</kbd> is not in our system yet. This usually
-                means that they have never logged into Decentraland client. If
-                you think this is an error,{" "}
-                <b>please contact us using feedback menu on the top.</b>
-              </Text>
+              <Flex direction="column">
+                <Center w="100%">
+                  <Text>
+                    User <kbd>{address}</kbd> is not in our system yet.
+                  </Text>
+                </Center>
+                <Center>
+                  <Text>
+                    This usually means that they have never logged into
+                    Decentraland client. If you think this is an error, please
+                    contact us using <b>feedback menu</b> on the top.
+                  </Text>
+                </Center>
+              </Flex>
             </Center>
           </Flex>
         </Center>
