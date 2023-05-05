@@ -81,7 +81,7 @@ const SingleUserPage = (props) => {
 
   return (
     <Layout>
-      {Object.keys(userAddressRes).length !== 0 ? (
+      {Object.keys(userAddressRes).length === 0 ? (
         <Center h="calc(100vh - 8rem)">
           <Flex direction="column" w="100%">
             <Center mb="8">
