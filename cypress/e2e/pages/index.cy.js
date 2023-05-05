@@ -1,10 +1,8 @@
-/* eslint-disable */
-/// <reference types="Cypress" />
-
 describe("Index page", () => {
   beforeEach(() => {
     cy.visit("/")
   })
+
   it("should render sidebar", () => {
     // sidebar
     cy.findByText("Global").should("be.visible")
@@ -29,5 +27,3 @@ describe("Index page", () => {
     cy.findAllByText("Top Market Deals").should("be.visible")
   })
 })
-
-export {}

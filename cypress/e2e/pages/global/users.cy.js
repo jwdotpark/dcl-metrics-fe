@@ -1,7 +1,4 @@
-/* eslint-disable */
-/// <reference types="Cypress" />
-
-describe("User page", () => {
+describe("/users page", () => {
   beforeEach(() => {
     cy.visit("/users")
   })
@@ -19,7 +16,7 @@ describe("User page", () => {
   })
 
   it("has explorers component properties", () => {
-    cy.findAllByText("Parcel Visited").should("be.visible")
+    cy.findAllByText("Parcels Visited").should("be.visible")
     cy.findAllByText("User").should("be.visible")
     cy.findAllByText("Address").should("be.visible")
     cy.findAllByText("Link").should("be.visible")
