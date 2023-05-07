@@ -12,13 +12,13 @@ describe("/scenes page", () => {
     cy.findByText("Scenes with AFK Time Spent").should("be.visible")
   })
 
-  describe("Top 50 Scenes", () => {
+  describe("Top 50 Scenes component", () => {
     it("should be rendered properly", () => {
       const top50SceneTable = cy.get(".css-hp15d1 > :nth-child(1)")
       top50SceneTable.scrollIntoView().should("be.visible")
     })
 
-    it("has Top 50 Scenes and its properties", () => {
+    it("has its properties", () => {
       cy.findAllByText("Map").should("be.visible")
       cy.findAllByText("Scene").should("be.visible")
       cy.findAllByText("Visitors").should("be.visible")

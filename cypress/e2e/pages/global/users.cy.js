@@ -14,7 +14,6 @@ describe("/users page", () => {
     cy.findAllByText("Address").should("be.visible")
     cy.findAllByText("Link").should("be.visible")
 
-    // date range button group
     const marathonUserTable = cy.get(":nth-child(1) > .chakra-table__container")
     marathonUserTable.should("be.visible")
     const Name90Day = cy.get("div.css-gmuwbf").eq(0)
@@ -30,8 +29,9 @@ describe("/users page", () => {
     cy.findAllByText("User").should("be.visible")
     cy.findAllByText("Address").should("be.visible")
     cy.findAllByText("Link").should("be.visible")
+  })
 
-    // date range button group
+  it("has date range button group", () => {
     const explorersTable = cy.get(":nth-child(2) > .chakra-table__container")
     explorersTable.should("be.visible")
     const Name90Day = cy.get("div.css-gmuwbf").eq(10)
