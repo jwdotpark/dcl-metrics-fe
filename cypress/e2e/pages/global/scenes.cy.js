@@ -31,25 +31,28 @@ describe("/scenes page", () => {
   it("has top 50 scenes component pagination button group", () => {
     const paginationBtnGroup = cy.get(".css-1xxacki > .chakra-button__group")
     const top50SearchInput = cy.get(".css-0 > .chakra-input")
-    const nextBtn = cy.get(
-      ".css-1xxacki > .chakra-button__group > :nth-child(4)"
-    )
-    const prevBtn = cy.get(
-      ".css-1xxacki > .chakra-button__group > :nth-child(4)"
-    )
 
     paginationBtnGroup.should("be.visible")
     top50SearchInput.should("be.visible")
+
+    const nextBtn = cy.get(
+      ".css-1xxacki > .chakra-button__group > :nth-child(4)"
+    )
     nextBtn.should("be.visible")
     nextBtn.click()
-    cy.get(
+
+    const listing = cy.get(
       "tbody.css-0 > :nth-child(1) > :nth-child(1) > .chakra-text"
-    ).contains("11")
+    )
+    listing.contains("11")
+
+    const prevBtn = cy.get(
+      "tbody.css-0 > :nth-child(1) > :nth-child(1) > .chakra-text"
+    )
     prevBtn.should("be.visible")
     prevBtn.click()
-    cy.get(
-      "tbody.css-0 > :nth-child(1) > :nth-child(1) > .chakra-text"
-    ).contains("1")
+
+    listing.contains("1")
   })
 })
 

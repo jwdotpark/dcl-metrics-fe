@@ -28,7 +28,7 @@
     "src/components/error/ErrorBoundary.jsx",
     "cypress/e2e/healthcheck/main.cy.js",
     "__tests__/utils/util.js",
-    "cypress/e2e/pages/index.cy.js"
+    "cypress/e2e/pages/global/index.cy.js"
   ],
   "exclude": ["node_modules"]
 }
