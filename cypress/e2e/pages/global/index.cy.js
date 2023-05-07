@@ -3,18 +3,7 @@ describe("Index page", () => {
     cy.visit("/")
   })
 
-  it("should render sidebar", () => {
-    // sidebar
-    cy.findByText("Global").should("be.visible")
-    cy.findByText("Users").should("be.visible")
-    cy.findByText("Scenes").should("be.visible")
-    cy.findByText("Parcels").should("be.visible")
-    cy.findByText("Status").should("be.visible")
-    cy.findByText("Blog").should("be.visible")
-    cy.findByText("Roadmap").should("be.visible")
-    cy.findByText("About").should("be.visible")
-
-    // main, children of sidebar
+  it("should be rendered", () => {
     cy.findAllByText("Unique Visitors").should("be.visible")
     cy.findAllByText("Parcel Visitors").should("be.visible")
     cy.findAllByText("Scenes Visited").should("be.visible")
@@ -25,5 +14,18 @@ describe("Index page", () => {
     cy.findAllByText("Rentals Daily").should("be.visible")
     cy.findAllByText("Rentals Total").should("be.visible")
     cy.findAllByText("Top Market Deals").should("be.visible")
+  })
+
+  describe("Sidebar", () => {
+    it("renders sidebar list", () => {
+      cy.findByText("Global").should("be.visible")
+      cy.findByText("Users").should("be.visible")
+      cy.findByText("Scenes").should("be.visible")
+      cy.findByText("Parcels").should("be.visible")
+      cy.findByText("Status").should("be.visible")
+      cy.findByText("Blog").should("be.visible")
+      cy.findByText("Roadmap").should("be.visible")
+      cy.findByText("About").should("be.visible")
+    })
   })
 })

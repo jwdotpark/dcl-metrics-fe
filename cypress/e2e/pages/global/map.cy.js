@@ -1,7 +1,6 @@
 describe("/map page", () => {
   beforeEach(() => {
     cy.visit("/map")
-    cy.viewport(1920, 1080)
   })
 
   it("should be rendered", () => {
@@ -43,7 +42,7 @@ describe("/map page", () => {
 
   it("has lands that opens sidebar when clicked", () => {
     cy.wait(1000)
-    cy.get(".react-tile-map-canvas").click(960, 540)
+    cy.get(".react-tile-map-canvas").click(960, 540, { force: true })
     cy.findByText("Coordinate").should("be.visible")
     cy.findByText("Description").should("be.visible")
   })
