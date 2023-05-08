@@ -239,6 +239,7 @@ const LineChart = ({
               bg={useColorModeValue("whiteAlpha.700", "blackAlpha.500")}
               borderRadius="xl"
               shadow="md"
+              data-testid="slice-tooltip"
             >
               <Center mb="1">
                 <Text fontSize="sm" fontWeight="bold">
