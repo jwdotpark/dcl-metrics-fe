@@ -4,8 +4,8 @@ export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {},
     chromeWebSecurity: false,
-    viewportHeight: 1920,
-    viewportWidth: 1080,
+    viewportHeight: 800,
+    viewportWidth: 800,
     baseUrl: "http://localhost:3000",
     video: false,
     screenshotOnRunFailure: false,
