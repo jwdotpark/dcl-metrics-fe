@@ -27,5 +27,15 @@ describe("Index page", () => {
       cy.findByText("Roadmap").should("be.visible")
       cy.findByText("About").should("be.visible")
     })
+
+    it("can be collapsed and adjust the width accordingly", () => {
+      const wideSideBar = cy.get("div.css-uzcmrh div").eq(36)
+      wideSideBar.should("be.visible")
+      const collapseBtn = cy.contains("p", "Collapse")
+      collapseBtn.should("be.visible")
+      const narrowSideBar = cy.get("div.css-uzcmrh div").eq(36)
+      collapseBtn.click({ force: true })
+      wideSideBar.should("not.equal", narrowSideBar)
+    })
   })
 })
