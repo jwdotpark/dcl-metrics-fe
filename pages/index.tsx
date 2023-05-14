@@ -14,7 +14,14 @@ import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 import LandSales from "../src/components/local/stats/rentals/LandSales"
 import OnlineUsers from "../src/components/local/ext-data/OnlineUsers"
-import { writeFile, getDataWithProxy, getData } from "../src/lib/data/fetch"
+import {
+  writeFile,
+  getDataWithProxy,
+  getData,
+  fetchGlobalData,
+  fetchRentalData,
+  getLatestPost,
+} from "../src/lib/data/fetch"
 import { isProd, isDev, isLocal } from "../src/lib/data/constant"
 import { globalRequestList, globalFileNameArr } from "../src/lib/data/fetchList"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
@@ -28,94 +35,99 @@ import { useAtom } from "jotai"
 import { psaAtom } from "../src/lib/state/psaState"
 
 export async function getStaticProps() {
-  let globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes
+  //let globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes
 
-  if (isProd) {
-    ;[globalDailyRes, parcelRes] = await Promise.all(
-      globalRequestList.map(({ url, endpoint, staticData }) =>
-        getDataWithProxy(url, endpoint, staticData)
-      )
-    )
-    landSalesRes = await getDataWithProxy(
-      "https://www.dcl-property.rentals/api/price_data",
-      "https://www.dcl-property.rentals/api/price_data",
-      staticLandSales
-    )
+  //if (isProd) {
+  //  ;[globalDailyRes, parcelRes] = await Promise.all(
+  //    globalRequestList.map(({ url, endpoint, staticData }) =>
+  //      getDataWithProxy(url, endpoint, staticData)
+  //    )
+  //  )
+  //  landSalesRes = await getDataWithProxy(
+  //    "https://www.dcl-property.rentals/api/price_data",
+  //    "https://www.dcl-property.rentals/api/price_data",
+  //    staticLandSales
+  //  )
 
-    topLandRes = await getDataWithProxy(
-      "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
-      "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
-      staticTopLand
-    )
+  //  topLandRes = await getDataWithProxy(
+  //    "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
+  //    "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
+  //    staticTopLand
+  //  )
 
-    topPickRes = await getDataWithProxy(
-      "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
-      "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
-      staticTopPick
-    )
-  } else if (isDev && !isLocal) {
-    ;[globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes] =
-      await Promise.all(
-        globalRequestList.map(({ url, endpoint, staticData }) =>
-          getData(url, endpoint, staticData)
-        )
-      )
-  } else if (isLocal) {
-    globalDailyRes = staticGlobalDaily
-    parcelRes = staticParcel
-    landSalesRes = staticLandSales
-    topLandRes = staticTopLand
-    topPickRes = staticTopPick
-  }
+  //  topPickRes = await getDataWithProxy(
+  //    "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
+  //    "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
+  //    staticTopPick
+  //  )
+  //} else if (isDev && !isLocal) {
+  //  ;[globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes] =
+  //    await Promise.all(
+  //      globalRequestList.map(({ url, endpoint, staticData }) =>
+  //        getData(url, endpoint, staticData)
+  //      )
+  //    )
+  //} else if (isLocal) {
+  //  globalDailyRes = staticGlobalDaily
+  //  parcelRes = staticParcel
+  //  landSalesRes = staticLandSales
+  //  topLandRes = staticTopLand
+  //  topPickRes = staticTopPick
+  //}
 
-  // write heavy res for cache
-  if (isProd) {
-    for (let i = 0; i < globalFileNameArr.length; i++) {
-      writeFile(
-        globalFileNameArr[i],
-        [globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes][i]
-      )
-    }
-  }
+  //// write heavy res for cache
+  //if (isProd) {
+  //  for (let i = 0; i < globalFileNameArr.length; i++) {
+  //    writeFile(
+  //      globalFileNameArr[i],
+  //      [globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes][i]
+  //    )
+  //  }
+  //}
 
-  const rental = new ApolloClient({
-    uri: "https://api.thegraph.com/subgraphs/name/decentraland/rentals-ethereum-mainnet",
-    cache: new InMemoryCache(),
-  })
+  //const rental = new ApolloClient({
+  //  uri: "https://api.thegraph.com/subgraphs/name/decentraland/rentals-ethereum-mainnet",
+  //  cache: new InMemoryCache(),
+  //})
 
-  const { data } = await rental.query({
-    query: gql`
-      query {
-        analyticsTotalDatas {
-          rentals
-          volume
-          lessorEarnings
-          feeCollectorEarnings
-        }
-        analyticsDayDatas {
-          date
-          rentals
-          volume
-          lessorEarnings
-          feeCollectorEarnings
-        }
-      }
-    `,
-  })
+  //const { data } = await rental.query({
+  //  query: gql`
+  //    query {
+  //      analyticsTotalDatas {
+  //        rentals
+  //        volume
+  //        lessorEarnings
+  //        feeCollectorEarnings
+  //      }
+  //      analyticsDayDatas {
+  //        date
+  //        rentals
+  //        volume
+  //        lessorEarnings
+  //        feeCollectorEarnings
+  //      }
+  //    }
+  //  `,
+  //})
 
-  // blog PSA
-  const latestPost = getPosts().sort((a, b) => {
-    return moment(b.data.date).unix() - moment(a.data.date).unix()
-  })[0]
+  //// blog PSA
+  //const latestPost = getPosts().sort((a, b) => {
+  //  return moment(b.data.date).unix() - moment(a.data.date).unix()
+  //})[0]
+
+  const globalData = await fetchGlobalData()
+  const rentalData = await fetchRentalData()
+  const latestPost = getLatestPost()
 
   return {
     props: {
-      globalDailyRes,
-      parcelRes,
-      landSalesRes,
-      topLandRes,
-      topPickRes,
-      rental: data,
+      //globalDailyRes,
+      //parcelRes,
+      //landSalesRes,
+      //topLandRes,
+      //topPickRes,
+      ...globalData,
+      rental: rentalData,
       latestPost: latestPost,
     },
   }

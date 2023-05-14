@@ -1,5 +1,5 @@
 {
-  "name": "dcl-stats",
+  "name": "dcl-metrics-fe",
   "version": "0.1.0",
   "engines": {
     "node": "18.x"
@@ -15,6 +15,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:e2e": "cypress run --headless",
+    "cypress": "cypress open",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -70,6 +71,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^8.0.1",

@@ -1,14 +1,20 @@
 import { defineConfig } from "cypress"
 
 export default defineConfig({
-  projectId: "z97c3f",
   e2e: {
-    excludeSpecPattern: [
-      "cypress/e2e/1-getting-started/*",
-      "cypress/e2e/2-advanced-examples/*",
-    ],
     setupNodeEvents(on, config) {},
+    chromeWebSecurity: false,
+    viewportHeight: 800,
+    viewportWidth: 800,
+    baseUrl: "http://localhost:3000",
+    video: false,
+    screenshotOnRunFailure: false,
+    excludeSpecPattern: ["/cypress/e2e/all.spec.cy.js"],
   },
-  video: false,
-  screenshotOnRunFailure: false,
+  component: {
+    devServer: {
+      framework: "next",
+      bundler: "webpack",
+    },
+  },
 })

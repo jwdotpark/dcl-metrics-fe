@@ -6,7 +6,12 @@ const ColorButton = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
     <ToolTip label="Toggle Color Mode">
-      <Button onClick={toggleColorMode} size="lg" variant="link">
+      <Button
+        data-testid="colorBtn"
+        onClick={toggleColorMode}
+        size="lg"
+        variant="link"
+      >
         {colorMode === "light" ? <FiMoon /> : <FiSun />}
       </Button>
     </ToolTip>
