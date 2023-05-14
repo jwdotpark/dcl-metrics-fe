@@ -51,13 +51,13 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     const plotData = []
     for (const date of dateRange) {
       const dateString = date.toISOString().slice(0, 10)
-      let timeSpent = dataByDate[dateString]?.time_spent ?? 0
+      let time_spent = dataByDate[dateString]?.time_spent ?? 0
       const day = 60 * 60 * 24
-      if (timeSpent > day) {
-        timeSpent = day
+      if (time_spent > day) {
+        time_spent = day
       }
 
-      plotData.push({ date: dateString, timeSpent })
+      plotData.push({ date: dateString, time_spent })
     }
 
     return plotData
@@ -121,6 +121,8 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     setDateRange(data.length)
     setIsLoading(false)
   }, [data.length])
+
+  console.log("user time spent", result)
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 4, 3]}>
