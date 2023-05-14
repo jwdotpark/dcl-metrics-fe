@@ -1,13 +1,13 @@
-import { Box, Avatar, Center, Spinner, Tooltip } from "@chakra-ui/react"
+import { Box, Avatar, Center, Spinner } from "@chakra-ui/react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import verifiedBadge from "../../../public/verified.svg"
 import guestBadge from "../../../public/guest.svg"
-import staticAvatar from "../../../public/avatar.png"
 import ToolTip from "../layout/local/ToolTip"
 
 const ProfilePicture = ({ address, verified, guest }) => {
   const [pic, setPic] = useState<string>()
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {

@@ -1,11 +1,11 @@
 import { useState } from "react"
 import BoxTitle from "../../layout/local/BoxTitle"
 import BoxWrapper from "../../layout/local/BoxWrapper"
-//import TopLandDateRange from "../stats/daterange/TopLandDateRange"
 import TableComponent from "../stats/partials/TableComponent"
 import BottomLegend from "./partial/BottomLegend"
 
 const TopLand = ({ data }) => {
+  // eslint-disable-next-line no-unused-vars
   const [dateRange, setDateRange] = useState("yearTop")
   const dataArr = data[dateRange]
   const tableData = []

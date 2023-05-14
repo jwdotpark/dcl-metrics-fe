@@ -61,6 +61,7 @@ const ActiveUsers = () => {
 export default ActiveUsers
 
 const MyResponsiveBar = ({ data }) => {
+  // eslint-disable-next-line no-unused-vars
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   return (
     <Box h={chartProps.height}>

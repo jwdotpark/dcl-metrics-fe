@@ -1,10 +1,6 @@
 import {
-  Text,
-  Box,
   AccordionItem,
-  AccordionButton,
   useColorModeValue,
-  AccordionIcon,
   AccordionPanel,
   Grid,
   useBreakpointValue,

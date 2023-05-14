@@ -54,7 +54,7 @@ const ApiListDrawer = (props) => {
                       </Text>
                     </Box>
                     <List spacing={4}>
-                      {data.map((item, i) => {
+                      {data.map((item) => {
                         if (item.data.category === category) {
                           return (
                             <Box key={item.data.title} onClick={onClose}>

@@ -1,5 +1,4 @@
 import {
-  Text,
   AccordionItem,
   AccordionPanel,
   Grid,
@@ -8,11 +7,7 @@ import {
 } from "@chakra-ui/react"
 import Explorer from "../../local/stats/Explorer"
 import MarathonUsers from "../../local/stats/MarathonUsers"
-import UniqueVisitors from "../../local/stats/UniqueVisitors"
-import VisitedParcels from "../../local/stats/UniqueVisitors"
-import UniqueVisitedParcels from "../../local/stats/UniqueVisitedParcels"
 import AccordionLabel from "../global/partials/AccordionLabel"
-import AccordionLink from "../global/partials/AccordionLink"
 
 const UserLayout = ({ result }) => {
   const gridColumn = useBreakpointValue({

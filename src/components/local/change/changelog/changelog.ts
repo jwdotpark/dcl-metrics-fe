@@ -4,12 +4,9 @@ import {
   FiHome,
   FiBarChart2,
   FiCheckCircle,
-  FiCloudDrizzle,
-  FiTrendingUp,
   FiTarget,
   FiUsers,
   FiUserPlus,
-  FiZoomIn,
   FiCalendar,
 } from "react-icons/fi"
 

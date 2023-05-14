@@ -24,6 +24,7 @@ const OnlineUsers = () => {
   const dataArr = (data.result && data.result.data.result[0].values) || []
   const dateRange = dataArr.length - 1
 
+  // eslint-disable-next-line no-unused-vars
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
@@ -58,10 +59,11 @@ const OnlineUsers = () => {
     item.color = color[i]
   })
 
-  const lineVisibility = result.map((item, i) => {
+  const lineVisibility = result.map(() => {
     return true
   })
 
+  // eslint-disable-next-line no-unused-vars
   const [line, setLine] = useState(lineVisibility)
 
   const calculateAverages = (partial) => {

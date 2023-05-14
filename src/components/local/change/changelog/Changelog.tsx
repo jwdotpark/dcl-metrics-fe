@@ -10,7 +10,7 @@ import {
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react"
-import { FiPackage, FiHome, FiBarChart2, FiCheckCircle } from "react-icons/fi"
+import { FiCheckCircle } from "react-icons/fi"
 import { minorchangeTemplate } from "./changelog"
 
 const ChangeLog = () => {

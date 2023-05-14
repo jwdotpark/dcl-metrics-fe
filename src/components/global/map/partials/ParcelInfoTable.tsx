@@ -1,5 +1,4 @@
 import {
-  Tooltip,
   Text,
   Table,
   Tr,
@@ -14,11 +13,12 @@ import Link from "next/link"
 import { convertSeconds, parseUTC } from "../../../../lib/hooks/utils"
 import ToolTip from "../../../layout/local/ToolTip"
 
+// eslint-disable-next-line no-unused-vars
 const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
   const {
     id,
     name,
-    updatedAt,
+
     owner,
     visitors,
     max_concurrent_users,

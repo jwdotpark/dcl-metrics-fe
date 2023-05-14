@@ -1,4 +1,4 @@
-import { Text, Center, useColorModeValue, useColorMode } from "@chakra-ui/react"
+import { Text, Center, useColorModeValue } from "@chakra-ui/react"
 import Link from "next/link"
 
 const BottomLegend = ({ description, link }) => {

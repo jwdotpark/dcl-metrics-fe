@@ -6,10 +6,8 @@ import {
   FiMapPin,
   FiPackage,
   FiActivity,
-  FiLock,
   FiGrid,
   FiPenTool,
-  FiFileText,
 } from "react-icons/fi"
 
 export const sidebarList = {

@@ -10,7 +10,6 @@ import {
   Tr,
   useColorModeValue,
   Flex,
-  Tooltip,
   Button,
   ButtonGroup,
   Center,
@@ -160,7 +159,7 @@ const TopPick = ({ data }) => {
             "https://peer-ap1.decentraland.org/lambdas/profiles?id="
           const url = endpoint + row.original.owner
           const fetcher = (url) => fetch(url).then((r) => r.json())
-          // eslint-disable-next-line react-hooks/rules-of-hooks
+          // eslint-disable-next-line react-hooks/rules-of-hooks, no-unused-vars
           const { data, error, isLoading } = useSWR(url, fetcher)
 
           const { name, avatar } =
