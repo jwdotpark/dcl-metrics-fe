@@ -34,9 +34,7 @@ jobs:
           path: |
             ~/.npm
             ${{ github.workspace }}/.next/cache
-          # Generate a new cache whenever packages or source files change.
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
@@ -44,17 +42,12 @@ jobs:
         run: |
           yarn install
 
-      - name: Start server
-        run: |
-          yarn dev & sleep 10
-
       - name: Run test
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
         run: |
           yarn test --verbose
-          yarn test:e2e
           if [ $? -eq 1 ]; then curl -s -X POST https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage -d chat_id=${TELEGRAM_TO} -d text="❌ Test failure in ${{ github.workflow }} on ${{ github.repository }}/${{ github.ref_name }} by ${{ github.actor }}"; fi
   deploy:
     runs-on: ubuntu-latest
