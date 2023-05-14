@@ -30,7 +30,8 @@ jobs:
 
       - name: Run test
         run: |
-          yarn test
+          yarn test --verbose
+          yarn test:e2e
 
       - name: Send Test Fail message
         if: failure()
@@ -51,26 +52,3 @@ jobs:
           format: html
           message: |
             ✅ PR <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>test passed!
-
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: [build]
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: akhileshns/heroku-deploy@v3.12.12
-  #       with:
-  #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-  #         heroku_app_name: "dcl-metrics-fe"
-  #         heroku_email: "jongwoo.park@code.berlin"
-
-  #     - name: Finish build notfication
-  #       uses: appleboy/telegram-action@master
-  #       if: always()
-  #       with:
-  #         to: ${{ secrets.TELEGRAM_TO }}
-  #         token: ${{ secrets.TELEGRAM_TOKEN }}
-  #         disable_web_page_preview: true
-  #         format: html
-  #         message: |
-  #           ${{ job.status == 'success' && '✅ Build Success!' || '❌ Build Failed..' }}
-  #           Live Site: <a href="https://dcl-metrics.com/">dcl-metrics.com</a>

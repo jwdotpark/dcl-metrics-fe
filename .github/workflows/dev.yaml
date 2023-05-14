@@ -45,7 +45,8 @@ jobs:
           yarn install
       - name: Run test
         run: |
-          yarn test
+          yarn test --verbose
+          yarn test:e2e
 
   deploy:
     runs-on: ubuntu-latest
