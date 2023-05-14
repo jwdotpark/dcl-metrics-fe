@@ -74,8 +74,6 @@ export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
   return result
 }
 
-//---------------------------------------------------------------//
-
 export async function fetchGlobalData() {
   let globalDailyRes, parcelRes, landSalesRes, topLandRes, topPickRes
 
