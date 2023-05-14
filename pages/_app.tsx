@@ -15,6 +15,7 @@ const InterFont = Inter({
 function MyApp({
   Component,
   router,
+  // eslint-disable-next-line no-unused-vars
   pageProps: { session, ...pageProps },
 }: AppProps) {
   const telemetry = () => {

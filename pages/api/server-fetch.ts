@@ -5,7 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { address, endpoint, url } = req.query
+  const { endpoint, url } = req.query
   const result = await getDataWithApiKey(url, endpoint, {})
   res.status(200).json({ result })
 }

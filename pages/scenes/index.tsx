@@ -1,7 +1,6 @@
 import { useBreakpointValue, Grid, Box } from "@chakra-ui/react"
 import Layout from "../../src/components/layout/layout"
 import staticScene from "../../public/data/cached_scenes_top.json"
-import Scene from "../../src/components/local/stats/Scene"
 import ScenesLogin from "../../src/components/local/stats/scenes/ScenesLogin"
 import ScenesLogout from "../../src/components/local/stats/scenes/ScenesLogout"
 import ScenesTimeSpent from "../../src/components/local/stats/scenes/ScenesTimeSpent"

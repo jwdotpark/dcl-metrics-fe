@@ -1,9 +1,9 @@
-import { Box, Text, Center } from "@chakra-ui/react"
+import { Center } from "@chakra-ui/react"
 import Layout from "../../src/components/layout/layout"
-import SignIn from "../../src/components/auth/SignIn"
-import { encrypt, decrypt } from "../../src/lib/hooks/utils"
-import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
+//import SignIn from "../../src/components/auth/SignIn"
+//import { encrypt, decrypt } from "../../src/lib/hooks/utils"
+//import { useEffect, useState } from "react"
+//import { useRouter } from "next/router"
 
 const Dashboard = () => {
   //const router = useRouter()

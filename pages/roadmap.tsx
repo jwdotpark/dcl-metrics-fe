@@ -1,6 +1,5 @@
-import { useBreakpointValue, Grid, useColorModeValue } from "@chakra-ui/react"
+import { useBreakpointValue, Grid } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-//import GridBox from "../src/components/local/GridBox"
 import BoxWrapper from "../src/components/layout/local/BoxWrapper"
 import Changelog from "../src/components/local/change/changelog/Changelog"
 import RoadMap from "../src/components/local/change/roadmap/RoadMap"

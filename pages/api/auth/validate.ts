@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { sceneID, findUUID } from "../../../src/lib/data/sceneID"
+import { sceneID } from "../../../src/lib/data/sceneID"
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const edifice = process.env.EDIFICE
