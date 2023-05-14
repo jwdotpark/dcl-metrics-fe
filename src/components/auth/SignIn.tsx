@@ -3,7 +3,6 @@ import { useState } from "react"
 import {
   Box,
   Flex,
-  Container,
   FormControl,
   FormLabel,
   Input,
@@ -28,6 +27,7 @@ import { sceneID } from "../../lib/data/sceneID"
 const SignIn = () => {
   const router = useRouter()
   const [show, setShow] = useState(false)
+  // eslint-disable-next-line no-unused-vars
   const [isAuthenticated, setIsAuthenticated] = useAtom(AuthAtom)
   const [btnMsg, setBtnMsg] = useState("Sign In")
   const {

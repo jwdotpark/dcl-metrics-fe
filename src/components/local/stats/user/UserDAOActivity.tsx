@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
   Flex,
-  useColorModeValue,
   Box,
   Text,
   VStack,
@@ -17,7 +16,6 @@ import UserDAOActivityGrant from "./partial/grant/UserDAOActivityGrant"
 import { parseUTC } from "../../../../lib/hooks/utils"
 import UserDAOActivityTeam from "./partial/teams/UserDAOAvtivityTeams"
 import UserDAOActivityProposal from "./partial/proposal/UserDAOActivityProposal"
-import { FiAlertTriangle } from "react-icons/fi"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 
@@ -58,6 +56,7 @@ const UserDAOActivity = ({ data }) => {
     }
   }
 
+  // eslint-disable-next-line no-unused-vars
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
 
   return (

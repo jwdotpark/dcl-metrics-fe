@@ -1,10 +1,4 @@
-import {
-  Box,
-  useDisclosure,
-  Button,
-  useColorModeValue,
-  useBreakpointValue,
-} from "@chakra-ui/react"
+import { Box, useBreakpointValue } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import MapInfo from "../MapInfo"
 

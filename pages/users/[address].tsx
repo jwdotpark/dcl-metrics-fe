@@ -5,24 +5,18 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import staticUserTimeSpent from "../../public/data/staticUserTimeSpent.json"
-import staticUsercenesVisited from "../../public/data/staticUserScenesVisited.json"
-import staticUserTopScenes from "../../public/data/staticUserTopScenes.json"
-
 import {
   Text,
   Box,
   Center,
   Grid,
   useBreakpointValue,
-  useColorModeValue,
   Flex,
 } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
 import UserDAOActivity from "../../src/components/local/stats/user/UserDAOActivity"
-import { FiAlertTriangle } from "react-icons/fi"
 import UserTimeSpent from "../../src/components/local/stats/user/UserTimeSpent"
 import UserScenesVisited from "../../src/components/local/stats/user/UserScenesVisited"
 import UserTopScenes from "../../src/components/local/stats/user/UserTopScenes"

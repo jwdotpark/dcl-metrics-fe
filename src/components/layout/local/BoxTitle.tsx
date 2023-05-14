@@ -1,11 +1,4 @@
-import {
-  useColorModeValue,
-  Box,
-  Text,
-  Flex,
-  Spacer,
-  Divider,
-} from "@chakra-ui/react"
+import { useColorModeValue, Box, Text, Flex, Spacer } from "@chakra-ui/react"
 import AvgStat from "../../local/stats/partials/AvgStat"
 
 const BoxTitle = ({

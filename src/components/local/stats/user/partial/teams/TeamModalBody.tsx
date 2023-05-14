@@ -14,10 +14,7 @@ import {
   Tr,
   Button,
   useToast,
-  useBreakpointValue,
 } from "@chakra-ui/react"
-import moment from "moment"
-import { parseUTC } from "../../../../../../lib/hooks/utils"
 
 const TeamModalBody = ({ teams }) => {
   const toast = useToast()

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   Box,
   Flex,
@@ -5,7 +6,6 @@ import {
   useColorModeValue,
   Spinner,
   useDisclosure,
-  Button,
 } from "@chakra-ui/react"
 import { memo, useEffect, useState } from "react"
 import { usePrev } from "../../../lib/hooks/usePrev"

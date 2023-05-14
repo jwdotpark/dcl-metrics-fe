@@ -5,7 +5,6 @@ import MarathonUsers from "../../src/components/local/stats/MarathonUsers"
 import staticGlobalUsers from "../../public/data/staticGlobalUsers.json"
 import {
   getDataWithProxy,
-  getData,
   getDataWithApiKey,
   writeFile,
 } from "../../src/lib/data/fetch"

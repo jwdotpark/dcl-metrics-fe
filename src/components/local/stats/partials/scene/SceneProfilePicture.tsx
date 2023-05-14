@@ -1,4 +1,4 @@
-import { Box, Avatar, Center, Spinner, Tooltip } from "@chakra-ui/react"
+import { Box, Avatar, Center, Spinner } from "@chakra-ui/react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import verifiedBadge from "../../../../../../public/verified.svg"

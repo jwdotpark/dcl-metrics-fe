@@ -1,11 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { Box, Flex, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
-import SceneTitle from "../../../layout/local/SceneTitle"
 import DateRangeButton from "../daterange/DateRangeButton"
-import moment from "moment"
-import { dateFormat } from "../../../../lib/data/chartInfo"
 
 const SceneUserLineChart = ({ data, name }) => {
   const [avgData, setAvgData] = useState(0)

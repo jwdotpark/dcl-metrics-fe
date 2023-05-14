@@ -16,6 +16,7 @@ import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 
 const UserTimeSpent = ({ address, userAddressRes }) => {
+  // eslint-disable-next-line no-unused-vars
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -50,16 +51,13 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     const plotData = []
     for (const date of dateRange) {
       const dateString = date.toISOString().slice(0, 10)
-      //const time_spent = dataByDate[dateString]?.time_spent ?? 0
-
-      // FIXME temporary solution for value bigger than 24h
-      let time_spent = dataByDate[dateString]?.time_spent ?? 0
+      let timeSpent = dataByDate[dateString]?.time_spent ?? 0
       const day = 60 * 60 * 24
-      if (time_spent > day) {
-        time_spent = day
+      if (timeSpent > day) {
+        timeSpent = day
       }
 
-      plotData.push({ date: dateString, time_spent })
+      plotData.push({ date: dateString, timeSpent })
     }
 
     return plotData

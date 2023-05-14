@@ -12,12 +12,10 @@ import {
   Tr,
   Td,
   Button,
-  useBreakpointValue,
   useToast,
 } from "@chakra-ui/react"
 import moment from "moment"
 import Link from "next/link"
-import { useState } from "react"
 
 const GrantAuthoredNestedModalBody = ({ grants }) => {
   const toast = useToast()
@@ -31,23 +29,6 @@ const GrantAuthoredNestedModalBody = ({ grants }) => {
       position: "bottom-right",
       status: "success",
     })
-  }
-
-  const responsiveStr = useBreakpointValue({
-    xs: 5,
-    sm: 5,
-    md: 20,
-    lg: 20,
-    xl: 50,
-    base: 10,
-  })
-
-  const truncateName = (name: string) => {
-    const nameLength = responsiveStr
-    if (name && name.length > nameLength) {
-      return name.slice(0, nameLength) + ".."
-    }
-    return name
   }
 
   return (

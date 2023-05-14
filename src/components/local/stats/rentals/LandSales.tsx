@@ -54,7 +54,7 @@ const LandSales = ({ data }) => {
     item.color = color[i]
   })
 
-  const lineVisibility = result.map((item, i) => {
+  const lineVisibility = result.map(() => {
     return true
   })
 

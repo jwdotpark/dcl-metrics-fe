@@ -1,7 +1,6 @@
 // @ts-nocheck
-import { Box, color } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
-import { defaultDateRange, sliceData } from "../../../../lib/data/chartInfo"
+import { sliceData } from "../../../../lib/data/chartInfo"
 import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
@@ -17,9 +16,6 @@ const RentalDay = ({ data }) => {
   const chartData = []
   const [dateRange, setDateRange] = useState(plottedData.length - 1)
   const [avgData, setAvgData] = useState([])
-
-  const [lineColor, setLineColor] = useState(color)
-  const [avgColor, setAvgColor] = useState(color)
 
   dataArr.map((item) => {
     chartData.push({
@@ -51,7 +47,7 @@ const RentalDay = ({ data }) => {
     item.color = color[i]
   })
 
-  const lineVisibility = result.map((item, i) => {
+  const lineVisibility = result.map(() => {
     return true
   })
 
@@ -78,10 +74,6 @@ const RentalDay = ({ data }) => {
 
     return map
   }
-
-  const filteredResult = result.filter((item, i) => {
-    return line[i]
-  })
 
   useEffect(() => {
     setAvgData(calculateAverages(partial))

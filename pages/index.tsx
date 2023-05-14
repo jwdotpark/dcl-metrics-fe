@@ -54,6 +54,7 @@ const GlobalPage: NextPage = (props: Props) => {
     latestPost,
   } = props
 
+  // eslint-disable-next-line no-unused-vars
   const [psa, setPSA] = useAtom(psaAtom)
 
   useEffect(() => {

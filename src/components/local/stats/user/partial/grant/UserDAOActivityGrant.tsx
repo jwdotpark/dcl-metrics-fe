@@ -1,5 +1,4 @@
 import {
-  useColorModeValue,
   Button,
   Text,
   Box,
@@ -16,6 +15,7 @@ import {
 } from "@chakra-ui/react"
 import GrandModalBody from "../grant/GrantModalBody"
 
+// eslint-disable-next-line no-unused-vars
 const UserDAOActivityGrant = ({ name, grants }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 

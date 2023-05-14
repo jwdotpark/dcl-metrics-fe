@@ -5,7 +5,6 @@ import {
   Flex,
   Text,
   Spacer,
-  useBreakpointValue,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -15,11 +14,11 @@ import {
   useDisclosure,
   Center,
   useColorModeValue,
-  Divider,
 } from "@chakra-ui/react"
 import Link from "next/link"
 import DelegatorsModalBody from "./DelegatorsModalBody"
 
+// eslint-disable-next-line no-unused-vars
 const UserDAOAvtivityDelegate = ({ name, delegate, delegators }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 

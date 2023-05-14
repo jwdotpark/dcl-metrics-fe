@@ -15,6 +15,7 @@ import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 
 const UserScenesVisited = ({ address, userAddressRes }) => {
+  // eslint-disable-next-line no-unused-vars
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)

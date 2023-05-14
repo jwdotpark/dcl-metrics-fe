@@ -1,6 +1,7 @@
 import { Text, Box, Select, useColorModeValue } from "@chakra-ui/react"
-import { ChangeEvent, Key } from "react"
+import { ChangeEvent } from "react"
 
+// eslint-disable-next-line no-unused-vars
 const SceneSelector = ({ res, selectedScene, setSelectedScene, name }) => {
   const sceneNames = res.map((scene: { name: string }) => scene.name)
 

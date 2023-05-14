@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import {
-  useColorModeValue,
   Box,
   Flex,
   Spacer,
@@ -15,7 +14,6 @@ import BoxTitle from "../../../layout/local/BoxTitle"
 import { parseUTC } from "../../../../lib/hooks/utils"
 import Link from "next/link"
 import ToolTip from "../../../layout/local/ToolTip"
-import { FiAlertTriangle } from "react-icons/fi"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 
@@ -73,6 +71,7 @@ const UserNFT = ({ data, address }) => {
     first_land_acquired_at: "Date of first land acquisition",
   }
 
+  // eslint-disable-next-line no-unused-vars
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
 
   return (

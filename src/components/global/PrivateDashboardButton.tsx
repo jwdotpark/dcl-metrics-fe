@@ -1,4 +1,4 @@
-import { Button, Tooltip, Text } from "@chakra-ui/react"
+import { Button, Text } from "@chakra-ui/react"
 import { FiBriefcase } from "react-icons/fi"
 import { useRouter } from "next/router"
 import { decrypt } from "../../lib/hooks/utils"
@@ -8,6 +8,7 @@ import ToolTip from "../layout/local/ToolTip"
 
 const PrivateDashboardButton = () => {
   const router = useRouter()
+  // eslint-disable-next-line no-unused-vars
   const [dashboardName, setDashboardName] = useState("")
 
   const handleClick = () => {

@@ -8,7 +8,6 @@ import {
   Tooltip,
 } from "@chakra-ui/react"
 import { SceneColor } from "../../../../../lib/hooks/utils"
-import { heatmapColor } from "../../../../../lib/hooks/utils"
 
 const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   const heatmapHeight = 400

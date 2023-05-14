@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react"
 import ProposalModalBody from "./ProposalModalBody"
 
+// eslint-disable-next-line no-unused-vars
 const UserDAOActivityProposal = ({ name, proposals }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 

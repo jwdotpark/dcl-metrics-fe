@@ -13,25 +13,11 @@ import {
   Td,
   Tr,
   Button,
-  useToast,
 } from "@chakra-ui/react"
 import Link from "next/link"
 import { parseUTC } from "../../../../../../lib/hooks/utils"
 
 const CollectionModalBody = ({ collections }) => {
-  const toast = useToast()
-
-  const handleToast = (value) => {
-    navigator.clipboard.writeText(value)
-    toast({
-      description: "Value " + value + " has been copied to the clipboard.",
-      duration: 1000,
-      isClosable: true,
-      position: "bottom-right",
-      status: "success",
-    })
-  }
-
   return (
     <Box mb="4">
       {collections.map((item) => {

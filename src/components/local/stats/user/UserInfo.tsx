@@ -1,12 +1,10 @@
 import {
   Box,
   Text,
-  useBreakpointValue,
   useToast,
   Flex,
   VStack,
   Spacer,
-  Center,
   Button,
 } from "@chakra-ui/react"
 import moment from "moment"
@@ -16,7 +14,7 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 const UserInfo = ({ data }) => {
   const {
     address,
-    avatar_url,
+
     dao_member,
     first_seen,
     last_seen,
@@ -24,15 +22,6 @@ const UserInfo = ({ data }) => {
     name,
     verified,
   } = data
-
-  const responsiveStr = useBreakpointValue({
-    xs: 5,
-    sm: 5,
-    md: 50,
-    lg: 20,
-    xl: 20,
-    base: 10,
-  })
 
   const toast = useToast()
 

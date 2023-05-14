@@ -9,11 +9,11 @@ import {
   Tr,
 } from "@chakra-ui/react"
 import moment from "moment"
-import SceneHelpTooltip from "./SceneHelpTooltip"
 import { description, name } from "../../../../../lib/data/sceneInfo"
 import momentDurationFormatSetup from "moment-duration-format"
 import ToolTip from "../../../../layout/local/ToolTip"
 
+// eslint-disable-next-line no-unused-vars
 const StatBox = ({ data, selectedScene }) => {
   momentDurationFormatSetup(moment)
   const dataArr = Object.entries(data)

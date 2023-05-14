@@ -1,13 +1,5 @@
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import {
-  Box,
-  Text,
-  Center,
-  Flex,
-  Image,
-  useColorModeValue,
-  Spacer,
-} from "@chakra-ui/react"
+import { Text, Center, Flex, Image, useColorModeValue } from "@chakra-ui/react"
 
 const UserProfile = ({ data }) => {
   const { avatar_url, name } = data

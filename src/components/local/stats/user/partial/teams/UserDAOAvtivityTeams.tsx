@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react"
 import TeamModalBody from "./TeamModalBody"
 
+// eslint-disable-next-line no-unused-vars
 const UserDAOActivityTeam = ({ name, teams }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Box } from "@chakra-ui/react"
 import ParcelInfoBox from "./partials/ParcelInfoBox"
 
