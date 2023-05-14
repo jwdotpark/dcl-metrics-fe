@@ -52,6 +52,13 @@ jobs:
         run: |
           yarn test --verbose
           yarn test:e2e
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+          # Send a notification if the tests fail
+          if: ${{ failure() }}
+          run: |
+            curl -s -X POST https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage -d chat_id=${TELEGRAM_TO} -d text="❌ Test failure in ${{ github.workflow }} on ${{ github.repository }}/${{ github.ref_name }} by ${{ github.actor }}"
 
   deploy:
     runs-on: ubuntu-latest
