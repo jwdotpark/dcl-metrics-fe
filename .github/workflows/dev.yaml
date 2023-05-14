@@ -43,6 +43,11 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
+
+      - name: Start server
+        run: |
+          yarn dev & sleep 10
+
       - name: Run test
         run: |
           yarn test --verbose
