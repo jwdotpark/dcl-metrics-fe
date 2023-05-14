@@ -18,47 +18,37 @@ import staticGlobalScenes from "../../public/data/staticGlobalScene.json"
 import SceneTable from "../../src/components/local/stats/SceneTable"
 
 export async function getStaticProps() {
+  let globalSceneRes, sceneRes
+
   if (isProd) {
-    const globalSceneRes = await getDataWithProxy(
+    globalSceneRes = await getDataWithProxy(
       globalScenesURL,
       "/global/scenes",
       staticGlobalScenes
     )
-    const sceneRes = await getDataWithProxy(
-      sceneURL,
-      "/scenes/top",
-      staticScene
-    )
-
-    const sceneFileNameArr = ["staticGlobalScenes", "staticScene"]
-
-    for (let i = 0; i < sceneFileNameArr.length; i++) {
-      writeFile(sceneFileNameArr[i], [globalSceneRes, sceneRes][i])
-    }
-
-    const result = { globalSceneRes, sceneRes }
-    return {
-      props: result,
-    }
+    sceneRes = await getDataWithProxy(sceneURL, "/scenes/top", staticScene)
   } else if (isDev && !isLocal) {
-    const globalSceneRes = await getData(
+    globalSceneRes = await getData(
       globalScenesURL,
       "/global/scenes",
       staticGlobalScenes
     )
-    const sceneRes = await getData(sceneURL, "/scenes/top", staticScene)
-
-    const result = { globalSceneRes, sceneRes }
-    return {
-      props: result,
-    }
+    sceneRes = await getData(sceneURL, "/scenes/top", staticScene)
   } else if (isLocal) {
-    const globalSceneRes = staticGlobalScenes
-    const sceneRes = staticScene
-    const result = { globalSceneRes, sceneRes }
-    return {
-      props: result,
-    }
+    globalSceneRes = staticGlobalScenes
+    sceneRes = staticScene
+  }
+
+  const sceneFileNameArr = ["staticGlobalScenes", "staticScene"]
+  for (let i = 0; i < sceneFileNameArr.length; i++) {
+    writeFile(sceneFileNameArr[i], [globalSceneRes, sceneRes][i])
+  }
+
+  return {
+    props: {
+      globalSceneRes,
+      sceneRes,
+    },
   }
 }
 
