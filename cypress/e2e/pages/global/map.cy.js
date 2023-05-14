@@ -47,3 +47,5 @@ describe("/map page", () => {
     cy.findByText("Description").should("be.visible")
   })
 })
+
+export {}

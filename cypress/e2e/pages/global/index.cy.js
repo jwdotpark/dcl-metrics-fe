@@ -39,3 +39,5 @@ describe("Index page", () => {
     })
   })
 })
+
+export {}

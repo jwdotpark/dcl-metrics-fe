@@ -41,7 +41,7 @@ describe("/scenes/name/uuid page", () => {
       const newChart = cy.get(".css-18nfyt1")
       expect(oldChart).not.to.equal(newChart)
     })
-    
+
     it("has value popup on hover", () => {
       cy.get(".css-18nfyt1")
         .trigger("mouseover")
@@ -50,3 +50,5 @@ describe("/scenes/name/uuid page", () => {
     })
   })
 })
+
+export {}

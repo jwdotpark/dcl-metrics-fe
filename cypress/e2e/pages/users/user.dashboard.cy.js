@@ -53,3 +53,5 @@ describe("/users/uuid page", () => {
     cy.contains("Total Requested").should("not.exist")
   })
 })
+
+export {}

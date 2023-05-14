@@ -6,3 +6,5 @@
 //import "./pages/users/user.dashboard.cy"
 //import "./pages/scenes/scenes.cy"
 //import "./pages/scenes/scene.dashboard.cy"
+
+export {}
