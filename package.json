@@ -12,7 +12,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prod": "yarn build && yarn start",
-    "test": "jest",
+    "test": "jest --verbose",
     "test:watch": "jest --watch",
     "test:e2e": "cypress run --headless",
     "cypress": "cypress open",
