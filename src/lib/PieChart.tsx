@@ -6,12 +6,12 @@ import {
   Center,
 } from "@chakra-ui/react"
 import { ResponsivePie } from "@nivo/pie"
-import { chartHeight } from "./data/chartInfo"
 import { lineChartAtom } from "./state/lineChartState"
 import { useAtom } from "jotai"
 
 const PieChart = ({ data }) => {
   const { colorMode } = useColorMode()
+  // eslint-disable-next-line no-unused-vars
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   return (
     <Box h={chartProps.height}>

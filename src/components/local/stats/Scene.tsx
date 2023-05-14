@@ -9,7 +9,6 @@ import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
 import SceneUserLineChart from "./scenes/SceneUserLineChart"
-import BoxWrapper from "../../layout/local/BoxWrapper"
 import SceneTitle from "../../layout/local/SceneTitle"
 
 const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {

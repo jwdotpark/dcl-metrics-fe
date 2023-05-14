@@ -14,14 +14,12 @@ import {
   AlertDialogContent,
   AlertDialogFooter,
   AlertDialogOverlay,
-  Tooltip,
   IconButton,
 } from "@chakra-ui/react"
 import { FiChevronsRight } from "react-icons/fi"
 import { useEffect, useRef, useState } from "react"
 import MapImage from "./MapImage"
 import ParcelInfoTable from "./ParcelInfoTable"
-import { useRouter } from "next/router"
 import { mutateStringToURL } from "../../../../lib/hooks/utils"
 import dclLogo from "../../../../../public/dcl-logo.svg"
 import Image from "next/image"
@@ -34,7 +32,6 @@ const ParcelInfoBox = ({
   isIncluded,
   getButtonProps,
 }) => {
-  const router = useRouter()
   const [fetchedInfo, setfetchedInfo] = useState({})
   const [isPicLoading, setIsPicLoading] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()

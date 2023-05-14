@@ -2,7 +2,6 @@ import {
   Box,
   Center,
   Button,
-  Tooltip,
   ButtonGroup,
   useColorModeValue,
 } from "@chakra-ui/react"

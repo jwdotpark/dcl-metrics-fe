@@ -1,13 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {
-  Box,
-  useColorModeValue,
-  useBreakpointValue,
-  Tooltip,
-} from "@chakra-ui/react"
+import { Box, useColorModeValue, useBreakpointValue } from "@chakra-ui/react"
 import { ResponsiveBar } from "@nivo/bar"
 import { SceneColor } from "../../../../../lib/hooks/utils"
-import TooltipTable from "../TableTooltip"
 import ToolTip from "../../../../layout/local/ToolTip"
 
 const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
@@ -113,24 +107,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram, selectedScene }) => {
               e.id + ": " + e.formattedValue + " in country: " + e.indexValue
             )
           }}
-          tooltip={(e) => {
-            return (
-              <Box
-                sx={{ backdropFilter: "blur(5px)" }}
-                pt="2"
-                color={useColorModeValue("black", "white")}
-                borderRadius="xl"
-                shadow="md"
-              >
-                {/* <TooltipTable
-                  bar={true}
-                  date={e.indexValue}
-                  count={e.value}
-                  degraded={false}
-                /> */}
-              </Box>
-            )
-          }}
+          tooltip={() => <></>}
         />
       </Box>
     </ToolTip>

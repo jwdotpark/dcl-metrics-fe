@@ -1,4 +1,4 @@
-import { Tooltip, Box, useBreakpointValue } from "@chakra-ui/react"
+import { Box, useBreakpointValue } from "@chakra-ui/react"
 import { FiInfo } from "react-icons/fi"
 import ToolTip from "../../../../layout/local/ToolTip"
 

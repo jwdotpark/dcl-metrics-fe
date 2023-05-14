@@ -58,11 +58,6 @@ const Warning = () => {
 }
 
 const ErrorBox = ({ error }) => {
-  const box = {
-    w: "100%",
-    bg: useColorModeValue("white", "gray.800"),
-  }
-
   return (
     <Box
       mb="4"

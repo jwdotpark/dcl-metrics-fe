@@ -45,13 +45,6 @@ const SceneMarathonUsers = ({ data }) => {
 
   const dataArr = Object.entries(data)
 
-  const addressWidth = useBreakpointValue({
-    base: 25,
-    sm: 25,
-    md: 35,
-    lg: 50,
-  })
-
   const MarathonUserTable = () => {
     const responsiveStr = useBreakpointValue({
       xs: 5,

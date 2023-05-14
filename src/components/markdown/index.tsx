@@ -36,6 +36,7 @@ export const MDYoutube = ({ id }) => {
   )
 }
 
+// eslint-disable-next-line no-unused-vars
 export const code = ({ node, inline, className, children, ...props }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const syntaxColor = useColorModeValue(oneLight, oneDark)

@@ -1,4 +1,4 @@
-import { Box, useColorModeValue } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 
 const AccordionBox = ({ children }) => {

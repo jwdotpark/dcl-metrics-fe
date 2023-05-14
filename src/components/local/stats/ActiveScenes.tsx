@@ -50,7 +50,7 @@ const ActiveScenes = ({ data }) => {
     item.color = color[i]
   })
 
-  const lineVisibility = result.map((item, i) => {
+  const lineVisibility = result.map(() => {
     return true
   })
 
@@ -67,10 +67,6 @@ const ActiveScenes = ({ data }) => {
     const map = [{ id: "Average Value", value: value.active_scenes }]
     return map
   }
-
-  const filteredResult = result.filter((item, i) => {
-    return line[i]
-  })
 
   useEffect(() => {
     setAvgData(calculateAverages(partial))

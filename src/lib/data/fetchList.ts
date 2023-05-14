@@ -1,20 +1,9 @@
 import staticGlobalDaily from "../../../public/data/staticGlobalDaily.json"
-import staticGlobalParcels from "../../../public/data/staticGlobalParcel.json"
-import staticGlobalScenes from "../../../public/data/staticGlobalScene.json"
-import staticGlobalUsers from "../../../public/data/staticGlobalUsers.json"
-import staticScene from "../../../public/data/cached_scenes_top.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
 import staticLandSales from "../../../public/data/staticLandSales.json"
 import staticTopLand from "../../../public/data/staticTopLand.json"
 import staticTopPick from "../../../public/data/staticTopPick.json"
-import {
-  globalDailyURL,
-  globalParcelURL,
-  globalScenesURL,
-  globalUsersURL,
-  sceneURL,
-  parcelURL,
-} from "./constant"
+import { globalDailyURL, parcelURL } from "./constant"
 
 export const globalRequestList = [
   {

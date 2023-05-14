@@ -51,7 +51,7 @@ const UniqueVisitedParcels = ({ data }) => {
     item.color = color[i]
   })
 
-  const lineVisibility = result.map((item, i) => {
+  const lineVisibility = result.map(() => {
     return true
   })
 
@@ -68,11 +68,6 @@ const UniqueVisitedParcels = ({ data }) => {
     const map = [{ id: "Average Value", value: value.active_parcels }]
     return map
   }
-
-  // filter result's values to only include the ones that are true in line
-  const filteredResult = result.filter((item, i) => {
-    return line[i]
-  })
 
   useEffect(() => {
     setAvgData(calculateAverages(partial))

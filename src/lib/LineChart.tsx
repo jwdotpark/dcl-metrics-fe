@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { ResponsiveLine } from "@nivo/line"
 import { Text, Box, Center, useColorModeValue } from "@chakra-ui/react"

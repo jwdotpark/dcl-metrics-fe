@@ -26,13 +26,8 @@ import {
   Tr,
   Button,
   ButtonGroup,
-  Spacer,
 } from "@chakra-ui/react"
-import {
-  convertSeconds,
-  mutateStringToURL,
-  formatTime,
-} from "../../../../lib/hooks/utils"
+import { mutateStringToURL, formatTime } from "../../../../lib/hooks/utils"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 import {
@@ -51,6 +46,7 @@ import {
 } from "react-icons/fi"
 
 const UserTopScenes = ({ address, userAddressRes }) => {
+  // eslint-disable-next-line no-unused-vars
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState([])

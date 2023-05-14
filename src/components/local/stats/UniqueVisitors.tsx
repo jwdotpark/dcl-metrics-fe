@@ -22,7 +22,7 @@ const UniqueVisitors = ({ data }) => {
   const [avgColor, setAvgColor] = useState(color)
 
   // TODO type this
-  dataArr.map((item, i) => {
+  dataArr.map((item) => {
     chartData.push({
       id: item[0],
       date: item[0],
@@ -59,7 +59,7 @@ const UniqueVisitors = ({ data }) => {
     item.color = color[i]
   })
 
-  const lineVisibility = result.map((item, i) => {
+  const lineVisibility = result.map(() => {
     return true
   })
 

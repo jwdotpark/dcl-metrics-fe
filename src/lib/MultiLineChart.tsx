@@ -3,7 +3,6 @@ import {
   Box,
   Center,
   useBreakpointValue,
-  Tooltip,
   useColorModeValue,
   Flex,
   Spacer,

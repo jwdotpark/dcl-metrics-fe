@@ -1,11 +1,4 @@
-import {
-  Box,
-  Image,
-  Text,
-  Center,
-  useColorModeValue,
-  useBreakpointValue,
-} from "@chakra-ui/react"
+import { Box, Image, Center, useColorModeValue } from "@chakra-ui/react"
 
 const TableMap = ({ mapUrl }) => {
   const size = 17

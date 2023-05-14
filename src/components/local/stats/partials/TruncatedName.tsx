@@ -1,4 +1,4 @@
-import { Text, useToast, Box } from "@chakra-ui/react"
+import { Text, useToast } from "@chakra-ui/react"
 import ToolTip from "../../../layout/local/ToolTip"
 
 const TruncateName = (name: string) => {

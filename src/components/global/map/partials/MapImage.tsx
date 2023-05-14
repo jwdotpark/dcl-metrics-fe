@@ -6,6 +6,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 
+// eslint-disable-next-line no-unused-vars
 const MapImage = ({ isPicLoading, name, image, isMapExpanded, isIncluded }) => {
   const height = [50, 75, 100]
   return (

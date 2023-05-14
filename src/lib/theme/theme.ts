@@ -1,4 +1,4 @@
-import { extendTheme, useColorModeValue } from "@chakra-ui/react"
+import { extendTheme } from "@chakra-ui/react"
 
 export const theme = extendTheme({
   styles: {
@@ -39,7 +39,6 @@ export const theme = extendTheme({
         marginBottom: "2rem",
         marginTop: "2rem",
       },
- 
     },
   },
 })
