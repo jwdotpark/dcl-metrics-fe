@@ -18,6 +18,11 @@
     "cypress": "cypress open",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test --verbose && yarn test:e2e"
+    }
+  },
   "dependencies": {
     "@apollo/client": "^3.7.4",
     "@chakra-ui/react": "^2.2.4",
