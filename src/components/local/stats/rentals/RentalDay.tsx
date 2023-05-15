@@ -28,8 +28,6 @@ const RentalDay = ({ data }) => {
     })
   })
 
-  console.log(chartData)
-
   const partial = sliceData(chartData, dateRange)
 
   const mapData = (id: string, key: number) => {
