@@ -122,8 +122,6 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     setIsLoading(false)
   }, [data.length])
 
-  console.log("user time spent", result)
-
   return (
     <BoxWrapper colSpan={[1, 1, 1, 4, 3]}>
       <BoxTitle

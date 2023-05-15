@@ -13,34 +13,56 @@ export const sliceData = (chartData: [], dateRange: number) => {
   }
 }
 
-export const sliceDate = (chartData: { date: Date }[], dateRange: number) => {
-  const partial = chartData.slice(-dateRange)
+// FIXME change the name of function for clarity
+export const sliceDateRange = (chartData: [], dateRange: number) => {
+  const partial = sliceData(chartData, dateRange)
+  // @ts-ignore
   const first = moment(partial[0].date).format(dateFormat)
   const last = moment(partial[partial.length - 1].date).format(dateFormat)
   return { date: { first: first, last: last } }
 }
 
 export const plotMissingDates = (data) => {
-  const timestamps = data.map((d) => d.date)
-  const minTimestamp = Math.min(...timestamps)
-  const maxTimestamp = Math.max(...timestamps)
-  const allTimestamps = Array.from(
-    { length: maxTimestamp - minTimestamp + 1 },
-    (_, i) => minTimestamp + i
+  const minTimestamp = Math.min.apply(
+    null,
+    data.map((d) => d.date)
   )
-  const yesterday = moment().subtract(1, "days").unix()
-  const missingTimestamps = allTimestamps.filter(
-    (timestamp) => timestamp > maxTimestamp && timestamp <= yesterday
+  const maxTimestamp = Math.max.apply(
+    null,
+    data.map((d) => d.date)
   )
-  const missingData = missingTimestamps.map((timestamp) => ({
-    date: timestamp,
-    id: 0,
-    rentals: 0,
-    volume: 0,
-  }))
-  const newData = [...data, ...missingData]
 
-  return newData.sort((a, b) => a.date - b.date)
+  const allTimestamps = []
+  for (
+    let timestamp = minTimestamp;
+    timestamp <= maxTimestamp;
+    timestamp += 86400
+  ) {
+    allTimestamps.push(timestamp)
+  }
+
+  const yesterday = moment().subtract(1, "days").unix()
+  for (
+    let timestamp = maxTimestamp;
+    timestamp <= yesterday;
+    timestamp += 86400
+  ) {
+    allTimestamps.push(timestamp)
+  }
+
+  allTimestamps.forEach((timestamp) => {
+    if (!data.find((d) => d.date === timestamp)) {
+      data.push({
+        date: timestamp,
+        id: 0,
+        rentals: 0,
+        volume: 0,
+      })
+    }
+  })
+
+  data.sort((a, b) => a.date - b.date)
+  return data
 }
 
 // FIXME type checking

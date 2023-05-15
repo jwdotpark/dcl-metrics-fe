@@ -5,7 +5,7 @@ import BoxTitle from "../../layout/local/BoxTitle"
 import {
   defaultDateRange,
   sliceData,
-  sliceDate,
+  sliceDateRange,
   findFalse,
 } from "../../../lib/data/chartInfo"
 import DateRangeButton from "./daterange/DateRangeButton"
@@ -35,7 +35,7 @@ const UniqueVisitors = ({ data }) => {
   })
 
   const partial = sliceData(chartData, dateRange)
-  const dateString = sliceDate(chartData, dateRange).date
+  const dateString = sliceDateRange(chartData, dateRange).date
 
   const mapData = (id: string, key: string) => {
     return {
