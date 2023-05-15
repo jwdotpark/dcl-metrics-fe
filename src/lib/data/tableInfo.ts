@@ -1,3 +1,6 @@
+export const baseUrl = "https://api.decentraland.org/v1/parcels/"
+export const mapUrl = "/map.png?width=auto&height=auto&size=25"
+
 export const dateRangeStr = (value) => {
   switch (value) {
     case 1:
@@ -26,9 +29,14 @@ export const sliceStr = (value: string) => {
   }
 }
 
-export const normalizeValue = (data) => {
-  const valueArr = []
-  const normalizedValueArr = []
+type Data = {
+  time_spent?: number
+  parcels_visited: number
+}
+
+export const normalizeValue = (data: Data[]): number[] => {
+  const valueArr: number[] = []
+  const normalizedValueArr: number[] = []
   for (let i = 0; i < data.length; i++) {
     valueArr.push(
       data[i].time_spent ? data[i].time_spent : data[i].parcels_visited
@@ -44,6 +52,3 @@ export const normalizeValue = (data) => {
   }
   return normalizedValueArr
 }
-
-export const baseUrl = "https://api.decentraland.org/v1/parcels/"
-export const mapUrl = "/map.png?width=auto&height=auto&size=25"
