@@ -13,10 +13,11 @@ export const sliceData = (chartData: [], dateRange: number) => {
   }
 }
 
-// FIXME change the name of function for clarity
-export const sliceDateRange = (chartData: [], dateRange: number) => {
-  const partial = sliceData(chartData, dateRange)
-  // @ts-ignore
+export const sliceDateRange = (
+  chartData: { date: Date }[],
+  dateRange: number
+) => {
+  const partial = chartData.slice(-dateRange)
   const first = moment(partial[0].date).format(dateFormat)
   const last = moment(partial[partial.length - 1].date).format(dateFormat)
   return { date: { first: first, last: last } }
@@ -65,7 +66,6 @@ export const plotMissingDates = (data) => {
   return data
 }
 
-// FIXME type checking
 export const findFalse = (obj) => {
   if (typeof obj !== "object" || obj === null) {
     throw new TypeError("not an object")
