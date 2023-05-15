@@ -1,0 +1,64 @@
+---
+title: "Project Update #9"
+date: "May 15, 2023"
+description: "Update #9: User Profiles"
+previewImage: "https://img.freepik.com/free-vector/buyer-persona-infographics-flat-design_23-2148659314.jpg"
+author: "Dax"
+published: true
+---
+
+![](https://img.freepik.com/free-vector/buyer-persona-infographics-flat-design_23-2148659314.jpg)
+
+## Introduction
+
+One of the first bar-napkin sketches I made when planning out DCL-Metrics was
+a screen with in-depth details about users and their interactions within the DCL
+ecosystem. This month, we're very excited to announce that this feature has been
+deployed and is already being used by DCL citizens! You check it out by adding
+your ethereum address (`0x...`) to this url: dcl-metrics.com/users/ADDRESS
+
+<br />
+For example: dcl-metrics.com/users/0x0506d39effcaefbc632cbe72c36c4d64759a665f
+
+<br />
+[https://www.dcl-metrics.com/](https://www.dcl-metrics.com/)
+
+## Highlights
+
+### Completed
+
+#### Backend
+
+- add user activity queries
+- fix bugs in reporting DAO delegators
+- migrate scenes data to primary database for faster queries
+- ensure all scenes are linkable by returning scene UUIDs in all related responses
+- when no recent data exists for a scene, return last existing data (grants
+  historic access to no longer deployed scenes)
+
+#### Frontend
+
+- link scenes from all components
+- implement user profile pages
+- a lot of testing, fixing and polishing
+- update size and styling of various components
+- adjustments for historic scene access
+- end-to-end testing
+
+
+## Blockers
+
+No blockers!
+
+## Next steps
+
+Next steps are various small fixes and refactoring on backend, testing on
+frontend and finishing our proposed roadmap!
+
+## Additional notes and links
+
+![](https://i.imgur.com/dzqv3OD.png)
+![](https://i.imgur.com/pxdRt5P.png)
+![](https://i.imgur.com/4MawV94.png)
+![](https://i.imgur.com/mo0VZAO.png)
+![](https://i.imgur.com/r1Rqg9K.png)
