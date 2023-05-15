@@ -1,21 +1,13 @@
-type Tile = {
-  scene: {
-    name: string
-  }
-}
-
-export const searchTiles = (
-  tiles: Record<string, Tile>,
-  keyword: string
-): Tile[] => {
+// @ts-nocheck
+export const searchTiles = (tiles: {}, keyword: string) => {
   if (!keyword) {
     return []
   }
 
-  let searchResult: Tile[] = []
-  const seenNames = new Set<string>()
+  let searchResult = []
+  const seenNames = new Set()
 
-  Object.values(tiles).filter((tile: Tile) => {
+  Object.values(tiles).filter((tile) => {
     if (tile.scene) {
       if (tile.scene.name.toLowerCase().includes(keyword.toLowerCase())) {
         if (!seenNames.has(tile.scene.name)) {

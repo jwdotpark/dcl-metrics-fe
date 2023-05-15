@@ -38,10 +38,10 @@ describe("FeedbackMenu", () => {
       await new Promise((resolve) => setTimeout(resolve, 500))
     })
 
-    // FIXME
+    // FIXME attach spy!
     //expect(sendFeedback).toHaveBeenCalledWith({ name, contact, msg: message })
 
-    // form being reset
+    //// form being reset
     //expect(nameInput).toHaveValue("")
     //expect(contactInput).toHaveValue("")
     //expect(messageInput).toHaveValue("")
