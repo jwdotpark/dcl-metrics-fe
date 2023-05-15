@@ -7,7 +7,6 @@ import {
 } from "../src/lib/hooks/utils"
 import { searchTiles } from "../src/lib/data/searchMap"
 import { tiles } from "./utils/mocks"
-import { sliceStr } from "../src/lib/data/tableInfo"
 
 describe("formatSeconds", () => {
   it("formats seconds into hours, minutes, and seconds", () => {
@@ -122,24 +121,5 @@ describe("searchTiles", () => {
         },
       },
     ])
-  })
-})
-
-describe("sliceStr", () => {
-  it("should return the original if it is shorter than 30 char", () => {
-    const result = sliceStr("Quick brown fox jumps")
-    expect(result).toEqual("Quick brown fox jumps")
-  })
-
-  it("should return a truncated string with '..' appended if longer than 30 char", () => {
-    const result = sliceStr("Quick brown fox jumps over the lazy dog")
-    expect(result).toEqual("Quick brown fox jumps over..")
-  })
-
-  it("should return an empty string if the input is null or undefined", () => {
-    const result1 = sliceStr(null)
-    const result2 = sliceStr(undefined)
-    expect(result1).toEqual("")
-    expect(result2).toEqual("")
   })
 })
