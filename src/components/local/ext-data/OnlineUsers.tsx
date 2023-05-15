@@ -6,7 +6,7 @@ import LineChart from "../../../lib/LineChart"
 import { useState, useEffect } from "react"
 import {
   sliceData,
-  date,
+  sliceDate,
   chartHeight,
   findFalse,
 } from "../../../lib/data/chartInfo"
@@ -40,7 +40,7 @@ const OnlineUsers = () => {
   }
 
   const partial = sliceData(chartData, dateRange)
-  const dateString = partial.length > 0 && date(partial, dateRange).date
+  const dateString = partial.length > 0 && sliceDate(partial, dateRange).date
 
   const mapData = (id: string) => {
     return {

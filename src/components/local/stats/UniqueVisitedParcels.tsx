@@ -4,7 +4,7 @@ import BoxWrapper from "../../layout/local/BoxWrapper"
 import {
   defaultDateRange,
   sliceData,
-  date,
+  sliceDate,
   findFalse,
 } from "../../../lib/data/chartInfo"
 import BoxTitle from "../../layout/local/BoxTitle"
@@ -32,7 +32,7 @@ const UniqueVisitedParcels = ({ data }) => {
   })
 
   const partial = sliceData(chartData, dateRange)
-  const dateString = date(chartData, dateRange).date
+  const dateString = sliceDate(chartData, dateRange).date
 
   const mapData = (id: string, key: number) => {
     return {

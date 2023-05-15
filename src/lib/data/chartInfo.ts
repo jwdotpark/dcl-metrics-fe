@@ -13,12 +13,9 @@ export const sliceData = (chartData: [], dateRange: number) => {
   }
 }
 
-// FIXME change the name of function for clarity
-export const date = (chartData: [], dateRange: number) => {
-  const partial = sliceData(chartData, dateRange)
-  // @ts-ignore
+export const sliceDate = (chartData: { date: Date }[], dateRange: number) => {
+  const partial = chartData.slice(-dateRange)
   const first = moment(partial[0].date).format(dateFormat)
-  // @ts-ignore
   const last = moment(partial[partial.length - 1].date).format(dateFormat)
   return { date: { first: first, last: last } }
 }
