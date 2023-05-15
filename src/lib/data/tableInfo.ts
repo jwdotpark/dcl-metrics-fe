@@ -15,10 +15,12 @@ export const dateRangeStr = (value) => {
   }
 }
 
-export const sliceStr = (value) => {
+export const sliceStr = (value: string) => {
   const length = 30
-  if (value && value.length > length) {
-    return value.slice(0, length) + ".."
+  if (value === null || value === undefined) {
+    return ""
+  } else if (value.length > length) {
+    return value.slice(0, length - 4) + ".."
   } else {
     return value
   }
