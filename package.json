@@ -15,6 +15,7 @@
     "test": "jest --verbose",
     "test:watch": "jest --watch",
     "test:e2e": "cypress run --headless",
+    "test:all": "next lint && jest && cypress run --headless",
     "cypress": "cypress open",
     "prepare": "husky install"
   },
