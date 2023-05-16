@@ -5,6 +5,7 @@ import DateRangeButton from "../daterange/DateRangeButton"
 import { defaultDateRange } from "../../../../lib/data/chartInfo"
 import { dateRangeStr } from "../../../../lib/data/tableInfo"
 import TableComponent from "../partials/TableComponent"
+import { Box } from "@chakra-ui/react"
 
 const ScenesTimeSpentAFK = ({ res }) => {
   const [dateRange, setDateRange] = useState(defaultDateRange)
@@ -44,13 +45,15 @@ const ScenesTimeSpentAFK = ({ res }) => {
         name="scenes_avg_time_spent_afk"
         yesterday={true}
       />
-      <TableComponent
-        data={tableData}
-        dateRange={dateRange}
-        propertyName={bodyList[0]}
-        headList={headList}
-        bodyList={bodyList}
-      />
+      <Box data-testid="ScenesTimeSpentAFKTable">
+        <TableComponent
+          data={tableData}
+          dateRange={dateRange}
+          propertyName={bodyList[0]}
+          headList={headList}
+          bodyList={bodyList}
+        />
+      </Box>
     </BoxWrapper>
   )
 }

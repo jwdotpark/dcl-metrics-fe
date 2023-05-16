@@ -5,6 +5,7 @@ import DateRangeButton from "../daterange/DateRangeButton"
 import { defaultDateRange } from "../../../../lib/data/chartInfo"
 import { dateRangeStr } from "../../../../lib/data/tableInfo"
 import TableComponent from "../partials/TableComponent"
+import { Box } from "@chakra-ui/react"
 
 const TopScenesVisitors = ({ res }) => {
   const [dateRange, setDateRange] = useState(defaultDateRange)
@@ -44,14 +45,15 @@ const TopScenesVisitors = ({ res }) => {
         name="scenes_unique_visitors"
         yesterday={true}
       />
-      <TableComponent
-        data={tableData}
-        dateRange={dateRange}
-        propertyName={bodyList[0]}
-        headList={headList}
-        bodyList={bodyList}
-        data-testid="test"
-      />
+      <Box data-testid='topScenesVisitorsTable'>
+        <TableComponent
+          data={tableData}
+          dateRange={dateRange}
+          propertyName={bodyList[0]}
+          headList={headList}
+          bodyList={bodyList}
+        />
+      </Box>
     </BoxWrapper>
   )
 }

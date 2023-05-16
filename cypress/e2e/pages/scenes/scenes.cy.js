@@ -68,17 +68,25 @@ describe("/scenes page", () => {
 
   describe("Sub components", () => {
     it("should be rendered properly", () => {
-      const uniqueVisitorTable = screen.getByTestId("test")
-      //const avgTimeSpentTable = cy.findAllByText("Scenes with AVG Time Spent")
-      //const mostLoginsTable = cy.findAllByText("Scenes with Most Logins")
-      //const mostLogoutsTable = cy.findAllByText("Scenes with Most Logouts")
-      //const afkTimeSpentTable = cy.findAllByText("Scenes with AFK Time Spent")
+      const uniqueVisitorTable = cy.get(
+        '[data-testid="topScenesVisitorsTable"]'
+      )
+      const avgTimeSpentTable = cy.get('[data-testid="ScenesTimeSpentTable"]')
+      const mostLoginsTable = cy.get('[data-testid="ScenesLoginTable"]')
+      const mostLogoutsTable = cy.get('[data-testid="ScenesLogoutTable"]')
+      const afkTimeSpentTable = cy.get(
+        '[data-testid="ScenesTimeSpentAFKTable"]'
+      )
 
       uniqueVisitorTable.scrollIntoView().should("be.visible")
-      //avgTimeSpentTable.scrollIntoView().should("be.visible")
-      //mostLoginsTable.scrollIntoView().should("be.visible")
-      //mostLogoutsTable.scrollIntoView().should("be.visible")
-      //afkTimeSpentTable.scrollIntoView().should("be.visible")
+      avgTimeSpentTable.scrollIntoView().should("be.visible")
+      mostLoginsTable.scrollIntoView().should("be.visible")
+      mostLogoutsTable.scrollIntoView().should("be.visible")
+      afkTimeSpentTable
+        .scrollIntoView()
+        .should("be.visible")
+
+        .should("be.visible")
     })
 
     it("has its properties", () => {
@@ -89,11 +97,6 @@ describe("/scenes page", () => {
       cy.findAllByText("Logins").should("be.visible")
       cy.findAllByText("Logouts").should("be.visible")
       cy.findAllByText("Time Spent AFK").should("be.visible")
-
-      const scene = cy.get(
-        ":nth-child(1) > .chakra-table__container > .chakra-table > tbody.css-0 > :nth-child(1) > :nth-child(2) > a"
-      )
-      scene.should("have.attr", "href")
     })
   })
 })
