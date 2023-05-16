@@ -1,6 +1,9 @@
 import { defineConfig } from "cypress"
 
 export default defineConfig({
+  experimental: {
+    experimentalMemoryManagement: true,
+  },
   e2e: {
     setupNodeEvents(on, config) {
       if (config.isTextTerminal) {

@@ -23,18 +23,17 @@ describe("Index page", () => {
         subComponent.should("be.visible")
 
         const buttons = cy.get(`div[data-testid="${dataTestId}"] button`)
-        //buttons.should("have.length", 3).and("be.visible")
 
         let initialCount
 
-        subComponent.should(($el) => {
-          initialCount = $el.text().trim()
+        subComponent.should((val) => {
+          initialCount = val.text().trim()
         })
 
         buttons.eq(1).click({ force: true })
 
-        subComponent.should(($el) => {
-          const updatedCount = $el.text().trim()
+        subComponent.should((val) => {
+          const updatedCount = val.text().trim()
           expect(updatedCount).not.to.equal(initialCount)
         })
       })
