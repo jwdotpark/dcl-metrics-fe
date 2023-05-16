@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
@@ -64,7 +64,7 @@ const GlobalPage: NextPage = (props: Props) => {
   return (
     <Layout>
       <Box w="100%">
-        <Box mb="4">
+        <Box mb="4" data-testid="uniqueVisitors">
           <UniqueVisitors data={globalDailyRes} />
         </Box>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">

@@ -1,5 +1,7 @@
 // @ts-nocheck
 import { useEffect, useState } from "react"
+import { Box } from "@chakra-ui/react"
+
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import {
   defaultDateRange,
@@ -94,30 +96,32 @@ const UniqueVisitedParcels = ({ data }) => {
 
   return (
     <BoxWrapper colSpan={3}>
-      <BoxTitle
-        name="Parcel Visitors"
-        date={dateString}
-        avgData={avgData}
-        slicedData={partial}
-        color={avgColor}
-        line={line}
-        setLine={setLine}
-      />
-      <DateRangeButton
-        dateRange={dateRange}
-        setDateRange={setDateRange}
-        validLegnth={90}
-        name="global_parcels_visited"
-        yesterday={false}
-      />
-      <LineChart
-        data={result}
-        color={lineColor}
-        name="uniqueVisitors"
-        avgData={avgData}
-        line={line}
-        avgColor={avgColor}
-      />
+      <Box data-testid="parcelVisitors">
+        <BoxTitle
+          name="Parcel Visitors"
+          date={dateString}
+          avgData={avgData}
+          slicedData={partial}
+          color={avgColor}
+          line={line}
+          setLine={setLine}
+        />
+        <DateRangeButton
+          dateRange={dateRange}
+          setDateRange={setDateRange}
+          validLegnth={90}
+          name="global_parcels_visited"
+          yesterday={false}
+        />
+        <LineChart
+          data={result}
+          color={lineColor}
+          name="uniqueVisitors"
+          avgData={avgData}
+          line={line}
+          avgColor={avgColor}
+        />
+      </Box>
     </BoxWrapper>
   )
 }

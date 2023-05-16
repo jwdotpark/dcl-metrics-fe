@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useEffect, useState } from "react"
+import { Box } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import {
   defaultDateRange,
@@ -93,30 +94,32 @@ const ActiveScenes = ({ data }) => {
 
   return (
     <BoxWrapper colSpan={3}>
-      <BoxTitle
-        name="Scenes Visited"
-        date={dateString}
-        avgData={avgData}
-        slicedData={partial}
-        color={avgColor}
-        line={line}
-        setLine={setLine}
-      />
-      <DateRangeButton
-        dateRange={dateRange}
-        setDateRange={setDateRange}
-        validLegnth={90}
-        name="global_scenes_visited"
-        yesterday={false}
-      />
-      <LineChart
-        data={result}
-        color={lineColor}
-        name="activeScenes"
-        avgData={avgData}
-        line={line}
-        avgColor={avgColor}
-      />
+      <Box data-testid="scenesVisited">
+        <BoxTitle
+          name="Scenes Visited"
+          date={dateString}
+          avgData={avgData}
+          slicedData={partial}
+          color={avgColor}
+          line={line}
+          setLine={setLine}
+        />
+        <DateRangeButton
+          dateRange={dateRange}
+          setDateRange={setDateRange}
+          validLegnth={90}
+          name="global_scenes_visited"
+          yesterday={false}
+        />
+        <LineChart
+          data={result}
+          color={lineColor}
+          name="activeScenes"
+          avgData={avgData}
+          line={line}
+          avgColor={avgColor}
+        />
+      </Box>
     </BoxWrapper>
   )
 }
