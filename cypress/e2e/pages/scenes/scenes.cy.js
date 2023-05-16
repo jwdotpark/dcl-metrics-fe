@@ -14,7 +14,7 @@ describe("/scenes page", () => {
 
   describe("Top 50 Scenes component", () => {
     it("should be rendered properly", () => {
-      const top50SceneTable = cy.get(".css-hp15d1 > :nth-child(1)")
+      const top50SceneTable = cy.get(".css-1q361w3")
       top50SceneTable.scrollIntoView().should("be.visible")
     })
 
@@ -66,11 +66,11 @@ describe("/scenes page", () => {
 
   describe("Sub components", () => {
     it("should be rendered properly", () => {
-      const uniqueVisitorTable = cy.get(".css-hp15d1 > :nth-child(1)")
-      const avgTimeSpentTable = cy.get(".css-hp15d1 > :nth-child(2)")
-      const mostLoginsTable = cy.get(".css-hp15d1 > :nth-child(3)")
-      const mostLogoutsTable = cy.get(".css-hp15d1 > :nth-child(4)")
-      const afkTimeSpentTable = cy.get(".css-hp15d1 > :nth-child(5)")
+      const uniqueVisitorTable = cy.get(".css-17bgf2u > :nth-child(1)")
+      const avgTimeSpentTable = cy.get(".css-17bgf2u > :nth-child(2)")
+      const mostLoginsTable = cy.get(".css-17bgf2u > :nth-child(3)")
+      const mostLogoutsTable = cy.get(".css-17bgf2u > :nth-child(4)")
+      const afkTimeSpentTable = cy.get(".css-17bgf2u > :nth-child(5)")
 
       uniqueVisitorTable.scrollIntoView().should("be.visible")
       avgTimeSpentTable.scrollIntoView().should("be.visible")
