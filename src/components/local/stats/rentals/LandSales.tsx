@@ -109,7 +109,7 @@ const LandSales = ({ data }) => {
 
   return (
     <BoxWrapper colSpan={0}>
-      <Box h="auto">
+      <Box h="auto" data-testid="landSales">
         <BoxTitle
           name="Land Sales"
           date={""}

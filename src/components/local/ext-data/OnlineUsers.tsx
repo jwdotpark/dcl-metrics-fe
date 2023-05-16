@@ -128,35 +128,37 @@ const OnlineUsers = () => {
 
   return (
     <BoxWrapper colSpan={3}>
-      <BoxTitle
-        name={`Online Users`}
-        date={""}
-        avgData={avgData}
-        slicedData={{}}
-        color={color}
-        description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
-      />
-      <Box>
-        {!isLoading ? (
-          <>
-            <LineChart
-              data={result}
-              color={color}
-              name="onlineUsers"
-              avgData={avgData}
-              avgColor={avgColor}
-              line={line}
-            />
-            <BottomLegend
-              description="UTC, source from"
-              link="https://status.decentraland.org/metrics"
-            />
-          </>
-        ) : (
-          <Center h={chartHeight}>
-            <Spinner />
-          </Center>
-        )}
+      <Box data-testid="onlineUsers">
+        <BoxTitle
+          name={`Online Users`}
+          date={""}
+          avgData={avgData}
+          slicedData={{}}
+          color={color}
+          description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
+        />
+        <Box>
+          {!isLoading ? (
+            <>
+              <LineChart
+                data={result}
+                color={color}
+                name="onlineUsers"
+                avgData={avgData}
+                avgColor={avgColor}
+                line={line}
+              />
+              <BottomLegend
+                description="UTC, source from"
+                link="https://status.decentraland.org/metrics"
+              />
+            </>
+          ) : (
+            <Center h={chartHeight}>
+              <Spinner />
+            </Center>
+          )}
+        </Box>
       </Box>
     </BoxWrapper>
   )

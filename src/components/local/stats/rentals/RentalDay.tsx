@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from "react"
+import { Box } from "@chakra-ui/react"
 import { sliceData } from "../../../../lib/data/chartInfo"
 import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
@@ -82,33 +83,35 @@ const RentalDay = ({ data }) => {
 
   return (
     <BoxWrapper colSpan={[4, 4, 4, 4, 4]}>
-      <BoxTitle
-        name="Rentals Daily"
-        date={""}
-        avgData={avgData}
-        slicedData={partial}
-        color={color}
-        description="Daily rentals and volume in the last period"
-        line={line}
-        setLine={setLine}
-      />
-      <DateRangeButton
-        dateRange={dateRange}
-        setDateRange={setDateRange}
-        validLegnth={chartData.length - 1}
-        name="rental_day"
-        yesterday={false}
-      />
-      <LineChart
-        data={result}
-        color={color}
-        name="daily_rental"
-        log={true}
-        rentalData={rentalData}
-        avgData={avgData}
-        avgColor={{}}
-        line={{}}
-      />
+      <Box data-testid="rentalDaily">
+        <BoxTitle
+          name="Rentals Daily"
+          date={""}
+          avgData={avgData}
+          slicedData={partial}
+          color={color}
+          description="Daily rentals and volume in the last period"
+          line={line}
+          setLine={setLine}
+        />
+        <DateRangeButton
+          dateRange={dateRange}
+          setDateRange={setDateRange}
+          validLegnth={chartData.length - 1}
+          name="rental_day"
+          yesterday={false}
+        />
+        <LineChart
+          data={result}
+          color={color}
+          name="daily_rental"
+          log={true}
+          rentalData={rentalData}
+          avgData={avgData}
+          avgColor={{}}
+          line={{}}
+        />
+      </Box>
     </BoxWrapper>
   )
 }
