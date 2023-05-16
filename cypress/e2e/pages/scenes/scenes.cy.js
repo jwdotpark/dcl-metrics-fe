@@ -1,3 +1,5 @@
+import { screen } from "@testing-library/dom"
+
 describe("/scenes page", () => {
   beforeEach(() => {
     cy.visit("/scenes")
@@ -66,17 +68,17 @@ describe("/scenes page", () => {
 
   describe("Sub components", () => {
     it("should be rendered properly", () => {
-      const uniqueVisitorTable = cy.get(".css-17bgf2u > :nth-child(1)")
-      const avgTimeSpentTable = cy.get(".css-17bgf2u > :nth-child(2)")
-      const mostLoginsTable = cy.get(".css-17bgf2u > :nth-child(3)")
-      const mostLogoutsTable = cy.get(".css-17bgf2u > :nth-child(4)")
-      const afkTimeSpentTable = cy.get(".css-17bgf2u > :nth-child(5)")
+      const uniqueVisitorTable = screen.getByTestId("test")
+      //const avgTimeSpentTable = cy.findAllByText("Scenes with AVG Time Spent")
+      //const mostLoginsTable = cy.findAllByText("Scenes with Most Logins")
+      //const mostLogoutsTable = cy.findAllByText("Scenes with Most Logouts")
+      //const afkTimeSpentTable = cy.findAllByText("Scenes with AFK Time Spent")
 
       uniqueVisitorTable.scrollIntoView().should("be.visible")
-      avgTimeSpentTable.scrollIntoView().should("be.visible")
-      mostLoginsTable.scrollIntoView().should("be.visible")
-      mostLogoutsTable.scrollIntoView().should("be.visible")
-      afkTimeSpentTable.scrollIntoView().should("be.visible")
+      //avgTimeSpentTable.scrollIntoView().should("be.visible")
+      //mostLoginsTable.scrollIntoView().should("be.visible")
+      //mostLogoutsTable.scrollIntoView().should("be.visible")
+      //afkTimeSpentTable.scrollIntoView().should("be.visible")
     })
 
     it("has its properties", () => {

@@ -11,7 +11,6 @@ const TopScenesVisitors = ({ res }) => {
   const headList = ["Scenes Map", "Name", "Visit Count"]
   const bodyList = ["visitors", "map_url", "scene_name", "unique_addresses"]
 
-
   // mapping data
   const date = dateRangeStr(dateRange)
   let tableData = res[date][bodyList[0]]
@@ -51,6 +50,7 @@ const TopScenesVisitors = ({ res }) => {
         propertyName={bodyList[0]}
         headList={headList}
         bodyList={bodyList}
+        data-testid="test"
       />
     </BoxWrapper>
   )
