@@ -1,5 +1,3 @@
-import { screen } from "@testing-library/dom"
-
 describe("/scenes page", () => {
   beforeEach(() => {
     cy.visit("/scenes")
