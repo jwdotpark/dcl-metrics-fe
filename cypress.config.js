@@ -16,6 +16,7 @@ export default defineConfig({
     viewportWidth: 1280,
     viewportHeight: 720,
     baseUrl: "http://localhost:3000",
+    numTestsKeptInMemory: 0,
     video: false,
     screenshotOnRunFailure: false,
     excludeSpecPattern: ["/cypress/e2e/all.spec.cy.js"],
