@@ -36,13 +36,12 @@ const Map = ({
     y: 0,
   })
   const [tiles, setTiles] = useState([])
-  const [isHover, setIsHover] = useState(false)
+  //const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
   const [zoom, setZoom] = useState(1)
   const [selected, setSelected] = useState([])
   const [selectedScene, setSelectedScene] = useState([])
   const prevScene = usePrev(selectedScene)
-  const isIncluded = selectedScene?.includes(selectedParcel?.id)
   const [center, setCenter] = useState({ x: 0, y: 0 })
   const [searchResult, setSearchResult] = useState([])
   const [keyword, setKeyword] = useState("")
@@ -53,8 +52,9 @@ const Map = ({
 
   const [selectedProp, setSelectedProp] = useState(heatmapProperties[0])
   const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
-  
+
   // infobox
+  const isIncluded = selectedScene?.includes(selectedParcel?.id)
   const { getButtonProps, getDisclosureProps, isOpen, onToggle } =
     useDisclosure()
   const [hidden, setHidden] = useState(!isOpen)
@@ -243,12 +243,12 @@ const Map = ({
             bg="#25232A"
             borderRadius="xl"
             shadow="md"
-            onMouseEnter={() => {
-              setIsHover(true)
-            }}
-            onMouseLeave={() => {
-              setIsHover(false)
-            }}
+            //onMouseEnter={() => {
+            //  setIsHover(true)
+            //}}
+            //onMouseLeave={() => {
+            //  setIsHover(false)
+            //}}
           >
             {!isMapLoading ? (
               <>
