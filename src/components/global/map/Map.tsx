@@ -351,5 +351,5 @@ const Map = ({
   )
 }
 
-export const MapWrapper = memo(Map)
-export default MapWrapper
+//export const MapWrapper = memo(Map)
+export default memo(Map)
