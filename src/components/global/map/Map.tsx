@@ -16,6 +16,7 @@ import MapButtonGroup from "./partials/MapButtonGroup"
 import CollapsibleMapBox from "./partials/CollapsibleMapBox"
 import { FullScreen, useFullScreenHandle } from "react-full-screen"
 import { searchTiles } from "../../../lib/data/searchMap"
+import { COLOR_BY_TYPE, heatmapProperties } from "../../../lib/data/constant"
 
 const Map = ({
   h,
@@ -34,60 +35,25 @@ const Map = ({
     x: 0,
     y: 0,
   })
-  const handle = useFullScreenHandle()
-
-  const COLOR_BY_TYPE: Record<number | string, string> = {
-    0: "#ff9990", // my parcels
-    1: "#ff4053", // my parcels on sale
-    2: "#ff9990", // my estates
-    3: "#ff4053", // my estates on sale
-    4: "#ffbd33", // parcels/estates where I have permissions
-    district: "#5054D4", // districts
-    6: "#563db8", // contributions
-    road: "#716C7A", // roads
-    plaza: "#70AC76", // plazas
-    owned: "#3D3A46", // owned parcel/estate
-    10: "#3D3A46", // parcels on sale (we show them as owned parcels)
-    unowned: "#09080A", // unowned pacel/estate
-    12: "#18141a", // background
-    13: "#110e13", // loading odd
-    14: "#0d0b0e", // loading even
-    // new properties
-    total_avg_time_spent: "#8be9fd",
-    total_avg_time_spent_afk: "#50fa7b",
-    total_logins: "#ffb86c",
-    total_logouts: "#ff79c6",
-    total_visitors: "#bd93f9",
-    deploy_count: "#ff5555",
-    selected_scene: "#FF9990",
-  }
-
-  const properties = [
-    { name: "max_concurrent_users" },
-    { name: "visitor_intensity" },
-    { name: "avg_time_spent_intensity" },
-    { name: "avg_time_spent_afk_intensity" },
-    { name: "login_intensity" },
-    { name: "logout_intensity" },
-  ]
-
   const [tiles, setTiles] = useState([])
   const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
   const [zoom, setZoom] = useState(1)
-  const btnBg = useColorModeValue("gray.100", "gray.900")
-  const textColor = useColorModeValue("gray.100", "gray.900")
   const [selected, setSelected] = useState([])
   const [selectedScene, setSelectedScene] = useState([])
   const prevScene = usePrev(selectedScene)
   const isIncluded = selectedScene?.includes(selectedParcel?.id)
-  const [selectedProp, setSelectedProp] = useState(properties[0])
-  const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
   const [center, setCenter] = useState({ x: 0, y: 0 })
   const [searchResult, setSearchResult] = useState([])
   const [keyword, setKeyword] = useState("")
   const [searchResultID, setSearchResultID] = useState({ x: 0, y: 0 })
+  const handle = useFullScreenHandle()
+  const btnBg = useColorModeValue("gray.100", "gray.900")
+  const textColor = useColorModeValue("gray.100", "gray.900")
 
+  const [selectedProp, setSelectedProp] = useState(heatmapProperties[0])
+  const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
+  
   // infobox
   const { getButtonProps, getDisclosureProps, isOpen, onToggle } =
     useDisclosure()
@@ -293,7 +259,7 @@ const Map = ({
                     zoom={zoom}
                     setZoom={setZoom}
                     tempCoord={tempCoord}
-                    properties={properties}
+                    heatmapProperties={heatmapProperties}
                     selectedProp={selectedProp}
                     setSelectedProp={setSelectedProp}
                     textColor={textColor}

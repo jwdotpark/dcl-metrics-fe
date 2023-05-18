@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Text,
   Menu,
@@ -18,7 +19,12 @@ import {
 } from "@chakra-ui/react"
 import { FiMenu } from "react-icons/fi"
 
-const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
+const MapMenu = ({
+  heatmapProperties,
+  selectedProp,
+  setSelectedProp,
+  btnBg,
+}) => {
   const formatName = (name) => {
     return name
       .replace(/_/g, " ")
@@ -96,13 +102,12 @@ const MapMenu = ({ properties, selectedProp, setSelectedProp, btnBg }) => {
   const MapMenuList = () => {
     return (
       <>
-        {properties.map((property) => {
+        {heatmapProperties.map((property) => {
           return (
             <MenuItem
               className={`umami--click--heatmap_` + property.name}
               key={property.name}
               justifyContent="flex-end"
-              // eslint-disable-next-line react-hooks/rules-of-hooks
               bg={useColorModeValue("gray.50", "gray.900")}
               onClick={() => {
                 setSelectedProp(property)
