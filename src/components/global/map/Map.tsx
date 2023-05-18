@@ -46,7 +46,7 @@ const Map = ({
   const [searchResult, setSearchResult] = useState([])
   const [keyword, setKeyword] = useState("")
   const [searchResultID, setSearchResultID] = useState({ x: 0, y: 0 })
-  const handle = useFullScreenHandle()
+  const handleFullscreen = useFullScreenHandle()
   const btnBg = useColorModeValue("gray.100", "gray.900")
   const textColor = useColorModeValue("gray.100", "gray.900")
   const [selectedProp, setSelectedProp] = useState(heatmapProperties[0])
@@ -228,28 +228,19 @@ const Map = ({
         isMapExpanded ? "column" : "row",
       ]}
       m="4"
+      border="solid 1px"
+      borderColor={useColorModeValue("gray.200", "gray.600")}
+      borderRadius="xl"
+      shadow="md"
     >
-      <Box
-        w="100%"
-        h="auto"
-        border="solid 1px"
-        borderColor={useColorModeValue("gray.200", "gray.600")}
-        borderRadius="xl"
-        shadow="md"
-      >
-        <FullScreen handle={handle}>
+      <Box w="100%" h="auto" minH="350">
+        <FullScreen handle={handleFullscreen}>
           <Box
             overflow="hidden"
             h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
             bg="#25232A"
             borderRadius="xl"
             shadow="md"
-            //onMouseEnter={() => {
-            //  setIsHover(true)
-            //}}
-            //onMouseLeave={() => {
-            //  setIsHover(false)
-            //}}
           >
             {!isMapLoading ? (
               <>
@@ -265,7 +256,7 @@ const Map = ({
                     setSelectedProp={setSelectedProp}
                     textColor={textColor}
                     btnBg={btnBg}
-                    handle={handle}
+                    handle={handleFullscreen}
                     setMapHeight={setMapHeight}
                     keyword={keyword}
                     setKeyword={setKeyword}
@@ -301,7 +292,7 @@ const Map = ({
                   isMapExpanded={isMapExpanded}
                   mapBoxVerticalSize={mapBoxVerticalSize}
                   mapHeight={mapHeight}
-                  handle={handle}
+                  handle={handleFullscreen}
                 />
               </>
             ) : (
@@ -318,5 +309,4 @@ const Map = ({
   )
 }
 
-//export const MapWrapper = memo(Map)
 export default memo(Map)
