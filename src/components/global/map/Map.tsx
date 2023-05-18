@@ -31,12 +31,12 @@ const Map = ({
   parcelData,
   setMapHeight,
 }) => {
+  // map
   const [tempCoord, setTempCoord] = useState({
     x: 0,
     y: 0,
   })
   const [tiles, setTiles] = useState([])
-  //const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
   const [zoom, setZoom] = useState(1)
   const [selected, setSelected] = useState([])
@@ -49,7 +49,6 @@ const Map = ({
   const handle = useFullScreenHandle()
   const btnBg = useColorModeValue("gray.100", "gray.900")
   const textColor = useColorModeValue("gray.100", "gray.900")
-
   const [selectedProp, setSelectedProp] = useState(heatmapProperties[0])
   const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
 
@@ -77,6 +76,7 @@ const Map = ({
         }
       : null
   }
+
   const handleClick = (x: number, y: number) => {
     const id = x + "," + y
     setSelectedParcel(tiles[id])
@@ -111,7 +111,7 @@ const Map = ({
     setIsMapLoading(false)
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // FIXME
   const injectTiles = () => {
     // @ts-ignore
     parcelData.map((tile) => {
@@ -119,6 +119,16 @@ const Map = ({
       tiles[id] = { ...tiles[id], ...tile }
     })
   }
+
+  //const injectTiles = useCallback(() => {
+  //  parcelData.forEach((tile) => {
+  //    const id = tile.coordinates;
+  //    setTiles((prevTiles) => ({
+  //      ...prevTiles,
+  //      [id]: { ...prevTiles[id], ...tile },
+  //    }));
+  //  });
+  //}, [parcelData, setTiles]);
 
   const tileColor = (tile) => {
     if (!tile[selectedProp.name]) {
