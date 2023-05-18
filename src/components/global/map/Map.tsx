@@ -187,7 +187,8 @@ const Map = ({
 
   useEffect(() => {
     injectTiles()
-  }, [injectTiles, tiles])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tiles])
 
   useEffect(() => {
     if (selectedParcel.type !== "selected_scene") {
@@ -199,7 +200,8 @@ const Map = ({
         tiles[tile].type = "selected_scene"
       })
     }
-  }, [selectedParcel, tiles])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedParcel])
 
   useEffect(() => {
     if (prevScene && !isIncluded) {
