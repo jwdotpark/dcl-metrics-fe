@@ -7,7 +7,7 @@ import {
   Spinner,
   useDisclosure,
 } from "@chakra-ui/react"
-import { memo, useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import { usePrev } from "../../../lib/hooks/usePrev"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
@@ -111,24 +111,13 @@ const Map = ({
     setIsMapLoading(false)
   }
 
-  // FIXME
-  const injectTiles = () => {
-    // @ts-ignore
+  const injectTiles = useCallback(() => {
     parcelData.map((tile) => {
       const id = tile.coordinates
       tiles[id] = { ...tiles[id], ...tile }
     })
-  }
-
-  //const injectTiles = useCallback(() => {
-  //  parcelData.forEach((tile) => {
-  //    const id = tile.coordinates;
-  //    setTiles((prevTiles) => ({
-  //      ...prevTiles,
-  //      [id]: { ...prevTiles[id], ...tile },
-  //    }));
-  //  });
-  //}, [parcelData, setTiles]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tiles])
 
   const tileColor = (tile) => {
     if (!tile[selectedProp.name]) {
