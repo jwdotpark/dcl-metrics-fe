@@ -77,6 +77,7 @@ const LineChart = ({
           value: item.value,
           lineStyle: {
             stroke: avgColor[i],
+            opacity: 0.8,
             strokeWidth: 2,
             strokeDasharray: "4 4",
           },
