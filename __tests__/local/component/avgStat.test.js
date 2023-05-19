@@ -8,7 +8,7 @@ describe("AvgStat", () => {
       value: 10,
     },
     {
-      id: "Total Volume of Mana",
+      id: "Total Mana",
       value: 100,
     },
   ]
@@ -28,7 +28,7 @@ describe("AvgStat", () => {
       />
     )
     expect(screen.getByText("Average")).toBeVisible()
-    expect(screen.getByText("Total Volume of Mana")).toBeInTheDocument()
+    expect(screen.getByText("Total Mana")).toBeInTheDocument()
     // CountUp doesn't act immediately
     await waitFor(() => expect(screen.getByText("10")).toBeInTheDocument())
   })

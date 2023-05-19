@@ -19,7 +19,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
   const tooltipStr = (id, data) => {
     const tooltip = `${id} for ${dateStr(data)} days`
     return (
-      (id === "Total Volume of Mana" ||
+      (id === "Total Mana" ||
         id === "Total Rentals" ||
         id === "Average Value") &&
       tooltip
