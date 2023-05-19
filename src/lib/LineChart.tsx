@@ -32,7 +32,7 @@ const LineChart = ({
 
   const dateRange = data[0].data.length
 
-  const CustomLayer = (props) => {
+  const rentalDailyBarChart = (props) => {
     const { innerWidth, innerHeight } = props
     return (
       <>
@@ -136,7 +136,7 @@ const LineChart = ({
           },
         }}
         layers={[
-          CustomLayer,
+          rentalDailyBarChart,
           "grid",
           "markers",
           "areas",

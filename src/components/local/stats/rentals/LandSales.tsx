@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useEffect, useState } from "react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box } from "@chakra-ui/react"
@@ -9,7 +8,7 @@ import DateRangeButton from "../daterange/DateRangeButton"
 
 const LandSales = ({ data }) => {
   const chartData = []
-  const dataArr = Object.entries(data)
+  const dataArr: any[] = Object.entries(data)
   const color = ["#48BB78", "#9F7AEA", "#4299E1"]
 
   const defaultDateRange = dataArr.length - 1
@@ -31,7 +30,6 @@ const LandSales = ({ data }) => {
   })
 
   const partial = sliceData(chartData, dateRange)
-  //const dateString = date(chartData, dateRange).date
 
   const mapData = (id: string, key) => {
     return {
@@ -50,7 +48,7 @@ const LandSales = ({ data }) => {
     mapData("Floor", "floor"),
   ]
 
-  result.map((item, i) => {
+  result.map((item: any, i) => {
     item.color = color[i]
   })
 
@@ -132,6 +130,7 @@ const LandSales = ({ data }) => {
           color={lineColor}
           name="rental"
           avgData={avgData}
+          rentalData={undefined}
           line={line}
           avgColor={avgColor}
         />
