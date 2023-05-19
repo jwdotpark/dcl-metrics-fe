@@ -1,5 +1,4 @@
-// @ts-nocheck
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { Box } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import {
@@ -12,29 +11,44 @@ import BoxTitle from "../../layout/local/BoxTitle"
 import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
 
-const ActiveScenes = ({ data }) => {
+const ActiveScenes = ({ data }: { data: Record<string, any> }) => {
   const [dateRange, setDateRange] = useState(defaultDateRange)
-  const color = ["#ffb86c"]
-  const [avgData, setAvgData] = useState([])
-  const chartData = []
-  const dataArr = Object.entries(data)
+  const color = useMemo(() => ["#ffb86c"], [])
+
+  const [avgData, setAvgData] = useState<any[]>([])
+  const chartData = useMemo(() => {
+    const dataArr = Object.entries(data)
+    const generatedChartData: any[] = []
+
+    dataArr.forEach(([date, users]) => {
+      generatedChartData.push({
+        id: date,
+        date,
+        active_scenes: users.active_scenes,
+        degraded: users.degraded,
+      })
+    })
+
+    return generatedChartData
+  }, [data])
 
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
-  dataArr.map((item) => {
-    chartData.push({
-      id: item[0],
-      date: item[0],
-      active_scenes: item[1].active_scenes,
-      degraded: item[1].degraded,
-    })
-  })
+  const partial = useMemo(
+    () => sliceData(chartData, dateRange),
+    [chartData, dateRange]
+  )
 
-  const partial = sliceData(chartData, dateRange)
-  const dateString = sliceDateRange(chartData, dateRange).date
+  const dateString = useMemo(
+    () => sliceDateRange(chartData, dateRange).date,
+    [chartData, dateRange]
+  )
 
-  const mapData = (id: string, key: number) => {
+  const mapData = useMemo(() => {
+    const id = "Scene Visitors"
+    const key = "active_scenes"
+
     return {
       id,
       data: partial.map((item) => ({
@@ -43,21 +57,24 @@ const ActiveScenes = ({ data }) => {
         degraded: item.degraded,
       })),
     }
-  }
+  }, [partial])
 
-  const result = [mapData("Scene Visitors", "active_scenes")]
+  const result = useMemo(() => {
+    const mappedResult = [mapData]
+    mappedResult.forEach((item: any, i) => {
+      item.color = color[i]
+    })
+    return mappedResult
+  }, [mapData, color])
 
-  result.map((item, i) => {
-    item.color = color[i]
-  })
-
-  const lineVisibility = result.map(() => {
-    return true
-  })
+  const lineVisibility = useMemo(
+    () => Array(result.length).fill(true),
+    [result.length]
+  )
 
   const [line, setLine] = useState(lineVisibility)
 
-  const calculateAverages = (partial) => {
+  const calculateAverages = useMemo(() => {
     const validLength = partial.length
     const sum = {
       active_scenes: partial.reduce((acc, cur) => acc + cur.active_scenes, 0),
@@ -67,30 +84,22 @@ const ActiveScenes = ({ data }) => {
     }
     const map = [{ id: "Average Value", value: value.active_scenes }]
     return map
-  }
+  }, [partial])
 
   useEffect(() => {
-    setAvgData(calculateAverages(partial))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange])
+    setAvgData(calculateAverages)
+  }, [calculateAverages])
 
   useEffect(() => {
     const res = findFalse(line)
-    const newChartColor = color.filter((item, i) => {
-      return !res.includes(i.toString())
-    })
-    const newAvgColor = color.map((item, i) => {
-      if (res.includes(i.toString())) {
-        return "gray.400"
-      } else {
-        return item
-      }
-    })
+    const newChartColor = color.filter((item, i) => !res.includes(i.toString()))
+    const newAvgColor = color.map((item, i) =>
+      res.includes(i.toString()) ? "gray.400" : item
+    )
 
     setLineColor(newChartColor)
     setAvgColor(newAvgColor)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [line])
+  }, [line, color])
 
   return (
     <BoxWrapper colSpan={3}>
@@ -98,6 +107,7 @@ const ActiveScenes = ({ data }) => {
         <BoxTitle
           name="Scenes Visited"
           date={dateString}
+          description={false}
           avgData={avgData}
           slicedData={partial}
           color={avgColor}
@@ -115,6 +125,7 @@ const ActiveScenes = ({ data }) => {
           data={result}
           color={lineColor}
           name="activeScenes"
+          rentalData={undefined}
           avgData={avgData}
           line={line}
           avgColor={avgColor}

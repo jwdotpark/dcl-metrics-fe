@@ -148,8 +148,14 @@ const LineChart = ({
           "legends",
         ]}
         animate={true}
-        motionStiffness={90}
-        motionDamping={15}
+        motionConfig={{
+          mass: 13,
+          tension: 500,
+          friction: 1,
+          clamp: true,
+          precision: 0.01,
+          velocity: 0,
+        }}
         margin={{
           top: 20,
           right: rentalData ? 50 : 25,
