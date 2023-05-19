@@ -19,7 +19,7 @@ const UniqueVisitors = ({ data }) => {
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
-  const chartData = useMemo(() => {
+  const generateChartData = useCallback((data) => {
     const dataArr = Object.entries(data)
     const generatedChartData = []
 
@@ -37,7 +37,12 @@ const UniqueVisitors = ({ data }) => {
     })
 
     return generatedChartData
-  }, [data])
+  }, [])
+
+  const chartData = useMemo(
+    () => generateChartData(data),
+    [data, generateChartData]
+  )
 
   const partial = useMemo(
     () => sliceData(chartData, dateRange),
@@ -63,7 +68,7 @@ const UniqueVisitors = ({ data }) => {
     [partial]
   )
 
-  const result = useMemo(() => {
+  const generateResultData = useCallback(() => {
     const mappedResult = [
       mapData("Unique Users", "unique_users"),
       mapData("Guest Users", "guest_users"),
@@ -76,8 +81,9 @@ const UniqueVisitors = ({ data }) => {
     })
 
     return mappedResult
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapData])
+
+  const result = useMemo(() => generateResultData(), [generateResultData])
 
   const lineVisibility = useMemo(() => result.map(() => true), [result])
 
@@ -115,8 +121,7 @@ const UniqueVisitors = ({ data }) => {
 
   useEffect(() => {
     setAvgData(calculateAverages(partial))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange])
+  }, [dateRange, calculateAverages, partial])
 
   useEffect(() => {
     const res = findFalse(line)
@@ -127,8 +132,7 @@ const UniqueVisitors = ({ data }) => {
 
     setLineColor(newChartColor)
     setAvgColor(newAvgColor)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [line])
+  }, [color, line])
 
   return (
     <BoxWrapper colSpan={0}>
