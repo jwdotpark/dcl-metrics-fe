@@ -44,7 +44,7 @@ const RentalTotal = ({ data }) => {
 
   const avgData = [
     {
-      id: "Total Volume of Mana",
+      id: "Total Mana",
       label: "Total Mana",
       value: Number(chartData[0].volume.slice(0, -17)),
       color: color[2],
@@ -65,7 +65,7 @@ const RentalTotal = ({ data }) => {
         avgData={avgData}
         slicedData={diff}
         color={color}
-        description={`Total rentals data since ${firstDate}`}
+        description={`Total data since ${firstDate}`}
         line={{}}
         setLine={() => {}}
       />

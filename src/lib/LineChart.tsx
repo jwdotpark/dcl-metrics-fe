@@ -32,7 +32,7 @@ const LineChart = ({
 
   const dateRange = data[0].data.length
 
-  const CustomLayer = (props) => {
+  const rentalDailyBarChart = (props) => {
     const { innerWidth, innerHeight } = props
     return (
       <>
@@ -77,6 +77,7 @@ const LineChart = ({
           value: item.value,
           lineStyle: {
             stroke: avgColor[i],
+            opacity: 0.8,
             strokeWidth: 2,
             strokeDasharray: "4 4",
           },
@@ -136,7 +137,7 @@ const LineChart = ({
           },
         }}
         layers={[
-          CustomLayer,
+          rentalDailyBarChart,
           "grid",
           "markers",
           "areas",
@@ -148,6 +149,14 @@ const LineChart = ({
           "legends",
         ]}
         animate={true}
+        motionConfig={{
+          mass: 13,
+          tension: 500,
+          friction: 1,
+          clamp: true,
+          precision: 0.01,
+          velocity: 0,
+        }}
         margin={{
           top: 20,
           right: rentalData ? 50 : 25,

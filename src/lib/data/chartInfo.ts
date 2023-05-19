@@ -5,7 +5,7 @@ export const chartHeight = 350
 export const defaultDateRange = 90
 export const dateFormat = "MMM. Do"
 
-export const sliceData = (chartData: [], dateRange: number) => {
+export const sliceData = (chartData: any[], dateRange: number) => {
   if (chartData.length - dateRange > 0) {
     return chartData.slice(chartData.length - dateRange, chartData.length)
   } else {
@@ -13,12 +13,9 @@ export const sliceData = (chartData: [], dateRange: number) => {
   }
 }
 
-// FIXME change the name of function for clarity
-export const sliceDateRange = (chartData: [], dateRange: number) => {
-  const partial = sliceData(chartData, dateRange)
-  // @ts-ignore
+export const sliceDateRange = (chartData: any[], dateRange: number) => {
+  const partial = chartData.slice(-dateRange)
   const first = moment(partial[0].date).format(dateFormat)
-  // @ts-ignore
   const last = moment(partial[partial.length - 1].date).format(dateFormat)
   return { date: { first: first, last: last } }
 }
@@ -66,7 +63,6 @@ export const plotMissingDates = (data) => {
   return data
 }
 
-// FIXME type checking
 export const findFalse = (obj) => {
   if (typeof obj !== "object" || obj === null) {
     throw new TypeError("not an object")

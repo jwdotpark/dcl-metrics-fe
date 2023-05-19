@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { Box, useBreakpointValue } from "@chakra-ui/react"
 import { motion } from "framer-motion"
-import MapInfo from "../MapInfo"
+import ParcelInfoBox from "./ParcelInfoBox"
 
 const CollapsibleMapBox = ({
   getButtonProps,
@@ -22,6 +23,8 @@ const CollapsibleMapBox = ({
     lg: 500,
     xl: 500,
   })
+  const isIncluded = selectedParcel.scene ? true : false
+
   return (
     <Box zIndex="auto">
       <motion.div
@@ -43,14 +46,15 @@ const CollapsibleMapBox = ({
           borderRadius: "0 0 0 16px",
         }}
       >
-        <MapInfo
-          getButtonProps={getButtonProps}
-          coord={coord}
-          selectedParcel={selectedParcel}
-          isMapExpanded={isMapExpanded}
-          mapBoxVerticalSize={mapBoxVerticalSize}
-          mapHeight={mapHeight}
-        />
+        <Box w="100%" borderRadius="xl">
+          <ParcelInfoBox
+            getButtonProps={getButtonProps}
+            isIncluded={isIncluded}
+            isMapExpanded={isMapExpanded}
+            selectedParcel={selectedParcel}
+            coord={coord}
+          />
+        </Box>
       </motion.div>
     </Box>
   )

@@ -5,6 +5,7 @@ import DateRangeButton from "../daterange/DateRangeButton"
 import { defaultDateRange } from "../../../../lib/data/chartInfo"
 import { dateRangeStr } from "../../../../lib/data/tableInfo"
 import TableComponent from "../partials/TableComponent"
+import { Box } from "@chakra-ui/react"
 
 const ScenesLogout = ({ res }) => {
   const [dateRange, setDateRange] = useState(defaultDateRange)
@@ -43,13 +44,15 @@ const ScenesLogout = ({ res }) => {
         name="scenes_logouts"
         yesterday={true}
       />
-      <TableComponent
-        data={tableData}
-        dateRange={dateRange}
-        propertyName={bodyList[0]}
-        headList={headList}
-        bodyList={bodyList}
-      />
+      <Box data-testid='ScenesLogoutTable'>
+        <TableComponent
+          data={tableData}
+          dateRange={dateRange}
+          propertyName={bodyList[0]}
+          headList={headList}
+          bodyList={bodyList}
+        />
+      </Box>
     </BoxWrapper>
   )
 }

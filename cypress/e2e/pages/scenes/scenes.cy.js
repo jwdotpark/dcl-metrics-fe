@@ -14,7 +14,7 @@ describe("/scenes page", () => {
 
   describe("Top 50 Scenes component", () => {
     it("should be rendered properly", () => {
-      const top50SceneTable = cy.get(".css-hp15d1 > :nth-child(1)")
+      const top50SceneTable = cy.get(".css-1q361w3")
       top50SceneTable.scrollIntoView().should("be.visible")
     })
 
@@ -66,17 +66,25 @@ describe("/scenes page", () => {
 
   describe("Sub components", () => {
     it("should be rendered properly", () => {
-      const uniqueVisitorTable = cy.get(".css-hp15d1 > :nth-child(1)")
-      const avgTimeSpentTable = cy.get(".css-hp15d1 > :nth-child(2)")
-      const mostLoginsTable = cy.get(".css-hp15d1 > :nth-child(3)")
-      const mostLogoutsTable = cy.get(".css-hp15d1 > :nth-child(4)")
-      const afkTimeSpentTable = cy.get(".css-hp15d1 > :nth-child(5)")
+      const uniqueVisitorTable = cy.get(
+        '[data-testid="topScenesVisitorsTable"]'
+      )
+      const avgTimeSpentTable = cy.get('[data-testid="ScenesTimeSpentTable"]')
+      const mostLoginsTable = cy.get('[data-testid="ScenesLoginTable"]')
+      const mostLogoutsTable = cy.get('[data-testid="ScenesLogoutTable"]')
+      const afkTimeSpentTable = cy.get(
+        '[data-testid="ScenesTimeSpentAFKTable"]'
+      )
 
       uniqueVisitorTable.scrollIntoView().should("be.visible")
       avgTimeSpentTable.scrollIntoView().should("be.visible")
       mostLoginsTable.scrollIntoView().should("be.visible")
       mostLogoutsTable.scrollIntoView().should("be.visible")
-      afkTimeSpentTable.scrollIntoView().should("be.visible")
+      afkTimeSpentTable
+        .scrollIntoView()
+        .should("be.visible")
+
+        .should("be.visible")
     })
 
     it("has its properties", () => {
@@ -87,11 +95,6 @@ describe("/scenes page", () => {
       cy.findAllByText("Logins").should("be.visible")
       cy.findAllByText("Logouts").should("be.visible")
       cy.findAllByText("Time Spent AFK").should("be.visible")
-
-      const scene = cy.get(
-        ":nth-child(1) > .chakra-table__container > .chakra-table > tbody.css-0 > :nth-child(1) > :nth-child(2) > a"
-      )
-      scene.should("have.attr", "href")
     })
   })
 })

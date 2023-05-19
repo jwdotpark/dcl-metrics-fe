@@ -16,6 +16,36 @@ describe("Index page", () => {
     cy.findAllByText("Top Market Deals").should("be.visible")
   })
 
+  describe("should have sub components", () => {
+    const testSubComponent = (subComponentName, dataTestId) => {
+      it(subComponentName, () => {
+        const subComponent = cy.get(`[data-testid="${dataTestId}"]`)
+        subComponent.should("be.visible")
+
+        const buttons = cy.get(`div[data-testid="${dataTestId}"] button`)
+
+        let initialCount
+
+        subComponent.should((val) => {
+          initialCount = val.text().trim()
+        })
+
+        buttons.eq(1).click({ force: true })
+
+        subComponent.should((val) => {
+          const updatedCount = val.text().trim()
+          expect(updatedCount).not.to.equal(initialCount)
+        })
+      })
+    }
+
+    testSubComponent("Unique Visitors", "uniqueVisitors")
+    testSubComponent("Parcel Visitors", "parcelVisitors")
+    testSubComponent("Scenes Visited", "scenesVisited")
+    testSubComponent("Land Sales", "landSales")
+    testSubComponent("Rentals Daily", "rentalDaily")
+  })
+
   describe("Sidebar", () => {
     it("renders sidebar list", () => {
       cy.findByText("Global").should("be.visible")

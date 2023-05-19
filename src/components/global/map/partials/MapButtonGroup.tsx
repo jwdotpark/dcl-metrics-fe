@@ -20,7 +20,7 @@ const MapButtonGroup = ({
   zoom,
   setZoom,
   tempCoord,
-  properties,
+  heatmapProperties,
   selectedProp,
   setSelectedProp,
   textColor,
@@ -151,7 +151,7 @@ const MapButtonGroup = ({
         <Box pos="absolute" zIndex="docked" bottom="2" left="2">
           <MapMenu
             btnBg={btnBg}
-            properties={properties}
+            heatmapProperties={heatmapProperties}
             selectedProp={selectedProp}
             setSelectedProp={setSelectedProp}
           />
