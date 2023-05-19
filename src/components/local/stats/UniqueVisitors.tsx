@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useEffect, useState, useMemo, useCallback } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
@@ -19,9 +18,9 @@ const UniqueVisitors = ({ data }) => {
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
-  const generateChartData = useCallback((data) => {
+  const generateChartData = useCallback((data: Record<string, any>) => {
     const dataArr = Object.entries(data)
-    const generatedChartData = []
+    const generatedChartData: any[] = []
 
     dataArr.forEach((item) => {
       const [date, users] = item
@@ -55,7 +54,7 @@ const UniqueVisitors = ({ data }) => {
   )
 
   const mapData = useCallback(
-    (id, key) => {
+    (id: string, key: string) => {
       return {
         id,
         data: partial.map((item) => ({
@@ -76,11 +75,12 @@ const UniqueVisitors = ({ data }) => {
       mapData("Named Users", "named_users"),
     ]
 
-    mappedResult.forEach((item, i) => {
+    mappedResult.forEach((item: any, i: number) => {
       item.color = color[i]
     })
 
     return mappedResult
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapData])
 
   const result = useMemo(() => generateResultData(), [generateResultData])
@@ -138,6 +138,7 @@ const UniqueVisitors = ({ data }) => {
     <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Unique Visitors"
+        description={false}
         date={dateString}
         avgData={avgData}
         slicedData={partial}
@@ -156,6 +157,7 @@ const UniqueVisitors = ({ data }) => {
         data={filteredResult}
         color={lineColor}
         avgColor={avgColor}
+        rentalData={undefined}
         name="uniqueVisitors"
         avgData={avgData}
         line={line}

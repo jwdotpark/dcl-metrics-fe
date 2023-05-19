@@ -5,7 +5,7 @@ export const chartHeight = 350
 export const defaultDateRange = 90
 export const dateFormat = "MMM. Do"
 
-export const sliceData = (chartData: [], dateRange: number) => {
+export const sliceData = (chartData: any[], dateRange: number) => {
   if (chartData.length - dateRange > 0) {
     return chartData.slice(chartData.length - dateRange, chartData.length)
   } else {
