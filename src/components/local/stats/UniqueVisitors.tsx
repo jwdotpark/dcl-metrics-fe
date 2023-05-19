@@ -12,7 +12,7 @@ import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ data }) => {
-  const color = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
+  const color = useMemo(() => ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"], [])
 
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
