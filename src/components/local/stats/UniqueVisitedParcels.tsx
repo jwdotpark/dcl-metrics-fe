@@ -1,7 +1,5 @@
-// @ts-nocheck
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { Box } from "@chakra-ui/react"
-
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import {
   defaultDateRange,
@@ -13,30 +11,45 @@ import BoxTitle from "../../layout/local/BoxTitle"
 import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
 
-// active_parcels
-const UniqueVisitedParcels = ({ data }) => {
-  const dataArr = Object.entries(data)
-  const chartData = []
-  const color = ["#CAB2D6FF"]
+const UniqueVisitedParcels = ({ data }: { data: Record<string, any> }) => {
+  const chartData = useMemo(() => {
+    const dataArr = Object.entries(data)
+    const generatedChartData: any[] = []
+
+    dataArr.forEach(([date, users]) => {
+      generatedChartData.push({
+        id: date,
+        date,
+        active_parcels: users.active_parcels,
+        degraded: users.degraded,
+      })
+    })
+
+    return generatedChartData
+  }, [data])
+
+  const color = useMemo(() => ["#CAB2D6FF"], [])
+
   const [dateRange, setDateRange] = useState(defaultDateRange)
-  const [avgData, setAvgData] = useState([])
+  const [avgData, setAvgData] = useState<any[]>([])
 
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
-  dataArr.map((item) => {
-    chartData.push({
-      id: item[0],
-      date: item[0],
-      active_parcels: item[1].active_parcels,
-      degraded: item[1].degraded,
-    })
-  })
+  const partial = useMemo(
+    () => sliceData(chartData, dateRange),
+    [chartData, dateRange]
+  )
 
-  const partial = sliceData(chartData, dateRange)
-  const dateString = sliceDateRange(chartData, dateRange).date
+  const dateString = useMemo(
+    () => sliceDateRange(chartData, dateRange).date,
+    [chartData, dateRange]
+  )
 
-  const mapData = (id: string, key: number) => {
+  const mapData = useMemo(() => {
+    const id = "Parcel Visitors"
+    const key = "active_parcels"
+
     return {
       id,
       data: partial.map((item) => ({
@@ -45,21 +58,24 @@ const UniqueVisitedParcels = ({ data }) => {
         degraded: item.degraded,
       })),
     }
-  }
+  }, [partial])
 
-  const result = [mapData("Parcel Visitors", "active_parcels")]
+  const result = useMemo(() => {
+    const mappedResult = [mapData]
+    mappedResult.forEach((item: any, i) => {
+      item.color = color[i]
+    })
+    return mappedResult
+  }, [mapData, color])
 
-  result.map((item, i) => {
-    item.color = color[i]
-  })
-
-  const lineVisibility = result.map(() => {
-    return true
-  })
+  const lineVisibility = useMemo(
+    () => Array(result.length).fill(true),
+    [result.length]
+  )
 
   const [line, setLine] = useState(lineVisibility)
 
-  const calculateAverages = (partial) => {
+  const calculateAverages = useMemo(() => {
     const validLength = partial.length
     const sum = {
       active_parcels: partial.reduce((acc, cur) => acc + cur.active_parcels, 0),
@@ -69,36 +85,29 @@ const UniqueVisitedParcels = ({ data }) => {
     }
     const map = [{ id: "Average Value", value: value.active_parcels }]
     return map
-  }
+  }, [partial])
 
   useEffect(() => {
-    setAvgData(calculateAverages(partial))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange])
+    setAvgData(calculateAverages)
+  }, [calculateAverages])
 
   useEffect(() => {
     const res = findFalse(line)
-    const newChartColor = color.filter((item, i) => {
-      return !res.includes(i.toString())
-    })
-    const newAvgColor = color.map((item, i) => {
-      if (res.includes(i.toString())) {
-        return "gray.400"
-      } else {
-        return item
-      }
-    })
+    const newChartColor = color.filter((item, i) => !res.includes(i.toString()))
+    const newAvgColor = color.map((item, i) =>
+      res.includes(i.toString()) ? "gray.400" : item
+    )
 
     setLineColor(newChartColor)
     setAvgColor(newAvgColor)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [line])
+  }, [line, color])
 
   return (
     <BoxWrapper colSpan={3}>
       <Box data-testid="parcelVisitors">
         <BoxTitle
           name="Parcel Visitors"
+          description={false}
           date={dateString}
           avgData={avgData}
           slicedData={partial}
@@ -117,6 +126,7 @@ const UniqueVisitedParcels = ({ data }) => {
           data={result}
           color={lineColor}
           name="uniqueVisitors"
+          rentalData={undefined}
           avgData={avgData}
           line={line}
           avgColor={avgColor}

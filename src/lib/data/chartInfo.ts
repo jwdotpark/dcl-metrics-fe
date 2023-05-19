@@ -13,10 +13,7 @@ export const sliceData = (chartData: any[], dateRange: number) => {
   }
 }
 
-export const sliceDateRange = (
-  chartData: { date: Date }[],
-  dateRange: number
-) => {
+export const sliceDateRange = (chartData: any[], dateRange: number) => {
   const partial = chartData.slice(-dateRange)
   const first = moment(partial[0].date).format(dateFormat)
   const last = moment(partial[partial.length - 1].date).format(dateFormat)
