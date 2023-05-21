@@ -2,6 +2,8 @@ export const generateChartData = (data: any[], userKeys: string[]) => {
   const dataArr = Object.entries(data)
   const generatedChartData = []
 
+  const isOnlineUsers = userKeys[0] === "online_users"
+
   dataArr.forEach((item) => {
     const [date, val] = item
     const userData = {}
@@ -10,6 +12,9 @@ export const generateChartData = (data: any[], userKeys: string[]) => {
       // multi line chart
       if (userKeys.length > 1) {
         userData[key] = val.users[key]
+      } else if (isOnlineUsers) {
+        // online users chart
+        userData[key] = Number(val[1])
       } else {
         // single line chart
         userData[key] = val[key]
@@ -17,9 +22,9 @@ export const generateChartData = (data: any[], userKeys: string[]) => {
     })
 
     generatedChartData.push({
-      id: date,
-      date,
-      degraded: val.degraded,
+      id: isOnlineUsers ? val[0] : date,
+      date: isOnlineUsers ? val[0] : date,
+      degraded: isOnlineUsers ? false : val.degraded,
       ...userData,
     })
   })

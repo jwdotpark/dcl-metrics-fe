@@ -2,29 +2,28 @@ import { Box, Center, Spinner } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import LineChart from "../../../lib/LineChart"
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect, useMemo, useCallback } from "react"
 import {
   sliceData,
   sliceDateRange,
   chartHeight,
   findFalse,
 } from "../../../lib/data/chart/chartInfo"
-import moment from "moment"
+import {
+  generateChartData,
+  //mapChartData,
+  calculateAverages,
+} from "../../../lib/data/chart/chartHelper"
 import BottomLegend from "./partial/BottomLegend"
+import moment from "moment"
 
 const OnlineUsers = () => {
   const [data, setData] = useState<any>([])
+  const userKeys = useMemo(() => ["online_users"], [])
   const [isLoading, setIsLoading] = useState(false)
   const color = useMemo(() => ["#9ccfd8"], [])
-
-  const chartData = []
-
   const [avgData, setAvgData] = useState([])
-  const dataArr = (data.result && data.result.data.result[0].values) || []
-  const dateRange = dataArr.length - 1
-
-  // eslint-disable-next-line no-unused-vars
-  const [lineColor, setLineColor] = useState(color)
+  //const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
   const fetchData = async () => {
@@ -38,91 +37,63 @@ const OnlineUsers = () => {
       },
     })
     const data = await res.json()
-    setData(data)
+    const dataArr = data.result && data.result.data.result[0].values
     setIsLoading(false)
+    setData(dataArr)
   }
 
-  if (dataArr !== null) {
-    dataArr.map((item) => {
-      chartData.push({
-        id: item[0],
-        date: moment.unix(item[0]).format("YYYY-MM-DD HH:mm"),
-        degraded: false,
-        value: item[1],
-      })
-    })
-  }
+  const chartData = useMemo(
+    () => generateChartData(data, userKeys),
+    [data, userKeys]
+  )
 
-  const partial = sliceData(chartData, dateRange)
-  const dateString =
-    partial.length > 0 && sliceDateRange(partial, dateRange).date
+  const partial = useMemo(
+    () => sliceData(chartData, data.length - 1),
+    [chartData, data.length]
+  )
 
-  const mapData = (id: string) => {
+  const mapChartData = useCallback(() => {
     return {
-      id: id,
-      data: partial.map((item) => ({
-        x: item.date,
-        y: Number(item.value).toFixed(0),
-        degraded: item.degraded,
+      id: "Online Users",
+      data: chartData.map((item) => ({
+        x: moment.unix(item.date).format("YYYY-MM-DD HH:mm"),
+        y: Number(item.online_users),
+        degraded: false,
       })),
     }
-  }
+  }, [chartData])
 
-  const result = [mapData("Online Users")]
+  const generateResultData = useCallback(() => {
+    const mappedResult = [mapChartData()]
+    mappedResult.forEach((item: any, i: number) => {
+      item.color = color[i]
+    })
 
-  result.map((item: any, i) => {
-    item.color = color[i]
-  })
+    return mappedResult
+  }, [color, mapChartData])
 
-  const lineVisibility = result.map(() => {
-    return true
-  })
+  const result = useMemo(() => generateResultData(), [generateResultData])
+  const lineVisibility = useMemo(() => result.map(() => true), [result])
 
-  // eslint-disable-next-line no-unused-vars
   const [line, setLine] = useState(lineVisibility)
-
-  const calculateAverages = (partial) => {
-    const validLength = partial.length
-    const sum = {
-      onlineUsers: partial.reduce((acc, cur) => acc + Number(cur.value), 0),
-    }
-    const value = {
-      online_users: Math.floor(sum.onlineUsers / validLength),
-    }
-    const map = [{ id: "Online Users", value: value.online_users }].sort(
-      (a, b) => {
-        return b.value - a.value
-      }
-    )
-    return map
-  }
-
-  useEffect(() => {
-    setAvgData(calculateAverages(partial))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data])
-
-  useEffect(() => {
-    const res = findFalse(line)
-    const newChartColor = color.filter((item, i) => {
-      return !res.includes(i.toString())
-    })
-    const newAvgColor = color.map((item, i) => {
-      if (res.includes(i.toString())) {
-        return "gray.400"
-      } else {
-        return item
-      }
-    })
-
-    setLineColor(newChartColor)
-    setAvgColor(newAvgColor)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [line])
 
   useEffect(() => {
     fetchData()
+    console.count("fetched")
   }, [])
+
+  useEffect(() => {
+    setAvgData(calculateAverages(partial, userKeys))
+  }, [partial, userKeys])
+
+  useEffect(() => {
+    const res = findFalse(line)
+    const newAvgColor = color.map((item, i) =>
+      res.includes(i.toString()) ? "gray.400" : item
+    )
+
+    setAvgColor(newAvgColor)
+  }, [color, line])
 
   return (
     <BoxWrapper colSpan={3}>
@@ -133,7 +104,7 @@ const OnlineUsers = () => {
           avgData={avgData}
           slicedData={{}}
           color={color}
-          description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
+          description={`Active daily users, data from Decentraland Status Page`}
           line={line}
           setLine={setLine}
         />
