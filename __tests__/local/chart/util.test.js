@@ -2,7 +2,7 @@ import {
   formatCount,
   findFalse,
   sliceData,
-} from "../../../src/lib/data/chartInfo"
+} from "../../../src/lib/data/chart/chartInfo"
 
 describe("formatCount", () => {
   it('returns "None" when val is 0', () => {
@@ -40,7 +40,7 @@ describe("findFalse", () => {
     expect(findFalse({ a: false, b: "", c: 0 })).toEqual(["a", "b", "c"])
   })
 
-  // FIXME type checking 
+  // FIXME type checking
   test("throws a TypeError when passed a non-object argument", () => {
     expect(() => findFalse("not an object")).toThrow(TypeError)
     expect(() => findFalse(null)).toThrow(TypeError)
