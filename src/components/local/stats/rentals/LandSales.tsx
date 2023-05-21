@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box } from "@chakra-ui/react"
 import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import { sliceData, findFalse } from "../../../../lib/data/chart/chartInfo"
 import DateRangeButton from "../daterange/DateRangeButton"
+import { calculateAverages } from "../../../../lib/data/chart/chartHelper"
 
 const LandSales = ({ data }) => {
   const chartData = []
   const dataArr: any[] = Object.entries(data)
-  const color = ["#48BB78", "#9F7AEA", "#4299E1"]
+  const color = useMemo(() => ["#48BB78", "#9F7AEA", "#4299E1"], [])
+  const userKeys = useMemo(
+    () => ["thirty_day_avg", "seven_day_avg", "floor"],
+    []
+  )
 
   const defaultDateRange = dataArr.length - 1
   const [dateRange, setDateRange] = useState(defaultDateRange)
@@ -58,32 +63,12 @@ const LandSales = ({ data }) => {
 
   const [line, setLine] = useState(lineVisibility)
 
-  const calculateAverages = (partial) => {
-    const validLength = partial.length
-    const sum = {
-      thirtyDayAvg: partial.reduce((acc, cur) => acc + cur.thirty_day_avg, 0),
-      sevenDayAvg: partial.reduce((acc, cur) => acc + cur.seven_day_avg, 0),
-      floor: partial.reduce((acc, cur) => acc + cur.floor, 0),
-    }
-    const value = {
-      thirtyDayAvg: Math.floor(sum.thirtyDayAvg / validLength),
-      sevenDayAvg: Math.floor(sum.sevenDayAvg / validLength),
-      floor: Math.floor(sum.floor / validLength),
-    }
-    const map = [
-      { id: "30 Day", value: value.thirtyDayAvg },
-      { id: "7 Day", value: value.sevenDayAvg },
-      { id: "Floor", value: value.floor },
-    ]
-    return map
-  }
-
   const filteredResult = result.filter((item, i) => {
     return line[i]
   })
 
   useEffect(() => {
-    setAvgData(calculateAverages(partial))
+    setAvgData(calculateAverages(partial, userKeys))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 
