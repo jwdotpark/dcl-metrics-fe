@@ -1,5 +1,5 @@
 import moment from "moment"
-import { convertSeconds } from "../hooks/utils"
+import { convertSeconds } from "../../hooks/utils"
 
 export const chartHeight = 350
 export const defaultDateRange = 90

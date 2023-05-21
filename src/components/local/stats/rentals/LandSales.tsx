@@ -3,7 +3,7 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box } from "@chakra-ui/react"
 import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
-import { sliceData, findFalse } from "../../../../lib/data/chartInfo"
+import { sliceData, findFalse } from "../../../../lib/data/chart/chartInfo"
 import DateRangeButton from "../daterange/DateRangeButton"
 
 const LandSales = ({ data }) => {

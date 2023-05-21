@@ -9,7 +9,7 @@ import {
   sliceDateRange,
   chartHeight,
   findFalse,
-} from "../../../lib/data/chartInfo"
+} from "../../../lib/data/chart/chartInfo"
 import moment from "moment"
 import BottomLegend from "./partial/BottomLegend"
 

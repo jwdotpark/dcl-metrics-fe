@@ -2,7 +2,7 @@ import { useState } from "react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import BoxTitle from "../../../../components/layout/local/BoxTitle"
 import DateRangeButton from "../daterange/DateRangeButton"
-import { defaultDateRange } from "../../../../lib/data/chartInfo"
+import { defaultDateRange } from "../../../../lib/data/chart/chartInfo"
 import { dateRangeStr, baseUrl, mapUrl } from "../../../../lib/data/tableInfo"
 import TableComponent from "../partials/TableComponent"
 
@@ -31,7 +31,10 @@ const AFKtimeSpentAFKParcel = ({ parcel }) => {
         avgData=""
         slicedData=""
         color=""
-        description="Parcels with the most idle time spent on them in the last period" line={undefined} setLine={undefined}      />
+        description="Parcels with the most idle time spent on them in the last period"
+        line={undefined}
+        setLine={undefined}
+      />
       <DateRangeButton
         dateRange={dateRange}
         setDateRange={setDateRange}

@@ -2,7 +2,7 @@ import { useState } from "react"
 import BoxTitle from "../../../../components/layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import DateRangeButton from "../daterange/DateRangeButton"
-import { defaultDateRange } from "../../../../lib/data/chartInfo"
+import { defaultDateRange } from "../../../../lib/data/chart/chartInfo"
 import { dateRangeStr } from "../../../../lib/data/tableInfo"
 import TableComponent from "../partials/TableComponent"
 import { Box } from "@chakra-ui/react"
@@ -45,7 +45,7 @@ const TopScenesVisitors = ({ res }) => {
         name="scenes_unique_visitors"
         yesterday={true}
       />
-      <Box data-testid='topScenesVisitorsTable'>
+      <Box data-testid="topScenesVisitorsTable">
         <TableComponent
           data={tableData}
           dateRange={dateRange}

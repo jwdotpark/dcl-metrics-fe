@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { defaultDateRange } from "../../../lib/data/chartInfo"
+import { defaultDateRange } from "../../../lib/data/chart/chartInfo"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import TableComponent from "./partials/TableComponent"

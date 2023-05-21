@@ -2,7 +2,7 @@ import { useState } from "react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import BoxTitle from "../../../../components/layout/local/BoxTitle"
 import DateRangeButton from "../daterange/DateRangeButton"
-import { defaultDateRange } from "../../../../lib/data/chartInfo"
+import { defaultDateRange } from "../../../../lib/data/chart/chartInfo"
 import { dateRangeStr } from "../../../../lib/data/tableInfo"
 import TableComponent from "../partials/TableComponent"
 import { Box } from "@chakra-ui/react"
@@ -44,7 +44,7 @@ const ScenesLogout = ({ res }) => {
         name="scenes_logouts"
         yesterday={true}
       />
-      <Box data-testid='ScenesLogoutTable'>
+      <Box data-testid="ScenesLogoutTable">
         <TableComponent
           data={tableData}
           dateRange={dateRange}

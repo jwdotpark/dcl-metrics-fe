@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo } from "react"
 import { Box } from "@chakra-ui/react"
-import { sliceData } from "../../../../lib/data/chartInfo"
+import { sliceData } from "../../../../lib/data/chart/chartInfo"
 import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import DateRangeButton from "../daterange/DateRangeButton"
-import { plotMissingDates } from "../../../../lib/data/chartInfo"
+import { plotMissingDates } from "../../../../lib/data/chart/chartInfo"
 import moment from "moment"
 
 const RentalDay = ({ data }) => {

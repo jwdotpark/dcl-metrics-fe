@@ -6,7 +6,7 @@ import {
   sliceData,
   sliceDateRange,
   findFalse,
-} from "../../../lib/data/chartInfo"
+} from "../../../lib/data/chart/chartInfo"
 import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
 
