@@ -14,7 +14,6 @@ import {
   mapChartData,
 } from "../../../lib/data/chart/chartHelper"
 import BottomLegend from "./partial/BottomLegend"
-import moment from "moment"
 
 const OnlineUsers = () => {
   const [data, setData] = useState<any>([])
