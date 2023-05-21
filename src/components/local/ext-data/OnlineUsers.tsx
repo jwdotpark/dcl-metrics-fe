@@ -1,9 +1,8 @@
-// @ts-nocheck
 import { Box, Center, Spinner } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import LineChart from "../../../lib/LineChart"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import {
   sliceData,
   sliceDateRange,
@@ -14,11 +13,11 @@ import moment from "moment"
 import BottomLegend from "./partial/BottomLegend"
 
 const OnlineUsers = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any>([])
   const [isLoading, setIsLoading] = useState(false)
+  const color = useMemo(() => ["#9ccfd8"], [])
 
   const chartData = []
-  const color = ["#9ccfd8"]
 
   const [avgData, setAvgData] = useState([])
   const dataArr = (data.result && data.result.data.result[0].values) || []
@@ -27,6 +26,21 @@ const OnlineUsers = () => {
   // eslint-disable-next-line no-unused-vars
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
+
+  const fetchData = async () => {
+    setIsLoading(true)
+    const url = "https://public-metrics.decentraland.org/onlineUsers30d"
+    const res = await fetch(`/api/client-fetch?url=${url}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        mode: "no-cors",
+      },
+    })
+    const data = await res.json()
+    setData(data)
+    setIsLoading(false)
+  }
 
   if (dataArr !== null) {
     dataArr.map((item) => {
@@ -56,7 +70,7 @@ const OnlineUsers = () => {
 
   const result = [mapData("Online Users")]
 
-  result.map((item, i) => {
+  result.map((item: any, i) => {
     item.color = color[i]
   })
 
@@ -81,22 +95,6 @@ const OnlineUsers = () => {
       }
     )
     return map
-  }
-
-  const fetchData = async () => {
-    setIsLoading(true)
-
-    const url = "https://public-metrics.decentraland.org/onlineUsers30d"
-    const res = await fetch(`/api/client-fetch?url=${url}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        mode: "no-cors",
-      },
-    })
-    const data = await res.json()
-    setData(data)
-    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -136,6 +134,8 @@ const OnlineUsers = () => {
           slicedData={{}}
           color={color}
           description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
+          line={line}
+          setLine={setLine}
         />
         <Box>
           {!isLoading ? (
@@ -147,6 +147,7 @@ const OnlineUsers = () => {
                 avgData={avgData}
                 avgColor={avgColor}
                 line={line}
+                rentalData={undefined}
               />
               <BottomLegend
                 description="UTC, source from"
