@@ -17,7 +17,6 @@ import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitedParcels = ({ data }) => {
-
   const color = useMemo(() => ["#CAB2D6FF"], [])
   const userKeys = ["active_parcels"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
