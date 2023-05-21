@@ -8,7 +8,7 @@ export const generateChartData = (data: any[], userKeys: string[]) => {
 
   dataArr.forEach((item) => {
     const [date, val] = item
-    const userData = {}
+    let userData = {}
 
     userKeys.forEach((key) => {
       // multi line chart
@@ -23,12 +23,14 @@ export const generateChartData = (data: any[], userKeys: string[]) => {
       }
     })
 
-    generatedChartData.push({
+    const chartEntry = {
       id: isOnlineUsers ? val[0] : date,
       date: isOnlineUsers ? val[0] : date,
       degraded: isOnlineUsers ? false : val.degraded,
       ...userData,
-    })
+    }
+
+    generatedChartData.push(chartEntry)
   })
 
   return generatedChartData
