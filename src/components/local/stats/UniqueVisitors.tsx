@@ -17,7 +17,7 @@ import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ data }) => {
   const color = useMemo(() => ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"], [])
-  const userKeys = ["unique_users", "guest_users", "new_users", "named_users"]
+  const chartKeys = ["unique_users", "guest_users", "new_users", "named_users"]
 
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
@@ -25,7 +25,7 @@ const UniqueVisitors = ({ data }) => {
   const [avgColor, setAvgColor] = useState(color)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const chartData = useMemo(() => generateChartData(data, userKeys), [data])
+  const chartData = useMemo(() => generateChartData(data, chartKeys), [data])
 
   const partial = useMemo(
     () => sliceData(chartData, dateRange),
@@ -64,7 +64,7 @@ const UniqueVisitors = ({ data }) => {
   )
 
   useEffect(() => {
-    setAvgData(calculateAverages(partial, userKeys))
+    setAvgData(calculateAverages(partial, chartKeys))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange, calculateAverages])
 

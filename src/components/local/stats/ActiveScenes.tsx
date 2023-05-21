@@ -18,14 +18,14 @@ import LineChart from "../../../lib/LineChart"
 
 const ActiveScenes = ({ data }) => {
   const color = useMemo(() => ["#ffb86c"], [])
-  const userKeys = ["active_scenes"]
+  const chartKeys = ["active_scenes"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const chartData = useMemo(() => generateChartData(data, userKeys), [data])
+  const chartData = useMemo(() => generateChartData(data, chartKeys), [data])
 
   const partial = useMemo(
     () => sliceData(chartData, dateRange),
@@ -55,7 +55,7 @@ const ActiveScenes = ({ data }) => {
   const [line, setLine] = useState(lineVisibility)
 
   useEffect(() => {
-    setAvgData(calculateAverages(partial, userKeys))
+    setAvgData(calculateAverages(partial, chartKeys))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange, calculateAverages])
 

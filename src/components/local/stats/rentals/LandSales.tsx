@@ -11,7 +11,7 @@ const LandSales = ({ data }) => {
   const chartData = []
   const dataArr: any[] = Object.entries(data)
   const color = useMemo(() => ["#48BB78", "#9F7AEA", "#4299E1"], [])
-  const userKeys = useMemo(
+  const chartKeys = useMemo(
     () => ["thirty_day_avg", "seven_day_avg", "floor"],
     []
   )
@@ -68,7 +68,7 @@ const LandSales = ({ data }) => {
   })
 
   useEffect(() => {
-    setAvgData(calculateAverages(partial, userKeys))
+    setAvgData(calculateAverages(partial, chartKeys))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange])
 

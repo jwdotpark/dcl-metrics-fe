@@ -17,7 +17,7 @@ import BottomLegend from "./partial/BottomLegend"
 
 const OnlineUsers = () => {
   const [data, setData] = useState<any>([])
-  const userKeys = useMemo(() => ["online_users"], [])
+  const chartKeys = useMemo(() => ["online_users"], [])
   const [isLoading, setIsLoading] = useState(false)
   const color = useMemo(() => ["#9ccfd8"], [])
   const [avgData, setAvgData] = useState([])
@@ -40,8 +40,8 @@ const OnlineUsers = () => {
   }
 
   const chartData = useMemo(
-    () => generateChartData(data, userKeys),
-    [data, userKeys]
+    () => generateChartData(data, chartKeys),
+    [data, chartKeys]
   )
 
   const partial = useMemo(
@@ -73,8 +73,8 @@ const OnlineUsers = () => {
   }, [])
 
   useEffect(() => {
-    setAvgData(calculateAverages(partial, userKeys))
-  }, [partial, userKeys])
+    setAvgData(calculateAverages(partial, chartKeys))
+  }, [partial, chartKeys])
 
   useEffect(() => {
     const res = findFalse(line)

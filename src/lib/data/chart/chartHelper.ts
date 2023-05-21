@@ -1,25 +1,25 @@
 import moment from "moment"
 
-export const generateChartData = (data: any[], userKeys: string[]) => {
+export const generateChartData = (data: any[], chartKeys: string[]) => {
   const dataArr = Object.entries(data)
   const generatedChartData = []
 
-  const isOnlineUsers = userKeys[0] === "online_users"
+  const isOnlineUsers = chartKeys[0] === "online_users"
 
   dataArr.forEach((item) => {
     const [date, val] = item
-    let userData = {}
+    let chartData = {}
 
-    userKeys.forEach((key) => {
+    chartKeys.forEach((key) => {
       // multi line chart
-      if (userKeys.length > 1) {
-        userData[key] = val.users[key]
+      if (chartKeys.length > 1) {
+        chartData[key] = val.users[key]
       } else if (isOnlineUsers) {
         // online users chart
-        userData[key] = Number(val[1])
+        chartData[key] = Number(val[1])
       } else {
         // single line chart
-        userData[key] = val[key]
+        chartData[key] = val[key]
       }
     })
 
@@ -27,7 +27,7 @@ export const generateChartData = (data: any[], userKeys: string[]) => {
       id: isOnlineUsers ? val[0] : date,
       date: isOnlineUsers ? val[0] : date,
       degraded: isOnlineUsers ? false : val.degraded,
-      ...userData,
+      ...chartData,
     }
 
     generatedChartData.push(chartEntry)
@@ -57,20 +57,20 @@ export const mapChartData = (id: string, key: string, partial: any[]) => {
   }
 }
 
-export const calculateAverages = (partial: any[], userKeys: string[]) => {
+export const calculateAverages = (partial: any[], chartKeys: string[]) => {
   const validLength = partial.length
   const sum = {}
 
-  userKeys.forEach((key) => {
+  chartKeys.forEach((key) => {
     sum[key] = partial.reduce((acc, cur) => acc + cur[key], 0)
   })
 
   const value = {}
-  userKeys.forEach((key) => {
+  chartKeys.forEach((key) => {
     value[key] = Math.floor(sum[key] / validLength)
   })
 
-  const map = userKeys
+  const map = chartKeys
     .map((key) => ({
       id: key.charAt(0).toUpperCase() + key.slice(1),
       value: value[key],

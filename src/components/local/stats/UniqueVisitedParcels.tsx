@@ -18,14 +18,14 @@ import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitedParcels = ({ data }) => {
   const color = useMemo(() => ["#CAB2D6FF"], [])
-  const userKeys = ["active_parcels"]
+  const chartKeys = ["active_parcels"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const chartData = useMemo(() => generateChartData(data, userKeys), [data])
+  const chartData = useMemo(() => generateChartData(data, chartKeys), [data])
 
   const partial = useMemo(
     () => sliceData(chartData, dateRange),
@@ -54,9 +54,8 @@ const UniqueVisitedParcels = ({ data }) => {
 
   const [line, setLine] = useState(lineVisibility)
 
-
   useEffect(() => {
-    setAvgData(calculateAverages(partial, userKeys))
+    setAvgData(calculateAverages(partial, chartKeys))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange, calculateAverages])
 
