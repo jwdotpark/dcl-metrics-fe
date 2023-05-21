@@ -85,6 +85,34 @@ const OnlineUsers = () => {
     setAvgColor(newAvgColor)
   }, [color, line])
 
+  let onlineUserChart
+
+  if (isLoading) {
+    onlineUserChart = (
+      <Center h={chartHeight}>
+        <Spinner />
+      </Center>
+    )
+  } else {
+    onlineUserChart = (
+      <>
+        <LineChart
+          data={result}
+          color={color}
+          name="onlineUsers"
+          avgData={avgData}
+          avgColor={avgColor}
+          line={line}
+          rentalData={undefined}
+        />
+        <BottomLegend
+          description="UTC, source from"
+          link="https://status.decentraland.org/metrics"
+        />
+      </>
+    )
+  }
+
   return (
     <BoxWrapper colSpan={3}>
       <Box data-testid="onlineUsers">
@@ -98,29 +126,7 @@ const OnlineUsers = () => {
           line={line}
           setLine={setLine}
         />
-        <Box>
-          {!isLoading ? (
-            <>
-              <LineChart
-                data={result}
-                color={color}
-                name="onlineUsers"
-                avgData={avgData}
-                avgColor={avgColor}
-                line={line}
-                rentalData={undefined}
-              />
-              <BottomLegend
-                description="UTC, source from"
-                link="https://status.decentraland.org/metrics"
-              />
-            </>
-          ) : (
-            <Center h={chartHeight}>
-              <Spinner />
-            </Center>
-          )}
-        </Box>
+        {onlineUserChart}
       </Box>
     </BoxWrapper>
   )
