@@ -1,3 +1,5 @@
+import moment from "moment"
+
 export const generateChartData = (data: any[], userKeys: string[]) => {
   const dataArr = Object.entries(data)
   const generatedChartData = []
@@ -33,13 +35,23 @@ export const generateChartData = (data: any[], userKeys: string[]) => {
 }
 
 export const mapChartData = (id: string, key: string, partial: any[]) => {
-  return {
-    id,
-    data: partial.map((item) => ({
-      x: item.date,
-      y: item[key],
-      degraded: item.degraded,
-    })),
+  if (id === "Online Users") {
+    return {
+      id,
+      data: partial.map((item) => ({
+        x: moment.unix(item.date).format("YYYY-MM-DD HH:mm"),
+        y: item[key],
+      })),
+    }
+  } else {
+    return {
+      id,
+      data: partial.map((item) => ({
+        x: item.date,
+        y: item[key],
+        degraded: item.degraded,
+      })),
+    }
   }
 }
 

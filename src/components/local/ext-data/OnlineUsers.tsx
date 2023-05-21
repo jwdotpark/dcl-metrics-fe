@@ -5,14 +5,13 @@ import LineChart from "../../../lib/LineChart"
 import { useState, useEffect, useMemo, useCallback } from "react"
 import {
   sliceData,
-  sliceDateRange,
   chartHeight,
   findFalse,
 } from "../../../lib/data/chart/chartInfo"
 import {
   generateChartData,
-  //mapChartData,
   calculateAverages,
+  mapChartData,
 } from "../../../lib/data/chart/chartHelper"
 import BottomLegend from "./partial/BottomLegend"
 import moment from "moment"
@@ -23,7 +22,6 @@ const OnlineUsers = () => {
   const [isLoading, setIsLoading] = useState(false)
   const color = useMemo(() => ["#9ccfd8"], [])
   const [avgData, setAvgData] = useState([])
-  //const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
   const fetchData = async () => {
@@ -52,25 +50,19 @@ const OnlineUsers = () => {
     [chartData, data.length]
   )
 
-  const mapChartData = useCallback(() => {
-    return {
-      id: "Online Users",
-      data: chartData.map((item) => ({
-        x: moment.unix(item.date).format("YYYY-MM-DD HH:mm"),
-        y: Number(item.online_users),
-        degraded: false,
-      })),
-    }
-  }, [chartData])
+  const mappedChartData = useMemo(
+    () => mapChartData("Online Users", "online_users", partial),
+    [partial]
+  )
 
   const generateResultData = useCallback(() => {
-    const mappedResult = [mapChartData()]
+    const mappedResult = [mappedChartData]
     mappedResult.forEach((item: any, i: number) => {
       item.color = color[i]
     })
 
     return mappedResult
-  }, [color, mapChartData])
+  }, [color, mappedChartData])
 
   const result = useMemo(() => generateResultData(), [generateResultData])
   const lineVisibility = useMemo(() => result.map(() => true), [result])
@@ -79,7 +71,6 @@ const OnlineUsers = () => {
 
   useEffect(() => {
     fetchData()
-    console.count("fetched")
   }, [])
 
   useEffect(() => {
