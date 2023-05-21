@@ -26,6 +26,24 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
     )
   }
 
+  const formatString = (str: string) => {
+    const words = str.split("_")
+    const formattedWords = words.map((word) => {
+      const capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1)
+      return capitalizedWord
+    })
+    
+    let formattedString = formattedWords.join(" ")
+    if (
+      formattedString === "Active Parcels" ||
+      formattedString === "Active Scenes"
+    ) {
+      return "Average Value"
+    }
+
+    return formattedString
+  }
+
   return (
     <Box>
       <Flex>
@@ -71,7 +89,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
                     fontSize={["xs", "sm"]}
                     noOfLines={1}
                   >
-                    {item.id}
+                    {formatString(item.id)}
                   </Text>
                 </Box>
               </Flex>
