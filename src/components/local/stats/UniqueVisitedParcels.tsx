@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react"
+import { useEffect, useState, useMemo, useCallback } from "react"
 import { Box } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import {
@@ -7,34 +7,26 @@ import {
   sliceDateRange,
   findFalse,
 } from "../../../lib/data/chart/chartInfo"
+import {
+  generateChartData,
+  mapChartData,
+  calculateAverages,
+} from "../../../lib/data/chart/chartHelper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
 
-const UniqueVisitedParcels = ({ data }: { data: Record<string, any> }) => {
-  const chartData = useMemo(() => {
-    const dataArr = Object.entries(data)
-    const generatedChartData: any[] = []
-
-    dataArr.forEach(([date, users]) => {
-      generatedChartData.push({
-        id: date,
-        date,
-        active_parcels: users.active_parcels,
-        degraded: users.degraded,
-      })
-    })
-
-    return generatedChartData
-  }, [data])
+const UniqueVisitedParcels = ({ data }) => {
 
   const color = useMemo(() => ["#CAB2D6FF"], [])
-
+  const userKeys = ["active_parcels"]
   const [dateRange, setDateRange] = useState(defaultDateRange)
-  const [avgData, setAvgData] = useState<any[]>([])
-
+  const [avgData, setAvgData] = useState([])
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const chartData = useMemo(() => generateChartData(data, userKeys), [data])
 
   const partial = useMemo(
     () => sliceData(chartData, dateRange),
@@ -45,51 +37,29 @@ const UniqueVisitedParcels = ({ data }: { data: Record<string, any> }) => {
     () => sliceDateRange(chartData, dateRange).date,
     [chartData, dateRange]
   )
+  const generateResultData = useCallback(() => {
+    const mappedResult = [
+      mapChartData("Parcel Visitors", "active_parcels", partial),
+    ]
 
-  const mapData = useMemo(() => {
-    const id = "Parcel Visitors"
-    const key = "active_parcels"
-
-    return {
-      id,
-      data: partial.map((item) => ({
-        x: item.date,
-        y: item[key],
-        degraded: item.degraded,
-      })),
-    }
-  }, [partial])
-
-  const result = useMemo(() => {
-    const mappedResult = [mapData]
-    mappedResult.forEach((item: any, i) => {
+    mappedResult.forEach((item: any, i: number) => {
       item.color = color[i]
     })
-    return mappedResult
-  }, [mapData, color])
 
-  const lineVisibility = useMemo(
-    () => Array(result.length).fill(true),
-    [result.length]
-  )
+    return mappedResult
+  }, [color, partial])
+
+  const result = useMemo(() => generateResultData(), [generateResultData])
+
+  const lineVisibility = useMemo(() => result.map(() => true), [result])
 
   const [line, setLine] = useState(lineVisibility)
 
-  const calculateAverages = useMemo(() => {
-    const validLength = partial.length
-    const sum = {
-      active_parcels: partial.reduce((acc, cur) => acc + cur.active_parcels, 0),
-    }
-    const value = {
-      active_parcels: Math.floor(sum.active_parcels / validLength),
-    }
-    const map = [{ id: "Average Value", value: value.active_parcels }]
-    return map
-  }, [partial])
 
   useEffect(() => {
-    setAvgData(calculateAverages)
-  }, [calculateAverages])
+    setAvgData(calculateAverages(partial, userKeys))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateRange, calculateAverages])
 
   useEffect(() => {
     const res = findFalse(line)
@@ -100,7 +70,7 @@ const UniqueVisitedParcels = ({ data }: { data: Record<string, any> }) => {
 
     setLineColor(newChartColor)
     setAvgColor(newAvgColor)
-  }, [line, color])
+  }, [color, line])
 
   return (
     <BoxWrapper colSpan={3}>

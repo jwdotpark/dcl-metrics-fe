@@ -7,7 +7,13 @@ export const generateChartData = (data: any[], userKeys: string[]) => {
     const userData = {}
 
     userKeys.forEach((key) => {
-      userData[key] = val.users[key]
+      // multi line chart
+      if (userKeys.length > 1) {
+        userData[key] = val.users[key]
+      } else {
+        // single line chart
+        userData[key] = val[key]
+      }
     })
 
     generatedChartData.push({
@@ -21,7 +27,7 @@ export const generateChartData = (data: any[], userKeys: string[]) => {
   return generatedChartData
 }
 
-export function mapData(id: string, key: string, partial: any[]) {
+export const mapChartData = (id: string, key: string, partial: any[]) => {
   return {
     id,
     data: partial.map((item) => ({
