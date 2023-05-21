@@ -6,7 +6,7 @@ import moment from "moment"
 const RentalTotal = ({ data }) => {
   const { analyticsTotalDatas } = data
   const chartData = []
-  const color = ["#48BB78", "#4299E1", "#9F7AEA", "#F56565"]
+  const color = ["#FBB4AE", "#B3CDE3"]
 
   const firstDate = moment
     .unix(data.analyticsDayDatas[0].date)
@@ -47,13 +47,13 @@ const RentalTotal = ({ data }) => {
       id: "Total Mana",
       label: "Total Mana",
       value: Number(chartData[0].volume.slice(0, -17)),
-      color: color[2],
+      color: color[0],
     },
     {
       id: "Total Rentals",
       label: "Total Rentals",
       value: Number(chartData[0].rentals),
-      color: color[3],
+      color: color[1],
     },
   ]
 
