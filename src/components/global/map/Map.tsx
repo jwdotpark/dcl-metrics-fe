@@ -8,7 +8,7 @@ import {
   Spinner,
   useDisclosure,
 } from "@chakra-ui/react"
-import { memo, useCallback, useEffect, useState } from "react"
+import { memo, ReactFragment, useCallback, useEffect, useState } from "react"
 import { usePrev } from "../../../lib/hooks/usePrev"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
@@ -208,7 +208,7 @@ const Map = ({
     }
   }, [isIncluded, prevScene, prevTile, tiles])
 
-  let mapComponent
+  let mapComponent: JSX.Element
 
   if (isMapLoading) {
     mapComponent = (
