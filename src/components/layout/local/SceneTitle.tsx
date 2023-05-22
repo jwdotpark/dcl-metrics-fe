@@ -64,7 +64,7 @@ const SceneTitle = ({
         p="4"
         bg={useColorModeValue("white", "gray.800")}
         border="1px solid"
-        borderColor={useColorModeValue("gray.200", "gray.600")}
+        borderColor={useColorModeValue("gray.200", "gray.700")}
         borderRadius="xl"
         shadow="md"
       >
