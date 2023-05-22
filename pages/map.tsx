@@ -3,11 +3,12 @@ import LandPicker from "../src/components/global/map/LandPicker"
 import Layout from "../src/components/layout/layout"
 import staticParcel from "../public/data/cached_parcel.json"
 import { isDev, isLocal, isProd, parcelURL } from "../src/lib/data/constant"
-import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
+import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 
 export async function getStaticProps() {
   if (isProd) {
-    const parcelRes = await getDataWithProxy(
+    // NOTE
+    const parcelRes = await getDataWithApiKey(
       parcelURL,
       "/parcels/all",
       staticParcel

@@ -3,11 +3,7 @@ import Layout from "../../src/components/layout/layout"
 import Explorer from "../../src/components/local/stats/Explorer"
 import MarathonUsers from "../../src/components/local/stats/MarathonUsers"
 import staticGlobalUsers from "../../public/data/staticGlobalUsers.json"
-import {
-  getDataWithProxy,
-  getDataWithApiKey,
-  writeFile,
-} from "../../src/lib/data/fetch"
+import { getDataWithApiKey, writeFile } from "../../src/lib/data/fetch"
 import {
   isProd,
   isDev,
@@ -17,7 +13,8 @@ import {
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalUserRes = await getDataWithProxy(
+    // NOTE
+    const globalUserRes = await getDataWithApiKey(
       globalUsersURL,
       "/global/users",
       staticGlobalUsers

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Layout from "../../src/components/layout/layout"
 import Scene from "../../src/components/local/stats/Scene"
 import { getEndpoint } from "../../src/lib/data/constant"
-import { getDataWithProxy } from "../../src/lib/data/fetch"
+import { getDataWithApiKey } from "../../src/lib/data/fetch"
 import { findUUID } from "../../src/lib/data/sceneID"
 
 export async function getServerSideProps(context) {
@@ -12,10 +12,13 @@ export async function getServerSideProps(context) {
   const uuid = findUUID(name)
 
   const historyUrl = getEndpoint(`scenes/${uuid}/visitor_history`)
-  const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
+  // NOTE
+  const historyResult = await getDataWithApiKey(historyUrl, historyUrl, {})
 
   const sceneUrl = getEndpoint(`scenes/${uuid}`)
-  const sceneResult = await getDataWithProxy(sceneUrl, sceneUrl, {})
+
+  // NOTE
+  const sceneResult = await getDataWithApiKey(sceneUrl, sceneUrl, {})
 
   return {
     props: { historyResult, sceneResult, uuid },

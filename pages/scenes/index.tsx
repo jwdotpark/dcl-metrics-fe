@@ -6,7 +6,7 @@ import ScenesLogout from "../../src/components/local/stats/scenes/ScenesLogout"
 import ScenesTimeSpent from "../../src/components/local/stats/scenes/ScenesTimeSpent"
 import ScenesTimeSpentAFK from "../../src/components/local/stats/scenes/ScenesTimeSpentAFK"
 import TopScenesVisitors from "../../src/components/local/stats/scenes/TopScenesVisitors"
-import { getData, getDataWithProxy, writeFile } from "../../src/lib/data/fetch"
+import { getData, getDataWithApiKey, writeFile } from "../../src/lib/data/fetch"
 import {
   globalScenesURL,
   isDev,
@@ -21,12 +21,14 @@ export async function getStaticProps() {
   let globalSceneRes, sceneRes
 
   if (isProd) {
-    globalSceneRes = await getDataWithProxy(
+    // NOTE
+    globalSceneRes = await getDataWithApiKey(
       globalScenesURL,
       "/global/scenes",
       staticGlobalScenes
     )
-    sceneRes = await getDataWithProxy(sceneURL, "/scenes/top", staticScene)
+    // NOTE
+    sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
   } else if (isDev && !isLocal) {
     globalSceneRes = await getData(
       globalScenesURL,

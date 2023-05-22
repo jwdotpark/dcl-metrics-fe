@@ -2,12 +2,13 @@ import { Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import StatusBox from "../src/components/local/status/StatusBox"
 import { isDev, isLocal, isProd, statusURL } from "../src/lib/data/constant"
-import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
+import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 import staticPeerStatus from "../public/data/staticPeerStatus.json"
 
 export async function getStaticProps() {
   if (isProd) {
-    const statusRes = await getDataWithProxy(
+    // NOTE
+    const statusRes = await getDataWithApiKey(
       statusURL,
       "/peer_status",
       staticPeerStatus

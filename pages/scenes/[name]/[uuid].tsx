@@ -2,7 +2,7 @@ import { Box, Center, Text } from "@chakra-ui/react"
 import Layout from "../../../src/components/layout/layout"
 import Scene from "../../../src/components/local/stats/Scene"
 import { getEndpoint } from "../../../src/lib/data/constant"
-import { getDataWithProxy } from "../../../src/lib/data/fetch"
+import { getDataWithApiKey } from "../../../src/lib/data/fetch"
 
 const SingleScenePage = ({ result, historyResult }) => {
   const res = [result]
@@ -36,10 +36,12 @@ export async function getServerSideProps(context) {
   const { uuid, name } = context.query
   const url = getEndpoint("scenes/" + uuid)
   const result =
-    uuid && (await getDataWithProxy(url, `scenes/${name}/${uuid}`, {}))
+    // NOTE
+    uuid && (await getDataWithApiKey(url, `scenes/${name}/${uuid}`, {}))
 
   const historyUrl = getEndpoint(`scenes/${uuid}/visitor_history`)
-  const historyResult = await getDataWithProxy(historyUrl, historyUrl, {})
+  // NOTE
+  const historyResult = await getDataWithApiKey(historyUrl, historyUrl, {})
 
   return {
     props: { result, historyResult },

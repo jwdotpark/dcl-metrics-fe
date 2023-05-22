@@ -13,11 +13,12 @@ import {
   isLocal,
   isProd,
 } from "../src/lib/data/constant"
-import { getData, getDataWithProxy, writeFile } from "../src/lib/data/fetch"
+import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalParcelRes = await getDataWithProxy(
+    // NOTE
+    const globalParcelRes = await getDataWithApiKey(
       globalParcelURL,
       "/global/parcels",
       staticGlobalParcels
