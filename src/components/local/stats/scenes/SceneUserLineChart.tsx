@@ -12,11 +12,9 @@ const SceneUserLineChart = ({ data, name }) => {
   const color = "rgba(80, 150, 123)"
 
   const chartData = []
-  userData.map((item) => {
+  userData.map((item: any[]) => {
     chartData.push({
-      // @ts-ignore
       date: item[1].date,
-      // @ts-ignore
       visitors: item[1].visitors,
     })
   })
@@ -88,7 +86,7 @@ const SceneUserLineChart = ({ data, name }) => {
           <DateRangeButton
             dateRange={dateRange}
             setDateRange={setDateRange}
-            validLegnth={validLegnth - 1}
+            validLegnth={validLegnth}
             name=""
             yesterday={false}
           />
