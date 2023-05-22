@@ -1,16 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserScenesVisited from "../../../../../public/data/staticUserScenesVisited.json"
-import { useState, useEffect } from "react"
-import {
-  isProd,
-  isDev,
-  isLocal,
-  getEndpoint,
-} from "../../../../lib/data/constant"
+import { useState, useEffect, useMemo, useCallback } from "react"
+import { isLocal, getEndpoint } from "../../../../lib/data/constant"
 import LineChart from "../../../../lib/LineChart"
 import DateRangeButton from "../daterange/DateRangeButton"
-import { Center, Spinner } from "@chakra-ui/react"
+import { Text, Center, Spinner } from "@chakra-ui/react"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
 
@@ -27,16 +23,14 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
   const [dateRange, setDateRange] = useState(data.length)
   const color = ["#ff79c6"]
 
-  let chartData = []
-
-  data.map((item) => {
-    chartData.push({
+  const chartData = useMemo(() => {
+    return data.map((item) => ({
       date: item.date,
       count: item.count,
-    })
-  })
+    }))
+  }, [data])
 
-  const plotMissingDataArr = (data) => {
+  const plotMissingDataArr = useCallback((data) => {
     const minDate = new Date(Math.min(...data.map((d) => new Date(d.date))))
     const maxDate = new Date(Math.max(...data.map((d) => new Date(d.date))))
     const dateRange = []
@@ -57,68 +51,105 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
     }
 
     return plotData
-  }
+  }, [])
 
-  const slicedData = () => {
+  const fetchData = useCallback(async () => {
+    let url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/scenes_visited/`
+
+    if (isLocal) {
+      setData(plotMissingDataArr(staticUserScenesVisited))
+    } else {
+      setIsLoading(true)
+      try {
+        const response = await fetch(url)
+        const res = await response.json()
+        setData(plotMissingDataArr(res.result))
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+  }, [scenesVisitedUrl, address, plotMissingDataArr])
+
+  const slicedData = useMemo(() => {
     if (chartData.length - dateRange > 0) {
       return chartData.slice(chartData.length - dateRange, chartData.length)
     } else {
       return chartData
     }
-  }
+  }, [chartData, dateRange])
 
-  const result = [
-    {
-      id: "Number of Scenes Visited",
-      color: "hsl(90, 70%, 50%)",
-      data: slicedData().map((item) => ({
-        id: item.date,
-        x: item.date,
-        y: item.count,
-      })),
-    },
-  ]
+  const result = useMemo(
+    () => [
+      {
+        id: "Number of Scenes Visited",
+        color: "hsl(90, 70%, 50%)",
+        data: slicedData.map((item) => ({
+          id: item.date,
+          x: item.date,
+          y: item.count,
+        })),
+      },
+    ],
+    [slicedData]
+  )
 
-  const validLegnth = chartData.filter(
-    (item) => item.active_scenes !== 0
-  ).length
+  const validLength = useMemo(() => {
+    return chartData.filter((item: any) => item.active_scenes !== 0).length
+  }, [chartData])
 
   useEffect(() => {
     setIsLoading(true)
-    const fetchData = async () => {
-      const url = `/api/server-fetch?url=${scenesVisitedUrl}&address=${address}&endpoint=${address}/activity/scenes_visited/`
-      if (isProd) {
-        const response = await fetch(url)
-        const res = await response.json()
-        setData(plotMissingDataArr(res.result))
-      } else if (isDev && !isLocal) {
-        const response = await fetch(url)
-        const res = await response.json()
-        setData(plotMissingDataArr(res.result))
-      } else if (isLocal) {
-        setData(plotMissingDataArr(staticUserScenesVisited))
-      }
-    }
     fetchData()
     setIsLoading(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     setIsLoading(true)
-    const data = slicedData()
-    const sum = slicedData().reduce((acc, cur) => acc + cur.count, 0)
-    const result = sum / data.length
-    setAvgData(result)
+    const sum = slicedData.reduce((acc, cur) => acc + cur.count, 0)
+    const average = sum / slicedData.length
+    setAvgData(average)
     setIsLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange])
+  }, [dateRange, slicedData])
 
   useEffect(() => {
     setIsLoading(true)
     setDateRange(data.length)
     setIsLoading(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.length])
+
+  let chartComponent: JSX.Element
+
+  if (data.length !== 0) {
+    if (isLoading) {
+      chartComponent = (
+        <Center h={chartProps.height}>
+          <Spinner />
+        </Center>
+      )
+    } else {
+      chartComponent = (
+        <LineChart
+          data={result}
+          color={color}
+          name="userScenesVisited"
+          avgColor={undefined}
+          line={undefined}
+          rentalData={false}
+          avgData={[]}
+        />
+      )
+    }
+  } else {
+    chartComponent = (
+      <Center h={chartProps.height}>
+        <Text>No Data</Text>
+      </Center>
+    )
+  }
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 4, 3]}>
@@ -127,39 +158,19 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
         description={`The number of the scene ${userAddressRes.name} visited`}
         date=""
         avgData={avgData}
-        slicedData={slicedData()}
+        slicedData={slicedData}
         color={color}
         line={false}
         setLine={{}}
       />
-      {data.length !== 0 ? (
-        <>
-          <DateRangeButton
-            dateRange={dateRange}
-            setDateRange={setDateRange}
-            validLegnth={validLegnth}
-            name=""
-            yesterday={false}
-          />
-          {!isLoading ? (
-            <LineChart
-              data={result}
-              color={color}
-              name="userScenesVisited"
-              avgColor={undefined}
-              line={undefined}
-              rentalData={false}
-              avgData={[]}
-            />
-          ) : (
-            <Center h={chartProps.height}>
-              <Spinner />
-            </Center>
-          )}
-        </>
-      ) : (
-        <Center h={chartProps.height}>No Data</Center>
-      )}
+      <DateRangeButton
+        dateRange={dateRange}
+        setDateRange={setDateRange}
+        validLegnth={validLength}
+        name=""
+        yesterday={false}
+      />
+      {chartComponent}
     </BoxWrapper>
   )
 }

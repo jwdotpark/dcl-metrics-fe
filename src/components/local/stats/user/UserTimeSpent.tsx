@@ -99,6 +99,36 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     setIsLoading(false)
   }, [data.length])
 
+  let chartComponent: JSX.Element
+
+  if (data.length !== 0) {
+    if (isLoading) {
+      chartComponent = (
+        <Center h={chartProps.height}>
+          <Spinner />
+        </Center>
+      )
+    } else {
+      chartComponent = (
+        <LineChart
+          data={result}
+          color={color}
+          name="userTimeSpent"
+          avgColor={undefined}
+          line={undefined}
+          rentalData={false}
+          avgData={[]}
+        />
+      )
+    }
+  } else {
+    chartComponent = (
+      <Center h={chartProps.height}>
+        <Text>No Data</Text>
+      </Center>
+    )
+  }
+
   return (
     <BoxWrapper colSpan={[1, 1, 1, 4, 3]}>
       <BoxTitle
@@ -111,34 +141,14 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
         line={false}
         setLine={{}}
       />
-      {data.length !== 0 ? (
-        <>
-          <DateRangeButton
-            dateRange={dateRange}
-            setDateRange={setDateRange}
-            validLegnth={validLegnth}
-            name=""
-            yesterday={false}
-          />
-          {!isLoading ? (
-            <LineChart
-              data={result}
-              color={color}
-              name="userTimeSpent"
-              avgColor={undefined}
-              line={undefined}
-              rentalData={false}
-              avgData={[]}
-            />
-          ) : (
-            <Center h={chartProps.height}>
-              <Spinner />
-            </Center>
-          )}
-        </>
-      ) : (
-        <Center h={chartProps.height}>No Data</Center>
-      )}
+      <DateRangeButton
+        dateRange={dateRange}
+        setDateRange={setDateRange}
+        validLegnth={validLegnth}
+        name=""
+        yesterday={false}
+      />
+      {chartComponent}
     </BoxWrapper>
   )
 }
