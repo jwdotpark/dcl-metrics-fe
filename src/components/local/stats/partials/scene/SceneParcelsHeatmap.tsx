@@ -57,8 +57,6 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
     return res
   }
 
-  // NOTE fix tooltip
-
   return (
     <Tooltip
       p="2"

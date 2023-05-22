@@ -40,7 +40,6 @@ describe("findFalse", () => {
     expect(findFalse({ a: false, b: "", c: 0 })).toEqual(["a", "b", "c"])
   })
 
-  // FIXME type checking
   test("throws a TypeError when passed a non-object argument", () => {
     expect(() => findFalse("not an object")).toThrow(TypeError)
     expect(() => findFalse(null)).toThrow(TypeError)

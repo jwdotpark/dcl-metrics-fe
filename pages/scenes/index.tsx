@@ -21,13 +21,11 @@ export async function getStaticProps() {
   let globalSceneRes, sceneRes
 
   if (isProd) {
-    // NOTE
     globalSceneRes = await getDataWithApiKey(
       globalScenesURL,
       "/global/scenes",
       staticGlobalScenes
     )
-    // NOTE
     sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
   } else if (isDev && !isLocal) {
     globalSceneRes = await getData(

@@ -7,7 +7,6 @@ import staticPeerStatus from "../public/data/staticPeerStatus.json"
 
 export async function getStaticProps() {
   if (isProd) {
-    // NOTE
     const statusRes = await getDataWithApiKey(
       statusURL,
       "/peer_status",

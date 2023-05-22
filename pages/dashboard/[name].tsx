@@ -12,12 +12,9 @@ export async function getServerSideProps(context) {
   const uuid = findUUID(name)
 
   const historyUrl = getEndpoint(`scenes/${uuid}/visitor_history`)
-  // NOTE
   const historyResult = await getDataWithApiKey(historyUrl, historyUrl, {})
 
   const sceneUrl = getEndpoint(`scenes/${uuid}`)
-
-  // NOTE
   const sceneResult = await getDataWithApiKey(sceneUrl, sceneUrl, {})
 
   return {

@@ -32,19 +32,19 @@ export const writeFile = (name, response) => {
   fs.writeFileSync(path + file, JSON.stringify(response))
 }
 
-export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
-  try {
-    const res = await axios.get(targetURL, axiosOptions)
-    const data = res.data
-    return data
-  } catch (error) {
-    console.log("error", error.response.status, error.response.statusText)
-    if (isProd) {
-      sendNotification(error.response.statusText, `${endpoint}`, "error")
-    }
-    return staticFile
-  }
-}
+//export const getDataWithProxy = async (targetURL, endpoint, staticFile) => {
+//  try {
+//    const res = await axios.get(targetURL, axiosOptions)
+//    const data = res.data
+//    return data
+//  } catch (error) {
+//    console.log("error", error.response.status, error.response.statusText)
+//    if (isProd) {
+//      sendNotification(error.response.statusText, `${endpoint}`, "error")
+//    }
+//    return staticFile
+//  }
+//}
 
 export const getData = async (targetUrl, endpoint, staticFile) => {
   const response = await fetch(targetUrl)

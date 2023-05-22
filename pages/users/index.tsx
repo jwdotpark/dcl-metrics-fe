@@ -13,7 +13,6 @@ import {
 
 export async function getStaticProps() {
   if (isProd) {
-    // NOTE
     const globalUserRes = await getDataWithApiKey(
       globalUsersURL,
       "/global/users",

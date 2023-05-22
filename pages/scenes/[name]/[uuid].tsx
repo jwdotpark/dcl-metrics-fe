@@ -36,11 +36,9 @@ export async function getServerSideProps(context) {
   const { uuid, name } = context.query
   const url = getEndpoint("scenes/" + uuid)
   const result =
-    // NOTE
     uuid && (await getDataWithApiKey(url, `scenes/${name}/${uuid}`, {}))
 
   const historyUrl = getEndpoint(`scenes/${uuid}/visitor_history`)
-  // NOTE
   const historyResult = await getDataWithApiKey(historyUrl, historyUrl, {})
 
   return {

@@ -37,25 +37,5 @@ describe("FeedbackMenu", () => {
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 500))
     })
-
-    // FIXME attach spy!
-    //expect(sendFeedback).toHaveBeenCalledWith({ name, contact, msg: message })
-
-    //// form being reset
-    //expect(nameInput).toHaveValue("")
-    //expect(contactInput).toHaveValue("")
-    //expect(messageInput).toHaveValue("")
-
-    //// too short
-    //act(() => {
-    //  fireEvent.change(messageInput, { target: { value: "Hi" } })
-    //})
-    //expect(await screen.findByText("Send")).toHaveAttribute("disabled")
-
-    //// too long
-    //act(() => {
-    //  fireEvent.change(messageInput, { target: { value: "a".repeat(1025) } })
-    //})
-    //expect(await screen.findByText("Send")).toHaveAttribute("disabled")
   })
 })

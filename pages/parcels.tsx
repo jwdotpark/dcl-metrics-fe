@@ -17,7 +17,6 @@ import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 
 export async function getStaticProps() {
   if (isProd) {
-    // NOTE
     const globalParcelRes = await getDataWithApiKey(
       globalParcelURL,
       "/global/parcels",
