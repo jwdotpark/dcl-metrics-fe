@@ -1,4 +1,3 @@
-import axios from "axios"
 import fs from "fs"
 import { sendNotification } from "../hooks/sendNotification"
 import { isDev, isLocal, isProd } from "./constant"
