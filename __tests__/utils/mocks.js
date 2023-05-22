@@ -51,3 +51,21 @@ export const lineChartAvgData = [
   { x: "2022-03-02", y: 65 },
   { x: "2022-03-03", y: 70 },
 ]
+
+export const tiles = {
+  tile1: {
+    scene: {
+      name: "Scene 1",
+    },
+  },
+  tile2: {
+    scene: {
+      name: "Scene 2",
+    },
+  },
+  tile3: {
+    scene: {
+      name: "Scene 3",
+    },
+  },
+}

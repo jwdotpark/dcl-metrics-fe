@@ -1,91 +1,30 @@
-// @ts-nocheck
 import { Box, Center, Spinner } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import LineChart from "../../../lib/LineChart"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo, useCallback } from "react"
 import {
   sliceData,
-  sliceDateRange,
   chartHeight,
   findFalse,
-} from "../../../lib/data/chartInfo"
-import moment from "moment"
+} from "../../../lib/data/chart/chartInfo"
+import {
+  generateChartData,
+  calculateAverages,
+  mapChartData,
+} from "../../../lib/data/chart/chartHelper"
 import BottomLegend from "./partial/BottomLegend"
 
 const OnlineUsers = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any>([])
+  const chartKeys = useMemo(() => ["online_users"], [])
   const [isLoading, setIsLoading] = useState(false)
-
-  const chartData = []
-  const color = ["#9ccfd8"]
-
+  const color = useMemo(() => ["#9ccfd8"], [])
   const [avgData, setAvgData] = useState([])
-  const dataArr = (data.result && data.result.data.result[0].values) || []
-  const dateRange = dataArr.length - 1
-
-  // eslint-disable-next-line no-unused-vars
-  const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
-
-  if (dataArr !== null) {
-    dataArr.map((item) => {
-      chartData.push({
-        id: item[0],
-        date: moment.unix(item[0]).format("YYYY-MM-DD HH:mm"),
-        degraded: false,
-        value: item[1],
-      })
-    })
-  }
-
-  const partial = sliceData(chartData, dateRange)
-  const dateString =
-    partial.length > 0 && sliceDateRange(partial, dateRange).date
-
-  const mapData = (id: string) => {
-    return {
-      id: id,
-      data: partial.map((item) => ({
-        x: item.date,
-        y: Number(item.value).toFixed(0),
-        degraded: item.degraded,
-      })),
-    }
-  }
-
-  const result = [mapData("Online Users")]
-
-  result.map((item, i) => {
-    item.color = color[i]
-  })
-
-  const lineVisibility = result.map(() => {
-    return true
-  })
-
-  // eslint-disable-next-line no-unused-vars
-  const [line, setLine] = useState(lineVisibility)
-
-  const calculateAverages = (partial) => {
-    const validLength = partial.length
-    const sum = {
-      onlineUsers: partial.reduce((acc, cur) => acc + Number(cur.value), 0),
-    }
-    const value = {
-      online_users: Math.floor(sum.onlineUsers / validLength),
-    }
-    const map = [{ id: "Online Users", value: value.online_users }].sort(
-      (a, b) => {
-        return b.value - a.value
-      }
-    )
-    return map
-  }
 
   const fetchData = async () => {
     setIsLoading(true)
-
     const url = "https://public-metrics.decentraland.org/onlineUsers30d"
     const res = await fetch(`/api/client-fetch?url=${url}`, {
       method: "GET",
@@ -95,68 +34,99 @@ const OnlineUsers = () => {
       },
     })
     const data = await res.json()
-    setData(data)
+    const dataArr = data.result && data.result.data.result[0].values
     setIsLoading(false)
+    setData(dataArr)
   }
 
-  useEffect(() => {
-    setAvgData(calculateAverages(partial))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data])
+  const chartData = useMemo(
+    () => generateChartData(data, chartKeys),
+    [data, chartKeys]
+  )
 
-  useEffect(() => {
-    const res = findFalse(line)
-    const newChartColor = color.filter((item, i) => {
-      return !res.includes(i.toString())
-    })
-    const newAvgColor = color.map((item, i) => {
-      if (res.includes(i.toString())) {
-        return "gray.400"
-      } else {
-        return item
-      }
+  const partial = useMemo(
+    () => sliceData(chartData, data.length - 1),
+    [chartData, data.length]
+  )
+
+  const mappedChartData = useMemo(
+    () => mapChartData("Online Users", "online_users", partial),
+    [partial]
+  )
+
+  const generateResultData = useCallback(() => {
+    const mappedResult = [mappedChartData]
+    mappedResult.forEach((item: any, i: number) => {
+      item.color = color[i]
     })
 
-    setLineColor(newChartColor)
-    setAvgColor(newAvgColor)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [line])
+    return mappedResult
+  }, [color, mappedChartData])
+
+  const result = useMemo(() => generateResultData(), [generateResultData])
+  const lineVisibility = useMemo(() => result.map(() => true), [result])
+
+  const [line, setLine] = useState(lineVisibility)
 
   useEffect(() => {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    setAvgData(calculateAverages(partial, chartKeys))
+  }, [partial, chartKeys])
+
+  useEffect(() => {
+    const res = findFalse(line)
+    const newAvgColor = color.map((item, i) =>
+      res.includes(i.toString()) ? "gray.400" : item
+    )
+
+    setAvgColor(newAvgColor)
+  }, [color, line])
+
+  let onlineUserChart
+
+  if (isLoading) {
+    onlineUserChart = (
+      <Center h={chartHeight}>
+        <Spinner />
+      </Center>
+    )
+  } else {
+    onlineUserChart = (
+      <>
+        <LineChart
+          data={result}
+          color={color}
+          name="onlineUsers"
+          avgData={avgData}
+          avgColor={avgColor}
+          line={line}
+          rentalData={undefined}
+        />
+        <BottomLegend
+          description="UTC, source from"
+          link="https://status.decentraland.org/metrics"
+        />
+      </>
+    )
+  }
+
   return (
     <BoxWrapper colSpan={3}>
-      <BoxTitle
-        name={`Online Users`}
-        date={""}
-        avgData={avgData}
-        slicedData={{}}
-        color={color}
-        description={`Data from status.decentraland.org from ${dateString.first} - ${dateString.last}`}
-      />
-      <Box>
-        {!isLoading ? (
-          <>
-            <LineChart
-              data={result}
-              color={color}
-              name="onlineUsers"
-              avgData={avgData}
-              avgColor={avgColor}
-              line={line}
-            />
-            <BottomLegend
-              description="UTC, source from"
-              link="https://status.decentraland.org/metrics"
-            />
-          </>
-        ) : (
-          <Center h={chartHeight}>
-            <Spinner />
-          </Center>
-        )}
+      <Box data-testid="onlineUsers">
+        <BoxTitle
+          name={`Online Users`}
+          date={""}
+          avgData={avgData}
+          slicedData={{}}
+          color={color}
+          description={`Active daily users, data from Decentraland Status Page`}
+          line={line}
+          setLine={setLine}
+        />
+        {onlineUserChart}
       </Box>
     </BoxWrapper>
   )

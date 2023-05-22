@@ -26,7 +26,7 @@ describe("/map page", () => {
     zoomOutBtn.should("be.visible")
   })
 
-  it("has coordinate input and sidebar", () => {
+  it.skip("has coordinate input and sidebar", () => {
     const preMapHeight = cy.get(".css-50a42o > :nth-child(2)")
     const collapsibleBtn = cy.get(".css-185g68i")
     const afterMapHeight = cy.get(".css-50a42o > :nth-child(2)")

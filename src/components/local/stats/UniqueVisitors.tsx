@@ -1,5 +1,4 @@
-// @ts-nocheck
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo, useCallback } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 import {
@@ -7,120 +6,84 @@ import {
   sliceData,
   sliceDateRange,
   findFalse,
-} from "../../../lib/data/chartInfo"
+} from "../../../lib/data/chart/chartInfo"
+import {
+  generateChartData,
+  mapChartData,
+  calculateAverages,
+} from "../../../lib/data/chart/chartHelper"
 import DateRangeButton from "./daterange/DateRangeButton"
 import LineChart from "../../../lib/LineChart"
 
 const UniqueVisitors = ({ data }) => {
-  const dataArr = Object.entries(data)
-  const chartData = []
-  const color = ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"]
+  const color = useMemo(() => ["#48BB78", "#9F7AEA", "#4299E1", "#F56565"], [])
+  const chartKeys = ["unique_users", "guest_users", "new_users", "named_users"]
+
   const [dateRange, setDateRange] = useState(defaultDateRange)
   const [avgData, setAvgData] = useState([])
-
   const [lineColor, setLineColor] = useState(color)
   const [avgColor, setAvgColor] = useState(color)
 
-  // TODO type this
-  dataArr.map((item) => {
-    chartData.push({
-      id: item[0],
-      date: item[0],
-      degraded: item[1].degraded,
-      unique_users: item[1].users.unique_users,
-      new_users: item[1].users.new_users,
-      named_users: item[1].users.named_users,
-      guest_users: item[1].users.guest_users,
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const chartData = useMemo(() => generateChartData(data, chartKeys), [data])
+
+  const partial = useMemo(
+    () => sliceData(chartData, dateRange),
+    [chartData, dateRange]
+  )
+
+  const dateString = useMemo(
+    () => sliceDateRange(chartData, dateRange).date,
+    [chartData, dateRange]
+  )
+
+  const generateResultData = useCallback(() => {
+    const mappedResult = [
+      mapChartData("Unique Users", "unique_users", partial),
+      mapChartData("Guest Users", "guest_users", partial),
+      mapChartData("New Users", "new_users", partial),
+      mapChartData("Named Users", "named_users", partial),
+    ]
+
+    mappedResult.forEach((item: any, i: number) => {
+      item.color = color[i]
     })
-  })
 
-  const partial = sliceData(chartData, dateRange)
-  const dateString = sliceDateRange(chartData, dateRange).date
+    return mappedResult
+  }, [color, partial])
 
-  const mapData = (id: string, key: string) => {
-    return {
-      id: id,
-      data: partial.map((item) => ({
-        x: item.date,
-        y: item[key],
-        degraded: item.degraded,
-      })),
-    }
-  }
+  const result = useMemo(() => generateResultData(), [generateResultData])
 
-  const result = [
-    mapData("Unique Users", "unique_users"),
-    mapData("Guest Users", "guest_users"),
-    mapData("New Users", "new_users"),
-    mapData("Named Users", "named_users"),
-  ]
-
-  result.map((item, i) => {
-    item.color = color[i]
-  })
-
-  const lineVisibility = result.map(() => {
-    return true
-  })
+  const lineVisibility = useMemo(() => result.map(() => true), [result])
 
   const [line, setLine] = useState(lineVisibility)
 
-  const calculateAverages = (partial) => {
-    const validLength = partial.length
-    const sum = {
-      uniqueUsers: partial.reduce((acc, cur) => acc + cur.unique_users, 0),
-      guestUsers: partial.reduce((acc, cur) => acc + cur.guest_users, 0),
-      newUsers: partial.reduce((acc, cur) => acc + cur.new_users, 0),
-      namedUsers: partial.reduce((acc, cur) => acc + cur.named_users, 0),
-    }
-    const value = {
-      unique_users: Math.floor(sum.uniqueUsers / validLength),
-      guest_users: Math.floor(sum.guestUsers / validLength),
-      new_users: Math.floor(sum.newUsers / validLength),
-      named_users: Math.floor(sum.namedUsers / validLength),
-    }
-    const map = [
-      { id: "Unique Users", value: value.unique_users },
-      { id: "Guest Users", value: value.guest_users },
-      { id: "New Users", value: value.new_users },
-      { id: "Named Users", value: value.named_users },
-    ].sort((a, b) => {
-      return b.value - a.value
-    })
-    return map
-  }
-
-  const filteredResult = result.filter((item, i) => {
-    return line[i]
-  })
+  const filteredResult = useMemo(
+    () => result.filter((item, i) => line[i]),
+    [result, line]
+  )
 
   useEffect(() => {
-    setAvgData(calculateAverages(partial))
+    setAvgData(calculateAverages(partial, chartKeys))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange])
+  }, [dateRange, calculateAverages])
 
   useEffect(() => {
     const res = findFalse(line)
-    const newChartColor = color.filter((item, i) => {
-      return !res.includes(i.toString())
-    })
-    const newAvgColor = color.map((item, i) => {
-      if (res.includes(i.toString())) {
-        return "gray.400"
-      } else {
-        return item
-      }
-    })
+    const newChartColor = color.filter((item, i) => !res.includes(i.toString()))
+    const newAvgColor = color.map((item, i) =>
+      res.includes(i.toString()) ? "gray.400" : item
+    )
 
     setLineColor(newChartColor)
     setAvgColor(newAvgColor)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [line])
+  }, [color, line])
 
   return (
     <BoxWrapper colSpan={0}>
       <BoxTitle
         name="Unique Visitors"
+        description={false}
         date={dateString}
         avgData={avgData}
         slicedData={partial}
@@ -139,6 +102,7 @@ const UniqueVisitors = ({ data }) => {
         data={filteredResult}
         color={lineColor}
         avgColor={avgColor}
+        rentalData={undefined}
         name="uniqueVisitors"
         avgData={avgData}
         line={line}

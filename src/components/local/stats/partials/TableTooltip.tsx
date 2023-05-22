@@ -1,5 +1,5 @@
 import { Box, Text, Flex, Spacer, Center } from "@chakra-ui/react"
-import { formatCount } from "../../../../lib/data/chartInfo"
+import { formatCount } from "../../../../lib/data/chart/chartInfo"
 
 // eslint-disable-next-line no-unused-vars
 const TooltipTable = ({ date, count, degraded, bar, name, color }) => {

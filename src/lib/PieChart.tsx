@@ -14,7 +14,7 @@ const PieChart = ({ data }) => {
   // eslint-disable-next-line no-unused-vars
   const [chartProps, setChartProps] = useAtom(lineChartAtom)
   return (
-    <Box h={chartProps.height}>
+    <Box h={chartProps.height} data-testid="pie-chart">
       <ResponsivePie
         data={data}
         colors={{ scheme: "pastel1" }}

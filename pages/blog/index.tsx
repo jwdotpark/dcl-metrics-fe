@@ -1,7 +1,7 @@
 import { Center } from "@chakra-ui/react"
-import { getPosts } from "../markdown/helpers/post"
-import Layout from "../src/components/layout/layout"
-import PostList from "../src/components/blog/PostList"
+import { getPosts } from "../../markdown/helpers/post"
+import Layout from "../../src/components/layout/layout"
+import PostList from "../../src/components/blog/PostList"
 import moment from "moment"
 
 export const getStaticProps = () => {

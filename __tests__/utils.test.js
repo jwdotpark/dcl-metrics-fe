@@ -5,6 +5,8 @@ import {
   mutateStringToURL,
   strToCoord,
 } from "../src/lib/hooks/utils"
+import { searchTiles } from "../src/lib/data/searchMap"
+import { tiles } from "./utils/mocks"
 
 describe("formatSeconds", () => {
   it("formats seconds into hours, minutes, and seconds", () => {
@@ -52,5 +54,72 @@ describe("strToCoord", () => {
   test("handles invalid input", () => {
     const testString = "abc,def"
     expect(strToCoord(testString)).toEqual({ x: NaN, y: NaN })
+  })
+})
+
+describe("searchTiles", () => {
+  it("returns an empty array when keyword is empty", () => {
+    const result = searchTiles(tiles, "")
+    expect(result).toEqual([])
+  })
+
+  it("returns an empty array when no tiles match the keyword", () => {
+    const result = searchTiles(tiles, "game")
+    expect(result).toEqual([])
+  })
+
+  it("returns an array of matching tiles when some tiles match the keyword", () => {
+    const result = searchTiles(tiles, "scene")
+    expect(result).toEqual([
+      {
+        scene: {
+          name: "Scene 1",
+        },
+      },
+      {
+        scene: {
+          name: "Scene 2",
+        },
+      },
+      {
+        scene: {
+          name: "Scene 3",
+        },
+      },
+    ])
+  })
+
+  it("returns an array of unique matching tiles when some tiles have the same scene name", () => {
+    const tilesWithDuplicateSceneName = {
+      tile1: {
+        scene: {
+          name: "Scene 1",
+        },
+      },
+      tile2: {
+        scene: {
+          name: "Scene 2",
+        },
+      },
+      tile3: {
+        scene: {
+          name: "Scene 1",
+        },
+      },
+    }
+
+    const result = searchTiles(tilesWithDuplicateSceneName, "scene")
+    expect(result).toEqual([
+      {
+        scene: {
+          name: "Scene 1",
+        },
+      },
+      {
+        scene: {
+          name: "Scene 2",
+        },
+      },
+    ])
   })
 })

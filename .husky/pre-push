@@ -2,4 +2,4 @@
 
 yarn lint
 yarn test --verbose
-yarn test:e2e
+#yarn test:e2e

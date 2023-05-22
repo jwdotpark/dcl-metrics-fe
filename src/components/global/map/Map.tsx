@@ -7,7 +7,7 @@ import {
   Spinner,
   useDisclosure,
 } from "@chakra-ui/react"
-import { memo, useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import { usePrev } from "../../../lib/hooks/usePrev"
 import "react-tile-map/lib/styles.css"
 import { Layer, TileMap } from "react-tile-map"
@@ -16,6 +16,7 @@ import MapButtonGroup from "./partials/MapButtonGroup"
 import CollapsibleMapBox from "./partials/CollapsibleMapBox"
 import { FullScreen, useFullScreenHandle } from "react-full-screen"
 import { searchTiles } from "../../../lib/data/searchMap"
+import { COLOR_BY_TYPE, heatmapProperties } from "../../../lib/data/constant"
 
 const Map = ({
   h,
@@ -30,65 +31,29 @@ const Map = ({
   parcelData,
   setMapHeight,
 }) => {
+  // map
   const [tempCoord, setTempCoord] = useState({
     x: 0,
     y: 0,
   })
-  const handle = useFullScreenHandle()
-
-  const COLOR_BY_TYPE: Record<number | string, string> = {
-    0: "#ff9990", // my parcels
-    1: "#ff4053", // my parcels on sale
-    2: "#ff9990", // my estates
-    3: "#ff4053", // my estates on sale
-    4: "#ffbd33", // parcels/estates where I have permissions
-    district: "#5054D4", // districts
-    6: "#563db8", // contributions
-    road: "#716C7A", // roads
-    plaza: "#70AC76", // plazas
-    owned: "#3D3A46", // owned parcel/estate
-    10: "#3D3A46", // parcels on sale (we show them as owned parcels)
-    unowned: "#09080A", // unowned pacel/estate
-    12: "#18141a", // background
-    13: "#110e13", // loading odd
-    14: "#0d0b0e", // loading even
-    // new properties
-    total_avg_time_spent: "#8be9fd",
-    total_avg_time_spent_afk: "#50fa7b",
-    total_logins: "#ffb86c",
-    total_logouts: "#ff79c6",
-    total_visitors: "#bd93f9",
-    deploy_count: "#ff5555",
-    selected_scene: "#FF9990",
-  }
-
-  const properties = [
-    { name: "max_concurrent_users" },
-    { name: "visitor_intensity" },
-    { name: "avg_time_spent_intensity" },
-    { name: "avg_time_spent_afk_intensity" },
-    { name: "login_intensity" },
-    { name: "logout_intensity" },
-  ]
-
   const [tiles, setTiles] = useState([])
-  const [isHover, setIsHover] = useState(false)
   const [isMapLoading, setIsMapLoading] = useState(false)
   const [zoom, setZoom] = useState(1)
-  const btnBg = useColorModeValue("gray.100", "gray.900")
-  const textColor = useColorModeValue("gray.100", "gray.900")
   const [selected, setSelected] = useState([])
   const [selectedScene, setSelectedScene] = useState([])
   const prevScene = usePrev(selectedScene)
-  const isIncluded = selectedScene?.includes(selectedParcel?.id)
-  const [selectedProp, setSelectedProp] = useState(properties[0])
-  const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
   const [center, setCenter] = useState({ x: 0, y: 0 })
   const [searchResult, setSearchResult] = useState([])
   const [keyword, setKeyword] = useState("")
   const [searchResultID, setSearchResultID] = useState({ x: 0, y: 0 })
+  const handleFullscreen = useFullScreenHandle()
+  const btnBg = useColorModeValue("gray.100", "gray.900")
+  const textColor = useColorModeValue("gray.100", "gray.900")
+  const [selectedProp, setSelectedProp] = useState(heatmapProperties[0])
+  const prevTile = usePrev(sessionStorage.getItem("selectedParcelType"))
 
   // infobox
+  const isIncluded = selectedScene?.includes(selectedParcel?.id)
   const { getButtonProps, getDisclosureProps, isOpen, onToggle } =
     useDisclosure()
   const [hidden, setHidden] = useState(!isOpen)
@@ -111,6 +76,7 @@ const Map = ({
         }
       : null
   }
+
   const handleClick = (x: number, y: number) => {
     const id = x + "," + y
     setSelectedParcel(tiles[id])
@@ -145,14 +111,13 @@ const Map = ({
     setIsMapLoading(false)
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const injectTiles = () => {
-    // @ts-ignore
+  const injectTiles = useCallback(() => {
     parcelData.map((tile) => {
       const id = tile.coordinates
       tiles[id] = { ...tiles[id], ...tile }
     })
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tiles])
 
   const tileColor = (tile) => {
     if (!tile[selectedProp.name]) {
@@ -222,7 +187,8 @@ const Map = ({
 
   useEffect(() => {
     injectTiles()
-  }, [injectTiles, tiles])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tiles])
 
   useEffect(() => {
     if (selectedParcel.type !== "selected_scene") {
@@ -234,7 +200,8 @@ const Map = ({
         tiles[tile].type = "selected_scene"
       })
     }
-  }, [selectedParcel, tiles])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedParcel])
 
   useEffect(() => {
     if (prevScene && !isIncluded) {
@@ -261,28 +228,19 @@ const Map = ({
         isMapExpanded ? "column" : "row",
       ]}
       m="4"
+      border="solid 1px"
+      borderColor={useColorModeValue("gray.200", "gray.600")}
+      borderRadius="xl"
+      shadow="md"
     >
-      <Box
-        w="100%"
-        h="auto"
-        border="solid 1px"
-        borderColor={useColorModeValue("gray.200", "gray.600")}
-        borderRadius="xl"
-        shadow="md"
-      >
-        <FullScreen handle={handle}>
+      <Box w="100%" h="auto" minH="350">
+        <FullScreen handle={handleFullscreen}>
           <Box
             overflow="hidden"
             h={!isMapExpanded ? mapHeight.collapsed : mapHeight.expanded}
             bg="#25232A"
             borderRadius="xl"
             shadow="md"
-            onMouseEnter={() => {
-              setIsHover(true)
-            }}
-            onMouseLeave={() => {
-              setIsHover(false)
-            }}
           >
             {!isMapLoading ? (
               <>
@@ -293,12 +251,12 @@ const Map = ({
                     zoom={zoom}
                     setZoom={setZoom}
                     tempCoord={tempCoord}
-                    properties={properties}
+                    heatmapProperties={heatmapProperties}
                     selectedProp={selectedProp}
                     setSelectedProp={setSelectedProp}
                     textColor={textColor}
                     btnBg={btnBg}
-                    handle={handle}
+                    handle={handleFullscreen}
                     setMapHeight={setMapHeight}
                     keyword={keyword}
                     setKeyword={setKeyword}
@@ -334,7 +292,7 @@ const Map = ({
                   isMapExpanded={isMapExpanded}
                   mapBoxVerticalSize={mapBoxVerticalSize}
                   mapHeight={mapHeight}
-                  handle={handle}
+                  handle={handleFullscreen}
                 />
               </>
             ) : (
@@ -351,5 +309,4 @@ const Map = ({
   )
 }
 
-export const MapWrapper = memo(Map)
-export default MapWrapper
+export default memo(Map)
