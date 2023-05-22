@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import {
   Box,
@@ -164,19 +165,16 @@ const Map = ({
       setCenter({ x: searchResultID.x, y: searchResultID.y })
       handleClick(searchResultID.x, searchResultID.y)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchResultID])
 
   useEffect(() => {
     setTimeout(() => {
       setSearchResult(searchTiles(tiles, keyword))
     }, 250)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword])
 
   useEffect(() => {
     fetchTiles()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -187,7 +185,6 @@ const Map = ({
 
   useEffect(() => {
     injectTiles()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tiles])
 
   useEffect(() => {
@@ -200,7 +197,6 @@ const Map = ({
         tiles[tile].type = "selected_scene"
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedParcel])
 
   useEffect(() => {
@@ -211,6 +207,71 @@ const Map = ({
       })
     }
   }, [isIncluded, prevScene, prevTile, tiles])
+
+  let mapComponent
+
+  if (isMapLoading) {
+    mapComponent = (
+      <Center h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}>
+        <Spinner />
+      </Center>
+    )
+  } else {
+    mapComponent = (
+      <>
+        <Box>
+          <MapButtonGroup
+            isMapExpanded={isMapExpanded}
+            setIsMapExpanded={setIsMapExpanded}
+            zoom={zoom}
+            setZoom={setZoom}
+            tempCoord={tempCoord}
+            heatmapProperties={heatmapProperties}
+            selectedProp={selectedProp}
+            setSelectedProp={setSelectedProp}
+            textColor={textColor}
+            btnBg={btnBg}
+            handle={handleFullscreen}
+            setMapHeight={setMapHeight}
+            keyword={keyword}
+            setKeyword={setKeyword}
+            searchResult={searchResult}
+            setSearchResultID={setSearchResultID}
+          />
+        </Box>
+        <TileMap
+          zoom={zoom}
+          layers={[layer, selectedStrokeLayer, ...layers]}
+          onHover={(x, y) => {
+            setTempCoord({ x, y })
+          }}
+          onClick={(x, y) => {
+            setCoord({ x, y })
+            handleClick(x, y)
+          }}
+          onChange={(e) => {
+            setZoom(e.zoom)
+            setCenter(e.center)
+          }}
+          x={center.x}
+          y={center.y}
+        />
+        <CollapsibleMapBox
+          getButtonProps={getButtonProps}
+          getDisclosureProps={getDisclosureProps}
+          isOpen={isOpen}
+          hidden={hidden}
+          setHidden={setHidden}
+          coord={coord}
+          selectedParcel={selectedParcel}
+          isMapExpanded={isMapExpanded}
+          mapBoxVerticalSize={mapBoxVerticalSize}
+          mapHeight={mapHeight}
+          handle={handleFullscreen}
+        />
+      </>
+    )
+  }
 
   return (
     <Flex
@@ -242,66 +303,7 @@ const Map = ({
             borderRadius="xl"
             shadow="md"
           >
-            {!isMapLoading ? (
-              <>
-                <Box>
-                  <MapButtonGroup
-                    isMapExpanded={isMapExpanded}
-                    setIsMapExpanded={setIsMapExpanded}
-                    zoom={zoom}
-                    setZoom={setZoom}
-                    tempCoord={tempCoord}
-                    heatmapProperties={heatmapProperties}
-                    selectedProp={selectedProp}
-                    setSelectedProp={setSelectedProp}
-                    textColor={textColor}
-                    btnBg={btnBg}
-                    handle={handleFullscreen}
-                    setMapHeight={setMapHeight}
-                    keyword={keyword}
-                    setKeyword={setKeyword}
-                    searchResult={searchResult}
-                    setSearchResultID={setSearchResultID}
-                  />
-                </Box>
-                <TileMap
-                  zoom={zoom}
-                  layers={[layer, selectedStrokeLayer, ...layers]}
-                  onHover={(x, y) => {
-                    setTempCoord({ x, y })
-                  }}
-                  onClick={(x, y) => {
-                    setCoord({ x, y })
-                    handleClick(x, y)
-                  }}
-                  onChange={(e) => {
-                    setZoom(e.zoom)
-                    setCenter(e.center)
-                  }}
-                  x={center.x}
-                  y={center.y}
-                />
-                <CollapsibleMapBox
-                  getButtonProps={getButtonProps}
-                  getDisclosureProps={getDisclosureProps}
-                  isOpen={isOpen}
-                  hidden={hidden}
-                  setHidden={setHidden}
-                  coord={coord}
-                  selectedParcel={selectedParcel}
-                  isMapExpanded={isMapExpanded}
-                  mapBoxVerticalSize={mapBoxVerticalSize}
-                  mapHeight={mapHeight}
-                  handle={handleFullscreen}
-                />
-              </>
-            ) : (
-              <Center
-                h={isMapExpanded ? mapHeight.expanded : mapHeight.collapsed}
-              >
-                <Spinner />
-              </Center>
-            )}
+            {mapComponent}
           </Box>
         </FullScreen>
       </Box>
