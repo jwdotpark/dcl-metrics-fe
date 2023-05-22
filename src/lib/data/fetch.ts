@@ -80,22 +80,22 @@ export async function fetchGlobalData() {
   if (isProd) {
     ;[globalDailyRes, parcelRes] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
-        getDataWithProxy(url, endpoint, staticData)
+        getDataWithApiKey(url, endpoint, staticData)
       )
     )
-    landSalesRes = await getDataWithProxy(
+    landSalesRes = await getDataWithApiKey(
       "https://www.dcl-property.rentals/api/price_data",
       "https://www.dcl-property.rentals/api/price_data",
       staticLandSales
     )
 
-    topLandRes = await getDataWithProxy(
+    topLandRes = await getDataWithApiKey(
       "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
       "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
       staticTopLand
     )
 
-    topPickRes = await getDataWithProxy(
+    topPickRes = await getDataWithApiKey(
       "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
       "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
       staticTopPick
