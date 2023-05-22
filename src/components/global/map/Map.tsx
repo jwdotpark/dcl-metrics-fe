@@ -78,24 +78,31 @@ const Map = ({
       : null
   }
 
+  // FIXME: onClick does too many thing at once but every step is needed for functional map.. how to refactor?
   const handleClick = (x: number, y: number) => {
     const id = x + "," + y
+
+    // save selected coord
     setSelectedParcel(tiles[id])
 
+    // load information of selected parcel
     if (isSelected(x, y)) {
       setSelected(selected.filter((coord) => coord.x !== x && coord.y !== y))
     } else {
       setSelected([{ x, y }])
     }
 
+    // open up infobox of selected coord
     if (!isOpen) {
       onToggle()
     }
 
+    // set tiles to be scene if it's scene
     if (selectedParcel && selectedParcel.scene) {
       setSelectedScene(selectedParcel.scene.parcels)
     }
 
+    // panning map to center
     setCenter({ x: x, y: y })
   }
 
@@ -104,12 +111,17 @@ const Map = ({
   ) => {
     if (!window.fetch) return {}
     setIsMapLoading(true)
-    const resp = await fetch(url, {
-      cache: "force-cache",
-    })
-    const json = await resp.json()
-    setTiles(json.data)
-    setIsMapLoading(false)
+    try {
+      const resp = await fetch(url, {
+        cache: "force-cache",
+      })
+      const json = await resp.json()
+      setTiles(json.data)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setIsMapLoading(false)
+    }
   }
 
   const injectTiles = useCallback(() => {
@@ -120,7 +132,7 @@ const Map = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tiles])
 
-  const tileColor = (tile) => {
+  const tileColor = useCallback((tile) => {
     if (!tile[selectedProp.name]) {
       return COLOR_BY_TYPE[tile.type]
     }
@@ -128,7 +140,7 @@ const Map = ({
       const value = tile[selectedProp.name]
       return heatmapColor(value)
     }
-  }
+  }, [])
 
   const layer = (x, y) => {
     const id = x + "," + y
