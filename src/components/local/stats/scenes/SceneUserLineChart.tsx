@@ -69,7 +69,7 @@ const SceneUserLineChart = ({ data, name }) => {
       <Box w="100%" pt="4" px="4">
         <Box
           p="2"
-          bg={useColorModeValue("white", "gray.700")}
+          bg={useColorModeValue("white", "gray.800")}
           border="1px solid"
           borderColor={useColorModeValue("gray.100", "gray.600")}
           borderRadius="xl"

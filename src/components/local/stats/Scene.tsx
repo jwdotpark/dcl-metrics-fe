@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Flex, Text, Box, useColorModeValue, Center } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import SceneMap from "./partials/scene/SceneMap"
@@ -21,7 +22,6 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
     visitors_by_hour_histogram,
   } = res[selectedScene]
 
-  // for private dashboard
   const hasMultipleScenes = res.length > 1 ? true : false
   const [isEmpty, setIsEmpty] = useState(false)
   const latest = moment(res[selectedScene].date)
@@ -48,11 +48,14 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
     } else {
       setIsEmpty(false)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [res])
 
   return (
-    <>
+    <Box
+      overflow="hidden"
+      bg={useColorModeValue("gray.200", "gray.600")}
+      borderRadius="xl"
+    >
       <SceneTitle
         name={name}
         date={latest}
@@ -63,7 +66,6 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
         uuid={uuid}
         description={`Last update ${latest}`}
       />
-      {/* main scene user chart on private dashboard */}
       {dailyUsers.length > 0 && (
         <SceneUserLineChart data={dailyUsers} name={name} />
       )}
@@ -159,9 +161,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
           </Box>
         </Flex>
       </Box>
-    </>
-    //  </Box>
-    //</Box>
+    </Box>
   )
 }
 

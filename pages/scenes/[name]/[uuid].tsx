@@ -8,26 +8,30 @@ const SingleScenePage = ({ result, historyResult }) => {
   const res = [result]
   const isResultEmpty = Object.keys(result).length === 0
 
-  return (
-    <Layout>
-      {isResultEmpty ? (
-        <Center h="calc(100vh - 200px)">
-          <Box>
-            <Text fontSize="xl">No data is available</Text>
-          </Box>
-        </Center>
-      ) : (
-        <Scene
-          res={res}
-          date=""
-          setDate={{}}
-          availableDate={[]}
-          dailyUsers={historyResult}
-          uuid={""}
-        />
-      )}
-    </Layout>
-  )
+  let sceneComponent: JSX.Element
+
+  if (isResultEmpty) {
+    sceneComponent = (
+      <Center h="calc(100vh - 200px)">
+        <Box>
+          <Text fontSize="xl">No data is available</Text>
+        </Box>
+      </Center>
+    )
+  } else {
+    sceneComponent = (
+      <Scene
+        res={res}
+        dailyUsers={historyResult}
+        date=""
+        setDate={{}}
+        availableDate={[]}
+        uuid={""}
+      />
+    )
+  }
+
+  return <Layout>{sceneComponent}</Layout>
 }
 
 export default SingleScenePage

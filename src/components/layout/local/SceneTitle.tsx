@@ -62,7 +62,7 @@ const SceneTitle = ({
         m="4"
         mb="0"
         p="4"
-        bg={useColorModeValue("white", "gray.700")}
+        bg={useColorModeValue("white", "gray.800")}
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"
@@ -76,11 +76,10 @@ const SceneTitle = ({
           <ToolTip
             label={`Updated on ${moment(date).format("YYYY/MM/DD hh:mm")}`}
           >
-            <Text>Last Update {moment(date).fromNow()}</Text>
+            <Text mr="2">Last Update {moment(date).fromNow()}</Text>
           </ToolTip>
         </Flex>
       </Flex>
-
       <Spacer />
       {uuid && (
         <Flex m="4">
