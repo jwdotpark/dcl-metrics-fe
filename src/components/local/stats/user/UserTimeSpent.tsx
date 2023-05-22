@@ -1,19 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserTimeSpent from "../../../../../public/data/staticUserTimeSpent.json"
-import { useState, useEffect } from "react"
-import {
-  isProd,
-  isDev,
-  isLocal,
-  getEndpoint,
-} from "../../../../lib/data/constant"
+import { useState, useEffect, useMemo, useCallback } from "react"
+import { isLocal, getEndpoint } from "../../../../lib/data/constant"
 import LineChart from "../../../../lib/LineChart"
 import DateRangeButton from "../daterange/DateRangeButton"
 import { Center, Spinner } from "@chakra-ui/react"
 import { lineChartAtom } from "../../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
+import { plotMissingDataArr } from "../../../../lib/data/chart/chartInfo"
 
 const UserTimeSpent = ({ address, userAddressRes }) => {
   // eslint-disable-next-line no-unused-vars
@@ -26,95 +21,77 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
   const [dateRange, setDateRange] = useState(data.length)
   const color = ["#ff5555"]
 
-  let chartData = []
-
-  data.map((item) => {
-    chartData.push({
+  const chartData = useMemo(() => {
+    return data.map((item) => ({
       date: item.date,
       time_spent: item.time_spent,
-    })
-  })
+    }))
+  }, [data])
 
-  const plotMissingDataArr = (data) => {
-    const minDate = new Date(Math.min(...data.map((d) => new Date(d.date))))
-    const maxDate = new Date(Math.max(...data.map((d) => new Date(d.date))))
-    const dateRange = []
-    for (let d = minDate; d <= maxDate; d.setDate(d.getDate() + 1)) {
-      dateRange.push(new Date(d))
-    }
+  const fetchData = useCallback(async () => {
+    let url = `/api/server-fetch?url=${timeSpentUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
+    let val = []
 
-    const dataByDate = {}
-    for (const d of data) {
-      dataByDate[d.date] = d
-    }
-
-    const plotData = []
-    for (const date of dateRange) {
-      const dateString = date.toISOString().slice(0, 10)
-      let time_spent = dataByDate[dateString]?.time_spent ?? 0
-      const day = 60 * 60 * 24
-      if (time_spent > day) {
-        time_spent = day
+    if (isLocal) {
+      val = plotMissingDataArr(staticUserTimeSpent)
+    } else {
+      setIsLoading(true)
+      try {
+        const response = await fetch(url)
+        const res = await response.json()
+        val = plotMissingDataArr(res.result)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
       }
-
-      plotData.push({ date: dateString, time_spent })
     }
 
-    return plotData
-  }
+    setData(val)
+  }, [timeSpentUrl, address])
 
-  const slicedData = () => {
+  const slicedData = useMemo(() => {
     if (chartData.length - dateRange > 0) {
       return chartData.slice(chartData.length - dateRange, chartData.length)
     } else {
       return chartData
     }
-  }
+  }, [chartData, dateRange])
 
-  const result = [
-    {
-      id: "Total Time Spent",
-      color: "hsl(90, 70%, 50%)",
-      data: slicedData().map((item) => ({
-        id: item.date,
-        x: item.date,
-        y: item.time_spent,
-      })),
-    },
-  ]
+  const result = useMemo(
+    () => [
+      {
+        id: "Total Time Spent",
+        color: "hsl(90, 70%, 50%)",
+        data: slicedData.map((item) => ({
+          id: item.date,
+          x: item.date,
+          y: item.time_spent,
+        })),
+      },
+    ],
+    [slicedData]
+  )
 
-  const validLegnth = chartData.filter(
-    (item) => item.active_scenes !== 0
-  ).length
+  const validLegnth = useMemo(
+    () => chartData.filter((item: any) => item.active_scenes !== 0).length,
+    [chartData]
+  )
 
   useEffect(() => {
     setIsLoading(true)
-    const fetchData = async () => {
-      const url = `/api/server-fetch?url=${timeSpentUrl}&address=${address}&endpoint=${address}/activity/time_spent/`
-      if (isProd) {
-        const response = await fetch(url)
-        const res = await response.json()
-        setData(plotMissingDataArr(res.result))
-      } else if (isDev && !isLocal) {
-        const response = await fetch(url)
-        const res = await response.json()
-        setData(plotMissingDataArr(res.result))
-      } else if (isLocal) {
-        setData(plotMissingDataArr(staticUserTimeSpent))
-      }
-    }
     fetchData()
     setIsLoading(false)
-  }, [])
+  }, [fetchData])
 
   useEffect(() => {
     setIsLoading(true)
-    const data = slicedData()
-    const sum = slicedData().reduce((acc, cur) => acc + cur.time_spent, 0)
+    const data = slicedData
+    const sum = slicedData.reduce((acc, cur) => acc + cur.time_spent, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
     setIsLoading(false)
-  }, [dateRange])
+  }, [dateRange, slicedData])
 
   useEffect(() => {
     setIsLoading(true)
@@ -129,7 +106,7 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
         description={`Historical data that represents the amount of time ${userAddressRes.name} spent`}
         date=""
         avgData={avgData}
-        slicedData={slicedData()}
+        slicedData={slicedData}
         color={color}
         line={false}
         setLine={{}}

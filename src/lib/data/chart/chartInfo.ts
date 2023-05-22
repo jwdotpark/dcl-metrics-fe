@@ -20,6 +20,34 @@ export const sliceDateRange = (chartData: any[], dateRange: number) => {
   return { date: { first: first, last: last } }
 }
 
+export const plotMissingDataArr = (data) => {
+  const minDate = new Date(Math.min(...data.map((d) => new Date(d.date))))
+  const maxDate = new Date(Math.max(...data.map((d) => new Date(d.date))))
+  const dateRange = []
+  for (let d = minDate; d <= maxDate; d.setDate(d.getDate() + 1)) {
+    dateRange.push(new Date(d))
+  }
+
+  const dataByDate = {}
+  for (const d of data) {
+    dataByDate[d.date] = d
+  }
+
+  const plotData = []
+  for (const date of dateRange) {
+    const dateString = date.toISOString().slice(0, 10)
+    let time_spent = dataByDate[dateString]?.time_spent ?? 0
+    const day = 60 * 60 * 24
+    if (time_spent > day) {
+      time_spent = day
+    }
+
+    plotData.push({ date: dateString, time_spent })
+  }
+
+  return plotData
+}
+
 export const plotMissingDates = (data) => {
   const minTimestamp = Math.min.apply(
     null,
