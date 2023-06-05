@@ -48,7 +48,6 @@ const GlobalPage: NextPage = (props: Props) => {
     globalDailyRes,
     parcelRes,
     landSalesRes,
-    //topLandRes,
     topPickRes,
     rental,
     latestPost,
