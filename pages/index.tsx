@@ -20,6 +20,8 @@ import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 import TopPick from "../src/components/local/ext-data/TopPick"
 import { useAtom } from "jotai"
 import { psaAtom } from "../src/lib/state/psaState"
+import { generateMetaData } from "../src/lib/data/metadata"
+import Head from "next/head"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -56,13 +58,30 @@ const GlobalPage: NextPage = (props: Props) => {
   // eslint-disable-next-line no-unused-vars
   const [psa, setPSA] = useAtom(psaAtom)
 
+  const pageTitle = "DCL-Metrics"
+  const description =
+    "We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
+  const image = "/images/image.png"
+
+  const metaData = generateMetaData({
+    title: pageTitle,
+    description: description,
+    image: image,
+  })
+
   useEffect(() => {
     setPSA(latestPost)
   }, [])
 
   return (
     <Layout>
-      {/* default head on index */}
+      <Head>
+        <title>{metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+        <meta property="og:title" content={metaData.title} />
+        <meta property="og:description" content={metaData.description} />
+        <meta property="og:image" content={metaData.image} />
+      </Head>
       <Box w="100%">
         <Box mb="4" data-testid="uniqueVisitors">
           <UniqueVisitors data={globalDailyRes} />
