@@ -51,7 +51,6 @@ export async function getStaticProps() {
 const Users = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const { globalUserRes } = props
-
   const pageTitle = "Global User Page"
   const siteName = "DCL-Metrics"
   const pageDescription =

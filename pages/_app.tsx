@@ -46,13 +46,13 @@ function MyApp({
             content="initial-scale=1.0, width=device-width"
           />
           {/* Open Graph meta tags */}
-          <meta property="og:title" content={pageTitle} />
+          {/*<meta property="og:title" content={pageTitle} />
           <meta property="og:description" content={pageDescription} />
           <meta property="og:image" content={pageImage} />
-          <meta property="og:url" content="https://dcl-metrics.com/" />
+          <meta property="og:url" content="https://dcl-metrics.com/" />*/}
           {/* Replace with your actual website URL */}
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content={pageTitle} />
+          {/*<meta property="og:type" content="website" />
+          <meta property="og:site_name" content={pageTitle} />*/}
         </Head>
         {telemetry() && (
           <Script
