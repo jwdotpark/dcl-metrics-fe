@@ -4,6 +4,8 @@ import StatusBox from "../src/components/local/status/StatusBox"
 import { isDev, isLocal, isProd, statusURL } from "../src/lib/data/constant"
 import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 import staticPeerStatus from "../public/data/staticPeerStatus.json"
+import { generateMetaData } from "../src/lib/data/metadata"
+import Head from "next/head"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -37,8 +39,26 @@ export async function getStaticProps() {
 const Status = (props: Props) => {
   const { statusRes } = props
 
+  const pageTitle = "DCL-Metrics Status"
+  const description =
+    "Resource for monitoring and updates on the status of DCL-Metrics infrastructure."
+  const image = "/images/status.png"
+
+  const metaData = generateMetaData({
+    title: pageTitle,
+    description: description,
+    image: image,
+  })
+
   return (
     <Layout>
+      <Head>
+        <title>{metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+        <meta property="og:title" content={metaData.title} />
+        <meta property="og:description" content={metaData.description} />
+        <meta property="og:image" content={metaData.image} />
+      </Head>
       <Box>
         <StatusBox data={statusRes} />
       </Box>

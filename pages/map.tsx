@@ -4,6 +4,8 @@ import Layout from "../src/components/layout/layout"
 import staticParcel from "../public/data/cached_parcel.json"
 import { isDev, isLocal, isProd, parcelURL } from "../src/lib/data/constant"
 import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
+import { generateMetaData } from "../src/lib/data/metadata"
+import Head from "next/head"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -36,8 +38,27 @@ export async function getStaticProps() {
 
 const MapPage = (props: Props) => {
   const { parcelRes } = props
+
+  const pageTitle = "DCL-Metrics Map"
+  const description =
+    "Your interactive guide to exploring the virtual realm of Decentraland."
+  const image = "/images/map.png"
+
+  const metaData = generateMetaData({
+    title: pageTitle,
+    description: description,
+    image: image,
+  })
+  
   return (
     <Layout>
+      <Head>
+        <title>{metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+        <meta property="og:title" content={metaData.title} />
+        <meta property="og:description" content={metaData.description} />
+        <meta property="og:image" content={metaData.image} />
+      </Head>
       <Box mb="4" mx={[-4, 0, 0, 0]}>
         <LandPicker parcelData={parcelRes} isPage={true} />
       </Box>
