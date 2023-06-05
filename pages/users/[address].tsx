@@ -20,6 +20,8 @@ import UserDAOActivity from "../../src/components/local/stats/user/UserDAOActivi
 import UserTimeSpent from "../../src/components/local/stats/user/UserTimeSpent"
 import UserScenesVisited from "../../src/components/local/stats/user/UserScenesVisited"
 import UserTopScenes from "../../src/components/local/stats/user/UserTopScenes"
+import { generateMetaData } from "../../src/lib/data/metadata"
+import Head from "next/head"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -73,8 +75,27 @@ const SingleUserPage = (props) => {
   })
   const { address, userAddressRes, nftRes, daoActivityRes } = props
 
+  console.log(userAddressRes)
+
+  const pageTitle = `DCL-Metrics ${userAddressRes.name}`
+  const description = `${userAddressRes.name} last seen on ${userAddressRes.last_seen}}`
+  const image = userAddressRes.avatar_url
+
+  const metaData = generateMetaData({
+    title: pageTitle,
+    description: description,
+    image: image,
+  })
+
   return (
     <Layout>
+      <Head>
+        <title>{metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+        <meta property="og:title" content={metaData.title} />
+        <meta property="og:description" content={metaData.description} />
+        <meta property="og:image" content={metaData.image} />
+      </Head>
       {Object.keys(userAddressRes).length === 0 ? (
         <Center h="calc(100vh - 8rem)">
           <Flex direction="column" w="100%">

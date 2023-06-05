@@ -1,12 +1,24 @@
 import { Box, Center, Text } from "@chakra-ui/react"
+import Head from "next/head"
 import Layout from "../../../src/components/layout/layout"
 import Scene from "../../../src/components/local/stats/Scene"
 import { getEndpoint } from "../../../src/lib/data/constant"
 import { getDataWithApiKey } from "../../../src/lib/data/fetch"
+import { generateMetaData } from "../../../src/lib/data/metadata"
 
 const SingleScenePage = ({ result, historyResult }) => {
   const res = [result]
   const isResultEmpty = Object.keys(result).length === 0
+
+  const pageTitle = `DCL-Metrics ${res[0].name}`
+  const description = `${res[0].name} on ${res[0].date}`
+  const image = res[0].map_url
+
+  const metaData = generateMetaData({
+    title: pageTitle,
+    description: description,
+    image: image,
+  })
 
   let sceneComponent: JSX.Element
 
@@ -20,14 +32,23 @@ const SingleScenePage = ({ result, historyResult }) => {
     )
   } else {
     sceneComponent = (
-      <Scene
-        res={res}
-        dailyUsers={historyResult}
-        date=""
-        setDate={{}}
-        availableDate={[]}
-        uuid={""}
-      />
+      <>
+        <Head>
+          <title>{metaData.title}</title>
+          <meta name="description" content={metaData.description} />
+          <meta property="og:title" content={metaData.title} />
+          <meta property="og:description" content={metaData.description} />
+          <meta property="og:image" content={metaData.image} />
+        </Head>
+        <Scene
+          res={res}
+          dailyUsers={historyResult}
+          date=""
+          setDate={{}}
+          availableDate={[]}
+          uuid={""}
+        />
+      </>
     )
   }
 

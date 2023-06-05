@@ -10,11 +10,33 @@ import smartypants from "remark-smartypants"
 import remarkGfm from "remark-gfm"
 import moment from "moment"
 import { CallOut, MDYoutube } from "../../src/components/markdown"
+import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
+import Head from "next/head"
 
 function Post({ data, content }) {
   const router = useRouter()
+
+  const pageTitle = `DCL-Metrics ${data.title}`
+  const description = `${data.author} posted an article on ${moment(
+    data.date
+  ).format("MMMM D")}`
+  const image = `${siteUrl}/images/blog.png`
+
+  const metaData = generateMetaData({
+    title: pageTitle,
+    description: description,
+    image: image,
+  })
+
   return (
     <Layout>
+      <Head>
+        <title>{metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+        <meta property="og:title" content={metaData.title} />
+        <meta property="og:description" content={metaData.description} />
+        <meta property="og:image" content={metaData.image} />
+      </Head>
       <Center>
         <Center w={["100%", "100%", "100%", 1080]}>
           <BoxWrapper colSpan={6}>
