@@ -14,7 +14,7 @@ import {
   isProd,
 } from "../src/lib/data/constant"
 import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
-import { generateMetaData } from "../src/lib/data/metadata"
+import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import Head from "next/head"
 
 export async function getStaticProps() {
@@ -57,7 +57,7 @@ const Parcels = (props: Props) => {
   const pageTitle = "DCL-Metrics Parcels"
   const description =
     "Discover valuable metrics and data-driven insights that highlight the value and potential of individual parcels and entire regions within Decentraland."
-  const image = "/images/parcels.png"
+  const image = `${siteUrl}/images/parcels.png`
 
   const metaData = generateMetaData({
     title: pageTitle,

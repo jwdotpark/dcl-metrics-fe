@@ -16,7 +16,7 @@ import {
 } from "../../src/lib/data/constant"
 import staticGlobalScenes from "../../public/data/staticGlobalScene.json"
 import SceneTable from "../../src/components/local/stats/SceneTable"
-import { generateMetaData } from "../../src/lib/data/metadata"
+import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import Head from "next/head"
 
 export async function getStaticProps() {
@@ -61,7 +61,7 @@ const Scenes = (props: Props) => {
   const pageTitle = "DCL-Metrics Scenes"
   const description =
     "Uncover trending scenes, popular categories, and user ratings, allowing you to discover the hottest and most captivating experiences in Decentraland."
-  const image = "/images/scenes.png"
+  const image = `${siteUrl}/images/scenes.png`
 
   const metaData = generateMetaData({
     title: pageTitle,

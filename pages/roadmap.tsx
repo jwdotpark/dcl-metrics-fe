@@ -4,7 +4,7 @@ import Layout from "../src/components/layout/layout"
 import BoxWrapper from "../src/components/layout/local/BoxWrapper"
 import Changelog from "../src/components/local/change/changelog/Changelog"
 import RoadMap from "../src/components/local/change/roadmap/RoadMap"
-import { generateMetaData } from "../src/lib/data/metadata"
+import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 
 const Roadmap = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
@@ -12,7 +12,7 @@ const Roadmap = () => {
   const pageTitle = "DCL-Metrics RoadMap"
   const description =
     "Discover our plans to enhance user experiences, expand functionality, and introduce new tools and capabilities."
-  const image = "/images/roadmap.png"
+  const image = `${siteUrl}/images/roadmap.png`
 
   const metaData = generateMetaData({
     title: pageTitle,

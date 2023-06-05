@@ -10,7 +10,7 @@ import {
   isLocal,
   globalUsersURL,
 } from "../../src/lib/data/constant"
-import { generateMetaData } from "../../src/lib/data/metadata"
+import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import Head from "next/head"
 
 export async function getStaticProps() {
@@ -56,7 +56,7 @@ const Users = (props: Props) => {
   const pageTitle = "DCL-Metrics Users"
   const description =
     "Dive into a comprehensive analysis of user activity within the Decentraland metaverse. Explore valuable insights and metrics related to user engagement, behavior, and trends."
-  const image = "/images/users.png"
+  const image = `${siteUrl}/images/users.png`
 
   const metaData = generateMetaData({
     title: pageTitle,

@@ -4,7 +4,7 @@ import Layout from "../src/components/layout/layout"
 import staticParcel from "../public/data/cached_parcel.json"
 import { isDev, isLocal, isProd, parcelURL } from "../src/lib/data/constant"
 import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
-import { generateMetaData } from "../src/lib/data/metadata"
+import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import Head from "next/head"
 
 export async function getStaticProps() {
@@ -42,14 +42,14 @@ const MapPage = (props: Props) => {
   const pageTitle = "DCL-Metrics Map"
   const description =
     "Your interactive guide to exploring the virtual realm of Decentraland."
-  const image = "/images/map.png"
+  const image = `${siteUrl}/images/map.png`
 
   const metaData = generateMetaData({
     title: pageTitle,
     description: description,
     image: image,
   })
-  
+
   return (
     <Layout>
       <Head>
