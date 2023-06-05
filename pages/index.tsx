@@ -84,13 +84,10 @@ const GlobalPage: NextPage = (props: Props) => {
         }}
       />*/}
       <Head>
-        <meta property="og:title" content="DCL-Metrics" />
-        <meta
-          property="og:description"
-          content="We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
-        />
-        <meta property="og:image" content="https://picsum.photos/400" />
-        <meta property="og:url" content="https://dcl-metrics.com" />
+        <meta property="og:site_name" content="Microsoft" />
+        <meta property="og:title" content="title test" />
+        <meta name="twitter:image" content="https://i.imgur.com/idwQquW.png" />
+        <meta property="og:description" content="description test" />
       </Head>
       <Box w="100%">
         <Box mb="4" data-testid="uniqueVisitors">
