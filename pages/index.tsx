@@ -20,6 +20,7 @@ import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 import TopPick from "../src/components/local/ext-data/TopPick"
 import { useAtom } from "jotai"
 import { psaAtom } from "../src/lib/state/psaState"
+import { NextSeo } from "next-seo"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -63,6 +64,10 @@ const GlobalPage: NextPage = (props: Props) => {
 
   return (
     <Layout>
+      <NextSeo
+        title="opengraph test"
+        description="this is opengraph test description."
+      />
       <Box w="100%">
         <Box mb="4" data-testid="uniqueVisitors">
           <UniqueVisitors data={globalDailyRes} />
