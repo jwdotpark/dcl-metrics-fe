@@ -8,6 +8,7 @@ import { Inter } from "@next/font/google"
 import { AnimatePresence } from "framer-motion"
 import { DefaultSeo } from "next-seo"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
+import Head from "next/head"
 //import { generateMetaData } from "../src/lib/data/metadata"
 
 const InterFont = Inter({
@@ -37,12 +38,8 @@ function MyApp({
   return (
     <ChakraProvider theme={theme}>
       <Provider>
-        {/*<Head>
+        <Head>
           <link rel="shortcut icon" sizes="32x32" href="/images/favicon.ico" />
-          <meta
-            name="description"
-            content="We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
-          />
           <meta
             name="keywords"
             content="Decentraland, dcl stats, decentraland stats, dcl statistics, decentraland statistics, dcl metrics, decentraland metrics, metaverse stats, metaverse statistics, metaverse metrics"
@@ -51,7 +48,7 @@ function MyApp({
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
-        </Head>*/}
+        </Head>
         {telemetry() && (
           <Script
             async
@@ -65,6 +62,8 @@ function MyApp({
         <AnimatePresence initial={false} mode="wait">
           <main className={InterFont.className}>
             <DefaultSeo
+              title={metaData.title}
+              description={metaData.description}
               openGraph={{
                 url: siteUrl,
                 title: metaData.title,
