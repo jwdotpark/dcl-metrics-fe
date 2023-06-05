@@ -66,6 +66,20 @@ const GlobalPage: NextPage = (props: Props) => {
       <NextSeo
         title="opengraph test"
         description="this is opengraph test description."
+        openGraph={{
+          url: "https://dcl-metrics.com",
+          title: "DCL-Metrics",
+          description: "this is opengraph test description.",
+          images: [
+            {
+              url: "https://picsum.photos/400",
+              width: 400,
+              height: 400,
+              alt: "Og Image Alt",
+              type: "image/jpeg",
+            },
+          ],
+        }}
       />
       <Box w="100%">
         <Box mb="4" data-testid="uniqueVisitors">
