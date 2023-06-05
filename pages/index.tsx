@@ -20,6 +20,7 @@ import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 import TopPick from "../src/components/local/ext-data/TopPick"
 import { useAtom } from "jotai"
 import { psaAtom } from "../src/lib/state/psaState"
+import Head from "next/head"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -62,6 +63,16 @@ const GlobalPage: NextPage = (props: Props) => {
 
   return (
     <Layout>
+      <Head>
+        <meta property="og:site_name" content="DCL-Metrics" />
+        <meta property="og:title" content="Global Page" />
+        <meta name="twitter:image" content="/images/background.png" />
+        <meta
+          property="og:description"
+          content="We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
+        />
+      </Head>
+
       <Box w="100%">
         <Box mb="4" data-testid="uniqueVisitors">
           <UniqueVisitors data={globalDailyRes} />
