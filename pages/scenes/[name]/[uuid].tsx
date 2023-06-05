@@ -1,10 +1,11 @@
 import { Box, Center, Text } from "@chakra-ui/react"
-import Head from "next/head"
+import { NextSeo } from "next-seo"
 import Layout from "../../../src/components/layout/layout"
 import Scene from "../../../src/components/local/stats/Scene"
 import { getEndpoint } from "../../../src/lib/data/constant"
 import { getDataWithApiKey } from "../../../src/lib/data/fetch"
-import { generateMetaData } from "../../../src/lib/data/metadata"
+import { generateMetaData, siteUrl } from "../../../src/lib/data/metadata"
+import { mutateStringToURL } from "../../../src/lib/hooks/utils"
 
 const SingleScenePage = ({ result, historyResult }) => {
   const res = [result]
@@ -20,6 +21,10 @@ const SingleScenePage = ({ result, historyResult }) => {
     image: image,
   })
 
+  const link = `${siteUrl}/scenes/${mutateStringToURL(res[0].name)}/${
+    res[0].uuid
+  }`
+
   let sceneComponent: JSX.Element
 
   if (isResultEmpty) {
@@ -33,13 +38,26 @@ const SingleScenePage = ({ result, historyResult }) => {
   } else {
     sceneComponent = (
       <>
-        <Head>
-          <title>{metaData.title}</title>
-          <meta name="description" content={metaData.description} />
-          <meta property="og:title" content={metaData.title} />
-          <meta property="og:description" content={metaData.description} />
-          <meta property="og:image" content={metaData.image} />
-        </Head>
+        <NextSeo
+          title={metaData.title}
+          description={metaData.description}
+          openGraph={{
+            url: link,
+            title: metaData.title,
+            description: metaData.description,
+            images: [
+              {
+                url: metaData.image,
+                width: 400,
+                height: 400,
+                alt: metaData.description,
+                type: "image/png",
+              },
+            ],
+            siteName: "DCL-Metrics",
+          }}
+        />
+
         <Scene
           res={res}
           dailyUsers={historyResult}

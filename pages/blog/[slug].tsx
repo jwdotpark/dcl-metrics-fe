@@ -11,32 +11,43 @@ import remarkGfm from "remark-gfm"
 import moment from "moment"
 import { CallOut, MDYoutube } from "../../src/components/markdown"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
-import Head from "next/head"
+import { NextSeo } from "next-seo"
 
-function Post({ data, content }) {
+function Post({ slug, data, content }) {
   const router = useRouter()
 
   const pageTitle = `DCL-Metrics ${data.title}`
   const description = `${data.author} posted an article on ${moment(
     data.date
   ).format("MMMM D")}`
-  const image = `${siteUrl}/images/blog.png`
 
   const metaData = generateMetaData({
     title: pageTitle,
     description: description,
-    image: image,
+    image: data.previewImage,
   })
 
   return (
     <Layout>
-      <Head>
-        <title>{metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta property="og:title" content={metaData.title} />
-        <meta property="og:description" content={metaData.description} />
-        <meta property="og:image" content={metaData.image} />
-      </Head>
+      <NextSeo
+        title={metaData.title}
+        description={metaData.description}
+        openGraph={{
+          url: siteUrl + "/blog/" + slug,
+          title: metaData.title,
+          description: metaData.description,
+          images: [
+            {
+              url: metaData.image,
+              width: 400,
+              height: 400,
+              alt: metaData.description,
+              type: "image/png",
+            },
+          ],
+          siteName: "DCL-Metrics",
+        }}
+      />
       <Center>
         <Center w={["100%", "100%", "100%", 1080]}>
           <BoxWrapper colSpan={6}>
@@ -99,6 +110,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
+  const slug = params.slug
   const post = await getPost(params.slug)
   const mdxSource = await serialize(post.content, {
     scope: post.data,
@@ -117,6 +129,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       data: post.data,
       content: mdxSource,
+      slug: slug,
     },
   }
 }

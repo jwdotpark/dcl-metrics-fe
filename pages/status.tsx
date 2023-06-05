@@ -5,7 +5,7 @@ import { isDev, isLocal, isProd, statusURL } from "../src/lib/data/constant"
 import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 import staticPeerStatus from "../public/data/staticPeerStatus.json"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
-import Head from "next/head"
+import { NextSeo } from "next-seo"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -52,13 +52,26 @@ const Status = (props: Props) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta property="og:title" content={metaData.title} />
-        <meta property="og:description" content={metaData.description} />
-        <meta property="og:image" content={metaData.image} />
-      </Head>
+      <NextSeo
+        title={metaData.title}
+        description={metaData.description}
+        openGraph={{
+          url: siteUrl + "/status",
+          title: metaData.title,
+          description: metaData.description,
+          images: [
+            {
+              url: metaData.image,
+              width: 400,
+              height: 400,
+              alt: metaData.description,
+              type: "image/png",
+            },
+          ],
+          siteName: "DCL-Metrics",
+        }}
+      />
+
       <Box>
         <StatusBox data={statusRes} />
       </Box>

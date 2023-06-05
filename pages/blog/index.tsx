@@ -4,7 +4,7 @@ import Layout from "../../src/components/layout/layout"
 import PostList from "../../src/components/blog/PostList"
 import moment from "moment"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
-import Head from "next/head"
+import { NextSeo } from "next-seo"
 
 export const getStaticProps = () => {
   const posts = getPosts()
@@ -34,13 +34,25 @@ const BlogPage = ({ posts }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta property="og:title" content={metaData.title} />
-        <meta property="og:description" content={metaData.description} />
-        <meta property="og:image" content={metaData.image} />
-      </Head>
+      <NextSeo
+        title={metaData.title}
+        description={metaData.description}
+        openGraph={{
+          url: siteUrl + "/blog",
+          title: metaData.title,
+          description: metaData.description,
+          images: [
+            {
+              url: metaData.image,
+              width: 400,
+              height: 400,
+              alt: metaData.description,
+              type: "image/png",
+            },
+          ],
+          siteName: "DCL-Metrics",
+        }}
+      />
       <Center w="100%">
         <PostList posts={posts} />
       </Center>

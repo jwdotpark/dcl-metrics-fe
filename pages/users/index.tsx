@@ -11,7 +11,7 @@ import {
   globalUsersURL,
 } from "../../src/lib/data/constant"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
-import Head from "next/head"
+import { NextSeo } from "next-seo"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -66,13 +66,26 @@ const Users = (props: Props) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta property="og:title" content={metaData.title} />
-        <meta property="og:description" content={metaData.description} />
-        <meta property="og:image" content={metaData.image} />
-      </Head>
+      <NextSeo
+        title={metaData.title}
+        description={metaData.description}
+        openGraph={{
+          url: siteUrl + "/users",
+          title: metaData.title,
+          description: metaData.description,
+          images: [
+            {
+              url: metaData.image,
+              width: 400,
+              height: 400,
+              alt: metaData.description,
+              type: "image/png",
+            },
+          ],
+          siteName: "DCL-Metrics",
+        }}
+      />
+
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <MarathonUsers res={globalUserRes} />
         <Explorer res={globalUserRes} />

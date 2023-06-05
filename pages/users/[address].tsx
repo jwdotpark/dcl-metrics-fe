@@ -20,8 +20,8 @@ import UserDAOActivity from "../../src/components/local/stats/user/UserDAOActivi
 import UserTimeSpent from "../../src/components/local/stats/user/UserTimeSpent"
 import UserScenesVisited from "../../src/components/local/stats/user/UserScenesVisited"
 import UserTopScenes from "../../src/components/local/stats/user/UserTopScenes"
-import { generateMetaData } from "../../src/lib/data/metadata"
-import Head from "next/head"
+import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
+import { NextSeo } from "next-seo"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -89,13 +89,26 @@ const SingleUserPage = (props) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta property="og:title" content={metaData.title} />
-        <meta property="og:description" content={metaData.description} />
-        <meta property="og:image" content={metaData.image} />
-      </Head>
+      <NextSeo
+        title={metaData.title}
+        description={metaData.description}
+        openGraph={{
+          url: siteUrl + "/users/" + address,
+          title: metaData.title,
+          description: metaData.description,
+          images: [
+            {
+              url: metaData.image,
+              width: 400,
+              height: 400,
+              alt: metaData.description,
+              type: "image/png",
+            },
+          ],
+          siteName: "DCL-Metrics",
+        }}
+      />
+
       {Object.keys(userAddressRes).length === 0 ? (
         <Center h="calc(100vh - 8rem)">
           <Flex direction="column" w="100%">
