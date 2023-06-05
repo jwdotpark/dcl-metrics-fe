@@ -10,7 +10,6 @@ import {
   isLocal,
   globalUsersURL,
 } from "../../src/lib/data/constant"
-import Head from "next/head"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -51,25 +50,9 @@ export async function getStaticProps() {
 const Users = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const { globalUserRes } = props
-  const pageTitle = "Global User Page"
-  const siteName = "DCL-Metrics"
-  const pageDescription =
-    "We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
-  const pageImage = "/images/background.png"
 
   return (
     <Layout>
-      <Head>
-        {/* Open Graph meta tags */}
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={pageImage} />
-        <meta property="og:url" content="https://dcl-metrics.com/" />
-        {/* Replace with your actual website URL */}
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content={siteName} />
-      </Head>
-
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <MarathonUsers res={globalUserRes} />
         <Explorer res={globalUserRes} />
