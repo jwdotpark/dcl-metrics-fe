@@ -14,6 +14,8 @@ import {
   isProd,
 } from "../src/lib/data/constant"
 import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
+import { generateMetaData } from "../src/lib/data/metadata"
+import Head from "next/head"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -52,8 +54,26 @@ const Parcels = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const { globalParcelRes } = props
 
+  const pageTitle = "DCL-Metrics Parcels"
+  const description =
+    "Discover valuable metrics and data-driven insights that highlight the value and potential of individual parcels and entire regions within Decentraland."
+  const image = "/images/parcels.png"
+
+  const metaData = generateMetaData({
+    title: pageTitle,
+    description: description,
+    image: image,
+  })
+
   return (
     <Layout>
+      <Head>
+        <title>{metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+        <meta property="og:title" content={metaData.title} />
+        <meta property="og:description" content={metaData.description} />
+        <meta property="og:image" content={metaData.image} />
+      </Head>
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
         <AvgTimeSpentParcel parcel={globalParcelRes} />
         <LogInTimeSpentParcel parcel={globalParcelRes} />

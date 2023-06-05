@@ -56,7 +56,7 @@ const Users = (props: Props) => {
   const pageTitle = "DCL-Metrics Users"
   const description =
     "Dive into a comprehensive analysis of user activity within the Decentraland metaverse. Explore valuable insights and metrics related to user engagement, behavior, and trends."
-  const image = "/images/background.png"
+  const image = "/images/users.png"
 
   const metaData = generateMetaData({
     title: pageTitle,

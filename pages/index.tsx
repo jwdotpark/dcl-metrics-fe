@@ -62,6 +62,7 @@ const GlobalPage: NextPage = (props: Props) => {
 
   return (
     <Layout>
+      {/* default head on index */}
       <Box w="100%">
         <Box mb="4" data-testid="uniqueVisitors">
           <UniqueVisitors data={globalDailyRes} />
