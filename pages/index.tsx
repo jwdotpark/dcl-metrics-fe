@@ -20,8 +20,6 @@ import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 import TopPick from "../src/components/local/ext-data/TopPick"
 import { useAtom } from "jotai"
 import { psaAtom } from "../src/lib/state/psaState"
-import { NextSeo } from "next-seo"
-import Head from "next/head"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -64,31 +62,6 @@ const GlobalPage: NextPage = (props: Props) => {
 
   return (
     <Layout>
-      {/*<NextSeo
-        title="DCL-Metrics"
-        description="We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
-        openGraph={{
-          url: "https://dcl-metrics.com",
-          title: "DCL-Metrics",
-          description:
-            "We make Decentraland's data accessible so it can be used by the community to build a better metaverse.",
-          images: [
-            {
-              url: "https://picsum.photos/400",
-              width: 400,
-              height: 400,
-              alt: "Og Image Alt",
-              type: "image/jpeg",
-            },
-          ],
-        }}
-      />*/}
-      <Head>
-        <meta property="og:site_name" content="Microsoft" />
-        <meta property="og:title" content="title test" />
-        <meta name="twitter:image" content="https://i.imgur.com/idwQquW.png" />
-        <meta property="og:description" content="description test" />
-      </Head>
       <Box w="100%">
         <Box mb="4" data-testid="uniqueVisitors">
           <UniqueVisitors data={globalDailyRes} />

@@ -40,6 +40,13 @@ function MyApp({
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
+          <meta property="og:site_name" content="DCL-Metrics" />
+          <meta property="og:title" content="title test" />
+          <meta
+            name="twitter:image"
+            content="https://i.imgur.com/idwQquW.png"
+          />
+          <meta property="og:description" content="description test" />
         </Head>
         {telemetry() && (
           <Script
