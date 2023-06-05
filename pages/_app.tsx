@@ -7,7 +7,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
 import { Inter } from "@next/font/google"
 import { AnimatePresence } from "framer-motion"
-import { generateMetaData } from "../src/lib/data/metadata"
+//import { generateMetaData } from "../src/lib/data/metadata"
 
 const InterFont = Inter({
   subsets: ["latin"],
@@ -23,16 +23,16 @@ function MyApp({
     return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }
 
-  const pageTitle = "DCL-Metrics"
-  const description =
-    "We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
-  const image = "/images/index.png"
+  //const pageTitle = "DCL-Metrics"
+  //const description =
+  //  "We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
+  //const image = "/images/index.png"
 
-  const metaData = generateMetaData({
-    title: pageTitle,
-    description: description,
-    image: image,
-  })
+  //const metaData = generateMetaData({
+  //  title: pageTitle,
+  //  description: description,
+  //  image: image,
+  //})
 
   return (
     <ChakraProvider theme={theme}>
