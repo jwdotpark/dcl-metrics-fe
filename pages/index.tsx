@@ -57,6 +57,12 @@ const GlobalPage: NextPage = (props: Props) => {
   // eslint-disable-next-line no-unused-vars
   const [psa, setPSA] = useAtom(psaAtom)
 
+  const pageTitle = "Global Page"
+  const siteName = "DCL-Metrics"
+  const pageDescription =
+    "We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
+  const pageImage = "/images/background.png"
+
   useEffect(() => {
     setPSA(latestPost)
   }, [])
@@ -64,13 +70,14 @@ const GlobalPage: NextPage = (props: Props) => {
   return (
     <Layout>
       <Head>
-        <meta property="og:site_name" content="DCL-Metrics" />
-        <meta property="og:title" content="Global Page" />
-        <meta name="twitter:image" content="/images/background.png" />
-        <meta
-          property="og:description"
-          content="We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
-        />
+        {/* Open Graph meta tags */}
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:url" content="https://dcl-metrics.com/" />
+        {/* Replace with your actual website URL */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={siteName} />
       </Head>
 
       <Box w="100%">
