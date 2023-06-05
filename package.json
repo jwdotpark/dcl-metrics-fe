@@ -51,6 +51,7 @@
     "moment-duration-format": "^2.3.2",
     "next": "^13.0.7",
     "next-mdx-remote": "^4.2.1",
+    "next-seo": "^6.0.0",
     "next-ssl-redirect-middleware": "^0.1.4",
     "nextjs-cors": "^2.1.1",
     "react": "^18.2.0",
