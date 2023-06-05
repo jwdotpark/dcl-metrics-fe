@@ -37,8 +37,7 @@ function MyApp({
   return (
     <ChakraProvider theme={theme}>
       <Provider>
-        <Head>
-          {/*<title>DCL-Metrics</title>*/}
+        {/*<Head>
           <link rel="shortcut icon" sizes="32x32" href="/images/favicon.ico" />
           <meta
             name="description"
@@ -52,12 +51,7 @@ function MyApp({
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
-          {/*<title>{metaData.title}</title>
-          <meta name="description" content={metaData.description} />
-          <meta property="og:title" content={metaData.title} />
-          <meta property="og:description" content={metaData.description} />
-          <meta property="og:image" content={metaData.image} />*/}
-        </Head>
+        </Head>*/}
         {telemetry() && (
           <Script
             async
