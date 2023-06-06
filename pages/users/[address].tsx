@@ -75,8 +75,6 @@ const SingleUserPage = (props) => {
   })
   const { address, userAddressRes, nftRes, daoActivityRes } = props
 
-  console.log(userAddressRes)
-
   const pageTitle = `DCL-Metrics User ${userAddressRes.name} Dashboard`
   const description = `${userAddressRes.name}, last seen on ${userAddressRes.last_seen}`
   const image = userAddressRes.avatar_url
