@@ -28,7 +28,7 @@ function Post({ slug, data, content }) {
   })
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={metaData.title}
         description={metaData.description}
@@ -48,53 +48,57 @@ function Post({ slug, data, content }) {
           siteName: "DCL-Metrics",
         }}
       />
-      <Center>
-        <Center w={["100%", "100%", "100%", 1080]}>
-          <BoxWrapper colSpan={6}>
-            <Box>
-              <Flex m="4" mb="8" mx="8">
-                <Box>
-                  <Text
-                    mb="2"
-                    fontSize={["lg", "xl", "2xl", "3xl"]}
-                    fontWeight="bold"
-                  >
-                    {data.title}
-                  </Text>
-                  <Text>{data.author}</Text>
-                  <Text mb="4">{moment(data.date).format("MMMM D, YYYY")}</Text>
-                  <Flex>
-                    <Spacer />
-                  </Flex>
-                </Box>
-              </Flex>
+      <Layout>
+        <Center>
+          <Center w={["100%", "100%", "100%", 1080]}>
+            <BoxWrapper colSpan={6}>
+              <Box>
+                <Flex m="4" mb="8" mx="8">
+                  <Box>
+                    <Text
+                      mb="2"
+                      fontSize={["lg", "xl", "2xl", "3xl"]}
+                      fontWeight="bold"
+                    >
+                      {data.title}
+                    </Text>
+                    <Text>{data.author}</Text>
+                    <Text mb="4">
+                      {moment(data.date).format("MMMM D, YYYY")}
+                    </Text>
+                    <Flex>
+                      <Spacer />
+                    </Flex>
+                  </Box>
+                </Flex>
 
-              <Box className="markdown" m="4" mb="8" mx="8">
-                <MDXRemote
-                  {...content}
-                  components={{
-                    CallOut,
-                    MDYoutube,
-                  }}
-                />
+                <Box className="markdown" m="4" mb="8" mx="8">
+                  <MDXRemote
+                    {...content}
+                    components={{
+                      CallOut,
+                      MDYoutube,
+                    }}
+                  />
+                </Box>
+                <Flex m="4">
+                  <Spacer />
+                  <Button
+                    borderRadius="xl"
+                    shadow="md"
+                    onClick={() => {
+                      router.push("/blog")
+                    }}
+                  >
+                    To article list
+                  </Button>
+                </Flex>
               </Box>
-              <Flex m="4">
-                <Spacer />
-                <Button
-                  borderRadius="xl"
-                  shadow="md"
-                  onClick={() => {
-                    router.push("/blog")
-                  }}
-                >
-                  To article list
-                </Button>
-              </Flex>
-            </Box>
-          </BoxWrapper>
+            </BoxWrapper>
+          </Center>
         </Center>
-      </Center>
-    </Layout>
+      </Layout>
+    </>
   )
 }
 

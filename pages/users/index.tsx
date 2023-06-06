@@ -65,7 +65,7 @@ const Users = (props: Props) => {
   })
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={metaData.title}
         description={metaData.description}
@@ -85,12 +85,13 @@ const Users = (props: Props) => {
           siteName: "DCL-Metrics",
         }}
       />
-
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <MarathonUsers res={globalUserRes} />
-        <Explorer res={globalUserRes} />
-      </Grid>
-    </Layout>
+      <Layout>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <MarathonUsers res={globalUserRes} />
+          <Explorer res={globalUserRes} />
+        </Grid>
+      </Layout>
+    </>
   )
 }
 

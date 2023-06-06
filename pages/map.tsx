@@ -51,7 +51,7 @@ const MapPage = (props: Props) => {
   })
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={metaData.title}
         description={metaData.description}
@@ -71,11 +71,12 @@ const MapPage = (props: Props) => {
           siteName: "DCL-Metrics",
         }}
       />
-
-      <Box mb="4" mx={[-4, 0, 0, 0]}>
-        <LandPicker parcelData={parcelRes} isPage={true} />
-      </Box>
-    </Layout>
+      <Layout>
+        <Box mb="4" mx={[-4, 0, 0, 0]}>
+          <LandPicker parcelData={parcelRes} isPage={true} />
+        </Box>
+      </Layout>
+    </>
   )
 }
 

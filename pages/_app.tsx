@@ -25,7 +25,7 @@ function MyApp({
     return process.env.NEXT_PUBLIC_TELEMETRY === "true"
   }
 
-  const pageTitle = "DCL-Metrics"
+  const pageTitle = "DCL-Metrics - Decentraland Metaverse Data"
   const description =
     "We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
   const image = `${siteUrl}/images/image.png`
@@ -58,28 +58,28 @@ function MyApp({
             // data-domains="dcl-metrics.com/"
           ></Script>
         )}
+        <DefaultSeo
+          title={metaData.title}
+          description={metaData.description}
+          openGraph={{
+            url: siteUrl,
+            title: metaData.title,
+            description: metaData.description,
+            images: [
+              {
+                url: metaData.image,
+                width: 400,
+                height: 400,
+                alt: metaData.description,
+                type: "image/png",
+              },
+            ],
+            siteName: "DCL-Metrics",
+          }}
+        />
         {/* @ts-ignore */}
         <AnimatePresence initial={false} mode="wait">
           <main className={InterFont.className}>
-            <DefaultSeo
-              title={metaData.title}
-              description={metaData.description}
-              openGraph={{
-                url: siteUrl,
-                title: metaData.title,
-                description: metaData.description,
-                images: [
-                  {
-                    url: metaData.image,
-                    width: 400,
-                    height: 400,
-                    alt: metaData.description,
-                    type: "image/png",
-                  },
-                ],
-                siteName: "DCL-Metrics",
-              }}
-            />
             <Component {...pageProps} key={router.asPath} />
           </main>
         </AnimatePresence>

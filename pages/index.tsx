@@ -73,10 +73,8 @@ const GlobalPage: NextPage = (props: Props) => {
     setPSA(latestPost)
   }, [])
 
-  console.log(metaData.title)
-
   return (
-    <Layout>
+    <>
       <NextSeo
         title={metaData.title}
         description={metaData.description}
@@ -96,31 +94,33 @@ const GlobalPage: NextPage = (props: Props) => {
           siteName: "DCL-Metrics",
         }}
       />
-      <Box w="100%">
-        <Box mb="4" data-testid="uniqueVisitors">
-          <UniqueVisitors data={globalDailyRes} />
+      <Layout>
+        <Box w="100%">
+          <Box mb="4" data-testid="uniqueVisitors">
+            <UniqueVisitors data={globalDailyRes} />
+          </Box>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <UniqueVisitedParcels data={globalDailyRes} />
+            <ActiveScenes data={globalDailyRes} />
+          </Grid>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <OnlineUsers />
+            <ActiveUsers />
+          </Grid>
+          <LandPicker parcelData={parcelRes} isPage={false} />
+          <Box mb="4">
+            <LandSales data={landSalesRes} />
+          </Box>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <RentalDay data={rental} />
+            <RentalTotal data={rental} />
+          </Grid>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <TopPick data={topPickRes} />
+          </Grid>
         </Box>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <UniqueVisitedParcels data={globalDailyRes} />
-          <ActiveScenes data={globalDailyRes} />
-        </Grid>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <OnlineUsers />
-          <ActiveUsers />
-        </Grid>
-        <LandPicker parcelData={parcelRes} isPage={false} />
-        <Box mb="4">
-          <LandSales data={landSalesRes} />
-        </Box>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <RentalDay data={rental} />
-          <RentalTotal data={rental} />
-        </Grid>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <TopPick data={topPickRes} />
-        </Grid>
-      </Box>
-    </Layout>
+      </Layout>
+    </>
   )
 }
 

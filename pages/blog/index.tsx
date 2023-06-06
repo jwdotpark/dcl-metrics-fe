@@ -33,7 +33,7 @@ const BlogPage = ({ posts }) => {
   })
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={metaData.title}
         description={metaData.description}
@@ -53,10 +53,12 @@ const BlogPage = ({ posts }) => {
           siteName: "DCL-Metrics",
         }}
       />
-      <Center w="100%">
-        <PostList posts={posts} />
-      </Center>
-    </Layout>
+      <Layout>
+        <Center w="100%">
+          <PostList posts={posts} />
+        </Center>
+      </Layout>
+    </>
   )
 }
 

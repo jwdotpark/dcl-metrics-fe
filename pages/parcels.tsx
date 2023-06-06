@@ -66,7 +66,7 @@ const Parcels = (props: Props) => {
   })
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={metaData.title}
         description={metaData.description}
@@ -86,15 +86,16 @@ const Parcels = (props: Props) => {
           siteName: "DCL-Metrics",
         }}
       />
-
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <AvgTimeSpentParcel parcel={globalParcelRes} />
-        <LogInTimeSpentParcel parcel={globalParcelRes} />
-        <AFKTimeSpentParcel parcel={globalParcelRes} />
-        <LogOutTimeSpentParcel parcel={globalParcelRes} />
-        <MostVisitedParcel parcel={globalParcelRes} />
-      </Grid>
-    </Layout>
+      <Layout>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <AvgTimeSpentParcel parcel={globalParcelRes} />
+          <LogInTimeSpentParcel parcel={globalParcelRes} />
+          <AFKTimeSpentParcel parcel={globalParcelRes} />
+          <LogOutTimeSpentParcel parcel={globalParcelRes} />
+          <MostVisitedParcel parcel={globalParcelRes} />
+        </Grid>
+      </Layout>
+    </>
   )
 }
 

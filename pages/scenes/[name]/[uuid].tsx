@@ -38,26 +38,6 @@ const SingleScenePage = ({ result, historyResult }) => {
   } else {
     sceneComponent = (
       <>
-        <NextSeo
-          title={metaData.title}
-          description={metaData.description}
-          openGraph={{
-            url: link,
-            title: metaData.title,
-            description: metaData.description,
-            images: [
-              {
-                url: metaData.image,
-                width: 400,
-                height: 400,
-                alt: metaData.description,
-                type: "image/png",
-              },
-            ],
-            siteName: "DCL-Metrics",
-          }}
-        />
-
         <Scene
           res={res}
           dailyUsers={historyResult}
@@ -70,7 +50,30 @@ const SingleScenePage = ({ result, historyResult }) => {
     )
   }
 
-  return <Layout>{sceneComponent}</Layout>
+  return (
+    <>
+      <NextSeo
+        title={metaData.title}
+        description={metaData.description}
+        openGraph={{
+          url: link,
+          title: metaData.title,
+          description: metaData.description,
+          images: [
+            {
+              url: metaData.image,
+              width: 400,
+              height: 400,
+              alt: metaData.description,
+              type: "image/png",
+            },
+          ],
+          siteName: "DCL-Metrics",
+        }}
+      />
+      <Layout>{sceneComponent}</Layout>
+    </>
+  )
 }
 
 export default SingleScenePage

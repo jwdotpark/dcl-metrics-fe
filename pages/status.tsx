@@ -51,7 +51,7 @@ const Status = (props: Props) => {
   })
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={metaData.title}
         description={metaData.description}
@@ -71,11 +71,12 @@ const Status = (props: Props) => {
           siteName: "DCL-Metrics",
         }}
       />
-
-      <Box>
-        <StatusBox data={statusRes} />
-      </Box>
-    </Layout>
+      <Layout>
+        <Box>
+          <StatusBox data={statusRes} />
+        </Box>
+      </Layout>
+    </>
   )
 }
 

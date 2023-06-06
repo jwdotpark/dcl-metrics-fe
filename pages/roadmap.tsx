@@ -21,7 +21,7 @@ const Roadmap = () => {
   })
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={metaData.title}
         description={metaData.description}
@@ -41,15 +41,17 @@ const Roadmap = () => {
           siteName: "DCL-Metrics",
         }}
       />
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`}>
-        <BoxWrapper colSpan={1}>
-          <RoadMap />
-        </BoxWrapper>
-        <BoxWrapper colSpan={1}>
-          <Changelog />
-        </BoxWrapper>
-      </Grid>
-    </Layout>
+      <Layout>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`}>
+          <BoxWrapper colSpan={1}>
+            <RoadMap />
+          </BoxWrapper>
+          <BoxWrapper colSpan={1}>
+            <Changelog />
+          </BoxWrapper>
+        </Grid>
+      </Layout>
+    </>
   )
 }
 

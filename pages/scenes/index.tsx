@@ -70,7 +70,7 @@ const Scenes = (props: Props) => {
   })
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={metaData.title}
         description={metaData.description}
@@ -90,18 +90,19 @@ const Scenes = (props: Props) => {
           siteName: "DCL-Metrics",
         }}
       />
-
-      <Box mb="4">
-        <SceneTable sceneRes={sceneRes} />
-      </Box>
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <TopScenesVisitors res={globalSceneRes} />
-        <ScenesTimeSpent res={globalSceneRes} />
-        <ScenesLogin res={globalSceneRes} />
-        <ScenesLogout res={globalSceneRes} />
-        <ScenesTimeSpentAFK res={globalSceneRes} />
-      </Grid>
-    </Layout>
+      <Layout>
+        <Box mb="4">
+          <SceneTable sceneRes={sceneRes} />
+        </Box>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <TopScenesVisitors res={globalSceneRes} />
+          <ScenesTimeSpent res={globalSceneRes} />
+          <ScenesLogin res={globalSceneRes} />
+          <ScenesLogout res={globalSceneRes} />
+          <ScenesTimeSpentAFK res={globalSceneRes} />
+        </Grid>
+      </Layout>
+    </>
   )
 }
 
