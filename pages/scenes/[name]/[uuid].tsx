@@ -1,4 +1,5 @@
 import { Box, Center, Text } from "@chakra-ui/react"
+import { format } from "date-fns"
 import { NextSeo } from "next-seo"
 import Layout from "../../../src/components/layout/layout"
 import Scene from "../../../src/components/local/stats/Scene"
@@ -12,7 +13,10 @@ const SingleScenePage = ({ result, historyResult }) => {
   const isResultEmpty = Object.keys(result).length === 0
 
   const pageTitle = `DCL-Metrics ${res[0].name}`
-  const description = `${res[0].name} on ${res[0].date}`
+  const description = `${res[0].name} data on ${format(
+    new Date(res[0].date),
+    "yyyy MMM d"
+  )}`
   const image = res[0].map_url
 
   const metaData = generateMetaData({

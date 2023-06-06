@@ -77,8 +77,8 @@ const SingleUserPage = (props) => {
 
   console.log(userAddressRes)
 
-  const pageTitle = `DCL-Metrics ${userAddressRes.name}`
-  const description = `${userAddressRes.name} last seen on ${userAddressRes.last_seen}}`
+  const pageTitle = `DCL-Metrics User ${userAddressRes.name} Dashboard`
+  const description = `${userAddressRes.name}, last seen on ${userAddressRes.last_seen}`
   const image = userAddressRes.avatar_url
 
   const metaData = generateMetaData({
