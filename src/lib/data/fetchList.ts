@@ -54,6 +54,6 @@ export const globalFileNameArr = [
   //"staticGlobalUsers",
   //"cached_scenes_top",
   "cached_parcel",
-  "staticLandSales",
-  "staticTopLand",
+  //"staticLandSales",
+  //"staticTopLand",
 ]
