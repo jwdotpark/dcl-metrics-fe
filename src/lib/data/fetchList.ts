@@ -1,8 +1,8 @@
 import staticGlobalDaily from "../../../public/data/staticGlobalDaily.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
 import staticLandSales from "../../../public/data/staticLandSales.json"
-import staticTopLand from "../../../public/data/staticTopLand.json"
-import staticTopPick from "../../../public/data/staticTopPick.json"
+//import staticTopLand from "../../../public/data/staticTopLand.json"
+//import staticTopPick from "../../../public/data/staticTopPick.json"
 import { globalDailyURL, parcelURL } from "./constant"
 
 export const globalRequestList = [
