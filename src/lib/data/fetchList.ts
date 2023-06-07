@@ -5,6 +5,7 @@ import staticLandSales from "../../../public/data/staticLandSales.json"
 //import staticTopPick from "../../../public/data/staticTopPick.json"
 import { globalDailyURL, parcelURL } from "./constant"
 
+// NOTE commented endpoints are temporarily disabled
 export const globalRequestList = [
   {
     url: globalDailyURL,
