@@ -33,18 +33,18 @@ export const globalRequestList = [
     endpoint: "/dcl-property.rentals",
     staticData: staticLandSales,
   },
-  {
-    url: "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
-    endpint:
-      "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
-    staticData: staticTopLand,
-  },
-  {
-    url: "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
-    endpoint:
-      "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
-    staticData: staticTopPick,
-  },
+  //{
+  //  url: "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
+  //  endpint:
+  //    "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
+  //  staticData: staticTopLand,
+  //},
+  //{
+  //  url: "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
+  //  endpoint:
+  //    "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
+  //  staticData: staticTopPick,
+  //},
 ]
 
 export const globalFileNameArr = [
@@ -55,5 +55,5 @@ export const globalFileNameArr = [
   //"cached_scenes_top",
   "cached_parcel",
   "staticLandSales",
-  "staticTopLand",
+  //"staticTopLand",
 ]

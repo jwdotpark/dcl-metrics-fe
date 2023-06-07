@@ -17,7 +17,7 @@ import {
 import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
 import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
-import TopPick from "../src/components/local/ext-data/TopPick"
+//import TopPick from "../src/components/local/ext-data/TopPick"
 import { useAtom } from "jotai"
 import { psaAtom } from "../src/lib/state/psaState"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
@@ -50,7 +50,7 @@ const GlobalPage: NextPage = (props: Props) => {
     globalDailyRes,
     parcelRes,
     landSalesRes,
-    topPickRes,
+    //topPickRes,
     rental,
     latestPost,
   } = props
@@ -115,9 +115,9 @@ const GlobalPage: NextPage = (props: Props) => {
             <RentalDay data={rental} />
             <RentalTotal data={rental} />
           </Grid>
-          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <TopPick data={topPickRes} />
-          </Grid>
+          </Grid>*/}
         </Box>
       </Layout>
     </>
