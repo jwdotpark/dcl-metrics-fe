@@ -51,11 +51,9 @@ export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
   })
   const result = await response.json()
   if (response.status >= 300) {
-    // FIXME
-    sendNotification(response.status, `${endpoint}`, "error")
-    //if (isProd) {
-    //  sendNotification(response.status, `${endpoint}`, "error")
-    //}
+    if (isProd) {
+      sendNotification(response.status, `${endpoint}`, "error")
+    }
     return staticFile
   }
   return result
