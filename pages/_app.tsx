@@ -28,7 +28,7 @@ function MyApp({
   const pageTitle = "DCL-Metrics - Decentraland Metaverse Data"
   const description =
     "We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
-  const image = `${siteUrl}/images/image.png`
+  const image = `${siteUrl}/images/index.png`
 
   const metaData = generateMetaData({
     title: pageTitle,
