@@ -1,12 +1,4 @@
-import {
-  Box,
-  Center,
-  Image,
-  Flex,
-  Spacer,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react"
+import { Box, Center, Image, Flex, Spacer, Text } from "@chakra-ui/react"
 import Link from "next/link"
 import BoxWrapper from "../../components/layout/local/BoxWrapper"
 
@@ -26,16 +18,22 @@ const PostList = ({ posts }) => {
                 <Flex my="4">
                   <Box w={["70%", "85%"]}>
                     <Text
+                      ml="4"
                       fontSize={["lg", "xl", "2xl", "3xl"]}
                       fontWeight="bold"
-                      noOfLines={1}
+                      //noOfLines={1}
                     >
                       {post.data.title}
                     </Text>
                   </Box>
                   <Spacer />
                   <Center h="auto">
-                    <Text wordBreak="keep-all">{post.data.date}</Text>
+                    <Text
+                      fontSize={["xs", "xs", "xs", "xs", "md"]}
+                      wordBreak="keep-all"
+                    >
+                      {post.data.date}
+                    </Text>
                   </Center>
                 </Flex>
                 {post.data.previewImage.length > 0 && (
@@ -43,11 +41,9 @@ const PostList = ({ posts }) => {
                     pos="relative"
                     overflow="clip"
                     h={[200, 400, 500]}
-                    border="1px solid"
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
-                    borderColor={useColorModeValue("gray.200", "gray.600")}
+                    mb="6"
+                    mx="4"
                     borderRadius="xl"
-                    shadow="md"
                     objectFit="cover"
                     alt={`${post.data.title} preview picture`}
                     src={post.data.previewImage}
@@ -55,8 +51,8 @@ const PostList = ({ posts }) => {
                 )}
                 <Spacer />
               </Flex>
-              <Box m="4" ml="4">
-                <Text noOfLines={1}>{post.data.description}</Text>
+              <Box mb="4" mx="8">
+                <Text>{post.data.description}</Text>
               </Box>
             </BoxWrapper>
           </Link>
