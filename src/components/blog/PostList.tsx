@@ -1,4 +1,11 @@
-import { Box, Center, Image, Flex, Spacer, Text } from "@chakra-ui/react"
+import {
+  Box,
+  //Center,
+  Image,
+  Flex,
+  Spacer,
+  Text,
+} from "@chakra-ui/react"
 import Link from "next/link"
 import BoxWrapper from "../../components/layout/local/BoxWrapper"
 
