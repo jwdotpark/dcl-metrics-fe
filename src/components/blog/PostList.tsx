@@ -14,35 +14,31 @@ const PostList = ({ posts }) => {
         >
           <Link href={`/blog/` + post.slug}>
             <BoxWrapper colSpan={6}>
-              <Flex direction="column" mx="4">
-                <Flex my="4">
-                  <Box w={["70%", "85%"]}>
+              <Flex direction="column" m="4">
+                <Flex direction={["column", "row"]} my="4">
+                  <Box w={["100%", "100%"]} pr="4">
                     <Text
                       ml="4"
                       fontSize={["lg", "xl", "2xl", "3xl"]}
                       fontWeight="bold"
-                      //noOfLines={1}
                     >
                       {post.data.title}
                     </Text>
                   </Box>
                   <Spacer />
-                  <Center h="auto">
-                    <Text
-                      fontSize={["xs", "xs", "xs", "xs", "md"]}
-                      wordBreak="keep-all"
-                    >
+                  {/*<Box h="auto">
+                    <Text fontSize="xs" wordBreak="keep-all">
                       {post.data.date}
                     </Text>
-                  </Center>
+                  </Box>*/}
                 </Flex>
                 {post.data.previewImage.length > 0 && (
                   <Image
                     pos="relative"
                     overflow="clip"
                     h={[200, 400, 500]}
-                    mb="6"
                     mx="4"
+                    my="2"
                     borderRadius="xl"
                     objectFit="cover"
                     alt={`${post.data.title} preview picture`}
