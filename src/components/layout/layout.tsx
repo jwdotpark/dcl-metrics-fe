@@ -14,12 +14,8 @@ const Layout = ({ children }: any) => {
   useEffect(() => {
     if (data) {
       setRes(data.latestPost)
-    } else {
-      setRes({})
     }
-  }, [])
-
-  console.log("res", res)
+  }, [data])
 
   return (
     <>
