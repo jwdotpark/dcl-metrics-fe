@@ -22,6 +22,8 @@ import UserScenesVisited from "../../src/components/local/stats/user/UserScenesV
 import UserTopScenes from "../../src/components/local/stats/user/UserTopScenes"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
+import useSWR from "swr"
+import UserNotFound from "../../src/components/local/user/UserNotFound"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -85,6 +87,34 @@ const SingleUserPage = (props) => {
     image: image,
   })
 
+  const fetcher = (url) => fetch(url).then((res) => res.json())
+
+  const nameUrl = `https://peer.decentraland.org/lambdas/users/${address}/names`
+  const wearableUrl = `https://peer.decentraland.org/lambdas/users/${address}/wearables`
+  const landUrl = `https://peer.decentraland.org/lambdas/users/${address}/lands`
+  const emoteUrl = `https://peer.decentraland.org/lambdas/users/${address}/emotes`
+
+  const {
+    data: names,
+    error: nameError,
+    isLoading: nameLoading,
+  } = useSWR(nameUrl, fetcher)
+  const {
+    data: wearables,
+    error: wearableError,
+    isLoading: wearableLoading,
+  } = useSWR(wearableUrl, fetcher)
+  const {
+    data: lands,
+    error: landError,
+    isLoading: landLoading,
+  } = useSWR(landUrl, fetcher)
+  const {
+    data: emotes,
+    error: emoteError,
+    isLoading: emoteLoading,
+  } = useSWR(emoteUrl, fetcher)
+
   return (
     <>
       <NextSeo
@@ -108,31 +138,7 @@ const SingleUserPage = (props) => {
       />
       <Layout>
         {Object.keys(userAddressRes).length === 0 ? (
-          <Center h="calc(100vh - 8rem)">
-            <Flex direction="column" w="100%">
-              <Center mb="8">
-                <Text fontSize={["3xl", "6xl"]} fontWeight="bold">
-                  User Not Found
-                </Text>
-              </Center>
-              <Center w="100%" px={[0, 20]} fontSize={["xs", "md"]}>
-                <Flex direction="column">
-                  <Center w="100%">
-                    <Text>
-                      User <kbd>{address}</kbd> is not in our system yet.
-                    </Text>
-                  </Center>
-                  <Center>
-                    <Text>
-                      This usually means that they have never logged into
-                      Decentraland client. If you think this is an error, please
-                      contact us using <b>feedback menu</b> on the top.
-                    </Text>
-                  </Center>
-                </Flex>
-              </Center>
-            </Flex>
-          </Center>
+          <UserNotFound address={address} />
         ) : (
           <Box fontSize={["md", "md"]}>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
