@@ -4,7 +4,6 @@ import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi"
 
 const PaginationBtnGroup = ({ val, pageSize, pageNum, setPageNum }) => {
   const totalAmount = val.totalAmount
-
   const totalPages = Math.ceil(totalAmount / pageSize)
 
   const handlePageChange = (page) => {
@@ -12,6 +11,10 @@ const PaginationBtnGroup = ({ val, pageSize, pageNum, setPageNum }) => {
   }
 
   const renderPaginationButtons = () => {
+    if (totalPages <= 1) {
+      return null // Don't render the buttons if there's only one page
+    }
+
     const buttons = []
     const maxButtonsToShow = 8
     const halfMaxButtons = Math.floor(maxButtonsToShow / 2)
@@ -73,16 +76,16 @@ const PaginationBtnGroup = ({ val, pageSize, pageNum, setPageNum }) => {
     return buttons
   }
 
+  if (totalPages <= 1) {
+    return null
+  }
+
   return (
-    <>
-      {totalAmount > 10 && (
-        <Box w="100%" my="4">
-          <ButtonGroup w="100%" borderRadius="xl" shadow="md" isAttached>
-            {renderPaginationButtons()}
-          </ButtonGroup>
-        </Box>
-      )}
-    </>
+    <Box w="100%" my="4">
+      <ButtonGroup w="100%" borderRadius="xl" shadow="md" isAttached>
+        {renderPaginationButtons()}
+      </ButtonGroup>
+    </Box>
   )
 }
 

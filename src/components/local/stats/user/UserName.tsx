@@ -10,7 +10,7 @@ const UserName = ({ address }) => {
   const fetcher = (url) => fetch(url).then((res) => res.json())
 
   const [pageNum, setPageNum] = useState(1)
-  const pageSize = 10
+  const pageSize = 30
   const queryParam = `?pageNum=${pageNum}&pageSize=${pageSize}`
 
   const nameUrl =
@@ -46,7 +46,7 @@ const UserName = ({ address }) => {
                 mb="2"
                 borderRadius="full"
                 shadow="md"
-                size="sm"
+                size="md"
               >
                 <Link href={`/users/${item.contractAddress}`}>{item.name}</Link>
               </Button>
@@ -57,19 +57,23 @@ const UserName = ({ address }) => {
   }
 
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
-      <BoxTitle
-        name={`User Name`}
-        description={`User name description`}
-        date=""
-        avgData={[]}
-        slicedData={{}}
-        color={""}
-        line={false}
-        setLine={{}}
-      />
-      <Box m="4">{UserNameContent}</Box>
-    </BoxWrapper>
+    <>
+      {data && data.elements.length > 0 && (
+        <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
+          <BoxTitle
+            name={`User Name`}
+            description={`User name description`}
+            date=""
+            avgData={[]}
+            slicedData={{}}
+            color={""}
+            line={false}
+            setLine={{}}
+          />
+          <Box m="4">{UserNameContent}</Box>
+        </BoxWrapper>
+      )}
+    </>
   )
 }
 

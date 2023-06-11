@@ -5,14 +5,7 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import {
-  Text,
-  Box,
-  Center,
-  Grid,
-  useBreakpointValue,
-  Flex,
-} from "@chakra-ui/react"
+import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
@@ -22,11 +15,11 @@ import UserScenesVisited from "../../src/components/local/stats/user/UserScenesV
 import UserTopScenes from "../../src/components/local/stats/user/UserTopScenes"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
-import useSWR from "swr"
 import UserNotFound from "../../src/components/local/user/UserNotFound"
 import UserName from "../../src/components/local/stats/user/UserName"
 import UserWearables from "../../src/components/local/stats/user/UserWearables"
 import UserLand from "../../src/components/local/stats/user/UserLand"
+import UserEmotes from "../../src/components/local/stats/user/UserEmotes"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -90,28 +83,6 @@ const SingleUserPage = (props) => {
     image: image,
   })
 
-  const fetcher = (url) => fetch(url).then((res) => res.json())
-
-  const pageNum = 1
-  const pageSize = 10
-  const queryParam = `?pageNum=${pageNum}&pageSize=${pageSize}`
-
-  const landUrl =
-    `https://peer.decentraland.org/lambdas/users/${address}/lands` + queryParam
-  const emoteUrl =
-    `https://peer.decentraland.org/lambdas/users/${address}/emotes` + queryParam
-
-  const {
-    data: lands,
-    error: landError,
-    isLoading: landLoading,
-  } = useSWR(landUrl, fetcher)
-  const {
-    data: emotes,
-    error: emoteError,
-    isLoading: emoteLoading,
-  } = useSWR(emoteUrl, fetcher)
-
   return (
     <>
       <NextSeo
@@ -147,13 +118,6 @@ const SingleUserPage = (props) => {
               <UserDAOActivity data={daoActivityRes} />
             </Grid>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserName address={address} />
-              <UserLand address={address} />
-            </Grid>
-            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserWearables address={address} />
-            </Grid>
-            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserTimeSpent
                 address={address}
                 userAddressRes={userAddressRes}
@@ -168,6 +132,16 @@ const SingleUserPage = (props) => {
                 address={address}
                 userAddressRes={userAddressRes}
               />
+            </Grid>
+            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+              <UserName address={address} />
+              <UserEmotes address={address} />
+            </Grid>
+            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+              <UserWearables address={address} />
+            </Grid>
+            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+              <UserLand address={address} />
             </Grid>
           </Box>
         )}

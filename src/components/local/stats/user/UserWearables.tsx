@@ -1,5 +1,6 @@
 import {
   Box,
+  Image,
   Button,
   Center,
   Spinner,
@@ -25,7 +26,7 @@ const UserWearables = ({ address }) => {
   const fetcher = (url) => fetch(url).then((res) => res.json())
 
   const [pageNum, setPageNum] = useState(1)
-  const pageSize = 10
+  const pageSize = 5
   const queryParam = `?pageNum=${pageNum}&pageSize=${pageSize}`
 
   const wearableUrl =
@@ -36,7 +37,7 @@ const UserWearables = ({ address }) => {
 
   const DataTable = ({ elements }) => {
     return (
-      <Table size="sm" variant="striped">
+      <Table overflowX="scroll" minH="300px" size="sm" variant="striped">
         <Thead>
           <Tr>
             <Th>Name</Th>
@@ -55,7 +56,16 @@ const UserWearables = ({ address }) => {
               <Td fontWeight="bold">{element.name}</Td>
               <Td>{element.category}</Td>
               <Td>{element.rarity}</Td>
-              <Td>{element.urn}</Td>
+              {/*<Td>{element.urn}</Td>*/}
+              <Td>
+                <Center>
+                  <Image
+                    w="50px"
+                    alt={element.name}
+                    src={`https://peer.decentraland.org/lambdas/collections/contents/${element.urn}/thumbnail`}
+                  />
+                </Center>
+              </Td>
               <Td>{element.amount}</Td>
               <Td>
                 <Button
@@ -127,19 +137,23 @@ const UserWearables = ({ address }) => {
   }
 
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
-      <BoxTitle
-        name={`User Wearable`}
-        description={`User wearable description`}
-        date=""
-        avgData={[]}
-        slicedData={{}}
-        color={""}
-        line={false}
-        setLine={{}}
-      />
-      <Box m="4">{UserWearableContent}</Box>
-    </BoxWrapper>
+    <>
+      {data && data.elements.length > 0 && (
+        <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
+          <BoxTitle
+            name={`User Wearable`}
+            description={`User wearable description`}
+            date=""
+            avgData={[]}
+            slicedData={{}}
+            color={""}
+            line={false}
+            setLine={{}}
+          />
+          <Box m="4">{UserWearableContent}</Box>
+        </BoxWrapper>
+      )}
+    </>
   )
 }
 
