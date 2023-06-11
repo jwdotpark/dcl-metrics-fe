@@ -24,6 +24,9 @@ import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import useSWR from "swr"
 import UserNotFound from "../../src/components/local/user/UserNotFound"
+import UserName from "../../src/components/local/stats/user/UserName"
+import UserWearables from "../../src/components/local/stats/user/UserWearables"
+import UserLand from "../../src/components/local/stats/user/UserLand"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -89,21 +92,15 @@ const SingleUserPage = (props) => {
 
   const fetcher = (url) => fetch(url).then((res) => res.json())
 
-  const nameUrl = `https://peer.decentraland.org/lambdas/users/${address}/names`
-  const wearableUrl = `https://peer.decentraland.org/lambdas/users/${address}/wearables`
-  const landUrl = `https://peer.decentraland.org/lambdas/users/${address}/lands`
-  const emoteUrl = `https://peer.decentraland.org/lambdas/users/${address}/emotes`
+  const pageNum = 1
+  const pageSize = 10
+  const queryParam = `?pageNum=${pageNum}&pageSize=${pageSize}`
 
-  const {
-    data: names,
-    error: nameError,
-    isLoading: nameLoading,
-  } = useSWR(nameUrl, fetcher)
-  const {
-    data: wearables,
-    error: wearableError,
-    isLoading: wearableLoading,
-  } = useSWR(wearableUrl, fetcher)
+  const landUrl =
+    `https://peer.decentraland.org/lambdas/users/${address}/lands` + queryParam
+  const emoteUrl =
+    `https://peer.decentraland.org/lambdas/users/${address}/emotes` + queryParam
+
   const {
     data: lands,
     error: landError,
@@ -148,6 +145,13 @@ const SingleUserPage = (props) => {
               <UserInfo data={userAddressRes} />
               <UserNFT data={nftRes} address={address} />
               <UserDAOActivity data={daoActivityRes} />
+            </Grid>
+            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+              <UserName address={address} />
+              <UserLand address={address} />
+            </Grid>
+            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+              <UserWearables address={address} />
             </Grid>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserTimeSpent
