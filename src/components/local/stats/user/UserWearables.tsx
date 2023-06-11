@@ -37,7 +37,7 @@ const UserWearables = ({ address }) => {
 
   const DataTable = ({ elements }) => {
     return (
-      <Table overflowX="scroll" minH="300px" size="sm" variant="striped">
+      <Table overflowX="scroll" size="sm" variant="simple">
         <Thead>
           <Tr>
             <Th>Name</Th>

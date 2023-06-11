@@ -5,7 +5,7 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
+import { Box, Divider, Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
@@ -113,11 +113,6 @@ const SingleUserPage = (props) => {
               <UserProfile data={userAddressRes} />
             </Grid>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserInfo data={userAddressRes} />
-              <UserNFT data={nftRes} address={address} />
-              <UserDAOActivity data={daoActivityRes} />
-            </Grid>
-            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserTimeSpent
                 address={address}
                 userAddressRes={userAddressRes}
@@ -128,11 +123,17 @@ const SingleUserPage = (props) => {
               />
             </Grid>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+              <UserInfo data={userAddressRes} />
+              <UserNFT data={nftRes} address={address} />
+              <UserDAOActivity data={daoActivityRes} />
+            </Grid>
+            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserTopScenes
                 address={address}
                 userAddressRes={userAddressRes}
               />
             </Grid>
+            <Divider size="xl" />
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserName address={address} />
               <UserEmotes address={address} />

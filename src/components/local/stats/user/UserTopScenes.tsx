@@ -70,8 +70,8 @@ const UserTopScenes = ({ address, userAddressRes }) => {
           >
             <Image
               w="100%"
-              minW={[100, 200, 200, 200, 200]}
-              h="100px"
+              minW={[100, 200, 200, 15, 150]}
+              h="150px"
               borderRadius="xl"
               objectFit="cover"
               alt={row.original.name}
@@ -159,6 +159,47 @@ const UserTopScenes = ({ address, userAddressRes }) => {
         overflowY="auto"
         mx="4"
       >
+        <Center w="100%" mb="4" mx="0">
+          <ButtonGroup
+            w="100%"
+            border="1px solid"
+            borderColor={useColorModeValue("gray.300", "gray.700")}
+            borderRadius="md"
+            shadow="md"
+            isAttached
+            size="sm"
+          >
+            <Button
+              w="100%"
+              borderRadius="md"
+              disabled={!canPreviousPage}
+              onClick={() => gotoPage(0)}
+            >
+              <FiArrowLeftCircle />
+            </Button>
+            <Button
+              w="100%"
+              disabled={!canPreviousPage}
+              onClick={() => previousPage()}
+            >
+              <FiArrowLeft />
+            </Button>
+            <Button w="100%">
+              <b>{pageIndex + 1}</b>/{pageOptions.length}
+            </Button>
+            <Button w="100%" disabled={!canNextPage} onClick={() => nextPage()}>
+              <FiArrowRight />
+            </Button>
+            <Button
+              w="100%"
+              borderRadius="md"
+              disabled={!canNextPage}
+              onClick={() => gotoPage(pageCount - 1)}
+            >
+              <FiArrowRightCircle />
+            </Button>
+          </ButtonGroup>
+        </Center>
         <Table
           {...getTableProps()}
           h={chartProps.height}
@@ -215,33 +256,6 @@ const UserTopScenes = ({ address, userAddressRes }) => {
             })}
           </Tbody>
         </Table>
-        <Center w="100%" mx="4" my="4">
-          <ButtonGroup borderRadius="xl" shadow="md" isAttached size="sm">
-            <Button
-              borderRadius="xl"
-              disabled={!canPreviousPage}
-              onClick={() => gotoPage(0)}
-            >
-              <FiArrowLeftCircle />
-            </Button>
-            <Button disabled={!canPreviousPage} onClick={() => previousPage()}>
-              <FiArrowLeft />
-            </Button>
-            <Button>
-              <b>{pageIndex + 1}</b>/{pageOptions.length}
-            </Button>
-            <Button disabled={!canNextPage} onClick={() => nextPage()}>
-              <FiArrowRight />
-            </Button>
-            <Button
-              borderRadius="xl"
-              disabled={!canNextPage}
-              onClick={() => gotoPage(pageCount - 1)}
-            >
-              <FiArrowRightCircle />
-            </Button>
-          </ButtonGroup>
-        </Center>
       </Box>
     )
   }
@@ -270,7 +284,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
   }, [])
 
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 4, 3]}>
+    <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
       <BoxTitle
         name={`Frequently Visited Scenes`}
         description={`Top ${data.length} list of scenes ${userAddressRes.name} visited the most`}

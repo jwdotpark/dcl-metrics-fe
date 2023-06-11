@@ -10,6 +10,7 @@ import {
   Th,
   Thead,
   Tr,
+  AbsoluteCenter,
 } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
@@ -106,7 +107,7 @@ const UserEmotes = ({ address }) => {
 
   return (
     <>
-      {data && data.elements.length > 0 && (
+      {data && data.elements.length > 0 ? (
         <BoxWrapper colSpan={[1, 1, 1, 2, 4]}>
           <BoxTitle
             name={`User Emotes`}
@@ -120,6 +121,8 @@ const UserEmotes = ({ address }) => {
           />
           <Box m="4">{UserEmotesContent}</Box>
         </BoxWrapper>
+      ) : (
+        <AbsoluteCenter h="100%">No Data</AbsoluteCenter>
       )}
     </>
   )
