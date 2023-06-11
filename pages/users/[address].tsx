@@ -132,10 +132,11 @@ const SingleUserPage = (props) => {
                 address={address}
                 userAddressRes={userAddressRes}
               />
+              <UserName address={address} />
             </Grid>
             <Divider size="xl" />
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserName address={address} />
+              {/*<UserName address={address} />*/}
               <UserEmotes address={address} />
             </Grid>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">

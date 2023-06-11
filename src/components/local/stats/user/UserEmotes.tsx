@@ -52,7 +52,7 @@ const UserEmotes = ({ address }) => {
           pageSize={pageSize}
         />
         <Box overflowX="scroll">
-          <Table size="sm" variant="stripe">
+          <Table size="sm" variant="simple">
             <Thead>
               <Tr>
                 <Th>Name</Th>
@@ -108,7 +108,7 @@ const UserEmotes = ({ address }) => {
   return (
     <>
       {data && data.elements.length > 0 ? (
-        <BoxWrapper colSpan={[1, 1, 1, 2, 4]}>
+        <BoxWrapper colSpan={[1, 1, 1, 2, 6]}>
           <BoxTitle
             name={`User Emotes`}
             description={`User emote description`}

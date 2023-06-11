@@ -43,7 +43,7 @@ const UserWearables = ({ address }) => {
             <Th>Name</Th>
             <Th>Category</Th>
             <Th>Rarity</Th>
-            <Th>URN</Th>
+            <Th>Thumbnail</Th>
             <Th>Amount</Th>
             <Th>Token ID</Th>
             <Th>Transferred At</Th>

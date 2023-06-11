@@ -122,7 +122,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
   )
 
   const tableInstance = useTable(
-    { columns, data, initialState: { pageSize: 5 } },
+    { columns, data, initialState: { pageSize: 3 } },
     useGlobalFilter,
     useSortBy,
     usePagination
@@ -163,7 +163,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
           <ButtonGroup
             w="100%"
             border="1px solid"
-            borderColor={useColorModeValue("gray.300", "gray.700")}
+            borderColor={useColorModeValue("gray.200", "gray.700")}
             borderRadius="md"
             shadow="md"
             isAttached
@@ -284,7 +284,7 @@ const UserTopScenes = ({ address, userAddressRes }) => {
   }, [])
 
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
+    <BoxWrapper colSpan={[1, 1, 1, 4, 4]}>
       <BoxTitle
         name={`Frequently Visited Scenes`}
         description={`Top ${data.length} list of scenes ${userAddressRes.name} visited the most`}
