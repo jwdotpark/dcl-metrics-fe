@@ -22,10 +22,11 @@ const UserLand = ({ address }) => {
   const pageSize = 8
   const queryParam = `?pageNum=${pageNum}&pageSize=${pageSize}`
 
-  const nameUrl =
+  const landUrl =
     `https://peer.decentraland.org/lambdas/users/${address}/lands` + queryParam
 
-  const { data, error, isLoading } = useSWR(nameUrl, fetcher)
+  const { data, error, isLoading } = useSWR(landUrl, fetcher)
+  console.log("user land", data)
 
   let UserLandContent: JSX.Element
 
@@ -50,7 +51,9 @@ const UserLand = ({ address }) => {
           gap={4}
           templateColumns={[
             "repeat(1, 1fr)",
-            "repeat(3, 1fr)",
+            "repeat(1, 1fr)",
+            "repeat(2, 1fr)",
+            "repeat(2, 1fr)",
             "repeat(4, 1fr)",
           ]}
         >
@@ -100,7 +103,7 @@ const UserLand = ({ address }) => {
   return (
     <>
       {data && data.elements.length > 0 && (
-        <BoxWrapper colSpan={[1, 1, 1, 2, 6]}>
+        <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
           <BoxTitle
             name={`User Land`}
             description={`User land description`}
@@ -111,7 +114,9 @@ const UserLand = ({ address }) => {
             line={false}
             setLine={{}}
           />
-          <Box m="4">{UserLandContent}</Box>
+          <Box minH="400px" m="4">
+            {UserLandContent}
+          </Box>
         </BoxWrapper>
       )}
     </>

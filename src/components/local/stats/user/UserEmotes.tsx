@@ -10,7 +10,6 @@ import {
   Th,
   Thead,
   Tr,
-  AbsoluteCenter,
 } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
@@ -30,7 +29,6 @@ const UserEmotes = ({ address }) => {
     `https://peer.decentraland.org/lambdas/users/${address}/emotes` + queryParam
 
   const { data, error, isLoading } = useSWR(nameUrl, fetcher)
-  console.log("emote", data)
 
   let UserEmotesContent: JSX.Element
 
@@ -107,8 +105,8 @@ const UserEmotes = ({ address }) => {
 
   return (
     <>
-      {data && data.elements.length > 0 ? (
-        <BoxWrapper colSpan={[1, 1, 1, 2, 6]}>
+      {data && data.elements.length > 0 && (
+        <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
           <BoxTitle
             name={`User Emotes`}
             description={`User emote description`}
@@ -121,9 +119,11 @@ const UserEmotes = ({ address }) => {
           />
           <Box m="4">{UserEmotesContent}</Box>
         </BoxWrapper>
-      ) : (
-        <AbsoluteCenter h="100%">No Data</AbsoluteCenter>
       )}
+
+      {/*//  : (
+      //  <Center h="100%">No Data</Center>
+      // )}*/}
     </>
   )
 }

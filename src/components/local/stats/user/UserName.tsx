@@ -59,7 +59,7 @@ const UserName = ({ address }) => {
   return (
     <>
       {data && data.elements.length > 0 && (
-        <BoxWrapper colSpan={[1, 1, 1, 2, 2]}>
+        <BoxWrapper colSpan={[1, 1, 1, 4, 2]}>
           <BoxTitle
             name={`User Name`}
             description={`User name description`}

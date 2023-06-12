@@ -14,8 +14,8 @@ import Image from "next/image"
 import { FiMenu } from "react-icons/fi"
 import ColorButton from "../ColorButton"
 import FeedbackButton from "../FeedbackButton"
-import LogOutButton from "../LogOutButton"
-import PrivateDashboardButton from "../PrivateDashboardButton"
+//import LogOutButton from "../LogOutButton"
+//import PrivateDashboardButton from "../PrivateDashboardButton"
 import SettingsButton from "../SettingsButton"
 import Link from "next/link"
 import { FiCoffee } from "react-icons/fi"
@@ -67,7 +67,7 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
       {
         <Box display={["none", "block"]}>
           <Box
-            sx={{ transform: "translateY(3px)" }}
+            sx={{ transform: "translateY(2px)" }}
             display="inline-block"
             mr="2"
           >
@@ -88,13 +88,12 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
       }
       <Spacer />
       <HStack spacing={[-4, -1, 0, 1, 2]}>
-        {auth && (
+        {/*{auth && (
           <>
             <PrivateDashboardButton />
             <LogOutButton />
           </>
-        )}
-        {/* insert item */}
+        )}*/}
         <Spacer />
         {router.pathname === "/" && <SettingsButton />}
         <FeedbackButton />
