@@ -26,21 +26,20 @@ const UserLand = ({ address }) => {
     `https://peer.decentraland.org/lambdas/users/${address}/lands` + queryParam
 
   const { data, error, isLoading } = useSWR(landUrl, fetcher)
-  console.log("user land", data)
 
   let UserLandContent: JSX.Element
 
   if (isLoading) {
     UserLandContent = (
-      <Center h="200px">
+      <Center minH="200px">
         <Spinner />
       </Center>
     )
   } else if (error) {
-    UserLandContent = <Center h="100%">Error</Center>
+    UserLandContent = <Center minH="200px">Error</Center>
   } else {
     UserLandContent = (
-      <Box>
+      <Box minH="200px">
         <PaginationBtnGroup
           val={data}
           pageNum={pageNum}
@@ -60,8 +59,8 @@ const UserLand = ({ address }) => {
           {data.elements.map((land) => (
             <Box
               key={land.tokenId}
-              p={4}
-              bg={useColorModeValue("gray.200", "gray.700")}
+              p="4"
+              bg={useColorModeValue("gray.300", "gray.700")}
               shadow="md"
               _hover={{
                 bg: useColorModeValue("gray.100", "gray.600"),
@@ -101,25 +100,21 @@ const UserLand = ({ address }) => {
   }
 
   return (
-    <>
-      {data && data.elements.length > 0 && (
-        <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
-          <BoxTitle
-            name={`User Land`}
-            description={`User land description`}
-            date=""
-            avgData={[]}
-            slicedData={{}}
-            color={""}
-            line={false}
-            setLine={{}}
-          />
-          <Box minH="400px" m="4">
-            {UserLandContent}
-          </Box>
-        </BoxWrapper>
-      )}
-    </>
+    <Box mb="4">
+      <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
+        <BoxTitle
+          name={`User Land`}
+          description={`User land description`}
+          date=""
+          avgData={[]}
+          slicedData={{}}
+          color={""}
+          line={false}
+          setLine={{}}
+        />
+        <Box m="4">{UserLandContent}</Box>
+      </BoxWrapper>
+    </Box>
   )
 }
 

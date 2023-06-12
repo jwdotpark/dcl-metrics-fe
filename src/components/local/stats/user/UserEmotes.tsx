@@ -30,6 +30,14 @@ const UserEmotes = ({ address }) => {
 
   const { data, error, isLoading } = useSWR(nameUrl, fetcher)
 
+  data &&
+    data.elements.sort((a, b) => {
+      return (
+        Number(b.individualData[0].transferredAt) -
+        Number(a.individualData[0].transferredAt)
+      )
+    })
+
   let UserEmotesContent: JSX.Element
 
   if (isLoading) {
@@ -49,7 +57,7 @@ const UserEmotes = ({ address }) => {
           setPageNum={setPageNum}
           pageSize={pageSize}
         />
-        <Box overflowX="scroll">
+        <Box overflowX="scroll" minH="200px">
           <Table size="sm" variant="simple">
             <Thead>
               <Tr>
@@ -69,9 +77,8 @@ const UserEmotes = ({ address }) => {
                     <Text fontWeight="bold">{item.name}</Text>
                   </Td>
                   <Td>
-                    <Center>
+                    <Center w="60px" h="60px">
                       <Image
-                        w="75px"
                         alt={item.name}
                         src={`https://peer.decentraland.org/lambdas/collections/contents/${item.urn}/thumbnail`}
                       />
@@ -91,7 +98,7 @@ const UserEmotes = ({ address }) => {
                       new Date(
                         Number(item.individualData[0].transferredAt) * 1000
                       ),
-                      "yyyy MMM d"
+                      "yyyy/MM/dd"
                     )}
                   </Td>
                 </Tr>
@@ -104,7 +111,7 @@ const UserEmotes = ({ address }) => {
   }
 
   return (
-    <>
+    <Box mb="4">
       {data && data.elements.length > 0 && (
         <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
           <BoxTitle
@@ -120,11 +127,7 @@ const UserEmotes = ({ address }) => {
           <Box m="4">{UserEmotesContent}</Box>
         </BoxWrapper>
       )}
-
-      {/*//  : (
-      //  <Center h="100%">No Data</Center>
-      // )}*/}
-    </>
+    </Box>
   )
 }
 

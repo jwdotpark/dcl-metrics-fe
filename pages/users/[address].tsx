@@ -134,16 +134,9 @@ const SingleUserPage = (props) => {
               />
               <UserName address={address} />
             </Grid>
-            <Divider size="xl" />
-            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserEmotes address={address} />
-            </Grid>
-            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserWearables address={address} />
-            </Grid>
-            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserLand address={address} />
-            </Grid>
+            <UserEmotes address={address} />
+            <UserWearables address={address} />
+            <UserLand address={address} />
           </Box>
         )}
       </Layout>

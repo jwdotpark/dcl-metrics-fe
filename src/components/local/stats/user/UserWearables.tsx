@@ -12,7 +12,6 @@ import {
   Td,
   useToast,
 } from "@chakra-ui/react"
-//import Link from "next/link"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import PaginationBtnGroup from "./partial/PaginationBtnGroup"
@@ -35,38 +34,49 @@ const UserWearables = ({ address }) => {
 
   const { data, error, isLoading } = useSWR(wearableUrl, fetcher)
 
+  data &&
+    data.elements.sort((a, b) => {
+      return (
+        Number(b.individualData[0].transferredAt) -
+        Number(a.individualData[0].transferredAt)
+      )
+    })
+
   const DataTable = ({ elements }) => {
     return (
       <Table overflowX="scroll" size="sm" variant="simple">
         <Thead>
           <Tr>
             <Th>Name</Th>
-            <Th>Category</Th>
-            <Th>Rarity</Th>
             <Th>Thumbnail</Th>
             <Th>Amount</Th>
+            <Th>Price</Th>
+            <Th>Category</Th>
+            <Th>Rarity</Th>
             <Th>Token ID</Th>
             <Th>Transferred At</Th>
-            <Th>Price</Th>
           </Tr>
         </Thead>
         <Tbody>
           {elements.map((element) => (
             <Tr key={element.urn}>
               <Td fontWeight="bold">{element.name}</Td>
-              <Td>{element.category}</Td>
-              <Td>{element.rarity}</Td>
-              {/*<Td>{element.urn}</Td>*/}
               <Td>
-                <Center>
+                <Center w="60px" h="60px">
                   <Image
-                    w="50px"
                     alt={element.name}
                     src={`https://peer.decentraland.org/lambdas/collections/contents/${element.urn}/thumbnail`}
                   />
                 </Center>
               </Td>
               <Td>{element.amount}</Td>
+              <Td>
+                {Math.round(
+                  Number(element.individualData[0].price) / 1000000000000000000
+                )}
+              </Td>
+              <Td>{element.category}</Td>
+              <Td>{element.rarity}</Td>
               <Td>
                 <Button
                   fontSize="xs"
@@ -95,12 +105,7 @@ const UserWearables = ({ address }) => {
                   new Date(
                     Number(element.individualData[0].transferredAt) * 1000
                   ),
-                  "yyyy/MM/dd HH:mm"
-                )}
-              </Td>
-              <Td>
-                {Math.round(
-                  Number(element.individualData[0].price) / 1000000000000000000
+                  "yyyy/MM/dd"
                 )}
               </Td>
             </Tr>
@@ -114,7 +119,7 @@ const UserWearables = ({ address }) => {
 
   if (isLoading) {
     UserWearableContent = (
-      <Center minH="600px">
+      <Center h="200px">
         <Spinner />
       </Center>
     )
@@ -137,23 +142,23 @@ const UserWearables = ({ address }) => {
   }
 
   return (
-    <>
-      {data && data.elements.length > 0 && (
-        <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
-          <BoxTitle
-            name={`User Wearable`}
-            description={`User wearable description`}
-            date=""
-            avgData={[]}
-            slicedData={{}}
-            color={""}
-            line={false}
-            setLine={{}}
-          />
-          <Box m="4">{UserWearableContent}</Box>
-        </BoxWrapper>
-      )}
-    </>
+    <Box mb="4">
+      <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
+        <BoxTitle
+          name={`User Wearable`}
+          description={`User wearable description`}
+          date=""
+          avgData={[]}
+          slicedData={{}}
+          color={""}
+          line={false}
+          setLine={{}}
+        />
+        <Box m="4">
+          {data && data.elements.length > 0 && UserWearableContent}
+        </Box>
+      </BoxWrapper>
+    </Box>
   )
 }
 
