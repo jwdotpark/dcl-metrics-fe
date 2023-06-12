@@ -100,7 +100,7 @@ const UserLand = ({ address, name }) => {
   }
 
   return (
-    <Box mb="4">
+    <Box minH="500px" mb="4">
       <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
         <BoxTitle
           name={`User Land`}
