@@ -5,7 +5,7 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import { Box, Divider, Grid, useBreakpointValue } from "@chakra-ui/react"
+import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
@@ -132,11 +132,11 @@ const SingleUserPage = (props) => {
                 address={address}
                 userAddressRes={userAddressRes}
               />
-              <UserName address={address} />
+              <UserName name={userAddressRes.name} address={address} />
             </Grid>
-            <UserEmotes address={address} />
-            <UserWearables address={address} />
-            <UserLand address={address} />
+            <UserEmotes name={userAddressRes.name} address={address} />
+            <UserWearables name={userAddressRes.name} address={address} />
+            <UserLand name={userAddressRes.name} address={address} />
           </Box>
         )}
       </Layout>

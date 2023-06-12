@@ -18,7 +18,7 @@ import useSWR from "swr"
 import { useState } from "react"
 import { format } from "date-fns"
 
-const UserEmotes = ({ address }) => {
+const UserEmotes = ({ address, name }) => {
   const fetcher = (url) => fetch(url).then((res) => res.json())
 
   const [pageNum, setPageNum] = useState(1)
@@ -116,7 +116,7 @@ const UserEmotes = ({ address }) => {
         <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
           <BoxTitle
             name={`User Emotes`}
-            description={`User emote description`}
+            description={`Emotes ${name} owns in Decentraland, apart from default one`}
             date=""
             avgData={[]}
             slicedData={{}}

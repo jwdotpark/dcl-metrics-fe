@@ -15,7 +15,7 @@ import useSWR from "swr"
 import { useState } from "react"
 import Link from "next/link"
 
-const UserLand = ({ address }) => {
+const UserLand = ({ address, name }) => {
   const fetcher = (url) => fetch(url).then((res) => res.json())
 
   const [pageNum, setPageNum] = useState(1)
@@ -104,7 +104,7 @@ const UserLand = ({ address }) => {
       <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
         <BoxTitle
           name={`User Land`}
-          description={`User land description`}
+          description={`List of lands owned by ${name} in Decentraland`}
           date=""
           avgData={[]}
           slicedData={{}}

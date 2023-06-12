@@ -19,7 +19,7 @@ import useSWR from "swr"
 import { useState } from "react"
 import { format } from "date-fns"
 
-const UserWearables = ({ address }) => {
+const UserWearables = ({ address, name }) => {
   const toast = useToast()
 
   const fetcher = (url) => fetch(url).then((res) => res.json())
@@ -146,7 +146,7 @@ const UserWearables = ({ address }) => {
       <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
         <BoxTitle
           name={`User Wearable`}
-          description={`User wearable description`}
+          description={`Wearable ${name} owns in Decentraland`}
           date=""
           avgData={[]}
           slicedData={{}}

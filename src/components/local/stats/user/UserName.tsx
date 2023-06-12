@@ -6,7 +6,7 @@ import PaginationBtnGroup from "./partial/PaginationBtnGroup"
 import useSWR from "swr"
 import { useState } from "react"
 
-const UserName = ({ address }) => {
+const UserName = ({ address, name }) => {
   const fetcher = (url) => fetch(url).then((res) => res.json())
 
   const [pageNum, setPageNum] = useState(1)
@@ -62,7 +62,7 @@ const UserName = ({ address }) => {
         <BoxWrapper colSpan={[1, 1, 1, 4, 2]}>
           <BoxTitle
             name={`User Name`}
-            description={`User name description`}
+            description={`DCLENS name token ${name} has owned`}
             date=""
             avgData={[]}
             slicedData={{}}
