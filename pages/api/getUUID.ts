@@ -12,7 +12,6 @@ export default async function handler(
     `/scenes/search?coordinates=${x},${y}`
 
   const result = await getDataWithApiKey(url, url, {})
-  console.log(result)
 
   res.status(200).json({ result: result })
 }
