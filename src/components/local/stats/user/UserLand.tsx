@@ -1,30 +1,21 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {
-  Text,
-  Image,
-  Box,
-  Center,
-  Spinner,
-  Grid,
-  useColorModeValue,
-} from "@chakra-ui/react"
+import { Box, Center, Spinner, Grid } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import PaginationBtnGroup from "./partial/PaginationBtnGroup"
 import useSWR from "swr"
 import { useState } from "react"
-import Link from "next/link"
+import LandCard from "./partial/LandCard"
 
 const UserLand = ({ address, name }) => {
-  const fetcher = (url) => fetch(url).then((res) => res.json())
-
   const [pageNum, setPageNum] = useState(1)
-  const pageSize = 8
+  const pageSize = 4
   const queryParam = `?pageNum=${pageNum}&pageSize=${pageSize}`
 
   const landUrl =
     `https://peer.decentraland.org/lambdas/users/${address}/lands` + queryParam
-
+  
+  const fetcher = (url) => fetch(url).then((res) => res.json())
   const { data, error, isLoading } = useSWR(landUrl, fetcher)
 
   let UserLandContent: JSX.Element
@@ -37,7 +28,7 @@ const UserLand = ({ address, name }) => {
     )
   } else if (error) {
     UserLandContent = <Center minH="200px">Error</Center>
-  } else {
+  } else if (data && data.elements.length > 0) {
     UserLandContent = (
       <Box minH="200px">
         <PaginationBtnGroup
@@ -57,42 +48,7 @@ const UserLand = ({ address, name }) => {
           ]}
         >
           {data.elements.map((land) => (
-            <Box
-              key={land.tokenId}
-              p="4"
-              bg={useColorModeValue("gray.300", "gray.700")}
-              shadow="md"
-              _hover={{
-                bg: useColorModeValue("gray.100", "gray.600"),
-                cursor: "pointer",
-              }}
-              rounded="xl"
-            >
-              <Link href={`/users/${land.contractAddress}`} target="_blank">
-                <Image
-                  minH="50px"
-                  borderRadius="xl"
-                  alt={land.name}
-                  src={land.image}
-                />
-                <Box p="2">
-                  <Box my={2} fontSize="xs">
-                    {land.category
-                      ? land.category.toUpperCase()
-                      : "No Category"}{" "}
-                    {land.x && land.y && `[${land.x}, ${land.y}]`}
-                  </Box>
-                  <Box my={2} fontSize="md" fontWeight="bold">
-                    {land.name ? land.name : "No Name"}{" "}
-                  </Box>
-                  <Box fontSize="sm">
-                    <Text noOfLines={3}>
-                      {land.description ? land.description : "No Description"}
-                    </Text>
-                  </Box>
-                </Box>
-              </Link>
-            </Box>
+            <LandCard key={land.contractAddress} land={land} />
           ))}
         </Grid>
       </Box>
@@ -100,21 +56,25 @@ const UserLand = ({ address, name }) => {
   }
 
   return (
-    <Box minH="500px" mb="4">
-      <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
-        <BoxTitle
-          name={`User Land`}
-          description={`List of lands owned by ${name} in Decentraland`}
-          date=""
-          avgData={[]}
-          slicedData={{}}
-          color={""}
-          line={false}
-          setLine={{}}
-        />
-        <Box m="4">{UserLandContent}</Box>
-      </BoxWrapper>
-    </Box>
+    <>
+      {!isLoading && data.elements.length > 0 && (
+        <Box mb="4">
+          <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
+            <BoxTitle
+              name={`User Land`}
+              description={`List of lands owned by ${name} in Decentraland`}
+              date=""
+              avgData={[]}
+              slicedData={{}}
+              color={""}
+              line={false}
+              setLine={{}}
+            />
+            <Box m="4">{UserLandContent}</Box>
+          </BoxWrapper>
+        </Box>
+      )}
+    </>
   )
 }
 
