@@ -9,17 +9,17 @@ import {
   Spinner,
   Avatar,
   Text,
-  Flex,
   HStack,
   Spacer,
   AvatarBadge,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
-import ProfilePicture from "../../ProfilePicture"
 import Link from "next/link"
+import { useRouter } from "next/router"
 
 const SearchUser = () => {
+  const router = useRouter()
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const [search, setSearch] = useState("")
   const [data, setData] = useState([])
@@ -62,6 +62,7 @@ const SearchUser = () => {
     getInputProps,
     getItemProps,
     highlightedIndex,
+    selectItem,
   } = useCombobox({
     items: data.map((user) => user.name),
     onInputValueChange: ({ inputValue }) => {
@@ -78,6 +79,15 @@ const SearchUser = () => {
   const handleInputBlur = () => {
     if (inputRef.current && !isOpen) {
       setSearch("")
+    }
+  }
+
+  const handleItemKeyDown = (event, item) => {
+    console.log("asdf")
+    if (isOpen && event.key === "Enter") {
+      event.preventDefault()
+      selectItem(item)
+      router.push(`/users/${item}`)
     }
   }
 
@@ -130,7 +140,13 @@ const SearchUser = () => {
             {data.map((user, index) => (
               <ListItem
                 key={user.address}
-                {...getItemProps({ item: user.name, index })}
+                {...getItemProps({
+                  item: user.name,
+                  index,
+                  onKeyDown: (event) => {
+                    handleItemKeyDown(event, user.address)
+                  },
+                })}
                 px={4}
                 py={2}
                 bg={
@@ -141,7 +157,11 @@ const SearchUser = () => {
                 _hover={{ bg: itemHoverBgColor }}
                 cursor="pointer"
               >
-                <Link href={`/users/${user.address}`} target="_blank">
+                <Link
+                  href={`/users/${user.address}`}
+                  target="_blank"
+                  id={`user-link-${user.address}`}
+                >
                   <HStack>
                     <Box>
                       <Avatar size="sm" src={user.avatar_url}>
@@ -161,7 +181,7 @@ const SearchUser = () => {
                       <Text fontWeight="bold">{user.name}</Text>
                     </Box>
                     <Spacer />
-                    <Box>
+                    <Box display={user.verified ? "block" : "none"}>
                       <Text
                         color="green.400"
                         fontSize="xs"
@@ -170,7 +190,7 @@ const SearchUser = () => {
                         {user.verified && "Verified"}
                       </Text>
                     </Box>
-                    <Box>
+                    <Box display={user.dao_member ? "block" : "none"}>
                       <Text
                         color="blue.400"
                         fontSize="xs"
@@ -179,7 +199,7 @@ const SearchUser = () => {
                         {user.dao_member && "DAO Member"}
                       </Text>
                     </Box>
-                    <Box>
+                    <Box display={user.guest ? "block" : "none"}>
                       <Text
                         color="yellow.400"
                         fontSize="xs"
