@@ -7,9 +7,17 @@ import {
   ListItem,
   Box,
   Spinner,
+  Avatar,
+  Text,
+  Flex,
+  HStack,
+  Spacer,
+  AvatarBadge,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
+import ProfilePicture from "../../ProfilePicture"
+import Link from "next/link"
 
 const SearchUser = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
@@ -39,7 +47,6 @@ const SearchUser = () => {
     }
   }
 
-  // Debounce function
   const debounce = (func, delay) => {
     return (...args) => {
       clearTimeout(debounceTimeoutRef.current)
@@ -48,8 +55,6 @@ const SearchUser = () => {
       }, delay)
     }
   }
-
-  console.log(data)
 
   const {
     isOpen,
@@ -77,7 +82,7 @@ const SearchUser = () => {
   }
 
   useEffect(() => {
-    const debouncedFetchUserData = debounce(fetchUserData, 500)
+    const debouncedFetchUserData = debounce(fetchUserData, 250)
     if (search) {
       debouncedFetchUserData(search)
     } else {
@@ -115,9 +120,7 @@ const SearchUser = () => {
               isOpen && search.length > 0 && data.length > 0 ? "block" : "none"
             }
             {...getMenuProps()}
-            pos="absolute"
             zIndex={1}
-            //display="block"
             w="100%"
             mt={1}
             bg={bgColor}
@@ -138,13 +141,66 @@ const SearchUser = () => {
                 _hover={{ bg: itemHoverBgColor }}
                 cursor="pointer"
               >
-                {user.name}
+                <Link href={`/users/${user.address}`} target="_blank">
+                  <HStack>
+                    <Box>
+                      <Avatar size="sm" src={user.avatar_url}>
+                        <AvatarBadge
+                          boxSize="1.25em"
+                          bg={
+                            user.verified
+                              ? "green.400"
+                              : user.dao_member
+                              ? "blue.400"
+                              : "yellow.400"
+                          }
+                        />
+                      </Avatar>
+                    </Box>
+                    <Box>
+                      <Text fontWeight="bold">{user.name}</Text>
+                    </Box>
+                    <Spacer />
+                    <Box>
+                      <Text
+                        color="green.400"
+                        fontSize="xs"
+                        fontWeight="semibold"
+                      >
+                        {user.verified && "Verified"}
+                      </Text>
+                    </Box>
+                    <Box>
+                      <Text
+                        color="blue.400"
+                        fontSize="xs"
+                        fontWeight="semibold"
+                      >
+                        {user.dao_member && "DAO Member"}
+                      </Text>
+                    </Box>
+                    <Box>
+                      <Text
+                        color="yellow.400"
+                        fontSize="xs"
+                        fontWeight="semibold"
+                      >
+                        {user.guest && "Guest"}
+                      </Text>
+                    </Box>
+
+                    <Box>
+                      <Text as="kbd" fontSize="sm">
+                        {user.first_seen} - {user.last_seen}
+                      </Text>
+                    </Box>
+                  </HStack>
+                </Link>
               </ListItem>
             ))}
           </List>
         )}
       </Box>
-      {error && <div>{JSON.stringify(error)}</div>}
     </GridItem>
   )
 }
