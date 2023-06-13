@@ -62,7 +62,6 @@ const LandCard = ({ land }) => {
     const url = land.image
     const res = await fetch(url)
     const data = res.url
-    console.log(data)
     setImageUrl(data)
   }
 
@@ -89,6 +88,7 @@ const LandCard = ({ land }) => {
     }
     getImageUrl()
     setCardLoading(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [land])
 
   let LandCardContent: JSX.Element
