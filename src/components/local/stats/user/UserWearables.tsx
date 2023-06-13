@@ -44,7 +44,7 @@ const UserWearables = ({ address, name }) => {
 
   const DataTable = ({ elements }) => {
     return (
-      <Table overflowX="scroll" size="sm" variant="simple">
+      <Table size="sm" variant="simple">
         <Thead>
           <Tr>
             <Th>Name</Th>
@@ -134,7 +134,7 @@ const UserWearables = ({ address, name }) => {
           setPageNum={setPageNum}
           pageSize={pageSize}
         />
-        <Box overflowY="scroll">
+        <Box overflowX="scroll">
           <DataTable elements={data.elements} />
         </Box>
       </Box>
