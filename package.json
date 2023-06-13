@@ -43,6 +43,7 @@
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
     "dayzed": "^3.2.3",
+    "downshift": "^7.6.0",
     "framer-motion": "^6.5.1",
     "graphql": "^16.6.0",
     "gray-matter": "^4.0.3",
