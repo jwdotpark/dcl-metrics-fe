@@ -106,14 +106,18 @@ const LandCard = ({ land }) => {
       <>
         <Box
           key={land.tokenId}
-          sx={{ filter: checkDissolved() ? "grayScale(100%)" : "none" }}
-          p="4"
-          bg={useColorModeValue("gray.300", "gray.700")}
-          shadow="md"
-          _hover={{
-            bg: !checkDissolved() && useColorModeValue("gray.400", "gray.800"),
+          sx={{
+            filter: checkDissolved() ? "grayScale(100%)" : "none",
+            p: "4",
+            bg: useColorModeValue("gray.300", "gray.700"),
+            shadow: "md",
+            rounded: "xl",
+            _hover: {
+              bg:
+                !checkDissolved() && useColorModeValue("gray.400", "gray.800"),
+              transition: "background-color 0.5s",
+            },
           }}
-          rounded="xl"
         >
           <Image
             w="100%"
