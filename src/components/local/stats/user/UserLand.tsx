@@ -14,7 +14,7 @@ const UserLand = ({ address, name }) => {
 
   const landUrl =
     `https://peer.decentraland.org/lambdas/users/${address}/lands` + queryParam
-  
+
   const fetcher = (url) => fetch(url).then((res) => res.json())
   const { data, error, isLoading } = useSWR(landUrl, fetcher)
 
@@ -48,7 +48,7 @@ const UserLand = ({ address, name }) => {
           ]}
         >
           {data.elements.map((land) => (
-            <LandCard key={land.contractAddress} land={land} />
+            <LandCard key={land.tokenId} land={land} />
           ))}
         </Grid>
       </Box>
