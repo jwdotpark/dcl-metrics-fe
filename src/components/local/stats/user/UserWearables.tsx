@@ -48,8 +48,6 @@ const UserWearables = ({ address, name }) => {
       element.tokenId = individualData.tokenId
     })
 
-  console.log(data)
-
   const columns = useMemo(
     () => [
       //{
