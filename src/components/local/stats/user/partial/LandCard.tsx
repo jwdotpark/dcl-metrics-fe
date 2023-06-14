@@ -119,8 +119,9 @@ const LandCard = ({ land, pageNum }) => {
             rounded: "xl",
             _hover: {
               bg:
-                !checkDissolved() && useColorModeValue("gray.400", "gray.800"),
-              transition: "background-color 0.5s",
+                !checkDissolved() && useColorModeValue("gray.400", "gray.600"),
+              transition: "background-color 0.25s",
+              cursor: checkDissolved() ? "not-allowed" : "pointer",
             },
           }}
         >

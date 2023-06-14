@@ -23,7 +23,7 @@ import { useRouter } from "next/router"
 
 const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
   const router = useRouter()
-  const auth = JSON.parse(localStorage.getItem("auth"))
+  //const auth = JSON.parse(localStorage.getItem("auth"))
   return (
     <Flex
       align="center"
