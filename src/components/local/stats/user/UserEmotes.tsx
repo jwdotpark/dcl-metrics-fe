@@ -88,6 +88,7 @@ const UserEmotes = ({ address, name }) => {
         Header: "Price",
         accessor: "price",
         sort: "desc",
+        disableFilters: true,
         Cell: ({ cell: { value } }) => {
           return <Text>{value}</Text>
         },
