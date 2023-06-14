@@ -48,7 +48,7 @@ const UserLand = ({ address, name }) => {
           ]}
         >
           {data.elements.map((land) => (
-            <LandCard key={land.tokenId} land={land} />
+            <LandCard key={land.tokenId} land={land} pageNum={pageNum} />
           ))}
         </Grid>
       </Box>
