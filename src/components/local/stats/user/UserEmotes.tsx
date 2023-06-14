@@ -48,14 +48,14 @@ const UserEmotes = ({ address, name }) => {
 
   const columns = useMemo(
     () => [
-      {
-        Header: "#",
-        accessor: (row, index) => index + 1,
-        disableFilters: true,
-        Cell: ({ cell: { value } }) => {
-          return <Text>{value}</Text>
-        },
-      },
+      //{
+      //  Header: "#",
+      //  accessor: (row, index) => index + 1,
+      //  disableFilters: true,
+      //  Cell: ({ cell: { value } }) => {
+      //    return <Text>{value}</Text>
+      //  },
+      //},
       {
         Header: "Name",
         accessor: "name",
