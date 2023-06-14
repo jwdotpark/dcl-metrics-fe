@@ -62,7 +62,7 @@ const UserLand = ({ address, name }) => {
           <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
             <BoxTitle
               name={`User Land`}
-              description={`List of lands owned by ${name} in Decentraland`}
+              description={`List of ${data.totalAmount} lands owned by ${name} in Decentraland`}
               date=""
               avgData={[]}
               slicedData={{}}
