@@ -36,7 +36,6 @@ const LandCard = ({ land, pageNum }) => {
     } catch (error) {
       setError(error)
     } finally {
-      console.log("getUUID", land.name, parcelData)
     }
   }
 
@@ -77,12 +76,10 @@ const LandCard = ({ land, pageNum }) => {
 
     const fetchData = async () => {
       if (land.category === "parcel") {
-        console.log("parcel fetching")
         await getUUID(land.x, land.y)
       }
 
       if (land.category === "estate") {
-        console.log("estate fetching")
         await getEstateParcel()
         const x = estateData?.data[0]?.nft?.data?.estate?.parcels[0]?.x
         const y = estateData?.data[0]?.nft?.data?.estate?.parcels[0]?.y

@@ -83,7 +83,6 @@ const SearchUser = () => {
   }
 
   const handleItemKeyDown = (event, item) => {
-    console.log("asdf")
     if (isOpen && event.key === "Enter") {
       event.preventDefault()
       selectItem(item)
