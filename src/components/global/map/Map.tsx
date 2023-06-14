@@ -78,7 +78,6 @@ const Map = ({
       : null
   }
 
-  // FIXME: onClick does too many thing at once but every step is needed for functional map.. how to refactor?
   const handleClick = (x: number, y: number) => {
     const id = x + "," + y
 

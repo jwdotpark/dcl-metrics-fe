@@ -30,7 +30,6 @@ export async function getStaticProps() {
     }
   } else if (isDev && !isLocal) {
     const globalUserRes = await getDataWithApiKey(
-      // FIXME temporary fetch to main BE
       process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
       //globalUsersURL,
       "/global/users",

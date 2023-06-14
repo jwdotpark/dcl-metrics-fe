@@ -97,7 +97,6 @@ const LineChart = ({
         return line[i]
       })
 
-  // TODO set for 7/14/30d
   const setTickValues = () => {
     if (dataName === "Online Users") {
       return "every day"

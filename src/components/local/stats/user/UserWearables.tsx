@@ -45,7 +45,10 @@ const UserWearables = ({ address, name }) => {
       const individualData = element.individualData[0]
       element.price = Math.round(individualData.price / 1000000000000000000)
       element.transferredAt = individualData.transferredAt
+      element.tokenId = individualData.tokenId
     })
+
+  console.log(data)
 
   const columns = useMemo(
     () => [
@@ -104,6 +107,13 @@ const UserWearables = ({ address, name }) => {
         accessor: "rarity",
         Filter: ColumnFilter,
       },
+      // TODO tokenId to where?
+      //{
+      //  Header: "Token ID",
+      //  accessor: "tokenId",
+      //  disableFilters: true,
+      //  disableSortBy: true,
+      //},
       {
         Header: "Transferred At",
         accessor: "transferredAt",
@@ -193,7 +203,7 @@ const UserWearables = ({ address, name }) => {
   } else {
     UserEmotesContent = (
       <Box>
-        <Box overflowX="scroll" minH="200px">
+        <Box minH="200px">
           <Box>
             <ButtonGroup
               w="100%"
@@ -227,56 +237,62 @@ const UserWearables = ({ address, name }) => {
               </Button>
             </ButtonGroup>
           </Box>
-          <Table {...getTableProps()} size="md" variant="simple">
-            <Thead>
-              {headerGroups.map((headerGroup, i) => (
-                <Tr {...headerGroup.getHeaderGroupProps()} key={i}>
-                  {headerGroup.headers.map((column, j) => (
-                    <Th
-                      key={j}
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
-                    >
-                      <Flex direction="row">
-                        <Center>
-                          <Box>{column.render("Header")}</Box>
-                          <Box ml="2">
-                            {column.isSorted ? (
-                              column.isSortedDesc ? (
-                                <span>&darr;</span>
+          <Box overflowX="scroll">
+            <Table {...getTableProps()} size="md" variant="simple">
+              <Thead>
+                {headerGroups.map((headerGroup, i) => (
+                  <Tr {...headerGroup.getHeaderGroupProps()} key={i}>
+                    {headerGroup.headers.map((column, j) => (
+                      <Th
+                        key={j}
+                        {...column.getHeaderProps(
+                          column.getSortByToggleProps()
+                        )}
+                      >
+                        <Flex direction="row">
+                          <Center>
+                            <Box>{column.render("Header")}</Box>
+                            <Box ml="2">
+                              {column.isSorted ? (
+                                column.isSortedDesc ? (
+                                  <span>&darr;</span>
+                                ) : (
+                                  <span>&uarr;</span>
+                                )
                               ) : (
-                                <span>&uarr;</span>
-                              )
-                            ) : (
-                              ""
-                            )}
-                          </Box>
-                          <Box sx={{ transform: "translateY(-1px)" }} ml="2">
-                            {column.canFilter ? column.render("Filter") : null}
-                          </Box>
-                        </Center>
-                      </Flex>
-                    </Th>
-                  ))}
-                </Tr>
-              ))}
-            </Thead>
-            <Tbody {...getTableBodyProps()}>
-              {page.map((row, i) => {
-                prepareRow(row)
-                return (
-                  <Tr key={i} {...row.getRowProps()}>
-                    {row.cells.map((cell, j) => {
-                      return (
-                        <Td key={j} {...cell.getCellProps()}>
-                          {cell.render("Cell")}
-                        </Td>
-                      )
-                    })}
+                                ""
+                              )}
+                            </Box>
+                            <Box sx={{ transform: "translateY(-1px)" }} ml="2">
+                              {column.canFilter
+                                ? column.render("Filter")
+                                : null}
+                            </Box>
+                          </Center>
+                        </Flex>
+                      </Th>
+                    ))}
                   </Tr>
-                )
-              })}
-            </Tbody>
-          </Table>
+                ))}
+              </Thead>
+              <Tbody {...getTableBodyProps()}>
+                {page.map((row, i) => {
+                  prepareRow(row)
+                  return (
+                    <Tr key={i} {...row.getRowProps()}>
+                      {row.cells.map((cell, j) => {
+                        return (
+                          <Td key={j} {...cell.getCellProps()}>
+                            {cell.render("Cell")}
+                          </Td>
+                        )
+                      })}
+                    </Tr>
+                  )
+                })}
+              </Tbody>
+            </Table>
+          </Box>
         </Box>
       </Box>
     )
