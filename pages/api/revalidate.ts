@@ -14,7 +14,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     await res.revalidate("/status")
     return res.json({ revalidated: true })
   } catch (err) {
-    return res.status(500).send({message: "Error revalidating", error: err})
+    console.log("error", err)
+    return res.status(500).send({ message: "Error revalidating", error: err })
   }
 }
 
