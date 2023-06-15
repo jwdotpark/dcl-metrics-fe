@@ -12,9 +12,8 @@ import {
   HStack,
   Spacer,
   AvatarBadge,
-  Divider,
 } from "@chakra-ui/react"
-import { useState, useEffect, useRef, forwardRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -86,7 +85,7 @@ const SearchUser = () => {
     onSelectedItemChange: ({ selectedItem }) => {
       const selectedUser = data.find((user) => user.name === selectedItem)
       if (selectedUser) {
-        router.push(`/users/${selectedUser.address}`)
+        window.location.replace(`/users/${selectedUser.address}`)
       }
     },
     itemToString: (item) => (item ? item : ""),
@@ -100,6 +99,8 @@ const SearchUser = () => {
 
   useEffect(() => {
     const debouncedFetchUserData = debounce(fetchUserData, 250)
+    let isRedirected = false
+
     if (search) {
       debouncedFetchUserData(search)
     } else {
@@ -107,9 +108,13 @@ const SearchUser = () => {
     }
 
     return () => {
-      clearTimeout(debounceTimeoutRef.current)
+      isRedirected = true
+
+      if (isRedirected) {
+        clearTimeout(debounceTimeoutRef.current)
+      }
     }
-  }, [search])
+  }, [search, router])
 
   const menuProps = getMenuProps()
 
@@ -117,6 +122,7 @@ const SearchUser = () => {
     <GridItem borderRadius="xl" shadow="md" colSpan={gridColumn}>
       <Box pos="relative">
         <Input
+          id="searchInput"
           {...getInputProps()}
           ref={inputRef}
           borderRadius="xl"
