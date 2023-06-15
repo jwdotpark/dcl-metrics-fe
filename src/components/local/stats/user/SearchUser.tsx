@@ -59,7 +59,6 @@ const SearchUser = () => {
   }
 
   const handleItemKeyDown = (event, item) => {
-    console.log("enter pressed")
     if (isOpen && event.key === "Enter") {
       event.preventDefault()
       selectItem(item)
@@ -171,8 +170,8 @@ const SearchUser = () => {
                     {...getItemProps({
                       item: user.name,
                       index,
+                      // NOTE
                       onKeyDownCapture: (event) => {
-                        console.log(event)
                         handleItemKeyDown(event, user.address)
                       },
                     })}
