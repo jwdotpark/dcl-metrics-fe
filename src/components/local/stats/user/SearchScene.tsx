@@ -120,7 +120,6 @@ const SearchScene = () => {
   useEffect(() => {
     const debouncedFetchLandData = debounce(fetchLandData, 250)
     let isRedirected = false
-
     if (search) {
       debouncedFetchLandData(search)
     } else {
@@ -129,7 +128,6 @@ const SearchScene = () => {
 
     return () => {
       isRedirected = true
-
       if (isRedirected) {
         clearTimeout(debounceTimeoutRef.current)
       }
