@@ -6,10 +6,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { name } = req.query
+    const { category, name } = req.query
 
     const url =
-      process.env.NEXT_PUBLIC_PROD_ENDPOINT + `users/search?name=${name}`
+      process.env.NEXT_PUBLIC_PROD_ENDPOINT + `${category}/search?name=${name}`
 
     const result = await getDataWithApiKey(url, url, {})
 

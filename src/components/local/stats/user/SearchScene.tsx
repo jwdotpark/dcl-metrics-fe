@@ -21,7 +21,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow"
 
 const SearchUser = () => {
   const router = useRouter()
-  const category = "users"
+  const category = "scenes"
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const [search, setSearch] = useState("")
   const [data, setData] = useState([])
