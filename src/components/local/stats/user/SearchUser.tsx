@@ -128,7 +128,7 @@ const SearchUser = () => {
           ref={inputRef}
           borderRadius="xl"
           onBlur={handleInputBlur}
-          placeholder="Search users"
+          placeholder="Search user"
           size="lg"
           style={{
             borderRadius: "xl",

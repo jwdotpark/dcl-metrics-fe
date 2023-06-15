@@ -1,4 +1,5 @@
 import {
+  Image,
   GridItem,
   useColorModeValue,
   Input,
@@ -7,25 +8,23 @@ import {
   ListItem,
   Box,
   Spinner,
-  Avatar,
   Text,
   HStack,
   Spacer,
-  AvatarBadge,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import formatDistanceToNow from "date-fns/formatDistanceToNow"
+import { formatDistanceToNow } from "date-fns"
+import { mutateStringToURL } from "../../../../lib/hooks/utils"
 
-const SearchUser = () => {
+const SearchScene = () => {
   const router = useRouter()
   const category = "scenes"
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const [search, setSearch] = useState("")
   const [data, setData] = useState([])
-  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const inputRef = useRef(null)
@@ -35,7 +34,7 @@ const SearchUser = () => {
   const itemBgColor = useColorModeValue("gray.100", "gray.800")
   const itemHoverTextBgColor = useColorModeValue("white", "gray.600")
 
-  const fetchUserData = async (debouncedSearch) => {
+  const fetchLandData = async (debouncedSearch) => {
     try {
       setLoading(true)
       const url = `/api/search?category=${category}&name=${debouncedSearch}`
@@ -53,17 +52,16 @@ const SearchUser = () => {
     return (...args) => {
       clearTimeout(debounceTimeoutRef.current)
       debounceTimeoutRef.current = setTimeout(() => {
-        func.apply(null, args)
+        func(...args)
       }, delay)
     }
   }
 
   const handleItemKeyDown = (event, item) => {
-    console.log("enter pressed")
     if (isOpen && event.key === "Enter") {
       event.preventDefault()
       selectItem(item)
-      router.push(`/users/${item}`)
+      router.push(`/scenes/${mutateStringToURL(item.name)}/${item}`)
     }
   }
 
@@ -75,7 +73,7 @@ const SearchUser = () => {
     highlightedIndex,
     selectItem,
   } = useCombobox({
-    items: data.map((user) => user.name),
+    items: data.map((scene) => scene.name),
     onInputValueChange: ({ inputValue }) => {
       if (!inputValue) {
         setSearch("")
@@ -84,9 +82,11 @@ const SearchUser = () => {
       }
     },
     onSelectedItemChange: ({ selectedItem }) => {
-      const selectedUser = data.find((user) => user.name === selectedItem)
-      if (selectedUser) {
-        window.location.replace(`/users/${selectedUser.address}`)
+      const selectedLand = data.find((land) => land.name === selectedItem)
+      if (selectedLand) {
+        window.location.replace(
+          `/scenes/${mutateStringToURL(selectedLand.name)}/${selectedLand.uuid}`
+        )
       }
     },
     itemToString: (item) => (item ? item : ""),
@@ -98,12 +98,30 @@ const SearchUser = () => {
     }
   }
 
+  const calculateDate = (dateString) => {
+    if (dateString !== null) {
+      const date = dateString.slice(0, 10)
+      const formattedDate = formatDistanceToNow(new Date(date), {
+        addSuffix: true,
+      })
+      return "Deployed " + formattedDate
+    } else {
+      return "N/A"
+    }
+  }
+
+  const getImageUrl = (land) => {
+    const center = land.coordinates.split(";")[0]
+    const imageUrl = `https://api.decentraland.org/v2/map.png?center=${center}&selected=${land.coordinates}`
+    return imageUrl
+  }
+
   useEffect(() => {
-    const debouncedFetchUserData = debounce(fetchUserData, 250)
+    const debouncedFetchLandData = debounce(fetchLandData, 250)
     let isRedirected = false
 
     if (search) {
-      debouncedFetchUserData(search)
+      debouncedFetchLandData(search)
     } else {
       setData([])
     }
@@ -128,7 +146,7 @@ const SearchUser = () => {
           ref={inputRef}
           borderRadius="xl"
           onBlur={handleInputBlur}
-          placeholder="Search users"
+          placeholder="Search scene"
           size="lg"
           style={{
             borderRadius: "xl",
@@ -165,15 +183,14 @@ const SearchUser = () => {
               {isOpen &&
                 search.length > 0 &&
                 data.length > 0 &&
-                data.map((user, index) => (
+                data.map((land, index) => (
                   <ListItem
-                    key={user.address}
+                    key={land.address}
                     {...getItemProps({
-                      item: user.name,
+                      item: land.name,
                       index,
                       onKeyDownCapture: (event) => {
-                        console.log(event)
-                        handleItemKeyDown(event, user.address)
+                        handleItemKeyDown(event, land.address)
                       },
                     })}
                     px={4}
@@ -187,61 +204,30 @@ const SearchUser = () => {
                     cursor="pointer"
                   >
                     <Link
-                      href={`/users/${user.address}`}
+                      href={`/scenes/${mutateStringToURL(land.name)}/${
+                        land.uuid
+                      }`}
                       target="_blank"
-                      id={`user-link-${user.address}`}
+                      id={`user-link-${land.address}`}
                     >
                       <HStack>
-                        <Box>
-                          <Avatar size="sm" src={user.avatar_url}>
-                            <AvatarBadge
-                              boxSize="1.25em"
-                              bg={
-                                user.verified
-                                  ? "green.400"
-                                  : user.dao_member
-                                  ? "blue.400"
-                                  : "yellow.400"
-                              }
-                            />
-                          </Avatar>
+                        <Box overflow="hidden" borderRadius="md">
+                          <Image
+                            w="35px"
+                            h="35px"
+                            alt={land.name}
+                            src={getImageUrl(land)}
+                          />
                         </Box>
                         <Box>
-                          <Text fontWeight="bold">{user.name}</Text>
-                        </Box>
-                        <Box>
-                          <Text as="kbd" fontSize="xs">
-                            {formatDistanceToNow(new Date(user.last_seen), {
-                              addSuffix: true,
-                            })}
+                          <Text fontWeight="bold" noOfLines={1}>
+                            {land.name}
                           </Text>
                         </Box>
                         <Spacer />
-                        <Box display={user.verified ? "block" : "none"}>
-                          <Text
-                            color="green.400"
-                            fontSize="xs"
-                            fontWeight="semibold"
-                          >
-                            {user.verified && "Verified"}
-                          </Text>
-                        </Box>
-                        <Box display={user.dao_member ? "block" : "none"}>
-                          <Text
-                            color="blue.400"
-                            fontSize="xs"
-                            fontWeight="semibold"
-                          >
-                            {user.dao_member && "DAO Member"}
-                          </Text>
-                        </Box>
-                        <Box display={user.guest ? "block" : "none"}>
-                          <Text
-                            color="yellow.400"
-                            fontSize="xs"
-                            fontWeight="semibold"
-                          >
-                            {user.guest && "Guest"}
+                        <Box>
+                          <Text as="kbd" fontSize="xs">
+                            {calculateDate(land.first_seen_at)}
                           </Text>
                         </Box>
                       </HStack>
@@ -256,4 +242,4 @@ const SearchUser = () => {
   )
 }
 
-export default SearchUser
+export default SearchScene
