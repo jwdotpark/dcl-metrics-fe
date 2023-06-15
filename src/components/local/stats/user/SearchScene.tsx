@@ -25,6 +25,7 @@ const SearchScene = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const [search, setSearch] = useState("")
   const [data, setData] = useState([])
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const inputRef = useRef(null)
