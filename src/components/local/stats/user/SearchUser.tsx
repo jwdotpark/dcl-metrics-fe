@@ -12,11 +12,13 @@ import {
   HStack,
   Spacer,
   AvatarBadge,
+  Divider,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import formatDistanceToNow from "date-fns/formatDistanceToNow"
 
 const SearchUser = () => {
   const router = useRouter()
@@ -124,102 +126,113 @@ const SearchUser = () => {
             <Spinner size="md" />
           </Box>
         )}
-        {isOpen && data.length > 0 && (
-          <List
-            display={
-              isOpen && search.length > 0 && data.length > 0 ? "block" : "none"
-            }
+        <Box
+          pos="absolute"
+          zIndex={1}
+          top="100%"
+          left={0}
+          display={isOpen && data.length > 0 ? "block" : "none"}
+          overflow="hidden"
+          w="100%"
+          mt="2"
+          borderRadius="xl"
+        >
+          <Box
             {...getMenuProps()}
-            zIndex={1}
-            w="100%"
-            mt={1}
             bg={bgColor}
             borderRadius="xl"
             shadow="sm"
+            style={{
+              backdropFilter: "blur(10px)",
+            }}
           >
-            {data.map((user, index) => (
-              <ListItem
-                key={user.address}
-                {...getItemProps({
-                  item: user.name,
-                  index,
-                  onKeyDown: (event) => {
-                    handleItemKeyDown(event, user.address)
-                  },
-                })}
-                px={4}
-                py={2}
-                bg={
-                  highlightedIndex === index
-                    ? itemBgColor
-                    : itemHoverTextBgColor
-                }
-                _hover={{ bg: itemHoverBgColor }}
-                cursor="pointer"
-              >
-                <Link
-                  href={`/users/${user.address}`}
-                  target="_blank"
-                  id={`user-link-${user.address}`}
+            {isOpen &&
+              search.length > 0 &&
+              data.length > 0 &&
+              data.map((user, index) => (
+                <Box
+                  key={user.address}
+                  {...getItemProps({
+                    item: user.name,
+                    index,
+                    onKeyDown: (event) => {
+                      handleItemKeyDown(event, user.address)
+                    },
+                  })}
+                  px={4}
+                  py={2}
+                  bg={
+                    highlightedIndex === index
+                      ? itemBgColor
+                      : itemHoverTextBgColor
+                  }
+                  borderBottom="1px solid #A0AEC050"
+                  cursor="pointer"
                 >
-                  <HStack>
-                    <Box>
-                      <Avatar size="sm" src={user.avatar_url}>
-                        <AvatarBadge
-                          boxSize="1.25em"
-                          bg={
-                            user.verified
-                              ? "green.400"
-                              : user.dao_member
-                              ? "blue.400"
-                              : "yellow.400"
-                          }
-                        />
-                      </Avatar>
-                    </Box>
-                    <Box>
-                      <Text fontWeight="bold">{user.name}</Text>
-                    </Box>
-                    <Spacer />
-                    <Box display={user.verified ? "block" : "none"}>
-                      <Text
-                        color="green.400"
-                        fontSize="xs"
-                        fontWeight="semibold"
-                      >
-                        {user.verified && "Verified"}
-                      </Text>
-                    </Box>
-                    <Box display={user.dao_member ? "block" : "none"}>
-                      <Text
-                        color="blue.400"
-                        fontSize="xs"
-                        fontWeight="semibold"
-                      >
-                        {user.dao_member && "DAO Member"}
-                      </Text>
-                    </Box>
-                    <Box display={user.guest ? "block" : "none"}>
-                      <Text
-                        color="yellow.400"
-                        fontSize="xs"
-                        fontWeight="semibold"
-                      >
-                        {user.guest && "Guest"}
-                      </Text>
-                    </Box>
-
-                    <Box>
-                      <Text as="kbd" fontSize="sm">
-                        {user.first_seen} - {user.last_seen}
-                      </Text>
-                    </Box>
-                  </HStack>
-                </Link>
-              </ListItem>
-            ))}
-          </List>
-        )}
+                  <Link
+                    href={`/users/${user.address}`}
+                    target="_blank"
+                    id={`user-link-${user.address}`}
+                  >
+                    <HStack>
+                      <Box>
+                        <Avatar size="sm" src={user.avatar_url}>
+                          <AvatarBadge
+                            boxSize="1.25em"
+                            bg={
+                              user.verified
+                                ? "green.400"
+                                : user.dao_member
+                                ? "blue.400"
+                                : "yellow.400"
+                            }
+                          />
+                        </Avatar>
+                      </Box>
+                      <Box>
+                        <Text fontWeight="bold">{user.name}</Text>
+                      </Box>
+                      <Box>
+                        <Text as="kbd" fontSize="xs">
+                          {formatDistanceToNow(new Date(user.last_seen), {
+                            addSuffix: true,
+                          })}
+                        </Text>
+                      </Box>
+                      <Spacer />
+                      <Box display={user.verified ? "block" : "none"}>
+                        <Text
+                          color="green.400"
+                          fontSize="xs"
+                          fontWeight="semibold"
+                        >
+                          {user.verified && "Verified"}
+                        </Text>
+                      </Box>
+                      <Box display={user.dao_member ? "block" : "none"}>
+                        <Text
+                          color="blue.400"
+                          fontSize="xs"
+                          fontWeight="semibold"
+                        >
+                          {user.dao_member && "DAO Member"}
+                        </Text>
+                      </Box>
+                      <Box display={user.guest ? "block" : "none"}>
+                        <Text
+                          color="yellow.400"
+                          fontSize="xs"
+                          fontWeight="semibold"
+                        >
+                          {user.guest && "Guest"}
+                        </Text>
+                      </Box>
+                    </HStack>
+                  </Link>
+                </Box>
+              ))}
+          </Box>
+        </Box>
       </Box>
     </GridItem>
   )
