@@ -85,7 +85,7 @@ const SearchScene = () => {
     onSelectedItemChange: ({ selectedItem }) => {
       const selectedLand = data.find((land) => land.name === selectedItem)
       if (selectedLand) {
-        window.location.replace(
+        window.location.assign(
           `/scenes/${mutateStringToURL(selectedLand.name)}/${selectedLand.uuid}`
         )
       }
@@ -135,6 +135,8 @@ const SearchScene = () => {
   }, [search, router])
 
   const menuProps = getMenuProps()
+
+  console.log(data)
 
   return (
     <GridItem borderRadius="xl" shadow="md" colSpan={gridColumn}>
@@ -225,7 +227,7 @@ const SearchScene = () => {
                         </Box>
                         <Spacer />
                         <Box>
-                          <Text as="kbd" fontSize="xs">
+                          <Text as="kbd" fontSize="xs" noOfLines={1}>
                             {calculateDate(land.first_seen_at)}
                           </Text>
                         </Box>

@@ -35,13 +35,20 @@ const SearchUser = () => {
   const itemBgColor = useColorModeValue("gray.100", "gray.800")
   const itemHoverTextBgColor = useColorModeValue("white", "gray.600")
 
+  const sortByLastSeen = (data) => {
+    // @ts-ignore
+    return data.sort((a, b) => new Date(b.last_seen) - new Date(a.last_seen))
+  }
+
   const fetchUserData = async (debouncedSearch) => {
     try {
       setLoading(true)
       const url = `/api/search?category=${category}&name=${debouncedSearch}`
       const response = await fetch(url)
       const res = await response.json()
-      setData(res.result)
+      const value = res.result
+      console.log(value)
+      setData(sortByLastSeen(value))
     } catch (error) {
       setError(error)
     } finally {
@@ -85,7 +92,7 @@ const SearchUser = () => {
     onSelectedItemChange: ({ selectedItem }) => {
       const selectedUser = data.find((user) => user.name === selectedItem)
       if (selectedUser) {
-        window.location.replace(`/users/${selectedUser.address}`)
+        window.location.assign(`/users/${selectedUser.address}`)
       }
     },
     itemToString: (item) => (item ? item : ""),
@@ -114,6 +121,7 @@ const SearchUser = () => {
         clearTimeout(debounceTimeoutRef.current)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, router])
 
   const menuProps = getMenuProps()
@@ -161,7 +169,7 @@ const SearchUser = () => {
             }}
           >
             <Box>
-              {isOpen &&
+              {isOpen ? (
                 search.length > 0 &&
                 data.length > 0 &&
                 data.map((user, index) => (
@@ -246,7 +254,13 @@ const SearchUser = () => {
                       </HStack>
                     </Link>
                   </ListItem>
-                ))}
+                ))
+              ) : (
+                <div
+                  ref={inputRef}
+                  style={{ height: 0, visibility: "hidden" }}
+                />
+              )}
             </Box>
           </List>
         </Box>
