@@ -55,7 +55,7 @@ const SidebarContent = ({
     }
 
     return (
-      <ToolTip label={label}>
+      <ToolTip label={!sidebarOpen && label}>
         <Box ml={sidebarOpen && subItem && "4"}>
           <Link href={"/" + name} passHref legacyBehavior>
             <a>
@@ -75,7 +75,9 @@ const SidebarContent = ({
                   as={router.pathname === "/" + name && "u"}
                   fontSize="md"
                 >
-                  {isMobile() && name}
+                  {isMobile() &&
+                    setItemName(name).slice(0, 1).toUpperCase() +
+                      setItemName(name).slice(1)}
                   {sidebarOpen && setItemName(name)}
                 </Text>
               </NavItem>
