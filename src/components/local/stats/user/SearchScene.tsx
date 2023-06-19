@@ -13,6 +13,7 @@ import {
   Spacer,
   Center,
   Tag,
+  Button,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
@@ -251,23 +252,27 @@ const SearchScene = () => {
                           </ToolTip>
                         </Box>
                         <Spacer />
-                        <Box display={isMobile ? "none" : "block"}>
-                          <Text as="kbd" fontSize="xs" noOfLines={1}>
-                            {land.first_deployed_at
-                              ? land.first_deployed_at.slice(0, 10)
-                              : "N/A"}
-                          </Text>
-                        </Box>
-                        <Box display={isMobile ? "none" : "block"}>
-                          <Text>-</Text>
-                        </Box>
-                        <Box>
-                          <Text as="kbd" fontSize="xs" noOfLines={1}>
-                            {land.last_deployed_at
-                              ? land.last_deployed_at.slice(0, 10)
-                              : "N/A"}
-                          </Text>
-                        </Box>
+                        <ToolTip label="First deployed at - Last deployed at">
+                          <Button variant="ghost">
+                            <Box display={isMobile ? "none" : "block"}>
+                              <Text as="kbd" fontSize="xs" noOfLines={1}>
+                                {land.first_deployed_at
+                                  ? land.first_deployed_at.slice(0, 10)
+                                  : "N/A"}
+                              </Text>
+                            </Box>
+                            <Box display={isMobile ? "none" : "block"} mx="2">
+                              <Text>-</Text>
+                            </Box>
+                            <Box>
+                              <Text as="kbd" fontSize="xs" noOfLines={1}>
+                                {land.last_deployed_at
+                                  ? land.last_deployed_at.slice(0, 10)
+                                  : "N/A"}
+                              </Text>
+                            </Box>
+                          </Button>
+                        </ToolTip>
                       </HStack>
                     </Link>
                   </ListItem>
