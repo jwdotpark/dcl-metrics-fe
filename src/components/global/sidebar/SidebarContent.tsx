@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   Box,
   useColorModeValue,
@@ -19,7 +20,7 @@ import ToolTip from "../../layout/local/ToolTip"
 interface SidebarProps extends BoxProps {
   onClose: () => void
   sidebarOpen: boolean
-  setSidebarOpen: () => void
+  setSidebarOpen: (value: boolean) => void
   sidebarStatus: string
   handleSidebar: () => void
   isOpen: boolean
@@ -27,10 +28,10 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({
   sidebarOpen,
-  //setSidebarOpen,
+  setSidebarOpen,
   sidebarStatus,
   handleSidebar,
-  //isOpen,
+  isOpen,
   onClose,
   ...rest
 }: SidebarProps) => {
