@@ -127,11 +127,10 @@ const SearchScene = () => {
         clearTimeout(debounceTimeoutRef.current)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, router])
 
   const menuProps = getMenuProps()
-
-  const isMobile = useBreakpointValue({ base: true, md: false })
 
   return (
     <GridItem borderRadius="xl" shadow="md" colSpan={gridColumn}>
