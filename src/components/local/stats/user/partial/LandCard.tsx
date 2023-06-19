@@ -28,7 +28,7 @@ const LandCard = ({ land, pageNum }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        cache: "force-cache",
+        //cache: "force-cache",
       })
       const res = await req.json()
 
@@ -47,7 +47,7 @@ const LandCard = ({ land, pageNum }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        cache: "force-cache",
+        //cache: "force-cache",
       })
       const res = await req.json()
       setEstateData(res)
