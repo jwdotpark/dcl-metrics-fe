@@ -13,7 +13,6 @@ import {
   Spacer,
   Center,
   Tag,
-  Button,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
@@ -21,6 +20,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { mutateStringToURL } from "../../../../lib/hooks/utils"
 import ToolTip from "../../../layout/local/ToolTip"
+import { formatDistanceToNow } from "date-fns"
 
 const SearchScene = () => {
   const router = useRouter()
@@ -38,14 +38,17 @@ const SearchScene = () => {
   const itemBgColor = useColorModeValue("gray.100", "gray.800")
   const itemHoverTextBgColor = useColorModeValue("white", "gray.600")
 
+  const sortByDeployCount = (data) => {
+    return data.sort((a, b) => b.deploy_count - a.deploy_count)
+  }
+
   const fetchLandData = async (debouncedSearch) => {
     try {
       setLoading(true)
       const url = `/api/search?category=${category}&name=${debouncedSearch}`
       const response = await fetch(url)
       const res = await response.json()
-      console.log(res)
-      setData(res.result)
+      setData(sortByDeployCount(res.result))
     } catch (error) {
       setError(error)
     } finally {
@@ -102,18 +105,6 @@ const SearchScene = () => {
       setSearch("")
     }
   }
-
-  //const calculateDate = (dateString) => {
-  //  if (dateString !== null) {
-  //    const date = dateString.slice(0, 19)
-  //    const formattedDate = formatDistanceToNow(new Date(date), {
-  //      addSuffix: true,
-  //    })
-  //    return "Deployed " + formattedDate
-  //  } else {
-  //    return "N/A"
-  //  }
-  //}
 
   const getImageUrl = (land) => {
     const center = land.coordinates.split(";")[0]
@@ -242,7 +233,7 @@ const SearchScene = () => {
                             <Center>
                               <Tag
                                 // eslint-disable-next-line react-hooks/rules-of-hooks
-                                bg={useColorModeValue("gray.300", "gray.800")}
+                                bg={useColorModeValue("gray.300", "gray.700")}
                                 borderRadius="full"
                                 size="sm"
                               >
@@ -253,25 +244,18 @@ const SearchScene = () => {
                         </Box>
                         <Spacer />
                         <ToolTip label="First deployed at - Last deployed at">
-                          <Button variant="ghost">
-                            <Box display={isMobile ? "none" : "block"}>
-                              <Text as="kbd" fontSize="xs" noOfLines={1}>
-                                {land.first_deployed_at
-                                  ? land.first_deployed_at.slice(0, 10)
-                                  : "N/A"}
-                              </Text>
-                            </Box>
-                            <Box display={isMobile ? "none" : "block"} mx="2">
-                              <Text>-</Text>
-                            </Box>
-                            <Box>
-                              <Text as="kbd" fontSize="xs" noOfLines={1}>
-                                {land.last_deployed_at
-                                  ? land.last_deployed_at.slice(0, 10)
-                                  : "N/A"}
-                              </Text>
-                            </Box>
-                          </Button>
+                          <Box>
+                            <Text as="kbd" fontSize="xs" noOfLines={1}>
+                              {land.last_deployed_at
+                                ? formatDistanceToNow(
+                                    new Date(
+                                      land.last_deployed_at.slice(0, 10)
+                                    ),
+                                    { addSuffix: true }
+                                  )
+                                : "N/A"}
+                            </Text>
+                          </Box>
                         </ToolTip>
                       </HStack>
                     </Link>
