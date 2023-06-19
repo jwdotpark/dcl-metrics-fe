@@ -11,13 +11,18 @@ import {
   Text,
   HStack,
   Spacer,
+  Button,
+  Center,
+  Tag,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { formatDistanceToNow } from "date-fns"
+import { format, formatDistanceToNow } from "date-fns"
 import { mutateStringToURL } from "../../../../lib/hooks/utils"
+import ToolTip from "../../../layout/local/ToolTip"
+import { FiMinus } from "react-icons/fi"
 
 const SearchScene = () => {
   const router = useRouter()
@@ -41,6 +46,7 @@ const SearchScene = () => {
       const url = `/api/search?category=${category}&name=${debouncedSearch}`
       const response = await fetch(url)
       const res = await response.json()
+      console.log(res)
       setData(res.result)
     } catch (error) {
       setError(error)
@@ -101,7 +107,7 @@ const SearchScene = () => {
 
   const calculateDate = (dateString) => {
     if (dateString !== null) {
-      const date = dateString.slice(0, 10)
+      const date = dateString.slice(0, 19)
       const formattedDate = formatDistanceToNow(new Date(date), {
         addSuffix: true,
       })
@@ -136,7 +142,7 @@ const SearchScene = () => {
 
   const menuProps = getMenuProps()
 
-  console.log(data)
+  const isMobile = useBreakpointValue({ base: true, md: false })
 
   return (
     <GridItem borderRadius="xl" shadow="md" colSpan={gridColumn}>
@@ -215,7 +221,12 @@ const SearchScene = () => {
                       id={`user-link-${land.address}`}
                     >
                       <HStack>
-                        <Box overflow="hidden" borderRadius="md">
+                        <Box
+                          overflow="hidden"
+                          w="35px"
+                          h="35px"
+                          borderRadius="md"
+                        >
                           <Image
                             w="35px"
                             h="35px"
@@ -228,11 +239,40 @@ const SearchScene = () => {
                             {land.name}
                           </Text>
                         </Box>
+
                         <Spacer />
+
+                        <Box display={isMobile ? "none" : "block"}>
+                          <Text as="kbd" fontSize="xs" noOfLines={1}>
+                            {land.first_deployed_at
+                              ? land.first_deployed_at.slice(0, 10)
+                              : "N/A"}
+                          </Text>
+                        </Box>
+                        <Box display={isMobile ? "none" : "block"}>
+                          <Text>
+                            <FiMinus />
+                          </Text>
+                        </Box>
                         <Box>
                           <Text as="kbd" fontSize="xs" noOfLines={1}>
-                            {calculateDate(land.first_seen_at)}
+                            {land.last_deployed_at
+                              ? land.last_deployed_at.slice(0, 10)
+                              : "N/A"}
                           </Text>
+                        </Box>
+                        <Box>
+                          <ToolTip label="Deploy count">
+                            <Tag
+                              ml="2"
+                              // eslint-disable-next-line react-hooks/rules-of-hooks
+                              bg={useColorModeValue("gray.300", "gray.800")}
+                              borderRadius="full"
+                              size="sm"
+                            >
+                              {land.deploy_count ? land.deploy_count : "N/A"}
+                            </Tag>
+                          </ToolTip>
                         </Box>
                       </HStack>
                     </Link>

@@ -36,8 +36,10 @@ const SearchUser = () => {
   const itemHoverTextBgColor = useColorModeValue("white", "gray.600")
 
   const sortByLastSeen = (data) => {
-    // @ts-ignore
-    return data.sort((a, b) => new Date(b.last_seen) - new Date(a.last_seen))
+    return data.sort(
+      (a, b) =>
+        new Date(b.last_seen).valueOf() - new Date(a.last_seen).valueOf()
+    )
   }
 
   const fetchUserData = async (debouncedSearch) => {
@@ -47,7 +49,6 @@ const SearchUser = () => {
       const response = await fetch(url)
       const res = await response.json()
       const value = res.result
-      console.log(value)
       setData(sortByLastSeen(value))
     } catch (error) {
       setError(error)
