@@ -12,6 +12,7 @@ import {
   HStack,
   Spacer,
   AvatarBadge,
+  Tag,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
@@ -229,31 +230,31 @@ const SearchUser = () => {
                         </Box>
                         <Spacer />
                         <Box display={user.verified ? "block" : "none"}>
-                          <Text
-                            color="green.400"
+                          <Tag
                             fontSize="xs"
                             fontWeight="semibold"
+                            bg="green.400"
                           >
                             {user.verified && "Verified"}
-                          </Text>
+                          </Tag>
                         </Box>
                         <Box display={user.dao_member ? "block" : "none"}>
-                          <Text
-                            color="blue.400"
+                          <Tag
                             fontSize="xs"
                             fontWeight="semibold"
+                            bg="blue.400"
                           >
                             {user.dao_member && "DAO Member"}
-                          </Text>
+                          </Tag>
                         </Box>
                         <Box display={user.guest ? "block" : "none"}>
-                          <Text
-                            color="yellow.400"
+                          <Tag
                             fontSize="xs"
                             fontWeight="semibold"
+                            bg="yellow.400"
                           >
                             {user.guest && "Guest"}
-                          </Text>
+                          </Tag>
                         </Box>
                       </HStack>
                     </Link>

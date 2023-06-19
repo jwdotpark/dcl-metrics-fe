@@ -11,7 +11,6 @@ import {
   Text,
   HStack,
   Spacer,
-  Button,
   Center,
   Tag,
 } from "@chakra-ui/react"
@@ -19,10 +18,8 @@ import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { format, formatDistanceToNow } from "date-fns"
 import { mutateStringToURL } from "../../../../lib/hooks/utils"
 import ToolTip from "../../../layout/local/ToolTip"
-import { FiMinus } from "react-icons/fi"
 
 const SearchScene = () => {
   const router = useRouter()
@@ -105,17 +102,17 @@ const SearchScene = () => {
     }
   }
 
-  const calculateDate = (dateString) => {
-    if (dateString !== null) {
-      const date = dateString.slice(0, 19)
-      const formattedDate = formatDistanceToNow(new Date(date), {
-        addSuffix: true,
-      })
-      return "Deployed " + formattedDate
-    } else {
-      return "N/A"
-    }
-  }
+  //const calculateDate = (dateString) => {
+  //  if (dateString !== null) {
+  //    const date = dateString.slice(0, 19)
+  //    const formattedDate = formatDistanceToNow(new Date(date), {
+  //      addSuffix: true,
+  //    })
+  //    return "Deployed " + formattedDate
+  //  } else {
+  //    return "N/A"
+  //  }
+  //}
 
   const getImageUrl = (land) => {
     const center = land.coordinates.split(";")[0]
@@ -239,9 +236,21 @@ const SearchScene = () => {
                             {land.name}
                           </Text>
                         </Box>
-
+                        <Box>
+                          <ToolTip label="Deploy count">
+                            <Center>
+                              <Tag
+                                // eslint-disable-next-line react-hooks/rules-of-hooks
+                                bg={useColorModeValue("gray.300", "gray.800")}
+                                borderRadius="full"
+                                size="sm"
+                              >
+                                {land.deploy_count ? land.deploy_count : "N/A"}
+                              </Tag>
+                            </Center>
+                          </ToolTip>
+                        </Box>
                         <Spacer />
-
                         <Box display={isMobile ? "none" : "block"}>
                           <Text as="kbd" fontSize="xs" noOfLines={1}>
                             {land.first_deployed_at
@@ -250,9 +259,7 @@ const SearchScene = () => {
                           </Text>
                         </Box>
                         <Box display={isMobile ? "none" : "block"}>
-                          <Text>
-                            <FiMinus />
-                          </Text>
+                          <Text>-</Text>
                         </Box>
                         <Box>
                           <Text as="kbd" fontSize="xs" noOfLines={1}>
@@ -260,19 +267,6 @@ const SearchScene = () => {
                               ? land.last_deployed_at.slice(0, 10)
                               : "N/A"}
                           </Text>
-                        </Box>
-                        <Box>
-                          <ToolTip label="Deploy count">
-                            <Tag
-                              ml="2"
-                              // eslint-disable-next-line react-hooks/rules-of-hooks
-                              bg={useColorModeValue("gray.300", "gray.800")}
-                              borderRadius="full"
-                              size="sm"
-                            >
-                              {land.deploy_count ? land.deploy_count : "N/A"}
-                            </Tag>
-                          </ToolTip>
                         </Box>
                       </HStack>
                     </Link>
