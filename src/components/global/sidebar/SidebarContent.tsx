@@ -19,7 +19,7 @@ import ToolTip from "../../layout/local/ToolTip"
 interface SidebarProps extends BoxProps {
   onClose: () => void
   sidebarOpen: boolean
-  setSidebarOpen: (value: boolean) => void
+  setSidebarOpen: () => void
   sidebarStatus: string
   handleSidebar: () => void
   isOpen: boolean
@@ -27,10 +27,10 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({
   sidebarOpen,
-  setSidebarOpen,
+  //setSidebarOpen,
   sidebarStatus,
   handleSidebar,
-  isOpen,
+  //isOpen,
   onClose,
   ...rest
 }: SidebarProps) => {

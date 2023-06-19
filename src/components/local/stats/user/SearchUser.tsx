@@ -133,6 +133,9 @@ const SearchUser = () => {
           id="searchInput"
           {...getInputProps()}
           ref={inputRef}
+          bg={useColorModeValue("white", "gray.700")}
+          border="1px solid"
+          borderColor={useColorModeValue("white", "gray.600")}
           borderRadius="xl"
           onBlur={handleInputBlur}
           placeholder="Search user"
@@ -140,7 +143,7 @@ const SearchUser = () => {
           style={{
             borderRadius: "xl",
           }}
-          variant="solid"
+          variant="outline"
         />
         {loading && (
           <Box pos="absolute" top="50%" right={4} transform="translateY(-50%)">
