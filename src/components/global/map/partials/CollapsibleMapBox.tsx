@@ -26,7 +26,7 @@ const CollapsibleMapBox = ({
   const isIncluded = selectedParcel.scene ? true : false
 
   return (
-    <Box zIndex="auto">
+    <Box>
       <motion.div
         {...getDisclosureProps()}
         hidden={hidden}
@@ -35,7 +35,7 @@ const CollapsibleMapBox = ({
         onAnimationComplete={() => setHidden(!isOpen)}
         animate={{ width: isOpen ? mobileWidth : 0 }}
         style={{
-          zIndex: 9000,
+          zIndex: "1750",
           backdropFilter: "blur(5px) brightness(0.5)",
           overflowY: isMapExpanded ? "hidden" : "scroll",
           whiteSpace: "nowrap",
