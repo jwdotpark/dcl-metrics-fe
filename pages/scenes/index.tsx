@@ -18,6 +18,7 @@ import staticGlobalScenes from "../../public/data/staticGlobalScene.json"
 import SceneTable from "../../src/components/local/stats/SceneTable"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
+import SearchScene from "../../src/components/local/stats/user/SearchScene"
 
 export async function getStaticProps() {
   let globalSceneRes, sceneRes
@@ -91,6 +92,9 @@ const Scenes = (props: Props) => {
         }}
       />
       <Layout>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <SearchScene />
+        </Grid>
         <Box mb="4">
           <SceneTable sceneRes={sceneRes} />
         </Box>

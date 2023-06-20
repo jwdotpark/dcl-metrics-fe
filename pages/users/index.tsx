@@ -12,6 +12,7 @@ import {
 } from "../../src/lib/data/constant"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
+import SearchUser from "../../src/components/local/stats/user/SearchUser"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -29,7 +30,6 @@ export async function getStaticProps() {
     }
   } else if (isDev && !isLocal) {
     const globalUserRes = await getDataWithApiKey(
-      // FIXME temporary fetch to main BE
       process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
       //globalUsersURL,
       "/global/users",
@@ -86,6 +86,9 @@ const Users = (props: Props) => {
         }}
       />
       <Layout>
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          <SearchUser />
+        </Grid>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <MarathonUsers res={globalUserRes} />
           <Explorer res={globalUserRes} />

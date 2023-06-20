@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react"
+import React from "react"
 import type { NextPage } from "next"
 import { Grid, useBreakpointValue, Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
@@ -18,8 +18,6 @@ import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
 import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 //import TopPick from "../src/components/local/ext-data/TopPick"
-import { useAtom } from "jotai"
-import { psaAtom } from "../src/lib/state/psaState"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 
@@ -52,11 +50,7 @@ const GlobalPage: NextPage = (props: Props) => {
     landSalesRes,
     //topPickRes,
     rental,
-    latestPost,
   } = props
-
-  // eslint-disable-next-line no-unused-vars
-  const [psa, setPSA] = useAtom(psaAtom)
 
   const pageTitle = "DCL-Metrics"
   const description =
@@ -68,10 +62,6 @@ const GlobalPage: NextPage = (props: Props) => {
     description: description,
     image: image,
   })
-
-  useEffect(() => {
-    setPSA(latestPost)
-  }, [])
 
   return (
     <>

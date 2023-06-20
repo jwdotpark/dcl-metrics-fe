@@ -3,7 +3,6 @@
 import {
   Text,
   Box,
-  FlexProps,
   Flex,
   useColorModeValue,
   IconButton,
@@ -11,28 +10,20 @@ import {
   Spacer,
   Button,
 } from "@chakra-ui/react"
-import { useAtomValue } from "jotai"
 import Image from "next/image"
 import { FiMenu } from "react-icons/fi"
-import { psaAtom } from "../../../lib/state/psaState"
 import ColorButton from "../ColorButton"
 import FeedbackButton from "../FeedbackButton"
-import LogOutButton from "../LogOutButton"
-import PrivateDashboardButton from "../PrivateDashboardButton"
+//import LogOutButton from "../LogOutButton"
+//import PrivateDashboardButton from "../PrivateDashboardButton"
 import SettingsButton from "../SettingsButton"
 import Link from "next/link"
 import { FiCoffee } from "react-icons/fi"
 import { useRouter } from "next/router"
 
-interface MobileProps extends FlexProps {
-  sidebarStatus: string
-  onOpen: () => void
-}
-
-const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
+const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
   const router = useRouter()
-  const auth = JSON.parse(localStorage.getItem("auth"))
-  const psa = useAtomValue(psaAtom)
+  //const auth = JSON.parse(localStorage.getItem("auth"))
   return (
     <Flex
       align="center"
@@ -73,10 +64,10 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
           </Text>
         </HStack>
       </Box>
-      {router.pathname === "/" && (
+      {
         <Box display={["none", "block"]}>
           <Box
-            sx={{ transform: "translateY(3px)" }}
+            sx={{ transform: "translateY(2px)" }}
             display="inline-block"
             mr="2"
           >
@@ -94,16 +85,15 @@ const TopBar = ({ sidebarStatus, onOpen, ...rest }: MobileProps) => {
             </Link>
           </Box>
         </Box>
-      )}
+      }
       <Spacer />
       <HStack spacing={[-4, -1, 0, 1, 2]}>
-        {auth && (
+        {/*{auth && (
           <>
             <PrivateDashboardButton />
             <LogOutButton />
           </>
-        )}
-        {/* insert item */}
+        )}*/}
         <Spacer />
         {router.pathname === "/" && <SettingsButton />}
         <FeedbackButton />

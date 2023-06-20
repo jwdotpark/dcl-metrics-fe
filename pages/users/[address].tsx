@@ -5,14 +5,7 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import {
-  Text,
-  Box,
-  Center,
-  Grid,
-  useBreakpointValue,
-  Flex,
-} from "@chakra-ui/react"
+import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
@@ -22,6 +15,11 @@ import UserScenesVisited from "../../src/components/local/stats/user/UserScenesV
 import UserTopScenes from "../../src/components/local/stats/user/UserTopScenes"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
+import UserNotFound from "../../src/components/local/user/UserNotFound"
+import UserName from "../../src/components/local/stats/user/UserName"
+import UserWearables from "../../src/components/local/stats/user/UserWearables"
+import UserLand from "../../src/components/local/stats/user/UserLand"
+import UserEmotes from "../../src/components/local/stats/user/UserEmotes"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -108,40 +106,11 @@ const SingleUserPage = (props) => {
       />
       <Layout>
         {Object.keys(userAddressRes).length === 0 ? (
-          <Center h="calc(100vh - 8rem)">
-            <Flex direction="column" w="100%">
-              <Center mb="8">
-                <Text fontSize={["3xl", "6xl"]} fontWeight="bold">
-                  User Not Found
-                </Text>
-              </Center>
-              <Center w="100%" px={[0, 20]} fontSize={["xs", "md"]}>
-                <Flex direction="column">
-                  <Center w="100%">
-                    <Text>
-                      User <kbd>{address}</kbd> is not in our system yet.
-                    </Text>
-                  </Center>
-                  <Center>
-                    <Text>
-                      This usually means that they have never logged into
-                      Decentraland client. If you think this is an error, please
-                      contact us using <b>feedback menu</b> on the top.
-                    </Text>
-                  </Center>
-                </Flex>
-              </Center>
-            </Flex>
-          </Center>
+          <UserNotFound address={address} />
         ) : (
           <Box fontSize={["md", "md"]}>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserProfile data={userAddressRes} />
-            </Grid>
-            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserInfo data={userAddressRes} />
-              <UserNFT data={nftRes} address={address} />
-              <UserDAOActivity data={daoActivityRes} />
             </Grid>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserTimeSpent
@@ -154,11 +123,20 @@ const SingleUserPage = (props) => {
               />
             </Grid>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+              <UserInfo data={userAddressRes} />
+              <UserNFT data={nftRes} address={address} />
+              <UserDAOActivity data={daoActivityRes} />
+            </Grid>
+            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserTopScenes
                 address={address}
                 userAddressRes={userAddressRes}
               />
+              <UserName name={userAddressRes.name} address={address} />
             </Grid>
+            <UserEmotes name={userAddressRes.name} address={address} />
+            <UserWearables name={userAddressRes.name} address={address} />
+            <UserLand name={userAddressRes.name} address={address} />
           </Box>
         )}
       </Layout>

@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import {
   useToast,
   Box,
@@ -12,11 +12,7 @@ import TopBar from "./sidebar/TopBar"
 import SidebarContent from "./sidebar/SidebarContent"
 import { motion } from "framer-motion"
 
-export default function SidebarWithHeader({
-  children,
-}: {
-  children: ReactNode
-}) {
+export default function SidebarWithHeader({ psa, children }: any) {
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const sidebarCollapsed = localStorage.getItem("sidebar-collapsed")
@@ -79,7 +75,7 @@ export default function SidebarWithHeader({
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <TopBar onOpen={onOpen} sidebarStatus={sidebarStatus} />
+      <TopBar psa={psa} onOpen={onOpen} sidebarStatus={sidebarStatus} />
       <Flex
         align="center"
         justify="center"

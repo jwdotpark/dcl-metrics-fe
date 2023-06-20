@@ -55,7 +55,7 @@ const SidebarContent = ({
     }
 
     return (
-      <ToolTip label={label}>
+      <ToolTip label={!sidebarOpen && !isMobile() && label}>
         <Box ml={sidebarOpen && subItem && "4"}>
           <Link href={"/" + name} passHref legacyBehavior>
             <a>
@@ -65,17 +65,23 @@ const SidebarContent = ({
                 icon={icon}
                 bg={
                   router.pathname === "/" + name &&
-                  // eslint-disable-next-line
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
                   useColorModeValue("gray.200", "gray.700")
                 }
                 overflow="hidden"
+                transition="background-color 0.25s ease"
+                _hover={{
+                  bg: useColorModeValue("gray.200", "gray.700"),
+                }}
               >
                 <Text
-                  // @ts-ignore
-                  as={router.pathname === "/" + name && "u"}
+                  as={router.pathname === "/" + name ? "u" : "a"}
                   fontSize="md"
+                  fontWeight="medium"
                 >
-                  {isMobile() && name}
+                  {isMobile() &&
+                    setItemName(name).slice(0, 1).toUpperCase() +
+                      setItemName(name).slice(1)}
                   {sidebarOpen && setItemName(name)}
                 </Text>
               </NavItem>

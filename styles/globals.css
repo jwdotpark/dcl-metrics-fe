@@ -27,27 +27,31 @@ a {
 
 .markdown {
   line-height: 1.5;
-  font-size: 1.1rem;
-  /*padding-left: 1rem;*/
-  /*padding-right: 1rem;*/
   padding-top: 1rem;
   padding-bottom: 1rem;
+  font-size: 1rem;
+
 }
 
 .markdown a {
   color: #4299e1;
   margin-bottom: 1rem;
   font-weight: bold;
+  font-size: 1rem;
+
 }
 
 .markdown ul {
   margin-left: 2rem;
   margin-bottom: 0.25rem;
+  font-size: 1rem;
+
 }
 
 .markdown li {
   margin-left: 2rem;
   margin-bottom: 0.25rem;
+  font-size: 1rem;
 }
 
 .markdown img {

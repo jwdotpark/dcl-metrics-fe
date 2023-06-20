@@ -53,26 +53,37 @@ function Post({ slug, data, content }) {
           <Center w={["100%", "100%", "100%", 1080]}>
             <BoxWrapper colSpan={6}>
               <Box>
-                <Flex m="4" mb="8" mx="8">
-                  <Box>
+                <Box w="100%">
+                  <Center mt="8" mx="4">
                     <Text
                       mb="2"
-                      fontSize={["lg", "xl", "2xl", "3xl"]}
+                      fontSize={["xl", "xl", "2xl", "3xl"]}
                       fontWeight="bold"
                     >
                       {data.title}
                     </Text>
-                    <Text>{data.author}</Text>
-                    <Text mb="4">
-                      {moment(data.date).format("MMMM D, YYYY")}
-                    </Text>
-                    <Flex>
-                      <Spacer />
-                    </Flex>
-                  </Box>
-                </Flex>
+                  </Center>
+                  <Flex w="100%" mt="4">
+                    <Center w="100%">
+                      <Flex direction="column" fontSize="sm">
+                        <Center>
+                          <Text>{data.author}</Text>
+                        </Center>
+                        <Center>
+                          <Text>
+                            {moment(data.date).format("MMMM D, YYYY")}
+                          </Text>
+                        </Center>
+                      </Flex>
+                    </Center>
+                  </Flex>
 
-                <Box className="markdown" m="4" mb="8" mx="8">
+                  <Flex>
+                    <Spacer />
+                  </Flex>
+                </Box>
+
+                <Box className="markdown" m="4" mb="8" mx={[4, 8]}>
                   <MDXRemote
                     {...content}
                     components={{

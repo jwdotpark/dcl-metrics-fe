@@ -1,11 +1,10 @@
 import {
   Box,
-  Center,
+  //Center,
   Image,
   Flex,
   Spacer,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react"
 import Link from "next/link"
 import BoxWrapper from "../../components/layout/local/BoxWrapper"
@@ -22,32 +21,32 @@ const PostList = ({ posts }) => {
         >
           <Link href={`/blog/` + post.slug}>
             <BoxWrapper colSpan={6}>
-              <Flex direction="column" mx="4">
-                <Flex my="4">
-                  <Box w={["70%", "85%"]}>
+              <Flex direction="column" m="4">
+                <Flex direction={["column", "row"]} my="4">
+                  <Box w={["100%", "100%"]} pr="4">
                     <Text
+                      ml="4"
                       fontSize={["lg", "xl", "2xl", "3xl"]}
                       fontWeight="bold"
-                      noOfLines={1}
                     >
                       {post.data.title}
                     </Text>
                   </Box>
                   <Spacer />
-                  <Center h="auto">
-                    <Text wordBreak="keep-all">{post.data.date}</Text>
-                  </Center>
+                  {/*<Box h="auto">
+                    <Text fontSize="xs" wordBreak="keep-all">
+                      {post.data.date}
+                    </Text>
+                  </Box>*/}
                 </Flex>
                 {post.data.previewImage.length > 0 && (
                   <Image
                     pos="relative"
                     overflow="clip"
                     h={[200, 400, 500]}
-                    border="1px solid"
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
-                    borderColor={useColorModeValue("gray.200", "gray.600")}
+                    mx="4"
+                    my="2"
                     borderRadius="xl"
-                    shadow="md"
                     objectFit="cover"
                     alt={`${post.data.title} preview picture`}
                     src={post.data.previewImage}
@@ -55,8 +54,8 @@ const PostList = ({ posts }) => {
                 )}
                 <Spacer />
               </Flex>
-              <Box m="4" ml="4">
-                <Text noOfLines={1}>{post.data.description}</Text>
+              <Box mb="4" mx="8">
+                <Text>{post.data.description}</Text>
               </Box>
             </BoxWrapper>
           </Link>

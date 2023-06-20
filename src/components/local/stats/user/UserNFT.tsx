@@ -110,7 +110,9 @@ const UserNFT = ({ data, address }) => {
                   </ToolTip>
                   <Spacer />
                   <Box>
-                    <Text>{owns_nfts && "Yes"}</Text>
+                    <Text color={owns_nfts ? "green" : "gray"}>
+                      {owns_nfts && "Yes"}
+                    </Text>
                   </Box>
                 </Flex>
               )}
@@ -237,7 +239,7 @@ const UserNFT = ({ data, address }) => {
                   <Divider />
                   <Flex w="100%" h="100%">
                     <ToolTip label={toolTipText.owns_land}>
-                      <Box _hover={{ cursor: "help" }}>Land</Box>
+                      <Box _hover={{ cursor: "help" }}>Parcel</Box>
                     </ToolTip>
                     <Spacer />
                     <Box>
@@ -246,7 +248,7 @@ const UserNFT = ({ data, address }) => {
                         target="_blank"
                       >
                         <Button borderRadius="xl" shadow="md" size="xs">
-                          <Text fontWeight="bold">{owns_land && "Land"}</Text>
+                          <Text fontWeight="bold">{owns_land && "Parcel"}</Text>
                         </Button>
                       </Link>
                     </Box>
@@ -257,7 +259,7 @@ const UserNFT = ({ data, address }) => {
               {total_lands && (
                 <Flex w="100%" h="100%">
                   <ToolTip label={toolTipText.total_lands}>
-                    <Box _hover={{ cursor: "help" }}>Total Lands</Box>
+                    <Box _hover={{ cursor: "help" }}>Total Parcel</Box>
                   </ToolTip>
                   <Spacer />
                   <Box>{total_lands}</Box>
@@ -266,7 +268,7 @@ const UserNFT = ({ data, address }) => {
               {first_land_acquired_at && (
                 <Flex w="100%" h="100%">
                   <ToolTip label={toolTipText.first_land_acquired_at}>
-                    <Box _hover={{ cursor: "help" }}>First Land</Box>
+                    <Box _hover={{ cursor: "help" }}>First Parcel</Box>
                   </ToolTip>
                   <Spacer />
                   <Box>

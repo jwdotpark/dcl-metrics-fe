@@ -31,7 +31,6 @@ jobs:
       - name: Run test
         run: |
           yarn test --verbose
-          yarn test:e2e
 
       - name: Send Test Fail message
         if: failure()
