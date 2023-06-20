@@ -152,7 +152,13 @@ const SearchScene = () => {
           variant="outline"
         />
         {loading && (
-          <Box pos="absolute" top="50%" right={4} transform="translateY(-50%)">
+          <Box
+            pos="absolute"
+            zIndex={1}
+            top="50%"
+            right={4}
+            transform="translateY(-50%)"
+          >
             <Spinner size="md" />
           </Box>
         )}

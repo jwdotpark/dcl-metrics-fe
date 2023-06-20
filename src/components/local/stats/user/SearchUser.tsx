@@ -106,6 +106,8 @@ const SearchUser = () => {
     }
   }
 
+  const isMobile = useBreakpointValue({ base: true, md: false })
+
   useEffect(() => {
     const debouncedFetchUserData = debounce(fetchUserData, 250)
     let isRedirected = false
@@ -148,8 +150,14 @@ const SearchUser = () => {
           variant="outline"
         />
         {loading && (
-          <Box pos="absolute" top="50%" right={4} transform="translateY(-50%)">
-            <Spinner size="md" />
+          <Box
+            pos="absolute"
+            zIndex={1}
+            top="50%"
+            right={4}
+            transform="translateY(-50%)"
+          >
+            <Spinner size="sm" />
           </Box>
         )}
         <Box
@@ -221,7 +229,7 @@ const SearchUser = () => {
                         <Box>
                           <Text fontWeight="bold">{user.name}</Text>
                         </Box>
-                        <Box>
+                        <Box display={isMobile ? "none" : "block"}>
                           <Text as="kbd" fontSize="xs">
                             {formatDistanceToNow(new Date(user.last_seen), {
                               addSuffix: true,
