@@ -131,7 +131,7 @@ const Map = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tiles])
 
-  const tileColor = useCallback((tile) => {
+  const tileColor = (tile) => {
     if (!tile[selectedProp.name]) {
       return COLOR_BY_TYPE[tile.type]
     }
@@ -139,7 +139,7 @@ const Map = ({
       const value = tile[selectedProp.name]
       return heatmapColor(value)
     }
-  }, [])
+  }
 
   const layer = (x, y) => {
     const id = x + "," + y
@@ -150,7 +150,7 @@ const Map = ({
         top: !!tile.top,
         left: !!tile.left,
         topLeft: !!tile.topLeft,
-        scale: 0.95,
+        scale: 1,
         owner: tile.owner,
         estateId: tile.estateId,
         tokenId: tile.tokenId,
