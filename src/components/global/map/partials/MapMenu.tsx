@@ -107,13 +107,15 @@ const MapMenu = ({
             <MenuItem
               className={`umami--click--heatmap_` + property.name}
               key={property.name}
-              justifyContent="flex-end"
+              justifyContent="flex-start"
               bg={useColorModeValue("gray.50", "gray.900")}
               onClick={() => {
                 setSelectedProp(property)
               }}
             >
-              <Text fontSize="sm">{formatName(property.name)}</Text>
+              <Text fontSize="sm" fontWeight="medium">
+                {formatName(property.name)}
+              </Text>
             </MenuItem>
           )
         })}
@@ -137,8 +139,10 @@ const MapMenu = ({
           {formatName(selectedProp.name)}
         </MenuButton>
         <MenuList
+          w="100px"
           bg={useColorModeValue("gray.50", "gray.900")}
           borderRadius="xl"
+          shadow="md"
           rootProps={{ width: "100%" }}
         >
           <MapMenuList />
