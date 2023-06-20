@@ -141,7 +141,7 @@ const ParcelInfoBox = ({
                 bgColor={useColorModeValue("gray.200", "gray.500")}
                 onClick={() => onOpen()}
                 size="sm"
-                variant="unstyled"
+                variant="link"
               >
                 <Center w="100%" h="100%">
                   <Image
@@ -164,6 +164,7 @@ const ParcelInfoBox = ({
                   borderRadius="xl"
                   shadow="md"
                   size="sm"
+                  variant="outline"
                 >
                   <Link href={sceneHandle} target="_blank">
                     <Text px="4" color="#000" fontWeight="bold">

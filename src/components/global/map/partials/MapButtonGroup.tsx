@@ -98,7 +98,7 @@ const MapButtonGroup = ({
               }
             />
             <Input
-              maxW={[200, "auto"]}
+              maxW={["auto"]}
               borderTopRadius="xl"
               borderBottomRadius={searchResult.length > 0 ? "0" : "xl"}
               id="search-input"
