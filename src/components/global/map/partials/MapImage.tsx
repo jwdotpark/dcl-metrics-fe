@@ -19,7 +19,7 @@ const MapImage = ({ isPicLoading, name, image, isMapExpanded, isIncluded }) => {
             overflow="hidden"
             w="100%"
             h={height}
-            border="2px solid"
+            border="1px solid"
             // eslint-disable-next-line react-hooks/rules-of-hooks
             borderColor={useColorModeValue("gray.200", "gray.700")}
             borderRadius="xl"
