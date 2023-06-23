@@ -5,7 +5,10 @@ import {
   OrderedList,
   UnorderedList,
   useColorModeValue,
+  Button,
+  Center,
 } from "@chakra-ui/react"
+import Link from "next/link"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark, oneLight } from "../../../src/lib/data/syntaxHighlight"
 
@@ -33,6 +36,25 @@ export const MDYoutube = ({ id }) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       ></iframe>
     </Box>
+  )
+}
+
+export const LinkButton = ({ children, link }) => {
+  return (
+    <Center mt="16">
+      <Link href={link} target="_blank">
+        <Button
+          w="100%"
+          h="100%"
+          p="4"
+          fontWeight="bold"
+          borderRadius="xl"
+          shadow="md"
+        >
+          <Text fontSize="4xl">{children}</Text>
+        </Button>
+      </Link>
+    </Center>
   )
 }
 
