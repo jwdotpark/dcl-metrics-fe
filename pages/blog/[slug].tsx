@@ -9,7 +9,7 @@ import externalLinks from "remark-external-links"
 import smartypants from "remark-smartypants"
 import remarkGfm from "remark-gfm"
 import moment from "moment"
-import { CallOut, MDYoutube } from "../../src/components/markdown"
+import { CallOut, MDYoutube, LinkButton } from "../../src/components/markdown"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 
@@ -89,6 +89,7 @@ function Post({ slug, data, content }) {
                     components={{
                       CallOut,
                       MDYoutube,
+                      LinkButton,
                     }}
                   />
                 </Box>
