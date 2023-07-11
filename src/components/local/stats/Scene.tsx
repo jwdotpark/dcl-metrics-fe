@@ -53,7 +53,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   return (
     <Box
       overflow="hidden"
-      bg={useColorModeValue("gray.200", "gray.600")}
+      bg={useColorModeValue("gray.300", "gray.600")}
       borderRadius="xl"
     >
       <SceneTitle
