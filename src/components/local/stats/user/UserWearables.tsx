@@ -302,7 +302,7 @@ const UserWearables = ({ address, name }) => {
         <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
           <BoxTitle
             name={`User Wearables`}
-            description={`Latest ${data.totalAmount} emotes ${name} owns in Decentraland, apart from the default one`}
+            description={`Latest ${data.totalAmount} wearables ${name} owns in Decentraland, apart from the default one`}
             date=""
             avgData={[]}
             slicedData={{}}
