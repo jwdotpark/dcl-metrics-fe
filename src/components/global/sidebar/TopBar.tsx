@@ -66,13 +66,6 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
       </Box>
       {
         <Box display={["none", "block"]}>
-          <Box
-            sx={{ transform: "translateY(2px)" }}
-            display="inline-block"
-            mr="2"
-          >
-            <FiCoffee color={useColorModeValue("black", "white")} />
-          </Box>
           <Box display="inline-block">
             <Link href={`/blog/${psa?.slug}`} target="_blank">
               <Text>
