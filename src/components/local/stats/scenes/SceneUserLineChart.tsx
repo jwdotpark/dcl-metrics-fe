@@ -45,7 +45,7 @@ const SceneUserLineChart = ({ data, name }) => {
 
   useEffect(() => {
     const data = slicedData()
-    const sum = slicedData().reduce((acc, cur) => acc + cur.users, 0)
+    const sum = slicedData().reduce((acc, cur) => acc + cur.visitors, 0)
     const result = Math.floor(sum / data.length)
     setAvgData(result)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,16 +77,16 @@ const SceneUserLineChart = ({ data, name }) => {
             name={`Unique Visitors`}
             description="The number of unique visitors in the last period"
             date={""}
-            avgData={[]}
+            avgData={avgData}
             slicedData={{}}
-            color=""
+            color={[color]}
             line={undefined}
             setLine={undefined}
           />
           <DateRangeButton
             dateRange={dateRange}
             setDateRange={setDateRange}
-            validLegnth={validLegnth}
+            validLegnth={validLegnth - 1}
             name=""
             yesterday={false}
           />
