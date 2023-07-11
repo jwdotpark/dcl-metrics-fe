@@ -18,7 +18,6 @@ import FeedbackButton from "../FeedbackButton"
 //import PrivateDashboardButton from "../PrivateDashboardButton"
 import SettingsButton from "../SettingsButton"
 import Link from "next/link"
-import { FiCoffee } from "react-icons/fi"
 import { useRouter } from "next/router"
 
 const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
