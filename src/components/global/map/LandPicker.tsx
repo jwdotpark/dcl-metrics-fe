@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
 
-const LandPicker = ({ parcelData, isPage }) => {
+const LandPicker = ({ parcelData, isPage, parcelCoord }) => {
   const [coord, setCoord] = useState({
     x: 0,
     y: 0,
@@ -19,6 +19,7 @@ const LandPicker = ({ parcelData, isPage }) => {
 
   const [selectedParcel, setSelectedParcel] = useState(defaultParcel)
   const [isMapExpanded, setIsMapExpanded] = useState(false)
+
   const mapBoxVerticalSize = {
     map: isMapExpanded ? "100%" : "100%",
     info: isMapExpanded ? "100%" : "100%",
@@ -62,6 +63,7 @@ const LandPicker = ({ parcelData, isPage }) => {
             mapHeight={mapHeight}
             setMapHeight={setMapHeight}
             parcelData={parcelData}
+            parcelCoord={parcelCoord}
           />
         </Box>
       </BoxWrapper>

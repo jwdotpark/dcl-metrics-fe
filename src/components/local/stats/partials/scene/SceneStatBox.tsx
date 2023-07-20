@@ -35,8 +35,6 @@ const StatBox = ({ data, selectedScene, date }) => {
       item.label !== "visitors_by_hour_histogram"
   )
 
-  console.log(date)
-
   const StatTable = () => {
     return (
       <>

@@ -31,6 +31,7 @@ const Map = ({
   mapHeight,
   parcelData,
   setMapHeight,
+  parcelCoord,
 }) => {
   // map
   const [tempCoord, setTempCoord] = useState({
@@ -221,6 +222,14 @@ const Map = ({
       })
     }
   }, [isIncluded, prevScene, prevTile, tiles])
+
+  useEffect(() => {
+    if (Number(parcelCoord.x) && Number(parcelCoord.y)) {
+      setCenter({ x: Number(parcelCoord.x), y: Number(parcelCoord.y) })
+      handleClick(Number(parcelCoord.x), Number(parcelCoord.y))
+      setZoom(1.5)
+    }
+  }, [parcelCoord, tiles])
 
   let mapComponent: JSX.Element
 

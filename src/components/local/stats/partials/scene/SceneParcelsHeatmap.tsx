@@ -7,9 +7,12 @@ import {
   useColorModeValue,
   Tooltip,
 } from "@chakra-ui/react"
+import { useRouter } from "next/router"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 
 const SceneParcelsHeatmap = ({ data, selectedScene }) => {
+  const router = useRouter()
+
   const heatmapHeight = 400
 
   const minX = Math.min(
@@ -64,7 +67,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
       borderRadius="md"
       shadow="xl"
       hasArrow
-      label="This chart shows the heatmap of each coordinate in this scene"
+      label="This chart shows the visitor heatmap of each coordinate in this scene"
       placement="left"
     >
       <Box
@@ -125,7 +128,10 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                           }
                           _hover={{
                             bg: setBgColor(cell.normalizedValue / 50),
-                            cursor: "crosshair",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            router.push("/map?x=" + cell.x + "&y=" + cell.y)
                           }}
                         >
                           <Center h="100%">

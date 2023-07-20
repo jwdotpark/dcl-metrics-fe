@@ -6,6 +6,8 @@ import { isDev, isLocal, isProd, parcelURL } from "../src/lib/data/constant"
 import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
+import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -37,6 +39,18 @@ export async function getStaticProps() {
 }
 
 const MapPage = (props: Props) => {
+  const router = useRouter()
+  const { x, y } = router.query
+
+  const [parcelCoord, setParcelCoord] = useState({
+    x: x,
+    y: y,
+  })
+
+  useEffect(() => {
+    setParcelCoord({ x: x, y: y })
+  }, [x, y])
+
   const { parcelRes } = props
 
   const pageTitle = "DCL-Metrics Map"
@@ -73,7 +87,11 @@ const MapPage = (props: Props) => {
       />
       <Layout>
         <Box mb="4" mx={[-4, 0, 0, 0]}>
-          <LandPicker parcelData={parcelRes} isPage={true} />
+          <LandPicker
+            parcelData={parcelRes}
+            isPage={true}
+            parcelCoord={parcelCoord}
+          />
         </Box>
       </Layout>
     </>
