@@ -1,15 +1,9 @@
 import React from "react"
-import {
-  Box,
-  useColorModeValue,
-  Flex,
-  Text,
-  Spacer,
-  Center,
-} from "@chakra-ui/react"
+import { Box, useColorModeValue, Flex, Text, Spacer } from "@chakra-ui/react"
 import moment from "moment"
 import { description, name } from "../../../../../lib/data/sceneInfo"
 import momentDurationFormatSetup from "moment-duration-format"
+import ToolTip from "../../../../layout/local/ToolTip"
 
 // eslint-disable-next-line no-unused-vars
 const StatBox = ({ data, selectedScene, date }) => {
@@ -46,115 +40,144 @@ const StatBox = ({ data, selectedScene, date }) => {
             },
           }}
           direction={["column", "row"]}
-          overflow="hidden"
           w="100%"
           h="100%"
-          p="4"
-          bg={useColorModeValue("white", "gray.700")}
-          border="1px solid"
-          borderColor={useColorModeValue("gray.200", "gray.600")}
           borderRadius="xl"
-          shadow="md"
         >
           <Flex
             direction="column"
-            overflow="hidden"
+            overflowY="scroll"
             w="100%"
+            bg={useColorModeValue("white", "gray.700")}
             border="1px solid"
             borderColor={useColorModeValue("gray.200", "gray.600")}
             borderRadius="xl"
             shadow="md"
           >
-            {filteredStats
-              .slice(2, filteredStats.length / 2 + 1)
-              .map(({ label, name, value, description }) => (
-                <Box key={label} mb="2">
-                  <Flex>
-                    <Flex align="center" flex="1" pt="4" px="4">
-                      <Box>
-                        <Text fontSize={["md", "lg", "xl"]} fontWeight="black">
-                          {name === "average time spent" ||
-                          name === "average time spent AFK"
-                            ? moment
-                                .duration(Number(value), "seconds")
-                                // @ts-ignore
-                                .format("h[h] m[m] s[s]")
-                            : value}
-                          {name === "Share of Global Visitors" && "%"}
-                        </Text>
-                      </Box>
-                      <Box ml="2">
-                        <Text fontSize={["md", "lg", "xl"]}>{name}</Text>
-                      </Box>
-                    </Flex>
-                  </Flex>
-                  <Box px="4">
-                    <Text color="gray.500" fontSize="sm">
-                      {description}
-                    </Text>
-                  </Box>
-                  <Spacer />
-                </Box>
-              ))}
-            <Spacer />
-            <Box mb="4">
-              <Center>
+            <ToolTip
+              label={
                 <Text fontSize="xs">
                   Last updated at {moment(date).format("yy/MM/DD")}
                 </Text>
-              </Center>
-            </Box>
+              }
+            >
+              <Box mt="4">
+                {filteredStats
+                  .slice(2, filteredStats.length / 2 + 1)
+                  .map(({ label, name, value, description }) => (
+                    <Box
+                      key={label}
+                      mb="4"
+                      mx="4"
+                      p="2"
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
+                      bg={useColorModeValue("gray.100", "gray.600")}
+                      border="1px solid"
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
+                      borderColor={useColorModeValue("gray.100", "gray.400")}
+                      borderRadius="xl"
+                      shadow="md"
+                    >
+                      <Flex>
+                        <Flex align="center" flex="1" px="4">
+                          <Box>
+                            <Text
+                              fontSize={["md", "lg", "xl"]}
+                              fontWeight="black"
+                            >
+                              {name === "average time spent" ||
+                              name === "average time spent AFK"
+                                ? moment
+                                    .duration(Number(value), "seconds")
+                                    // @ts-ignore
+                                    .format("h[h] m[m] s[s]")
+                                : value}
+                              {name === "share of Global Visitors" && "%"}
+                            </Text>
+                          </Box>
+                          <Box ml="2">
+                            <Text fontSize={["md", "lg", "xl"]}>{name}</Text>
+                          </Box>
+                        </Flex>
+                      </Flex>
+                      <Box px="4">
+                        <Text color="gray.500" fontSize="sm">
+                          {description}
+                        </Text>
+                      </Box>
+                      <Spacer />
+                    </Box>
+                  ))}
+              </Box>
+            </ToolTip>
           </Flex>
 
           <Flex
             direction="column"
-            overflow="hidden"
+            overflowY="scroll"
             w="100%"
+            bg={useColorModeValue("white", "gray.700")}
             border="1px solid"
             borderColor={useColorModeValue("gray.200", "gray.600")}
             borderRadius="xl"
             shadow="md"
           >
-            {filteredStats
-              //.slice(2, filteredStats.length / 2 + 1)
-              .slice(filteredStats.length / 2 + 1, filteredStats.length)
-              .map(({ label, name, value, description }) => (
-                <Box key={label} mb="2">
-                  <Flex>
-                    <Flex align="center" flex="1" pt="4" px="4">
-                      <Box>
-                        <Text fontSize={["md", "lg", "xl"]} fontWeight="black">
-                          {name === "average time spent" ||
-                          name === "average time spent AFK"
-                            ? moment
-                                .duration(Number(value), "seconds")
-                                // @ts-ignore
-                                .format("h[h] m[m] s[s]")
-                            : value}
-                          {name === "Share of Global Visitors" && "%"}
-                        </Text>
-                      </Box>
-                      <Box ml="2">
-                        <Text fontSize={["md", "lg", "xl"]}>{name}</Text>
-                      </Box>
-                    </Flex>
-                  </Flex>
-                  <Box px="4">
-                    <Text color="gray.500" fontSize="sm">
-                      {description}
-                    </Text>
-                  </Box>
-                  <Spacer />
-                </Box>
-              ))}
-            <Spacer />
-            <Box mb="4">
-              <Center>
+            <ToolTip
+              label={
                 <Text fontSize="xs">
                   Last updated at {moment(date).format("yy/MM/DD")}
                 </Text>
-              </Center>
-            </Box>
+              }
+            >
+              <Box mt="4">
+                {filteredStats
+                  .slice(filteredStats.length / 2 + 1, filteredStats.length)
+                  .map(({ label, name, value, description }) => (
+                    <Box
+                      key={label}
+                      mb="4"
+                      mx="4"
+                      p="2"
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
+                      bg={useColorModeValue("gray.100", "gray.600")}
+                      border="1px solid"
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
+                      borderColor={useColorModeValue("gray.100", "gray.400")}
+                      borderRadius="xl"
+                      shadow="md"
+                    >
+                      <Flex>
+                        <Flex align="center" flex="1" px="4">
+                          <Box>
+                            <Text
+                              fontSize={["md", "lg", "xl"]}
+                              fontWeight="black"
+                            >
+                              {name === "average time spent" ||
+                              name === "average time spent AFK"
+                                ? moment
+                                    .duration(Number(value), "seconds")
+                                    // @ts-ignore
+                                    .format("h[h] m[m] s[s]")
+                                : value}
+                              {name === "Share of Global Visitors" && "%"}
+                            </Text>
+                          </Box>
+                          <Box ml="2">
+                            <Text fontSize={["md", "lg", "xl"]}>{name}</Text>
+                          </Box>
+                        </Flex>
+                      </Flex>
+                      <Box px="4">
+                        <Text color="gray.500" fontSize="sm">
+                          {description}
+                        </Text>
+                      </Box>
+                      <Spacer />
+                    </Box>
+                  ))}
+              </Box>
+            </ToolTip>
           </Flex>
         </Flex>
       </>

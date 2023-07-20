@@ -99,7 +99,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                         borderRadius="md"
                         shadow="xl"
                         hasArrow
-                        label={`[${cell.x}, ${cell.y}]`}
+                        label={`Jump to [${cell.x}, ${cell.y}]`}
                         placement="top"
                       >
                         <Box
