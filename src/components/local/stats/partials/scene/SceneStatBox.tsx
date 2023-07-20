@@ -152,14 +152,12 @@ const StatBox = ({ data, selectedScene, date }) => {
                               fontSize={["md", "lg", "xl"]}
                               fontWeight="black"
                             >
-                              {name === "average time spent" ||
-                              name === "average time spent AFK"
+                              {name === "average complete session duration"
                                 ? moment
                                     .duration(Number(value), "seconds")
                                     // @ts-ignore
                                     .format("h[h] m[m] s[s]")
                                 : value}
-                              {name === "Share of Global Visitors" && "%"}
                             </Text>
                           </Box>
                           <Box ml="2">
