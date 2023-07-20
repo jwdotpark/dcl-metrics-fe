@@ -51,11 +51,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   }, [res])
 
   return (
-    <Box
-    //overflow="hidden"
-    //bg={useColorModeValue("gray.200", "gray.600")}
-    //borderRadius="xl"
-    >
+    <Box>
       <SceneTitle
         name={name}
         date={latest}

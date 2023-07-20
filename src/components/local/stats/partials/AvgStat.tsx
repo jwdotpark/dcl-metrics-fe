@@ -8,7 +8,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
   if (typeof avgData === "number") {
     avgData = [
       {
-        id: "Average",
+        id: `${data.length} days avg.`,
         value: avgData,
       },
     ]
@@ -32,7 +32,7 @@ const AvgStat = ({ avgData, data, color, line, setLine }) => {
       const capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1)
       return capitalizedWord
     })
-    
+
     let formattedString = formattedWords.join(" ")
     if (
       formattedString === "Active Parcels" ||
