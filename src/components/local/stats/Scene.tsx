@@ -89,13 +89,13 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
             )}
             <SceneMap
               url={map_url}
-              height={!hasMultipleScenes ? 500 : 405}
+              height={!hasMultipleScenes ? 520 : 405}
               name={name && name}
             />
           </Box>
           <Box
             w={["100%", "100%", "100%", "65%"]}
-            h={["100%", "100%", "100%", "500px"]}
+            h={["100%", "100%", "100%", "520px"]}
             mt={[4, 4, 4, 0]}
           >
             {isEmpty && <EmptyScene />}

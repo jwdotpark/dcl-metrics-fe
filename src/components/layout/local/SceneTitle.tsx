@@ -74,14 +74,18 @@ const SceneTitle = ({
           fontSize={["2xl", "3xl", "4xl"]}
           fontWeight="semibold"
         >
-          <Text noOfLines={1}>{name}</Text>
+          <Text fontWeight="black" noOfLines={1}>
+            {name}
+          </Text>
         </Box>
         <Spacer />
         <Flex align="center" h="100%">
           <ToolTip
             label={`Updated on ${moment(date).format("YYYY/MM/DD hh:mm")}`}
           >
-            <Text mr="2">Last Update {moment(date).fromNow()}</Text>
+            <Text mr="2">
+              Updated <i>{moment(date).fromNow()}</i>
+            </Text>
           </ToolTip>
         </Flex>
       </Flex>

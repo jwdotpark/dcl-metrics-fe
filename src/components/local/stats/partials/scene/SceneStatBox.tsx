@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from "react"
 import { Box, useColorModeValue, Flex, Text, Spacer } from "@chakra-ui/react"
 import moment from "moment"
@@ -57,7 +58,7 @@ const StatBox = ({ data, selectedScene, date }) => {
             <ToolTip
               label={
                 <Text fontSize="xs">
-                  Last updated at {moment(date).format("yy/MM/DD")}
+                  Data on {moment(date).format("yy/MM/DD")}
                 </Text>
               }
             >
@@ -70,13 +71,12 @@ const StatBox = ({ data, selectedScene, date }) => {
                       mb="4"
                       mx="4"
                       p="2"
-                      // eslint-disable-next-line react-hooks/rules-of-hooks
                       bg={useColorModeValue("gray.100", "gray.600")}
                       border="1px solid"
-                      // eslint-disable-next-line react-hooks/rules-of-hooks
                       borderColor={useColorModeValue("gray.100", "gray.400")}
                       borderRadius="xl"
                       shadow="md"
+                      _hover={{ bg: useColorModeValue("gray.200", "gray.700") }}
                     >
                       <Flex>
                         <Flex align="center" flex="1" px="4">
@@ -96,7 +96,7 @@ const StatBox = ({ data, selectedScene, date }) => {
                             </Text>
                           </Box>
                           <Box ml="2">
-                            <Text fontSize={["md", "lg", "xl"]}>{name}</Text>
+                            <Text fontSize="xs">{name.toUpperCase()}</Text>
                           </Box>
                         </Flex>
                       </Flex>
@@ -125,7 +125,7 @@ const StatBox = ({ data, selectedScene, date }) => {
             <ToolTip
               label={
                 <Text fontSize="xs">
-                  Last updated at {moment(date).format("yy/MM/DD")}
+                  Data on {moment(date).format("yy/MM/DD")}
                 </Text>
               }
             >
@@ -138,13 +138,12 @@ const StatBox = ({ data, selectedScene, date }) => {
                       mb="4"
                       mx="4"
                       p="2"
-                      // eslint-disable-next-line react-hooks/rules-of-hooks
                       bg={useColorModeValue("gray.100", "gray.600")}
                       border="1px solid"
-                      // eslint-disable-next-line react-hooks/rules-of-hooks
                       borderColor={useColorModeValue("gray.100", "gray.400")}
                       borderRadius="xl"
                       shadow="md"
+                      _hover={{ bg: useColorModeValue("gray.200", "gray.700") }}
                     >
                       <Flex>
                         <Flex align="center" flex="1" px="4">
@@ -164,7 +163,7 @@ const StatBox = ({ data, selectedScene, date }) => {
                             </Text>
                           </Box>
                           <Box ml="2">
-                            <Text fontSize={["md", "lg", "xl"]}>{name}</Text>
+                            <Text fontSize="xs">{name.toUpperCase()}</Text>
                           </Box>
                         </Flex>
                       </Flex>
