@@ -97,7 +97,7 @@ const GlobalPage: NextPage = (props: Props) => {
             <OnlineUsers />
             <ActiveUsers />
           </Grid>
-          <LandPicker parcelData={parcelRes} isPage={false} />
+          <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}}/>
           <Box mb="4">
             <LandSales data={landSalesRes} />
           </Box>
