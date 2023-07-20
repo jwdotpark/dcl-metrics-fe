@@ -52,9 +52,9 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
 
   return (
     <Box
-      overflow="hidden"
-      bg={useColorModeValue("gray.300", "gray.600")}
-      borderRadius="xl"
+    //overflow="hidden"
+    //bg={useColorModeValue("gray.200", "gray.600")}
+    //borderRadius="xl"
     >
       <SceneTitle
         name={name}
@@ -69,7 +69,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
       {dailyUsers.length > 0 && (
         <SceneUserLineChart data={dailyUsers} name={name} />
       )}
-      <Box m="4">
+      <Box m="0">
         <Flex
           sx={{
             "& > * + *": {

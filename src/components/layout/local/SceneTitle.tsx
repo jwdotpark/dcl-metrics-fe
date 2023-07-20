@@ -58,8 +58,8 @@ const SceneTitle = ({
     <Flex direction={["column", "column", "row", "row"]}>
       <Flex
         direction={["column", "column", "column", "column", "row"]}
-        w="calc(100% - 2rem)"
-        m="4"
+        w="calc(100%)"
+        m="0"
         mb="0"
         p="4"
         bg={useColorModeValue("white", "gray.800")}

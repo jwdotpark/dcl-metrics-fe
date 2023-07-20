@@ -64,7 +64,7 @@ const SceneUserLineChart = ({ data, name }) => {
       h="auto"
       mb="4"
     >
-      <Box w="100%" pt="4" px="4">
+      <Box w="100%" pt="4" px="0">
         <Box
           p="2"
           bg={useColorModeValue("white", "gray.800")}
