@@ -68,7 +68,12 @@ const SceneTitle = ({
         borderRadius="xl"
         shadow="md"
       >
-        <Box h="100%" fontSize={["xl", "2xl", "3xl"]} fontWeight="semibold">
+        <Box
+          h="100%"
+          ml="2"
+          fontSize={["2xl", "3xl", "4xl"]}
+          fontWeight="semibold"
+        >
           <Text noOfLines={1}>{name}</Text>
         </Box>
         <Spacer />

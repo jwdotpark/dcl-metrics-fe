@@ -89,13 +89,13 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
             )}
             <SceneMap
               url={map_url}
-              height={!hasMultipleScenes ? 450 : 405}
+              height={!hasMultipleScenes ? 500 : 405}
               name={name && name}
             />
           </Box>
           <Box
             w={["100%", "100%", "100%", "65%"]}
-            h={["100%", "100%", "100%", "450px"]}
+            h={["100%", "100%", "100%", "500px"]}
             mt={[4, 4, 4, 0]}
           >
             {isEmpty && <EmptyScene />}
@@ -103,6 +103,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
               <StatBox
                 data={res[selectedScene]}
                 selectedScene={selectedScene}
+                date={res[selectedScene].date}
               />
             )}
           </Box>
