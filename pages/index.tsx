@@ -29,6 +29,7 @@ import WorldStat from "../src/components/local/stats/world/WorldStat"
 import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
 import { isProd } from "../src/lib/data/constant"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
+import BoxWrapper from "../src/components/layout/local/BoxWrapper"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -67,6 +68,7 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const [worldData, setWorldData] = useState({})
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState()
 
   const fetchWorldData = async () => {
     const baseUrl = "http://api.dcl-metrics.com/"
@@ -87,6 +89,7 @@ const GlobalPage: NextPage = (props: Props) => {
       }
     } catch (error) {
       console.error("Error fetching world data..")
+      setError(error)
     } finally {
       setIsLoading(false)
     }
@@ -131,14 +134,16 @@ const GlobalPage: NextPage = (props: Props) => {
             <ActiveUsers />
           </Grid>
           <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
-          {!isLoading ? (
+          {!isLoading && !error && Object.keys(worldData).length > 0 ? (
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <WorldStat worldCurrentRes={worldData} isMainPage={true} />
               <WorldCurrentTop worldCurrentRes={worldData} pageSize={5} />
             </Grid>
           ) : (
             <Center h="500px">
-              <Spinner />
+              <BoxWrapper colSpan={[1, 1, 1, 2, 6]}>
+                <Spinner />
+              </BoxWrapper>
             </Center>
           )}
           <Box mb="4">
