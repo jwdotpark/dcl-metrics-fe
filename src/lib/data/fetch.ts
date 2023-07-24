@@ -6,8 +6,7 @@ import { globalFileNameArr, globalRequestList } from "./fetchList"
 import staticGlobalDaily from "../../../public/data/staticGlobalDaily.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
 import staticLandSales from "../../../public/data/staticLandSales.json"
-import staticWorldCurrent from "../../../public/data/staticWorldCurrent.json"
-
+//import staticWorldCurrent from "../../../public/data/staticWorldCurrent.json"
 //import staticTopLand from "../../../public/data/staticTopLand.json"
 //import staticTopPick from "../../../public/data/staticTopPick.json"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
@@ -62,10 +61,10 @@ export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
 }
 
 export async function fetchGlobalData() {
-  let globalDailyRes, parcelRes, landSalesRes, worldCurrentRes
+  let globalDailyRes, parcelRes, landSalesRes
 
   if (isProd) {
-    ;[globalDailyRes, parcelRes, worldCurrentRes] = await Promise.all(
+    ;[globalDailyRes, parcelRes] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
         getDataWithApiKey(url, endpoint, staticData)
       )
@@ -76,17 +75,15 @@ export async function fetchGlobalData() {
       staticLandSales
     )
   } else if (isDev && !isLocal) {
-    ;[globalDailyRes, parcelRes, landSalesRes, worldCurrentRes] =
-      await Promise.all(
-        globalRequestList.map(({ url, endpoint, staticData }) =>
-          getDataWithApiKey(url, endpoint, staticData)
-        )
+    ;[globalDailyRes, parcelRes, landSalesRes] = await Promise.all(
+      globalRequestList.map(({ url, endpoint, staticData }) =>
+        getDataWithApiKey(url, endpoint, staticData)
       )
+    )
   } else if (isLocal) {
     globalDailyRes = staticGlobalDaily
     parcelRes = staticParcel
     landSalesRes = staticLandSales
-    worldCurrentRes = staticWorldCurrent
   }
 
   // write heavy res for cache
@@ -94,7 +91,7 @@ export async function fetchGlobalData() {
     for (let i = 0; i < globalFileNameArr.length; i++) {
       writeFile(
         globalFileNameArr[i],
-        [globalDailyRes, parcelRes, landSalesRes, worldCurrentRes][i]
+        [globalDailyRes, parcelRes, landSalesRes][i]
       )
     }
   }
@@ -103,7 +100,6 @@ export async function fetchGlobalData() {
     globalDailyRes,
     parcelRes,
     landSalesRes,
-    worldCurrentRes,
   }
 }
 

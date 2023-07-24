@@ -1,7 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from "react"
+import React, { useEffect, useState } from "react"
 import type { NextPage } from "next"
-import { Grid, useBreakpointValue, Box } from "@chakra-ui/react"
+import {
+  Grid,
+  useBreakpointValue,
+  Box,
+  Spinner,
+  Center,
+} from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import LandPicker from "../src/components/global/map/LandPicker"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
@@ -21,6 +27,8 @@ import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import WorldStat from "../src/components/local/stats/world/WorldStat"
 import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
+import { isProd } from "../src/lib/data/constant"
+import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -44,8 +52,7 @@ const GlobalPage: NextPage = (props: Props) => {
     xl: 6,
   })
 
-  const { globalDailyRes, parcelRes, landSalesRes, worldCurrentRes, rental } =
-    props
+  const { globalDailyRes, parcelRes, landSalesRes, rental } = props
 
   const pageTitle = "DCL-Metrics"
   const description =
@@ -57,6 +64,37 @@ const GlobalPage: NextPage = (props: Props) => {
     description: description,
     image: image,
   })
+
+  const [worldData, setWorldData] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+
+  const fetchWorldData = async () => {
+    const baseUrl = "http://api.dcl-metrics.com/"
+    const endpoint = "worlds/current"
+
+    setIsLoading(true)
+    try {
+      if (isProd) {
+        const response = await fetch(`/api/fetch?url=${baseUrl + endpoint}`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        })
+
+        const data = await response.json()
+        setWorldData(data.result)
+      } else {
+        setWorldData(staticWorldCurrent)
+      }
+    } catch (error) {
+      console.error("Error fetching world data..")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchWorldData()
+  }, [])
 
   return (
     <>
@@ -93,10 +131,16 @@ const GlobalPage: NextPage = (props: Props) => {
             <ActiveUsers />
           </Grid>
           <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
-          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={true} />
-            <WorldCurrentTop worldCurrentRes={worldCurrentRes} pageSize={5} />
-          </Grid>
+          {!isLoading ? (
+            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+              <WorldStat worldCurrentRes={worldData} isMainPage={true} />
+              <WorldCurrentTop worldCurrentRes={worldData} pageSize={5} />
+            </Grid>
+          ) : (
+            <Center h="500px">
+              <Spinner />
+            </Center>
+          )}
           <Box mb="4">
             <LandSales data={landSalesRes} />
           </Box>
