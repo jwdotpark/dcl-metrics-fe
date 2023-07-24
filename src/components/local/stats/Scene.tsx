@@ -61,7 +61,6 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
 
   return (
     <Box>
-      {secondRowHeight}
       <SceneTitle
         name={name}
         date={latest}

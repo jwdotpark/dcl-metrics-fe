@@ -1,5 +1,5 @@
 import { Flex, useColorModeValue, Box, Text } from "@chakra-ui/react"
-import { format } from "date-fns"
+import { formatDistanceToNow } from "date-fns"
 import CountUp from "react-countup"
 
 const WorldStatItem = ({ value, label, description }) => {
@@ -41,27 +41,28 @@ const WorldStatBox = ({
   currently_occupied,
   timestamp,
 }) => {
+  console.log(timestamp)
   return (
     <Flex justify="space-between" direction={isMainPage ? "column" : "row"}>
       <WorldStatItem
         value={total_count}
         label="total world count"
-        description="The number of count of existing world at last update"
+        description=" The total number of currently deployed worlds at last update"
       />
       <WorldStatItem
         value={current_users}
         label="current world users"
-        description="The number of user in the world at last update"
+        description="The number of users in worlds at last update"
       />
       <WorldStatItem
         value={currently_occupied}
         label="currently occupied"
-        description="The number of count of occupied world at last update"
+        description="The number of occupied worlds at last update"
       />
       <WorldStatItem
-        value={format(timestamp * 1000, "yyyy MMM d")}
-        label="last Updated at"
-        description="Last time data is updated at"
+        value={formatDistanceToNow(new Date(timestamp * 1000))}
+        label="ago"
+        description="Data is updated at"
       />
     </Flex>
   )
