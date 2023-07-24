@@ -10,7 +10,7 @@ const WorldStatItem = ({ value, label, description }) => {
       mx="4"
       p="2"
       px="4"
-      bg={useColorModeValue("gray.100", "gray.800")}
+      bg={useColorModeValue("gray.100", "gray.700")}
       border="1px solid"
       borderColor={useColorModeValue("gray.100", "gray.700")}
       borderRadius="xl"
