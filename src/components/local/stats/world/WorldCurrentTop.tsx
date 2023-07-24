@@ -8,7 +8,7 @@ const WorldCurrentTop = ({ worldCurrentRes }) => {
     <Box>
       <BoxWrapper colSpan={0}>
         <BoxTitle
-          name="World Data"
+          name="World List"
           description="A list of Worlds currently deployed to Decentraland servers."
           date={""}
           avgData={undefined}

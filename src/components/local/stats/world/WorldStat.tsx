@@ -1,65 +1,31 @@
-import { Box, Flex, Text } from "@chakra-ui/react"
-import { format, parseISO } from "date-fns"
-import CountUp from "react-countup"
+import { Box } from "@chakra-ui/react"
+import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
+import WorldStatBox from "./WorldStatBox"
 
 const WorldStat = ({ worldCurrentRes }) => {
-  console.log(worldCurrentRes)
   const { total_count, current_users, timestamp, currently_occupied } =
     worldCurrentRes
 
-  console.log(parseISO(timestamp))
-
   return (
     <Box mb="4">
-      <BoxWrapper colSpan={0}>
-        <Flex
-          justify="space-between"
-          direction={["column", "row"]}
-          gap={4}
-          m="4"
-        >
-          <Box>
-            <Box>
-              <Text fontSize="xs">Total World Count</Text>
-            </Box>
-            <Box>
-              <Text fontSize="3xl" fontWeight="bold">
-                <CountUp end={total_count} />
-              </Text>
-            </Box>
-          </Box>
-          <Box>
-            <Box>
-              <Text fontSize="xs">Current World Users</Text>
-            </Box>
-            <Box>
-              <Text fontSize="3xl" fontWeight="bold">
-                <CountUp end={current_users} />
-              </Text>
-            </Box>
-          </Box>
-          <Box>
-            <Box>
-              <Text fontSize="xs">Current Occupied</Text>
-            </Box>
-            <Box>
-              <Text fontSize="3xl" fontWeight="bold">
-                <CountUp end={currently_occupied} />
-              </Text>
-            </Box>
-          </Box>
-          <Box>
-            <Box>
-              <Text fontSize="xs">Updated At</Text>
-            </Box>
-            <Box>
-              <Text fontSize="3xl" fontWeight="bold">
-                {format(timestamp * 1000, "yy MMM d HH:mm")}
-              </Text>
-            </Box>
-          </Box>
-        </Flex>
+      <BoxWrapper colSpan={2}>
+        <BoxTitle
+          name="World Stat"
+          description="A list of Worlds currently deployed to Decentraland servers."
+          date={""}
+          avgData={undefined}
+          slicedData={() => {}}
+          color={""}
+          line={{}}
+          setLine={() => {}}
+        />
+        <WorldStatBox
+          total_count={total_count}
+          current_users={current_users}
+          currently_occupied={currently_occupied}
+          timestamp={timestamp}
+        />
       </BoxWrapper>
     </Box>
   )
