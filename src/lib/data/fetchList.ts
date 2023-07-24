@@ -1,9 +1,11 @@
 import staticGlobalDaily from "../../../public/data/staticGlobalDaily.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
 import staticLandSales from "../../../public/data/staticLandSales.json"
+import staticWorldCurrent from "../../../public/data/staticWorldCurrent.json"
+
 //import staticTopLand from "../../../public/data/staticTopLand.json"
 //import staticTopPick from "../../../public/data/staticTopPick.json"
-import { globalDailyURL, parcelURL } from "./constant"
+import { globalDailyURL, parcelURL, worldURL } from "./constant"
 
 // NOTE commented endpoints are temporarily disabled
 export const globalRequestList = [
@@ -34,6 +36,11 @@ export const globalRequestList = [
     endpoint: "/dcl-property.rentals",
     staticData: staticLandSales,
   },
+  {
+    url: worldURL,
+    endpoint: "/worlds/current",
+    staticData: staticWorldCurrent,
+  },
   //{
   //  url: "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
   //  endpint:
@@ -56,5 +63,6 @@ export const globalFileNameArr = [
   //"cached_scenes_top",
   "cached_parcel",
   "staticLandSales",
+  "staticWorldCurrent",
   //"staticTopLand",
 ]

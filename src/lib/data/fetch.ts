@@ -6,6 +6,8 @@ import { globalFileNameArr, globalRequestList } from "./fetchList"
 import staticGlobalDaily from "../../../public/data/staticGlobalDaily.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
 import staticLandSales from "../../../public/data/staticLandSales.json"
+import staticWorldCurrent from "../../../public/data/staticWorldCurrent.json"
+
 //import staticTopLand from "../../../public/data/staticTopLand.json"
 //import staticTopPick from "../../../public/data/staticTopPick.json"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
@@ -60,11 +62,10 @@ export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
 }
 
 export async function fetchGlobalData() {
-  let globalDailyRes, parcelRes, landSalesRes
-  //topLandRes, topPickRes
+  let globalDailyRes, parcelRes, landSalesRes, worldCurrentRes
 
   if (isProd) {
-    ;[globalDailyRes, parcelRes] = await Promise.all(
+    ;[globalDailyRes, parcelRes, worldCurrentRes] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
         getDataWithApiKey(url, endpoint, staticData)
       )
@@ -74,35 +75,18 @@ export async function fetchGlobalData() {
       "https://www.dcl-property.rentals/api/price_data",
       staticLandSales
     )
-
-    //topLandRes = await getDataWithApiKey(
-    //  "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
-    //  "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
-    //  staticTopLand
-    //)
-
-    //topPickRes = await getDataWithApiKey(
-    //  "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
-    //  "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
-    //  staticTopPick
-    //)
   } else if (isDev && !isLocal) {
-    ;[
-      globalDailyRes,
-      parcelRes,
-      landSalesRes,
-      //topLandRes, topPickRes
-    ] = await Promise.all(
-      globalRequestList.map(({ url, endpoint, staticData }) =>
-        getDataWithApiKey(url, endpoint, staticData)
+    ;[globalDailyRes, parcelRes, landSalesRes, worldCurrentRes] =
+      await Promise.all(
+        globalRequestList.map(({ url, endpoint, staticData }) =>
+          getDataWithApiKey(url, endpoint, staticData)
+        )
       )
-    )
   } else if (isLocal) {
     globalDailyRes = staticGlobalDaily
     parcelRes = staticParcel
     landSalesRes = staticLandSales
-    //topLandRes = staticTopLand
-    //topPickRes = staticTopPick
+    worldCurrentRes = staticWorldCurrent
   }
 
   // write heavy res for cache
@@ -110,12 +94,7 @@ export async function fetchGlobalData() {
     for (let i = 0; i < globalFileNameArr.length; i++) {
       writeFile(
         globalFileNameArr[i],
-        [
-          globalDailyRes,
-          parcelRes,
-          landSalesRes,
-          //topLandRes, topPickRes
-        ][i]
+        [globalDailyRes, parcelRes, landSalesRes, worldCurrentRes][i]
       )
     }
   }
@@ -124,8 +103,7 @@ export async function fetchGlobalData() {
     globalDailyRes,
     parcelRes,
     landSalesRes,
-    //topLandRes,
-    //topPickRes,
+    worldCurrentRes,
   }
 }
 

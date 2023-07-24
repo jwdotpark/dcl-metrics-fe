@@ -17,15 +17,15 @@ import {
 import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
 import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
-//import TopPick from "../src/components/local/ext-data/TopPick"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
+import WorldStat from "../src/components/local/stats/world/WorldStat"
+import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
   const rentalData = await fetchRentalData()
   const latestPost = getLatestPost()
-
   return {
     props: {
       ...globalData,
@@ -44,13 +44,8 @@ const GlobalPage: NextPage = (props: Props) => {
     xl: 6,
   })
 
-  const {
-    globalDailyRes,
-    parcelRes,
-    landSalesRes,
-    //topPickRes,
-    rental,
-  } = props
+  const { globalDailyRes, parcelRes, landSalesRes, worldCurrentRes, rental } =
+    props
 
   const pageTitle = "DCL-Metrics"
   const description =
@@ -97,7 +92,7 @@ const GlobalPage: NextPage = (props: Props) => {
             <OnlineUsers />
             <ActiveUsers />
           </Grid>
-          <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}}/>
+          <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
           <Box mb="4">
             <LandSales data={landSalesRes} />
           </Box>
@@ -105,6 +100,11 @@ const GlobalPage: NextPage = (props: Props) => {
             <RentalDay data={rental} />
             <RentalTotal data={rental} />
           </Grid>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={true} />
+            <WorldCurrentTop worldCurrentRes={worldCurrentRes} pageSize={5} />
+          </Grid>
+
           {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <TopPick data={topPickRes} />
           </Grid>*/}

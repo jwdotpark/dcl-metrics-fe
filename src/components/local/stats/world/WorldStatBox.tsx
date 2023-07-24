@@ -3,6 +3,7 @@ import { format } from "date-fns"
 import CountUp from "react-countup"
 
 const WorldStatBox = ({
+  isMainPage,
   total_count,
   current_users,
   currently_occupied,
@@ -11,10 +12,9 @@ const WorldStatBox = ({
   return (
     <Flex
       justify="space-between"
-      direction={["column", "row"]}
-      gap={4}
+      direction={isMainPage ? "column" : "row"}
+      gap={8}
       m="4"
-      mx={[6, 8]}
     >
       <Box>
         <Box>
