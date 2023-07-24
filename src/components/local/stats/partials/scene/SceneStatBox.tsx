@@ -71,12 +71,12 @@ const StatBox = ({ data, selectedScene, date }) => {
                       mb="4"
                       mx="4"
                       p="2"
-                      bg={useColorModeValue("gray.100", "gray.600")}
+                      bg={useColorModeValue("gray.100", "gray.800")}
                       border="1px solid"
-                      borderColor={useColorModeValue("gray.100", "gray.400")}
+                      borderColor={useColorModeValue("gray.100", "gray.700")}
                       borderRadius="xl"
                       shadow="md"
-                      _hover={{ bg: useColorModeValue("gray.200", "gray.700") }}
+                      _hover={{ bg: useColorModeValue("gray.200", "gray.900") }}
                     >
                       <Flex>
                         <Flex align="center" flex="1" px="4">
@@ -138,12 +138,12 @@ const StatBox = ({ data, selectedScene, date }) => {
                       mb="4"
                       mx="4"
                       p="2"
-                      bg={useColorModeValue("gray.100", "gray.600")}
+                      bg={useColorModeValue("gray.100", "gray.800")}
                       border="1px solid"
-                      borderColor={useColorModeValue("gray.100", "gray.400")}
+                      borderColor={useColorModeValue("gray.100", "gray.700")}
                       borderRadius="xl"
                       shadow="md"
-                      _hover={{ bg: useColorModeValue("gray.200", "gray.700") }}
+                      _hover={{ bg: useColorModeValue("gray.200", "gray.900") }}
                     >
                       <Flex>
                         <Flex align="center" flex="1" px="4">

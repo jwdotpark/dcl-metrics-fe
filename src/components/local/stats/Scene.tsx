@@ -1,5 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Flex, Text, Box, useColorModeValue, Center } from "@chakra-ui/react"
+import {
+  Flex,
+  Text,
+  Box,
+  useColorModeValue,
+  Center,
+  useBreakpointValue,
+} from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import SceneMap from "./partials/scene/SceneMap"
 import SceneLineChart from "./partials/scene/SceneLineChart"
@@ -26,7 +33,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   const [isEmpty, setIsEmpty] = useState(false)
   const latest = moment(res[selectedScene].date)
 
-  const secondRowHeight = 550
+  const secondRowHeight = useBreakpointValue([550, 700, 700, 750, 550])
 
   const EmptyScene = () => {
     return (
@@ -54,6 +61,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
 
   return (
     <Box>
+      {secondRowHeight}
       <SceneTitle
         name={name}
         date={latest}
