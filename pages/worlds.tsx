@@ -1,6 +1,6 @@
 import Layout from "../src/components/layout/layout"
-import { isDev, isLocal, isProd, worldURL } from "../src/lib/data/constant"
-import { getData, getDataWithApiKey } from "../src/lib/data/fetch"
+import { isLocal, worldURL } from "../src/lib/data/constant"
+import { getDataWithApiKey } from "../src/lib/data/fetch"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
@@ -9,30 +9,18 @@ import WorldStat from "../src/components/local/stats/world/WorldStat"
 import { Box } from "@chakra-ui/react"
 
 export async function getServerSideProps() {
-  if (isProd) {
+  if (!isLocal) {
     const worldCurrentRes = await getDataWithApiKey(
       worldURL,
       "/world/current",
       staticWorldCurrent
     )
 
-    //writeFile("staticWorldCurrent", staticWorldCurrent)
-
     const result = { worldCurrentRes }
     return {
       props: result,
     }
-  } else if (isDev && !isLocal) {
-    const worldCurrentRes = await getData(
-      worldURL,
-      "/world/current",
-      staticWorldCurrent
-    )
-    const result = { worldCurrentRes }
-    return {
-      props: result,
-    }
-  } else if (isLocal) {
+  } else {
     const worldCurrentRes = staticWorldCurrent
     const result = { worldCurrentRes }
     return {
