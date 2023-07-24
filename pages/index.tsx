@@ -93,6 +93,10 @@ const GlobalPage: NextPage = (props: Props) => {
             <ActiveUsers />
           </Grid>
           <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={true} />
+            <WorldCurrentTop worldCurrentRes={worldCurrentRes} pageSize={5} />
+          </Grid>
           <Box mb="4">
             <LandSales data={landSalesRes} />
           </Box>
@@ -100,14 +104,6 @@ const GlobalPage: NextPage = (props: Props) => {
             <RentalDay data={rental} />
             <RentalTotal data={rental} />
           </Grid>
-          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={true} />
-            <WorldCurrentTop worldCurrentRes={worldCurrentRes} pageSize={5} />
-          </Grid>
-
-          {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <TopPick data={topPickRes} />
-          </Grid>*/}
         </Box>
       </Layout>
     </>
