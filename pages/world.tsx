@@ -1,14 +1,11 @@
-import { Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import { isDev, isLocal, isProd, statusURL } from "../src/lib/data/constant"
 import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
-import WorldTable from "../src/components/local/stats/world/WorldTable"
-import BoxWrapper from "../src/components/layout/local/BoxWrapper"
-import BoxTitle from "../src/components/layout/local/BoxTitle"
 import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
+import WorldStat from "../src/components/local/stats/world/WorldStat"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -46,6 +43,9 @@ export async function getStaticProps() {
 const World = (props: Props) => {
   const { worldCurrentRes } = props
 
+  //const { current_users, currently_occupied, timestamp, total_count } =
+  //  worldCurrent
+
   const pageTitle = "DCL-Metrics World Data"
   const description =
     "A list of Worlds currently deployed to Decentraland servers."
@@ -78,6 +78,7 @@ const World = (props: Props) => {
         }}
       />
       <Layout>
+        <WorldStat worldCurrentRes={worldCurrentRes} />
         <WorldCurrentTop worldCurrentRes={worldCurrentRes} />
       </Layout>
     </>

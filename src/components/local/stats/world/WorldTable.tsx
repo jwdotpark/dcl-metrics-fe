@@ -25,13 +25,7 @@ import WorldPageTableButtonGroup from "../partials/world/WorldPageTableButtonGro
 
 const ScenePageTable = ({ worldCurrentRes }) => {
   const worldCurrent = useMemo(() => worldCurrentRes, [worldCurrentRes])
-
   const { data } = worldCurrent
-  //console.log(worldCurrent)
-  const { current_users, currently_occupied, timestamp, total_count } =
-    worldCurrent
-
-  console.log(worldCurrent)
 
   const columns = useMemo(
     () => [

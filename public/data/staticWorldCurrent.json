@@ -1,7 +1,7 @@
 {
-  "timestamp": "2023-07-24 12:01:41 UTC",
-  "currently_occupied": 1,
-  "current_users": 1,
+  "timestamp": 1690210864,
+  "currently_occupied": 3,
+  "current_users": 4,
   "total_count": 419,
   "data": [
     {
@@ -2845,10 +2845,10 @@
       "ens_token": "lowpolymodels",
       "scenes": [
         {
-          "id": "bafkreiahvkstbhzkdy3pl3uwmkjq275cytaxksmqtqcr4utkkqkbydzahm",
+          "id": "bafkreibqjarg5ap57rgjhcwui5tfxztbei46yk57rwubyx74h3yscxixy4",
           "title": "MVAW Warm-Up Party",
           "thumbnail": "https://worlds-content-server.decentraland.org/contents/bafybeig6ez6jj3qnw7xop5x5h2vwnlaox4xnej3uawvctjxxenkchtzz5u",
-          "timestamp": 1690148902239,
+          "timestamp": 1690206382741,
           "description": "MVAW Warm-Up Party by Low Poly Models"
         }
       ]

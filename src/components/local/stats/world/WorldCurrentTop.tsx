@@ -17,7 +17,6 @@ const WorldCurrentTop = ({ worldCurrentRes }) => {
           line={{}}
           setLine={() => {}}
         />
-        {/*<WorldStat />*/}
         <WorldTable worldCurrentRes={worldCurrentRes} />
       </BoxWrapper>
     </Box>
