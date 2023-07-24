@@ -23,7 +23,7 @@ import {
 import { format } from "date-fns"
 import WorldPageTableButtonGroup from "../partials/world/WorldPageTableButtonGroup"
 
-const ScenePageTable = ({ worldCurrentRes }) => {
+const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
   const worldCurrent = useMemo(() => worldCurrentRes, [worldCurrentRes])
   const { data } = worldCurrent
 
@@ -84,7 +84,7 @@ const ScenePageTable = ({ worldCurrentRes }) => {
   )
 
   const tableInstance = useTable(
-    { columns, data },
+    { columns, data, initialState: { pageSize: pageSize } },
     useGlobalFilter,
     useSortBy,
     usePagination

@@ -17,7 +17,7 @@ const WorldCurrentTop = ({ worldCurrentRes }) => {
           line={{}}
           setLine={() => {}}
         />
-        <WorldTable worldCurrentRes={worldCurrentRes} />
+        <WorldTable worldCurrentRes={worldCurrentRes} pageSize={25} />
       </BoxWrapper>
     </Box>
   )
