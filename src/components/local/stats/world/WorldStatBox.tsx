@@ -41,7 +41,6 @@ const WorldStatBox = ({
   currently_occupied,
   timestamp,
 }) => {
-  console.log(timestamp)
   return (
     <Flex justify="space-between" direction={isMainPage ? "column" : "row"}>
       <WorldStatItem

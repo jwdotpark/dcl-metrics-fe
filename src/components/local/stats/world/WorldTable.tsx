@@ -79,12 +79,26 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
           </Box>
         ),
       },
+      {
+        Header: "User",
+        id: "user_count",
+        accessor: (row) => row.user_count,
+        Cell: ({ row }) => <Text>{row.original.user_count}</Text>,
+      },
     ],
     []
   )
 
   const tableInstance = useTable(
-    { columns, data, initialState: { pageSize: pageSize } },
+    {
+      columns,
+      data,
+      initialState: {
+        pageSize: pageSize,
+        sortBy: [{ id: "user_count", desc: true }],
+        hiddenColumns: ["user_count", "index"],
+      },
+    },
     useGlobalFilter,
     useSortBy,
     usePagination
