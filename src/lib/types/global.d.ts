@@ -17,4 +17,5 @@ declare type Props = {
     }
   }
   onlineUserData: {}
+  worldCurrentRes: {}
 }

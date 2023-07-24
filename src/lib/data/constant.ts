@@ -21,6 +21,7 @@ export const globalUsersURL = getEndpoint("global/users")
 export const sceneURL = getEndpoint("scenes/top")
 export const parcelURL = getEndpoint("parcels/all")
 export const statusURL = getEndpoint("peer_status")
+export const worldURL = getEndpoint('worlds/current')
 
 
 export const COLOR_BY_TYPE: Record<number | string, string> = {

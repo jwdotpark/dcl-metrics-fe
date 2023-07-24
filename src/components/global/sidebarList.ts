@@ -8,6 +8,7 @@ import {
   FiActivity,
   FiGrid,
   FiPenTool,
+  FiGlobe,
 } from "react-icons/fi"
 
 export const sidebarList = {
@@ -40,6 +41,12 @@ export const sidebarList = {
     name: "map",
     icon: FiMapPin,
     subItem: true,
+  },
+  world: {
+    label: "World",
+    name: "world",
+    icon: FiGlobe,
+    subItem: false,
   },
   //docs: {
   //  label: "API Documentation",
