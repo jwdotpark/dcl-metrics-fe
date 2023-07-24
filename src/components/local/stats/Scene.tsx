@@ -26,6 +26,8 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   const [isEmpty, setIsEmpty] = useState(false)
   const latest = moment(res[selectedScene].date)
 
+  const secondRowHeight = 550
+
   const EmptyScene = () => {
     return (
       <Center
@@ -89,13 +91,13 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
             )}
             <SceneMap
               url={map_url}
-              height={!hasMultipleScenes ? 520 : 405}
+              height={!hasMultipleScenes ? secondRowHeight : 405}
               name={name && name}
             />
           </Box>
           <Box
             w={["100%", "100%", "100%", "65%"]}
-            h={["100%", "100%", "100%", "520px"]}
+            h={["100%", "100%", "100%", `${secondRowHeight}px`]}
             mt={[4, 4, 4, 0]}
           >
             {isEmpty && <EmptyScene />}
