@@ -27,7 +27,7 @@ import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import WorldStat from "../src/components/local/stats/world/WorldStat"
 import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
-import { isProd } from "../src/lib/data/constant"
+import { isDev, isProd } from "../src/lib/data/constant"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import BoxWrapper from "../src/components/layout/local/BoxWrapper"
 
@@ -76,7 +76,7 @@ const GlobalPage: NextPage = (props: Props) => {
 
     setIsLoading(true)
     try {
-      if (isProd) {
+      if (isProd && isDev) {
         const response = await fetch(`/api/fetch?url=${baseUrl + endpoint}`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
