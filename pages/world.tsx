@@ -1,11 +1,14 @@
 import { Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-import StatusBox from "../src/components/local/status/StatusBox"
 import { isDev, isLocal, isProd, statusURL } from "../src/lib/data/constant"
 import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
+import WorldTable from "../src/components/local/stats/world/WorldTable"
+import BoxWrapper from "../src/components/layout/local/BoxWrapper"
+import BoxTitle from "../src/components/layout/local/BoxTitle"
+import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
 
 export async function getStaticProps() {
   if (isProd) {
@@ -43,11 +46,9 @@ export async function getStaticProps() {
 const World = (props: Props) => {
   const { worldCurrentRes } = props
 
-  console.log("worldCurrentRes", worldCurrentRes)
-
   const pageTitle = "DCL-Metrics World Data"
   const description =
-    "Resource for monitoring and updates on world of Decentraland."
+    "A list of Worlds currently deployed to Decentraland servers."
   const image = `${siteUrl}/images/status.png`
 
   const metaData = generateMetaData({
@@ -77,7 +78,7 @@ const World = (props: Props) => {
         }}
       />
       <Layout>
-        <Box>{/*<StatusBox data={statusRes} />*/}</Box>
+        <WorldCurrentTop worldCurrentRes={worldCurrentRes} />
       </Layout>
     </>
   )

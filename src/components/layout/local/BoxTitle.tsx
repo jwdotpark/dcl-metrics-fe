@@ -17,8 +17,8 @@ const BoxTitle = ({
         <Box mt="4">
           <Flex direction="column" ml="5">
             <Box>
-              <Text fontSize="xl">
-                <b>{name}</b>
+              <Text fontSize="xl" fontWeight="bold">
+                {name}
               </Text>
             </Box>
             {date !== "" && name !== "Land Picker" && (
