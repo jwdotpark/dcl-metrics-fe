@@ -43,8 +43,8 @@ export const sidebarList = {
     subItem: true,
   },
   world: {
-    label: "World",
-    name: "world",
+    label: "Worlds",
+    name: "worlds",
     icon: FiGlobe,
     subItem: false,
   },
