@@ -137,7 +137,7 @@ const GlobalPage: NextPage = (props: Props) => {
           {!isLoading && !error && Object.keys(worldData).length > 0 ? (
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <WorldStat worldCurrentRes={worldData} isMainPage={true} />
-              <WorldCurrentTop worldCurrentRes={worldData} pageSize={5} />
+              <WorldCurrentTop worldCurrentRes={worldData} pageSize={4} />
             </Grid>
           ) : (
             <Center h="500px">
