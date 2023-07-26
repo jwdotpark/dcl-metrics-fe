@@ -1,5 +1,5 @@
 import { Flex, useColorModeValue, Box, Text } from "@chakra-ui/react"
-import { formatDistanceToNow } from "date-fns"
+import { format, formatDistanceToNow } from "date-fns"
 import CountUp from "react-countup"
 
 const WorldStatItem = ({ value, label, description }) => {
@@ -18,15 +18,17 @@ const WorldStatItem = ({ value, label, description }) => {
       _hover={{ bg: useColorModeValue("gray.200", "gray.900") }}
     >
       <Box mb="-2">
-        <Text as="span" fontSize={["lg", "xl", "2xl"]} fontWeight="black">
-          {typeof value === "number" ? <CountUp end={value} /> : value}
-        </Text>
-        <Text as="span" ml="2" fontSize="sm">
+        <Text as="span" fontSize="md" fontWeight="semibold">
+          {typeof value === "number" ? (
+            <CountUp end={value} />
+          ) : (
+            "Last update " + value
+          )}{" "}
           {label}
         </Text>
       </Box>
       <Box py="2">
-        <Text color="gray.500" fontSize="sm">
+        <Text color="gray.500" fontSize="xs">
           {description}
         </Text>
       </Box>
@@ -55,13 +57,16 @@ const WorldStatBox = ({
       />
       <WorldStatItem
         value={currently_occupied}
-        label="currently occupied"
+        label="worlds currently occupied"
         description="The number of occupied worlds at last update"
       />
       <WorldStatItem
         value={formatDistanceToNow(new Date(timestamp * 1000))}
         label="ago"
-        description="Data is updated at"
+        description={`Data is updated at ${format(
+          new Date(timestamp * 1000),
+          "yyyy MMM d HH:mm"
+        )}`}
       />
     </Flex>
   )
