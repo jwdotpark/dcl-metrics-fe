@@ -66,15 +66,15 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
         sortBy: false,
       },
       {
-        Header: "ENS Token",
+        Header: "World Name",
         Cell: ({ row }) => <Text>{row.original.ens_token}</Text>,
         accessor: (row) => row.ens_token,
       },
-      {
-        Header: "Name",
-        Cell: ({ row }) => <Text>{row.original.name}</Text>,
-        accessor: (row) => row.name,
-      },
+      //{
+      //  Header: "Name",
+      //  Cell: ({ row }) => <Text>{row.original.name}</Text>,
+      //  accessor: (row) => row.name,
+      //},
       {
         Header: "Scene Title",
         accessor: (row) => row.scenes[0].title,
@@ -167,6 +167,7 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
           globalFilter={globalFilter}
           setGlobalFilter={setGlobalFilter}
         />
+
         <Box
           sx={{
             "&::-webkit-scrollbar": {

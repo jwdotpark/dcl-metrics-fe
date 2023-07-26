@@ -7,7 +7,7 @@ const WorldCurrentTop = ({ worldCurrentRes, pageSize }) => {
     <BoxWrapper colSpan={[4, 4, 4, 4, 4]}>
       <BoxTitle
         name="World List"
-        description="A list of Worlds currently deployed to Decentraland servers."
+        description="A list of Worlds currently deployed to Decentraland servers. Click the thumbnail to jump in!"
         date={""}
         avgData={undefined}
         slicedData={() => {}}
