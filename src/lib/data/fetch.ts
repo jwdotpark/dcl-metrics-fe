@@ -87,11 +87,11 @@ export async function fetchGlobalData() {
   }
 
   // write heavy res for cache
-  if (isProd) {
+  if (isLocal) {
     for (let i = 0; i < globalFileNameArr.length; i++) {
       writeFile(
         globalFileNameArr[i],
-        [globalDailyRes, parcelRes, landSalesRes][i]
+        [globalDailyRes, parcelRes, landSalesRes, ][i]
       )
     }
   }

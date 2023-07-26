@@ -13,7 +13,6 @@ import { useRouter } from "next/router"
 
 const WodldJumpModal = ({ isOpen, onClose, selectedRow }) => {
   const router = useRouter()
-  console.log(selectedRow.original)
   const { original } = selectedRow
 
   const handleJumpClick = () => {
