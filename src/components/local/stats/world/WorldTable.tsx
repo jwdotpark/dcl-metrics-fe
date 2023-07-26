@@ -167,7 +167,16 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
           globalFilter={globalFilter}
           setGlobalFilter={setGlobalFilter}
         />
-        <Box overflowX="scroll">
+        <Box
+          sx={{
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+            msOverflfowStyle: "none",
+            scrollbarWidth: "none",
+          }}
+          overflowX="scroll"
+        >
           <Table
             {...getTableProps()}
             w="100%"
