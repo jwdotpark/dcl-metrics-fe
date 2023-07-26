@@ -20,7 +20,7 @@ const ScenePageTableButtonGroup = ({
   setGlobalFilter,
 }) => {
   return (
-    <Center w="100%" mx="4" my="4">
+    <Center mb="2" ml="4">
       <ButtonGroup borderRadius="xl" shadow="md" isAttached size="sm">
         <Button
           borderRadius="xl"
@@ -46,7 +46,7 @@ const ScenePageTableButtonGroup = ({
           <FiArrowRightCircle />
         </Button>
       </ButtonGroup>
-      <Flex w="100%" mr="8">
+      <Flex w="100%" ml="2">
         <Spacer />
         <GlobalTableFilter filter={globalFilter} setFilter={setGlobalFilter} />
       </Flex>

@@ -10,8 +10,9 @@ import {
   Td,
   Box,
   Image,
+  useDisclosure,
 } from "@chakra-ui/react"
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import {
   useTable,
@@ -22,10 +23,20 @@ import {
 //import { mutateStringToURL, convertSeconds } from "../../../../lib/hooks/utils"
 import { format } from "date-fns"
 import WorldPageTableButtonGroup from "../partials/world/WorldPageTableButtonGroup"
+import WorldJumpModal from "../partials/world/WorldJumpModal"
 
 const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   const worldCurrent = useMemo(() => worldCurrentRes, [worldCurrentRes])
   const { data } = worldCurrent
+
+  const [selectedRow, setSelectedRow] = useState({})
+
+  const handleThumbnailClick = (row: any) => {
+    onOpen()
+    setSelectedRow(row)
+  }
 
   const columns = useMemo(
     () => [
@@ -35,32 +46,37 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
         accessor: "index",
       },
       {
-        Header: "Map",
+        Header: "Thumbnail",
         Cell: ({ row }) => (
-          <Image
-            w="75px"
-            minW="75px"
-            maxW="75px"
-            h="75px"
-            minH="75px"
-            maxH="75px"
-            borderRadius="md"
-            alt={row.original.scenes[0].title}
-            fallbackSrc="/dcl-logo-toned.svg"
-            src={row.original.scenes[0].thumbnail}
-          />
+          <Box onClick={() => handleThumbnailClick(row)}>
+            <Image
+              w="75px"
+              minW="75px"
+              maxW="75px"
+              h="75px"
+              minH="75px"
+              maxH="75px"
+              borderRadius="md"
+              alt={row.original.scenes[0].title}
+              fallbackSrc="/dcl-logo-toned.svg"
+              src={row.original.scenes[0].thumbnail}
+            />
+          </Box>
         ),
         sortBy: false,
       },
       {
-        Header: "Created At",
-        accessor: (row) => row.scenes[0].timestamp,
-        Cell: ({ row }) => (
-          <Text>{format(row.original.scenes[0].timestamp, "yy MMM d")}</Text>
-        ),
+        Header: "ENS Token",
+        Cell: ({ row }) => <Text>{row.original.ens_token}</Text>,
+        accessor: (row) => row.ens_token,
       },
       {
-        Header: "Title",
+        Header: "Name",
+        Cell: ({ row }) => <Text>{row.original.name}</Text>,
+        accessor: (row) => row.name,
+      },
+      {
+        Header: "Scene Title",
         accessor: (row) => row.scenes[0].title,
         Cell: ({ row }) => (
           <Text fontWeight="bold">{row.original.scenes[0].title}</Text>
@@ -80,12 +96,20 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
         ),
       },
       {
+        Header: "Created At",
+        accessor: (row) => row.scenes[0].timestamp,
+        Cell: ({ row }) => (
+          <Text>{format(row.original.scenes[0].timestamp, "yy MMM d")}</Text>
+        ),
+      },
+      {
         Header: "User",
         id: "user_count",
         accessor: (row) => row.user_count,
         Cell: ({ row }) => <Text>{row.original.user_count}</Text>,
       },
     ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
 
@@ -125,75 +149,82 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
 
   return (
     <Box>
-      <Box overflowX="scroll" pr="8">
-        <Table
-          {...getTableProps()}
-          w="100%"
-          mt="2"
-          mb="2"
-          mx={[2, 2, 4]}
-          size="sm"
-          variant="simple"
-        >
-          <Thead>
-            {headerGroups.map((headerGroup, i) => (
-              <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column, j) => (
-                  <Th
-                    key={j}
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                  >
-                    {column.render("Header")}
-                    <Box display="inline-block">
-                      {column.isSorted ? (
-                        column.isSortedDesc ? (
-                          <FiChevronDown />
-                        ) : (
-                          <FiChevronUp />
-                        )
-                      ) : (
-                        ""
-                      )}
-                    </Box>
-                  </Th>
-                ))}
-              </Tr>
-            ))}
-          </Thead>
-          <Tbody {...getTableBodyProps()}>
-            {page.map((row, i) => {
-              prepareRow(row)
-              return (
-                <Tr
-                  key={i}
-                  {...row.getRowProps()}
-                  _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
-                >
-                  {row.cells.map((cell, j) => {
-                    return (
-                      <Td key={j} {...cell.getCellProps()}>
-                        {cell.render("Cell")}
-                      </Td>
-                    )
-                  })}
-                </Tr>
-              )
-            })}
-          </Tbody>
-        </Table>
-      </Box>
-      <WorldPageTableButtonGroup
-        pageOptions={pageOptions}
-        canPreviousPage={canPreviousPage}
-        canNextPage={canNextPage}
-        gotoPage={gotoPage}
-        pageIndex={pageIndex}
-        nextPage={nextPage}
-        previousPage={previousPage}
-        pageCount={pageCount}
-        globalFilter={globalFilter}
-        setGlobalFilter={setGlobalFilter}
+      <WorldJumpModal
+        isOpen={isOpen}
+        onClose={onClose}
+        selectedRow={selectedRow}
       />
+      <Box mr="4">
+        <WorldPageTableButtonGroup
+          pageOptions={pageOptions}
+          canPreviousPage={canPreviousPage}
+          canNextPage={canNextPage}
+          gotoPage={gotoPage}
+          pageIndex={pageIndex}
+          nextPage={nextPage}
+          previousPage={previousPage}
+          pageCount={pageCount}
+          globalFilter={globalFilter}
+          setGlobalFilter={setGlobalFilter}
+        />
+        <Box overflowX="scroll">
+          <Table
+            {...getTableProps()}
+            w="100%"
+            mt="2"
+            mb="2"
+            mx={[2, 2, 4]}
+            size="sm"
+            variant="simple"
+          >
+            <Thead>
+              {headerGroups.map((headerGroup, i) => (
+                <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column, j) => (
+                    <Th
+                      key={j}
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                    >
+                      {column.render("Header")}
+                      <Box display="inline-block">
+                        {column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <FiChevronDown />
+                          ) : (
+                            <FiChevronUp />
+                          )
+                        ) : (
+                          ""
+                        )}
+                      </Box>
+                    </Th>
+                  ))}
+                </Tr>
+              ))}
+            </Thead>
+            <Tbody {...getTableBodyProps()}>
+              {page.map((row, i) => {
+                prepareRow(row)
+                return (
+                  <Tr
+                    key={i}
+                    {...row.getRowProps()}
+                    _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
+                  >
+                    {row.cells.map((cell, j) => {
+                      return (
+                        <Td key={j} {...cell.getCellProps()}>
+                          {cell.render("Cell")}
+                        </Td>
+                      )
+                    })}
+                  </Tr>
+                )
+              })}
+            </Tbody>
+          </Table>
+        </Box>
+      </Box>
     </Box>
   )
 }
