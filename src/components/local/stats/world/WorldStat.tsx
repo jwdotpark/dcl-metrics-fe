@@ -9,8 +9,8 @@ const WorldStat = ({ worldCurrentRes, isMainPage }) => {
   return (
     <BoxWrapper colSpan={[4, 4, 4, 4, 2]}>
       <BoxTitle
-        name="Worlds Stats"
-        description="Stats of Worlds currently deployed to Decentraland servers."
+        name="Decentraland Worlds Metrics"
+        description=""
         date={""}
         avgData={undefined}
         slicedData={() => {}}
