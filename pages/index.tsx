@@ -55,6 +55,8 @@ const GlobalPage: NextPage = (props: Props) => {
 
   const { globalDailyRes, parcelRes, landSalesRes, rental } = props
 
+  console.log("landSalesRes", landSalesRes)
+
   const pageTitle = "DCL-Metrics"
   const description =
     "We make Decentraland's data accessible so it can be used by the community to build a better metaverse."
