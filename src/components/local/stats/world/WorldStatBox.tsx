@@ -78,7 +78,7 @@ const WorldStatBox = ({
           description={`Data last updated at ${format(
             new Date(timestamp * 1000),
             "yy/MM/d HH:mm"
-          )} UTC`}
+          )}`}
         />
       </ToolTip>
     </Flex>
