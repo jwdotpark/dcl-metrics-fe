@@ -134,7 +134,7 @@ const GlobalPage: NextPage = (props: Props) => {
             <ActiveUsers />
           </Grid>
           <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
-          {!isLoading && !error && Object.keys(worldData).length > 0 ? (
+          {/* {!isLoading && !error && Object.keys(worldData).length > 0 ? (
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <WorldStat worldCurrentRes={worldData} isMainPage={true} />
               <WorldCurrentTop worldCurrentRes={worldData} pageSize={4} />
@@ -148,7 +148,7 @@ const GlobalPage: NextPage = (props: Props) => {
               </BoxWrapper>
               <Box mb="4" />
             </>
-          )}
+          )} */}
           <Box mb="4">
             <LandSales data={landSalesRes} />
           </Box>
