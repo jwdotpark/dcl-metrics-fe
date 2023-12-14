@@ -51,7 +51,7 @@ export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
     },
   })
   const result = await response.json()
-  if (response.status >= 300) {
+  if (response.status !== 200) {
     if (isProd) {
       sendNotification(response.status, `${endpoint}`, "error")
     }
