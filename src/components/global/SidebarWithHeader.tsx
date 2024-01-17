@@ -71,7 +71,6 @@ export default function SidebarWithHeader({ psa, children }: any) {
         size="full"
       >
         <DrawerContent>
-          {/* @ts-ignore */}
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>

@@ -27,12 +27,13 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
     <Flex
       align="center"
       justify={{ base: "space-between", md: "flex-end" }}
-      h="20"
+      h="12"
       ml={{ base: 0, md: sidebarStatus }}
       px={{ base: 4, md: 4 }}
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      shadow="md"
       transition=".25s ease"
       {...rest}
     >
