@@ -32,13 +32,15 @@ export const writeFile = (name, response) => {
   fs.writeFileSync(path + file, JSON.stringify(response))
 }
 
+// disable fetch error, errors are handled in the backend
+
 export const getData = async (targetUrl, endpoint, staticFile) => {
   const response = await fetch(targetUrl)
   const result = await response.json()
   if (response.status >= 200) {
-    if (isProd) {
-      sendNotification(response.status, `${endpoint}`, "error")
-    }
+    //if (isProd) {
+    //  sendNotification(response.status, `${endpoint}`, "error")
+    //}
     return staticFile
   }
   return result
@@ -52,9 +54,9 @@ export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
   })
   const result = await response.json()
   if (response.status !== 200) {
-    if (isProd) {
-      sendNotification(response.status, `${endpoint}`, "error")
-    }
+    //if (isProd) {
+    //  sendNotification(response.status, `${endpoint}`, "error")
+    //}
     return staticFile
   }
   return result
