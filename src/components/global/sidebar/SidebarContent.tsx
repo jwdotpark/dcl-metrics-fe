@@ -69,7 +69,7 @@ const SidebarContent = ({
                   useColorModeValue("gray.200", "gray.700")
                 }
                 overflow="hidden"
-                transition="background-color 0.25s ease"
+                transition="background-color 0.15s easeInOut"
                 _hover={{
                   bg: useColorModeValue("gray.200", "gray.700"),
                 }}
