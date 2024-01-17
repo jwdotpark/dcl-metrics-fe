@@ -38,7 +38,7 @@ const UniqueVisitedParcels = ({ data }) => {
   )
   const generateResultData = useCallback(() => {
     const mappedResult = [
-      mapChartData("Parcel Visitors", "active_parcels", partial),
+      mapChartData("Parcel Visited", "active_parcels", partial),
     ]
 
     mappedResult.forEach((item: any, i: number) => {
@@ -74,7 +74,7 @@ const UniqueVisitedParcels = ({ data }) => {
     <BoxWrapper colSpan={3}>
       <Box data-testid="parcelVisitors">
         <BoxTitle
-          name="Parcel Visitors"
+          name="Parcel Visited"
           description={false}
           date={dateString}
           avgData={avgData}

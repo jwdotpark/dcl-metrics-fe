@@ -5,7 +5,7 @@ describe("Index page", () => {
 
   it("should be rendered", () => {
     cy.findAllByText("Unique Visitors").should("be.visible")
-    cy.findAllByText("Parcel Visitors").should("be.visible")
+    cy.findAllByText("Parcel Visited").should("be.visible")
     cy.findAllByText("Scenes Visited").should("be.visible")
     cy.findAllByText("Online Users").should("be.visible")
     cy.findAllByText("Active Users").should("be.visible")
@@ -40,7 +40,7 @@ describe("Index page", () => {
     }
 
     testSubComponent("Unique Visitors", "uniqueVisitors")
-    testSubComponent("Parcel Visitors", "parcelVisitors")
+    testSubComponent("Parcel Visited", "parcelVisitors")
     testSubComponent("Scenes Visited", "scenesVisited")
     testSubComponent("Land Sales", "landSales")
     testSubComponent("Rentals Daily", "rentalDaily")
