@@ -89,7 +89,9 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
           <Box maxW="500px">
             <Text>
               {row.original.scenes[0].description
-                ? row.original.scenes[0].description
+                ? row.original.scenes[0].description.length > 200
+                  ? `${row.original.scenes[0].description.substring(0, 200)}...`
+                  : row.original.scenes[0].description
                 : "N/A"}
             </Text>
           </Box>

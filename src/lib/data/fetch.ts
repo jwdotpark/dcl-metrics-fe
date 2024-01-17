@@ -1,8 +1,7 @@
 import fs from "fs"
-import { sendNotification } from "../hooks/sendNotification"
+//import { sendNotification } from "../hooks/sendNotification"
 import { isDev, isLocal, isProd } from "./constant"
 import { globalFileNameArr, globalRequestList } from "./fetchList"
-
 import staticGlobalDaily from "../../../public/data/staticGlobalDaily.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
 import staticLandSales from "../../../public/data/staticLandSales.json"
