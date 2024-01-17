@@ -15,20 +15,19 @@ import { motion } from "framer-motion"
 export default function SidebarWithHeader({ psa, children }: any) {
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const sidebarCollapsed = localStorage.getItem("sidebar-collapsed")
-  const [sidebarOpen, setSidebarOpen] = useState(
-    sidebarCollapsed ? false : true
-  )
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const sidebarStatus = sidebarOpen ? "180px" : "60px"
 
   const handleSidebar = () => {
-    if (sidebarOpen) {
-      setSidebarOpen(false)
-      localStorage.setItem("sidebar-collapsed", "open")
-    } else {
-      setSidebarOpen(true)
-      localStorage.removeItem("sidebar-collapsed")
-    }
+    setSidebarOpen(!sidebarOpen)
+  }
+
+  const handleMouseEnter = () => {
+    setSidebarOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    setSidebarOpen(false)
   }
 
   useEffect(() => {
@@ -38,7 +37,7 @@ export default function SidebarWithHeader({ psa, children }: any) {
     ) {
       toast({
         title: "Desktop is recommended. ☹️",
-        description: " For better experience, please use desktop!",
+        description: " For a better experience, please use desktop!",
         status: "info",
         duration: 5000,
         isClosable: true,
@@ -60,6 +59,9 @@ export default function SidebarWithHeader({ psa, children }: any) {
         isOpen={isOpen}
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
+        id="sidebar-content"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       />
       <Drawer
         autoFocus={false}
@@ -78,15 +80,15 @@ export default function SidebarWithHeader({ psa, children }: any) {
       <Flex
         align="center"
         justify="center"
-        w={["100%", "100%", `calc(100% - ${sidebarStatus})`]}
-        ml={{ base: 0, md: sidebarStatus }}
+        w={["100%", "100%", `calc(100% - 60px)`]}
+        ml={{ base: 0, md: "60px" }}
       >
         <Box w="100%" maxW="1920px" p="4" data-testid="sidebar">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.15, ease: "easeInOut" }}
           >
             {children}
           </motion.div>

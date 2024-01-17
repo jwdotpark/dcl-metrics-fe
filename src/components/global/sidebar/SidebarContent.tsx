@@ -60,7 +60,7 @@ const SidebarContent = ({
           <Link href={"/" + name} passHref legacyBehavior>
             <a>
               <NavItem
-                height="3rem"
+                height="2.5rem"
                 shadow={router.pathname === "/" + name && "md"}
                 icon={icon}
                 bg={
@@ -99,10 +99,13 @@ const SidebarContent = ({
       h="full"
       bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      borderRightColor={useColorModeValue("gray.300", "gray.700")}
+      shadow="lg"
       transition=".25s ease"
       {...rest}
+      zIndex="banner"
       overflow="clip"
+      onClick={handleSidebar}
     >
       <Flex
         align="center"

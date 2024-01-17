@@ -15,7 +15,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         borderRadius="lg"
         _hover={{
           bg: "gray.400",
-          color: "white",
+          color: "gray.50",
         }}
         cursor="pointer"
         role="group"
@@ -23,14 +23,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
       >
         {icon && (
           <Center px="2" py="4">
-            <Icon
-              as={icon}
-              mr="4"
-              fontSize="16"
-              _groupHover={{
-                color: "white",
-              }}
-            />
+            <Icon as={icon} mr="4" fontSize="16" />
           </Center>
         )}
         {children}
