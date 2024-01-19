@@ -8,6 +8,7 @@ import {
   FiUsers,
   FiUserPlus,
   FiCalendar,
+  FiZoomIn,
 } from "react-icons/fi"
 
 export const minorchangeTemplate = [
@@ -102,6 +103,21 @@ export const minorchangeTemplate = [
         icon: FiPackage,
         title: "Introduce Concurrent Users histogram globally and by scene",
         description: "",
+      },
+    ],
+  },
+  {
+    date: "2023 Q2",
+    contents: [
+      {
+        icon: FiZoomIn,
+        title: "More detailed parcel and scene-based metrics",
+        description: "Z-axis analytics",
+      },
+      {
+        icon: FiPackage,
+        title: "Advanced user analytics",
+        description: "Wearbles, POAPs, DAO Activity",
       },
     ],
   },
