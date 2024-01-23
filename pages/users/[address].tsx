@@ -20,6 +20,8 @@ import UserName from "../../src/components/local/stats/user/UserName"
 import UserWearables from "../../src/components/local/stats/user/UserWearables"
 import UserLand from "../../src/components/local/stats/user/UserLand"
 import UserEmotes from "../../src/components/local/stats/user/UserEmotes"
+import { useEffect, useState } from "react"
+import UserEvent from "../../src/components/local/stats/user/UserEvent"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -47,9 +49,17 @@ export async function getServerSideProps(context) {
       {}
     )
   } else if (isLocal) {
-    userAddressRes = staticUserAddress
-    nftRes = staticUserNFT
-    daoActivityRes = staticUserDAOActivity
+    // NOTE remove this
+    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
+    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
+    daoActivityRes = await getDataWithApiKey(
+      daoActivityUrl,
+      "users/" + address + "/dao_activity",
+      {}
+    )
+    //userAddressRes = staticUserAddress
+    //nftRes = staticUserNFT
+    //daoActivityRes = staticUserDAOActivity
   }
 
   return {
@@ -83,6 +93,23 @@ const SingleUserPage = (props) => {
     image: image,
   })
 
+  const userEvent = `https://events.decentraland.org/api/events?creator=${address}`
+
+  const [event, setEvent] = useState({})
+
+  const fetchUserEvent = async () => {
+    const req = await fetch(userEvent)
+    const res = await req.json()
+    if (res.ok) {
+      setEvent(res)
+    }
+  }
+
+  useEffect(() => {
+    fetchUserEvent()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       <NextSeo
@@ -108,7 +135,7 @@ const SingleUserPage = (props) => {
         {Object.keys(userAddressRes).length === 0 ? (
           <UserNotFound address={address} />
         ) : (
-          <Box fontSize={["md", "md"]}>
+          <Box fontSize="sm">
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserProfile data={userAddressRes} />
             </Grid>
@@ -127,6 +154,7 @@ const SingleUserPage = (props) => {
               <UserNFT data={nftRes} address={address} />
               <UserDAOActivity data={daoActivityRes} />
             </Grid>
+            <UserEvent event={event} userAddressRes={userAddressRes} />
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserTopScenes
                 address={address}
