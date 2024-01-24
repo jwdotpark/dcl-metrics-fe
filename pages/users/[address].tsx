@@ -95,7 +95,11 @@ const SingleUserPage = (props) => {
 
   const userEvent = `https://events.decentraland.org/api/events?creator=${address}`
 
-  const [event, setEvent] = useState({})
+  type Event = {
+    ok?: boolean
+    data?: any[]
+  }
+  const [event, setEvent] = useState<Event>({})
 
   const fetchUserEvent = async () => {
     const req = await fetch(userEvent)
@@ -154,7 +158,9 @@ const SingleUserPage = (props) => {
               <UserNFT data={nftRes} address={address} />
               <UserDAOActivity data={daoActivityRes} />
             </Grid>
-            <UserEvent event={event} userAddressRes={userAddressRes} />
+            {event.data && event.data.length > 0 && (
+              <UserEvent event={event} userAddressRes={userAddressRes} />
+            )}
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserTopScenes
                 address={address}

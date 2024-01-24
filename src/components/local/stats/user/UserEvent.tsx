@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/no-children-prop */
 import {
+  Button,
   Text,
   Image,
   Accordion,
@@ -15,6 +17,7 @@ import {
   Divider,
 } from "@chakra-ui/react"
 import ChakraUIRenderer from "chakra-ui-markdown-renderer"
+import { format } from "date-fns"
 import ReactMarkdown from "react-markdown"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
@@ -55,9 +58,44 @@ const UserEvent = ({ event, userAddressRes }: UserEventProps) => {
                           src={item.image}
                         />
                       </Box>
-                      <Center ml="4" textAlign="left" wordBreak="keep-all">
-                        <Text fontSize="sm">{item.name}</Text>
+                      <Center
+                        w="100%"
+                        ml="4"
+                        textAlign="left"
+                        wordBreak="keep-all"
+                      >
+                        <Flex w="100%" fontSize="sm">
+                          <Text>{item.name}</Text>
+                          <Spacer />
+                          <Box mr="2">
+                            {item.categories.map((category: string) => {
+                              return (
+                                <Button
+                                  key={category}
+                                  mr="2"
+                                  px="2"
+                                  py="-1"
+                                  borderRadius="full"
+                                  shadow="md"
+                                  size="xs"
+                                >
+                                  <Text
+                                    px="2"
+                                    fontSize="xs"
+                                    fontWeight="medium"
+                                  >
+                                    {category.toUpperCase()}
+                                  </Text>
+                                </Button>
+                              )
+                            })}
+                          </Box>
+                          <Text mr="2">
+                            {format(new Date(item.next_start_at), "yyyy MMM d")}
+                          </Text>
+                        </Flex>
                       </Center>
+
                       <Spacer />
                       <Center>
                         <AccordionIcon />
@@ -75,6 +113,9 @@ const UserEvent = ({ event, userAddressRes }: UserEventProps) => {
                         />
                       </Center>
                       <Flex direction="row">
+                        <Box>
+                          <Text>{}</Text>
+                        </Box>
                         <Box w="100%" mt="2">
                           <ReactMarkdown
                             components={ChakraUIRenderer()}
