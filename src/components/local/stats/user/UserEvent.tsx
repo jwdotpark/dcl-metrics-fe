@@ -1,24 +1,21 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable react/no-children-prop */
 import {
+  SimpleGrid,
+  ButtonGroup,
   Button,
   Text,
   Image,
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Box,
   Center,
   Flex,
   Spacer,
   Spinner,
-  Divider,
+  useColorModeValue,
+  IconButton,
 } from "@chakra-ui/react"
-import ChakraUIRenderer from "chakra-ui-markdown-renderer"
 import { format } from "date-fns"
-import ReactMarkdown from "react-markdown"
+import Link from "next/link"
+import { FiCalendar, FiHash } from "react-icons/fi"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 
@@ -32,6 +29,8 @@ const UserEvent = ({ event, userAddressRes }: UserEventProps) => {
   const { name } = userAddressRes
   let eventTable: JSX.Element
 
+  console.log(data)
+
   if (!event.ok) {
     eventTable = (
       <Center h="350px">
@@ -40,99 +39,95 @@ const UserEvent = ({ event, userAddressRes }: UserEventProps) => {
     )
   } else {
     eventTable = (
-      <Box m="0" mt="-2" mb="4">
-        {data.map((item) => {
-          return (
-            <>
-              <Accordion allowMultiple allowToggle defaultIndex={[1]}>
-                <AccordionItem key={item.name} border="none">
-                  <AccordionButton>
-                    <Flex w="100%">
-                      <Box>
-                        <Image
-                          w="auto"
-                          h="50px"
-                          borderRadius="md"
-                          objectFit="cover"
-                          alt={item.name}
-                          src={item.image}
-                        />
-                      </Box>
-                      <Center
-                        w="100%"
-                        ml="4"
-                        textAlign="left"
-                        wordBreak="keep-all"
-                      >
-                        <Flex w="100%" fontSize="sm">
-                          <Text>{item.name}</Text>
-                          <Spacer />
-                          <Box mr="2">
-                            {item.categories.map((category: string) => {
-                              return (
-                                <Button
-                                  key={category}
-                                  mr="2"
-                                  px="2"
-                                  py="-1"
-                                  borderRadius="full"
-                                  shadow="md"
-                                  size="xs"
-                                >
-                                  <Text
-                                    px="2"
-                                    fontSize="xs"
-                                    fontWeight="medium"
-                                  >
-                                    {category.toUpperCase()}
-                                  </Text>
-                                </Button>
-                              )
-                            })}
-                          </Box>
-                          <Text mr="2">
-                            {format(new Date(item.next_start_at), "yyyy MMM d")}
-                          </Text>
-                        </Flex>
+      <Box m="4">
+        <SimpleGrid columns={[1, 2]} spacing="4">
+          {data.map((event: any) => {
+            return (
+              <Box
+                key={event.name}
+                overflow="hidden"
+                bg={useColorModeValue("gray.50", "gray.900")}
+                border="1px"
+                borderColor={useColorModeValue("gray.100", "gray.700")}
+                borderRadius="xl"
+                shadow="md"
+                _hover={{
+                  shadow: useColorModeValue(
+                    "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
+                    "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+                  ),
+                }}
+                transition="box-shadow background-color 0.1s ease-in-out"
+              >
+                <Image objectFit="cover" alt={event.name} src={event.image} />
+                <Box m="4">
+                  <Text as="span" fontWeight="bold">
+                    {event.name}
+                  </Text>
+                  <Flex align="center" h="100%" mt="2">
+                    <Flex h="100%" dir="row">
+                      <Center sx={{ transform: "translateY(-1px)" }} mr="1">
+                        <FiCalendar />
                       </Center>
-
-                      <Spacer />
-                      <Center>
-                        <AccordionIcon />
-                      </Center>
+                      <Text as="span">
+                        {format(new Date(event.next_start_at), "yyyy MMM. d")}
+                      </Text>
+                      {event.scene_name && (
+                        <Text as="span" ml="1">
+                          @ <span>{event.scene_name}</span>
+                        </Text>
+                      )}
                     </Flex>
-                  </AccordionButton>
-                  <AccordionPanel pb={4}>
+                    <Spacer />
                     <Box>
-                      <Center mb="4" mx={[4, 8, 12, 16]}>
-                        <Image
-                          borderRadius="xl"
-                          objectFit="cover"
-                          alt={item.name}
-                          src={item.image}
-                        />
-                      </Center>
-                      <Flex direction="row">
-                        <Box>
-                          <Text>{}</Text>
-                        </Box>
-                        <Box w="100%" mt="2">
-                          <ReactMarkdown
-                            components={ChakraUIRenderer()}
-                            children={item.description}
-                            skipHtml
-                          />
-                        </Box>
-                      </Flex>
-                      <Divider my="4" />
+                      {event.categories.map((item) => {
+                        return (
+                          <ButtonGroup key={item} as="span" isAttached>
+                            <IconButton
+                              mx="-1"
+                              borderRadius="full"
+                              shadow="sm"
+                              aria-label={item}
+                              icon={<FiHash />}
+                              size="xs"
+                            />
+                            <Button
+                              mx="-1"
+                              borderRadius="full"
+                              shadow="sm"
+                              size="xs"
+                            >
+                              {item}
+                            </Button>
+                          </ButtonGroup>
+                        )
+                      })}
                     </Box>
-                  </AccordionPanel>
-                </AccordionItem>
-              </Accordion>
-              {/*<Box key={item.name}>{item.name}</Box>*/}
-            </>
-          )
-        })}
+                  </Flex>
+                </Box>
+                <ButtonGroup w="100%" p="4">
+                  <Box w="100%">
+                    <Link
+                      href={`https://decentraland.org/events/event/?id=${event.id}`}
+                      target="_blank"
+                    >
+                      <Button w="100%" shadow="md" size="sm">
+                        Event Page
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box w="100%">
+                    <Link href={event.url} target="_blank">
+                      <Button w="100%" shadow="md" size="sm">
+                        Join [{event.x}, {event.y}]
+                      </Button>
+                    </Link>
+                  </Box>
+                </ButtonGroup>
+              </Box>
+            )
+          })}
+        </SimpleGrid>
       </Box>
     )
   }
@@ -142,7 +137,7 @@ const UserEvent = ({ event, userAddressRes }: UserEventProps) => {
       <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
         <BoxTitle
           name={`User Event`}
-          description={`Event that is created by ${name}`}
+          description={`Event hosted by ${name}`}
           date=""
           avgData={[]}
           slicedData={{}}
