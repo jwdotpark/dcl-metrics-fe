@@ -29,6 +29,11 @@ import UserEmotes from "../../src/components/local/stats/user/UserEmotes"
 import { useEffect, useState } from "react"
 import UserEvent from "../../src/components/local/stats/user/UserEvent"
 
+type Event = {
+  ok?: boolean
+  data?: any[]
+}
+
 export async function getServerSideProps(context) {
   const { address } = context.query
 
@@ -60,12 +65,27 @@ export async function getServerSideProps(context) {
     daoActivityRes = staticUserDAOActivity
   }
 
+  let event: Event = {}
+  const eventUrl = `https://events.decentraland.org/api/events?creator=${address}`
+  const fetchUserEvent = async () => {
+    const req = await fetch(eventUrl)
+    const res = await req.json()
+    if (res.data.length > 0) {
+      event = res
+    } else {
+      event = null
+    }
+  }
+
+  fetchUserEvent()
+
   return {
     props: {
       address,
       userAddressRes,
       nftRes,
       daoActivityRes,
+      event,
     },
   }
 }
@@ -79,7 +99,7 @@ const SingleUserPage = (props) => {
     lg: 4,
     xl: 6,
   })
-  const { address, userAddressRes, nftRes, daoActivityRes } = props
+  const { address, userAddressRes, nftRes, daoActivityRes, event } = props
 
   const pageTitle = `DCL-Metrics User ${userAddressRes.name} Dashboard`
   const description = `${userAddressRes.name}, last seen on ${userAddressRes.last_seen}`
@@ -90,42 +110,6 @@ const SingleUserPage = (props) => {
     description: description,
     image: image,
   })
-
-  const userEvent = `https://events.decentraland.org/api/events?creator=${address}`
-
-  type Event = {
-    ok?: boolean
-    data?: any[]
-  }
-
-  const [event, setEvent] = useState<Event>({})
-
-  const fetchUserEvent = async () => {
-    const req = await fetch(userEvent)
-    const res = await req.json()
-    if (res.ok) {
-      setEvent(res)
-    }
-  }
-
-  let UserEventComponent: JSX.Element
-
-  if (event.ok) {
-    UserEventComponent = (
-      <UserEvent event={event} userAddressRes={userAddressRes} />
-    )
-  } else {
-    UserEventComponent = (
-      <Center h="350px">
-        <Spinner />
-      </Center>
-    )
-  }
-
-  useEffect(() => {
-    fetchUserEvent()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <>
@@ -171,6 +155,7 @@ const SingleUserPage = (props) => {
               <UserNFT data={nftRes} address={address} />
               <UserDAOActivity data={daoActivityRes} />
             </Grid>
+            {/*{UserEventComponent}*/}
             {event && event.data && event.data.length > 0 && (
               <UserEvent event={event} userAddressRes={userAddressRes} />
             )}
