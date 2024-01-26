@@ -5,13 +5,7 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import {
-  Box,
-  Center,
-  Grid,
-  Spinner,
-  useBreakpointValue,
-} from "@chakra-ui/react"
+import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
@@ -26,7 +20,6 @@ import UserName from "../../src/components/local/stats/user/UserName"
 import UserWearables from "../../src/components/local/stats/user/UserWearables"
 import UserLand from "../../src/components/local/stats/user/UserLand"
 import UserEmotes from "../../src/components/local/stats/user/UserEmotes"
-import { useEffect, useState } from "react"
 import UserEvent from "../../src/components/local/stats/user/UserEvent"
 
 type Event = {
