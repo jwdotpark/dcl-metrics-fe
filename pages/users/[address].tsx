@@ -5,7 +5,13 @@ import { isProd, isDev, isLocal } from "../../src/lib/data/constant"
 import staticUserAddress from "../../public/data/staticUserAddress.json"
 import staticUserNFT from "../../public/data/staticUserNFT.json"
 import staticUserDAOActivity from "../../public/data/staticUserDAOActivity.json"
-import { Box, Grid, useBreakpointValue } from "@chakra-ui/react"
+import {
+  Box,
+  Center,
+  Grid,
+  Spinner,
+  useBreakpointValue,
+} from "@chakra-ui/react"
 import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
@@ -49,17 +55,9 @@ export async function getServerSideProps(context) {
       {}
     )
   } else if (isLocal) {
-    // NOTE remove this
-    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
-    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
-    daoActivityRes = await getDataWithApiKey(
-      daoActivityUrl,
-      "users/" + address + "/dao_activity",
-      {}
-    )
-    //userAddressRes = staticUserAddress
-    //nftRes = staticUserNFT
-    //daoActivityRes = staticUserDAOActivity
+    userAddressRes = staticUserAddress
+    nftRes = staticUserNFT
+    daoActivityRes = staticUserDAOActivity
   }
 
   return {
@@ -99,6 +97,7 @@ const SingleUserPage = (props) => {
     ok?: boolean
     data?: any[]
   }
+
   const [event, setEvent] = useState<Event>({})
 
   const fetchUserEvent = async () => {
@@ -107,6 +106,20 @@ const SingleUserPage = (props) => {
     if (res.ok) {
       setEvent(res)
     }
+  }
+
+  let UserEventComponent: JSX.Element
+
+  if (event.ok) {
+    UserEventComponent = (
+      <UserEvent event={event} userAddressRes={userAddressRes} />
+    )
+  } else {
+    UserEventComponent = (
+      <Center h="350px">
+        <Spinner />
+      </Center>
+    )
   }
 
   useEffect(() => {
@@ -158,7 +171,7 @@ const SingleUserPage = (props) => {
               <UserNFT data={nftRes} address={address} />
               <UserDAOActivity data={daoActivityRes} />
             </Grid>
-            {event.data && event.data.length > 0 && (
+            {event && event.data && event.data.length > 0 && (
               <UserEvent event={event} userAddressRes={userAddressRes} />
             )}
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">

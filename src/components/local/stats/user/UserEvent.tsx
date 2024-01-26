@@ -15,21 +15,31 @@ import {
 } from "@chakra-ui/react"
 import { format } from "date-fns"
 import Link from "next/link"
-import { FiCalendar, FiHash } from "react-icons/fi"
+import { FiCalendar, FiTag } from "react-icons/fi"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 
 type UserEventProps = {
-  event: any
-  userAddressRes: any
+  event: {
+    ok?: boolean
+    data?: any[]
+  }
+  userAddressRes: {
+    address: string
+    name: string
+    avatar_url: string
+    first_seen: string
+    last_seen: string
+    guest: boolean
+    verified: boolean
+    dao_member: boolean
+  }
 }
 
 const UserEvent = ({ event, userAddressRes }: UserEventProps) => {
   const { data } = event
   const { name } = userAddressRes
   let eventTable: JSX.Element
-
-  console.log(data)
 
   if (!event.ok) {
     eventTable = (
@@ -82,22 +92,21 @@ const UserEvent = ({ event, userAddressRes }: UserEventProps) => {
                     <Box>
                       {event.categories.map((item) => {
                         return (
-                          <ButtonGroup key={item} as="span" isAttached>
+                          <ButtonGroup
+                            key={item}
+                            as="span"
+                            isAttached
+                            isDisabled
+                          >
                             <IconButton
-                              mx="-1"
                               borderRadius="full"
                               shadow="sm"
                               aria-label={item}
-                              icon={<FiHash />}
+                              icon={<FiTag />}
                               size="xs"
                             />
-                            <Button
-                              mx="-1"
-                              borderRadius="full"
-                              shadow="sm"
-                              size="xs"
-                            >
-                              {item}
+                            <Button borderRadius="full" shadow="sm" size="xs">
+                              {item.toUpperCase()}
                             </Button>
                           </ButtonGroup>
                         )
