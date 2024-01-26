@@ -8,10 +8,8 @@ import {
   Box,
   Center,
   Flex,
-  Spacer,
   Spinner,
   useColorModeValue,
-  IconButton,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
 import Link from "next/link"
@@ -88,24 +86,14 @@ const UserEvent = ({ event, userAddressRes }: UserEventProps) => {
                         </Text>
                       )}
                     </Flex>
-                    <Spacer />
-                    <Box>
+                    <Box ml="2">
                       {event.categories.map((item) => {
                         return (
-                          <ButtonGroup
-                            key={item}
-                            as="span"
-                            isAttached
-                            isDisabled
-                          >
-                            <IconButton
-                              borderRadius="full"
-                              shadow="sm"
-                              aria-label={item}
-                              icon={<FiTag />}
-                              size="xs"
-                            />
+                          <ButtonGroup key={item} as="span" isAttached>
                             <Button borderRadius="full" shadow="sm" size="xs">
+                              <Box mr="1">
+                                <FiTag />
+                              </Box>
                               {item.toUpperCase()}
                             </Button>
                           </ButtonGroup>

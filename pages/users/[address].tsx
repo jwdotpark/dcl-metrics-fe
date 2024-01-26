@@ -22,19 +22,15 @@ import UserLand from "../../src/components/local/stats/user/UserLand"
 import UserEmotes from "../../src/components/local/stats/user/UserEmotes"
 import UserEvent from "../../src/components/local/stats/user/UserEvent"
 
-type Event = {
-  ok?: boolean
-  data?: any[]
-}
-
 export async function getServerSideProps(context) {
   const { address } = context.query
 
-  let userAddressRes, nftRes, daoActivityRes
+  let userAddressRes, nftRes, daoActivityRes, event
 
   const addressUrl = `https://api.dcl-metrics.com/users/${address}`
   const nftsUrl = `https://api.dcl-metrics.com/users/${address}/nfts`
   const daoActivityUrl = `https://api.dcl-metrics.com/users/${address}/dao_activity`
+  const eventUrl = `https://events.decentraland.org/api/events?creator=${address}`
 
   if (isProd) {
     userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
@@ -58,19 +54,12 @@ export async function getServerSideProps(context) {
     daoActivityRes = staticUserDAOActivity
   }
 
-  let event: Event = {}
-  const eventUrl = `https://events.decentraland.org/api/events?creator=${address}`
   const fetchUserEvent = async () => {
     const req = await fetch(eventUrl)
     const res = await req.json()
-    if (res.data.length > 0) {
-      event = res
-    } else {
-      event = null
-    }
+    return res
   }
-
-  fetchUserEvent()
+  event = await fetchUserEvent()
 
   return {
     props: {
@@ -148,7 +137,6 @@ const SingleUserPage = (props) => {
               <UserNFT data={nftRes} address={address} />
               <UserDAOActivity data={daoActivityRes} />
             </Grid>
-            {/*{UserEventComponent}*/}
             {event && event.data && event.data.length > 0 && (
               <UserEvent event={event} userAddressRes={userAddressRes} />
             )}
