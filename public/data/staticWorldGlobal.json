@@ -1,0 +1,3512 @@
+[
+  {
+    "date": "2023-01-12",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 112,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-13",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 115,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-14",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 116,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-15",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 118,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-16",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 123,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-17",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 126,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-18",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 127,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-19",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 127,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-20",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 128,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-21",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 128,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-22",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 128,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-23",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 131,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-24",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 138,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-25",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 140,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-26",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 141,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-27",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 142,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-28",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 145,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-29",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 147,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-30",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 148,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-01-31",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 148,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-02-01",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 149,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-02-02",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 0,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 151,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-03",
+    "max_user_count": 2,
+    "avg_user_count": 0.8,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.8,
+    "total_world_count": 189,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-04",
+    "max_user_count": 3,
+    "avg_user_count": 0.8,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 189,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-05",
+    "max_user_count": 3,
+    "avg_user_count": 0.8,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.6,
+    "total_world_count": 190,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-06",
+    "max_user_count": 4,
+    "avg_user_count": 1.3,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.0,
+    "total_world_count": 190,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-07",
+    "max_user_count": 6,
+    "avg_user_count": 2.1,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 193,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-08",
+    "max_user_count": 5,
+    "avg_user_count": 1.0,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.9,
+    "total_world_count": 193,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-09",
+    "max_user_count": 5,
+    "avg_user_count": 1.2,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.0,
+    "total_world_count": 196,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-10",
+    "max_user_count": 3,
+    "avg_user_count": 0.8,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.8,
+    "total_world_count": 199,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-11",
+    "max_user_count": 3,
+    "avg_user_count": 0.4,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.3,
+    "total_world_count": 200,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-12",
+    "max_user_count": 3,
+    "avg_user_count": 1.5,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.3,
+    "total_world_count": 200,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-13",
+    "max_user_count": 3,
+    "avg_user_count": 1.5,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 200,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-14",
+    "max_user_count": 8,
+    "avg_user_count": 2.7,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.1,
+    "total_world_count": 202,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-15",
+    "max_user_count": 4,
+    "avg_user_count": 1.3,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.1,
+    "total_world_count": 205,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-16",
+    "max_user_count": 4,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 207,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-17",
+    "max_user_count": 13,
+    "avg_user_count": 2.7,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 210,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-18",
+    "max_user_count": 2,
+    "avg_user_count": 1.1,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.9,
+    "total_world_count": 210,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-19",
+    "max_user_count": 4,
+    "avg_user_count": 0.9,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.8,
+    "total_world_count": 210,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-20",
+    "max_user_count": 6,
+    "avg_user_count": 2.4,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 211,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-21",
+    "max_user_count": 9,
+    "avg_user_count": 3.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 214,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-22",
+    "max_user_count": 8,
+    "avg_user_count": 3.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.2,
+    "total_world_count": 216,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-23",
+    "max_user_count": 13,
+    "avg_user_count": 1.8,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.7,
+    "total_world_count": 216,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-24",
+    "max_user_count": 2,
+    "avg_user_count": 0.4,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.3,
+    "total_world_count": 218,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-25",
+    "max_user_count": 3,
+    "avg_user_count": 1.2,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.7,
+    "total_world_count": 218,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-26",
+    "max_user_count": 3,
+    "avg_user_count": 0.5,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 218,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-27",
+    "max_user_count": 7,
+    "avg_user_count": 1.9,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 219,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-28",
+    "max_user_count": 13,
+    "avg_user_count": 2.4,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 223,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-29",
+    "max_user_count": 20,
+    "avg_user_count": 2.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 226,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-30",
+    "max_user_count": 9,
+    "avg_user_count": 1.6,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 226,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-03-31",
+    "max_user_count": 8,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 226,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-01",
+    "max_user_count": 3,
+    "avg_user_count": 1.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.1,
+    "total_world_count": 226,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-02",
+    "max_user_count": 3,
+    "avg_user_count": 1.0,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.9,
+    "total_world_count": 226,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-03",
+    "max_user_count": 5,
+    "avg_user_count": 1.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.8,
+    "total_world_count": 226,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-04",
+    "max_user_count": 7,
+    "avg_user_count": 1.6,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.1,
+    "total_world_count": 226,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-05",
+    "max_user_count": 4,
+    "avg_user_count": 1.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 226,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-06",
+    "max_user_count": 4,
+    "avg_user_count": 1.7,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 227,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-07",
+    "max_user_count": 4,
+    "avg_user_count": 0.6,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.4,
+    "total_world_count": 227,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-08",
+    "max_user_count": 4,
+    "avg_user_count": 1.5,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.9,
+    "total_world_count": 228,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-09",
+    "max_user_count": 3,
+    "avg_user_count": 0.9,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.7,
+    "total_world_count": 229,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-10",
+    "max_user_count": 9,
+    "avg_user_count": 1.8,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.1,
+    "total_world_count": 230,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-11",
+    "max_user_count": 6,
+    "avg_user_count": 1.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 231,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-12",
+    "max_user_count": 4,
+    "avg_user_count": 1.5,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 232,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-13",
+    "max_user_count": 11,
+    "avg_user_count": 2.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 232,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-14",
+    "max_user_count": 13,
+    "avg_user_count": 3.3,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 232,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-15",
+    "max_user_count": 5,
+    "avg_user_count": 2.9,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 232,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-16",
+    "max_user_count": 5,
+    "avg_user_count": 2.1,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 232,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-17",
+    "max_user_count": 7,
+    "avg_user_count": 3.6,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 232,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-18",
+    "max_user_count": 6,
+    "avg_user_count": 2.4,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 232,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-19",
+    "max_user_count": 4,
+    "avg_user_count": 1.9,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 233,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-20",
+    "max_user_count": 6,
+    "avg_user_count": 3.1,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.5,
+    "total_world_count": 234,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-21",
+    "max_user_count": 4,
+    "avg_user_count": 2.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 234,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-22",
+    "max_user_count": 5,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 234,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-23",
+    "max_user_count": 3,
+    "avg_user_count": 1.5,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 234,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-24",
+    "max_user_count": 4,
+    "avg_user_count": 1.9,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.6,
+    "total_world_count": 234,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-25",
+    "max_user_count": 7,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 235,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-26",
+    "max_user_count": 3,
+    "avg_user_count": 1.2,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 236,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-27",
+    "max_user_count": 1,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.8,
+    "total_world_count": 237,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-28",
+    "max_user_count": 1,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 238,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-29",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.9,
+    "total_world_count": 239,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-04-30",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.8,
+    "total_world_count": 239,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-01",
+    "max_user_count": 6,
+    "avg_user_count": 0.6,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.6,
+    "total_world_count": 239,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-02",
+    "max_user_count": 3,
+    "avg_user_count": 0.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.0,
+    "total_world_count": 240,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-03",
+    "max_user_count": 1,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.3,
+    "total_world_count": 240,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-04",
+    "max_user_count": 2,
+    "avg_user_count": 1.1,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.0,
+    "total_world_count": 240,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-05",
+    "max_user_count": 2,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.8,
+    "total_world_count": 240,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-06",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.6,
+    "total_world_count": 241,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-07",
+    "max_user_count": 2,
+    "avg_user_count": 0.5,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 241,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-08",
+    "max_user_count": 2,
+    "avg_user_count": 0.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.8,
+    "total_world_count": 242,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-09",
+    "max_user_count": 4,
+    "avg_user_count": 1.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 242,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-10",
+    "max_user_count": 2,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.6,
+    "total_world_count": 242,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-11",
+    "max_user_count": 2,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 243,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-12",
+    "max_user_count": 2,
+    "avg_user_count": 1.1,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.3,
+    "total_world_count": 245,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-13",
+    "max_user_count": 1,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.3,
+    "total_world_count": 246,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-14",
+    "max_user_count": 1,
+    "avg_user_count": 0.3,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.0,
+    "total_world_count": 246,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-15",
+    "max_user_count": 4,
+    "avg_user_count": 0.6,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 248,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-16",
+    "max_user_count": 2,
+    "avg_user_count": 0.5,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 250,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-17",
+    "max_user_count": 1,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 251,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-18",
+    "max_user_count": 1,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 251,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-19",
+    "max_user_count": 4,
+    "avg_user_count": 0.5,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 254,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-20",
+    "max_user_count": 1,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 254,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-21",
+    "max_user_count": 1,
+    "avg_user_count": 0.3,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.3,
+    "total_world_count": 254,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-22",
+    "max_user_count": 1,
+    "avg_user_count": 0.4,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 254,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-23",
+    "max_user_count": 1,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.3,
+    "total_world_count": 255,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-24",
+    "max_user_count": 1,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.0,
+    "total_world_count": 255,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-25",
+    "max_user_count": 1,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 255,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-26",
+    "max_user_count": 1,
+    "avg_user_count": 0.3,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 256,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-27",
+    "max_user_count": 1,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.7,
+    "total_world_count": 256,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-28",
+    "max_user_count": 0,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.7,
+    "total_world_count": 256,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-29",
+    "max_user_count": 4,
+    "avg_user_count": 0.8,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 256,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-30",
+    "max_user_count": 2,
+    "avg_user_count": 0.4,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.1,
+    "total_world_count": 259,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-05-31",
+    "max_user_count": 2,
+    "avg_user_count": 0.6,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.6,
+    "total_world_count": 259,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-01",
+    "max_user_count": 1,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 259,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-02",
+    "max_user_count": 2,
+    "avg_user_count": 0.3,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 259,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-03",
+    "max_user_count": 2,
+    "avg_user_count": 0.9,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 260,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-04",
+    "max_user_count": 2,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 262,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-05",
+    "max_user_count": 2,
+    "avg_user_count": 0.3,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 262,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-06",
+    "max_user_count": 6,
+    "avg_user_count": 1.2,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.9,
+    "total_world_count": 262,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-07",
+    "max_user_count": 3,
+    "avg_user_count": 1.1,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.6,
+    "total_world_count": 264,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-08",
+    "max_user_count": 1,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 264,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-09",
+    "max_user_count": 2,
+    "avg_user_count": 0.3,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 264,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-10",
+    "max_user_count": 2,
+    "avg_user_count": 0.9,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 266,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-11",
+    "max_user_count": 1,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 268,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-12",
+    "max_user_count": 2,
+    "avg_user_count": 0.4,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.3,
+    "total_world_count": 268,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-13",
+    "max_user_count": 1,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 278,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-14",
+    "max_user_count": 1,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.1,
+    "total_world_count": 288,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-15",
+    "max_user_count": 1,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.1,
+    "total_world_count": 294,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-16",
+    "max_user_count": 3,
+    "avg_user_count": 0.8,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 301,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-17",
+    "max_user_count": 2,
+    "avg_user_count": 0.5,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 306,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-18",
+    "max_user_count": 1,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.1,
+    "total_world_count": 308,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-19",
+    "max_user_count": 1,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 310,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-20",
+    "max_user_count": 1,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 312,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-21",
+    "max_user_count": 1,
+    "avg_user_count": 0.0,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.0,
+    "total_world_count": 314,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-22",
+    "max_user_count": 2,
+    "avg_user_count": 0.2,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.2,
+    "total_world_count": 315,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-23",
+    "max_user_count": 2,
+    "avg_user_count": 0.3,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.3,
+    "total_world_count": 317,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-24",
+    "max_user_count": 1,
+    "avg_user_count": 0.1,
+    "max_occupied_worlds": 1,
+    "avg_occupied_worlds": 0.1,
+    "total_world_count": 315,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-25",
+    "max_user_count": 2,
+    "avg_user_count": 0.5,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 319,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-26",
+    "max_user_count": 19,
+    "avg_user_count": 2.3,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 321,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-27",
+    "max_user_count": 4,
+    "avg_user_count": 0.9,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.5,
+    "total_world_count": 322,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-28",
+    "max_user_count": 3,
+    "avg_user_count": 1.4,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.3,
+    "total_world_count": 323,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-29",
+    "max_user_count": 13,
+    "avg_user_count": 2.9,
+    "max_occupied_worlds": 8,
+    "avg_occupied_worlds": 2.1,
+    "total_world_count": 327,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-06-30",
+    "max_user_count": 10,
+    "avg_user_count": 3.9,
+    "max_occupied_worlds": 9,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 341,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-01",
+    "max_user_count": 7,
+    "avg_user_count": 2.8,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 345,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-02",
+    "max_user_count": 4,
+    "avg_user_count": 1.7,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 355,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-03",
+    "max_user_count": 6,
+    "avg_user_count": 2.8,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 357,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-04",
+    "max_user_count": 8,
+    "avg_user_count": 2.9,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 360,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-05",
+    "max_user_count": 6,
+    "avg_user_count": 3.4,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 362,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-06",
+    "max_user_count": 23,
+    "avg_user_count": 3.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.1,
+    "total_world_count": 364,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-07",
+    "max_user_count": 7,
+    "avg_user_count": 3.1,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 367,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-08",
+    "max_user_count": 5,
+    "avg_user_count": 1.9,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 373,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-09",
+    "max_user_count": 7,
+    "avg_user_count": 3.5,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.5,
+    "total_world_count": 378,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-10",
+    "max_user_count": 8,
+    "avg_user_count": 4.3,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.6,
+    "total_world_count": 381,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-11",
+    "max_user_count": 20,
+    "avg_user_count": 6.7,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.7,
+    "total_world_count": 391,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-12",
+    "max_user_count": 6,
+    "avg_user_count": 3.2,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.8,
+    "total_world_count": 397,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-13",
+    "max_user_count": 6,
+    "avg_user_count": 3.3,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 398,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-14",
+    "max_user_count": 8,
+    "avg_user_count": 4.5,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.8,
+    "total_world_count": 398,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-15",
+    "max_user_count": 6,
+    "avg_user_count": 4.2,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.3,
+    "total_world_count": 401,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-16",
+    "max_user_count": 5,
+    "avg_user_count": 3.1,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.5,
+    "total_world_count": 402,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-17",
+    "max_user_count": 7,
+    "avg_user_count": 3.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.5,
+    "total_world_count": 407,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-18",
+    "max_user_count": 25,
+    "avg_user_count": 6.3,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.1,
+    "total_world_count": 410,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-19",
+    "max_user_count": 14,
+    "avg_user_count": 7.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 4.0,
+    "total_world_count": 411,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-20",
+    "max_user_count": 11,
+    "avg_user_count": 5.3,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.8,
+    "total_world_count": 413,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-21",
+    "max_user_count": 8,
+    "avg_user_count": 3.6,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.6,
+    "total_world_count": 417,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-22",
+    "max_user_count": 6,
+    "avg_user_count": 2.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 417,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-23",
+    "max_user_count": 6,
+    "avg_user_count": 3.7,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.1,
+    "total_world_count": 419,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-24",
+    "max_user_count": 6,
+    "avg_user_count": 2.7,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 420,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-25",
+    "max_user_count": 8,
+    "avg_user_count": 3.8,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 421,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-26",
+    "max_user_count": 6,
+    "avg_user_count": 2.9,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.6,
+    "total_world_count": 425,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-27",
+    "max_user_count": 11,
+    "avg_user_count": 3.1,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.6,
+    "total_world_count": 427,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-28",
+    "max_user_count": 33,
+    "avg_user_count": 8.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.9,
+    "total_world_count": 430,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-29",
+    "max_user_count": 6,
+    "avg_user_count": 2.5,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 434,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-30",
+    "max_user_count": 3,
+    "avg_user_count": 1.1,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.7,
+    "total_world_count": 436,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-07-31",
+    "max_user_count": 10,
+    "avg_user_count": 3.6,
+    "max_occupied_worlds": 8,
+    "avg_occupied_worlds": 2.8,
+    "total_world_count": 440,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-01",
+    "max_user_count": 6,
+    "avg_user_count": 2.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 444,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-02",
+    "max_user_count": 5,
+    "avg_user_count": 2.6,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 444,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-03",
+    "max_user_count": 4,
+    "avg_user_count": 1.9,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 447,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-04",
+    "max_user_count": 7,
+    "avg_user_count": 3.0,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.2,
+    "total_world_count": 451,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-05",
+    "max_user_count": 3,
+    "avg_user_count": 1.3,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.9,
+    "total_world_count": 453,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-06",
+    "max_user_count": 4,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 454,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-07",
+    "max_user_count": 6,
+    "avg_user_count": 2.7,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.2,
+    "total_world_count": 455,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-08",
+    "max_user_count": 7,
+    "avg_user_count": 2.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 456,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-09",
+    "max_user_count": 5,
+    "avg_user_count": 2.6,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 460,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-10",
+    "max_user_count": 6,
+    "avg_user_count": 2.7,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 460,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-11",
+    "max_user_count": 7,
+    "avg_user_count": 3.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.8,
+    "total_world_count": 463,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-12",
+    "max_user_count": 5,
+    "avg_user_count": 2.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 465,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-13",
+    "max_user_count": 6,
+    "avg_user_count": 2.8,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.1,
+    "total_world_count": 466,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-14",
+    "max_user_count": 5,
+    "avg_user_count": 2.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.2,
+    "total_world_count": 471,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-15",
+    "max_user_count": 9,
+    "avg_user_count": 3.4,
+    "max_occupied_worlds": 8,
+    "avg_occupied_worlds": 2.8,
+    "total_world_count": 474,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-16",
+    "max_user_count": 6,
+    "avg_user_count": 3.7,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.2,
+    "total_world_count": 479,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-17",
+    "max_user_count": 8,
+    "avg_user_count": 4.0,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.5,
+    "total_world_count": 481,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-18",
+    "max_user_count": 5,
+    "avg_user_count": 2.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 482,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-19",
+    "max_user_count": 5,
+    "avg_user_count": 1.9,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.1,
+    "total_world_count": 484,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-20",
+    "max_user_count": 4,
+    "avg_user_count": 1.7,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 484,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-21",
+    "max_user_count": 8,
+    "avg_user_count": 2.9,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.6,
+    "total_world_count": 489,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-22",
+    "max_user_count": 8,
+    "avg_user_count": 5.8,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 4.1,
+    "total_world_count": 490,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-23",
+    "max_user_count": 8,
+    "avg_user_count": 4.1,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.9,
+    "total_world_count": 492,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-24",
+    "max_user_count": 5,
+    "avg_user_count": 1.4,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.0,
+    "total_world_count": 493,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-25",
+    "max_user_count": 4,
+    "avg_user_count": 1.5,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.0,
+    "total_world_count": 496,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-26",
+    "max_user_count": 4,
+    "avg_user_count": 1.7,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.7,
+    "total_world_count": 497,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-27",
+    "max_user_count": 5,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 499,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-28",
+    "max_user_count": 6,
+    "avg_user_count": 2.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 499,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-29",
+    "max_user_count": 26,
+    "avg_user_count": 3.3,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 501,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-30",
+    "max_user_count": 4,
+    "avg_user_count": 2.6,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 503,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-08-31",
+    "max_user_count": 6,
+    "avg_user_count": 2.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 503,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-01",
+    "max_user_count": 8,
+    "avg_user_count": 2.4,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 505,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-02",
+    "max_user_count": 5,
+    "avg_user_count": 1.9,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 505,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-03",
+    "max_user_count": 6,
+    "avg_user_count": 3.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.2,
+    "total_world_count": 506,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-04",
+    "max_user_count": 12,
+    "avg_user_count": 5.2,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 508,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-05",
+    "max_user_count": 10,
+    "avg_user_count": 4.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 514,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-06",
+    "max_user_count": 14,
+    "avg_user_count": 3.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 516,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-07",
+    "max_user_count": 5,
+    "avg_user_count": 1.4,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.9,
+    "total_world_count": 517,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-08",
+    "max_user_count": 4,
+    "avg_user_count": 1.9,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 520,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-09",
+    "max_user_count": 4,
+    "avg_user_count": 1.2,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 0.6,
+    "total_world_count": 521,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-10",
+    "max_user_count": 6,
+    "avg_user_count": 2.9,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.2,
+    "total_world_count": 526,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-11",
+    "max_user_count": 5,
+    "avg_user_count": 2.7,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 532,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-12",
+    "max_user_count": 8,
+    "avg_user_count": 2.5,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 533,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-13",
+    "max_user_count": 9,
+    "avg_user_count": 4.0,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 536,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-14",
+    "max_user_count": 4,
+    "avg_user_count": 2.3,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 538,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-15",
+    "max_user_count": 4,
+    "avg_user_count": 1.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.6,
+    "total_world_count": 539,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-16",
+    "max_user_count": 7,
+    "avg_user_count": 1.7,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 1.3,
+    "total_world_count": 539,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-17",
+    "max_user_count": 4,
+    "avg_user_count": 1.8,
+    "max_occupied_worlds": 2,
+    "avg_occupied_worlds": 1.2,
+    "total_world_count": 539,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-18",
+    "max_user_count": 7,
+    "avg_user_count": 2.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 539,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-19",
+    "max_user_count": 8,
+    "avg_user_count": 2.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 547,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-20",
+    "max_user_count": 6,
+    "avg_user_count": 1.7,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.4,
+    "total_world_count": 550,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-21",
+    "max_user_count": 8,
+    "avg_user_count": 4.6,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.1,
+    "total_world_count": 554,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-22",
+    "max_user_count": 8,
+    "avg_user_count": 3.7,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.8,
+    "total_world_count": 561,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-23",
+    "max_user_count": 4,
+    "avg_user_count": 2.3,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 561,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-24",
+    "max_user_count": 4,
+    "avg_user_count": 0.7,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 0.6,
+    "total_world_count": 562,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-25",
+    "max_user_count": 5,
+    "avg_user_count": 2.2,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 564,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-26",
+    "max_user_count": 6,
+    "avg_user_count": 3.5,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 570,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-27",
+    "max_user_count": 7,
+    "avg_user_count": 2.2,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 2.2,
+    "total_world_count": 571,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-28",
+    "max_user_count": 5,
+    "avg_user_count": 3.1,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 573,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-29",
+    "max_user_count": 5,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 575,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-09-30",
+    "max_user_count": 4,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 578,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-01",
+    "max_user_count": 4,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 579,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-02",
+    "max_user_count": 5,
+    "avg_user_count": 3.1,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 580,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-03",
+    "max_user_count": 8,
+    "avg_user_count": 3.2,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 581,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-04",
+    "max_user_count": 9,
+    "avg_user_count": 4.4,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.5,
+    "total_world_count": 582,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-05",
+    "max_user_count": 6,
+    "avg_user_count": 2.2,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 586,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-06",
+    "max_user_count": 27,
+    "avg_user_count": 9.9,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 587,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-07",
+    "max_user_count": 14,
+    "avg_user_count": 8.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 588,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-08",
+    "max_user_count": 14,
+    "avg_user_count": 6.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.5,
+    "total_world_count": 589,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-09",
+    "max_user_count": 10,
+    "avg_user_count": 6.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.9,
+    "total_world_count": 591,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-10",
+    "max_user_count": 32,
+    "avg_user_count": 8.2,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.7,
+    "total_world_count": 593,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-11",
+    "max_user_count": 7,
+    "avg_user_count": 4.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 596,
+    "dcl_world_count": 0,
+    "ens_world_count": 0
+  },
+  {
+    "date": "2023-10-12",
+    "max_user_count": 7,
+    "avg_user_count": 4.0,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.9,
+    "total_world_count": 599,
+    "dcl_world_count": 593,
+    "ens_world_count": 6
+  },
+  {
+    "date": "2023-10-13",
+    "max_user_count": 21,
+    "avg_user_count": 7.7,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.5,
+    "total_world_count": 601,
+    "dcl_world_count": 593,
+    "ens_world_count": 8
+  },
+  {
+    "date": "2023-10-14",
+    "max_user_count": 14,
+    "avg_user_count": 5.7,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 602,
+    "dcl_world_count": 593,
+    "ens_world_count": 9
+  },
+  {
+    "date": "2023-10-15",
+    "max_user_count": 10,
+    "avg_user_count": 4.2,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 604,
+    "dcl_world_count": 594,
+    "ens_world_count": 10
+  },
+  {
+    "date": "2023-10-16",
+    "max_user_count": 13,
+    "avg_user_count": 5.6,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.3,
+    "total_world_count": 609,
+    "dcl_world_count": 597,
+    "ens_world_count": 12
+  },
+  {
+    "date": "2023-10-17",
+    "max_user_count": 9,
+    "avg_user_count": 4.8,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.6,
+    "total_world_count": 612,
+    "dcl_world_count": 601,
+    "ens_world_count": 12
+  },
+  {
+    "date": "2023-10-18",
+    "max_user_count": 8,
+    "avg_user_count": 3.1,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.5,
+    "total_world_count": 615,
+    "dcl_world_count": 604,
+    "ens_world_count": 11
+  },
+  {
+    "date": "2023-10-19",
+    "max_user_count": 8,
+    "avg_user_count": 3.2,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 615,
+    "dcl_world_count": 604,
+    "ens_world_count": 11
+  },
+  {
+    "date": "2023-10-20",
+    "max_user_count": 12,
+    "avg_user_count": 4.2,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 619,
+    "dcl_world_count": 607,
+    "ens_world_count": 12
+  },
+  {
+    "date": "2023-10-21",
+    "max_user_count": 12,
+    "avg_user_count": 3.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.1,
+    "total_world_count": 621,
+    "dcl_world_count": 608,
+    "ens_world_count": 13
+  },
+  {
+    "date": "2023-10-22",
+    "max_user_count": 7,
+    "avg_user_count": 2.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.6,
+    "total_world_count": 621,
+    "dcl_world_count": 608,
+    "ens_world_count": 13
+  },
+  {
+    "date": "2023-10-23",
+    "max_user_count": 5,
+    "avg_user_count": 1.6,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 1.6,
+    "total_world_count": 625,
+    "dcl_world_count": 610,
+    "ens_world_count": 15
+  },
+  {
+    "date": "2023-10-24",
+    "max_user_count": 4,
+    "avg_user_count": 2.1,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 627,
+    "dcl_world_count": 612,
+    "ens_world_count": 15
+  },
+  {
+    "date": "2023-10-25",
+    "max_user_count": 6,
+    "avg_user_count": 3.0,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 631,
+    "dcl_world_count": 616,
+    "ens_world_count": 15
+  },
+  {
+    "date": "2023-10-26",
+    "max_user_count": 16,
+    "avg_user_count": 4.0,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 634,
+    "dcl_world_count": 619,
+    "ens_world_count": 15
+  },
+  {
+    "date": "2023-10-27",
+    "max_user_count": 9,
+    "avg_user_count": 4.4,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 635,
+    "dcl_world_count": 620,
+    "ens_world_count": 15
+  },
+  {
+    "date": "2023-10-28",
+    "max_user_count": 10,
+    "avg_user_count": 5.2,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 635,
+    "dcl_world_count": 620,
+    "ens_world_count": 15
+  },
+  {
+    "date": "2023-10-29",
+    "max_user_count": 8,
+    "avg_user_count": 3.4,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 637,
+    "dcl_world_count": 621,
+    "ens_world_count": 16
+  },
+  {
+    "date": "2023-10-30",
+    "max_user_count": 5,
+    "avg_user_count": 2.8,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 641,
+    "dcl_world_count": 624,
+    "ens_world_count": 17
+  },
+  {
+    "date": "2023-10-31",
+    "max_user_count": 7,
+    "avg_user_count": 3.2,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 648,
+    "dcl_world_count": 626,
+    "ens_world_count": 23
+  },
+  {
+    "date": "2023-11-01",
+    "max_user_count": 3,
+    "avg_user_count": 1.6,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.6,
+    "total_world_count": 649,
+    "dcl_world_count": 627,
+    "ens_world_count": 22
+  },
+  {
+    "date": "2023-11-02",
+    "max_user_count": 7,
+    "avg_user_count": 3.4,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 649,
+    "dcl_world_count": 627,
+    "ens_world_count": 22
+  },
+  {
+    "date": "2023-11-03",
+    "max_user_count": 8,
+    "avg_user_count": 4.6,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 4.2,
+    "total_world_count": 649,
+    "dcl_world_count": 627,
+    "ens_world_count": 22
+  },
+  {
+    "date": "2023-11-04",
+    "max_user_count": 12,
+    "avg_user_count": 5.5,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.6,
+    "total_world_count": 651,
+    "dcl_world_count": 628,
+    "ens_world_count": 23
+  },
+  {
+    "date": "2023-11-05",
+    "max_user_count": 8,
+    "avg_user_count": 5.3,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.8,
+    "total_world_count": 651,
+    "dcl_world_count": 628,
+    "ens_world_count": 23
+  },
+  {
+    "date": "2023-11-06",
+    "max_user_count": 10,
+    "avg_user_count": 5.6,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.7,
+    "total_world_count": 653,
+    "dcl_world_count": 630,
+    "ens_world_count": 23
+  },
+  {
+    "date": "2023-11-07",
+    "max_user_count": 8,
+    "avg_user_count": 4.4,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.1,
+    "total_world_count": 657,
+    "dcl_world_count": 633,
+    "ens_world_count": 24
+  },
+  {
+    "date": "2023-11-08",
+    "max_user_count": 17,
+    "avg_user_count": 6.4,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 663,
+    "dcl_world_count": 639,
+    "ens_world_count": 24
+  },
+  {
+    "date": "2023-11-09",
+    "max_user_count": 23,
+    "avg_user_count": 10.2,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 665,
+    "dcl_world_count": 640,
+    "ens_world_count": 25
+  },
+  {
+    "date": "2023-11-10",
+    "max_user_count": 33,
+    "avg_user_count": 18.7,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.3,
+    "total_world_count": 666,
+    "dcl_world_count": 641,
+    "ens_world_count": 25
+  },
+  {
+    "date": "2023-11-11",
+    "max_user_count": 18,
+    "avg_user_count": 12.3,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.5,
+    "total_world_count": 665,
+    "dcl_world_count": 640,
+    "ens_world_count": 25
+  },
+  {
+    "date": "2023-11-12",
+    "max_user_count": 14,
+    "avg_user_count": 8.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.3,
+    "total_world_count": 665,
+    "dcl_world_count": 640,
+    "ens_world_count": 25
+  },
+  {
+    "date": "2023-11-13",
+    "max_user_count": 15,
+    "avg_user_count": 10.1,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 666,
+    "dcl_world_count": 641,
+    "ens_world_count": 25
+  },
+  {
+    "date": "2023-11-14",
+    "max_user_count": 22,
+    "avg_user_count": 9.5,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.1,
+    "total_world_count": 667,
+    "dcl_world_count": 642,
+    "ens_world_count": 25
+  },
+  {
+    "date": "2023-11-15",
+    "max_user_count": 25,
+    "avg_user_count": 11.7,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 2.2,
+    "total_world_count": 668,
+    "dcl_world_count": 642,
+    "ens_world_count": 26
+  },
+  {
+    "date": "2023-11-16",
+    "max_user_count": 33,
+    "avg_user_count": 23.3,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.6,
+    "total_world_count": 669,
+    "dcl_world_count": 643,
+    "ens_world_count": 26
+  },
+  {
+    "date": "2023-11-17",
+    "max_user_count": 35,
+    "avg_user_count": 20.1,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 670,
+    "dcl_world_count": 644,
+    "ens_world_count": 26
+  },
+  {
+    "date": "2023-11-18",
+    "max_user_count": 25,
+    "avg_user_count": 15.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 673,
+    "dcl_world_count": 645,
+    "ens_world_count": 28
+  },
+  {
+    "date": "2023-11-19",
+    "max_user_count": 26,
+    "avg_user_count": 13.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.8,
+    "total_world_count": 676,
+    "dcl_world_count": 646,
+    "ens_world_count": 30
+  },
+  {
+    "date": "2023-11-20",
+    "max_user_count": 28,
+    "avg_user_count": 11.6,
+    "max_occupied_worlds": 9,
+    "avg_occupied_worlds": 3.3,
+    "total_world_count": 677,
+    "dcl_world_count": 647,
+    "ens_world_count": 30
+  },
+  {
+    "date": "2023-11-21",
+    "max_user_count": 16,
+    "avg_user_count": 7.1,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.5,
+    "total_world_count": 679,
+    "dcl_world_count": 649,
+    "ens_world_count": 30
+  },
+  {
+    "date": "2023-11-22",
+    "max_user_count": 14,
+    "avg_user_count": 7.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 681,
+    "dcl_world_count": 650,
+    "ens_world_count": 31
+  },
+  {
+    "date": "2023-11-23",
+    "max_user_count": 12,
+    "avg_user_count": 7.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 680,
+    "dcl_world_count": 650,
+    "ens_world_count": 30
+  },
+  {
+    "date": "2023-11-24",
+    "max_user_count": 18,
+    "avg_user_count": 10.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 4.3,
+    "total_world_count": 682,
+    "dcl_world_count": 652,
+    "ens_world_count": 30
+  },
+  {
+    "date": "2023-11-25",
+    "max_user_count": 12,
+    "avg_user_count": 5.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 683,
+    "dcl_world_count": 652,
+    "ens_world_count": 31
+  },
+  {
+    "date": "2023-11-26",
+    "max_user_count": 10,
+    "avg_user_count": 5.4,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.3,
+    "total_world_count": 683,
+    "dcl_world_count": 652,
+    "ens_world_count": 31
+  },
+  {
+    "date": "2023-11-27",
+    "max_user_count": 86,
+    "avg_user_count": 29.0,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.6,
+    "total_world_count": 686,
+    "dcl_world_count": 654,
+    "ens_world_count": 32
+  },
+  {
+    "date": "2023-11-28",
+    "max_user_count": 73,
+    "avg_user_count": 52.5,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.6,
+    "total_world_count": 693,
+    "dcl_world_count": 657,
+    "ens_world_count": 36
+  },
+  {
+    "date": "2023-11-29",
+    "max_user_count": 81,
+    "avg_user_count": 37.5,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 4.6,
+    "total_world_count": 698,
+    "dcl_world_count": 659,
+    "ens_world_count": 39
+  },
+  {
+    "date": "2023-11-30",
+    "max_user_count": 50,
+    "avg_user_count": 9.8,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.8,
+    "total_world_count": 699,
+    "dcl_world_count": 660,
+    "ens_world_count": 39
+  },
+  {
+    "date": "2023-12-01",
+    "max_user_count": 70,
+    "avg_user_count": 27.9,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.5,
+    "total_world_count": 702,
+    "dcl_world_count": 662,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-02",
+    "max_user_count": 57,
+    "avg_user_count": 36.7,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.9,
+    "total_world_count": 702,
+    "dcl_world_count": 662,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-03",
+    "max_user_count": 34,
+    "avg_user_count": 24.6,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.4,
+    "total_world_count": 704,
+    "dcl_world_count": 664,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-04",
+    "max_user_count": 10,
+    "avg_user_count": 5.6,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 704,
+    "dcl_world_count": 664,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-05",
+    "max_user_count": 13,
+    "avg_user_count": 8.3,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.8,
+    "total_world_count": 705,
+    "dcl_world_count": 665,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-06",
+    "max_user_count": 11,
+    "avg_user_count": 6.6,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.6,
+    "total_world_count": 706,
+    "dcl_world_count": 666,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-07",
+    "max_user_count": 13,
+    "avg_user_count": 7.5,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.6,
+    "total_world_count": 708,
+    "dcl_world_count": 668,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-08",
+    "max_user_count": 13,
+    "avg_user_count": 7.5,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.1,
+    "total_world_count": 709,
+    "dcl_world_count": 669,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-09",
+    "max_user_count": 13,
+    "avg_user_count": 8.9,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.4,
+    "total_world_count": 709,
+    "dcl_world_count": 669,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-10",
+    "max_user_count": 17,
+    "avg_user_count": 7.1,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.9,
+    "total_world_count": 710,
+    "dcl_world_count": 670,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-11",
+    "max_user_count": 13,
+    "avg_user_count": 8.6,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.8,
+    "total_world_count": 710,
+    "dcl_world_count": 670,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-12",
+    "max_user_count": 13,
+    "avg_user_count": 6.9,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.4,
+    "total_world_count": 711,
+    "dcl_world_count": 671,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-13",
+    "max_user_count": 13,
+    "avg_user_count": 7.0,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 711,
+    "dcl_world_count": 671,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-14",
+    "max_user_count": 23,
+    "avg_user_count": 10.1,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 4.3,
+    "total_world_count": 712,
+    "dcl_world_count": 672,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-15",
+    "max_user_count": 14,
+    "avg_user_count": 9.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 714,
+    "dcl_world_count": 674,
+    "ens_world_count": 40
+  },
+  {
+    "date": "2023-12-16",
+    "max_user_count": 11,
+    "avg_user_count": 7.5,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 714,
+    "dcl_world_count": 673,
+    "ens_world_count": 41
+  },
+  {
+    "date": "2023-12-17",
+    "max_user_count": 15,
+    "avg_user_count": 8.7,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.9,
+    "total_world_count": 715,
+    "dcl_world_count": 674,
+    "ens_world_count": 41
+  },
+  {
+    "date": "2023-12-18",
+    "max_user_count": 17,
+    "avg_user_count": 9.1,
+    "max_occupied_worlds": 8,
+    "avg_occupied_worlds": 3.7,
+    "total_world_count": 717,
+    "dcl_world_count": 676,
+    "ens_world_count": 41
+  },
+  {
+    "date": "2023-12-19",
+    "max_user_count": 9,
+    "avg_user_count": 5.6,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 721,
+    "dcl_world_count": 679,
+    "ens_world_count": 42
+  },
+  {
+    "date": "2023-12-20",
+    "max_user_count": 16,
+    "avg_user_count": 8.3,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.9,
+    "total_world_count": 720,
+    "dcl_world_count": 678,
+    "ens_world_count": 42
+  },
+  {
+    "date": "2023-12-21",
+    "max_user_count": 47,
+    "avg_user_count": 7.8,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.5,
+    "total_world_count": 723,
+    "dcl_world_count": 681,
+    "ens_world_count": 42
+  },
+  {
+    "date": "2023-12-22",
+    "max_user_count": 10,
+    "avg_user_count": 5.3,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 726,
+    "dcl_world_count": 684,
+    "ens_world_count": 42
+  },
+  {
+    "date": "2023-12-23",
+    "max_user_count": 7,
+    "avg_user_count": 4.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 726,
+    "dcl_world_count": 684,
+    "ens_world_count": 42
+  },
+  {
+    "date": "2023-12-24",
+    "max_user_count": 10,
+    "avg_user_count": 5.5,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 733,
+    "dcl_world_count": 688,
+    "ens_world_count": 45
+  },
+  {
+    "date": "2023-12-25",
+    "max_user_count": 9,
+    "avg_user_count": 5.2,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 733,
+    "dcl_world_count": 688,
+    "ens_world_count": 45
+  },
+  {
+    "date": "2023-12-26",
+    "max_user_count": 8,
+    "avg_user_count": 5.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 734,
+    "dcl_world_count": 689,
+    "ens_world_count": 45
+  },
+  {
+    "date": "2023-12-27",
+    "max_user_count": 9,
+    "avg_user_count": 5.4,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 734,
+    "dcl_world_count": 689,
+    "ens_world_count": 45
+  },
+  {
+    "date": "2023-12-28",
+    "max_user_count": 14,
+    "avg_user_count": 5.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 737,
+    "dcl_world_count": 691,
+    "ens_world_count": 46
+  },
+  {
+    "date": "2023-12-29",
+    "max_user_count": 25,
+    "avg_user_count": 11.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 739,
+    "dcl_world_count": 692,
+    "ens_world_count": 47
+  },
+  {
+    "date": "2023-12-30",
+    "max_user_count": 16,
+    "avg_user_count": 12.3,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 739,
+    "dcl_world_count": 693,
+    "ens_world_count": 46
+  },
+  {
+    "date": "2023-12-31",
+    "max_user_count": 15,
+    "avg_user_count": 10.2,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 741,
+    "dcl_world_count": 695,
+    "ens_world_count": 46
+  },
+  {
+    "date": "2024-01-01",
+    "max_user_count": 12,
+    "avg_user_count": 7.5,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.6,
+    "total_world_count": 741,
+    "dcl_world_count": 695,
+    "ens_world_count": 46
+  },
+  {
+    "date": "2024-01-02",
+    "max_user_count": 18,
+    "avg_user_count": 8.1,
+    "max_occupied_worlds": 3,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 743,
+    "dcl_world_count": 697,
+    "ens_world_count": 46
+  },
+  {
+    "date": "2024-01-03",
+    "max_user_count": 18,
+    "avg_user_count": 10.6,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.9,
+    "total_world_count": 747,
+    "dcl_world_count": 701,
+    "ens_world_count": 46
+  },
+  {
+    "date": "2024-01-04",
+    "max_user_count": 15,
+    "avg_user_count": 10.5,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.6,
+    "total_world_count": 747,
+    "dcl_world_count": 701,
+    "ens_world_count": 46
+  },
+  {
+    "date": "2024-01-05",
+    "max_user_count": 17,
+    "avg_user_count": 9.6,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 753,
+    "dcl_world_count": 705,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-06",
+    "max_user_count": 14,
+    "avg_user_count": 8.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 756,
+    "dcl_world_count": 708,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-07",
+    "max_user_count": 14,
+    "avg_user_count": 8.4,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 756,
+    "dcl_world_count": 708,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-08",
+    "max_user_count": 12,
+    "avg_user_count": 6.9,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.0,
+    "total_world_count": 758,
+    "dcl_world_count": 709,
+    "ens_world_count": 49
+  },
+  {
+    "date": "2024-01-09",
+    "max_user_count": 11,
+    "avg_user_count": 6.5,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 757,
+    "dcl_world_count": 709,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-10",
+    "max_user_count": 17,
+    "avg_user_count": 8.3,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.8,
+    "total_world_count": 759,
+    "dcl_world_count": 711,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-11",
+    "max_user_count": 15,
+    "avg_user_count": 7.1,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.4,
+    "total_world_count": 761,
+    "dcl_world_count": 713,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-12",
+    "max_user_count": 13,
+    "avg_user_count": 6.5,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 763,
+    "dcl_world_count": 715,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-13",
+    "max_user_count": 9,
+    "avg_user_count": 4.9,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.2,
+    "total_world_count": 763,
+    "dcl_world_count": 715,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-14",
+    "max_user_count": 10,
+    "avg_user_count": 5.3,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.0,
+    "total_world_count": 764,
+    "dcl_world_count": 716,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-15",
+    "max_user_count": 10,
+    "avg_user_count": 3.8,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.9,
+    "total_world_count": 765,
+    "dcl_world_count": 717,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-16",
+    "max_user_count": 9,
+    "avg_user_count": 4.0,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.8,
+    "total_world_count": 764,
+    "dcl_world_count": 716,
+    "ens_world_count": 48
+  },
+  {
+    "date": "2024-01-17",
+    "max_user_count": 13,
+    "avg_user_count": 8.5,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 4.1,
+    "total_world_count": 768,
+    "dcl_world_count": 719,
+    "ens_world_count": 49
+  },
+  {
+    "date": "2024-01-18",
+    "max_user_count": 12,
+    "avg_user_count": 6.5,
+    "max_occupied_worlds": 7,
+    "avg_occupied_worlds": 3.9,
+    "total_world_count": 768,
+    "dcl_world_count": 719,
+    "ens_world_count": 49
+  },
+  {
+    "date": "2024-01-19",
+    "max_user_count": 99,
+    "avg_user_count": 14.2,
+    "max_occupied_worlds": 8,
+    "avg_occupied_worlds": 4.1,
+    "total_world_count": 769,
+    "dcl_world_count": 720,
+    "ens_world_count": 49
+  },
+  {
+    "date": "2024-01-20",
+    "max_user_count": 9,
+    "avg_user_count": 5.6,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 769,
+    "dcl_world_count": 720,
+    "ens_world_count": 49
+  },
+  {
+    "date": "2024-01-21",
+    "max_user_count": 8,
+    "avg_user_count": 3.3,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.5,
+    "total_world_count": 771,
+    "dcl_world_count": 722,
+    "ens_world_count": 49
+  },
+  {
+    "date": "2024-01-22",
+    "max_user_count": 12,
+    "avg_user_count": 5.0,
+    "max_occupied_worlds": 6,
+    "avg_occupied_worlds": 3.2,
+    "total_world_count": 771,
+    "dcl_world_count": 722,
+    "ens_world_count": 49
+  },
+  {
+    "date": "2024-01-23",
+    "max_user_count": 14,
+    "avg_user_count": 3.3,
+    "max_occupied_worlds": 5,
+    "avg_occupied_worlds": 2.3,
+    "total_world_count": 776,
+    "dcl_world_count": 725,
+    "ens_world_count": 51
+  },
+  {
+    "date": "2024-01-24",
+    "max_user_count": 5,
+    "avg_user_count": 2.1,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 1.7,
+    "total_world_count": 778,
+    "dcl_world_count": 727,
+    "ens_world_count": 51
+  },
+  {
+    "date": "2024-01-25",
+    "max_user_count": 5,
+    "avg_user_count": 3.7,
+    "max_occupied_worlds": 4,
+    "avg_occupied_worlds": 2.7,
+    "total_world_count": 778,
+    "dcl_world_count": 727,
+    "ens_world_count": 51
+  }
+]
