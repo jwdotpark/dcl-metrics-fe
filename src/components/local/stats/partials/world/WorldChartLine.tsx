@@ -15,8 +15,6 @@ import {
 import { TitleHolder } from "./TitleHolder"
 
 const WorldChartLine = ({ data }: any) => {
-  console.log(data)
-
   const chartMargin = {
     top: 0,
     right: 0,
