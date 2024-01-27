@@ -33,8 +33,8 @@ const WorldChartLine = ({ data }: any) => {
       }}
       itemStyle={{
         fontSize: "12px",
-        fontWeight: "medium",
-        lineHeight: "10px",
+        fontWeight: "bold",
+        lineHeight: "7px",
       }}
       wrapperStyle={{
         fontSize: "12px",
