@@ -1,10 +1,12 @@
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import staticWorldGlobal from "../../../../../public/data/staticWorldGlobal.json"
 import WorldChartLine from "../partials/world/WorldChartLine"
 
-const WorldStat = () => {
-  console.log(staticWorldGlobal)
+type WorldStatProps = {
+  worldGlobalRes: any
+}
+
+const WorldStat = ({ worldGlobalRes }: WorldStatProps) => {
   return (
     <BoxWrapper colSpan={[4, 4, 4, 4, 2]}>
       <BoxTitle
@@ -17,7 +19,7 @@ const WorldStat = () => {
         line={{}}
         setLine={() => {}}
       />
-      <WorldChartLine data={staticWorldGlobal} />
+      <WorldChartLine data={worldGlobalRes} />
     </BoxWrapper>
   )
 }

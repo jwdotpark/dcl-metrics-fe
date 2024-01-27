@@ -1,7 +1,8 @@
 import Layout from "../src/components/layout/layout"
-import { isLocal, worldURL } from "../src/lib/data/constant"
+import { isLocal, worldURL, worldGlobalURL } from "../src/lib/data/constant"
 import { getDataWithApiKey } from "../src/lib/data/fetch"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
+import staticWorldGlobal from "../public/data/staticWorldGlobal.json"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
@@ -13,17 +14,23 @@ export async function getServerSideProps() {
   if (!isLocal) {
     const worldCurrentRes = await getDataWithApiKey(
       worldURL,
-      "/world/current",
+      "/worlds/current",
       staticWorldCurrent
     )
+    const worldGlobalRes = await getDataWithApiKey(
+      worldGlobalURL,
+      "/worlds/global",
+      staticWorldGlobal
+    )
 
-    const result = { worldCurrentRes }
+    const result = { worldCurrentRes, worldGlobalRes }
     return {
       props: result,
     }
   } else {
     const worldCurrentRes = staticWorldCurrent
-    const result = { worldCurrentRes }
+    const worldGlobalRes = staticWorldGlobal
+    const result = { worldCurrentRes, worldGlobalRes }
     return {
       props: result,
     }
@@ -31,7 +38,7 @@ export async function getServerSideProps() {
 }
 
 const World = (props: Props) => {
-  const { worldCurrentRes } = props
+  const { worldCurrentRes, worldGlobalRes } = props
 
   const pageTitle = "DCL-Metrics World Data"
   const description =
@@ -65,7 +72,7 @@ const World = (props: Props) => {
         }}
       />
       <Layout>
-        <WorldChart />
+        <WorldChart worldGlobalRes={worldGlobalRes} />
         <Box mb="4" />
         <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={false} />
         <Box mb="4" />
