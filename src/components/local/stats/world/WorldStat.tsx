@@ -9,7 +9,7 @@ const WorldStat = ({ worldCurrentRes, isMainPage }) => {
   return (
     <BoxWrapper colSpan={[4, 4, 4, 4, 2]}>
       <BoxTitle
-        name="Concurrent Decentraland Worlds Metrics"
+        name="Concurrent Worlds Metrics"
         description=""
         date={""}
         avgData={undefined}
