@@ -8,13 +8,15 @@ import {
   CartesianGrid,
   Tooltip,
   Brush,
-  AreaChart,
-  Area,
+  //AreaChart,
+  //Area,
   ResponsiveContainer,
 } from "recharts"
 import { TitleHolder } from "./TitleHolder"
 
 const WorldChartLine = ({ data }: any) => {
+  console.log(data)
+
   const chartMargin = {
     top: 0,
     right: 0,
@@ -58,10 +60,10 @@ const WorldChartLine = ({ data }: any) => {
         title="Total World Count"
         description="Total count of DCL, ENS and both worlds"
       />
-      <ResponsiveContainer width="100%" height={150}>
+      <ResponsiveContainer width="100%" height={200}>
         <LineChart
           width={150}
-          height={150}
+          height={200}
           data={data}
           syncId="anyId"
           margin={chartMargin}
@@ -114,13 +116,13 @@ const WorldChartLine = ({ data }: any) => {
         </LineChart>
       </ResponsiveContainer>
       <TitleHolder
-        title="Max User Count"
-        description="Total number of users in the world at the same time"
+        title="User Count"
+        description="Total and average number of users in the world at the same time"
       />
-      <ResponsiveContainer width="100%" height={150}>
-        <AreaChart
+      <ResponsiveContainer width="100%" height={200}>
+        <LineChart
           width={500}
-          height={150}
+          height={200}
           data={data}
           syncId="anyId"
           margin={chartMargin}
@@ -143,61 +145,33 @@ const WorldChartLine = ({ data }: any) => {
             tick={{ fill: AxisFontColor }}
           />
           {ToolTipComponent}
-          <Area
+          <Line
             type="monotone"
             dataKey="max_user_count"
             stroke="#8884d8"
+            strokeWidth={2}
             fill="#8884d8"
             dot={false}
           />
-        </AreaChart>
-      </ResponsiveContainer>
-      <TitleHolder
-        title="Average User Count"
-        description="Average number of users in the world"
-      />
-      <ResponsiveContainer width="100%" height={150}>
-        <AreaChart
-          width={500}
-          height={150}
-          data={data}
-          syncId="anyId"
-          margin={chartMargin}
-        >
-          <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
-          <XAxis
-            dataKey="date"
-            fontSize="10px"
-            style={{ fontWeight: "medium" }}
-            tickFormatter={(tick) => {
-              const date = new Date(tick)
-              return format(date, "MM/dd")
-            }}
-            tick={{ fill: AxisFontColor }}
-          />
-          <YAxis
-            fontSize="10px"
-            style={{ fontWeight: "medium" }}
-            tick={{ fill: AxisFontColor }}
-          />
-          {ToolTipComponent}
-          <Area
+          <Line
             data={data}
             type="monotone"
             dataKey="avg_user_count"
             stroke="#82ca9d"
+            strokeWidth={2}
             fill="#82ca9d"
+            dot={false}
           />
-        </AreaChart>
+        </LineChart>
       </ResponsiveContainer>
       <TitleHolder
-        title="Average Occupied Worlds"
-        description="Average number of occupied worlds"
+        title="Occupied Worlds"
+        description="Total and average number of occupied worlds"
       />
-      <ResponsiveContainer width="100%" height={150}>
-        <AreaChart
+      <ResponsiveContainer width="100%" height={200}>
+        <LineChart
           width={500}
-          height={150}
+          height={200}
           data={data}
           syncId="anyId"
           margin={chartMargin}
@@ -219,11 +193,20 @@ const WorldChartLine = ({ data }: any) => {
             tick={{ fill: AxisFontColor }}
           />
           {ToolTipComponent}
-          <Area
+          <Line
+            type="monotone"
+            dataKey="max_occupied_worlds"
+            stroke="#C53030"
+            strokeWidth={2}
+            fill="#C53030"
+            dot={false}
+          />
+          <Line
             type="monotone"
             dataKey="avg_occupied_worlds"
-            stroke="#C53030"
-            fill="#C53030"
+            stroke="#805AD5"
+            strokeWidth={2}
+            fill="#805AD5"
             dot={false}
           />
           <Brush
@@ -238,7 +221,7 @@ const WorldChartLine = ({ data }: any) => {
               return format(date, "MMM dd")
             }}
           />
-        </AreaChart>
+        </LineChart>
       </ResponsiveContainer>
     </Box>
   )
