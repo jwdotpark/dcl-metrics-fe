@@ -66,6 +66,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-table": "^7.8.0",
     "react-tile-map": "^0.3.3",
+    "recharts": "^2.10.4",
     "remark-external-links": "^9.0.1",
     "remark-gfm": "^3.0.1",
     "remark-smartypants": "^2.0.0",

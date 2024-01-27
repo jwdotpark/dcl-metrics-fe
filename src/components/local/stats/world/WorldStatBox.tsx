@@ -23,8 +23,8 @@ const WorldStatItem = ({ value, label, description }) => {
           as="span"
           fontSize={
             typeof value === "number"
-              ? ["xl", "xl", "3xl", "4xl"]
-              : ["sm", "lg", "4xl"]
+              ? ["xl", "xl", "2xl", "3xl"]
+              : ["sm", "lg", "2xl"]
           }
           fontWeight="semibold"
         >
@@ -32,7 +32,7 @@ const WorldStatItem = ({ value, label, description }) => {
         </Text>
       </Box>
       <Box py="2">
-        <Text color="gray.500" fontSize={["xs", "sm"]}>
+        <Text mt="2" color="gray.500" fontSize="xs">
           {description}
         </Text>
       </Box>

@@ -1,0 +1,247 @@
+import { Box, useColorModeValue } from "@chakra-ui/react"
+import { format } from "date-fns"
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Brush,
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+} from "recharts"
+import { TitleHolder } from "./TitleHolder"
+
+const WorldChartLine = ({ data }: any) => {
+  const chartMargin = {
+    top: 0,
+    right: 0,
+    left: -30,
+    bottom: 0,
+  }
+  const AxisFontColor = useColorModeValue("#000", "#fff")
+
+  const ToolTipComponent = (
+    <Tooltip
+      contentStyle={{
+        borderRadius: "10px",
+        boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+        backgroundColor: useColorModeValue("#fff", "#171923"),
+        borderColor: useColorModeValue("#fff", "#171923"),
+      }}
+      itemStyle={{
+        fontSize: "12px",
+        fontWeight: "medium",
+        lineHeight: "10px",
+      }}
+      wrapperStyle={{
+        fontSize: "12px",
+      }}
+      labelStyle={{
+        fontSize: "14px",
+        fontWeight: "bold",
+        color: AxisFontColor,
+        marginBottom: "4px",
+      }}
+      labelFormatter={(label) => {
+        const date = new Date(label)
+        return format(date, "yyyy MMMM d")
+      }}
+    />
+  )
+
+  return (
+    <Box m="4">
+      <TitleHolder
+        title="Total World Count"
+        description="Total count of DCL, ENS and both worlds"
+      />
+      <ResponsiveContainer width="100%" height={150}>
+        <LineChart
+          width={150}
+          height={150}
+          data={data}
+          syncId="anyId"
+          margin={chartMargin}
+        >
+          <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+          <XAxis
+            dataKey="date"
+            fontSize="10px"
+            style={{
+              fontWeight: "medium",
+            }}
+            tick={{ fill: AxisFontColor }}
+            tickFormatter={(tick) => {
+              const date = new Date(tick)
+              return format(date, "MM/dd")
+            }}
+          />
+          <YAxis
+            dataKey="total_world_count"
+            fontSize="10px"
+            style={{ fontWeight: "medium" }}
+            tick={{ fill: AxisFontColor }}
+          />
+          {ToolTipComponent}
+          <Line
+            type="monotone"
+            dataKey="total_world_count"
+            stroke="#6272A4"
+            fill="#6272A4"
+            strokeWidth={2}
+            strokeLinejoin="bevel"
+            dot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey="dcl_world_count"
+            strokeWidth={2}
+            stroke="#FF5555"
+            fill="#FF5555"
+            dot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey="ens_world_count"
+            stroke="#BD93F9"
+            fill="#BD93F9"
+            strokeWidth={2}
+            dot={false}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+      <TitleHolder
+        title="Max User Count"
+        description="Total number of users in the world at the same time"
+      />
+      <ResponsiveContainer width="100%" height={150}>
+        <AreaChart
+          width={500}
+          height={150}
+          data={data}
+          syncId="anyId"
+          margin={chartMargin}
+        >
+          <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+          <XAxis
+            dataKey="date"
+            fontSize="10px"
+            style={{ fontWeight: "medium" }}
+            tickFormatter={(tick) => {
+              const date = new Date(tick)
+              return format(date, "MM/dd")
+            }}
+            tick={{ fill: AxisFontColor }}
+          />
+          <YAxis
+            dataKey="max_user_count"
+            fontSize="10px"
+            style={{ fontWeight: "medium" }}
+            tick={{ fill: AxisFontColor }}
+          />
+          {ToolTipComponent}
+          <Area
+            type="monotone"
+            dataKey="max_user_count"
+            stroke="#8884d8"
+            fill="#8884d8"
+            dot={false}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+      <TitleHolder
+        title="Average User Count"
+        description="Average number of users in the world"
+      />
+      <ResponsiveContainer width="100%" height={150}>
+        <AreaChart
+          width={500}
+          height={150}
+          data={data}
+          syncId="anyId"
+          margin={chartMargin}
+        >
+          <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+          <XAxis
+            dataKey="date"
+            fontSize="10px"
+            style={{ fontWeight: "medium" }}
+            tickFormatter={(tick) => {
+              const date = new Date(tick)
+              return format(date, "MM/dd")
+            }}
+            tick={{ fill: AxisFontColor }}
+          />
+          <YAxis
+            fontSize="10px"
+            style={{ fontWeight: "medium" }}
+            tick={{ fill: AxisFontColor }}
+          />
+          {ToolTipComponent}
+          <Area
+            data={data}
+            type="monotone"
+            dataKey="avg_user_count"
+            stroke="#82ca9d"
+            fill="#82ca9d"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+      <TitleHolder
+        title="Average Occupied Worlds"
+        description="Average number of occupied worlds"
+      />
+      <ResponsiveContainer width="100%" height={150}>
+        <AreaChart
+          width={500}
+          height={150}
+          data={data}
+          syncId="anyId"
+          margin={chartMargin}
+        >
+          <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+          <XAxis
+            dataKey="date"
+            fontSize="10px"
+            style={{ fontWeight: "medium" }}
+            tickFormatter={(tick) => {
+              const date = new Date(tick)
+              return format(date, "MM/dd")
+            }}
+            tick={{ fill: AxisFontColor }}
+          />
+          <YAxis
+            fontSize="10px"
+            style={{ fontWeight: "medium" }}
+            tick={{ fill: AxisFontColor }}
+          />
+          {ToolTipComponent}
+          <Area
+            type="monotone"
+            dataKey="avg_occupied_worlds"
+            stroke="#C53030"
+            fill="#C53030"
+            dot={false}
+          />
+          <Brush
+            dataKey="date"
+            height={30}
+            travellerWidth={10}
+            stroke={useColorModeValue("#718096", "#EDF2F7")}
+            fill={useColorModeValue("#EDF2F7", "#4A5568")}
+            fillOpacity={0.5}
+            tickFormatter={(tick) => {
+              const date = new Date(tick)
+              return format(date, "MMM dd")
+            }}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </Box>
+  )
+}
+
+export default WorldChartLine

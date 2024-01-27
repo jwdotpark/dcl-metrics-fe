@@ -1,7 +1,7 @@
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticWorldGlobal from "../../../../../public/data/staticWorldGlobal.json"
-import { Box } from "@chakra-ui/react"
+import WorldChartLine from "../partials/world/WorldChartLine"
 
 const WorldStat = () => {
   console.log(staticWorldGlobal)
@@ -9,7 +9,7 @@ const WorldStat = () => {
     <BoxWrapper colSpan={[4, 4, 4, 4, 2]}>
       <BoxTitle
         name="World Trends"
-        description="World Trends description"
+        description="Historical trends of DCL and ENS worlds"
         date={""}
         avgData={undefined}
         slicedData={() => {}}
@@ -17,7 +17,7 @@ const WorldStat = () => {
         line={{}}
         setLine={() => {}}
       />
-      <Box></Box>
+      <WorldChartLine data={staticWorldGlobal} />
     </BoxWrapper>
   )
 }
