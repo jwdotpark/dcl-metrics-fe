@@ -152,7 +152,6 @@ const WorldChartLine = ({ data }: any) => {
             dot={false}
           />
           <Line
-            data={data}
             type="monotone"
             dataKey="avg_user_count"
             stroke="#82ca9d"
