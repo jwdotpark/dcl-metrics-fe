@@ -7,6 +7,7 @@ import { NextSeo } from "next-seo"
 import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
 import WorldStat from "../src/components/local/stats/world/WorldStat"
 import { Box } from "@chakra-ui/react"
+import WorldChart from "../src/components/local/stats/world/WorldChart"
 
 export async function getServerSideProps() {
   if (!isLocal) {
@@ -64,9 +65,11 @@ const World = (props: Props) => {
         }}
       />
       <Layout>
+        <WorldChart />
+        <Box mb="4" />
         <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={false} />
         <Box mb="4" />
-        <WorldCurrentTop worldCurrentRes={worldCurrentRes} pageSize={25} />
+        <WorldCurrentTop worldCurrentRes={worldCurrentRes} pageSize={10} />
       </Layout>
     </>
   )
