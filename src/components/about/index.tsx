@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
+  Image,
   Box,
   useColorModeValue,
   Center,
@@ -8,13 +9,14 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react"
+import Link from "next/link"
 import BoxWrapper from "../layout/local/BoxWrapper"
 
 const AboutList = () => {
   return (
     <BoxWrapper colSpan={0}>
       <Box
-        minH="calc(100vh - 7rem)"
+        //minH="calc(100vh - 7rem)"
         px="4"
         bg={useColorModeValue(
           "linear-gradient(322deg, rgba(250,146,248,1) 0%, rgba(145,198,252,1) 49%, rgba(241,246,252,1) 100%)",
@@ -23,7 +25,9 @@ const AboutList = () => {
         bgSize="cover"
         borderRadius="xl"
       >
-        <Center minH="calc(100vh - 7rem)">
+        <Center
+        //minH="calc(100vh - 7rem)"
+        >
           <Container
             sx={{ backdropFilter: "blur(5px)" }}
             maxW={"8xl"}
@@ -89,6 +93,48 @@ const AboutList = () => {
                   )
                 })}
               </Flex>
+              <Flex
+                as="section"
+                zIndex="2"
+                align="start"
+                justify="between"
+                direction={{ base: "column", md: "row" }}
+                my={{ base: "1.5rem", md: "2.5rem" }}
+                pb={8}
+                borderColor={useColorModeValue("gray.600", "gray.400")}
+                borderBottom="1px solid"
+              >
+                {linkList.map((link) => {
+                  return (
+                    <Box
+                      key={link.id}
+                      w={{ base: "100%", md: 1 / 3 }}
+                      mb={{ base: "6", md: "0" }}
+                      px={{ md: "0.5rem" }}
+                    >
+                      {link.icon}
+                      <Text
+                        mt={3}
+                        mb={1}
+                        color={useColorModeValue("gray.700", "gray.100")}
+                        fontWeight="700"
+                        textAlign="left"
+                      >
+                        {link.title}
+                      </Text>
+                      <Text
+                        mt={3}
+                        mb={1}
+                        color={useColorModeValue("gray.700", "gray.100")}
+                        fontSize="0.875rem"
+                        textAlign="left"
+                      >
+                        {link.desc}
+                      </Text>
+                    </Box>
+                  )
+                })}
+              </Flex>
             </Box>
           </Container>
         </Center>
@@ -98,6 +144,41 @@ const AboutList = () => {
 }
 
 export default AboutList
+
+export const linkList = [
+  {
+    id: 1,
+    title: (
+      <Link href="https://github.com/DCL-Metrics" target="_blank">
+        Github
+      </Link>
+    ),
+    desc: "Our repository, housing both Frontend and Backend code, is publicly accessible and open for contributions.",
+    icon: (
+      <Box w="50px">
+        <Image alt="github logo" src="/github-logo.png" />
+      </Box>
+    ),
+  },
+  {
+    id: 2,
+    title: (
+      <Link href="https://decentraland.org/dao/" target="_blank">
+        Decentraland DAO
+      </Link>
+    ),
+    desc: "Our organization receives support from Decentraland DAO; plase refer to their page for comprehensive information.",
+    icon: (
+      <Box
+        sx={{ filter: "grayscale(100%)", transform: "translateY(-5px)" }}
+        w="60px"
+        h="50px"
+      >
+        <Image alt="github logo" src="/decentraland_bw.png" />
+      </Box>
+    ),
+  },
+]
 
 export const featuresList = [
   {
