@@ -7,7 +7,7 @@ const BottomLegend = ({ description, link }) => {
       <Text color="gray.400" fontSize="xs">
         {description}
       </Text>
-      <Link href={link} target="_bkank">
+      <Link href={link} target="_blank">
         <Text
           ml="1"
           color={useColorModeValue("blue.400", "blue.200")}

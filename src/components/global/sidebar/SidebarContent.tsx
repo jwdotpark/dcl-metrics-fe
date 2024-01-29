@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import {
+  Image as ChakraImage,
   Box,
   useColorModeValue,
   Flex,
@@ -8,6 +9,7 @@ import {
   Spacer,
   Text,
   BoxProps,
+  Center,
 } from "@chakra-ui/react"
 import Image from "next/image"
 import Link from "next/link"
@@ -148,7 +150,19 @@ const SidebarContent = ({
           />
         ))}
         <Spacer />
-        <ToolTip label={sidebarOpen ? "Collapse" : "Expand"}>
+        <Link href="https://decentraland.org/dao/" target="_blank">
+          <Center sx={{ transform: "translateY(20px)" }}>
+            <ChakraImage
+              alt="DAO logo"
+              //src="/DAO_logo.png"
+              src={useColorModeValue(
+                "/DAO_logo_light.png",
+                "DAO_logo_dark.png"
+              )}
+            />
+          </Center>
+        </Link>
+        {/*<ToolTip label={sidebarOpen ? "Collapse" : "Expand"}>
           <Box display={{ base: "none", md: "block" }}>
             <NavItem
               height="3rem"
@@ -159,7 +173,7 @@ const SidebarContent = ({
               <Text>Collapse</Text>
             </NavItem>
           </Box>
-        </ToolTip>
+        </ToolTip>*/}
       </Flex>
     </Box>
   )
