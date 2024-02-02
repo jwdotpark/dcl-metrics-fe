@@ -1,4 +1,4 @@
-import ApiLayout from "../../src/components/api-docs/ApiLayout"
+import ApiLayout from "../../src/components/docs/ApiLayout"
 import ApiExample from "../../src/components/local/api/ApiExample"
 import { getApiLists } from "../../markdown/helpers/post"
 import { useState } from "react"

@@ -1,4 +1,4 @@
-import ApiLayout from "../../src/components/api-docs/ApiLayout"
+import ApiLayout from "../../src/components/docs/ApiLayout"
 import { useRouter } from "next/router"
 import { getApiLists } from "../../markdown/helpers/post"
 import { useState } from "react"

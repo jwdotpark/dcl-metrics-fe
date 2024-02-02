@@ -11,7 +11,7 @@ const SingleListItem = ({
 }) => {
   return (
     <Link
-      href={`/api-docs/${item.data.category}-${item.data.title}`}
+      href={`/docs/${item.data.category}-${item.data.title}`}
       key={item.data.title}
       scroll={false}
     >
@@ -32,10 +32,12 @@ const SingleListItem = ({
           setItemIndex(i)
         }}
       >
-        <Text fontSize="lg" fontWeight="semibold">
+        <Text fontSize="md" fontWeight="semibold">
           {item.data.title}
         </Text>
-        <Text as="kbd">{item.data.description}</Text>
+        <Text as="kbd" fontSize="sm">
+          {item.data.description}
+        </Text>
       </ListItem>
     </Link>
   )
