@@ -3,7 +3,7 @@ import ApiExample from "../../src/components/local/api/ApiExample"
 import { getApiLists } from "../../markdown/helpers/post"
 import { useState } from "react"
 
-export const getStaticProps = () => {
+export const getServerSideProps = async () => {
   const apiList = getApiLists()
 
   apiList
@@ -13,14 +13,13 @@ export const getStaticProps = () => {
     .reverse()
 
   return {
-    props: {
-      apiList,
-    },
+    props: { apiList },
   }
 }
 
 const API = ({ children, apiList }) => {
   const [selectedItem, setSelectedItem] = useState(apiList[0])
+
   return (
     <ApiLayout
       selectedItem={selectedItem}

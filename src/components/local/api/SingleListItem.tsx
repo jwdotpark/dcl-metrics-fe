@@ -11,7 +11,7 @@ const SingleListItem = ({
 }) => {
   return (
     <Link
-      href={`/docs/${item.data.category}-${item.data.title}`}
+      href={`/docs/${item.data.category}/${item.data.title}`}
       key={item.data.title}
       scroll={false}
     >
@@ -30,6 +30,9 @@ const SingleListItem = ({
         onClick={() => {
           setSelectedItem(item)
           setItemIndex(i)
+          //router.push(
+          //  `/docs?category=${item.data.category}&subcategory=${item.data.title}`
+          //)
         }}
       >
         <Text fontSize="md" fontWeight="semibold">

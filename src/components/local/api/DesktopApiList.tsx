@@ -16,12 +16,12 @@ const DesktopApiList = ({
           return (
             <Box key={category}>
               <Box>
-                <Text my="4" fontSize="4xl" fontWeight="bold">
+                <Text fontSize="xl" fontWeight="bold">
                   {category.toUpperCase()}
                 </Text>
               </Box>
 
-              <List spacing={4}>
+              <List spacing={2}>
                 {data.map((item) => {
                   if (item.data.category === category) {
                     return (
@@ -37,7 +37,7 @@ const DesktopApiList = ({
                   }
                 })}
               </List>
-              <Divider my="4" />
+              <Divider my="2" />
             </Box>
           )
         })}
