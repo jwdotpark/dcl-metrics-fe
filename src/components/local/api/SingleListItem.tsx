@@ -30,13 +30,10 @@ const SingleListItem = ({
         onClick={() => {
           setSelectedItem(item)
           setItemIndex(i)
-          //router.push(
-          //  `/docs?category=${item.data.category}&subcategory=${item.data.title}`
-          //)
         }}
       >
         <Text fontSize="md" fontWeight="semibold">
-          {item.data.title}
+          {item.data.title.charAt(0).toUpperCase() + item.data.title.slice(1)}
         </Text>
         <Text as="kbd" fontSize="sm">
           {item.data.description}
