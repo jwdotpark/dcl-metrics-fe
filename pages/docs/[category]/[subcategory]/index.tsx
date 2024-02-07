@@ -2,6 +2,7 @@ import ApiLayout from "../../../../src/components/docs/ApiLayout"
 import ApiExample from "../../../../src/components/local/api/ApiExample"
 import { getApiLists } from "../../../../markdown/helpers/post"
 import { useState } from "react"
+import { useRouter } from "next/router"
 
 export const getServerSideProps = async ({ resolvedUrl }) => {
   const apiList = getApiLists()
@@ -22,11 +23,18 @@ export const getServerSideProps = async ({ resolvedUrl }) => {
 }
 
 const APIPage = ({ apiList, category, subcategory }) => {
+  const router = useRouter()
   const article = apiList.find(
     (item) => item.data.category === category && item.data.title === subcategory
   )
 
   const [selectedItem, setSelectedItem] = useState(article)
+
+  // if article is not found, redirect to 404
+  if (!article) {
+    router.push("/docs")
+    return null
+  }
 
   return (
     <ApiLayout
