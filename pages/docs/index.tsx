@@ -3,7 +3,7 @@ import ApiExample from "../../src/components/local/api/ApiExample"
 import { getApiLists } from "../../markdown/helpers/post"
 import { useState } from "react"
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const apiList = getApiLists()
 
   apiList
