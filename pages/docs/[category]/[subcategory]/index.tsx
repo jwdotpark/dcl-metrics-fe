@@ -30,7 +30,6 @@ const APIPage = ({ apiList, category, subcategory }) => {
 
   const [selectedItem, setSelectedItem] = useState(article)
 
-  // if article is not found, redirect to 404
   if (!article) {
     router.push("/docs")
     return null
