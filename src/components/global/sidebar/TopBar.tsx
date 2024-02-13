@@ -20,7 +20,6 @@ import { isMobile } from "../../../lib/hooks/utils"
 
 const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
   const router = useRouter()
-  console.log(!isMobile())
 
   return (
     <Flex
