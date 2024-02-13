@@ -6,11 +6,9 @@ import { useState } from "react"
 export const getStaticProps = async () => {
   const apiList = getApiLists()
 
-  apiList
-    .sort((a, b) => {
-      return b.data.issue - a.data.issue
-    })
-    .reverse()
+  //apiList.sort((a, b) => {
+  //  return a.data.issue - b.data.issue
+  //})
 
   return {
     props: { apiList },

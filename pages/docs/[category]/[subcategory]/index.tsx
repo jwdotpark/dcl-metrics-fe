@@ -7,11 +7,9 @@ import { useRouter } from "next/router"
 export const getServerSideProps = async ({ resolvedUrl }) => {
   const apiList = getApiLists()
 
-  apiList
-    .sort((a, b) => {
-      return b.data.issue - a.data.issue
-    })
-    .reverse()
+  apiList.sort((a, b) => {
+    return a.data.issue - b.data.issue
+  })
 
   const urlArray = resolvedUrl.split("/")
   const category = urlArray[2]
