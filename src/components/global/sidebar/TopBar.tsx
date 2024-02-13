@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-// @ts-nocheck
 import {
   Text,
   Box,
@@ -9,20 +8,20 @@ import {
   HStack,
   Spacer,
   Button,
+  Center,
 } from "@chakra-ui/react"
-import Image from "next/image"
 import { FiMenu } from "react-icons/fi"
 import ColorButton from "../ColorButton"
 import FeedbackButton from "../FeedbackButton"
-//import LogOutButton from "../LogOutButton"
-//import PrivateDashboardButton from "../PrivateDashboardButton"
 import SettingsButton from "../SettingsButton"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { isMobile } from "../../../lib/hooks/utils"
 
 const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
   const router = useRouter()
-  //const auth = JSON.parse(localStorage.getItem("auth"))
+  console.log(!isMobile())
+
   return (
     <Flex
       align="center"
@@ -42,6 +41,7 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
         aria-label="open menu"
         icon={<FiMenu />}
         onClick={onOpen}
+        size="sm"
         variant="outline"
       />
       <Box
@@ -52,9 +52,10 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
       >
         <HStack>
           <Box ml={[2, 0]} shadow="md">
-            <Image width="26" height="26" alt="logo" src={"/images/logo.png"} />
+            {/*<Image width="26" height="26" alt="logo" src={"/images/logo.png"} />*/}
           </Box>
           <Text
+            display="none"
             fontSize="20px"
             fontWeight="extrabold"
             css={{ transform: "translateY(-1px)" }}
@@ -64,34 +65,28 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
           </Text>
         </HStack>
       </Box>
-      {
-        <Box display={["none", "block"]}>
-          <Box display="inline-block">
-            <Link href={`/blog/${psa?.slug}`} target="_blank">
-              <Text>
-                <Button variant="link">
-                  <Text color={useColorModeValue("#000", "#fff")}>
-                    {psa?.data?.description}
-                  </Text>
-                </Button>
-              </Text>
-            </Link>
-          </Box>
+      <Box display={"block"}>
+        <Box display="inline-block">
+          <Link href={`/blog/${psa?.slug}`} target="_blank">
+            <Text>
+              <Button variant="link">
+                <Text ml="2" color={useColorModeValue("#000", "#fff")}>
+                  {isMobile()
+                    ? psa?.data?.description.slice(0, 30) + ".."
+                    : psa?.data?.description}
+                </Text>
+              </Button>
+            </Text>
+          </Link>
         </Box>
-      }
+      </Box>
+
       <Spacer />
-      <HStack spacing={[-4, -1, 0, 1, 2]}>
-        {/*{auth && (
-          <>
-            <PrivateDashboardButton />
-            <LogOutButton />
-          </>
-        )}*/}
-        <Spacer />
+      <Center>
         {router.pathname === "/" && <SettingsButton />}
         <FeedbackButton />
         <ColorButton />
-      </HStack>
+      </Center>
     </Flex>
   )
 }

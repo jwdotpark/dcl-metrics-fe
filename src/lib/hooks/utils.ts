@@ -5,6 +5,11 @@ export const isServer = () => {
   return typeof window === "undefined"
 }
 
+export const isMobile = () => {
+  if (isServer()) return false
+  return window.innerWidth < 500
+}
+
 export const convertSeconds = (seconds: number) => {
   const duration = moment.duration(seconds, "seconds")
   const days = duration.days()

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 import {
   Image as ChakraImage,
@@ -14,10 +15,10 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi"
 import { sidebarList } from "../sidebarList"
 import NavItem from "./NavItem"
 import ToolTip from "../../layout/local/ToolTip"
+import { isMobile, isServer } from "../../../lib/hooks/utils"
 
 interface SidebarProps extends BoxProps {
   onClose: () => void
@@ -50,14 +51,13 @@ const SidebarContent = ({
       }
     }
 
-    const isMobile = () => {
-      if (typeof window !== "undefined") {
-        return window.innerWidth < 768
-      }
+    const capitalize = (s: string) => {
+      if (typeof s !== "string") return ""
+      return s.charAt(0).toUpperCase() + s.slice(1)
     }
 
     return (
-      <ToolTip label={!sidebarOpen && !isMobile() && label}>
+      <ToolTip label={!sidebarOpen && isServer() && label}>
         <Box ml={sidebarOpen && subItem && "4"}>
           <Link href={"/" + name} passHref legacyBehavior>
             <a>
@@ -67,7 +67,6 @@ const SidebarContent = ({
                 icon={icon}
                 bg={
                   router.pathname === "/" + name &&
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
                   useColorModeValue("gray.200", "gray.700")
                 }
                 overflow="hidden"
@@ -81,10 +80,7 @@ const SidebarContent = ({
                   fontSize="md"
                   fontWeight="medium"
                 >
-                  {isMobile() &&
-                    setItemName(name).slice(0, 1).toUpperCase() +
-                      setItemName(name).slice(1)}
-                  {sidebarOpen && setItemName(name)}
+                  {capitalize(setItemName(name))}
                 </Text>
               </NavItem>
             </a>
@@ -112,13 +108,14 @@ const SidebarContent = ({
       <Flex
         align="center"
         justify="space-between"
-        h="20"
+        mt="3"
+        mb="5"
         ml="4"
         cursor="pointer"
       >
         <Link href="/" passHref legacyBehavior>
           <HStack>
-            <Box sx={{ transform: "translateY(-3px)" }} shadow="md">
+            <Box shadow="md">
               <Image
                 width="26"
                 height="26"
@@ -150,30 +147,19 @@ const SidebarContent = ({
           />
         ))}
         <Spacer />
-        <Link href="https://decentraland.org/dao/" target="_blank">
-          <Center sx={{ transform: "translateY(20px)" }}>
-            <ChakraImage
-              alt="DAO logo"
-              //src="/DAO_logo.png"
-              src={useColorModeValue(
-                "/DAO_logo_light.png",
-                "DAO_logo_dark.png"
-              )}
-            />
-          </Center>
-        </Link>
-        {/*<ToolTip label={sidebarOpen ? "Collapse" : "Expand"}>
-          <Box display={{ base: "none", md: "block" }}>
-            <NavItem
-              height="3rem"
-              icon={sidebarOpen ? FiArrowLeftCircle : FiArrowRightCircle}
-              onClick={handleSidebar}
-              overflow="hidden"
-            >
-              <Text>Collapse</Text>
-            </NavItem>
-          </Box>
-        </ToolTip>*/}
+        {!isMobile() && (
+          <Link href="https://decentraland.org/dao/" target="_blank">
+            <Center sx={{ transform: "translateY(20px)" }}>
+              <ChakraImage
+                alt="DAO logo"
+                src={useColorModeValue(
+                  "/DAO_logo_light.png",
+                  "DAO_logo_dark.png"
+                )}
+              />
+            </Center>
+          </Link>
+        )}
       </Flex>
     </Box>
   )
