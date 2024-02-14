@@ -20,7 +20,6 @@ import {
   useSortBy,
   useGlobalFilter,
 } from "react-table"
-//import { mutateStringToURL, convertSeconds } from "../../../../lib/hooks/utils"
 import { format } from "date-fns"
 import WorldPageTableButtonGroup from "../partials/world/WorldPageTableButtonGroup"
 import WorldJumpModal from "../partials/world/WorldJumpModal"

@@ -1,23 +1,20 @@
-import { Flex, Box, Spacer } from "@chakra-ui/react"
+import { Flex, Box, Spacer, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import { FiGrid, FiList } from "react-icons/fi"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import ToolTip from "../../layout/local/ToolTip"
 import EventCardGrid from "./EventCardGrid"
+import EventCardList from "./EventCardList"
 
 const EventBox = ({ data }) => {
-  const [grid, setGrid] = useState("grid")
-
-  const EventCardList = () => {
-    return <Box>List</Box>
-  }
+  const [grid, setGrid] = useState("list")
 
   const handleGridForm = () => {
     switch (grid) {
       case "grid":
         return <EventCardGrid data={data} />
       case "list":
-        return <EventCardList />
+        return <EventCardList data={data} />
       default:
         return <EventCardGrid data={data} />
     }
@@ -34,6 +31,9 @@ const EventBox = ({ data }) => {
   return (
     <BoxWrapper colSpan="0">
       <Flex m="2" mb="4">
+        <Box ml="2">
+          <Text>{grid === "grid" ? "Grid View" : "List View"}</Text>
+        </Box>
         <Spacer />
         <ToolTip label="Change View">
           <Flex
