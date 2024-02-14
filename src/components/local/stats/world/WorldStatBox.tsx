@@ -69,18 +69,16 @@ const WorldStatBox = ({
         label=""
         description="The number of users in all worlds"
       />
-      <ToolTip label={"test"}>
-        <WorldStatItem
-          value={formatDistanceToNowStrict(new Date(timestamp * 1000), {
-            addSuffix: false,
-          })}
-          label="ago"
-          description={`Data last updated at ${format(
-            new Date(timestamp * 1000),
-            "yy/MM/d HH:mm"
-          )}`}
-        />
-      </ToolTip>
+      <WorldStatItem
+        value={formatDistanceToNowStrict(new Date(timestamp * 1000), {
+          addSuffix: false,
+        })}
+        label="ago"
+        description={`Data last updated at ${format(
+          new Date(timestamp * 1000),
+          "yy/MM/d HH:mm"
+        )}`}
+      />
     </Flex>
   )
 }
