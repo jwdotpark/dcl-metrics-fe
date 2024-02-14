@@ -1,6 +1,5 @@
 import CryptoJS from "crypto-js"
 import moment from "moment"
-import { intervalToDuration, formatDuration } from "date-fns"
 
 export const isServer = () => {
   return typeof window === "undefined"
