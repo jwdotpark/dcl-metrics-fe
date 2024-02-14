@@ -1,14 +1,15 @@
-import Layout from "../src/components/layout/layout"
-import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
+import Layout from "../../src/components/layout/layout"
+import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
-import EventBox from "../src/components/local/events/EventBox"
-import EventFilter from "../src/components/local/events/EventFilter"
+import EventBox from "../../src/components/local/events/EventBox"
+import EventFilter from "../../src/components/local/events/EventFilter"
 import { Box } from "@chakra-ui/react"
 
 export async function getServerSideProps() {
   const url = "https://events.decentraland.org/api/events"
   const res = await fetch(url)
   const data = await res.json()
+
   if (data.ok) {
     return {
       props: { data },

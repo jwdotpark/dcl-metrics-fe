@@ -14,6 +14,7 @@ import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 
 function Post({ slug, data, content }) {
+  console.log(content)
   const router = useRouter()
 
   const pageTitle = `DCL-Metrics ${data.title}`
