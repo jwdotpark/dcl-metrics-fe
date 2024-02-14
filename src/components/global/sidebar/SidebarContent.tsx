@@ -18,7 +18,7 @@ import { useRouter } from "next/router"
 import { sidebarList } from "../sidebarList"
 import NavItem from "./NavItem"
 import ToolTip from "../../layout/local/ToolTip"
-import { isMobile, isServer } from "../../../lib/hooks/utils"
+import { capitalize, isMobile, isServer } from "../../../lib/hooks/utils"
 
 interface SidebarProps extends BoxProps {
   onClose: () => void
@@ -49,11 +49,6 @@ const SidebarContent = ({
       } else {
         return name.charAt(0).toUpperCase() + name.slice(1)
       }
-    }
-
-    const capitalize = (s: string) => {
-      if (typeof s !== "string") return ""
-      return s.charAt(0).toUpperCase() + s.slice(1)
     }
 
     return (

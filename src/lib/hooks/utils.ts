@@ -1,5 +1,6 @@
 import CryptoJS from "crypto-js"
 import moment from "moment"
+import { intervalToDuration, formatDuration } from "date-fns"
 
 export const isServer = () => {
   return typeof window === "undefined"
@@ -111,4 +112,9 @@ export const parseUTC = (date: string) => {
   const parsedDate = moment.utc(date, "YYYY-MM-DD HH:mm:ss [UTC]")
   const outputDate = parsedDate.format("YYYY MMM DD HH:mm")
   return outputDate
+}
+
+export const capitalize = (s: string) => {
+  if (typeof s !== "string") return ""
+  return s.charAt(0).toUpperCase() + s.slice(1)
 }

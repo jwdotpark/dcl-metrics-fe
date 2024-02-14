@@ -23,10 +23,9 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import WorldPageTableButtonGroup from "../stats/partials/world/WorldPageTableButtonGroup"
 import EventItemDrawer from "./EventItemDrawer"
 import Link from "next/link"
+import { capitalize } from "../../../lib/hooks/utils"
 
 const EventCardList = ({ data }) => {
-  console.log(data)
-
   const columns = useMemo(
     () => [
       {
@@ -67,6 +66,17 @@ const EventCardList = ({ data }) => {
         ),
       },
       {
+        Header: "Category",
+        accessor: "category",
+        Cell: ({ row }) => (
+          <Text>
+            {row.original.categories[0]
+              ? capitalize(row.original.categories[0])
+              : "N/A"}
+          </Text>
+        ),
+      },
+      {
         Header: "Start At",
         accessor: "start_at",
         Cell: ({ value }) => format(new Date(value), "yy MMM d"),
@@ -75,6 +85,10 @@ const EventCardList = ({ data }) => {
         Header: "Finish At",
         accessor: "finish_at",
         Cell: ({ value }) => format(new Date(value), "yy MMM d"),
+      },
+      {
+        Header: "Attendees",
+        accessor: "total_attendees",
       },
       {
         Header: "Details",
@@ -93,8 +107,7 @@ const EventCardList = ({ data }) => {
       columns,
       data,
       initialState: {
-        pageSize: 20,
-        //sortBy: [{ id: "user_count", desc: false }],
+        pageSize: 10,
       },
     },
     useGlobalFilter,
@@ -122,20 +135,8 @@ const EventCardList = ({ data }) => {
   const { pageIndex, globalFilter } = state
 
   return (
-    <Box m="2">
-      <WorldPageTableButtonGroup
-        pageOptions={pageOptions}
-        canPreviousPage={canPreviousPage}
-        canNextPage={canNextPage}
-        gotoPage={gotoPage}
-        pageIndex={pageIndex}
-        nextPage={nextPage}
-        previousPage={previousPage}
-        pageCount={pageCount}
-        globalFilter={globalFilter}
-        setGlobalFilter={setGlobalFilter}
-      />
-      <Box mt="4" mr="4">
+    <Box>
+      <Box mt="4" mr="8">
         <Table
           {...getTableProps()}
           w="100%"
@@ -191,6 +192,20 @@ const EventCardList = ({ data }) => {
             })}
           </Tbody>
         </Table>
+        <Box mt="4" mr="-4">
+          <WorldPageTableButtonGroup
+            pageOptions={pageOptions}
+            canPreviousPage={canPreviousPage}
+            canNextPage={canNextPage}
+            gotoPage={gotoPage}
+            pageIndex={pageIndex}
+            nextPage={nextPage}
+            previousPage={previousPage}
+            pageCount={pageCount}
+            globalFilter={globalFilter}
+            setGlobalFilter={setGlobalFilter}
+          />
+        </Box>
       </Box>
     </Box>
   )

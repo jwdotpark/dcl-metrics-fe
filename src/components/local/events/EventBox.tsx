@@ -1,4 +1,4 @@
-import { Flex, Box, Spacer, Text } from "@chakra-ui/react"
+import { Center, Flex, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import { FiGrid, FiList } from "react-icons/fi"
 import BoxWrapper from "../../layout/local/BoxWrapper"
@@ -31,18 +31,33 @@ const EventBox = ({ data }) => {
   return (
     <BoxWrapper colSpan="0">
       <Flex m="2" mb="4">
-        <Box ml="2">
-          <Text>{grid === "grid" ? "Grid View" : "List View"}</Text>
-        </Box>
-        <Spacer />
         <ToolTip label="Change View">
           <Flex
             direction="row"
             gap="2"
-            mr="1"
+            ml="4"
+            _hover={{ cursor: "pointer" }}
             onClick={() => handleGridFormChange()}
           >
-            {grid === "grid" ? <FiGrid /> : <FiList />}
+            {grid === "grid" ? (
+              <Flex direction="row">
+                <Center>
+                  <FiGrid />
+                  <Text ml="2" fontSize="sm">
+                    Grid View
+                  </Text>
+                </Center>
+              </Flex>
+            ) : (
+              <Flex direction="row">
+                <Center>
+                  <FiList />
+                  <Text ml="2" fontSize="sm">
+                    List View
+                  </Text>
+                </Center>
+              </Flex>
+            )}
           </Flex>
         </ToolTip>
       </Flex>
