@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
+  Image,
   Box,
   Table,
   Tbody,
@@ -20,8 +21,8 @@ import { format } from "date-fns"
 import { useMemo } from "react"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import WorldPageTableButtonGroup from "../stats/partials/world/WorldPageTableButtonGroup"
-import ListAccordion from "./EventItemDrawer"
 import EventItemDrawer from "./EventItemDrawer"
+import Link from "next/link"
 
 const EventCardList = ({ data }) => {
   console.log(data)
@@ -33,6 +34,15 @@ const EventCardList = ({ data }) => {
         Cell: ({ row }) => <Text>{row.index + 1}</Text>,
       },
       {
+        Header: "",
+        accessor: "image",
+        Cell: ({ row }) => (
+          <Box w="100px" h="50px">
+            <Image alt={row.original.name} src={row.original.image} />
+          </Box>
+        ),
+      },
+      {
         Header: "Event Name",
         accessor: "name",
         Cell: ({ row }) => (
@@ -42,13 +52,28 @@ const EventCardList = ({ data }) => {
         ),
       },
       {
-        Header: "Created At",
-        accessor: "created_at",
-        Cell: ({ value }) => format(new Date(value), "yy MMM d"),
+        Header: "Created By",
+        accessor: "user_name",
+        Cell: ({ row }) => (
+          <Link href={`/users/${row.original.user}`} target="_blank">
+            <Text
+              color="blue.400"
+              fontWeight="medium"
+              _hover={{ color: "blue.600" }}
+            >
+              {row.original.user_name}
+            </Text>
+          </Link>
+        ),
       },
       {
         Header: "Start At",
         accessor: "start_at",
+        Cell: ({ value }) => format(new Date(value), "yy MMM d"),
+      },
+      {
+        Header: "Finish At",
+        accessor: "finish_at",
         Cell: ({ value }) => format(new Date(value), "yy MMM d"),
       },
       {
@@ -68,7 +93,7 @@ const EventCardList = ({ data }) => {
       columns,
       data,
       initialState: {
-        pageSize: 100,
+        pageSize: 20,
         //sortBy: [{ id: "user_count", desc: false }],
       },
     },
