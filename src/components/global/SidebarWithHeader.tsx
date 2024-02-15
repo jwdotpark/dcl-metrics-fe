@@ -11,11 +11,9 @@ import {
 import TopBar from "./sidebar/TopBar"
 import SidebarContent from "./sidebar/SidebarContent"
 import { motion } from "framer-motion"
-//import { useRouter } from "next/router"
 
 export default function SidebarWithHeader({ psa, children }: any) {
   const toast = useToast()
-  //const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const sidebarStatus = sidebarOpen ? "180px" : "60px"

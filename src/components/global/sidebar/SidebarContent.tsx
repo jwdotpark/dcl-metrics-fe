@@ -44,8 +44,6 @@ const SidebarContent = ({
     const setItemName = (name: string) => {
       if (name === "") {
         return "Global"
-      } else if (name === "docs") {
-        return "API"
       } else {
         return name.charAt(0).toUpperCase() + name.slice(1)
       }
