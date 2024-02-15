@@ -136,13 +136,13 @@ const EventCardList = ({ data }) => {
 
   return (
     <Box>
-      <Box mt="4" mr="8">
+      <Box overflowX="auto" mt="4" mr="6" mx="4">
         <Table
           {...getTableProps()}
           w="100%"
           mt="2"
           mb="2"
-          mx={[2, 2, 4]}
+          //mx={[2, 2, 4]}
           size="sm"
           variant="simple"
         >
@@ -192,20 +192,20 @@ const EventCardList = ({ data }) => {
             })}
           </Tbody>
         </Table>
-        <Box mt="4" mr="-4">
-          <WorldPageTableButtonGroup
-            pageOptions={pageOptions}
-            canPreviousPage={canPreviousPage}
-            canNextPage={canNextPage}
-            gotoPage={gotoPage}
-            pageIndex={pageIndex}
-            nextPage={nextPage}
-            previousPage={previousPage}
-            pageCount={pageCount}
-            globalFilter={globalFilter}
-            setGlobalFilter={setGlobalFilter}
-          />
-        </Box>
+      </Box>
+      <Box mt="4" mr="4">
+        <WorldPageTableButtonGroup
+          pageOptions={pageOptions}
+          canPreviousPage={canPreviousPage}
+          canNextPage={canNextPage}
+          gotoPage={gotoPage}
+          pageIndex={pageIndex}
+          nextPage={nextPage}
+          previousPage={previousPage}
+          pageCount={pageCount}
+          globalFilter={globalFilter}
+          setGlobalFilter={setGlobalFilter}
+        />
       </Box>
     </Box>
   )
