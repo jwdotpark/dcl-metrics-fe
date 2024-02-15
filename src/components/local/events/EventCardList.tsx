@@ -46,7 +46,9 @@ const EventCardList = ({ data }) => {
         accessor: "name",
         Cell: ({ row }) => (
           <Box>
-            <Text fontSize="md">{row.values.name.slice(0, 50)}</Text>
+            <Text fontSize="sm" fontWeight="medium">
+              {row.values.name.slice(0, 50)}
+            </Text>
           </Box>
         ),
       },
@@ -57,7 +59,7 @@ const EventCardList = ({ data }) => {
           <Link href={`/users/${row.original.user}`} target="_blank">
             <Text
               color="blue.400"
-              fontWeight="medium"
+              fontWeight="bold"
               _hover={{ color: "blue.600" }}
             >
               {row.original.user_name}
