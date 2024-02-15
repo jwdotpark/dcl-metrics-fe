@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Layout from "../../src/components/layout/layout"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
@@ -7,6 +8,7 @@ import { Box } from "@chakra-ui/react"
 import { filterAtom } from "../../src/lib/state/eventFilter"
 import { useAtom } from "jotai"
 import { useEffect, useState } from "react"
+import { getUniqueCategories } from "../../src/lib/hooks/utils"
 
 export async function getServerSideProps() {
   const url = "https://events.decentraland.org/api/events"
@@ -38,30 +40,29 @@ const Events = (props) => {
 
   const { data } = props
 
-  const [selectedFilters, setSelectedFilters] = useAtom(filterAtom)
+  const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
   const [filteredEvents, setFilteredEvents] = useState([])
 
-  console.log(data.data.map((event) => event.recurrent))
+  const categories = getUniqueCategories(
+    data.data.map((event) => event.categories[0])
+  )
 
-  //useEffect(() => {
-  //  const filterEvents = () => {
-  //    const events = data.data
-  //    let filteredEvents = events
+  useEffect(() => {
+    const events = data.data
+    switch (selectedFilter) {
+      case "all":
+        setFilteredEvents(events)
+        break
+      case "oneoff":
+        setFilteredEvents(events.filter((event) => !event.recurrent))
+        break
+      case "regular":
+        setFilteredEvents(events.filter((event) => event.recurrent))
+        break
+    }
 
-  //    // Apply filters based on selectedFilters
-  //    if (selectedFilters.length > 0) {
-  //      filteredEvents = events.filter((event) =>
-  //        selectedFilters.includes(event.category)
-  //      )
-  //    }
-
-  //    setFilteredEvents(filteredEvents)
-  //  }
-
-  //  filterEvents()
-  //  console.log(filteredEvents)
-  //  // eslint-disable-next-line react-hooks/exhaustive-deps
-  //}, [selectedFilters])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedFilter])
 
   return (
     <>
@@ -86,7 +87,7 @@ const Events = (props) => {
       <Layout>
         <EventFilter />
         <Box mb="4" />
-        <EventBox data={data.data} />
+        <EventBox data={filteredEvents} />
       </Layout>
     </>
   )

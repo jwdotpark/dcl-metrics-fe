@@ -12,10 +12,10 @@ import { filterAtom } from "../../../lib/state/eventFilter"
 import { useAtom } from "jotai"
 
 const EventFilter = () => {
-  const [selectedFilters, setSelectedFilters] = useAtom(filterAtom)
+  const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
 
   const handleCheckboxChange = (newSelectedFilters) => {
-    setSelectedFilters(newSelectedFilters)
+    setSelectedFilter(newSelectedFilters)
   }
 
   return (

@@ -117,3 +117,15 @@ export const capitalize = (s: string) => {
   if (typeof s !== "string") return ""
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
+
+export const getUniqueCategories = (array: string[]) => {
+  const uniqueItems = []
+  const seenItems = {}
+  for (const item of array) {
+    if (item !== null && item !== undefined && !seenItems[item]) {
+      uniqueItems.push(item)
+      seenItems[item] = true
+    }
+  }
+  return uniqueItems
+}
