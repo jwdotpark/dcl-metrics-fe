@@ -5,8 +5,9 @@ import BoxWrapper from "../../layout/local/BoxWrapper"
 import ToolTip from "../../layout/local/ToolTip"
 import EventCardGrid from "./EventCardGrid"
 import EventCardList from "./EventCardList"
+import EventFilter from "./EventFilter"
 
-const EventBox = ({ data }) => {
+const EventBox = ({ data, filters }) => {
   const [grid, setGrid] = useState("list")
 
   const handleGridForm = () => {
@@ -28,14 +29,11 @@ const EventBox = ({ data }) => {
     }
   }
 
-  return (
-    <BoxWrapper colSpan="0">
-      <Flex m="2" mb="4">
+  const HandleView = () => {
+    return (
+      <Flex mr="4">
         <ToolTip label="Change View">
           <Flex
-            direction="row"
-            gap="2"
-            ml="4"
             _hover={{ cursor: "pointer" }}
             onClick={() => handleGridFormChange()}
           >
@@ -43,24 +41,26 @@ const EventBox = ({ data }) => {
               <Flex direction="row">
                 <Center>
                   <FiGrid />
-                  <Text ml="2" fontSize="sm">
-                    Grid View
-                  </Text>
+                  <Text ml="2">List</Text>
                 </Center>
               </Flex>
             ) : (
               <Flex direction="row">
                 <Center>
                   <FiList />
-                  <Text ml="2" fontSize="sm">
-                    List View
-                  </Text>
+                  <Text ml="2">Grid</Text>
                 </Center>
               </Flex>
             )}
           </Flex>
         </ToolTip>
       </Flex>
+    )
+  }
+
+  return (
+    <BoxWrapper colSpan="0">
+      <EventFilter filters={filters} HandleView={HandleView} />
       {handleGridForm()}
     </BoxWrapper>
   )

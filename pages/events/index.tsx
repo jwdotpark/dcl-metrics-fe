@@ -5,10 +5,11 @@ import { NextSeo } from "next-seo"
 import EventBox from "../../src/components/local/events/EventBox"
 import EventFilter from "../../src/components/local/events/EventFilter"
 import { Box } from "@chakra-ui/react"
-import { filterAtom } from "../../src/lib/state/eventFilter"
+import { categoryAtom, filterAtom } from "../../src/lib/state/eventFilter"
 import { useAtom } from "jotai"
 import { useEffect, useState } from "react"
 import { getUniqueCategories } from "../../src/lib/hooks/utils"
+import { set } from "cypress/types/lodash"
 
 export async function getServerSideProps() {
   const url = "https://events.decentraland.org/api/events"
@@ -39,13 +40,19 @@ const Events = (props) => {
   })
 
   const { data } = props
-
-  const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
   const [filteredEvents, setFilteredEvents] = useState([])
 
-  const categories = getUniqueCategories(
+  const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
+  const [selectedCategory, setSelectedCategory] = useAtom(categoryAtom)
+
+  const filters = getUniqueCategories(
     data.data.map((event) => event.categories[0])
   )
+
+  const categories = []
+  selectedCategory.map((category) => {
+    categories.push(category.value)
+  })
 
   useEffect(() => {
     const events = data.data
@@ -59,10 +66,27 @@ const Events = (props) => {
       case "regular":
         setFilteredEvents(events.filter((event) => event.recurrent))
         break
+      default:
+        setFilteredEvents(events)
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFilter])
+  }, [selectedFilter, selectedCategory])
+
+  useEffect(() => {
+    const events = data.data
+    const categoryFilteredEvents = filteredEvents.filter((event) => {
+      return event.categories.some((category) => categories.includes(category))
+    })
+
+    if (categoryFilteredEvents.length > 0) {
+      setFilteredEvents(categoryFilteredEvents)
+    } else {
+      setFilteredEvents(events)
+    }
+
+    console.log(categoryFilteredEvents)
+  }, [selectedCategory])
 
   return (
     <>
@@ -70,7 +94,7 @@ const Events = (props) => {
         title={metaData.title}
         description={metaData.description}
         openGraph={{
-          url: siteUrl + "/world",
+          url: siteUrl + "/events",
           title: metaData.title,
           description: metaData.description,
           images: [
@@ -85,9 +109,9 @@ const Events = (props) => {
         }}
       />
       <Layout>
-        <EventFilter />
+        {/*<EventFilter categories={categories} />*/}
         <Box mb="4" />
-        <EventBox data={filteredEvents} />
+        <EventBox data={filteredEvents} filters={filters} />
       </Layout>
     </>
   )

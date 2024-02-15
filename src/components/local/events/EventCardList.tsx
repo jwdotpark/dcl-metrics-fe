@@ -23,7 +23,6 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import WorldPageTableButtonGroup from "../stats/partials/world/WorldPageTableButtonGroup"
 import EventItemDrawer from "./EventItemDrawer"
 import Link from "next/link"
-import { capitalize } from "../../../lib/hooks/utils"
 
 const EventCardList = ({ data }) => {
   const columns = useMemo(
@@ -73,7 +72,7 @@ const EventCardList = ({ data }) => {
         Cell: ({ row }) => (
           <Text>
             {row.original.categories[0]
-              ? capitalize(row.original.categories[0])
+              ? row.original.categories[0].toUpperCase()
               : "N/A"}
           </Text>
         ),
@@ -109,7 +108,7 @@ const EventCardList = ({ data }) => {
       columns,
       data,
       initialState: {
-        pageSize: 10,
+        pageSize: 100,
       },
     },
     useGlobalFilter,
@@ -195,7 +194,7 @@ const EventCardList = ({ data }) => {
           </Tbody>
         </Table>
       </Box>
-      <Box mt="4" mr="4">
+      <Box mt="2" mr="4">
         <WorldPageTableButtonGroup
           pageOptions={pageOptions}
           canPreviousPage={canPreviousPage}
