@@ -23,7 +23,7 @@ import ReactMarkdown from "react-markdown"
 
 const EventItemDrawer = ({ data }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  console.log(data)
+  
   const position = {
     x: data.position[0],
     y: data.position[1],

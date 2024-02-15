@@ -1,17 +1,37 @@
-import { Box, Checkbox, CheckboxGroup, Stack } from "@chakra-ui/react"
+import {
+  Box,
+  Checkbox,
+  CheckboxGroup,
+  Radio,
+  RadioGroup,
+  Stack,
+} from "@chakra-ui/react"
+import { useState } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
+import { filterAtom } from "../../../lib/state/eventFilter"
+import { useAtom } from "jotai"
 
 const EventFilter = () => {
+  const [selectedFilters, setSelectedFilters] = useAtom(filterAtom)
+
+  const handleCheckboxChange = (newSelectedFilters) => {
+    setSelectedFilters(newSelectedFilters)
+  }
+
   return (
     <BoxWrapper colSpan="0">
       <Box m="2">
-        <CheckboxGroup defaultValue={["naruto", "kakashi"]}>
+        <RadioGroup
+          colorScheme="purple"
+          defaultValue={"all"}
+          onChange={handleCheckboxChange}
+        >
           <Stack direction={["column", "row"]} spacing={[1, 5]}>
-            <Checkbox value="naruto">All</Checkbox>
-            <Checkbox value="sasuke">One-Off Event</Checkbox>
-            <Checkbox value="kakashi">Regular Event</Checkbox>
+            <Radio value="all">All</Radio>
+            <Radio value="oneoff">One-Off Event</Radio>
+            <Radio value="regular">Regular Event</Radio>
           </Stack>
-        </CheckboxGroup>
+        </RadioGroup>
       </Box>
     </BoxWrapper>
   )

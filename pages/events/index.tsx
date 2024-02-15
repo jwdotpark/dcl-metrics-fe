@@ -4,6 +4,9 @@ import { NextSeo } from "next-seo"
 import EventBox from "../../src/components/local/events/EventBox"
 import EventFilter from "../../src/components/local/events/EventFilter"
 import { Box } from "@chakra-ui/react"
+import { filterAtom } from "../../src/lib/state/eventFilter"
+import { useAtom } from "jotai"
+import { useEffect, useState } from "react"
 
 export async function getServerSideProps() {
   const url = "https://events.decentraland.org/api/events"
@@ -34,6 +37,31 @@ const Events = (props) => {
   })
 
   const { data } = props
+
+  const [selectedFilters, setSelectedFilters] = useAtom(filterAtom)
+  const [filteredEvents, setFilteredEvents] = useState([])
+
+  console.log(data.data.map((event) => event.recurrent))
+
+  //useEffect(() => {
+  //  const filterEvents = () => {
+  //    const events = data.data
+  //    let filteredEvents = events
+
+  //    // Apply filters based on selectedFilters
+  //    if (selectedFilters.length > 0) {
+  //      filteredEvents = events.filter((event) =>
+  //        selectedFilters.includes(event.category)
+  //      )
+  //    }
+
+  //    setFilteredEvents(filteredEvents)
+  //  }
+
+  //  filterEvents()
+  //  console.log(filteredEvents)
+  //  // eslint-disable-next-line react-hooks/exhaustive-deps
+  //}, [selectedFilters])
 
   return (
     <>
