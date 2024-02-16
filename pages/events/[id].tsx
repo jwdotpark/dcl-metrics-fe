@@ -46,8 +46,6 @@ const SingleEventPage = (props) => {
 
   const event = data.data
 
-  console.log(event)
-
   return (
     <>
       <NextSeo
