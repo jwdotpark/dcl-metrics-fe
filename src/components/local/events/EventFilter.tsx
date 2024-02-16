@@ -1,41 +1,15 @@
 /* eslint-disable no-unused-vars */
-import {
-  useColorModeValue,
-  Box,
-  Flex,
-  FormControl,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Stack,
-  Center,
-} from "@chakra-ui/react"
-import { categoryAtom, filterAtom } from "../../../lib/state/eventFilter"
+import { Box, Flex, Radio, RadioGroup, Stack } from "@chakra-ui/react"
+import { filterAtom } from "../../../lib/state/eventFilter"
 import { useAtom } from "jotai"
-import { Select as MultiSelect } from "chakra-react-select"
-import { useState } from "react"
+import { Select } from "@chakra-ui/react"
 
 const EventFilter = ({ filters, HandleView }) => {
   const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
-  const [selectedCategory, setSelectedCategory] = useAtom(categoryAtom)
 
   const handleCheckboxChange = (newSelectedFilters) => {
     setSelectedFilter(newSelectedFilters)
   }
-
-  const categoryData = filters.map((category) => {
-    return {
-      value: category,
-      label: category.toUpperCase(),
-    }
-  })
-
-  const groupedOptions = [
-    {
-      label: "Categories",
-      options: categoryData,
-    },
-  ]
 
   return (
     <Flex direction={["column", "row"]} w="100%" mt={[8, 0]} mb="-2" pl="4">
@@ -55,20 +29,12 @@ const EventFilter = ({ filters, HandleView }) => {
           </RadioGroup>
         </Box>
       </Flex>
-      <Box zIndex="banner" w="100%" mx={[-4, 0]}>
-        <FormControl p={4}>
-          <MultiSelect
-            variant="filled"
-            isMulti
-            name="categories"
-            colorScheme="purple"
-            options={groupedOptions}
-            placeholder="Select Categories.."
-            closeMenuOnSelect={false}
-            // @ts-ignore
-            onChange={(value) => setSelectedCategory(value)}
-          />
-        </FormControl>
+      <Box>
+        <Select placeholder="Select option">
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </Select>
       </Box>
     </Flex>
   )

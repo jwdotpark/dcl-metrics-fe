@@ -5,7 +5,7 @@ import { NextSeo } from "next-seo"
 import EventBox from "../../src/components/local/events/EventBox"
 import EventFilter from "../../src/components/local/events/EventFilter"
 import { Box } from "@chakra-ui/react"
-import { categoryAtom, filterAtom } from "../../src/lib/state/eventFilter"
+import { filterAtom } from "../../src/lib/state/eventFilter"
 import { useAtom } from "jotai"
 import { useEffect, useState } from "react"
 import { getUniqueCategories } from "../../src/lib/hooks/utils"
@@ -43,16 +43,10 @@ const Events = (props) => {
   const [filteredEvents, setFilteredEvents] = useState([])
 
   const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
-  const [selectedCategory, setSelectedCategory] = useAtom(categoryAtom)
 
   const filters = getUniqueCategories(
     data.data.map((event) => event.categories[0])
   )
-
-  const categories = []
-  selectedCategory.map((category) => {
-    categories.push(category.value)
-  })
 
   useEffect(() => {
     const events = data.data
@@ -71,22 +65,7 @@ const Events = (props) => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFilter, selectedCategory])
-
-  useEffect(() => {
-    const events = data.data
-    const categoryFilteredEvents = filteredEvents.filter((event) => {
-      return event.categories.some((category) => categories.includes(category))
-    })
-
-    if (categoryFilteredEvents.length > 0) {
-      setFilteredEvents(categoryFilteredEvents)
-    } else {
-      setFilteredEvents(events)
-    }
-
-    console.log(categoryFilteredEvents)
-  }, [selectedCategory])
+  }, [selectedFilter])
 
   return (
     <>

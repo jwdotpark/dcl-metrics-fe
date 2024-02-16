@@ -38,7 +38,6 @@
     "@tanstack/react-table": "^8.5.2",
     "axios": "^0.27.2",
     "chakra-dayzed-datepicker": "^0.2.5",
-    "chakra-react-select": "^4.7.6",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
