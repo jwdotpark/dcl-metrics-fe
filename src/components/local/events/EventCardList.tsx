@@ -108,7 +108,7 @@ const EventCardList = ({ data }) => {
       columns,
       data,
       initialState: {
-        pageSize: 100,
+        pageSize: 20,
       },
     },
     useGlobalFilter,

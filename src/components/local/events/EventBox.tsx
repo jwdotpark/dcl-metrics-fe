@@ -7,7 +7,7 @@ import EventCardGrid from "./EventCardGrid"
 import EventCardList from "./EventCardList"
 import EventFilter from "./EventFilter"
 
-const EventBox = ({ data, filters }) => {
+const EventBox = ({ data, categories }) => {
   const [grid, setGrid] = useState("list")
 
   const handleGridForm = () => {
@@ -31,7 +31,7 @@ const EventBox = ({ data, filters }) => {
 
   const HandleView = () => {
     return (
-      <Flex mr="4">
+      <Flex mr="4" ml="2">
         <ToolTip label="Change View">
           <Flex
             _hover={{ cursor: "pointer" }}
@@ -60,7 +60,7 @@ const EventBox = ({ data, filters }) => {
 
   return (
     <BoxWrapper colSpan="0">
-      <EventFilter filters={filters} HandleView={HandleView} />
+      <EventFilter categories={categories} HandleView={HandleView} />
       {handleGridForm()}
     </BoxWrapper>
   )

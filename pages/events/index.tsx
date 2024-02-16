@@ -3,13 +3,11 @@ import Layout from "../../src/components/layout/layout"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import EventBox from "../../src/components/local/events/EventBox"
-import EventFilter from "../../src/components/local/events/EventFilter"
 import { Box } from "@chakra-ui/react"
-import { filterAtom } from "../../src/lib/state/eventFilter"
+import { categoryAtom, filterAtom } from "../../src/lib/state/eventFilter"
 import { useAtom } from "jotai"
 import { useEffect, useState } from "react"
 import { getUniqueCategories } from "../../src/lib/hooks/utils"
-import { set } from "cypress/types/lodash"
 
 export async function getServerSideProps() {
   const url = "https://events.decentraland.org/api/events"
@@ -43,8 +41,9 @@ const Events = (props) => {
   const [filteredEvents, setFilteredEvents] = useState([])
 
   const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
+  const [category, setCategory] = useAtom(categoryAtom)
 
-  const filters = getUniqueCategories(
+  const categories = getUniqueCategories(
     data.data.map((event) => event.categories[0])
   )
 
@@ -64,8 +63,14 @@ const Events = (props) => {
         setFilteredEvents(events)
     }
 
+    if (category !== "") {
+      setFilteredEvents(
+        events.filter((event) => event.categories[0] === category)
+      )
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFilter])
+  }, [selectedFilter, category])
 
   return (
     <>
@@ -88,9 +93,8 @@ const Events = (props) => {
         }}
       />
       <Layout>
-        {/*<EventFilter categories={categories} />*/}
         <Box mb="4" />
-        <EventBox data={filteredEvents} filters={filters} />
+        <EventBox data={filteredEvents} categories={categories} />
       </Layout>
     </>
   )
