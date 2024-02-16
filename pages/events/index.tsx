@@ -28,7 +28,7 @@ export async function getServerSideProps() {
 const Events = (props) => {
   const pageTitle = "DCL-Metrics Events Data"
   const description =
-    "A list of Worlds currently deployed to Decentraland servers."
+    "A list of Events currently deployed to Decentraland servers."
   const image = `${siteUrl}/images/status.png`
 
   const metaData = generateMetaData({

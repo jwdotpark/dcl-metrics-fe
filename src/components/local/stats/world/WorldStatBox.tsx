@@ -1,7 +1,6 @@
 import { Flex, useColorModeValue, Box, Text } from "@chakra-ui/react"
 import { format, formatDistanceToNowStrict } from "date-fns"
 import CountUp from "react-countup"
-import ToolTip from "../../../layout/local/ToolTip"
 
 const WorldStatItem = ({ value, label, description }) => {
   return (

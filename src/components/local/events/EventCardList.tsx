@@ -45,9 +45,16 @@ const EventCardList = ({ data }) => {
         accessor: "name",
         Cell: ({ row }) => (
           <Box>
-            <Text fontSize="sm" fontWeight="medium">
-              {row.values.name.slice(0, 50)}
-            </Text>
+            <Link href={`/events/${row.original.id}`} target="_blank">
+              <Text
+                color="blue.400"
+                fontSize="sm"
+                fontWeight="medium"
+                _hover={{ color: "blue.600" }}
+              >
+                {row.values.name.slice(0, 50)}
+              </Text>
+            </Link>
           </Box>
         ),
       },
@@ -58,7 +65,7 @@ const EventCardList = ({ data }) => {
           <Link href={`/users/${row.original.user}`} target="_blank">
             <Text
               color="blue.400"
-              fontWeight="bold"
+              fontWeight="medium"
               _hover={{ color: "blue.600" }}
             >
               {row.original.user_name}
