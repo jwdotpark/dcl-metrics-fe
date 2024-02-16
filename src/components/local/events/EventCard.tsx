@@ -16,15 +16,17 @@ const EventCard = ({ event }) => {
   return (
     <Flex direction="column" h="100%">
       <Box>
-        <Box>
-          <Image
-            w="100%"
-            h="200px"
-            objectFit="cover"
-            alt={event.name}
-            src={event.image}
-          />
-        </Box>
+        <Link href={`/events/${event.id}`} target="_blank">
+          <Box>
+            <Image
+              w="100%"
+              h="200px"
+              objectFit="cover"
+              alt={event.name}
+              src={event.image}
+            />
+          </Box>
+        </Link>
         <Flex direction="column" h="100%" m="2">
           <Box h="auto">
             <ToolTip label={event.name}>
