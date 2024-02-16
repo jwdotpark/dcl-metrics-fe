@@ -1,22 +1,6 @@
-import {
-  Box,
-  Text,
-  Flex,
-  Grid,
-  Image,
-  useBreakpointValue,
-  Center,
-  Divider,
-} from "@chakra-ui/react"
-import ChakraUIRenderer from "chakra-ui-markdown-renderer"
-import { format } from "date-fns"
+import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import { NextSeo } from "next-seo"
-import Link from "next/link"
-import { FiAtSign, FiCalendar } from "react-icons/fi"
-import ReactMarkdown from "react-markdown"
 import Layout from "../../src/components/layout/layout"
-import BoxWrapper from "../../src/components/layout/local/BoxWrapper"
-import ToolTip from "../../src/components/layout/local/ToolTip"
 import { Description } from "../../src/components/local/events/event/Description"
 import { ImageBox } from "../../src/components/local/events/event/Image"
 import { Title } from "../../src/components/local/events/event/Title"
