@@ -13,17 +13,18 @@ import {
   Center,
   Flex,
   Spacer,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
 import Link from "next/link"
-import { FiCalendar, FiGlobe, FiInfo } from "react-icons/fi"
+import { FiCalendar, FiGlobe } from "react-icons/fi"
 import ToolTip from "../../layout/local/ToolTip"
 import ChakraUIRenderer from "chakra-ui-markdown-renderer"
 import ReactMarkdown from "react-markdown"
 
 const EventItemDrawer = ({ data }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  
+
   const position = {
     x: data.position[0],
     y: data.position[1],
@@ -32,14 +33,29 @@ const EventItemDrawer = ({ data }) => {
   return (
     <Box>
       <>
-        <Button onClick={onOpen} size="sm" variant="ghost">
-          <FiInfo />
-        </Button>
+        <Box _hover={{ cursor: "pointer" }} onClick={onOpen}>
+          <Text
+            color="blue.400"
+            fontSize="sm"
+            fontWeight="medium"
+            _hover={{ color: "blue.600" }}
+          >
+            {data.name.slice(0, 50)}
+          </Text>
+        </Box>
         <Drawer isOpen={isOpen} onClose={onClose} placement="right" size="xl">
           <DrawerOverlay />
           <DrawerContent>
             <DrawerBody>
-              <Box overflow="hidden" m="-8" mb="8" borderRadius="md">
+              <Box
+                overflow="hidden"
+                mt="8"
+                mb="8"
+                border="3px solid"
+                borderColor={useColorModeValue("gray.300", "gray.600")}
+                borderRadius="xl"
+                shadow="sm"
+              >
                 <Image alt={data.name} src={data.image} />
               </Box>
               <Box mb="-4">

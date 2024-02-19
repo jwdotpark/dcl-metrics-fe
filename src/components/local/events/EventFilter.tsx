@@ -6,10 +6,13 @@ import {
   RadioGroup,
   HStack,
   useColorModeValue,
+  Button,
 } from "@chakra-ui/react"
 import { categoryAtom, filterAtom } from "../../../lib/state/eventFilter"
 import { useAtom } from "jotai"
 import { Select } from "@chakra-ui/react"
+import { FiDelete, FiRefreshCcw } from "react-icons/fi"
+import ToolTip from "../../layout/local/ToolTip"
 
 const EventFilter = ({ categories, HandleView }) => {
   const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
@@ -17,6 +20,11 @@ const EventFilter = ({ categories, HandleView }) => {
 
   const handleCheckboxChange = (newSelectedFilters) => {
     setSelectedFilter(newSelectedFilters)
+  }
+
+  const handleClearBtn = () => {
+    setSelectedFilter("all")
+    setCategory("")
   }
 
   return (
@@ -36,8 +44,9 @@ const EventFilter = ({ categories, HandleView }) => {
           <Box>
             <RadioGroup
               colorScheme="purple"
-              defaultValue={"all"}
+              //defaultValue={"all"}
               onChange={handleCheckboxChange}
+              value={selectedFilter}
             >
               <HStack gap="4">
                 <Radio value="all">All</Radio>
@@ -55,6 +64,7 @@ const EventFilter = ({ categories, HandleView }) => {
                 }}
                 placeholder="Category"
                 size="sm"
+                value={category}
                 variant="outline"
               >
                 {categories.map((category) => {
@@ -67,6 +77,18 @@ const EventFilter = ({ categories, HandleView }) => {
               </Select>
             </Flex>
           </Box>
+          <ToolTip label="Clear Filter">
+            <Box>
+              <Button
+                borderRadius="xl"
+                shadow="sm"
+                onClick={handleClearBtn}
+                size="sm"
+              >
+                <FiRefreshCcw />
+              </Button>
+            </Box>
+          </ToolTip>
         </Flex>
       </Flex>
     </Box>

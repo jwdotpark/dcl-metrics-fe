@@ -19,7 +19,7 @@ import {
 } from "react-table"
 import { format } from "date-fns"
 import { useMemo } from "react"
-import { FiChevronDown, FiChevronUp } from "react-icons/fi"
+import { FiChevronDown, FiChevronUp, FiInfo } from "react-icons/fi"
 import WorldPageTableButtonGroup from "../stats/partials/world/WorldPageTableButtonGroup"
 import EventItemDrawer from "./EventItemDrawer"
 import Link from "next/link"
@@ -45,16 +45,7 @@ const EventCardList = ({ data }) => {
         accessor: "name",
         Cell: ({ row }) => (
           <Box>
-            <Link href={`/events/${row.original.id}`} target="_blank">
-              <Text
-                color="blue.400"
-                fontSize="sm"
-                fontWeight="medium"
-                _hover={{ color: "blue.600" }}
-              >
-                {row.values.name.slice(0, 50)}
-              </Text>
-            </Link>
+            <EventItemDrawer data={row.original} />
           </Box>
         ),
       },
@@ -99,10 +90,12 @@ const EventCardList = ({ data }) => {
         accessor: "total_attendees",
       },
       {
-        Header: "Details",
+        Header: "Info",
         Cell: ({ row }) => (
           <Box>
-            <EventItemDrawer data={row.original} />
+            <Link href={`/events/${row.original.id}`} target="_blank">
+              <FiInfo />
+            </Link>
           </Box>
         ),
       },
@@ -115,7 +108,7 @@ const EventCardList = ({ data }) => {
       columns,
       data,
       initialState: {
-        pageSize: 20,
+        pageSize: 10,
       },
     },
     useGlobalFilter,
@@ -150,7 +143,6 @@ const EventCardList = ({ data }) => {
           w="100%"
           mt="2"
           mb="2"
-          //mx={[2, 2, 4]}
           size="sm"
           variant="simple"
         >
