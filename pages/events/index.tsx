@@ -3,7 +3,6 @@ import Layout from "../../src/components/layout/layout"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import EventBox from "../../src/components/local/events/EventBox"
-import { Box } from "@chakra-ui/react"
 import { categoryAtom, filterAtom } from "../../src/lib/state/eventFilter"
 import { useAtom } from "jotai"
 import { useEffect, useState } from "react"
@@ -93,7 +92,6 @@ const Events = (props) => {
         }}
       />
       <Layout>
-        <Box mb="4" />
         <EventBox data={filteredEvents} categories={categories} />
       </Layout>
     </>

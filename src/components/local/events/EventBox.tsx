@@ -1,6 +1,7 @@
 import { Center, Flex, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import { FiGrid, FiList } from "react-icons/fi"
+import BoxTitle from "../../layout/local/BoxTitle"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import ToolTip from "../../layout/local/ToolTip"
 import EventCardGrid from "./EventCardGrid"
@@ -60,6 +61,16 @@ const EventBox = ({ data, categories }) => {
 
   return (
     <BoxWrapper colSpan="0">
+      <BoxTitle
+        name="Decentraland Events"
+        description="A list of Events deployed or will be deployed to Decentraland"
+        date={""}
+        avgData={[]}
+        slicedData={() => {}}
+        color={""}
+        line={""}
+        setLine={""}
+      />
       <EventFilter categories={categories} HandleView={HandleView} />
       {handleGridForm()}
     </BoxWrapper>
