@@ -94,7 +94,7 @@ const EventCardList = ({ data }) => {
         Cell: ({ row }) => (
           <Box>
             <Link href={`/events/${row.original.id}`} target="_blank">
-              <FiInfo />
+              <FiInfo size="15px" />
             </Link>
           </Box>
         ),

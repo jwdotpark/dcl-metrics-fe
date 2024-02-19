@@ -5,7 +5,7 @@ import ToolTip from "../../../layout/local/ToolTip"
 
 export const ImageBox = ({ event }) => {
   return (
-    <BoxWrapper colSpan={[4, 4, 4, 4, 3]}>
+    <BoxWrapper colSpan={[4, 4, 4, 4, 6]}>
       <Flex>
         <ToolTip label={`Jump in [${event.x},${event.y}]`}>
           <Link href={event.url} target="_blank">

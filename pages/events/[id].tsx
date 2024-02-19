@@ -26,9 +26,9 @@ export async function getServerSideProps(context) {
 const SingleEventPage = (props) => {
   const { data } = props
 
-  const pageTitle = `Decentraland Events - ${data.data.name}`
-  const description = data.data.description
-  const image = data.data.image
+  const pageTitle = `Decentraland Events ${data.data && data.data.name}`
+  const description = data.data && data.data.description
+  const image = data.data && data.data.image
 
   const metaData = generateMetaData({
     title: pageTitle,
@@ -69,7 +69,9 @@ const SingleEventPage = (props) => {
       <Layout>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <Title event={event} />
+
           <ImageBox event={event} />
+
           <Description event={event} />
           {/* TODO */}
           {/*<BoxWrapper colSpan="6">
