@@ -143,14 +143,18 @@ export const HighlightedEvents = ({ highlighted }) => {
 
   return (
     <BoxWrapper colSpan="8">
-      <Flex direction="column">
+      <Flex direction="column" h="100%">
         <Box m="4"> {carouselFragment}</Box>
-        <Center pos="relative" w="100%">
+        <Center
+          pos="absolute"
+          alignItems="center"
+          w="calc(100%  - 8rem)"
+          h="500px"
+        >
           <ButtonGroup
             pos="absolute"
-            bottom="0"
             left="50%"
-            w="calc(100% - 0.5rem)"
+            w="100%"
             transform="translateX(-50%)"
           >
             <IconButton
