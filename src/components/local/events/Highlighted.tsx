@@ -45,14 +45,17 @@ export const HighlightedEvents = ({ highlighted }) => {
           <Flex direction={["column", "row"]} gap="4" w="100%" pr="6">
             <Box w={["100%", "70%"]} h="100%">
               <Box overflow="hidden" h="100%" borderRadius="xl">
-                <Image
-                  h={["100%"]}
-                  shadow="md"
-                  userSelect="none"
-                  objectFit="cover"
-                  alt={event.name}
-                  src={event.image}
-                />
+                <ToolTip label={`Go to ${event.name} page`}>
+                  <Image
+                    sx={{ cursor: "pointer" }}
+                    h={["100%"]}
+                    shadow="md"
+                    userSelect="none"
+                    objectFit="cover"
+                    alt={event.name}
+                    src={event.image}
+                  />
+                </ToolTip>
               </Box>
             </Box>
             <Box w={["100%", "30%"]} h="100%">
@@ -67,9 +70,16 @@ export const HighlightedEvents = ({ highlighted }) => {
                 shadow="md"
               >
                 <Box>
-                  <Text fontSize={["md", "xl", "2xl"]} fontWeight="black">
-                    {event.name}
-                  </Text>
+                  <Link href={`/events/${event.id}`} target="_blank">
+                    <Text
+                      color="blue.400"
+                      fontSize={["md", "xl", "2xl"]}
+                      fontWeight="black"
+                      _hover={{ color: "blue.600" }}
+                    >
+                      {event.name}
+                    </Text>
+                  </Link>
                 </Box>
                 <Spacer />
                 <Box>
@@ -145,23 +155,20 @@ export const HighlightedEvents = ({ highlighted }) => {
     <BoxWrapper colSpan="8">
       <Flex direction="column" h="100%">
         <Box m="4"> {carouselFragment}</Box>
-        <Center
-          pos="absolute"
-          alignItems="center"
-          w="calc(100%  - 8rem)"
-          h="500px"
-        >
+        <Center pos="relative">
           <ButtonGroup
             pos="absolute"
+            bottom="210"
             left="50%"
             w="100%"
             transform="translateX(-50%)"
           >
             <IconButton
+              zIndex="banner"
               fontSize="14px"
+              bg={useColorModeValue("#BD93F9", "#FF5555")}
               shadow="md"
               aria-label="prev"
-              colorScheme="whatsapp"
               icon={<FiArrowLeft />}
               isRound={true}
               onClick={slideToPrevItem}
@@ -169,10 +176,11 @@ export const HighlightedEvents = ({ highlighted }) => {
             />
             <Spacer />
             <IconButton
+              zIndex="banner"
               fontSize="14px"
+              bg={useColorModeValue("#BD93F9", "#FF5555")}
               shadow="md"
               aria-label="next"
-              colorScheme="whatsapp"
               icon={<FiArrowRight />}
               isRound={true}
               onClick={slideToNextItem}
