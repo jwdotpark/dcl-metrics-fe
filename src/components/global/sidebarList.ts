@@ -10,7 +10,6 @@ import {
   FiPenTool,
   FiGlobe,
   FiAtSign,
-  FiFileText,
 } from "react-icons/fi"
 
 export const sidebarList = {

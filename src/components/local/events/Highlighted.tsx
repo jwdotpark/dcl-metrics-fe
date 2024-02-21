@@ -159,7 +159,7 @@ export const HighlightedEvents = ({ highlighted }) => {
         <Center pos="relative">
           <ButtonGroup
             pos="absolute"
-            bottom="210"
+            bottom="0"
             left="50%"
             w="100%"
             transform="translateX(-50%)"

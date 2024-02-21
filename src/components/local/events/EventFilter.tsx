@@ -35,7 +35,6 @@ const EventFilter = ({ categories, HandleView }) => {
           <Box>
             <RadioGroup
               colorScheme="purple"
-              //defaultValue={"all"}
               onChange={handleCheckboxChange}
               value={selectedFilter}
             >
