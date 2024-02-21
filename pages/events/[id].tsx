@@ -2,6 +2,7 @@ import { Grid, useBreakpointValue } from "@chakra-ui/react"
 import { NextSeo } from "next-seo"
 import Layout from "../../src/components/layout/layout"
 import { Description } from "../../src/components/local/events/event/Description"
+import { Details } from "../../src/components/local/events/event/Details"
 import { ImageBox } from "../../src/components/local/events/event/Image"
 import { Title } from "../../src/components/local/events/event/Title"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
@@ -26,7 +27,7 @@ export async function getServerSideProps(context) {
 const SingleEventPage = (props) => {
   const { data } = props
 
-  const pageTitle = `Decentraland Events ${data.data && data.data.name}`
+  const pageTitle = `Decentraland Events - ${data.data && data.data.name}`
   const description = data.data && data.data.description
   const image = data.data && data.data.image
 
@@ -41,7 +42,7 @@ const SingleEventPage = (props) => {
     sm: 1,
     md: 1,
     lg: 2,
-    xl: 6,
+    xl: 8,
   })
 
   const event = data.data
@@ -69,9 +70,8 @@ const SingleEventPage = (props) => {
       <Layout>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <Title event={event} />
-
           <ImageBox event={event} />
-
+          <Details event={event} />
           <Description event={event} />
           {/* TODO */}
           {/*<BoxWrapper colSpan="6">

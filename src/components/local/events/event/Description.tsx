@@ -5,8 +5,8 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 
 export const Description = ({ event }) => {
   return (
-    <BoxWrapper colSpan={[4, 4, 4, 4, 6]}>
-      <Box overflowY="scroll" maxH="600px" p="2">
+    <BoxWrapper colSpan={[8]}>
+      <Box overflowY="scroll" maxH="600px" m="4">
         <ReactMarkdown
           components={ChakraUIRenderer()}
           // eslint-disable-next-line react/no-children-prop
