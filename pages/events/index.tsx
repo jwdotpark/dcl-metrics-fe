@@ -7,6 +7,8 @@ import { categoryAtom, filterAtom } from "../../src/lib/state/eventFilter"
 import { useAtom } from "jotai"
 import { useEffect, useState } from "react"
 import { getUniqueCategories } from "../../src/lib/hooks/utils"
+import { Box } from "@chakra-ui/react"
+import { HighlightedEvents } from "../../src/components/local/events/Highlighted"
 
 export async function getServerSideProps() {
   const url = "https://events.decentraland.org/api/events"
@@ -45,6 +47,8 @@ const Events = (props) => {
   const categories = getUniqueCategories(
     data.data.map((event) => event.categories[0])
   )
+
+  const highlighted = data.data.filter((event) => event.highlighted === true)
 
   useEffect(() => {
     const events = data.data
@@ -92,6 +96,8 @@ const Events = (props) => {
         }}
       />
       <Layout>
+        <HighlightedEvents highlighted={highlighted} />
+        <Box mb="4" />
         <EventBox data={filteredEvents} categories={categories} />
       </Layout>
     </>
