@@ -45,17 +45,15 @@ export const HighlightedEvents = ({ highlighted }) => {
           <Flex direction={["column", "row"]} gap="4" w="100%" pr="6">
             <Box w={["100%", "70%"]} h="100%">
               <Box overflow="hidden" h="100%" borderRadius="xl">
-                <ToolTip label={`Go to ${event.name} page`}>
-                  <Image
-                    sx={{ cursor: "pointer" }}
-                    h={["100%"]}
-                    shadow="md"
-                    userSelect="none"
-                    objectFit="cover"
-                    alt={event.name}
-                    src={event.image}
-                  />
-                </ToolTip>
+                <Image
+                  sx={{ cursor: "pointer" }}
+                  h={["100%"]}
+                  shadow="md"
+                  userSelect="none"
+                  objectFit="cover"
+                  alt={event.name}
+                  src={event.image}
+                />
               </Box>
             </Box>
             <Box w={["100%", "30%"]} h="100%">
@@ -63,6 +61,7 @@ export const HighlightedEvents = ({ highlighted }) => {
                 direction="column"
                 h="100%"
                 p="4"
+                fontSize="sm"
                 bg={useColorModeValue("gray.200", "gray.700")}
                 border="1px solid"
                 borderColor={useColorModeValue("gray.300", "gray.600")}
@@ -72,10 +71,12 @@ export const HighlightedEvents = ({ highlighted }) => {
                 <Box>
                   <Link href={`/events/${event.id}`} target="_blank">
                     <Text
+                      mb="2"
                       color="blue.400"
                       fontSize={["md", "xl", "2xl"]}
                       fontWeight="black"
                       _hover={{ color: "blue.600" }}
+                      noOfLines={4}
                     >
                       {event.name}
                     </Text>

@@ -28,16 +28,7 @@ const EventFilter = ({ categories, HandleView }) => {
   }
 
   return (
-    <Box
-      m="2"
-      mb="4"
-      py="1"
-      bg={useColorModeValue("white", "gray.700")}
-      border="1px solid"
-      borderColor={useColorModeValue("gray.200", "gray.900")}
-      borderRadius="xl"
-      shadow="md"
-    >
+    <Box mx="-2">
       <Flex direction={["column", "row"]} w="100%" m="4" pr="8">
         <Flex align="center" gap={4} w="100%">
           <HandleView />
