@@ -1,4 +1,4 @@
-import { Center, Flex, Text } from "@chakra-ui/react"
+import { Center, Flex, Text, useColorModeValue } from "@chakra-ui/react"
 import { useState } from "react"
 import { FiGrid, FiList } from "react-icons/fi"
 import BoxTitle from "../../layout/local/BoxTitle"
@@ -32,7 +32,20 @@ const EventBox = ({ data, categories }) => {
 
   const HandleView = () => {
     return (
-      <Flex mr="4" ml="2">
+      <Flex
+        ml="0"
+        px="4"
+        py="1"
+        fontSize="sm"
+        border="1px solid"
+        borderColor={useColorModeValue("gray.200", "gray.700")}
+        borderRadius="md"
+        shadow="md"
+        _hover={{
+          shadow: "lg",
+          borderColor: useColorModeValue("gray.100", "gray.600"),
+        }}
+      >
         <ToolTip label="Change View">
           <Flex
             _hover={{ cursor: "pointer" }}
@@ -41,14 +54,14 @@ const EventBox = ({ data, categories }) => {
             {grid === "grid" ? (
               <Flex direction="row">
                 <Center>
-                  <FiGrid />
+                  <FiList />
                   <Text ml="2">List</Text>
                 </Center>
               </Flex>
             ) : (
               <Flex direction="row">
                 <Center>
-                  <FiList />
+                  <FiGrid />
                   <Text ml="2">Grid</Text>
                 </Center>
               </Flex>

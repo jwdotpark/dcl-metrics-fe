@@ -168,6 +168,7 @@ export const HighlightedEvents = ({ highlighted }) => {
               zIndex="banner"
               fontSize="14px"
               border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
               shadow="md"
               aria-label="prev"
               icon={<FiArrowLeft />}
@@ -181,6 +182,7 @@ export const HighlightedEvents = ({ highlighted }) => {
               zIndex="banner"
               fontSize="14px"
               border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
               shadow="md"
               aria-label="next"
               icon={<FiArrowRight />}

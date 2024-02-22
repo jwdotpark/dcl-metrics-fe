@@ -34,8 +34,19 @@ const EventFilter = ({ categories, HandleView }) => {
           <HandleView />
           <Box>
             <RadioGroup
+              px="4"
+              py="1"
+              border="1px solid"
+              borderColor={useColorModeValue("gray.100", "gray.700")}
+              borderRadius="md"
+              shadow="md"
+              _hover={{
+                shadow: "lg",
+                borderColor: useColorModeValue("gray.100", "gray.600"),
+              }}
               colorScheme="purple"
               onChange={handleCheckboxChange}
+              size="sm"
               value={selectedFilter}
             >
               <HStack gap="4">
@@ -49,6 +60,7 @@ const EventFilter = ({ categories, HandleView }) => {
             <Flex align="center" direction="row">
               <Select
                 borderRadius="lg"
+                shadow="md"
                 onChange={(e) => {
                   setCategory(e.target.value)
                 }}
@@ -70,8 +82,10 @@ const EventFilter = ({ categories, HandleView }) => {
           <ToolTip label="Clear Filter">
             <Box>
               <Button
-                borderRadius="xl"
-                shadow="sm"
+                border="1px solid"
+                borderColor={useColorModeValue("gray.200", "gray.600")}
+                borderRadius="md"
+                shadow="md"
                 onClick={handleClearBtn}
                 size="sm"
               >
