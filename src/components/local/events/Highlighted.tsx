@@ -154,37 +154,39 @@ export const HighlightedEvents = ({ highlighted }) => {
 
   return (
     <BoxWrapper colSpan="8">
-      <Flex direction="column" h="100%">
+      <Flex pos="relative" direction="column">
         <Box m="4"> {carouselFragment}</Box>
-        <Center pos="relative">
-          <ButtonGroup
-            pos="absolute"
-            bottom="0"
-            left="50%"
-            w="100%"
-            transform="translateX(-50%)"
-          >
+        <Center
+          pos="absolute"
+          top="50%"
+          left="50%"
+          w="100%"
+          transform="translate(-50%, -50%)"
+        >
+          <ButtonGroup w="100%">
             <IconButton
               zIndex="banner"
               fontSize="14px"
-              bg={useColorModeValue("#BD93F9", "#FF5555")}
+              border="1px solid"
               shadow="md"
               aria-label="prev"
               icon={<FiArrowLeft />}
               isRound={true}
               onClick={slideToPrevItem}
+              size="sm"
               variant="solid"
             />
             <Spacer />
             <IconButton
               zIndex="banner"
               fontSize="14px"
-              bg={useColorModeValue("#BD93F9", "#FF5555")}
+              border="1px solid"
               shadow="md"
               aria-label="next"
               icon={<FiArrowRight />}
               isRound={true}
               onClick={slideToNextItem}
+              size="sm"
               variant="solid"
             />
           </ButtonGroup>
