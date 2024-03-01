@@ -5,6 +5,8 @@ import { Description } from "../../src/components/local/events/event/Description
 import { Details } from "../../src/components/local/events/event/Details"
 import { ImageBox } from "../../src/components/local/events/event/Image"
 import { Title } from "../../src/components/local/events/event/Title"
+import { getEndpoint } from "../../src/lib/data/constant"
+import { getDataWithApiKey } from "../../src/lib/data/fetch"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 
 export async function getServerSideProps(context) {
@@ -13,9 +15,12 @@ export async function getServerSideProps(context) {
   const res = await fetch(url)
   const data = await res.json()
 
+  const eventUrl = getEndpoint(`/events/${id}`)
+  const eventData = await getDataWithApiKey(eventUrl, `events/${id}`, {})
+
   if (data.ok) {
     return {
-      props: { data },
+      props: { data, eventData },
     }
   } else {
     return {
@@ -25,7 +30,9 @@ export async function getServerSideProps(context) {
 }
 
 const SingleEventPage = (props) => {
-  const { data } = props
+  const { data, eventData } = props
+
+  console.log("eventData", eventData)
 
   const pageTitle = `Decentraland Events - ${data.data && data.data.name}`
   const description = data.data && data.data.description
