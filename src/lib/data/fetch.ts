@@ -70,11 +70,11 @@ export async function fetchGlobalData() {
         getDataWithApiKey(url, endpoint, staticData)
       )
     )
-    landSalesRes = await getDataWithApiKey(
-      "https://www.dcl-property.rentals/api/price_data",
-      "https://www.dcl-property.rentals/api/price_data",
-      staticLandSales
-    )
+    //landSalesRes = await getDataWithApiKey(
+    //  "https://www.dcl-property.rentals/api/price_data",
+    //  "https://www.dcl-property.rentals/api/price_data",
+    //  staticLandSales
+    //)
   } else if (isDev && !isLocal) {
     ;[globalDailyRes, parcelRes, landSalesRes] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
@@ -84,7 +84,7 @@ export async function fetchGlobalData() {
   } else if (isLocal) {
     globalDailyRes = staticGlobalDaily
     parcelRes = staticParcel
-    landSalesRes = staticLandSales
+    //landSalesRes = staticLandSales
   }
 
   // write heavy res for cache
@@ -92,7 +92,11 @@ export async function fetchGlobalData() {
     for (let i = 0; i < globalFileNameArr.length; i++) {
       writeFile(
         globalFileNameArr[i],
-        [globalDailyRes, parcelRes, landSalesRes][i]
+        [
+          globalDailyRes,
+          parcelRes,
+          //landSalesRes
+        ][i]
       )
     }
   }
@@ -100,7 +104,7 @@ export async function fetchGlobalData() {
   return {
     globalDailyRes,
     parcelRes,
-    landSalesRes,
+    //landSalesRes,
   }
 }
 

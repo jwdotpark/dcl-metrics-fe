@@ -20,8 +20,8 @@ import {
   fetchRentalData,
   getLatestPost,
 } from "../src/lib/data/fetch"
-import RentalDay from "../src/components/local/stats/rentals/RentalDay"
-import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
+//import RentalDay from "../src/components/local/stats/rentals/RentalDay"
+//import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
 import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
@@ -33,12 +33,12 @@ import BoxWrapper from "../src/components/layout/local/BoxWrapper"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
-  const rentalData = await fetchRentalData()
+  //const rentalData = await fetchRentalData()
   const latestPost = getLatestPost()
   return {
     props: {
       ...globalData,
-      rental: rentalData,
+      //rental: rentalData,
       latestPost: latestPost,
     },
   }
@@ -53,7 +53,11 @@ const GlobalPage: NextPage = (props: Props) => {
     xl: 6,
   })
 
-  const { globalDailyRes, parcelRes, landSalesRes, rental } = props
+  const {
+    globalDailyRes,
+    parcelRes,
+    //landSalesRes, rental
+  } = props
 
   const pageTitle = "DCL-Metrics"
   const description =
@@ -151,13 +155,13 @@ const GlobalPage: NextPage = (props: Props) => {
               <Box mb="4" />
             </>
           )}
-          <Box mb="4">
+          {/*<Box mb="4">
             <LandSales data={landSalesRes} />
           </Box>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <RentalDay data={rental} />
             <RentalTotal data={rental} />
-          </Grid>
+          </Grid>*/}
         </Box>
       </Layout>
     </>
