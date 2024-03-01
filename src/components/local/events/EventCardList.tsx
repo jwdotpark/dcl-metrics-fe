@@ -35,7 +35,7 @@ const EventCardList = ({ data }) => {
         Header: "",
         accessor: "image",
         Cell: ({ row }) => (
-          <Box w="100px" h="50px">
+          <Box overflow="hidden" w="100px" h="50px">
             <Image alt={row.original.name} src={row.original.image} />
           </Box>
         ),
