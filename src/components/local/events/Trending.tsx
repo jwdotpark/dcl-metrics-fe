@@ -18,6 +18,7 @@ import BoxWrapper from "../../layout/local/BoxWrapper"
 import ToolTip from "../../layout/local/ToolTip"
 
 export const TrendingEvents = ({ trending }) => {
+  console.log(trending)
   return (
     <BoxWrapper colSpan="8">
       <BoxTitle
@@ -31,16 +32,12 @@ export const TrendingEvents = ({ trending }) => {
         setLine={""}
       />
       <Box>
-        <Grid
-          gap="4"
-          templateColumns={`repeat(${trending.length}, 1fr)`}
-          mb="4"
-          mx="4"
-        >
+        <Flex direction={["column", "row"]} gap="4" mb="4" mx="4">
           {trending.map((event) => {
             return (
-              <GridItem
+              <Box
                 key={event.id}
+                w="100%"
                 border="1px solid"
                 borderColor={useColorModeValue("gray.200", "gray.600")}
                 borderRadius="xl"
@@ -81,17 +78,19 @@ export const TrendingEvents = ({ trending }) => {
                       </Box>
                       <Spacer />
                       <Box>
-                        <Button colorScheme="purple" size="xs">
-                          {event.coordinates[0]}, {event.coordinates[1]}
-                        </Button>
+                        <Link href={event.url} target="_blank">
+                          <Button colorScheme="purple" size="xs">
+                            {event.coordinates[0]}, {event.coordinates[1]}
+                          </Button>
+                        </Link>
                       </Box>
                     </Flex>
                   </Box>
                 </Link>
-              </GridItem>
+              </Box>
             )
           })}
-        </Grid>
+        </Flex>
       </Box>
     </BoxWrapper>
   )

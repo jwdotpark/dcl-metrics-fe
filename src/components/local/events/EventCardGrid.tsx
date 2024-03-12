@@ -9,7 +9,7 @@ import {
 import EventCard from "./EventCard"
 
 const EventCardGrid = ({ data }) => {
-  const gridCol = useBreakpointValue({ base: "1", md: "2", lg: "3", xl: "4" })
+  const gridCol = useBreakpointValue({ base: "1", md: "3", lg: "4", xl: "5" })
   const gridHeight = useBreakpointValue({ base: "auto", md: "450px" })
 
   return (
