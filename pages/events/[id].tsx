@@ -1,8 +1,8 @@
-import { Grid, useBreakpointValue } from "@chakra-ui/react"
+import { Center, Grid, useBreakpointValue } from "@chakra-ui/react"
 import { NextSeo } from "next-seo"
 import Layout from "../../src/components/layout/layout"
 import { Description } from "../../src/components/local/events/event/Description"
-import { Details } from "../../src/components/local/events/event/Details"
+import { EnrichedData } from "../../src/components/local/events/event/EnrichedData"
 import { ImageBox } from "../../src/components/local/events/event/Image"
 import { Title } from "../../src/components/local/events/event/Title"
 import { getEndpoint } from "../../src/lib/data/constant"
@@ -10,12 +10,14 @@ import { getDataWithApiKey } from "../../src/lib/data/fetch"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 
 export async function getServerSideProps(context) {
+  console.log(context.params)
+
   const { id } = context.params
   const url = `https://events.decentraland.org/api/events/${id}`
   const res = await fetch(url)
   const data = await res.json()
 
-  const eventUrl = getEndpoint(`/events/${id}`)
+  const eventUrl = getEndpoint(`events/${id}`)
   const eventData = await getDataWithApiKey(eventUrl, `events/${id}`, {})
 
   if (data.ok) {
@@ -30,9 +32,15 @@ export async function getServerSideProps(context) {
 }
 
 const SingleEventPage = (props) => {
-  const { data, eventData } = props
+  if (!props.data) {
+    return (
+      <Layout>
+        <Center h="calc(100vh - 8rem)">Event not found</Center>
+      </Layout>
+    )
+  }
 
-  eventData && console.log("eventData", eventData)
+  const { data, eventData } = props
 
   const pageTitle = `Decentraland Events - ${data.data && data.data.name}`
   const description = data.data && data.data.description
@@ -44,6 +52,7 @@ const SingleEventPage = (props) => {
     image: image,
   })
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const gridColumn = useBreakpointValue({
     base: 1,
     sm: 1,
@@ -78,8 +87,9 @@ const SingleEventPage = (props) => {
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <Title event={event} />
           <ImageBox event={event} />
-          <Details event={event} />
+          {/*<Details event={event} />*/}
           <Description event={event} />
+          <EnrichedData event={event} eventData={eventData} />
           {/* TODO */}
           {/*<BoxWrapper colSpan="6">
             <Box p="2">details</Box>

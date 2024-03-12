@@ -9,7 +9,6 @@ import {
   FiUser,
   FiHome,
 } from "react-icons/fi"
-import BoxWrapper from "../../../layout/local/BoxWrapper"
 import ToolTip from "../../../layout/local/ToolTip"
 
 const EventDetail = ({ icon, text }) => (
@@ -23,8 +22,8 @@ const EventDetail = ({ icon, text }) => (
 
 export const Details = ({ event }) => {
   return (
-    <BoxWrapper colSpan={[6, 2]}>
-      <Box m="2" mx="0">
+    <Box>
+      <Box m="4" color="#fff">
         <EventDetail
           icon={<FiCalendar />}
           text={format(new Date(event.start_at), "yyyy MMMM d")}
@@ -40,7 +39,6 @@ export const Details = ({ event }) => {
         />
         <Flex align="center" direction="row" mb="2" mx="2">
           <FiUser />
-
           <Text ml="2" fontWeight="medium">
             Organized by
             <Link href={`/users/${event.user_name}`}>
@@ -74,6 +72,6 @@ export const Details = ({ event }) => {
           }
         />
       </Box>
-    </BoxWrapper>
+    </Box>
   )
 }
