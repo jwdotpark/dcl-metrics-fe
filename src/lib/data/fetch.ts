@@ -50,14 +50,18 @@ export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
     headers: {
       API_KEY: process.env.BE_API_KEY,
     },
+    cache: isProd ? "default" : "force-cache",
   })
   const result = await response.json()
-  if (response.status !== 200) {
-    //if (isProd) {
-    //  sendNotification(response.status, `${endpoint}`, "error")
-    //}
-    return staticFile
-  }
+
+  // telegram error notification temporarily disabled
+  //if (response.status !== 200) {
+  //  if (isProd) {
+  //    sendNotification(response.status, `${endpoint}`, "error")
+  //  }
+  //  return staticFile
+  //}
+
   return result
 }
 
