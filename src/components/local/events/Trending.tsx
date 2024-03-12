@@ -3,8 +3,6 @@ import {
   Box,
   Text,
   Image,
-  Grid,
-  GridItem,
   useColorModeValue,
   Divider,
   Flex,
