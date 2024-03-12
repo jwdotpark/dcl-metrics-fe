@@ -27,15 +27,15 @@ import Link from "next/link"
 const EventCardList = ({ data }) => {
   const columns = useMemo(
     () => [
-      {
-        Header: "#",
-        Cell: ({ row }) => <Text>{row.index + 1}</Text>,
-      },
+      //{
+      //  Header: "#",
+      //  Cell: ({ row }) => <Text>{row.index + 1}</Text>,
+      //},
       {
         Header: "",
         accessor: "image",
         Cell: ({ row }) => (
-          <Box overflow="hidden" w="100px" h="50px">
+          <Box overflow="hidden" w="100px" h="50px" borderRadius="lg">
             <Image alt={row.original.name} src={row.original.image} />
           </Box>
         ),
@@ -78,12 +78,12 @@ const EventCardList = ({ data }) => {
       {
         Header: "Start At",
         accessor: "start_at",
-        Cell: ({ value }) => format(new Date(value), "yy MMM d"),
+        Cell: ({ value }) => format(new Date(value), "dd/MM/yy"),
       },
       {
         Header: "Finish At",
         accessor: "finish_at",
-        Cell: ({ value }) => format(new Date(value), "yy MMM d"),
+        Cell: ({ value }) => format(new Date(value), "dd/MM/yy"),
       },
       {
         Header: "Attendees",

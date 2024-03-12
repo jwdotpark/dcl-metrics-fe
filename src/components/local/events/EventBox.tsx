@@ -75,7 +75,7 @@ const EventBox = ({ data, categories }) => {
   return (
     <BoxWrapper colSpan="0">
       <BoxTitle
-        name="Decentraland Events"
+        name="Every Event in Decentraland"
         description="A list of Events deployed or will be deployed to Decentraland"
         date={""}
         avgData={[]}

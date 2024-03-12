@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
 const SingleEventPage = (props) => {
   const { data, eventData } = props
 
-  console.log("eventData", eventData)
+  eventData && console.log("eventData", eventData)
 
   const pageTitle = `Decentraland Events - ${data.data && data.data.name}`
   const description = data.data && data.data.description

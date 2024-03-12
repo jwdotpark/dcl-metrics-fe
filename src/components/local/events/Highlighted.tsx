@@ -44,11 +44,17 @@ export const HighlightedEvents = ({ highlighted }) => {
         renderItem: (
           <Flex direction={["column", "row"]} gap="4" w="100%" pr="6">
             <Box w={["100%", "70%"]} h="100%">
-              <Box overflow="hidden" h="100%" borderRadius="xl">
+              <Box
+                overflow="hidden"
+                h="100%"
+                border="1px solid"
+                borderColor={useColorModeValue("gray.300", "gray.600")}
+                borderRadius="xl"
+                shadow="md"
+              >
                 <Image
                   sx={{ cursor: "pointer" }}
                   h={["100%"]}
-                  shadow="md"
                   userSelect="none"
                   objectFit="cover"
                   alt={event.name}

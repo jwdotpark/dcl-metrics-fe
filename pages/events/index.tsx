@@ -9,6 +9,7 @@ import { useEffect, useState } from "react"
 import { getUniqueCategories } from "../../src/lib/hooks/utils"
 import { Box } from "@chakra-ui/react"
 import { HighlightedEvents } from "../../src/components/local/events/Highlighted"
+import { TrendingEvents } from "../../src/components/local/events/Trending"
 
 export async function getServerSideProps() {
   const url = "https://events.decentraland.org/api/events"
@@ -49,6 +50,7 @@ const Events = (props) => {
   )
 
   const highlighted = data.data.filter((event) => event.highlighted === true)
+  const trending = data.data.filter((event) => event.trending === true)
 
   useEffect(() => {
     const events = data.data
@@ -97,6 +99,8 @@ const Events = (props) => {
       />
       <Layout>
         <HighlightedEvents highlighted={highlighted} />
+        <Box mb="4" />
+        <TrendingEvents trending={trending} />
         <Box mb="4" />
         <EventBox data={filteredEvents} categories={categories} />
       </Layout>

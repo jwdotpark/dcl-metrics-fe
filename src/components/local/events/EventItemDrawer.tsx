@@ -37,7 +37,7 @@ const EventItemDrawer = ({ data }) => {
           <Text
             color="blue.400"
             fontSize="sm"
-            fontWeight="medium"
+            fontWeight="bold"
             _hover={{ color: "blue.600" }}
           >
             {data.name.slice(0, 50)}
