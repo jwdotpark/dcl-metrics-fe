@@ -6,7 +6,7 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 
 export const Description = ({ event }) => {
   return (
-    <BoxWrapper colSpan={[8, 4]}>
+    <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle
         name={`About ${event.name}`}
         description=""
