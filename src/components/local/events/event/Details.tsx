@@ -1,6 +1,9 @@
 import { Flex, Button, Text, Box } from "@chakra-ui/react"
+
 import { format } from "date-fns"
+
 import Link from "next/link"
+
 import {
   FiCalendar,
   FiAtSign,
@@ -9,11 +12,16 @@ import {
   FiUser,
   FiHome,
 } from "react-icons/fi"
+import BoxTitle from "../../../layout/local/BoxTitle"
+
+import BoxWrapper from "../../../layout/local/BoxWrapper"
+
 import ToolTip from "../../../layout/local/ToolTip"
 
 const EventDetail = ({ icon, text }) => (
   <Flex align="center" direction="row" mb="2" mx="2">
     {icon}
+
     <Text ml="2" fontWeight="medium">
       {text}
     </Text>
@@ -22,25 +30,37 @@ const EventDetail = ({ icon, text }) => (
 
 export const Details = ({ event }) => {
   return (
-    <Box>
-      <Box m="4" color="#fff">
+    <BoxWrapper colSpan={[8, 2]}>
+      <BoxTitle
+        name="Details"
+        description=""
+        date={""}
+        avgData={[]}
+        slicedData={() => {}}
+        color={""}
+        line={""}
+        setLine={""}
+      />
+      <Box p="4">
         <EventDetail
           icon={<FiCalendar />}
-          text={format(new Date(event.start_at), "yyyy MMMM d")}
+          text={format(new Date(event.start_at), "yyyy MMMM d HH:mm")}
         />
         <EventDetail icon={<FiAtSign />} text={event.scene_name || "N/A"} />
         <EventDetail
           icon={<FiTag />}
           text={event.categories[0]?.toUpperCase() || "N/A"}
         />
+
         <EventDetail
           icon={<FiCheckSquare />}
           text={event.approved ? "Approved event" : "Not Approved event"}
         />
+
         <Flex align="center" direction="row" mb="2" mx="2">
           <FiUser />
+
           <Text ml="2" fontWeight="medium">
-            Organized by
             <Link href={`/users/${event.user_name}`}>
               <Text
                 as="span"
@@ -54,6 +74,7 @@ export const Details = ({ event }) => {
             </Link>
           </Text>
         </Flex>
+
         <EventDetail
           icon={<FiHome />}
           text={
@@ -72,6 +93,6 @@ export const Details = ({ event }) => {
           }
         />
       </Box>
-    </Box>
+    </BoxWrapper>
   )
 }

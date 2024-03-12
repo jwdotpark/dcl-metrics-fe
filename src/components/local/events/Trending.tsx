@@ -16,7 +16,6 @@ import BoxWrapper from "../../layout/local/BoxWrapper"
 import ToolTip from "../../layout/local/ToolTip"
 
 export const TrendingEvents = ({ trending }) => {
-  console.log(trending)
   return (
     <BoxWrapper colSpan="8">
       <BoxTitle

@@ -1,7 +1,9 @@
 import { Center, Grid, useBreakpointValue } from "@chakra-ui/react"
 import { NextSeo } from "next-seo"
 import Layout from "../../src/components/layout/layout"
+import { Attendees } from "../../src/components/local/events/event/Attendees"
 import { Description } from "../../src/components/local/events/event/Description"
+import { Details } from "../../src/components/local/events/event/Details"
 import { EnrichedData } from "../../src/components/local/events/event/EnrichedData"
 import { ImageBox } from "../../src/components/local/events/event/Image"
 import { Title } from "../../src/components/local/events/event/Title"
@@ -10,8 +12,6 @@ import { getDataWithApiKey } from "../../src/lib/data/fetch"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 
 export async function getServerSideProps(context) {
-  console.log(context.params)
-
   const { id } = context.params
   const url = `https://events.decentraland.org/api/events/${id}`
   const res = await fetch(url)
@@ -84,11 +84,12 @@ const SingleEventPage = (props) => {
         }}
       />
       <Layout>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="0">
           <Title event={event} />
           <ImageBox event={event} />
-          {/*<Details event={event} />*/}
+          <Details event={event} />
           <Description event={event} />
+          <Attendees event={event} />
           <EnrichedData event={event} eventData={eventData} />
           {/* TODO */}
           {/*<BoxWrapper colSpan="6">

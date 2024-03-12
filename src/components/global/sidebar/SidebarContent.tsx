@@ -140,7 +140,7 @@ const SidebarContent = ({
           />
         ))}
         <Spacer />
-        {!isMobile() && (
+        {/*{!isMobile() && (
           <Link href="https://decentraland.org/dao/" target="_blank">
             <Center sx={{ transform: "translateY(20px)" }}>
               <ChakraImage
@@ -152,7 +152,7 @@ const SidebarContent = ({
               />
             </Center>
           </Link>
-        )}
+        )}*/}
       </Flex>
     </Box>
   )

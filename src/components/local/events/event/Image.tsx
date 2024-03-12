@@ -1,24 +1,23 @@
-import { Box, useColorModeValue, Image } from "@chakra-ui/react"
+import { Box, Image, useColorModeValue } from "@chakra-ui/react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import ToolTip from "../../../layout/local/ToolTip"
-import { Details } from "./Details"
 
 export const ImageBox = ({ event }) => {
   return (
-    <BoxWrapper colSpan="8">
-      <Box pos="relative" m="4" mb={[0, 4]}>
-        <Image borderRadius="xl" alt={event.name} src={event.image} />
+    <BoxWrapper colSpan={[8, 6]}>
+      <Box m="4" mb={[0, 4]}>
         <Box
-          pos="absolute"
-          right="6"
-          bottom="6"
-          bg={useColorModeValue("whiteAlpha.200", "blackAlpha.400")}
           border="1px solid"
+          borderColor={useColorModeValue("gray.600", "gray.200")}
           borderRadius="xl"
-          backdropBlur="50px"
-          backdropFilter="auto"
         >
-          <Details event={event} />
+          <Image
+            w="100%"
+            borderRadius="xl"
+            shadow="md"
+            objectFit="cover"
+            alt={event.name}
+            src={event.image}
+          />
         </Box>
       </Box>
     </BoxWrapper>

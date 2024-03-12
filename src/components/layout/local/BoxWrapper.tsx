@@ -6,10 +6,10 @@ const BoxWrapper = ({ children, colSpan }) => {
     w: "100%",
     p: [0, 1, 1, 2, 2],
     bg: useColorModeValue("white", "gray.800"),
-    //border: "1px solid",
-    //borderColor: useColorModeValue("gray.300", "gray.600"),
+    border: "1px solid",
+    borderColor: useColorModeValue("gray.300", "gray.600"),
     borderRadius: "xl",
-    //shadow: "md",
+    shadow: "md",
     pb: 4,
     colSpan: colSpan,
     hover: {
@@ -30,10 +30,10 @@ const BoxWrapper = ({ children, colSpan }) => {
       p={box.p}
       pb={box.pb}
       bg={box.bg}
-      //border={box.border}
-      //borderColor={box.borderColor}
+      border={box.border}
+      borderColor={box.borderColor}
       borderRadius={box.borderRadius}
-      //shadow={box.shadow}
+      shadow={box.shadow}
       _hover={box.hover}
       transition={box.transition}
       colSpan={box.colSpan}
