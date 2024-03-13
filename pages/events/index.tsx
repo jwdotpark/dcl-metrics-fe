@@ -10,15 +10,20 @@ import { getUniqueCategories } from "../../src/lib/hooks/utils"
 import { Box } from "@chakra-ui/react"
 import { HighlightedEvents } from "../../src/components/local/events/Highlighted"
 import { TrendingEvents } from "../../src/components/local/events/Trending"
+//import { Scheduled } from "../../src/components/local/events/Scheduled"
 
 export async function getServerSideProps() {
   const url = "https://events.decentraland.org/api/events"
   const res = await fetch(url)
   const data = await res.json()
 
+  const scheduleUrl = `https://events.decentraland.org/api/schedules`
+  const scheduleRes = await fetch(scheduleUrl)
+  const scheduleData = await scheduleRes.json()
+
   if (data.ok) {
     return {
-      props: { data },
+      props: { data, scheduleData },
     }
   } else {
     return {
@@ -39,7 +44,8 @@ const Events = (props) => {
     image: image,
   })
 
-  const { data } = props
+  const { data, scheduleData } = props
+
   const [filteredEvents, setFilteredEvents] = useState([])
 
   const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
@@ -102,6 +108,8 @@ const Events = (props) => {
         <Box mb="4" />
         <TrendingEvents trending={trending} />
         <Box mb="4" />
+        {/*<Scheduled scheduleData={scheduleData} />
+        <Box mb="4" />*/}
         <EventBox data={filteredEvents} categories={categories} />
       </Layout>
     </>

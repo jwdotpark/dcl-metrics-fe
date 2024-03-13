@@ -91,16 +91,6 @@ const SingleEventPage = (props) => {
           <Description event={event} />
           <Attendees event={event} />
           <EnrichedData event={event} eventData={eventData} />
-          {/* TODO */}
-          {/*<BoxWrapper colSpan="6">
-            <Box p="2">details</Box>
-          </BoxWrapper>
-          <BoxWrapper colSpan={[4, 4, 4, 4, 4]}>
-            <Box p="2">chart</Box>
-          </BoxWrapper>
-          <BoxWrapper colSpan={[4, 4, 4, 4, 2]}>
-            <Box p="2">stat box</Box>
-          </BoxWrapper>*/}
         </Grid>
       </Layout>
     </>

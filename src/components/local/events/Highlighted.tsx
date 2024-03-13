@@ -26,6 +26,7 @@ import {
 } from "react-icons/fi"
 import { format } from "date-fns"
 import ToolTip from "../../layout/local/ToolTip"
+import BoxTitle from "../../layout/local/BoxTitle"
 
 export const HighlightedEvents = ({ highlighted }) => {
   const EventDetail = ({ icon, text }) => (
@@ -160,8 +161,21 @@ export const HighlightedEvents = ({ highlighted }) => {
 
   return (
     <BoxWrapper colSpan="8">
+      <BoxTitle
+        name="Highlighted Event"
+        description=""
+        date={""}
+        avgData={[]}
+        slicedData={() => {}}
+        color={""}
+        line={""}
+        setLine={""}
+      />
       <Flex pos="relative" direction="column">
-        <Box m="4"> {carouselFragment}</Box>
+        <Box m="4" mt="0">
+          {" "}
+          {carouselFragment}
+        </Box>
         <Center
           pos="absolute"
           top="50%"
