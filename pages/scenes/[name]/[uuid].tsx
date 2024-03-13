@@ -10,7 +10,6 @@ import { mutateStringToURL } from "../../../src/lib/hooks/utils"
 
 const SingleScenePage = ({ result, historyResult }) => {
   const res = [result]
-  console.log(res)
   const isResultEmpty = Object.keys(result).length === 0
 
   const pageTitle = `DCL-Metrics ${res[0].name}`

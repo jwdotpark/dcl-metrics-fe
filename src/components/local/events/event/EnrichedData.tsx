@@ -10,8 +10,6 @@ import SceneParcelsHeatmap from "../../stats/partials/scene/SceneParcelsHeatmap"
 import { EventStatBox } from "./EventStatBox"
 
 export const EnrichedData = ({ event, eventData, sceneData }) => {
-  console.log(sceneData)
-
   return (
     <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle

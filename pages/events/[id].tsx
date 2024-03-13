@@ -28,13 +28,13 @@ export async function getServerSideProps(context) {
     {}
   )
 
-  if (data.ok) {
+  if (data.ok && eventData && sceneData) {
     return {
       props: { data, eventData, sceneData },
     }
   } else {
     return {
-      props: { data: {} },
+      props: {},
     }
   }
 }
