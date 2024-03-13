@@ -96,7 +96,7 @@ const SingleEventPage = (props) => {
           <Title event={event} />
           <ImageBox event={event} />
           <Details event={event} />
-          {sceneData && (
+          {sceneData.length > 0 && (
             <EnrichedData
               event={event}
               eventData={eventData}
