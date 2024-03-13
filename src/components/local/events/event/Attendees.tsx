@@ -23,7 +23,7 @@ export const Attendees = ({ event }) => {
         {latest_attendees.map((id, i) => {
           return <Profile key={i} id={id} />
         })}
-        <Center ml="2">...+{extraAttendees}</Center>
+        {extraAttendees > 0 && <Center ml="2">...+{extraAttendees}</Center>}
       </Flex>
     </BoxWrapper>
   )

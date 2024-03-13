@@ -87,7 +87,7 @@ const SceneMarathonUsers = ({ data }) => {
                 </Td>
                 <Td>
                   <Link href={`/users/${item[1].address}`} target="_blank">
-                    <Text fontWeight="bold">
+                    <Text color="blue.500" fontSize="xs" fontWeight="bold">
                       {item[1].name ? TruncateName(item[1].name) : "N/A"}
                     </Text>
                   </Link>
@@ -107,7 +107,7 @@ const SceneMarathonUsers = ({ data }) => {
                   </Button>
                 </Td>
                 <Td isNumeric>
-                  <Text wordBreak="keep-all">
+                  <Text fontSize="xs" wordBreak="keep-all">
                     {moment
                       .duration(item[1].time_spent, "minutes")
                       .format("dd:hh:mm:ss")}

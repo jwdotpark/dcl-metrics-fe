@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import {
   Box,
@@ -174,10 +175,11 @@ const MultiLineChart = ({ res, selectedScene }) => {
             return (
               <Box
                 key={slice.points[0].data.xFormatted}
-                sx={{ backdropFilter: "blur(5px)" }}
                 p="2"
-                // eslint-disable-next-line react-hooks/rules-of-hooks
                 color={useColorModeValue("black", "white")}
+                bg={useColorModeValue("white", "gray.900")}
+                border="1px solid"
+                borderColor={useColorModeValue("gray.200", "gray.600")}
                 borderRadius="xl"
                 shadow="md"
               >
@@ -192,11 +194,6 @@ const MultiLineChart = ({ res, selectedScene }) => {
                         {slice.points[0].data.xFormatted} hr
                       </Text>
                     </Center>
-                    <Flex mb="2">
-                      <Box>Scene Name</Box>
-                      <Spacer />
-                      <Box isNumeric>Number of Users</Box>
-                    </Flex>
                   </Box>
 
                   {slice.points

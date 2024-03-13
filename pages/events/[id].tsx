@@ -20,9 +20,17 @@ export async function getServerSideProps(context) {
   const eventUrl = getEndpoint(`events/${id}`)
   const eventData = await getDataWithApiKey(eventUrl, `events/${id}`, {})
 
+  const { scene_uuid, date } = eventData
+  const sceneUrl = getEndpoint(`scenes/${scene_uuid}?date=${date}`)
+  const sceneData = await getDataWithApiKey(
+    sceneUrl,
+    `/scenes/${scene_uuid}`,
+    {}
+  )
+
   if (data.ok) {
     return {
-      props: { data, eventData },
+      props: { data, eventData, sceneData },
     }
   } else {
     return {
@@ -40,7 +48,7 @@ const SingleEventPage = (props) => {
     )
   }
 
-  const { data, eventData } = props
+  const { data, eventData, sceneData } = props
 
   const pageTitle = `Decentraland Events - ${data.data && data.data.name}`
   const description = data.data && data.data.description
@@ -88,9 +96,15 @@ const SingleEventPage = (props) => {
           <Title event={event} />
           <ImageBox event={event} />
           <Details event={event} />
+          {sceneData && (
+            <EnrichedData
+              event={event}
+              eventData={eventData}
+              sceneData={sceneData}
+            />
+          )}
           <Description event={event} />
           <Attendees event={event} />
-          <EnrichedData event={event} eventData={eventData} />
         </Grid>
       </Layout>
     </>

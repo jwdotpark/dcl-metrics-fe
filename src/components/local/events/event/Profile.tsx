@@ -20,7 +20,7 @@ export const Profile = ({ id }) => {
         cursor: "pointer",
       }}
     >
-      <ToolTip label={name}>
+      <ToolTip label={name ? name : "N/A"}>
         <Link href={`/users/${id}`} target="_blank">
           <Center overflow="hidden" w="auto" h="auto">
             <AvatarGroup>

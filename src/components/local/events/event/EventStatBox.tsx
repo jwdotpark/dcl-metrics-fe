@@ -2,12 +2,12 @@
 import React from "react"
 import { Box, useColorModeValue, Flex, Text, Spacer } from "@chakra-ui/react"
 import moment from "moment"
-import { description, name } from "../../../../../lib/data/sceneInfo"
+import { eventDescription, name } from "../../../../lib/data/sceneInfo"
 import momentDurationFormatSetup from "moment-duration-format"
-import ToolTip from "../../../../layout/local/ToolTip"
+import ToolTip from "../../../layout/local/ToolTip"
 
 // eslint-disable-next-line no-unused-vars
-const StatBox = ({ data, selectedScene, date }) => {
+export const EventStatBox = ({ data, selectedScene, date }) => {
   momentDurationFormatSetup(moment)
   const dataArr = Object.entries(data)
   const stats = dataArr.map((item, index) => {
@@ -15,7 +15,7 @@ const StatBox = ({ data, selectedScene, date }) => {
       id: index,
       label: item[0],
       value: item[1],
-      description: description[item[0]],
+      description: eventDescription[item[0]],
       name: name[item[0]],
     }
   })
@@ -189,5 +189,3 @@ const StatBox = ({ data, selectedScene, date }) => {
     </>
   )
 }
-
-export default StatBox

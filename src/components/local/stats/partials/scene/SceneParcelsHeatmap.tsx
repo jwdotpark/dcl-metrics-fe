@@ -1,14 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {
-  Center,
-  Box,
-  Text,
-  Flex,
-  useColorModeValue,
-  Tooltip,
-} from "@chakra-ui/react"
+import { Center, Box, Text, Flex, useColorModeValue } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { SceneColor } from "../../../../../lib/hooks/utils"
+import ToolTip from "../../../../layout/local/ToolTip"
 
 const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   const router = useRouter()
@@ -61,14 +55,14 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   }
 
   return (
-    <Tooltip
-      p="2"
-      fontSize="sm"
-      borderRadius="md"
-      shadow="xl"
-      hasArrow
+    <ToolTip
+      //p="2"
+      //fontSize="sm"
+      //borderRadius="md"
+      //shadow="xl"
+      //hasArrow
       label="This chart shows the visitor heatmap of each coordinate in this scene"
-      placement="left"
+      //placement="left"
     >
       <Box
         w="100%"
@@ -92,15 +86,15 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                 <Flex key={i}>
                   {row.map((cell, j) => {
                     return (
-                      <Tooltip
+                      <ToolTip
                         key={j}
-                        p="2"
-                        fontSize="sm"
-                        borderRadius="md"
-                        shadow="xl"
-                        hasArrow
+                        //p="2"
+                        //fontSize="sm"
+                        //borderRadius="md"
+                        //shadow="xl"
+                        //hasArrow
                         label={`Jump to [${cell.x}, ${cell.y}]`}
-                        placement="top"
+                        //placement="top"
                       >
                         <Box
                           w="100%"
@@ -145,7 +139,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                             </Text>
                           </Center>
                         </Box>
-                      </Tooltip>
+                      </ToolTip>
                     )
                   })}
                 </Flex>
@@ -154,7 +148,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
           </Box>
         </Box>
       </Box>
-    </Tooltip>
+    </ToolTip>
   )
 }
 

@@ -19,6 +19,27 @@ export const description = {
     "Average time spent by users with complete sessions",
 }
 
+export const eventDescription = {
+  visitors: "Unique visitors in this event scene",
+  share_of_global_visitors:
+    "Percent of total DCL visitors which visited this event scene",
+  avg_time_spent: "Average time users spent in this event scene",
+  avg_time_spent_afk:
+    "Average idle time which is more than 10 minutes in this event scene",
+  total_logins:
+    "The total number of times users logged in directly to this event scene",
+  unique_logins:
+    "Count of unique users that logged in directly to this event scene",
+  total_logouts:
+    "The total number of times users logged out directly from this event scene",
+  unique_logouts:
+    "Count of unique users that logged out directly from this event scene",
+  complete_sessions:
+    "Number of times that users logged in and logged out of this event scene without visiting any other scenes",
+  avg_complete_session_duration:
+    "Average time spent by users with complete sessions",
+}
+
 export const name = {
   visitors: "visitors",
   share_of_global_visitors: "share of Global Visitors",
@@ -29,5 +50,5 @@ export const name = {
   total_logouts: "total logouts",
   unique_logouts: "unique logouts",
   complete_sessions: "complete sessions",
-  avg_complete_session_duration: "average complete session duration",
+  avg_complete_session_duration: "avg complete session duration",
 }
