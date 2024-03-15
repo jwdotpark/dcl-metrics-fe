@@ -1,16 +1,15 @@
-import { Center, Flex } from "@chakra-ui/react"
+import { Box, Wrap } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Profile } from "./Profile"
 
-export const Attendees = ({ event }) => {
-  const { total_attendees, latest_attendees } = event
-  const extraAttendees = total_attendees - latest_attendees.length
+export const Attendees = ({ attendees }) => {
+  const { data } = attendees
 
   return (
     <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle
-        name={`${total_attendees} Attendees`}
+        name={`${data.length} Attendees`}
         description=""
         date={""}
         avgData={[]}
@@ -19,12 +18,13 @@ export const Attendees = ({ event }) => {
         line={""}
         setLine={""}
       />
-      <Flex direction="row" overflowX="scroll" m="4">
-        {latest_attendees.map((id, i) => {
-          return <Profile key={i} id={id} />
-        })}
-        {extraAttendees > 0 && <Center ml="2">...+{extraAttendees}</Center>}
-      </Flex>
+      <Box m="4">
+        <Wrap gap={2}>
+          {data.map((person) => {
+            return <Profile key={person.user} id={person.user} />
+          })}
+        </Wrap>
+      </Box>
     </BoxWrapper>
   )
 }

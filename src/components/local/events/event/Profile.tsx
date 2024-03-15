@@ -1,4 +1,4 @@
-import { Center, Box, Avatar, AvatarGroup } from "@chakra-ui/react"
+import { Center, Avatar, AvatarGroup, WrapItem } from "@chakra-ui/react"
 import Link from "next/link"
 import useSWR from "swr"
 import ToolTip from "../../../layout/local/ToolTip"
@@ -13,7 +13,7 @@ export const Profile = ({ id }) => {
   const profileImage = avatar?.snapshots?.face256
 
   return (
-    <Box
+    <WrapItem
       _hover={{
         transform: "scale(1.02)",
         transition: "all 0.2s ease-in-out",
@@ -24,11 +24,11 @@ export const Profile = ({ id }) => {
         <Link href={`/users/${id}`} target="_blank">
           <Center overflow="hidden" w="auto" h="auto">
             <AvatarGroup>
-              <Avatar size={["lg", "xl"]} src={profileImage} />
+              <Avatar size={["md", "lg"]} src={profileImage} />
             </AvatarGroup>
           </Center>
         </Link>
       </ToolTip>
-    </Box>
+    </WrapItem>
   )
 }
