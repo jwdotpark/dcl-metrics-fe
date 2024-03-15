@@ -7,13 +7,15 @@ import {
   Center,
   IconButton,
   useColorModeValue,
+  Button,
+  ButtonGroup,
 } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Profile } from "./Profile"
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi"
 
-export const Attendees = ({ attendees, itemsPerPage = 30 }) => {
+export const Attendees = ({ attendees, itemsPerPage = 35 }) => {
   const { data } = attendees
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -54,7 +56,7 @@ export const Attendees = ({ attendees, itemsPerPage = 30 }) => {
             size="sm"
           />
         </Center>
-        <Box mb="4">
+        <Box mb="4" mx="4">
           <Wrap justify="left">
             {currentData.map((person) => (
               <Profile key={person.user} id={person.user} />

@@ -1,7 +1,6 @@
 import { Center, Avatar, Text, WrapItem, Box } from "@chakra-ui/react"
 import Link from "next/link"
 import useSWR from "swr"
-import ToolTip from "../../../layout/local/ToolTip"
 
 export const Profile = ({ id }) => {
   const endpoint = `https://peer-ap1.decentraland.org/lambdas/profiles?id=${id}`
@@ -14,6 +13,7 @@ export const Profile = ({ id }) => {
 
   return (
     <WrapItem
+      overflow="hidden"
       maxW="90px"
       _hover={{
         transform: "scale(1.02)",
