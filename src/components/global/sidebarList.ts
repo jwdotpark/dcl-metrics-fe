@@ -10,6 +10,7 @@ import {
   FiPenTool,
   FiGlobe,
   FiAtSign,
+  //FiFileText,
 } from "react-icons/fi"
 
 export const sidebarList = {
@@ -49,12 +50,12 @@ export const sidebarList = {
     icon: FiGlobe,
     subItem: false,
   },
-  //events: {
-  //  label: "Events",
-  //  name: "events",
-  //  icon: FiAtSign,
-  //  subItem: false,
-  //},
+  events: {
+    label: "Events",
+    name: "events",
+    icon: FiAtSign,
+    subItem: false,
+  },
   //docs: {
   //  label: "API Documentation",
   //  name: "docs",
