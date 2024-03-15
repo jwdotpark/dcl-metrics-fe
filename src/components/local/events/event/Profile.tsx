@@ -1,4 +1,4 @@
-import { Center, Avatar, AvatarGroup, WrapItem } from "@chakra-ui/react"
+import { Center, Avatar, Text, WrapItem, Box } from "@chakra-ui/react"
 import Link from "next/link"
 import useSWR from "swr"
 import ToolTip from "../../../layout/local/ToolTip"
@@ -14,21 +14,30 @@ export const Profile = ({ id }) => {
 
   return (
     <WrapItem
+      maxW="90px"
       _hover={{
         transform: "scale(1.02)",
         transition: "all 0.2s ease-in-out",
         cursor: "pointer",
       }}
     >
-      <ToolTip label={name ? name : "N/A"}>
+      <Center w="100%" h="100%">
         <Link href={`/users/${id}`} target="_blank">
           <Center overflow="hidden" w="auto" h="auto">
-            <AvatarGroup>
-              <Avatar size={["md", "lg"]} src={profileImage} />
-            </AvatarGroup>
+            <Avatar size={["md", "lg"]} src={profileImage} />
           </Center>
+          <Box>
+            <Text
+              fontSize="xs"
+              fontWeight="medium"
+              textAlign="center"
+              noOfLines={1}
+            >
+              {name ? name : "N/A"}
+            </Text>
+          </Box>
         </Link>
-      </ToolTip>
+      </Center>
     </WrapItem>
   )
 }
