@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from "react"
 import {
   Box,
@@ -7,8 +6,6 @@ import {
   Center,
   IconButton,
   useColorModeValue,
-  Button,
-  ButtonGroup,
 } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"

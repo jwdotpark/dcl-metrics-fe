@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import fs from "fs"
 //import { sendNotification } from "../hooks/sendNotification"
 import { isDev, isLocal, isProd } from "./constant"
