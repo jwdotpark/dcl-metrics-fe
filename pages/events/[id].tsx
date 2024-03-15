@@ -28,9 +28,13 @@ export async function getServerSideProps(context) {
     {}
   )
 
+  const attendeeUrl = `https://events.decentraland.org/api/events/${id}/attendees`
+  const attendeeData = await fetch(attendeeUrl)
+  const attendees = await attendeeData.json()
+
   if (data.ok && eventData && sceneData) {
     return {
-      props: { data, eventData, sceneData },
+      props: { data, eventData, sceneData, attendees },
     }
   } else {
     return {
@@ -48,7 +52,7 @@ const SingleEventPage = (props) => {
     )
   }
 
-  const { data, eventData, sceneData } = props
+  const { data, eventData, sceneData, attendees } = props
 
   const pageTitle = `Decentraland Events - ${data.data && data.data.name}`
   const description = data.data && data.data.description
@@ -70,6 +74,7 @@ const SingleEventPage = (props) => {
   })
 
   const event = data.data
+  console.log("sceneData", sceneData)
 
   return (
     <>
@@ -96,7 +101,7 @@ const SingleEventPage = (props) => {
           <Title event={event} />
           <ImageBox event={event} />
           <Details event={event} />
-          {sceneData.length > 0 && (
+          {sceneData.uuid && (
             <EnrichedData
               event={event}
               eventData={eventData}
@@ -104,7 +109,7 @@ const SingleEventPage = (props) => {
             />
           )}
           <Description event={event} />
-          <Attendees event={event} />
+          <Attendees attendees={attendees} />
         </Grid>
       </Layout>
     </>

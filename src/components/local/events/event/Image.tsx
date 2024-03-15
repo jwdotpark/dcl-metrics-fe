@@ -7,7 +7,7 @@ export const ImageBox = ({ event }) => {
       <Box m="4" mb={[0, 4]}>
         <Box
           border="1px solid"
-          borderColor={useColorModeValue("gray.600", "gray.200")}
+          borderColor={useColorModeValue("gray.200", "gray.600")}
           borderRadius="xl"
         >
           <Image
