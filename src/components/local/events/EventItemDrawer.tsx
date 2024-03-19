@@ -21,6 +21,7 @@ import { FiCalendar, FiGlobe } from "react-icons/fi"
 import ToolTip from "../../layout/local/ToolTip"
 import ChakraUIRenderer from "chakra-ui-markdown-renderer"
 import ReactMarkdown from "react-markdown"
+import { isMobile } from "../../../lib/hooks/utils"
 
 const EventItemDrawer = ({ data }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -43,7 +44,12 @@ const EventItemDrawer = ({ data }) => {
             {data.name.slice(0, 50)}
           </Text>
         </Box>
-        <Drawer isOpen={isOpen} onClose={onClose} placement="right" size="xl">
+        <Drawer
+          isOpen={isOpen}
+          onClose={onClose}
+          placement="right"
+          size={["lg", "md"]}
+        >
           <DrawerOverlay />
           <DrawerContent>
             <DrawerBody>
@@ -112,7 +118,19 @@ const EventItemDrawer = ({ data }) => {
                 />
               </Box>
               <Divider my="4" />
-              <Box></Box>
+              {isMobile() && (
+                <Box w="100%">
+                  <Button
+                    w="100%"
+                    mb="4"
+                    borderRadius="xl"
+                    shadow="md"
+                    onClick={onClose}
+                  >
+                    Close
+                  </Button>
+                </Box>
+              )}
             </DrawerBody>
           </DrawerContent>
         </Drawer>

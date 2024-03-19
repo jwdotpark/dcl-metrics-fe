@@ -74,7 +74,6 @@ const SingleEventPage = (props) => {
   })
 
   const event = data.data
-  console.log("sceneData", sceneData)
 
   return (
     <>

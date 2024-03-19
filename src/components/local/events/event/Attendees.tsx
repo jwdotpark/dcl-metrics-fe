@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from "react"
 import {
   Box,
@@ -39,20 +40,22 @@ export const Attendees = ({ attendees, itemsPerPage = 35 }) => {
         setLine={""}
       />
       <Flex direction="row" w="100%" px="4">
-        <Center>
-          <IconButton
-            border="1px solid"
-            borderColor={useColorModeValue("gray.200", "gray.600")}
-            borderRadius="full"
-            shadow="md"
-            aria-label="Previous Page"
-            icon={<FiArrowLeft />}
-            isDisabled={currentPage > 1 ? false : true}
-            isRound={true}
-            onClick={() => handlePageChange(currentPage - 1)}
-            size="sm"
-          />
-        </Center>
+        {data.length - itemsPerPage > 0 && (
+          <Center>
+            <IconButton
+              border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
+              borderRadius="full"
+              shadow="md"
+              aria-label="Previous Page"
+              icon={<FiArrowLeft />}
+              isDisabled={currentPage > 1 ? false : true}
+              isRound={true}
+              onClick={() => handlePageChange(currentPage - 1)}
+              size="sm"
+            />
+          </Center>
+        )}
         <Box mb="4" mx="4">
           <Wrap justify="left">
             {currentData.map((person) => (
@@ -60,19 +63,21 @@ export const Attendees = ({ attendees, itemsPerPage = 35 }) => {
             ))}
           </Wrap>
         </Box>
-        <Center>
-          <IconButton
-            border="1px solid"
-            borderColor={useColorModeValue("gray.200", "gray.600")}
-            borderRadius="full"
-            shadow="md"
-            aria-label="Next Page"
-            icon={<FiArrowRight />}
-            isDisabled={currentPage < totalPages ? false : true}
-            onClick={() => handlePageChange(currentPage + 1)}
-            size="sm"
-          />
-        </Center>
+        {data.length - itemsPerPage > 0 && (
+          <Center>
+            <IconButton
+              border="1px solid"
+              borderColor={useColorModeValue("gray.200", "gray.600")}
+              borderRadius="full"
+              shadow="md"
+              aria-label="Next Page"
+              icon={<FiArrowRight />}
+              isDisabled={currentPage < totalPages ? false : true}
+              onClick={() => handlePageChange(currentPage + 1)}
+              size="sm"
+            />
+          </Center>
+        )}
       </Flex>
     </BoxWrapper>
   )

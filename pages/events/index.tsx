@@ -10,6 +10,7 @@ import { getUniqueCategories } from "../../src/lib/hooks/utils"
 import { Box } from "@chakra-ui/react"
 import { HighlightedEvents } from "../../src/components/local/events/Highlighted"
 import { TrendingEvents } from "../../src/components/local/events/Trending"
+import { SearchEvent } from "../../src/components/local/events/event/SearchEvent"
 //import { Scheduled } from "../../src/components/local/events/Scheduled"
 
 export async function getServerSideProps() {
@@ -104,6 +105,8 @@ const Events = (props) => {
         }}
       />
       <Layout>
+        <SearchEvent />
+        <Box mb="4" />
         <HighlightedEvents highlighted={highlighted} />
         <Box mb="4" />
         <TrendingEvents trending={trending} />

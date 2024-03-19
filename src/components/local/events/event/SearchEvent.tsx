@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import {
+  Image,
   GridItem,
   useColorModeValue,
   Input,
@@ -7,25 +9,19 @@ import {
   ListItem,
   Box,
   Spinner,
-  Avatar,
   Text,
   HStack,
   Spacer,
-  AvatarBadge,
   Tag,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
 import { useCombobox } from "downshift"
-import { useRouter } from "next/router"
 import formatDistanceToNow from "date-fns/formatDistanceToNow"
 
-const SearchUser = () => {
-  const router = useRouter()
-  const category = "users"
+export const SearchEvent = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const [search, setSearch] = useState("")
   const [data, setData] = useState([])
-  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const inputRef = useRef(null)
@@ -35,21 +31,13 @@ const SearchUser = () => {
   const itemBgColor = useColorModeValue("gray.100", "gray.800")
   const itemHoverTextBgColor = useColorModeValue("white", "gray.600")
 
-  const sortByLastSeen = (data) => {
-    return data.sort(
-      (a, b) =>
-        new Date(b.last_seen).valueOf() - new Date(a.last_seen).valueOf()
-    )
-  }
-
-  const fetchUserData = async (debouncedSearch) => {
+  const fetchEventData = async (debouncedSearch: string) => {
     try {
       setLoading(true)
-      const url = `/api/search?category=${category}&name=${debouncedSearch}`
+      const url = `https://events.decentraland.org/api/events?search=${debouncedSearch}`
       const response = await fetch(url)
       const res = await response.json()
-      const value = res.result
-      setData(sortByLastSeen(value))
+      setData(res.data)
     } catch (error) {
       setError(error)
     } finally {
@@ -57,7 +45,10 @@ const SearchUser = () => {
     }
   }
 
-  const debounce = (func, delay) => {
+  const debounce = (
+    func: (debouncedSearch: string) => Promise<void>,
+    delay: number
+  ) => {
     return (...args) => {
       clearTimeout(debounceTimeoutRef.current)
       debounceTimeoutRef.current = setTimeout(() => {
@@ -81,7 +72,7 @@ const SearchUser = () => {
     highlightedIndex,
     selectItem,
   } = useCombobox({
-    items: data.map((user) => user.name),
+    items: data.map((event) => event.name),
     onInputValueChange: ({ inputValue }) => {
       if (!inputValue) {
         setSearch("")
@@ -90,9 +81,9 @@ const SearchUser = () => {
       }
     },
     onSelectedItemChange: ({ selectedItem }) => {
-      const selectedUser = data.find((user) => user.name === selectedItem)
-      if (selectedUser) {
-        window.location.assign(`/users/${selectedUser.address}`)
+      const selectedEvent = data.find((event) => event.name === selectedItem)
+      if (selectedEvent) {
+        window.location.assign(`/events/${selectedEvent.id}`)
       }
     },
     itemToString: (item) => (item ? item : ""),
@@ -107,11 +98,11 @@ const SearchUser = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
 
   useEffect(() => {
-    const debouncedFetchUserData = debounce(fetchUserData, 250)
+    const debouncedFetchEventData = debounce(fetchEventData, 250)
     let isRedirected = false
 
     if (search) {
-      debouncedFetchUserData(search)
+      debouncedFetchEventData(search)
     } else {
       setData([])
     }
@@ -124,7 +115,7 @@ const SearchUser = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search, router])
+  }, [search])
 
   const menuProps = getMenuProps()
 
@@ -140,7 +131,7 @@ const SearchUser = () => {
           borderColor={useColorModeValue("white", "gray.600")}
           borderRadius="xl"
           onBlur={handleInputBlur}
-          placeholder="Search user"
+          placeholder="Search event"
           size="lg"
           style={{
             borderRadius: "xl",
@@ -183,15 +174,14 @@ const SearchUser = () => {
               {isOpen ? (
                 search.length > 0 &&
                 data.length > 0 &&
-                data.map((user, index) => (
+                data.slice(0, 10).map((event, index) => (
                   <ListItem
-                    key={user.address}
+                    key={event.id}
                     {...getItemProps({
-                      item: user.name,
+                      item: event.name,
                       index,
-                      // NOTE
                       onKeyDownCapture: (event) => {
-                        handleItemKeyDown(event, user.address)
+                        handleItemKeyDown(event, event)
                       },
                     })}
                     px={4}
@@ -204,58 +194,48 @@ const SearchUser = () => {
                     borderBottom="1px solid #A0AEC050"
                     cursor="pointer"
                   >
-                    {/*<Link
-                      href={`/users/${user.address}`}
-                      target="_blank"
-                      id={`user-link-${user.address}`}
-                    >*/}
                     <HStack>
                       <Box>
-                        <Avatar size="sm" src={user.avatar_url}>
-                          <AvatarBadge
-                            boxSize="1.25em"
-                            bg={
-                              user.verified
-                                ? "green.400"
-                                : user.dao_member
-                                ? "blue.400"
-                                : "yellow.400"
-                            }
+                        <Box
+                          overflow="hidden"
+                          w="75px"
+                          h="auto"
+                          maxH="50px"
+                          borderRadius="md"
+                        >
+                          <Image
+                            objectFit="cover"
+                            alt={event.name}
+                            src={event.image}
                           />
-                        </Avatar>
+                        </Box>
                       </Box>
                       <Box>
-                        <Text fontWeight="bold">{user.name}</Text>
+                        <Text fontWeight="bold">{event.name}</Text>
                       </Box>
                       <Box display={isMobile ? "none" : "block"}>
                         <Text as="kbd" fontSize="xs">
-                          {formatDistanceToNow(new Date(user.last_seen), {
+                          {formatDistanceToNow(new Date(event.start_at), {
                             addSuffix: true,
                           })}
                         </Text>
                       </Box>
                       <Spacer />
-                      <Box display={user.verified ? "block" : "none"}>
-                        <Tag fontSize="xs" fontWeight="semibold" bg="green.400">
-                          {user.verified && "Verified"}
-                        </Tag>
-                      </Box>
-                      <Box display={user.dao_member ? "block" : "none"}>
+                      <Box display={event.world ? "block" : "none"}>
                         <Tag fontSize="xs" fontWeight="semibold" bg="blue.400">
-                          {user.dao_member && "DAO Member"}
+                          World
                         </Tag>
                       </Box>
-                      <Box display={user.guest ? "block" : "none"}>
+                      <Box display={event.trending ? "block" : "none"}>
                         <Tag
                           fontSize="xs"
                           fontWeight="semibold"
                           bg="yellow.400"
                         >
-                          {user.guest && "Guest"}
+                          Trending
                         </Tag>
                       </Box>
                     </HStack>
-                    {/*</Link>*/}
                   </ListItem>
                 ))
               ) : (
@@ -271,5 +251,3 @@ const SearchUser = () => {
     </GridItem>
   )
 }
-
-export default SearchUser
