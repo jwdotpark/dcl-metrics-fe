@@ -27,8 +27,6 @@ export const Attendees = ({ attendees, itemsPerPage = 35 }) => {
   const endIndex = startIndex + itemsPerPage
   const currentData = data.slice(startIndex, endIndex)
 
-  console.log(data.length)
-
   return (
     <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle

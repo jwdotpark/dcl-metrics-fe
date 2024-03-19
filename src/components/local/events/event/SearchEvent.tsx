@@ -31,7 +31,7 @@ export const SearchEvent = () => {
   const itemBgColor = useColorModeValue("gray.100", "gray.800")
   const itemHoverTextBgColor = useColorModeValue("white", "gray.600")
 
-  const fetchEventData = async (debouncedSearch) => {
+  const fetchEventData = async (debouncedSearch: string) => {
     try {
       setLoading(true)
       const url = `https://events.decentraland.org/api/events?search=${debouncedSearch}`
@@ -45,7 +45,10 @@ export const SearchEvent = () => {
     }
   }
 
-  const debounce = (func, delay) => {
+  const debounce = (
+    func: (debouncedSearch: string) => Promise<void>,
+    delay: number
+  ) => {
     return (...args) => {
       clearTimeout(debounceTimeoutRef.current)
       debounceTimeoutRef.current = setTimeout(() => {
