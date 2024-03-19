@@ -104,10 +104,7 @@ const UserEvent = ({ event, userAddressRes }: UserEventProps) => {
                 </Box>
                 <ButtonGroup w="100%" p="4">
                   <Box w="100%">
-                    <Link
-                      href={`https://decentraland.org/events/event/?id=${event.id}`}
-                      target="_blank"
-                    >
+                    <Link href={`/events/${event.id}`} target="_blank">
                       <Button w="100%" shadow="md" size="sm">
                         Event Page
                       </Button>
