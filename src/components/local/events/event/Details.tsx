@@ -29,6 +29,7 @@ const EventDetail = ({ icon, text }) => (
 )
 
 export const Details = ({ event }) => {
+  console.log(event)
   return (
     <BoxWrapper colSpan={[8, 2]}>
       <BoxTitle
@@ -61,7 +62,7 @@ export const Details = ({ event }) => {
           <FiUser />
 
           <Text ml="2" fontWeight="medium">
-            <Link href={`/users/${event.user_name}`}>
+            <Link href={`/users/${event.user}`}>
               <Text
                 as="span"
                 ml="1"
