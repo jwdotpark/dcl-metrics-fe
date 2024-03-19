@@ -114,7 +114,7 @@ export const HighlightedEvents = ({ highlighted }) => {
 
                     <Text ml="2" fontWeight="medium">
                       Organized by
-                      <Link href={`/users/${event.user_name}`}>
+                      <Link href={`/users/${event.user}`}>
                         <Text
                           as="span"
                           ml="1"
