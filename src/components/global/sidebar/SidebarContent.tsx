@@ -129,7 +129,7 @@ const SidebarContent = ({
         </Link>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      <Flex direction="column" gap="1" h="calc(100vh - 6rem)">
+      <Flex direction="column" gap="1" h="calc(100vh - 5rem)">
         {Object.keys(sidebarList).map((item) => (
           <SidebarItem
             key={item}
@@ -140,7 +140,7 @@ const SidebarContent = ({
           />
         ))}
         <Spacer />
-        {/*{!isMobile() && (
+        {!isMobile() && (
           <Link href="https://decentraland.org/dao/" target="_blank">
             <Center sx={{ transform: "translateY(20px)" }}>
               <ChakraImage
@@ -152,7 +152,7 @@ const SidebarContent = ({
               />
             </Center>
           </Link>
-        )}*/}
+        )}
       </Flex>
     </Box>
   )
