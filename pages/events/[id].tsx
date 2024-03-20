@@ -100,13 +100,11 @@ const SingleEventPage = (props) => {
           <Title event={event} />
           <ImageBox event={event} />
           <Details event={event} />
-          {sceneData.uuid && (
-            <EnrichedData
-              event={event}
-              eventData={eventData}
-              sceneData={sceneData}
-            />
-          )}
+          <EnrichedData
+            event={event}
+            eventData={eventData}
+            sceneData={sceneData}
+          />
           <Description event={event} />
           <Attendees attendees={attendees} />
         </Grid>

@@ -29,7 +29,6 @@ const EventDetail = ({ icon, text }) => (
 )
 
 export const Details = ({ event }) => {
-  console.log(event)
   return (
     <BoxWrapper colSpan={[8, 2]}>
       <BoxTitle
@@ -45,7 +44,7 @@ export const Details = ({ event }) => {
       <Box p="4">
         <EventDetail
           icon={<FiCalendar />}
-          text={format(new Date(event.start_at), "yyyy MMMM d HH:mm")}
+          text={format(new Date(event.next_start_at), "yyyy MMMM d HH:mm")}
         />
         <EventDetail icon={<FiAtSign />} text={event.scene_name || "N/A"} />
         <EventDetail

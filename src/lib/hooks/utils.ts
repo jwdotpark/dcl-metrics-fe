@@ -142,3 +142,15 @@ export const generateOppositeColor = (hex: string) => {
 
   return oppositeColor
 }
+
+export const eventStatus = (event) => {
+  const today = new Date()
+  const eventDate = new Date(event.start_at)
+  if (eventDate < today) {
+    return "past"
+  } else if (eventDate > today) {
+    return "upcoming"
+  } else {
+    return "current"
+  }
+}
