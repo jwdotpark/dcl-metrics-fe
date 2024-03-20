@@ -37,7 +37,7 @@ const EventItemDrawer = ({ data }) => {
         <Box _hover={{ cursor: "pointer" }} onClick={onOpen}>
           <Text
             color="blue.400"
-            fontSize="sm"
+            fontSize="xs"
             fontWeight="bold"
             _hover={{ color: "blue.600" }}
           >

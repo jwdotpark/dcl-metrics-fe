@@ -24,11 +24,10 @@ const EventDetail = ({ icon, text }) => (
 
 export const Details = ({ event }) => {
   const category = event.categories[0].toString()
-  console.log(tagColor[category])
   return (
     <BoxWrapper colSpan={[8, 2]}>
       <BoxTitle
-        name="Details"
+        name="Event Details"
         description=""
         date={""}
         avgData={[]}

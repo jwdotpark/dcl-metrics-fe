@@ -10,6 +10,7 @@ import {
   Thead,
   Tr,
   useColorModeValue,
+  Tag,
 } from "@chakra-ui/react"
 import {
   useTable,
@@ -23,6 +24,7 @@ import { FiChevronDown, FiChevronUp, FiInfo } from "react-icons/fi"
 import WorldPageTableButtonGroup from "../stats/partials/world/WorldPageTableButtonGroup"
 import EventItemDrawer from "./EventItemDrawer"
 import Link from "next/link"
+import { tagColor } from "../../../lib/data/constant"
 
 const EventCardList = ({ data }) => {
   const columns = useMemo(
@@ -69,9 +71,14 @@ const EventCardList = ({ data }) => {
         accessor: "category",
         Cell: ({ row }) => (
           <Text>
-            {row.original.categories[0]
-              ? row.original.categories[0].toUpperCase()
-              : "N/A"}
+            <Tag
+              fontSize="xs"
+              colorScheme={tagColor[row.original.categories[0]]}
+            >
+              {row.original.categories[0]
+                ? row.original.categories[0].toUpperCase()
+                : "N/A"}
+            </Tag>
           </Text>
         ),
       },

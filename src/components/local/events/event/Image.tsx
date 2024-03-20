@@ -4,7 +4,7 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 export const ImageBox = ({ event }) => {
   return (
     <BoxWrapper colSpan={[8, 6]}>
-      <Box m="4" mb={[0, 4]}>
+      <Box m="2" mb={[0, 4]}>
         <Box
           border="1px solid"
           borderColor={useColorModeValue("gray.200", "gray.600")}

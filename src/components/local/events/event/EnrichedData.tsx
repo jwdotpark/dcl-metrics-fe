@@ -9,15 +9,15 @@ import SceneMarathonUsers from "../../stats/partials/scene/SceneMarathonUsers"
 import SceneParcelsHeatmap from "../../stats/partials/scene/SceneParcelsHeatmap"
 import { EventStatBox } from "./EventStatBox"
 
+// eslint-disable-next-line no-unused-vars
 export const EnrichedData = ({ event, eventData, sceneData }) => {
   return (
     <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle
-        name={`${event.name} information on ${
-          eventData.date
-            ? format(new Date(eventData.date), "yyyy MMMM d")
-            : format(new Date(event.next_start_at), "yyyy MMMM d")
-        }`}
+        name={`Overview on ${format(
+          new Date(event.next_start_at),
+          "MMM d, yyyy"
+        )}`}
         description=""
         date={""}
         avgData={[]}
@@ -70,7 +70,9 @@ export const EnrichedData = ({ event, eventData, sceneData }) => {
           </Flex>
         </Box>
       ) : (
-        <Center h="100px">No enriched Data</Center>
+        <Center h="100px">
+          Data for the upcoming event has not yet been gathered.
+        </Center>
       )}
     </BoxWrapper>
   )

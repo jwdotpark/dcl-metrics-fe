@@ -108,7 +108,6 @@ export const HighlightedEvents = ({ highlighted }) => {
                         shadow="sm"
                         _hover={{ cursor: "pointer" }}
                         colorScheme={tagColor[event.categories[0]]}
-                        variant="solid"
                       >
                         {event.categories[0]?.toUpperCase() || "N/A"}
                       </Tag>
