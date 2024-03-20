@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
   ButtonGroup,
   Button,
@@ -18,6 +18,7 @@ import { getEndpoint } from "../../../../lib/data/constant"
 import { SceneDataType } from "../../../../lib/types/SceneData"
 import { format } from "date-fns"
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi"
+import { isMobile } from "../../../../lib/hooks/utils"
 
 export const EventRelatedEvene = ({ data, itemsPerPage = 1 }) => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -41,15 +42,25 @@ export const EventRelatedEvene = ({ data, itemsPerPage = 1 }) => {
     fetchSceneData(data[pageNumber - 1].scene_uuid, data[pageNumber - 1].date)
   }
 
+  const firstValidScene = data.find((item) => item.scene_uuid)
+  const firstValidSceneIndex = data.indexOf(firstValidScene)
+
+  useEffect(() => {
+    if (firstValidScene) {
+      fetchSceneData(firstValidScene.scene_uuid, firstValidScene.date)
+      setCurrentPage(firstValidSceneIndex + 1)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Box>
-      {/* Pagination buttons */}
       <Center mt="-4">
         <ButtonGroup mt={4} borderRadius="xl" shadow="md" isAttached={true}>
           <Button
             disabled={currentPage === 1}
             onClick={() => handleClick(currentPage > 1 ? currentPage - 1 : 1)}
-            size="sm"
+            size={["xs", "sm"]}
           >
             <FiArrowLeftCircle />
           </Button>
@@ -62,10 +73,13 @@ export const EventRelatedEvene = ({ data, itemsPerPage = 1 }) => {
                   : useColorModeValue("gray.400", "gray.600")
               }
               onClick={() => handleClick(index + 1)}
-              size="sm"
+              size={["xs", "sm"]}
               variant={currentPage === index + 1 ? "solid" : "outline"}
             >
-              {format(new Date(item.date), "MMM d, yyyy")}
+              {format(
+                new Date(item.date),
+                isMobile() ? "MM/dd" : "MMM d, yyyy"
+              )}
             </Button>
           ))}
           <Button
@@ -75,7 +89,7 @@ export const EventRelatedEvene = ({ data, itemsPerPage = 1 }) => {
                 currentPage < totalPages ? currentPage + 1 : totalPages
               )
             }
-            size="sm"
+            size={["xs", "sm"]}
           >
             <FiArrowRightCircle />
           </Button>
