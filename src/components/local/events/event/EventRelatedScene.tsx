@@ -7,6 +7,7 @@ import {
   Flex,
   Center,
   useColorModeValue,
+  Spinner,
 } from "@chakra-ui/react"
 import SceneBarChart from "../../stats/partials/scene/SceneBarChart"
 import SceneLineChart from "../../stats/partials/scene/SceneLineChart"
@@ -22,22 +23,33 @@ import { isMobile } from "../../../../lib/hooks/utils"
 
 export const EventRelatedEvene = ({ data, itemsPerPage = 1 }) => {
   const [currentPage, setCurrentPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
   const [sceneData, setSceneData] = useState<SceneDataType>()
 
   const totalPages = Math.ceil(data.length / itemsPerPage)
 
   const fetchSceneData = async (scene_uuid: string, date: string) => {
-    const url = getEndpoint(`scenes/${scene_uuid}?date=${date}`)
-    const sceneData = await fetch("/api/fetch?url=" + url)
-    const data = await sceneData.json()
-    const { result } = data
-    if (result.scene_uuid) {
-      fetchSceneData(result.scene_uuid, result.date)
+    setIsLoading(true)
+    try {
+      const url = getEndpoint(`scenes/${scene_uuid}?date=${date}`)
+      const sceneData = await fetch("/api/fetch?url=" + url, {
+        method: "GET",
+        cache: "default",
+      })
+      const data = await sceneData.json()
+      const { result } = data
+      if (result.scene_uuid) {
+        fetchSceneData(result.scene_uuid, result.date)
+      }
+      setSceneData(result)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoading(false)
     }
-    setSceneData(result)
   }
 
-  const handleClick = (pageNumber) => {
+  const handleClick = (pageNumber: number) => {
     setCurrentPage(pageNumber)
     fetchSceneData(data[pageNumber - 1].scene_uuid, data[pageNumber - 1].date)
   }
@@ -96,8 +108,13 @@ export const EventRelatedEvene = ({ data, itemsPerPage = 1 }) => {
         </ButtonGroup>
       </Center>
 
-      {/* Display current items */}
-      {sceneData && sceneData.uuid ? (
+      {isLoading && (
+        <Center h="400px">
+          <Spinner />
+        </Center>
+      )}
+
+      {sceneData && sceneData.uuid && !isLoading ? (
         <Box m="4">
           <Flex direction={["column", "row"]} w="100%">
             <Box w={["100%", "30%"]} mr={[0, 4]} mb={[4, 0]}>
