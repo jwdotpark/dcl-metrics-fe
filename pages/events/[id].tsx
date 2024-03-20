@@ -4,7 +4,7 @@ import Layout from "../../src/components/layout/layout"
 import { Attendees } from "../../src/components/local/events/event/Attendees"
 import { Description } from "../../src/components/local/events/event/Description"
 import { Details } from "../../src/components/local/events/event/Details"
-import { EnrichedData } from "../../src/components/local/events/event/EnrichedData"
+import { AdditionalData } from "../../src/components/local/events/event/AdditionalData"
 import { ImageBox } from "../../src/components/local/events/event/Image"
 import { Title } from "../../src/components/local/events/event/Title"
 import { getEndpoint } from "../../src/lib/data/constant"
@@ -20,21 +20,13 @@ export async function getServerSideProps(context) {
   const eventUrl = getEndpoint(`events/${id}`)
   const eventData = await getDataWithApiKey(eventUrl, `events/${id}`, {})
 
-  const { scene_uuid, date } = eventData
-  const sceneUrl = getEndpoint(`scenes/${scene_uuid}?date=${date}`)
-  const sceneData = await getDataWithApiKey(
-    sceneUrl,
-    `/scenes/${scene_uuid}`,
-    {}
-  )
-
   const attendeeUrl = `https://events.decentraland.org/api/events/${id}/attendees`
   const attendeeData = await fetch(attendeeUrl)
   const attendees = await attendeeData.json()
 
-  if (data.ok && eventData && sceneData) {
+  if (data.ok && eventData) {
     return {
-      props: { data, eventData, sceneData, attendees },
+      props: { data, eventData, attendees },
     }
   } else {
     return {
@@ -52,7 +44,7 @@ const SingleEventPage = (props) => {
     )
   }
 
-  const { data, eventData, sceneData, attendees } = props
+  const { data, eventData, attendees } = props
 
   const pageTitle = `Decentraland Events - ${data.data && data.data.name}`
   const description = data.data && data.data.description
@@ -100,10 +92,10 @@ const SingleEventPage = (props) => {
           <Title event={event} />
           <ImageBox event={event} />
           <Details event={event} />
-          <EnrichedData
+          <AdditionalData
             event={event}
             eventData={eventData}
-            sceneData={sceneData}
+            //sceneData={sceneData}
           />
           <Description event={event} />
           <Attendees attendees={attendees} />
