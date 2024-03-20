@@ -31,6 +31,7 @@ export const Title = ({ event }) => {
         <Spacer />
         <Center justifyContent={["flex-start", "center"]} pt={[2, 0]}>
           <Badge
+            ml={[0, 4]}
             px="2"
             py="1"
             fontSize={["xs", "sm"]}
