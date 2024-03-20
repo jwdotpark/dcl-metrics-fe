@@ -18,6 +18,7 @@ const EventFilter = ({ categories, HandleView }) => {
   const [selectedFilter, setSelectedFilter] = useAtom(filterAtom)
   const [category, setCategory] = useAtom(categoryAtom)
 
+
   const handleCheckboxChange = (newSelectedFilters) => {
     setSelectedFilter(newSelectedFilters)
   }

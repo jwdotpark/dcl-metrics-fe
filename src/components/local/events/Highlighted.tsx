@@ -11,6 +11,7 @@ import {
   Spacer,
   Link,
   IconButton,
+  Tag,
 } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import { useSpringCarousel } from "react-spring-carousel"
@@ -19,7 +20,6 @@ import {
   FiArrowRight,
   FiAtSign,
   FiCalendar,
-  FiCheckSquare,
   FiHome,
   FiTag,
   FiUser,
@@ -27,6 +27,7 @@ import {
 import { format } from "date-fns"
 import ToolTip from "../../layout/local/ToolTip"
 import BoxTitle from "../../layout/local/BoxTitle"
+import { tagColor } from "../../../lib/data/constant"
 
 export const HighlightedEvents = ({ highlighted }) => {
   const EventDetail = ({ icon, text }) => (
@@ -101,12 +102,16 @@ export const HighlightedEvents = ({ highlighted }) => {
                   />
                   <EventDetail
                     icon={<FiTag />}
-                    text={event.categories[0]?.toUpperCase() || "N/A"}
-                  />
-                  <EventDetail
-                    icon={<FiCheckSquare />}
                     text={
-                      event.approved ? "Approved event" : "Not Approved event"
+                      <Tag
+                        fontSize="xs"
+                        shadow="sm"
+                        _hover={{ cursor: "pointer" }}
+                        colorScheme={tagColor[event.categories[0]]}
+                        variant="solid"
+                      >
+                        {event.categories[0]?.toUpperCase() || "N/A"}
+                      </Tag>
                     }
                   />
                   <Flex align="center" direction="row" mb="2" mx="2">

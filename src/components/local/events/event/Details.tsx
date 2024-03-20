@@ -1,17 +1,11 @@
-import { Flex, Button, Text, Box } from "@chakra-ui/react"
+import { Flex, Button, Text, Box, Tag } from "@chakra-ui/react"
 
 import { format } from "date-fns"
 
 import Link from "next/link"
 
-import {
-  FiCalendar,
-  FiAtSign,
-  FiTag,
-  FiCheckSquare,
-  FiUser,
-  FiHome,
-} from "react-icons/fi"
+import { FiCalendar, FiAtSign, FiTag, FiUser, FiHome } from "react-icons/fi"
+import { tagColor } from "../../../../lib/data/constant"
 import BoxTitle from "../../../layout/local/BoxTitle"
 
 import BoxWrapper from "../../../layout/local/BoxWrapper"
@@ -29,6 +23,8 @@ const EventDetail = ({ icon, text }) => (
 )
 
 export const Details = ({ event }) => {
+  const category = event.categories[0].toString()
+  console.log(tagColor[category])
   return (
     <BoxWrapper colSpan={[8, 2]}>
       <BoxTitle
@@ -49,12 +45,16 @@ export const Details = ({ event }) => {
         <EventDetail icon={<FiAtSign />} text={event.scene_name || "N/A"} />
         <EventDetail
           icon={<FiTag />}
-          text={event.categories[0]?.toUpperCase() || "N/A"}
-        />
-
-        <EventDetail
-          icon={<FiCheckSquare />}
-          text={event.approved ? "Approved event" : "Not Approved event"}
+          text={
+            <Tag
+              fontSize="xs"
+              _hover={{ cursor: "pointer" }}
+              colorScheme={tagColor[category]}
+              variant="solid"
+            >
+              {event.categories[0]?.toUpperCase() || "N/A"}
+            </Tag>
+          }
         />
 
         <Flex align="center" direction="row" mb="2" mx="2">

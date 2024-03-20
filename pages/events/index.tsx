@@ -59,6 +59,8 @@ const Events = (props) => {
   const highlighted = data.data.filter((event) => event.highlighted === true)
   const trending = data.data.filter((event) => event.trending === true)
 
+  console.log(categories)
+
   useEffect(() => {
     const events = data.data
     switch (selectedFilter) {

@@ -58,3 +58,20 @@ export const heatmapProperties = [
   { name: "login_intensity" },
   { name: "logout_intensity" },
 ]
+
+export const tagColor = {
+  gaming: "green",
+  competition: "red",
+  education: "yellow",
+  art: "pink",
+  music: "orange",
+  social: "blue",
+  live: "red",
+  giveaway: "teal",
+  talks: "yellow",
+  party: "cyan",
+  health: "yellow",
+  town: "blue",
+  tv: "yellow",
+  other: "blue",
+}

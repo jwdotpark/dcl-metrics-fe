@@ -37,6 +37,7 @@ export const Title = ({ event }) => {
             border="1px"
             borderRadius="md"
             shadow="md"
+            _hover={{ cursor: "pointer" }}
             colorScheme={getColor(status)}
             variant="subtle"
           >
