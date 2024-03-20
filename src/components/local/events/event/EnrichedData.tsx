@@ -54,7 +54,6 @@ export const EnrichedData = ({ event, eventData, sceneData }) => {
             <SceneMarathonUsers data={sceneData.marathon_users} />
           </Box>
           <Box w={["100%", "40%"]}>
-            {" "}
             <SceneBarChart
               visitors_by_hour_histogram={sceneData.visitors_by_hour_histogram}
               selectedScene={0}

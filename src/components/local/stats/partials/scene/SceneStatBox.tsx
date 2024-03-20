@@ -47,7 +47,7 @@ const StatBox = ({ data, selectedScene, date }) => {
         >
           <Flex
             direction="column"
-            overflowY="scroll"
+            overflowY="auto"
             w="100%"
             bg={useColorModeValue("white", "gray.700")}
             border="1px solid"
@@ -114,7 +114,7 @@ const StatBox = ({ data, selectedScene, date }) => {
 
           <Flex
             direction="column"
-            overflowY="scroll"
+            overflowY="auto"
             w="100%"
             bg={useColorModeValue("white", "gray.700")}
             border="1px solid"

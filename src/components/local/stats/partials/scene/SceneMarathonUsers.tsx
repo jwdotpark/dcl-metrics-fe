@@ -49,8 +49,8 @@ const SceneMarathonUsers = ({ data }) => {
     const responsiveStr = useBreakpointValue({
       xs: 5,
       sm: 5,
-      md: 20,
-      lg: 20,
+      md: 15,
+      lg: 15,
       xl: 30,
       base: 10,
     })
@@ -63,7 +63,7 @@ const SceneMarathonUsers = ({ data }) => {
     }
     return (
       <Box
-        overflowY="hidden"
+        overflowY="auto"
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"

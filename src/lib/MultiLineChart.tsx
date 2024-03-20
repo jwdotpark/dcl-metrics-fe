@@ -178,19 +178,14 @@ const MultiLineChart = ({ res, selectedScene }) => {
                 p="2"
                 color={useColorModeValue("black", "white")}
                 bg={useColorModeValue("white", "gray.900")}
-                border="1px solid"
                 borderColor={useColorModeValue("gray.200", "gray.600")}
                 borderRadius="xl"
                 shadow="md"
               >
                 <Box size="sm" variant="simple">
-                  <Box fontSize="sm">
-                    <Center
-                      mb="2"
-                      borderColor="#2D374850"
-                      borderBottom="1px dotted"
-                    >
-                      <Text fontSize="sm" fontWeight="bold">
+                  <Box fontSize="xs">
+                    <Center mb="2" borderColor="#2D374850">
+                      <Text fontSize="xs" fontWeight="bold">
                         {slice.points[0].data.xFormatted} hr
                       </Text>
                     </Center>
@@ -212,14 +207,14 @@ const MultiLineChart = ({ res, selectedScene }) => {
                               borderRadius="xl"
                             />
                             <Box mr="8">
-                              <Text fontSize="sm">{point.serieId}</Text>
+                              <Text fontSize="xs">{point.serieId}</Text>
                             </Box>
                             <Spacer />
                             <Box
                               sx={{ transform: "translateY(-3px)" }}
                               isNumeric
                             >
-                              <Text as="kbd" fontSize="sm" fontWeight="bold">
+                              <Text as="kbd" fontSize="xs" fontWeight="bold">
                                 <b>{Number(point.data.yFormatted)}</b>
                               </Text>
                             </Box>

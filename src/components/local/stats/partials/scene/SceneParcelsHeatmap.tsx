@@ -1,5 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Center, Box, Text, Flex, useColorModeValue } from "@chakra-ui/react"
+import {
+  Center,
+  Box,
+  Text,
+  Flex,
+  useColorModeValue,
+  Tooltip,
+} from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { SceneColor } from "../../../../../lib/hooks/utils"
 import ToolTip from "../../../../layout/local/ToolTip"
@@ -55,14 +62,20 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
   }
 
   return (
-    <ToolTip
-      //p="2"
-      //fontSize="sm"
-      //borderRadius="md"
-      //shadow="xl"
-      //hasArrow
+    <Tooltip
+      sx={{ backdropFilter: "blur(5px)" }}
+      m="2"
+      py="1"
+      color={useColorModeValue("black", "white")}
+      fontSize="xs"
+      fontWeight="semibold"
+      bg={useColorModeValue("gray.50", "gray.600")}
+      border="1px solid"
+      borderColor={useColorModeValue("gray.600", "gray.200")}
+      borderRadius="xl"
+      shadow="md"
       label="This chart shows the visitor heatmap of each coordinate in this scene"
-      //placement="left"
+      placement="bottom"
     >
       <Box
         w="100%"
@@ -86,16 +99,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
                 <Flex key={i}>
                   {row.map((cell, j) => {
                     return (
-                      <ToolTip
-                        key={j}
-                        //p="2"
-                        //fontSize="sm"
-                        //borderRadius="md"
-                        //shadow="xl"
-                        //hasArrow
-                        label={`Jump to [${cell.x}, ${cell.y}]`}
-                        //placement="top"
-                      >
+                      <ToolTip key={j} label={`Jump to [${cell.x}, ${cell.y}]`}>
                         <Box
                           w="100%"
                           h={
@@ -148,7 +152,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
           </Box>
         </Box>
       </Box>
-    </ToolTip>
+    </Tooltip>
   )
 }
 
