@@ -62,13 +62,13 @@ const StatBox = ({ data, selectedScene, date }) => {
                 </Text>
               }
             >
-              <Box mt="4">
+              <Box mt="4" mb="2">
                 {filteredStats
                   .slice(2, filteredStats.length / 2 + 1)
                   .map(({ label, name, value, description }) => (
                     <Box
                       key={label}
-                      mb="4"
+                      mb="2"
                       mx="4"
                       p="2"
                       bg={useColorModeValue("gray.100", "gray.800")}
@@ -129,13 +129,13 @@ const StatBox = ({ data, selectedScene, date }) => {
                 </Text>
               }
             >
-              <Box mt="4">
+              <Box mt="4" mb="2">
                 {filteredStats
                   .slice(filteredStats.length / 2 + 1, filteredStats.length)
                   .map(({ label, name, value, description }) => (
                     <Box
                       key={label}
-                      mb="4"
+                      mb="2"
                       mx="4"
                       p="2"
                       bg={useColorModeValue("gray.100", "gray.800")}

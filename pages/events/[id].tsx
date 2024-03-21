@@ -95,7 +95,6 @@ const SingleEventPage = (props) => {
           <AdditionalData
             event={event}
             eventData={eventData}
-            //sceneData={sceneData}
           />
           <Description event={event} />
           <Attendees attendees={attendees} />

@@ -21,7 +21,7 @@ import { format } from "date-fns"
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi"
 import { isMobile } from "../../../../lib/hooks/utils"
 
-export const EventRelatedEvene = ({ data, itemsPerPage = 1 }) => {
+export const EventRelatedEvent = ({ data, itemsPerPage = 1 }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
   const [sceneData, setSceneData] = useState<SceneDataType>()

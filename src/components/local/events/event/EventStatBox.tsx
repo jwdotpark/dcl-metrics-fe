@@ -4,6 +4,7 @@ import { Box, useColorModeValue, Flex, Text, Spacer } from "@chakra-ui/react"
 import moment from "moment"
 import { eventDescription, name } from "../../../../lib/data/sceneInfo"
 import momentDurationFormatSetup from "moment-duration-format"
+import { convertSeconds } from "../../../../lib/hooks/utils"
 
 // eslint-disable-next-line no-unused-vars
 export const EventStatBox = ({ data, selectedScene, date }) => {
@@ -54,13 +55,13 @@ export const EventStatBox = ({ data, selectedScene, date }) => {
             borderRadius="xl"
             shadow="md"
           >
-            <Box mt="4">
+            <Box mt="4" mb="2">
               {filteredStats
                 .slice(2, filteredStats.length / 2 + 1)
                 .map(({ label, name, value, description }) => (
                   <Box
                     key={label}
-                    mb="4"
+                    mb="2"
                     mx="4"
                     p="2"
                     bg={useColorModeValue("gray.100", "gray.800")}
@@ -113,13 +114,13 @@ export const EventStatBox = ({ data, selectedScene, date }) => {
             borderRadius="xl"
             shadow="md"
           >
-            <Box mt="4">
+            <Box mt="4" mb="2">
               {filteredStats
                 .slice(filteredStats.length / 2 + 1, filteredStats.length)
                 .map(({ label, name, value, description }) => (
                   <Box
                     key={label}
-                    mb="4"
+                    mb="2"
                     mx="4"
                     p="2"
                     bg={useColorModeValue("gray.100", "gray.800")}
@@ -136,11 +137,9 @@ export const EventStatBox = ({ data, selectedScene, date }) => {
                             fontSize={["md", "lg", "lg"]}
                             fontWeight="black"
                           >
-                            {name === "average complete session duration"
-                              ? moment
-                                  .duration(Number(value), "seconds")
-                                  // @ts-ignore
-                                  .format("h[h] m[m] s[s]")
+                            {/* @ts-ignore */}
+                            {name === "avg complete session duration"
+                              ? convertSeconds(Number(value))
                               : value}
                           </Text>
                         </Box>

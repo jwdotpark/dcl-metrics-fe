@@ -33,7 +33,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   const [isEmpty, setIsEmpty] = useState(false)
   const latest = moment(res[selectedScene].date)
 
-  const secondRowHeight = useBreakpointValue([550, 700, 700, 750, 550])
+  const secondRowHeight = useBreakpointValue([200, 300, 350, 500])
 
   const EmptyScene = () => {
     return (

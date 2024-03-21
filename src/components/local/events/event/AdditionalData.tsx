@@ -1,16 +1,16 @@
 import { format } from "date-fns"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import { EventRelatedEvene } from "./EventRelatedScene"
+import { EventRelatedEvent } from "./EventRelatedScene"
 
 export const AdditionalData = ({ event, eventData }) => {
   const { occurrences } = eventData
   return (
     <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle
-        name={`Overview on ${format(
+        name={`Event Overview on ${format(
           new Date(event.next_start_at),
-          "MMM d, yyyy"
+          "dd MMMM yyyy"
         )}`}
         description=""
         date={""}
@@ -20,7 +20,7 @@ export const AdditionalData = ({ event, eventData }) => {
         line={""}
         setLine={""}
       />
-      <EventRelatedEvene data={occurrences} />
+      <EventRelatedEvent data={occurrences} />
     </BoxWrapper>
   )
 }
