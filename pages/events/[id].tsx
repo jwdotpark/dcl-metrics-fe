@@ -92,10 +92,7 @@ const SingleEventPage = (props) => {
           <Title event={event} />
           <ImageBox event={event} />
           <Details event={event} />
-          <AdditionalData
-            event={event}
-            eventData={eventData}
-          />
+          <AdditionalData eventData={eventData} />
           <Description event={event} />
           <Attendees attendees={attendees} />
         </Grid>

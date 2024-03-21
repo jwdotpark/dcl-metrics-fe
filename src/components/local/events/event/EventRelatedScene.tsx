@@ -28,6 +28,26 @@ export const EventRelatedEvent = ({ data, itemsPerPage = 1 }) => {
 
   const totalPages = Math.ceil(data.length / itemsPerPage)
 
+  const generatePageNumbers = () => {
+    let pages = []
+    let startPage = Math.max(1, currentPage - 2)
+    let endPage = Math.min(totalPages, currentPage + 2)
+
+    if (currentPage <= 3) {
+      endPage = Math.min(totalPages, 4)
+    }
+
+    if (currentPage > totalPages - 3) {
+      startPage = Math.max(1, totalPages - 4)
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i)
+    }
+
+    return pages
+  }
+
   const fetchSceneData = async (scene_uuid: string, date: string) => {
     setIsLoading(true)
     try {
@@ -76,20 +96,21 @@ export const EventRelatedEvent = ({ data, itemsPerPage = 1 }) => {
           >
             <FiArrowLeftCircle />
           </Button>
-          {data.map((item, index) => (
+          {generatePageNumbers().map((pageNumber) => (
             <Button
-              key={index}
+              key={pageNumber}
               color={
-                item.scene_uuid
+                data[pageNumber - 1].scene_uuid
                   ? useColorModeValue("#000", "#fff")
                   : useColorModeValue("gray.400", "gray.600")
               }
-              onClick={() => handleClick(index + 1)}
+              fontSize={["xs", "sm"]}
+              onClick={() => handleClick(pageNumber)}
               size={["xs", "sm"]}
-              variant={currentPage === index + 1 ? "solid" : "outline"}
+              variant={currentPage === pageNumber ? "solid" : "outline"}
             >
               {format(
-                new Date(item.date),
+                new Date(data[pageNumber - 1].date),
                 isMobile() ? "MM/dd" : "MMM d, yyyy"
               )}
             </Button>
