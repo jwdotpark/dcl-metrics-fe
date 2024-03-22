@@ -149,7 +149,7 @@ export const EventRelatedEvent = ({ event, data, itemsPerPage = 1 }) => {
               />
             </Box>
 
-            <Box h="100%" w={["100%", "60%"]}>
+            <Box w={["100%", "60%"]} h="100%">
               <SceneLineChart data={[sceneData]} selectedScene={0} />
             </Box>
           </Flex>
