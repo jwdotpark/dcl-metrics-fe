@@ -20,8 +20,9 @@ import { SceneDataType } from "../../../../lib/types/SceneData"
 import { format } from "date-fns"
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi"
 import { isMobile } from "../../../../lib/hooks/utils"
+import { Details } from "./Details"
 
-export const EventRelatedEvent = ({ data, itemsPerPage = 1 }) => {
+export const EventRelatedEvent = ({ event, data, itemsPerPage = 1 }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
   const [sceneData, setSceneData] = useState<SceneDataType>()
@@ -137,6 +138,21 @@ export const EventRelatedEvent = ({ data, itemsPerPage = 1 }) => {
 
       {sceneData && sceneData.uuid && !isLoading ? (
         <Box m="4">
+          <Flex direction={["column", "row"]} mt="4" mb={[0, 4]}>
+            <Box w={["100%", "30%"]} mr="4" mb={[4, 0]}>
+              <Details event={event} sceneData={sceneData} />
+            </Box>
+            <Box w={["100%", "40%"]} mr={[0, 4]} mb={[2, 0]}>
+              <SceneParcelsHeatmap
+                data={sceneData.parcels_heatmap}
+                selectedScene={0}
+              />
+            </Box>
+
+            <Box h="100%" w={["100%", "60%"]}>
+              <SceneLineChart data={[sceneData]} selectedScene={0} />
+            </Box>
+          </Flex>
           <Flex direction={["column", "row"]} w="100%">
             <Box w={["100%", "30%"]} mr={[0, 4]} mb={[4, 0]}>
               <SceneMap
@@ -154,18 +170,7 @@ export const EventRelatedEvent = ({ data, itemsPerPage = 1 }) => {
             </Box>
           </Flex>
           <Flex direction={["column", "row"]} mt="4">
-            <Box w={["100%", "30%"]} mr={[0, 4]} mb={[2, 0]}>
-              <SceneParcelsHeatmap
-                data={sceneData.parcels_heatmap}
-                selectedScene={0}
-              />
-            </Box>
-            <Box w={["100%", "70%"]}>
-              <SceneLineChart data={[sceneData]} selectedScene={0} />
-            </Box>
-          </Flex>
-          <Flex direction={["column", "row"]} mt="4">
-            <Box w={["100%", "60%"]} mr={[0, 4]}>
+            <Box w={["100%", "60%"]} mr={[0, 4]} mb={[2, 0]}>
               <SceneMarathonUsers data={sceneData.marathon_users} />
             </Box>
             <Box w={["100%", "40%"]}>

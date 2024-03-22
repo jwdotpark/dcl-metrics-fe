@@ -7,7 +7,7 @@ const SceneLineChart = ({ data, selectedScene }) => {
     item.name = data[index].name
   })
   return (
-    <Box h="300">
+    <Box h="100%" mb={[4, 0]}>
       <MultiLineChart
         res={timeSpentHistogramArr}
         selectedScene={selectedScene}

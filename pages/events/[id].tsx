@@ -3,7 +3,6 @@ import { NextSeo } from "next-seo"
 import Layout from "../../src/components/layout/layout"
 import { Attendees } from "../../src/components/local/events/event/Attendees"
 import { Description } from "../../src/components/local/events/event/Description"
-import { Details } from "../../src/components/local/events/event/Details"
 import { AdditionalData } from "../../src/components/local/events/event/AdditionalData"
 import { ImageBox } from "../../src/components/local/events/event/Image"
 import { Title } from "../../src/components/local/events/event/Title"
@@ -91,8 +90,8 @@ const SingleEventPage = (props) => {
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="0">
           <Title event={event} />
           <ImageBox event={event} />
-          <Details event={event} />
-          <AdditionalData eventData={eventData} />
+          {/*<Details event={event} />*/}
+          <AdditionalData event={event} eventData={eventData} />
           <Description event={event} />
           <Attendees attendees={attendees} />
         </Grid>

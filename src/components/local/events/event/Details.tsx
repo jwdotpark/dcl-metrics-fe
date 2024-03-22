@@ -1,15 +1,17 @@
-import { Flex, Button, Text, Box, Tag } from "@chakra-ui/react"
-
+import {
+  Flex,
+  Button,
+  Text,
+  Box,
+  Tag,
+  GridItem,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import { format } from "date-fns"
-
 import Link from "next/link"
-
 import { FiCalendar, FiAtSign, FiTag, FiUser, FiHome } from "react-icons/fi"
 import { tagColor } from "../../../../lib/data/constant"
 import BoxTitle from "../../../layout/local/BoxTitle"
-
-import BoxWrapper from "../../../layout/local/BoxWrapper"
-
 import ToolTip from "../../../layout/local/ToolTip"
 
 const EventDetail = ({ icon, text }) => (
@@ -22,10 +24,45 @@ const EventDetail = ({ icon, text }) => (
   </Flex>
 )
 
-export const Details = ({ event }) => {
+export const Details = ({ event, sceneData }) => {
   const category = event.categories[0].toString()
+
+  const box = {
+    h: "100%",
+    w: "100%",
+    p: [0, 1, 1, 2, 2],
+    bg: useColorModeValue("white", "gray.800"),
+    border: "1px solid",
+    borderColor: useColorModeValue("gray.300", "gray.600"),
+    borderRadius: "xl",
+    shadow: "md",
+    pb: 4,
+    colSpan: 8,
+    hover: {
+      shadow: useColorModeValue(
+        "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
+        "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+      ),
+      transition: "outline 0.1s ease-in-out",
+    },
+    transition: "box-shadow 0.5s ease-in-out",
+  }
+
   return (
-    <BoxWrapper colSpan={[8, 2]}>
+    <GridItem
+      w={box.w}
+      h={box.h}
+      p={box.p}
+      pb={box.pb}
+      bg={box.bg}
+      border={box.border}
+      borderColor={box.borderColor}
+      borderRadius={box.borderRadius}
+      shadow={box.shadow}
+      _hover={box.hover}
+      transition={box.transition}
+      colSpan={box.colSpan}
+    >
       <BoxTitle
         name="Event Details"
         description=""
@@ -36,10 +73,10 @@ export const Details = ({ event }) => {
         line={""}
         setLine={""}
       />
-      <Box p="4">
+      <Box h="100%" p="4">
         <EventDetail
           icon={<FiCalendar />}
-          text={format(new Date(event.next_start_at), "yyyy MMMM d HH:mm")}
+          text={format(new Date(sceneData.date), "MMM d, yyyy")}
         />
         <EventDetail icon={<FiAtSign />} text={event.scene_name || "N/A"} />
         <EventDetail
@@ -92,6 +129,6 @@ export const Details = ({ event }) => {
           }
         />
       </Box>
-    </BoxWrapper>
+    </GridItem>
   )
 }

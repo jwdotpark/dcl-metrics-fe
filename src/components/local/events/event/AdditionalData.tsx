@@ -2,7 +2,7 @@ import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { EventRelatedEvent } from "./EventRelatedScene"
 
-export const AdditionalData = ({ eventData }) => {
+export const AdditionalData = ({ event, eventData }) => {
   const { occurrences } = eventData
   return (
     <BoxWrapper colSpan={[8, 8]}>
@@ -16,7 +16,8 @@ export const AdditionalData = ({ eventData }) => {
         line={""}
         setLine={""}
       />
-      <EventRelatedEvent data={occurrences} />
+
+      <EventRelatedEvent event={event} data={occurrences} />
     </BoxWrapper>
   )
 }
