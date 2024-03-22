@@ -7,7 +7,7 @@ export const AdditionalData = ({ event, eventData }) => {
   return (
     <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle
-        name={`Event Overview`}
+        name={`Event Series Overview`}
         description=""
         date={""}
         avgData={[]}

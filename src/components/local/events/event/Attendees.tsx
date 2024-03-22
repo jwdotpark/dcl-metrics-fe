@@ -30,7 +30,7 @@ export const Attendees = ({ attendees, itemsPerPage = 35 }) => {
   return (
     <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle
-        name={`${data.length} Attendees`}
+        name={`${data.length} Users interested in this event`}
         description=""
         date={""}
         avgData={[]}
