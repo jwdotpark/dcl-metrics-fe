@@ -209,7 +209,9 @@ const Map = ({
     }
     if (selectedParcel.scene) {
       selectedParcel.scene.parcels.map((tile) => {
-        tiles[tile].type = "selected_scene"
+        if (tiles[tile]) {
+          tiles[tile].type = "selected_scene"
+        }
       })
     }
   }, [selectedParcel])
