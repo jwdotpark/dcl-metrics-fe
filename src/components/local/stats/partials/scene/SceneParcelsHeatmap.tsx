@@ -94,7 +94,7 @@ const SceneParcelsHeatmap = ({ data, selectedScene }) => {
             borderRadius="xl"
             shadow="md"
           >
-            {normalizedGrid.map((row, i) => {
+            {normalizedGrid.reverse().map((row, i) => {
               return (
                 <Flex key={i}>
                   {row.map((cell, j) => {
