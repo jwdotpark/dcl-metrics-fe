@@ -64,7 +64,7 @@ export const Details = ({ event, sceneData }) => {
       colSpan={box.colSpan}
     >
       <BoxTitle
-        name="Event Details"
+        name={`Event Details`}
         description=""
         date={""}
         avgData={[]}
@@ -92,11 +92,9 @@ export const Details = ({ event, sceneData }) => {
             </Tag>
           }
         />
-
-        <Flex align="center" direction="row" mb="2" mx="2">
-          <FiUser />
-
-          <Text ml="2" fontWeight="medium">
+        <EventDetail
+          icon={<FiUser />}
+          text={
             <Link href={`/users/${event.user}`}>
               <Text
                 as="span"
@@ -108,9 +106,8 @@ export const Details = ({ event, sceneData }) => {
                 {event.user_name}
               </Text>
             </Link>
-          </Text>
-        </Flex>
-
+          }
+        />
         <EventDetail
           icon={<FiHome />}
           text={

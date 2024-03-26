@@ -9,6 +9,7 @@ import { Title } from "../../src/components/local/events/event/Title"
 import { getEndpoint } from "../../src/lib/data/constant"
 import { getDataWithApiKey } from "../../src/lib/data/fetch"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
+import { EventInfo } from "../../src/components/local/events/event/EventInfo"
 
 export async function getServerSideProps(context) {
   const { id } = context.params
@@ -90,9 +91,9 @@ const SingleEventPage = (props) => {
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="0">
           <Title event={event} />
           <ImageBox event={event} />
-          {/*<Details event={event} />*/}
-          <AdditionalData event={event} eventData={eventData} />
+          <EventInfo event={event} />
           <Description event={event} />
+          <AdditionalData event={event} eventData={eventData} />
           <Attendees attendees={attendees} />
         </Grid>
       </Layout>

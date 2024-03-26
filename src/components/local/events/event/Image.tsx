@@ -3,7 +3,7 @@ import BoxWrapper from "../../../layout/local/BoxWrapper"
 
 export const ImageBox = ({ event }) => {
   return (
-    <BoxWrapper colSpan={[8, 8]}>
+    <BoxWrapper colSpan={[8, 6]}>
       <Box m="2" mb={[0, 4]}>
         <Box
           border="1px solid"
@@ -12,6 +12,7 @@ export const ImageBox = ({ event }) => {
         >
           <Image
             w="100%"
+            //maxH='500px'
             borderRadius="xl"
             shadow="md"
             objectFit="cover"

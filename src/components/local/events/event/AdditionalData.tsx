@@ -7,8 +7,8 @@ export const AdditionalData = ({ event, eventData }) => {
   return (
     <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle
-        name={`Event Series Overview`}
-        description=""
+        name={`Past Event Series Overview`}
+        description="Detailed information on the past event series on this scene"
         date={""}
         avgData={[]}
         slicedData={() => {}}

@@ -9,7 +9,7 @@ export const Description = ({ event }) => {
     <BoxWrapper colSpan={[8, 8]}>
       <BoxTitle
         name={`Event Description`}
-        description=""
+        description="Desription for the latest event"
         date={""}
         avgData={[]}
         slicedData={() => {}}
