@@ -28,7 +28,7 @@ export const EventInfo = ({ event }) => {
   const category = event.categories[0].toString()
 
   return (
-    <BoxWrapper colSpan={[8, 2]}>
+    <BoxWrapper colSpan={[8, 3]}>
       <BoxTitle
         name="Latest Event Details"
         description=""
