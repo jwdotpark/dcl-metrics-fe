@@ -56,7 +56,7 @@ const EventItemDrawer = ({ data }) => {
             fontWeight="bold"
             _hover={{ color: "blue.600" }}
           >
-            {data.name.slice(0, 50)}
+            {data.name.slice(0, 80) + (data.name.length > 80 ? "..." : "")}
           </Text>
         </Box>
         <Drawer
