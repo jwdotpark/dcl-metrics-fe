@@ -27,6 +27,7 @@ import Link from "next/link"
 import { tagColor } from "../../../lib/data/constant"
 
 const EventCardList = ({ data }) => {
+  console.log(data)
   const columns = useMemo(
     () => [
       //{
@@ -83,14 +84,14 @@ const EventCardList = ({ data }) => {
         ),
       },
       {
-        Header: "Start At",
-        accessor: "start_at",
-        Cell: ({ value }) => format(new Date(value), "dd/MM/yy"),
+        Header: "Next Start At",
+        accessor: "next_start_at",
+        Cell: ({ value }) => format(new Date(value), "MMM d HH:mm"),
       },
       {
-        Header: "Finish At",
-        accessor: "finish_at",
-        Cell: ({ value }) => format(new Date(value), "dd/MM/yy"),
+        Header: "Next Finish At",
+        accessor: "next_finish_at",
+        Cell: ({ value }) => format(new Date(value), "MMM d HH:mm"),
       },
       {
         Header: "Attendees",

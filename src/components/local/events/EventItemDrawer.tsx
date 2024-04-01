@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react"
 import { format } from "date-fns"
 import Link from "next/link"
-import { FiCalendar, FiGlobe } from "react-icons/fi"
+import { FiCalendar, FiClock, FiGlobe } from "react-icons/fi"
 import ToolTip from "../../layout/local/ToolTip"
 import ChakraUIRenderer from "chakra-ui-markdown-renderer"
 import ReactMarkdown from "react-markdown"
@@ -30,6 +30,21 @@ const EventItemDrawer = ({ data }) => {
     x: data.position[0],
     y: data.position[1],
   }
+
+  //console.log(data.recurrent_dates)
+
+  // make a function that find the next closed date in data.recurrent_dates
+  const findNextDate = (recurrentEvents: string[]) => {
+    //const dates = data.recurrent_dates
+    const now = new Date()
+    const nextDate = recurrentEvents.find((d) => {
+      const dDate = new Date(d)
+      return dDate > now
+    })
+    return nextDate
+  }
+
+  console.log(findNextDate(data.recurrent_dates))
 
   return (
     <Box>
@@ -79,12 +94,10 @@ const EventItemDrawer = ({ data }) => {
                     <FiCalendar />
                   </Center>
                   <Text as="span">
-                    {format(new Date(data.next_start_at), "yyyy MMM. d")}
+                    {format(new Date(data.next_start_at), "yyyy MMMM d")}
                   </Text>
                   {data.scene_name && (
-                    <Text as="span" ml="1">
-                      @ <span>{data.scene_name}</span>
-                    </Text>
+                    <Text ml="1">{"@ " + data.scene_name}</Text>
                   )}
                 </Flex>
                 <Spacer />
@@ -92,10 +105,10 @@ const EventItemDrawer = ({ data }) => {
                   <Link href={data.url} target="_blank">
                     <ToolTip label={`Jump in this event`}>
                       <Button
-                        borderRadius="xl"
+                        borderRadius="lg"
                         shadow="md"
                         colorScheme="purple"
-                        size="sm"
+                        size="xs"
                       >
                         <Box sx={{ transform: "translateY(-1px)" }} mr="1">
                           <FiGlobe />
@@ -107,6 +120,16 @@ const EventItemDrawer = ({ data }) => {
                     </ToolTip>
                   </Link>
                 </Box>
+              </Flex>
+              <Divider my="4" />
+              <Flex>
+                <Box sx={{ transform: "translateY(2px)" }} mr="1">
+                  <FiClock />
+                </Box>
+                <Center>
+                  {format(new Date(data.next_start_at), "MMMM d HH:mm")} -{" "}
+                  {format(new Date(data.next_finish_at), "MMMM d HH:mm")}
+                </Center>
               </Flex>
               <Divider my="4" />
               <Box mt="4">
