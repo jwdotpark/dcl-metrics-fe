@@ -61,13 +61,19 @@ export async function getServerSideProps(context) {
   }
   event = await fetchUserEvent()
 
+  //return {
+  //  props: {
+  //    address,
+  //    userAddressRes,
+  //    nftRes,
+  //    daoActivityRes,
+  //    event,
+  //  },
+  //}
   return {
-    props: {
-      address,
-      userAddressRes,
-      nftRes,
-      daoActivityRes,
-      event,
+    redirect: {
+      destination: "/500",
+      permanent: false,
     },
   }
 }

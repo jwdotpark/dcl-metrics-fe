@@ -25,8 +25,14 @@ export async function getStaticProps() {
     writeFile("staticGlobalUsers", globalUserRes)
 
     const result = { globalUserRes }
+    //return {
+    //  props: result,
+    //}
     return {
-      props: result,
+      redirect: {
+        destination: "/500",
+        permanent: false,
+      },
     }
   } else if (isDev && !isLocal) {
     const globalUserRes = await getDataWithApiKey(
@@ -37,14 +43,26 @@ export async function getStaticProps() {
     )
 
     const result = { globalUserRes }
+    //return {
+    //  props: result,
+    //}
     return {
-      props: result,
+      redirect: {
+        destination: "/500",
+        permanent: false,
+      },
     }
   } else if (isLocal) {
     const globalUserRes = staticGlobalUsers
     const result = { globalUserRes }
+    //return {
+    //  props: result,
+    //}
     return {
-      props: result,
+      redirect: {
+        destination: "/500",
+        permanent: false,
+      },
     }
   }
 }

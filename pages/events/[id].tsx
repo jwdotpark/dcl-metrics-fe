@@ -25,8 +25,14 @@ export async function getServerSideProps(context) {
   const attendees = await attendeeData.json()
 
   if (data.ok && eventData) {
+    //return {
+    //  props: { data, eventData, attendees },
+    //}
     return {
-      props: { data, eventData, attendees },
+      redirect: {
+        destination: "/500",
+        permanent: false,
+      },
     }
   } else {
     return {
