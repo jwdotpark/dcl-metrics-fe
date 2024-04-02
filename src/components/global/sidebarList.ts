@@ -20,12 +20,12 @@ export const sidebarList = {
     icon: FiTrendingUp,
     subItem: false,
   },
-  users: {
-    label: "Users",
-    name: "users",
-    icon: FiUsers,
-    subItem: true,
-  },
+  //users: {
+  //  label: "Users",
+  //  name: "users",
+  //  icon: FiUsers,
+  //  subItem: true,
+  //},
   scenes: {
     label: "Scenes",
     name: "scenes",
