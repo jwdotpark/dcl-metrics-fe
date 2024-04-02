@@ -14,7 +14,15 @@ import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import SearchUser from "../../src/components/local/stats/user/SearchUser"
 
-export async function getStaticProps() {
+//export async function getStaticProps() {
+export async function getServerSideProps() {
+  return {
+    redirect: {
+      destination: "/500",
+      permanent: false,
+    },
+  }
+
   if (isProd) {
     const globalUserRes = await getDataWithApiKey(
       globalUsersURL,
@@ -25,14 +33,8 @@ export async function getStaticProps() {
     writeFile("staticGlobalUsers", globalUserRes)
 
     const result = { globalUserRes }
-    //return {
-    //  props: result,
-    //}
     return {
-      redirect: {
-        destination: "/500",
-        permanent: false,
-      },
+      props: result,
     }
   } else if (isDev && !isLocal) {
     const globalUserRes = await getDataWithApiKey(
@@ -43,26 +45,14 @@ export async function getStaticProps() {
     )
 
     const result = { globalUserRes }
-    //return {
-    //  props: result,
-    //}
     return {
-      redirect: {
-        destination: "/500",
-        permanent: false,
-      },
+      props: result,
     }
   } else if (isLocal) {
     const globalUserRes = staticGlobalUsers
     const result = { globalUserRes }
-    //return {
-    //  props: result,
-    //}
     return {
-      redirect: {
-        destination: "/500",
-        permanent: false,
-      },
+      props: result,
     }
   }
 }
