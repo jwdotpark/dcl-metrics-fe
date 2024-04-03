@@ -1,4 +1,3 @@
-// useChartZoom.js
 import { useState } from "react"
 
 export const useChartZoom = (initialData) => {
@@ -61,5 +60,11 @@ export const useChartZoom = (initialData) => {
     setChartState({ ...chartState, data: initialData })
   }
 
-  return { chartState, handleMouseDown, handleMouseMove, handleMouseUp, handleReset }
+  return {
+    chartState,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+    handleReset,
+  }
 }

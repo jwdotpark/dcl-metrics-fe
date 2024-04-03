@@ -1,16 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {
-  Box,
-  Center,
-  IconButton,
-  Table,
-  Tbody,
-  Td,
-  Tr,
-  useColorModeValue,
-} from "@chakra-ui/react"
+import { Box, IconButton, useColorModeValue } from "@chakra-ui/react"
 import { format } from "date-fns"
-import { useState } from "react"
 import { FiRotateCcw } from "react-icons/fi"
 import {
   ResponsiveContainer,
@@ -23,13 +13,14 @@ import {
   Brush,
   ReferenceArea,
 } from "recharts"
-import { indexChartMargin } from "../../../lib/data/constant"
+import { chartHeight, indexChartMargin } from "../../../lib/data/constant"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import PlainBoxTitle from "../../layout/local/PlainBoxTitle"
 import ToolTip from "../../layout/local/ToolTip"
+import { CustomTooltip } from "./partials/chart/CustomCharatToolTip"
 import { useChartZoom } from "./partials/chart/useChartZoom"
 
-const GlobalChart = ({ chartData }) => {
+const UniqueVisitor = ({ chartData }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
   const {
     chartState,
@@ -39,67 +30,14 @@ const GlobalChart = ({ chartData }) => {
     handleReset,
   } = useChartZoom(chartData)
 
-  const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <Box
-          p="2"
-          fontSize="xs"
-          bg={useColorModeValue("whiteAlpha.700", "blackAlpha.600")}
-          border="1px"
-          borderColor={useColorModeValue("gray.200", "gray.600")}
-          borderRadius="xl"
-          shadow="md"
-        >
-          <Center mb="2" fontWeight="bold">
-            {format(new Date(label), "yyyy MMMM d")}
-          </Center>
-          <Table size="xs" variant="simple">
-            <Tbody>
-              <Tr>
-                <Td>Unique Users</Td>
-                <Td isNumeric>
-                  <Box mx="2" color="#48BB78" fontWeight="bold">
-                    {payload[0].value}
-                  </Box>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Guest Users</Td>
-                <Td isNumeric>
-                  <Box mx="2" color="#9F7AEA" fontWeight="bold">
-                    {payload[1].value}
-                  </Box>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>New Users</Td>
-                <Td isNumeric>
-                  <Box mx="2" color="#4299E1" fontWeight="bold">
-                    {payload[2].value}
-                  </Box>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Name Users</Td>
-                <Td isNumeric>
-                  <Box mx="2" color="#F56565" fontWeight="bold">
-                    {payload[3].value}
-                  </Box>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </Box>
-      )
-    }
-  }
-
   return (
     <BoxWrapper colSpan={0}>
-      <PlainBoxTitle name="Unique Visitors" description="description" />
+      <PlainBoxTitle
+        name="Unique Visitors"
+        description={`Unique visitors in Decentraland are recognized through their status, which is measured by their recent engagement within the platform.`}
+      />
       <Box>
-        <Box pos="relative" w="100%" h="300px" mt="4" mb="4">
+        <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="4">
           <Box pos="absolute" top="" right="4">
             <ToolTip label={`Reset`}>
               <IconButton
@@ -119,11 +57,11 @@ const GlobalChart = ({ chartData }) => {
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               margin={indexChartMargin}
-              width={500}
               data={chartState.data}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
+              onMouseLeave={() => handleMouseUp()}
             >
               <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
               <Tooltip
@@ -156,28 +94,32 @@ const GlobalChart = ({ chartData }) => {
                 tick={{ fill: AxisFontColor }}
               />
               <Area
-                type="monotone"
+                animationDuration={150}
+                type="linear"
                 dataKey="unique_users"
                 stroke="#48BB78"
                 strokeWidth="2px"
                 fill="#48BB7880"
               />
               <Area
-                type="monotone"
+                animationDuration={150}
+                type="linear"
                 dataKey="guest_users"
                 stroke="#9F7AEA"
                 strokeWidth="2px"
                 fill="#9F7AEA80"
               />
               <Area
-                type="monotone"
+                animationDuration={150}
+                type="linear"
                 dataKey="new_users"
                 strokeWidth="2px"
                 stroke="#4299E1"
                 fill="#4299E180"
               />
               <Area
-                type="monotone"
+                animationDuration={150}
+                type="linear"
                 dataKey="named_users"
                 strokeWidth="2px"
                 stroke="#F56565"
@@ -200,7 +142,7 @@ const GlobalChart = ({ chartData }) => {
                 fillOpacity={0.5}
                 tickFormatter={(tick) => {
                   const date = new Date(tick)
-                  return format(date, "M/d")
+                  return format(date, "MMM. d")
                 }}
               />
             </AreaChart>
@@ -211,4 +153,4 @@ const GlobalChart = ({ chartData }) => {
   )
 }
 
-export default GlobalChart
+export default UniqueVisitor

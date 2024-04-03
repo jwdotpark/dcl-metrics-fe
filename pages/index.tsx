@@ -11,7 +11,7 @@ import {
 import Layout from "../src/components/layout/layout"
 import LandPicker from "../src/components/global/map/LandPicker"
 import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
-import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
+//import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
 import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 //import LandSales from "../src/components/local/stats/rentals/LandSales"
 import OnlineUsers from "../src/components/local/ext-data/OnlineUsers"
@@ -30,7 +30,7 @@ import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop
 import { isLocal } from "../src/lib/data/constant"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import BoxWrapper from "../src/components/layout/local/BoxWrapper"
-import GlobalChart from "../src/components/local/stats/GlobalChart"
+import UniqueVisitor from "../src/components/local/stats/UniqueVisitor"
 import { DataArrayType, DataObjectType } from "../src/lib/types/IndexPage"
 
 export async function getStaticProps() {
@@ -148,9 +148,9 @@ const GlobalPage: NextPage = (props: Props) => {
       <Layout>
         <Box w="100%">
           <Box mb="4" data-testid="uniqueVisitors">
-            <UniqueVisitors data={globalDailyRes} />
-            <Box mb="4" />
-            <GlobalChart chartData={chartData} />
+            {/*<UniqueVisitors data={globalDailyRes} />*/}
+            {/*<Box mb="4" />*/}
+            <UniqueVisitor chartData={chartData} />
           </Box>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <UniqueVisitedParcels data={globalDailyRes} />
