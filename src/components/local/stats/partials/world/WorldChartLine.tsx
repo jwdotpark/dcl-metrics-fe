@@ -12,15 +12,10 @@ import {
   //Area,
   ResponsiveContainer,
 } from "recharts"
+import { chartMargin } from "../../../../../lib/data/constant"
 import { TitleHolder } from "./TitleHolder"
 
 const WorldChartLine = ({ data }: any) => {
-  const chartMargin = {
-    top: 0,
-    right: 0,
-    left: -30,
-    bottom: 0,
-  }
   const AxisFontColor = useColorModeValue("#000", "#fff")
 
   const ToolTipComponent = (

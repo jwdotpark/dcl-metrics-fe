@@ -8,7 +8,7 @@ type TitleProps = {
 
 export const TitleHolder = ({ title, description }: TitleProps) => {
   return (
-    <Box w="100%" mb="2" ml="8">
+    <Box w="100%" mb="2" ml="6">
       <Text fontSize="sm" fontWeight="bold">
         {title}
         {description && (

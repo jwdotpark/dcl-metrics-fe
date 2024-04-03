@@ -30,8 +30,7 @@ import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop
 import { isLocal } from "../src/lib/data/constant"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import BoxWrapper from "../src/components/layout/local/BoxWrapper"
-
-import { Unique_Visitors } from "../src/components/local/stats/Unique_Visitors"
+import GlobalChart from "../src/components/local/stats/GlobalChart"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -133,7 +132,7 @@ const GlobalPage: NextPage = (props: Props) => {
           <Box mb="4" data-testid="uniqueVisitors">
             <UniqueVisitors data={globalDailyRes} />
             <Box mb="4" />
-            <Unique_Visitors data={globalDailyRes} />
+            <GlobalChart data={globalDailyRes} />
           </Box>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <UniqueVisitedParcels data={globalDailyRes} />
