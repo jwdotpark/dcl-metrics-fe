@@ -1,16 +1,15 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { Box, useColorModeValue } from "@chakra-ui/react"
 import { format } from "date-fns"
 import {
   ResponsiveContainer,
+  AreaChart,
   CartesianGrid,
   XAxis,
   YAxis,
-  Tooltip,
-  AreaChart,
   Area,
-  Brush,
   ReferenceArea,
+  Brush,
+  Tooltip,
 } from "recharts"
 import { chartHeight, indexChartMargin } from "../../../lib/data/constant"
 import BoxWrapper from "../../layout/local/BoxWrapper"
@@ -19,7 +18,7 @@ import { CustomTooltip } from "./partials/chart/CustomChartToolTip"
 import ChartResetBtn from "./partials/chart/ResetBtn"
 import { useChartZoom } from "./partials/chart/useChartZoom"
 
-const UniqueVisitor = ({ chartData }) => {
+const ParcelVisited = ({ chartData }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
   const {
     chartState,
@@ -30,13 +29,13 @@ const UniqueVisitor = ({ chartData }) => {
   } = useChartZoom(chartData)
 
   return (
-    <BoxWrapper colSpan={0}>
+    <BoxWrapper colSpan={3}>
       <PlainBoxTitle
-        name="Unique Visitors"
-        description={`Unique visitors are users that visited at least once in the given 24hr period and remained in world for at least one minute.`}
+        name="Parcel Visited"
+        description={`Parcel visited represents `}
       />
       <Box>
-        <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="4">
+        <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
           <ChartResetBtn handleReset={handleReset} />
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
@@ -70,7 +69,7 @@ const UniqueVisitor = ({ chartData }) => {
                 }}
               />
               <YAxis
-                dataKey="unique_users"
+                dataKey="active_parcels"
                 fontSize="10px"
                 style={{
                   fontWeight: "medium",
@@ -80,40 +79,16 @@ const UniqueVisitor = ({ chartData }) => {
               <Area
                 animationDuration={150}
                 type="linear"
-                dataKey="unique_users"
-                stroke="#48BB78"
+                dataKey="active_parcels"
+                stroke="#CAB2D6"
                 strokeWidth="2px"
-                fill="#48BB7880"
-              />
-              <Area
-                animationDuration={150}
-                type="linear"
-                dataKey="guest_users"
-                stroke="#9F7AEA"
-                strokeWidth="2px"
-                fill="#9F7AEA80"
-              />
-              <Area
-                animationDuration={150}
-                type="linear"
-                dataKey="new_users"
-                strokeWidth="2px"
-                stroke="#4299E1"
-                fill="#4299E180"
-              />
-              <Area
-                animationDuration={150}
-                type="linear"
-                dataKey="named_users"
-                strokeWidth="2px"
-                stroke="#F56565"
-                fill="#F5656580"
+                fill="#CAB2D680"
               />
               {chartState.startX !== null && chartState.endX !== null && (
                 <ReferenceArea
                   x1={chartState.startX}
                   x2={chartState.endX}
-                  stroke="#8884d8"
+                  stroke="#CAB2D6"
                   strokeOpacity={0.3}
                 />
               )}
@@ -137,4 +112,4 @@ const UniqueVisitor = ({ chartData }) => {
   )
 }
 
-export default UniqueVisitor
+export default ParcelVisited
