@@ -27,105 +27,17 @@ import { indexChartMargin } from "../../../lib/data/constant"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import PlainBoxTitle from "../../layout/local/PlainBoxTitle"
 import ToolTip from "../../layout/local/ToolTip"
-import { TitleHolder } from "./partials/world/TitleHolder"
+import { useChartZoom } from "./partials/chart/useChartZoom"
 
-interface DataObjectType {
-  active_parcels: number
-  active_scenes: number
-  users: {
-    guest_users: number
-    named_users: number
-    new_users: number
-    unique_users: number
-  }
-  degraded: boolean
-}
-
-interface DataArrayType {
-  date: string
-  active_parcels: number
-  active_scenes: number
-  guest_users: number
-  named_users: number
-  new_users: number
-  unique_users: number
-  degraded: boolean
-}
-
-const GlobalChart = ({ data }) => {
+const GlobalChart = ({ chartData }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
-
-  const flattenObject = (
-    temp: Record<string, DataObjectType>
-  ): DataArrayType[] => {
-    return Object.entries(temp).map(([date, value]) => ({
-      date,
-      active_parcels: value.active_parcels,
-      active_scenes: value.active_scenes,
-      guest_users: value.users.guest_users,
-      named_users: value.users.named_users,
-      new_users: value.users.new_users,
-      unique_users: value.users.unique_users,
-      degraded: value.degraded,
-    }))
-  }
-
-  const chartData = flattenObject(data)
-
-  const [chartState, setChartState] = useState({
-    startX: null,
-    endX: null,
-    startY: null,
-    endY: null,
-    data: chartData,
-  })
-
-  const handleMouseDown = (e) => {
-    if (e?.activeLabel && e?.activePayload?.length) {
-      const x = e?.activeLabel
-      const y = e?.activePayload[0]?.value
-      setChartState((prevState) => ({
-        ...prevState,
-        startX: x,
-        endX: x,
-        startY: y,
-        endY: y,
-      }))
-    }
-  }
-
-  const handleMouseMove = (e) => {
-    if (chartState.startX !== null) {
-      if (e?.activeLabel && e?.activePayload?.length) {
-        const x = e?.activeLabel
-        const y = e?.activePayload[0]?.value
-        setChartState((prevState) => ({ ...prevState, endX: x, endY: y }))
-      }
-    }
-  }
-
-  const handleMouseUp = () => {
-    if (
-      chartState.startX !== null &&
-      chartState.endX !== null &&
-      chartState.startY !== null &&
-      chartState.endY !== null
-    ) {
-      const xValues = chartState.data.map((entry) => entry.date)
-      const startIndex = xValues.indexOf(chartState.startX)
-      const endIndex = xValues.indexOf(chartState.endX)
-      if (startIndex < endIndex) {
-        const zoomedData = chartState.data.slice(startIndex, endIndex + 1)
-        setChartState({
-          startX: null,
-          endX: null,
-          startY: null,
-          endY: null,
-          data: zoomedData,
-        })
-      }
-    }
-  }
+  const {
+    chartState,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+    handleReset,
+  } = useChartZoom(chartData)
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -198,15 +110,7 @@ const GlobalChart = ({ data }) => {
                 shadow="md"
                 aria-label={""}
                 icon={<FiRotateCcw />}
-                onClick={() =>
-                  setChartState({
-                    startX: null,
-                    endX: null,
-                    startY: null,
-                    endY: null,
-                    data: chartData,
-                  })
-                }
+                onClick={() => handleReset()}
                 size="xs"
                 type="button"
               />
@@ -283,22 +187,20 @@ const GlobalChart = ({ data }) => {
                 <ReferenceArea
                   x1={chartState.startX}
                   x2={chartState.endX}
-                  //y1={chartState.startY}
-                  //y2={chartState.endY}
                   stroke="#8884d8"
                   strokeOpacity={0.3}
                 />
               )}
               <Brush
                 dataKey="date"
-                height={30}
-                travellerWidth={10}
+                height={20}
+                travellerWidth={5}
                 stroke={useColorModeValue("#718096", "#EDF2F7")}
                 fill={useColorModeValue("#EDF2F7", "#4A5568")}
                 fillOpacity={0.5}
                 tickFormatter={(tick) => {
                   const date = new Date(tick)
-                  return format(date, "MMM dd")
+                  return format(date, "M/d")
                 }}
               />
             </AreaChart>

@@ -31,6 +31,7 @@ import { isLocal } from "../src/lib/data/constant"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import BoxWrapper from "../src/components/layout/local/BoxWrapper"
 import GlobalChart from "../src/components/local/stats/GlobalChart"
+import { DataArrayType, DataObjectType } from "../src/lib/types/IndexPage"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -102,6 +103,23 @@ const GlobalPage: NextPage = (props: Props) => {
     }
   }
 
+  const flattenObject = (
+    temp: Record<string, DataObjectType>
+  ): DataArrayType[] => {
+    return Object.entries(temp).map(([date, value]) => ({
+      date,
+      active_parcels: value.active_parcels,
+      active_scenes: value.active_scenes,
+      guest_users: value.users.guest_users,
+      named_users: value.users.named_users,
+      new_users: value.users.new_users,
+      unique_users: value.users.unique_users,
+      degraded: value.degraded,
+    }))
+  }
+
+  const chartData = flattenObject(globalDailyRes)
+
   useEffect(() => {
     fetchWorldData()
   }, [])
@@ -132,7 +150,7 @@ const GlobalPage: NextPage = (props: Props) => {
           <Box mb="4" data-testid="uniqueVisitors">
             <UniqueVisitors data={globalDailyRes} />
             <Box mb="4" />
-            <GlobalChart data={globalDailyRes} />
+            <GlobalChart chartData={chartData} />
           </Box>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <UniqueVisitedParcels data={globalDailyRes} />
