@@ -133,7 +133,6 @@ const GlobalPage: NextPage = (props: Props) => {
           <Box mb="4" data-testid="uniqueVisitors">
             <UniqueVisitors data={globalDailyRes} />
             <Box mb="4" />
-            <Unique_Visitors data={globalDailyRes} />
           </Box>
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <UniqueVisitedParcels data={globalDailyRes} />
