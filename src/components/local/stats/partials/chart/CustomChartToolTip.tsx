@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
+  Text,
   Box,
   useColorModeValue,
   Center,
@@ -11,6 +12,17 @@ import {
 import { format } from "date-fns"
 
 export const CustomTooltip = ({ active, payload, label }) => {
+  const findDegraded = (payloadArray) => {
+    for (let item of payloadArray) {
+      if (item.payload.degraded === true) {
+        return true
+      }
+    }
+    return false
+  }
+
+  const isDegraded = findDegraded(payload)
+
   if (active && payload && payload.length > 1) {
     return (
       <Box
@@ -22,9 +34,16 @@ export const CustomTooltip = ({ active, payload, label }) => {
         borderRadius="xl"
         shadow="md"
       >
-        <Center mb="2" fontWeight="bold">
-          {format(new Date(label), "yyyy MMMM d")}
+        <Center fontWeight="bold">
+          {format(new Date(label), "yyyy MMMM d")}:{" "}
         </Center>
+        {isDegraded && (
+          <Center my="1">
+            <Text color="red.500" fontWeight="bold">
+              Degraded
+            </Text>
+          </Center>
+        )}
         <Table size="xs" variant="simple">
           <Tbody>
             <Tr>
@@ -77,6 +96,13 @@ export const CustomTooltip = ({ active, payload, label }) => {
         <Center mb="2" fontWeight="bold">
           {format(new Date(payload[0].payload.date), "yyyy MMMM d")}
         </Center>
+        {isDegraded && (
+          <Center my="1">
+            <Text color="red.500" fontWeight="bold">
+              Degraded
+            </Text>
+          </Center>
+        )}
         <Table size="xs" variant="simple">
           <Tbody>
             <Tr>

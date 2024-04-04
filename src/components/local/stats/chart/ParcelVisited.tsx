@@ -11,12 +11,11 @@ import {
   Brush,
   Tooltip,
 } from "recharts"
-import { chartHeight, indexChartMargin } from "../../../lib/data/constant"
-import BoxWrapper from "../../layout/local/BoxWrapper"
-import PlainBoxTitle from "../../layout/local/PlainBoxTitle"
-import { CustomTooltip } from "./partials/chart/CustomChartToolTip"
-import ChartResetBtn from "./partials/chart/ResetBtn"
-import { useChartZoom } from "./partials/chart/useChartZoom"
+import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
+import { SmallBoxTitle } from "../../../layout/local/SmallBoxTitle"
+import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
+import ChartResetBtn from "../partials/chart/ResetBtn"
+import { useChartZoom } from "../partials/chart/useChartZoom"
 
 const ParcelVisited = ({ chartData }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
@@ -29,13 +28,10 @@ const ParcelVisited = ({ chartData }) => {
   } = useChartZoom(chartData)
 
   return (
-    <BoxWrapper colSpan={3}>
-      <PlainBoxTitle
-        name="Parcel Visited"
-        description={`Parcel visited represents `}
-      />
+    <Box mb="2">
+      <SmallBoxTitle name="Unique Visitors" description="description" />
       <Box>
-        <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
+        <Box pos="relative" w="50%" h={chartHeight} mt="4" mb="2">
           <ChartResetBtn handleReset={handleReset} />
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
@@ -45,6 +41,7 @@ const ParcelVisited = ({ chartData }) => {
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={() => handleMouseUp()}
+              syncId="anyId"
             >
               <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
               <Tooltip
@@ -108,7 +105,7 @@ const ParcelVisited = ({ chartData }) => {
           </ResponsiveContainer>
         </Box>
       </Box>
-    </BoxWrapper>
+    </Box>
   )
 }
 
