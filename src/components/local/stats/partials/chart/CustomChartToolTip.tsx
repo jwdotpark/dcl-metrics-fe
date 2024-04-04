@@ -11,6 +11,25 @@ import {
 } from "@chakra-ui/react"
 import { format } from "date-fns"
 
+const TableRow = ({ dataKey, value, stroke }) => {
+  const mutateString = (inputString: string): string => {
+    return inputString.replace("_", " ")
+  }
+
+  return (
+    <>
+      <Tr>
+        <Td>{mutateString(dataKey).toUpperCase()}</Td>
+        <Td isNumeric>
+          <Box mx="2" color={stroke} fontWeight="bold">
+            {value}
+          </Box>
+        </Td>
+      </Tr>
+    </>
+  )
+}
+
 export const CustomTooltip = ({ active, payload, label }) => {
   const findDegraded = (payloadArray) => {
     for (let item of payloadArray) {
@@ -23,14 +42,14 @@ export const CustomTooltip = ({ active, payload, label }) => {
 
   const isDegraded = findDegraded(payload)
 
-  if (active && payload && payload.length > 1) {
+  if (active && payload && payload.length > 0) {
     return (
       <Box
         p="2"
         fontSize="xs"
         bg={useColorModeValue("whiteAlpha.700", "blackAlpha.600")}
         border="1px"
-        borderColor={useColorModeValue("gray.200", "gray.600")}
+        borderColor={useColorModeValue("gray.200", "gray.800")}
         borderRadius="xl"
         shadow="md"
       >
@@ -38,81 +57,22 @@ export const CustomTooltip = ({ active, payload, label }) => {
           {format(new Date(label), "yyyy MMMM d")}:{" "}
         </Center>
         {isDegraded && (
-          <Center my="1">
+          <Center mt="1">
             <Text color="red.500" fontWeight="bold">
               Degraded
             </Text>
           </Center>
         )}
-        <Table size="xs" variant="simple">
+        <Table my="1" size="xs" variant="simple">
           <Tbody>
-            <Tr>
-              <Td>{payload[0].dataKey}</Td>
-              <Td isNumeric>
-                <Box mx="2" color={payload[0].stroke} fontWeight="bold">
-                  {payload[0].value}
-                </Box>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>{payload[1].dataKey}</Td>
-              <Td isNumeric>
-                <Box mx="2" color={payload[1].stroke} fontWeight="bold">
-                  {payload[1].value}
-                </Box>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>{payload[2].dataKey}</Td>
-              <Td isNumeric>
-                <Box mx="2" color={payload[2].stroke} fontWeight="bold">
-                  {payload[2].value}
-                </Box>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>{payload[3].dataKey}</Td>
-              <Td isNumeric>
-                <Box mx="2" color={payload[3].stroke} fontWeight="bold">
-                  {payload[3].value}
-                </Box>
-              </Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </Box>
-    )
-  } else if (active && payload && payload.length === 1) {
-    return (
-      <Box
-        p="2"
-        fontSize="xs"
-        bg={useColorModeValue("whiteAlpha.700", "blackAlpha.600")}
-        border="1px"
-        borderColor={useColorModeValue("gray.200", "gray.600")}
-        borderRadius="xl"
-        shadow="md"
-      >
-        <Center mb="2" fontWeight="bold">
-          {format(new Date(payload[0].payload.date), "yyyy MMMM d")}
-        </Center>
-        {isDegraded && (
-          <Center my="1">
-            <Text color="red.500" fontWeight="bold">
-              Degraded
-            </Text>
-          </Center>
-        )}
-        <Table size="xs" variant="simple">
-          <Tbody>
-            <Tr>
-              <Td>{payload[0].dataKey}</Td>
-              <Td isNumeric>
-                <Box mx="2" color={payload[0].stroke} fontWeight="bold">
-                  {payload[0].value}
-                </Box>
-              </Td>
-            </Tr>
+            {payload.map((item, index) => (
+              <TableRow
+                key={index}
+                dataKey={item.dataKey}
+                value={item.value}
+                stroke={item.stroke}
+              />
+            ))}
           </Tbody>
         </Table>
       </Box>

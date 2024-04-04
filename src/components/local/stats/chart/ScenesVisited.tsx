@@ -17,7 +17,7 @@ import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
 
-const ParcelVisited = ({ chartData }) => {
+const ScenesVisited = ({ chartData }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
   const {
     chartState,
@@ -30,7 +30,7 @@ const ParcelVisited = ({ chartData }) => {
   return (
     <GridItem w="100%" h="auto" colSpan={[6, 3]}>
       <Box mb="2">
-        <SmallBoxTitle name="Active Parcel" description="description" />
+        <SmallBoxTitle name="Active Scenes" description="description" />
         <Box>
           <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
             <ChartResetBtn handleReset={handleReset} />
@@ -67,7 +67,7 @@ const ParcelVisited = ({ chartData }) => {
                   }}
                 />
                 <YAxis
-                  dataKey="active_parcels"
+                  dataKey="active_scenes"
                   fontSize="10px"
                   style={{
                     fontWeight: "medium",
@@ -77,10 +77,10 @@ const ParcelVisited = ({ chartData }) => {
                 <Area
                   animationDuration={150}
                   type="linear"
-                  dataKey="active_parcels"
-                  stroke="#CAB2D6"
+                  dataKey="active_scenes"
+                  stroke="#FFB86C"
                   strokeWidth="2px"
-                  fill="#CAB2D680"
+                  fill="#FFB86C80"
                 />
                 {chartState.startX !== null && chartState.endX !== null && (
                   <ReferenceArea
@@ -111,4 +111,4 @@ const ParcelVisited = ({ chartData }) => {
   )
 }
 
-export default ParcelVisited
+export default ScenesVisited
