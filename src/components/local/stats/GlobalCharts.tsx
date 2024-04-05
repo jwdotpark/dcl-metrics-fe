@@ -11,6 +11,7 @@ import { UniqueVisitor } from "./chart/UniqueVisitor"
 import ParcelVisited from "./chart/ParcelVisited"
 import ScenesVisited from "./chart/ScenesVisited"
 import { useState } from "react"
+import { OnlineUsers } from "./chart/OnlineUsers"
 
 const GlobalChart = ({ chartData }) => {
   const axisFontColor = useColorModeValue("#000", "#fff")
@@ -45,11 +46,9 @@ const GlobalChart = ({ chartData }) => {
         <ParcelVisited chartData={chartData} avg={avg} setAvg={setAvg} />
         <ScenesVisited chartData={chartData} avg={avg} setAvg={setAvg} />
       </Grid>
-      <Grid
-        gap={4}
-        templateColumns={`repeat(${gridColumn}, 1fr)`}
-        mb="4"
-      ></Grid>
+      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+        <OnlineUsers />
+      </Grid>
     </BoxWrapper>
   )
 }
