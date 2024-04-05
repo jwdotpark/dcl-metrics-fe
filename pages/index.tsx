@@ -10,9 +10,9 @@ import {
 } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import LandPicker from "../src/components/global/map/LandPicker"
-import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
+//import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
 //import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
-import ActiveScenes from "../src/components/local/stats/ActiveScenes"
+//import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 //import LandSales from "../src/components/local/stats/rentals/LandSales"
 import OnlineUsers from "../src/components/local/ext-data/OnlineUsers"
 import {

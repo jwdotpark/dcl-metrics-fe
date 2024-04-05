@@ -1,5 +1,6 @@
 import { Box, useColorModeValue } from "@chakra-ui/react"
 import { format } from "date-fns"
+import { useEffect } from "react"
 import {
   ResponsiveContainer,
   AreaChart,
@@ -11,13 +12,14 @@ import {
   ReferenceArea,
   Brush,
 } from "recharts"
+import { calculateAvg } from "../../../../lib/data/chart/chartHelper"
 import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
 import { SmallBoxTitle } from "../../../layout/local/SmallBoxTitle"
 import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
 
-export const UniqueVisitor = ({ chartData, axisFontColor }) => {
+export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
   const {
     chartState,
     handleMouseDown,
@@ -25,6 +27,11 @@ export const UniqueVisitor = ({ chartData, axisFontColor }) => {
     handleMouseUp,
     handleReset,
   } = useChartZoom(chartData)
+
+  useEffect(() => {
+    setAvg(calculateAvg(chartState.data))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chartState.data])
 
   return (
     <Box>
@@ -52,6 +59,8 @@ export const UniqueVisitor = ({ chartData, axisFontColor }) => {
                   active={undefined}
                   payload={undefined}
                   label={undefined}
+                  avg={avg}
+                  data={chartState.data}
                 />
               }
             />

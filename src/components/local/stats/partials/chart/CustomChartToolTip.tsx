@@ -8,10 +8,12 @@ import {
   Tbody,
   Tr,
   Td,
+  Flex,
+  Thead,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
 
-const TableRow = ({ dataKey, value, stroke }) => {
+const TableRow = ({ dataKey, value, stroke, avg }) => {
   const mutateString = (inputString: string): string => {
     return inputString.replace("_", " ")
   }
@@ -21,8 +23,19 @@ const TableRow = ({ dataKey, value, stroke }) => {
       <Tr>
         <Td>{mutateString(dataKey).toUpperCase()}</Td>
         <Td isNumeric>
-          <Box mx="2" color={stroke} fontWeight="bold">
-            {value}
+          <Flex direction="row">
+            <Box mx="2" color={stroke} fontWeight="bold">
+              {value}
+            </Box>
+            <Box mr="4" />
+          </Flex>
+        </Td>
+        <Td fontWeight="medium" textAlign="end">
+          <Box alignContent="end">
+            <Text color={value - avg > 0 ? "green.500" : "red.500"}>
+              {value - avg > 0 && "+"}
+              {value - avg}
+            </Text>
           </Box>
         </Td>
       </Tr>
@@ -30,7 +43,7 @@ const TableRow = ({ dataKey, value, stroke }) => {
   )
 }
 
-export const CustomTooltip = ({ active, payload, label }) => {
+export const CustomTooltip = ({ active, payload, label, avg, data }) => {
   const findDegraded = (payloadArray) => {
     for (let item of payloadArray) {
       if (item.payload.degraded === true) {
@@ -53,8 +66,8 @@ export const CustomTooltip = ({ active, payload, label }) => {
         borderRadius="xl"
         shadow="md"
       >
-        <Center fontWeight="bold">
-          {format(new Date(label), "yyyy MMMM d")}:{" "}
+        <Center fontSize="md" fontWeight="bold">
+          {format(new Date(label), "yyyy MMMM d")}
         </Center>
         {isDegraded && (
           <Center mt="1">
@@ -64,15 +77,33 @@ export const CustomTooltip = ({ active, payload, label }) => {
           </Center>
         )}
         <Table my="1" size="xs" variant="simple">
+          <Thead>
+            <Tr>
+              <Td>Category</Td>
+              <Td>
+                <Box ml="2">Value</Box>
+              </Td>
+              <Td isNumeric>vs. {data && data.length} days AVG.</Td>
+            </Tr>
+          </Thead>
           <Tbody>
-            {payload.map((item, index) => (
-              <TableRow
-                key={index}
-                dataKey={item.dataKey}
-                value={item.value}
-                stroke={item.stroke}
-              />
-            ))}
+            {avg &&
+              payload.map((item, index) => {
+                const avgKey = `avg${item.dataKey
+                  .split("_")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join("")}`
+                const avgValue = avg[avgKey]
+                return (
+                  <TableRow
+                    key={index}
+                    dataKey={item.dataKey}
+                    value={item.value}
+                    avg={avgValue}
+                    stroke={item.stroke}
+                  />
+                )
+              })}
           </Tbody>
         </Table>
       </Box>

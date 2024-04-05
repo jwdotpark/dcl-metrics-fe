@@ -1,5 +1,6 @@
 import { Box, GridItem, useColorModeValue } from "@chakra-ui/react"
 import { format } from "date-fns"
+import { useEffect } from "react"
 import {
   ResponsiveContainer,
   AreaChart,
@@ -11,13 +12,14 @@ import {
   Brush,
   Tooltip,
 } from "recharts"
+import { calculateAvg } from "../../../../lib/data/chart/chartHelper"
 import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
 import { SmallBoxTitle } from "../../../layout/local/SmallBoxTitle"
 import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
 
-const ParcelVisited = ({ chartData }) => {
+const ParcelVisited = ({ chartData, avg, setAvg }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
   const {
     chartState,
@@ -26,6 +28,11 @@ const ParcelVisited = ({ chartData }) => {
     handleMouseUp,
     handleReset,
   } = useChartZoom(chartData)
+
+  useEffect(() => {
+    setAvg(calculateAvg(chartState.data))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chartState.data])
 
   return (
     <GridItem w="100%" h="auto" colSpan={[6, 3]}>
@@ -51,6 +58,8 @@ const ParcelVisited = ({ chartData }) => {
                       active={undefined}
                       payload={undefined}
                       label={undefined}
+                      avg={avg}
+                      data={chartState.data}
                     />
                   }
                 />

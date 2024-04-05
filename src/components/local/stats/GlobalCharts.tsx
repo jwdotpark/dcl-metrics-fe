@@ -10,6 +10,7 @@ import PlainBoxTitle from "../../layout/local/PlainBoxTitle"
 import { UniqueVisitor } from "./chart/UniqueVisitor"
 import ParcelVisited from "./chart/ParcelVisited"
 import ScenesVisited from "./chart/ScenesVisited"
+import { useState } from "react"
 
 const GlobalChart = ({ chartData }) => {
   const axisFontColor = useColorModeValue("#000", "#fff")
@@ -21,15 +22,34 @@ const GlobalChart = ({ chartData }) => {
     xl: 6,
   })
 
+  const [avg, setAvg] = useState({
+    avgActiveParcels: 0,
+    avgActiveScenes: 0,
+    avgGuestUsers: 0,
+    avgNamedUsers: 0,
+    avgNewUsers: 0,
+    avgUniqueUsers: 0,
+  })
+
   return (
     <BoxWrapper colSpan={0}>
       <PlainBoxTitle name="Global Charts" description="" />
-      <UniqueVisitor chartData={chartData} axisFontColor={axisFontColor} />
-      <Box mb="8" />
+      <UniqueVisitor
+        chartData={chartData}
+        axisFontColor={axisFontColor}
+        avg={avg}
+        setAvg={setAvg}
+      />
+      <Box my="8" />
       <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <ParcelVisited chartData={chartData} />
-        <ScenesVisited chartData={chartData} />
+        <ParcelVisited chartData={chartData} avg={avg} setAvg={setAvg} />
+        <ScenesVisited chartData={chartData} avg={avg} setAvg={setAvg} />
       </Grid>
+      <Grid
+        gap={4}
+        templateColumns={`repeat(${gridColumn}, 1fr)`}
+        mb="4"
+      ></Grid>
     </BoxWrapper>
   )
 }
