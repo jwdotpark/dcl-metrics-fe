@@ -11,10 +11,11 @@ import {
   Area,
   ReferenceArea,
   Brush,
+  Legend,
 } from "recharts"
 import { calculateAvg } from "../../../../lib/data/chart/chartHelper"
 import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
-import { SmallBoxTitle } from "../../../layout/local/SmallBoxTitle"
+import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
 import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
@@ -35,7 +36,7 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
 
   return (
     <Box>
-      <SmallBoxTitle
+      <PlainBoxTitle
         name="Unique Visitors"
         description="Unique visitors are users that visited at least once in the given
         24hr period and remained in world for at least one minute."
@@ -53,6 +54,18 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
             syncId="anyId"
           >
             <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+            <Brush
+              dataKey="date"
+              height={20}
+              travellerWidth={15}
+              stroke={useColorModeValue("#718096", "#EDF2F7")}
+              fill={useColorModeValue("#EDF2F7", "#4A5568")}
+              fillOpacity={0.5}
+              tickFormatter={(tick) => {
+                const date = new Date(tick)
+                return format(date, "MMMM d")
+              }}
+            />
             <Tooltip
               content={
                 <CustomTooltip
@@ -108,6 +121,7 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
               stroke="#4299E1"
               fill="#4299E180"
             />
+            <Legend verticalAlign="top" align="center" />
             <Area
               animationDuration={150}
               type="linear"
@@ -116,6 +130,7 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
               stroke="#F56565"
               fill="#F5656580"
             />
+
             {chartState.startX !== null && chartState.endX !== null && (
               <ReferenceArea
                 x1={chartState.startX}
@@ -124,18 +139,6 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
                 strokeOpacity={0.3}
               />
             )}
-            <Brush
-              dataKey="date"
-              height={20}
-              travellerWidth={5}
-              stroke={useColorModeValue("#718096", "#EDF2F7")}
-              fill={useColorModeValue("#EDF2F7", "#4A5568")}
-              fillOpacity={0.5}
-              tickFormatter={(tick) => {
-                const date = new Date(tick)
-                return format(date, "MMM. d")
-              }}
-            />
           </AreaChart>
         </ResponsiveContainer>
       </Box>

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export const useChartZoom = (initialData) => {
   const [chartState, setChartState] = useState({
@@ -8,6 +8,10 @@ export const useChartZoom = (initialData) => {
     endY: null,
     data: initialData,
   })
+
+  useEffect(() => {
+    setChartState((prevState) => ({ ...prevState, data: initialData }))
+  }, [initialData])
 
   const handleMouseDown = (e) => {
     if (e?.activeLabel && e?.activePayload?.length) {

@@ -9,12 +9,11 @@ import {
   YAxis,
   Area,
   ReferenceArea,
-  Brush,
   Tooltip,
 } from "recharts"
 import { calculateAvg } from "../../../../lib/data/chart/chartHelper"
 import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
-import { SmallBoxTitle } from "../../../layout/local/SmallBoxTitle"
+import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
 import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
@@ -37,7 +36,7 @@ const ParcelVisited = ({ chartData, avg, setAvg }) => {
   return (
     <GridItem w="100%" h="auto" colSpan={[6, 3]}>
       <Box mb="2">
-        <SmallBoxTitle name="Active Parcel" description="description" />
+        <PlainBoxTitle name="Active Parcel" description="description" />
         <Box>
           <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
             <ChartResetBtn handleReset={handleReset} />
@@ -99,7 +98,7 @@ const ParcelVisited = ({ chartData, avg, setAvg }) => {
                     strokeOpacity={0.3}
                   />
                 )}
-                <Brush
+                {/*<Brush
                   dataKey="date"
                   height={20}
                   travellerWidth={5}
@@ -110,7 +109,7 @@ const ParcelVisited = ({ chartData, avg, setAvg }) => {
                     const date = new Date(tick)
                     return format(date, "MMM. d")
                   }}
-                />
+                />*/}
               </AreaChart>
             </ResponsiveContainer>
           </Box>

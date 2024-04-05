@@ -154,3 +154,7 @@ export const eventStatus = (event) => {
     return "current"
   }
 }
+
+export const mutateString = (inputString: string): string => {
+  return inputString.replace("_", " ")
+}

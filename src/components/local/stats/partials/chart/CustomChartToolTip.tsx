@@ -12,12 +12,9 @@ import {
   Thead,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
+import { mutateString } from "../../../../../lib/hooks/utils"
 
 const TableRow = ({ dataKey, value, stroke, avg }) => {
-  const mutateString = (inputString: string): string => {
-    return inputString.replace("_", " ")
-  }
-
   return (
     <>
       <Tr>

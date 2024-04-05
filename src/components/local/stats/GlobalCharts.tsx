@@ -1,17 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {
-  Box,
-  Grid,
-  useBreakpointValue,
-  useColorModeValue,
-} from "@chakra-ui/react"
+import { Grid, useBreakpointValue, useColorModeValue } from "@chakra-ui/react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
-import PlainBoxTitle from "../../layout/local/PlainBoxTitle"
 import { UniqueVisitor } from "./chart/UniqueVisitor"
 import ParcelVisited from "./chart/ParcelVisited"
 import ScenesVisited from "./chart/ScenesVisited"
 import { useState } from "react"
-import { OnlineUsers } from "./chart/OnlineUsers"
 
 const GlobalChart = ({ chartData }) => {
   const axisFontColor = useColorModeValue("#000", "#fff")
@@ -34,21 +27,21 @@ const GlobalChart = ({ chartData }) => {
 
   return (
     <BoxWrapper colSpan={0}>
-      <PlainBoxTitle name="Global Charts" description="" />
+      <Grid
+        gap={4}
+        templateColumns={`repeat(${gridColumn}, 1fr)`}
+        mt="-2"
+        mb="-4"
+      >
+        <ParcelVisited chartData={chartData} avg={avg} setAvg={setAvg} />
+        <ScenesVisited chartData={chartData} avg={avg} setAvg={setAvg} />
+      </Grid>
       <UniqueVisitor
         chartData={chartData}
         axisFontColor={axisFontColor}
         avg={avg}
         setAvg={setAvg}
       />
-      <Box my="8" />
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <ParcelVisited chartData={chartData} avg={avg} setAvg={setAvg} />
-        <ScenesVisited chartData={chartData} avg={avg} setAvg={setAvg} />
-      </Grid>
-      <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-        <OnlineUsers />
-      </Grid>
     </BoxWrapper>
   )
 }
