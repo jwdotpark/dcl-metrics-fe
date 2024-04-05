@@ -36,7 +36,7 @@ const ScenesVisited = ({ chartData, avg, setAvg }) => {
   return (
     <GridItem w="100%" h="auto" colSpan={[6, 3]}>
       <Box mb="2">
-        <PlainBoxTitle name="Active Scenes" description="description" />
+        <PlainBoxTitle name="Active Scenes" description="Scenes that had any activity for at least one minute" />
         <Box>
           <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
             <ChartResetBtn handleReset={handleReset} />

@@ -38,8 +38,8 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
     <Box>
       <PlainBoxTitle
         name="Unique Visitors"
-        description="Unique visitors are users that visited at least once in the given
-        24hr period and remained in world for at least one minute."
+        description="Users that visited at least once in the given
+        24hr period and remained in world for at least one minute"
       />
       <Box pos="relative" w="100%" h={chartHeight} mb="4">
         <ChartResetBtn handleReset={handleReset} />

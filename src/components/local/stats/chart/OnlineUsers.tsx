@@ -13,6 +13,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import {
   ResponsiveContainer,
@@ -133,7 +134,10 @@ export const OnlineUsers = () => {
     <BoxWrapper colSpan={3}>
       <GridItem w="100%" h="auto" colSpan={[6, 3]}>
         <Box mb="2">
-          <PlainBoxTitle name="Online Users" description="description" />
+          <PlainBoxTitle
+            name="Online Users"
+            description="Active daily users, data from Decentraland Status Page"
+          />
           {isLoading ? (
             <Center h={chartHeight}>
               <Spinner />
@@ -203,6 +207,17 @@ export const OnlineUsers = () => {
             </Box>
           )}
         </Box>
+        <Center mt="-3" mb="1" fontSize="xs">
+          UTC, source from
+          <Box ml="1" color="blue.500">
+            <Link
+              href="https://status.decentraland.org/metrics"
+              target="_blank"
+            >
+              https://status.decentraland.org/metrics
+            </Link>
+          </Box>
+        </Center>
       </GridItem>
     </BoxWrapper>
   )

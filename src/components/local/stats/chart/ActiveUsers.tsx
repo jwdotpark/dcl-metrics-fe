@@ -13,6 +13,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import {
   ResponsiveContainer,
@@ -168,6 +169,17 @@ export const ActiveUsers = () => {
             </Box>
           )}
         </Box>
+        <Center mt="-3" mb="1" fontSize="xs">
+          Source from
+          <Box ml="1" color="blue.500">
+            <Link
+              href="https://status.decentraland.org/metrics"
+              target="_blank"
+            >
+              https://status.decentraland.org/metrics
+            </Link>
+          </Box>
+        </Center>
       </GridItem>
     </BoxWrapper>
   )
