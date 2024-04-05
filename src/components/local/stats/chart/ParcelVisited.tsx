@@ -101,18 +101,6 @@ const ParcelVisited = ({ chartData, avg, setAvg }) => {
                     strokeOpacity={0.3}
                   />
                 )}
-                {/*<Brush
-                  dataKey="date"
-                  height={20}
-                  travellerWidth={5}
-                  stroke={useColorModeValue("#718096", "#EDF2F7")}
-                  fill={useColorModeValue("#EDF2F7", "#4A5568")}
-                  fillOpacity={0.5}
-                  tickFormatter={(tick) => {
-                    const date = new Date(tick)
-                    return format(date, "MMM. d")
-                  }}
-                />*/}
               </AreaChart>
             </ResponsiveContainer>
           </Box>

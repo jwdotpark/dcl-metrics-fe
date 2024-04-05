@@ -36,7 +36,10 @@ const ScenesVisited = ({ chartData, avg, setAvg }) => {
   return (
     <GridItem w="100%" h="auto" colSpan={[6, 3]}>
       <Box mb="2">
-        <PlainBoxTitle name="Active Scenes" description="Scenes that had any activity for at least one minute" />
+        <PlainBoxTitle
+          name="Active Scenes"
+          description="Scenes that had any activity for at least one minute"
+        />
         <Box>
           <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
             <ChartResetBtn handleReset={handleReset} />
@@ -98,18 +101,6 @@ const ScenesVisited = ({ chartData, avg, setAvg }) => {
                     strokeOpacity={0.3}
                   />
                 )}
-                {/*<Brush
-                  dataKey="date"
-                  height={20}
-                  travellerWidth={5}
-                  stroke={useColorModeValue("#718096", "#EDF2F7")}
-                  fill={useColorModeValue("#EDF2F7", "#4A5568")}
-                  fillOpacity={0.5}
-                  tickFormatter={(tick) => {
-                    const date = new Date(tick)
-                    return format(date, "MMM. d")
-                  }}
-                />*/}
               </AreaChart>
             </ResponsiveContainer>
           </Box>
