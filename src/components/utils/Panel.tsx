@@ -21,6 +21,7 @@ export const Panel = ({ profilingData }) => {
   // 7. create handler for dragging
   // 8. create a snapshot feature
   // 9. add multi label section for monitored component
+  // 10. make panel fixed position regardless of y position
 
   return (
     <Rnd
