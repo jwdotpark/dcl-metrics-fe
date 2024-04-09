@@ -1,4 +1,11 @@
-import { Box, Center } from "@chakra-ui/react"
+import {
+  useColorModeValue,
+  Box,
+  Center,
+  Flex,
+  IconButton,
+  Spacer,
+} from "@chakra-ui/react"
 import { Rnd } from "react-rnd"
 import {
   ResponsiveContainer,
@@ -9,15 +16,13 @@ import {
   Legend,
   Line,
 } from "recharts"
+import { FiXCircle } from "react-icons/fi"
 
-export const Panel = ({ profilingData }) => {
+export const Panel = ({ profilingData, setOpen }) => {
   // TODO
-  // 1. use local storage to save the position of the panel
   // 2. add a control button for panel state
-  // 3. fixed position tooltip
   // 4. add a reset button to reset the chart
   // 5. option panel to change the variable for chart
-  // 6. setup a boundary for panel
   // 7. create handler for dragging
   // 8. create a snapshot feature
   // 9. add multi label section for monitored component
@@ -26,23 +31,59 @@ export const Panel = ({ profilingData }) => {
   return (
     <Rnd
       style={{
+        position: "fixed",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        border: "solid 1px #ddd",
         background: "#f0f0f0",
+        border: "1px solid",
+        borderColor: "#A0AEC0",
+        borderRadius: "12px",
+        overflow: "hidden",
       }}
+      lockAspectRatio={true}
+      aspectRatio={8 / 5}
+      bounds="body"
+      dragHandleClassName="handler"
       default={{
-        x: 500,
-        y: 500,
-        width: 500,
+        x: 80,
+        y: 80,
+        width: 800,
         height: 500,
       }}
+      minWidth={700}
+      minHeight={400}
     >
-      <Box w="100%" h="100%" bg="gray.200" border="1px solid" shadow="xl">
-        <Box w="100%" h="50px" bg="orange" border="1px">
-          Handler
-        </Box>
+      <Box
+        w="100%"
+        h="100%"
+        bg={useColorModeValue("gray.100", "gray.700")}
+        shadow="xl"
+      >
+        <Flex
+          className="handler"
+          direction="row"
+          w="100%"
+          h="50px"
+          bg={useColorModeValue("gray.500", "gray.900")}
+          _hover={{ cursor: "grab" }}
+        >
+          <Center h="100%" mx="4">
+            Handler
+          </Center>
+          <Spacer />
+          <Center w="4rem" h="100%">
+            <IconButton
+              bg={useColorModeValue("gray.400", "gray.200")}
+              borderRadius="full"
+              shadow="sm"
+              aria-label={"close"}
+              icon={<FiXCircle size="100%" />}
+              onClick={() => setOpen(false)}
+              size="xs"
+            />
+          </Center>
+        </Flex>
         <Center>Chart</Center>
         <Box w="100%" h="300px" mt="4">
           <ResponsiveContainer width="100%" height="80%">

@@ -1,15 +1,18 @@
 import { Button, Flex } from "@chakra-ui/react"
 import { format } from "date-fns"
-import { Profiler, useEffect, useState } from "react"
+import { Profiler, useState } from "react"
 import { isProd } from "../../lib/data/constant"
 import { Panel } from "./Panel"
 
 const Inspector = ({ children, id }) => {
   const [profilingData, setProfilingData] = useState([])
   const [open, setOpen] = useState(false)
+
+  // TODO add option to change the interval and data length
+  // eslint-disable-next-line no-unused-vars
   const [option, setOption] = useState({
-    dataLegnth: 1000,
-    interval: 100,
+    dataLegnth: 500,
+    interval: 50,
   })
 
   const debounce = (func: Function, delay: number) => {
@@ -33,7 +36,6 @@ const Inspector = ({ children, id }) => {
         },
       ]
 
-      // Keep only the latest 200 items
       return updatedData.slice(
         Math.max(updatedData.length - option.dataLegnth, 0)
       )
@@ -66,10 +68,6 @@ const Inspector = ({ children, id }) => {
       })
   }
 
-  useEffect(() => {
-    console.log(profilingData)
-  }, [profilingData])
-
   return (
     <>
       <Profiler id={id} onRender={onRenderCallback}>
@@ -92,7 +90,7 @@ const Inspector = ({ children, id }) => {
         </Flex>
         {children}
       </Profiler>
-      {open && <Panel profilingData={profilingData} />}
+      {open && <Panel profilingData={profilingData} setOpen={setOpen} />}
     </>
   )
 }
