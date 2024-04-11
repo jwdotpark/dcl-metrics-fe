@@ -125,7 +125,6 @@ const ParcelInfoBox = ({
       <Flex
         direction="column"
         p="2"
-        //bg={useColorModeValue("gray.300", "gray.800")}
         borderBottomLeftRadius="xl"
         shadow="md"
       >

@@ -14,45 +14,46 @@ import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import SearchUser from "../../src/components/local/stats/user/SearchUser"
 
-//export async function getStaticProps() {
 export async function getServerSideProps() {
-  return {
-    redirect: {
-      destination: "/500",
-      permanent: false,
-    },
-  }
+  if (process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true") {
+    if (isProd) {
+      const globalUserRes = await getDataWithApiKey(
+        globalUsersURL,
+        "/global/users",
+        staticGlobalUsers
+      )
 
-  if (isProd) {
-    const globalUserRes = await getDataWithApiKey(
-      globalUsersURL,
-      "/global/users",
-      staticGlobalUsers
-    )
+      writeFile("staticGlobalUsers", globalUserRes)
 
-    writeFile("staticGlobalUsers", globalUserRes)
+      const result = { globalUserRes }
+      return {
+        props: result,
+      }
+    } else if (isDev && !isLocal) {
+      const globalUserRes = await getDataWithApiKey(
+        process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
+        //globalUsersURL,
+        "/global/users",
+        staticGlobalUsers
+      )
 
-    const result = { globalUserRes }
-    return {
-      props: result,
+      const result = { globalUserRes }
+      return {
+        props: result,
+      }
+    } else if (isLocal) {
+      const globalUserRes = staticGlobalUsers
+      const result = { globalUserRes }
+      return {
+        props: result,
+      }
     }
-  } else if (isDev && !isLocal) {
-    const globalUserRes = await getDataWithApiKey(
-      process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
-      //globalUsersURL,
-      "/global/users",
-      staticGlobalUsers
-    )
-
-    const result = { globalUserRes }
+  } else {
     return {
-      props: result,
-    }
-  } else if (isLocal) {
-    const globalUserRes = staticGlobalUsers
-    const result = { globalUserRes }
-    return {
-      props: result,
+      redirect: {
+        destination: "/500",
+        permanent: false,
+      },
     }
   }
 }

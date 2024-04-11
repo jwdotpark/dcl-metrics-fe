@@ -152,14 +152,13 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
             </Tr>
           )}
 
-          {owner && (
+          {process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true" && owner && (
             <Tr>
               <Td>Owner</Td>
               <Td isNumeric>
                 <Link href={`/users/${owner}`} target="_blank">
                   <Button borderRadius="xl" shadow="md" size="xs">
                     <Text
-                      //as="kbd"
                       _hover={{ cursor: "grab", color: "gray.600" }}
                       wordBreak="break-all"
                       noOfLines={1}
