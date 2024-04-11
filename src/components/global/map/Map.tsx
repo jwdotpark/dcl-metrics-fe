@@ -192,12 +192,6 @@ const Map = ({
     fetchTiles()
   }, [])
 
-  //useEffect(() => {
-  //  if (zoom < 0.7) {
-  //    setZoom(0.7)
-  //  }
-  //}, [zoom])
-
   useEffect(() => {
     injectTiles()
   }, [tiles])
