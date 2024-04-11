@@ -14,7 +14,7 @@ import SceneSelector from "./partials/scene/SceneSelector"
 import StatBox from "./partials/scene/SceneStatBox"
 import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 import SceneBarChart from "./partials/scene/SceneBarChart"
-import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
+//import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
 import SceneUserLineChart from "./scenes/SceneUserLineChart"
 import SceneTitle from "../../layout/local/SceneTitle"
@@ -24,7 +24,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   const {
     map_url,
     name,
-    marathon_users,
+    //marathon_users,
     parcels_heatmap,
     visitors_by_hour_histogram,
   } = res[selectedScene]
@@ -154,9 +154,9 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
           w="100%"
           h="auto"
         >
-          <Box w={["100%", "100%", "100%", "50%"]} h="520" mt={[4, 4, 8, 0]}>
+          {/*<Box w={["100%", "100%", "100%", "50%"]} h="520" mt={[4, 4, 8, 0]}>
             {!isEmpty && <SceneMarathonUsers data={marathon_users} />}
-          </Box>
+          </Box>*/}
           <Box w={["100%", "100%", "100%", "50%"]} h="520px" mb={[4, 4, 4, 0]}>
             {!isEmpty && (
               <SceneBarChart
