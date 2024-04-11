@@ -12,7 +12,7 @@ import {
 import SceneBarChart from "../../stats/partials/scene/SceneBarChart"
 import SceneLineChart from "../../stats/partials/scene/SceneLineChart"
 import SceneMap from "../../stats/partials/scene/SceneMap"
-import SceneMarathonUsers from "../../stats/partials/scene/SceneMarathonUsers"
+//import SceneMarathonUsers from "../../stats/partials/scene/SceneMarathonUsers"
 import SceneParcelsHeatmap from "../../stats/partials/scene/SceneParcelsHeatmap"
 import { EventStatBox } from "./EventStatBox"
 import { getEndpoint } from "../../../../lib/data/constant"
