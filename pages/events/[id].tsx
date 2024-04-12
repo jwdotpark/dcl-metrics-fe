@@ -24,12 +24,12 @@ export async function getServerSideProps(context) {
   const attendeeData = await fetch(attendeeUrl)
   const attendees = await attendeeData.json()
 
-  return {
-    redirect: {
-      destination: "/500",
-      permanent: false,
-    },
-  }
+  //return {
+  //  redirect: {
+  //    destination: "/500",
+  //    permanent: false,
+  //  },
+  //}
 
   if (data.ok && eventData) {
     return {

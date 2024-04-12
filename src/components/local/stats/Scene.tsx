@@ -154,9 +154,11 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
           w="100%"
           h="auto"
         >
-          <Box w={["100%", "100%", "100%", "50%"]} h="520" mt={[4, 4, 8, 0]}>
-            {!isEmpty && <SceneMarathonUsers data={marathon_users} />}
-          </Box>
+          {process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true" && (
+            <Box w={["100%", "100%", "100%", "50%"]} h="520" mt={[4, 4, 8, 0]}>
+              {!isEmpty && <SceneMarathonUsers data={marathon_users} />}
+            </Box>
+          )}
           <Box w={["100%", "100%", "100%", "50%"]} h="520px" mb={[4, 4, 4, 0]}>
             {!isEmpty && (
               <SceneBarChart

@@ -2,7 +2,7 @@ import {
   FiTrendingUp,
   FiCompass,
   FiAnchor,
-  FiUsers,
+  //FiUsers,
   FiMapPin,
   FiPackage,
   FiActivity,

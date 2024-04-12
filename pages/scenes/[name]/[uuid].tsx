@@ -91,13 +91,13 @@ export async function getServerSideProps(context) {
   const historyUrl = getEndpoint(`scenes/${uuid}/visitor_history`)
   const historyResult = await getDataWithApiKey(historyUrl, historyUrl, {})
 
-  //return {
-  //  props: { result, historyResult },
-  //}
   return {
-    redirect: {
-      destination: "/500",
-      permanent: false,
-    },
+    props: { result, historyResult },
   }
+  //return {
+  //  redirect: {
+  //    destination: "/500",
+  //    permanent: false,
+  //  },
+  //}
 }
