@@ -68,31 +68,35 @@ const Inspector = ({ children, id }) => {
       })
   }
 
-  return (
-    <>
-      <Profiler id={id} onRender={onRenderCallback}>
-        <Flex
-          pos="fixed"
-          zIndex="99999"
-          top="8px"
-          right="45%"
-          justify="flex-end"
-        >
-          <Button
-            border="1px"
-            borderRadius="full"
-            shadow="md"
-            onClick={() => setOpen(!open)}
-            size="sm"
+  if (process.env.NEXT_PUBLIC_INSPECTOR === "true") {
+    return (
+      <>
+        <Profiler id={id} onRender={onRenderCallback}>
+          <Flex
+            pos="fixed"
+            zIndex="99999"
+            top="8px"
+            right="45%"
+            justify="flex-end"
           >
-            {!open ? "Profiler Open" : "Profiler Close"}
-          </Button>
-        </Flex>
-        {children}
-      </Profiler>
-      {open && <Panel profilingData={profilingData} setOpen={setOpen} />}
-    </>
-  )
+            <Button
+              border="1px"
+              borderRadius="full"
+              shadow="md"
+              onClick={() => setOpen(!open)}
+              size="sm"
+            >
+              {!open ? "Profiler Open" : "Profiler Close"}
+            </Button>
+          </Flex>
+          {children}
+        </Profiler>
+        {open && <Panel profilingData={profilingData} setOpen={setOpen} />}
+      </>
+    )
+  } else {
+    return <>{children}</>
+  }
 }
 
 export default Inspector
