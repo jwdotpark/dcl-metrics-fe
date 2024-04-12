@@ -99,7 +99,8 @@ const ParcelVisited = ({ chartData, avg, setAvg }) => {
                   label={{
                     position: "insideBottomRight",
                     value: `AVG. ${avg.avgActiveParcels}`,
-                    fill: "#000",
+                    //fill: "#000",
+                    fill: useColorModeValue("#000", "#fff"),
                     fontSize: 12,
                   }}
                   stroke="#CAB2D6"

@@ -99,7 +99,7 @@ const ScenesVisited = ({ chartData, avg, setAvg }) => {
                   label={{
                     position: "center",
                     value: "Data Collection Starting Point",
-                    fill: "#000",
+                    fill: useColorModeValue("#000", "#fff"),
                     fontSize: 12,
                   }}
                   stroke="#E53E3E"
@@ -112,7 +112,7 @@ const ScenesVisited = ({ chartData, avg, setAvg }) => {
                   label={{
                     position: "insideBottomRight",
                     value: `AVG. ${avg.avgActiveScenes}`,
-                    fill: "#000",
+                    fill: useColorModeValue("#000", "#fff"),
                     fontSize: 12,
                   }}
                   stroke="#FFB86C"

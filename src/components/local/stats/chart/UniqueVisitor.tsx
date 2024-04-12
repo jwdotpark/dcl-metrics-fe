@@ -137,8 +137,8 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
               label={{
                 position: "insideBottomRight",
                 value: `Unique User AVG. ${avg.avgUniqueUsers}`,
-                fill: "#000",
                 fontSize: 10,
+                fill: useColorModeValue("#000", "#fff"),
               }}
               stroke="#48BB78"
               strokeWidth="1"
@@ -150,8 +150,8 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
               label={{
                 position: "insideBottomRight",
                 value: `Guest User AVG. ${avg.avgGuestUsers}`,
-                fill: "#000",
                 fontSize: 10,
+                fill: useColorModeValue("#000", "#fff"),
               }}
               stroke="#9F7AEA"
               strokeWidth="1"
@@ -163,8 +163,8 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
               label={{
                 position: "insideBottomRight",
                 value: `New User AVG. ${avg.avgNewUsers}`,
-                fill: "#000",
                 fontSize: 10,
+                fill: useColorModeValue("#000", "#fff"),
               }}
               stroke="#4299E1"
               strokeWidth="1"
@@ -176,8 +176,8 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
               label={{
                 position: "insideBottomRight",
                 value: `Named User AVG. ${avg.avgNamedUsers}`,
-                fill: "#000",
                 fontSize: 10,
+                fill: useColorModeValue("#000", "#fff"),
               }}
               stroke="#F56565"
               strokeWidth="1"
