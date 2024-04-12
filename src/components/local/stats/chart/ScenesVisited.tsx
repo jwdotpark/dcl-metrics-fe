@@ -34,6 +34,8 @@ const ScenesVisited = ({ chartData, avg, setAvg }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartState.data])
 
+  console.log(avg)
+
   return (
     <GridItem w="100%" h="auto" colSpan={[6, 3]}>
       <Box mb="2">
@@ -96,13 +98,30 @@ const ScenesVisited = ({ chartData, avg, setAvg }) => {
                 />
                 <ReferenceLine
                   x="2022-07-31"
-                  label="Data Collection Starting Point"
+                  label={{
+                    position: "center",
+                    value: "Data Collection Starting Point",
+                    fill: "#000",
+                    fontSize: 12,
+                  }}
                   stroke="#E53E3E"
                   strokeWidth="1"
                   position="start"
                   strokeDasharray="4 4"
                 />
-
+                <ReferenceLine
+                  y={avg.avgActiveScenes}
+                  label={{
+                    position: "insideBottomRight",
+                    value: `AVG. ${avg.avgActiveScenes}`,
+                    fill: "#000",
+                    fontSize: 12,
+                  }}
+                  stroke="#FFB86C"
+                  strokeWidth="1"
+                  position="start"
+                  strokeDasharray="4 4"
+                />
                 {chartState.startX !== null && chartState.endX !== null && (
                   <ReferenceArea
                     x1={chartState.startX}

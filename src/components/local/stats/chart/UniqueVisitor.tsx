@@ -12,8 +12,10 @@ import {
   ReferenceArea,
   Brush,
   Legend,
+  ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../lib/data/chart/chartHelper"
+// eslint-disable-next-line no-unused-vars
 import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
 import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
 import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
@@ -41,7 +43,7 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
         description="Users that visited at least once in the given
         24hr period and remained in world for at least one minute"
       />
-      <Box pos="relative" w="100%" h={chartHeight} mb="4">
+      <Box pos="relative" w="100%" h={400} mb="4">
         <ChartResetBtn handleReset={handleReset} />
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
@@ -129,6 +131,58 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
               strokeWidth="2px"
               stroke="#F56565"
               fill="#F5656580"
+            />
+            <ReferenceLine
+              y={avg.avgUniqueUsers}
+              label={{
+                position: "insideBottomRight",
+                value: `Unique User AVG. ${avg.avgUniqueUsers}`,
+                fill: "#000",
+                fontSize: 10,
+              }}
+              stroke="#48BB78"
+              strokeWidth="1"
+              position="start"
+              strokeDasharray="4 4"
+            />
+            <ReferenceLine
+              y={avg.avgGuestUsers}
+              label={{
+                position: "insideBottomRight",
+                value: `Guest User AVG. ${avg.avgGuestUsers}`,
+                fill: "#000",
+                fontSize: 10,
+              }}
+              stroke="#9F7AEA"
+              strokeWidth="1"
+              position="start"
+              strokeDasharray="4 4"
+            />
+            <ReferenceLine
+              y={avg.avgNewUsers}
+              label={{
+                position: "insideBottomRight",
+                value: `New User AVG. ${avg.avgNewUsers}`,
+                fill: "#000",
+                fontSize: 10,
+              }}
+              stroke="#4299E1"
+              strokeWidth="1"
+              position="start"
+              strokeDasharray="4 4"
+            />
+            <ReferenceLine
+              y={avg.avgNamedUsers}
+              label={{
+                position: "insideBottomRight",
+                value: `Named User AVG. ${avg.avgNamedUsers}`,
+                fill: "#000",
+                fontSize: 10,
+              }}
+              stroke="#F56565"
+              strokeWidth="1"
+              position="start"
+              strokeDasharray="4 4"
             />
 
             {chartState.startX !== null && chartState.endX !== null && (

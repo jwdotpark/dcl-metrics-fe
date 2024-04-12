@@ -10,6 +10,7 @@ import {
   Area,
   ReferenceArea,
   Tooltip,
+  ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../lib/data/chart/chartHelper"
 import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
@@ -92,6 +93,19 @@ const ParcelVisited = ({ chartData, avg, setAvg }) => {
                   stroke="#CAB2D6"
                   strokeWidth="2px"
                   fill="#CAB2D680"
+                />
+                <ReferenceLine
+                  y={avg.avgActiveParcels}
+                  label={{
+                    position: "insideBottomRight",
+                    value: `AVG. ${avg.avgActiveParcels}`,
+                    fill: "#000",
+                    fontSize: 12,
+                  }}
+                  stroke="#CAB2D6"
+                  strokeWidth="1"
+                  position="start"
+                  strokeDasharray="4 4"
                 />
                 {chartState.startX !== null && chartState.endX !== null && (
                   <ReferenceArea
