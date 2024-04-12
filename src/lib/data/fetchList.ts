@@ -1,6 +1,6 @@
 import staticGlobalDaily from "../../../public/data/staticGlobalDaily.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
-import staticLandSales from "../../../public/data/staticLandSales.json"
+//import staticLandSales from "../../../public/data/staticLandSales.json"
 //import staticWorldCurrent from "../../../public/data/staticWorldCurrent.json"
 
 //import staticTopLand from "../../../public/data/staticTopLand.json"
