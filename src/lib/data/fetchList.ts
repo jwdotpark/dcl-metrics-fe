@@ -31,11 +31,11 @@ export const globalRequestList = [
   //},
   //{ url: sceneURL, endpoint: "/scenes/top", staticData: staticScene },
   { url: parcelURL, endpoint: "/parcels/all", staticData: staticParcel },
-  {
-    url: "https://www.dcl-property.rentals/api/price_data",
-    endpoint: "/dcl-property.rentals",
-    staticData: staticLandSales,
-  },
+  //{
+  //  url: "https://www.dcl-property.rentals/api/price_data",
+  //  endpoint: "/dcl-property.rentals",
+  //  staticData: staticLandSales,
+  //},
   //{
   //  url: "https://services.itrmachines.com/val-analytics/topSellingLands?metaverse=decentraland",
   //  endpint:
@@ -57,6 +57,6 @@ export const globalFileNameArr = [
   //"staticGlobalUsers",
   //"cached_scenes_top",
   "cached_parcel",
-  "staticLandSales",
+  //"staticLandSales",
   //"staticTopLand",
 ]
