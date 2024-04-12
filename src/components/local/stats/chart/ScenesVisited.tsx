@@ -34,8 +34,6 @@ const ScenesVisited = ({ chartData, avg, setAvg }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartState.data])
 
-  console.log(avg)
-
   return (
     <GridItem w="100%" h="auto" colSpan={[6, 3]}>
       <Box mb="2">
