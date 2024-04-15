@@ -12,7 +12,7 @@ import {
 import SceneBarChart from "../../stats/partials/scene/SceneBarChart"
 import SceneLineChart from "../../stats/partials/scene/SceneLineChart"
 import SceneMap from "../../stats/partials/scene/SceneMap"
-//import SceneMarathonUsers from "../../stats/partials/scene/SceneMarathonUsers"
+import SceneMarathonUsers from "../../stats/partials/scene/SceneMarathonUsers"
 import SceneParcelsHeatmap from "../../stats/partials/scene/SceneParcelsHeatmap"
 import { EventStatBox } from "./EventStatBox"
 import { getEndpoint } from "../../../../lib/data/constant"
@@ -170,10 +170,19 @@ export const EventRelatedEvent = ({ event, data, itemsPerPage = 1 }) => {
             </Box>
           </Flex>
           <Flex direction={["column", "row"]} mt="4">
-            {/*<Box w={["100%", "60%"]} mr={[0, 4]} mb={[2, 0]}>
-              <SceneMarathonUsers data={sceneData.marathon_users} />
-            </Box>*/}
-            <Box w={["100%", "40%"]}>
+            {process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true" && (
+              <Box w={["100%", "60%"]} mr={[0, 4]} mb={[2, 0]}>
+                <SceneMarathonUsers data={sceneData.marathon_users} />
+              </Box>
+            )}
+            <Box
+              w={[
+                "100%",
+                process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true"
+                  ? "40%"
+                  : "100%",
+              ]}
+            >
               <SceneBarChart
                 visitors_by_hour_histogram={
                   sceneData.visitors_by_hour_histogram

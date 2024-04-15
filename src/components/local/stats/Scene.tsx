@@ -159,7 +159,16 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
               {!isEmpty && <SceneMarathonUsers data={marathon_users} />}
             </Box>
           )}
-          <Box w={["100%", "100%", "100%", "50%"]} h="520px" mb={[4, 4, 4, 0]}>
+          <Box
+            w={[
+              "100%",
+              "100%",
+              "100%",
+              process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true" ? "50%" : "100%",
+            ]}
+            h="520px"
+            mb={[4, 4, 4, 0]}
+          >
             {!isEmpty && (
               <SceneBarChart
                 visitors_by_hour_histogram={visitors_by_hour_histogram}
