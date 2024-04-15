@@ -4,13 +4,13 @@ export const isDev = process.env.NEXT_PUBLIC_STAGING === "true"
 export const isLocal = process.env.NODE_ENV === "development"
 
 export function getEndpoint(path: string) {
-  const url = isProd
-    ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + path
-    : process.env.NEXT_PUBLIC_DEV_ENDPOINT + path
+  //const url = isProd
+  //  ? process.env.NEXT_PUBLIC_PROD_ENDPOINT + path
+  //  : process.env.NEXT_PUBLIC_DEV_ENDPOINT + path
 
   // NOTE staging endpoint is missing some user data
-  //const url = process.env.NEXT_PUBLIC_PROD_ENDPOINT + path
-  
+  const url = process.env.NEXT_PUBLIC_PROD_ENDPOINT + path
+
   return url
 }
 
