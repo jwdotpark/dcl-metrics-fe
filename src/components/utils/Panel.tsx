@@ -17,30 +17,25 @@ import {
   Line,
 } from "recharts"
 import { FiXCircle } from "react-icons/fi"
-import { useState, useEffect } from "react"
 
 export const Panel = ({ profilingData, setOpen }) => {
-  // TODO
-  // 2. add a control button for panel state
-  // 4. add a reset button to reset the chart
-  // 5. option panel to change the variable for chart
-  // 7. create handler for dragging
-  // 8. create a snapshot feature
-  // 9. add multi label section for monitored component
-  // 10. make panel fixed position regardless of y position
-  const [defaultPosition, setDefaultPosition] = useState({
-    x: 0,
-    y: 0,
-    width: 800,
-    height: 500,
-  })
+  const defaultPosition = {
+    x: window.innerWidth / 5,
+    y: window.innerHeight / 5,
+    width: 400,
+    height: 800,
+  }
 
-  useEffect(() => {
-    const x = window.innerWidth / 2 - defaultPosition.width / 2
-    const y = window.innerHeight / 2 - defaultPosition.height / 2
-    setDefaultPosition({ ...defaultPosition, x, y })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const getUniqueIds = (data) => {
+    const ids = data.map((item) => item.id)
+    return [...new Set(ids)]
+  }
+
+  const uniqueIds = getUniqueIds(profilingData).sort()
+
+  const filteredData = uniqueIds.map((id) => {
+    return profilingData.filter((item) => item.id === id)
+  })
 
   return (
     <Rnd
@@ -60,12 +55,7 @@ export const Panel = ({ profilingData, setOpen }) => {
       aspectRatio={8 / 5}
       bounds="body"
       dragHandleClassName="handler"
-      default={{
-        x: -800,
-        y: 100,
-        width: 800,
-        height: 500,
-      }}
+      default={defaultPosition}
       minWidth={700}
       minHeight={400}
     >

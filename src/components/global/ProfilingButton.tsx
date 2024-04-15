@@ -1,16 +1,11 @@
-import { Box, Button, Center } from "@chakra-ui/react"
+import { Button, Center } from "@chakra-ui/react"
 import { useAtom } from "jotai"
-import { useState } from "react"
 import { FiActivity } from "react-icons/fi"
-import { profilerAtom } from "../../lib/state/profiler"
+import { profilerOpenAtom } from "../../lib/state/profiler"
 import ToolTip from "../layout/local/ToolTip"
-import { Panel } from "../utils/Panel"
 
 const ProfilingButton = () => {
-  const [open, setOpen] = useState(false)
-
-  // eslint-disable-next-line no-unused-vars
-  const [profiling, setProfiling] = useAtom(profilerAtom)
+  const [open, setOpen] = useAtom(profilerOpenAtom)
 
   return (
     <>
@@ -18,7 +13,9 @@ const ProfilingButton = () => {
         <ToolTip label="Profiler">
           <Button
             data-testid="colorBtn"
-            onClick={() => setOpen(!open)}
+            onClick={() => {
+              setOpen(!open)
+            }}
             size="lg"
             variant="link"
           >
@@ -26,11 +23,6 @@ const ProfilingButton = () => {
           </Button>
         </ToolTip>
       </Center>
-      {open && (
-        <Box pos="absolute">
-          <Panel profilingData={profiling} setOpen={setOpen} />
-        </Box>
-      )}
     </>
   )
 }

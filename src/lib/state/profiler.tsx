@@ -1,3 +1,3 @@
 import { atom } from "jotai"
 
-export const profilerAtom = atom([])
+export const profilerOpenAtom = atom(false)
