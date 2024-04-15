@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 import Layout from "../../src/components/layout/layout"
 import { getDataWithApiKey } from "../../src/lib/data/fetch"

@@ -27,7 +27,6 @@ import Link from "next/link"
 import { tagColor } from "../../../lib/data/constant"
 
 const EventCardList = ({ data }) => {
-  console.log(data)
   const columns = useMemo(
     () => [
       //{

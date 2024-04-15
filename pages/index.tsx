@@ -10,11 +10,11 @@ import {
 } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import LandPicker from "../src/components/global/map/LandPicker"
-import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
-import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
-import ActiveScenes from "../src/components/local/stats/ActiveScenes"
+//import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
+//import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
+//import ActiveScenes from "../src/components/local/stats/ActiveScenes"
 //import LandSales from "../src/components/local/stats/rentals/LandSales"
-import OnlineUsers from "../src/components/local/ext-data/OnlineUsers"
+// import OnlineUsers from "../src/components/local/ext-data/OnlineUsers"
 import {
   fetchGlobalData,
   //fetchRentalData,
@@ -22,7 +22,7 @@ import {
 } from "../src/lib/data/fetch"
 //import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 //import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
-import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
+//import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import WorldStat from "../src/components/local/stats/world/WorldStat"
@@ -30,8 +30,10 @@ import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop
 import { isLocal } from "../src/lib/data/constant"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import BoxWrapper from "../src/components/layout/local/BoxWrapper"
-
-import { Unique_Visitors } from "../src/components/local/stats/Unique_Visitors"
+import GlobalChart from "../src/components/local/stats/GlobalCharts"
+import { DataArrayType, DataObjectType } from "../src/lib/types/IndexPage"
+import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
+import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -103,6 +105,23 @@ const GlobalPage: NextPage = (props: Props) => {
     }
   }
 
+  const flattenObject = (
+    temp: Record<string, DataObjectType>
+  ): DataArrayType[] => {
+    return Object.entries(temp).map(([date, value]) => ({
+      date,
+      active_parcels: value.active_parcels,
+      active_scenes: value.active_scenes,
+      guest_users: value.users.guest_users,
+      named_users: value.users.named_users,
+      new_users: value.users.new_users,
+      unique_users: value.users.unique_users,
+      degraded: value.degraded,
+    }))
+  }
+
+  const chartData = flattenObject(globalDailyRes)
+
   useEffect(() => {
     fetchWorldData()
   }, [])
@@ -131,17 +150,13 @@ const GlobalPage: NextPage = (props: Props) => {
       <Layout>
         <Box w="100%">
           <Box mb="4" data-testid="uniqueVisitors">
-            <UniqueVisitors data={globalDailyRes} />
+            <GlobalChart chartData={chartData} />
             <Box mb="4" />
+            <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+              <OnlineUsers />
+              <ActiveUsers />
+            </Grid>
           </Box>
-          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <UniqueVisitedParcels data={globalDailyRes} />
-            <ActiveScenes data={globalDailyRes} />
-          </Grid>
-          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <OnlineUsers />
-            <ActiveUsers />
-          </Grid>
           <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
           {!isLoading && !error && Object.keys(worldData).length > 0 ? (
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">

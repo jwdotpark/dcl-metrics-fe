@@ -9,7 +9,7 @@ import { AnimatePresence } from "framer-motion"
 import { DefaultSeo } from "next-seo"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import Head from "next/head"
-//import { generateMetaData } from "../src/lib/data/metadata"
+import Inspector from "../src/components/utils/Inspector"
 
 const InterFont = Inter({
   subsets: ["latin"],
@@ -77,12 +77,14 @@ function MyApp({
             siteName: "DCL-Metrics",
           }}
         />
-        {/* @ts-ignore */}
-        <AnimatePresence initial={false} mode="wait">
-          <main className={InterFont.className}>
-            <Component {...pageProps} key={router.asPath} />
-          </main>
-        </AnimatePresence>
+        <Inspector id="app">
+          {/* @ts-ignore */}
+          <AnimatePresence initial={false} mode="wait">
+            <main className={InterFont.className}>
+              <Component {...pageProps} key={router.asPath} />
+            </main>
+          </AnimatePresence>
+        </Inspector>
       </Provider>
     </ChakraProvider>
   )

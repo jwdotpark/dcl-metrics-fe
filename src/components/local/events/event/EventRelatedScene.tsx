@@ -170,10 +170,19 @@ export const EventRelatedEvent = ({ event, data, itemsPerPage = 1 }) => {
             </Box>
           </Flex>
           <Flex direction={["column", "row"]} mt="4">
-            <Box w={["100%", "60%"]} mr={[0, 4]} mb={[2, 0]}>
-              <SceneMarathonUsers data={sceneData.marathon_users} />
-            </Box>
-            <Box w={["100%", "40%"]}>
+            {process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true" && (
+              <Box w={["100%", "60%"]} mr={[0, 4]} mb={[2, 0]}>
+                <SceneMarathonUsers data={sceneData.marathon_users} />
+              </Box>
+            )}
+            <Box
+              w={[
+                "100%",
+                process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true"
+                  ? "40%"
+                  : "100%",
+              ]}
+            >
               <SceneBarChart
                 visitors_by_hour_histogram={
                   sceneData.visitors_by_hour_histogram

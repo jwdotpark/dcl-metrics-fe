@@ -10,6 +10,7 @@ export function getEndpoint(path: string) {
 
   // NOTE staging endpoint is missing some user data
   const url = process.env.NEXT_PUBLIC_PROD_ENDPOINT + path
+
   return url
 }
 
@@ -75,3 +76,19 @@ export const tagColor = {
   tv: "yellow",
   other: "blue",
 }
+
+export const chartMargin = {
+  top: 0,
+  right: 0,
+  left: -30,
+  bottom: 0,
+}
+
+export const indexChartMargin = {
+  top: 0,
+  right: 20,
+  left: 0,
+  bottom: 0,
+}
+
+export const chartHeight = 250

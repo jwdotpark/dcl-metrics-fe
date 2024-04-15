@@ -79,3 +79,38 @@ export const calculateAverages = (partial: any[], chartKeys: string[]) => {
 
   return map
 }
+
+export const calculateAvg = (chartData) => {
+  let sumActiveParcels = 0
+  let sumActiveScenes = 0
+  let sumGuestUsers = 0
+  let sumNamedUsers = 0
+  let sumNewUsers = 0
+  let sumUniqueUsers = 0
+  let count = chartData.length
+
+  chartData.forEach((data) => {
+    sumActiveParcels += data.active_parcels
+    sumActiveScenes += data.active_scenes
+    sumGuestUsers += data.guest_users
+    sumNamedUsers += data.named_users
+    sumNewUsers += data.new_users
+    sumUniqueUsers += data.unique_users
+  })
+
+  const avgActiveParcels = Math.round(sumActiveParcels / count)
+  const avgActiveScenes = Math.round(sumActiveScenes / count)
+  const avgGuestUsers = Math.round(sumGuestUsers / count)
+  const avgNamedUsers = Math.round(sumNamedUsers / count)
+  const avgNewUsers = Math.round(sumNewUsers / count)
+  const avgUniqueUsers = Math.round(sumUniqueUsers / count)
+
+  return {
+    avgActiveParcels,
+    avgActiveScenes,
+    avgGuestUsers,
+    avgNamedUsers,
+    avgNewUsers,
+    avgUniqueUsers,
+  }
+}

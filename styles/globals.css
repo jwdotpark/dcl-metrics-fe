@@ -58,9 +58,13 @@ a {
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding-left: 1rem;
-  padding-right: 1rem;
+  padding-right: 1rem
 }
 
 .recharts-brush-texts {
   font-size: 12px;
 }
+
+/*.recharts-label {
+  font-size: 14px;
+}*/

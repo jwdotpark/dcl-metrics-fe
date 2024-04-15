@@ -24,7 +24,6 @@ export const EventInfo = ({ event }) => {
       </Text>
     </Flex>
   )
-  console.log(event)
   const category = event.categories[0].toString()
 
   return (
