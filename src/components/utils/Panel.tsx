@@ -1,11 +1,5 @@
-import {
-  useColorModeValue,
-  Box,
-  Center,
-  Flex,
-  IconButton,
-  Spacer,
-} from "@chakra-ui/react"
+import { Text, useColorModeValue, Box, Center } from "@chakra-ui/react"
+import { useMemo } from "react"
 import { Rnd } from "react-rnd"
 import {
   ResponsiveContainer,
@@ -13,29 +7,31 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  Legend,
   Line,
 } from "recharts"
-import { FiXCircle } from "react-icons/fi"
+import { PanelHeader } from "./panel/PanelHeader"
+import { PanelLegend } from "./panel/PanelLegend"
 
 export const Panel = ({ profilingData, setOpen }) => {
   const defaultPosition = {
-    x: window.innerWidth / 5,
-    y: window.innerHeight / 5,
+    x: -800,
+    y: 0,
     width: 400,
     height: 800,
   }
 
-  const getUniqueIds = (data) => {
-    const ids = data.map((item) => item.id)
-    return [...new Set(ids)]
-  }
+  const tickColor = useColorModeValue("#000", "#fff")
 
-  const uniqueIds = getUniqueIds(profilingData).sort()
+  const uniqueIds = useMemo(() => {
+    const ids = profilingData.map((item) => item.id)
+    return [...new Set(ids)].sort()
+  }, [profilingData])
 
-  const filteredData = uniqueIds.map((id) => {
-    return profilingData.filter((item) => item.id === id)
-  })
+  const filteredData = useMemo(() => {
+    return uniqueIds.map((id) => {
+      return profilingData.filter((item) => item.id === id)
+    })
+  }, [uniqueIds, profilingData])
 
   return (
     <Rnd
@@ -49,86 +45,76 @@ export const Panel = ({ profilingData, setOpen }) => {
         borderColor: "#A0AEC0",
         borderRadius: "12px",
         overflow: "hidden",
-        zIndex: 999999,
+        zIndex: 999998,
         boxShadow: "0 0 5px rgba(0,0,0,0.4)",
       }}
-      aspectRatio={8 / 5}
       bounds="body"
       dragHandleClassName="handler"
       default={defaultPosition}
-      minWidth={700}
+      minWidth={300}
       minHeight={400}
     >
       <Box
         w="100%"
         h="100%"
-        bg={useColorModeValue("gray.100", "gray.700")}
+        bg={useColorModeValue("gray.100", "gray.800")}
         shadow="xl"
       >
-        <Flex
-          className="handler"
-          direction="row"
-          w="100%"
-          h="50px"
-          bg={useColorModeValue("gray.500", "gray.900")}
-          _hover={{ cursor: "grab" }}
-        >
-          <Center h="100%" mx="4">
-            Handler
-          </Center>
-          <Spacer />
-          <Center w="4rem" h="100%">
-            <IconButton
-              bg={useColorModeValue("gray.400", "gray.200")}
-              borderRadius="full"
-              shadow="sm"
-              aria-label={"close"}
-              icon={<FiXCircle size="100%" />}
-              onClick={() => setOpen(false)}
-              size="xs"
-            />
-          </Center>
-        </Flex>
-        <Center>Chart</Center>
-        <Box w="100%" h="300px" mt="4">
-          <ResponsiveContainer width="100%" height="80%">
-            <LineChart
-              width={500}
-              height={300}
-              data={profilingData}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="time" tick={{ fontSize: "10px" }} />
-              <YAxis
-                scale="pow"
-                domain={["auto", "auto"]}
-                tick={{ fontSize: "10px" }}
-              />
-              <Legend />
-              <Line
-                animationDuration={0}
-                type="linear"
-                dataKey="actualDuration"
-                stroke="red"
-                strokeWidth="2px"
-                dot={false}
-              />
-              <Line
-                animationDuration={0}
-                type="linear"
-                dataKey="baseDuration"
-                stroke="blue"
-                strokeWidth="2px"
-                dot={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+        <PanelHeader setOpen={setOpen} />
+        <Box overflowY="auto" w="100%" h="100%" mt="4">
+          {filteredData.map((data, index) => {
+            return (
+              <Box key={index} w="100%" h="200px">
+                <Center>
+                  <Text fontWeight="bold">
+                    {(uniqueIds[index] as string).toUpperCase()}
+                  </Text>
+                </Center>
+                <ResponsiveContainer key={index} width="100%" height="80%">
+                  <LineChart
+                    width={500}
+                    height={300}
+                    data={data}
+                    margin={{
+                      top: 20,
+                      right: 50,
+                      left: 0,
+                      bottom: 0,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+                    {/*<Legend />*/}
+                    <XAxis
+                      dataKey="startTime"
+                      tick={{ fontSize: "10px", fill: tickColor }}
+                    />
+                    <YAxis
+                      scale="pow"
+                      domain={["auto", "auto"]}
+                      tick={{ fontSize: "10px", fill: tickColor }}
+                    />
+                    <Line
+                      animationDuration={0}
+                      type="linear"
+                      dataKey="actualDuration"
+                      stroke="#FF5555"
+                      strokeWidth="2px"
+                      dot={false}
+                    />
+                    <Line
+                      animationDuration={0}
+                      type="linear"
+                      dataKey="baseDuration"
+                      stroke="#BD93F9"
+                      strokeWidth="2px"
+                      dot={false}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </Box>
+            )
+          })}
+          <PanelLegend />
         </Box>
       </Box>
     </Rnd>

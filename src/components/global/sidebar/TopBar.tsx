@@ -79,7 +79,6 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
 
       <Spacer />
       <Center>
-        {/*{router.pathname === "/" && <SettingsButton />}*/}
         {process.env.NEXT_PUBLIC_INSPECTOR === "true" && <ProfilingButton />}
         <FeedbackButton />
         <ColorButton />

@@ -18,7 +18,7 @@ export const PanelHeader = ({ setOpen }) => {
       _hover={{ cursor: "grab" }}
     >
       <Center h="100%" mx="4">
-        Handler
+        Insepctor
       </Center>
       <Spacer />
       <Center w="4rem" h="100%">

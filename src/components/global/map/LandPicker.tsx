@@ -4,6 +4,7 @@ const MapWrapper = dynamic(() => import("./Map"), { ssr: false })
 import { useEffect, useState } from "react"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import BoxTitle from "../../layout/local/BoxTitle"
+import Inspector from "../../utils/Inspector"
 
 const LandPicker = ({ parcelData, isPage, parcelCoord }) => {
   const [coord, setCoord] = useState({
@@ -39,34 +40,36 @@ const LandPicker = ({ parcelData, isPage, parcelCoord }) => {
 
   return (
     <Box mb="4">
-      <BoxWrapper colSpan={0}>
-        <BoxTitle
-          name="Land Picker"
-          description="Choose the land!"
-          date=""
-          avgData=""
-          slicedData=""
-          color=""
-          line={undefined}
-          setLine={undefined}
-        />
-        <Box h="100%">
-          <MapWrapper
-            h="auto"
-            isMapExpanded={isMapExpanded}
-            setIsMapExpanded={setIsMapExpanded}
-            coord={coord}
-            setCoord={setCoord}
-            selectedParcel={selectedParcel}
-            setSelectedParcel={setSelectedParcel}
-            mapBoxVerticalSize={mapBoxVerticalSize}
-            mapHeight={mapHeight}
-            setMapHeight={setMapHeight}
-            parcelData={parcelData}
-            parcelCoord={parcelCoord}
+      <Inspector id="land picker">
+        <BoxWrapper colSpan={0}>
+          <BoxTitle
+            name="Land Picker"
+            description="Choose the land!"
+            date=""
+            avgData=""
+            slicedData=""
+            color=""
+            line={undefined}
+            setLine={undefined}
           />
-        </Box>
-      </BoxWrapper>
+          <Box h="100%">
+            <MapWrapper
+              h="auto"
+              isMapExpanded={isMapExpanded}
+              setIsMapExpanded={setIsMapExpanded}
+              coord={coord}
+              setCoord={setCoord}
+              selectedParcel={selectedParcel}
+              setSelectedParcel={setSelectedParcel}
+              mapBoxVerticalSize={mapBoxVerticalSize}
+              mapHeight={mapHeight}
+              setMapHeight={setMapHeight}
+              parcelData={parcelData}
+              parcelCoord={parcelCoord}
+            />
+          </Box>
+        </BoxWrapper>
+      </Inspector>
     </Box>
   )
 }

@@ -28,6 +28,7 @@ import {
 import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
+import Inspector from "../../../utils/Inspector"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
 
@@ -131,94 +132,97 @@ export const OnlineUsers = () => {
   }, [chartState.data])
 
   return (
-    <BoxWrapper colSpan={3}>
-      <GridItem w="100%" h="auto" colSpan={[6, 3]}>
-        <Box mb="2">
-          <PlainBoxTitle
-            name="Online Users"
-            description="Active daily users, data from Decentraland Status Page"
-          />
-          {isLoading ? (
-            <Center h={chartHeight}>
-              <Spinner />
-            </Center>
-          ) : (
-            <Box>
-              <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
-                <ChartResetBtn handleReset={handleReset} />
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart
-                    margin={indexChartMargin}
-                    data={chartState.data}
-                    onMouseDown={handleMouseDown}
-                    onMouseMove={handleMouseMove}
-                    onMouseUp={handleMouseUp}
-                    onMouseLeave={() => handleMouseUp()}
-                  >
-                    <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
-                    <Tooltip
-                      content={
-                        <CustomTooltip
-                          active={undefined}
-                          payload={undefined}
-                          label={undefined}
-                        />
-                      }
-                    />
-                    <XAxis
-                      dataKey="date"
-                      fontSize="10px"
-                      style={{
-                        fontWeight: "medium",
-                      }}
-                      tick={{ fill: AxisFontColor }}
-                      tickFormatter={(tick) => {
-                        const date = new Date(tick)
-                        return format(date, "MM/dd")
-                      }}
-                    />
-                    <YAxis
-                      dataKey="value"
-                      fontSize="10px"
-                      style={{
-                        fontWeight: "medium",
-                      }}
-                      tick={{ fill: AxisFontColor }}
-                    />
-                    <Area
-                      animationDuration={150}
-                      type="linear"
-                      dataKey="value"
-                      stroke="#FF5555"
-                      strokeWidth="2px"
-                      fill="#FF555580"
-                    />
-                    {chartState.startX !== null && chartState.endX !== null && (
-                      <ReferenceArea
-                        x1={chartState.startX}
-                        x2={chartState.endX}
-                        stroke="#CAB2D6"
-                        strokeOpacity={0.3}
+    <Inspector id="Online Users">
+      <BoxWrapper colSpan={3}>
+        <GridItem w="100%" h="auto" colSpan={[6, 3]}>
+          <Box mb="2">
+            <PlainBoxTitle
+              name="Online Users"
+              description="Active daily users, data from Decentraland Status Page"
+            />
+            {isLoading ? (
+              <Center h={chartHeight}>
+                <Spinner />
+              </Center>
+            ) : (
+              <Box>
+                <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
+                  <ChartResetBtn handleReset={handleReset} />
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart
+                      margin={indexChartMargin}
+                      data={chartState.data}
+                      onMouseDown={handleMouseDown}
+                      onMouseMove={handleMouseMove}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={() => handleMouseUp()}
+                    >
+                      <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+                      <Tooltip
+                        content={
+                          <CustomTooltip
+                            active={undefined}
+                            payload={undefined}
+                            label={undefined}
+                          />
+                        }
                       />
-                    )}
-                  </AreaChart>
-                </ResponsiveContainer>
+                      <XAxis
+                        dataKey="date"
+                        fontSize="10px"
+                        style={{
+                          fontWeight: "medium",
+                        }}
+                        tick={{ fill: AxisFontColor }}
+                        tickFormatter={(tick) => {
+                          const date = new Date(tick)
+                          return format(date, "MM/dd")
+                        }}
+                      />
+                      <YAxis
+                        dataKey="value"
+                        fontSize="10px"
+                        style={{
+                          fontWeight: "medium",
+                        }}
+                        tick={{ fill: AxisFontColor }}
+                      />
+                      <Area
+                        animationDuration={150}
+                        type="linear"
+                        dataKey="value"
+                        stroke="#FF5555"
+                        strokeWidth="2px"
+                        fill="#FF555580"
+                      />
+                      {chartState.startX !== null &&
+                        chartState.endX !== null && (
+                          <ReferenceArea
+                            x1={chartState.startX}
+                            x2={chartState.endX}
+                            stroke="#CAB2D6"
+                            strokeOpacity={0.3}
+                          />
+                        )}
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </Box>
               </Box>
-            </Box>
-          )}
-        </Box>
-        <Center mt="-3" mb="1" fontSize="xs">
-          UTC, source from
-          <Box ml="1" color="blue.500">
-            <Link
-              href="https://status.decentraland.org/metrics"
-              target="_blank"
-            >
-              https://status.decentraland.org/metrics
-            </Link>
+            )}
           </Box>
-        </Center>
-      </GridItem>
-    </BoxWrapper>
+          <Center mt="-3" mb="1" fontSize="xs">
+            UTC, source from
+            <Box ml="1" color="blue.500">
+              <Link
+                href="https://status.decentraland.org/metrics"
+                target="_blank"
+              >
+                https://status.decentraland.org/metrics
+              </Link>
+            </Box>
+          </Center>
+        </GridItem>
+      </BoxWrapper>
+    </Inspector>
   )
 }

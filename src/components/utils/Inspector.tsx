@@ -1,22 +1,16 @@
-/* eslint-disable no-unused-vars */
-import { Button, Flex } from "@chakra-ui/react"
-import { format } from "date-fns"
 import { useAtom } from "jotai"
-import { Profiler, useState } from "react"
+import { Profiler } from "react"
 import { isProd } from "../../lib/data/constant"
-import { profilerOpenAtom } from "../../lib/state/profiler"
-import { Panel } from "./Panel"
+import { profilerDataAtom } from "../../lib/state/profiler"
 
 const Inspector = ({ children, id }) => {
-  const [profilingData, setProfilingData] = useState([])
-  const [open, setOpen] = useAtom(profilerOpenAtom)
-
-  // TODO add option to change the interval and data length
   // eslint-disable-next-line no-unused-vars
-  const [option, setOption] = useState({
+  const [profiling, setProfiling] = useAtom(profilerDataAtom)
+
+  const option = {
     dataLegnth: 500,
     interval: 1000,
-  })
+  }
 
   const debounce = (func: Function, delay: number) => {
     let timeoutId: NodeJS.Timeout
@@ -28,14 +22,11 @@ const Inspector = ({ children, id }) => {
   }
 
   const updateProfilingData = (newData) => {
-    const time = format(new Date(), "HH:mm:ss")
-
-    setProfilingData((oldData) => {
+    setProfiling((oldData) => {
       const updatedData = [
         ...oldData,
         {
           ...newData,
-          time: time,
         },
       ]
 
@@ -71,23 +62,17 @@ const Inspector = ({ children, id }) => {
       })
   }
 
-  if (process.env.NEXT_PUBLIC_INSPECTOR === "true") {
-    return (
-      <>
+  return (
+    <>
+      {process.env.NEXT_PUBLIC_INSPECTOR === "true" ? (
         <Profiler id={id} onRender={onRenderCallback}>
           {children}
         </Profiler>
-        {open && (
-          <>
-            asdf
-            <Panel profilingData={profilingData} setOpen={setOpen} />
-          </>
-        )}
-      </>
-    )
-  } else {
-    return <>{children}</>
-  }
+      ) : (
+        <>{children}</>
+      )}
+    </>
+  )
 }
 
 export default Inspector
