@@ -17,6 +17,7 @@ import {
   Line,
 } from "recharts"
 import { FiXCircle } from "react-icons/fi"
+import { useState, useEffect } from "react"
 
 export const Panel = ({ profilingData, setOpen }) => {
   // TODO
@@ -27,6 +28,19 @@ export const Panel = ({ profilingData, setOpen }) => {
   // 8. create a snapshot feature
   // 9. add multi label section for monitored component
   // 10. make panel fixed position regardless of y position
+  const [defaultPosition, setDefaultPosition] = useState({
+    x: 0,
+    y: 0,
+    width: 800,
+    height: 500,
+  })
+
+  useEffect(() => {
+    const x = window.innerWidth / 2 - defaultPosition.width / 2
+    const y = window.innerHeight / 2 - defaultPosition.height / 2
+    setDefaultPosition({ ...defaultPosition, x, y })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Rnd
@@ -40,14 +54,15 @@ export const Panel = ({ profilingData, setOpen }) => {
         borderColor: "#A0AEC0",
         borderRadius: "12px",
         overflow: "hidden",
+        zIndex: 999999,
+        boxShadow: "0 0 5px rgba(0,0,0,0.4)",
       }}
-      lockAspectRatio={true}
       aspectRatio={8 / 5}
       bounds="body"
       dragHandleClassName="handler"
       default={{
-        x: 80,
-        y: 80,
+        x: -800,
+        y: 100,
         width: 800,
         height: 500,
       }}

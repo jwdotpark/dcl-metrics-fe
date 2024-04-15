@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { Button, Flex } from "@chakra-ui/react"
 import { format } from "date-fns"
+import { useAtom } from "jotai"
 import { Profiler, useState } from "react"
 import { isProd } from "../../lib/data/constant"
+import { profilerAtom } from "../../lib/state/profiler"
 import { Panel } from "./Panel"
 
 const Inspector = ({ children, id }) => {
-  const [profilingData, setProfilingData] = useState([])
-  const [open, setOpen] = useState(false)
+  //const [profilingData, setProfilingData] = useState([])
+  //const [open, setOpen] = useState(false)
 
   // TODO add option to change the interval and data length
   // eslint-disable-next-line no-unused-vars
@@ -14,6 +17,8 @@ const Inspector = ({ children, id }) => {
     dataLegnth: 500,
     interval: 50,
   })
+
+  const [profiling, setProfiling] = useAtom(profilerAtom)
 
   const debounce = (func: Function, delay: number) => {
     let timeoutId: NodeJS.Timeout
@@ -27,7 +32,7 @@ const Inspector = ({ children, id }) => {
   const updateProfilingData = (newData) => {
     const time = format(new Date(), "HH:mm:ss")
 
-    setProfilingData((oldData) => {
+    setProfiling((oldData) => {
       const updatedData = [
         ...oldData,
         {
@@ -72,7 +77,7 @@ const Inspector = ({ children, id }) => {
     return (
       <>
         <Profiler id={id} onRender={onRenderCallback}>
-          <Flex
+          {/*<Flex
             pos="fixed"
             zIndex="99999"
             top="8px"
@@ -88,10 +93,10 @@ const Inspector = ({ children, id }) => {
             >
               {!open ? "Profiler Open" : "Profiler Close"}
             </Button>
-          </Flex>
+          </Flex>*/}
           {children}
         </Profiler>
-        {open && <Panel profilingData={profilingData} setOpen={setOpen} />}
+        {/*{open && <Panel profilingData={profiling} setOpen={setOpen} />}*/}
       </>
     )
   } else {
