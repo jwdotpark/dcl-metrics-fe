@@ -10,11 +10,6 @@ import {
 } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import LandPicker from "../src/components/global/map/LandPicker"
-//import UniqueVisitedParcels from "../src/components/local/stats/UniqueVisitedParcels"
-//import UniqueVisitors from "../src/components/local/stats/UniqueVisitors"
-//import ActiveScenes from "../src/components/local/stats/ActiveScenes"
-//import LandSales from "../src/components/local/stats/rentals/LandSales"
-// import OnlineUsers from "../src/components/local/ext-data/OnlineUsers"
 import {
   fetchGlobalData,
   //fetchRentalData,
@@ -22,7 +17,6 @@ import {
 } from "../src/lib/data/fetch"
 //import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 //import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
-//import ActiveUsers from "../src/components/local/ext-data/ActiveUsers"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import WorldStat from "../src/components/local/stats/world/WorldStat"
