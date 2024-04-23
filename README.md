@@ -19,6 +19,10 @@ Please refer to our [changelog and roadmap](https://dcl-metrics.com/roadmap) or 
 
 This project is licensed under the Apache License - see the `LICENSE.md` file for details.
 
+## Environment Variables
+
+Please refer to `.env.template`.  
+
 ## Misc
 
 - [Decentraland Land API reference](https://docs.decentraland.org/player/market/api/)
