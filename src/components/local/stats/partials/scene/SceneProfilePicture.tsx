@@ -5,6 +5,7 @@ import verifiedBadge from "../../../../../../public/verified.svg"
 import guestBadge from "../../../../../../public/guest.svg"
 import staticAvatar from "../../../../../../public/avatar.png"
 import ToolTip from "../../../../layout/local/ToolTip"
+import { isProd } from "../../../../../lib/data/constant"
 
 const SceneProfilePicture = ({ address, verified, guest }) => {
   const [pic, setPic] = useState<string>()
@@ -12,7 +13,7 @@ const SceneProfilePicture = ({ address, verified, guest }) => {
 
   useEffect(() => {
     setIsLoading(true)
-    if (process.env.NEXT_PUBLIC_ENV === "prod") {
+    if (isProd) {
       setPic(address)
     } else {
       // @ts-ignore
