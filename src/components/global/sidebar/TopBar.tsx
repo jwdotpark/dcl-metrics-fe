@@ -13,14 +13,11 @@ import {
 import { FiMenu } from "react-icons/fi"
 import ColorButton from "../ColorButton"
 import FeedbackButton from "../FeedbackButton"
-import SettingsButton from "../SettingsButton"
 import Link from "next/link"
-import { useRouter } from "next/router"
 import { isMobile } from "../../../lib/hooks/utils"
+import ProfilingButton from "../ProfilingButton"
 
 const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
-  const router = useRouter()
-
   return (
     <Flex
       align="center"
@@ -82,7 +79,7 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
 
       <Spacer />
       <Center>
-        {router.pathname === "/" && <SettingsButton />}
+        {process.env.NEXT_PUBLIC_INSPECTOR === "true" && <ProfilingButton />}
         <FeedbackButton />
         <ColorButton />
       </Center>

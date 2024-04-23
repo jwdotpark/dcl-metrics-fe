@@ -1,19 +1,16 @@
-import { Button, Flex } from "@chakra-ui/react"
-import { format } from "date-fns"
-import { Profiler, useState } from "react"
+import { useAtom } from "jotai"
+import { Profiler } from "react"
 import { isProd } from "../../lib/data/constant"
-import { Panel } from "./Panel"
+import { profilerDataAtom } from "../../lib/state/profiler"
 
 const Inspector = ({ children, id }) => {
-  const [profilingData, setProfilingData] = useState([])
-  const [open, setOpen] = useState(false)
-
-  // TODO add option to change the interval and data length
   // eslint-disable-next-line no-unused-vars
-  const [option, setOption] = useState({
+  const [profiling, setProfiling] = useAtom(profilerDataAtom)
+
+  const option = {
     dataLegnth: 500,
-    interval: 50,
-  })
+    interval: 1000,
+  }
 
   const debounce = (func: Function, delay: number) => {
     let timeoutId: NodeJS.Timeout
@@ -25,14 +22,11 @@ const Inspector = ({ children, id }) => {
   }
 
   const updateProfilingData = (newData) => {
-    const time = format(new Date(), "HH:mm:ss")
-
-    setProfilingData((oldData) => {
+    setProfiling((oldData) => {
       const updatedData = [
         ...oldData,
         {
           ...newData,
-          time: time,
         },
       ]
 
@@ -68,35 +62,17 @@ const Inspector = ({ children, id }) => {
       })
   }
 
-  if (process.env.NEXT_PUBLIC_INSPECTOR === "true") {
-    return (
-      <>
+  return (
+    <>
+      {process.env.NEXT_PUBLIC_INSPECTOR === "true" ? (
         <Profiler id={id} onRender={onRenderCallback}>
-          <Flex
-            pos="fixed"
-            zIndex="99999"
-            top="8px"
-            right="45%"
-            justify="flex-end"
-          >
-            <Button
-              border="1px"
-              borderRadius="full"
-              shadow="md"
-              onClick={() => setOpen(!open)}
-              size="sm"
-            >
-              {!open ? "Profiler Open" : "Profiler Close"}
-            </Button>
-          </Flex>
           {children}
         </Profiler>
-        {open && <Panel profilingData={profilingData} setOpen={setOpen} />}
-      </>
-    )
-  } else {
-    return <>{children}</>
-  }
+      ) : (
+        <>{children}</>
+      )}
+    </>
+  )
 }
 
 export default Inspector

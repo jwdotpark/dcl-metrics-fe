@@ -5,6 +5,7 @@ import { UniqueVisitor } from "./chart/UniqueVisitor"
 import ParcelVisited from "./chart/ParcelVisited"
 import ScenesVisited from "./chart/ScenesVisited"
 import { useState } from "react"
+import Inspector from "../../utils/Inspector"
 
 const GlobalChart = ({ chartData }) => {
   const axisFontColor = useColorModeValue("#000", "#fff")
@@ -26,23 +27,25 @@ const GlobalChart = ({ chartData }) => {
   })
 
   return (
-    <BoxWrapper colSpan={0}>
-      <Grid
-        gap={4}
-        templateColumns={`repeat(${gridColumn}, 1fr)`}
-        mt="-2"
-        mb="-4"
-      >
-        <ParcelVisited chartData={chartData} avg={avg} setAvg={setAvg} />
-        <ScenesVisited chartData={chartData} avg={avg} setAvg={setAvg} />
-      </Grid>
-      <UniqueVisitor
-        chartData={chartData}
-        axisFontColor={axisFontColor}
-        avg={avg}
-        setAvg={setAvg}
-      />
-    </BoxWrapper>
+    <Inspector id="Global Chart">
+      <BoxWrapper colSpan={0}>
+        <Grid
+          gap={4}
+          templateColumns={`repeat(${gridColumn}, 1fr)`}
+          mt="-2"
+          mb="-4"
+        >
+          <ParcelVisited chartData={chartData} avg={avg} setAvg={setAvg} />
+          <ScenesVisited chartData={chartData} avg={avg} setAvg={setAvg} />
+        </Grid>
+        <UniqueVisitor
+          chartData={chartData}
+          axisFontColor={axisFontColor}
+          avg={avg}
+          setAvg={setAvg}
+        />
+      </BoxWrapper>
+    </Inspector>
   )
 }
 
