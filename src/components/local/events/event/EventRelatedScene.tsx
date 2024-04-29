@@ -150,7 +150,7 @@ export const EventRelatedEvent = ({ event, data, itemsPerPage = 1 }) => {
             </Box>
 
             <Box w={["100%", "60%"]} h="100%">
-              <SceneLineChart data={[sceneData]} selectedScene={0} />
+              <SceneLineChart data={[sceneData]} />
             </Box>
           </Flex>
           <Flex direction={["column", "row"]} w="100%">
@@ -187,7 +187,6 @@ export const EventRelatedEvent = ({ event, data, itemsPerPage = 1 }) => {
                 visitors_by_hour_histogram={
                   sceneData.visitors_by_hour_histogram
                 }
-                selectedScene={0}
               />
             </Box>
           </Flex>
