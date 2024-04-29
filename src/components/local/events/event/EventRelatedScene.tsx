@@ -87,7 +87,7 @@ export const EventRelatedEvent = ({ event, data, itemsPerPage = 1 }) => {
   }, [])
 
   return (
-    <Box>
+    <Box overflow="hidden">
       <Center mt="-4">
         <ButtonGroup mt={4} borderRadius="xl" shadow="md" isAttached={true}>
           <Button
@@ -129,13 +129,11 @@ export const EventRelatedEvent = ({ event, data, itemsPerPage = 1 }) => {
           </Button>
         </ButtonGroup>
       </Center>
-
       {isLoading && (
         <Center h="400px">
           <Spinner />
         </Center>
       )}
-
       {sceneData && sceneData.uuid && !isLoading ? (
         <Box m="4">
           <Flex direction={["column", "row"]} mt="4" mb={[0, 4]}>

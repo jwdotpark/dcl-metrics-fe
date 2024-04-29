@@ -60,7 +60,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   }, [res])
 
   return (
-    <Box>
+    <Box overflow="hidden">
       <SceneTitle
         name={name}
         date={latest}
