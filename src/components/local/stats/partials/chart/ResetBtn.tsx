@@ -4,7 +4,7 @@ import ToolTip from "../../../../layout/local/ToolTip"
 
 const ChartResetBtn = ({ handleReset }) => {
   return (
-    <Box pos="absolute" top="-12" right="5">
+    <Box pos="absolute" top="0" right="5">
       <ToolTip label={`Reset`}>
         <IconButton
           zIndex="auto"
