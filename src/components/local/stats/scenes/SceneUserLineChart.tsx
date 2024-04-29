@@ -120,9 +120,9 @@ export const SceneUserLineChart = ({ data }) => {
                   animationDuration={150}
                   type="linear"
                   dataKey="visitors"
-                  stroke="#CAB2D6"
+                  stroke="#50967b"
                   strokeWidth="2px"
-                  fill="#CAB2D680"
+                  fill="#50967b80"
                 />
                 <ReferenceLine
                   y={avg.avgUniqueVisitors}

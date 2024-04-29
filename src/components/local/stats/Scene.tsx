@@ -140,9 +140,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
             )}
           </Box>
           <Box w={["100%", "100%", "100%", "65%"]} h="435px" mt={[4, 4, 0]}>
-            {!isEmpty && (
-              <SceneLineChart data={res} selectedScene={selectedScene} />
-            )}
+            {!isEmpty && <SceneLineChart data={res} />}
           </Box>
         </Flex>
         <Flex
@@ -168,13 +166,12 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
               "100%",
               process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true" ? "50%" : "100%",
             ]}
-            h="520px"
+            //h="300px"
             mb={[4, 4, 4, 0]}
           >
             {!isEmpty && (
               <SceneBarChart
                 visitors_by_hour_histogram={visitors_by_hour_histogram}
-                selectedScene={selectedScene}
               />
             )}
           </Box>
