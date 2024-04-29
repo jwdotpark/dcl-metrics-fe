@@ -25,17 +25,16 @@ const SceneBarChart = ({ visitors_by_hour_histogram }) => {
     useChartZoom(chartData)
 
   return (
-    <ToolTip label="This chart shows the number of users that is presented in each hour of the day">
-      <Box
-        w="100%"
-        //h="300px"
-        mt={[2, 2, 2, 0]}
-        bg={useColorModeValue("white", "gray.700")}
-        border="1px solid"
-        borderColor={useColorModeValue("gray.200", "gray.600")}
-        borderRadius="xl"
-        shadow="md"
-      >
+    <Box
+      w="100%"
+      mt={[2, 2, 2, 0]}
+      bg={useColorModeValue("white", "gray.700")}
+      border="1px solid"
+      borderColor={useColorModeValue("gray.200", "gray.600")}
+      borderRadius="xl"
+      shadow="md"
+    >
+      <ToolTip label="This chart shows the number of users that is presented in each hour of the day">
         <Box pos="relative" w="100%" h={300} mt="4" mb="2" pt="4" pb="4">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
@@ -82,8 +81,8 @@ const SceneBarChart = ({ visitors_by_hour_histogram }) => {
             </Text>
           </Center>
         </Box>
-      </Box>
-    </ToolTip>
+      </ToolTip>
+    </Box>
   )
 }
 
