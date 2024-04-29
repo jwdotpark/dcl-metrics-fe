@@ -84,7 +84,7 @@ export const CustomTooltip = ({ active, payload, label, avg, data }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {avg &&
+            {avg && typeof avg !== "number" ? (
               payload.map((item, index) => {
                 const avgKey = `avg${item.dataKey
                   .split("_")
@@ -100,7 +100,15 @@ export const CustomTooltip = ({ active, payload, label, avg, data }) => {
                     stroke={item.stroke}
                   />
                 )
-              })}
+              })
+            ) : (
+              <TableRow
+                dataKey={payload[0].dataKey}
+                value={payload[0].value}
+                stroke={undefined}
+                avg={avg}
+              />
+            )}
           </Tbody>
         </Table>
       </Box>

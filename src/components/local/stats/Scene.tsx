@@ -16,8 +16,8 @@ import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
-import SceneUserLineChart from "./scenes/SceneUserLineChart"
 import SceneTitle from "../../layout/local/SceneTitle"
+import { SceneUserLineChar } from "./scenes/SceneUserLineChar"
 
 const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   const [selectedScene, setSelectedScene] = useState(0)
@@ -72,7 +72,10 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
         description={`Last update ${latest}`}
       />
       {dailyUsers.length > 0 && (
-        <SceneUserLineChart data={dailyUsers} name={name} />
+        <>
+          {/*<SceneUserLineChart data={dailyUsers} name={name} />*/}
+          <SceneUserLineChar data={dailyUsers} />
+        </>
       )}
       <Box m="0">
         <Flex
