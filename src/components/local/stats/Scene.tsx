@@ -17,7 +17,7 @@ import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
 import moment from "moment"
 import SceneTitle from "../../layout/local/SceneTitle"
-import { SceneUserLineChar } from "./scenes/SceneUserLineChar"
+import { SceneUserLineChart } from "./scenes/SceneUserLineChart"
 
 const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
   const [selectedScene, setSelectedScene] = useState(0)
@@ -73,8 +73,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
       />
       {dailyUsers.length > 0 && (
         <>
-          {/*<SceneUserLineChart data={dailyUsers} name={name} />*/}
-          <SceneUserLineChar data={dailyUsers} />
+          <SceneUserLineChart data={dailyUsers} />
         </>
       )}
       <Box m="0">

@@ -19,7 +19,7 @@ import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
 
-export const SceneUserLineChar = ({ data }) => {
+export const SceneUserLineChart = ({ data }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
   const [avg, setAvg] = useState({
     avgUniqueVisitors: 0,
