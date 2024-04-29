@@ -100,7 +100,7 @@ const ScenesVisited = ({ chartData, avg, setAvg }) => {
                     position: "center",
                     value: "Data Collection Starting Point",
                     fill: useColorModeValue("#000", "#fff"),
-                    fontSize: 12,
+                    fontSize: 10,
                   }}
                   stroke="#E53E3E"
                   strokeWidth="1"

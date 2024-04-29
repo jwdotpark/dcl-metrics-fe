@@ -123,7 +123,36 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
               stroke="#4299E1"
               fill="#4299E180"
             />
-            <Legend verticalAlign="top" align="center" />
+            <Legend
+              verticalAlign="top"
+              align="center"
+              wrapperStyle={{
+                fontSize: "11px",
+                fontWeight: "medium",
+              }}
+              payload={[
+                {
+                  value: "Unique Users",
+                  type: "line",
+                  color: "#48BB78",
+                },
+                {
+                  value: "Guest Users",
+                  type: "line",
+                  color: "#9F7AEA",
+                },
+                {
+                  value: "New Users",
+                  type: "line",
+                  color: "#4299E1",
+                },
+                {
+                  value: "Named Users",
+                  type: "line",
+                  color: "#F56565",
+                },
+              ]}
+            />
             <Area
               animationDuration={150}
               type="linear"
