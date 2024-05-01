@@ -1,6 +1,8 @@
-import { Box, Flex, useColorModeValue } from "@chakra-ui/react"
+import { Box, Flex, IconButton, useColorModeValue } from "@chakra-ui/react"
 import { format } from "date-fns"
+import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import { FiMaximize2 } from "react-icons/fi"
 import {
   Area,
   AreaChart,
@@ -13,14 +15,17 @@ import {
   XAxis,
   YAxis,
 } from "recharts"
-import { indexChartMargin } from "../../../../lib/data/constant"
+import { getEndpoint, indexChartMargin } from "../../../../lib/data/constant"
 import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
+import ToolTip from "../../../layout/local/ToolTip"
 import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
 
 export const SceneUserLineChart = ({ data }) => {
+  const router = useRouter()
   const AxisFontColor = useColorModeValue("#000", "#fff")
+  const [localData, setLocalData] = useState(data)
   const [avg, setAvg] = useState({
     avgUniqueVisitors: 0,
   })
@@ -31,7 +36,7 @@ export const SceneUserLineChart = ({ data }) => {
     handleMouseMove,
     handleMouseUp,
     handleReset,
-  } = useChartZoom(data)
+  } = useChartZoom(localData)
 
   const calculateAvg = (data) => {
     const avgUniqueVisitors = Math.round(
@@ -40,6 +45,14 @@ export const SceneUserLineChart = ({ data }) => {
     return {
       avgUniqueVisitors,
     }
+  }
+
+  const fetchFullData = async () => {
+    const uuid = router.query.uuid
+    const url = getEndpoint(`scenes/${uuid}/visitor_history?show_all=true`)
+    const result = await fetch(`/api/fetch?url=${url}`)
+    const data = await result.json()
+    setLocalData(data.result)
   }
 
   useEffect(() => {
@@ -74,6 +87,22 @@ export const SceneUserLineChart = ({ data }) => {
             description="The number of unique visitors in the last period"
           />
           <Box pos="relative" w="100%" h={300} mt="4" mb="2">
+            <Box pos="absolute" zIndex="99999" top="0" right="14">
+              <ToolTip label={`Load full range data`}>
+                <IconButton
+                  zIndex="auto"
+                  border="1px solid"
+                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                  borderRadius="full"
+                  shadow="md"
+                  aria-label={""}
+                  icon={<FiMaximize2 />}
+                  onClick={() => fetchFullData()}
+                  size="xs"
+                  type="button"
+                />
+              </ToolTip>
+            </Box>
             <ChartResetBtn handleReset={handleReset} />
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart
