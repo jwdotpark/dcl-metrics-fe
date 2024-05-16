@@ -11,7 +11,7 @@ import staticParcel from "../../../public/data/cached_parcel.json"
 //import staticTopLand from "../../../public/data/staticTopLand.json"
 //import staticTopPick from "../../../public/data/staticTopPick.json"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
-import moment from "moment"
+//import moment from "moment"
 import { getPosts } from "../../../markdown/helpers/post"
 import { fromUnixTime, compareDesc, parseISO } from "date-fns"
 
@@ -143,14 +143,6 @@ export async function fetchRentalData() {
 
   return data
 }
-
-//export function getLatestPost() {
-//  const posts = getPosts().sort((a, b) => {
-//    return moment(b.data.date).unix() - moment(a.data.date).unix()
-//  })
-
-//  return posts[0]
-//}
 
 export function getLatestPost() {
   const posts = getPosts().sort((a, b) => {

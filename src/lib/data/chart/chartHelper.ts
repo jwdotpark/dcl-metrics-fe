@@ -1,4 +1,5 @@
-import moment from "moment"
+import { format } from "date-fns"
+//import moment from "moment"
 
 export const generateChartData = (data: any[], chartKeys: string[]) => {
   const dataArr = Object.entries(data)
@@ -41,7 +42,7 @@ export const mapChartData = (id: string, key: string, partial: any[]) => {
     return {
       id,
       data: partial.map((item) => ({
-        x: moment.unix(item.date).format("YYYY-MM-DD HH:mm"),
+        x: format(new Date(item.date * 1000), "yyyy-MM-dd HH:mm"),
         y: item[key],
       })),
     }
