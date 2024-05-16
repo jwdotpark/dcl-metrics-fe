@@ -6,7 +6,7 @@ import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import DateRangeButton from "../daterange/DateRangeButton"
 import { plotMissingDates } from "../../../../lib/data/chart/chartInfo"
-import moment from "moment"
+import { format, fromUnixTime } from "date-fns"
 
 const RentalDay = ({ data }) => {
   const { analyticsDayDatas } = data
@@ -28,7 +28,7 @@ const RentalDay = ({ data }) => {
       data.push({
         id: item[1].date,
         degraded: false,
-        date: moment.unix(item[1].date).format("YYYY-MM-DD"),
+        date: format(fromUnixTime(item[1].date), "yyyy-MM-dd"),
         volume:
           item[1].volume.length > 0 ? Number(item[1].volume.slice(0, -17)) : 0,
         rentals: item[1].rentals,

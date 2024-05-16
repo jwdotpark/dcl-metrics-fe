@@ -1,15 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from "react"
 import { Box, useColorModeValue, Flex, Text, Spacer } from "@chakra-ui/react"
-import moment from "moment"
 import { description, name } from "../../../../../lib/data/sceneInfo"
-import momentDurationFormatSetup from "moment-duration-format"
 import ToolTip from "../../../../layout/local/ToolTip"
 import { convertSeconds } from "../../../../../lib/hooks/utils"
 
 // eslint-disable-next-line no-unused-vars
 const StatBox = ({ data, selectedScene, date }) => {
-  momentDurationFormatSetup(moment)
   const dataArr = Object.entries(data)
   const stats = dataArr.map((item, index) => {
     return {
@@ -59,7 +56,7 @@ const StatBox = ({ data, selectedScene, date }) => {
             <ToolTip
               label={
                 <Text fontSize="xs">
-                  Data on {moment(date).format("yy/MM/DD")}
+                  Data on {date.slice(2).replace(/-/g, "/")}
                 </Text>
               }
             >
@@ -86,14 +83,13 @@ const StatBox = ({ data, selectedScene, date }) => {
                               fontSize={["md", "lg", "lg"]}
                               fontWeight="black"
                             >
-                              {name === "average time spent" ||
-                              name === "average time spent AFK"
-                                ? moment
-                                    .duration(Number(value), "seconds")
-                                    // @ts-ignore
-                                    .format("h[h] m[m] s[s]")
-                                : value}
-                              {name === "share of Global Visitors" && "%"}
+                              <>
+                                {name === "average time spent" ||
+                                name === "average time spent AFK"
+                                  ? convertSeconds(Number(value))
+                                  : value}
+                                {name === "share of Global Visitors" && "%"}
+                              </>
                             </Text>
                           </Box>
                           <Box ml="2">
@@ -126,7 +122,7 @@ const StatBox = ({ data, selectedScene, date }) => {
             <ToolTip
               label={
                 <Text fontSize="xs">
-                  Data on {moment(date).format("yy/MM/DD")}
+                  Data on {date.slice(2).replace(/-/g, "/")}
                 </Text>
               }
             >

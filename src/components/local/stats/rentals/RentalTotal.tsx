@@ -1,21 +1,30 @@
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import PieChart from "../../../../lib/PieChart"
-import moment from "moment"
+import { format, fromUnixTime, differenceInDays } from "date-fns"
 
 const RentalTotal = ({ data }) => {
   const { analyticsTotalDatas } = data
   const chartData = []
   const color = ["#FBB4AE", "#B3CDE3"]
 
-  const firstDate = moment
-    .unix(data.analyticsDayDatas[0].date)
-    .format("YYYY MMM. D")
-
-  const diff = moment(new Date()).diff(
-    moment.unix(data.analyticsDayDatas[0].date),
-    "days"
+  //const firstDate = moment
+  //  .unix(data.analyticsDayDatas[0].date)
+  //  .format("YYYY MMM. D")
+  const firstDate = format(
+    fromUnixTime(data.analyticsDayDatas[0].date),
+    "yyyy MMM. d"
   )
+
+  //const diff = moment(new Date()).diff(
+  //  moment.unix(data.analyticsDayDatas[0].date),
+  //  "days"
+  //)
+  const diff = differenceInDays(
+    new Date(),
+    fromUnixTime(data.analyticsDayDatas[0].date)
+  )
+
   analyticsTotalDatas.map((item) => {
     chartData.push({
       id: item.__typename,

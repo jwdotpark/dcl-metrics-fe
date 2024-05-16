@@ -20,7 +20,18 @@ const nextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   swcMinify: true,
   images: {
-    domains: ["https://api.decentraland.org/", "picsum.photos"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "https://api.decentraland.org/",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        pathname: "**",
+      },
+    ],
   },
   staticPageGenerationTimeout: 60000,
 }

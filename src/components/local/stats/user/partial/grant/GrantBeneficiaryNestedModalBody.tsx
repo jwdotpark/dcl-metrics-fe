@@ -15,7 +15,8 @@ import {
   useBreakpointValue,
   useToast,
 } from "@chakra-ui/react"
-import moment from "moment"
+import { format } from "date-fns"
+//import moment from "moment"
 
 const GrantBeneficiaryNestedModalBody = ({ grants }) => {
   const toast = useToast()
@@ -164,13 +165,15 @@ const GrantBeneficiaryNestedModalBody = ({ grants }) => {
                         <Tr>
                           <Td>Started At</Td>
                           <Td isNumeric>
-                            {moment(item.started_at).format("YYYY MMM. D")}
+                            {/*{moment(item.started_at).format("YYYY MMM. D")}*/}
+                            {format(new Date(item.started_at), "yyyy MMM. d")}
                           </Td>
                         </Tr>
                         <Tr>
                           <Td>Ended At</Td>
                           <Td isNumeric>
-                            {moment(item.ended_at).format("YYYY MMM. D")}
+                            {/*{moment(item.ended_at).format("YYYY MMM. D")}*/}
+                            {format(new Date(item.ended_at), "yyyy MMM. d")}
                           </Td>
                         </Tr>
                       </Tbody>

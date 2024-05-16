@@ -7,7 +7,8 @@ import {
   Spacer,
   Button,
 } from "@chakra-ui/react"
-import moment from "moment"
+import { format, formatDistanceToNow } from "date-fns"
+//import moment from "moment"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 
@@ -75,14 +76,21 @@ const UserInfo = ({ data }) => {
               <Flex w="100%">
                 <Box>First Seen At</Box>
                 <Spacer />
-                <Box>{moment(first_seen).format("YYYY MMMM D")}</Box>
+                {/*<Box>{moment(first_seen).format("YYYY MMMM D")}</Box>*/}
+                <Box>{format(new Date(first_seen), "yyyy MMMM d")}</Box>
               </Flex>
             </Box>
             <Box w="100%">
               <Flex w="100%">
                 <Box>Last Seen At</Box>
                 <Spacer />
-                <Box>{moment(last_seen).fromNow(true)} ago</Box>
+                {/*<Box>{moment(last_seen).fromNow(true)} ago</Box>*/}
+                <Box>
+                  {formatDistanceToNow(new Date(last_seen), {
+                    addSuffix: true,
+                  })}{" "}
+                  ago
+                </Box>
               </Flex>
             </Box>
             <Box w="100%">

@@ -17,7 +17,8 @@ import {
   Divider,
   useToast,
 } from "@chakra-ui/react"
-import moment from "moment"
+import { format } from "date-fns"
+//import moment from "moment"
 import ToolTip from "../../../../../layout/local/ToolTip"
 
 const UserActivityGrandPopOver = ({ grants }) => {
@@ -146,19 +147,37 @@ const UserActivityGrandPopOver = ({ grants }) => {
                                   </Tr>
                                   <Tr>
                                     <Td>Started At</Td>
-                                    <Td isNumeric>
+                                    {/*<Td isNumeric>
                                       {moment(
                                         grants.authored.data[0].started_at
                                       ).format("YYYY MMM. D hh:mm")}{" "}
+                                      UTC
+                                    </Td>*/}
+                                    <Td isNumeric>
+                                      {format(
+                                        new Date(
+                                          grants.authored.data[0].started_at
+                                        ),
+                                        "yyyy MMM d HH:mm"
+                                      )}{" "}
                                       UTC
                                     </Td>
                                   </Tr>
                                   <Tr>
                                     <Td>Ended At</Td>
-                                    <Td isNumeric>
+                                    {/*<Td isNumeric>
                                       {moment(
                                         grants.authored.data[0].ended_at
                                       ).format("YYYY MMM. D hh:mm")}{" "}
+                                      UTC
+                                    </Td>*/}
+                                    <Td isNumeric>
+                                      {format(
+                                        new Date(
+                                          grants.authored.data[0].ended_at
+                                        ),
+                                        "yyyy MMM d HH:mm"
+                                      )}{" "}
                                       UTC
                                     </Td>
                                   </Tr>
