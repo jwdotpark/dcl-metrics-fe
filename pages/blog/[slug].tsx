@@ -8,7 +8,7 @@ import { useRouter } from "next/router"
 import externalLinks from "remark-external-links"
 import smartypants from "remark-smartypants"
 import remarkGfm from "remark-gfm"
-import moment from "moment"
+import { format } from "date-fns"
 import { CallOut, MDYoutube, LinkButton } from "../../src/components/markdown"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
@@ -17,9 +17,10 @@ function Post({ slug, data, content }) {
   const router = useRouter()
 
   const pageTitle = `DCL-Metrics ${data.title}`
-  const description = `${data.author} posted an article on ${moment(
-    data.date
-  ).format("MMMM D")}`
+  const description = `${data.author} posted an article on ${format(
+    new Date(data.date),
+    "MMMM d"
+  )}`
 
   const metaData = generateMetaData({
     title: pageTitle,
@@ -71,7 +72,7 @@ function Post({ slug, data, content }) {
                         </Center>
                         <Center>
                           <Text>
-                            {moment(data.date).format("MMMM D, YYYY")}
+                            {format(new Date(data.date), "MMMM d, yyyy")}
                           </Text>
                         </Center>
                       </Flex>
