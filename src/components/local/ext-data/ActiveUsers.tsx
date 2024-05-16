@@ -3,7 +3,7 @@ import BoxWrapper from "../../layout/local/BoxWrapper"
 import useSWR from "swr"
 import { ResponsiveBar } from "@nivo/bar"
 import { Box, Text, Center, Spinner, useColorModeValue } from "@chakra-ui/react"
-import moment from "moment"
+import { format } from "date-fns"
 import BottomLegend from "./partial/BottomLegend"
 import { lineChartAtom } from "../../../lib/state/lineChartState"
 import { useAtom } from "jotai"
@@ -22,7 +22,7 @@ const ActiveUsers = () => {
   data &&
     rawData.map((item) => {
       chartData.push({
-        id: moment(item[0]).format("YYYY-MM-DD"),
+        id: format(new Date(item[0]), "yyyy-MM-dd"),
         value: item[1],
       })
     })
@@ -106,7 +106,7 @@ const MyResponsiveBar = ({ data }) => {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          format: (value) => moment(value).format("YYYY MMM"),
+          format: (value) => format(new Date(value), "yyyy MMM"),
         }}
         axisLeft={{
           tickSize: 5,
@@ -142,7 +142,7 @@ const MyResponsiveBar = ({ data }) => {
           >
             <Box mb="1" fontWeight="bold">
               <Text fontSize="sm">
-                {moment(label.slice(-10)).format("YYYY MMMM")}
+                {format(new Date(label.slice(-10)), "yyyy MMMM")}
               </Text>
             </Box>
             <Center>

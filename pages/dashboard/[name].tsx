@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import moment from "moment"
+import { format, parseISO } from "date-fns"
 import { useEffect, useState } from "react"
 import Layout from "../../src/components/layout/layout"
 import Scene from "../../src/components/local/stats/Scene"
@@ -29,7 +29,7 @@ const DashboardPage = ({ historyResult, sceneResult, uuid }) => {
     new Date(availableDate[availableDate.length - 1])
   )
 
-  const targetDate = moment(date).format("YYYY-MM-DD")
+  const targetDate = format(parseISO(date.toISOString()), "yyyy-MM-dd")
   const path = `scenes/${uuid}?date=${targetDate}`
   const endpoint = getEndpoint(path)
 

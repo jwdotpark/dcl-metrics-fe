@@ -17,14 +17,11 @@ import {
 import SceneProfilePicture from "./SceneProfilePicture"
 import TableLink from "../TableLink"
 import TruncateName from "../TruncatedName"
-import moment from "moment"
-import momentDurationFormatSetup from "moment-duration-format"
+import { formatDuration, intervalToDuration } from "date-fns"
 import ToolTip from "../../../../layout/local/ToolTip"
 import Link from "next/link"
 
 const SceneMarathonUsers = ({ data }) => {
-  momentDurationFormatSetup(moment)
-
   const toast = useToast()
   const handleToast = async (value) => {
     try {
@@ -108,9 +105,10 @@ const SceneMarathonUsers = ({ data }) => {
                 </Td>
                 <Td isNumeric>
                   <Text fontSize="xs" wordBreak="keep-all">
-                    {moment
-                      .duration(item[1].time_spent, "minutes")
-                      .format("dd:hh:mm:ss")}
+                    {formatDuration(
+                      intervalToDuration({ minutes: item[1].time_spent }),
+                      { format: ["days", "hours", "minutes", "seconds"] }
+                    )}
                   </Text>
                 </Td>
                 <Td>

@@ -2,7 +2,7 @@ import { Center } from "@chakra-ui/react"
 import { getPosts } from "../../markdown/helpers/post"
 import Layout from "../../src/components/layout/layout"
 import PostList from "../../src/components/blog/PostList"
-import moment from "moment"
+import { getUnixTime, parseISO } from "date-fns"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 
@@ -10,7 +10,9 @@ export const getStaticProps = () => {
   const posts = getPosts()
 
   posts.sort((a, b) => {
-    return moment(b.data.date).unix() - moment(a.data.date).unix()
+    return (
+      getUnixTime(parseISO(b.data.date)) - getUnixTime(parseISO(a.data.date))
+    )
   })
 
   return {

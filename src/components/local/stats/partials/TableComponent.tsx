@@ -26,10 +26,10 @@ import { convertSeconds, mutateStringToURL } from "../../../../lib/hooks/utils"
 import TableLink from "./TableLink"
 import TableMap from "./TableMap"
 import { isSafari, isMobileSafari } from "react-device-detect"
-import moment from "moment"
 import Link from "next/link"
 import useSWR from "swr"
 import ToolTip from "../../../layout/local/ToolTip"
+import { format } from "date-fns"
 
 const TableComponent = ({
   data,
@@ -270,7 +270,7 @@ const RenderTd = (body, row) => {
     case "date":
       return (
         <Td key={body}>
-          <Text as="kbd">{moment(row.date).format("YYYY-MM-DD")}</Text>
+          <Text as="kbd">{format(new Date(row.date), "yyyy-MM-dd")}</Text>
         </Td>
       )
     case "buyer":

@@ -15,7 +15,7 @@ import StatBox from "./partials/scene/SceneStatBox"
 import SceneParcelsHeatmap from "./partials/scene/SceneParcelsHeatmap"
 import SceneBarChart from "./partials/scene/SceneBarChart"
 import SceneMarathonUsers from "./partials/scene/SceneMarathonUsers"
-import moment from "moment"
+import { format, parseISO } from "date-fns"
 import SceneTitle from "../../layout/local/SceneTitle"
 import { SceneUserLineChart } from "./scenes/SceneUserLineChart"
 
@@ -31,7 +31,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
 
   const hasMultipleScenes = res.length > 1 ? true : false
   const [isEmpty, setIsEmpty] = useState(false)
-  const latest = moment(res[selectedScene].date)
+  const latest = parseISO(res[selectedScene].date)
 
   const secondRowHeight = useBreakpointValue([200, 300, 350, 500])
 
@@ -44,7 +44,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
         shadow="md"
       >
         <Text m="4" fontSize={["md", "xl", "2xl", "3xl"]}>
-          {name && name} had no visitors on {moment(date).format("MMMM D")}!
+          {name && name} had no visitors on {format(new Date(date), "MMMM d")}!
         </Text>
       </Center>
     )

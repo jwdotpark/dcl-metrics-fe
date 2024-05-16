@@ -20,7 +20,7 @@ import {
 import DatePicker from "../../local/stats/scenes/DatePicker"
 import { FiDownload } from "react-icons/fi"
 import ToolTip from "./ToolTip"
-import moment from "moment"
+import { format, formatDistanceToNow, parseISO } from "date-fns"
 
 const SceneTitle = ({
   name,
@@ -81,10 +81,18 @@ const SceneTitle = ({
         <Spacer />
         <Flex align="center" h="100%">
           <ToolTip
-            label={`Updated on ${moment(date).format("YYYY/MM/DD hh:mm")}`}
+            label={`Updated on ${format(
+              parseISO(date.toISOString()),
+              "yyyy/MM/dd hh:mm"
+            )}`}
           >
             <Text mr="2">
-              Updated <i>{moment(date).fromNow()}</i>
+              Updated{" "}
+              <i>
+                {formatDistanceToNow(parseISO(date.toISOString()), {
+                  addSuffix: true,
+                })}
+              </i>
             </Text>
           </ToolTip>
         </Flex>

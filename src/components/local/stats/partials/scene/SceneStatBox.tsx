@@ -5,6 +5,7 @@ import moment from "moment"
 import { description, name } from "../../../../../lib/data/sceneInfo"
 import momentDurationFormatSetup from "moment-duration-format"
 import ToolTip from "../../../../layout/local/ToolTip"
+import { convertSeconds } from "../../../../../lib/hooks/utils"
 
 // eslint-disable-next-line no-unused-vars
 const StatBox = ({ data, selectedScene, date }) => {
@@ -152,12 +153,9 @@ const StatBox = ({ data, selectedScene, date }) => {
                               fontSize={["md", "lg", "lg"]}
                               fontWeight="black"
                             >
-                              {name === "average complete session duration"
-                                ? moment
-                                    .duration(Number(value), "seconds")
-                                    // @ts-ignore
-                                    .format("h[h] m[m] s[s]")
-                                : value}
+                              {name === "avg complete session duration"
+                                ? convertSeconds(Number(value))
+                                : value.toString()}
                             </Text>
                           </Box>
                           <Box ml="2">

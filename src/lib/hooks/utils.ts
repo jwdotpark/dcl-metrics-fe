@@ -1,5 +1,6 @@
 import CryptoJS from "crypto-js"
 import moment from "moment"
+import { intervalToDuration } from "date-fns"
 
 export const isServer = () => {
   return typeof window === "undefined"
@@ -10,12 +11,27 @@ export const isMobile = () => {
   return window.innerWidth < 500
 }
 
+//export const convertSeconds = (seconds: number) => {
+//  const duration = moment.duration(seconds, "seconds")
+//  const days = duration.days()
+//  const hours = duration.hours()
+//  const minutes = duration.minutes()
+//  const formattedSeconds = duration.seconds()
+//  const formattedDuration = [
+//    days > 0 ? `${days}d` : null,
+//    hours > 0 ? `${hours}h` : null,
+//    minutes > 0 ? `${minutes}m` : null,
+//    formattedSeconds > 0 ? `${formattedSeconds}s` : null,
+//  ]
+//    .filter(Boolean)
+//    .join(" ")
+
+//  return formattedDuration
+//}
+
 export const convertSeconds = (seconds: number) => {
-  const duration = moment.duration(seconds, "seconds")
-  const days = duration.days()
-  const hours = duration.hours()
-  const minutes = duration.minutes()
-  const formattedSeconds = duration.seconds()
+  const duration = intervalToDuration({ start: 0, end: seconds * 1000 })
+  const { days, hours, minutes, seconds: formattedSeconds } = duration
   const formattedDuration = [
     days > 0 ? `${days}d` : null,
     hours > 0 ? `${hours}h` : null,

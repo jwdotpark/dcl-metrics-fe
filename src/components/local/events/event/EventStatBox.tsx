@@ -1,14 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from "react"
 import { Box, useColorModeValue, Flex, Text, Spacer } from "@chakra-ui/react"
-import moment from "moment"
+import { intervalToDuration } from "date-fns"
 import { eventDescription, name } from "../../../../lib/data/sceneInfo"
-import momentDurationFormatSetup from "moment-duration-format"
 import { convertSeconds } from "../../../../lib/hooks/utils"
 
 // eslint-disable-next-line no-unused-vars
 export const EventStatBox = ({ data, selectedScene, date }) => {
-  momentDurationFormatSetup(moment)
   const dataArr = Object.entries(data)
   const stats = dataArr.map((item, index) => {
     return {
@@ -29,6 +27,19 @@ export const EventStatBox = ({ data, selectedScene, date }) => {
       item.label !== "parcels_heatmap" &&
       item.label !== "visitors_by_hour_histogram"
   )
+  const formatTimeDuration = (seconds) => {
+    const duration = intervalToDuration({ start: 0, end: seconds * 1000 })
+    const { hours, minutes, seconds: formattedSeconds } = duration
+    const formattedDuration = [
+      hours > 0 ? `${hours}h` : null,
+      minutes > 0 ? `${minutes}m` : null,
+      formattedSeconds > 0 ? `${formattedSeconds}s` : null,
+    ]
+      .filter(Boolean)
+      .join(" ")
+
+    return formattedDuration
+  }
 
   const StatTable = () => {
     return (
@@ -78,14 +89,13 @@ export const EventStatBox = ({ data, selectedScene, date }) => {
                             fontSize={["md", "lg", "lg"]}
                             fontWeight="black"
                           >
-                            {name === "average time spent" ||
-                            name === "average time spent AFK"
-                              ? moment
-                                  .duration(Number(value), "seconds")
-                                  // @ts-ignore
-                                  .format("h[h] m[m] s[s]")
-                              : value}
-                            {name === "share of Global Visitors" && "%"}
+                            <>
+                              {name === "average time spent" ||
+                              name === "average time spent AFK"
+                                ? formatTimeDuration(Number(value))
+                                : value}
+                              {name === "share of Global Visitors" && "%"}
+                            </>
                           </Text>
                         </Box>
                         <Box ml="2">
@@ -137,10 +147,9 @@ export const EventStatBox = ({ data, selectedScene, date }) => {
                             fontSize={["md", "lg", "lg"]}
                             fontWeight="black"
                           >
-                            {/* @ts-ignore */}
                             {name === "avg complete session duration"
                               ? convertSeconds(Number(value))
-                              : value}
+                              : value.toString()}
                           </Text>
                         </Box>
                         <Box ml="2">
