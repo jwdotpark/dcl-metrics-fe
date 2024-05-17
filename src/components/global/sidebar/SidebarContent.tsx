@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 import {
-  //Image as ChakraImage,
   Box,
   useColorModeValue,
   Flex,

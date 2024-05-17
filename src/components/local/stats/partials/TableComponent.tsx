@@ -15,6 +15,7 @@ import {
   useColorModeValue,
   Box,
   Button,
+  Thead,
 } from "@chakra-ui/react"
 import {
   dateRangeStr,
@@ -30,6 +31,18 @@ import Link from "next/link"
 import useSWR from "swr"
 import ToolTip from "../../../layout/local/ToolTip"
 import { format } from "date-fns"
+
+const TableHead = ({ headList }) => {
+  return (
+    <Thead>
+      <Tr>
+        {headList.map((head) => (
+          <Th key={head}>{head}</Th>
+        ))}
+      </Tr>
+    </Thead>
+  )
+}
 
 const TableComponent = ({
   data,
@@ -48,19 +61,9 @@ const TableComponent = ({
     tableData = data[date][propertyName]
   }
 
-  const TableHead = () => {
-    return (
-      <Tr>
-        {headList.map((head) => (
-          <Th key={head}>{head}</Th>
-        ))}
-      </Tr>
-    )
-  }
-
   const TableBody = () => {
     const barColor = headList[0] === "Time Spent" ? "#70AC7650" : "#bd93f950"
-    const detectSafari = isSafari || isMobileSafari ? true : false
+    const detectSafari = !!(isSafari || isMobileSafari)
     const barChartStyle = (index) => {
       return {
         background: `linear-gradient(90deg, ${barColor} ${
@@ -72,7 +75,7 @@ const TableComponent = ({
       <Tbody>
         {tableData.map((row, i) => (
           <Tr
-            key={row.time_spent ? row.time_spent : row.parcels_visited}
+            key={row.uuid}
             // eslint-disable-next-line react-hooks/rules-of-hooks
             _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
             style={detectSafari ? {} : barChartStyle(i)}
@@ -89,7 +92,7 @@ const TableComponent = ({
   return (
     <TableContainer mt="2" mx="4">
       <Table h="auto" my="2" borderBottom="none" size="sm" variant="simple">
-        <TableHead />
+        <TableHead headList={headList} />
         <TableBody />
       </Table>
     </TableContainer>
@@ -277,8 +280,7 @@ const RenderTd = (body, row) => {
       const endpoint = "https://peer-ap1.decentraland.org/lambdas/profiles?id="
       const url = endpoint + row.buyer
       const fetcher = (url) => fetch(url).then((r) => r.json())
-      // eslint-disable-next-line react-hooks/rules-of-hooks, no-unused-vars
-      const { data, error, isLoading } = useSWR(url, fetcher)
+      const { data } = useSWR(url, fetcher)
 
       const { name, avatar } =
         data && data.length > 0 ? data[0].avatars[0] : "no data"
@@ -302,7 +304,7 @@ const RenderTd = (body, row) => {
                 display="inline-block"
               >
                 <ToolTip label="User does not have a name for Decentraland">
-                  <Text>{name ? name : "N/A"}</Text>
+                  <Text>{name || "N/A"}</Text>
                 </ToolTip>
               </Center>
             </Link>

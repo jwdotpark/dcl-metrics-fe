@@ -28,8 +28,7 @@ const SearchScene = () => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
   const [search, setSearch] = useState("")
   const [data, setData] = useState([])
-  // eslint-disable-next-line no-unused-vars
-  const [error, setError] = useState(null)
+  //const [, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const inputRef = useRef(null)
   const debounceTimeoutRef = useRef(null)
@@ -50,7 +49,7 @@ const SearchScene = () => {
       const res = await response.json()
       setData(sortByDeployCount(res.result))
     } catch (error) {
-      setError(error)
+      console.log(error)
     } finally {
       setLoading(false)
     }
@@ -97,7 +96,7 @@ const SearchScene = () => {
         )
       }
     },
-    itemToString: (item) => (item ? item : ""),
+    itemToString: (item) => item || "",
   })
 
   const handleInputBlur = () => {
