@@ -54,6 +54,7 @@ const SidebarContent = ({
         <Box ml={sidebarOpen && subItem && "4"}>
           <Box
             onClick={() => {
+              router.prefetch(`/${name}`)
               router.push(`/${name}`)
             }}
           >

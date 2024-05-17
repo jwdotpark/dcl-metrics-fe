@@ -1,4 +1,5 @@
 import { Box, Text, Center, useColorModeValue } from "@chakra-ui/react"
+import { useEffect, useState } from "react"
 import {
   ResponsiveContainer,
   CartesianGrid,
@@ -13,13 +14,17 @@ import { useChartZoom } from "../chart/useChartZoom"
 
 const SceneBarChart = ({ visitors_by_hour_histogram }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
+  const [chartData, setChartData] = useState([])
 
-  const chartData = Object.keys(visitors_by_hour_histogram).map((key) => {
-    return {
-      hour: key,
-      count: visitors_by_hour_histogram[key],
-    }
-  })
+  useEffect(() => {
+    const data = Object.keys(visitors_by_hour_histogram).map((key) => {
+      return {
+        hour: key,
+        count: visitors_by_hour_histogram[key],
+      }
+    })
+    setChartData(data)
+  }, [visitors_by_hour_histogram])
 
   const { chartState, handleMouseDown, handleMouseMove, handleMouseUp } =
     useChartZoom(chartData)
