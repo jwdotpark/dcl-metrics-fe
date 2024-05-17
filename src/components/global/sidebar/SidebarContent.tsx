@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 import {
-  Image as ChakraImage,
+  //Image as ChakraImage,
   Box,
   useColorModeValue,
   Flex,
@@ -29,6 +29,54 @@ interface SidebarProps extends BoxProps {
   isOpen?: boolean
 }
 
+const SidebarItem = ({ sidebarOpen, label, name, icon, subItem }) => {
+  const router = useRouter()
+
+  const setItemName = (name: string) => {
+    if (name === "") {
+      return "Global"
+    } else {
+      return name.charAt(0).toUpperCase() + name.slice(1)
+    }
+  }
+
+  return (
+    <ToolTip label={!sidebarOpen && isServer() && label}>
+      <Box ml={sidebarOpen && subItem && "4"}>
+        <Box
+          onClick={() => {
+            router.prefetch(`/${name}`)
+            router.push(`/${name}`)
+          }}
+        >
+          <NavItem
+            height="2.5rem"
+            shadow={router.pathname === "/" + name && "md"}
+            icon={icon}
+            bg={
+              router.pathname === "/" + name &&
+              useColorModeValue("gray.200", "gray.700")
+            }
+            overflow="hidden"
+            transition="background-color 0.15s easeInOut"
+            _hover={{
+              bg: useColorModeValue("gray.200", "gray.700"),
+            }}
+          >
+            <Text
+              as={router.pathname === "/" + name ? "u" : "a"}
+              fontSize="md"
+              fontWeight="medium"
+            >
+              {capitalize(setItemName(name))}
+            </Text>
+          </NavItem>
+        </Box>
+      </Box>
+    </ToolTip>
+  )
+}
+
 const SidebarContent = ({
   sidebarOpen,
   setSidebarOpen,
@@ -38,54 +86,6 @@ const SidebarContent = ({
   onClose,
   ...rest
 }: SidebarProps) => {
-  const router = useRouter()
-
-  const SidebarItem = ({ label, name, icon, subItem }) => {
-    const setItemName = (name: string) => {
-      if (name === "") {
-        return "Global"
-      } else {
-        return name.charAt(0).toUpperCase() + name.slice(1)
-      }
-    }
-
-    return (
-      <ToolTip label={!sidebarOpen && isServer() && label}>
-        <Box ml={sidebarOpen && subItem && "4"}>
-          <Box
-            onClick={() => {
-              router.prefetch(`/${name}`)
-              router.push(`/${name}`)
-            }}
-          >
-            <NavItem
-              height="2.5rem"
-              shadow={router.pathname === "/" + name && "md"}
-              icon={icon}
-              bg={
-                router.pathname === "/" + name &&
-                useColorModeValue("gray.200", "gray.700")
-              }
-              overflow="hidden"
-              transition="background-color 0.15s easeInOut"
-              _hover={{
-                bg: useColorModeValue("gray.200", "gray.700"),
-              }}
-            >
-              <Text
-                as={router.pathname === "/" + name ? "u" : "a"}
-                fontSize="md"
-                fontWeight="medium"
-              >
-                {capitalize(setItemName(name))}
-              </Text>
-            </NavItem>
-          </Box>
-        </Box>
-      </ToolTip>
-    )
-  }
-
   return (
     <Box
       pos="fixed"
@@ -136,6 +136,7 @@ const SidebarContent = ({
         {Object.keys(sidebarList).map((item) => (
           <SidebarItem
             key={item}
+            sidebarOpen={sidebarOpen}
             label={sidebarList[item].label}
             name={sidebarList[item].name}
             icon={sidebarList[item].icon}
