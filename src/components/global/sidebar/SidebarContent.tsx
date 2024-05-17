@@ -83,8 +83,6 @@ const SidebarContent = ({
     )
   }
 
-  console.log(useColorModeValue("/DAO_logo_light.png", "DAO_logo_dark.png"))
-
   return (
     <Box
       pos="fixed"
