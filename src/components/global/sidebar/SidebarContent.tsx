@@ -83,6 +83,8 @@ const SidebarContent = ({
     )
   }
 
+  console.log(useColorModeValue("/DAO_logo_light.png", "DAO_logo_dark.png"))
+
   return (
     <Box
       pos="fixed"
@@ -143,12 +145,14 @@ const SidebarContent = ({
         {!isMobile() && (
           <Link href="https://decentraland.org/dao/" target="_blank">
             <Center sx={{ transform: "translateY(20px)" }}>
-              <ChakraImage
+              <Image
                 alt="DAO logo"
                 src={useColorModeValue(
                   "/DAO_logo_light.png",
-                  "DAO_logo_dark.png"
+                  "/DAO_logo_dark.png"
                 )}
+                width="100"
+                height="100"
               />
             </Center>
           </Link>
