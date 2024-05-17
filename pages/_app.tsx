@@ -5,7 +5,6 @@ import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
 import { Inter } from "next/font/google"
-import { AnimatePresence } from "framer-motion"
 import { DefaultSeo } from "next-seo"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import Head from "next/head"
@@ -78,12 +77,9 @@ function MyApp({
           }}
         />
         <Inspector id="app">
-          {/* @ts-ignore */}
-          <AnimatePresence initial={false} mode="wait">
-            <main className={InterFont.className}>
-              <Component {...pageProps} key={router.asPath} />
-            </main>
-          </AnimatePresence>
+          <main className={InterFont.className}>
+            <Component {...pageProps} key={router.asPath} />
+          </main>
         </Inspector>
       </Provider>
     </ChakraProvider>

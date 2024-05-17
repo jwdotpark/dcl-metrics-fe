@@ -52,32 +52,34 @@ const SidebarContent = ({
     return (
       <ToolTip label={!sidebarOpen && isServer() && label}>
         <Box ml={sidebarOpen && subItem && "4"}>
-          <Link href={"/" + name} passHref legacyBehavior>
-            <a>
-              <NavItem
-                height="2.5rem"
-                shadow={router.pathname === "/" + name && "md"}
-                icon={icon}
-                bg={
-                  router.pathname === "/" + name &&
-                  useColorModeValue("gray.200", "gray.700")
-                }
-                overflow="hidden"
-                transition="background-color 0.15s easeInOut"
-                _hover={{
-                  bg: useColorModeValue("gray.200", "gray.700"),
-                }}
+          <Box
+            onClick={() => {
+              router.push(`/${name}`)
+            }}
+          >
+            <NavItem
+              height="2.5rem"
+              shadow={router.pathname === "/" + name && "md"}
+              icon={icon}
+              bg={
+                router.pathname === "/" + name &&
+                useColorModeValue("gray.200", "gray.700")
+              }
+              overflow="hidden"
+              transition="background-color 0.15s easeInOut"
+              _hover={{
+                bg: useColorModeValue("gray.200", "gray.700"),
+              }}
+            >
+              <Text
+                as={router.pathname === "/" + name ? "u" : "a"}
+                fontSize="md"
+                fontWeight="medium"
               >
-                <Text
-                  as={router.pathname === "/" + name ? "u" : "a"}
-                  fontSize="md"
-                  fontWeight="medium"
-                >
-                  {capitalize(setItemName(name))}
-                </Text>
-              </NavItem>
-            </a>
-          </Link>
+                {capitalize(setItemName(name))}
+              </Text>
+            </NavItem>
+          </Box>
         </Box>
       </ToolTip>
     )
