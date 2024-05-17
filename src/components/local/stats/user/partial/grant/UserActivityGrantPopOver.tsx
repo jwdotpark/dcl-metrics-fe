@@ -18,7 +18,6 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
-//import moment from "moment"
 import ToolTip from "../../../../../layout/local/ToolTip"
 
 const UserActivityGrandPopOver = ({ grants }) => {
@@ -147,12 +146,6 @@ const UserActivityGrandPopOver = ({ grants }) => {
                                   </Tr>
                                   <Tr>
                                     <Td>Started At</Td>
-                                    {/*<Td isNumeric>
-                                      {moment(
-                                        grants.authored.data[0].started_at
-                                      ).format("YYYY MMM. D hh:mm")}{" "}
-                                      UTC
-                                    </Td>*/}
                                     <Td isNumeric>
                                       {format(
                                         new Date(
@@ -165,12 +158,6 @@ const UserActivityGrandPopOver = ({ grants }) => {
                                   </Tr>
                                   <Tr>
                                     <Td>Ended At</Td>
-                                    {/*<Td isNumeric>
-                                      {moment(
-                                        grants.authored.data[0].ended_at
-                                      ).format("YYYY MMM. D hh:mm")}{" "}
-                                      UTC
-                                    </Td>*/}
                                     <Td isNumeric>
                                       {format(
                                         new Date(

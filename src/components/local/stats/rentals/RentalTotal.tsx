@@ -8,18 +8,11 @@ const RentalTotal = ({ data }) => {
   const chartData = []
   const color = ["#FBB4AE", "#B3CDE3"]
 
-  //const firstDate = moment
-  //  .unix(data.analyticsDayDatas[0].date)
-  //  .format("YYYY MMM. D")
   const firstDate = format(
     fromUnixTime(data.analyticsDayDatas[0].date),
     "yyyy MMM. d"
   )
 
-  //const diff = moment(new Date()).diff(
-  //  moment.unix(data.analyticsDayDatas[0].date),
-  //  "days"
-  //)
   const diff = differenceInDays(
     new Date(),
     fromUnixTime(data.analyticsDayDatas[0].date)

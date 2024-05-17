@@ -1,5 +1,4 @@
 import { format, getUnixTime, subDays } from "date-fns"
-//import moment from "moment"
 import { convertSeconds } from "../../hooks/utils"
 
 export const chartHeight = 350
@@ -16,9 +15,6 @@ export const sliceData = (chartData: any[], dateRange: number) => {
 
 export const sliceDateRange = (chartData: any[], dateRange: number) => {
   const partial = chartData.slice(-dateRange)
-  //const first = moment(partial[0].date).format(dateFormat)
-  //const last = moment(partial[partial.length - 1].date).format(dateFormat)
-
   const first = format(new Date(partial[0].date * 1000), dateFormat)
   const last = format(
     new Date(partial[partial.length - 1].date * 1000),
@@ -75,7 +71,6 @@ export const plotMissingDates = (data) => {
     allTimestamps.push(timestamp)
   }
 
-  //const yesterday = moment().subtract(1, "days").unix()
   const yesterday = getUnixTime(subDays(new Date(), 1))
   for (
     let timestamp = maxTimestamp;

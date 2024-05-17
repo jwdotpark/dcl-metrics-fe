@@ -15,7 +15,6 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
-//import moment from "moment"
 import Link from "next/link"
 
 const GrantAuthoredNestedModalBody = ({ grants }) => {
@@ -148,14 +147,12 @@ const GrantAuthoredNestedModalBody = ({ grants }) => {
                         <Tr>
                           <Td>Started At</Td>
                           <Td isNumeric>
-                            {/*{moment(item.started_at).format("YYYY MMM. D")}*/}
                             {format(new Date(item.started_at), "yyyy MMM. d")}
                           </Td>
                         </Tr>
                         <Tr>
                           <Td>Ended At</Td>
                           <Td isNumeric>
-                            {/*{moment(item.ended_at).format("YYYY MMM. D")}*/}
                             {format(new Date(item.ended_at), "yyyy MMM. d")}
                           </Td>
                         </Tr>

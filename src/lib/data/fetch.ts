@@ -11,7 +11,6 @@ import staticParcel from "../../../public/data/cached_parcel.json"
 //import staticTopLand from "../../../public/data/staticTopLand.json"
 //import staticTopPick from "../../../public/data/staticTopPick.json"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
-//import moment from "moment"
 import { getPosts } from "../../../markdown/helpers/post"
 import { fromUnixTime, compareDesc, parseISO } from "date-fns"
 

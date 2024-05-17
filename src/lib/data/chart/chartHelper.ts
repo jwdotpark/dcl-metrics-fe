@@ -1,5 +1,4 @@
 import { format } from "date-fns"
-//import moment from "moment"
 
 export const generateChartData = (data: any[], chartKeys: string[]) => {
   const dataArr = Object.entries(data)

@@ -1,5 +1,4 @@
 import CryptoJS from "crypto-js"
-//import moment from "moment"
 import { format, intervalToDuration, parse } from "date-fns"
 
 export const isServer = () => {
@@ -10,24 +9,6 @@ export const isMobile = () => {
   if (isServer()) return false
   return window.innerWidth < 500
 }
-
-//export const convertSeconds = (seconds: number) => {
-//  const duration = moment.duration(seconds, "seconds")
-//  const days = duration.days()
-//  const hours = duration.hours()
-//  const minutes = duration.minutes()
-//  const formattedSeconds = duration.seconds()
-//  const formattedDuration = [
-//    days > 0 ? `${days}d` : null,
-//    hours > 0 ? `${hours}h` : null,
-//    minutes > 0 ? `${minutes}m` : null,
-//    formattedSeconds > 0 ? `${formattedSeconds}s` : null,
-//  ]
-//    .filter(Boolean)
-//    .join(" ")
-
-//  return formattedDuration
-//}
 
 export const convertSeconds = (seconds: number) => {
   const duration = intervalToDuration({ start: 0, end: seconds * 1000 })
@@ -54,12 +35,6 @@ export const formatTime = (seconds: number) => {
   const result = `${days}d ${hours}h ${minutes}m ${seconds}s`
   return result
 }
-
-//export const convertHours = (seconds: number) => {
-//  const duration = moment.duration(seconds, "seconds")
-//  const hours = duration.hours()
-//  return hours
-//}
 
 export const convertHours = (seconds) => {
   const duration = intervalToDuration({ start: 0, end: seconds * 1000 })
@@ -128,12 +103,6 @@ export const strToCoord = (val: string) => {
   }
   return coord
 }
-
-//export const parseUTC = (date: string) => {
-//  const parsedDate = moment.utc(date, "YYYY-MM-DD HH:mm:ss [UTC]")
-//  const outputDate = parsedDate.format("YYYY MMM DD HH:mm")
-//  return outputDate
-//}
 
 export const parseUTC = (date) => {
   const parsedDate = parse(date, "yyyy-MM-dd HH:mm:ss 'UTC'", new Date())
