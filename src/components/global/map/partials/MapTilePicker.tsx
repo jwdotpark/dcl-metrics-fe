@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react"
-import { Box, Grid, Text, Flex, Center } from "@chakra-ui/react"
+import { Box, Flex, Text, Center } from "@chakra-ui/react"
 
 const MapTilePicker = () => {
   const [zoomDisplay, setZoomDisplay] = useState(1)
@@ -9,6 +9,38 @@ const MapTilePicker = () => {
   const isDragging = useRef(false)
   const dragStart = useRef({ x: 0, y: 0 })
   const gridNum = { x: 5, y: 5 }
+  const logicalGridSize = 301 // From -150 to 150 inclusive
+  const canvasRef = useRef(null)
+
+  //useEffect(() => {
+  //  const canvas = canvasRef.current
+  //  const ctx = canvas.getContext("2d")
+  //  const cellSize = 2 // Adjust cell size as needed for performance
+
+  //  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  //  ctx.strokeStyle = "rgba(0, 0, 0, 1)"
+
+  //  // Calculate the size of the logical grid area based on zoom and canvas size
+  //  const gridSize = logicalGridSize / zoomRef.current
+  //  const halfGridSize = gridSize / 2
+  //  const startX = positionRef.current.x - halfGridSize
+  //  const startY = positionRef.current.y - halfGridSize
+
+  //  // Draw grid lines
+  //  for (let x = startX; x <= startX + gridSize; x += cellSize) {
+  //    ctx.beginPath()
+  //    ctx.moveTo(x, startY)
+  //    ctx.lineTo(x, startY + gridSize)
+  //    ctx.stroke()
+  //  }
+
+  //  for (let y = startY; y <= startY + gridSize; y += cellSize) {
+  //    ctx.beginPath()
+  //    ctx.moveTo(startX, y)
+  //    ctx.lineTo(startX + gridSize, y)
+  //    ctx.stroke()
+  //  }
+  //}, [zoomDisplay, positionRef.current])
 
   const handleWheel = (e) => {
     e.preventDefault()
@@ -68,38 +100,57 @@ const MapTilePicker = () => {
     <Box mb="4">
       <Box pos="relative" overflow="hidden" h="500px" bg="gray.100">
         <Center w="100%" h="100%">
-          <Grid
-            ref={mapRef}
-            pos="absolute"
-            gap={0}
-            templateRows={`repeat(${gridNum.x}, 1fr)`}
-            templateColumns={`repeat(${gridNum.y}, 1fr)`}
-            w="100%"
-            h="100%"
-            transformOrigin="top left"
-          >
-            {Array.from({ length: 25 }).map((_, index) => {
-              const row = Math.floor(index / 5)
-              const col = index % 5
-              return (
-                <Flex
-                  key={index}
-                  align="center"
-                  justify="center"
-                  direction="column"
-                  w="100%"
-                  h="100%"
-                  bg="white"
-                  //border="1px solid black"
-                  boxSizing="border-box"
-                >
-                  <Text>Row: {row}</Text>
-                  <Text>Col: {col}</Text>
-                  <Text>Zoom: {zoomDisplay.toFixed(1)}</Text>
-                </Flex>
-              )
-            })}
-          </Grid>
+          <Box ref={mapRef} pos="relative" w="100%" h="100%">
+            {/* Canvas for Logical Grid */}
+            {/*<canvas
+              ref={canvasRef}
+              width={logicalGridSize}
+              height={logicalGridSize}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                zIndex: 99999,
+                border: "1px solid",
+              }}
+              onMouseEnter={() => canvasRef.current.focus()}
+            />*/}
+            {/* Existing Grid */}
+            <Box
+              pos="absolute"
+              zIndex={2}
+              top="0"
+              left="0"
+              overflow="hidden"
+              w="100%"
+              h="100%"
+            >
+              {Array.from({ length: gridNum.x * gridNum.y }).map((_, index) => {
+                const row = Math.floor(index / gridNum.x)
+                const col = index % gridNum.x
+                return (
+                  <Flex
+                    key={index}
+                    pos="absolute"
+                    top={`${row * (100 / gridNum.y)}%`}
+                    left={`${col * (100 / gridNum.x)}%`}
+                    align="center"
+                    justify="center"
+                    direction="column"
+                    w={`${100 / gridNum.x}%`}
+                    h={`${100 / gridNum.y}%`}
+                    bg="white"
+                    border="1px solid black"
+                    boxSizing="border-box"
+                  >
+                    <Text>Row: {row}</Text>
+                    <Text>Col: {col}</Text>
+                    <Text>Zoom: {zoomDisplay.toFixed(1)}</Text>
+                  </Flex>
+                )
+              })}
+            </Box>
+          </Box>
         </Center>
       </Box>
     </Box>
