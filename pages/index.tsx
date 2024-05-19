@@ -28,6 +28,7 @@ import GlobalChart from "../src/components/local/stats/GlobalCharts"
 import { DataArrayType, DataObjectType } from "../src/lib/types/IndexPage"
 import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
 import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
+import { LandTilePicker } from "../src/components/global/map/LandTilePicker"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -152,6 +153,11 @@ const GlobalPage: NextPage = (props: Props) => {
             </Grid>
           </Box>
           <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
+          <LandTilePicker
+            parcelData={parcelRes}
+            isPage={false}
+            parcelCoord={{}}
+          />
           {!isLoading && !error && Object.keys(worldData).length > 0 ? (
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <WorldStat worldCurrentRes={worldData} isMainPage={true} />
