@@ -2,7 +2,7 @@ import { Box, Flex, IconButton, useColorModeValue } from "@chakra-ui/react"
 import { format } from "date-fns"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { FiMaximize2 } from "react-icons/fi"
+import { FiDownload, FiMaximize2 } from "react-icons/fi"
 import {
   Area,
   AreaChart,
@@ -47,12 +47,42 @@ export const SceneUserLineChart = ({ data }) => {
     }
   }
 
+  const uuid = router.query.uuid
+
   const fetchFullData = async () => {
-    const uuid = router.query.uuid
     const url = getEndpoint(`scenes/${uuid}/visitor_history?show_all=true`)
     const result = await fetch(`/api/fetch?url=${url}`)
     const data = await result.json()
     setLocalData(data.result)
+  }
+
+  const downloadData = async () => {
+    try {
+      const endpoint = getEndpoint(`scenes/${uuid}/report`)
+      const response = await fetch(`/api/fetch-csv?url=${endpoint}`)
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok")
+      }
+
+      const csvData = await response.text()
+      const blob = new Blob([csvData], { type: "text/csv" })
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement("a")
+
+      const sceneName = router.query.name as string
+      const startDate = format(new Date(localData[0].date), "yyyy-MM-dd")
+      const endDate = format(
+        new Date(localData[localData.length - 1].date),
+        "yyyy-MM-dd"
+      )
+      link.href = url
+      link.download = `[${sceneName}]${startDate}_${endDate}.csv`
+      link.click()
+      URL.revokeObjectURL(url)
+    } catch (error) {
+      console.error("Error downloading the data:", error)
+    }
   }
 
   useEffect(() => {
@@ -87,7 +117,7 @@ export const SceneUserLineChart = ({ data }) => {
             description="The number of unique visitors in the last period"
           />
           <Box pos="relative" w="100%" h={300} mt="4" mb="2">
-            <Box pos="absolute" zIndex="99999" top="0" right="14">
+            <Box pos="absolute" zIndex="banner" top="0" right="14">
               <ToolTip label={`Load full range data`}>
                 <IconButton
                   zIndex="auto"
@@ -98,6 +128,22 @@ export const SceneUserLineChart = ({ data }) => {
                   aria-label={""}
                   icon={<FiMaximize2 />}
                   onClick={() => fetchFullData()}
+                  size="xs"
+                  type="button"
+                />
+              </ToolTip>
+            </Box>
+            <Box pos="absolute" zIndex="banner" top="0" right="24">
+              <ToolTip label={`Download CSV data`}>
+                <IconButton
+                  zIndex="auto"
+                  border="1px solid"
+                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                  borderRadius="full"
+                  shadow="md"
+                  aria-label={""}
+                  icon={<FiDownload />}
+                  onClick={() => downloadData()}
                   size="xs"
                   type="button"
                 />

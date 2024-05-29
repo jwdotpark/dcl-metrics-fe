@@ -41,16 +41,14 @@ const SingleScenePage = ({ result, historyResult }) => {
     )
   } else {
     sceneComponent = (
-      <>
-        <Scene
-          res={res}
-          dailyUsers={historyResult}
-          date=""
-          setDate={{}}
-          availableDate={[]}
-          uuid={""}
-        />
-      </>
+      <Scene
+        res={res}
+        dailyUsers={historyResult}
+        date=""
+        setDate={{}}
+        availableDate={[]}
+        uuid={""}
+      />
     )
   }
 

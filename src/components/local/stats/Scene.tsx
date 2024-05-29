@@ -29,7 +29,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
     visitors_by_hour_histogram,
   } = res[selectedScene]
 
-  const hasMultipleScenes = res.length > 1 ? true : false
+  const hasMultipleScenes = res.length > 1
   const [isEmpty, setIsEmpty] = useState(false)
   const latest = parseISO(res[selectedScene].date)
 
@@ -44,7 +44,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
         shadow="md"
       >
         <Text m="4" fontSize={["md", "xl", "2xl", "3xl"]}>
-          {name && name} had no visitors on {format(new Date(date), "MMMM d")}!
+          {name} had no visitors on {format(new Date(date), "MMMM d")}!
         </Text>
       </Center>
     )
@@ -71,11 +71,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
         uuid={uuid}
         description={`Last update ${latest}`}
       />
-      {dailyUsers.length > 0 && (
-        <>
-          <SceneUserLineChart data={dailyUsers} />
-        </>
-      )}
+      {dailyUsers.length > 0 && <SceneUserLineChart data={dailyUsers} />}
       <Box m="0">
         <Flex
           sx={{
@@ -93,7 +89,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
             {hasMultipleScenes && (
               <SceneSelector
                 res={res}
-                name={name && name}
+                name={name}
                 selectedScene={selectedScene}
                 setSelectedScene={setSelectedScene}
               />
@@ -101,7 +97,7 @@ const Scene = ({ res, date, setDate, availableDate, dailyUsers, uuid }) => {
             <SceneMap
               url={map_url}
               height={!hasMultipleScenes ? secondRowHeight : 405}
-              name={name && name}
+              name={name}
             />
           </Box>
           <Box

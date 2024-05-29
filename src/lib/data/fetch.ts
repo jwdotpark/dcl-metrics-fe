@@ -12,7 +12,7 @@ import staticParcel from "../../../public/data/cached_parcel.json"
 //import staticTopPick from "../../../public/data/staticTopPick.json"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 import { getPosts } from "../../../markdown/helpers/post"
-import { fromUnixTime, compareDesc, parseISO } from "date-fns"
+import { compareDesc, parseISO } from "date-fns"
 
 export const axiosOptions = {
   method: "get",
@@ -44,6 +44,16 @@ export const getData = async (targetUrl, endpoint, staticFile) => {
     //}
     return staticFile
   }
+  return result
+}
+
+export const getCSV = async (targetUrl) => {
+  const response = await fetch(targetUrl, {
+    headers: {
+      API_KEY: process.env.BE_API_KEY,
+    },
+  })
+  const result = await response.text()
   return result
 }
 
