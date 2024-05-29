@@ -71,13 +71,9 @@ export const SceneUserLineChart = ({ data }) => {
       const link = document.createElement("a")
 
       const sceneName = router.query.name as string
-      const startDate = format(new Date(localData[0].date), "yyyy-MM-dd")
-      const endDate = format(
-        new Date(localData[localData.length - 1].date),
-        "yyyy-MM-dd"
-      )
+      const today = format(new Date(), "yyyy-MM-dd")
       link.href = url
-      link.download = `[${sceneName}]${startDate}_${endDate}.csv`
+      link.download = `${sceneName}_${today}.csv`
       link.click()
       URL.revokeObjectURL(url)
     } catch (error) {
