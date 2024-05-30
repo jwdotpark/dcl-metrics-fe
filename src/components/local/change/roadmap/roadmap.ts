@@ -12,37 +12,17 @@ import {
 
 export const roadmap = [
   {
-    date: "2024 Q1",
-    contents: [
-      {
-        icon: FiActivity,
-        title: "Event Tracker",
-        //description: "",
-      },
-      {
-        icon: FiBox,
-        title: "Additional Worlds Data",
-        //description: "",
-      },
-    ],
-  },
-  {
-    date: "2024 Q2",
-    contents: [
-      {
-        icon: FiTrendingUp,
-        title: "Historical scene history & expanded data scope",
-        //description: "",
-      },
-      {
-        icon: FiThumbsUp,
-        title: "Quality of life improvements for site usability",
-        //description: "",
-      },
-    ],
-  },
-  {
     date: "2024 Q3",
+    contents: [
+      {
+        icon: FiTruck,
+        title: "Land/Scene utilization for detailed metrics",
+        //description: "",
+      },
+    ],
+  },
+  {
+    date: "2024 Q4",
     contents: [
       {
         icon: FiUserPlus,
@@ -54,16 +34,7 @@ export const roadmap = [
         title: "Retention Metrics for scenes",
         //description: "",
       },
-    ],
-  },
-  {
-    date: "2024 Q4",
-    contents: [
-      {
-        icon: FiTruck,
-        title: "Land/Scene utilization for detailed metrics",
-        //description: "",
-      },
+      
     ],
   },
   {

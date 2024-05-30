@@ -9,6 +9,10 @@ import {
   FiUserPlus,
   FiCalendar,
   FiZoomIn,
+  FiActivity,
+  FiBox,
+  FiThumbsUp,
+  FiTrendingUp,
 } from "react-icons/fi"
 
 export const minorchangeTemplate = [
@@ -118,6 +122,36 @@ export const minorchangeTemplate = [
         icon: FiPackage,
         title: "Advanced user analytics",
         description: "Wearbles, POAPs, DAO Activity",
+      },
+    ],
+  },
+  {
+    date: "2024 Q1",
+    contents: [
+      {
+        icon: FiActivity,
+        title: "Event Tracker",
+        description: `Incorporate the event stat tracker in /events`,
+      },
+      {
+        icon: FiBox,
+        title: "Additional Worlds Data",
+        description: "Incorporate the global world stat tracker in /worlds",
+      },
+    ],
+  },
+  {
+    date: "2024 Q2",
+    contents: [
+      {
+        icon: FiTrendingUp,
+        title: "Historical scene history & expanded data scope",
+        description: "Data for the individual scene can go back to April 2022 and be saved locally",
+      },
+      {
+        icon: FiThumbsUp,
+        title: "Quality of life improvements for site usability",
+        description: "Improved site usability and performance in general",
       },
     ],
   },
