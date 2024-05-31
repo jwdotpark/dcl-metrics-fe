@@ -154,9 +154,12 @@ export async function fetchRentalData() {
 }
 
 export function getLatestPost() {
-  const posts = getPosts().sort((a, b) => {
-    return compareDesc(parseISO(b.data.date), parseISO(a.data.date))
-  })
-
-  return posts[0]
+  const posts = getPosts()
+  const latestPost = posts.reduce((latest, post) => {
+    if (!latest || parseISO(post.data.date) > parseISO(latest.data.date)) {
+      return post;
+    }
+    return latest;
+  }, null);
+  return latestPost
 }
