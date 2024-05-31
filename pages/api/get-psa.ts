@@ -6,6 +6,5 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const latestPost = getLatestPost()
-  console.log(latestPost)
   res.status(200).json({ latestPost: latestPost })
 }
