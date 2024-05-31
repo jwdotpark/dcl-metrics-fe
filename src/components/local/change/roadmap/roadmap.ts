@@ -1,11 +1,6 @@
-// https://react-icons.github.io/react-icons/icons?name=fi
 import {
-  FiActivity,
-  FiBox,
   FiGift,
   FiSliders,
-  FiThumbsUp,
-  FiTrendingUp,
   FiTruck,
   FiUserPlus,
 } from "react-icons/fi"
