@@ -154,12 +154,11 @@ export async function fetchRentalData() {
 }
 
 export function getLatestPost() {
-  const posts = getPosts()
-  const latestPost = posts.reduce((latest, post) => {
-    if (!latest || parseISO(post.data.date) > parseISO(latest.data.date)) {
-      return post;
-    }
-    return latest;
-  }, null);
-  return latestPost
+  const posts = getPosts();
+
+  return posts.reduce((latest, post) => {
+    const latestDate = new Date(latest.data.date);
+    const postDate = new Date(post.data.date);
+    return postDate > latestDate ? post : latest;
+  });
 }
