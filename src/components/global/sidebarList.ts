@@ -2,7 +2,7 @@ import {
   FiTrendingUp,
   FiCompass,
   FiAnchor,
-  //FiUsers,
+  FiUsers,
   FiMapPin,
   FiPackage,
   FiActivity,
@@ -10,22 +10,40 @@ import {
   FiPenTool,
   FiGlobe,
   FiAtSign,
-  //FiFileText,
+  // FiFileText,
 } from "react-icons/fi"
 
-export const sidebarList = {
+type SidebarItem = {
+  label: string
+  name: string
+  icon: React.ComponentType
+  subItem: boolean
+}
+
+type SidebarList = {
+  global: SidebarItem
+  scenes: SidebarItem
+  parcels: SidebarItem
+  map: SidebarItem
+  world: SidebarItem
+  events: SidebarItem
+  status: SidebarItem
+  blog: SidebarItem
+  roadmap: SidebarItem
+  about: SidebarItem
+  users?: SidebarItem
+  // docs?: SidebarItem; // Uncomment if needed
+}
+
+const userAllowed = process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true"
+
+let sidebarList: SidebarList = {
   global: {
     label: "Global Dashboard",
     name: "",
     icon: FiTrendingUp,
     subItem: false,
   },
-  //users: {
-  //  label: "Users",
-  //  name: "users",
-  //  icon: FiUsers,
-  //  subItem: true,
-  //},
   scenes: {
     label: "Scenes",
     name: "scenes",
@@ -56,12 +74,6 @@ export const sidebarList = {
     icon: FiAtSign,
     subItem: false,
   },
-  //docs: {
-  //  label: "API Documentation",
-  //  name: "docs",
-  //  icon: FiFileText,
-  //  subItem: false,
-  //},
   status: {
     label: "Status",
     name: "status",
@@ -87,3 +99,18 @@ export const sidebarList = {
     subItem: false,
   },
 }
+
+if (userAllowed) {
+  sidebarList = {
+    global: sidebarList.global,
+    users: {
+      label: "Users",
+      name: "users",
+      icon: FiUsers,
+      subItem: true,
+    },
+    ...sidebarList,
+  }
+}
+
+export { sidebarList }
