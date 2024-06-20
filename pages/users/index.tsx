@@ -15,7 +15,7 @@ import { NextSeo } from "next-seo"
 import SearchUser from "../../src/components/local/stats/user/SearchUser"
 
 export async function getServerSideProps() {
-  if (process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true") {
+  if (process.env.NEXT_PUBLIC_ALLOW_USER === "true") {
     if (isProd) {
       const globalUserRes = await getDataWithApiKey(
         globalUsersURL,

@@ -152,7 +152,7 @@ const ParcelInfoTable = ({ selectedParcel, description, external_url }) => {
             </Tr>
           )}
 
-          {process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true" && owner && (
+          {process.env.NEXT_PUBLIC_ALLOW_USER === "true" && owner && (
             <Tr>
               <Td>Owner</Td>
               <Td isNumeric>

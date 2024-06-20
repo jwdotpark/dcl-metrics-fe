@@ -35,7 +35,7 @@ type SidebarList = {
   // docs?: SidebarItem; // Uncomment if needed
 }
 
-const userAllowed = process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true"
+const userAllowed = process.env.NEXT_PUBLIC_ALLOW_USER === "true"
 
 let sidebarList: SidebarList = {
   global: {

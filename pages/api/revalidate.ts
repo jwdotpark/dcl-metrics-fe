@@ -9,7 +9,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     await res.revalidate("/")
     await res.revalidate("/map")
 
-    process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true" &&
+    process.env.NEXT_PUBLIC_ALLOW_USER === "true" &&
       (await res.revalidate("/users"))
 
     await res.revalidate("/scenes")

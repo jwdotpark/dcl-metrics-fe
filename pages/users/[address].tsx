@@ -70,7 +70,7 @@ export async function getServerSideProps(context) {
   }
   event = await fetchUserEvent()
 
-  const userAllowed = process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true"
+  const userAllowed = process.env.NEXT_PUBLIC_ALLOW_USER === "true"
 
   if (userAllowed) {
     return {
