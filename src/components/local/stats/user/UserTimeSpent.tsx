@@ -76,7 +76,9 @@ export const UserTimeSpent = ({ address }) => {
 
   useEffect(() => {
     fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   return (
     <Box w="100%" mb="-2">
       <PlainBoxTitle name="User Time Spent" description="User Time Spent" />
@@ -100,7 +102,6 @@ export const UserTimeSpent = ({ address }) => {
                   payload={undefined}
                   label={"user time spent"}
                   avg={calculateAvg()}
-                  data={chartState.data}
                 />
               }
             />

@@ -14,7 +14,7 @@ import {
 import { format } from "date-fns"
 import { convertSeconds, mutateString } from "../../../../../lib/hooks/utils"
 
-const TableRow = ({ dataKey, value, stroke, avg }) => {
+const TableRow = ({ dataKey, value, stroke }) => {
   return (
     <>
       <Tr>
@@ -32,7 +32,7 @@ const TableRow = ({ dataKey, value, stroke, avg }) => {
   )
 }
 
-export const HourBasedToolTip = ({ active, payload, label, avg, data }) => {
+export const HourBasedToolTip = ({ active, payload, label, avg }) => {
   const findDegraded = (payloadArray) => {
     for (let item of payloadArray) {
       if (item.payload.degraded === true) {
@@ -77,17 +77,11 @@ export const HourBasedToolTip = ({ active, payload, label, avg, data }) => {
           <Tbody>
             {avg && typeof avg !== "number" ? (
               payload.map((item, index) => {
-                const avgKey = `avg${item.dataKey
-                  .split("_")
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join("")}`
-                const avgValue = avg[avgKey]
                 return (
                   <TableRow
                     key={index}
                     dataKey={item.dataKey}
                     value={item.value}
-                    avg={avgValue}
                     stroke={item.stroke}
                   />
                 )
@@ -97,7 +91,6 @@ export const HourBasedToolTip = ({ active, payload, label, avg, data }) => {
                 dataKey={payload[0].dataKey}
                 value={payload[0].value}
                 stroke={undefined}
-                avg={avg}
               />
             )}
           </Tbody>
