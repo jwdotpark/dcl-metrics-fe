@@ -1,0 +1,108 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import {
+  Text,
+  Box,
+  useColorModeValue,
+  Center,
+  Table,
+  Tbody,
+  Tr,
+  Td,
+  Flex,
+  Thead,
+} from "@chakra-ui/react"
+import { format } from "date-fns"
+import { convertSeconds, mutateString } from "../../../../../lib/hooks/utils"
+
+const TableRow = ({ dataKey, value, stroke, avg }) => {
+  return (
+    <>
+      <Tr>
+        <Td>{mutateString(dataKey).toUpperCase()}</Td>
+        <Td isNumeric>
+          <Flex direction="row">
+            <Box mx="2" color={stroke} fontWeight="bold">
+              {value === 0 ? 0 : convertSeconds(value)}
+            </Box>
+            <Box mr="4" />
+          </Flex>
+        </Td>
+      </Tr>
+    </>
+  )
+}
+
+export const HourBasedToolTip = ({ active, payload, label, avg, data }) => {
+  const findDegraded = (payloadArray) => {
+    for (let item of payloadArray) {
+      if (item.payload.degraded === true) {
+        return true
+      }
+    }
+    return false
+  }
+
+  const isDegraded = findDegraded(payload)
+
+  if (active && payload && payload.length > 0) {
+    return (
+      <Box
+        p="2"
+        fontSize="xs"
+        bg={useColorModeValue("whiteAlpha.700", "blackAlpha.600")}
+        border="1px"
+        borderColor={useColorModeValue("gray.200", "gray.800")}
+        borderRadius="xl"
+        shadow="md"
+      >
+        <Center fontSize="md" fontWeight="bold">
+          {format(new Date(label), "yyyy MMMM d")}
+        </Center>
+        {isDegraded && (
+          <Center mt="1">
+            <Text color="red.500" fontWeight="bold">
+              Degraded
+            </Text>
+          </Center>
+        )}
+        <Table my="1" size="xs" variant="simple">
+          <Thead>
+            <Tr>
+              <Td>Category</Td>
+              <Td>
+                <Box ml="2">Value</Box>
+              </Td>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {avg && typeof avg !== "number" ? (
+              payload.map((item, index) => {
+                const avgKey = `avg${item.dataKey
+                  .split("_")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join("")}`
+                const avgValue = avg[avgKey]
+                return (
+                  <TableRow
+                    key={index}
+                    dataKey={item.dataKey}
+                    value={item.value}
+                    avg={avgValue}
+                    stroke={item.stroke}
+                  />
+                )
+              })
+            ) : (
+              <TableRow
+                dataKey={payload[0].dataKey}
+                value={payload[0].value}
+                stroke={undefined}
+                avg={avg}
+              />
+            )}
+          </Tbody>
+        </Table>
+      </Box>
+    )
+  }
+}

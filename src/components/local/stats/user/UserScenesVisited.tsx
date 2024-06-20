@@ -1,27 +1,38 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import BoxTitle from "../../../layout/local/BoxTitle"
-import BoxWrapper from "../../../layout/local/BoxWrapper"
 import staticUserScenesVisited from "../../../../../public/data/staticUserScenesVisited.json"
 import { useState, useEffect, useMemo, useCallback } from "react"
-import { isLocal, getEndpoint } from "../../../../lib/data/constant"
-import LineChart from "../../../../lib/LineChart"
-import DateRangeButton from "../daterange/DateRangeButton"
-import { Text, Center, Spinner } from "@chakra-ui/react"
-import { lineChartAtom } from "../../../../lib/state/lineChartState"
-import { useAtom } from "jotai"
+import {
+  isLocal,
+  getEndpoint,
+  indexChartMargin,
+} from "../../../../lib/data/constant"
+import { Box, useColorModeValue } from "@chakra-ui/react"
+import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
+import { format } from "date-fns"
+import {
+  ResponsiveContainer,
+  AreaChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Area,
+  Tooltip,
+  ReferenceArea,
+  Brush,
+} from "recharts"
+import ChartResetBtn from "../partials/chart/ResetBtn"
+import { useChartZoom } from "../partials/chart/useChartZoom"
+import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 
-const UserScenesVisited = ({ address, userAddressRes }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [chartProps, setChartProps] = useAtom(lineChartAtom)
+const UserScenesVisited = ({ address }) => {
   const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+
+  const AxisFontColor = useColorModeValue("#000", "#fff")
+  const chartHeight = 150
+
   const scenesVisitedUrl = getEndpoint(
     `users/${address}/activity/scenes_visited`
   )
-
-  const [avgData, setAvgData] = useState(0)
-  const [dateRange, setDateRange] = useState(data.length)
-  const color = ["#ff79c6"]
 
   const chartData = useMemo(() => {
     return data.map((item) => ({
@@ -59,7 +70,6 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
     if (isLocal) {
       setData(plotMissingDataArr(staticUserScenesVisited))
     } else {
-      setIsLoading(true)
       try {
         const response = await fetch(url)
         const res = await response.json()
@@ -67,111 +77,113 @@ const UserScenesVisited = ({ address, userAddressRes }) => {
       } catch (error) {
         console.log(error)
       } finally {
-        setIsLoading(false)
       }
     }
   }, [scenesVisitedUrl, address, plotMissingDataArr])
 
-  const slicedData = useMemo(() => {
-    if (chartData.length - dateRange > 0) {
-      return chartData.slice(chartData.length - dateRange, chartData.length)
-    } else {
-      return chartData
-    }
-  }, [chartData, dateRange])
+  const {
+    chartState,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+    handleReset,
+  } = useChartZoom(chartData)
 
-  const result = useMemo(
-    () => [
-      {
-        id: "Number of Scenes Visited",
-        color: "hsl(90, 70%, 50%)",
-        data: slicedData.map((item) => ({
-          id: item.date,
-          x: item.date,
-          y: item.count,
-        })),
-      },
-    ],
-    [slicedData]
-  )
-
-  const validLength = useMemo(() => {
-    return chartData.filter((item: any) => item.active_scenes !== 0).length
-  }, [chartData])
-
-  useEffect(() => {
-    setIsLoading(true)
-    fetchData()
-    setIsLoading(false)
-  }, [])
-
-  useEffect(() => {
-    setIsLoading(true)
-    const sum = slicedData.reduce((acc, cur) => acc + cur.count, 0)
-    const average = sum / slicedData.length
-    setAvgData(average)
-    setIsLoading(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange, slicedData])
-
-  useEffect(() => {
-    setIsLoading(true)
-    setDateRange(data.length)
-    setIsLoading(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.length])
-
-  let chartComponent: JSX.Element
-
-  if (data.length !== 0) {
-    if (isLoading) {
-      chartComponent = (
-        <Center h={chartProps.height}>
-          <Spinner />
-        </Center>
-      )
-    } else {
-      chartComponent = (
-        <LineChart
-          data={result}
-          color={color}
-          name="userScenesVisited"
-          avgColor={undefined}
-          line={undefined}
-          rentalData={false}
-          avgData={[]}
-        />
-      )
-    }
-  } else {
-    chartComponent = (
-      <Center h={chartProps.height}>
-        <Text>No Data</Text>
-      </Center>
-    )
+  const calculateAvg = () => {
+    let sum = 0
+    chartData.forEach((item) => {
+      sum += item.count
+    })
+    const avg = Math.floor(sum / chartData.length)
+    return Math.max(1, avg)
   }
 
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 4, 3]}>
-      <BoxTitle
-        name={`User Scenes Visited`}
-        description={`The number of the scene ${userAddressRes.name} visited`}
-        date=""
-        avgData={avgData}
-        slicedData={slicedData}
-        color={color}
-        line={false}
-        setLine={{}}
+    <Box mb="2" w="100%">
+      <PlainBoxTitle
+        name="User Scenes Visited"
+        description="The number of the scene user has visited"
       />
-      <DateRangeButton
-        dateRange={dateRange}
-        setDateRange={setDateRange}
-        validLegnth={validLength}
-        name=""
-        yesterday={false}
-      />
-      {chartComponent}
-    </BoxWrapper>
+      <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
+        <ChartResetBtn handleReset={handleReset} />
+        <ResponsiveContainer width="100%" height={chartHeight}>
+          <AreaChart
+            margin={indexChartMargin}
+            data={chartState.data}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={() => handleMouseUp()}
+            syncId="userChart"
+          >
+            <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+            <Tooltip
+              content={
+                <CustomTooltip
+                  active={undefined}
+                  payload={undefined}
+                  label={undefined}
+                  avg={calculateAvg()}
+                  data={chartState.data}
+                />
+              }
+            />
+            <XAxis
+              dataKey="date"
+              fontSize="10px"
+              style={{
+                fontWeight: "medium",
+              }}
+              tick={{ fill: AxisFontColor }}
+              tickFormatter={(tick) => {
+                const date = new Date(tick)
+                return format(date, "MMM. d")
+              }}
+            />
+            <YAxis
+              fontSize="10px"
+              style={{
+                fontWeight: "medium",
+              }}
+              tick={{ fill: AxisFontColor }}
+            />
+            <YAxis />
+            <Area
+              animationDuration={150}
+              type="linear"
+              dataKey="count"
+              stroke="#FFB86C"
+              strokeWidth="2px"
+              fill="#FFB86C80"
+            />
+            {chartState.startX !== null && chartState.endX !== null && (
+              <ReferenceArea
+                x1={chartState.startX}
+                x2={chartState.endX}
+                stroke="#CAB2D6"
+                strokeOpacity={0.3}
+              />
+            )}
+            <Brush
+              dataKey="date"
+              height={20}
+              travellerWidth={15}
+              stroke={useColorModeValue("#718096", "#EDF2F7")}
+              fill={useColorModeValue("#EDF2F7", "#4A5568")}
+              fillOpacity={0.5}
+              tickFormatter={(tick) => {
+                const date = new Date(tick)
+                return format(date, "MMMM d")
+              }}
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </Box>
+    </Box>
   )
 }
 

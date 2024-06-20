@@ -11,7 +11,7 @@ import UserProfile from "../../src/components/local/stats/user/UserProfile"
 import UserInfo from "../../src/components/local/stats/user/UserInfo"
 import UserNFT from "../../src/components/local/stats/user/UserNFT"
 import UserDAOActivity from "../../src/components/local/stats/user/UserDAOActivity"
-import UserTimeSpent from "../../src/components/local/stats/user/UserTimeSpent"
+import UserTimeSpent from "../../src/components/local/stats/user/UserCharts"
 import UserScenesVisited from "../../src/components/local/stats/user/UserScenesVisited"
 import UserTopScenes from "../../src/components/local/stats/user/UserTopScenes"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
@@ -22,6 +22,7 @@ import UserWearables from "../../src/components/local/stats/user/UserWearables"
 import UserLand from "../../src/components/local/stats/user/UserLand"
 import UserEmotes from "../../src/components/local/stats/user/UserEmotes"
 import UserEvent from "../../src/components/local/stats/user/UserEvent"
+import UserCharts from "../../src/components/local/stats/user/UserCharts"
 
 export async function getServerSideProps(context) {
   const { address } = context.query
@@ -50,9 +51,16 @@ export async function getServerSideProps(context) {
       {}
     )
   } else if (isLocal) {
-    userAddressRes = staticUserAddress
-    nftRes = staticUserNFT
-    daoActivityRes = staticUserDAOActivity
+    //userAddressRes = staticUserAddress
+    //nftRes = staticUserNFT
+    //daoActivityRes = staticUserDAOActivity
+    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
+    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
+    daoActivityRes = await getDataWithApiKey(
+      daoActivityUrl,
+      "users/" + address + "/dao_activity",
+      {}
+    )
   }
 
   const fetchUserEvent = async () => {
@@ -62,20 +70,25 @@ export async function getServerSideProps(context) {
   }
   event = await fetchUserEvent()
 
-  //return {
-  //  props: {
-  //    address,
-  //    userAddressRes,
-  //    nftRes,
-  //    daoActivityRes,
-  //    event,
-  //  },
-  //}
-  return {
-    redirect: {
-      destination: "/500",
-      permanent: false,
-    },
+  const userAllowed = process.env.NEXT_PUBLIC_ALLOW_PRIVACY === "true"
+
+  if (userAllowed) {
+    return {
+      props: {
+        address,
+        userAddressRes,
+        nftRes,
+        daoActivityRes,
+        event,
+      },
+    }
+  } else {
+    return {
+      redirect: {
+        destination: "/500",
+        permanent: false,
+      },
+    }
   }
 }
 
@@ -99,6 +112,9 @@ const SingleUserPage = (props) => {
     description: description,
     image: image,
   })
+
+  //console.log("address", address)
+  //console.log("userAddressRes", userAddressRes)
 
   return (
     <>
@@ -130,14 +146,7 @@ const SingleUserPage = (props) => {
               <UserProfile data={userAddressRes} />
             </Grid>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserTimeSpent
-                address={address}
-                userAddressRes={userAddressRes}
-              />
-              <UserScenesVisited
-                address={address}
-                userAddressRes={userAddressRes}
-              />
+              <UserCharts address={address} />
             </Grid>
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <UserInfo data={userAddressRes} />

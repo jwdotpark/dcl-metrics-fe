@@ -1,25 +1,34 @@
-import BoxTitle from "../../../layout/local/BoxTitle"
-import BoxWrapper from "../../../layout/local/BoxWrapper"
-import staticUserTimeSpent from "../../../../../public/data/staticUserTimeSpent.json"
-import { useState, useEffect, useMemo, useCallback } from "react"
-import { isLocal, getEndpoint } from "../../../../lib/data/constant"
-import LineChart from "../../../../lib/LineChart"
-import DateRangeButton from "../daterange/DateRangeButton"
-import { Text, Center, Spinner } from "@chakra-ui/react"
-import { lineChartAtom } from "../../../../lib/state/lineChartState"
-import { useAtom } from "jotai"
+import { useColorModeValue, Box } from "@chakra-ui/react"
+import { format } from "date-fns"
+import { useState, useMemo, useCallback, useEffect } from "react"
+import {
+  ResponsiveContainer,
+  AreaChart,
+  CartesianGrid,
+  Tooltip,
+  XAxis,
+  YAxis,
+  Area,
+  ReferenceArea,
+} from "recharts"
 import { plotMissingDataArr } from "../../../../lib/data/chart/chartInfo"
+import {
+  getEndpoint,
+  indexChartMargin,
+  isLocal,
+} from "../../../../lib/data/constant"
+import { convertSeconds } from "../../../../lib/hooks/utils"
+import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
+import { HourBasedToolTip } from "../partials/chart/HourBasedToolTip"
+import ChartResetBtn from "../partials/chart/ResetBtn"
+import { useChartZoom } from "../partials/chart/useChartZoom"
+import staticUserTimeSpent from "../../../../../public/data/staticUserTimeSpent.json"
 
-const UserTimeSpent = ({ address, userAddressRes }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [chartProps, setChartProps] = useAtom(lineChartAtom)
+export const UserTimeSpent = ({ address }) => {
   const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   const timeSpentUrl = getEndpoint(`users/${address}/activity/time_spent`)
 
-  const [avgData, setAvgData] = useState(0)
-  const [dateRange, setDateRange] = useState(data.length)
-  const color = ["#ff5555"]
+  const chartHeight = 150
 
   const chartData = useMemo(() => {
     return data.map((item) => ({
@@ -35,7 +44,6 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
     if (isLocal) {
       val = plotMissingDataArr(staticUserTimeSpent)
     } else {
-      setIsLoading(true)
       try {
         const response = await fetch(url)
         const res = await response.json()
@@ -43,114 +51,101 @@ const UserTimeSpent = ({ address, userAddressRes }) => {
       } catch (error) {
         console.log(error)
       } finally {
-        setIsLoading(false)
       }
     }
 
     setData(val)
   }, [timeSpentUrl, address])
 
-  const slicedData = useMemo(() => {
-    if (chartData.length - dateRange > 0) {
-      return chartData.slice(chartData.length - dateRange, chartData.length)
-    } else {
-      return chartData
-    }
-  }, [chartData, dateRange])
+  const AxisFontColor = useColorModeValue("#000", "#fff")
+  const {
+    chartState,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+    handleReset,
+  } = useChartZoom(chartData)
 
-  const result = useMemo(
-    () => [
-      {
-        id: "Total Time Spent",
-        color: "hsl(90, 70%, 50%)",
-        data: slicedData.map((item) => ({
-          id: item.date,
-          x: item.date,
-          y: item.time_spent,
-        })),
-      },
-    ],
-    [slicedData]
-  )
-
-  const validLegnth = useMemo(
-    () => chartData.filter((item: any) => item.active_scenes !== 0).length,
-    [chartData]
-  )
-
-  useEffect(() => {
-    setIsLoading(true)
-    fetchData()
-    setIsLoading(false)
-  }, [fetchData])
-
-  useEffect(() => {
-    setIsLoading(true)
-    const data = slicedData
-    const sum = slicedData.reduce((acc, cur) => acc + cur.time_spent, 0)
-    const result = Math.floor(sum / data.length)
-    setAvgData(result)
-    setIsLoading(false)
-  }, [dateRange, slicedData])
-
-  useEffect(() => {
-    setIsLoading(true)
-    setDateRange(data.length)
-    setIsLoading(false)
-  }, [data.length])
-
-  let chartComponent: JSX.Element
-
-  if (data.length !== 0) {
-    if (isLoading) {
-      chartComponent = (
-        <Center h={chartProps.height}>
-          <Spinner />
-        </Center>
-      )
-    } else {
-      chartComponent = (
-        <LineChart
-          data={result}
-          color={color}
-          name="userTimeSpent"
-          avgColor={undefined}
-          line={undefined}
-          rentalData={false}
-          avgData={[]}
-        />
-      )
-    }
-  } else {
-    chartComponent = (
-      <Center h={chartProps.height}>
-        <Text>No Data</Text>
-      </Center>
-    )
+  const calculateAvg = () => {
+    let sum = 0
+    chartData.forEach((item) => {
+      sum += item.time_spent
+    })
+    return Number(Math.floor(sum / chartData.length))
   }
 
+  useEffect(() => {
+    fetchData()
+  }, [])
   return (
-    <BoxWrapper colSpan={[1, 1, 1, 4, 3]}>
-      <BoxTitle
-        name={`User Time Spent`}
-        description={`Historical data that represents the amount of time ${userAddressRes.name} spent`}
-        date=""
-        avgData={avgData}
-        slicedData={slicedData}
-        color={color}
-        line={false}
-        setLine={{}}
-      />
-      <DateRangeButton
-        dateRange={dateRange}
-        setDateRange={setDateRange}
-        validLegnth={validLegnth}
-        name=""
-        yesterday={false}
-      />
-      {chartComponent}
-    </BoxWrapper>
+    <Box w="100%" mb="-2">
+      <PlainBoxTitle name="User Time Spent" description="User Time Spent" />
+      <Box pos="relative" w="100%" h={chartHeight}>
+        <ChartResetBtn handleReset={handleReset} />
+        <ResponsiveContainer width="100%" height={chartHeight}>
+          <AreaChart
+            margin={indexChartMargin}
+            data={chartState.data}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={() => handleMouseUp()}
+            syncId="userChart"
+          >
+            <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+            <Tooltip
+              content={
+                <HourBasedToolTip
+                  active={undefined}
+                  payload={undefined}
+                  label={"user time spent"}
+                  avg={calculateAvg()}
+                  data={chartState.data}
+                />
+              }
+            />
+            <XAxis
+              dataKey="date"
+              fontSize="10px"
+              style={{
+                fontWeight: "medium",
+              }}
+              tick={{ fill: AxisFontColor }}
+              tickFormatter={(tick) => {
+                const date = new Date(tick)
+                return format(date, "MMM. d")
+              }}
+            />
+            <YAxis
+              fontSize="10px"
+              style={{
+                fontWeight: "medium",
+              }}
+              tickFormatter={(tick) => {
+                return convertSeconds(tick)
+              }}
+              tick={{ fill: AxisFontColor }}
+            />
+            <YAxis />
+            <Area
+              animationDuration={150}
+              type="linear"
+              dataKey="time_spent"
+              stroke="#CAB2D6"
+              strokeWidth="2px"
+              fill="#CAB2D680"
+            />
+            {chartState.startX !== null && chartState.endX !== null && (
+              <ReferenceArea
+                x1={chartState.startX}
+                x2={chartState.endX}
+                stroke="#CAB2D6"
+                strokeOpacity={0.3}
+              />
+            )}
+          </AreaChart>
+        </ResponsiveContainer>
+      </Box>
+    </Box>
   )
 }
-
-export default UserTimeSpent
