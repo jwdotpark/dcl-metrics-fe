@@ -103,7 +103,7 @@ const UserScenesVisited = ({ address }) => {
   }, [])
 
   return (
-    <Box mb="2" w="100%">
+    <Box w="100%" mb="2">
       <PlainBoxTitle
         name="User Scenes Visited"
         description="The number of the scene user has visited"
