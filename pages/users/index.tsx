@@ -42,22 +42,11 @@ export async function getServerSideProps() {
         props: result,
       }
     } else if (isLocal) {
-      const globalUserRes = await getDataWithApiKey(
-        process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
-        //globalUsersURL,
-        "/global/users",
-        staticGlobalUsers
-      )
-
+      const globalUserRes = staticGlobalUsers
       const result = { globalUserRes }
       return {
         props: result,
       }
-      //const globalUserRes = staticGlobalUsers
-      //const result = { globalUserRes }
-      //return {
-      //  props: result,
-      //}
     }
   } else {
     return {
