@@ -5,11 +5,12 @@ import { UserTimeSpent } from "./UserTimeSpent"
 import UserScenesVisited from "./UserScenesVisited"
 
 const UserCharts = ({ address }) => {
+  const chartHeight = 150
   return (
     <BoxWrapper colSpan={[1, 1, 1, 4, 6]}>
       <Flex direction="column">
-        <UserTimeSpent address={address} />
-        <UserScenesVisited address={address} />
+        <UserTimeSpent address={address} chartHeight={chartHeight} />
+        <UserScenesVisited address={address} chartHeight={chartHeight} />
       </Flex>
     </BoxWrapper>
   )
