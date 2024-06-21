@@ -113,9 +113,6 @@ const SingleUserPage = (props) => {
     image: image,
   })
 
-  //console.log("address", address)
-  //console.log("userAddressRes", userAddressRes)
-
   return (
     <>
       <NextSeo
