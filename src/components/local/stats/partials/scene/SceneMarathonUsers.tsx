@@ -106,7 +106,10 @@ const SceneMarathonUsers = ({ data }) => {
                 <Td isNumeric>
                   <Text fontSize="xs" wordBreak="keep-all">
                     {formatDuration(
-                      intervalToDuration({ minutes: item[1].time_spent }),
+                      intervalToDuration({
+                        start: 0,
+                        end: item[1].time_spent * 60 * 1000,
+                      }),
                       { format: ["days", "hours", "minutes", "seconds"] }
                     )}
                   </Text>
