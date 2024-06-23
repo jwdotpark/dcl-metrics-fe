@@ -1,8 +1,29 @@
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Text, Center, Flex, Image, useColorModeValue } from "@chakra-ui/react"
+import { useEffect, useState } from "react"
 
 const UserProfile = ({ data }) => {
-  const { avatar_url, name } = data
+  const { name, address } = data
+  const [profileImage, setProfileImage] = useState("")
+
+  const url = `https://peer-ec1.decentraland.org/lambdas/profiles/${address}`
+
+  const fetchUserPicture = async () => {
+    try {
+      const res = await fetch(url)
+      const data = await res.json()
+      const image = data.avatars[0].avatar.snapshots.face256
+      setProfileImage(image)
+    } catch (error) {
+      console.log(error)
+    } finally {
+    }
+  }
+
+  useEffect(() => {
+    fetchUserPicture()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <BoxWrapper colSpan={[1, 1, 1, 6, 6]}>
@@ -33,10 +54,11 @@ const UserProfile = ({ data }) => {
           >
             <Image
               sx={{ filter: "drop-shadow(0px 2px 6px rgba(0,0,0,0.5))" }}
-              h={[200, "auto"]}
+              h="100"
               shadow="xl"
               alt={name}
-              src={avatar_url ? avatar_url : "/images/blank_profile.png"}
+              fallbackSrc="/images/blank_profile.png"
+              src={profileImage}
             />
           </Flex>
           <Center display={["none", "block"]} mt="2">

@@ -188,7 +188,11 @@ export const EventRelatedEvent = ({ event, data, itemsPerPage = 1 }) => {
           </Flex>
         </Box>
       ) : (
-        <Center h="150px">Data not available for this date yet.</Center>
+        <>
+          {!isLoading && (
+            <Center h="200">Data not available for this date yet.</Center>
+          )}
+        </>
       )}
     </Box>
   )
