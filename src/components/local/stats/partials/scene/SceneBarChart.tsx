@@ -32,6 +32,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram }) => {
   return (
     <Box
       w="100%"
+      h="100%"
       mt={[2, 2, 2, 0]}
       bg={useColorModeValue("white", "gray.700")}
       border="1px solid"
@@ -40,7 +41,7 @@ const SceneBarChart = ({ visitors_by_hour_histogram }) => {
       shadow="md"
     >
       <ToolTip label="This chart shows the number of users that is presented in each hour of the day">
-        <Box pos="relative" w="100%" h={300} mt="4" mb="2" pt="4" pb="4">
+        <Box pos="relative" w="100%" h={500} mt="4" mb="2" pt="4" pb="4">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               margin={indexChartMargin}
