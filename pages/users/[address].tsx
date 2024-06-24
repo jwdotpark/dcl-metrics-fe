@@ -154,10 +154,10 @@ const SingleUserPage = (props) => {
               <UserEvent event={event} userAddressRes={userAddressRes} />
             )}
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-              <UserTopScenes
+              {/*<UserTopScenes
                 address={address}
                 userAddressRes={userAddressRes}
-              />
+              />*/}
               <UserName name={userAddressRes.name} address={address} />
             </Grid>
             <UserEmotes name={userAddressRes.name} address={address} />
