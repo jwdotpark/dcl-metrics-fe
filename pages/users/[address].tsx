@@ -135,7 +135,7 @@ const SingleUserPage = (props) => {
         }}
       />
       <Layout>
-        {Object.keys(userAddressRes).length === 0 ? (
+        {userAddressRes.msg ? (
           <UserNotFound address={address} />
         ) : (
           <Box fontSize="sm">

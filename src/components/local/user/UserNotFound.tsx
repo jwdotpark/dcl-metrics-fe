@@ -17,10 +17,11 @@ const UserNotFound = ({ address }) => {
               </Text>
             </Center>
             <Center>
-              <Text>
+              <Text align="center">
                 This usually means that they have never logged into Decentraland
-                client. If you think this is an error, please contact us using{" "}
-                <b>feedback menu</b> on the top.
+                client. <br />
+                If you think this is an error, please contact us using{" "}
+                <b>feedback menu</b> on the top-right corner.
               </Text>
             </Center>
           </Flex>
