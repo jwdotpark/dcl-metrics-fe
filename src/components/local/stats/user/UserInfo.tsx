@@ -6,22 +6,15 @@ import {
   VStack,
   Spacer,
   Button,
+  Center,
 } from "@chakra-ui/react"
 import { format, formatDistanceToNow } from "date-fns"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 
 const UserInfo = ({ data }) => {
-  const {
-    address,
-
-    dao_member,
-    first_seen,
-    last_seen,
-    guest,
-    name,
-    verified,
-  } = data
+  const { address, dao_member, first_seen, last_seen, guest, name, verified } =
+    data
 
   const toast = useToast()
 
@@ -49,60 +42,63 @@ const UserInfo = ({ data }) => {
       />
       <Flex direction="column" w="auto" m="4" mx="5">
         <Box w="100%">
-          <VStack align="stretch" spacing="4">
-            <Flex w="100%" h="100%">
-              <Box>DAO Member?</Box>
-              <Spacer />
-              <Box>
-                <Text color={dao_member ? "green" : "red"}>
-                  {dao_member ? "Yes" : "No"}
-                </Text>
-              </Box>
-            </Flex>
-            <Flex w="100%" h="100%">
-              <Box>Address</Box>
-              <Spacer />
-              <Box
-                _hover={{ cursor: "pointer" }}
-                onClick={() => handleToast(address)}
-              >
-                <Button borderRadius="xl" shadow="md" size="xs">
-                  <Text noOfLines={1}>Copy Address</Text>
-                </Button>
-              </Box>
-            </Flex>
-            <Box w="100%">
-              <Flex w="100%">
-                <Box>First Seen At</Box>
-                <Spacer />
-                <Box>{format(new Date(first_seen), "yyyy MMMM d")}</Box>
-              </Flex>
-            </Box>
-            <Box w="100%">
-              <Flex w="100%">
-                <Box>Last Seen At</Box>
+          {!data.msg ? (
+            <VStack align="stretch" spacing="4">
+              <Flex w="100%" h="100%">
+                <Box>DAO Member?</Box>
                 <Spacer />
                 <Box>
-                  {formatDistanceToNow(new Date(last_seen), {
-                    addSuffix: true,
-                  })}{" "}
-                  ago
-                </Box>
-              </Flex>
-            </Box>
-            <Box w="100%">
-              <Flex w="100%">
-                <Box>Status</Box>
-                <Spacer />
-                <Box>
-                  <Text color={verified ? "green" : "gray"}>
-                    {verified ? "Verified" : "Guest User"}
-                    {(!verified && !guest) ?? "N/A"}
+                  <Text color={dao_member ? "green" : "red"}>
+                    {dao_member ? "Yes" : "No"}
                   </Text>
                 </Box>
               </Flex>
-            </Box>
-          </VStack>
+              <Flex w="100%" h="100%">
+                <Box>Address</Box>
+                <Spacer />
+                <Box
+                  _hover={{ cursor: "pointer" }}
+                  onClick={() => handleToast(address)}
+                >
+                  <Button borderRadius="xl" shadow="md" size="xs">
+                    <Text noOfLines={1}>Copy Address</Text>
+                  </Button>
+                </Box>
+              </Flex>
+              <Box w="100%">
+                <Flex w="100%">
+                  <Box>First Seen At</Box>
+                  <Spacer />
+                  <Box>{format(new Date(first_seen), "yyyy MMMM d")}</Box>
+                </Flex>
+              </Box>
+              <Box w="100%">
+                <Flex w="100%">
+                  <Box>Last Seen At</Box>
+                  <Spacer />
+                  <Box>
+                    {formatDistanceToNow(new Date(last_seen), {
+                      addSuffix: true,
+                    }) + " ago"}
+                  </Box>
+                </Flex>
+              </Box>
+              <Box w="100%">
+                <Flex w="100%">
+                  <Box>Status</Box>
+                  <Spacer />
+                  <Box>
+                    <Text color={verified ? "green" : "gray"}>
+                      {verified ? "Verified" : "Guest User"}
+                      {(!verified && !guest) ?? "N/A"}
+                    </Text>
+                  </Box>
+                </Flex>
+              </Box>
+            </VStack>
+          ) : (
+            <Center h="350">No Data</Center>
+          )}
         </Box>
       </Flex>
     </BoxWrapper>
