@@ -20,33 +20,26 @@ const SceneCharts = ({ sceneRes }) => {
 
   const [chartData, setChartData] = useState([])
 
-  const fetchChartData = async () => {
-    const endpoint = getEndpoint(
-      `scenes/compare?range=${option.dateRange}&uuids=${option.uuid}&metric=${option.metric}`
-    )
-    const url = `/api/fetch?url=${endpoint}`
+  //const fetchChartData = async () => {
+  //  const endpoint = getEndpoint(`scenes/compare`)
+  //  const targetUrl = `/api/chart-data?url=${endpoint}&range=${option.dateRange}&uuid=${option.uuid}&metric=${option.metric}`
 
-    if (isProd) {
-      const response = await fetch(url)
-      const data = await response.json()
-      setChartData(data.result)
-    } else if (isDev && !isLocal) {
-      const response = await fetch(url)
-      const data = await response.json()
-      setChartData(data.result)
-    } else if (isLocal) {
-      // fix this
-      const response = await fetch(url)
-      const data = await response.json()
-      setChartData(data.result)
-    }
-    console.log(chartData)
-  }
-
-  useEffect(() => {
-    fetchChartData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  //  if (isProd) {
+  //    const response = await fetch(targetUrl)
+  //    const data = await response.json()
+  //    setChartData(data.result)
+  //  } else if (isDev && !isLocal) {
+  //    const response = await fetch(targetUrl)
+  //    const data = await response.json()
+  //    setChartData(data.result)
+  //  } else if (isLocal) {
+  //    // fix this
+  //    const response = await fetch(targetUrl)
+  //    const data = await response.json()
+  //    setChartData(data.result)
+  //  }
+  //  console.log(chartData)
+  //}
 
   return (
     <BoxWrapper colSpan={6}>

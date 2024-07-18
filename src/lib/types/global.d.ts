@@ -19,4 +19,5 @@ declare type Props = {
   onlineUserData: {}
   worldCurrentRes: {}
   worldGlobalRes: {}
+  testData: {}
 }
