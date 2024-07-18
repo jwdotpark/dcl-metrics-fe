@@ -11,7 +11,7 @@ import {
   Box,
   Image,
 } from "@chakra-ui/react"
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import Link from "next/link"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import {
@@ -25,6 +25,8 @@ import {
   convertSeconds,
 } from "../../../../../../lib/hooks/utils"
 import ScenePageTableButtonGroup from "./ScenePageTableButtonGroup"
+import { useAtom } from "jotai"
+import { tableIndexAtom } from "../../../../../../lib/state/sceneChart"
 
 const ScenePageTable = ({ sceneRes }) => {
   const data = useMemo(() => sceneRes, [sceneRes])
@@ -151,6 +153,14 @@ const ScenePageTable = ({ sceneRes }) => {
   } = tableInstance
 
   const { pageIndex, globalFilter } = state
+
+  // eslint-disable-next-line no-unused-vars
+  const [tableIndex, setTableIndex] = useAtom(tableIndexAtom)
+
+  useEffect(() => {
+    setTableIndex(pageIndex)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageIndex])
 
   return (
     <>

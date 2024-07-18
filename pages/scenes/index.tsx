@@ -19,6 +19,7 @@ import SceneTable from "../../src/components/local/stats/SceneTable"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import SearchScene from "../../src/components/local/stats/user/SearchScene"
+import SceneCharts from "../../src/components/local/stats/SceneCharts"
 
 export async function getStaticProps() {
   let globalSceneRes, sceneRes
@@ -46,6 +47,8 @@ export async function getStaticProps() {
   for (let i = 0; i < sceneFileNameArr.length; i++) {
     writeFile(sceneFileNameArr[i], [globalSceneRes, sceneRes][i])
   }
+
+  //
 
   return {
     props: {
@@ -95,6 +98,9 @@ const Scenes = (props: Props) => {
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <SearchScene />
         </Grid>
+        <Box mb="4">
+          <SceneCharts sceneRes={sceneRes} />
+        </Box>
         <Box mb="4">
           <SceneTable sceneRes={sceneRes} />
         </Box>
