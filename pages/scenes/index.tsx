@@ -97,10 +97,10 @@ const Scenes = (props: Props) => {
           <SearchScene />
         </Grid>
         <Box mb="4">
-          <SceneCharts sceneRes={sceneRes} />
+          <SceneTable sceneRes={sceneRes} />
         </Box>
         <Box mb="4">
-          <SceneTable sceneRes={sceneRes} />
+          <SceneCharts sceneRes={sceneRes} />
         </Box>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopScenesVisitors res={globalSceneRes} />
