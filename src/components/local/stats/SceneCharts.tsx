@@ -23,6 +23,7 @@ import { SceneChartTooltip } from "./partials/chart/SceneChartToolTip"
 
 const SceneCharts = ({ sceneRes, pageIndex }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
+  const theme = useColorModeValue("light", "dark")
 
   const data = sceneRes.slice(pageIndex * 10, pageIndex * 10 + 10)
 
@@ -33,6 +34,12 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
   })
 
   const sceneNames = data.map((d) => d.name)
+
+  // Create a color map based on the theme
+  const colorMap = sceneNames.reduce((acc, sceneName) => {
+    acc[sceneName] = getThemeColor(theme)
+    return acc
+  }, {})
 
   const fetcher = async (url) => {
     const res = await fetch(url)
@@ -106,7 +113,11 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
                 />
                 <Tooltip
                   content={
-                    <SceneChartTooltip active={undefined} payload={undefined} />
+                    <SceneChartTooltip
+                      colorMap={colorMap}
+                      active={undefined}
+                      payload={undefined}
+                    />
                   }
                 />
                 <Legend iconSize={8} wrapperStyle={{ fontSize: "12px" }} />
@@ -120,10 +131,7 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
                         key={item}
                         type="linear"
                         dataKey={item}
-                        stroke={getThemeColor(
-                          // eslint-disable-next-line react-hooks/rules-of-hooks
-                          useColorModeValue("light", "dark")
-                        )}
+                        stroke={colorMap[item]} // Apply the color from the colorMap
                         strokeWidth="2px"
                         dot={false}
                         activeDot={true}
