@@ -183,3 +183,29 @@ export const getThemeColor = (() => {
     return selectedColor
   }
 })()
+
+export const availableProperties = [
+  "total_visitors",
+  "unique_visitors",
+  "unique_visitors_afk",
+  "unique_addresses",
+  "share_of_global_visitors",
+  "avg_time_spent",
+  "avg_time_spent_afk",
+  "percent_of_users_afk",
+  "total_logins",
+  "unique_logins",
+  "total_logouts",
+  "unique_logouts",
+  "complete_sessions",
+  "avg_complete_session_duration",
+]
+
+export const availableDateRanges = [7, 14, 30, 60, 90, 180, 365]
+
+export const transformToTitleCase = (str: string) => {
+  return str
+    .replace(/_/g, " ")
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase())
+}

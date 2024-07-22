@@ -20,6 +20,7 @@ import {
 import useSWR from "swr"
 import { format } from "date-fns"
 import { SceneChartTooltip } from "./partials/chart/SceneChartToolTip"
+import { ChartParameters } from "./partials/chart/ChartParameters"
 
 const SceneCharts = ({ sceneRes, pageIndex }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
@@ -35,7 +36,6 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
 
   const sceneNames = data.map((d) => d.name)
 
-  // Create a color map based on the theme
   const colorMap = sceneNames.reduce((acc, sceneName) => {
     acc[sceneName] = getThemeColor(theme)
     return acc
@@ -78,7 +78,11 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
         overflowY="auto"
         pb="4"
       >
-        <PlainBoxTitle name="Top 10 Scenes Chart" description="description" />
+        <PlainBoxTitle
+          name="Top 10 Scenes Chart"
+          description="description for date range, number of top # scene and property"
+        />
+        <ChartParameters setOption={setOption} />
         {!isLoading && sortedData && !error ? (
           <Box w="100%" h="350px">
             <ResponsiveContainer width="100%" height="100%">
