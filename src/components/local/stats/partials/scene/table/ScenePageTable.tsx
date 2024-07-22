@@ -25,10 +25,8 @@ import {
   convertSeconds,
 } from "../../../../../../lib/hooks/utils"
 import ScenePageTableButtonGroup from "./ScenePageTableButtonGroup"
-import { useAtom } from "jotai"
-import { tableIndexAtom } from "../../../../../../lib/state/sceneChart"
 
-const ScenePageTable = ({ sceneRes }) => {
+const ScenePageTable = ({ sceneRes, setPageIndex }) => {
   const data = useMemo(() => sceneRes, [sceneRes])
 
   const columns = useMemo(
@@ -154,11 +152,8 @@ const ScenePageTable = ({ sceneRes }) => {
 
   const { pageIndex, globalFilter } = state
 
-  // eslint-disable-next-line no-unused-vars
-  const [tableIndex, setTableIndex] = useAtom(tableIndexAtom)
-
   useEffect(() => {
-    setTableIndex(pageIndex)
+    setPageIndex(pageIndex)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageIndex])
 

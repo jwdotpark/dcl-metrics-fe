@@ -4,7 +4,7 @@ import BoxTitle from "../../layout/local/BoxTitle"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import { sub, format } from "date-fns"
 
-const SceneTable = ({ sceneRes }) => {
+const SceneTable = ({ sceneRes, setPageIndex }) => {
   const yesterday = format(
     sub(new Date(sceneRes[0].date), { days: 1 }),
     "yyyy MMMM d"
@@ -32,7 +32,7 @@ const SceneTable = ({ sceneRes }) => {
           line={undefined}
           setLine={undefined}
         />
-        <ScenePageTable sceneRes={sceneRes} />
+        <ScenePageTable sceneRes={sceneRes} setPageIndex={setPageIndex} />
       </Box>
     </BoxWrapper>
   )

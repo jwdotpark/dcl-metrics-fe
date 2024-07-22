@@ -1,8 +1,6 @@
-import { Box } from "@chakra-ui/react"
-import { useAtom } from "jotai"
+import { Box, Center, Spinner, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { getEndpoint } from "../../../lib/data/constant"
-import { tableIndexAtom } from "../../../lib/state/sceneChart"
 import BoxWrapper from "../../layout/local/BoxWrapper"
 import PlainBoxTitle from "../../layout/local/PlainBoxTitle"
 import {
@@ -15,77 +13,50 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts"
+import {
+  getThemeColor,
+  transformChartData,
+} from "../../../lib/data/chart/chartHelper"
+import useSWR from "swr"
+import { format } from "date-fns"
+import { SceneChartTooltip } from "./partials/chart/SceneChartToolTip"
 
-const SceneCharts = ({ sceneRes }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [tableIndex, setTableIndex] = useAtom(tableIndexAtom)
-  const data = sceneRes.slice(tableIndex * 10, tableIndex * 10 + 10)
-  const uuidParam = data.map((d) => d.uuid).join(",")
+const SceneCharts = ({ sceneRes, pageIndex }) => {
+  const AxisFontColor = useColorModeValue("#000", "#fff")
+
+  const data = sceneRes.slice(pageIndex * 10, pageIndex * 10 + 10)
 
   const [option, setOption] = useState({
-    dateRange: 7,
-    uuid: uuidParam,
+    dateRange: 30,
+    uuids: data.map((d) => d.uuid).join(","),
     metric: "total_visitors",
   })
 
-  const [isLoading, setIsLoading] = useState(true)
-  const [chartData, setChartData] = useState([])
+  const sceneNames = data.map((d) => d.name)
 
-  const fetchChartData = async () => {
-    const endpoint = getEndpoint(`scenes/compare`)
-    const targetUrl = `/api/chart-data?url=${endpoint}&range=${option.dateRange}&uuids=${option.uuid}&metric=${option.metric}`
-
-    try {
-      setIsLoading(true)
-      const response = await fetch(targetUrl)
-      if (!response.ok) {
-        throw new Error("Network response was not ok")
-      }
-      const data = await response.json()
-      return data.result
-    } catch (error) {
-      console.error("Error fetching chart data:", error)
-      return []
-    } finally {
-      setIsLoading(false)
-    }
+  const fetcher = async (url) => {
+    const res = await fetch(url)
+    return res.json()
   }
 
+  const targetUrl = `/api/chart-data?url=${getEndpoint(
+    `scenes/compare`
+  )}&range=${option.dateRange}&uuids=${option.uuids}&metric=${option.metric}`
+
+  const { data: fetchedData, isLoading, error } = useSWR(targetUrl, fetcher)
+
+  const sortedData = fetchedData && transformChartData(fetchedData.result)
+
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const data = await fetchChartData()
-        setChartData(data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    getData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  console.log(chartData)
-  // extract name into array
-  const names = data.map((d) => d.name)
-  console.log(names)
-
-  const transformedData = {}
-
-  chartData.forEach((scene) => {
-    scene.values.forEach((entry) => {
-      const { date, value } = entry
-      if (!transformedData[date]) {
-        transformedData[date] = { date }
-      }
-      transformedData[date][scene.name] = value
-    })
-  })
-
-  const sortedData = Object.keys(transformedData)
-    .sort()
-    .map((date) => transformedData[date])
-
-  console.log("sorted", sortedData)
+    const newUuids = sceneRes
+      .slice(pageIndex * 10, pageIndex * 10 + 10)
+      .map((d) => d.uuid)
+      .join(",")
+    setOption((prevOption) => ({
+      ...prevOption,
+      uuids: newUuids,
+    }))
+  }, [pageIndex, sceneRes])
 
   return (
     <BoxWrapper colSpan={6}>
@@ -101,54 +72,72 @@ const SceneCharts = ({ sceneRes }) => {
         pb="4"
       >
         <PlainBoxTitle name="Top 10 Scenes Chart" description="description" />
-        <Box w="100%" h="500px">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              width={500}
-              height={300}
-              data={sortedData}
-              margin={{
-                top: 5,
-                right: 40,
-                left: 10,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              {names.map((item) => {
-                return (
-                  <Line
-                    key={item}
-                    type="monotone"
-                    dataKey={item}
-                    //stroke="#8884d8"
-                    // randomize stroke color
-                    stroke={`#${Math.floor(Math.random() * 16777215).toString(
-                      16
-                    )}`}
-                    activeDot={{ r: 8 }}
-                  />
-                )
-              })}
-              <Line
-                type="monotone"
-                dataKey="WonderMine Crafting Game"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-              <Line
-                type="monotone"
-                dataKey="Soul Magic"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </Box>
+        {!isLoading && sortedData && !error ? (
+          <Box w="100%" h="350px">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={sortedData}
+                margin={{
+                  top: 5,
+                  right: 20,
+                  left: 0,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+                <XAxis
+                  fontSize="10px"
+                  style={{
+                    fontWeight: "medium",
+                  }}
+                  dataKey="date"
+                  tick={{ fill: AxisFontColor }}
+                  tickFormatter={(tick) => {
+                    const date = new Date(tick)
+                    return format(date, "MM/dd")
+                  }}
+                />
+                <YAxis
+                  fontSize="10px"
+                  style={{
+                    fontWeight: "medium",
+                  }}
+                  tick={{ fill: AxisFontColor }}
+                />
+                <Tooltip
+                  content={
+                    <SceneChartTooltip active={undefined} payload={undefined} />
+                  }
+                />
+                <Legend iconSize={8} wrapperStyle={{ fontSize: "12px" }} />
+                {!isLoading &&
+                  !error &&
+                  sceneNames.map((item) => {
+                    return (
+                      <Line
+                        animationDuration={150}
+                        connectNulls
+                        key={item}
+                        type="linear"
+                        dataKey={item}
+                        stroke={getThemeColor(
+                          // eslint-disable-next-line react-hooks/rules-of-hooks
+                          useColorModeValue("light", "dark")
+                        )}
+                        strokeWidth="2px"
+                        dot={false}
+                        activeDot={true}
+                      />
+                    )
+                  })}
+              </LineChart>
+            </ResponsiveContainer>
+          </Box>
+        ) : (
+          <Center w="100%" h="350px">
+            <Spinner />
+          </Center>
+        )}
       </Box>
     </BoxWrapper>
   )

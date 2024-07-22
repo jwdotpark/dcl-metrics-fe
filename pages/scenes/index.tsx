@@ -20,6 +20,7 @@ import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import SearchScene from "../../src/components/local/stats/user/SearchScene"
 import SceneCharts from "../../src/components/local/stats/SceneCharts"
+import { useState } from "react"
 
 export async function getStaticProps() {
   let globalSceneRes, sceneRes
@@ -39,8 +40,14 @@ export async function getStaticProps() {
     )
     sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
   } else if (isLocal) {
-    globalSceneRes = staticGlobalScenes
-    sceneRes = staticScene
+    globalSceneRes = await getDataWithApiKey(
+      globalScenesURL,
+      "/global/scenes",
+      staticGlobalScenes
+    )
+    sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
+    //globalSceneRes = staticGlobalScenes
+    //sceneRes = staticScene
   }
 
   const sceneFileNameArr = ["staticGlobalScenes", "staticScene"]
@@ -71,6 +78,8 @@ const Scenes = (props: Props) => {
     image: image,
   })
 
+  const [pageIndex, setPageIndex] = useState(0)
+
   return (
     <>
       <NextSeo
@@ -97,10 +106,10 @@ const Scenes = (props: Props) => {
           <SearchScene />
         </Grid>
         <Box mb="4">
-          <SceneTable sceneRes={sceneRes} />
+          <SceneTable sceneRes={sceneRes} setPageIndex={setPageIndex} />
         </Box>
         <Box mb="4">
-          <SceneCharts sceneRes={sceneRes} />
+          <SceneCharts sceneRes={sceneRes} pageIndex={pageIndex} />
         </Box>
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <TopScenesVisitors res={globalSceneRes} />

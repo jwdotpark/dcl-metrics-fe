@@ -114,3 +114,72 @@ export const calculateAvg = (chartData) => {
     avgUniqueUsers,
   }
 }
+
+export const transformChartData = (chartData) => {
+  let transformedData = {}
+  chartData.forEach((scene) => {
+    scene.values.forEach((entry) => {
+      const { date, value } = entry
+      if (!transformedData[date]) {
+        transformedData[date] = { date }
+      }
+      transformedData[date][scene.name] = value
+    })
+  })
+
+  const sortedData = Object.keys(transformedData)
+    .sort()
+    .map((date) => transformedData[date])
+
+  return sortedData
+}
+
+const darkThemeColors = [
+  "#ff5555", // Red
+  "#50fa7b", // Green
+  "#f1fa8c", // Yellow
+  "#bd93f9", // Purple
+  "#ff79c6", // Pink
+  "#8be9fd", // Cyan
+  "#ffb86c", // Orange
+  "#6272a4", // Blue-Gray
+  "#f8f8f2", // Light Gray
+  "#ffb86c", // Light Orange
+]
+
+const lightThemeColors = [
+  "#d32f2f", // Strong Red
+  "#388e3c", // Strong Green
+  "#fbc02d", // Bright Yellow
+  "#7b1fa2", // Strong Purple
+  "#e91e63", // Vivid Pink
+  "#03a9f4", // Vivid Cyan
+  "#fb8c00", // Bright Orange
+  "#0288d1", // Bright Blue
+  "#c0ca33", // Bright Lime Green
+  "#f57c00", // Bright Coral
+]
+
+export const getThemeColor = (() => {
+  const usedColors = {
+    dark: new Set<string>(),
+    light: new Set<string>(),
+  }
+
+  return (theme: "dark" | "light"): string => {
+    const colors = theme === "dark" ? darkThemeColors : lightThemeColors
+    const availableColors = colors.filter(
+      (color) => !usedColors[theme].has(color)
+    )
+
+    if (availableColors.length === 0) {
+      usedColors[theme].clear()
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableColors.length)
+    const selectedColor = availableColors[randomIndex]
+
+    usedColors[theme].add(selectedColor)
+    return selectedColor
+  }
+})()
