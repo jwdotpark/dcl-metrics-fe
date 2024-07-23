@@ -111,8 +111,8 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
         <PlainBoxTitle
           name={`Top ${pageIndex * 10 + 1}-${
             pageIndex * 10 + 10
-          } Scenes ${transformToTitleCase(option.metric)} Chart`}
-          description={`Selected top 10 scenes restrospective data chart for ${option.dateRange} days`}
+          } Scenes ${transformToTitleCase(option.metric)}`}
+          description={`Selected top 10 scenes's restrospective data for ${option.dateRange} days`}
         />
         <ChartParameters
           option={option}
