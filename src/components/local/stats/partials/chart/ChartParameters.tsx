@@ -8,7 +8,7 @@ import ToolTip from "../../../../layout/local/ToolTip"
 
 export const ChartParameters = ({ setOption }) => {
   return (
-    <Flex direction="row" gap="4" w="100%" pb="4" px="6">
+    <Flex direction="row" gap="4" w="100%" pb="4" px="4">
       <Box w="100%">
         <ToolTip label="Chart Parameter">
           <Select

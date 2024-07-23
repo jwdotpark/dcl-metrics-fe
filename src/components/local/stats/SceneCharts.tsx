@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Box, Center, Spinner, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { getEndpoint } from "../../../lib/data/constant"
@@ -13,10 +14,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts"
-import {
-  getThemeColor,
-  transformChartData,
-} from "../../../lib/data/chart/chartHelper"
+import { transformChartData } from "../../../lib/data/chart/chartHelper"
 import useSWR from "swr"
 import { format } from "date-fns"
 import { SceneChartTooltip } from "./partials/chart/SceneChartToolTip"
@@ -24,7 +22,6 @@ import { ChartParameters } from "./partials/chart/ChartParameters"
 
 const SceneCharts = ({ sceneRes, pageIndex }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
-  const theme = useColorModeValue("light", "dark")
 
   const data = sceneRes.slice(pageIndex * 10, pageIndex * 10 + 10)
 
@@ -35,11 +32,6 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
   })
 
   const sceneNames = data.map((d) => d.name)
-
-  const colorMap = sceneNames.reduce((acc, sceneName) => {
-    acc[sceneName] = getThemeColor(theme)
-    return acc
-  }, {})
 
   const fetcher = async (url) => {
     const res = await fetch(url)
@@ -52,7 +44,18 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
 
   const { data: fetchedData, isLoading, error } = useSWR(targetUrl, fetcher)
 
-  const sortedData = fetchedData && transformChartData(fetchedData.result)
+  const sortedData =
+    fetchedData &&
+    transformChartData(fetchedData.result, useColorModeValue("light", "dark"))
+
+  console.log("sorted", sortedData)
+
+  const [visibleLines, setVisibleLines] = useState(
+    sceneNames.reduce((acc, name) => {
+      acc[name] = true
+      return acc
+    }, {})
+  )
 
   useEffect(() => {
     const newUuids = sceneRes
@@ -63,7 +66,22 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
       ...prevOption,
       uuids: newUuids,
     }))
+
+    setVisibleLines(
+      sceneNames.reduce((acc, name) => {
+        acc[name] = true
+        return acc
+      }, {})
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageIndex, sceneRes])
+
+  const handleLegendClick = (val) => {
+    setVisibleLines((prevState) => ({
+      ...prevState,
+      [val.dataKey]: !prevState[val.dataKey],
+    }))
+  }
 
   return (
     <BoxWrapper colSpan={6}>
@@ -87,11 +105,11 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
           <Box w="100%" h="350px">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
-                data={sortedData}
+                data={sortedData.sortedData}
                 margin={{
                   top: 5,
                   right: 20,
-                  left: 0,
+                  left: -10,
                   bottom: 5,
                 }}
               >
@@ -118,13 +136,17 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
                 <Tooltip
                   content={
                     <SceneChartTooltip
-                      colorMap={colorMap}
+                      colorMap={sortedData.sceneColorMap}
                       active={undefined}
                       payload={undefined}
                     />
                   }
                 />
-                <Legend iconSize={8} wrapperStyle={{ fontSize: "12px" }} />
+                <Legend
+                  iconSize={8}
+                  wrapperStyle={{ fontSize: "12px", marginLeft: "12px" }}
+                  onClick={handleLegendClick}
+                />
                 {!isLoading &&
                   !error &&
                   sceneNames.map((item) => {
@@ -135,10 +157,11 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
                         key={item}
                         type="linear"
                         dataKey={item}
-                        stroke={colorMap[item]} // Apply the color from the colorMap
+                        stroke={sortedData.sceneColorMap[item]}
                         strokeWidth="2px"
                         dot={false}
                         activeDot={true}
+                        hide={!visibleLines[item]}
                       />
                     )
                   })}

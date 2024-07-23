@@ -115,25 +115,6 @@ export const calculateAvg = (chartData) => {
   }
 }
 
-export const transformChartData = (chartData) => {
-  let transformedData = {}
-  chartData.forEach((scene) => {
-    scene.values.forEach((entry) => {
-      const { date, value } = entry
-      if (!transformedData[date]) {
-        transformedData[date] = { date }
-      }
-      transformedData[date][scene.name] = value
-    })
-  })
-
-  const sortedData = Object.keys(transformedData)
-    .sort()
-    .map((date) => transformedData[date])
-
-  return sortedData
-}
-
 const darkThemeColors = [
   "#ff5555", // Red
   "#50fa7b", // Green
@@ -160,29 +141,30 @@ const lightThemeColors = [
   "#f57c00", // Bright Coral
 ]
 
-export const getThemeColor = (() => {
-  const usedColors = {
-    dark: new Set<string>(),
-    light: new Set<string>(),
-  }
+export const transformChartData = (chartData, color) => {
+  const themeColors = color === "dark" ? darkThemeColors : lightThemeColors
+  let transformedData = {}
+  let sceneColorMap = {}
 
-  return (theme: "dark" | "light"): string => {
-    const colors = theme === "dark" ? darkThemeColors : lightThemeColors
-    const availableColors = colors.filter(
-      (color) => !usedColors[theme].has(color)
-    )
+  chartData.forEach((scene, index) => {
+    const sceneColor = themeColors[index % themeColors.length]
+    sceneColorMap[scene.name] = sceneColor
 
-    if (availableColors.length === 0) {
-      usedColors[theme].clear()
-    }
+    scene.values.forEach((entry) => {
+      const { date, value } = entry
+      if (!transformedData[date]) {
+        transformedData[date] = { date }
+      }
+      transformedData[date][scene.name] = value
+    })
+  })
 
-    const randomIndex = Math.floor(Math.random() * availableColors.length)
-    const selectedColor = availableColors[randomIndex]
+  const sortedData = Object.keys(transformedData)
+    .sort()
+    .map((date) => transformedData[date])
 
-    usedColors[theme].add(selectedColor)
-    return selectedColor
-  }
-})()
+  return { sortedData, sceneColorMap }
+}
 
 export const availableProperties = [
   "total_visitors",
