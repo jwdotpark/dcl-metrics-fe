@@ -28,7 +28,7 @@ const SceneTable = ({ sceneRes, setPageIndex }) => {
           avgData=""
           slicedData=""
           color=""
-          description={`The busiest top scenes on ${yesterday}`}
+          description={`The busiest of the top scenes on ${yesterday}`}
           line={undefined}
           setLine={undefined}
         />

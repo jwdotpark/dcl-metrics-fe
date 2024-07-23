@@ -14,7 +14,10 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts"
-import { transformChartData } from "../../../lib/data/chart/chartHelper"
+import {
+  transformChartData,
+  transformToTitleCase,
+} from "../../../lib/data/chart/chartHelper"
 import useSWR from "swr"
 import { format } from "date-fns"
 import { SceneChartTooltip } from "./partials/chart/SceneChartToolTip"
@@ -25,8 +28,10 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
 
   const data = sceneRes.slice(pageIndex * 10, pageIndex * 10 + 10)
 
+  const [chartHeight, setChartHeight] = useState(350)
+
   const [option, setOption] = useState({
-    dateRange: 30,
+    dateRange: 60,
     uuids: data.map((d) => d.uuid).join(","),
     metric: "total_visitors",
   })
@@ -48,14 +53,21 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
     fetchedData &&
     transformChartData(fetchedData.result, useColorModeValue("light", "dark"))
 
-  console.log("sorted", sortedData)
-
   const [visibleLines, setVisibleLines] = useState(
     sceneNames.reduce((acc, name) => {
       acc[name] = true
       return acc
     }, {})
   )
+
+  const resetVisibleLines = () => {
+    setVisibleLines(
+      sceneNames.reduce((acc, name) => {
+        acc[name] = true
+        return acc
+      }, {})
+    )
+  }
 
   useEffect(() => {
     const newUuids = sceneRes
@@ -97,12 +109,20 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
         pb="4"
       >
         <PlainBoxTitle
-          name="Top 10 Scenes Chart"
-          description="description for date range, number of top # scene and property"
+          name={`Top ${pageIndex * 10 + 1}-${
+            pageIndex * 10 + 10
+          } Scenes ${transformToTitleCase(option.metric)} Chart`}
+          description={`Selected top 10 scenes restrospective data chart for ${option.dateRange} days`}
         />
-        <ChartParameters setOption={setOption} />
+        <ChartParameters
+          option={option}
+          setOption={setOption}
+          chartHeight={chartHeight}
+          setChartHeight={setChartHeight}
+          resetVisibleLines={resetVisibleLines}
+        />
         {!isLoading && sortedData && !error ? (
-          <Box w="100%" h="350px">
+          <Box w="100%" h={chartHeight}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={sortedData.sortedData}
@@ -153,7 +173,6 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
                     return (
                       <Line
                         animationDuration={150}
-                        connectNulls
                         key={item}
                         type="linear"
                         dataKey={item}
@@ -169,7 +188,7 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
             </ResponsiveContainer>
           </Box>
         ) : (
-          <Center w="100%" h="350px">
+          <Center w="100%" h={chartHeight}>
             <Spinner />
           </Center>
         )}
