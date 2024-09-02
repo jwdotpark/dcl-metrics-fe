@@ -75,7 +75,11 @@ export default function SidebarWithHeader({ psa, children }: any) {
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <TopBar psa={psa} onOpen={onOpen} sidebarStatus={sidebarStatus} />
+      <TopBar
+        //psa={psa}
+        onOpen={onOpen}
+        sidebarStatus={sidebarStatus}
+      />
       <Flex
         align="center"
         justify="center"

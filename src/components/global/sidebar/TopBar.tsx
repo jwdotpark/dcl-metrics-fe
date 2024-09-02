@@ -61,7 +61,7 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
           </Text>
         </HStack>
       </Box>
-      <Box display={"block"}>
+      {/*<Box display={"block"}>
         <Box display="inline-block">
           <Link href={`/blog/${psa?.slug}`} target="_blank">
             <Text>
@@ -75,7 +75,7 @@ const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
             </Text>
           </Link>
         </Box>
-      </Box>
+      </Box>*/}
 
       <Spacer />
       <Center>

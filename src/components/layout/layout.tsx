@@ -6,20 +6,23 @@ const SidebarWithHeader = dynamic(() => import("../global/SidebarWithHeader"), {
 })
 
 const Layout = ({ children }: any) => {
-  const [res, setRes] = useState({})
-  const { data } = useSWR("/api/get-psa", (url) =>
-    fetch(url).then((r) => r.json())
-  )
+  //const [res, setRes] = useState({})
+  //const { data } = useSWR("/api/get-psa", (url) =>
+  //  fetch(url).then((r) => r.json())
+  //)
 
-  useEffect(() => {
-    if (data) {
-      setRes(data.latestPost)
-    }
-  }, [data])
+  //useEffect(() => {
+  //  if (data) {
+  //    setRes(data.latestPost)
+  //  }
+  //}, [data])
 
   return (
     <>
-      <SidebarWithHeader psa={res} {...{ ...children }}>
+      <SidebarWithHeader
+        //psa={res}
+        {...{ ...children }}
+      >
         {children}
       </SidebarWithHeader>
     </>
