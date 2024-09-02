@@ -15,7 +15,7 @@ export async function getStaticProps() {
       staticPeerStatus
     )
 
-    writeFile("staticPeerStatus", statusRes)
+    //writeFile("staticPeerStatus", statusRes)
 
     const result = { statusRes }
     return {

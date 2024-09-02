@@ -23,7 +23,7 @@ export async function getServerSideProps() {
         staticGlobalUsers
       )
 
-      writeFile("staticGlobalUsers", globalUserRes)
+      //writeFile("staticGlobalUsers", globalUserRes)
 
       const result = { globalUserRes }
       return {

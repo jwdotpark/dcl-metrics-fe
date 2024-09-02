@@ -25,7 +25,7 @@ export async function getStaticProps() {
       staticGlobalParcels
     )
 
-    writeFile("staticGlobalParcels", globalParcelRes)
+    //writeFile("staticGlobalParcels", globalParcelRes)
 
     const result = { globalParcelRes }
     return {

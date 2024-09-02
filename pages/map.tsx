@@ -17,7 +17,7 @@ export async function getStaticProps() {
       staticParcel
     )
 
-    writeFile("staticParcel", parcelRes)
+    //writeFile("staticParcel", parcelRes)
 
     const result = { parcelRes }
     return {

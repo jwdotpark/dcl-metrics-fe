@@ -154,11 +154,11 @@ export async function fetchRentalData() {
 }
 
 export function getLatestPost() {
-  const posts = getPosts();
+  const posts = getPosts()
 
   return posts.reduce((latest, post) => {
-    const latestDate = new Date(latest.data.date);
-    const postDate = new Date(post.data.date);
-    return postDate > latestDate ? post : latest;
-  });
+    const latestDate = new Date(latest.data.date)
+    const postDate = new Date(post.data.date)
+    return postDate > latestDate ? post : latest
+  })
 }
