@@ -6,12 +6,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   try {
-    await res.revalidate("/")
-    await res.revalidate("/map")
+    //await res.revalidate("/")
+    //await res.revalidate("/map")
     //await res.revalidate("/users")
-    await res.revalidate("/scenes")
-    await res.revalidate("/parcels")
-    await res.revalidate("/status")
+    //await res.revalidate("/scenes")
+    //await res.revalidate("/parcels")
+    //await res.revalidate("/status")
     return res.json({ revalidated: true })
   } catch (err) {
     console.log("error", err)
