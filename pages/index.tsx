@@ -13,7 +13,7 @@ import LandPicker from "../src/components/global/map/LandPicker"
 import {
   fetchGlobalData,
   //fetchRentalData,
-  getLatestPost,
+  //getLatestPost,
 } from "../src/lib/data/fetch"
 //import RentalDay from "../src/components/local/stats/rentals/RentalDay"
 //import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
@@ -32,12 +32,12 @@ import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
   //const rentalData = await fetchRentalData()
-  const latestPost = getLatestPost()
+  //const latestPost = getLatestPost()
   return {
     props: {
       ...globalData,
       //rental: rentalData,
-      latestPost: latestPost,
+      //latestPost: latestPost,
     },
   }
 }

@@ -1,8 +1,9 @@
-import { NextApiRequest, NextApiResponse } from "next"
+//import { NextApiRequest, NextApiResponse } from "next"
 //import fs from "fs"
 
 // save body to json file in /public/data
-async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler() {
+  //req: NextApiRequest, res: NextApiResponse
   //const { data, name } = req.body
   //if (req.method === "POST") {
   //  const path = "public/data/example.json"
