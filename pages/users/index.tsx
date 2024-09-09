@@ -14,7 +14,7 @@ import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import SearchUser from "../../src/components/local/stats/user/SearchUser"
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     if (isProd) {
       const globalUserRes = await getDataWithApiKey(
