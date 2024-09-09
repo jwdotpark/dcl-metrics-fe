@@ -8,10 +8,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     await res.revalidate("/")
     await res.revalidate("/map")
-
-    process.env.NEXT_PUBLIC_ALLOW_USER === "true" &&
-      (await res.revalidate("/users"))
-
+    await res.revalidate("/users")
+    //const allowUserRevalidate = process.env.NEXT_PUBLIC_ALLOW_USER === "true"
+    //if (allowUserRevalidate) {
+    //  await res.revalidate("/users")
+    //}
     await res.revalidate("/scenes")
     await res.revalidate("/parcels")
     await res.revalidate("/status")

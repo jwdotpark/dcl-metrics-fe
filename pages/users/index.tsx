@@ -15,16 +15,13 @@ import { NextSeo } from "next-seo"
 import SearchUser from "../../src/components/local/stats/user/SearchUser"
 
 export async function getServerSideProps() {
-  if (process.env.NEXT_PUBLIC_ALLOW_USER === "true") {
+  try {
     if (isProd) {
       const globalUserRes = await getDataWithApiKey(
         globalUsersURL,
         "/global/users",
         staticGlobalUsers
       )
-
-      //writeFile("staticGlobalUsers", globalUserRes)
-
       const result = { globalUserRes }
       return {
         props: result,
@@ -32,11 +29,9 @@ export async function getServerSideProps() {
     } else if (isDev && !isLocal) {
       const globalUserRes = await getDataWithApiKey(
         process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
-        //globalUsersURL,
         "/global/users",
         staticGlobalUsers
       )
-
       const result = { globalUserRes }
       return {
         props: result,
@@ -48,14 +43,50 @@ export async function getServerSideProps() {
         props: result,
       }
     }
-  } else {
+  } catch (err) {
+    console.error("Error fetching global users:", err)
+  } finally {
     return {
-      redirect: {
-        destination: "/500",
-        permanent: false,
-      },
+      props: { globalUserRes: staticGlobalUsers },
     }
   }
+
+  //if (process.env.NEXT_PUBLIC_ALLOW_USER === "true") {
+  //  if (isProd) {
+  //    const globalUserRes = await getDataWithApiKey(
+  //      globalUsersURL,
+  //      "/global/users",
+  //      staticGlobalUsers
+  //    )
+  //    const result = { globalUserRes }
+  //    return {
+  //      props: result,
+  //    }
+  //  } else if (isDev && !isLocal) {
+  //    const globalUserRes = await getDataWithApiKey(
+  //      process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
+  //      "/global/users",
+  //      staticGlobalUsers
+  //    )
+  //    const result = { globalUserRes }
+  //    return {
+  //      props: result,
+  //    }
+  //  } else if (isLocal) {
+  //    const globalUserRes = staticGlobalUsers
+  //    const result = { globalUserRes }
+  //    return {
+  //      props: result,
+  //    }
+  //  }
+  //} else {
+  //  return {
+  //    redirect: {
+  //      destination: "/500",
+  //      permanent: false,
+  //    },
+  //  }
+  //}
 }
 
 const Users = (props: Props) => {
