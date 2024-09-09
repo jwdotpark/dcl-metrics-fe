@@ -6,10 +6,13 @@ import { isDev, isLocal, isProd } from "./constant"
 import { globalFileNameArr, globalRequestList } from "./fetchList"
 import staticGlobalDaily from "../../../public/data/staticGlobalDaily.json"
 import staticParcel from "../../../public/data/cached_parcel.json"
+
+// temp dsiabled local cache
 //import staticLandSales from "../../../public/data/staticLandSales.json"
 //import staticWorldCurrent from "../../../public/data/staticWorldCurrent.json"
 //import staticTopLand from "../../../public/data/staticTopLand.json"
 //import staticTopPick from "../../../public/data/staticTopPick.json"
+
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 import { getPosts } from "../../../markdown/helpers/post"
 import { compareDesc, parseISO } from "date-fns"
