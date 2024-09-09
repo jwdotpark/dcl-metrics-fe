@@ -11,7 +11,10 @@ import {
 import TopBar from "./sidebar/TopBar"
 import SidebarContent from "./sidebar/SidebarContent"
 
-export default function SidebarWithHeader({ psa, children }: any) {
+export default function SidebarWithHeader({
+  //psa,
+  children,
+}: any) {
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [sidebarOpen, setSidebarOpen] = useState(false)

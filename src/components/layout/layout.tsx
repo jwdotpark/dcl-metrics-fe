@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
-import { useEffect, useState } from "react"
-import useSWR from "swr"
+//import { useEffect, useState } from "react"
+//import useSWR from "swr"
 const SidebarWithHeader = dynamic(() => import("../global/SidebarWithHeader"), {
   ssr: false,
 })

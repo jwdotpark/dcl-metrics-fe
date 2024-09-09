@@ -3,7 +3,7 @@ import Layout from "../../src/components/layout/layout"
 import Explorer from "../../src/components/local/stats/Explorer"
 import MarathonUsers from "../../src/components/local/stats/MarathonUsers"
 import staticGlobalUsers from "../../public/data/staticGlobalUsers.json"
-import { getDataWithApiKey, writeFile } from "../../src/lib/data/fetch"
+import { getDataWithApiKey } from "../../src/lib/data/fetch"
 import {
   isProd,
   isDev,

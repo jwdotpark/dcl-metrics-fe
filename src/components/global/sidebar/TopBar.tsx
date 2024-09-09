@@ -7,17 +7,22 @@ import {
   IconButton,
   HStack,
   Spacer,
-  Button,
+  //Button,
   Center,
 } from "@chakra-ui/react"
 import { FiMenu } from "react-icons/fi"
 import ColorButton from "../ColorButton"
 import FeedbackButton from "../FeedbackButton"
-import Link from "next/link"
-import { isMobile } from "../../../lib/hooks/utils"
+//import Link from "next/link"
+//import { isMobile } from "../../../lib/hooks/utils"
 import ProfilingButton from "../ProfilingButton"
 
-const TopBar = ({ psa, sidebarStatus, onOpen, ...rest }: any) => {
+const TopBar = ({
+  //psa,
+  sidebarStatus,
+  onOpen,
+  ...rest
+}: any) => {
   return (
     <Flex
       align="center"
