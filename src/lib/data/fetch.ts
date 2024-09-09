@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import fs from "fs"
+//import fs from "fs"
 //import { sendNotification } from "../hooks/sendNotification"
 import { isDev, isLocal, isProd } from "./constant"
 import { globalFileNameArr, globalRequestList } from "./fetchList"
@@ -27,11 +27,11 @@ export const axiosOptions = {
   },
 }
 
-export const writeFile = (name, response) => {
-  const path = "./public/data/"
-  const file = `${name}.json`
-  fs.writeFileSync(path + file, JSON.stringify(response))
-}
+//export const writeFile = (name, response) => {
+//  const path = "./public/data/"
+//  const file = `${name}.json`
+//  fs.writeFileSync(path + file, JSON.stringify(response))
+//}
 
 // disable fetch error, errors are handled in the backend
 
@@ -104,18 +104,18 @@ export async function fetchGlobalData() {
   }
 
   // write heavy res for cache
-  if (process.env.CACHE_RESPONSE === "true") {
-    for (let i = 0; i < globalFileNameArr.length; i++) {
-      writeFile(
-        globalFileNameArr[i],
-        [
-          globalDailyRes,
-          parcelRes,
-          //landSalesRes
-        ][i]
-      )
-    }
-  }
+  //if (process.env.CACHE_RESPONSE === "true") {
+  //  for (let i = 0; i < globalFileNameArr.length; i++) {
+  //    writeFile(
+  //      globalFileNameArr[i],
+  //      [
+  //        globalDailyRes,
+  //        parcelRes,
+  //        //landSalesRes
+  //      ][i]
+  //    )
+  //  }
+  //}
 
   return {
     globalDailyRes,

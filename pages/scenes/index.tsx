@@ -6,7 +6,10 @@ import ScenesLogout from "../../src/components/local/stats/scenes/ScenesLogout"
 import ScenesTimeSpent from "../../src/components/local/stats/scenes/ScenesTimeSpent"
 import ScenesTimeSpentAFK from "../../src/components/local/stats/scenes/ScenesTimeSpentAFK"
 import TopScenesVisitors from "../../src/components/local/stats/scenes/TopScenesVisitors"
-import { getDataWithApiKey, writeFile } from "../../src/lib/data/fetch"
+import {
+  getDataWithApiKey,
+  //writeFile
+} from "../../src/lib/data/fetch"
 import {
   globalScenesURL,
   isDev,
@@ -50,10 +53,10 @@ export async function getStaticProps() {
     //sceneRes = staticScene
   }
 
-  const sceneFileNameArr = ["staticGlobalScenes", "staticScene"]
-  for (let i = 0; i < sceneFileNameArr.length; i++) {
-    writeFile(sceneFileNameArr[i], [globalSceneRes, sceneRes][i])
-  }
+  //const sceneFileNameArr = ["staticGlobalScenes", "staticScene"]
+  //for (let i = 0; i < sceneFileNameArr.length; i++) {
+  //  writeFile(sceneFileNameArr[i], [globalSceneRes, sceneRes][i])
+  //}
 
   return {
     props: {
