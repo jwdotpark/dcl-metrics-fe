@@ -53,7 +53,7 @@ function MyApp({
             async
             defer
             data-website-id="ba886c85-0602-4add-a574-52d2d163ecc1"
-            src="https://dcl-metrics-telemetry.vercel.app/dcl-metrics.js"
+            src="https://dcl-metrics-telemetry.vercel.app/umami.js"
             //data-website-id="ba886c85-0602-4add-a574-52d2d163ecc1"
             //src="https://dcl-metrics-telemetry.vercel.app/dcl-metrics-telemetry.js"
             // data-domains="dcl-metrics.com/"
