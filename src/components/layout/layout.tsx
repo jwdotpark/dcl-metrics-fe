@@ -15,6 +15,7 @@ const Layout = ({ children }: any) => {
   //  if (data) {
   //    setRes(data.latestPost)
   //  }
+  //  console.log("psa", res)
   //}, [data])
 
   return (
