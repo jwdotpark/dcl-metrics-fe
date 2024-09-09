@@ -6,8 +6,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   try {
-    await res.revalidate("/")
-    //await res.revalidate("/users")
+    //await res.revalidate("/")
+    await res.revalidate("/users")
     await res.revalidate("/map")
     await res.revalidate("/scenes")
     await res.revalidate("/parcels")
