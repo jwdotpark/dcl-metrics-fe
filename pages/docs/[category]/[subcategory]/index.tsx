@@ -1,7 +1,7 @@
 import ApiLayout from "../../../../src/components/docs/ApiLayout"
 import ApiExample from "../../../../src/components/local/api/ApiExample"
 import { getApiLists } from "../../../../markdown/helpers/post"
-import { useState } from "react"
+import React, { useState } from "react"
 import { useRouter } from "next/router"
 
 export const getServerSideProps = async ({ resolvedUrl }) => {
@@ -11,12 +11,16 @@ export const getServerSideProps = async ({ resolvedUrl }) => {
   const category = urlArray[2]
   const subcategory = urlArray[3]
 
+  const example = apiList.find(
+    (item) => item.data.category === category && item.data.title === subcategory
+  )
+
   return {
-    props: { apiList, category, subcategory },
+    props: { apiList, category, subcategory, example },
   }
 }
 
-const APIPage = ({ apiList, category, subcategory }) => {
+const APIPage = ({ apiList, category, subcategory, example }) => {
   const router = useRouter()
   const article = apiList.find(
     (item) => item.data.category === category && item.data.title === subcategory
@@ -24,10 +28,7 @@ const APIPage = ({ apiList, category, subcategory }) => {
 
   const [selectedItem, setSelectedItem] = useState(article)
 
-  if (!article) {
-    router.push("/docs")
-    return null
-  }
+  !article && router.push("/docs")
 
   return (
     <ApiLayout
@@ -35,7 +36,7 @@ const APIPage = ({ apiList, category, subcategory }) => {
       setSelectedItem={setSelectedItem}
       apiList={apiList}
     >
-      <ApiExample selectedItem={selectedItem} />
+      <ApiExample example={example} />
     </ApiLayout>
   )
 }
