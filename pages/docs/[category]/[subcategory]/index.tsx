@@ -11,20 +11,24 @@ export const getServerSideProps = async ({ resolvedUrl }) => {
   const category = urlArray[2]
   const subcategory = urlArray[3]
 
+  const example = apiList.find(
+    (item) => item.data.category === category && item.data.title === subcategory
+  )
+
   return {
-    props: { apiList, category, subcategory },
+    props: { apiList, category, subcategory, example },
   }
 }
 
-const APIPage = ({ apiList, category, subcategory }) => {
+const APIPage = ({ apiList, category, subcategory, example }) => {
   const router = useRouter()
   const article = apiList.find(
     (item) => item.data.category === category && item.data.title === subcategory
   )
 
-  !article && router.push("/docs")
-
   const [selectedItem, setSelectedItem] = useState(article)
+
+  !article && router.push("/docs")
 
   return (
     <ApiLayout
@@ -32,7 +36,7 @@ const APIPage = ({ apiList, category, subcategory }) => {
       setSelectedItem={setSelectedItem}
       apiList={apiList}
     >
-      <ApiExample selectedItem={selectedItem} />
+      <ApiExample example={example} />
     </ApiLayout>
   )
 }
