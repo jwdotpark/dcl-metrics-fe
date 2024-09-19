@@ -1,7 +1,7 @@
 import ApiLayout from "../../../../src/components/docs/ApiLayout"
 import ApiExample from "../../../../src/components/local/api/ApiExample"
 import { getApiLists } from "../../../../markdown/helpers/post"
-import { useState } from "react"
+import React, { useState } from "react"
 import { useRouter } from "next/router"
 
 export const getServerSideProps = async ({ resolvedUrl }) => {
@@ -22,12 +22,9 @@ const APIPage = ({ apiList, category, subcategory }) => {
     (item) => item.data.category === category && item.data.title === subcategory
   )
 
-  const [selectedItem, setSelectedItem] = useState(article)
+  !article && router.push("/docs")
 
-  if (!article) {
-    router.push("/docs")
-    return null
-  }
+  const [selectedItem, setSelectedItem] = useState(article)
 
   return (
     <ApiLayout

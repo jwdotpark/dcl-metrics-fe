@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown"
 import { theme } from "../../markdown/theme"
 
 const ApiExample = ({ selectedItem }) => {
-  const content = selectedItem.content
+  const { content } = selectedItem
 
   return (
     <BoxWrapper colSpan={[6, 6, 6, 4, 4]}>

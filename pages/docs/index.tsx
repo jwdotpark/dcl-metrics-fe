@@ -11,7 +11,7 @@ export const getStaticProps = async () => {
   }
 }
 
-const API = ({ children, apiList }) => {
+const API = ({ apiList }) => {
   const [selectedItem, setSelectedItem] = useState(apiList[0])
 
   return (
@@ -21,7 +21,6 @@ const API = ({ children, apiList }) => {
       apiList={apiList}
     >
       <ApiExample selectedItem={selectedItem} />
-      {children}
     </ApiLayout>
   )
 }
