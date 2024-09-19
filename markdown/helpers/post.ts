@@ -2,14 +2,15 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 
+const postsDirectory = path.join(process.cwd(), "markdown", "posts")
+const apiListDirectory = path.join(process.cwd(), "markdown", "api-list")
+
 export const getPosts = () => {
-  const files = fs.readdirSync(path.join("./markdown/posts"))
+  const files = fs.readdirSync(postsDirectory)
   const allPostsData = files.map((fileName) => {
     const slug = fileName.replace(".mdx", "")
-    const fileContents = fs.readFileSync(
-      path.join(`./markdown/posts/${slug}.mdx`),
-      "utf8"
-    )
+    const filePath = path.join(postsDirectory, `${slug}.mdx`)
+    const fileContents = fs.readFileSync(filePath, "utf8")
     const { data, content } = matter(fileContents)
     return {
       slug,
@@ -22,10 +23,8 @@ export const getPosts = () => {
 }
 
 export const getPost = (slug) => {
-  const fileContents = fs.readFileSync(
-    path.join(`./markdown/posts/${slug}.mdx`),
-    "utf8"
-  )
+  const filePath = path.join(postsDirectory, `${slug}.mdx`)
+  const fileContents = fs.readFileSync(filePath, "utf8")
   const { data, content } = matter(fileContents)
   return {
     data,
@@ -34,29 +33,25 @@ export const getPost = (slug) => {
 }
 
 export const getApiLists = () => {
-  const files = fs.readdirSync(path.join("./markdown/api-list/"))
-
-  const allPostsData = files.map((fileName) => {
+  const files = fs.readdirSync(apiListDirectory)
+  const allApiData = files.map((fileName) => {
     const slug = fileName.replace(".mdx", "")
-    const fileContents = fs.readFileSync(
-      path.join(`./markdown/api-list/${slug}.mdx`),
-      "utf8"
-    )
+    const filePath = path.join(apiListDirectory, `${slug}.mdx`)
+    const fileContents = fs.readFileSync(filePath, "utf8")
     const { data, content } = matter(fileContents)
     return {
+      slug,
       data,
       content,
     }
   })
 
-  return allPostsData
+  return allApiData
 }
 
 export const getApi = (slug) => {
-  const fileContents = fs.readFileSync(
-    path.join(`./markdown/api-list/${slug}.mdx`),
-    "utf8"
-  )
+  const filePath = path.join(apiListDirectory, `${slug}.mdx`)
+  const fileContents = fs.readFileSync(filePath, "utf8")
   const { data, content } = matter(fileContents)
   return {
     data,
