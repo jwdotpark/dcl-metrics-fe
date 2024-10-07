@@ -4,10 +4,10 @@ import { PanelHeader } from "./PanelHeader"
 
 export const SurveyPanel = ({ setOpen }) => {
   const defaultPosition = {
-    x: -200,
+    x: -450,
     y: 50,
-    width: 400,
-    height: 800,
+    width: 600,
+    height: 1000,
   }
   return (
     <Rnd
@@ -37,8 +37,14 @@ export const SurveyPanel = ({ setOpen }) => {
         shadow="xl"
       >
         <PanelHeader title="Survey" setOpen={setOpen} />
-        <Box overflowY="auto" w="100%" h="100%" mt="4">
-          survey
+        <Box overflowY="auto" w="100%" h="100%" pb="16">
+          <iframe
+            src="https://tally.so/r/wAK6Mo"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            title="Survey Form"
+          ></iframe>
         </Box>
       </Box>
     </Rnd>
