@@ -1,14 +1,46 @@
 import { useColorModeValue, Box } from "@chakra-ui/react"
 import { Rnd } from "react-rnd"
 import { PanelHeader } from "./PanelHeader"
+import { useState, useEffect } from "react"
 
 export const SurveyPanel = ({ setOpen }) => {
-  const defaultPosition = {
-    x: -450,
-    y: 50,
-    width: 600,
-    height: 1000,
+  const [position, setPosition] = useState(null)
+
+  useEffect(() => {
+    const savedPosition = localStorage.getItem("surveyPanelPosition")
+    if (savedPosition) {
+      setPosition(JSON.parse(savedPosition))
+    } else {
+      setPosition({
+        x: -450,
+        y: 50,
+        width: 600,
+        height: 1000,
+      })
+    }
+  }, [])
+
+  const handleDragStop = (e, d) => {
+    const newPosition = { ...position, x: d.x, y: d.y }
+    setPosition(newPosition)
+    localStorage.setItem("surveyPanelPosition", JSON.stringify(newPosition))
   }
+
+  const handleResizeStop = (e, direction, ref, delta, position) => {
+    const newSize = {
+      x: position.x,
+      y: position.y,
+      width: ref.style.width,
+      height: ref.style.height,
+    }
+    setPosition(newSize)
+    localStorage.setItem("surveyPanelPosition", JSON.stringify(newSize))
+  }
+
+  if (!position) {
+    return null
+  }
+
   return (
     <Rnd
       style={{
@@ -26,13 +58,17 @@ export const SurveyPanel = ({ setOpen }) => {
       }}
       bounds="window"
       dragHandleClassName="handler"
-      default={defaultPosition}
+      size={{ width: position.width, height: position.height }}
+      position={{ x: position.x, y: position.y }}
+      onDragStop={handleDragStop}
+      onResizeStop={handleResizeStop}
       minWidth={300}
       minHeight={400}
     >
       <Box
         w="100%"
         h="100%"
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         bg={useColorModeValue("gray.100", "gray.800")}
         shadow="xl"
       >
@@ -42,7 +78,6 @@ export const SurveyPanel = ({ setOpen }) => {
             src="https://tally.so/r/wAK6Mo"
             width="100%"
             height="100%"
-            frameBorder="0"
             title="Survey Form"
           ></iframe>
         </Box>
