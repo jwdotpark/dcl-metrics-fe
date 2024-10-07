@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react"
 import { FiXCircle } from "react-icons/fi"
 
-export const PanelHeader = ({ setOpen }) => {
+export const PanelHeader = ({ title, setOpen }) => {
   return (
     <Flex
       className="handler"
@@ -18,7 +18,7 @@ export const PanelHeader = ({ setOpen }) => {
       _hover={{ cursor: "grab" }}
     >
       <Center h="100%" mx="4">
-        Insepctor
+        {title}
       </Center>
       <Spacer />
       <Center w="4rem" h="100%">

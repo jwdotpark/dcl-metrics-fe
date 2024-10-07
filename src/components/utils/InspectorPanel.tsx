@@ -12,7 +12,7 @@ import {
 import { PanelHeader } from "./panel/PanelHeader"
 import { PanelLegend } from "./panel/PanelLegend"
 
-export const Panel = ({ profilingData, setOpen }) => {
+export const InspectorPanel = ({ profilingData, setOpen }) => {
   const defaultPosition = {
     x: -800,
     y: 0,
@@ -60,7 +60,7 @@ export const Panel = ({ profilingData, setOpen }) => {
         bg={useColorModeValue("gray.100", "gray.800")}
         shadow="xl"
       >
-        <PanelHeader setOpen={setOpen} />
+        <PanelHeader title="Inspector" setOpen={setOpen} />
         <Box overflowY="auto" w="100%" h="100%" mt="4">
           {filteredData.map((data, index) => {
             return (

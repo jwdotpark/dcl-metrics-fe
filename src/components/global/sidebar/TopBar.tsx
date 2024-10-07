@@ -7,7 +7,6 @@ import {
   IconButton,
   HStack,
   Spacer,
-  //Button,
   Center,
 } from "@chakra-ui/react"
 import { FiMenu } from "react-icons/fi"
@@ -16,6 +15,7 @@ import FeedbackButton from "../FeedbackButton"
 //import Link from "next/link"
 //import { isMobile } from "../../../lib/hooks/utils"
 import ProfilingButton from "../ProfilingButton"
+import SurveyButton from "../SurveyButton"
 
 const TopBar = ({
   //psa,
@@ -85,6 +85,7 @@ const TopBar = ({
       <Spacer />
       <Center>
         {process.env.NEXT_PUBLIC_INSPECTOR === "true" && <ProfilingButton />}
+        <SurveyButton />
         <FeedbackButton />
         <ColorButton />
       </Center>
