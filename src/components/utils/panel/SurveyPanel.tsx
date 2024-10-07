@@ -41,6 +41,8 @@ export const SurveyPanel = ({ setOpen }) => {
     return null
   }
 
+  const surveyUrl = "https://tally.so/r/wAK6Mo"
+
   return (
     <Rnd
       style={{
@@ -73,9 +75,9 @@ export const SurveyPanel = ({ setOpen }) => {
         shadow="xl"
       >
         <PanelHeader title="Survey" setOpen={setOpen} />
-        <Box overflowY="auto" w="100%" h="100%" pb="16">
+        <Box overflowY="auto" w="100%" h="100%" pb="8">
           <iframe
-            src="https://tally.so/r/wAK6Mo"
+            src={surveyUrl}
             width="100%"
             height="100%"
             title="Survey Form"
