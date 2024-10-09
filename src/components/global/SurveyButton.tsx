@@ -1,12 +1,22 @@
 import { Button, Center } from "@chakra-ui/react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FiShoppingBag } from "react-icons/fi"
 import ToolTip from "../layout/local/ToolTip"
 import { SurveyPanel } from "../utils/panel/SurveyPanel"
-//import { Panel } from "../utils/InspectorPanel"
 
 const SurveyButton = () => {
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const savedOpenState = localStorage.getItem("surveyPanelOpen")
+    if (savedOpenState) {
+      setOpen(JSON.parse(savedOpenState))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("surveyPanelOpen", JSON.stringify(open))
+  }, [open])
 
   return (
     <>
@@ -29,7 +39,6 @@ const SurveyButton = () => {
           <SurveyPanel setOpen={setOpen} />
         </>
       )}
-      {/*<SurveyPanel setOpen={setOpen} />*/}
     </>
   )
 }
