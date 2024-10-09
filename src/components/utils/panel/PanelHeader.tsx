@@ -23,7 +23,7 @@ export const PanelHeader = ({ title, setOpen }) => {
       <Spacer />
       <Center w="4rem" h="100%">
         <IconButton
-          bg={useColorModeValue("gray.400", "gray.200")}
+          bg={useColorModeValue("gray.400", "gray.600")}
           borderRadius="full"
           shadow="sm"
           aria-label={"close"}

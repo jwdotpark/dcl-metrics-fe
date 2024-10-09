@@ -4,9 +4,12 @@ import {
   Radio,
   RadioGroup,
   VStack,
-  HStack,
   Progress,
+  Text,
+  useColorModeValue,
   Flex,
+  ButtonGroup,
+  Spacer,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { inquiries } from "./statics"
@@ -34,12 +37,16 @@ const Step = ({
 
   return (
     <Flex direction="column">
-      <Box mb="4">{inquiry.question}</Box>
+      <Box>
+        <Text fontSize="xl" fontWeight="semibold">
+          {inquiry.question}
+        </Text>
+      </Box>
       <RadioGroup
         onChange={handleChange}
         value={formData[`step${step}`]?.answer || ""}
       >
-        <Flex direction="column" gap="4" ml="2">
+        <Flex direction="column" gap="4" mt="4" ml="0">
           {inquiry.options.map((option, index) => (
             <Radio key={index} value={option}>
               {option}
@@ -74,6 +81,12 @@ export const SurveyContainer = () => {
 
   const nextStep = () => setStep(step + 1)
   const prevStep = () => setStep(step - 1)
+  const resetSurvey = () => {
+    setStep(0)
+    setFormData({})
+    localStorage.removeItem("surveyStep")
+    localStorage.removeItem("surveyFormData")
+  }
 
   const handleStartSurvey = () => {
     setStartTime(Date.now())
@@ -82,15 +95,30 @@ export const SurveyContainer = () => {
 
   const handleSubmit = () => {
     alert(JSON.stringify(formData, null, 2))
-    localStorage.removeItem("surveyStep")
-    localStorage.removeItem("surveyFormData")
+    resetSurvey()
   }
 
   const progress = (step / (inquiries.length + 1)) * 100
 
   return (
-    <Box p={4} borderWidth={1} borderRadius="lg">
-      <Progress mb={4} value={progress} />
+    <Box pos="relative" minH="400px" p={4} borderWidth={1} borderRadius="lg">
+      <Box pos="relative" mb={4}>
+        <Progress
+          h="20px"
+          bg={useColorModeValue("gray.300", "gray.600")}
+          borderRadius="md"
+          value={progress}
+        />
+        <Text
+          pos="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          whiteSpace="nowrap"
+        >
+          {step} / {inquiries.length}
+        </Text>
+      </Box>
       {step === 0 && (
         <VStack spacing={4}>
           <Box>Welcome to the survey. Click Okay to start.</Box>
@@ -111,15 +139,50 @@ export const SurveyContainer = () => {
             />
           )
       )}
-
       {step > 0 && (
-        <HStack mt={4} spacing={4}>
-          {step > 1 && <Button onClick={prevStep}>Previous</Button>}
-          {step < inquiries.length && <Button onClick={nextStep}>Next</Button>}
-          {step === inquiries.length && (
-            <Button onClick={handleSubmit}>Submit</Button>
-          )}
-        </HStack>
+        <Box
+          pos="absolute"
+          bottom="16px"
+          left="50%"
+          w="100%"
+          transform="translateX(-50%)"
+        >
+          <Flex px="4">
+            <Box>
+              <ButtonGroup isAttached>
+                {step > 1 && (
+                  <Button onClick={prevStep} variant="outline">
+                    Previous
+                  </Button>
+                )}
+                {step < inquiries.length && (
+                  <Button
+                    colorScheme="green"
+                    disabled={!formData[`step${step}`]?.answer}
+                    onClick={nextStep}
+                  >
+                    Next
+                  </Button>
+                )}
+              </ButtonGroup>
+            </Box>
+            <Spacer />
+            <Box>
+              {step === inquiries.length && (
+                <Button mx="4" colorScheme="green" onClick={handleSubmit}>
+                  Submit
+                </Button>
+              )}
+              <Button
+                colorScheme="yellow"
+                onClick={resetSurvey}
+                variant="outline"
+              >
+                Reset
+              </Button>
+            </Box>
+          </Flex>
+        </Box>
       )}
     </Box>
   )

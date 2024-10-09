@@ -72,8 +72,8 @@ export const SurveyPanel = ({ setOpen }) => {
         w="100%"
         h="100%"
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        bg={useColorModeValue("gray.100", "gray.800")}
-        shadow="xl"
+        bg={useColorModeValue("gray.300", "gray.700")}
+        shadow="2xl"
       >
         <PanelHeader title="Survey" setOpen={setOpen} />
         <Box overflowY="auto" w="100%" h="100%" pb="8">
