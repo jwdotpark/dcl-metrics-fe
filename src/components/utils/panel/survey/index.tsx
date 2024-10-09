@@ -1,8 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 import {
   Box,
   Button,
-  Radio,
-  RadioGroup,
   VStack,
   Progress,
   Text,
@@ -10,53 +9,11 @@ import {
   Flex,
   ButtonGroup,
   Spacer,
+  Center,
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { inquiries } from "./statics"
-
-const Step = ({
-  inquiry,
-  formData,
-  setFormData,
-  step,
-  startTime,
-  setStartTime,
-}) => {
-  useEffect(() => {
-    setStartTime(Date.now())
-  }, [step, setStartTime])
-
-  const handleChange = (value) => {
-    const endTime = Date.now()
-    const responseTime = endTime - startTime
-    setFormData({
-      ...formData,
-      [`step${step}`]: { answer: value, responseTime },
-    })
-  }
-
-  return (
-    <Flex direction="column">
-      <Box>
-        <Text fontSize="xl" fontWeight="semibold">
-          {inquiry.question}
-        </Text>
-      </Box>
-      <RadioGroup
-        onChange={handleChange}
-        value={formData[`step${step}`]?.answer || ""}
-      >
-        <Flex direction="column" gap="4" mt="4" ml="0">
-          {inquiry.options.map((option, index) => (
-            <Radio key={index} value={option}>
-              {option}
-            </Radio>
-          ))}
-        </Flex>
-      </RadioGroup>
-    </Flex>
-  )
-}
+import { SurveyStep } from "./SurveyStep"
 
 export const SurveyContainer = () => {
   const [step, setStep] = useState(0)
@@ -66,11 +23,15 @@ export const SurveyContainer = () => {
   useEffect(() => {
     const savedStep = localStorage.getItem("surveyStep")
     const savedFormData = localStorage.getItem("surveyFormData")
+    const savedStartTime = localStorage.getItem("surveyStartTime")
     if (savedStep) {
       setStep(parseInt(savedStep, 10))
     }
     if (savedFormData) {
       setFormData(JSON.parse(savedFormData))
+    }
+    if (savedStartTime) {
+      setStartTime(parseInt(savedStartTime, 10))
     }
   }, [])
 
@@ -82,14 +43,19 @@ export const SurveyContainer = () => {
   const nextStep = () => setStep(step + 1)
   const prevStep = () => setStep(step - 1)
   const resetSurvey = () => {
-    setStep(0)
-    setFormData({})
-    localStorage.removeItem("surveyStep")
-    localStorage.removeItem("surveyFormData")
+    if (window.confirm("Are you sure you want to reset the survey?")) {
+      setStep(0)
+      setFormData({})
+      setStartTime(0)
+      localStorage.removeItem("surveyStep")
+      localStorage.removeItem("surveyFormData")
+      localStorage.removeItem("surveyStartTime")
+    }
   }
 
   const handleStartSurvey = () => {
     setStartTime(Date.now())
+    localStorage.setItem("surveyStartTime", Date.now().toString())
     nextStep()
   }
 
@@ -101,34 +67,51 @@ export const SurveyContainer = () => {
   const progress = (step / (inquiries.length + 1)) * 100
 
   return (
-    <Box pos="relative" minH="400px" p={4} borderWidth={1} borderRadius="lg">
-      <Box pos="relative" mb={4}>
-        <Progress
-          h="20px"
-          bg={useColorModeValue("gray.300", "gray.600")}
-          borderRadius="md"
-          value={progress}
-        />
-        <Text
-          pos="absolute"
-          top="50%"
-          left="50%"
-          transform="translate(-50%, -50%)"
-          whiteSpace="nowrap"
-        >
-          {step} / {inquiries.length}
-        </Text>
-      </Box>
+    <Box pos="relative" minH="400px" p={4} borderRadius="lg">
+      {step > 0 && (
+        <Box pos="relative" mb={4}>
+          <Progress
+            h="20px"
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            bg={useColorModeValue("gray.300", "gray.600")}
+            borderRadius="md"
+            value={progress}
+          />
+          <Text
+            pos="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            whiteSpace="nowrap"
+          >
+            {step} / {inquiries.length}
+          </Text>
+        </Box>
+      )}
+
       {step === 0 && (
         <VStack spacing={4}>
-          <Box>Welcome to the survey. Click Okay to start.</Box>
+          <Box>
+            <Center mb="4">
+              <Text fontSize="xl">Welcome to the survey!</Text>
+            </Center>
+            <Text align="justify" mb="8">
+              This survey will help us improve the usability of our site. Please
+              note that your responses will be recorded, and the time it takes
+              to complete the survey will also be tracked. The data collected
+              will be used to enhance your experience and improve the site's
+              usability. If you have any questions or feedback, please let us
+              know by using the message button on the top bar. If you agree to
+              participate, please click "Okay" to proceed with the survey.
+            </Text>
+          </Box>
           <Button onClick={handleStartSurvey}>Okay</Button>
         </VStack>
       )}
       {inquiries.map(
         (inquiry, index) =>
           step === index + 1 && (
-            <Step
+            <SurveyStep
               key={index}
               inquiry={inquiry}
               formData={formData}

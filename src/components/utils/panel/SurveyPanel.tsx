@@ -15,8 +15,8 @@ export const SurveyPanel = ({ setOpen }) => {
       setPosition({
         x: -450,
         y: 50,
-        width: 600,
-        height: 1000,
+        width: 500,
+        height: 500,
       })
     }
   }, [])
@@ -41,8 +41,6 @@ export const SurveyPanel = ({ setOpen }) => {
   if (!position) {
     return null
   }
-
-  //const surveyUrl = "https://tally.so/r/wAK6Mo"
 
   return (
     <Rnd
@@ -72,18 +70,12 @@ export const SurveyPanel = ({ setOpen }) => {
         w="100%"
         h="100%"
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        bg={useColorModeValue("gray.300", "gray.700")}
+        bg={useColorModeValue("gray.50", "gray.700")}
         shadow="2xl"
       >
         <PanelHeader title="Survey" setOpen={setOpen} />
         <Box overflowY="auto" w="100%" h="100%" pb="8">
           <SurveyContainer />
-          {/*<iframe
-            src={surveyUrl}
-            width="100%"
-            height="100%"
-            title="Survey Form"
-          ></iframe>*/}
         </Box>
       </Box>
     </Rnd>
