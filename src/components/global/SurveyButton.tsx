@@ -24,12 +24,12 @@ const SurveyButton = () => {
           </Button>
         </ToolTip>
       </Center>
-      {/*{open && (
+      {open && (
         <>
           <SurveyPanel setOpen={setOpen} />
         </>
-      )}*/}
-      <SurveyPanel setOpen={setOpen} />
+      )}
+      {/*<SurveyPanel setOpen={setOpen} />*/}
     </>
   )
 }

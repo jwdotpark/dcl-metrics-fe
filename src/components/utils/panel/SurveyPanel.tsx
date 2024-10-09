@@ -2,6 +2,7 @@ import { useColorModeValue, Box } from "@chakra-ui/react"
 import { Rnd } from "react-rnd"
 import { PanelHeader } from "./PanelHeader"
 import { useState, useEffect } from "react"
+import { SurveyContainer } from "./survey"
 
 export const SurveyPanel = ({ setOpen }) => {
   const [position, setPosition] = useState(null)
@@ -41,7 +42,7 @@ export const SurveyPanel = ({ setOpen }) => {
     return null
   }
 
-  const surveyUrl = "https://tally.so/r/wAK6Mo"
+  //const surveyUrl = "https://tally.so/r/wAK6Mo"
 
   return (
     <Rnd
@@ -76,12 +77,13 @@ export const SurveyPanel = ({ setOpen }) => {
       >
         <PanelHeader title="Survey" setOpen={setOpen} />
         <Box overflowY="auto" w="100%" h="100%" pb="8">
-          <iframe
+          <SurveyContainer />
+          {/*<iframe
             src={surveyUrl}
             width="100%"
             height="100%"
             title="Survey Form"
-          ></iframe>
+          ></iframe>*/}
         </Box>
       </Box>
     </Rnd>
