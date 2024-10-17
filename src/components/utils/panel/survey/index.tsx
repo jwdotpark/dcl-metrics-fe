@@ -1,18 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import {
-  Box,
-  Button,
-  VStack,
-  Progress,
-  Text,
-  useColorModeValue,
-  Flex,
-  ButtonGroup,
-  Spacer,
-  Center,
-} from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
+import { ProgressBar } from "./ProgressBar"
 import { inquiries } from "./statics"
+import { SurveyForm } from "./SurveyForm"
+import { SurveyIntro } from "./SurveyIntro"
 import { SurveyStep } from "./SurveyStep"
 
 export const SurveyContainer = () => {
@@ -59,20 +51,13 @@ export const SurveyContainer = () => {
     nextStep()
   }
 
-  const handleSubmit = async () => {
-    alert(JSON.stringify(formData, null, 2))
-    console.log(formData)
-    await handleFormSubmit()
-    resetSurvey()
-  }
-
   const progress = (step / (inquiries.length + 1)) * 100
 
   const apiKey = process.env.NEXT_PUBLIC_AIRTABLE_API
   const baseID = process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID
   const tableName = process.env.NEXT_PUBLIC_AIRTABLE_NAME
 
-  const handleFormSubmit = async () => {
+  const handleSubmit = async () => {
     const fields = inquiries.reduce((acc, inquiries, index) => {
       const step = `step${Number(index) + 1}`
       acc[`${step}`] = formData[step]?.answer
@@ -81,8 +66,6 @@ export const SurveyContainer = () => {
     }, {})
 
     const data = { fields }
-
-    console.log(data)
 
     try {
       const response = await fetch(
@@ -113,46 +96,8 @@ export const SurveyContainer = () => {
 
   return (
     <Box pos="relative" minH="400px" p={4} borderRadius="lg">
-      {step > 0 && (
-        <Box pos="relative" mb={4}>
-          <Progress
-            h="20px"
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            bg={useColorModeValue("gray.300", "gray.600")}
-            borderRadius="md"
-            value={progress}
-          />
-          <Text
-            pos="absolute"
-            top="50%"
-            left="50%"
-            transform="translate(-50%, -50%)"
-            whiteSpace="nowrap"
-          >
-            {step} / {inquiries.length}
-          </Text>
-        </Box>
-      )}
-
-      {step === 0 && (
-        <VStack spacing={4}>
-          <Box>
-            <Center mb="4">
-              <Text fontSize="xl">Welcome to the survey!</Text>
-            </Center>
-            <Text align="justify" mb="8" mx="4">
-              This survey will help us improve the usability of our site. Please
-              note that your responses will be recorded, and the time it takes
-              to complete the survey will also be tracked. The data collected
-              will be used to enhance your experience and improve the site's
-              usability. If you have any questions or feedback, please let us
-              know by using the message button on the top bar. If you agree to
-              participate, please click "Okay" to proceed with the survey.
-            </Text>
-          </Box>
-          <Button onClick={handleStartSurvey}>Okay</Button>
-        </VStack>
-      )}
+      <ProgressBar step={step} progress={progress} />
+      <SurveyIntro step={step} handleStartSurvey={handleStartSurvey} />
       {inquiries.map(
         (inquiry, index) =>
           step === index + 1 && (
@@ -167,51 +112,14 @@ export const SurveyContainer = () => {
             />
           )
       )}
-      {step > 0 && (
-        <Box
-          pos="absolute"
-          bottom="16px"
-          left="50%"
-          w="100%"
-          transform="translateX(-50%)"
-        >
-          <Flex px="4">
-            <Box>
-              <ButtonGroup isAttached>
-                {step > 1 && (
-                  <Button onClick={prevStep} variant="outline">
-                    Previous
-                  </Button>
-                )}
-                {step < inquiries.length && (
-                  <Button
-                    colorScheme="green"
-                    disabled={!formData[`step${step}`]?.answer}
-                    onClick={nextStep}
-                  >
-                    Next
-                  </Button>
-                )}
-              </ButtonGroup>
-            </Box>
-            <Spacer />
-            <Box>
-              {step === inquiries.length && (
-                <Button mx="4" colorScheme="green" onClick={handleSubmit}>
-                  Submit
-                </Button>
-              )}
-              <Button
-                colorScheme="yellow"
-                onClick={resetSurvey}
-                variant="outline"
-              >
-                Reset
-              </Button>
-            </Box>
-          </Flex>
-        </Box>
-      )}
+      <SurveyForm
+        step={step}
+        prevStep={prevStep}
+        nextStep={nextStep}
+        handleSubmit={handleSubmit}
+        resetSurvey={resetSurvey}
+        formData={formData}
+      />
     </Box>
   )
 }
