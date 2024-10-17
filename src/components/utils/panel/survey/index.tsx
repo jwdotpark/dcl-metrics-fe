@@ -59,12 +59,57 @@ export const SurveyContainer = () => {
     nextStep()
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     alert(JSON.stringify(formData, null, 2))
+    console.log(formData)
+    await handleFormSubmit()
     resetSurvey()
   }
 
   const progress = (step / (inquiries.length + 1)) * 100
+
+  const apiKey = process.env.NEXT_PUBLIC_AIRTABLE_API
+  const baseID = process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID
+  const tableName = process.env.NEXT_PUBLIC_AIRTABLE_NAME
+
+  const handleFormSubmit = async () => {
+    const fields = inquiries.reduce((acc, inquiries, index) => {
+      const step = `step${Number(index) + 1}`
+      acc[`${step}`] = formData[step]?.answer
+      acc[`${step} rt`] = formData[step]?.responseTime
+      return acc
+    }, {})
+
+    const data = { fields }
+
+    console.log(data)
+
+    try {
+      const response = await fetch(
+        `https://api.airtable.com/v0/${baseID}/${tableName}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      )
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok")
+      }
+
+      const responseData = await response.json()
+      console.log("Airtable response:", responseData)
+      alert("Form submitted successfully!")
+      resetSurvey()
+    } catch (error) {
+      console.error("Error submitting form to Airtable:", error)
+      alert("There was an error submitting the form. Please try again.")
+    }
+  }
 
   return (
     <Box pos="relative" minH="400px" p={4} borderRadius="lg">
@@ -95,7 +140,7 @@ export const SurveyContainer = () => {
             <Center mb="4">
               <Text fontSize="xl">Welcome to the survey!</Text>
             </Center>
-            <Text align="justify" mb="8">
+            <Text align="justify" mb="8" mx="4">
               This survey will help us improve the usability of our site. Please
               note that your responses will be recorded, and the time it takes
               to complete the survey will also be tracked. The data collected
