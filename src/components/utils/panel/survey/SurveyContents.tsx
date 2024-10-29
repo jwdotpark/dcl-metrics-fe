@@ -1,13 +1,13 @@
 import { Box, Flex, ButtonGroup, Button, Spacer } from "@chakra-ui/react"
 import { inquiries } from "./statics"
 
-export const SurveyForm = ({
+export const SurveyContents = ({
   step,
   prevStep,
   formData,
   nextStep,
   handleSubmit,
-  resetSurvey,
+  setIsResetOpen,
 }) => {
   return (
     <>
@@ -52,7 +52,7 @@ export const SurveyForm = ({
               )}
               <Button
                 colorScheme="yellow"
-                onClick={resetSurvey}
+                onClick={() => setIsResetOpen(true)}
                 variant="outline"
               >
                 Reset

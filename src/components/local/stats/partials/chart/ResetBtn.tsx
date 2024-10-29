@@ -4,10 +4,9 @@ import ToolTip from "../../../../layout/local/ToolTip"
 
 const ChartResetBtn = ({ handleReset }) => {
   return (
-    <Box pos="absolute" zIndex="99999" top="0" right="5">
+    <Box pos="absolute" zIndex="8" top="0" right="5">
       <ToolTip label={`Reset`}>
         <IconButton
-          zIndex="auto"
           border="1px solid"
           borderColor={useColorModeValue("gray.200", "gray.600")}
           borderRadius="full"

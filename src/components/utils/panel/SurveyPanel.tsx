@@ -2,7 +2,7 @@ import { useColorModeValue, Box } from "@chakra-ui/react"
 import { Rnd } from "react-rnd"
 import { PanelHeader } from "./PanelHeader"
 import { useState, useEffect } from "react"
-import { SurveyContainer } from "./survey"
+import SurveyContainer from "./survey"
 
 export const SurveyPanel = ({ setOpen }) => {
   const [position, setPosition] = useState(null)
@@ -54,7 +54,7 @@ export const SurveyPanel = ({ setOpen }) => {
         borderColor: "#A0AEC0",
         borderRadius: "12px",
         overflow: "hidden",
-        zIndex: 999998,
+        zIndex: 10,
         boxShadow: "0 0 5px rgba(0,0,0,0.4)",
       }}
       bounds="window"
