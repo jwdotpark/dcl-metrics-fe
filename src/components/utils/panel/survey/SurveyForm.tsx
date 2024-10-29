@@ -41,7 +41,12 @@ export const SurveyForm = ({
             <Spacer />
             <Box>
               {step === inquiries.length && (
-                <Button mx="4" colorScheme="green" onClick={handleSubmit}>
+                <Button
+                  mx="4"
+                  colorScheme="green"
+                  disabled={!formData[`step${step}`]?.answer}
+                  onClick={handleSubmit}
+                >
                   Submit
                 </Button>
               )}

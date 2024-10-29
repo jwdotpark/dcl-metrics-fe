@@ -35,7 +35,7 @@ export const SurveyContainer = () => {
   const nextStep = () => setStep(step + 1)
   const prevStep = () => setStep(step - 1)
   const resetSurvey = () => {
-    if (window.confirm("Are you sure you want to reset the survey?")) {
+    if (window.confirm("Do you want to reset the survey?")) {
       setStep(0)
       setFormData({})
       setStartTime(0)
@@ -84,8 +84,6 @@ export const SurveyContainer = () => {
         throw new Error("Network response was not ok")
       }
 
-      const responseData = await response.json()
-      console.log("Airtable response:", responseData)
       alert("Form submitted successfully!")
       resetSurvey()
     } catch (error) {
