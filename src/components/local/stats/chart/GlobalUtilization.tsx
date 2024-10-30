@@ -12,21 +12,27 @@ import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
 const GlobalUtilization = () => {
   // fetch utilization data
   const fetchUtilization = async () => {
-    if (isProd) {
-      const utilizationURL = getEndpoint("utilization")
-      const response = await fetch(utilizationURL)
-      const data = await response.json()
-      console.log("data", data)
-    } else if (isDev) {
-      const utilizationURL = getEndpoint("utilization")
-      const response = await fetch(utilizationURL)
-      const data = await response.json()
-      console.log("data", data)
-    } else if (isLocal) {
-      const utilizationURL = getEndpoint("utilization")
-      const response = await fetch(utilizationURL)
-      const data = await response.json()
-      console.log("data", data)
+    try {
+      if (isProd) {
+        const utilizationURL = getEndpoint("utilization")
+        const response = await fetch(utilizationURL)
+        const data = await response.json()
+        console.log("data", data)
+      } else if (isDev) {
+        const utilizationURL = getEndpoint("utilization")
+        const response = await fetch(utilizationURL)
+        const data = await response.json()
+        console.log("data", data)
+      } else if (isLocal) {
+        const utilizationURL = getEndpoint("utilization")
+        const response = await fetch(utilizationURL)
+        const data = await response.json()
+        console.log("data", data)
+      }
+    } catch (error) {
+      console.error("error", error)
+    } finally {
+      console.log("fetching finished")
     }
   }
 
