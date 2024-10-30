@@ -81,10 +81,10 @@ export const getDataWithApiKey = async (targetUrl, endpoint, staticFile) => {
 }
 
 export async function fetchGlobalData() {
-  let globalDailyRes, parcelRes, landSalesRes
+  let globalDailyRes, parcelRes, landSalesRes, utilizationRes
 
   if (isProd) {
-    ;[globalDailyRes, parcelRes] = await Promise.all(
+    ;[globalDailyRes, parcelRes, utilizationRes] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
         getDataWithApiKey(url, endpoint, staticData)
       )
@@ -95,7 +95,7 @@ export async function fetchGlobalData() {
     //  staticLandSales
     //)
   } else if (isDev && !isLocal) {
-    ;[globalDailyRes, parcelRes, landSalesRes] = await Promise.all(
+    ;[globalDailyRes, parcelRes, utilizationRes] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
         getDataWithApiKey(url, endpoint, staticData)
       )
@@ -103,6 +103,7 @@ export async function fetchGlobalData() {
   } else if (isLocal) {
     globalDailyRes = staticGlobalDaily
     parcelRes = staticParcel
+    utilizationRes = 50
     //landSalesRes = staticLandSales
   }
 
@@ -124,6 +125,7 @@ export async function fetchGlobalData() {
     globalDailyRes,
     parcelRes,
     //landSalesRes,
+    utilizationRes,
   }
 }
 
