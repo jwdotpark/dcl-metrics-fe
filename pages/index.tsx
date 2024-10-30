@@ -7,7 +7,6 @@ import {
   Box,
   Spinner,
   Center,
-  GridItem,
 } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
 import LandPicker from "../src/components/global/map/LandPicker"
@@ -29,7 +28,7 @@ import GlobalChart from "../src/components/local/stats/GlobalCharts"
 import { DataArrayType, DataObjectType } from "../src/lib/types/IndexPage"
 import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
 import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
-import PlainBoxTitle from "../src/components/layout/local/PlainBoxTitle"
+import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -57,7 +56,6 @@ const GlobalPage: NextPage = (props: Props) => {
     globalDailyRes,
     parcelRes,
     //landSalesRes, rental,
-    utilizationRes,
   } = props
 
   const pageTitle = "DCL-Metrics"
@@ -154,16 +152,7 @@ const GlobalPage: NextPage = (props: Props) => {
               <ActiveUsers />
             </Grid>
           </Box>
-          {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-            <BoxWrapper colSpan={3}>
-              <GridItem w="100%" h="auto" colSpan={[6, 3]}>
-                <PlainBoxTitle
-                  name="Global Utilization"
-                  description="Active daily users, data from Decentraland Status Page"
-                />
-              </GridItem>
-            </BoxWrapper>
-          </Grid>*/}
+          <GlobalUtilization />
 
           <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
           {!isLoading && !error && Object.keys(worldData).length > 0 ? (

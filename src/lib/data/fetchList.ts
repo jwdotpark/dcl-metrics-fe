@@ -5,7 +5,7 @@ import staticParcel from "../../../public/data/cached_parcel.json"
 
 //import staticTopLand from "../../../public/data/staticTopLand.json"
 //import staticTopPick from "../../../public/data/staticTopPick.json"
-import { globalDailyURL, parcelURL, utilizationURL } from "./constant"
+import { globalDailyURL, parcelURL } from "./constant"
 
 // NOTE commented endpoints are temporarily disabled
 export const globalRequestList = [
@@ -48,7 +48,6 @@ export const globalRequestList = [
   //    "https://services.itrmachines.com/val-analytics/topPicks?metaverse=decentraland",
   //  staticData: staticTopPick,
   //},
-  { url: utilizationURL, endpoint: "/utilization", staticData: 50 },
 ]
 
 export const globalFileNameArr = [
