@@ -1,55 +1,55 @@
-import { Box } from "@chakra-ui/react"
-import { useEffect } from "react"
-import {
-  getEndpoint,
-  isDev,
-  isLocal,
-  isProd,
-} from "../../../../lib/data/constant"
+import { Text, GridItem, Center } from "@chakra-ui/react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
+import ReactSpeedometer from "react-d3-speedometer"
+import ToolTip from "../../../layout/local/ToolTip"
 
-const GlobalUtilization = () => {
-  // fetch utilization data
-  const fetchUtilization = async () => {
-    try {
-      if (isProd) {
-        const utilizationURL = getEndpoint("utilization")
-        const response = await fetch(utilizationURL)
-        const data = await response.json()
-        console.log("data", data)
-      } else if (isDev) {
-        const utilizationURL = getEndpoint("utilization")
-        const response = await fetch(utilizationURL)
-        const data = await response.json()
-        console.log("data", data)
-      } else if (isLocal) {
-        const utilizationURL = getEndpoint("utilization")
-        const response = await fetch(utilizationURL)
-        const data = await response.json()
-        console.log("data", data)
-      }
-    } catch (error) {
-      console.error("error", error)
-    } finally {
-      console.log("fetching finished")
+const GlobalUtilization = ({ utilizationData }) => {
+  const segmentValueFormatter = (value) => {
+    if (value < 20) {
+      return `${value}`
     }
+    if (value < 40) {
+      return `${value}`
+    }
+    return `${value}`
   }
-
-  useEffect(() => {
-    fetchUtilization()
-  }, [])
-
   return (
-    <Box mb="4">
-      <BoxWrapper colSpan={0}>
-        <PlainBoxTitle
-          name="Global Utilization"
-          description="Global utilization value description"
-        />
-        <Box m="4"></Box>
-      </BoxWrapper>
-    </Box>
+    <BoxWrapper colSpan={2}>
+      <ToolTip label={`${utilizationData}% Utilization`}>
+        <GridItem overflowY="hidden" w="100%" h="100%" colSpan={[6, 3]}>
+          <PlainBoxTitle
+            name="Global Utilization"
+            description="Global utilization value description"
+          />
+          <Center h="180px" mt="16">
+            <ReactSpeedometer
+              height={200}
+              maxValue={100}
+              value={utilizationData}
+              needleColor="black"
+              startColor="red"
+              endColor="green"
+              segments={5}
+              forceRender={true}
+              needleTransitionDuration={1000}
+              fluidWidth={false}
+              segmentValueFormatter={segmentValueFormatter}
+              paddingHorizontal={34}
+              paddingVertical={34}
+              currentValueText=""
+              ringWidth={50}
+              needleHeightRatio={0.75}
+            />
+          </Center>
+          <Center w="100%">
+            <Text fontSize="2xl" fontWeight="bold">
+              {utilizationData}%
+            </Text>
+          </Center>
+        </GridItem>
+      </ToolTip>
+    </BoxWrapper>
   )
 }
 
