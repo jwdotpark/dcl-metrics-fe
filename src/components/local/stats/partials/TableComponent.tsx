@@ -111,6 +111,7 @@ const RenderTd = (body, row) => {
       status: "success",
     })
   }
+
   switch (body) {
     case "time_spent":
       return (
@@ -134,7 +135,8 @@ const RenderTd = (body, row) => {
           <Link href={`/users/${row.address}`} target="_blank">
             <Flex>
               <ProfilePicture
-                address={row.avatar_url}
+                name={row.name}
+                address={row.address}
                 verified={row.verified_user}
                 guest={row.guest_user}
               />
@@ -292,7 +294,8 @@ const RenderTd = (body, row) => {
               target="_blank"
             >
               <ProfilePicture
-                address={profileImage}
+                name={profileImage}
+                address={row.address}
                 verified={false}
                 guest={false}
               />
