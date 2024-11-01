@@ -25,65 +25,65 @@ jobs:
             By: ${{ github.actor }}
             Commit: <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>
 
-      - name: actions/cache@v3
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+  #    - name: actions/cache@v3
+  #      uses: actions/cache@v3
+  #      with:
+  #        path: |
+  #          ~/.npm
+  #          ${{ github.workspace }}/.next/cache
+  #        # Generate a new cache whenever packages or source files change.
+  #        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+  #        # If source files changed but packages didn't, rebuild from a prior cache.
+  #        restore-keys: |
+  #          ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
-      - name: Install dependencies
-        run: |
-          yarn install
+  #    - name: Install dependencies
+  #      run: |
+  #        yarn install
 
-      - name: Run test
-        run: |
-          yarn test --verbose
+  #    - name: Run test
+  #      run: |
+  #        yarn test --verbose
 
-      - name: Send Test Fail message
-        if: failure()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: html
-          message: |
-            ❌ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> test failed..
+  #    - name: Send Test Fail message
+  #      if: failure()
+  #      uses: appleboy/telegram-action@master
+  #      with:
+  #        to: ${{ secrets.TELEGRAM_TO }}
+  #        token: ${{ secrets.TELEGRAM_TOKEN }}
+  #        format: html
+  #        message: |
+  #          ❌ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> test failed..
 
-      - name: Send Test Success message
-        if: success()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: html
-          message: |
-            ✅ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> test passed!
+  #    - name: Send Test Success message
+  #      if: success()
+  #      uses: appleboy/telegram-action@master
+  #      with:
+  #        to: ${{ secrets.TELEGRAM_TO }}
+  #        token: ${{ secrets.TELEGRAM_TOKEN }}
+  #        format: html
+  #        message: |
+  #          ✅ Commit <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a> test passed!
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "dcl-metrics-fe"
-          heroku_email: "jongwoo.park@code.berlin"
+  #deploy:
+  #  runs-on: ubuntu-latest
+  #  needs: [build]
+  #  steps:
+  #    - uses: actions/checkout@v3
+  #    - uses: akhileshns/heroku-deploy@v3.12.12
+  #      with:
+  #        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+  #        heroku_app_name: "dcl-metrics-fe"
+  #        heroku_email: "jongwoo.park@code.berlin"
 
-      - name: Finish build notfication
-        uses: appleboy/telegram-action@master
-        if: always()
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          disable_web_page_preview: true
-          format: html
-          message: |
-            ${{ job.status == 'success' && '✅ Production Build Success!' || '❌ Production Build Failed..' }}
-            Live Site: <a href="https://dcl-metrics.com/">dcl-metrics.com</a>
+  #    - name: Finish build notfication
+  #      uses: appleboy/telegram-action@master
+  #      if: always()
+  #      with:
+  #        to: ${{ secrets.TELEGRAM_TO }}
+  #        token: ${{ secrets.TELEGRAM_TOKEN }}
+  #        disable_web_page_preview: true
+  #        format: html
+  #        message: |
+  #          ${{ job.status == 'success' && '✅ Production Build Success!' || '❌ Production Build Failed..' }}
+  #          Live Site: <a href="https://dcl-metrics.com/">dcl-metrics.com</a>
