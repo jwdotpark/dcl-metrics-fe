@@ -28,6 +28,7 @@ import GlobalChart from "../src/components/local/stats/GlobalCharts"
 import { DataArrayType, DataObjectType } from "../src/lib/types/IndexPage"
 import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
 import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
+import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -54,7 +55,7 @@ const GlobalPage: NextPage = (props: Props) => {
   const {
     globalDailyRes,
     parcelRes,
-    //landSalesRes, rental
+    //landSalesRes, rental,
   } = props
 
   const pageTitle = "DCL-Metrics"
@@ -69,30 +70,47 @@ const GlobalPage: NextPage = (props: Props) => {
   })
 
   const [worldData, setWorldData] = useState({})
+  const [utilizationData, setUtilizationData] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState()
 
-  const fetchWorldData = async () => {
-    const baseUrl = "http://api.dcl-metrics.com/"
-    const endpoint = "worlds/current"
+  const fetchClientData = async () => {
+    const worldBaseUrl = "http://api.dcl-metrics.com/"
+    const worldEndpoint = "worlds/current"
+    const utilizationEndpoint = "utilization"
 
     setIsLoading(true)
     try {
-      if (!isLocal) {
-        const response = await fetch(`/api/fetch?url=${baseUrl + endpoint}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+      const fetchData = async (endpoint) => {
+        const response = await fetch(
+          `/api/fetch?url=${worldBaseUrl + endpoint}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        return response.json()
+      }
 
-        const data = await response.json()
-        setWorldData(data.result)
+      if (!isLocal) {
+        const [worldData, utilizationData] = await Promise.all([
+          fetchData(worldEndpoint),
+          fetchData(utilizationEndpoint),
+        ])
+
+        setWorldData(worldData.result)
+        setUtilizationData(
+          Number(utilizationData.result.global_utilization.toFixed(2))
+        )
       } else {
+        const staticUtilizationData = 75
         setWorldData(staticWorldCurrent)
+        setUtilizationData(staticUtilizationData)
       }
     } catch (error) {
-      console.error("Error fetching world data..")
+      console.error("Error fetching data: ", error)
       setError(error)
     } finally {
       setIsLoading(false)
@@ -117,7 +135,7 @@ const GlobalPage: NextPage = (props: Props) => {
   const chartData = flattenObject(globalDailyRes)
 
   useEffect(() => {
-    fetchWorldData()
+    fetchClientData()
   }, [])
 
   return (
@@ -149,8 +167,13 @@ const GlobalPage: NextPage = (props: Props) => {
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <OnlineUsers />
               <ActiveUsers />
+              <GlobalUtilization
+                utilizationData={utilizationData}
+                isLoading={isLoading}
+              />
             </Grid>
           </Box>
+
           <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
           {!isLoading && !error && Object.keys(worldData).length > 0 ? (
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">

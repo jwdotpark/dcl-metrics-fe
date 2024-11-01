@@ -104,7 +104,7 @@ export const ActiveUsers = () => {
   }, [])
 
   return (
-    <BoxWrapper colSpan={3}>
+    <BoxWrapper colSpan={2}>
       <GridItem w="100%" h="auto" colSpan={[6, 3]}>
         <Box mb="2">
           <PlainBoxTitle
