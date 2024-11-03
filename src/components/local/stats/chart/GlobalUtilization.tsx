@@ -8,8 +8,12 @@ import {
 } from "@chakra-ui/react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
-import ReactSpeedometer from "react-d3-speedometer"
 import ToolTip from "../../../layout/local/ToolTip"
+//import ReactSpeedometer from "react-d3-speedometer"
+import dynamic from "next/dynamic"
+const ReactSpeedometer = dynamic(() => import("react-d3-speedometer"), {
+  ssr: false,
+})
 
 const GlobalUtilization = ({ utilizationData, isLoading }) => {
   return (
