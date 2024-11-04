@@ -25,10 +25,10 @@ import { isLocal } from "../src/lib/data/constant"
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import BoxWrapper from "../src/components/layout/local/BoxWrapper"
 import GlobalChart from "../src/components/local/stats/GlobalCharts"
-import { DataArrayType, DataObjectType } from "../src/lib/types/IndexPage"
 import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
 import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
-import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
+import { flattenObject } from "../src/lib/hooks/utils"
+//import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -134,36 +134,39 @@ const GlobalPage: NextPage = (props: Props) => {
     return response.json()
   }
 
-  const fetchUtilizationData = async () => {
-    const response = await fetch(
-      `/api/fetch?url=${worldBaseUrl + utilizationEndpoint}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-    return response.json()
-  }
+  //const fetchUtilizationData = async () => {
+  //  const response = await fetch(
+  //    `/api/fetch?url=${worldBaseUrl + utilizationEndpoint}`,
+  //    {
+  //      method: "GET",
+  //      headers: {
+  //        "Content-Type": "application/json",
+  //      },
+  //    }
+  //  )
+  //  return response.json()
+  //}
 
   const fetchClientData = async () => {
     setIsLoading(true)
     try {
       if (!isLocal) {
-        const [worldData, utilizationData] = await Promise.all([
+        const [
+          worldData,
+          //utilizationData
+        ] = await Promise.all([
           fetchWorldData(),
-          fetchUtilizationData(),
+          //fetchUtilizationData(),
         ])
 
         setWorldData(worldData.result)
-        setUtilizationData(
-          Number(utilizationData.result.global_utilization.toFixed(2))
-        )
+        //setUtilizationData(
+        //  Number(utilizationData.result.global_utilization.toFixed(2))
+        //)
       } else {
         const staticUtilizationData = 75
         setWorldData(staticWorldCurrent)
-        setUtilizationData(staticUtilizationData)
+        //setUtilizationData(staticUtilizationData)
       }
     } catch (error) {
       console.error("Error fetching data: ", error)
@@ -171,21 +174,6 @@ const GlobalPage: NextPage = (props: Props) => {
     } finally {
       setIsLoading(false)
     }
-  }
-
-  const flattenObject = (
-    temp: Record<string, DataObjectType>
-  ): DataArrayType[] => {
-    return Object.entries(temp).map(([date, value]) => ({
-      date,
-      active_parcels: value.active_parcels,
-      active_scenes: value.active_scenes,
-      guest_users: value.users.guest_users,
-      named_users: value.users.named_users,
-      new_users: value.users.new_users,
-      unique_users: value.users.unique_users,
-      degraded: value.degraded,
-    }))
   }
 
   const chartData = flattenObject(globalDailyRes)
@@ -223,10 +211,10 @@ const GlobalPage: NextPage = (props: Props) => {
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <OnlineUsers />
               <ActiveUsers />
-              <GlobalUtilization
+              {/*<GlobalUtilization
                 utilizationData={utilizationData}
                 isLoading={isLoading}
-              />
+              />*/}
             </Grid>
           </Box>
 
