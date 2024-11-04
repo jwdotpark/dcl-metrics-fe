@@ -74,30 +74,86 @@ const GlobalPage: NextPage = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState()
 
-  const fetchClientData = async () => {
-    const worldBaseUrl = "http://api.dcl-metrics.com/"
-    const worldEndpoint = "worlds/current"
-    const utilizationEndpoint = "utilization"
+  //const fetchClientData = async () => {
+  //  const worldBaseUrl = "http://api.dcl-metrics.com/"
+  //  const worldEndpoint = "worlds/current"
+  //  const utilizationEndpoint = "utilization"
 
+  //  setIsLoading(true)
+  //  try {
+  //    const fetchData = async (endpoint) => {
+  //      const response = await fetch(
+  //        `/api/fetch?url=${worldBaseUrl + endpoint}`,
+  //        {
+  //          method: "GET",
+  //          headers: {
+  //            "Content-Type": "application/json",
+  //          },
+  //        }
+  //      )
+  //      return response.json()
+  //    }
+
+  //    if (!isLocal) {
+  //      const [worldData, utilizationData] = await Promise.all([
+  //        fetchData(worldEndpoint),
+  //        fetchData(utilizationEndpoint),
+  //      ])
+
+  //      setWorldData(worldData.result)
+  //      setUtilizationData(
+  //        Number(utilizationData.result.global_utilization.toFixed(2))
+  //      )
+  //    } else {
+  //      const staticUtilizationData = 75
+  //      setWorldData(staticWorldCurrent)
+  //      setUtilizationData(staticUtilizationData)
+  //    }
+  //  } catch (error) {
+  //    console.error("Error fetching data: ", error)
+  //    setError(error)
+  //  } finally {
+  //    setIsLoading(false)
+  //  }
+  //}
+
+  const worldBaseUrl = "http://api.dcl-metrics.com/"
+  const worldEndpoint = "worlds/current"
+  const utilizationEndpoint = "utilization"
+
+  const fetchWorldData = async () => {
+    const response = await fetch(
+      `/api/fetch?url=${worldBaseUrl + worldEndpoint}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    return response.json()
+  }
+
+  const fetchUtilizationData = async () => {
+    const response = await fetch(
+      `/api/fetch?url=${worldBaseUrl + utilizationEndpoint}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    return response.json()
+  }
+
+  const fetchClientData = async () => {
     setIsLoading(true)
     try {
-      const fetchData = async (endpoint) => {
-        const response = await fetch(
-          `/api/fetch?url=${worldBaseUrl + endpoint}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        return response.json()
-      }
-
       if (!isLocal) {
         const [worldData, utilizationData] = await Promise.all([
-          fetchData(worldEndpoint),
-          fetchData(utilizationEndpoint),
+          fetchWorldData(),
+          fetchUtilizationData(),
         ])
 
         setWorldData(worldData.result)
