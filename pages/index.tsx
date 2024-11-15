@@ -28,7 +28,7 @@ import GlobalChart from "../src/components/local/stats/GlobalCharts"
 import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
 import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
 import { flattenObject } from "../src/lib/hooks/utils"
-//import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
+import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -74,49 +74,6 @@ const GlobalPage: NextPage = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState()
 
-  //const fetchClientData = async () => {
-  //  const worldBaseUrl = "http://api.dcl-metrics.com/"
-  //  const worldEndpoint = "worlds/current"
-  //  const utilizationEndpoint = "utilization"
-
-  //  setIsLoading(true)
-  //  try {
-  //    const fetchData = async (endpoint) => {
-  //      const response = await fetch(
-  //        `/api/fetch?url=${worldBaseUrl + endpoint}`,
-  //        {
-  //          method: "GET",
-  //          headers: {
-  //            "Content-Type": "application/json",
-  //          },
-  //        }
-  //      )
-  //      return response.json()
-  //    }
-
-  //    if (!isLocal) {
-  //      const [worldData, utilizationData] = await Promise.all([
-  //        fetchData(worldEndpoint),
-  //        fetchData(utilizationEndpoint),
-  //      ])
-
-  //      setWorldData(worldData.result)
-  //      setUtilizationData(
-  //        Number(utilizationData.result.global_utilization.toFixed(2))
-  //      )
-  //    } else {
-  //      const staticUtilizationData = 75
-  //      setWorldData(staticWorldCurrent)
-  //      setUtilizationData(staticUtilizationData)
-  //    }
-  //  } catch (error) {
-  //    console.error("Error fetching data: ", error)
-  //    setError(error)
-  //  } finally {
-  //    setIsLoading(false)
-  //  }
-  //}
-
   const worldBaseUrl = "http://api.dcl-metrics.com/"
   const worldEndpoint = "worlds/current"
   const utilizationEndpoint = "utilization"
@@ -134,39 +91,36 @@ const GlobalPage: NextPage = (props: Props) => {
     return response.json()
   }
 
-  //const fetchUtilizationData = async () => {
-  //  const response = await fetch(
-  //    `/api/fetch?url=${worldBaseUrl + utilizationEndpoint}`,
-  //    {
-  //      method: "GET",
-  //      headers: {
-  //        "Content-Type": "application/json",
-  //      },
-  //    }
-  //  )
-  //  return response.json()
-  //}
+  const fetchUtilizationData = async () => {
+    const response = await fetch(
+      `/api/fetch?url=${worldBaseUrl + utilizationEndpoint}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    return response.json()
+  }
 
   const fetchClientData = async () => {
     setIsLoading(true)
     try {
       if (!isLocal) {
-        const [
-          worldData,
-          //utilizationData
-        ] = await Promise.all([
+        const [worldData, utilizationData] = await Promise.all([
           fetchWorldData(),
-          //fetchUtilizationData(),
+          fetchUtilizationData(),
         ])
 
         setWorldData(worldData.result)
-        //setUtilizationData(
-        //  Number(utilizationData.result.global_utilization.toFixed(2))
-        //)
+        setUtilizationData(
+          Number(utilizationData.result.global_utilization.toFixed(2))
+        )
       } else {
-        const staticUtilizationData = 75
+        const staticUtilizationData = 25
         setWorldData(staticWorldCurrent)
-        //setUtilizationData(staticUtilizationData)
+        setUtilizationData(staticUtilizationData)
       }
     } catch (error) {
       console.error("Error fetching data: ", error)
@@ -211,10 +165,10 @@ const GlobalPage: NextPage = (props: Props) => {
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <OnlineUsers />
               <ActiveUsers />
-              {/*<GlobalUtilization
+              <GlobalUtilization
                 utilizationData={utilizationData}
                 isLoading={isLoading}
-              />*/}
+              />
             </Grid>
           </Box>
 
