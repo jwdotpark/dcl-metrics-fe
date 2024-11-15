@@ -95,7 +95,7 @@ export async function fetchGlobalData() {
     //  staticLandSales
     //)
   } else if (isDev && !isLocal) {
-    ;[globalDailyRes, parcelRes, landSalesRes] = await Promise.all(
+    ;[globalDailyRes, parcelRes] = await Promise.all(
       globalRequestList.map(({ url, endpoint, staticData }) =>
         getDataWithApiKey(url, endpoint, staticData)
       )
