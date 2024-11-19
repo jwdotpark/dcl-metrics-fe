@@ -13,14 +13,14 @@ import {
   ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../../lib/data/chart/chartHelper"
-import { indexChartMargin } from "../../../../../lib/data/constant"
+import { chartHeight, indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../../partials/chart/ResetBtn"
 import { useChartZoom } from "../../partials/chart/useChartZoom"
 
-export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
+export const SceneVisitedGrid = ({ chartData, avg, setAvg }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
   const {
     chartState,
@@ -38,18 +38,20 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
   return (
     <GridItemContainer>
       <Title
-        title="Active Parcel"
-        description="Parcels that had any activity for at least one minute."
+        title="Active Scenes"
+        description="Scenes that had any activity for at least one minute."
       />
       <Box>
         <Box
           pos="relative"
           w="100%"
-          h="100%"
+          h={chartHeight}
+          mt="4"
+          mb="2"
           onDoubleClick={() => handleReset()}
         >
           <ChartResetBtn handleReset={handleReset} />
-          <ResponsiveContainer width="100%" height={250}>
+          <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               margin={indexChartMargin}
               data={chartState.data}
@@ -59,7 +61,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
               onMouseLeave={() => handleMouseUp()}
               syncId="anyId"
             >
-              <CartesianGrid strokeDasharray="4 4" opacity={1} />
+              <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
               <Tooltip
                 content={
                   <CustomTooltip
@@ -84,7 +86,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
                 }}
               />
               <YAxis
-                dataKey="active_parcels"
+                dataKey="active_scenes"
                 fontSize="10px"
                 style={{
                   fontWeight: "medium",
@@ -94,20 +96,33 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
               <Area
                 animationDuration={150}
                 type="linear"
-                dataKey="active_parcels"
-                stroke="#CAB2D6"
+                dataKey="active_scenes"
+                stroke="#FFB86C"
                 strokeWidth="2px"
-                fill="#CAB2D680"
+                fill="#FFB86C80"
               />
               <ReferenceLine
-                y={avg.avgActiveParcels}
+                x="2022-07-31"
+                label={{
+                  position: "center",
+                  value: "Data Collection Starting Point",
+                  fill: useColorModeValue("#000", "#fff"),
+                  fontSize: 10,
+                }}
+                stroke="#E53E3E"
+                strokeWidth="1"
+                position="start"
+                strokeDasharray="4 4"
+              />
+              <ReferenceLine
+                y={avg.avgActiveScenes}
                 label={{
                   position: "insideBottomRight",
-                  value: `AVG. ${avg.avgActiveParcels}`,
+                  value: `AVG. ${avg.avgActiveScenes}`,
                   fill: useColorModeValue("#000", "#fff"),
                   fontSize: 12,
                 }}
-                stroke="#CAB2D6"
+                stroke="#FFB86C"
                 strokeWidth="1"
                 position="start"
                 strokeDasharray="4 4"
@@ -117,7 +132,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
                   x1={chartState.startX}
                   x2={chartState.endX}
                   stroke="#CAB2D6"
-                  strokeOpacity={0.5}
+                  strokeOpacity={0.3}
                 />
               )}
             </AreaChart>

@@ -4,6 +4,7 @@ import { Responsive, WidthProvider } from "react-grid-layout"
 import "react-grid-layout/css/styles.css"
 import "react-resizable/css/styles.css"
 import { ParcelVisitedGrid } from "../../../local/stats/chart/grid/ParcelVisitedGrid"
+import { SceneVisitedGrid } from "../../../local/stats/chart/grid/SceneVisitedGrid"
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
@@ -15,10 +16,9 @@ export const GridContainer = ({ chartData }) => {
       y: 0,
       w: 1,
       h: 1,
-      resizehandles: ["s", "n"],
       isResizable: false,
     },
-    { i: "2", x: 1, y: 0, w: 1, h: 1 },
+    { i: "2", x: 1, y: 0, w: 1, h: 1, isResizable: false },
     { i: "3", x: 0, y: 1, w: 2, h: 1 },
     { i: "4", x: 1, y: 1, w: 2, h: 1 },
   ]
@@ -48,14 +48,8 @@ export const GridContainer = ({ chartData }) => {
         <Box key="1" data-grid={layout[0]}>
           <ParcelVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
         </Box>
-        <Box
-          key="2"
-          p="2"
-          bg="gray.200"
-          border="1px solid"
-          data-grid={layout[1]}
-        >
-          2
+        <Box key="2" data-grid={layout[1]}>
+          <SceneVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
         </Box>
         <Box
           key="3"
