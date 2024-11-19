@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Responsive, WidthProvider } from "react-grid-layout"
 import "react-grid-layout/css/styles.css"
 import "react-resizable/css/styles.css"
@@ -8,20 +8,24 @@ import { SceneVisitedGrid } from "../../../local/stats/chart/grid/SceneVisitedGr
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
+const getSavedLayout = () => {
+  const savedLayout = localStorage.getItem("gridLayout")
+  return savedLayout ? JSON.parse(savedLayout) : null
+}
+
+const saveLayout = (layout) => {
+  localStorage.setItem("gridLayout", JSON.stringify(layout))
+}
+
 export const GridContainer = ({ chartData }) => {
-  const layout = [
-    {
-      i: "1",
-      x: 0,
-      y: 0,
-      w: 1,
-      h: 1,
-      isResizable: false,
-    },
+  const defaultLayout = [
+    { i: "1", x: 0, y: 0, w: 1, h: 1, isResizable: false },
     { i: "2", x: 1, y: 0, w: 1, h: 1, isResizable: false },
     { i: "3", x: 0, y: 1, w: 2, h: 1 },
     { i: "4", x: 1, y: 1, w: 2, h: 1 },
   ]
+
+  const [layout, setLayout] = useState(getSavedLayout() || defaultLayout)
 
   const [avg, setAvg] = useState({
     avgActiveParcels: 0,
@@ -31,6 +35,14 @@ export const GridContainer = ({ chartData }) => {
     avgNewUsers: 0,
     avgUniqueUsers: 0,
   })
+
+  useEffect(() => {
+    saveLayout(layout)
+  }, [layout])
+
+  const handleLayoutChange = (newLayout) => {
+    setLayout(newLayout)
+  }
 
   return (
     <Box w="100%" h="100%">
@@ -44,31 +56,19 @@ export const GridContainer = ({ chartData }) => {
         draggableHandle=".drag-handle"
         isDraggable={true}
         useCSSTransforms={true}
+        onLayoutChange={handleLayoutChange}
       >
-        <Box key="1" data-grid={layout[0]}>
+        {/* adjust the height of the container to be fixed  */}
+        <Box key="1" data-grid={layout.find((item) => item.i === "1")}>
           <ParcelVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
         </Box>
-        <Box key="2" data-grid={layout[1]}>
+        <Box key="2" data-grid={layout.find((item) => item.i === "2")}>
           <SceneVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
         </Box>
-        <Box
-          key="3"
-          p="2"
-          bg="gray.200"
-          border="1px solid"
-          data-grid={layout[2]}
-        >
-          3
+        {/*<Box key="3" data-grid={layout.find((item) => item.i === "3")}>
         </Box>
-        <Box
-          key="4"
-          p="2"
-          bg="gray.200"
-          border="1px solid"
-          data-grid={layout[3]}
-        >
-          4
-        </Box>
+        <Box key="4" data-grid={layout.find((item) => item.i === "4")}>
+        </Box>*/}
       </ResponsiveGridLayout>
     </Box>
   )
