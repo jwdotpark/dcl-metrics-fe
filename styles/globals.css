@@ -68,3 +68,8 @@ a {
 /*.recharts-label {
   font-size: 14px;
 }*/
+
+.react-grid-placeholder {
+  background-color: rgba(0, 0, 255, 0.2) !important;
+  border: 2px dashed rgba(0, 0, 255, 0.8) !important;
+}

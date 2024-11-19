@@ -10,7 +10,6 @@ const ChartResetBtn = ({ handleReset }) => {
           border="1px solid"
           borderColor={useColorModeValue("gray.200", "gray.600")}
           borderRadius="full"
-          shadow="md"
           aria-label={""}
           icon={<FiRotateCcw />}
           onClick={() => handleReset()}

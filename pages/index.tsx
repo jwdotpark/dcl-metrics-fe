@@ -29,6 +29,7 @@ import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
 import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
 import { flattenObject } from "../src/lib/hooks/utils"
 import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
+import { GridContainer } from "../src/components/layout/global/grid/GridContainer"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -159,7 +160,8 @@ const GlobalPage: NextPage = (props: Props) => {
       />
       <Layout>
         <Box w="100%">
-          <Box mb="4" data-testid="uniqueVisitors">
+          <GridContainer chartData={chartData} />
+          {/*<Box mb="4" data-testid="uniqueVisitors">
             <GlobalChart chartData={chartData} />
             <Box mb="4" />
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
@@ -170,9 +172,8 @@ const GlobalPage: NextPage = (props: Props) => {
                 isLoading={isLoading}
               />
             </Grid>
-          </Box>
-
-          <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
+          </Box>*/}
+          {/*<LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
           {!isLoading && !error && Object.keys(worldData).length > 0 ? (
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <WorldStat worldCurrentRes={worldData} isMainPage={true} />
@@ -187,7 +188,7 @@ const GlobalPage: NextPage = (props: Props) => {
               </BoxWrapper>
               <Box mb="4" />
             </>
-          )}
+          )}*/}
           {/*<Box mb="4">
             <LandSales data={landSalesRes} />
           </Box>
