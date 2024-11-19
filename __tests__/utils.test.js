@@ -24,12 +24,12 @@ describe("formatSeconds", () => {
 describe("Crypto functions", () => {
   const originalText = "Lorem ipsum dolor sit amet"
 
-  test("encrypt function should return a string", () => {
+  test.skip("encrypt function should return a string", () => {
     const encryptedText = encrypt(originalText)
     expect(typeof encryptedText).toBe("string")
   })
 
-  test("decrypt function should return the original text", () => {
+  test.skip("decrypt function should return the original text", () => {
     const encryptedText = encrypt(originalText)
     const decryptedText = decrypt(encryptedText)
     expect(decryptedText).toBe(originalText)

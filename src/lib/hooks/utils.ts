@@ -1,4 +1,3 @@
-import CryptoJS from "crypto-js"
 import { format, intervalToDuration, parse } from "date-fns"
 import { DataArrayType, DataObjectType } from "../types/IndexPage"
 
@@ -55,21 +54,6 @@ export const SceneColor = [
   "rgba(241, 150, 140)",
   "rgba(255, 121, 198)",
 ]
-
-const passPhrase = "okgu"
-
-export const encrypt = (text) => {
-  return CryptoJS.AES.encrypt(text, passPhrase).toString()
-}
-
-export const decrypt = (ciphertext) => {
-  if (ciphertext) {
-    ciphertext = ciphertext.replace(/ /g, "+")
-    const bytes = CryptoJS.AES.decrypt(ciphertext, passPhrase)
-    const originalText = bytes.toString(CryptoJS.enc.Utf8)
-    return originalText
-  }
-}
 
 export const heatmapColor = (value) => {
   let h
