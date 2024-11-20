@@ -1,6 +1,6 @@
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
-import PieChart from "../../../../lib/PieChart"
+//import PieChart from "../../../../lib/PieChart"
 import { format, fromUnixTime, differenceInDays } from "date-fns"
 
 const RentalTotal = ({ data }) => {
@@ -71,7 +71,7 @@ const RentalTotal = ({ data }) => {
         line={{}}
         setLine={() => {}}
       />
-      <PieChart data={result} />
+      {/*<PieChart data={result} />*/}
     </BoxWrapper>
   )
 }
