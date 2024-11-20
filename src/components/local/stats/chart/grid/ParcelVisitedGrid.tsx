@@ -63,7 +63,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
               onMouseLeave={() => handleMouseUp()}
               syncId="anyId"
             >
-              <CartesianGrid strokeDasharray="4 4" opacity={1} />
+              <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
               <Tooltip
                 content={
                   <CustomTooltip

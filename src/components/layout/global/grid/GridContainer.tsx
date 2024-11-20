@@ -8,6 +8,7 @@ import {
   handleHeight,
 } from "../../../../lib/data/chart/chartInfo"
 import { BrushGrid } from "../../../local/stats/chart/grid/BrushGrid"
+import { OnlineUsersGrid } from "../../../local/stats/chart/grid/OnlineUsersGrid"
 import { ParcelVisitedGrid } from "../../../local/stats/chart/grid/ParcelVisitedGrid"
 import { SceneVisitedGrid } from "../../../local/stats/chart/grid/SceneVisitedGrid"
 import { UniqueVisitorsGrid } from "../../../local/stats/chart/grid/UniqueVisitorsGrid"
@@ -40,7 +41,7 @@ export const GridContainer = ({ chartData }) => {
     { i: "1", x: 0, y: 0, w: 1, h: 1, isResizable: false },
     { i: "2", x: 1, y: 0, w: 1, h: 1, isResizable: false },
     { i: "3", x: 1, y: 1, w: 2, h: 1, isResizable: false },
-    //{ i: "4", x: 1, y: 1, w: 2, h: 1 },
+    { i: "4", x: 1, y: 1, w: 1, h: 1, isResizable: false },
   ]
 
   const [layout, setLayout] = useState(getSavedLayout() || defaultLayout)
@@ -89,9 +90,10 @@ export const GridContainer = ({ chartData }) => {
           <UniqueVisitorsGrid chartData={chartData} avg={avg} setAvg={setAvg} />
         </Box>
 
-        {/*<Box key="3" data-grid={layout.find((item) => item.i === "3")}>
-        </Box>
         <Box key="4" data-grid={layout.find((item) => item.i === "4")}>
+          <OnlineUsersGrid />
+        </Box>
+        {/*<Box key="4" data-grid={layout.find((item) => item.i === "4")}>
         </Box>*/}
       </ResponsiveGridLayout>
     </Box>
