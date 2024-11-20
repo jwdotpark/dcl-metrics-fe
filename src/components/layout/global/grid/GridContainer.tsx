@@ -1,10 +1,13 @@
-import { Box } from "@chakra-ui/react"
+import { Box, useToast } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { Responsive, WidthProvider } from "react-grid-layout"
 import "react-grid-layout/css/styles.css"
 import "react-resizable/css/styles.css"
+import { gridChartHeight } from "../../../../lib/data/chart/chartInfo"
+import { BrushGrid } from "../../../local/stats/chart/grid/BrushGrid"
 import { ParcelVisitedGrid } from "../../../local/stats/chart/grid/ParcelVisitedGrid"
 import { SceneVisitedGrid } from "../../../local/stats/chart/grid/SceneVisitedGrid"
+import { UniqueVisitorsGrid } from "../../../local/stats/chart/grid/UniqueVisitorsGrid"
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
@@ -18,10 +21,22 @@ const saveLayout = (layout) => {
 }
 
 export const GridContainer = ({ chartData }) => {
+  const toast = useToast()
+
+  const handleToast = () => {
+    toast({
+      title: "Layout is Changed",
+      //description: "The layout has been reset to default",
+      status: "info",
+      duration: 1000,
+      isClosable: true,
+      position: "bottom-right",
+    })
+  }
   const defaultLayout = [
     { i: "1", x: 0, y: 0, w: 1, h: 1, isResizable: false },
     { i: "2", x: 1, y: 0, w: 1, h: 1, isResizable: false },
-    //{ i: "3", x: 0, y: 1, w: 2, h: 1 },
+    { i: "3", x: 1, y: 1, w: 2, h: 1 },
     //{ i: "4", x: 1, y: 1, w: 2, h: 1 },
   ]
 
@@ -41,30 +56,37 @@ export const GridContainer = ({ chartData }) => {
   }, [layout])
 
   const handleLayoutChange = (newLayout) => {
+    handleToast()
     setLayout(newLayout)
   }
 
   return (
     <Box w="100%" h="100%">
+      <BrushGrid chartData={chartData} />
+
       <ResponsiveGridLayout
         className="layout"
         layouts={{ lg: layout }}
         breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
         cols={{ lg: 2, md: 2, sm: 2, xs: 1, xxs: 1 }}
-        rowHeight={350}
+        //rowHeight={400}
+        rowHeight={gridChartHeight}
         width="100%"
         draggableHandle=".drag-handle"
         isDraggable={true}
         useCSSTransforms={true}
         onLayoutChange={handleLayoutChange}
       >
-        {/* adjust the height of the container to be fixed  */}
         <Box key="1" data-grid={layout.find((item) => item.i === "1")}>
           <ParcelVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
         </Box>
         <Box key="2" data-grid={layout.find((item) => item.i === "2")}>
           <SceneVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
         </Box>
+        <Box key="3" data-grid={layout.find((item) => item.i === "3")}>
+          <UniqueVisitorsGrid chartData={chartData} avg={avg} setAvg={setAvg} />
+        </Box>
+
         {/*<Box key="3" data-grid={layout.find((item) => item.i === "3")}>
         </Box>
         <Box key="4" data-grid={layout.find((item) => item.i === "4")}>

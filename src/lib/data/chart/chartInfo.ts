@@ -2,8 +2,12 @@ import { format, getUnixTime, subDays } from "date-fns"
 import { convertSeconds } from "../../hooks/utils"
 
 export const chartHeight = 350
+export const gridChartHeight = 350
 export const defaultDateRange = 90
 export const dateFormat = "MMM. Do"
+export const chartFormat = {
+  fontSize: "14px",
+}
 
 export const sliceData = (chartData: any[], dateRange: number) => {
   if (chartData.length - dateRange > 0) {
