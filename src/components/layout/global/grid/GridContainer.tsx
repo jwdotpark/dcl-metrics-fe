@@ -3,7 +3,10 @@ import { useState, useEffect } from "react"
 import { Responsive, WidthProvider } from "react-grid-layout"
 import "react-grid-layout/css/styles.css"
 import "react-resizable/css/styles.css"
-import { gridChartHeight } from "../../../../lib/data/chart/chartInfo"
+import {
+  gridChartHeight,
+  handleHeight,
+} from "../../../../lib/data/chart/chartInfo"
 import { BrushGrid } from "../../../local/stats/chart/grid/BrushGrid"
 import { ParcelVisitedGrid } from "../../../local/stats/chart/grid/ParcelVisitedGrid"
 import { SceneVisitedGrid } from "../../../local/stats/chart/grid/SceneVisitedGrid"
@@ -69,8 +72,7 @@ export const GridContainer = ({ chartData }) => {
         layouts={{ lg: layout }}
         breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
         cols={{ lg: 2, md: 2, sm: 2, xs: 1, xxs: 1 }}
-        //rowHeight={400}
-        rowHeight={gridChartHeight}
+        rowHeight={handleHeight(gridChartHeight)}
         width="100%"
         draggableHandle=".drag-handle"
         isDraggable={true}
