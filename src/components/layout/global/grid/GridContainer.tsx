@@ -27,10 +27,9 @@ const saveLayout = (layout) => {
 export const GridContainer = ({ chartData }) => {
   const toast = useToast()
 
-  const handleToast = () => {
+  const handleLayoutToast = () => {
     toast({
       title: "Layout is Changed",
-      //description: "The layout has been reset to default",
       status: "info",
       duration: 1000,
       isClosable: true,
@@ -41,7 +40,8 @@ export const GridContainer = ({ chartData }) => {
     { i: "1", x: 0, y: 0, w: 1, h: 1, isResizable: false },
     { i: "2", x: 1, y: 0, w: 1, h: 1, isResizable: false },
     { i: "3", x: 1, y: 1, w: 2, h: 1, isResizable: false },
-    { i: "4", x: 1, y: 1, w: 1, h: 1, isResizable: false },
+    { i: "4", x: 0, y: 2, w: 1, h: 1, isResizable: false },
+    { i: "5", x: 2, y: 2, w: 1, h: 1, isResizable: false },
   ]
 
   const [layout, setLayout] = useState(getSavedLayout() || defaultLayout)
@@ -60,7 +60,7 @@ export const GridContainer = ({ chartData }) => {
   }, [layout])
 
   const handleLayoutChange = (newLayout) => {
-    handleToast()
+    handleLayoutToast()
     setLayout(newLayout)
   }
 
@@ -93,8 +93,9 @@ export const GridContainer = ({ chartData }) => {
         <Box key="4" data-grid={layout.find((item) => item.i === "4")}>
           <OnlineUsersGrid />
         </Box>
-        {/*<Box key="4" data-grid={layout.find((item) => item.i === "4")}>
-        </Box>*/}
+        <Box key="5" data-grid={layout.find((item) => item.i === "5")}>
+          asdf
+        </Box>
       </ResponsiveGridLayout>
     </Box>
   )
