@@ -13,7 +13,7 @@ import {
   isLocal,
   isProd,
 } from "../src/lib/data/constant"
-import { getData, getDataWithApiKey } from "../src/lib/data/fetch"
+import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 
@@ -25,7 +25,7 @@ export async function getStaticProps() {
       staticGlobalParcels
     )
 
-    //writeFile("staticGlobalParcels", globalParcelRes)
+    writeFile("staticGlobalParcels", globalParcelRes)
 
     const result = { globalParcelRes }
     return {
