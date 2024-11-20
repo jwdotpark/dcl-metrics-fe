@@ -14,7 +14,10 @@ import {
   ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../../lib/data/chart/chartHelper"
-import { chartFormat } from "../../../../../lib/data/chart/chartInfo"
+import {
+  chartFormat,
+  labelInterval,
+} from "../../../../../lib/data/chart/chartInfo"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
@@ -84,7 +87,7 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                   const date = new Date(tick)
                   return format(date, "MMM d")
                 }}
-                interval={40}
+                interval={labelInterval}
               />
               <YAxis
                 dataKey="unique_users"
@@ -159,48 +162,52 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
               <ReferenceLine
                 y={avg.avgUniqueUsers}
                 label={{
-                  position: "insideBottomRight",
+                  position: "insideBottomLeft",
                   value: `Unique User AVG. ${avg.avgUniqueUsers}`,
-                  fontSize: 10,
+                  fontSize: chartFormat.fontSize,
+                  //fontWeight: chartFormat.fontWeight,
                   fill: useColorModeValue("#000", "#fff"),
                 }}
                 stroke="#48BB78"
                 strokeWidth="1"
                 position="start"
-                strokeDasharray="4 4"
+                strokeDasharray="4 2"
               />
               <ReferenceLine
                 y={avg.avgGuestUsers}
                 label={{
                   position: "insideBottomRight",
                   value: `Guest User AVG. ${avg.avgGuestUsers}`,
-                  fontSize: 10,
+                  fontSize: chartFormat.fontSize,
+                  //fontWeight: chartFormat.fontWeight,
                   fill: useColorModeValue("#000", "#fff"),
                 }}
                 stroke="#9F7AEA"
                 strokeWidth="1"
                 position="start"
-                strokeDasharray="4 4"
+                strokeDasharray="4 2"
               />
               <ReferenceLine
                 y={avg.avgNewUsers}
                 label={{
-                  position: "insideBottomRight",
+                  position: "insideBottomLeft",
                   value: `New User AVG. ${avg.avgNewUsers}`,
-                  fontSize: 10,
+                  fontSize: chartFormat.fontSize,
+                  //fontWeight: chartFormat.fontWeight,
                   fill: useColorModeValue("#000", "#fff"),
                 }}
                 stroke="#4299E1"
                 strokeWidth="1"
                 position="start"
-                strokeDasharray="4 4"
+                strokeDasharray="4 2"
               />
               <ReferenceLine
                 y={avg.avgNamedUsers}
                 label={{
                   position: "insideBottomRight",
                   value: `Named User AVG. ${avg.avgNamedUsers}`,
-                  fontSize: 10,
+                  fontSize: chartFormat.fontSize,
+                  //fontWeight: chartFormat.fontWeight,
                   fill: useColorModeValue("#000", "#fff"),
                 }}
                 stroke="#F56565"

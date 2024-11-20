@@ -5,8 +5,10 @@ export const chartHeight = 350
 export const gridChartHeight = 350
 export const defaultDateRange = 90
 export const dateFormat = "MMM. Do"
+export const labelInterval = 40
 export const chartFormat = {
   fontSize: "14px",
+  fontWeight: "bold",
 }
 
 export const sliceData = (chartData: any[], dateRange: number) => {

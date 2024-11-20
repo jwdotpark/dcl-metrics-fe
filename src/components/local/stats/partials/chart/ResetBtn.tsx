@@ -1,4 +1,4 @@
-import { Box, IconButton, useColorModeValue } from "@chakra-ui/react"
+import { Box, IconButton } from "@chakra-ui/react"
 import { FiRotateCcw } from "react-icons/fi"
 import ToolTip from "../../../../layout/local/ToolTip"
 
@@ -7,14 +7,13 @@ const ChartResetBtn = ({ handleReset }) => {
     <Box pos="absolute" zIndex="8" top="0" right="5">
       <ToolTip label={`Reset`}>
         <IconButton
-          border="1px solid"
-          borderColor={useColorModeValue("gray.200", "gray.600")}
-          borderRadius="full"
-          aria-label={""}
+          borderRadius="none"
+          aria-label={"Reset button"}
           icon={<FiRotateCcw />}
           onClick={() => handleReset()}
-          size="xs"
+          size="sm"
           type="button"
+          variant="ghost"
         />
       </ToolTip>
     </Box>

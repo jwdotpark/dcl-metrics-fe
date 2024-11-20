@@ -5,7 +5,7 @@ import { format } from "date-fns"
 
 export const BrushGrid = ({ chartData }) => {
   return (
-    <Box mx="2" border="0px">
+    <Box mx="6px" border="0px">
       <ResponsiveContainer width="100%" height={30}>
         <AreaChart syncId="anyId" dataKey="date" data={chartData}>
           <XAxis dataKey="date" hide={true} />

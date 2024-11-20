@@ -13,6 +13,10 @@ import {
   ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../../lib/data/chart/chartHelper"
+import {
+  chartFormat,
+  labelInterval,
+} from "../../../../../lib/data/chart/chartInfo"
 import { indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
@@ -73,19 +77,20 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
               />
               <XAxis
                 dataKey="date"
-                fontSize="10px"
+                fontSize={chartFormat.fontSize}
                 style={{
                   fontWeight: "medium",
                 }}
                 tick={{ fill: AxisFontColor }}
                 tickFormatter={(tick) => {
                   const date = new Date(tick)
-                  return format(date, "MM/dd")
+                  return format(date, "MMM d")
                 }}
+                interval={labelInterval * 2}
               />
               <YAxis
                 dataKey="active_parcels"
-                fontSize="10px"
+                fontSize={chartFormat.fontSize}
                 style={{
                   fontWeight: "medium",
                 }}

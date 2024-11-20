@@ -13,6 +13,10 @@ import {
   ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../../lib/data/chart/chartHelper"
+import {
+  chartFormat,
+  labelInterval,
+} from "../../../../../lib/data/chart/chartInfo"
 import { chartHeight, indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
@@ -39,7 +43,7 @@ export const SceneVisitedGrid = ({ chartData, avg, setAvg }) => {
     <GridItemContainer>
       <Title
         title="Active Scenes"
-        description="Scenes that had any activity for at least one minute."
+        description="The number of scenes that had any activity for at least one minute."
       />
       <Box>
         <Box
@@ -75,19 +79,20 @@ export const SceneVisitedGrid = ({ chartData, avg, setAvg }) => {
               />
               <XAxis
                 dataKey="date"
-                fontSize="10px"
+                fontSize={chartFormat.fontSize}
                 style={{
                   fontWeight: "medium",
                 }}
                 tick={{ fill: AxisFontColor }}
                 tickFormatter={(tick) => {
                   const date = new Date(tick)
-                  return format(date, "MM/dd")
+                  return format(date, "MMM d")
                 }}
+                interval={labelInterval * 2}
               />
               <YAxis
                 dataKey="active_scenes"
-                fontSize="10px"
+                fontSize={chartFormat.fontSize}
                 style={{
                   fontWeight: "medium",
                 }}
@@ -106,8 +111,9 @@ export const SceneVisitedGrid = ({ chartData, avg, setAvg }) => {
                 label={{
                   position: "center",
                   value: "Data Collection Starting Point",
-                  fill: useColorModeValue("#000", "#fff"),
-                  fontSize: 10,
+                  fill: useColorModeValue("#ef4444", "#f87171"),
+                  fontSize: chartFormat.fontSize,
+                  dy: -80,
                 }}
                 stroke="#E53E3E"
                 strokeWidth="1"
