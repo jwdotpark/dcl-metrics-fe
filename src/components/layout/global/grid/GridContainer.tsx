@@ -7,6 +7,7 @@ import {
   gridChartHeight,
   handleHeight,
 } from "../../../../lib/data/chart/chartInfo"
+import { ActiveUsersGrid } from "../../../local/stats/chart/grid/ActiveUsersGrid"
 import { BrushGrid } from "../../../local/stats/chart/grid/BrushGrid"
 import { OnlineUsersGrid } from "../../../local/stats/chart/grid/OnlineUsersGrid"
 import { ParcelVisitedGrid } from "../../../local/stats/chart/grid/ParcelVisitedGrid"
@@ -94,7 +95,7 @@ export const GridContainer = ({ chartData }) => {
           <OnlineUsersGrid />
         </Box>
         <Box key="5" data-grid={layout.find((item) => item.i === "5")}>
-          asdf
+          <ActiveUsersGrid />
         </Box>
       </ResponsiveGridLayout>
     </Box>
