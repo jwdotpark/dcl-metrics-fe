@@ -14,6 +14,7 @@ import { OnlineUsersGrid } from "../../../local/stats/chart/grid/OnlineUsersGrid
 import { ParcelVisitedGrid } from "../../../local/stats/chart/grid/ParcelVisitedGrid"
 import { SceneVisitedGrid } from "../../../local/stats/chart/grid/SceneVisitedGrid"
 import { UniqueVisitorsGrid } from "../../../local/stats/chart/grid/UniqueVisitorsGrid"
+import { WorldListGrid } from "../../../local/stats/chart/grid/WorldListGrid"
 import { WorldStatGrid } from "../../../local/stats/chart/grid/WorldStatGrid"
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
@@ -47,6 +48,7 @@ export const GridContainer = ({ chartData, worldData }) => {
     { i: "5", x: 1, y: 3, w: 1, h: 1, isResizable: false },
     { i: "6", x: 0, y: 4, w: 1, h: 1, isResizable: false },
     { i: "7", x: 1, y: 4, w: 1, h: 1, isResizable: false },
+    { i: "8", x: 0, y: 5, w: 2, h: 2, isResizable: false },
   ]
 
   const [layout, setLayout] = useState(getSavedLayout() || defaultLayout)
@@ -106,6 +108,9 @@ export const GridContainer = ({ chartData, worldData }) => {
         </Box>
         <Box key="7" data-grid={layout.find((item) => item.i === "7")}>
           <WorldStatGrid worldCurrentRes={worldData} />
+        </Box>
+        <Box key="8" data-grid={layout.find((item) => item.i === "8")}>
+          <WorldListGrid worldCurrentRes={worldData} />
         </Box>
       </ResponsiveGridLayout>
     </Box>

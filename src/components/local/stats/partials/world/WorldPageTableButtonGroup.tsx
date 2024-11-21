@@ -1,4 +1,11 @@
-import { Center, ButtonGroup, Button, Flex, Spacer } from "@chakra-ui/react"
+import {
+  useColorModeValue,
+  Center,
+  ButtonGroup,
+  Button,
+  Flex,
+  Spacer,
+} from "@chakra-ui/react"
 import {
   FiArrowLeftCircle,
   FiArrowLeft,
@@ -20,13 +27,15 @@ const ScenePageTableButtonGroup = ({
   setGlobalFilter,
 }) => {
   return (
-    <Center mb="2" ml="4">
-      <ButtonGroup borderRadius="xl" shadow="md" isAttached size="sm">
-        <Button
-          borderRadius="xl"
-          disabled={!canPreviousPage}
-          onClick={() => gotoPage(0)}
-        >
+    <Center ml="2">
+      <ButtonGroup
+        bg={useColorModeValue("gray.50", "gray.700")}
+        borderRadius="md"
+        shadow="md"
+        isAttached
+        size="xs"
+      >
+        <Button disabled={!canPreviousPage} onClick={() => gotoPage(0)}>
           <FiArrowLeftCircle />
         </Button>
         <Button disabled={!canPreviousPage} onClick={() => previousPage()}>
@@ -38,11 +47,7 @@ const ScenePageTableButtonGroup = ({
         <Button disabled={!canNextPage} onClick={() => nextPage()}>
           <FiArrowRight />
         </Button>
-        <Button
-          borderRadius="xl"
-          disabled={!canNextPage}
-          onClick={() => gotoPage(pageCount - 1)}
-        >
+        <Button disabled={!canNextPage} onClick={() => gotoPage(pageCount - 1)}>
           <FiArrowRightCircle />
         </Button>
       </ButtonGroup>
