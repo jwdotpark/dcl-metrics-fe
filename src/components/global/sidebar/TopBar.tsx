@@ -15,6 +15,7 @@ import FeedbackButton from "../FeedbackButton"
 //import Link from "next/link"
 //import { isMobile } from "../../../lib/hooks/utils"
 import ProfilingButton from "../ProfilingButton"
+import { ResetButton } from "../ResetButton"
 import SurveyButton from "../SurveyButton"
 
 const TopBar = ({
@@ -86,6 +87,7 @@ const TopBar = ({
       <Center>
         {process.env.NEXT_PUBLIC_INSPECTOR === "true" && <ProfilingButton />}
         <SurveyButton />
+        <ResetButton />
         <FeedbackButton />
         <ColorButton />
       </Center>
