@@ -19,7 +19,7 @@ const WorldStat = ({ worldCurrentRes, isMainPage }) => {
         setLine={() => {}}
       />
       <WorldStatBox
-        isMainPage={isMainPage}
+        //isMainPage={isMainPage}
         total_count={total_count}
         current_users={current_users}
         currently_occupied={currently_occupied}

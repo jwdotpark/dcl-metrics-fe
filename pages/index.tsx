@@ -160,7 +160,7 @@ const GlobalPage: NextPage = (props: Props) => {
       />
       <Layout>
         <Box w="100%">
-          <GridContainer chartData={chartData} />
+          <GridContainer chartData={chartData} worldData={worldData} />
           {/*<Box mb="4" data-testid="uniqueVisitors">
             <GlobalChart chartData={chartData} />
             <Box mb="4" />

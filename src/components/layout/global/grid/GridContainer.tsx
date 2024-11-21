@@ -14,6 +14,7 @@ import { OnlineUsersGrid } from "../../../local/stats/chart/grid/OnlineUsersGrid
 import { ParcelVisitedGrid } from "../../../local/stats/chart/grid/ParcelVisitedGrid"
 import { SceneVisitedGrid } from "../../../local/stats/chart/grid/SceneVisitedGrid"
 import { UniqueVisitorsGrid } from "../../../local/stats/chart/grid/UniqueVisitorsGrid"
+import { WorldStatGrid } from "../../../local/stats/chart/grid/WorldStatGrid"
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
@@ -26,7 +27,7 @@ const saveLayout = (layout) => {
   localStorage.setItem("gridLayout", JSON.stringify(layout))
 }
 
-export const GridContainer = ({ chartData }) => {
+export const GridContainer = ({ chartData, worldData }) => {
   const toast = useToast()
 
   const handleLayoutToast = () => {
@@ -45,6 +46,7 @@ export const GridContainer = ({ chartData }) => {
     { i: "4", x: 0, y: 2, w: 1, h: 1, isResizable: false },
     { i: "5", x: 1, y: 3, w: 1, h: 1, isResizable: false },
     { i: "6", x: 0, y: 4, w: 1, h: 1, isResizable: false },
+    { i: "7", x: 1, y: 4, w: 1, h: 1, isResizable: false },
   ]
 
   const [layout, setLayout] = useState(getSavedLayout() || defaultLayout)
@@ -101,6 +103,9 @@ export const GridContainer = ({ chartData }) => {
         </Box>
         <Box key="6" data-grid={layout.find((item) => item.i === "6")}>
           <GlobalUtilizationGrid />
+        </Box>
+        <Box key="7" data-grid={layout.find((item) => item.i === "7")}>
+          <WorldStatGrid worldCurrentRes={worldData} />
         </Box>
       </ResponsiveGridLayout>
     </Box>

@@ -6,7 +6,7 @@ export const Title = ({ title, description }) => {
     <Box mb="4" ml="2">
       <Flex direction="row">
         <Center>
-          <Text fontSize="2xl" fontWeight="bold">
+          <Text fontSize="2xl" fontWeight="black">
             {title}
           </Text>
         </Center>
@@ -16,7 +16,7 @@ export const Title = ({ title, description }) => {
         </Center>
       </Flex>
       <Box>
-        <Text fontSize="sm" fontWeight="light">
+        <Text fontSize="xs" fontWeight="light">
           {description}
         </Text>
       </Box>

@@ -1,84 +1,76 @@
-import { Flex, useColorModeValue, Box, Text } from "@chakra-ui/react"
-import { format, formatDistanceToNowStrict } from "date-fns"
+import React from "react"
+import { Box, Flex, Grid, Text, useColorModeValue } from "@chakra-ui/react"
+import { formatDistanceToNowStrict } from "date-fns"
 import CountUp from "react-countup"
 
 const WorldStatItem = ({ value, label, description }) => {
+  const borderColor = useColorModeValue("gray.300", "gray.700")
+  const bg = useColorModeValue("gray.300", "gray.600")
+  const fontColor = useColorModeValue("gray.600", "gray.300")
   return (
-    <Box
-      flex={1}
-      mb="4"
-      mx={[1, 2]}
-      p="2"
-      px={[2, 4]}
-      bg={useColorModeValue("gray.100", "gray.700")}
-      border="1px solid"
-      borderColor={useColorModeValue("gray.100", "gray.700")}
-      borderRadius="xl"
+    <Flex
+      align="center"
+      justify="center"
+      direction="column"
+      bg={bg}
+      border="1px"
+      borderColor={borderColor}
       shadow="md"
-      _hover={{ bg: useColorModeValue("gray.200", "gray.900") }}
+      rounded="xl"
     >
-      <Box mb="-2">
-        <Text
-          as="span"
-          fontSize={
-            typeof value === "number"
-              ? ["xl", "xl", "2xl", "3xl"]
-              : ["sm", "lg", "2xl"]
-          }
-          fontWeight="semibold"
-        >
+      <Box>
+        <Text fontSize="3xl" fontWeight="black">
           {typeof value === "number" ? <CountUp end={value} /> : value} {label}
         </Text>
       </Box>
-      <Box py="2">
-        <Text mt="2" color="gray.500" fontSize="xs">
+      <Box>
+        <Text color={fontColor} fontSize="sm">
           {description}
         </Text>
       </Box>
-    </Box>
+    </Flex>
   )
 }
 
 const WorldStatBox = ({
-  isMainPage,
   total_count,
   current_users,
   currently_occupied,
   timestamp,
 }) => {
   return (
-    <Flex
-      justify="space-between"
-      direction={isMainPage ? "column" : "row"}
-      mb="-2"
-      mx="2"
-    >
-      <WorldStatItem
-        value={total_count}
-        label=""
-        description=" The total number of deployed worlds"
-      />
-      <WorldStatItem
-        value={currently_occupied}
-        label=""
-        description="The number of occupied worlds"
-      />
-      <WorldStatItem
-        value={current_users}
-        label=""
-        description="The number of users in all worlds"
-      />
-      <WorldStatItem
-        value={formatDistanceToNowStrict(new Date(timestamp * 1000), {
-          addSuffix: false,
-        })}
-        label="ago"
-        description={`Data last updated at ${format(
-          new Date(timestamp * 1000),
-          "yy/MM/d HH:mm"
-        )}`}
-      />
-    </Flex>
+    <Box w="100%" h="270px">
+      <Grid
+        gap={4}
+        templateRows="repeat(2, 1fr)"
+        templateColumns="repeat(2, 1fr)"
+        w="100%"
+        h="100%"
+      >
+        <WorldStatItem
+          value={total_count}
+          label=""
+          description="Deployed worlds"
+        />
+        <WorldStatItem
+          value={currently_occupied}
+          label=""
+          description="Occupied worlds"
+        />
+        <WorldStatItem
+          value={current_users}
+          label=""
+          description="Users in all worlds"
+        />
+        <WorldStatItem
+          value={formatDistanceToNowStrict(new Date(timestamp * 1000), {
+            addSuffix: true,
+          })}
+          label=""
+          description="updated"
+        />
+      </Grid>
+    </Box>
   )
 }
 
