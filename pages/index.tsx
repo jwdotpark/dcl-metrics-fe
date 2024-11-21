@@ -45,13 +45,6 @@ export async function getStaticProps() {
 }
 
 const GlobalPage: NextPage = (props: Props) => {
-  const gridColumn = useBreakpointValue({
-    base: 1,
-    sm: 1,
-    md: 1,
-    lg: 2,
-    xl: 6,
-  })
 
   const {
     globalDailyRes,
@@ -160,7 +153,12 @@ const GlobalPage: NextPage = (props: Props) => {
       />
       <Layout>
         <Box w="100%">
-          <GridContainer chartData={chartData} worldData={worldData} />
+          <GridContainer
+            chartData={chartData}
+            worldData={worldData}
+            isLoading={isLoading}
+            error={error}
+          />
           {/*<Box mb="4" data-testid="uniqueVisitors">
             <GlobalChart chartData={chartData} />
             <Box mb="4" />

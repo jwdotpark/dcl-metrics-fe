@@ -62,13 +62,15 @@ const WorldStatBox = ({
           label=""
           description="Users in all worlds"
         />
-        <WorldStatItem
-          value={formatDistanceToNowStrict(new Date(timestamp * 1000), {
-            addSuffix: true,
-          })}
-          label=""
-          description="updated"
-        />
+        {timestamp && (
+          <WorldStatItem
+            value={formatDistanceToNowStrict(new Date(timestamp * 1000), {
+              addSuffix: true,
+            })}
+            label=""
+            description="updated"
+          />
+        )}
       </Grid>
     </Box>
   )
