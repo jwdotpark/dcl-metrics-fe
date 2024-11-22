@@ -17,20 +17,8 @@ export default function SidebarWithHeader({
 }: any) {
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const sidebarStatus = sidebarOpen ? "180px" : "60px"
-
-  const handleSidebar = () => {
-    setSidebarOpen(!sidebarOpen)
-  }
-
-  const handleMouseEnter = () => {
-    setSidebarOpen(true)
-  }
-
-  const handleMouseLeave = () => {
-    setSidebarOpen(false)
-  }
+  //const [sidebarOpen, setSidebarOpen] = useState(false)
+  //const sidebarStatus = sidebarOpen ? "180px" : "60px"
 
   useEffect(() => {
     if (
@@ -53,7 +41,7 @@ export default function SidebarWithHeader({
 
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "blackAlpha.900")}>
-      <SidebarContent
+      {/*<SidebarContent
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
         sidebarStatus={sidebarStatus}
@@ -64,7 +52,7 @@ export default function SidebarWithHeader({
         id="sidebar-content"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-      />
+      />*/}
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
@@ -78,18 +66,15 @@ export default function SidebarWithHeader({
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <TopBar
-        //psa={psa}
-        onOpen={onOpen}
-        sidebarStatus={sidebarStatus}
-      />
+      <TopBar onOpen={onOpen} />
       <Flex
         align="center"
         justify="center"
-        w={["100%", "100%", `calc(100% - 60px)`]}
-        ml={{ base: 0, md: "60px" }}
+        //w={["100%", "100%", `calc(100% - 60px)`]}
+        w="100%"
+        //ml={{ base: 0, md: "60px" }}
       >
-        <Box w="100%" maxW="1920px" py="2" data-testid="sidebar">
+        <Box w="100%" maxW="1920px" m="4" py="2" data-testid="sidebar">
           {children}
         </Box>
       </Flex>

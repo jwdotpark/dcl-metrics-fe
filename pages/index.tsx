@@ -45,7 +45,6 @@ export async function getStaticProps() {
 }
 
 const GlobalPage: NextPage = (props: Props) => {
-
   const {
     globalDailyRes,
     parcelRes,
@@ -153,12 +152,7 @@ const GlobalPage: NextPage = (props: Props) => {
       />
       <Layout>
         <Box w="100%">
-          <GridContainer
-            chartData={chartData}
-            worldData={worldData}
-            isLoading={isLoading}
-            error={error}
-          />
+          <GridContainer chartData={chartData} worldData={worldData} />
           {/*<Box mb="4" data-testid="uniqueVisitors">
             <GlobalChart chartData={chartData} />
             <Box mb="4" />

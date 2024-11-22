@@ -17,10 +17,11 @@ import FeedbackButton from "../FeedbackButton"
 import ProfilingButton from "../ProfilingButton"
 import { ResetButton } from "../ResetButton"
 import SurveyButton from "../SurveyButton"
+import { TopbarLinks } from "./TopBarLinks"
 
 const TopBar = ({
   //psa,
-  sidebarStatus,
+  //sidebarStatus,
   onOpen,
   ...rest
 }: any) => {
@@ -29,7 +30,7 @@ const TopBar = ({
       align="center"
       justify={{ base: "space-between", md: "flex-end" }}
       h="12"
-      ml={{ base: 0, md: sidebarStatus }}
+      //ml={{ base: 0, md: sidebarStatus }}
       px={{ base: 4, md: 4 }}
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
@@ -38,14 +39,6 @@ const TopBar = ({
       transition=".25s ease"
       {...rest}
     >
-      <IconButton
-        display={{ base: "flex", md: "none" }}
-        aria-label="open menu"
-        icon={<FiMenu />}
-        onClick={onOpen}
-        size="sm"
-        variant="outline"
-      />
       <Box
         display={{ base: "flex", md: "none" }}
         fontFamily="sans-serif"
@@ -82,7 +75,16 @@ const TopBar = ({
           </Link>
         </Box>
       </Box>*/}
-
+      <IconButton
+        display={{ base: "flex", md: "none" }}
+        ml="-4"
+        aria-label="open menu"
+        icon={<FiMenu />}
+        onClick={onOpen}
+        size="sm"
+        variant="outline"
+      />
+      <TopbarLinks />
       <Spacer />
       <Center>
         {process.env.NEXT_PUBLIC_INSPECTOR === "true" && <ProfilingButton />}

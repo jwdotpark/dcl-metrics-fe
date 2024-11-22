@@ -6,6 +6,8 @@ export const WorldListGrid = ({ worldCurrentRes, pageSize = 9 }) => {
   const bg = useColorModeValue("gray.200", "gray.700")
   const borderColor = useColorModeValue("gray.300", "gray.800")
 
+  console.log("worldCurrentRes", worldCurrentRes)
+
   return (
     <Box
       h="100%"
@@ -21,7 +23,7 @@ export const WorldListGrid = ({ worldCurrentRes, pageSize = 9 }) => {
           "A list of Worlds currently deployed to Decentraland servers, click the thumbnail to jump in."
         }
       />
-      {worldCurrentRes && (
+      {Object.keys(worldCurrentRes).length !== 0 && (
         <WorldTable worldCurrentRes={worldCurrentRes} pageSize={pageSize} />
       )}
     </Box>

@@ -28,7 +28,7 @@ const saveLayout = (layout) => {
   localStorage.setItem("gridLayout", JSON.stringify(layout))
 }
 
-export const GridContainer = ({ chartData, worldData, isLoading, error }) => {
+export const GridContainer = ({ chartData, worldData }) => {
   const toast = useToast()
 
   const handleLayoutToast = () => {
