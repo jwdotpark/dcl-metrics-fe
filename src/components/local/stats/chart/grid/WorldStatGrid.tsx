@@ -10,6 +10,7 @@ export const WorldStatGrid = ({ worldCurrentRes }) => {
     <GridItemContainer>
       <Title title="Concurrent Worlds Metrics" description="" />
       <WorldStatBox
+        isMainPage={true}
         total_count={total_count}
         current_users={current_users}
         currently_occupied={currently_occupied}

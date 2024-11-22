@@ -72,7 +72,9 @@ const World = (props: Props) => {
         }}
       />
       <Layout>
-        <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={false} />
+        <Box>
+          <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={false} />
+        </Box>
         <Box mb="4" />
         <WorldChart worldGlobalRes={worldGlobalRes} />
         <Box mb="4" />

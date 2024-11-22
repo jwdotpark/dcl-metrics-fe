@@ -1,12 +1,12 @@
-import React from "react"
 import { Box, Flex, Grid, Text, useColorModeValue } from "@chakra-ui/react"
 import { formatDistanceToNowStrict } from "date-fns"
 import CountUp from "react-countup"
 
 const WorldStatItem = ({ value, label, description }) => {
   const borderColor = useColorModeValue("gray.300", "gray.700")
-  const bg = useColorModeValue("gray.300", "gray.600")
+  const bg = useColorModeValue("gray.200", "gray.600")
   const fontColor = useColorModeValue("gray.600", "gray.300")
+
   return (
     <Flex
       align="center"
@@ -19,7 +19,7 @@ const WorldStatItem = ({ value, label, description }) => {
       rounded="xl"
     >
       <Box>
-        <Text fontSize="3xl" fontWeight="black">
+        <Text fontSize="3xl" fontWeight="black" noOfLines={1}>
           {typeof value === "number" ? <CountUp end={value} /> : value} {label}
         </Text>
       </Box>
@@ -37,9 +37,10 @@ const WorldStatBox = ({
   current_users,
   currently_occupied,
   timestamp,
+  isMainPage,
 }) => {
   return (
-    <Box w="100%" h="270px">
+    <Box w="100%" h="270px" p={!isMainPage && 2}>
       <Grid
         gap={4}
         templateRows="repeat(2, 1fr)"
@@ -68,7 +69,7 @@ const WorldStatBox = ({
               addSuffix: true,
             })}
             label=""
-            description="updated"
+            description="Updated"
           />
         )}
       </Grid>
