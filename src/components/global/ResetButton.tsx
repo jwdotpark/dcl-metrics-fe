@@ -10,7 +10,7 @@ export const ResetButton = () => {
 
   return (
     <ToolTip label="Reset Layout">
-      <Button onClick={handleLayoutReset} variant="link">
+      <Button onClick={handleLayoutReset} size="md" variant="link">
         <FiRotateCcw />
       </Button>
     </ToolTip>

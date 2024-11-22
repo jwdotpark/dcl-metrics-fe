@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 
 export const TopbarLinks = () => {
   const router = useRouter()
-  const activeColor = useColorModeValue("#44475A", "#F8F8F2")
+  const activeColor = useColorModeValue("#6272A4", "#FFB86C")
 
   const links = [
     { name: "Home", path: "/" },

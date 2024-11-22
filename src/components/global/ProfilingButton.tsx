@@ -20,7 +20,7 @@ const ProfilingButton = () => {
             onClick={() => {
               setOpen(!open)
             }}
-            size="lg"
+            size="md"
             variant="link"
           >
             <FiActivity />

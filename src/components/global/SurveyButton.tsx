@@ -27,7 +27,7 @@ const SurveyButton = () => {
             onClick={() => {
               setOpen(!open)
             }}
-            size="lg"
+            size="md"
             variant="link"
           >
             <FiShoppingBag />
