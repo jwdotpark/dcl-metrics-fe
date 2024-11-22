@@ -9,28 +9,22 @@ import {
   Spacer,
   Center,
 } from "@chakra-ui/react"
+import { useRouter } from "next/router"
 import { FiMenu } from "react-icons/fi"
 import ColorButton from "../ColorButton"
 import FeedbackButton from "../FeedbackButton"
-//import Link from "next/link"
-//import { isMobile } from "../../../lib/hooks/utils"
 import ProfilingButton from "../ProfilingButton"
 import { ResetButton } from "../ResetButton"
 import SurveyButton from "../SurveyButton"
 import { TopbarLinks } from "./TopBarLinks"
 
-const TopBar = ({
-  //psa,
-  //sidebarStatus,
-  onOpen,
-  ...rest
-}: any) => {
+const TopBar = ({ onOpen, ...rest }: any) => {
+  const router = useRouter()
   return (
     <Flex
       align="center"
       justify={{ base: "space-between", md: "flex-end" }}
       h="12"
-      //ml={{ base: 0, md: sidebarStatus }}
       px={{ base: 4, md: 4 }}
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
@@ -46,9 +40,8 @@ const TopBar = ({
         fontWeight="bold"
       >
         <HStack>
-          <Box ml={[2, 0]} shadow="md">
-            {/*<Image width="26" height="26" alt="logo" src={"/images/logo.png"} />*/}
-          </Box>
+          {/*<Box ml={[2, 0]} shadow="md">
+          </Box>*/}
           <Text
             display="none"
             fontSize="20px"
@@ -89,7 +82,7 @@ const TopBar = ({
       <Center>
         {process.env.NEXT_PUBLIC_INSPECTOR === "true" && <ProfilingButton />}
         <SurveyButton />
-        <ResetButton />
+        {router.pathname === "/" && <ResetButton />}
         <FeedbackButton />
         <ColorButton />
       </Center>
