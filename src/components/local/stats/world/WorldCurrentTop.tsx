@@ -1,8 +1,9 @@
+import { Box } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import WorldTable from "./WorldTable"
 
-const WorldCurrentTop = ({ worldCurrentRes, pageSize }) => {
+const WorldCurrentTop = ({ worldCurrentRes, pageSize, isMainPage }) => {
   return (
     <BoxWrapper colSpan={[4, 4, 4, 4, 4]}>
       <BoxTitle
@@ -15,7 +16,9 @@ const WorldCurrentTop = ({ worldCurrentRes, pageSize }) => {
         line={{}}
         setLine={() => {}}
       />
-      <WorldTable worldCurrentRes={worldCurrentRes} pageSize={pageSize} />
+      <Box mx={!isMainPage && 4}>
+        <WorldTable worldCurrentRes={worldCurrentRes} pageSize={pageSize} />
+      </Box>
     </BoxWrapper>
   )
 }

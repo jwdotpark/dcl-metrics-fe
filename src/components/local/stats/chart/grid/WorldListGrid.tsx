@@ -6,8 +6,6 @@ export const WorldListGrid = ({ worldCurrentRes, pageSize = 9 }) => {
   const bg = useColorModeValue("gray.50", "gray.800")
   const borderColor = useColorModeValue("gray.300", "gray.600")
 
-  console.log("worldCurrentRes", worldCurrentRes)
-
   return (
     <Box
       h="100%"
