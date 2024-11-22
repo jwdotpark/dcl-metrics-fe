@@ -105,15 +105,17 @@ const Events = (props) => {
         }}
       />
       <Layout>
-        <SearchEvent />
-        <Box mb="4" />
-        <HighlightedEvents highlighted={highlighted} />
-        <Box mb="4" />
-        <TrendingEvents trending={trending} />
-        <Box mb="4" />
-        {/*<Scheduled scheduleData={scheduleData} />
+        <Box m="4">
+          <SearchEvent />
+          <Box mb="4" />
+          <HighlightedEvents highlighted={highlighted} />
+          <Box mb="4" />
+          <TrendingEvents trending={trending} />
+          <Box mb="4" />
+          {/*<Scheduled scheduleData={scheduleData} />
         <Box mb="4" />*/}
-        <EventBox data={filteredEvents} categories={categories} />
+          <EventBox data={filteredEvents} categories={categories} />
+        </Box>
       </Layout>
     </>
   )
