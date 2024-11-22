@@ -13,7 +13,7 @@ import { format } from "date-fns"
 export const BrushGrid = ({ chartData }) => {
   const [dataIndex, setDataIndex] = useState({
     start: 0,
-    end: 0,
+    end: chartData.length - 1,
   })
 
   const date = {
@@ -23,18 +23,23 @@ export const BrushGrid = ({ chartData }) => {
 
   return (
     <Box
-      mx="10px"
+      h="100%"
+      mx="2"
       p="4"
-      bg={useColorModeValue("gray.200", "gray.700")}
-      border="1px"
-      borderColor={useColorModeValue("gray.300", "gray.900")}
-      //shadow="md"
+      bg={useColorModeValue("gray.50", "gray.800")}
+      border="1px solid"
+      borderColor={useColorModeValue("gray.300", "gray.600")}
       shadow="md"
+      rounded="xl"
     >
       <Flex direction="row" w="100%" px="2">
         <Center w="100%">
           <Box>
-            <Text fontSize="2xl" fontWeight="bold" whiteSpace="nowrap">
+            <Text
+              fontSize={["sm", "2xl"]}
+              fontWeight="bold"
+              whiteSpace="nowrap"
+            >
               {format(new Date(date.start), "yyyy MMMM d")}
             </Text>
           </Box>
@@ -47,7 +52,11 @@ export const BrushGrid = ({ chartData }) => {
           />
           <Spacer />
           <Box>
-            <Text fontSize="2xl" fontWeight="bold" whiteSpace="nowrap">
+            <Text
+              fontSize={["sm", "2xl"]}
+              fontWeight="bold"
+              whiteSpace="nowrap"
+            >
               {format(new Date(date.end), "yyyy MMMM d")}
             </Text>
           </Box>

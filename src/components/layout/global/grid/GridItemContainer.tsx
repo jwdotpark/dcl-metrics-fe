@@ -9,10 +9,11 @@ export const GridItemContainer = ({ children }) => {
     <Box
       h={handleHeight(gridChartHeight)}
       p="4"
-      bg={useColorModeValue("gray.200", "gray.700")}
+      bg={useColorModeValue("gray.50", "gray.800")}
       border="1px solid"
-      borderColor={useColorModeValue("gray.300", "gray.800")}
+      borderColor={useColorModeValue("gray.300", "gray.600")}
       shadow="md"
+      rounded="xl"
     >
       {children}
     </Box>

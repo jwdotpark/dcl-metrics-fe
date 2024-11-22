@@ -3,8 +3,8 @@ import { Title } from "../../../../layout/global/grid/Title"
 import WorldTable from "../../world/WorldTable"
 
 export const WorldListGrid = ({ worldCurrentRes, pageSize = 9 }) => {
-  const bg = useColorModeValue("gray.200", "gray.700")
-  const borderColor = useColorModeValue("gray.300", "gray.800")
+  const bg = useColorModeValue("gray.50", "gray.800")
+  const borderColor = useColorModeValue("gray.300", "gray.600")
 
   console.log("worldCurrentRes", worldCurrentRes)
 
@@ -16,6 +16,7 @@ export const WorldListGrid = ({ worldCurrentRes, pageSize = 9 }) => {
       border="1px solid"
       borderColor={borderColor}
       shadow="md"
+      rounded="xl"
     >
       <Title
         title={"World List"}
