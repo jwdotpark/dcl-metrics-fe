@@ -5,7 +5,14 @@ export const chartHeight = 350
 export const gridChartHeight = 360
 export const defaultDateRange = 90
 export const dateFormat = "MMM. Do"
-export const labelInterval = 40
+
+export const labelInterval = () => {
+  if (window.innerWidth < 400) {
+    return 240
+  } else {
+    return 80
+  }
+}
 export const chartFormat = {
   fontSize: "14px",
   fontWeight: "bold",

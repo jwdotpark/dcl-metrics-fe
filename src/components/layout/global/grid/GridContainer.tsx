@@ -41,14 +41,75 @@ export const GridContainer = ({ chartData, worldData }) => {
     })
   }
   const defaultLayout = [
-    { i: "1", x: 0, y: 0, w: 1, h: 1, isResizable: false },
-    { i: "2", x: 1, y: 0, w: 1, h: 1, isResizable: false },
-    { i: "3", x: 1, y: 1, w: 2, h: 1, isResizable: false },
-    { i: "4", x: 0, y: 2, w: 1, h: 1, isResizable: false },
-    { i: "5", x: 1, y: 3, w: 1, h: 1, isResizable: false },
-    { i: "6", x: 0, y: 4, w: 1, h: 1, isResizable: false },
-    { i: "7", x: 1, y: 4, w: 1, h: 1, isResizable: false },
-    { i: "8", x: 0, y: 5, w: 2, h: 2, isResizable: false },
+    {
+      i: "1",
+      x: 0,
+      y: 0,
+      w: 1,
+      h: 1,
+      isResizable: true,
+      resizeHandles: ["e", "w"],
+    },
+    {
+      i: "2",
+      x: 1,
+      y: 0,
+      w: 1,
+      h: 1,
+      isResizable: true,
+      resizeHandles: ["e", "w"],
+    },
+    {
+      i: "3",
+      x: 0,
+      y: 1,
+      w: 2,
+      h: 1,
+      isResizable: false,
+    },
+    {
+      i: "4",
+      x: 0,
+      y: 2,
+      w: 1,
+      h: 1,
+      isResizable: true,
+      resizeHandles: ["e", "w"],
+    },
+    {
+      i: "5",
+      x: 1,
+      y: 2,
+      w: 1,
+      h: 1,
+      isResizable: true,
+      resizeHandles: ["e", "w"],
+    },
+    {
+      i: "6",
+      x: 0,
+      y: 3,
+      w: 1,
+      h: 1,
+      isResizable: false,
+    },
+    {
+      i: "7",
+      x: 1,
+      y: 3,
+      w: 1,
+      h: 1,
+      isResizable: false,
+    },
+    {
+      i: "8",
+      x: 0,
+      y: 4,
+      w: 2,
+      h: 2,
+      isResizable: true,
+      resizeHandles: ["e", "w"],
+    },
   ]
 
   const [layout, setLayout] = useState(getSavedLayout() || defaultLayout)
@@ -84,7 +145,7 @@ export const GridContainer = ({ chartData, worldData }) => {
         width="100%"
         draggableHandle=".drag-handle"
         isDraggable={true}
-        useCSSTransforms={true}
+        //useCSSTransforms={true}
         onLayoutChange={handleLayoutChange}
       >
         <Box key="1" data-grid={layout.find((item) => item.i === "1")}>

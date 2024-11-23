@@ -184,6 +184,7 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
                 scrollbarWidth: "none",
               }}
               overflowX="scroll"
+              overflowY="hidden"
               mt="4"
             >
               <Table

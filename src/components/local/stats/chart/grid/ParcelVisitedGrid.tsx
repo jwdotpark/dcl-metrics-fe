@@ -86,7 +86,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
                   const date = new Date(tick)
                   return format(date, "MMM d")
                 }}
-                interval={labelInterval * 2}
+                interval={labelInterval()}
               />
               <YAxis
                 dataKey="active_parcels"

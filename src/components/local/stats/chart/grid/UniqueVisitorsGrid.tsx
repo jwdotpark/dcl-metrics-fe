@@ -87,7 +87,7 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                   const date = new Date(tick)
                   return format(date, "MMM d")
                 }}
-                interval={labelInterval}
+                interval={labelInterval() * 0.75}
               />
               <YAxis
                 dataKey="unique_users"
