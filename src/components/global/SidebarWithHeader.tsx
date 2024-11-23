@@ -74,7 +74,7 @@ export default function SidebarWithHeader({
         w="100%"
         //ml={{ base: 0, md: "60px" }}
       >
-        <Box w="100%" maxW="1920px" m="4" py="2" data-testid="sidebar">
+        <Box w="100%" maxW="1920px" m="4" mt="14" py="2" data-testid="sidebar">
           {children}
         </Box>
       </Flex>

@@ -22,15 +22,20 @@ const TopBar = ({ onOpen, ...rest }: any) => {
   const router = useRouter()
   return (
     <Flex
+      pos="fixed"
+      zIndex="banner"
+      top="0"
+      right="0"
+      left="0"
       align="center"
       justify={{ base: "space-between", md: "flex-end" }}
+      w="100vw"
       h="12"
       px={{ base: 4, md: 4 }}
-      bg={useColorModeValue("white", "gray.900")}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      shadow="md"
+      bg={useColorModeValue("#fafafa90", "#27272a50")}
+      shadow="lg"
       transition=".25s ease"
+      backdropFilter="blur(10px)"
       {...rest}
     >
       <Box

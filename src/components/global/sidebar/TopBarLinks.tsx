@@ -22,19 +22,27 @@ export const TopbarLinks = () => {
 
   return (
     <Center gap={2} display={{ base: "none", md: "flex" }}>
-      {links.map((link) => (
-        <Link key={link.path} href={link.path} passHref>
-          <Box
-            as="a"
-            color={router.pathname === link.path ? activeColor : "inherit"}
-            fontWeight={router.pathname === link.path ? "black" : "normal"}
-            opacity={router.pathname === link.path ? 1 : 0.75}
-            _hover={{ textDecoration: "underline" }}
-          >
-            <Text>{link.name}</Text>
-          </Box>
-        </Link>
-      ))}
+      {links.map((link) => {
+        const isActive =
+          link.path === "/"
+            ? router.pathname === link.path
+            : router.pathname.startsWith(link.path)
+
+        return (
+          <Link key={link.path} href={link.path} passHref>
+            <Box
+              as="a"
+              color={isActive ? activeColor : "inherit"}
+              fontSize={isActive ? "lg" : "md"}
+              fontWeight={isActive ? "black" : "semibold"}
+              opacity={isActive ? 1 : 0.75}
+              _hover={{ textDecoration: "underline" }}
+            >
+              <Text>{link.name}</Text>
+            </Box>
+          </Link>
+        )
+      })}
     </Center>
   )
 }

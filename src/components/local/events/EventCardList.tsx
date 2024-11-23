@@ -58,6 +58,7 @@ const EventCardList = ({ data }) => {
           <Link href={`/users/${row.original.user}`} target="_blank">
             <Text
               color="blue.400"
+              fontSize="sm"
               fontWeight="medium"
               _hover={{ color: "blue.600" }}
             >

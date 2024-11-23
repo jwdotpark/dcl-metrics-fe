@@ -31,25 +31,13 @@ const EventItemDrawer = ({ data }) => {
     y: data.position[1],
   }
 
-  // make a function that find the next closed date in data.recurrent_dates
-  // eslint-disable-next-line no-unused-vars
-  const findNextDate = (recurrentEvents: string[]) => {
-    //const dates = data.recurrent_dates
-    const now = new Date()
-    const nextDate = recurrentEvents.find((d) => {
-      const dDate = new Date(d)
-      return dDate > now
-    })
-    return nextDate
-  }
-
   return (
     <Box>
       <>
         <Box _hover={{ cursor: "pointer" }} onClick={onOpen}>
           <Text
             color="blue.400"
-            fontSize="xs"
+            fontSize="sm"
             fontWeight="bold"
             _hover={{ color: "blue.600" }}
           >
