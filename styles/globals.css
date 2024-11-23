@@ -77,8 +77,19 @@ a {
   border-radius: 12px !important;
 }
 
+.react-resizable-handle,
 .react-resizable-handle-e,
 .react-resizable-handle-w {
+  position: relative;
+  background-color: transparent;
+  width: 14px;
+  height: 100%;
+  cursor: ew-resize;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.react-resizable-handle .react-resizable-handle-e {
   position: relative;
   background-color: transparent;
   width: 14px;
