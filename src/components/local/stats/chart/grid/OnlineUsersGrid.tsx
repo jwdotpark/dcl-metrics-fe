@@ -23,7 +23,10 @@ import {
   Tooltip,
   ReferenceLine,
 } from "recharts"
-import { chartFormat } from "../../../../../lib/data/chart/chartInfo"
+import {
+  chartFormat,
+  labelInterval,
+} from "../../../../../lib/data/chart/chartInfo"
 import { chartHeight, indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
@@ -166,7 +169,7 @@ export const OnlineUsersGrid = () => {
                       const date = new Date(tick)
                       return format(date, "MMM d")
                     }}
-                    interval={200}
+                    interval={labelInterval() * 2}
                   />
                   <YAxis
                     dataKey="value"
