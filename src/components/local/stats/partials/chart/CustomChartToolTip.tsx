@@ -57,11 +57,12 @@ export const CustomTooltip = ({ active, payload, label, avg, data }) => {
       <Box
         p="2"
         fontSize="xs"
-        bg={useColorModeValue("whiteAlpha.700", "blackAlpha.600")}
+        bg={useColorModeValue("whiteAlpha.300", "blackAlpha.500")}
         border="1px"
         borderColor={useColorModeValue("gray.200", "gray.800")}
         borderRadius="xl"
         shadow="md"
+        backdropFilter="blur(4px)"
       >
         <Center fontSize="md" fontWeight="bold">
           {format(new Date(label), "yyyy MMMM d")}

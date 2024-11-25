@@ -70,6 +70,7 @@ export const ActiveUsersGrid = () => {
           borderColor={borderColor}
           borderRadius="xl"
           shadow="md"
+          backdropFilter="blur(2px)"
         >
           <Center fontSize="md" fontWeight="bold">
             {format(new Date(label), "yyyy MMMM")}
