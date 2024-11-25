@@ -7,6 +7,12 @@ import {
   gridChartHeight,
   handleHeight,
 } from "../../../../lib/data/chart/chartInfo"
+import {
+  defaultLayout,
+  getSavedLayout,
+  Layout,
+  saveLayout,
+} from "../../../../lib/data/grid/gridInfo"
 import { ActiveUsersGrid } from "../../../local/stats/chart/grid/ActiveUsersGrid"
 import { BrushGrid } from "../../../local/stats/chart/grid/BrushGrid"
 import { GlobalUtilizationGrid } from "../../../local/stats/chart/grid/GlobalUtilizationGrid"
@@ -19,98 +25,33 @@ import { WorldStatGrid } from "../../../local/stats/chart/grid/WorldStatGrid"
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
-const getSavedLayout = () => {
-  const savedLayout = localStorage.getItem("gridLayout")
-  return savedLayout ? JSON.parse(savedLayout) : null
-}
-
-const saveLayout = (layout) => {
-  localStorage.setItem("gridLayout", JSON.stringify(layout))
+const componentMap = {
+  "1": ParcelVisitedGrid,
+  "2": SceneVisitedGrid,
+  "3": UniqueVisitorsGrid,
+  "4": OnlineUsersGrid,
+  "5": ActiveUsersGrid,
+  "6": GlobalUtilizationGrid,
+  "7": WorldStatGrid,
+  "8": WorldListGrid,
 }
 
 export const GridContainer = ({ chartData, worldData }) => {
   const toast = useToast()
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const toastId = "layout-toast"
 
   const handleLayoutToast = () => {
-    toast({
-      title: "Layout is Changed",
-      status: "info",
-      duration: 1000,
-      isClosable: true,
-      position: "bottom-right",
-    })
+    if (!toast.isActive(toastId)) {
+      toast({
+        title: "Layout is Changed",
+        status: "info",
+        duration: 1000,
+        isClosable: true,
+        position: "bottom-right",
+      })
+    }
   }
-  const defaultLayout = [
-    {
-      i: "1",
-      x: 0,
-      y: 0,
-      w: 1,
-      h: 1,
-      isResizable: true,
-      resizeHandles: ["e", "w"],
-    },
-    {
-      i: "2",
-      x: 1,
-      y: 0,
-      w: 1,
-      h: 1,
-      isResizable: true,
-      resizeHandles: ["e", "w"],
-    },
-    {
-      i: "3",
-      x: 0,
-      y: 1,
-      w: 2,
-      h: 1,
-      isResizable: false,
-    },
-    {
-      i: "4",
-      x: 0,
-      y: 2,
-      w: 1,
-      h: 1,
-      isResizable: true,
-      resizeHandles: ["e", "w"],
-    },
-    {
-      i: "5",
-      x: 1,
-      y: 2,
-      w: 1,
-      h: 1,
-      isResizable: true,
-      resizeHandles: ["e", "w"],
-    },
-    {
-      i: "6",
-      x: 0,
-      y: 3,
-      w: 1,
-      h: 1,
-      isResizable: false,
-    },
-    {
-      i: "7",
-      x: 1,
-      y: 3,
-      w: 1,
-      h: 1,
-      isResizable: false,
-    },
-    {
-      i: "8",
-      x: 0,
-      y: 4,
-      w: 2,
-      h: 2,
-      isResizable: true,
-      resizeHandles: ["e", "w"],
-    },
-  ]
 
   const [layout, setLayout] = useState(getSavedLayout() || defaultLayout)
 
@@ -123,14 +64,30 @@ export const GridContainer = ({ chartData, worldData }) => {
     avgUniqueUsers: 0,
   })
 
-  useEffect(() => {
-    saveLayout(layout)
-  }, [layout])
-
-  const handleLayoutChange = (newLayout) => {
+  const handleLayoutChange = (newLayout: Layout) => {
     handleLayoutToast()
     setLayout(newLayout)
   }
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.innerWidth
+      if (
+        (windowWidth >= 400 && newWidth < 400) ||
+        (windowWidth < 400 && newWidth >= 400)
+      ) {
+        setLayout(defaultLayout)
+      }
+      setWindowWidth(newWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [windowWidth])
+
+  useEffect(() => {
+    saveLayout(layout)
+  }, [layout])
 
   return (
     <Box w="100%" h="100%">
@@ -145,34 +102,21 @@ export const GridContainer = ({ chartData, worldData }) => {
         width="100%"
         draggableHandle=".drag-handle"
         isDraggable={true}
-        //useCSSTransforms={true}
         onLayoutChange={handleLayoutChange}
       >
-        <Box key="1" data-grid={layout.find((item) => item.i === "1")}>
-          <ParcelVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
-        </Box>
-        <Box key="2" data-grid={layout.find((item) => item.i === "2")}>
-          <SceneVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
-        </Box>
-        <Box key="3" data-grid={layout.find((item) => item.i === "3")}>
-          <UniqueVisitorsGrid chartData={chartData} avg={avg} setAvg={setAvg} />
-        </Box>
-
-        <Box key="4" data-grid={layout.find((item) => item.i === "4")}>
-          <OnlineUsersGrid />
-        </Box>
-        <Box key="5" data-grid={layout.find((item) => item.i === "5")}>
-          <ActiveUsersGrid />
-        </Box>
-        <Box key="6" data-grid={layout.find((item) => item.i === "6")}>
-          <GlobalUtilizationGrid />
-        </Box>
-        <Box key="7" data-grid={layout.find((item) => item.i === "7")}>
-          <WorldStatGrid worldCurrentRes={worldData} />
-        </Box>
-        <Box key="8" data-grid={layout.find((item) => item.i === "8")}>
-          <WorldListGrid worldCurrentRes={worldData} />
-        </Box>
+        {layout.map((item) => {
+          const GridComponent = componentMap[item.i]
+          return (
+            <Box key={item.i} data-grid={item}>
+              <GridComponent
+                chartData={chartData}
+                avg={avg}
+                setAvg={setAvg}
+                worldCurrentRes={worldData}
+              />
+            </Box>
+          )
+        })}
       </ResponsiveGridLayout>
     </Box>
   )
