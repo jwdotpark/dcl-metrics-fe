@@ -10,7 +10,6 @@ import {
   Text,
 } from "@chakra-ui/react"
 import Link from "next/link"
-import BoxWrapper from "../layout/local/BoxWrapper"
 
 const AboutList = () => {
   return (
