@@ -72,18 +72,20 @@ const World = (props: Props) => {
         }}
       />
       <Layout>
-        <Box>
-          <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={false} />
-        </Box>
-        <Box mb="4" />
-        <WorldChart worldGlobalRes={worldGlobalRes} />
-        <Box mb="4" />
-        <Box>
-          <WorldCurrentTop
-            worldCurrentRes={worldCurrentRes}
-            pageSize={10}
-            isMainPage={false}
-          />
+        <Box mx="4">
+          <Box>
+            <WorldStat worldCurrentRes={worldCurrentRes} isMainPage={false} />
+          </Box>
+          <Box mb="4" />
+          <WorldChart worldGlobalRes={worldGlobalRes} />
+          <Box mb="4" />
+          <Box>
+            <WorldCurrentTop
+              worldCurrentRes={worldCurrentRes}
+              pageSize={10}
+              isMainPage={false}
+            />
+          </Box>
         </Box>
       </Layout>
     </>

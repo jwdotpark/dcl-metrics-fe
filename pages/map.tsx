@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react"
 import LandPicker from "../src/components/global/map/LandPicker"
 import Layout from "../src/components/layout/layout"
 import staticParcel from "../public/data/cached_parcel.json"
@@ -86,13 +85,11 @@ const MapPage = (props: Props) => {
         }}
       />
       <Layout>
-        <Box mb="4" mx={[-4, 0, 0, 0]}>
-          <LandPicker
-            parcelData={parcelRes}
-            isPage={true}
-            parcelCoord={parcelCoord}
-          />
-        </Box>
+        <LandPicker
+          parcelData={parcelRes}
+          isPage={true}
+          parcelCoord={parcelCoord}
+        />
       </Layout>
     </>
   )

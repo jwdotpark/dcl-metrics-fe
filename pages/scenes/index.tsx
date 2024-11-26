@@ -102,22 +102,24 @@ const Scenes = (props: Props) => {
         }}
       />
       <Layout>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <SearchScene />
-        </Grid>
-        <Box mb="4">
-          <SceneTable sceneRes={sceneRes} setPageIndex={setPageIndex} />
+        <Box mx={[4, 0]}>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <SearchScene />
+          </Grid>
+          <Box mb="4">
+            <SceneTable sceneRes={sceneRes} setPageIndex={setPageIndex} />
+          </Box>
+          <Box mb="4">
+            <SceneCharts sceneRes={sceneRes} pageIndex={pageIndex} />
+          </Box>
+          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+            <TopScenesVisitors res={globalSceneRes} />
+            <ScenesTimeSpent res={globalSceneRes} />
+            <ScenesLogin res={globalSceneRes} />
+            <ScenesLogout res={globalSceneRes} />
+            <ScenesTimeSpentAFK res={globalSceneRes} />
+          </Grid>
         </Box>
-        <Box mb="4">
-          <SceneCharts sceneRes={sceneRes} pageIndex={pageIndex} />
-        </Box>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
-          <TopScenesVisitors res={globalSceneRes} />
-          <ScenesTimeSpent res={globalSceneRes} />
-          <ScenesLogin res={globalSceneRes} />
-          <ScenesLogout res={globalSceneRes} />
-          <ScenesTimeSpentAFK res={globalSceneRes} />
-        </Grid>
       </Layout>
     </>
   )
