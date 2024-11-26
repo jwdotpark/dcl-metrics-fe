@@ -14,25 +14,19 @@ import BoxWrapper from "../layout/local/BoxWrapper"
 
 const AboutList = () => {
   return (
-    <BoxWrapper colSpan={0}>
+    <>
       <Box
-        //minH="calc(100vh - 7rem)"
-        px="4"
+        overflow="clip"
+        h="100vh"
+        m="-4"
         bg={useColorModeValue(
           "linear-gradient(322deg, rgba(250,146,248,1) 0%, rgba(145,198,252,1) 49%, rgba(241,246,252,1) 100%)",
           "linear-gradient(322deg, rgba(70,20,69,1) 0%, rgba(38,80,124,1) 49%, rgba(69,71,73,1) 100%)"
         )}
         bgSize="cover"
-        borderRadius="xl"
       >
-        <Center
-        //minH="calc(100vh - 7rem)"
-        >
-          <Container
-            sx={{ backdropFilter: "blur(5px)" }}
-            maxW={"8xl"}
-            borderRadius="xl"
-          >
+        <Center>
+          <Container maxW={"8xl"} borderRadius="xl">
             <Box
               maxW="64rem"
               px={{ base: "1rem", md: "0" }}
@@ -139,7 +133,7 @@ const AboutList = () => {
           </Container>
         </Center>
       </Box>
-    </BoxWrapper>
+    </>
   )
 }
 

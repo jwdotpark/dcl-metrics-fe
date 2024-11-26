@@ -62,7 +62,7 @@ const ErrorBox = ({ error }) => {
     <Box
       mb="4"
       border="1px solid"
-      borderColor={useColorModeValue("green.200", "green.900")}
+      borderColor={useColorModeValue("gray.200", "gray.900")}
       borderRadius="xl"
       shadow="md"
     >

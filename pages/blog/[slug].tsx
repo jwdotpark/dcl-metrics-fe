@@ -59,7 +59,7 @@ function Post({ slug, data, content }) {
                     <Text
                       mb="2"
                       fontSize={["xl", "xl", "2xl", "3xl"]}
-                      fontWeight="bold"
+                      fontWeight="black"
                     >
                       {data.title}
                     </Text>

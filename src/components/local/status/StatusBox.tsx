@@ -45,7 +45,9 @@ const StatusBox = ({ data }) => {
           return (
             <Box key={category[0]}>
               <Box ml="2" my="4">
-                <Text fontSize={["md", "xl", "3xl", "3xl"]}>{category[0]}</Text>
+                <Text fontSize={["sm", "md", "lg", "xl"]} fontWeight="bold">
+                  {category[0]}
+                </Text>
               </Box>
               <SimpleGrid gap={4} columns={[0, 2, 2, 3]}>
                 {/* @ts-ignore */}
