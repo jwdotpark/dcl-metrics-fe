@@ -20,8 +20,8 @@ const ScenePageTableButtonGroup = ({
   setGlobalFilter,
 }) => {
   return (
-    <Center w="100%" mx="4" my="4">
-      <ButtonGroup borderRadius="xl" shadow="md" isAttached size="sm">
+    <Center w="100%" mx="4">
+      <ButtonGroup borderRadius="xl" shadow="md" isAttached size="xs">
         <Button
           borderRadius="xl"
           disabled={!canPreviousPage}

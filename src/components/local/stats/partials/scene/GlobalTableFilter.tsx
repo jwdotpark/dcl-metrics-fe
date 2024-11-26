@@ -2,7 +2,7 @@ import { Box, Input, useColorModeValue } from "@chakra-ui/react"
 
 const GlobalTableFilter = ({ filter, setFilter }) => {
   return (
-    <Box>
+    <Box mb="2">
       <Input
         bg={useColorModeValue("gray.50", "gray.800")}
         borderColor={useColorModeValue("gray.300", "gray.600")}

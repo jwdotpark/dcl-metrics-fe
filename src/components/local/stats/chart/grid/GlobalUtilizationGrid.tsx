@@ -86,8 +86,8 @@ export const GlobalUtilizationGrid = () => {
                   needleHeightRatio={0.75}
                 />
               </Center>
-              <Center w="100%" mt="2">
-                <Text fontSize="2xl" fontWeight="bold">
+              <Center w="100%" mt="4">
+                <Text fontSize="3xl" fontWeight="bold">
                   {utilizationData}%
                 </Text>
               </Center>

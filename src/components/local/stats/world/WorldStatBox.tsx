@@ -3,8 +3,8 @@ import { formatDistanceToNowStrict } from "date-fns"
 import CountUp from "react-countup"
 
 const WorldStatItem = ({ value, label, description }) => {
-  const borderColor = useColorModeValue("gray.300", "gray.700")
-  const bg = useColorModeValue("gray.200", "gray.600")
+  const borderColor = useColorModeValue("gray.200", "gray.600")
+  const bg = useColorModeValue("gray.100", "gray.700")
   const fontColor = useColorModeValue("gray.600", "gray.300")
 
   return (

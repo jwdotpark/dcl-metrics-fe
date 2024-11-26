@@ -1,35 +1,30 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+
 import React, { useEffect, useState } from "react"
 import type { NextPage } from "next"
-import {
-  Grid,
-  useBreakpointValue,
-  Box,
-  Spinner,
-  Center,
-} from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-import LandPicker from "../src/components/global/map/LandPicker"
 import {
   fetchGlobalData,
   //fetchRentalData,
   //getLatestPost,
 } from "../src/lib/data/fetch"
-//import RentalDay from "../src/components/local/stats/rentals/RentalDay"
-//import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
+import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
-import WorldStat from "../src/components/local/stats/world/WorldStat"
-import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
 import { isLocal } from "../src/lib/data/constant"
-import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
-import BoxWrapper from "../src/components/layout/local/BoxWrapper"
-import GlobalChart from "../src/components/local/stats/GlobalCharts"
-import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
-import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
 import { flattenObject } from "../src/lib/hooks/utils"
-import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
 import { GridContainer } from "../src/components/layout/global/grid/GridContainer"
+//import LandPicker from "../src/components/global/map/LandPicker"
+//import RentalDay from "../src/components/local/stats/rentals/RentalDay"
+//import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
+//import WorldStat from "../src/components/local/stats/world/WorldStat"
+//import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
+//import BoxWrapper from "../src/components/layout/local/BoxWrapper"
+//import GlobalChart from "../src/components/local/stats/GlobalCharts"
+//import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
+//import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
+//import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -127,6 +122,7 @@ const GlobalPage: NextPage = (props: Props) => {
 
   useEffect(() => {
     fetchClientData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

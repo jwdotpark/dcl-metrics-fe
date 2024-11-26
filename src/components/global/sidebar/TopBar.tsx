@@ -75,7 +75,6 @@ const TopBar = ({ onOpen, ...rest }: any) => {
       </Box>*/}
       <IconButton
         display={{ base: "flex", md: "none" }}
-        ml="-4"
         aria-label="open menu"
         icon={<FiMenu />}
         onClick={onOpen}
