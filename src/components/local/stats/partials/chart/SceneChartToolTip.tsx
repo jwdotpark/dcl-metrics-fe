@@ -11,6 +11,11 @@ import { format } from "date-fns"
 
 export const SceneChartTooltip = ({ active, payload, colorMap }) => {
   if (active && payload && payload.length) {
+    const uniqueEntries = payload.map((entry, index) => ({
+      ...entry,
+      key: `${entry.name}-${index}`,
+    }))
+
     return (
       <Box
         p="2"
@@ -23,13 +28,13 @@ export const SceneChartTooltip = ({ active, payload, colorMap }) => {
       >
         <Center>
           <Text fontWeight="semibold">
-            {format(new Date(payload[0].payload.date), "d MMMM yyyy")}
+            {format(new Date(payload[0].payload.date), "yyyy MMM d")}
           </Text>
         </Center>
-        {payload
+        {uniqueEntries
           .sort((a, b) => b.value - a.value)
           .map((entry) => (
-            <Flex key={entry.name} fontSize="xs">
+            <Flex key={entry.key} fontSize="xs">
               <Box mr="4">
                 <Text color={colorMap[entry.name]}>{entry.name}</Text>
               </Box>

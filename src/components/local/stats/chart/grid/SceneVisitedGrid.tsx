@@ -21,7 +21,7 @@ import { chartHeight, indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
-//import ChartResetBtn from "../../partials/chart/ResetBtn"
+//import ChartResetBtn from "../../partials/chart/ResetBtn"q
 import { useChartZoom } from "../../partials/chart/useChartZoom"
 
 export const SceneVisitedGrid = ({ chartData, avg, setAvg }) => {

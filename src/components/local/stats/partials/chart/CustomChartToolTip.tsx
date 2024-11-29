@@ -13,6 +13,7 @@ import {
   Thead,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
+import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { mutateString } from "../../../../../lib/hooks/utils"
 
@@ -62,6 +63,9 @@ export const CustomTooltip = ({
   const isDegraded = findDegraded(payload)
 
   const [isMobile, setIsMobile] = useState(false)
+  const router = useRouter()
+
+  console.log(router.asPath)
 
   useEffect(() => {
     if (window.innerWidth < 600) {
@@ -88,7 +92,14 @@ export const CustomTooltip = ({
     }
   }, [payload])
 
-  if (isMobile && active && payload && payload.length > 0) {
+  const shouldShowTooltip =
+    !isMobile &&
+    active &&
+    payload &&
+    payload.length > 0 &&
+    router.pathname !== "/"
+
+  if (shouldShowTooltip) {
     return (
       <Box
         p="2"

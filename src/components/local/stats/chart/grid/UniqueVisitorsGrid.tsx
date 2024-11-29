@@ -26,8 +26,7 @@ import { useChartZoom } from "../../partials/chart/useChartZoom"
 
 export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
   const axisFontColor = useColorModeValue("#000", "#fff")
-  const { chartState, handleMouseMove, handleMouseUp, handleReset } =
-    useChartZoom(chartData)
+  const { chartState, handleMouseMove, handleMouseUp } = useChartZoom(chartData)
 
   const [tooltipPayload, setTooltipPayload] = useState(null)
 
@@ -39,6 +38,7 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
     setAvg(calculateAvg(chartState.data))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartState.data])
+  
   return (
     <GridItemContainer>
       <Box>

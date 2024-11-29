@@ -121,6 +121,7 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
           setChartHeight={setChartHeight}
           resetVisibleLines={resetVisibleLines}
         />
+        {option.dateRange}
         {!isLoading && sortedData && !error ? (
           <Box w="100%" h={chartHeight}>
             <ResponsiveContainer width="100%" height="100%">
@@ -145,6 +146,7 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
                     const date = new Date(tick)
                     return format(date, "MM/dd")
                   }}
+                  interval={Math.round(option.dateRange / 10)}
                 />
                 <YAxis
                   fontSize="10px"
