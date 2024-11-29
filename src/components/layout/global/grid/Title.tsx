@@ -6,7 +6,6 @@ import {
   FiArrowDown,
   FiArrowUp,
   FiCalendar,
-  FiTrendingUp,
 } from "react-icons/fi"
 import { Handle } from "./Handle"
 
@@ -38,7 +37,7 @@ export const Title = ({ title, description, payload }) => {
               <Flex w="100%" mr="4">
                 <Spacer />
 
-                <Flex direction="row" mr="4">
+                <Flex direction="row" mr="2">
                   <Box sx={{ transform: "translateY(4px)" }} mr="1">
                     {item.payload.degraded ? (
                       <FiAlertCircle color="#ef4444" />
@@ -47,16 +46,16 @@ export const Title = ({ title, description, payload }) => {
                     )}
                   </Box>
                   <Box>
-                    <Text color={item.payload.degraded && "#ef4444"}>
+                    <Text
+                      color={item.payload.degraded && "#ef4444"}
+                      fontWeight="light"
+                    >
                       {format(new Date(item.payload.date), "yyyy MMM d")}
                     </Text>
                   </Box>
                 </Flex>
 
-                <Flex direction="row" mr="4">
-                  <Box sx={{ transform: "translateY(4px)" }} mr="1">
-                    <FiTrendingUp color={item.stroke} />
-                  </Box>
+                <Flex direction="row" mr="2">
                   <Box>
                     <Text color={item.stroke} fontWeight="bold">
                       {item.value}
@@ -65,7 +64,7 @@ export const Title = ({ title, description, payload }) => {
                 </Flex>
 
                 <Flex direction="row">
-                  <Box sx={{ transform: "translateY(4px)" }} mr="1">
+                  <Box sx={{ transform: "translateY(4px)" }} mr="0">
                     {item.value - payload[0].avg > 0 ? (
                       <FiArrowUp color="#22c55e" />
                     ) : (

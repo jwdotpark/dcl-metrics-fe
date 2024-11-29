@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
   Text,
@@ -68,7 +69,6 @@ export const CustomTooltip = ({
     } else {
       setIsMobile(false)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.innerWidth])
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export const CustomTooltip = ({
       })
       onChange(enrichedPayload)
     }
-  }, [active, payload, avg, onChange])
+  }, [payload])
 
   if (isMobile && active && payload && payload.length > 0) {
     return (

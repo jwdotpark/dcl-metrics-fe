@@ -1,6 +1,6 @@
 import { Box, useColorModeValue } from "@chakra-ui/react"
 import { format } from "date-fns"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import {
   ResponsiveContainer,
   AreaChart,
@@ -18,21 +18,22 @@ import {
   chartFormat,
   labelInterval,
 } from "../../../../../lib/data/chart/chartInfo"
+import { ExtendedTitle } from "../../../../layout/global/grid/ExtendedTitle"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
-import { Title } from "../../../../layout/global/grid/Title"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
-import ChartResetBtn from "../../partials/chart/ResetBtn"
+//import ChartResetBtn from "../../partials/chart/ResetBtn"
 import { useChartZoom } from "../../partials/chart/useChartZoom"
 
 export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
   const axisFontColor = useColorModeValue("#000", "#fff")
-  const {
-    chartState,
-    handleMouseDown,
-    handleMouseMove,
-    handleMouseUp,
-    handleReset,
-  } = useChartZoom(chartData)
+  const { chartState, handleMouseMove, handleMouseUp, handleReset } =
+    useChartZoom(chartData)
+
+  const [tooltipPayload, setTooltipPayload] = useState(null)
+
+  const handleTooltipChange = (payload) => {
+    setTooltipPayload(payload)
+  }
 
   useEffect(() => {
     setAvg(calculateAvg(chartState.data))
@@ -41,14 +42,15 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
   return (
     <GridItemContainer>
       <Box>
-        <Title
+        <ExtendedTitle
           title="Unique Visitors"
           description="Users that visited at least once in the given 24hr period and remained in world for at least one minute."
+          payload={tooltipPayload}
         />
         <Box pos="relative" w="100%" h={250} mb="4">
-          <Box pos="absolute" zIndex="8" top="4" right="0">
+          {/*<Box pos="absolute" zIndex="8" top="4" right="0">
             <ChartResetBtn handleReset={handleReset} />
-          </Box>
+          </Box>*/}
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               margin={{
@@ -58,9 +60,7 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                 bottom: 0,
               }}
               data={chartState.data}
-              onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
               onMouseLeave={() => handleMouseUp()}
               syncId="anyId"
             >
@@ -73,6 +73,7 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                     label={undefined}
                     avg={avg}
                     data={chartState.data}
+                    onChange={handleTooltipChange}
                   />
                 }
               />
@@ -101,9 +102,9 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                 animationDuration={150}
                 type="linear"
                 dataKey="unique_users"
-                stroke="#48BB78"
+                stroke="#14b8a6"
                 strokeWidth="2px"
-                fill="#48BB7880"
+                fill="#14b8a680"
               />
               <Area
                 animationDuration={150}
@@ -125,29 +126,29 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                 verticalAlign="top"
                 align="center"
                 wrapperStyle={{
-                  fontSize: "11px",
+                  fontSize: "14px",
                   fontWeight: "medium",
                 }}
                 payload={[
                   {
                     value: "Unique Users",
-                    type: "line",
-                    color: "#48BB78",
+                    type: "rect",
+                    color: "#14b8a6",
                   },
                   {
                     value: "Guest Users",
-                    type: "line",
+                    type: "rect",
                     color: "#9F7AEA",
                   },
                   {
                     value: "New Users",
-                    type: "line",
+                    type: "rect",
                     color: "#4299E1",
                   },
                   {
                     value: "Named Users",
-                    type: "line",
-                    color: "#F56565",
+                    type: "rect",
+                    color: "#eab308",
                   },
                 ]}
               />
@@ -156,8 +157,8 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                 type="linear"
                 dataKey="named_users"
                 strokeWidth="2px"
-                stroke="#F56565"
-                fill="#F5656580"
+                stroke="#eab308"
+                fill="#eab30880"
               />
               <ReferenceLine
                 y={avg.avgUniqueUsers}
@@ -165,10 +166,9 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                   position: "insideBottomLeft",
                   value: `Unique User AVG. ${avg.avgUniqueUsers}`,
                   fontSize: chartFormat.fontSize,
-                  //fontWeight: chartFormat.fontWeight,
                   fill: useColorModeValue("#000", "#fff"),
                 }}
-                stroke="#48BB78"
+                stroke="#14b8a6"
                 strokeWidth="1"
                 position="start"
                 strokeDasharray="4 2"
@@ -179,7 +179,6 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                   position: "insideBottomRight",
                   value: `Guest User AVG. ${avg.avgGuestUsers}`,
                   fontSize: chartFormat.fontSize,
-                  //fontWeight: chartFormat.fontWeight,
                   fill: useColorModeValue("#000", "#fff"),
                 }}
                 stroke="#9F7AEA"
@@ -193,7 +192,6 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                   position: "insideBottomLeft",
                   value: `New User AVG. ${avg.avgNewUsers}`,
                   fontSize: chartFormat.fontSize,
-                  //fontWeight: chartFormat.fontWeight,
                   fill: useColorModeValue("#000", "#fff"),
                 }}
                 stroke="#4299E1"
@@ -207,10 +205,9 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                   position: "insideBottomRight",
                   value: `Named User AVG. ${avg.avgNamedUsers}`,
                   fontSize: chartFormat.fontSize,
-                  //fontWeight: chartFormat.fontWeight,
                   fill: useColorModeValue("#000", "#fff"),
                 }}
-                stroke="#F56565"
+                stroke="#eab308"
                 strokeWidth="1"
                 position="start"
                 strokeDasharray="4 4"

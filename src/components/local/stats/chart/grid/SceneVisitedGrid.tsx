@@ -21,18 +21,13 @@ import { chartHeight, indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
-import ChartResetBtn from "../../partials/chart/ResetBtn"
+//import ChartResetBtn from "../../partials/chart/ResetBtn"
 import { useChartZoom } from "../../partials/chart/useChartZoom"
 
 export const SceneVisitedGrid = ({ chartData, avg, setAvg }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
-  const {
-    chartState,
-    handleMouseDown,
-    handleMouseMove,
-    handleMouseUp,
-    handleReset,
-  } = useChartZoom(chartData)
+  const { chartState, handleMouseMove, handleMouseUp, handleReset } =
+    useChartZoom(chartData)
 
   const [tooltipPayload, setTooltipPayload] = useState(null)
 
@@ -61,14 +56,12 @@ export const SceneVisitedGrid = ({ chartData, avg, setAvg }) => {
           mb="2"
           onDoubleClick={() => handleReset()}
         >
-          <ChartResetBtn handleReset={handleReset} />
+          {/*<ChartResetBtn handleReset={handleReset} />*/}
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               margin={indexChartMargin}
               data={chartState.data}
-              onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
               onMouseLeave={() => handleMouseUp()}
               syncId="anyId"
             >

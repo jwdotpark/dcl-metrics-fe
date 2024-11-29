@@ -21,14 +21,14 @@ import { indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
-import ChartResetBtn from "../../partials/chart/ResetBtn"
+//import ChartResetBtn from "../../partials/chart/ResetBtn"
 import { useChartZoom } from "../../partials/chart/useChartZoom"
 
 export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
   const {
     chartState,
-    handleMouseDown,
+
     handleMouseMove,
     handleMouseUp,
     handleReset,
@@ -59,14 +59,12 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
           h="100%"
           onDoubleClick={() => handleReset()}
         >
-          <ChartResetBtn handleReset={handleReset} />
+          {/*<ChartResetBtn handleReset={handleReset} />*/}
           <ResponsiveContainer width="100%" height={250}>
             <AreaChart
               margin={indexChartMargin}
               data={chartState.data}
-              onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
               onMouseLeave={() => handleMouseUp()}
               syncId="anyId"
             >
