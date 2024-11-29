@@ -1,6 +1,6 @@
 import { Box, useColorModeValue } from "@chakra-ui/react"
 import { format } from "date-fns"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import {
   ResponsiveContainer,
   AreaChart,
@@ -34,6 +34,12 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
     handleReset,
   } = useChartZoom(chartData)
 
+  const [tooltipPayload, setTooltipPayload] = useState(null)
+
+  const handleTooltipChange = (payload) => {
+    setTooltipPayload(payload)
+  }
+
   useEffect(() => {
     setAvg(calculateAvg(chartState.data))
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,6 +50,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
       <Title
         title="Active Parcel"
         description="Parcels that had any activity for at least one minute."
+        payload={tooltipPayload}
       />
       <Box>
         <Box
@@ -72,6 +79,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
                     label={undefined}
                     avg={avg}
                     data={chartState.data}
+                    onChange={handleTooltipChange}
                   />
                 }
               />

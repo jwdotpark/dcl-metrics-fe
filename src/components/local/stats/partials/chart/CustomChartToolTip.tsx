@@ -12,6 +12,7 @@ import {
   Thead,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
+import { useEffect, useState } from "react"
 import { mutateString } from "../../../../../lib/hooks/utils"
 
 const TableRow = ({ dataKey, value, stroke, avg }) => {
@@ -40,7 +41,14 @@ const TableRow = ({ dataKey, value, stroke, avg }) => {
   )
 }
 
-export const CustomTooltip = ({ active, payload, label, avg, data }) => {
+export const CustomTooltip = ({
+  active,
+  payload,
+  label,
+  avg,
+  data,
+  onChange,
+}) => {
   const findDegraded = (payloadArray) => {
     for (let item of payloadArray) {
       if (item.payload.degraded === true) {
@@ -52,7 +60,35 @@ export const CustomTooltip = ({ active, payload, label, avg, data }) => {
 
   const isDegraded = findDegraded(payload)
 
-  if (active && payload && payload.length > 0) {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    if (window.innerWidth < 600) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.innerWidth])
+
+  useEffect(() => {
+    if (active && payload && payload.length > 0) {
+      const enrichedPayload = payload.map((item) => {
+        const avgKey = `avg${item.dataKey
+          .split("_")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join("")}`
+        const avgValue = avg[avgKey] || 0
+        return {
+          ...item,
+          avg: avgValue,
+        }
+      })
+      onChange(enrichedPayload)
+    }
+  }, [active, payload, avg, onChange])
+
+  if (isMobile && active && payload && payload.length > 0) {
     return (
       <Box
         p="2"
@@ -64,54 +100,56 @@ export const CustomTooltip = ({ active, payload, label, avg, data }) => {
         shadow="md"
         backdropFilter="blur(4px)"
       >
-        <Center fontSize="md" fontWeight="bold">
-          {format(new Date(label), "yyyy MMMM d")}
-        </Center>
-        {isDegraded && (
-          <Center mt="1">
-            <Text color="red.500" fontWeight="bold">
-              Degraded
-            </Text>
+        <Box>
+          <Center fontSize="md" fontWeight="bold">
+            {format(new Date(label), "yyyy MMMM d")}
           </Center>
-        )}
-        <Table my="1" size="xs" variant="simple">
-          <Thead>
-            <Tr>
-              <Td>Category</Td>
-              <Td>
-                <Box ml="2">Value</Box>
-              </Td>
-              <Td isNumeric>vs. {data && data.length} days AVG.</Td>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {avg && typeof avg !== "number" ? (
-              payload.map((item, index) => {
-                const avgKey = `avg${item.dataKey
-                  .split("_")
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join("")}`
-                const avgValue = avg[avgKey]
-                return (
-                  <TableRow
-                    key={index}
-                    dataKey={item.dataKey}
-                    value={item.value}
-                    avg={avgValue}
-                    stroke={item.stroke}
-                  />
-                )
-              })
-            ) : (
-              <TableRow
-                dataKey={payload[0].dataKey}
-                value={payload[0].value}
-                stroke={undefined}
-                avg={avg}
-              />
-            )}
-          </Tbody>
-        </Table>
+          {isDegraded && (
+            <Center mt="1">
+              <Text color="red.500" fontWeight="bold">
+                Degraded
+              </Text>
+            </Center>
+          )}
+          <Table my="1" size="xs" variant="simple">
+            <Thead>
+              <Tr>
+                <Td>Category</Td>
+                <Td>
+                  <Box ml="2">Value</Box>
+                </Td>
+                <Td isNumeric>vs. {data && data.length} days AVG.</Td>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {avg && typeof avg !== "number" ? (
+                payload.map((item, index) => {
+                  const avgKey = `avg${item.dataKey
+                    .split("_")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join("")}`
+                  const avgValue = avg[avgKey]
+                  return (
+                    <TableRow
+                      key={index}
+                      dataKey={item.dataKey}
+                      value={item.value}
+                      avg={avgValue}
+                      stroke={item.stroke}
+                    />
+                  )
+                })
+              ) : (
+                <TableRow
+                  dataKey={payload[0].dataKey}
+                  value={payload[0].value}
+                  stroke={undefined}
+                  avg={avg}
+                />
+              )}
+            </Tbody>
+          </Table>
+        </Box>
       </Box>
     )
   }

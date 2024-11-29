@@ -104,7 +104,17 @@ export const GridContainer = ({ chartData, worldData }) => {
         isDraggable={true}
         onLayoutChange={handleLayoutChange}
       >
-        {layout.map((item) => {
+        <Box key={1}>
+          <ParcelVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
+        </Box>
+
+        <Box key={2}>
+          <SceneVisitedGrid chartData={chartData} avg={avg} setAvg={setAvg} />
+        </Box>
+        {/*<Box key={3}>
+          <UniqueVisitorsGrid chartData={chartData} avg={avg} setAvg={setAvg} />
+        </Box>*/}
+        {/*{layout.map((item) => {
           const GridComponent = componentMap[item.i]
           return (
             <Box key={item.i} data-grid={item}>
@@ -116,7 +126,7 @@ export const GridContainer = ({ chartData, worldData }) => {
               />
             </Box>
           )
-        })}
+        })}*/}
       </ResponsiveGridLayout>
     </Box>
   )
