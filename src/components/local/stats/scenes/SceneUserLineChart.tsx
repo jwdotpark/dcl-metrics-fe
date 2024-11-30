@@ -15,6 +15,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts"
+import { chartFormat } from "../../../../lib/data/chart/chartInfo"
 import { getEndpoint, indexChartMargin } from "../../../../lib/data/constant"
 import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
 import ToolTip from "../../../layout/local/ToolTip"
@@ -151,16 +152,26 @@ export const SceneUserLineChart = ({ data }) => {
                 />
               </ToolTip>
             </Box>
-            {/*<ChartResetBtn handleReset={handleReset} />*/}
+
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart
                 margin={indexChartMargin}
                 data={chartState.data}
-                //onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
-                //onMouseUp={handleMouseUp}
                 onMouseLeave={() => handleMouseUp()}
               >
+                <Brush
+                  dataKey="date"
+                  height={20}
+                  travellerWidth={15}
+                  stroke={useColorModeValue("#718096", "#EDF2F7")}
+                  fill={useColorModeValue("#EDF2F7", "#4A5568")}
+                  fillOpacity={0.5}
+                  tickFormatter={(tick) => {
+                    const date = new Date(tick)
+                    return format(date, "MM/dd")
+                  }}
+                />
                 <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
                 <Tooltip
                   content={
@@ -176,22 +187,17 @@ export const SceneUserLineChart = ({ data }) => {
                 />
                 <XAxis
                   dataKey="date"
-                  fontSize="10px"
-                  style={{
-                    fontWeight: "medium",
-                  }}
+                  fontSize={chartFormat.fontSize}
                   tick={{ fill: AxisFontColor }}
                   tickFormatter={(tick) => {
                     const date = new Date(tick)
                     return format(date, "MM/dd")
                   }}
+                  interval={Math.round(chartState.data.length / 10)}
                 />
                 <YAxis
                   dataKey="visitors"
-                  fontSize="10px"
-                  style={{
-                    fontWeight: "medium",
-                  }}
+                  fontSize={chartFormat.fontSize}
                   tick={{ fill: AxisFontColor }}
                 />
                 <Area
@@ -215,18 +221,7 @@ export const SceneUserLineChart = ({ data }) => {
                   position="start"
                   strokeDasharray="4 4"
                 />
-                <Brush
-                  dataKey="date"
-                  height={20}
-                  travellerWidth={15}
-                  stroke={useColorModeValue("#718096", "#EDF2F7")}
-                  fill={useColorModeValue("#EDF2F7", "#4A5568")}
-                  fillOpacity={0.5}
-                  tickFormatter={(tick) => {
-                    const date = new Date(tick)
-                    return format(date, "MMMM d")
-                  }}
-                />
+
                 {chartState.startX !== null && chartState.endX !== null && (
                   <ReferenceArea
                     x1={chartState.startX}

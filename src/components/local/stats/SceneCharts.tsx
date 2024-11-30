@@ -22,6 +22,7 @@ import useSWR from "swr"
 import { format } from "date-fns"
 import { SceneChartTooltip } from "./partials/chart/SceneChartToolTip"
 import { ChartParameters } from "./partials/chart/ChartParameters"
+import { chartFormat } from "../../../lib/data/chart/chartInfo"
 
 const SceneCharts = ({ sceneRes, pageIndex }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
@@ -121,7 +122,6 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
           setChartHeight={setChartHeight}
           resetVisibleLines={resetVisibleLines}
         />
-        {option.dateRange}
         {!isLoading && sortedData && !error ? (
           <Box w="100%" h={chartHeight}>
             <ResponsiveContainer width="100%" height="100%">
@@ -136,10 +136,7 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
               >
                 <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
                 <XAxis
-                  fontSize="10px"
-                  style={{
-                    fontWeight: "medium",
-                  }}
+                  fontSize={chartFormat.fontSize}
                   dataKey="date"
                   tick={{ fill: AxisFontColor }}
                   tickFormatter={(tick) => {
@@ -149,10 +146,7 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
                   interval={Math.round(option.dateRange / 10)}
                 />
                 <YAxis
-                  fontSize="10px"
-                  style={{
-                    fontWeight: "medium",
-                  }}
+                  fontSize={chartFormat.fontSize}
                   tick={{ fill: AxisFontColor }}
                 />
                 <Tooltip
