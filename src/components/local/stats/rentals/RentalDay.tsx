@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useMemo } from "react"
 import { Box } from "@chakra-ui/react"
 import { sliceData } from "../../../../lib/data/chart/chartInfo"
