@@ -1,4 +1,4 @@
-import { Box, Text, Flex, Spacer, Center, Divider } from "@chakra-ui/react"
+import { Box, Text, Flex, Spacer, Center } from "@chakra-ui/react"
 import { format } from "date-fns"
 import { useEffect, useState } from "react"
 import { FiArrowDown, FiArrowUp, FiCalendar } from "react-icons/fi"
@@ -33,13 +33,13 @@ export const ExtendedTitle = ({ title, description, payload }) => {
             {payload && format(new Date(payload[0].payload.date), "yyyy MMM d")}
           </Box>
         </Flex>
-        <Flex mr="4">
+        <Flex>
           {!isMobile &&
             payload &&
             payload.map((item, index) => {
               const avgValue = item.avg
               return (
-                <Center key={index} w="100%" mr="6">
+                <Center key={index} w="100%" mr="4">
                   <Flex w="100%">
                     <Spacer />
                     <Flex direction="row" mr="1">

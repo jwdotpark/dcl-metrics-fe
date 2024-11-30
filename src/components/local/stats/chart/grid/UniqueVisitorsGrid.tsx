@@ -38,7 +38,7 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
     setAvg(calculateAvg(chartState.data))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartState.data])
-  
+
   return (
     <GridItemContainer>
       <Box>
@@ -124,10 +124,11 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
               />
               <Legend
                 verticalAlign="top"
-                align="center"
+                align="right"
                 wrapperStyle={{
                   fontSize: "14px",
                   fontWeight: "medium",
+                  transform: "translateX(6px) translateY(20px)",
                 }}
                 payload={[
                   {
