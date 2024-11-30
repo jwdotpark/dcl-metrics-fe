@@ -111,6 +111,7 @@ export const ActiveUsersGrid = () => {
           <Title
             title="Active Users"
             description="Unique users that have logged into Decentraland and moved out of their initial tile."
+            payload={[]}
           />
 
           {isLoading ? (

@@ -5,7 +5,7 @@ import {
   ResponsiveContainer,
   AreaChart,
   CartesianGrid,
-  Tooltip,
+  //Tooltip,
   XAxis,
   YAxis,
   Area,
@@ -18,7 +18,7 @@ import { calculateAvg } from "../../../../lib/data/chart/chartHelper"
 // eslint-disable-next-line no-unused-vars
 import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
 import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
-import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
+//import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
 
@@ -68,7 +68,7 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
                 return format(date, "MMMM d")
               }}
             />
-            <Tooltip
+            {/*<Tooltip
               content={
                 <CustomTooltip
                   active={undefined}
@@ -78,7 +78,7 @@ export const UniqueVisitor = ({ chartData, axisFontColor, avg, setAvg }) => {
                   data={chartState.data}
                 />
               }
-            />
+            />*/}
             <XAxis
               dataKey="date"
               fontSize="10px"

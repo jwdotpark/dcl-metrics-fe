@@ -29,6 +29,7 @@ export const WorldListGrid = ({ worldCurrentRes, pageSize = 9 }) => {
         description={
           "A list of Worlds currently deployed to Decentraland servers, click the thumbnail to jump in."
         }
+        payload={[]}
       />
       {Object.keys(worldCurrentRes).length !== 0 && (
         <WorldTable worldCurrentRes={worldCurrentRes} pageSize={pageSize} />

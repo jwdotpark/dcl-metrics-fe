@@ -61,6 +61,7 @@ export const GlobalUtilizationGrid = () => {
             description={
               "Percentage of parcels with deployed content in Decentraland, regardless of activity."
             }
+            payload={[]}
           />
           {isLoading ? (
             <Center h="200px">

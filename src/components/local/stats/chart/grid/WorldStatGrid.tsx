@@ -8,7 +8,7 @@ export const WorldStatGrid = ({ worldCurrentRes }) => {
 
   return (
     <GridItemContainer>
-      <Title title="Concurrent Worlds Metrics" description="" />
+      <Title title="Concurrent Worlds Metrics" description="" payload={[]} />
       <WorldStatBox
         isMainPage={true}
         total_count={total_count}

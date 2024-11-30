@@ -136,6 +136,7 @@ export const OnlineUsersGrid = () => {
         <Title
           title="Online Users"
           description="Active daily users, data from Decentraland Status Page."
+          payload={[]}
         />
 
         {isLoading ? (
