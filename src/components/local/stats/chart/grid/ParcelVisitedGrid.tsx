@@ -1,5 +1,6 @@
 import { Box, useColorModeValue } from "@chakra-ui/react"
 import { format } from "date-fns"
+import { useAtom } from "jotai"
 import { useEffect, useState } from "react"
 import {
   ResponsiveContainer,
@@ -18,6 +19,7 @@ import {
   labelInterval,
 } from "../../../../../lib/data/chart/chartInfo"
 import { indexChartMargin } from "../../../../../lib/data/constant"
+import { chartDataAtom } from "../../../../../lib/state/dataIndex"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
@@ -29,17 +31,21 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
   const { chartState, handleMouseMove, handleMouseUp, handleReset } =
     useChartZoom(chartData)
-
   const [tooltipPayload, setTooltipPayload] = useState(null)
+  const slicedData = useAtom(chartDataAtom)
 
   const handleTooltipChange = (payload) => {
     setTooltipPayload(payload)
   }
 
   useEffect(() => {
-    setAvg(calculateAvg(chartState.data))
+    if (slicedData[0]) {
+      setAvg(calculateAvg(slicedData[0]))
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartState.data])
+  }, [slicedData[0]])
+
+  console.count("rerendered")
 
   return (
     <GridItemContainer>
@@ -60,6 +66,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
             <AreaChart
               margin={indexChartMargin}
               data={chartState.data}
+              //data={slicedData[0]}
               onMouseMove={handleMouseMove}
               onMouseLeave={() => handleMouseUp()}
               //onMouseEnter={}

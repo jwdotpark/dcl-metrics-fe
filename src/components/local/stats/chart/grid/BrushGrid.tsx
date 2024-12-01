@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {
   Box,
   Text,
@@ -9,8 +9,12 @@ import {
 } from "@chakra-ui/react"
 import { Brush, XAxis, AreaChart, ResponsiveContainer } from "recharts"
 import { format } from "date-fns"
+import { chartDataAtom } from "../../../../../lib/state/dataIndex"
+import { useAtom } from "jotai"
 
 export const BrushGrid = ({ chartData }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [slicedData, setSLicedData] = useAtom(chartDataAtom)
   const [dataIndex, setDataIndex] = useState({
     start: 0,
     end: chartData.length - 1,
@@ -20,6 +24,15 @@ export const BrushGrid = ({ chartData }) => {
     start: chartData[dataIndex.start].date,
     end: chartData[dataIndex.end].date,
   }
+
+  const sliceData = () => {
+    return chartData.slice(dataIndex.start, dataIndex.end)
+  }
+
+  useEffect(() => {
+    setSLicedData(sliceData())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataIndex])
 
   return (
     <Box
