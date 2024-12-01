@@ -31,14 +31,22 @@ export const ExtendedTitle = ({ title, description, payload }) => {
           </Text>
         </Center>
         <Spacer />
-        <Flex direction="row" fontSize="sm">
-          <Box sx={{ transform: "translateY(12px)" }} mr="1">
-            <FiCalendar />
-          </Box>
-          <Box sx={{ transform: "translateY(8px)" }} mr="4" fontWeight="light">
-            {payload && format(new Date(payload[0].payload.date), "yyyy MMM d")}
-          </Box>
-        </Flex>
+        {!isMobile && (
+          <Flex direction="row" fontSize="sm">
+            <Box sx={{ transform: "translateY(12px)" }} mr="1">
+              <FiCalendar />
+            </Box>
+            <Box
+              sx={{ transform: "translateY(8px)" }}
+              mr="4"
+              fontWeight="light"
+            >
+              {payload &&
+                format(new Date(payload[0].payload.date), "yyyy MMM d")}
+            </Box>
+          </Flex>
+        )}
+
         <Flex>
           {!isMobile &&
             payload &&

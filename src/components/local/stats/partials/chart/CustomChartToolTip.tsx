@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Text,
   Box,
@@ -13,7 +11,7 @@ import {
   Thead,
 } from "@chakra-ui/react"
 import { format } from "date-fns"
-import { useRouter } from "next/router"
+//import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import {
   enrichPayload,
@@ -57,7 +55,7 @@ export const CustomTooltip = ({
 }) => {
   const isDegraded = findDegraded(payload)
   const [isMobile, setIsMobile] = useState(false)
-  const router = useRouter()
+  //const router = useRouter()
 
   useEffect(() => {
     if (window.innerWidth < 600) {
@@ -65,6 +63,7 @@ export const CustomTooltip = ({
     } else {
       setIsMobile(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.innerWidth])
 
   useEffect(() => {
@@ -72,23 +71,23 @@ export const CustomTooltip = ({
       const enrichedPayload = enrichPayload(payload, avg)
       onChange(enrichedPayload)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [label])
 
-  const shouldShowTooltip =
-    !isMobile &&
-    active &&
-    payload &&
-    payload.length > 0 &&
-    router.pathname !== "/"
+  const shouldShowTooltip = isMobile && active && payload && payload.length > 0
+  //&& router.pathname !== "/"
+
+  const bg = useColorModeValue("whiteAlpha.300", "blackAlpha.500")
+  const borderColor = useColorModeValue("gray.200", "gray.800")
 
   if (shouldShowTooltip) {
     return (
       <Box
         p="2"
         fontSize="xs"
-        bg={useColorModeValue("whiteAlpha.300", "blackAlpha.500")}
+        bg={bg}
         border="1px"
-        borderColor={useColorModeValue("gray.200", "gray.800")}
+        borderColor={borderColor}
         borderRadius="xl"
         shadow="md"
         backdropFilter="blur(4px)"
