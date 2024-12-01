@@ -28,12 +28,8 @@ import { useChartZoom } from "../../partials/chart/useChartZoom"
 
 export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
-  const {
-    chartState,
-    handleMouseMove,
-    handleMouseUp,
-    handleReset,
-  } = useChartZoom(chartData)
+  const { chartState, handleMouseMove, handleMouseUp, handleReset } =
+    useChartZoom(chartData)
   const [tooltipPayload, setTooltipPayload] = useState(null)
   const slicedData = useAtom(chartDataAtom)
 
@@ -69,9 +65,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
               data={chartState.data}
               onMouseMove={handleMouseMove}
               onMouseLeave={() => handleMouseUp()}
-              onMouseDown={() => {
-                
-              }}
+              onMouseDown={() => {}}
               onMouseUp={handleMouseUp}
               syncId="anyId"
             >
