@@ -15,6 +15,10 @@ import {
 import { format } from "date-fns"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import {
+  enrichPayload,
+  findDegraded,
+} from "../../../../../lib/data/chart/chartInfo"
 import { mutateString } from "../../../../../lib/hooks/utils"
 
 const TableRow = ({ dataKey, value, stroke, avg }) => {
@@ -51,21 +55,9 @@ export const CustomTooltip = ({
   data,
   onChange,
 }) => {
-  const findDegraded = (payloadArray) => {
-    for (let item of payloadArray) {
-      if (item.payload.degraded === true) {
-        return true
-      }
-    }
-    return false
-  }
-
   const isDegraded = findDegraded(payload)
-
   const [isMobile, setIsMobile] = useState(false)
   const router = useRouter()
-
-  console.log(router.asPath)
 
   useEffect(() => {
     if (window.innerWidth < 600) {
@@ -77,20 +69,10 @@ export const CustomTooltip = ({
 
   useEffect(() => {
     if (active && payload && payload.length > 0) {
-      const enrichedPayload = payload.map((item) => {
-        const avgKey = `avg${item.dataKey
-          .split("_")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join("")}`
-        const avgValue = avg[avgKey] || 0
-        return {
-          ...item,
-          avg: avgValue,
-        }
-      })
+      const enrichedPayload = enrichPayload(payload, avg)
       onChange(enrichedPayload)
     }
-  }, [payload])
+  }, [label])
 
   const shouldShowTooltip =
     !isMobile &&

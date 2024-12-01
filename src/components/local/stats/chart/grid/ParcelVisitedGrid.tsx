@@ -21,18 +21,14 @@ import { indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
+//import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
 //import ChartResetBtn from "../../partials/chart/ResetBtn"
 import { useChartZoom } from "../../partials/chart/useChartZoom"
 
 export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
-  const {
-    chartState,
-
-    handleMouseMove,
-    handleMouseUp,
-    handleReset,
-  } = useChartZoom(chartData)
+  const { chartState, handleMouseMove, handleMouseUp, handleReset } =
+    useChartZoom(chartData)
 
   const [tooltipPayload, setTooltipPayload] = useState(null)
 
@@ -66,9 +62,22 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
               data={chartState.data}
               onMouseMove={handleMouseMove}
               onMouseLeave={() => handleMouseUp()}
+              //onMouseEnter={}
               syncId="anyId"
             >
               <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
+              {/*<Tooltip
+                content={
+                  <CustomTooltip
+                    active={undefined}
+                    payload={undefined}
+                    label={undefined}
+                    avg={avg}
+                    data={chartState.data}
+                    onChange={handleTooltipChange}
+                  />
+                }
+              />*/}
               <Tooltip
                 content={
                   <CustomTooltip

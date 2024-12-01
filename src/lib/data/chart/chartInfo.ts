@@ -140,3 +140,42 @@ export const formatCount = (val) => {
     return "24h"
   }
 }
+
+export const findDegraded = (payloadArray) => {
+  for (let item of payloadArray) {
+    if (item.payload.degraded === true) {
+      return true
+    }
+  }
+  return false
+}
+
+const memoize = (fn) => {
+  const cache = new Map()
+  return (...args) => {
+    const key = JSON.stringify(args)
+    if (cache.has(key)) {
+      return cache.get(key)
+    }
+    const result = fn(...args)
+    cache.set(key, result)
+    return result
+  }
+}
+
+export const enrichPayload = memoize((payload, avg) => {
+  if (payload && payload.length > 0) {
+    return payload.map((item) => {
+      const avgKey = `avg${item.dataKey
+        .split("_")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join("")}`
+      const avgValue = avg[avgKey] || 0
+      return {
+        ...item,
+        avg: avgValue,
+      }
+    })
+  }
+  return []
+})
