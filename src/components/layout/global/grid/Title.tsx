@@ -33,7 +33,7 @@ export const Title = ({ title, description, payload }) => {
         {!isMobile &&
           payload &&
           payload.map((item, index) => (
-            <Center key={index} w="100%">
+            <Center key={index} w="100%" fontSize="sm">
               <Flex w="100%" mr="4">
                 <Spacer />
 

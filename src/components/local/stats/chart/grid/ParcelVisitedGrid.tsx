@@ -23,14 +23,17 @@ import { chartDataAtom } from "../../../../../lib/state/dataIndex"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
-//import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
-//import ChartResetBtn from "../../partials/chart/ResetBtn"
 import { useChartZoom } from "../../partials/chart/useChartZoom"
+//import ChartResetBtn from "../../partials/chart/ResetBtn"
 
 export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
-  const { chartState, handleMouseMove, handleMouseUp, handleReset } =
-    useChartZoom(chartData)
+  const {
+    chartState,
+    handleMouseMove,
+    handleMouseUp,
+    handleReset,
+  } = useChartZoom(chartData)
   const [tooltipPayload, setTooltipPayload] = useState(null)
   const slicedData = useAtom(chartDataAtom)
 
@@ -44,8 +47,6 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slicedData[0]])
-
-  console.count("rerendered")
 
   return (
     <GridItemContainer>
@@ -66,25 +67,15 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
             <AreaChart
               margin={indexChartMargin}
               data={chartState.data}
-              //data={slicedData[0]}
               onMouseMove={handleMouseMove}
               onMouseLeave={() => handleMouseUp()}
-              //onMouseEnter={}
+              onMouseDown={() => {
+                
+              }}
+              onMouseUp={handleMouseUp}
               syncId="anyId"
             >
               <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
-              {/*<Tooltip
-                content={
-                  <CustomTooltip
-                    active={undefined}
-                    payload={undefined}
-                    label={undefined}
-                    avg={avg}
-                    data={chartState.data}
-                    onChange={handleTooltipChange}
-                  />
-                }
-              />*/}
               <Tooltip
                 content={
                   <CustomTooltip
@@ -97,6 +88,7 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
                   />
                 }
               />
+
               <XAxis
                 dataKey="date"
                 fontSize={chartFormat.fontSize}
