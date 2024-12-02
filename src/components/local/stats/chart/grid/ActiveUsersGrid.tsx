@@ -107,7 +107,7 @@ export const ActiveUsersGrid = () => {
   return (
     <GridItemContainer>
       <Box>
-        <Box mb="2">
+        <Box>
           <Title
             title="Active Users"
             description="Unique users that have logged into Decentraland and moved out of their initial tile."
@@ -120,7 +120,7 @@ export const ActiveUsersGrid = () => {
             </Center>
           ) : (
             <Box>
-              <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
+              <Box pos="relative" w="100%" h={chartHeight} mt="4">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
                     width={500}
@@ -130,7 +130,7 @@ export const ActiveUsersGrid = () => {
                       top: 5,
                       right: 30,
                       left: 20,
-                      bottom: 5,
+                      bottom: 10,
                     }}
                   >
                     <CartesianGrid strokeDasharray="4 4" opacity="0.5" />
@@ -169,7 +169,7 @@ export const ActiveUsersGrid = () => {
             </Box>
           )}
         </Box>
-        <Center mt="-4" mb="1" fontSize="xs">
+        <Center fontSize="xs">
           Source from
           <Box ml="1" color="blue.500">
             <Link

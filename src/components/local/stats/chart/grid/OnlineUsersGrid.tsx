@@ -23,10 +23,7 @@ import {
   Tooltip,
   ReferenceLine,
 } from "recharts"
-import {
-  chartFormat,
-  labelInterval,
-} from "../../../../../lib/data/chart/chartInfo"
+import { chartFormat } from "../../../../../lib/data/chart/chartInfo"
 import { chartHeight, indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
@@ -132,7 +129,7 @@ export const OnlineUsersGrid = () => {
 
   return (
     <GridItemContainer>
-      <Box mb="2">
+      <Box mb="1">
         <Title
           title="Online Users"
           description="Active daily users, data from Decentraland Status Page."
@@ -145,7 +142,7 @@ export const OnlineUsersGrid = () => {
           </Center>
         ) : (
           <Box mt="-1">
-            <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="2">
+            <Box pos="relative" w="100%" h={chartHeight} mt="4" mb="0">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
                   margin={indexChartMargin}
@@ -171,7 +168,8 @@ export const OnlineUsersGrid = () => {
                       const date = new Date(tick)
                       return format(date, "MMM d")
                     }}
-                    interval={labelInterval() * 2}
+                    angle={-45}
+                    tickMargin={10}
                   />
                   <YAxis
                     dataKey="value"
@@ -205,7 +203,7 @@ export const OnlineUsersGrid = () => {
           </Box>
         )}
       </Box>
-      <Center mt="-3" mb="1" fontSize="xs">
+      <Center fontSize="xs">
         UTC, source from
         <Box ml="1" color="blue.500">
           <Link href="https://status.decentraland.org/metrics" target="_blank">

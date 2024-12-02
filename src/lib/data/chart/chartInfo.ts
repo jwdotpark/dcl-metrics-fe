@@ -14,7 +14,7 @@ export const labelInterval = () => {
   }
 }
 export const chartFormat = {
-  fontSize: "14px",
+  fontSize: "12px",
   fontWeight: "bold",
 }
 
@@ -22,7 +22,7 @@ export const handleHeight = (h: number) => {
   if (window.innerWidth < 768) {
     return h + 50
   } else {
-    return h
+    return h + 10
   }
 }
 

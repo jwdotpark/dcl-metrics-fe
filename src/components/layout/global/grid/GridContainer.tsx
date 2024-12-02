@@ -92,7 +92,6 @@ export const GridContainer = ({ chartData, worldData }) => {
   return (
     <Box w="100%" h="100%">
       <BrushGrid chartData={chartData} />
-
       <ResponsiveGridLayout
         className="layout"
         layouts={{ lg: layout }}

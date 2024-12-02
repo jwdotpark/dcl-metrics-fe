@@ -14,10 +14,7 @@ import {
   ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../../lib/data/chart/chartHelper"
-import {
-  chartFormat,
-  labelInterval,
-} from "../../../../../lib/data/chart/chartInfo"
+import { chartFormat } from "../../../../../lib/data/chart/chartInfo"
 import { indexChartMargin } from "../../../../../lib/data/constant"
 import { chartDataAtom } from "../../../../../lib/state/dataIndex"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
@@ -94,7 +91,8 @@ export const ParcelVisitedGrid = ({ chartData, avg, setAvg }) => {
                   const date = new Date(tick)
                   return format(date, "MMM d")
                 }}
-                interval={labelInterval()}
+                angle={-45}
+                tickMargin={10}
               />
               <YAxis
                 dataKey="active_parcels"

@@ -88,7 +88,7 @@ export const indexChartMargin = {
   top: 0,
   right: 20,
   left: 0,
-  bottom: 0,
+  bottom: 10,
 }
 
 export const chartHeight = 250

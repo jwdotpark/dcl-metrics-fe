@@ -36,6 +36,13 @@ export const BrushGrid = ({ chartData }) => {
 
   return (
     <Box
+      display={{
+        base: "none",
+        sm: "none",
+        md: "block",
+        lg: "block",
+        xl: "block",
+      }}
       h="100%"
       mx="2"
       p="4"

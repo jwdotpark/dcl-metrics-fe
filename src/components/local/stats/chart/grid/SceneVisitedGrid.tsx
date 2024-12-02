@@ -13,10 +13,7 @@ import {
   ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../../lib/data/chart/chartHelper"
-import {
-  chartFormat,
-  labelInterval,
-} from "../../../../../lib/data/chart/chartInfo"
+import { chartFormat } from "../../../../../lib/data/chart/chartInfo"
 import { chartHeight, indexChartMargin } from "../../../../../lib/data/constant"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { Title } from "../../../../layout/global/grid/Title"
@@ -89,7 +86,8 @@ export const SceneVisitedGrid = ({ chartData, avg, setAvg }) => {
                   const date = new Date(tick)
                   return format(date, "MMM d")
                 }}
-                interval={labelInterval()}
+                angle={-45}
+                tickMargin={10}
               />
               <YAxis
                 dataKey="active_scenes"

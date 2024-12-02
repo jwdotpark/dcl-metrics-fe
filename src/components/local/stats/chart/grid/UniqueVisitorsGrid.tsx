@@ -14,10 +14,7 @@ import {
   ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../../lib/data/chart/chartHelper"
-import {
-  chartFormat,
-  labelInterval,
-} from "../../../../../lib/data/chart/chartInfo"
+import { chartFormat } from "../../../../../lib/data/chart/chartInfo"
 import { ExtendedTitle } from "../../../../layout/global/grid/ExtendedTitle"
 import { GridItemContainer } from "../../../../layout/global/grid/GridItemContainer"
 import { CustomTooltip } from "../../partials/chart/CustomChartToolTip"
@@ -57,7 +54,7 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                 top: 0,
                 right: 20,
                 left: 0,
-                bottom: 0,
+                bottom: 10,
               }}
               data={chartState.data}
               onMouseMove={handleMouseMove}
@@ -88,7 +85,8 @@ export const UniqueVisitorsGrid = ({ chartData, avg, setAvg }) => {
                   const date = new Date(tick)
                   return format(date, "MMM d")
                 }}
-                interval={labelInterval() * 0.75}
+                angle={-45}
+                tickMargin={10}
               />
               <YAxis
                 dataKey="unique_users"
