@@ -1,45 +1,54 @@
-import { Box, Text, Center, useColorModeValue } from "@chakra-ui/react"
+/* eslint-disable react-hooks/rules-of-hooks */
+import { Box, Text, Center, useColorModeValue, Tooltip } from "@chakra-ui/react"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { topbarLinks } from "../../../lib/data/grid/topbarItems"
+import { TopbarHoverCard } from "./TopbarHoverCard"
+//import { topbarLinks } from "../../../lib/data/grid/topbarLinks"
 
 export const TopbarLinks = () => {
   const router = useRouter()
   const activeColor = useColorModeValue("#6272A4", "#FFB86C")
 
-  const links = [
-    { name: "Home", path: "/" },
-    { name: "User", path: "/users" },
-    { name: "Scene", path: "/scenes" },
-    { name: "Parcel", path: "/parcels" },
-    { name: "Map", path: "/map" },
-    { name: "World", path: "/worlds" },
-    { name: "Event", path: "/events" },
-    { name: "Status", path: "/status" },
-    { name: "Blog", path: "/blog" },
-    { name: "Roadmap", path: "/roadmap" },
-    { name: "About", path: "/about" },
-  ]
-
   return (
     <Center gap={2} display={{ base: "none", md: "flex" }}>
-      {links.map((link) => {
+      {topbarLinks.map((link) => {
         const isActive =
           link.path === "/"
             ? router.pathname === link.path
             : router.pathname.startsWith(link.path)
-
+        const thumbnail = useColorModeValue(
+          `/images/top/${link.name.toLowerCase()}_l.png`,
+          `/images/top/${link.name.toLowerCase()}_d.png`
+        )
         return (
           <Link key={link.path} href={link.path} passHref>
-            <Box
-              as="a"
-              color={isActive ? activeColor : "inherit"}
-              fontSize={isActive ? "lg" : "md"}
-              fontWeight={isActive ? "black" : "semibold"}
-              opacity={isActive ? 1 : 0.75}
-              _hover={{ textDecoration: "underline" }}
+            <Tooltip
+              sx={{
+                padding: 0,
+                bg: "transparent",
+                boxShadow: "none",
+              }}
+              hasArrow
+              label={
+                <TopbarHoverCard
+                  name={link.name}
+                  image={thumbnail}
+                  description={link.description}
+                />
+              }
             >
-              <Text>{link.name}</Text>
-            </Box>
+              <Box
+                as="a"
+                color={isActive ? activeColor : "inherit"}
+                fontSize={isActive ? "lg" : "md"}
+                fontWeight={isActive ? "black" : "semibold"}
+                opacity={isActive ? 1 : 0.75}
+                _hover={{ textDecoration: "underline" }}
+              >
+                <Text>{link.name}</Text>
+              </Box>
+            </Tooltip>
           </Link>
         )
       })}
