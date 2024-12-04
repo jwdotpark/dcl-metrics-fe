@@ -4,7 +4,6 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { topbarLinks } from "../../../lib/data/grid/topbarItems"
 import { TopbarHoverCard } from "./TopbarHoverCard"
-//import { topbarLinks } from "../../../lib/data/grid/topbarLinks"
 
 export const TopbarLinks = () => {
   const router = useRouter()
@@ -29,7 +28,7 @@ export const TopbarLinks = () => {
                 bg: "transparent",
                 boxShadow: "none",
               }}
-              hasArrow
+              shadow="lg"
               label={
                 <TopbarHoverCard
                   name={link.name}

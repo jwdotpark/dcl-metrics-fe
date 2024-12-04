@@ -21,7 +21,6 @@ export const TopbarHoverCard = ({ name, image, description }) => {
           <Image
             width={200}
             height={200}
-            //layout='responsive'
             alt={name}
             src={image}
             quality={50}
@@ -30,7 +29,11 @@ export const TopbarHoverCard = ({ name, image, description }) => {
           />
         </Box>
         <Center w="100%" mt="2">
-          <Text fontSize="xs" fontWeight="light" wordBreak="break-word">
+          <Text
+            color={useColorModeValue("gray.600", "gray.200")}
+            fontSize="xs"
+            wordBreak="break-word"
+          >
             {description}
           </Text>
         </Center>
