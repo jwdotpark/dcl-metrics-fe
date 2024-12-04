@@ -17,8 +17,8 @@ export const TopbarLinks = () => {
             ? router.pathname === link.path
             : router.pathname.startsWith(link.path)
         const thumbnail = useColorModeValue(
-          `/images/top/${link.name.toLowerCase()}_l.png`,
-          `/images/top/${link.name.toLowerCase()}_d.png`
+          `/images/top/${link.name.toLowerCase()}_l-min.png`,
+          `/images/top/${link.name.toLowerCase()}_d-min.png`
         )
         return (
           <Link key={link.path} href={link.path} passHref>
