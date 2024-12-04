@@ -2,6 +2,7 @@ import { Box, Text, Flex, Spacer, Center } from "@chakra-ui/react"
 import { format } from "date-fns"
 import { useEffect, useState } from "react"
 import {
+  FiActivity,
   FiAlertCircle,
   FiArrowDown,
   FiArrowUp,
@@ -56,6 +57,9 @@ export const Title = ({ title, description, payload }) => {
                 </Flex>
 
                 <Flex direction="row" mr="2">
+                  <Box sx={{ transform: "translateY(5px)" }} mr="1">
+                    <FiActivity size="13px" color={item.stroke} />
+                  </Box>
                   <Box>
                     <Text color={item.stroke} fontWeight="bold">
                       {item.value}
