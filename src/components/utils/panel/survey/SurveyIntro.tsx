@@ -1,5 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Box, Text, VStack, Center, Button } from "@chakra-ui/react"
+import { FiMessageSquare } from "react-icons/fi"
 
 export const SurveyIntro = ({ step, handleStartSurvey }) => {
   const handleProceed = () => {
@@ -9,27 +9,44 @@ export const SurveyIntro = ({ step, handleStartSurvey }) => {
   return (
     <>
       {step === 0 && (
-        <VStack spacing={4}>
-          <Box>
+        <VStack>
+          <Box mb="12">
             <Center mb="4">
-              <Text mb="4" fontSize="2xl">
-                Welcome to the survey!
+              <Text mb="4" fontSize="2xl" fontWeight="bold">
+                Welcome to our survey!
               </Text>
             </Center>
-            <Text m="4">
-              This survey will help us improve the usability of our site. Please
-              note that your responses will be recorded, and the time it takes
-              to complete the survey will also be tracked. The data collected
-              will be used to enhance your experience and improve the site's
-              usability. If you have any questions or feedback, please let us
-              know by using the message button on the top bar.
+            <Text m="2">
+              We appreciate your willingness to help us improve our website.
+              Your feedback is invaluable in enhancing the user experience.
+              Please note that your responses and the time taken to complete the
+              survey will be recorded.
             </Text>
-            <Text m="4">
-              If you agree to participate, please click "Okay" to proceed with
-              the survey.
+            <Text m="2">
+              If you have any questions or feedback during the survey, feel free
+              to use the message button{" "}
+              <Box
+                as={FiMessageSquare}
+                sx={{ transform: "translateY(3px)" }}
+                display="inline-block"
+                w="14px"
+                mr="1"
+              />
+              on the top bar.
+            </Text>
+            <Text m="2">
+              To begin the survey, please click &quot;Start&quot;.
             </Text>
           </Box>
-          <Button onClick={handleProceed}>Okay</Button>
+          <Button
+            shadow="md"
+            colorScheme="green"
+            onClick={handleProceed}
+            size="lg"
+            variant="solid"
+          >
+            Start
+          </Button>
         </VStack>
       )}
     </>

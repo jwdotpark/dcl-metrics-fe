@@ -6,6 +6,7 @@ import SurveyContainer from "./survey"
 
 export const SurveyPanel = ({ setOpen }) => {
   const [position, setPosition] = useState(null)
+  const bg = useColorModeValue("gray.50", "gray.700")
 
   useEffect(() => {
     const savedPosition = localStorage.getItem("surveyPanelPosition")
@@ -47,8 +48,6 @@ export const SurveyPanel = ({ setOpen }) => {
       style={{
         position: "fixed",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
         background: "#f0f0f0",
         border: "1px solid",
         borderColor: "#A0AEC0",
@@ -63,20 +62,14 @@ export const SurveyPanel = ({ setOpen }) => {
       position={{ x: position.x, y: position.y }}
       onDragStop={handleDragStop}
       onResizeStop={handleResizeStop}
-      minWidth={300}
-      minHeight={400}
+      minWidth={500}
+      minHeight={500}
+      maxWidth={500}
+      maxHeight={500}
     >
-      <Box
-        w="100%"
-        h="100%"
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        bg={useColorModeValue("gray.50", "gray.700")}
-        shadow="2xl"
-      >
+      <Box w="100%" h="100%" bg={bg} shadow="2xl">
         <PanelHeader title="Survey" setOpen={setOpen} />
-        <Box overflowY="auto" w="100%" h="100%" pb="8">
-          <SurveyContainer />
-        </Box>
+        <SurveyContainer />
       </Box>
     </Rnd>
   )

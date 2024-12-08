@@ -1,4 +1,5 @@
 import {
+  useColorModeValue,
   AlertDialog,
   AlertDialogOverlay,
   AlertDialogContent,
@@ -26,8 +27,8 @@ export const SurveyReset = ({
         justifyContent="center"
         display="flex"
       >
-        <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+        <AlertDialogContent bg={useColorModeValue("gray.50", "gray.600")}>
+          <AlertDialogHeader mt="4" fontSize="lg" fontWeight="bold">
             Reset Survey
           </AlertDialogHeader>
 
@@ -37,10 +38,10 @@ export const SurveyReset = ({
           </AlertDialogBody>
 
           <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={onCloseReset}>
+            <Button ref={cancelRef} onClick={onCloseReset} size="sm">
               Cancel
             </Button>
-            <Button ml={3} colorScheme="red" onClick={resetSurvey}>
+            <Button ml={3} colorScheme="red" onClick={resetSurvey} size="sm">
               Reset
             </Button>
           </AlertDialogFooter>

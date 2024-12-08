@@ -5,7 +5,7 @@ export const ProgressBar = ({ step, progress }) => {
   return (
     <>
       {step > 0 && (
-        <Box pos="relative" mb={4}>
+        <Box pos="relative" mt="2" mb="4">
           <Progress
             h="20px"
             // eslint-disable-next-line react-hooks/rules-of-hooks

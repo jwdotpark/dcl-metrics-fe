@@ -27,7 +27,7 @@ export const SurveyConfirm = ({
         display="flex"
       >
         <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+          <AlertDialogHeader mt="4" fontSize="2xl" fontWeight="bold">
             Form Submitted
           </AlertDialogHeader>
 

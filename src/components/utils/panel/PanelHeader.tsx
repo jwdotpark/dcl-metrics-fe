@@ -13,7 +13,7 @@ export const PanelHeader = ({ title, setOpen }) => {
       className="handler"
       direction="row"
       w="100%"
-      h="50px"
+      h="35px"
       bg={useColorModeValue("gray.500", "gray.900")}
       _hover={{ cursor: "grab" }}
     >

@@ -1,4 +1,5 @@
 import {
+  useColorModeValue,
   Box,
   Button,
   Flex,
@@ -116,87 +117,102 @@ const SurveyContainer = () => {
   }
 
   return (
-    <Box pos="relative" minH="400px" m="2" p={4} borderRadius="lg">
-      <ProgressBar step={step} progress={progress} />
-      <SurveyIntro step={step} handleStartSurvey={handleStartSurvey} />
-      {inquiries.map(
-        (inquiry, index) =>
-          step === index + 1 && (
-            <SurveyStep
-              key={index}
-              inquiry={inquiry}
-              formData={formData}
-              setFormData={setFormData}
-              step={index + 1}
-              startTime={startTime}
-              setStartTime={setStartTime}
-            />
-          )
-      )}
-      {step > 0 && (
-        <Box
-          pos="absolute"
-          bottom="16px"
-          left="50%"
-          w="100%"
-          transform="translateX(-50%)"
-        >
-          <Flex px="4">
-            <Box>
-              <ButtonGroup isAttached>
-                {step > 1 && (
-                  <Button onClick={prevStep} variant="outline">
-                    Previous
-                  </Button>
-                )}
-                {step < inquiries.length && (
-                  <Button
-                    colorScheme="green"
-                    disabled={!formData[`step${step}`]?.answer}
-                    onClick={nextStep}
-                  >
-                    Next
-                  </Button>
-                )}
-              </ButtonGroup>
-            </Box>
-            <Spacer />
-            <Box>
-              {step === inquiries.length && (
-                <Button
-                  mx="4"
-                  colorScheme="green"
-                  disabled={!formData[`step${step}`]?.answer || isSubmitting}
-                  onClick={handleSubmit}
-                >
-                  {isSubmitting ? <Spinner size="sm" /> : "Submit"}
-                </Button>
-              )}
-              <Button
-                colorScheme="yellow"
-                onClick={() => setIsResetOpen(true)}
-                variant="outline"
-              >
-                Reset
-              </Button>
-            </Box>
-          </Flex>
+    <Flex
+      direction="column"
+      w="100%"
+      h="100%"
+      p="4"
+      bg={useColorModeValue("gray.200", "gray.600")}
+    >
+      <Box h="370px">
+        <Box pos="relative" h="100%" mb="4">
+          <ProgressBar step={step} progress={progress} />
+          <SurveyIntro step={step} handleStartSurvey={handleStartSurvey} />
+          {inquiries.map(
+            (inquiry, index) =>
+              step === index + 1 && (
+                <SurveyStep
+                  key={index}
+                  inquiry={inquiry}
+                  formData={formData}
+                  setFormData={setFormData}
+                  step={index + 1}
+                  startTime={startTime}
+                  setStartTime={setStartTime}
+                />
+              )
+          )}
         </Box>
-      )}
-      <SurveyReset
-        isResetOpen={isResetOpen}
-        cancelRef={cancelRef}
-        onCloseReset={onCloseReset}
-        resetSurvey={resetSurvey}
-      />
-
-      <SurveyConfirm
-        isSubmitOpen={isSubmitOpen}
-        cancelRef={cancelRef}
-        onCloseSubmit={onCloseSubmit}
-        resetSurvey={resetSurvey}
-      />
-    </Box>
+        <Spacer />
+        <Box>
+          {step > 0 && (
+            <Box mt="4">
+              <Flex>
+                <Box>
+                  <ButtonGroup shadow="md" isAttached size="sm">
+                    {step > 1 && (
+                      <Button
+                        colorScheme="yellow"
+                        onClick={prevStep}
+                        variant="outline"
+                      >
+                        Previous
+                      </Button>
+                    )}
+                    {step < inquiries.length && (
+                      <Button
+                        colorScheme="green"
+                        disabled={!formData[`step${step}`]?.answer}
+                        onClick={nextStep}
+                      >
+                        Next
+                      </Button>
+                    )}
+                  </ButtonGroup>
+                </Box>
+                <Spacer />
+                <Box>
+                  {step === inquiries.length && (
+                    <Button
+                      mx="4"
+                      colorScheme="green"
+                      disabled={
+                        !formData[`step${step}`]?.answer || isSubmitting
+                      }
+                      onClick={handleSubmit}
+                      size="sm"
+                    >
+                      {isSubmitting ? <Spinner size="sm" /> : "Submit"}
+                    </Button>
+                  )}
+                  <Button
+                    shadow="md"
+                    colorScheme="orange"
+                    onClick={() => setIsResetOpen(true)}
+                    size="sm"
+                    variant="solid"
+                  >
+                    Reset
+                  </Button>
+                </Box>
+              </Flex>
+            </Box>
+          )}
+          <SurveyReset
+            isResetOpen={isResetOpen}
+            cancelRef={cancelRef}
+            onCloseReset={onCloseReset}
+            resetSurvey={resetSurvey}
+          />
+          <SurveyConfirm
+            isSubmitOpen={isSubmitOpen}
+            cancelRef={cancelRef}
+            onCloseSubmit={onCloseSubmit}
+            resetSurvey={resetSurvey}
+          />
+        </Box>
+      </Box>
+    </Flex>
   )
 }
 
