@@ -4,13 +4,17 @@ import { theme } from "../src/lib/theme/theme"
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from "jotai"
-import { Inter } from "next/font/google"
+import { Inter, Roboto_Serif } from "next/font/google"
 import { DefaultSeo } from "next-seo"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import Head from "next/head"
 import Inspector from "../src/components/utils/Inspector"
 
 const InterFont = Inter({
+  subsets: ["latin"],
+})
+
+export const serifFont = Roboto_Serif({
   subsets: ["latin"],
 })
 

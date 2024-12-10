@@ -44,7 +44,7 @@ const LandPicker = ({ parcelData, isPage, parcelCoord }) => {
         <BoxWrapper colSpan={0}>
           <BoxTitle
             name="Land Picker"
-            description="Choose the land!"
+            description="Select a parcel to view its details."
             date=""
             avgData=""
             slicedData=""

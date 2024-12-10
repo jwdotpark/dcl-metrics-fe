@@ -9,6 +9,7 @@ import {
   Center,
 } from "@chakra-ui/react"
 import Link from "next/link"
+import { serifFont } from "../../../pages/_app"
 
 const PostList = ({ posts }) => {
   const bg = useColorModeValue("white", "gray.800")
@@ -18,8 +19,8 @@ const PostList = ({ posts }) => {
     "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
   )
   return (
-    <Box w={["100%", "100%", "100%", 1080]}>
-      <SimpleGrid columns={[1, 1, 2]} spacing={4}>
+    <Box w={["100%", "100%", "100%", 800]}>
+      <SimpleGrid columns={[1, 1, 1]} spacing={4}>
         {posts.map((post) => (
           <Box
             key={post.slug}
@@ -45,9 +46,11 @@ const PostList = ({ posts }) => {
                     <Box w={["100%", "100%"]} pr="4">
                       <Text
                         align="center"
-                        mb="2"
+                        mt="0"
+                        mb="4"
                         ml="4"
-                        fontSize="lg"
+                        fontFamily={serifFont.style.fontFamily}
+                        fontSize="2xl"
                         fontWeight="bold"
                       >
                         {post.data.title}
@@ -60,7 +63,7 @@ const PostList = ({ posts }) => {
                       <Image
                         pos="relative"
                         overflow="clip"
-                        h="150px"
+                        h="300px"
                         mx="4"
                         borderRadius="xl"
                         objectFit="cover"

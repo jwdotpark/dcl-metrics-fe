@@ -8,6 +8,7 @@ import {
   FiArrowUp,
   FiCalendar,
 } from "react-icons/fi"
+import { serifFont } from "../../../../../pages/_app"
 import { Handle } from "./Handle"
 
 export const Title = ({ title, description, payload }) => {
@@ -26,7 +27,12 @@ export const Title = ({ title, description, payload }) => {
     <Box mb="4" ml="2">
       <Flex direction="row">
         <Center>
-          <Text fontSize="2xl" fontWeight="bold" whiteSpace="nowrap">
+          <Text
+            fontFamily={serifFont.style.fontFamily}
+            fontSize="2xl"
+            fontWeight="black"
+            whiteSpace="nowrap"
+          >
             {title}
           </Text>
         </Center>

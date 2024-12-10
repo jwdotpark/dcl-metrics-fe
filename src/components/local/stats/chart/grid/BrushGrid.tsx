@@ -11,6 +11,7 @@ import { Brush, XAxis, AreaChart, ResponsiveContainer } from "recharts"
 import { format } from "date-fns"
 import { chartDataAtom } from "../../../../../lib/state/dataIndex"
 import { useAtom } from "jotai"
+import { serifFont } from "../../../../../../pages/_app"
 
 export const BrushGrid = ({ chartData }) => {
   // eslint-disable-next-line no-unused-vars
@@ -52,7 +53,12 @@ export const BrushGrid = ({ chartData }) => {
       shadow="md"
       rounded="xl"
     >
-      <Flex direction="row" w="100%" px="2">
+      <Flex
+        direction="row"
+        w="100%"
+        px="2"
+        fontFamily={serifFont.style.fontFamily}
+      >
         <Center w="100%">
           <Box>
             <Text

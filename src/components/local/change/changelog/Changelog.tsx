@@ -11,6 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import { FiCheckCircle } from "react-icons/fi"
+import { serifFont } from "../../../../../pages/_app"
 import { minorchangeTemplate } from "./changelog"
 
 const ChangeLog = () => {
@@ -58,8 +59,9 @@ const ChangeLog = () => {
           my={4}
           textAlign="center"
           w="100%"
+          fontFamily={serifFont.style.fontFamily}
         >
-          Changelog
+          Change Log
         </chakra.h3>
         <Box zIndex={1}>
           <ChangeList />
