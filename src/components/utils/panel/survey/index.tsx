@@ -9,6 +9,7 @@ import {
   Spinner,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
+import { ATapiKey, ATbaseID, ATtableName } from "../../../../lib/data/constant"
 import { ProgressBar } from "./ProgressBar"
 import { inquiries } from "./statics"
 import { SurveyConfirm } from "./SurveyConfirm"
@@ -69,29 +70,30 @@ const SurveyContainer = () => {
 
   const progress = (step / (inquiries.length + 1)) * 100
 
-  const apiKey = process.env.NEXT_PUBLIC_AIRTABLE_API
-  const baseID = process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID
-  const tableName = process.env.NEXT_PUBLIC_AIRTABLE_NAME
-
   const handleSubmit = async () => {
     setIsSubmitting(true)
 
-    const fields = inquiries.reduce((acc, inquiries, index) => {
+    const fields = inquiries.reduce((acc, inquiry, index) => {
       const step = `step${Number(index) + 1}`
-      acc[`${step}`] = formData[step]?.answer
+      const answer = formData[step]?.answer
+      const correct = inquiry.answer === answer ? "correct" : "incorrect"
+      acc[`${step}`] = answer
       acc[`${step} rt`] = formData[step]?.responseTime
+      acc[`${step} answer`] = correct
       return acc
     }, {})
 
     const data = { fields }
 
+    console.log("form data", data)
+
     try {
       const response = await fetch(
-        `https://api.airtable.com/v0/${baseID}/${tableName}`,
+        `https://api.airtable.com/v0/${ATbaseID}/${ATtableName}`,
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${apiKey}`,
+            Authorization: `Bearer ${ATapiKey}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),

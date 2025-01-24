@@ -92,3 +92,7 @@ export const indexChartMargin = {
 }
 
 export const chartHeight = 250
+
+export const ATapiKey = process.env.NEXT_PUBLIC_AIRTABLE_API
+export const ATbaseID = process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID
+export const ATtableName = process.env.NEXT_PUBLIC_AIRTABLE_NAME
