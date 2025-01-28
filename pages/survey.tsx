@@ -182,6 +182,8 @@ const SurveyPage = () => {
     )
   }
 
+  const chartHeight = 300
+
   return (
     <Layout>
       <Grid
@@ -201,7 +203,8 @@ const SurveyPage = () => {
             </Center>
           ) : (
             <>
-              <ResponsiveContainer width="100%" height={600}>
+              <Center>Test Environment</Center>
+              <ResponsiveContainer width="100%" height={chartHeight}>
                 <BarChart
                   barGap={1}
                   data={clusteredData}
@@ -246,7 +249,8 @@ const SurveyPage = () => {
                   ))}
                 </BarChart>
               </ResponsiveContainer>
-              <ResponsiveContainer width="100%" height={600}>
+              <Center>Original Environment</Center>
+              <ResponsiveContainer width="100%" height={chartHeight}>
                 <BarChart
                   barGap={1}
                   data={oldClusteredData}
