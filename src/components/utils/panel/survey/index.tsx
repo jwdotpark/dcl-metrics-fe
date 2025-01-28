@@ -9,7 +9,11 @@ import {
   Spinner,
 } from "@chakra-ui/react"
 import { useState, useEffect, useRef } from "react"
-import { ATapiKey, ATbaseID, ATtableName } from "../../../../lib/data/constant"
+import {
+  ATapiKey,
+  ATbaseID,
+  ATnewTableName,
+} from "../../../../lib/data/constant"
 import { ProgressBar } from "./ProgressBar"
 import { inquiries } from "./statics"
 import { SurveyConfirm } from "./SurveyConfirm"
@@ -89,7 +93,7 @@ const SurveyContainer = () => {
 
     try {
       const response = await fetch(
-        `https://api.airtable.com/v0/${ATbaseID}/${ATtableName}`,
+        `https://api.airtable.com/v0/${ATbaseID}/${ATnewTableName}`,
         {
           method: "POST",
           headers: {

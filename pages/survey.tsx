@@ -28,12 +28,14 @@ import {
   Cell,
 } from "recharts"
 import { convertSeconds } from "../src/lib/hooks/utils"
-import { ATapiKey, ATbaseID, ATtableName } from "../src/lib/data/constant"
+import { ATapiKey, ATbaseID, ATnewTableName } from "../src/lib/data/constant"
 import { useState } from "react"
 import { inquiries } from "../src/components/utils/panel/survey/statics"
 
 const SurveyPage = () => {
   const [surveyData, setSurveyData] = useState([])
+  const [oldSurveyData, setOldSurveyData] = useState([])
+
   const [isTableLoading, setIsTableLoading] = useState(false)
   const [password, setPassword] = useState("")
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -42,14 +44,22 @@ const SurveyPage = () => {
   const getColors = (isCorrect) => (isCorrect ? "green" : "red")
 
   const fetchData = async () => {
+    const AToldTableName = process.env.NEXT_PUBLIC_OLD_AIRTABLE_NAME
     try {
       setIsTableLoading(true)
-      const response = await fetch(
-        `/api/airtable?baseID=${ATbaseID}&tableName=${ATtableName}&apiKey=${ATapiKey}`
+      const newTableResponse = await fetch(
+        `/api/airtable?baseID=${ATbaseID}&tableName=${ATnewTableName}&apiKey=${ATapiKey}`
       )
-      const data = await response.json()
-      setSurveyData(data)
-      return data
+      const newTableData = await newTableResponse.json()
+
+      const oldTableResponse = await fetch(
+        `/api/airtable?baseID=${ATbaseID}&tableName=${AToldTableName}&apiKey=${ATapiKey}`
+      )
+      const oldTableData = await oldTableResponse.json()
+
+      setSurveyData(newTableData)
+      setOldSurveyData(oldTableData)
+      return { newTableData, oldTableData }
     } catch (error) {
       console.error(error)
     } finally {
@@ -61,6 +71,14 @@ const SurveyPage = () => {
   const clusteredData = steps.map((step, i) => ({
     step: `Q${i + 1}`,
     ...surveyData.reduce((acc, item, index) => {
+      acc[`Survey ${index + 1}`] = item[`${step} rt`]
+      acc[`Survey ${index + 1} correct`] = item[`${step} answer`] === "correct"
+      return acc
+    }, {}),
+  }))
+  const oldClusteredData = steps.map((step, i) => ({
+    step: `Q${i + 1}`,
+    ...oldSurveyData.reduce((acc, item, index) => {
       acc[`Survey ${index + 1}`] = item[`${step} rt`]
       acc[`Survey ${index + 1} correct`] = item[`${step} answer`] === "correct"
       return acc
@@ -80,9 +98,10 @@ const SurveyPage = () => {
         : "Unknown Question"
 
       const totalResponseTime = payload.reduce(
-        (acc, entry) => acc + entry.value,
+        (acc, entry) => acc + Number(entry.value),
         0
       )
+
       const avgResponseTime = (
         totalResponseTime /
         payload.length /
@@ -172,54 +191,106 @@ const SurveyPage = () => {
         borderRadius="md"
         shadow="md"
       >
-        <Button onClick={() => fetchData()}>Fetch Data</Button>
+        <Button mb="8" onClick={() => fetchData()}>
+          Fetch Data
+        </Button>
         <GridItem>
           {isTableLoading ? (
             <Center h="600px">
               <Spinner />
             </Center>
           ) : (
-            <ResponsiveContainer width="100%" height={600}>
-              <BarChart
-                barGap={1}
-                data={clusteredData}
-                margin={{
-                  top: 20,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="step" />
-                <YAxis
-                  tickFormatter={(tick) => {
-                    const val = convertSeconds(tick / 1000)
-                    return val
+            <>
+              <ResponsiveContainer width="100%" height={600}>
+                <BarChart
+                  barGap={1}
+                  data={clusteredData}
+                  margin={{
+                    top: 20,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
                   }}
-                />
-                {/*<Tooltip />*/}
-                <Tooltip
-                  content={
-                    <CustomTooltip
-                      active={undefined}
-                      payload={undefined}
-                      label={undefined}
-                    />
-                  }
-                />
-                {surveyData.map((_, index) => (
-                  <Bar key={index} dataKey={`Survey ${index + 1}`} barSize={4}>
-                    {clusteredData.map((entry, idx) => (
-                      <Cell
-                        key={`cell-${idx}`}
-                        fill={getColors(entry[`Survey ${index + 1} correct`])}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="step" />
+                  <YAxis
+                    tickFormatter={(tick) => {
+                      const val = convertSeconds(tick / 1000)
+                      return val
+                    }}
+                  />
+                  {/*<Tooltip />*/}
+                  <Tooltip
+                    content={
+                      <CustomTooltip
+                        active={undefined}
+                        payload={undefined}
+                        label={undefined}
                       />
-                    ))}
-                  </Bar>
-                ))}
-              </BarChart>
-            </ResponsiveContainer>
+                    }
+                  />
+                  {surveyData.map((_, index) => (
+                    <Bar
+                      key={index}
+                      dataKey={`Survey ${index + 1}`}
+                      barSize={4}
+                    >
+                      {clusteredData.map((entry, idx) => (
+                        <Cell
+                          key={`cell-${idx}`}
+                          fill={getColors(entry[`Survey ${index + 1} correct`])}
+                        />
+                      ))}
+                    </Bar>
+                  ))}
+                </BarChart>
+              </ResponsiveContainer>
+              <ResponsiveContainer width="100%" height={600}>
+                <BarChart
+                  barGap={1}
+                  data={oldClusteredData}
+                  margin={{
+                    top: 20,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="step" />
+                  <YAxis
+                    tickFormatter={(tick) => {
+                      const val = convertSeconds(tick / 1000)
+                      return val
+                    }}
+                  />
+                  <Tooltip
+                    content={
+                      <CustomTooltip
+                        active={undefined}
+                        payload={undefined}
+                        label={undefined}
+                      />
+                    }
+                  />
+                  {oldSurveyData.map((_, index) => (
+                    <Bar
+                      key={index}
+                      dataKey={`Survey ${index + 1}`}
+                      barSize={4}
+                    >
+                      {oldClusteredData.map((entry, idx) => (
+                        <Cell
+                          key={`cell-${idx}`}
+                          fill={getColors(entry[`Survey ${index + 1} correct`])}
+                        />
+                      ))}
+                    </Bar>
+                  ))}
+                </BarChart>
+              </ResponsiveContainer>
+            </>
           )}
         </GridItem>
       </Grid>
