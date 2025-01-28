@@ -30,8 +30,11 @@ export const TopbarHoverCard = ({ name, image, description }) => {
         </Box>
         <Center w="100%" mt="2">
           <Text
+            mx="2"
             color={useColorModeValue("gray.600", "gray.200")}
-            fontSize="xs"
+            fontSize="sm"
+            fontWeight="black"
+            textAlign="center"
             wordBreak="break-word"
           >
             {description}
