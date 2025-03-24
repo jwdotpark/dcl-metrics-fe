@@ -182,7 +182,7 @@ const SurveyPage = () => {
     )
   }
 
-  const chartHeight = 300
+  const chartHeight = 500
 
   return (
     <Layout>
