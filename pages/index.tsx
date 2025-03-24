@@ -12,7 +12,7 @@ import {
 import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
-import { isLocal } from "../src/lib/data/constant"
+import { isLocal, isProd } from "../src/lib/data/constant"
 import { flattenObject } from "../src/lib/hooks/utils"
 import { GridContainer } from "../src/components/layout/global/grid/GridContainer"
 //import LandPicker from "../src/components/global/map/LandPicker"
@@ -45,6 +45,8 @@ const GlobalPage: NextPage = (props: Props) => {
     parcelRes,
     //landSalesRes, rental,
   } = props
+
+  isProd && console.log("prod", globalDailyRes)
 
   const pageTitle = "DCL-Metrics"
   const description =

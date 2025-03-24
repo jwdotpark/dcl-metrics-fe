@@ -89,6 +89,8 @@ export async function fetchGlobalData() {
         getDataWithApiKey(url, endpoint, staticData)
       )
     )
+    console.log("globalDailyRes", globalDailyRes)
+    
     //landSalesRes = await getDataWithApiKey(
     //  "https://www.dcl-property.rentals/api/price_data",
     //  "https://www.dcl-property.rentals/api/price_data",
