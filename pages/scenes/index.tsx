@@ -22,50 +22,54 @@ import SearchScene from "../../src/components/local/stats/user/SearchScene"
 import SceneCharts from "../../src/components/local/stats/SceneCharts"
 import { useState } from "react"
 
-export async function getStaticProps() {
-  let globalSceneRes, sceneRes
+//export async function getStaticProps() {
+//  let globalSceneRes, sceneRes
 
-  if (isProd) {
-    globalSceneRes = await getDataWithApiKey(
-      globalScenesURL,
-      "/global/scenes",
-      staticGlobalScenes
-    )
-    sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
-  } else if (isDev && !isLocal) {
-    globalSceneRes = await getDataWithApiKey(
-      globalScenesURL,
-      "/global/scenes",
-      staticGlobalScenes
-    )
-    sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
-  } else if (isLocal) {
-    globalSceneRes = await getDataWithApiKey(
-      globalScenesURL,
-      "/global/scenes",
-      staticGlobalScenes
-    )
-    sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
-    //globalSceneRes = staticGlobalScenes
-    //sceneRes = staticScene
-  }
+//  if (isProd) {
+//    globalSceneRes = await getDataWithApiKey(
+//      globalScenesURL,
+//      "/global/scenes",
+//      staticGlobalScenes
+//    )
+//    sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
+//    console.log(sceneRes)
+//  } else if (isDev && !isLocal) {
+//    globalSceneRes = await getDataWithApiKey(
+//      globalScenesURL,
+//      "/global/scenes",
+//      staticGlobalScenes
+//    )
+//    sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
+//  } else if (isLocal) {
+//    globalSceneRes = await getDataWithApiKey(
+//      globalScenesURL,
+//      "/global/scenes",
+//      staticGlobalScenes
+//    )
+//    sceneRes = await getDataWithApiKey(sceneURL, "/scenes/top", staticScene)
+//    //globalSceneRes = staticGlobalScenes
+//    //sceneRes = staticScene
+//  }
 
-  const sceneFileNameArr = ["staticGlobalScenes", "staticScene"]
-  for (let i = 0; i < sceneFileNameArr.length; i++) {
-    writeFile(sceneFileNameArr[i], [globalSceneRes, sceneRes][i])
-  }
+//  const sceneFileNameArr = ["staticGlobalScenes", "staticScene"]
+//  for (let i = 0; i < sceneFileNameArr.length; i++) {
+//    writeFile(sceneFileNameArr[i], [globalSceneRes, sceneRes][i])
+//  }
 
-  return {
-    props: {
-      globalSceneRes,
-      sceneRes,
-    },
-  }
-}
+//  return {
+//    props: {
+//      globalSceneRes,
+//      sceneRes,
+//    },
+//  }
+//}
 
 const Scenes = (props: Props) => {
   const gridColumn = useBreakpointValue({ md: 1, lg: 1, xl: 2 })
-  const { globalSceneRes, sceneRes } = props
+
+  //const { globalSceneRes, sceneRes } = props
+  const globalSceneRes = staticGlobalScenes
+  const sceneRes = staticScene
 
   const pageTitle = "DCL-Metrics Scenes"
   const description =
@@ -109,9 +113,9 @@ const Scenes = (props: Props) => {
           <Box mb="4">
             <SceneTable sceneRes={sceneRes} setPageIndex={setPageIndex} />
           </Box>
-          <Box mb="4">
+          {/*<Box mb="4">
             <SceneCharts sceneRes={sceneRes} pageIndex={pageIndex} />
-          </Box>
+          </Box>*/}
           <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <TopScenesVisitors res={globalSceneRes} />
             <ScenesTimeSpent res={globalSceneRes} />

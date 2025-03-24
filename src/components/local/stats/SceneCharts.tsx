@@ -49,6 +49,7 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
   )}&range=${option.dateRange}&uuids=${option.uuids}&metric=${option.metric}`
 
   const { data: fetchedData, isLoading, error } = useSWR(targetUrl, fetcher)
+  console.log("fetchedData", fetchedData)
 
   const sortedData =
     fetchedData &&
