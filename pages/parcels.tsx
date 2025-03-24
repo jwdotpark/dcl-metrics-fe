@@ -19,24 +19,34 @@ import { NextSeo } from "next-seo"
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalParcelRes = await getDataWithApiKey(
-      globalParcelURL,
-      "/global/parcels",
-      staticGlobalParcels
-    )
+    //const globalParcelRes = await getDataWithApiKey(
+    //  globalParcelURL,
+    //  "/global/parcels",
+    //  staticGlobalParcels
+    //)
 
-    writeFile("staticGlobalParcels", globalParcelRes)
+    //writeFile("staticGlobalParcels", globalParcelRes)
 
+    //const result = { globalParcelRes }
+    //return {
+    //  props: result,
+    //}
+    const globalParcelRes = staticGlobalParcels
     const result = { globalParcelRes }
     return {
       props: result,
     }
   } else if (isDev && !isLocal) {
-    const globalParcelRes = await getData(
-      globalParcelURL,
-      "/global/parcels",
-      staticGlobalParcels
-    )
+    //const globalParcelRes = await getData(
+    //  globalParcelURL,
+    //  "/global/parcels",
+    //  staticGlobalParcels
+    //)
+    //const result = { globalParcelRes }
+    //return {
+    //  props: result,
+    //}
+    const globalParcelRes = staticGlobalParcels
     const result = { globalParcelRes }
     return {
       props: result,
