@@ -1,5 +1,5 @@
-import CryptoJS from "crypto-js"
 import { format, intervalToDuration, parse } from "date-fns"
+import { DataArrayType, DataObjectType } from "../types/IndexPage"
 
 export const isServer = () => {
   return typeof window === "undefined"
@@ -54,21 +54,6 @@ export const SceneColor = [
   "rgba(241, 150, 140)",
   "rgba(255, 121, 198)",
 ]
-
-const passPhrase = "okgu"
-
-export const encrypt = (text) => {
-  return CryptoJS.AES.encrypt(text, passPhrase).toString()
-}
-
-export const decrypt = (ciphertext) => {
-  if (ciphertext) {
-    ciphertext = ciphertext.replace(/ /g, "+")
-    const bytes = CryptoJS.AES.decrypt(ciphertext, passPhrase)
-    const originalText = bytes.toString(CryptoJS.enc.Utf8)
-    return originalText
-  }
-}
 
 export const heatmapColor = (value) => {
   let h
@@ -154,4 +139,19 @@ export const eventStatus = (event) => {
 
 export const mutateString = (inputString: string): string => {
   return inputString.replace("_", " ")
+}
+
+export const flattenObject = (
+  temp: Record<string, DataObjectType>
+): DataArrayType[] => {
+  return Object.entries(temp).map(([date, value]) => ({
+    date,
+    active_parcels: value.active_parcels,
+    active_scenes: value.active_scenes,
+    guest_users: value.users.guest_users,
+    named_users: value.users.named_users,
+    new_users: value.users.new_users,
+    unique_users: value.users.unique_users,
+    degraded: value.degraded,
+  }))
 }

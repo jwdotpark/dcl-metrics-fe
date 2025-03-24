@@ -1,4 +1,5 @@
 import { useColorModeValue, Box, Text, Flex, Spacer } from "@chakra-ui/react"
+import { serifFont } from "../../../../pages/_app"
 
 const BoxTitle = ({ name, description }) => {
   return (
@@ -7,13 +8,17 @@ const BoxTitle = ({ name, description }) => {
         <Box mt="4">
           <Flex direction="column" ml="5">
             <Box>
-              <Text fontSize="xl" fontWeight="bold">
+              <Text
+                fontFamily={serifFont.style.fontFamily}
+                fontSize="2xl"
+                fontWeight="bold"
+              >
                 {name}
               </Text>
             </Box>
 
             <Box mr="4">
-              <Text color="gray.500" fontSize={["xs", "sm"]}>
+              <Text fontSize="xs" fontWeight="light">
                 {description}
               </Text>
             </Box>

@@ -22,6 +22,7 @@ import useSWR from "swr"
 import { format } from "date-fns"
 import { SceneChartTooltip } from "./partials/chart/SceneChartToolTip"
 import { ChartParameters } from "./partials/chart/ChartParameters"
+import { chartFormat } from "../../../lib/data/chart/chartInfo"
 
 const SceneCharts = ({ sceneRes, pageIndex }) => {
   const AxisFontColor = useColorModeValue("#000", "#fff")
@@ -48,6 +49,7 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
   )}&range=${option.dateRange}&uuids=${option.uuids}&metric=${option.metric}`
 
   const { data: fetchedData, isLoading, error } = useSWR(targetUrl, fetcher)
+  console.log("fetchedData", fetchedData)
 
   const sortedData =
     fetchedData &&
@@ -135,22 +137,17 @@ const SceneCharts = ({ sceneRes, pageIndex }) => {
               >
                 <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
                 <XAxis
-                  fontSize="10px"
-                  style={{
-                    fontWeight: "medium",
-                  }}
+                  fontSize={chartFormat.fontSize}
                   dataKey="date"
                   tick={{ fill: AxisFontColor }}
                   tickFormatter={(tick) => {
                     const date = new Date(tick)
                     return format(date, "MM/dd")
                   }}
+                  interval={Math.round(option.dateRange / 10)}
                 />
                 <YAxis
-                  fontSize="10px"
-                  style={{
-                    fontWeight: "medium",
-                  }}
+                  fontSize={chartFormat.fontSize}
                   tick={{ fill: AxisFontColor }}
                 />
                 <Tooltip

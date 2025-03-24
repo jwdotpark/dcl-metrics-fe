@@ -13,30 +13,40 @@ import {
   isLocal,
   isProd,
 } from "../src/lib/data/constant"
-import { getData, getDataWithApiKey } from "../src/lib/data/fetch"
+import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 
 export async function getStaticProps() {
   if (isProd) {
-    const globalParcelRes = await getDataWithApiKey(
-      globalParcelURL,
-      "/global/parcels",
-      staticGlobalParcels
-    )
+    //const globalParcelRes = await getDataWithApiKey(
+    //  globalParcelURL,
+    //  "/global/parcels",
+    //  staticGlobalParcels
+    //)
 
     //writeFile("staticGlobalParcels", globalParcelRes)
 
+    //const result = { globalParcelRes }
+    //return {
+    //  props: result,
+    //}
+    const globalParcelRes = staticGlobalParcels
     const result = { globalParcelRes }
     return {
       props: result,
     }
   } else if (isDev && !isLocal) {
-    const globalParcelRes = await getData(
-      globalParcelURL,
-      "/global/parcels",
-      staticGlobalParcels
-    )
+    //const globalParcelRes = await getData(
+    //  globalParcelURL,
+    //  "/global/parcels",
+    //  staticGlobalParcels
+    //)
+    //const result = { globalParcelRes }
+    //return {
+    //  props: result,
+    //}
+    const globalParcelRes = staticGlobalParcels
     const result = { globalParcelRes }
     return {
       props: result,

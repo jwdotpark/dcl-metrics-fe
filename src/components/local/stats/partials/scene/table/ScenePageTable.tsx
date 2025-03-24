@@ -159,8 +159,19 @@ const ScenePageTable = ({ sceneRes, setPageIndex }) => {
 
   return (
     <>
+      <ScenePageTableButtonGroup
+        pageOptions={pageOptions}
+        canPreviousPage={canPreviousPage}
+        canNextPage={canNextPage}
+        gotoPage={gotoPage}
+        pageIndex={pageIndex}
+        nextPage={nextPage}
+        previousPage={previousPage}
+        pageCount={pageCount}
+        globalFilter={globalFilter}
+        setGlobalFilter={setGlobalFilter}
+      />
       <Table
-        h={["auto", 850]}
         {...getTableProps()}
         w="auto"
         mt="2"
@@ -215,18 +226,6 @@ const ScenePageTable = ({ sceneRes, setPageIndex }) => {
           })}
         </Tbody>
       </Table>
-      <ScenePageTableButtonGroup
-        pageOptions={pageOptions}
-        canPreviousPage={canPreviousPage}
-        canNextPage={canNextPage}
-        gotoPage={gotoPage}
-        pageIndex={pageIndex}
-        nextPage={nextPage}
-        previousPage={previousPage}
-        pageCount={pageCount}
-        globalFilter={globalFilter}
-        setGlobalFilter={setGlobalFilter}
-      />
     </>
   )
 }

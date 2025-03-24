@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import staticUserScenesVisited from "../../../../../public/data/staticUserScenesVisited.json"
 import { useState, useEffect, useMemo, useCallback } from "react"
 import {
@@ -130,7 +131,7 @@ const UserScenesVisited = ({ address, chartHeight }) => {
               syncId="userChart"
             >
               <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
-              <Tooltip
+              {/*<Tooltip
                 content={
                   <CustomTooltip
                     active={undefined}
@@ -140,7 +141,7 @@ const UserScenesVisited = ({ address, chartHeight }) => {
                     data={chartState.data}
                   />
                 }
-              />
+              />*/}
               <XAxis
                 dataKey="date"
                 fontSize="10px"

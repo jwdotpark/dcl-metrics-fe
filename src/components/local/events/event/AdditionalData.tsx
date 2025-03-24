@@ -1,3 +1,4 @@
+import { Center, Spinner } from "@chakra-ui/react"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { EventRelatedEvent } from "./EventRelatedScene"
@@ -16,8 +17,13 @@ export const AdditionalData = ({ event, eventData }) => {
         line={""}
         setLine={""}
       />
-
-      <EventRelatedEvent event={event} data={occurrences} />
+      {occurrences !== undefined ? (
+        <EventRelatedEvent event={event} data={occurrences} />
+      ) : (
+        <Center h="100px">
+          <Spinner />
+        </Center>
+      )}
     </BoxWrapper>
   )
 }

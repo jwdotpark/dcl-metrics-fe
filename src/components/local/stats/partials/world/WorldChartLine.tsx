@@ -12,6 +12,7 @@ import {
   //Area,
   ResponsiveContainer,
 } from "recharts"
+import { chartFormat } from "../../../../../lib/data/chart/chartInfo"
 import { chartMargin } from "../../../../../lib/data/constant"
 import { TitleHolder } from "./TitleHolder"
 
@@ -49,10 +50,12 @@ const WorldChartLine = ({ data }: any) => {
 
   return (
     <Box m="4">
-      <TitleHolder
-        title="Total World Count"
-        description="Total count of DCL, ENS and both worlds"
-      />
+      <Box mb="4">
+        <TitleHolder
+          title="Total World Count"
+          description="Total count of DCL, ENS and both worlds"
+        />
+      </Box>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart
           width={150}
@@ -64,20 +67,17 @@ const WorldChartLine = ({ data }: any) => {
           <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
           <XAxis
             dataKey="date"
-            fontSize="10px"
-            style={{
-              fontWeight: "medium",
-            }}
+            fontSize={chartFormat.fontSize}
             tick={{ fill: AxisFontColor }}
             tickFormatter={(tick) => {
               const date = new Date(tick)
               return format(date, "MM/dd")
             }}
+            interval={15}
           />
           <YAxis
             dataKey="total_world_count"
-            fontSize="10px"
-            style={{ fontWeight: "medium" }}
+            fontSize={chartFormat.fontSize}
             tick={{ fill: AxisFontColor }}
           />
           {ToolTipComponent}
@@ -123,18 +123,17 @@ const WorldChartLine = ({ data }: any) => {
           <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
           <XAxis
             dataKey="date"
-            fontSize="10px"
-            style={{ fontWeight: "medium" }}
+            fontSize={chartFormat.fontSize}
             tickFormatter={(tick) => {
               const date = new Date(tick)
               return format(date, "MM/dd")
             }}
             tick={{ fill: AxisFontColor }}
+            interval={15}
           />
           <YAxis
             dataKey="max_user_count"
-            fontSize="10px"
-            style={{ fontWeight: "medium" }}
+            fontSize={chartFormat.fontSize}
             tick={{ fill: AxisFontColor }}
           />
           {ToolTipComponent}
@@ -171,17 +170,16 @@ const WorldChartLine = ({ data }: any) => {
           <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
           <XAxis
             dataKey="date"
-            fontSize="10px"
-            style={{ fontWeight: "medium" }}
+            fontSize={chartFormat.fontSize}
             tickFormatter={(tick) => {
               const date = new Date(tick)
               return format(date, "MM/dd")
             }}
             tick={{ fill: AxisFontColor }}
+            interval={15}
           />
           <YAxis
-            fontSize="10px"
-            style={{ fontWeight: "medium" }}
+            fontSize={chartFormat.fontSize}
             tick={{ fill: AxisFontColor }}
           />
           {ToolTipComponent}
@@ -203,7 +201,7 @@ const WorldChartLine = ({ data }: any) => {
           />
           <Brush
             dataKey="date"
-            height={30}
+            height={15}
             travellerWidth={10}
             stroke={useColorModeValue("#718096", "#EDF2F7")}
             fill={useColorModeValue("#EDF2F7", "#4A5568")}

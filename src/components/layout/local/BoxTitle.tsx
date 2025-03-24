@@ -1,4 +1,5 @@
 import { useColorModeValue, Box, Text, Flex, Spacer } from "@chakra-ui/react"
+import { serifFont } from "../../../../pages/_app"
 import AvgStat from "../../local/stats/partials/AvgStat"
 
 const BoxTitle = ({
@@ -17,7 +18,11 @@ const BoxTitle = ({
         <Box mt="4">
           <Flex direction="column" ml="5">
             <Box>
-              <Text fontSize="xl" fontWeight="bold">
+              <Text
+                fontFamily={serifFont.style.fontFamily}
+                fontSize="2xl"
+                fontWeight="bold"
+              >
                 {name}
               </Text>
             </Box>
@@ -30,7 +35,7 @@ const BoxTitle = ({
             )}
             {date === "" && (
               <Box mr="4">
-                <Text color="gray.500" fontSize={["xs", "sm"]}>
+                <Text fontSize="xs" fontWeight="light">
                   {description}
                 </Text>
               </Box>

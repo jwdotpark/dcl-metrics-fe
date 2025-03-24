@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useMemo, useState } from "react"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 import { Box } from "@chakra-ui/react"
-import LineChart from "../../../../lib/LineChart"
+//import LineChart from "../../../../lib/LineChart"
 import BoxTitle from "../../../layout/local/BoxTitle"
 import { sliceData, findFalse } from "../../../../lib/data/chart/chartInfo"
 import DateRangeButton from "../daterange/DateRangeButton"
@@ -110,7 +111,7 @@ const LandSales = ({ data }) => {
           name="rentals"
           yesterday={false}
         />
-        <LineChart
+        {/*<LineChart
           data={filteredResult}
           color={lineColor}
           name="rental"
@@ -118,7 +119,7 @@ const LandSales = ({ data }) => {
           rentalData={undefined}
           line={line}
           avgColor={avgColor}
-        />
+        />*/}
       </Box>
     </BoxWrapper>
   )

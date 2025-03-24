@@ -11,6 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import { FiCheckCircle } from "react-icons/fi"
+import { serifFont } from "../../../../../pages/_app"
 import { roadmap } from "./roadmap"
 
 const RoadMap = () => {
@@ -66,6 +67,7 @@ const RoadMap = () => {
             my={4}
             textAlign="center"
             w="100%"
+            fontFamily={serifFont.style.fontFamily}
           >
             Roadmap
           </chakra.h3>

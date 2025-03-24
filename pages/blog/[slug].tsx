@@ -12,6 +12,7 @@ import { format } from "date-fns"
 import { CallOut, MDYoutube, LinkButton } from "../../src/components/markdown"
 import { generateMetaData, siteUrl } from "../../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
+import { serifFont } from "../_app"
 
 function Post({ slug, data, content }) {
   const router = useRouter()
@@ -58,8 +59,9 @@ function Post({ slug, data, content }) {
                   <Center mt="8" mx="4">
                     <Text
                       mb="2"
+                      fontFamily={serifFont.style.fontFamily}
                       fontSize={["xl", "xl", "2xl", "3xl"]}
-                      fontWeight="bold"
+                      fontWeight="black"
                     >
                       {data.title}
                     </Text>
@@ -68,10 +70,12 @@ function Post({ slug, data, content }) {
                     <Center w="100%">
                       <Flex direction="column" fontSize="sm">
                         <Center>
-                          <Text>{data.author}</Text>
+                          <Text fontFamily={serifFont.style.fontFamily}>
+                            {data.author}
+                          </Text>
                         </Center>
                         <Center>
-                          <Text>
+                          <Text fontFamily={serifFont.style.fontFamily}>
                             {format(new Date(data.date), "MMMM d, yyyy")}
                           </Text>
                         </Center>

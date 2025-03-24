@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-//import fs from "fs"
+import fs from "fs"
 //import { sendNotification } from "../hooks/sendNotification"
 import { isDev, isLocal, isProd } from "./constant"
 import { globalFileNameArr, globalRequestList } from "./fetchList"
@@ -30,11 +30,11 @@ export const axiosOptions = {
   },
 }
 
-//export const writeFile = (name, response) => {
-//  const path = "./public/data/"
-//  const file = `${name}.json`
-//  fs.writeFileSync(path + file, JSON.stringify(response))
-//}
+export const writeFile = (name, response) => {
+  const path = "./public/data/"
+  const file = `${name}.json`
+  fs.writeFileSync(path + file, JSON.stringify(response))
+}
 
 // disable fetch error, errors are handled in the backend
 
@@ -84,22 +84,30 @@ export async function fetchGlobalData() {
   let globalDailyRes, parcelRes, landSalesRes
 
   if (isProd) {
-    ;[globalDailyRes, parcelRes] = await Promise.all(
-      globalRequestList.map(({ url, endpoint, staticData }) =>
-        getDataWithApiKey(url, endpoint, staticData)
-      )
-    )
+    //;[globalDailyRes, parcelRes] = await Promise.all(
+    //  globalRequestList.map(({ url, endpoint, staticData }) =>
+    //    getDataWithApiKey(url, endpoint, staticData)
+    //  )
+    //)
     //landSalesRes = await getDataWithApiKey(
     //  "https://www.dcl-property.rentals/api/price_data",
     //  "https://www.dcl-property.rentals/api/price_data",
     //  staticLandSales
     //)
+    
+    // temp local cache
+    globalDailyRes = staticGlobalDaily
+    parcelRes = staticParcel
   } else if (isDev && !isLocal) {
-    ;[globalDailyRes, parcelRes] = await Promise.all(
-      globalRequestList.map(({ url, endpoint, staticData }) =>
-        getDataWithApiKey(url, endpoint, staticData)
-      )
-    )
+    //;[globalDailyRes, parcelRes] = await Promise.all(
+    //  globalRequestList.map(({ url, endpoint, staticData }) =>
+    //    getDataWithApiKey(url, endpoint, staticData)
+    //  )
+    //)
+    
+    // temp local cache
+    globalDailyRes = staticGlobalDaily
+    parcelRes = staticParcel
   } else if (isLocal) {
     globalDailyRes = staticGlobalDaily
     parcelRes = staticParcel

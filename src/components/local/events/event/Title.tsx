@@ -1,4 +1,5 @@
 import { Text, Center, Box, Flex, Spacer, Badge } from "@chakra-ui/react"
+import { serifFont } from "../../../../../pages/_app"
 import { eventStatus } from "../../../../lib/hooks/utils"
 import BoxWrapper from "../../../layout/local/BoxWrapper"
 
@@ -24,7 +25,11 @@ export const Title = ({ event }) => {
         mx="4"
       >
         <Box>
-          <Text fontSize={["md", "2xl", "3xl", "4xl"]} fontWeight="black">
+          <Text
+            fontFamily={serifFont.style.fontFamily}
+            fontSize={["md", "2xl", "3xl", "4xl"]}
+            fontWeight="black"
+          >
             {event.name}
           </Text>
         </Box>

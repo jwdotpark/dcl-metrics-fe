@@ -17,21 +17,31 @@ import SearchUser from "../../src/components/local/stats/user/SearchUser"
 export async function getStaticProps() {
   try {
     if (isProd) {
-      const globalUserRes = await getDataWithApiKey(
-        globalUsersURL,
-        "/global/users",
-        staticGlobalUsers
-      )
+      //const globalUserRes = await getDataWithApiKey(
+      //  globalUsersURL,
+      //  "/global/users",
+      //  staticGlobalUsers
+      //)
+      //const result = { globalUserRes }
+      //return {
+      //  props: result,
+      //}
+      const globalUserRes = staticGlobalUsers
       const result = { globalUserRes }
       return {
         props: result,
       }
     } else if (isDev && !isLocal) {
-      const globalUserRes = await getDataWithApiKey(
-        process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
-        "/global/users",
-        staticGlobalUsers
-      )
+      //const globalUserRes = await getDataWithApiKey(
+      //  process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
+      //  "/global/users",
+      //  staticGlobalUsers
+      //)
+      //const result = { globalUserRes }
+      //return {
+      //  props: result,
+      //}
+      const globalUserRes = staticGlobalUsers
       const result = { globalUserRes }
       return {
         props: result,
@@ -126,9 +136,9 @@ const Users = (props: Props) => {
         }}
       />
       <Layout>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+        {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <SearchUser />
-        </Grid>
+        </Grid>*/}
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <MarathonUsers res={globalUserRes} />
           <Explorer res={globalUserRes} />

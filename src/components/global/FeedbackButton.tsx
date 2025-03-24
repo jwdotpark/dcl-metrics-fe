@@ -15,7 +15,7 @@ const FeedbackButton = () => {
     <>
       <Popover placement="bottom-start" variant="responsive">
         <PopoverTrigger>
-          <Button data-testid="feedbackBtn" size="lg" variant="link">
+          <Button data-testid="feedbackBtn" size="md" variant="link">
             <FiMessageSquare />
           </Button>
         </PopoverTrigger>

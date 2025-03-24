@@ -60,7 +60,7 @@ const SceneMarathonUsers = ({ data }) => {
     }
     return (
       <Box
-        overflowY="auto"
+        overflowY="hidden"
         border="1px solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
         borderRadius="xl"

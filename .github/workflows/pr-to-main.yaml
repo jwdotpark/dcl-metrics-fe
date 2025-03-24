@@ -1,53 +1,53 @@
-name: Pull request to main
-on:
-  pull_request:
-    branches: [main]
+#name: Pull request to main
+#on:
+#  pull_request:
+#    branches: [main]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18.x"
-      - name: Start build notfication
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          disable_web_page_preview: true
-          format: html
-          message: |
-            ⏳ <b>PR TO MAIN Build started!</b> ${{ github.repository }}/${{ github.ref_name }}
-            Workflow: ${{ github.workflow }}
-            By: ${{ github.actor }}
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Use Node.js
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: "18.x"
+#      - name: Start build notfication
+#        uses: appleboy/telegram-action@master
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+#          disable_web_page_preview: true
+#          format: html
+#          message: |
+#            ⏳ <b>PR TO MAIN Build started!</b> ${{ github.repository }}/${{ github.ref_name }}
+#            Workflow: ${{ github.workflow }}
+#            By: ${{ github.actor }}
 
-      - name: Install dependencies
-        run: |
-          yarn install
+#      - name: Install dependencies
+#        run: |
+#          yarn install
 
-      - name: Run test
-        run: |
-          yarn test --verbose
+#      - name: Run test
+#        run: |
+#          yarn test --verbose
 
-      - name: Send Test Fail message
-        if: failure()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: html
-          message: |
-            ❌ PR <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>test failed..
+#      - name: Send Test Fail message
+#        if: failure()
+#        uses: appleboy/telegram-action@master
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+#          format: html
+#          message: |
+#            ❌ PR <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>test failed..
 
-      - name: Send Test Success message
-        if: success()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: html
-          message: |
-            ✅ PR <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>test passed!
+#      - name: Send Test Success message
+#        if: success()
+#        uses: appleboy/telegram-action@master
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+#          format: html
+#          message: |
+#            ✅ PR <a href="${{ github.event.head_commit.url }}">${{ github.event.head_commit.message }}</a>test passed!

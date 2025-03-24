@@ -121,7 +121,7 @@ export const SearchEvent = () => {
 
   return (
     <GridItem borderRadius="xl" shadow="md" colSpan={gridColumn}>
-      <Box pos="relative">
+      <Box pos="relative" mt="-4">
         <Input
           id="searchInput"
           {...getInputProps()}

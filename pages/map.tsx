@@ -1,9 +1,8 @@
-import { Box } from "@chakra-ui/react"
 import LandPicker from "../src/components/global/map/LandPicker"
 import Layout from "../src/components/layout/layout"
 import staticParcel from "../public/data/cached_parcel.json"
 import { isDev, isLocal, isProd, parcelURL } from "../src/lib/data/constant"
-import { getData, getDataWithApiKey } from "../src/lib/data/fetch"
+import { getData, getDataWithApiKey, writeFile } from "../src/lib/data/fetch"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
@@ -11,20 +10,30 @@ import { useEffect, useState } from "react"
 
 export async function getStaticProps() {
   if (isProd) {
-    const parcelRes = await getDataWithApiKey(
-      parcelURL,
-      "/parcels/all",
-      staticParcel
-    )
+    //const parcelRes = await getDataWithApiKey(
+    //  parcelURL,
+    //  "/parcels/all",
+    //  staticParcel
+    //)
 
     //writeFile("staticParcel", parcelRes)
 
+    //const result = { parcelRes }
+    //return {
+    //  props: result,
+    //}
+    const parcelRes = staticParcel
     const result = { parcelRes }
     return {
       props: result,
     }
   } else if (isDev && !isLocal) {
-    const parcelRes = await getData(parcelURL, "/parcels/all", staticParcel)
+    //const parcelRes = await getData(parcelURL, "/parcels/all", staticParcel)
+    //const result = { parcelRes }
+    //return {
+    //  props: result,
+    //}
+    const parcelRes = staticParcel
     const result = { parcelRes }
     return {
       props: result,
@@ -86,13 +95,11 @@ const MapPage = (props: Props) => {
         }}
       />
       <Layout>
-        <Box mb="4" mx={[-4, 0, 0, 0]}>
-          <LandPicker
-            parcelData={parcelRes}
-            isPage={true}
-            parcelCoord={parcelCoord}
-          />
-        </Box>
+        <LandPicker
+          parcelData={parcelRes}
+          isPage={true}
+          parcelCoord={parcelCoord}
+        />
       </Layout>
     </>
   )

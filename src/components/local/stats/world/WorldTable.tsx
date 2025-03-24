@@ -11,6 +11,8 @@ import {
   Box,
   Image,
   useDisclosure,
+  Flex,
+  Center,
 } from "@chakra-ui/react"
 import { useMemo, useState } from "react"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
@@ -23,6 +25,7 @@ import {
 import { format } from "date-fns"
 import WorldPageTableButtonGroup from "../partials/world/WorldPageTableButtonGroup"
 import WorldJumpModal from "../partials/world/WorldJumpModal"
+import { motion } from "framer-motion"
 
 const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -47,19 +50,22 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
       {
         Header: "Thumbnail",
         Cell: ({ row }) => (
-          <Box onClick={() => handleThumbnailClick(row)}>
-            <Image
-              w="75px"
-              minW="75px"
-              maxW="75px"
-              h="75px"
-              minH="75px"
-              maxH="75px"
-              borderRadius="md"
-              alt={row.original.scenes[0].title}
-              fallbackSrc="/dcl-logo-toned.svg"
-              src={row.original.scenes[0].thumbnail}
-            />
+          <Box
+            w="45px"
+            h="100%"
+            _hover={{ cursor: "grab" }}
+            onClick={() => handleThumbnailClick(row)}
+          >
+            <motion.div whileHover={{ scale: 1.5 }}>
+              <Image
+                w="45px"
+                h="45px"
+                borderRadius="md"
+                alt={row.original.scenes[0].title}
+                fallbackSrc="/dcl-logo-toned.svg"
+                src={row.original.scenes[0].thumbnail}
+              />
+            </motion.div>
           </Box>
         ),
         sortBy: false,
@@ -69,11 +75,11 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
         Cell: ({ row }) => <Text>{row.original.ens_token}</Text>,
         accessor: (row) => row.ens_token,
       },
-      //{
-      //  Header: "Name",
-      //  Cell: ({ row }) => <Text>{row.original.name}</Text>,
-      //  accessor: (row) => row.name,
-      //},
+      {
+        Header: "Name",
+        Cell: ({ row }) => <Text>{row.original.name}</Text>,
+        accessor: (row) => row.name,
+      },
       {
         Header: "Scene Title",
         accessor: (row) => row.scenes[0].title,
@@ -86,11 +92,9 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
         accessor: (row) => row.scenes[0].description,
         Cell: ({ row }) => (
           <Box maxW="500px">
-            <Text>
+            <Text noOfLines={3}>
               {row.original.scenes[0].description
-                ? row.original.scenes[0].description.length > 200
-                  ? `${row.original.scenes[0].description.substring(0, 200)}...`
-                  : row.original.scenes[0].description
+                ? row.original.scenes[0].description
                 : "N/A"}
             </Text>
           </Box>
@@ -100,7 +104,7 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
         Header: "Created At",
         accessor: (row) => row.scenes[0].timestamp,
         Cell: ({ row }) => (
-          <Text>{format(row.original.scenes[0].timestamp, "yy MMM d")}</Text>
+          <Text>{format(row.original.scenes[0].timestamp, "yyyy/MM/d")}</Text>
         ),
       },
       {
@@ -150,92 +154,100 @@ const ScenePageTable = ({ worldCurrentRes, pageSize }) => {
 
   return (
     <Box>
-      <WorldJumpModal
-        isOpen={isOpen}
-        onClose={onClose}
-        selectedRow={selectedRow}
-      />
-      <Box mr="4">
-        <WorldPageTableButtonGroup
-          pageOptions={pageOptions}
-          canPreviousPage={canPreviousPage}
-          canNextPage={canNextPage}
-          gotoPage={gotoPage}
-          pageIndex={pageIndex}
-          nextPage={nextPage}
-          previousPage={previousPage}
-          pageCount={pageCount}
-          globalFilter={globalFilter}
-          setGlobalFilter={setGlobalFilter}
-        />
+      <Flex direction="column" w="100%" h="100%" mt="4">
+        <Center w="100%">
+          <WorldJumpModal
+            isOpen={isOpen}
+            onClose={onClose}
+            selectedRow={selectedRow}
+          />
+          <Box w="100%">
+            <WorldPageTableButtonGroup
+              pageOptions={pageOptions}
+              canPreviousPage={canPreviousPage}
+              canNextPage={canNextPage}
+              gotoPage={gotoPage}
+              pageIndex={pageIndex}
+              nextPage={nextPage}
+              previousPage={previousPage}
+              pageCount={pageCount}
+              globalFilter={globalFilter}
+              setGlobalFilter={setGlobalFilter}
+            />
 
-        <Box
-          sx={{
-            "&::-webkit-scrollbar": {
-              display: "none",
-            },
-            msOverflfowStyle: "none",
-            scrollbarWidth: "none",
-          }}
-          overflowX="scroll"
-        >
-          <Table
-            {...getTableProps()}
-            w="100%"
-            mt="2"
-            mb="2"
-            mx={[2, 2, 4]}
-            size="sm"
-            variant="simple"
-          >
-            <Thead>
-              {headerGroups.map((headerGroup, i) => (
-                <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column, j) => (
-                    <Th
-                      key={j}
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
-                    >
-                      {column.render("Header")}
-                      <Box display="inline-block">
-                        {column.isSorted ? (
-                          column.isSortedDesc ? (
-                            <FiChevronDown />
-                          ) : (
-                            <FiChevronUp />
-                          )
-                        ) : (
-                          ""
-                        )}
-                      </Box>
-                    </Th>
+            <Box
+              sx={{
+                "&::-webkit-scrollbar": {
+                  display: "none",
+                },
+                msOverflfowStyle: "none",
+                scrollbarWidth: "none",
+              }}
+              overflowX="scroll"
+              overflowY="hidden"
+              mt="4"
+            >
+              <Table
+                {...getTableProps()}
+                w="100%"
+                h="100%"
+                size="sm"
+                variant="simple"
+              >
+                <Thead>
+                  {headerGroups.map((headerGroup, i) => (
+                    <Tr key={i} {...headerGroup.getHeaderGroupProps()}>
+                      {headerGroup.headers.map((column, j) => (
+                        <Th
+                          key={j}
+                          {...column.getHeaderProps(
+                            column.getSortByToggleProps()
+                          )}
+                        >
+                          {column.render("Header")}
+                          <Box display="inline-block">
+                            {column.isSorted ? (
+                              column.isSortedDesc ? (
+                                <FiChevronDown />
+                              ) : (
+                                <FiChevronUp />
+                              )
+                            ) : (
+                              ""
+                            )}
+                          </Box>
+                        </Th>
+                      ))}
+                    </Tr>
                   ))}
-                </Tr>
-              ))}
-            </Thead>
-            <Tbody {...getTableBodyProps()}>
-              {page.map((row, i) => {
-                prepareRow(row)
-                return (
-                  <Tr
-                    key={i}
-                    {...row.getRowProps()}
-                    _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
-                  >
-                    {row.cells.map((cell, j) => {
-                      return (
-                        <Td key={j} {...cell.getCellProps()}>
-                          {cell.render("Cell")}
-                        </Td>
-                      )
-                    })}
-                  </Tr>
-                )
-              })}
-            </Tbody>
-          </Table>
-        </Box>
-      </Box>
+                </Thead>
+                <Tbody {...getTableBodyProps()}>
+                  {page.map((row, i) => {
+                    prepareRow(row)
+                    return (
+                      <Tr
+                        key={i}
+                        {...row.getRowProps()}
+                        _hover={{
+                          bg: useColorModeValue("gray.100", "gray.700"),
+                        }}
+                      >
+                        {row.cells.map((cell, j) => {
+                          return (
+                            <Td key={j} {...cell.getCellProps()}>
+                              {cell.render("Cell")}
+                            </Td>
+                          )
+                        })}
+                      </Tr>
+                    )
+                  })}
+                </Tbody>
+              </Table>
+            </Box>
+          </Box>
+        </Center>
+      </Flex>
     </Box>
   )
 }

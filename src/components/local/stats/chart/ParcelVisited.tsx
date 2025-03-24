@@ -9,13 +9,13 @@ import {
   YAxis,
   Area,
   ReferenceArea,
-  Tooltip,
+  //Tooltip,
   ReferenceLine,
 } from "recharts"
 import { calculateAvg } from "../../../../lib/data/chart/chartHelper"
 import { chartHeight, indexChartMargin } from "../../../../lib/data/constant"
 import PlainBoxTitle from "../../../layout/local/PlainBoxTitle"
-import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
+//import { CustomTooltip } from "../partials/chart/CustomChartToolTip"
 import ChartResetBtn from "../partials/chart/ResetBtn"
 import { useChartZoom } from "../partials/chart/useChartZoom"
 
@@ -55,7 +55,7 @@ const ParcelVisited = ({ chartData, avg, setAvg }) => {
                 syncId="anyId"
               >
                 <CartesianGrid strokeDasharray="4 4" opacity={0.5} />
-                <Tooltip
+                {/*<Tooltip
                   content={
                     <CustomTooltip
                       active={undefined}
@@ -65,7 +65,7 @@ const ParcelVisited = ({ chartData, avg, setAvg }) => {
                       data={chartState.data}
                     />
                   }
-                />
+                />*/}
                 <XAxis
                   dataKey="date"
                   fontSize="10px"

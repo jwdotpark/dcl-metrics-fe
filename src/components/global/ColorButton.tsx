@@ -9,7 +9,7 @@ const ColorButton = () => {
       <Button
         data-testid="colorBtn"
         onClick={toggleColorMode}
-        size="lg"
+        size="md"
         variant="link"
       >
         {colorMode === "light" ? <FiMoon /> : <FiSun />}

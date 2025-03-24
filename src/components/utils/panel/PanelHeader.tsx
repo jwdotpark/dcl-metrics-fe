@@ -7,23 +7,23 @@ import {
 } from "@chakra-ui/react"
 import { FiXCircle } from "react-icons/fi"
 
-export const PanelHeader = ({ setOpen }) => {
+export const PanelHeader = ({ title, setOpen }) => {
   return (
     <Flex
       className="handler"
       direction="row"
       w="100%"
-      h="50px"
+      h="35px"
       bg={useColorModeValue("gray.500", "gray.900")}
       _hover={{ cursor: "grab" }}
     >
       <Center h="100%" mx="4">
-        Insepctor
+        {title}
       </Center>
       <Spacer />
       <Center w="4rem" h="100%">
         <IconButton
-          bg={useColorModeValue("gray.400", "gray.200")}
+          bg={useColorModeValue("gray.400", "gray.600")}
           borderRadius="full"
           shadow="sm"
           aria-label={"close"}

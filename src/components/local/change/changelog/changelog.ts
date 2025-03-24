@@ -13,6 +13,7 @@ import {
   FiBox,
   FiThumbsUp,
   FiTrendingUp,
+  FiTruck,
 } from "react-icons/fi"
 
 export const minorchangeTemplate = [
@@ -146,12 +147,23 @@ export const minorchangeTemplate = [
       {
         icon: FiTrendingUp,
         title: "Historical scene history & expanded data scope",
-        description: "Data for the individual scene can go back to April 2022 and be saved locally",
+        description:
+          "Data for the individual scene can go back to April 2022 and be saved locally",
       },
       {
         icon: FiThumbsUp,
         title: "Quality of life improvements for site usability",
         description: "Improved site usability and performance in general",
+      },
+    ],
+  },
+  {
+    date: "2024 Q3",
+    contents: [
+      {
+        icon: FiTruck,
+        title: "Land/Scene utilization for detailed metrics",
+        //description: "",
       },
     ],
   },

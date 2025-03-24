@@ -25,71 +25,79 @@ import UserEvent from "../../src/components/local/stats/user/UserEvent"
 import UserCharts from "../../src/components/local/stats/user/UserCharts"
 
 export async function getServerSideProps(context) {
-  const { address } = context.query
-
-  let userAddressRes, nftRes, daoActivityRes, event
-
-  const addressUrl = `https://api.dcl-metrics.com/users/${address}`
-  const nftsUrl = `https://api.dcl-metrics.com/users/${address}/nfts`
-  const daoActivityUrl = `https://api.dcl-metrics.com/users/${address}/dao_activity`
-  const eventUrl = `https://events.decentraland.org/api/events?creator=${address}`
-
-  if (isProd) {
-    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
-    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
-    daoActivityRes = await getDataWithApiKey(
-      daoActivityUrl,
-      "users/" + address + "/dao_activity",
-      {}
-    )
-  } else if (isDev && !isLocal) {
-    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
-    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
-    daoActivityRes = await getDataWithApiKey(
-      daoActivityUrl,
-      "users/" + address + "/dao_activity",
-      {}
-    )
-  } else if (isLocal) {
-    //userAddressRes = staticUserAddress
-    //nftRes = staticUserNFT
-    //daoActivityRes = staticUserDAOActivity
-    userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
-    nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
-    daoActivityRes = await getDataWithApiKey(
-      daoActivityUrl,
-      "users/" + address + "/dao_activity",
-      {}
-    )
+  // reroute to /users
+  return {
+    redirect: {
+      destination: "/users",
+      permanent: false,
+    },
   }
 
-  const fetchUserEvent = async () => {
-    const req = await fetch(eventUrl)
-    const res = await req.json()
-    return res
-  }
-  event = await fetchUserEvent()
+  //const { address } = context.query
 
-  const userAllowed = process.env.NEXT_PUBLIC_ALLOW_USER === "true"
+  //let userAddressRes, nftRes, daoActivityRes, event
 
-  if (userAllowed) {
-    return {
-      props: {
-        address,
-        userAddressRes,
-        nftRes,
-        daoActivityRes,
-        event,
-      },
-    }
-  } else {
-    return {
-      redirect: {
-        destination: "/500",
-        permanent: false,
-      },
-    }
-  }
+  //const addressUrl = `https://api.dcl-metrics.com/users/${address}`
+  //const nftsUrl = `https://api.dcl-metrics.com/users/${address}/nfts`
+  //const daoActivityUrl = `https://api.dcl-metrics.com/users/${address}/dao_activity`
+  //const eventUrl = `https://events.decentraland.org/api/events?creator=${address}`
+
+  //if (isProd) {
+  //  userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
+  //  nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
+  //  daoActivityRes = await getDataWithApiKey(
+  //    daoActivityUrl,
+  //    "users/" + address + "/dao_activity",
+  //    {}
+  //  )
+  //} else if (isDev && !isLocal) {
+  //  userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
+  //  nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
+  //  daoActivityRes = await getDataWithApiKey(
+  //    daoActivityUrl,
+  //    "users/" + address + "/dao_activity",
+  //    {}
+  //  )
+  //} else if (isLocal) {
+  //  //userAddressRes = staticUserAddress
+  //  //nftRes = staticUserNFT
+  //  //daoActivityRes = staticUserDAOActivity
+  //  userAddressRes = await getDataWithApiKey(addressUrl, "users/" + address, {})
+  //  nftRes = await getDataWithApiKey(nftsUrl, "users/" + address + "/nfts", {})
+  //  daoActivityRes = await getDataWithApiKey(
+  //    daoActivityUrl,
+  //    "users/" + address + "/dao_activity",
+  //    {}
+  //  )
+  //}
+
+  //const fetchUserEvent = async () => {
+  //  const req = await fetch(eventUrl)
+  //  const res = await req.json()
+  //  return res
+  //}
+  //event = await fetchUserEvent()
+
+  //const userAllowed = process.env.NEXT_PUBLIC_ALLOW_USER === "true"
+
+  //if (userAllowed) {
+  //  return {
+  //    props: {
+  //      address,
+  //      userAddressRes,
+  //      nftRes,
+  //      daoActivityRes,
+  //      event,
+  //    },
+  //  }
+  //} else {
+  //  return {
+  //    redirect: {
+  //      destination: "/500",
+  //      permanent: false,
+  //    },
+  //}
+  //}
 }
 
 const SingleUserPage = (props) => {

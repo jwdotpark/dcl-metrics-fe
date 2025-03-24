@@ -1,34 +1,30 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+
 import React, { useEffect, useState } from "react"
 import type { NextPage } from "next"
-import {
-  Grid,
-  useBreakpointValue,
-  Box,
-  Spinner,
-  Center,
-} from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import Layout from "../src/components/layout/layout"
-import LandPicker from "../src/components/global/map/LandPicker"
 import {
   fetchGlobalData,
   //fetchRentalData,
   //getLatestPost,
 } from "../src/lib/data/fetch"
-//import RentalDay from "../src/components/local/stats/rentals/RentalDay"
-//import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
+import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
 import { generateMetaData, siteUrl } from "../src/lib/data/metadata"
 import { NextSeo } from "next-seo"
-import WorldStat from "../src/components/local/stats/world/WorldStat"
-import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
-import { isLocal } from "../src/lib/data/constant"
-import staticWorldCurrent from "../public/data/staticWorldCurrent.json"
-import BoxWrapper from "../src/components/layout/local/BoxWrapper"
-import GlobalChart from "../src/components/local/stats/GlobalCharts"
-import { DataArrayType, DataObjectType } from "../src/lib/types/IndexPage"
-import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
-import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
-import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
+import { isLocal, isProd } from "../src/lib/data/constant"
+import { flattenObject } from "../src/lib/hooks/utils"
+import { GridContainer } from "../src/components/layout/global/grid/GridContainer"
+//import LandPicker from "../src/components/global/map/LandPicker"
+//import RentalDay from "../src/components/local/stats/rentals/RentalDay"
+//import RentalTotal from "../src/components/local/stats/rentals/RentalTotal"
+//import WorldStat from "../src/components/local/stats/world/WorldStat"
+//import WorldCurrentTop from "../src/components/local/stats/world/WorldCurrentTop"
+//import BoxWrapper from "../src/components/layout/local/BoxWrapper"
+//import GlobalChart from "../src/components/local/stats/GlobalCharts"
+//import { OnlineUsers } from "../src/components/local/stats/chart/OnlineUsers"
+//import { ActiveUsers } from "../src/components/local/stats/chart/ActiveUsers"
+//import GlobalUtilization from "../src/components/local/stats/chart/GlobalUtilization"
 
 export async function getStaticProps() {
   const globalData = await fetchGlobalData()
@@ -44,14 +40,6 @@ export async function getStaticProps() {
 }
 
 const GlobalPage: NextPage = (props: Props) => {
-  const gridColumn = useBreakpointValue({
-    base: 1,
-    sm: 1,
-    md: 1,
-    lg: 2,
-    xl: 6,
-  })
-
   const {
     globalDailyRes,
     parcelRes,
@@ -74,40 +62,58 @@ const GlobalPage: NextPage = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState()
 
-  const fetchClientData = async () => {
-    const worldBaseUrl = "http://api.dcl-metrics.com/"
-    const worldEndpoint = "worlds/current"
-    const utilizationEndpoint = "utilization"
+  const worldBaseUrl = "http://api.dcl-metrics.com/"
+  const worldEndpoint = "worlds/current"
+  const utilizationEndpoint = "utilization"
 
+  const fetchWorldData = async () => {
+    const response = await fetch(
+      `/api/fetch?url=${worldBaseUrl + worldEndpoint}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    return response.json()
+  }
+
+  const fetchUtilizationData = async () => {
+    const response = await fetch(
+      `/api/fetch?url=${worldBaseUrl + utilizationEndpoint}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    return response.json()
+  }
+
+  const fetchClientData = async () => {
     setIsLoading(true)
     try {
-      const fetchData = async (endpoint) => {
-        const response = await fetch(
-          `/api/fetch?url=${worldBaseUrl + endpoint}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        return response.json()
-      }
-
       if (!isLocal) {
-        const [worldData, utilizationData] = await Promise.all([
-          fetchData(worldEndpoint),
-          fetchData(utilizationEndpoint),
-        ])
+        //const [worldData, utilizationData] = await Promise.all([
+        //  fetchWorldData(),
+        //  fetchUtilizationData(),
+        //])
 
-        setWorldData(worldData.result)
-        setUtilizationData(
-          Number(utilizationData.result.global_utilization.toFixed(2))
-        )
-      } else {
-        const staticUtilizationData = 75
+        //setWorldData(worldData.result)
+        //setUtilizationData(
+        //  Number(utilizationData.result.global_utilization.toFixed(2))
+        //)
+
+        // temp local data
+        const staticUtilizationData = 25
         setWorldData(staticWorldCurrent)
-        setUtilizationData(staticUtilizationData)
+        setUtilizationData(58.02)
+      } else {
+        const staticUtilizationData = 25
+        setWorldData(staticWorldCurrent)
+        setUtilizationData(58.02)
       }
     } catch (error) {
       console.error("Error fetching data: ", error)
@@ -117,25 +123,11 @@ const GlobalPage: NextPage = (props: Props) => {
     }
   }
 
-  const flattenObject = (
-    temp: Record<string, DataObjectType>
-  ): DataArrayType[] => {
-    return Object.entries(temp).map(([date, value]) => ({
-      date,
-      active_parcels: value.active_parcels,
-      active_scenes: value.active_scenes,
-      guest_users: value.users.guest_users,
-      named_users: value.users.named_users,
-      new_users: value.users.new_users,
-      unique_users: value.users.unique_users,
-      degraded: value.degraded,
-    }))
-  }
-
   const chartData = flattenObject(globalDailyRes)
 
   useEffect(() => {
     fetchClientData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -161,7 +153,8 @@ const GlobalPage: NextPage = (props: Props) => {
       />
       <Layout>
         <Box w="100%">
-          <Box mb="4" data-testid="uniqueVisitors">
+          <GridContainer chartData={chartData} worldData={worldData} />
+          {/*<Box mb="4" data-testid="uniqueVisitors">
             <GlobalChart chartData={chartData} />
             <Box mb="4" />
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
@@ -172,9 +165,8 @@ const GlobalPage: NextPage = (props: Props) => {
                 isLoading={isLoading}
               />
             </Grid>
-          </Box>
-
-          <LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
+          </Box>*/}
+          {/*<LandPicker parcelData={parcelRes} isPage={false} parcelCoord={{}} />
           {!isLoading && !error && Object.keys(worldData).length > 0 ? (
             <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
               <WorldStat worldCurrentRes={worldData} isMainPage={true} />
@@ -189,7 +181,7 @@ const GlobalPage: NextPage = (props: Props) => {
               </BoxWrapper>
               <Box mb="4" />
             </>
-          )}
+          )}*/}
           {/*<Box mb="4">
             <LandSales data={landSalesRes} />
           </Box>

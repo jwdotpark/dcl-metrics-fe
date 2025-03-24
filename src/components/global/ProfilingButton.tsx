@@ -3,7 +3,7 @@ import { useAtom } from "jotai"
 import { FiActivity } from "react-icons/fi"
 import { profilerDataAtom, profilerOpenAtom } from "../../lib/state/profiler"
 import ToolTip from "../layout/local/ToolTip"
-import { Panel } from "../utils/Panel"
+import { InspectorPanel } from "../utils/InspectorPanel"
 
 const ProfilingButton = () => {
   const [open, setOpen] = useAtom(profilerOpenAtom)
@@ -20,7 +20,7 @@ const ProfilingButton = () => {
             onClick={() => {
               setOpen(!open)
             }}
-            size="lg"
+            size="md"
             variant="link"
           >
             <FiActivity />
@@ -29,7 +29,7 @@ const ProfilingButton = () => {
       </Center>
       {open && (
         <>
-          <Panel profilingData={profiling} setOpen={setOpen} />
+          <InspectorPanel profilingData={profiling} setOpen={setOpen} />
         </>
       )}
     </>
