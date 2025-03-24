@@ -12,17 +12,23 @@ import WorldChart from "../src/components/local/stats/world/WorldChart"
 
 export async function getServerSideProps() {
   if (!isLocal) {
-    const worldCurrentRes = await getDataWithApiKey(
-      worldURL,
-      "/worlds/current",
-      staticWorldCurrent
-    )
-    const worldGlobalRes = await getDataWithApiKey(
-      worldGlobalURL,
-      "/worlds/global",
-      staticWorldGlobal
-    )
+    //const worldCurrentRes = await getDataWithApiKey(
+    //  worldURL,
+    //  "/worlds/current",
+    //  staticWorldCurrent
+    //)
+    //const worldGlobalRes = await getDataWithApiKey(
+    //  worldGlobalURL,
+    //  "/worlds/global",
+    //  staticWorldGlobal
+    //)
 
+    //const result = { worldCurrentRes, worldGlobalRes }
+    //return {
+    //  props: result,
+    //}
+    const worldCurrentRes = staticWorldCurrent
+    const worldGlobalRes = staticWorldGlobal
     const result = { worldCurrentRes, worldGlobalRes }
     return {
       props: result,
