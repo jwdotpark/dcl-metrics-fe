@@ -10,20 +10,30 @@ import { useEffect, useState } from "react"
 
 export async function getStaticProps() {
   if (isProd) {
-    const parcelRes = await getDataWithApiKey(
-      parcelURL,
-      "/parcels/all",
-      staticParcel
-    )
+    //const parcelRes = await getDataWithApiKey(
+    //  parcelURL,
+    //  "/parcels/all",
+    //  staticParcel
+    //)
 
-    writeFile("staticParcel", parcelRes)
+    //writeFile("staticParcel", parcelRes)
 
+    //const result = { parcelRes }
+    //return {
+    //  props: result,
+    //}
+    const parcelRes = staticParcel
     const result = { parcelRes }
     return {
       props: result,
     }
   } else if (isDev && !isLocal) {
-    const parcelRes = await getData(parcelURL, "/parcels/all", staticParcel)
+    //const parcelRes = await getData(parcelURL, "/parcels/all", staticParcel)
+    //const result = { parcelRes }
+    //return {
+    //  props: result,
+    //}
+    const parcelRes = staticParcel
     const result = { parcelRes }
     return {
       props: result,
