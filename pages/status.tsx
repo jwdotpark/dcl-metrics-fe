@@ -9,20 +9,30 @@ import { NextSeo } from "next-seo"
 
 export async function getStaticProps() {
   if (isProd) {
-    const statusRes = await getDataWithApiKey(
-      statusURL,
-      "/peer_status",
-      staticPeerStatus
-    )
+    //const statusRes = await getDataWithApiKey(
+    //  statusURL,
+    //  "/peer_status",
+    //  staticPeerStatus
+    //)
 
-    writeFile("staticPeerStatus", statusRes)
+    //writeFile("staticPeerStatus", statusRes)
 
+    //const result = { statusRes }
+    //return {
+    //  props: result,
+    //}
+    const statusRes = staticPeerStatus
     const result = { statusRes }
     return {
       props: result,
     }
   } else if (isDev && !isLocal) {
-    const statusRes = await getData(statusURL, "/peer_status", staticPeerStatus)
+    //const statusRes = await getData(statusURL, "/peer_status", staticPeerStatus)
+    //const result = { statusRes }
+    //return {
+    //  props: result,
+    //}
+    const statusRes = staticPeerStatus
     const result = { statusRes }
     return {
       props: result,
