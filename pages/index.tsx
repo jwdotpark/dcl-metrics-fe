@@ -76,7 +76,6 @@ const GlobalPage: NextPage = (props: Props) => {
         },
       }
     )
-    console.log("world data", response.json())
     return response.json()
   }
 
@@ -110,11 +109,11 @@ const GlobalPage: NextPage = (props: Props) => {
         // temp local data
         const staticUtilizationData = 25
         setWorldData(staticWorldCurrent)
-        setUtilizationData(staticUtilizationData)
+        setUtilizationData(58.02)
       } else {
         const staticUtilizationData = 25
         setWorldData(staticWorldCurrent)
-        setUtilizationData(staticUtilizationData)
+        setUtilizationData(58.02)
       }
     } catch (error) {
       console.error("Error fetching data: ", error)
