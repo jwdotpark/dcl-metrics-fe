@@ -76,6 +76,7 @@ const GlobalPage: NextPage = (props: Props) => {
         },
       }
     )
+    console.log("world data", response.json())
     return response.json()
   }
 
@@ -96,15 +97,20 @@ const GlobalPage: NextPage = (props: Props) => {
     setIsLoading(true)
     try {
       if (!isLocal) {
-        const [worldData, utilizationData] = await Promise.all([
-          fetchWorldData(),
-          fetchUtilizationData(),
-        ])
+        //const [worldData, utilizationData] = await Promise.all([
+        //  fetchWorldData(),
+        //  fetchUtilizationData(),
+        //])
 
-        setWorldData(worldData.result)
-        setUtilizationData(
-          Number(utilizationData.result.global_utilization.toFixed(2))
-        )
+        //setWorldData(worldData.result)
+        //setUtilizationData(
+        //  Number(utilizationData.result.global_utilization.toFixed(2))
+        //)
+
+        // temp local data
+        const staticUtilizationData = 25
+        setWorldData(staticWorldCurrent)
+        setUtilizationData(staticUtilizationData)
       } else {
         const staticUtilizationData = 25
         setWorldData(staticWorldCurrent)
