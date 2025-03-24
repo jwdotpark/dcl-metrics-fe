@@ -107,9 +107,9 @@ const Scenes = (props: Props) => {
       />
       <Layout>
         <Box mx={[4, 0]}>
-          <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+          {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
             <SearchScene />
-          </Grid>
+          </Grid>*/}
           <Box mb="4">
             <SceneTable sceneRes={sceneRes} setPageIndex={setPageIndex} />
           </Box>

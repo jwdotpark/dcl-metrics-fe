@@ -136,9 +136,9 @@ const Users = (props: Props) => {
         }}
       />
       <Layout>
-        <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
+        {/*<Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <SearchUser />
-        </Grid>
+        </Grid>*/}
         <Grid gap={4} templateColumns={`repeat(${gridColumn}, 1fr)`} mb="4">
           <MarathonUsers res={globalUserRes} />
           <Explorer res={globalUserRes} />
