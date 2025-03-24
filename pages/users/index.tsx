@@ -17,21 +17,31 @@ import SearchUser from "../../src/components/local/stats/user/SearchUser"
 export async function getStaticProps() {
   try {
     if (isProd) {
-      const globalUserRes = await getDataWithApiKey(
-        globalUsersURL,
-        "/global/users",
-        staticGlobalUsers
-      )
+      //const globalUserRes = await getDataWithApiKey(
+      //  globalUsersURL,
+      //  "/global/users",
+      //  staticGlobalUsers
+      //)
+      //const result = { globalUserRes }
+      //return {
+      //  props: result,
+      //}
+      const globalUserRes = staticGlobalUsers
       const result = { globalUserRes }
       return {
         props: result,
       }
     } else if (isDev && !isLocal) {
-      const globalUserRes = await getDataWithApiKey(
-        process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
-        "/global/users",
-        staticGlobalUsers
-      )
+      //const globalUserRes = await getDataWithApiKey(
+      //  process.env.NEXT_PUBLIC_PROD_ENDPOINT + "global/users",
+      //  "/global/users",
+      //  staticGlobalUsers
+      //)
+      //const result = { globalUserRes }
+      //return {
+      //  props: result,
+      //}
+      const globalUserRes = staticGlobalUsers
       const result = { globalUserRes }
       return {
         props: result,
